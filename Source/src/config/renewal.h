@@ -9,5 +9,4 @@
 #define RENEWAL_CAST
 #define RENEWAL_DROP
 #define RENEWAL_EXP
-#define RENEWAL_LVDMG
 #endif

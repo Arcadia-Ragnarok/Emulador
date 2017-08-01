@@ -77,7 +77,6 @@
 #endif
 
 /* Renewal's dmg level modifier, used as a macro for a easy way to turn off. */
-#ifdef RENEWAL_LVDMG
 	#define RE_LVL_DMOD(val) do { \
 		if( (val) > 0 ) \
 			skillratio = skillratio * status->get_lv(src) / (val); \
@@ -90,11 +89,6 @@
 	#define RE_LVL_TMDMOD() do { \
 		md.damage = md.damage * 150 / 100 + md.damage * status->get_lv(src) / 100; \
 	} while(0)
-#else
-	#define RE_LVL_DMOD(val) (void)(val)
-	#define RE_LVL_MDMOD(val) (void)(val)
-	#define RE_LVL_TMDMOD() (void)0
-#endif
 
 // Renewal variable cast time reduction
 #ifdef RENEWAL_CAST
