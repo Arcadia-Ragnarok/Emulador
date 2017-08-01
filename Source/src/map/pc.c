@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, RENEWAL_CAST, RENEWAL_DROP, RENEWAL_EXP, SECURE_NPCTIMEOUT
+#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, RENEWAL_CAST, SECURE_NPCTIMEOUT
 #include "pc.h"
 
 #include "map/atcommand.h" // get_atcommand_level()
@@ -6687,7 +6687,6 @@ void pc_calcexp(struct map_session_data *sd, unsigned int *base_exp, unsigned in
 	if (src != NULL) {
 		const struct status_data *st = status->get_status_data(src);
 
-#ifdef RENEWAL_EXP //should happen first before we caluclate any modifiers
 		if (src->type == BL_MOB) {
 			const struct mob_data *md = BL_UCAST(BL_MOB, src);
 			int re_mod;
@@ -6695,7 +6694,6 @@ void pc_calcexp(struct map_session_data *sd, unsigned int *base_exp, unsigned in
 			jexp = apply_percentrate64(jexp, re_mod, 100);
 			bexp = apply_percentrate64(bexp, re_mod, 100);
 		}
-#endif
 
 		//Race modifier
 		if (sd->expaddrace[st->race])
@@ -10695,9 +10693,7 @@ void pc_del_charm(struct map_session_data *sd, int count, int type)
  * @param type Modifier type (1=exp 2=itemdrop)
  * @return The percent rate modifier (100 = 100%)
  */
-int pc_level_penalty_mod(int diff, unsigned char race, uint32 mode, int type)
-{
-#if defined(RENEWAL_DROP) || defined(RENEWAL_EXP)
+int pc_level_penalty_mod(int diff, unsigned char race, uint32 mode, int type) {
 	int rate = 100, i;
 
 	if( diff < 0 )
@@ -10720,9 +10716,6 @@ int pc_level_penalty_mod(int diff, unsigned char race, uint32 mode, int type)
 	}
 
 	return rate;
-#else
-	return 100;
-#endif
 }
 int pc_split_str(char *str,char **val,int num)
 {
@@ -11007,7 +11000,6 @@ void pc_clear_skill_tree(void)
 }
 
 bool pc_readdb_levelpenalty(char* fields[], int columns, int current) {
-#if defined(RENEWAL_DROP) || defined(RENEWAL_EXP)
 	int type, race, diff;
 
 	nullpo_retr(false, fields);
@@ -11031,7 +11023,6 @@ bool pc_readdb_levelpenalty(char* fields[], int columns, int current) {
 		diff = min(150 + ( ~(diff) + 1 ), 150*2); // MAX_LEVEL
 
 	pc->level_penalty[type][race][diff] = atoi(fields[3]);
-#endif
 	return true;
 }
 
@@ -11125,7 +11116,6 @@ int pc_readdb(void) {
 	// Reset and read skilltree
 	pc->clear_skill_tree();
 	pc->read_skill_tree();
-#if defined(RENEWAL_DROP) || defined(RENEWAL_EXP)
 	sv->readdb(map->db_path, "Job_DB/LevelPenalty.txt", ',', 4, 4, -1, pc->readdb_levelpenalty);
 	for( k=1; k < 3; k++ ){ // fill in the blanks
 		for (j = RC_FORMLESS; j < RC_MAX; j++) {
@@ -11140,7 +11130,6 @@ int pc_readdb(void) {
 			}
 		}
 	}
-#endif
 
 	// Reset then read attr_fix
 	for(i=0;i<4;i++)

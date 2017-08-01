@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // AUTOLOOT_DISTANCE, SV_VERSION, DEFTYPE_MAX, DEFTYPE_MIN, RENEWAL_DROP, RENEWAL_EXP
+#include "config/core.h" // AUTOLOOT_DISTANCE, SV_VERSION, DEFTYPE_MAX, DEFTYPE_MIN
 #include "mob.h"
 
 #include "map/atcommand.h"
@@ -2366,12 +2366,10 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 		struct item_drop *ditem;
 		struct item_data* it = NULL;
 		int drop_rate;
-#ifdef RENEWAL_DROP
 		int drop_modifier = mvp_sd    ? pc->level_penalty_mod( md->level - mvp_sd->status.base_level, md->status.race, md->status.mode, 2)   :
 							second_sd ? pc->level_penalty_mod( md->level - second_sd->status.base_level, md->status.race, md->status.mode, 2):
 							third_sd  ? pc->level_penalty_mod( md->level - third_sd->status.base_level, md->status.race, md->status.mode, 2) :
 							100;/* no player was attached, we don't use any modifier (100 = rates are not touched) */
-#endif
 		dlist->m = md->bl.m;
 		dlist->x = md->bl.x;
 		dlist->y = md->bl.y;
@@ -2419,13 +2417,11 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 				drop_rate = max(drop_rate, cap_value((int)(0.5 + drop_rate * (sd->sc.data[SC_CASH_RECEIVEITEM]->val1) / 100.), 0, 9000));
 			if (sd && sd->sc.data[SC_OVERLAPEXPUP])
 				drop_rate = max(drop_rate, cap_value((int)(0.5 + drop_rate * (sd->sc.data[SC_OVERLAPEXPUP]->val2) / 100.), 0, 9000));
-#ifdef RENEWAL_DROP
 			if( drop_modifier != 100 ) {
 				drop_rate = drop_rate * drop_modifier / 100;
 				if( drop_rate < 1 )
 					drop_rate = 1;
 			}
-#endif
 			if( sd && sd->status.mod_drop != 100 ) {
 				drop_rate = drop_rate * sd->status.mod_drop / 100;
 				if( drop_rate < 1 )

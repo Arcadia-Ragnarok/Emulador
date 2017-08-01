@@ -7,6 +7,4 @@
 #define CONFIG_RENEWAL_H
 #define RENEWAL
 #define RENEWAL_CAST
-#define RENEWAL_DROP
-#define RENEWAL_EXP
 #endif

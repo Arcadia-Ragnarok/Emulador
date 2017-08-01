@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT(), RENEWAL, RENEWAL_DROP, RENEWAL_EXP
+#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT(), RENEWAL
 #include "atcommand.h"
 
 #include "map/HPMmap.h"
@@ -6605,12 +6605,10 @@ ACMD(mobinfo)
 		job_exp  = monster->job_exp;
 		base_exp = monster->base_exp;
 
-#ifdef RENEWAL_EXP
 		if( battle_config.atcommand_mobinfo_type ) {
 			base_exp = base_exp * pc->level_penalty_mod(monster->lv - sd->status.base_level, monster->status.race, monster->status.mode, 1) / 100;
 			job_exp = job_exp * pc->level_penalty_mod(monster->lv - sd->status.base_level, monster->status.race, monster->status.mode, 1) / 100;
 		}
-#endif
 
 		// stats
 		if (monster->mexp)
@@ -6652,14 +6650,12 @@ ACMD(mobinfo)
 
 			droprate = monster->dropitem[i].p;
 
-#ifdef RENEWAL_DROP
 			if( battle_config.atcommand_mobinfo_type ) {
 				droprate = droprate * pc->level_penalty_mod(monster->lv - sd->status.base_level, monster->status.race, monster->status.mode, 2) / 100;
 
 				if (droprate <= 0 && !battle_config.drop_rate0item)
 					droprate = 1;
 			}
-#endif
 
 			if (item_data->slot)
 				sprintf(atcmd_output2, " - %s[%d]  %02.02f%%", item_data->jname, item_data->slot, (float)droprate / 100);
