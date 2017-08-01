@@ -10,5 +10,4 @@
 #define RENEWAL_DROP
 #define RENEWAL_EXP
 #define RENEWAL_LVDMG
-#define RENEWAL_EDP
 #endif

@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // ANTI_MAYAP_CHEAT, SV_VERSION, DEFTYPE_MAX, DEFTYPE_MIN, DEVOTION_REFLECT_DAMAGE, RENEWAL, RENEWAL_EDP
+#include "config/core.h" // ANTI_MAYAP_CHEAT, SV_VERSION, DEFTYPE_MAX, DEFTYPE_MIN, DEVOTION_REFLECT_DAMAGE, RENEWAL
 #include "status.h"
 
 #include "map/battle.h"
@@ -8242,11 +8242,7 @@ int status_change_start(struct block_list *src, struct block_list *bl, enum sc_t
 				break;
 			case SC_EDP: // [Celest]
 				//Chance to Poison enemies.
-#ifdef RENEWAL_EDP
 				val2 = ((val1 + 1) / 2 + 2);
-#else
-				val2 = val1 + 2;
-#endif
 				val3 = 50 * (val1 + 1); //Damage increase (+50 +50*lv%)
 				if( sd )//[Ind] - iROwiki says each level increases its duration by 3 seconds
 					tick += pc->checkskill(sd,GC_RESEARCHNEWPOISON)*3000;

@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, HMAP_ZONE_DAMAGE_CAP_TYPE, OFFICIAL_WALKPATH, RENEWAL, RENEWAL_DROP, RENEWAL_EDP, RENEWAL_EXP, RENEWAL_LVDMG, RE_LVL_DMOD(), RE_LVL_MDMOD(), RE_LVL_TMDMOD(), RE_SKILL_REDUCTION(), SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT, STATS_OPT_OUT
+#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, HMAP_ZONE_DAMAGE_CAP_TYPE, OFFICIAL_WALKPATH, RENEWAL, RENEWAL_DROP, RENEWAL_EXP, RENEWAL_LVDMG, RE_LVL_DMOD(), RE_LVL_MDMOD(), RE_LVL_TMDMOD(), RE_SKILL_REDUCTION(), SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT, STATS_OPT_OUT
 #include "battle.h"
 
 #include "map/battleground.h"
@@ -486,14 +486,12 @@ int64 battle_calc_weapon_damage(struct block_list *src, struct block_list *bl, u
 			eatk += 200;
 	}
 
-#ifdef RENEWAL_EDP
 	if ( sc && sc->data[SC_EDP] && skill_id != AS_GRIMTOOTH && skill_id != AS_VENOMKNIFE && skill_id != ASC_BREAKER ) {
 		struct status_data *tstatus;
 		tstatus = status->get_status_data(bl);
 		eatk += damage * 0x19 * battle->attr_fix_table[tstatus->ele_lv - 1][ELE_POISON][tstatus->def_ele] / 10000;
 		damage += (eatk + damage) * sc->data[SC_EDP]->val3 / 100 + eatk;
 	} else /* fall through */
-#endif
 	damage += eatk;
 	damage = battle->calc_elefix(src, bl, skill_id, skill_lv, damage, nk, n_ele, s_ele, s_ele_, type == EQI_HAND_L, flag);
 
@@ -2697,14 +2695,12 @@ int battle_calc_skillratio(int attack_type, struct block_list *src, struct block
 			}
 			//Skill damage modifiers that stack linearly
 			if(sc && skill_id != PA_SACRIFICE){
-#ifdef RENEWAL_EDP
 				if( sc->data[SC_EDP] ){
 					if( skill_id == AS_SONICBLOW ||
 						skill_id == GC_COUNTERSLASH ||
 						skill_id == GC_CROSSIMPACT )
 							skillratio >>= 1;
 				}
-#endif
 				if(sc->data[SC_OVERTHRUST])
 					skillratio += sc->data[SC_OVERTHRUST]->val3;
 				if(sc->data[SC_OVERTHRUSTMAX])
@@ -4093,21 +4089,14 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 		break ;
 	case ASC_BREAKER:
 		{
-#ifndef RENEWAL
-		md.damage = 500+rnd()%500 + 5*skill_lv * sstatus->int_;
-		nk|=NK_IGNORE_FLEE|NK_NO_ELEFIX; //These two are not properties of the weapon based part.
-#else
 		int ratio = 300 + 50 * skill_lv;
 		int64 matk = battle->calc_magic_attack(src, target, skill_id, skill_lv, mflag).damage;
 		short totaldef = status->get_total_def(target) + status->get_total_mdef(target);
 		int64 atk = battle->calc_base_damage(src, target, skill_id, skill_lv, nk, false, s_ele, ELE_NEUTRAL, EQI_HAND_R, (sc && sc->data[SC_MAXIMIZEPOWER] ? 1 : 0) | (sc && sc->data[SC_WEAPONPERFECT] ? 8 : 0), md.flag);
-#ifdef RENEWAL_EDP
 		if( sc && sc->data[SC_EDP] )
 			ratio >>= 1;
-#endif
 		md.damage = (matk + atk) * ratio / 100;
 		md.damage -= totaldef;
-#endif
 		}
 		break;
 	case HW_GRAVITATION:
@@ -5232,11 +5221,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 #endif
 		//The following are applied on top of current damage and are stackable.
 		if ( sc ) {
-#ifndef RENEWAL
-			if( sc->data[SC_TRUESIGHT] )
-				ATK_ADDRATE(2*sc->data[SC_TRUESIGHT]->val1);
-#endif
-#ifndef RENEWAL_EDP
 			if( sc->data[SC_EDP] ){
 				switch(skill_id){
 					case AS_SPLASHER: // Needs more info
@@ -5246,7 +5230,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 						ATK_ADDRATE(sc->data[SC_EDP]->val3);
 				}
 			}
-#endif
 			if(sc->data[SC_STYLE_CHANGE]){
 				struct homun_data *hd = BL_CAST(BL_HOM, src);
 				if (hd != NULL)
@@ -7344,7 +7327,6 @@ void battle_report(char* date, char *time_c) {
 		C_RENEWAL_DROP          = 0x0080,
 		C_RENEWAL_EXP           = 0x0100,
 		C_RENEWAL_LVDMG         = 0x0200,
-		C_RENEWAL_EDP           = 0x0400,
 		C_SECURE_NPCTIMEOUT     = 0x1000,
 		//C_SQL_DB_ITEM           = 0x2000,
 		C_SQL_LOGS              = 0x4000,
@@ -7399,10 +7381,6 @@ void battle_report(char* date, char *time_c) {
 
 #ifdef RENEWAL_LVDMG
 	config |= C_RENEWAL_LVDMG;
-#endif
-
-#ifdef RENEWAL_EDP
-	config |= C_RENEWAL_EDP;
 #endif
 
 #ifdef SECURE_NPCTIMEOUT
