@@ -6,5 +6,4 @@
 #ifndef CONFIG_RENEWAL_H
 #define CONFIG_RENEWAL_H
 #define RENEWAL
-#define RENEWAL_CAST
 #endif

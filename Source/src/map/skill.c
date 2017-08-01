@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // SV_VERSION, MAGIC_REFLECTION_TYPE, OFFICIAL_WALKPATH, RENEWAL, RENEWAL_CAST, VARCAST_REDUCTION()
+#include "config/core.h" // SV_VERSION, MAGIC_REFLECTION_TYPE, OFFICIAL_WALKPATH, RENEWAL, VARCAST_REDUCTION()
 #include "skill.h"
 
 #include "map/battle.h"
@@ -214,13 +214,7 @@ int skill_get_unit_bl_target( uint16 skill_id )    { skill_get (skill->dbs->db[s
 int skill_get_unit_flag( uint16 skill_id )         { skill_get (skill->dbs->db[skill_id].unit_flag, skill_id); }
 int skill_get_unit_layout_type( uint16 skill_id ,uint16 skill_lv ){ Assert_ret(skill_lv > 0); skill_get2 (skill->dbs->db[skill_id].unit_layout_type[skill_glv(skill_lv-1)], skill_id, skill_lv); }
 int skill_get_cooldown( uint16 skill_id, uint16 skill_lv )     { Assert_ret(skill_lv > 0); skill_get2 (skill->dbs->db[skill_id].cooldown[skill_glv(skill_lv-1)], skill_id, skill_lv); }
-int skill_get_fixed_cast( uint16 skill_id ,uint16 skill_lv ) {
-#ifdef RENEWAL_CAST
-	Assert_ret(skill_lv > 0); skill_get2 (skill->dbs->db[skill_id].fixed_cast[skill_glv(skill_lv-1)], skill_id, skill_lv);
-#else
-	return 0;
-#endif
-}
+int skill_get_fixed_cast( uint16 skill_id ,uint16 skill_lv ) { Assert_ret(skill_lv > 0); skill_get2 (skill->dbs->db[skill_id].fixed_cast[skill_glv(skill_lv-1)], skill_id, skill_lv); return 0; }
 
 int skill_tree_get_max(uint16 skill_id, int b_class)
 {
@@ -15046,7 +15040,6 @@ int skill_castfix (struct block_list *bl, uint16 skill_id, uint16 skill_lv)
 	int time = skill->get_cast(skill_id, skill_lv);
 
 	nullpo_ret(bl);
-#ifndef RENEWAL_CAST
 	{
 		struct map_session_data *sd;
 
@@ -15078,7 +15071,6 @@ int skill_castfix (struct block_list *bl, uint16 skill_id, uint16 skill_lv)
 		}
 
 	}
-#endif
 	// config cast time multiplier
 	if (battle_config.cast_rate != 100)
 		time = time * battle_config.cast_rate / 100;
@@ -15128,9 +15120,7 @@ int skill_castfix_sc (struct block_list *bl, int time)
 	return time;
 }
 
-int skill_vfcastfix(struct block_list *bl, double time, uint16 skill_id, uint16 skill_lv)
-{
-#ifdef RENEWAL_CAST
+int skill_vfcastfix(struct block_list *bl, double time, uint16 skill_id, uint16 skill_lv) {
 	struct status_change *sc = status->get_sc(bl);
 	struct map_session_data *sd = BL_CAST(BL_PC,bl);
 	int fixed = skill->get_fixed_cast(skill_id, skill_lv), fixcast_r = 0, varcast_r = 0, i = 0;
@@ -15264,7 +15254,6 @@ int skill_vfcastfix(struct block_list *bl, double time, uint16 skill_id, uint16 
 		time = (1 - sqrt( ((float)(status_get_dex(bl)*2 + status_get_int(bl)) / battle_config.vcast_stat_scale) )) * time;
 	// underflow checking/capping
 	time = max(time, 0) + (1 - (float)min(fixcast_r, 100) / 100) * max(fixed,0);
-#endif
 	return (int)time;
 }
 
@@ -20604,11 +20593,10 @@ bool skill_read_skilldb(const char *filename)
 		if ((t=libconfig->setting_get_member(conf, "CoolDown")))
 			skill->config_set_level(t, tmp_db.cooldown);
 
-#ifdef RENEWAL_CAST
 		/* Fixed Casting Time */
 		if ((t=libconfig->setting_get_member(conf, "FixedCastTime")))
 			skill->config_set_level(t, tmp_db.fixed_cast);
-#endif
+
 		/* Cast Time Options */
 		skill->validate_castnodex(conf, &tmp_db, false);
 		skill->validate_castnodex(conf, &tmp_db, true);

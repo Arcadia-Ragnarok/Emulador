@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, RENEWAL_CAST, SECURE_NPCTIMEOUT
+#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, SECURE_NPCTIMEOUT
 #include "pc.h"
 
 #include "map/atcommand.h" // get_atcommand_level()
@@ -2429,9 +2429,6 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 			val += (int)bst->max_sp;
 			bst->max_sp = (unsigned int)val;
 			break;
-	#ifndef RENEWAL_CAST
-		case SP_VARCASTRATE:
-	#endif
 		case SP_CASTRATE:
 			if(sd->state.lr_flag != 2)
 				sd->castrate+=val;
@@ -2901,7 +2898,6 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 				sd->bonus.add_fixcast += val;
 
 			break;
-	#ifdef RENEWAL_CAST
 		case SP_VARCASTRATE:
 			if(sd->state.lr_flag != 2)
 				sd->bonus.varcastrate -= val;
@@ -2910,7 +2906,6 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 			if(sd->state.lr_flag != 2)
 				sd->bonus.add_varcast += val;
 			break;
-	#endif
 		case SP_ADD_MONSTER_DROP_CHAINITEM:
 			if (sd->state.lr_flag != 2)
 				pc->bonus_item_drop(sd->add_drop, ARRAYLENGTH(sd->add_drop), 0, val, map->race_id2mask(RC_ALL), 10000);
@@ -3372,9 +3367,6 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 				sd->skillblown[i].val = val;
 			}
 			break;
-#ifndef RENEWAL_CAST
-		case SP_VARCASTRATE:
-#endif
 		case SP_CASTRATE:
 			if(sd->state.lr_flag == 2)
 				break;
@@ -3652,7 +3644,6 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 				sd->skillvarcast[i].val = val;
 			}
 			break;
-	#ifdef RENEWAL_CAST
 		case SP_VARCASTRATE:
 			if(sd->state.lr_flag == 2)
 				break;
@@ -3669,7 +3660,6 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 				sd->skillcast[i].val -= val;
 			}
 			break;
-	#endif
 		case SP_SKILL_USE_SP: //bonus2 bSkillUseSP,n,x;
 			if(sd->state.lr_flag == 2)
 				break;
@@ -8052,9 +8042,6 @@ int pc_readparam(const struct map_session_data *sd, int type)
 		case SP_FLEE1:           val = sd->battle_status.flee; break;
 		case SP_FLEE2:           val = sd->battle_status.flee2; break;
 		case SP_DEFELE:          val = sd->battle_status.def_ele; break;
-#ifndef RENEWAL_CAST
-		case SP_VARCASTRATE:
-#endif
 		case SP_CASTRATE:
 				val = sd->castrate;
 			break;
@@ -8132,10 +8119,8 @@ int pc_readparam(const struct map_session_data *sd, int type)
 		case SP_EMATK:           val = sd->bonus.ematk; break;
 		case SP_FIXCASTRATE:     val = sd->bonus.fixcastrate; break;
 		case SP_ADD_FIXEDCAST:   val = sd->bonus.add_fixcast; break;
-#ifdef RENEWAL_CAST
 		case SP_VARCASTRATE:     val = sd->bonus.varcastrate; break;
 		case SP_ADD_VARIABLECAST:val = sd->bonus.add_varcast; break;
-#endif
 	}
 
 	return val;

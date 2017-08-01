@@ -7323,7 +7323,6 @@ void battle_report(char* date, char *time_c) {
 		C_SCRIPT_CALLFUNC_CHECK = 0x0008,
 		C_OFFICIAL_WALKPATH     = 0x0010,
 		C_RENEWAL               = 0x0020,
-		C_RENEWAL_CAST          = 0x0040,
 		C_SECURE_NPCTIMEOUT     = 0x1000,
 		//C_SQL_DB_ITEM           = 0x2000,
 		C_SQL_LOGS              = 0x4000,
@@ -7362,10 +7361,6 @@ void battle_report(char* date, char *time_c) {
 
 #ifdef RENEWAL
 	config |= C_RENEWAL;
-#endif
-
-#ifdef RENEWAL_CAST
-	config |= C_RENEWAL_CAST;
 #endif
 
 #ifdef SECURE_NPCTIMEOUT

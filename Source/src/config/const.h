@@ -91,12 +91,10 @@
 	} while(0)
 
 // Renewal variable cast time reduction
-#ifdef RENEWAL_CAST
 	#define VARCAST_REDUCTION(val) do { \
 		if( (varcast_r += (val)) != 0 && varcast_r >= 0 ) \
 			time = time * (1 - (float)min((val), 100) / 100); \
 	} while(0)
-#endif
 
 /* console_input doesn't go well with minicore */
 #ifdef MINICORE
