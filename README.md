@@ -38,25 +38,27 @@ desenvolvimento é mostrado abertamente.
 ***
 
 ### Fases do Projeto
-* 1: Iniciar base do código fonte. (Completado)
-* 2: Personalização dos módulos. (Completado)
-* 3: Depreciação dos módulos pré renovação. (Completado)
-* 4: Bloquear/remover configuração típicas de high. (Completado)
-* 5: Fixar incompatibilidade com modulos high. (Completado)
-* 6: Organização de diretórios "Source/Databases/Scripts". (Completado)
-* 7: Adaptação prévia para Linux. (Completado)
-* 8: Limpesa de databases. (Completado)
-* 9: Remover scripts obsoletos. (Completado)
-* 10: Adesão dos scripts. (Em andamento)
-* 11: Sincronizar 100% source, databases, scripts e client. (A fazer)
-* 12: Remover arquivo obsoletos dos databases. (A fazer)
-* 13: Remover todos módulos pré renovação. (A fazer)
-* 14: Remover todos pacotes módulos não usados. (A fazer)
-* 15: Limpesa do código fonte. (A fazer)
-* 16: Iniciar testes maciços em busca de erros e solucionar. (A fazer)
-* 17: Remover compatibilidade com windows e fixar no Linux. (A fazer)
-* 18: Buscar e corrigir todos problemas com Linux. (A fazer)
-* 19: Concluir o emulador. (A fazer)
+* Iniciar base do código fonte. (Completado)
+* Personalização dos módulos. (Completado)
+* Depreciação dos módulos pré renovação. (Completado)
+* Bloquear/remover configuração típicas de high. (Completado)
+* Fixar incompatibilidade com modulos high. (Completado)
+* Organização de diretórios "Source/Databases/Scripts". (Completado)
+* Adaptação prévia para Linux. (Completado)
+* Limpesa de databases. (Completado)
+* Remover scripts obsoletos. (Completado)
+* Remover todos módulos pré renovação. (Completado)
+
+* Adesão dos scripts. (Em andamento)
+
+* Sincronizar 100% source, databases, scripts e client. (A fazer)
+* Remover arquivo obsoletos dos databases. (A fazer)
+* Remover todos pacotes módulos não usados. (A fazer)
+* Limpesa do código fonte. (A fazer)
+* Iniciar testes maciços em busca de erros e solucionar. (A fazer)
+* Remover compatibilidade com windows e fixar no Linux. (A fazer)
+* Buscar e corrigir todos problemas com Linux. (A fazer)
+* Concluir o emulador. (A fazer)
 
 ***
 
