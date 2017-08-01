@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, SV_VERSION, RENEWAL
+#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, SV_VERSION
 #include "map.h"
 
 #include "map/HPMmap.h"

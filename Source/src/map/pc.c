@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, SECURE_NPCTIMEOUT
+#include "config/core.h" // SV_VERSION, GP_BOUND_ITEMS, MAX_SPIRITBALL, SECURE_NPCTIMEOUT
 #include "pc.h"
 
 #include "map/atcommand.h" // get_atcommand_level()
@@ -2308,22 +2308,13 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 			break;
 		case SP_BASE_ATK:
 			if(sd->state.lr_flag != 2) {
-#ifdef RENEWAL
 				bst->equip_atk += val;
-#else
-				bonus = bst->batk + val;
-				bst->batk = cap_value(bonus, 0, USHRT_MAX);
-#endif
 			}
 			break;
 		case SP_DEF1:
 			if(sd->state.lr_flag != 2) {
 				bonus = bst->def + val;
-	#ifdef RENEWAL
 				bst->def = cap_value(bonus, SHRT_MIN, SHRT_MAX);
-	#else
-				bst->def = cap_value(bonus, CHAR_MIN, CHAR_MAX);
-	#endif
 			}
 			break;
 		case SP_DEF2:
@@ -2335,11 +2326,7 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 		case SP_MDEF1:
 			if(sd->state.lr_flag != 2) {
 				bonus = bst->mdef + val;
-	#ifdef RENEWAL
 				bst->mdef = cap_value(bonus, SHRT_MIN, SHRT_MAX);
-	#else
-				bst->mdef = cap_value(bonus, CHAR_MIN, CHAR_MAX);
-	#endif
 				if( sd->state.lr_flag == 3 ) {//Shield, used for royal guard
 					sd->bonus.shieldmdef += bonus;
 				}
@@ -3687,7 +3674,6 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 				pc->bonus_item_drop(sd->add_drop, ARRAYLENGTH(sd->add_drop), 0, type2, race_mask, 10000);
 		}
 			break;
-#ifdef RENEWAL
 		case SP_RACE_TOLERANCE:
 		{
 			uint32 race_mask = map->race_id2mask(type2);
@@ -3701,7 +3687,6 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 				sd->race_tolerance[i] += val;
 			}
 			break;
-#endif
 		default:
 			ShowWarning("pc_bonus2: unknown type %d %d %d!\n",type,type2,val);
 			Assert_report(0);
@@ -4886,13 +4871,8 @@ int pc_isUseitem(struct map_session_data *sd,int n)
 	while( 1 ) {
 		// Normal classes (no upper, no baby, no third classes)
 		if( item->class_upper&ITEMUPPER_NORMAL && !(sd->class_&(JOBL_UPPER|JOBL_THIRD|JOBL_BABY)) ) break;
-#ifdef RENEWAL
 		// Upper classes (no third classes)
 		if( item->class_upper&ITEMUPPER_UPPER && sd->class_&JOBL_UPPER && !(sd->class_&JOBL_THIRD) ) break;
-#else
-		//pre-re has no use for the extra, so we maintain the previous for backwards compatibility
-		if( item->class_upper&ITEMUPPER_UPPER && sd->class_&(JOBL_UPPER|JOBL_THIRD) ) break;
-#endif
 		// Baby classes (no third classes)
 		if( item->class_upper&ITEMUPPER_BABY && sd->class_&JOBL_BABY && !(sd->class_&JOBL_THIRD) ) break;
 		// Third classes (no upper, no baby classes)
@@ -4923,9 +4903,7 @@ int pc_useitem(struct map_session_data *sd,int n) {
 
 	if( sd->npc_id || sd->state.workinprogress&1 ){
 		/* TODO: add to clif->messages enum */
-#ifdef RENEWAL
 		clif->msgtable(sd, MSG_NPC_WORK_IN_PROGRESS); // TODO look for the client date that has this message.
-#endif
 		return 0;
 	}
 
@@ -5789,10 +5767,8 @@ int pc_checkallowskill(struct map_session_data *sd)
 		SC_ADRENALINE2,
 		SC_DANCING,
 		SC_GS_GATLINGFEVER,
-#ifdef RENEWAL
 		SC_LKCONCENTRATION,
 		SC_EDP,
-#endif
 		SC_FEARBREEZE,
 		SC_EXEEDBREAK,
 	};
@@ -6949,11 +6925,7 @@ int pc_need_status_point(struct map_session_data* sd, int type, int val)
 		swap(low, high);
 
 	for ( ; low < high; low++ )
-#ifdef RENEWAL // renewal status point cost formula
 		sp += (low < 100) ? (2 + (low - 1) / 10) : (16 + 4 * ((low - 100) / 5));
-#else
-		sp += ( 1 + (low + 9) / 10 );
-#endif
 
 	return sp;
 }
@@ -6972,11 +6944,7 @@ int pc_maxparameterincrease(struct map_session_data* sd, int type) {
 	base = final = pc->getstat(sd, type);
 
 	while (final <= pc_maxparameter(sd) && status_points >= 0) {
-#ifdef RENEWAL // renewal status point cost formula
 		status_points -= (final < 100) ? (2 + (final - 1) / 10) : (16 + 4 * ((final - 100) / 5));
-#else
-		status_points -= ( 1 + (final + 9) / 10 );
-#endif
 		final++;
 	}
 	final--;
@@ -8381,10 +8349,8 @@ int pc_itemheal(struct map_session_data *sd,int itemid, int hp,int sp)
 			hp += hp / 10;
 			sp += sp / 10;
 		}
-#ifdef RENEWAL
 		if( sd->sc.data[SC_EXTREMITYFIST2] )
 			sp = 0;
-#endif
 		if (sd->sc.data[SC_BITESCAR]) {
 			hp = 0;
 		}
@@ -11156,10 +11122,6 @@ int pc_readdb(void) {
 				while (*p == ' ')
 					p++;
 				battle->attr_fix_table[lv-1][i][j]=atoi(p);
-#ifndef RENEWAL
-				if(battle_config.attr_recover == 0 && battle->attr_fix_table[lv-1][i][j] < 0)
-					battle->attr_fix_table[lv-1][i][j] = 0;
-#endif
 				p=strchr(p,',');
 				if (p != NULL)
 					*p++ = 0;

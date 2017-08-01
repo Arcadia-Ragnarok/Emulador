@@ -312,9 +312,6 @@
 		<ClInclude Include="..\src\config\core.h">
 			<Filter>config</Filter>
 		</ClInclude>
-		<ClInclude Include="..\src\config\renewal.h">
-			<Filter>config</Filter>
-		</ClInclude>
 		<ClInclude Include="..\src\config\secure.h">
 			<Filter>config</Filter>
 		</ClInclude>

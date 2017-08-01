@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // RENEWAL, SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT, SECURE_NPCTIMEOUT_INTERVAL
+#include "config/core.h" // SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT, SECURE_NPCTIMEOUT_INTERVAL
 #include "script.h"
 
 #include "map/atcommand.h"
@@ -6733,10 +6733,8 @@ BUILDIN(percentheal)
 	sd = script->rid2sd(st);
 	if (sd == NULL)
 		return true;
-#ifdef RENEWAL
 	if( sd->sc.data[SC_EXTREMITYFIST2] )
 		sp = 0;
-#endif
 	if (sd->sc.data[SC_BITESCAR]) {
 		hp = 0;
 	}
@@ -13426,8 +13424,6 @@ BUILDIN(getitemslots)
 		script_pushint(st,-1);
 	return true;
 }
-
-// TODO: add matk here if needed/once we get rid of RENEWAL
 
 /*==========================================
  * Returns some values of an item [Lupus]
@@ -21375,13 +21371,7 @@ void script_hardcoded_constants(void)
 	script->set_constant("NAV_KAFRA_AND_AIRSHIP", NAV_KAFRA_AND_AIRSHIP, false, false);
 	script->set_constant("NAV_KAFRA_AND_SCROLL", NAV_KAFRA_AND_SCROLL, false, false);
 	script->set_constant("NAV_ALL", NAV_ALL, false, false);
-
 	script->constdb_comment("Renewal");
-#ifdef RENEWAL
-	script->set_constant("RENEWAL", 1, false, false);
-#else
-	script->set_constant("RENEWAL", 0, false, false);
-#endif
 	script->constdb_comment(NULL);
 }
 

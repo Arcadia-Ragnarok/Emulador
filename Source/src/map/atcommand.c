@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT(), RENEWAL
+#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT()
 #include "atcommand.h"
 
 #include "map/HPMmap.h"
@@ -1830,11 +1830,7 @@ ACMD(go) {
 		{ MAP_GEFFEN,      119,  59, 3 }, //  2 = Geffen
 		{ MAP_PAYON,       162, 233, 3 }, //  3 = Payon
 		{ MAP_ALBERTA,     192, 147, 3 }, //  4 = Alberta
-#ifdef RENEWAL
 		{ MAP_IZLUDE,      128, 146, 3 }, //  5 = Izlude (Renewal)
-#else
-		{ MAP_IZLUDE,      128, 114, 3 }, //  5 = Izlude
-#endif
 		{ MAP_ALDEBARAN,   140, 131, 3 }, //  6 = Aldebaran
 		{ MAP_LUTIE,       147, 134, 3 }, //  7 = Lutie
 		{ MAP_COMODO,      209, 143, 3 }, //  8 = Comodo
@@ -6621,21 +6617,14 @@ ACMD(mobinfo)
 		clif->message(fd, atcmd_output);
 
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1243), //  DEF:%d  MDEF:%d  STR:%d  AGI:%d  VIT:%d  INT:%d  DEX:%d  LUK:%d
-				monster->status.def, monster->status.mdef, monster->status.str, monster->status.agi,
-				monster->status.vit, monster->status.int_, monster->status.dex, monster->status.luk);
+		monster->status.def, monster->status.mdef, monster->status.str, monster->status.agi,
+		monster->status.vit, monster->status.int_, monster->status.dex, monster->status.luk);
 		clif->message(fd, atcmd_output);
 
-#ifdef RENEWAL
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1291), //  ATK : %d~%d MATK : %d~%d Range : %d~%d~%d  Size : %s  Race : %s  Element : %s(Lv : %d)
-				MOB_ATK1(monster), MOB_ATK2(monster), MOB_MATK1(monster), MOB_MATK2(monster), monster->status.rhw.range,
-				monster->range2 , monster->range3, msize[monster->status.size],
-				mrace[monster->status.race], melement[monster->status.def_ele], monster->status.ele_lv);
-#else
-		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1244), //  ATK:%d~%d  Range:%d~%d~%d  Size:%s  Race: %s  Element: %s (Lv:%d)
-				monster->status.rhw.atk, monster->status.rhw.atk2, monster->status.rhw.range,
-				monster->range2 , monster->range3, msize[monster->status.size],
-				mrace[monster->status.race], melement[monster->status.def_ele], monster->status.ele_lv);
-#endif
+		MOB_ATK1(monster), MOB_ATK2(monster), MOB_MATK1(monster), MOB_MATK2(monster), monster->status.rhw.range,
+		monster->range2 , monster->range3, msize[monster->status.size],
+		mrace[monster->status.race], melement[monster->status.def_ele], monster->status.ele_lv);
 		clif->message(fd, atcmd_output);
 
 		// drops

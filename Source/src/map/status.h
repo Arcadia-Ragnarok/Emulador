@@ -56,11 +56,7 @@ struct pet_data;
  * Max Refine available to your server
  * Changing this limit requires edits to refine_db.txt
  **/
-#ifdef RENEWAL
-	#define MAX_REFINE 20
-#else
-	#define MAX_REFINE 10
-#endif
+#define MAX_REFINE 20
 
 enum refine_type {
 	REFINE_TYPE_ARMOR   = 0,
@@ -715,10 +711,8 @@ typedef enum sc_type {
 	SC_PYROCLASTIC,
 	SC_NEEDLE_OF_PARALYZE,
 	SC_PAIN_KILLER, // 550
-#ifdef RENEWAL
 	SC_EXTREMITYFIST2,
 	SC_RAID,
-#endif
 	SC_DARKCROW = 553,
 	SC_FULL_THROTTLE,
 	SC_REBOUND,
@@ -1991,10 +1985,8 @@ typedef struct weapon_atk {
 	unsigned short atk, atk2;
 	unsigned short range;
 	unsigned char ele;
-#ifdef RENEWAL
 	unsigned short matk;
 	unsigned char wlv;
-#endif
 } weapon_atk;
 
 //For holding basic status (which can be modified by status changes)
@@ -2095,9 +2087,7 @@ struct status_change {
 /**
  * The Storm Gust counter was dropped in renewal
  **/
-#ifndef RENEWAL
 	unsigned char sg_counter; //Storm gust counter (previous hits from storm gust)
-#endif
 	unsigned char bs_counter; // Blood Sucker counter
 	unsigned char fv_counter; // Force of vanguard counter
 	struct status_change_entry *data[SC_MAX];

@@ -24,7 +24,7 @@
 
 #define HPM_MAIN_CORE
 
-#include "config/core.h" // SV_VERSION, RENEWAL
+#include "config/core.h" // SV_VERSION
 #include "itemdb.h"
 
 #include "map/battle.h" // struct battle_config

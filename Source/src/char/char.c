@@ -165,11 +165,7 @@ struct fame_list chemist_fame_list[MAX_FAME_LIST];
 struct fame_list taekwon_fame_list[MAX_FAME_LIST];
 
 // Initial position (it's possible to set it in conf file)
-#ifdef RENEWAL
-	struct point start_point = { 0, 97, 90 };
-#else
-	struct point start_point = { 0, 53, 111 };
-#endif
+struct point start_point = { 0, 97, 90 };
 
 unsigned short skillid2idx[MAX_SKILL_ID];
 
