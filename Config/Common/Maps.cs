@@ -188,6 +188,7 @@ map_list: (
 	// - Classes 1/ Prisão
 	"sword_1-1",
 	"sword_2-1",
+	"job_sword1",
 	"in_hunter",
 	"job_thief1",
 	"moc_prydb1",
