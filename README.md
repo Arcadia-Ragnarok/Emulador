@@ -21,18 +21,12 @@ futuro servidor.
 
 De desenvolvimento indepedente por spell master, esse emulador quando estiver pronto visa a deixar o 
 software 99% semelhante aos padrões dos servidores oficiais de ragnarok.
-Sua linha de desenvolvimento segue a deixar-lo semelhante ao bRO(Brasil Ragnarok Online),
-mas atualizado conforme os servidores oficiais coreanos.
+Sua linha de desenvolvimento segue a deixar-lo semelhante ao bRO(Brasil Ragnarok Online).
 Seu código será limpo/liso usando somente o necessário, removendo uso de pacotes e funções que são usados.
-
-Esse emulador é próprio para servidores (Low Rate), pois seus rates não são configuráveis.
-Esse é o principal ponto forte do projeto pois ele elimina tudo aquilo que é usado
-para estragar o jogo Ragnarok.
 
 Na prática o Arcadia Emulador é um projeto de criação de um servidor de ragnarok onde seu
 desenvolvimento é mostrado abertamente.
 
-- Seu código foi baseado no código do emulador Hercules.
 ```
 
 ***
