@@ -1874,3 +1874,23 @@ function	script	F_NewDel	{
 	if (countitem(Acolyte_Manual)) { delitem(Acolyte_Manual,1); }
 	return;
 }
+
+// ------------------------------------------------------------------
+// - [ Proteger o mapa de treinamento ] -
+// - Caso algum personagem entrar e não for aprendiz ele é expulso
+// ------------------------------------------------------------------
+new_1-1,1,1,0	script	TrainingProtect	HIDDEN_NPC,{
+	OnPCLoadMapEvent:
+	if (BaseJob != Job_Novice) {
+		warp ("prontera",273,354);
+		savepoint ("prontera",273,354);
+	}
+	end;
+}
+
+new_1-2,1,1,0	duplicate(TrainingProtect)	TrainingProtectB	HIDDEN_NPC
+new_1-3,1,1,0	duplicate(TrainingProtect)	TrainingProtectC	HIDDEN_NPC
+
+new_1-1	mapflag	loadevent
+new_1-2	mapflag	loadevent
+new_1-3	mapflag	loadevent

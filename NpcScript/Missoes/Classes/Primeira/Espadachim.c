@@ -90,7 +90,6 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Aguardo seu retorno depois que concluir seu teste.";
 			close;
 		} else if (swordq == 2) {
-			mes "[Líder dos Espadachins]";
 			mes "Muito bom, mostrou muita coragem e resitencia em seu teste.";
 			mes "Com isso você se torna qualificad" +(Sex?"o":"a")+ "para ser Espadachim.";
 			next;
@@ -216,7 +215,7 @@ job_sword1,8,206,0	script	#WarpSwordQexit2	WARPNPC,1,3,{
 job_sword1,193,207,0	script	#WarpSwordQ2st	WARPNPC,1,3,{
 	OnTouch:
 	mapannounce (strnpcinfo(NPC_MAP), "[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo segundo percuso do teste.",bc_map,"0xffce00");
-	warp ("job_sword1",205,167);
+	warp ("job_sword1",10,169);
 	end;
 }
 

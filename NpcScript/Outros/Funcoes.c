@@ -25,5 +25,6 @@
 function	script	ClearJobVar	{
 	if (archerquest) { archerquest = 0; }
 	if (swordq) { swordq = 0; }
+	if (thiefq) { thiefq = 0; }
 	return;
 }
