@@ -29,6 +29,7 @@
 			else if (strnpcinfo(NPC_MAP) == "y_airport")   { warp ("y_airport",148,51); }
 			else if (strnpcinfo(NPC_MAP) == "izlude")      { warp ("airplane_01",244,58); }
 			else if (strnpcinfo(NPC_MAP) == "hugel")       { warp ("airplane",244,58); }
+			else if (strnpcinfo(NPC_MAP) == "ra_fild12")       { warp ("airplane_01",245,60); }
 			end;
 		}
 		mes "[Embarque do Aeroporto]";
@@ -57,6 +58,8 @@ y_airport,126,43,5	duplicate(EnterAirship)	Funcionária#yairenter3	4_F_01
 izlude,206,55,3	duplicate(EnterAirship)	Funcionária#izlairenter	4_F_01
 // - Hugel
 hugel,178,142,0	duplicate(EnterAirship)	Funcionária#hugairenter	4_F_01
+// - Rachel
+ra_fild12,295,208,2	duplicate(EnterAirship)	Funcionária#raairenter	4_F_01
 
 //---------------------------------------------------------------
 // - [Terminal de Juno] -

@@ -274,7 +274,6 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 			if (countitem(Mushroom_Of_Thief_2)) {
 				mes countitem(Mushroom_Of_Thief_2)+" "+getitemname(Mushroom_Of_Thief_2)+" são "+.@MushroomTh2+" pontos.";
 			}
-			mes .@MushroomTh3;
 			next;
 			mes "[Brad]";
 			if (.@MushroomTh3 < 25) {
