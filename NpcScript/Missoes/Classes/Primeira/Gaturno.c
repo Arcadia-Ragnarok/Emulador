@@ -192,7 +192,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 					case 2: warp ("job_thief1",38,50); end;
 					case 3: warp ("job_thief1",66,331); end;
 					case 4: warp ("job_thief1",196,331); end;
-					case 5: warp ("job_thief1",309,234); end;
+					default: warp ("job_thief1",309,234); end;
 				}
 			}
 			mes "[Senhor Irrelevante]";
@@ -210,9 +210,10 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 					case 2: warp ("job_thief1",38,50); end;
 					case 3: warp ("job_thief1",66,331); end;
 					case 4: warp ("job_thief1",196,331); end;
-					case 5: warp ("job_thief1",309,234); end;
+					default: warp ("job_thief1",309,234); end;
 				}
 			}
+			close;
 		} else if (thiefq == 3) {
 			mes "[Senhor Irrelevante]";
 			mes "Você passou em nos requisitos necessários para se Gaturno.";
@@ -266,13 +267,14 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 			mes "Deixe me ver...";
 			.@MushroomTh1 = countitem(Mushroom_Of_Thief_1) * 3;
 			.@MushroomTh2 = countitem(Mushroom_Of_Thief_2);
-			.@MushroomTh3 = countitem(Mushroom_Of_Thief_1) + countitem(Mushroom_Of_Thief_2);
+			.@MushroomTh3 = .@MushroomTh1 + .@MushroomTh2;
 			if (countitem(Mushroom_Of_Thief_1)) {
 				mes countitem(Mushroom_Of_Thief_1)+" "+getitemname(Mushroom_Of_Thief_1)+" são "+.@MushroomTh1+" pontos.";
 			}
 			if (countitem(Mushroom_Of_Thief_2)) {
 				mes countitem(Mushroom_Of_Thief_2)+" "+getitemname(Mushroom_Of_Thief_2)+" são "+.@MushroomTh2+" pontos.";
 			}
+			mes .@MushroomTh3;
 			next;
 			mes "[Brad]";
 			if (.@MushroomTh3 < 25) {
