@@ -1,0 +1,3 @@
+- Pasta que contém os arquivos de scripts para npc padrão dos emuladores.
+- Serve apenas como referência para adesão.
+- Não utilizar por conterem diversos erros!
