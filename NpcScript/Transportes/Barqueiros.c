@@ -66,7 +66,7 @@ alberta,195,151,2	script	Paul#AlbTre	4_M_04,{
 	}
 }
 
-alb2trea,39,50,6	script	Paul#2AlbTre	4W_SAILOR,{
+alb2trea,39,50,6	script	Paul#AlbTre2	4W_SAILOR,{
 	mes "[Paul]";
 	mes "Deseja voltar para alberta Alberta?";
 	next;
@@ -515,6 +515,103 @@ moscovia,166,53,4	script	Representante de Moscovia#mosknav2	4_F_RUSWOMAN2,{
 	close2; warp ("alberta",243,67); end;
 }
 
+
+// ------------------------------------------------------------------
+// - [ alberta ~ brasilis ] - 
+// ------------------------------------------------------------------
+alberta,247,115,3	script	Marinheiro Crewman#bra	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Hey, você já ouviu falar de um lugar chamado Brasilis?";
+	mes "É uma cidade tropical é quente como o deserto, mas também de chuva.";
+	mes "É um lugar muito misterioso.";
+	next;
+	mes "[Marinheiro]";
+	mes "Nós recentemente encontrou uma rota novo oceano para chegar lá facilmente.";
+	mes "É apenas 10.000 zeny para uma viagem de volta Então você quer ir?";
+	next;
+	switch(select("Leve-me para Brasilis","Eu vou ficar aqui.")) {
+		case 1:
+		if (Zeny > 9999) {
+			mes "[Marinheiro]";
+			mes "Agora está bem fresco então vamos!";
+			Zeny -= 10000;
+			close2; warp ("brasilis",314,60); end;
+		}
+		else {
+			mes "[Marinheiro]";
+			mes "Eu disse 10.000 zeny.";
+			close;
+		}
+		case 2:
+		mes "[Marinheiro]";
+		mes "Bem, se você está sempre interessad"+(Sex?"o":"a")+" é só me procurar.";
+		close;
+	}
+}
+
+brasilis,316,57,3	script	Marinheiro Crewman#bra2	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Meu navio vai voltar para Alberta, você quer se juntar a nós? ";
+	next;
+	switch(select("Volte para Alberta","Ainda não")) {
+		case 1:
+		mes "[Marinheiro]";
+		mes "Com certeza sinto falta de casa.";
+		close2; warp ("alberta",244,115); end;
+		case 2:
+		mes "[Marinheiro]";
+		mes "Ok, servir a si mesmo Nós vamos vê-lo quando voltar então.";
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+// - [ alberta ~ dewata ] - 
+// ------------------------------------------------------------------
+alberta,212,202,4	script	Marinheiro de Dewata#dewata	4_M_DEWMAN,{
+	mes "[Marinheiro de Dewata]";
+	mes "Quer visitar a ^8B4513Ilha Dewata^000000 com ondas deslumbrantes que dão descanso à sua alma?";
+	mes "A taxa de embarque é de 10,000 Zenys.";
+	next;
+	switch(select("Sim!","Não.")) {
+	case 1:
+		if (Zeny >= 10000) {
+			mes "[Marinheiro de Dewata]";
+			mes "Dewata é um belo pacífico país insular.";
+			mes "Tenha uma boa viagem.";
+			close2;
+			Zeny -= 10000; warp ("dewata",232,53); end;
+		} else {
+			mes "[Marinheiro de Dewata]";
+			mes "Você não tem a Zenys o bastante.";
+			mes "Volte quando você tiver mais dinheiro na carteira.";
+			close;
+		}
+	case 2:
+		mes "[Marinheiro de Dewata]";
+		mes "Avise-me quando quiser viajar";
+		close;
+	}
+}
+
+dewata,229,49,6	script	Marinheiro de Alberta#dewata2	4_M_DEWMAN,{
+	mes "[Marinheiro de Alberta]";
+	mes "Deseja voltar para Alberta?";
+	next;
+	switch(select("Sim.","Não.")) {
+	case 1:
+		mes "[Marinheiro de Alberta]";
+		mes "Eu espero que você tnha se divertido muita em sua viagem na ^8B4513Ilha de Dewata ^000000.";
+		mes "Venha nos visitar novamente!";
+		close2; warp ("alberta",210,198); end;
+	case 2:
+		mes "[Marinheiro de Alberta]";
+		mes "Se divirta um pouco mais antes de partir.";
+		mes "A ^8B4513Ilha de Dewata^000000 tem muito mais a oferecer.";
+		close;
+	}
+}
+
 // ------------------------------------------------------------------
 // - [Cmd_Fild > Alberta * Cmd_Fild > Izlude ] - 
 // ------------------------------------------------------------------
@@ -584,7 +681,7 @@ izlude,199,178,1	script	Marinheiro#izlude	4W_SAILOR,{
 	}
 }
 
-izlu2dun,108,27,0	script	Marinheiro#2izlude	4W_SAILOR,{
+izlu2dun,108,27,0	script	Marinheiro#izlude2	4W_SAILOR,{
 	mes "[Marinheiro]";
 	mes "Quer voltar para Izlude?";
 	next;

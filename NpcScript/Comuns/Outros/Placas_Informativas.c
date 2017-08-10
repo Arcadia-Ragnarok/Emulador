@@ -423,6 +423,32 @@ einbroch,104,202,5	script	Quadro de Avisos#Boardein19	4_BULLETIN_BOARD2,{
 	close;
 }
 
+// Brasilis ---------------------------------------------------------
+brasilis,155,165,3	script	Informativo#bra1	4_BULLETIN_BOARD2,{
+	mes ":: Museu de Arte ::";
+	close;
+}
+
+brasilis,195,231,3	script	Informativo#bra2	4_BULLETIN_BOARD2,{
+	mes ":: Monumento Verass";
+	close;
+}
+
+brasilis,240,247,3	script	Informativo#bra3	4_BULLETIN_BOARD2,{
+	mes ":: Mercado ::";
+	close;
+}
+
+brasilis,303,309,3	script	Informativo#bra4	4_BULLETIN_BOARD2,{
+	mes ":: Entrada da Selva ::";
+	close;
+}
+
+brasilis,278,137,3	script	Informativo#bra5	4_BULLETIN_BOARD2,{
+	mes ":: Hotel de Brasilis ::";
+	close;
+}
+
 // ------------------------------------------------------------------
 // - [ Campos ] -
 // ------------------------------------------------------------------
