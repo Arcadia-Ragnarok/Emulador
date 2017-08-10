@@ -57,6 +57,7 @@
 	if (strnpcinfo(NPC_MAP) == "einbroch")          { .@kaframenu = 5; }
 	if (strnpcinfo(NPC_MAP) == "einbech")           { .@kaframenu = 5; }
 	if (strnpcinfo(NPC_MAP) == "lhz_in02")          { .@kaframenu = 5; }
+	if (strnpcinfo(NPC_MAP) == "bat_room")          { .@kaframenu = 5; }
 	if (strnpcinfo(NPC_MAP) == "izlu2dun") {
 		// ** NOTA: Criar função para quest de mudança de classe para mercador!
 		.@kaframenu = 5;
@@ -627,3 +628,6 @@ moscovia,223,191,3	duplicate(KafraCorp)	Funcionária Kafra#kafra_04::moskaf	4_F_K
 
 // ------------------------------------------------------------------
 mjolnir_02,83,362,4	duplicate(KafraCorp)	Funcionária Kafra#kafra_02::mjokaf	4_F_KAFRA2
+
+// ------------------------------------------------------------------
+bat_room,148,147,4	duplicate(KafraCorp)	Funcionária Kafra#kafra_09::bgkaf	4_F_KAFRA9

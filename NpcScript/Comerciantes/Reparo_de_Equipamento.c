@@ -109,6 +109,7 @@ yuno_in01,175,28,3	duplicate(repairmain)	Reparador#juno	4_M_04
 geffen_in,34,166,3	duplicate(repairmain)	Reparador#gef	4_M_04
 aldeba_in,38,60,3	duplicate(repairmain)	Reparador#alde	4_M_04
 lhz_in02,284,14,3	duplicate(repairmain)	Reparador#lhz	4_M_04
+bat_room,138,144,4	duplicate(repairmain)	Reparador#bg	4_M_04
 
 //prt_gld,139,117,4	duplicate(repairmain)	Reparador#prt_gld	4_M_04,{
 //gef_fild13,263,117,4	duplicate(repairmain)	Reparador#gef_fild	4_M_04
