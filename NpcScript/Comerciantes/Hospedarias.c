@@ -43,6 +43,10 @@
 		if (strnpcinfo(NPC_MAP) == "lhz_in02") { savepoint ("lhz_in02",209,275); }
 		// Veins
 		if (strnpcinfo(NPC_MAP) == "ve_in") { savepoint ("ve_in",157,209); }
+		// Eclage
+		if (strnpcinfo(NPC_MAP) == "ecl_in02") { savepoint ("ecl_in02",162,50); }
+		// Malangdo
+		if (strnpcinfo(NPC_MAP) == "malangdo") { savepoint ("malangdo",142,118); }
 		close;
 		case 2:
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
@@ -77,6 +81,10 @@
 			if (strnpcinfo(NPC_MAP) == "lhz_in02") { warp ("lhz_in02",219,150); }
 			// Veins
 			if (strnpcinfo(NPC_MAP) == "ve_in") { warp ("ve_in",184,228); }
+			// Eclage
+			if (strnpcinfo(NPC_MAP) == "ecl_in02") { warp ("ecl_in02",167,49); }
+			// Malangdo
+			if (strnpcinfo(NPC_MAP) == "malangdo") { warp ("malangdo",140,121); }
 			end;
 		}
 		case 3:
@@ -97,3 +105,5 @@ ra_in01,376,69,4	duplicate(InnHouse)	Funcionária#raInn	4_M_RACHMAN1
 hu_in01,246,107,3	duplicate(InnHouse)	Funcionária#huInn	1_M_INNKEEPER
 lhz_in02,230,284,4	duplicate(InnHouse)	Funcionário#lhzInn	4_M_04
 ve_in,157,219,5	duplicate(InnHouse)	Chefe da Estalagem#veInn	4_M_SEAMAN
+ecl_in02,164,56,3	duplicate(InnHouse)	Recepcionista#eclInn	4_F_FAIRYKID2
+malangdo,147,117,3	duplicate(InnHouse)	Funcionário#eclInn	4_CAT_REST

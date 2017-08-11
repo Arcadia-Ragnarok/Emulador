@@ -449,6 +449,13 @@ brasilis,278,137,3	script	Informativo#bra5	4_BULLETIN_BOARD2,{
 	close;
 }
 
+// Eclage -----------------------------------------------------------
+ecl_in02,96,22,3	script	sign#prison_inn	2_BOARD1,{
+	mes "[Norte] Prisão";
+	mes "[Oeste] Clinica";
+	close;
+}
+
 // ------------------------------------------------------------------
 // - [ Campos ] -
 // ------------------------------------------------------------------

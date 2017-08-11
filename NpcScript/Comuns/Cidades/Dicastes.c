@@ -546,7 +546,7 @@ dicastes01,202,197,4	script	Venknick Maluco#dic	4_MAN_BENKUNI,{
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Qual é a triste lenda?";
 			next;
-			emotion e_dots;
+			emotion (e_dots);
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Eu perguntei do que se trata esta lenda!";
 			next;
