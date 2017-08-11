@@ -770,6 +770,15 @@ map_list: (
 	"ma_fild02",
 	"ma_scene01",
 	"ma_dun01",
+	"ma_zif01",
+	"ma_zif02",
+	"ma_zif03",
+	"ma_zif04",
+	"ma_zif05",
+	"ma_zif06",
+	"ma_zif07",
+	"ma_zif08",
+	"ma_zif09",
 
 	// ----------------------------------------------------------------
 	// - Hospital de Bangugot

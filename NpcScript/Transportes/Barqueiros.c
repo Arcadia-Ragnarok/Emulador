@@ -613,6 +613,60 @@ dewata,229,49,6	script	Marinheiro de Alberta#dewata2	4_M_DEWMAN,{
 }
 
 // ------------------------------------------------------------------
+// - [ alberta ~ malaya ] - 
+// ------------------------------------------------------------------
+alberta,237,71,3	script	Marinheiro Optamara#alb	4W_SAILOR,{
+	mes "[Marinheiro Optamara]";
+	mes "Ei, você!";
+	mes "Estaria intereçad"+(Sex?"o":"a")+" em ir ao Porto de Malaya?";
+	mes "São só 10,000 Zeny para taxa de embarque.";
+	next;
+	switch(select("Sobre o Porto de Malaya","Ir á Malaya","Cancelar")) {
+		case 1:
+		mes "[Marinheiro Optamara]";
+		mes "Porto Malaya é uma aldeia pequena à que você poderia chegar velejando sudoeste de Alberta.";
+		next;
+		mes "[Marinheiro Optamara]";
+		mes "Antigamente não se podia visitar-la por motivos internos de Malaya.";
+		mes "Mas agora está tudo bem e viagens até lá são permitidas";
+		close;
+		case 2:
+		if (Zeny < 10000) {
+			mes "[Marinheiro Optamara]";
+			mes "Você não sabe como Maçaya é distante daqui.";
+			mes "Por isso não posso te levar de graça.";
+			mes "Por favor volte quando tiver 10,000 Zeny.!";
+			close;
+		}
+		mes "[Marinheiro Optamara]";
+		mes "Great!";
+		mes "Heading for Port Malaya!!";
+		Zeny -= 10000; close2; warp ("malaya",271,55); end;
+		case 3:
+		mes "[Marinheiro Optamara]";
+		mes "Os aventureiros estes dias agem como eles estivessem ocupados.";
+		mes "Volte quando você tiver o tempo e nós poderíamos ir visitar Porto de Malaya.";
+		close;
+	}
+}
+
+malaya,276,55,4	script	Marinheiro Optamara#mal	4W_SAILOR,{
+	mes "[Marinheiro Optamara]";
+	mes "Você quer voltar agora para Alberta?";
+	next;
+	switch(select("Voltar para Alberta","Não voltar")) {
+		case 1:
+		mes "[Marinheiro Optamara]";
+		mes "Certo! Vamos então pata Alberta!!";
+		close2; warp ("alberta",239,68); end;
+		case 2:
+		mes "[Marinheiro Optamara]";
+		mes "Está bem. Me procure caso queira voltar para Alberta.";
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
 // - [Cmd_Fild > Alberta * Cmd_Fild > Izlude ] - 
 // ------------------------------------------------------------------
 -	script	cmdboard	FAKE_NPC,{
