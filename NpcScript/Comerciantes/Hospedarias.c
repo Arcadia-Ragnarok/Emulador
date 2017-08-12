@@ -49,6 +49,8 @@
 		if (strnpcinfo(NPC_MAP) == "malangdo") { savepoint ("malangdo",142,118); }
 		// Malaya
 		if (strnpcinfo(NPC_MAP) == "ma_in01") { savepoint ("ma_in01",43,98); }
+		// Mora
+		if (strnpcinfo(NPC_MAP) == "mora") { savepoint ("mora",56,143); }
 		close;
 		case 2:
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
@@ -89,6 +91,8 @@
 			if (strnpcinfo(NPC_MAP) == "malangdo") { warp ("malangdo",140,121); }
 			// Malaya
 			if (strnpcinfo(NPC_MAP) == "ma_in01") { warp ("ma_in01",43,98); }
+			// Mora
+			if (strnpcinfo(NPC_MAP) == "mora") { warp ("mora",32,123); }
 			end;
 		}
 		case 3:
@@ -112,3 +116,4 @@ ve_in,157,219,5	duplicate(InnHouse)	Chefe da Estalagem#veInn	4_M_SEAMAN
 ecl_in02,164,56,3	duplicate(InnHouse)	Recepcionista#eclInn	4_F_FAIRYKID2
 malangdo,147,117,3	duplicate(InnHouse)	Funcionário#eclInn	4_CAT_REST
 ma_in01,30,94,4	duplicate(InnHouse)	Funcionário#malInn	4_F_MALAYA
+mora,43,127,3	duplicate(InnHouse)	Funcionário#morInn	4_M_RAFLE_OR
