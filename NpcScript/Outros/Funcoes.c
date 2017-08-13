@@ -17,14 +17,28 @@
 
 // ------------------------------------------------------------------
 // - [ ClearJobVar ] -
+// ------------------------------------------------------------------
 // - Localiza variáveis atribuidas ao personagem durante as quests
 // de mudança de classe e Remove.
 // * Semelhante a "F_ClearJobVar" padrão dos emuladores.
 // ------------------------------------------------------------------
-
 function	script	ClearJobVar	{
 	if (archerquest) { archerquest = 0; }
 	if (swordq) { swordq = 0; }
 	if (thiefq) { thiefq = 0; }
+	if (acolyteq) { acolyteq = 0; }
 	return;
+}
+
+// ------------------------------------------------------------------
+// - [ F_Navi ] -
+// ------------------------------------------------------------------
+// - getarg(0) : Nome de Exibição
+// - getarg(1) : Mapa e Cordenadas para Link da Navegação
+// - <NAVI><INFO></INFO></NAVI> : Função Client Exe
+// * Necessário Client Exe (20111010) ou Superior
+// !! ARQUIVOS LUA DE NAVEGAÇÂO DISPINÌVEIS NA WEB ESTÂO BUGADOS !!
+// ------------------------------------------------------------------
+function	script	F_Navi	{
+	return "<NAVI>["+getarg(0)+"]<INFO>"+getarg(1)+",0,000,0</INFO></NAVI>";
 }

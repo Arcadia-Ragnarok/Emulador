@@ -12,7 +12,7 @@
 \*---------------------------------------------------------------*/
 
 npc_global_list: (
-	//"NpcScript/",
+	"NpcScript/Outros/Funcoes.c",
 
 	// Batalha Campal
 	@include "NpcScript/Npc_Config/Campal.conf"
@@ -25,6 +25,9 @@ npc_global_list: (
 
 	// Guerra do Império
 	@include "NpcScript/Npc_Config/Guerra_do_Imperio.conf"
+
+	// Guias
+	@include "NpcScript/Npc_Config/Guias.conf"
 
 	// Instânncias
 	@include "NpcScript/Npc_Config/Instancias.conf"
