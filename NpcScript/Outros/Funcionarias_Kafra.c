@@ -63,7 +63,7 @@
 		.@kaframenu = 5;
 	}
 	mes "[Funcionária Kafra]";
-	mes "Seja bem vind"+(Sex?"o":"a")+" aos serviços da Corporação kafra.";
+	mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" aos serviços da Corporação kafra.";
 	mes "Em que posso ajudar?";
 	next;
 	if (.@kaframenu == 1) {
@@ -190,7 +190,7 @@
 		}
 		case 3: // Serviço de Teletransporte
 		mes "[Funcionária Kafra]";
-		mes "Por favor selecione a localidade para levar-l"+(Sex?"o":"a")+".";
+		mes "Por favor selecione a localidade para levar-l"+(Sex == SEX_MALE ? "o":"a")+".";
 		next;
 		if (strnpcinfo(NPC_MAP) == "prontera") {
 			switch(select("Izlude 600 Zenys","Geffen 1.200 Zenys","Payon 1.200 Zenys","Morroc 1.200 Zenys","Calabouço dos Orcs 1.200 Zenys","Alberta 1.800 Zenys","Cancelar")) {
@@ -202,7 +202,7 @@
 				case 6: .@price = 1800; .@map$ = "alberta";    .@cordX = 117; .@cordY = 56;  break;
 				case 7:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -214,7 +214,7 @@
 				case 4: .@price = 1800; .@map$ = "comodo";   .@cordX = 209; .@cordY = 143; break;
 				case 5:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -226,7 +226,7 @@
 				case 4: .@price = 1700; .@map$ = "mjolnir_02"; .@cordX = 99;  .@cordY = 351; break;
 				case 5:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -237,7 +237,7 @@
 				case 3: .@price = 1200; .@map$ = "morocc";   .@cordX = 156; .@cordY = 46; break;
 				case 4:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -248,7 +248,7 @@
 				case 3: .@price = 1200; .@map$ = "prontera"; .@cordX = 116; .@cordY = 72; break;
 				case 4:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -260,7 +260,7 @@
 				case 4: .@price = 1800; .@map$ = "aldebaran"; .@cordX = 168; .@cordY = 112; break;
 				case 5:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -272,7 +272,7 @@
 				case 4: .@price = 1700; .@map$ = "mjolnir_02"; .@cordX = 99;  .@cordY = 351; break;
 				case 5:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -282,7 +282,7 @@
 				case 2: .@price = 1800; .@map$ = "umbala"; .@cordX = 100; .@cordY = 154; break;
 				case 3:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -291,7 +291,7 @@
 				case 1: .@price = 1200; .@map$ = "aldebaran"; .@cordX = 168; .@cordY = 112; break;
 				case 2:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -300,7 +300,7 @@
 				case 1: .@price = 1800; .@map$ = "comodo"; .@cordX = 209; .@cordY = 143; break;
 				case 2:
 				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
@@ -466,7 +466,7 @@
 							close2; cutin ("",255); end;
 						}
 						mes "[Funcionária Kafra]";
-						mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+						mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 						close2; cutin ("",255); end;
 					}
 				}
@@ -514,7 +514,7 @@
 								next;
 								if (select("Voltar a digitar a senha","Cancelar") == 2) {
 									mes "[Funcionária Kafra]";
-									mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+									mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 									close2; cutin ("",255); end;
 								}
 								break;
@@ -522,25 +522,25 @@
 								break;
 								case 4:
 								mes "[Funcionária Kafra]";
-								mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+								mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 								close2; cutin ("",255); end;
 							}
 						}
 					}
 					case 2:
 					mes "[Funcionária Kafra]";
-					mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+					mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 					close2; cutin ("",255); end;
 				}
 			}
 			case 3: // Cancelar
 			mes "[Funcionária Kafra]";
-			mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+			mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 			close2; cutin ("",255); end;
 		}
 		case 6: // Cancelar
 		mes "[Funcionária Kafra]";
-		mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+		mes "A Corporação Kafra estará sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 		close2; cutin ("",255); end;
 	}
 }

@@ -22,7 +22,7 @@
 new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 	if (!new_quest) {
 		mes "[Sprakki]";
-		mes "Bem-vind"+(Sex?"o":a)+" ao mundo de Ragnarök Online.";
+		mes "Bem-vind"+(Sex == SEX_MALE ? "o":a)+" ao mundo de Ragnarök Online.";
 		mes "Meu nome é Sprakki e eu estou encarregada de dar a você o guia básico do jogo.";
 		next;
 		mes "[Sprakki]";
@@ -105,7 +105,7 @@ new_1-1,66,114,4	script	Informação#new	HIDDEN_NPC,{
 		mes "=================================";
 		next;
 		mes "Fale com o Instrutor Brade, e equipe os itens que ele lhe der.";
-		mes "Não se preocupe será instruíd"+(Sex?"o":"a")+" como fazer.";
+		mes "Não se preocupe será instruíd"+(Sex == SEX_MALE ? "o":"a")+" como fazer.";
 		next;
 		mes "Fale com com a Instrutora Jinha";
 		mes "Ela lhe dará instruções como utilizar-se de habilidades.";
@@ -131,10 +131,10 @@ new_1-1,66,114,4	script	Informação#new	HIDDEN_NPC,{
 		mes "Não se preocupe, eles não são fortes, e haverá intrutores no local para lhe auxiliar.";
 		next;
 		mes "Assim que atingir o Level 10 de sua classe, e suas habilidades básicas, estiverem maximizadas no Nível 10";
-		mes "Poderá solicitar ao instrutor Brade que "+(Sex?"o":"a")+" leve para o Reino de Rune-Midgard.";
+		mes "Poderá solicitar ao instrutor Brade que "+(Sex == SEX_MALE ? "o":"a")+" leve para o Reino de Rune-Midgard.";
 		next;
 		mes "Também poderá solicitar no local que os representantes das associações.";
-		mes "Que "+(Sex?"o":"a")+" levem até suas guildas para enfim fazer o teste de mudança de classe.";
+		mes "Que "+(Sex == SEX_MALE ? "o":"a")+" levem até suas guildas para enfim fazer o teste de mudança de classe.";
 		next;
 		mes "Tenha um bom treinamento, lhe desejamos boa sorte em sua jornada.";
 		close;
@@ -389,7 +389,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 	if (new_quest < 5) {
 		mes "[Instrutora Jinha]";
-		mes "Me parece que está perdid"+(Sex?"o":"a")+", não é.";
+		mes "Me parece que está perdid"+(Sex == SEX_MALE ? "o":"a")+", não é.";
 		mes "Porque não procura pelo";
 		mes "^4d4dffInstrutor Brade^000000.";
 		mes "Talvez ele possa lhe ajudar.";
@@ -397,7 +397,7 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 	}
 	else if (new_quest == 5) {
 		mes "[Instrutora Jinha]";
-		mes "Me parece que está perdid"+(Sex?"o":"a")+", não é.";
+		mes "Me parece que está perdid"+(Sex == SEX_MALE ? "o":"a")+", não é.";
 		mes "Porque não procura pelo";
 		mes "^4d4dffInstrutor Brade^000000.";
 		mes "Talvez ele possa lhe ajudar.";
@@ -910,7 +910,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 			if (select("Quero ir para as cidades","Vou falar com eles então.") == 1) {
 				next;
 				mes "[Instrutor Brade]";
-				mes "A decisão é sua, a partir de agora um mundo infinito de possibilidades "+(Sex?"o":"a")+" espera!";
+				mes "A decisão é sua, a partir de agora um mundo infinito de possibilidades "+(Sex == SEX_MALE ? "o":"a")+" espera!";
 				mes "Me diga para onde quer ir?";
 				next;
 				switch (select("Prontera","Morroc","Payon","Alberta","Geffen","Ficar mais tempo aqui")) {
@@ -1067,7 +1067,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 			else {
 				if (questprogress(7123,HUNTING) == 2) {
 					mes "Muito bem!";
-					mes "Sabia que você seria "+(Sex?"um ótimo":"uma ótima")+" espadachim!";
+					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo":"uma ótima")+" espadachim!";
 					next;
 					mes "[Espadachim]";
 					mes "Está aqui sua recompensa.";
@@ -1092,7 +1092,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar espadachim.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar espadachim.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;
@@ -1217,7 +1217,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 			else {
 				if (questprogress(7124,HUNTING) == 2) {
 					mes "Muito bem!";
-					mes "Sabia que você seria "+(Sex?"um ótimo Mago":"uma ótima Maga")+"!";
+					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Mago":"uma ótima Maga")+"!";
 					next;
 					mes "[Mago]";
 					mes "Está aqui sua recompensa.";
@@ -1242,7 +1242,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar Mago.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Mago.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;
@@ -1361,7 +1361,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 			else {
 				if (Zeny >= 300) {
 					mes "Muito bem!";
-					mes "Sabia que você seria "+(Sex?"um ótimo Mercador":"uma ótima Mercadora")+"!";
+					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Mercador":"uma ótima Mercadora")+"!";
 					next;
 					mes "[Mercador]";
 					mes "Está aqui sua recompensa.";
@@ -1386,7 +1386,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar Mercador.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Mercador.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;
@@ -1508,7 +1508,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 			else {
 				if (questprogress(7127,HUNTING) == 2) {
 					mes "Muito bem!";
-					mes "Sabia que você seria "+(Sex?"um ótimo Gaturno":"uma ótima Gaturna")+"!";
+					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Gaturno":"uma ótima Gaturna")+"!";
 					next;
 					mes "[Gaturno]";
 					mes "Está aqui sua recompensa.";
@@ -1533,7 +1533,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar Gaturno.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Gaturno.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;
@@ -1657,7 +1657,7 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar Arqueiro.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Arqueiro.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;
@@ -1762,7 +1762,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 				close;
 			}
 			else {
-				mes "Então teremos "+(Sex?"um candidato":"uma candidata")+" a ser tornar Noviço.";
+				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Noviço.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
 				next;

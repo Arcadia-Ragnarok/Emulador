@@ -26,4 +26,3 @@
  60:#undisguise <nome do jogador> - Retira o disfarce de um jogador.
  60:#changesex <nome do jogador> - Muda o sexo da conta do jogador.
  60:#warp/#rura <nome do jogador> <mapa> <x> <y> <nome do jogador> - Move um jogador para certa localização.
-

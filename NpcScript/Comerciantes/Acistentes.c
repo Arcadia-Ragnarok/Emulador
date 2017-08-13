@@ -1,19 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|      npc Script         \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                     Projeto Ragnarok Online                       |
-+-------------------------------------------------------------------+
-| - Por: Spell Master 03/08/2014                                    |
-| - Versão Atual: Spell Master 07/04/2017                           |
+| - Desnvolvido Por: Spell Master 03/08/2014                        |
 | - Nota: Compra de pergaminhos para acistentes.                    |
 \*-----------------------------------------------------------------*/
 
@@ -24,7 +19,7 @@
 	mes "[Gerente do Clã]";
 	mes "Olá "+strcharinfo(PC_NAME)+".";
 	mes "Sou responsavel pela contratação de acistentes de nosso clã.";
-	mes "Estaria enterçad"+(Sex?"o":"a")+" em algum?";
+	mes "Estaria enterçad"+(Sex == SEX_MALE ? "o":"a")+" em algum?";
 	if (strnpcinfo(NPC_MAP) == "prontera") { .@mercenaryType$ = "SPEAR_MERC_GUILD"; .@mercenaryName$ = "Lanceiro"; }
 	if (strnpcinfo(NPC_MAP) == "izlude") { .@mercenaryType$ = "SWORD_MERC_GUILD"; .@mercenaryName$ = "Espadachim"; }
 	if (strnpcinfo(NPC_MAP) == "pay_arche") { .@mercenaryType$ = "ARCH_MERC_GUILD";  .@mercenaryName$ = "Arqueiro"; }
@@ -144,7 +139,7 @@
 			}
 			next;
 			mes "[Gerente do Clã]";
-			mes "Lembre-se que depois de usado o acistente irá acompanha-l"+(Sex?"o":"a")+" para qualquer lugar.";
+			mes "Lembre-se que depois de usado o acistente irá acompanha-l"+(Sex == SEX_MALE ? "o":"a")+" para qualquer lugar.";
 			mes "Irá enfrentar qualquer perigo por você.";
 			mes "Mas seu contrato expira em ^bb000030 minutos^000000, depois desse tempo ele irá embora.";
 			mes "Use seus serviços com sabedoria.";

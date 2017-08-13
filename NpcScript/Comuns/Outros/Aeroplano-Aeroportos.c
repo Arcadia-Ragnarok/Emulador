@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns localizados nos aeroplanos e Aeroportos       |
 \*-----------------------------------------------------------------*/
@@ -67,8 +66,8 @@ airplane,71,91,7	script	Homem de Umbala#ein_p	4_M_UMSOLDIER,{
 //-------------------------------------------------------------------
 airplane,250,58,2	script	Funcionário#air	1_F_02,{
 	mes "[Assistente do Aeroplano]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Aeroplano.";
-	mes "Como posso ajudá-l"+(Sex?"o?":"a?")+"";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroplano.";
+	mes "Como posso ajudá-l"+(Sex == SEX_MALE ? "o?":"a?")+"";
 	next;
 	switch (select("Usando o Aeroplano:Cabine do Capitão:Instalações:Cancelar")) {
 		case 1:
@@ -100,7 +99,7 @@ airplane,250,58,2	script	Funcionário#air	1_F_02,{
 //-------------------------------------------------------------------
 airplane,80,71,2	script	Zerta#01airplane	4_M_BUDDHIST,{
 	mes "[Zerta]";
-	mes "Oh, olá Aventureir"+(Sex?"o?":"a?")+".";
+	mes "Oh, olá Aventureir"+(Sex == SEX_MALE ? "o?":"a?")+".";
 	mes "Estou atualmente em uma Jornada Santa.";
 	mes "Orando em propósito do continente de Rune-Midgard.";
 	close;
@@ -188,8 +187,8 @@ airplane,247,40,1	duplicate(ExitAirplane)	Saída#air2b	4_BOARD3
 //-------------------------------------------------------------------
 airplane_01,250,58,2	script	Funcionário#air01	1_F_02,{
 	mes "[Equipe do Aeroplano]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Aeroplano.";
-	mes "Como posso ajudá-l"+(Sex?"o?":"a?")+"";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroplano.";
+	mes "Como posso ajudá-l"+(Sex == SEX_MALE ? "o?":"a?")+"";
 	next;
 	switch (select("Usando o Aeroplano:Cabine do Capitão:Instalações:Cancelar")) {
 		case 1:

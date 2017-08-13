@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Hugel                               |
 \*-----------------------------------------------------------------*/
@@ -62,7 +61,7 @@ hugel,71,197,3	script	Lisa#hug	4_F_01,{
 hugel,169,112,5	script	Velha Nikki#hug	4_F_HUGRANMA,{
 	mes "[Velha Nikki]";
 	mes "Você não deve ser daqui.";
-	mes "Ah, você é um aventureir"+(Sex?"o":"a")+", certo?";
+	mes "Ah, você é um aventureir"+(Sex == SEX_MALE ? "o":"a")+", certo?";
 	mes "E você sabe como eu sei?";
 	next;
 	mes "[Velha Nikki]";
@@ -83,7 +82,7 @@ hugel,175,115,5	script	Marius#hug	4_M_HUGRANFA,{
 	mes "É porque os velhos desta cidade se recusam a deitar e morrer!";
 	mes "Agora, vamos!";
 	mes "Deixe-me mostrar como eu sou forte!";
-	mes "Vamos lutar ou algo assim, garot"+(Sex?"o":"a")+".";
+	mes "Vamos lutar ou algo assim, garot"+(Sex == SEX_MALE ? "o":"a")+".";
 	close;
 }
 
@@ -104,7 +103,7 @@ hu_in01,111,386,4	script	Chris#hug	4_M_04,{
 // ------------------------------------------------------------------
 hu_in01,18,94,0	script	Assistente Temporário#hug	1_M_03,{
 	mes "[Luda]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Escritório da Expedição ao Templo.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Escritório da Expedição ao Templo.";
 	mes "Eu sou Luda, um assistente temporário.";
 	mes "Meu trabalho é manter o escritório arrumado e limpo, mas veja só este lugar!";
 	next;

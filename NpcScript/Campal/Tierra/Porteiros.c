@@ -1,16 +1,12 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|      npc Script         \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
-+-------------------------------------------------------------------+
-|                     Projeto Ragnarok Online                       |
 +-------------------------------------------------------------------+
 | - Criação: Spell Master 21/02/2017                                |
 | - Nota: Porteiros da batalha campal Tierra.                       |
@@ -49,7 +45,7 @@
 		if (strnpcinfo(NPC_NAME_HIDDEN) == "Croix") {
 			mes "Olá ^777777"+strcharinfo(PC_NAME)+"^000000, vamos mostrar o poder de nós Croixs para estes Guillaumes";
 		}
-		mes "Está pront"+(Sex?"o":"a")+" para a batalha?";
+		mes "Está pront"+(Sex == SEX_MALE ? "o":"a")+" para a batalha?";
 		next;
 		if (select("Sim:Não") == 1) {
 			mes "[Oficial de "+strnpcinfo(NPC_NAME_HIDDEN)+"]";

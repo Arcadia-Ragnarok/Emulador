@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Por: Spell Master/eAthena/rAthena/Hercules                      |
+| - Desenvolvido por: Spell Master                                  |
 | - Nota: Diversos npcs Barqueiros                                  |
 \*-----------------------------------------------------------------*/
 
@@ -357,7 +357,7 @@ alberta,246,40,3	script	Garota de Louyang#lou	4_F_CHNDRESS1,{
 	switch(select("Sobre Louyang.","Ir para Louyang.","Cancelar.")) {
 		case 1:
 		mes "[Garota]";
-		mes "Você está interessad"+(Sex?"o":"a")+" em Louyang?";
+		mes "Você está interessad"+(Sex == SEX_MALE ? "o":"a")+" em Louyang?";
 		mes "É um bom lugar para os aventureiros visitarem.";
 		next;
 		mes "[Garota]";
@@ -544,7 +544,7 @@ alberta,247,115,3	script	Marinheiro Crewman#bra	4W_SAILOR,{
 		}
 		case 2:
 		mes "[Marinheiro]";
-		mes "Bem, se você está sempre interessad"+(Sex?"o":"a")+" é só me procurar.";
+		mes "Bem, se você está sempre interessad"+(Sex == SEX_MALE ? "o":"a")+" é só me procurar.";
 		close;
 	}
 }
@@ -618,7 +618,7 @@ dewata,229,49,6	script	Marinheiro de Alberta#dewata2	4_M_DEWMAN,{
 alberta,237,71,3	script	Marinheiro Optamara#alb	4W_SAILOR,{
 	mes "[Marinheiro Optamara]";
 	mes "Ei, você!";
-	mes "Estaria intereçad"+(Sex?"o":"a")+" em ir ao Porto de Malaya?";
+	mes "Estaria intereçad"+(Sex == SEX_MALE ? "o":"a")+" em ir ao Porto de Malaya?";
 	mes "São só 10,000 Zeny para taxa de embarque.";
 	next;
 	switch(select("Sobre o Porto de Malaya","Ir á Malaya","Cancelar")) {
@@ -826,7 +826,7 @@ jawaii,122,263,5	script	Marinheiro#jaw2	4W_SAILOR,{
 	mes "Você deve verificar se não esqueceu alguma coisa antes de partirmos.";
 	next;
 	mes "[Marinheiro]";
-	mes "Agora, você está pront"+(Sex?"o":"a")+" para ir a Alberta?";
+	mes "Agora, você está pront"+(Sex == SEX_MALE ? "o":"a")+" para ir a Alberta?";
 	next;
 	if (select("Ir para Alberta.","Cancelar.") == 1) {
 		mes "[Marinheiro]";

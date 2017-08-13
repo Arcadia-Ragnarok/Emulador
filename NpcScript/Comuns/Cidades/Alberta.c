@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Alberta                             |
 \*-----------------------------------------------------------------*/
@@ -34,7 +33,7 @@ alberta,97,51,0	script	Fabian#alb	4_M_02,{
 alberta,53,39,0	script	Steiner#alb	4W_SAILOR,{
 	mes "[Steiner]";
 	mes "Oh, você parece ser de fora da cidade.";
-	mes "Seja bem vind"+(Sex? "o":"a")+" à Alberta.";
+	mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Alberta.";
 	emotion (e_gasp);
 	next;
 	mes "[Steiner]";
@@ -188,7 +187,7 @@ alberta,62,156,2	script	Sonya#alb	8_F,{
 		mes "Eu rapidinho pulei pro lado pra desviar dele.";
 		mes "Então BAMB!!!";
 		mes "Ele acertou uma gigantesca árvore e a deixou em pedacinhos.";
-		emotion e_wah;
+		emotion (e_wah);
 		next;
 		mes "[Sonya]";
 		mes "Aquele dia eu aprendi uma lição.";

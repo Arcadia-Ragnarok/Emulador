@@ -17,7 +17,7 @@
 // ------------------------------------------------------------------
 einbroch,232,272,3	script	Estação de Trem#EinTrain	4_M_EIN_SOLDIER,{
 	mes "[Funcionário]";
-	mes "Bem vind"+(Sex?"o":"a")+" a estação de trem.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a estação de trem.";
 	mes "Trens para Einbech estão sempre passando então se você perder um, não será um problema.";
 	next;
 	mes "[Funcionário]";

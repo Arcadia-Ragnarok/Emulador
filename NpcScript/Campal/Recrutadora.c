@@ -17,7 +17,7 @@
 //-------------------------------------------------------------------
 -	script	BattlegroundRecruit	FAKE_NPC,{
 	mes "[Emissária de Maroll]";
-	mes "Olá aventureir"+(Sex?"o":"a");
+	mes "Olá aventureir"+(Sex == SEX_MALE ? "o":"a");
 	mes "Eu venho de um reino distante, onde dois herdeiros do trono lutam para decidir quem vai govenar.";
 	next;
 	if (BaseLevel < 80) {

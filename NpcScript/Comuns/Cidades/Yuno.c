@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Juno (yuno)                         |
 \*-----------------------------------------------------------------*/
@@ -18,7 +17,7 @@
 //-------------------------------------------------------------------
 yuno,14,262,5	script	Funcionário#yun	4_F_02,{
 	mes "[Equipe do Aeroporto]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Aeroporto de Juno.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroporto de Juno.";
 	mes "Por favor, utilize esta porta para embarcar no dirigível que voa até Izlude dentro do Reino de Rune-Midgard.";
 	mes "E para Rachel na República de Arunafeltz.";
 	next;
@@ -31,7 +30,7 @@ yuno,14,262,5	script	Funcionário#yun	4_F_02,{
 //-------------------------------------------------------------------
 yuno,88,263,3	script	Funcionário#yun2	4_F_02,{
 	mes "[Equipe do Aeroporto]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Aeroporto de Juno.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroporto de Juno.";
 	mes "Por favor, utilize esta porta para embarcar no dirigível que voa até Einbroch, Lighthalzen e Hugel na República de Schwaltzvalt.";
 	next;
 	mes "[Equipe do Aeroporto]";

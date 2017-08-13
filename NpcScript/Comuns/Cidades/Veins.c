@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Veins                               |
 \*-----------------------------------------------------------------*/
@@ -35,7 +34,7 @@ veins,162,34,5	script	Cidadão#vei	4_M_DESERT,{
 // ------------------------------------------------------------------
 veins,148,41,3	script	Cidadão#vei2	4_F_DESERT,{
 	mes "[Cidadão]";
-	mes "Bem-vind"+(Sex?"o":"a")+" à Veins,";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" à Veins,";
 	mes "a cidade próxima do templo de Cheshrumnir.";
 	mes "Você pode achar que essa é uma cidade monótona e deserta, mas você verá que ela é tão viva como qualquer outro lugar.";
 	next;

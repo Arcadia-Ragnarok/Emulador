@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Comodo                              |
 \*-----------------------------------------------------------------*/
@@ -413,22 +412,3 @@ cmd_in02,57,62,4	script	Moo#com	4_M_MANAGER,{
 		close;
 	}
 }
-
-// ------------------------------------------------------------------
-/*
-cmd_in02,146,180,4	script	Funcionária Kafra::kaf_comodo2	4_F_KAFRA7,{
-	cutin ("kafra_07",2);
-	mes "[Kafra Misty]";
-	mes "Seja bem vindo a Corporação Kafra.";
-	mes "Você sabe que nossos serviços estão sempre com você.";
-	next;
-	mes "[Kafra Misty]";
-	mes "A Corporação Kafra";
-	mes "Promete construir uma nova divisão a Oeste daqui com o melhor serviço de qualidade.";
-	mes "Que enfatiza a confiabilidade e satisfação total do consumidor.";
-	mes "Agradecemos por seu patrocínio.";
-	close2;
-	cutin ("", 255);
-	end;
-}
-*/

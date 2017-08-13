@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Dewata.                             |
 \*-----------------------------------------------------------------*/
@@ -472,7 +471,7 @@ dewata,234,263,0	script	Casal Apaixonado#dew2	4_F_JOB_HUNTER,2,3,{
 dewata,269,208,4	script	Garotinho#dew	4_M_DEWBOY,2,3,{
 	OnTouch:
 	mes "[Garotinho]";
-	mes "EI "+(Sex?"mano":"mana")+", olhe aquele cara!";
+	mes "EI "+(Sex == SEX_MALE ? "mano":"mana")+", olhe aquele cara!";
 	next;
 	mes "[Garotinho]";
 	mes "Ele está ali deitado há uma semana sem fazer nada...";

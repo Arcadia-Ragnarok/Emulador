@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Louyang                             |
 \*-----------------------------------------------------------------*/
@@ -186,6 +185,7 @@ lou_in01,25,23,5	script	Garota Amigável#lo	4_F_CHNDRESS3,{
 	}
 }
 
+// ------------------------------------------------------------------
 louyang,84,254,0	script	Saída#lou	HIDDEN_NPC,{
 	mes "^3355FFHá alguns aparatos para descer.";
 	mes "Você gostaria de usá-los?^000000";

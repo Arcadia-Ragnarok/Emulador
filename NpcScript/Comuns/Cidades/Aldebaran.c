@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Al de Baran                         |
 \*-----------------------------------------------------------------*/
@@ -976,7 +975,7 @@ aldeba_in,24,245,4	script	Marianne#2alde	4_F_KAFRA3,{
 aldeba_in,148,243,4	script	Bianca#3alde	4_F_KAFRA4,{
 	cutin ("kafra_04",2);
 	mes "[Kafra Bianca]";
-	mes "Bem-vind"+(Sex? "o":"a")+"!";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+"!";
 	mes "A Corporação Kafra sempre ajudará os aventureiros de Rune-Midgard com os nossos excelentes serviços.";
 	next;
 	mes "[Kafra Bianca]";

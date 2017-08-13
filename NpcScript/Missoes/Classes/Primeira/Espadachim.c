@@ -19,7 +19,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Lembre-se sempre que os espadachins, não são somentes lutadores com a espada.";
 			close;
 		} else {
-			mes "Bem vind" +(Sex?"o":"a")+ "a guilda dos Espadachins.";
+			mes "Bem vind" +(Sex == SEX_MALE ? "o":"a")+ "a guilda dos Espadachins.";
 			close;
 		}
 	} else {
@@ -91,7 +91,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			close;
 		} else if (swordq == 2) {
 			mes "Muito bom, mostrou muita coragem e resitencia em seu teste.";
-			mes "Com isso você se torna qualificad" +(Sex?"o":"a")+ "para ser Espadachim.";
+			mes "Com isso você se torna qualificad" +(Sex == SEX_MALE ? "o":"a")+ "para ser Espadachim.";
 			next;
 			mes "[Líder dos Espadachins]";
 			mes "Mas antes de sua mudança, pense bem.";
@@ -99,7 +99,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Não vai poder se tornar outra classe.";
 			next;
 			mes "[Líder dos Espadachins]";
-			mes "Ainda vai poder ser tornar "+(Sex?"Cavaleiro ou Templário":"Cavaleira ou Templária");
+			mes "Ainda vai poder ser tornar "+(Sex == SEX_MALE ? "Cavaleiro ou Templário":"Cavaleira ou Templária");
 			mes "Que são classes que sucedem-se do Espadachim";
 			next;
 			mes "[Líder dos Espadachins]";
@@ -124,7 +124,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 	mes "[Espadachim]";
 	if (BaseJob != Job_Novice) {
-		mes "Bem vind" +(Sex?"o":"a")+ "a guilda dos Espadachins.";
+		mes "Bem vind" +(Sex == SEX_MALE ? "o":"a")+ "a guilda dos Espadachins.";
 		close;
 	} else if (!swordq) {
 		mes "Se você deseja ser espadachim.";
@@ -132,7 +132,7 @@ izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 		close;
 	} else if (swordq == 1) {
 		mes "Hunn...";
-		mes "Você é "+(Sex?"o novo":"a nova")+" aspirante a Espadachim";
+		mes "Você é "+(Sex == SEX_MALE ? "o novo":"a nova")+" aspirante a Espadachim";
 		mes "Deixe-me ver seu cartão de inscrição.";
 		next;
 		mes "[Espadachim]";
@@ -152,7 +152,7 @@ izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 izlude_in,30,176,4	script	Equipe de Testes#swordq	4_F_03,{
 	if (BaseJob == Job_Novice && swordq == 1) {
 		mes "[Equipe de Testes]";
-		mes "Pront" +(Sex?"o":"a")+ "para seu teste?";
+		mes "Pront" +(Sex == SEX_MALE ? "o":"a")+ "para seu teste?";
 		mes "Boa sorte!";
 		mes "Você conseguirá, pode parecer difícil, mas não é";
 		close2;

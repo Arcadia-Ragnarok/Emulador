@@ -17,7 +17,7 @@
 //-------------------------------------------------------------------
 -	script	EnterAirship	FAKE_NPC,{
 	mes "[Embarque do Aeroporto]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao serviço de embarque do Aeroplano.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao serviço de embarque do Aeroplano.";
 	mes "A taxa do embarque é de 1,200 zeny.";
 	mes "Gostaria de utilizar nossos serviços?";
 	next;
@@ -75,7 +75,7 @@ y_airport,145,63,5	script	Voos Domésticos	4_F_02,{
 	}
 	mes "[Equipe de Bordo]";
 	mes "Muito bem, então.";
-	mes "Obrigad"+(Sex?"o":"a")+" por se tornar um cliente, espero que tenha uma viajem divertida.";
+	mes "Obrigad"+(Sex == SEX_MALE ? "o":"a")+" por se tornar um cliente, espero que tenha uma viajem divertida.";
 	close;
 }
 
@@ -90,7 +90,7 @@ y_airport,140,63,5	script	Voos Internacionais	4_F_02,{
 	}
 	mes "[Equipe de Bordo]";
 	mes "Muito bem, então.";
-	mes "Obrigad"+(Sex?"o":"a")+" por voar conosco, espero uma viajem divertida.";
+	mes "Obrigad"+(Sex == SEX_MALE ? "o":"a")+" por voar conosco, espero uma viajem divertida.";
 	close;
 }
 

@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: Spell Master/ eAthena/ rAthena/ Hercules                |
+| - Script: Spell Master                                            |
 | - Nota: Livraria de Prontera                                      |
 \*-----------------------------------------------------------------*/
 

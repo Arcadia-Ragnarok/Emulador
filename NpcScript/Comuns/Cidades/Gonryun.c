@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Kunlun                              |
 \*-----------------------------------------------------------------*/
@@ -81,7 +80,7 @@ gonryun,113,135,6	script	Guardião#gon	8_M_TWSOLDIER,{
 // ------------------------------------------------------------------
 gonryun,113,127,6	script	Guardião#gon2	8_M_TWSOLDIER,{
 	mes "[Guardião]";
-	mes "Bem vind"+(Sex?"o":"a")+"!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+"!";
 	mes "Sou um humilde servidor de SaYumMoon, o governador dessa cidade.";
 	next;
 	mes "[Guardião]";
@@ -112,7 +111,7 @@ gonryun,166,196,3	script	Soldado#gon	8_M_TWSOLDIER,{
 // ------------------------------------------------------------------
 gonryun,169,71,3	script	Guia#gon	4_F_TWGIRL,{
 	mes "[LeeHee Min]";
-	mes "Bem vind"+(Sex?"o":"a")+"!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+"!";
 	mes "Você gostou da paisagem no seu caminho para cá?";
 	mes "O que achou daquelas pequenas construções no caminho?";
 	next;

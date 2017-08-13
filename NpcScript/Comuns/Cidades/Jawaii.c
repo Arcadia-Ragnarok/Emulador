@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Jawaii                              |
 \*-----------------------------------------------------------------*/
@@ -69,7 +68,7 @@ jawaii,220,235,3	script	Moradora de Jawaii#jaw	4_F_07,{
 // ------------------------------------------------------------------
 jawaii,240,146,5	script	Moradora de Jawaii#jaw2	4_F_07,{
 	mes "[Waii Waii]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Jawaii!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Jawaii!";
 	next;
 	mes "[Waii Waii]";
 	mes "Aqui, você pode aproveitar sua lua de mel sem se preocupar com interrupções.";
@@ -271,7 +270,7 @@ jawaii,112,173,7	script	Funcionária#jaw3	4_F_04,{
 // ------------------------------------------------------------------
 jawaii_in,25,94,0	script	Funcionaria#jaw5	4_F_07,{
 	mes "[Funcionária Tryteh]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes "Estou tão feliz com o casamento de vocês.";
 		mes "Espero que vivam felizes para sempre~";
@@ -292,7 +291,7 @@ jawaii_in,25,94,0	script	Funcionaria#jaw5	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,25,96,0	script	Funcionaria#jaw6	4_F_07,{
 	mes "[Funcionária Fey]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Funcionária Fey]";
@@ -345,7 +344,7 @@ jawaii_in,25,98,0	script	Funcionaria#jaw7	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,25,100,0	script	Funcionaria#jaw8	4_F_07,{
 	mes "[Funcionária Itere]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Funcionária Itere]";
@@ -368,7 +367,7 @@ jawaii_in,25,100,0	script	Funcionaria#jaw8	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,94,4	script	Funcionaria#jaw9	4_F_07,{
 	mes "[Funcionária Tonia]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Funcionária Tonia]";
@@ -394,7 +393,7 @@ jawaii_in,30,94,4	script	Funcionaria#jaw9	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,96,4	script	Funcionaria#jaw10	4_F_07,{
 	mes "[Funcionária Kay]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Funcionária Kay]";
@@ -412,7 +411,7 @@ jawaii_in,30,96,4	script	Funcionaria#jaw10	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,98,4	script	Funcionaria#jaw11	4_F_07,{
 	mes "[Funcionária Amy]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes "Oh! Vocês são perfeitos juntos!";
 		mes "Parecem, hum, uma arma e uma bala!";
@@ -438,7 +437,7 @@ jawaii_in,30,98,4	script	Funcionaria#jaw11	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,100,4	script	Funcionaria#jaw12	4_F_07,{
 	mes "[Funcionária Yasmine]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes "Assim como a lua e as estrelas, vocês são perfeitos juntos.";
 		mes "Estou muito feliz por vocês!";

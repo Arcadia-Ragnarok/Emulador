@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Geffen                              |
 \*-----------------------------------------------------------------*/
@@ -18,7 +17,7 @@
 // ------------------------------------------------------------------
 geffen,59,143,0	script	Meera#gef	4_F_02,{
 	mes "[Meera]";
-	mes "Bem vind"+(Sex?"o":"a")+" a Geffen, a Cidade da Magia!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Geffen, a Cidade da Magia!";
 	next;
 	mes "[Meera]";
 	mes "Você gosta de mel?";

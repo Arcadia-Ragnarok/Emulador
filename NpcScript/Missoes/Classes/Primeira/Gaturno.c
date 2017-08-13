@@ -21,7 +21,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 		} else {
 			mes "[Gatuna]";
 			mes "O que faz você aqui?";
-			mes "Por acaso está tentando ser roubad"+(Sex?"o":"a")+"?";
+			mes "Por acaso está tentando ser roubad"+(Sex == SEX_MALE ? "o":"a")+"?";
 			next;
 			mes "[Gatuna]";
 			mes "É melhor você sair daqui o mais rápido o possível, este local é a guilda dos gaturnos.";
@@ -31,7 +31,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 	} else {
 		if (!thiefq) {
 			mes "[Gatuna Ajudante]";
-			mes "Garotinh"+(Sex?"o":"a")+", está aqui porque eim?...";
+			mes "Garotinh"+(Sex == SEX_MALE ? "o":"a")+", está aqui porque eim?...";
 			if (getskilllv ("NV_BASIC") < 9) {
 				mes "Deveria aprender as habilidades básicas antes de se aventurar por locais como esse.";
 				close;
@@ -41,7 +41,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 				switch(select("Estou aqui para ser Gaturno","Só estou de passagem","Fale-me sobre o teste")) {
 					case 1:
 					mes "[Gatuna Ajudante]";
-					mes "O que faz pensar que pode ser "+(Sex?"um Gaturno":"uma Gaturna")+"?";
+					mes "O que faz pensar que pode ser "+(Sex == SEX_MALE ? "um Gaturno":"uma Gaturna")+"?";
 					mes "Está bem, assine seu nome nesse formulário.";
 					next;
 					if (select("Assinar","Cancelar inscrição") == 1) {
@@ -95,7 +95,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 				switch (select("Foi moleza","Aquele lugar é horrível!")) {
 					case 1:
 					mes "[Gatuna Ajudante]";
-					mes "Se achou essa tafera fácil, sem dúviadas será "+(Sex?"um ótimo Gaturno":"uma ótima Gatuna");
+					mes "Se achou essa tafera fácil, sem dúviadas será "+(Sex == SEX_MALE ? "um ótimo Gaturno":"uma ótima Gatuna");
 					break;
 					case 2:
 					mes "[Gatuna Ajudante]";
@@ -112,7 +112,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 				close;
 			} else if (thiefq == 3) {
 				mes "[Gatuna Ajudante]";
-				mes "Você veio aqui para se tornar "+(Sex?"um Gaturno":"uma Gaturna")+"?";
+				mes "Você veio aqui para se tornar "+(Sex == SEX_MALE ? "um Gaturno":"uma Gaturna")+"?";
 				mes "E o que está pensando ainda?";
 				close;
 			} else {
@@ -147,7 +147,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			mes "[Senhor Irrelevante]";
 			mes "Ei!!";
 			mes "Eu me lembro de você";
-			mes "Você é "+(Sex?"aquele":"aquela")+ "Aprendiz que veio até aqui para ser tornar Gaturno";
+			mes "Você é "+(Sex == SEX_MALE ? "aquele":"aquela")+ "Aprendiz que veio até aqui para ser tornar Gaturno";
 			next;
 			mes "[Senhor Irrelevante]";
 			mes "Vejo que conseguiu alcançar seu objetivo.";
@@ -162,13 +162,13 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 	} else {
 		if (!thiefq) {
 			mes "[Senhor Irrelevante]";
-			mes "Hora "+(Sex?"um":"uma")+" Aprendiz!";
+			mes "Hora "+(Sex == SEX_MALE ? "um":"uma")+" Aprendiz!";
 			mes "Já pensou em se tornar Gaturno?";
 			close;
 		} else if (thiefq == 1) {
 			mes "[Senhor Irrelevante]";
 			mes "O que faz aqui?";
-			select ("Fui enviad"+(Sex?"o":"a")+" aqui para fazer um teste");
+			select ("Fui enviad"+(Sex == SEX_MALE ? "o":"a")+" aqui para fazer um teste");
 			next;
 			mes "[Senhor Irrelevante]";
 			mes "A sim, o teste da guilda dos gaturnos.";
@@ -182,7 +182,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			mes "Para passar no teste da guilda";
 			next;
 			mes "[Senhor Irrelevante]";
-			mes "Pront"+(Sex?"o":"a")+" para ir?";
+			mes "Pront"+(Sex == SEX_MALE ? "o":"a")+" para ir?";
 			next;
 			if (select("Sim, agora mesmo","Não, preciso fazer algo primeiro") == 1) {
 				close2;
@@ -201,7 +201,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			close;
 		} else if (thiefq == 2) {
 			mes "[Senhor Irrelevante]";
-			mes "Você voltou, pront"+(Sex?"o":"a")+" para ir á fazenda de cogumelos?";
+			mes "Você voltou, pront"+(Sex == SEX_MALE ? "o":"a")+" para ir á fazenda de cogumelos?";
 			next;
 			if (select("Sim, agora mesmo","Agora não") == 1) {
 				close2;
@@ -315,7 +315,7 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 	} else if (thiefq == 3) {
 		mes "[Brad]";
 		mes "Então já se decidiu?";
-		mes "Quer se tornar "+(Sex?"um Gaturno":"uma Gaturna")+"?";
+		mes "Quer se tornar "+(Sex == SEX_MALE ? "um Gaturno":"uma Gaturna")+"?";
 		next;
 		if (select("Sim","Não") == 1) {
 			mes "[Brad]";

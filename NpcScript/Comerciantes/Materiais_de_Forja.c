@@ -8,14 +8,13 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Por: Spell Master/eAthena/rAthena/Hercules                      |
+| - Versão: Spell Master                                            |
 | - Nota: Venda de Materiais de Forja para Ferreiros.               |
 \*-----------------------------------------------------------------*/
 
 -	script	BlacksmithSupplier	FAKE_NPC,{
 	mes "["+strnpcinfo(NPC_NAME)+"]";
-	mes "Seja bem-vind"+(Sex?"o":"a")+" à minha loja.";
+	mes "Seja bem-vind"+(Sex == SEX_MALE ? "o":"a")+" à minha loja.";
 	mes "Você pode achar tudo relacionado a forja aqui.";
 	mes "O que traz você até mim?";
 	next;

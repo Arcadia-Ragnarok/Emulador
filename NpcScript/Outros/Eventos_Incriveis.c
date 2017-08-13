@@ -26,7 +26,7 @@
 	mes "[Funcionária]";
 	mes "Bem-vind"+(SEX_MALE?"o":"a")+" à Corporação Eventos Incríveis.";
 	mes "Nossa equipe está sempre trabalhando para auxiliar a Corporação Kafra em seus serviços prestados.";
-	mes "Como posso ajudá-l"+(Sex?"o":"a")+" hoje?";
+	mes "Como posso ajudá-l"+(Sex == SEX_MALE ? "o":"a")+" hoje?";
 	switch(select("Salvar","Usar Armazém","Alugar um Carrinho","Senha no Armazém","Cancelar")) {
 		case 1: // Salvar
 		if (strnpcinfo(NPC_MAP) == "lighthalzen") { savepoint (strnpcinfo(NPC_MAP),94,240); }
@@ -187,7 +187,7 @@
 						close2; cutin ("",255); end;
 					}
 					mes "[Funcionária]";
-					mes "Estaremos sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+					mes "Estaremos sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 					close2; cutin ("",255); end;
 				}
 			}
@@ -234,7 +234,7 @@
 							next;
 							if (select("Voltar a digitar a senha","Cancelar") == 2) {
 								mes "[Funcionária]";
-								mes "Estaremos sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+								mes "Estaremos sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 								close2; cutin ("",255); end;
 							}
 							break;
@@ -242,20 +242,20 @@
 							break;
 							case 4:
 							mes "[Funcionária]";
-							mes "Estaremos sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+							mes "Estaremos sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 							close2; cutin ("",255); end;
 						}
 					}
 				}
 				case 2:
 				mes "[Funcionária]";
-				mes "Estaremos sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+				mes "Estaremos sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				close2; cutin ("",255); end;
 			}
 		}
 		case 5: // Cancelar
 		mes "[Funcionária]";
-		mes "Estaremos sempre ao seu dispor para servir-l"+(Sex?"o":"a")+".";
+		mes "Estaremos sempre ao seu dispor para servir-l"+(Sex == SEX_MALE ? "o":"a")+".";
 		close2; cutin ("",255); end;
 	}
 }

@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Por: Spell Master/eAthena/rAthena/Hercules                      |
+| - Versão: Spell Master                                            |
 | - Nota: Conseta equipamentos danificados.                         |
 \*-----------------------------------------------------------------*/
 

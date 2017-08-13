@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade einbroch                            |
 \*-----------------------------------------------------------------*/
@@ -18,7 +17,7 @@
 // ------------------------------------------------------------------
 einbroch,94,267,3	script	Funcionário#ein01	4_F_02,{
 	mes "[Equipe do Aeroporto]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao Aeroporto de Einbroch.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroporto de Einbroch.";
 	mes "Utilize essa porta para embarcar no digirível que te leva para Juno, Lighthalzen e Hugel na República de Schwarzwald.";
 	next;
 	mes "[Equipe do Aeroporto]";

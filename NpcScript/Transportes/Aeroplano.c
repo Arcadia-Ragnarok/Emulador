@@ -8,8 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Por: eAthena/rAthena/Hercules                                   |
 | - Versão: Spell Master                                            |
 | - Nota: Controle sobre as rotas dos dirigiveis                    |
 \*-----------------------------------------------------------------*/

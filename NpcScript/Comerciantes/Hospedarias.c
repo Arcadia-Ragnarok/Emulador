@@ -14,7 +14,7 @@
 
 -	script	InnHouse	FAKE_NPC,{
 	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-	mes "Bom dia, seja bem vind"+(Sex?"o":"a")+" a nossa estalagem.";
+	mes "Bom dia, seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" a nossa estalagem.";
 	mes "Em que posso ajudar?";
 	next;
 	switch(select("Salvar Retorno","Descançar -> 5000 zeny","Cancelar")) {

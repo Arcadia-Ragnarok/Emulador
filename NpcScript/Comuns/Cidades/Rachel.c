@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Rachel                              |
 \*-----------------------------------------------------------------*/
@@ -56,7 +55,7 @@ rachel,155,243,3	duplicate(ChesGuard)	Guarda#rac2	4_M_RASWORD
 // ------------------------------------------------------------------
 rachel,268,120,1	script	Guarda#rac3::RaGuard	4_M_RASWORD,{
 	mes "[Guarda de Rachel]";
-	mes "Bem-Vind"+(Sex?"o":"a")+" à Rachel a capital de Arunafeltz.";
+	mes "Bem-Vind"+(Sex == SEX_MALE ? "o":"a")+" à Rachel a capital de Arunafeltz.";
 	mes "Por favor peça ao nosso guia no centro da cidade informações e serviços para visitantes.";
 	close;
 }

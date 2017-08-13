@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Mini jogos no aeroplano                                   |
 | - OBS.: Foi detectado alguns erros que podem comprometer o        |
@@ -20,7 +19,7 @@
 //-------------------------------------------------------------------
 airplane_01,32,61,4	script	Nils#ein	1_M_03,1,1,{
 	mes "[Nils]";
-	mes "Bem-vind"+(Sex?"o":"a")+" ao ^ff0000Desafio de Escrita^000000.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao ^ff0000Desafio de Escrita^000000.";
 	mes "Você gostaria de jogar um rápido jogo de escrita?";
 	next;
 	switch (select("Jogar ^ff0000Desafio de Escrita^000000","Informações","Ver recordes","Cancelar")) {

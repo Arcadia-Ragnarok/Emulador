@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: Spell Master/ eAthena/ rAthena/ Hercules                |
+| - Versão: Spell Master                                            |
 | - Nota: Museu de Monstros em Juno                                 |
 \*-----------------------------------------------------------------*/
 

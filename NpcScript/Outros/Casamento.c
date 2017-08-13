@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: Spell Master/ eAthena/ rAthena/ Hercules                |
+| - Versão: Spell Master                                            |
 | - Nota: Realiza casamento entre personagens                       |
 \*-----------------------------------------------------------------*/
 
@@ -77,7 +77,7 @@ prt_church,97,100,4	script	Casamenteira#w	1_F_LIBRARYGIRL,{
 		mes "Por favor forme uma fila e falem com o Bispo Vomars na ordem de que só um casal possa se casar de cada vez.";
 		next;
 		mes "[Casamenteira]";
-		mes "Finalmente, fale o nome exato de s"+(Sex?"ua":"eu")+" companheir"+(Sex?"a":"o")+" ao Bispo Vomars, sem desperdiçar muito tempo.";
+		mes "Finalmente, fale o nome exato de s"+(Sex == SEX_MALE ? "ua":"eu")+" companheir"+(Sex == SEX_MALE ? "a":"o")+" ao Bispo Vomars, sem desperdiçar muito tempo.";
 		next;
 		mes "[Casamenteira]";
 		mes "Se você levar muito tempo, a cerimônia automaticamente será cancelada e você terá de começar de novo.";
@@ -157,7 +157,7 @@ prt_church,97,100,4	script	Casamenteira#w	1_F_LIBRARYGIRL,{
 				mes "Você já não completou a solicitação?";
 				next;
 				mes "[Casamenteira]";
-				mes "Humm, tenha certeza que s"+(Sex?"ua":"eu")+" companheir"+(Sex?"o":"a")+" também terminou o processo de solicitação, e então fale com Bispo Vomars.";
+				mes "Humm, tenha certeza que s"+(Sex == SEX_MALE ? "ua":"eu")+" companheir"+(Sex == SEX_MALE ? "o":"a")+" também terminou o processo de solicitação, e então fale com Bispo Vomars.";
 				break;
 			}
 			else if (BaseLevel < 45) {

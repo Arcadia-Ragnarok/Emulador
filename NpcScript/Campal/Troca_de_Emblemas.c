@@ -14,7 +14,7 @@
 
 bat_room,160,150,3	script	Erundek#BgNpc	4_M_MANAGER,{
 	mes "[Erundek]";
-	mes "Bem-vind"+(Sex?"o":"a")+".";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+".";
 	mes "O que eu posso fazer por você?";
 	next;
 	switch(select("Ler Catálago","Trocar Emlemas de Bravura","Trocar Emlemas de Valor","Trocar Emlemas de Guerra")) {

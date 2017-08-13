@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na Porto de Malaya                            |
 \*-----------------------------------------------------------------*/
@@ -21,7 +20,7 @@ malaya,227,311,4	script	Vovó#ma01	4_F_BARYO_OLD,{
 	select("Meoneonuncle?");
 	mes "[Vovó]";
 	mes "Não conhece as histórias daqui?";
-	mes "Vou lhe falar, até por que "+(Sex?"um estrangeiro":"uma estrangeira")+" como você deveria ter cuidado.";
+	mes "Vou lhe falar, até por que "+(Sex == SEX_MALE ? "um estrangeiro":"uma estrangeira")+" como você deveria ter cuidado.";
 	next;
 	mes "[Vovó]";
 	mes "Meoneonuncle era uma mulher que viveu há muito tempo em Porto Malaya.";

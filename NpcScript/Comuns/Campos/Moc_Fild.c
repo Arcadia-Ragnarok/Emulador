@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Npcs comuns nos Campos de Morroc                          |
 \*-----------------------------------------------------------------*/
@@ -115,7 +114,7 @@ moc_fild16,211,254,4	script	La Conte#07rhea_30	2_M_THIEFMASTER,{
 moc_fild16,195,281,4	script	Mercenário Guardião#1::SinGuard	4_M_MOC_SOLDIER,{
 	mes "[Mercenário Guardião]";
 	if(BaseJob == Job_Assassin) {
-		mes "Bem Vind"+(Sex?"o":"a")+".";
+		mes "Bem Vind"+(Sex == SEX_MALE ? "o":"a")+".";
 		close;
 	}
 	else {

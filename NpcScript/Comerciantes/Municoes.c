@@ -26,7 +26,7 @@ que_ng,187,156,3	script	Negociador de Munições#ammo	4_M_04,{
 		mes "[Tony]";
 		mes "Meu nome é Tony e negocio diversas Munições, em troca de alguns materiais.";
 		mes "Que tal fazer-mos negócio?";
-		mes "Me diga no que está intereçad"+(Sex?"o":"a")+"?";
+		mes "Me diga no que está intereçad"+(Sex == SEX_MALE ? "o":"a")+"?";
 		next;
 		switch(select("Esfera Venenosa","Esfera de Chamas","Esfera de Relâmpagos","Esfera Cegante","Esfera Congelante","Cancelar")) {
 			case 1: .@requirement = 937;  .@requireunit = 10; .@selectitem = 13205; break;

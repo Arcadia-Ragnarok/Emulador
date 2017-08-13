@@ -16,10 +16,10 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 	mes "[Guia dos Arqueiros]";
 	if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Archer) {
-			mes "Agora que és " + (Sex?"um arqueiro":"uma arqueira") + " aprenda ao máximo o uso do Arco e Flecha.";
+			mes "Agora que és " + (Sex == SEX_MALE ? "um arqueiro":"uma arqueira") + " aprenda ao máximo o uso do Arco e Flecha.";
 			close;
 		} else {
-			mes "Bem vind" + (Sex?"o":"a") + "á guilda dos Arqueiros.";
+			mes "Bem vind" + (Sex == SEX_MALE ? "o":"a") + "á guilda dos Arqueiros.";
 			mes "Este é o local onde Aprendizes podem ser tonar arqueiros.";
 			next;
 			mes "[Guia dos Arqueiros]";
@@ -28,7 +28,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 		}
 	}
 	else if (!archerquest) {
-		mes "Bem vind" + (Sex?"o":"a") + " ^777777Aprendiz^000000 á guilda dos Arqueiros.";
+		mes "Bem vind" + (Sex == SEX_MALE ? "o":"a") + " ^777777Aprendiz^000000 á guilda dos Arqueiros.";
 		mes "Este é o local onde você pode se tonar um arqueiro, se desejar...";
 		next;
 		if (getskilllv("NV_BASIC") < 9) {
@@ -38,7 +38,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			close;
 		} else {
 			mes "[Guia dos Arqueiros]";
-			mes "Estaria entereçad" + (Sex?"o":"a") + "?";
+			mes "Estaria entereçad" + (Sex == SEX_MALE ? "o":"a") + "?";
 			next;
 			switch(select("Claro que sim","O que tenho de fazer","Não mesmo")) {
 				case 1:
@@ -88,7 +88,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				next;
 				mes "[Guia dos Arqueiros]";
 				mes "Se mudar de ideia volte a procurar nossa guilda.";
-				mes "Vejo em seus olhos que seria " + (Sex?"um ótimo arqueiro":"uma ótima arqueira") + ".";
+				mes "Vejo em seus olhos que seria " + (Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira") + ".";
 				close;
 				case 2:
 				mes "[Guia dos Arqueiros]";
@@ -113,7 +113,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				case 3:
 				mes "[Guia dos Arqueiros]";
 				mes "Se mudar de ideia volte a procurar nossa guilda.";
-				mes "Vejo em seus olhos que seria " + (Sex?"um ótimo arqueiro":"uma ótima arqueira") + ".";
+				mes "Vejo em seus olhos que seria " + (Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira") + ".";
 				close;
 			}
 		}
@@ -168,7 +168,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			next;
 			mes "[Guia dos Arqueiros]";
 			mes "Porque não haverá volta, uma vez arqueiro não poderá mudar para nenhuma outra classe inicial.";
-			mes "Mas ainda poderá se tornar Caçador, ou " +(Sex?" Bardo":"Odalisca");
+			mes "Mas ainda poderá se tornar Caçador, ou " +(Sex == SEX_MALE ? " Bardo":"Odalisca");
 			next;
 			if (countitem(Wooden_Block)) { delitem(Wooden_Block, countitem(Wooden_Block)); }
 			if (countitem(Tree_Of_Archer_1)) { delitem(Tree_Of_Archer_1, countitem(Tree_Of_Archer_1)); }
@@ -192,7 +192,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				}
 				mes "[Guia dos Arqueiros]";
 				mes "Parabéns!";
-				mes "De agora em diante você é "+(Sex?"um Arqueiro":"uma Arqueira");
+				mes "De agora em diante você é "+(Sex == SEX_MALE ? "um Arqueiro":"uma Arqueira");
 				next;
 				mes "[Guia dos Arqueiros]";
 				mes "Mas sua jornada não termina aqui.";
