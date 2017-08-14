@@ -8,12 +8,56 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
+| - Versão corrigida e otimizada: Spell Master                      |
 | - Nota: Fabricação de Tinturas                                    |
+| - Update:                                                         |
+| * 17/08/2017 - Adicionado Suporte a quest de Mudança de Classe    |
+|                para Mercador.                                     |
 \*-----------------------------------------------------------------*/
 
 morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 	mes "[Java Dullihan]";
+	if (merchantq > 2) {
+		if (merchantq >= 4) {
+			mes "Muito obrigado.";
+			mes "Agora leve esse recibo para a Guilda dos Mercadores.";
+			mes "Ele prova que você fez a entrega.";
+			close;
+		} else if (merchantq_3 == 3318702 || merchantq_3 == 3543625) {
+			if (countitem(Merchant_Box_1) || countitem(Merchant_Box_2)) {
+				mes "Você deve ter sido enviad"+(Sex == SEX_MALE ? "o":"a")+" pela Guilda dos Mercadores.";
+				mes "Para me entregar algo.";
+				next;
+				if (select("Sim, está aqui sua encomenda","Não sei do que está falando") == 2) {
+					mes "[Java Dullihan]";
+					mes "Estranho achei que era você.";
+					close;
+				}
+				mes "[Java Dullihan]";
+				mes "Muito obrigado.";
+				mes "Agora leve esse recibo para a Guilda dos Mercadores.";
+				mes "Ele prova que você fez a entrega.";
+				if (countitem(Merchant_Box_1)) {
+					merchantq = 4;
+					merchantq_3 = 5;
+					getitem (Merchant_Voucher_5,1);
+					delitem(Merchant_Box_1,1);
+				} else if (countitem(Merchant_Box_2)) {
+					merchantq = 4;
+					merchantq_3 = 6;
+					getitem (Merchant_Voucher_6,2);
+					delitem(Merchant_Box_2,1);
+				}
+				close;
+			} else {
+				mes "Acho que você não tem a encomenda que pedi a Guilda dos Mercadores.";
+				close;
+			}
+		} else {
+			mes "Acho que você não tem a encomenda que pedi a Guilda dos Mercadores.";
+			close;
+		}
+	}
 	mes "Uau...";
 	mes "Que lindo dia...";
 	mes "Dias como estes são perfeitos para fazer Tinturas!";
@@ -107,6 +151,7 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 		mes "Eu vou criá-las para você por um preço bastante razoável.";
 		close;
 	}
+
 	S_MakeDye:
 	mes "[Java Dullihan]";
 	switch(getarg(0)) {

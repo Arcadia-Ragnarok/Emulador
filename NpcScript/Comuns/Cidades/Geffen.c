@@ -62,7 +62,7 @@ geffen,156,190,0	script	Orwalk	4_KID01,{
 }
 
 // ------------------------------------------------------------------
-geffen_in,164,109,0	script	Bruxo Stanza#gef	1_M_WIZARD,{
+geffen_in,172,101,0	script	Bruxo Stanza#gef	1_M_WIZARD,{
 	mes "[Stanza]";
 	mes "Eu senti a presença de um espírito poderoso.";
 	mes "Pode ser você...?";

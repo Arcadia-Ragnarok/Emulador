@@ -27,6 +27,10 @@ function	script	ClearJobVar	{
 	if (swordq) { swordq = 0; }
 	if (thiefq) { thiefq = 0; }
 	if (acolyteq) { acolyteq = 0; }
+	if (mageq) { mageq = 0; }
+	if (merchantq) { merchantq = 0; }
+	if (merchantq_1) { merchantq_1 = 0; }
+	if (merchantq_2) { merchantq_2 = 0; }
 	return;
 }
 

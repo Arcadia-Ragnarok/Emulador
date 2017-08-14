@@ -10,13 +10,18 @@
 +-------------------------------------------------------------------+
 | - Desenvolvido por: Spell Master 27/03/2017                       |
 | - Nota: Funcionárias da Corporação Kafra                          |
+| * Observação: Variável "merchantq", "merchantq_2" e "merchantq_3" |
+|               pertencem a quest de mudança de classe              |
+|               para mercador.                                      |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
 // - [ Script Base ] -
 // ------------------------------------------------------------------
 -	script	KafraCorp	FAKE_NPC,{
-	cutin (strnpcinfo(NPC_NAME_HIDDEN),2);
+	if (strnpcinfo(NPC_NAME_HIDDEN) != "kafra_nif") {
+		cutin (strnpcinfo(NPC_NAME_HIDDEN),2);
+	}
 	if (getskilllv(NV_BASIC) < 6) {
 		mes "[Funcionária Kafra]";
 		mes "Me desculpe mas você deve pelo menos ter suas ^777777Habilidades Básicas^000000.";
@@ -59,8 +64,56 @@
 	if (strnpcinfo(NPC_MAP) == "lhz_in02")          { .@kaframenu = 5; }
 	if (strnpcinfo(NPC_MAP) == "bat_room")          { .@kaframenu = 5; }
 	if (strnpcinfo(NPC_MAP) == "izlu2dun") {
-		// ** NOTA: Criar função para quest de mudança de classe para mercador!
-		.@kaframenu = 5;
+		// Parte da quest de mudança de classe para mercador
+		if (merchantq == 3) {
+			mes "[Funcionária Kafra]";
+			mes "Hunn..?!";
+			mes "Você é a pessoa que foi enviada para me entregar e encomenda que estava esperando.";
+			if (merchantq_3 == 3318702 || merchantq_3 == 3543625) {
+				if (countitem(Merchant_Box_1) || countitem(Merchant_Box_2)) {
+					if (countitem(Merchant_Box_1)) {
+						merchantq = 4;
+						merchantq_3 = 7;
+						getitem (Merchant_Voucher_7,1);
+						delitem(Merchant_Box_1,1);
+					} else if (countitem(Merchant_Box_2)) {
+						merchantq = 4;
+						merchantq_3 = 8;
+						getitem (Merchant_Voucher_8,2);
+						delitem(Merchant_Box_2,1);
+					}
+					mes "Muito obrigada.";
+					mes "Agora leve esse recibo para a Guilda dos Mercadores.";
+					mes "Ele prova que você fez a entrega.";
+					if (countitem(Delivery_Message)) {
+						next;
+						mes "["+strcharinfo(PC_NAME)+"]";
+						mes "Espere!!";
+						mes "O Chefe Mansur também me pediu para lhe entregar essa mensagem.";
+						next;
+						mes "[Funcionária Kafra]";
+						mes "Hã?!";
+						mes "Uma carta dele, o que será?";
+						mes "De qualquer forma obrigada por isso também.";
+						next;
+						mes "[Funcionária Kafra]";
+						mes "Agora retorne a Guilda dos Mercadores.";
+					}
+					close2; merchantq_2 = 3; cutin ("",255); end;
+				} else {
+					mes "Mas onde está a encomenda?";
+					close2; cutin ("",255); end;
+				}
+			} else {
+				mes "Receio que não foi isso que pedi.";
+				mes "Acho que você foi enviad"+(Sex == SEX_MALE ? "o":"a")+" para entregar isso a outra pessoa.";
+				close2; cutin ("",255); end;
+			}
+		}
+		// Fim da parte da quest para Mercador
+		else {
+			.@kaframenu = 5;
+		}
 	}
 	mes "[Funcionária Kafra]";
 	mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" aos serviços da Corporação kafra.";

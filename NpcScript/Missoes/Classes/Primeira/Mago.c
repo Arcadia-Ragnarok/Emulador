@@ -8,10 +8,8 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 10/08/2017                       |
-| - Nota: Quest de Mudança de Classe para Noviço.                   |
-| - Observações: Contém trechos da quest de Mudança de Classe       |
-|                para Sacerdote (Ainda não adicionado)              |
+| - Desenvolvido por: Spell Master 13/08/2017                       |
+| - Nota: Quest de Mudança de Classe para Mago.                     |
 \*-----------------------------------------------------------------*/
 
 geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
@@ -19,13 +17,13 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 		if (BaseJob == Job_Mage) {
 			mes "[Líder da Guilda]";
 			mes "Um dia você irá perceber quão grande é o poder que existe dentro de você.";
+			close;
 		} else {
 			mes "[Líder da Guilda]";
 			mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Guilda dos Magos.";
 			mes "Este é o local onde Aprendizes apredem a magia para ser tornarem magos.";
 			close;
 		}
-		close;
 	} else {
 		if (!mageq) {
 			if (getskilllv("NV_BASIC") < 9) {
