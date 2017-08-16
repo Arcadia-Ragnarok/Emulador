@@ -9,7 +9,8 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Nota: Mapas onde não é permitido usar Galho Seco/               |
-          Galho Sangrento e itens de invocação de monstros agrecivos|
+|          Galho Sangrento ou itens de invocação de monstros        |
+|          agrecivos.                                               |
 \*-----------------------------------------------------------------*/
 
 prt_are01	mapflag	nobranch
