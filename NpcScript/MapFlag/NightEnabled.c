@@ -1,36 +1,3 @@
-//================= Hercules Script =======================================
-//=       _   _                     _
-//=      | | | |                   | |
-//=      | |_| | ___ _ __ ___ _   _| | ___  ___
-//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
-//=      | | | |  __/ | | (__| |_| | |  __/\__ \
-//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
-//================= License ===============================================
-//= This file is part of Hercules.
-//= http://herc.ws - http://github.com/HerculesWS/Hercules
-//=
-//= Copyright (C) 2012-2015  Hercules Dev Team
-//= Copyright (C)  Skotlex
-//=
-//= Hercules is free software: you can redistribute it and/or modify
-//= it under the terms of the GNU General Public License as published by
-//= the Free Software Foundation, either version 3 of the License, or
-//= (at your option) any later version.
-//=
-//= This program is distributed in the hope that it will be useful,
-//= but WITHOUT ANY WARRANTY; without even the implied warranty of
-//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//= GNU General Public License for more details.
-//=
-//= You should have received a copy of the GNU General Public License
-//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//=========================================================================
-//= Mapflag: Night mode.
-//================= Current Version =======================================
-//= 1.0
-//================= Description ===========================================
-//= Enables night mode effects.
-//=========================================================================
 
 alb2trea	mapflag	nightenabled
 alberta	mapflag	nightenabled
@@ -66,18 +33,10 @@ mjolnir_12	mapflag	nightenabled
 moc_fild01	mapflag	nightenabled
 moc_fild02	mapflag	nightenabled
 moc_fild03	mapflag	nightenabled
-//moc_fild04	mapflag	nightenabled
-//moc_fild05	mapflag	nightenabled
-//moc_fild06	mapflag	nightenabled
 moc_fild07	mapflag	nightenabled
-//moc_fild08	mapflag	nightenabled
-//moc_fild09	mapflag	nightenabled
-//moc_fild10	mapflag	nightenabled
 moc_fild11	mapflag	nightenabled
 moc_fild12	mapflag	nightenabled
 moc_fild13	mapflag	nightenabled
-//moc_fild14	mapflag	nightenabled
-//moc_fild15	mapflag	nightenabled
 moc_fild16	mapflag	nightenabled
 moc_fild17	mapflag	nightenabled
 moc_fild18	mapflag	nightenabled
@@ -113,60 +72,17 @@ prt_fild09	mapflag	nightenabled
 prt_fild10	mapflag	nightenabled
 prt_fild11	mapflag	nightenabled
 prt_monk	mapflag	nightenabled
-pvp_y_1-1	mapflag	nightenabled
-pvp_y_1-2	mapflag	nightenabled
-pvp_y_1-3	mapflag	nightenabled
-pvp_y_1-4	mapflag	nightenabled
-pvp_y_1-5	mapflag	nightenabled
-pvp_y_2-1	mapflag	nightenabled
-pvp_y_2-2	mapflag	nightenabled
-pvp_y_2-3	mapflag	nightenabled
-pvp_y_2-4	mapflag	nightenabled
-pvp_y_2-5	mapflag	nightenabled
-pvp_y_3-1	mapflag	nightenabled
-pvp_y_3-2	mapflag	nightenabled
-pvp_y_3-3	mapflag	nightenabled
-pvp_y_3-4	mapflag	nightenabled
-pvp_y_3-5	mapflag	nightenabled
-pvp_y_4-1	mapflag	nightenabled
-pvp_y_4-2	mapflag	nightenabled
-pvp_y_4-3	mapflag	nightenabled
-pvp_y_4-4	mapflag	nightenabled
-pvp_y_4-5	mapflag	nightenabled
-pvp_y_5-1	mapflag	nightenabled
-pvp_y_5-2	mapflag	nightenabled
-pvp_y_5-3	mapflag	nightenabled
-pvp_y_5-4	mapflag	nightenabled
-pvp_y_5-5	mapflag	nightenabled
-pvp_y_6-1	mapflag	nightenabled
-pvp_y_6-2	mapflag	nightenabled
-pvp_y_6-3	mapflag	nightenabled
-pvp_y_6-4	mapflag	nightenabled
-pvp_y_6-5	mapflag	nightenabled
-pvp_y_7-1	mapflag	nightenabled
-pvp_y_7-2	mapflag	nightenabled
-pvp_y_7-3	mapflag	nightenabled
-pvp_y_7-4	mapflag	nightenabled
-pvp_y_7-5	mapflag	nightenabled
-pvp_y_8-1	mapflag	nightenabled
-pvp_y_8-2	mapflag	nightenabled
-pvp_y_8-3	mapflag	nightenabled
-pvp_y_8-4	mapflag	nightenabled
-pvp_y_8-5	mapflag	nightenabled
 xmas	mapflag	nightenabled
 xmas_fild01	mapflag	nightenabled
 cmd_fild01	mapflag	nightenabled
 cmd_fild02	mapflag	nightenabled
 cmd_fild03	mapflag	nightenabled
 cmd_fild04	mapflag	nightenabled
-cmd_fild05	mapflag	nightenabled
 cmd_fild06	mapflag	nightenabled
 cmd_fild07	mapflag	nightenabled
 cmd_fild08	mapflag	nightenabled
 cmd_fild09	mapflag	nightenabled
-gef_fild12	mapflag	nightenabled
 gef_fild13	mapflag	nightenabled
-gef_fild14	mapflag	nightenabled
 tur_dun01	mapflag	nightenabled
 alde_gld	mapflag	nightenabled
 pay_gld	mapflag	nightenabled
@@ -196,14 +112,12 @@ payon	mapflag	nightenabled
 ayothaya	mapflag	nightenabled
 ayo_fild01	mapflag	nightenabled
 ayo_fild02	mapflag	nightenabled
-yuno_fild05	mapflag	nightenabled
 yuno_fild07	mapflag	nightenabled
 yuno_fild08	mapflag	nightenabled
 yuno_fild09	mapflag	nightenabled
 yuno_fild11	mapflag	nightenabled
 yuno_fild12	mapflag	nightenabled
-einbech	mapflag	nightenabled
-einbroch	mapflag	nightenabled
+
 ein_fild06	mapflag	nightenabled
 ein_fild07	mapflag	nightenabled
 ein_fild08	mapflag	nightenabled
@@ -215,18 +129,12 @@ lhz_fild02	mapflag	nightenabled
 lhz_fild03	mapflag	nightenabled
 lhz_fild01	mapflag	nightenabled
 lighthalzen	mapflag	nightenabled
-lhz_in01	mapflag	nightenabled
-lhz_in02	mapflag	nightenabled
-lhz_in03	mapflag	nightenabled
-hu_fild07	mapflag	nightenabled
 hu_fild05	mapflag	nightenabled
 hu_fild04	mapflag	nightenabled
 hu_fild01	mapflag	nightenabled
 yuno_fild06	mapflag	nightenabled
 tha_scene01	mapflag	nightenabled
 hugel	mapflag	nightenabled
-p_track01	mapflag	nightenabled
-p_track02	mapflag	nightenabled
 odin_tem01	mapflag	nightenabled
 odin_tem02	mapflag	nightenabled
 odin_tem03	mapflag	nightenabled
@@ -234,23 +142,15 @@ hu_fild02	mapflag	nightenabled
 hu_fild03	mapflag	nightenabled
 hu_fild06	mapflag	nightenabled
 ein_fild01	mapflag	nightenabled
-ein_fild02	mapflag	nightenabled
 ein_fild05	mapflag	nightenabled
-yuno_fild10	mapflag	nightenabled
 rachel	mapflag	nightenabled
 ra_fild01	mapflag	nightenabled
-ra_fild02	mapflag	nightenabled
 ra_fild03	mapflag	nightenabled
 ra_fild04	mapflag	nightenabled
 ra_fild05	mapflag	nightenabled
 ra_fild06	mapflag	nightenabled
-ra_fild07	mapflag	nightenabled
 ra_fild08	mapflag	nightenabled
-ra_fild09	mapflag	nightenabled
-ra_fild10	mapflag	nightenabled
-ra_fild11	mapflag	nightenabled
 ra_fild12	mapflag	nightenabled
-ra_fild13	mapflag	nightenabled
 ra_temple	mapflag	nightenabled
 ra_temsky	mapflag	nightenabled
 veins	mapflag	nightenabled
@@ -261,14 +161,8 @@ ve_fild04	mapflag	nightenabled
 ve_fild05	mapflag	nightenabled
 ve_fild06	mapflag	nightenabled
 ve_fild07	mapflag	nightenabled
-
-//Episode 12 ====================
-poring_c01	mapflag	nightenabled
-poring_c02	mapflag	nightenabled
 nameless_i	mapflag	nightenabled
 nameless_n	mapflag	nightenabled
-poring_w01	mapflag	nightenabled
-poring_w02	mapflag	nightenabled
 moscovia	mapflag	nightenabled
 mosk_ship	mapflag	nightenabled
 mosk_fild01	mapflag	nightenabled
@@ -282,26 +176,13 @@ moc_fild20	mapflag	nightenabled
 moc_fild21	mapflag	nightenabled
 moc_fild22	mapflag	nightenabled
 aru_gld	mapflag	nightenabled
-que_qsch01	mapflag	nightenabled
-que_qsch02	mapflag	nightenabled
-que_qsch03	mapflag	nightenabled
-que_qsch04	mapflag	nightenabled
-que_qsch05	mapflag	nightenabled
-que_qaru01	mapflag	nightenabled
-que_qaru02	mapflag	nightenabled
-que_qaru03	mapflag	nightenabled
-que_qaru04	mapflag	nightenabled
-que_qaru05	mapflag	nightenabled
 
-// Battle Grounds ==============
 bat_c01	mapflag	nightenabled
 bat_c02	mapflag	nightenabled
 bat_c03	mapflag	nightenabled
 
-//Endless Tower ==================
 e_tower	mapflag	nightenabled
 
-// Episode 13 ====================
 mid_camp	mapflag	nightenabled
 man_fild01	mapflag	nightenabled
 man_fild03	mapflag	nightenabled
@@ -309,8 +190,6 @@ spl_fild02	mapflag	nightenabled
 spl_fild03	mapflag	nightenabled
 moc_fild22b	mapflag	nightenabled
 que_dan01	mapflag	nightenabled
-schg_que01	mapflag	nightenabled
-arug_que01	mapflag	nightenabled
 nyd_dun01	mapflag	nightenabled
 nyd_dun02	mapflag	nightenabled
 manuk	mapflag	nightenabled
@@ -324,7 +203,6 @@ dicastes02	mapflag	nightenabled
 dic_fild01	mapflag	nightenabled
 dic_fild02	mapflag	nightenabled
 
-// Episode 14 ====================
 bif_fild01	mapflag	nightenabled
 bif_fild02	mapflag	nightenabled
 dewata	mapflag	nightenabled
@@ -339,4 +217,3 @@ eclage	mapflag	nightenabled
 ecl_fild01	mapflag	nightenabled
 ecl_hub01	mapflag	nightenabled
 
-//evt_zombie	mapflag	nightenabled

@@ -23,6 +23,9 @@ npc_global_list: (
 	// Habitantes e npcs comuns
 	@include "NpcScript/Npc_Config/Comuns.conf"
 
+	// Mapa Flag
+	@include "NpcScript/Npc_Config/Definicao_de_mapa.conf"
+
 	// Guerra do Império
 	@include "NpcScript/Npc_Config/Guerra_do_Imperio.conf"
 
