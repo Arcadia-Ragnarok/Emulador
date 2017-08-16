@@ -180,7 +180,7 @@ man_fild02	mapflag	nomemo
 man_fild03	mapflag	nomemo
 splendide	mapflag	nomemo
 spl_in01	mapflag	nomemo
-spl_in02
+spl_in02	mapflag	nomemo
 spl_fild01	mapflag	nomemo
 spl_fild02	mapflag	nomemo
 spl_fild03	mapflag	nomemo
