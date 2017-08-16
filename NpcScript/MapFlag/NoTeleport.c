@@ -1,184 +1,241 @@
-ayo_in01	mapflag	noteleport
-ayo_in02	mapflag	noteleport
-alb_ship	mapflag	noteleport
-alberta_in	mapflag	noteleport
-aldeba_in	mapflag	noteleport
-ama_dun01	mapflag	noteleport
-ama_in01	mapflag	noteleport
-ama_in02	mapflag	noteleport
-ama_test	mapflag	noteleport
-cmd_in01	mapflag	noteleport
-cmd_in02	mapflag	noteleport
-gef_dun03	mapflag	noteleport
-gef_tower	mapflag	noteleport
-geffen_in	mapflag	noteleport
-gon_in	mapflag	noteleport
-in_orcs01	mapflag	noteleport
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|                                                                   |
++-------------------------------------------------------------------+
+| - Nota: Mapas onde o teletrasporte é bloqueado                    |
+\*-----------------------------------------------------------------*/
+
+prt_in	mapflag	noteleport
+prt_castle	mapflag	noteleport
+prt_church	mapflag	noteleport
+prt_maze01	mapflag	noteleport
+prt_maze02	mapflag	noteleport
+prt_maze03	mapflag	noteleport
+prt_are01	mapflag	noteleport
+prt_monk	mapflag	noteleport
 izlude_in	mapflag	noteleport
-jawaii_in	mapflag	noteleport
-lou_in01	mapflag	noteleport
-lou_in02	mapflag	noteleport
+izlu2dun	mapflag	noteleport
+geffen_in	mapflag	noteleport
+gef_tower	mapflag	noteleport
+gef_dun03	mapflag	noteleport
+alberta_in	mapflag	noteleport
+alb_ship	mapflag	noteleport
+alb2trea	mapflag	noteleport
 morocc_in	mapflag	noteleport
-mosk_in	mapflag	noteleport
-
-new_1-1	mapflag	noteleport
-new_1-2	mapflag	noteleport
-new_1-3	mapflag	noteleport
-
-nif_in	mapflag	noteleport
+moc_ruins	mapflag	noteleport
+treasure01	mapflag	noteleport
+treasure02	mapflag	noteleport
+in_orcs01	mapflag	noteleport
+aldeba_in	mapflag	noteleport
+c_tower1	mapflag	noteleport
+c_tower2	mapflag	noteleport
+c_tower3	mapflag	noteleport
+c_tower4	mapflag	noteleport
+alde_dun01	mapflag	noteleport
+alde_dun02	mapflag	noteleport
+alde_dun03	mapflag	noteleport
+alde_dun04	mapflag	noteleport
 payon_in01	mapflag	noteleport
 payon_in02	mapflag	noteleport
 payon_in03	mapflag	noteleport
-prt_are01	mapflag	noteleport
-prt_castle	mapflag	noteleport
-prt_church	mapflag	noteleport
-prt_in	mapflag	noteleport
-um_in	mapflag	noteleport
+pay_arche	mapflag	noteleport
+in_hunter	mapflag	noteleport
+moc_prydb1	mapflag	noteleport
 xmas_in	mapflag	noteleport
+xmas_fild01
+cmd_in01	mapflag	noteleport
+cmd_in02	mapflag	noteleport
 yuno_in01	mapflag	noteleport
 yuno_in02	mapflag	noteleport
 yuno_in03	mapflag	noteleport
 yuno_in04	mapflag	noteleport
 yuno_in05	mapflag	noteleport
-que_sign01	mapflag	noteleport
-que_sign02	mapflag	noteleport
-ein_in01	mapflag	noteleport
-airport	mapflag	noteleport
-airplane	mapflag	noteleport
-airplane_01	mapflag	noteleport
-
 yuno_pre	mapflag	noteleport
-y_airport	mapflag	noteleport
-lhz_airport	mapflag	noteleport
-lhz_que01	mapflag	noteleport
-lhz_cube	mapflag	noteleport
+monk_in	mapflag	noteleport
+in_moc_16	mapflag	noteleport
+in_rogue	mapflag	noteleport
+job_hunte	mapflag	noteleport
+monk_test	mapflag	noteleport
+glast_01	mapflag	noteleport
+gl_church	mapflag	noteleport
+gl_chyard	mapflag	noteleport
+gl_step	mapflag	noteleport
+gl_cas01	mapflag	noteleport
+gl_cas02	mapflag	noteleport
+gl_dun01	mapflag	noteleport
+gl_dun02	mapflag	noteleport
+gl_in01	mapflag	noteleport
+gl_knt01	mapflag	noteleport
+gl_knt02	mapflag	noteleport
+gl_prison	mapflag	noteleport
+gl_prison1	mapflag	noteleport
+gl_sew01	mapflag	noteleport
+gl_sew02	mapflag	noteleport
+gl_sew03	mapflag	noteleport
+gl_sew04	mapflag	noteleport
+prtg_cas01	mapflag	noteleport
+prtg_cas02	mapflag	noteleport
+prtg_cas03	mapflag	noteleport
+prtg_cas04	mapflag	noteleport
+prtg_cas05	mapflag	noteleport
+aldeg_cas01	mapflag	noteleport
+aldeg_cas02	mapflag	noteleport
+aldeg_cas03	mapflag	noteleport
+aldeg_cas04	mapflag	noteleport
+aldeg_cas05	mapflag	noteleport
+gefg_cas01	mapflag	noteleport
+gefg_cas02	mapflag	noteleport
+gefg_cas03	mapflag	noteleport
+gefg_cas04	mapflag	noteleport
+gefg_cas05	mapflag	noteleport
+payg_cas01	mapflag	noteleport
+payg_cas02	mapflag	noteleport
+payg_cas03	mapflag	noteleport
+payg_cas04	mapflag	noteleport
+payg_cas05	mapflag	noteleport
+gld_dun01	mapflag	noteleport
+gld_dun02	mapflag	noteleport
+gld_dun03	mapflag	noteleport
+gld_dun04	mapflag	noteleport
+ama_in01	mapflag	noteleport
+ama_in02	mapflag	noteleport
+ama_dun01	mapflag	noteleport
+ama_dun02	mapflag	noteleport
+ama_dun03	mapflag	noteleport
+ama_test	mapflag	noteleport
+gon_in	mapflag	noteleport
+gon_dun01
+gon_dun02	mapflag	noteleport
+gon_dun03	mapflag	noteleport
+lou_in01	mapflag	noteleport
+lou_in02	mapflag	noteleport
+lou_dun03	mapflag	noteleport
+lou_dun02	mapflag	noteleport
+um_in	mapflag	noteleport
+um_dun01	mapflag	noteleport
+um_dun02	mapflag	noteleport
+nif_in	mapflag	noteleport
+yggdrasil01	mapflag	noteleport
+valkyrie	mapflag	noteleport
+himinn	mapflag	noteleport
+ayo_in01	mapflag	noteleport
+ayo_in02	mapflag	noteleport
+ayo_dun01	mapflag	noteleport
+ayo_dun02	mapflag	noteleport
+jawaii_in	mapflag	noteleport
 lhz_in01	mapflag	noteleport
 lhz_in02	mapflag	noteleport
 lhz_in03	mapflag	noteleport
-jupe_area1	mapflag	noteleport
-jupe_area2	mapflag	noteleport
-jupe_ele	mapflag	noteleport
-jupe_ele_r	mapflag	noteleport
-jupe_gate	mapflag	noteleport
+lhz_cube	mapflag	noteleport
+lhz_que01	mapflag	noteleport
+ein_in01	mapflag	noteleport
+ein_dun01	mapflag	noteleport
+ein_dun02	mapflag	noteleport
+hu_in01	mapflag	noteleport
+airport	mapflag	noteleport
+airplane	mapflag	noteleport
+airplane_01	mapflag	noteleport
+y_airport	mapflag	noteleport
+lhz_airport	mapflag	noteleport
+thana_step	mapflag	noteleport
 tha_t07	mapflag	noteleport
 tha_t08	mapflag	noteleport
 tha_t09	mapflag	noteleport
 tha_t10	mapflag	noteleport
 tha_t11	mapflag	noteleport
 tha_t12	mapflag	noteleport
-thana_step	mapflag	noteleport
-hu_in01	mapflag	noteleport
-
-ra_in01	mapflag	noteleport
-ra_temin	mapflag	noteleport
-ra_temsky	mapflag	noteleport
-kh_mansion	mapflag	noteleport
-kh_rossi	mapflag	noteleport
-kh_school	mapflag	noteleport
-kh_vila	mapflag	noteleport
-kh_dun01	mapflag	noteleport
-ve_in	mapflag	noteleport
-ve_in02	mapflag	noteleport
-thor_camp	mapflag	noteleport
-moc_para01	mapflag	noteleport
-
-
-job_sword1	mapflag	noteleport
-job_thief1	mapflag	noteleport
-
-job_knt	mapflag	noteleport
-job_prist	mapflag	noteleport
-job_wiz	mapflag	noteleport
-job_hunte	mapflag	noteleport
-in_hunter	mapflag	noteleport
-in_moc_16	mapflag	noteleport
-
 alde_alche	mapflag	noteleport
-job_cru	mapflag	noteleport
-job_duncer	mapflag	noteleport
-job_monk	mapflag	noteleport
-monk_test	mapflag	noteleport
-monk_in	mapflag	noteleport
-in_rogue	mapflag	noteleport
-job_sage	mapflag	noteleport
-job_star	mapflag	noteleport
-job_soul	mapflag	noteleport
 que_ng	mapflag	noteleport
-
+jupe_area1	mapflag	noteleport
+jupe_area2	mapflag	noteleport
+jupe_core	mapflag	noteleport
+jupe_ele	mapflag	noteleport
+jupe_ele_r	mapflag	noteleport
+jupe_gate	mapflag	noteleport
+jupe_cave	mapflag	noteleport
 que_god01	mapflag	noteleport
 que_god02	mapflag	noteleport
-
+que_sign01	mapflag	noteleport
+que_sign02	mapflag	noteleport
+kh_vila	mapflag	noteleport
+kh_school	mapflag	noteleport
+kh_rossi	mapflag	noteleport
+kh_mansion	mapflag	noteleport
 kh_kiehl01	mapflag	noteleport
 kh_kiehl02	mapflag	noteleport
+kh_dun01	mapflag	noteleport
+kh_dun02	mapflag	noteleport
+ra_in01	mapflag	noteleport
+ra_temin	mapflag	noteleport
+ra_temple	mapflag	noteleport
+ra_temsky	mapflag	noteleport
 que_rachel	mapflag	noteleport
+que_san04	mapflag	noteleport
+ve_in	mapflag	noteleport
+ve_in02	mapflag	noteleport
 que_thor	mapflag	noteleport
-
-que_job01	mapflag	noteleport
-
-aldeg_cas01	mapflag	noteleport
-aldeg_cas02	mapflag	noteleport
-aldeg_cas03	mapflag	noteleport
-aldeg_cas04	mapflag	noteleport
-aldeg_cas05	mapflag	noteleport
-
-gefg_cas01	mapflag	noteleport
-gefg_cas02	mapflag	noteleport
-gefg_cas03	mapflag	noteleport
-gefg_cas04	mapflag	noteleport
-gefg_cas05	mapflag	noteleport
-
-payg_cas01	mapflag	noteleport
-payg_cas02	mapflag	noteleport
-payg_cas03	mapflag	noteleport
-payg_cas04	mapflag	noteleport
-payg_cas05	mapflag	noteleport
-
-prtg_cas01	mapflag	noteleport
-prtg_cas02	mapflag	noteleport
-prtg_cas03	mapflag	noteleport
-prtg_cas04	mapflag	noteleport
-prtg_cas05	mapflag	noteleport
-
+thor_camp	mapflag	noteleport
+z_agit	mapflag	noteleport
+que_temsky	mapflag	noteleport
+nameless_i	mapflag	noteleport
+nameless_n	mapflag	noteleport
+nameless_in	mapflag	noteleport
+bra_in01	mapflag	noteleport
+mosk_in	mapflag	noteleport
+mosk_ship	mapflag	noteleport
+mosk_que	mapflag	noteleport
+e_tower	mapflag	noteleport
+1@tower
+2@tower
+3@tower
+4@tower
+5@tower
+6@tower
 schg_cas01	mapflag	noteleport
 schg_cas02	mapflag	noteleport
 schg_cas03	mapflag	noteleport
 schg_cas04	mapflag	noteleport
 schg_cas05	mapflag	noteleport
-
 arug_cas01	mapflag	noteleport
 arug_cas02	mapflag	noteleport
 arug_cas03	mapflag	noteleport
 arug_cas04	mapflag	noteleport
 arug_cas05	mapflag	noteleport
-
-e_tower	mapflag	noteleport
-
+bat_room	mapflag	noteleport
+bat_a01	mapflag	noteleport
+bat_a02	mapflag	noteleport
+bat_b01	mapflag	noteleport
+bat_b02	mapflag	noteleport
 bat_c01	mapflag	noteleport
 bat_c02	mapflag	noteleport
 bat_c03	mapflag	noteleport
-bat_room	mapflag	noteleport
-bat_b01	mapflag	noteleport
-bat_b02	mapflag	noteleport
-bat_a01	mapflag	noteleport
-bat_a02	mapflag	noteleport
-
+mid_camp	mapflag	noteleport
 mid_campin	mapflag	noteleport
 moc_fild22b	mapflag	noteleport
-que_dan01	mapflag	noteleport
-que_dan02	mapflag	noteleport
 man_in01	mapflag	noteleport
 spl_in01	mapflag	noteleport
+spl_in02	mapflag	noteleport
+nyd_dun01	mapflag	noteleport
+nyd_dun02	mapflag	noteleport
+que_job01	mapflag	noteleport
+moc_para01	mapflag	noteleport
+que_dan01	mapflag	noteleport
+que_dan02	mapflag	noteleport
 s_atelier	mapflag	noteleport
-bra_in01	mapflag	noteleport
 dic_in01	mapflag	noteleport
-
 dew_in01	mapflag	noteleport
+que_house_s	mapflag	noteleport
 mal_in01	mapflag	noteleport
 mal_in02	mapflag	noteleport
 que_lhz	mapflag	noteleport
-
-ma_scene01	mapflag	noteleport
 ma_in01	mapflag	noteleport
+ma_scene01	mapflag	noteleport
 ma_zif01	mapflag	noteleport
 ma_zif02	mapflag	noteleport
 ma_zif03	mapflag	noteleport
@@ -193,5 +250,8 @@ ecl_in02	mapflag	noteleport
 ecl_in03	mapflag	noteleport
 ecl_in04	mapflag	noteleport
 ecl_hub01	mapflag	noteleport
-
-nyd_dun02	mapflag	noteleport
+que_avan01	mapflag	noteleport
+ecl_tdun01	mapflag	noteleport
+ecl_tdun02	mapflag	noteleport
+ecl_tdun03	mapflag	noteleport
+ecl_tdun04	mapflag	noteleport
