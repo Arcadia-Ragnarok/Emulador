@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Comodo             |
 \*-----------------------------------------------------------------*/
@@ -20,7 +19,6 @@ cmd_fild01,313,213,10,10	monster	Planta Azul	1079,1,1800000,900000,1
 cmd_fild01,171,339,10,10	monster	Planta Azul	1079,2,1800000,900000,1
 cmd_fild01,72,78,10,10	monster	Planta Azul	1079,2,1800000,900000,1
 cmd_fild01,194,176,20,20	monster	Planta Azul	1079,1,1800000,900000,1
-cmd_fild01,0,0,0,0	monster	Planta Verde	1080,5,1800000,900000,1
 
 // ------------------------------------------------------------------
 cmd_fild02,0,0,0,0	monster	Foca	1317,120,5000,0,0

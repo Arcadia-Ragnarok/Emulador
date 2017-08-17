@@ -8,12 +8,11 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Amatsu             |
 \*-----------------------------------------------------------------*/
 
-ama_fild01,0,0,0,0	monster	Bigfoot	1060,10,5000,0,0
+ama_fild01,0,0,0,0	monster	Pé Grande	1060,10,5000,0,0
 ama_fild01,0,0,0,0	monster	Karakasa	1400,50,5000,0,0
 ama_fild01,0,0,0,0	monster	Kapha	1406,40,5000,0,0
 ama_fild01,0,0,0,0	monster	Miyabi Ningyo	1404,2,5000,0,0

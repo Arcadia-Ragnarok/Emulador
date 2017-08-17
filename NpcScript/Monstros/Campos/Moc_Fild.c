@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Morroc             |
 \*-----------------------------------------------------------------*/
@@ -29,13 +28,6 @@ moc_fild02,139,222,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild02,132,307,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild02,194,294,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild02,275,241,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild02,342,267,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,359,215,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,313,149,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,230,62,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,299,61,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,353,103,0,0	monster	Planta Verde	1080,1,180000,90000,1
-moc_fild02,337,35,0,0	monster	Planta Verde	1080,1,180000,90000,1
 
 // ------------------------------------------------------------------
 moc_fild03,0,0,0,0	monster	Lobo	1013,140,5000,0,0
@@ -89,15 +81,6 @@ moc_fild13,307,307,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
 moc_fild13,281,333,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
 moc_fild13,304,333,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
 moc_fild13,295,358,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
-moc_fild13,84,329,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,93,301,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,101,297,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,89,92,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,108,150,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,109,168,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild13,101,185,5,5	monster	Planta Amarela	1081,3,180000,90000,1
-moc_fild13,106,258,5,5	monster	Planta Amarela	1081,3,180000,90000,1
-moc_fild13,161,273,5,5	monster	Planta Amarela	1081,3,180000,90000,1
 
 // ------------------------------------------------------------------
 moc_fild16,0,0,0,0	monster	Arenoso	1165,130,5000,0,0
@@ -112,7 +95,6 @@ moc_fild17,0,0,0,0	boss_monster	Phreeoni	1159,1,7200000,600000,1
 moc_fild17,40,258,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild17,144,151,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild17,243,138,0,0	monster	Planta Amarela	1081,1,180000,90000,1
-moc_fild17,270,106,0,0	monster	Planta Azul	1079,1,180000,90000,1
 moc_fild17,335,191,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild17,347,224,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild17,359,258,0,0	monster	Planta Amarela	1081,1,180000,90000,1

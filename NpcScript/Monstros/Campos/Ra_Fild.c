@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Rachel             |
 \*-----------------------------------------------------------------*/
@@ -52,3 +51,9 @@ ra_fild08,0,0,0,0	monster	Roween	1782,50,5000,0,0
 ra_fild08,0,0,0,0	monster	Vento da Colina	1680,20,5000,0,0
 ra_fild08,0,0,0,0	monster	Filhote de Lobo do Deserto	1107,10,5000,0,0
 ra_fild08,0,0,0,0	monster	Anopheles	1627,10,5000,0,0
+
+// ------------------------------------------------------------------
+ra_fild12,0,0,0,0	monster	Roween	1782,130,5000,0,0
+ra_fild12,0,0,0,0	monster	Anopheles	1627,30,5000,0,0
+ra_fild12,0,0,0,0	monster	Filhote de Lobo	1107,15,5000,0,0
+ra_fild12,0,0,0,0	monster	Planta Amarela	1081,15,10000,0,1

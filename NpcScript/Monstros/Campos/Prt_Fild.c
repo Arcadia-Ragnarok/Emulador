@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Prontera           |
 \*-----------------------------------------------------------------*/
@@ -24,7 +23,6 @@ prt_fild01,0,0,0,0	monster	Lunático	1063,140,5000,0,0
 prt_fild01,0,0,0,0	monster	Poring	1002,30,5000,0,0
 prt_fild01,0,0,0,0	monster	Fabre	1007,30,5000,0,0
 prt_fild01,199,266,3,3	monster	Planta Verde	1080,3,360000,180000,1
-prt_fild01,199,266,3,3	monster	Planta Azul	1079,1,900000,450000,1
 
 // ------------------------------------------------------------------
 prt_fild02,0,0,0,0	monster	Percevejo	1174,140,5000,0,0
@@ -40,10 +38,6 @@ prt_fild03,0,0,0,0	monster	Poporing	1031,30,5000,0,0
 prt_fild03,0,0,0,0	monster	Besouro-Chifre	1128,30,5000,0,0
 prt_fild03,0,0,0,0	monster	Choco	1214,1,5000,0,0
 prt_fild03,296,58,15,15	monster	Planta Verde	1080,5,180000,90000,1
-prt_fild03,296,58,15,15	monster	Planta Azul	1079,2,900000,450000,1
-prt_fild03,307,75,5,5	monster	Planta Verde	1080,5,360000,180000,1
-prt_fild03,147,219,5,5	monster	Planta Verde	1080,5,360000,180000,1
-prt_fild03,148,107,5,5	monster	Planta Verde	1080,5,360000,180000,1
 
 // ------------------------------------------------------------------
 prt_fild04,0,0,0,0	monster	Ambernite	1094,80,5000,0,0
@@ -56,7 +50,6 @@ prt_fild05,0,0,0,0	monster	Zangão	1004,140,5000,0,0
 prt_fild05,0,0,0,0	monster	Ovo de Besouro-Ladrão	1048,30,5000,0,0
 prt_fild05,0,0,0,0	monster	Besouro-Ladrão	1051,30,5000,0,0
 prt_fild05,208,37,10,10	monster	Planta Verde	1080,6,900000,450000,1
-prt_fild05,208,37,10,10	monster	Planta Azul	1079,1,900000,450000,1
 
 // ------------------------------------------------------------------
 prt_fild06,0,0,0,0	monster	Fabre	1007,140,5000,0,0
@@ -68,13 +61,12 @@ prt_fild06,222,30,40,10	monster	Planta Verde	1080,15,900000,450000,1
 prt_fild07,0,0,0,0	monster	Rocker	1052,150,5000,0,0
 prt_fild07,0,0,0,0	monster	Bebê Selvagem	1167,50,5000,0,0
 prt_fild07,0,0,0,0	monster	Vocal	1088,1,1800000,1200000,0
-prt_fild07,225,110,5,5	monster	Cogumelo Negro	1084,3,360000,180000,1
 
 // ------------------------------------------------------------------
 prt_fild08,0,0,0,0	monster	Poring	1002,110,5000,0,0
 prt_fild08,0,0,0,0	monster	Lunático	1063,100,5000,0,0
 prt_fild08,0,0,0,0	monster	Fabre	1007,100,5000,0,0
-prt_fild08,0,0,0,0	monster	Poring Miniatura	2398,30,50000,0,0
+prt_fild08,0,0,0,0	monster	Pupa	1008,50,5000,0,0
 
 // ------------------------------------------------------------------
 prt_fild09,0,0,0,0	monster	Magnolia	1138,140,5000,0,0

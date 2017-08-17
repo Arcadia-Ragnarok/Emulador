@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Geffen             |
 \*-----------------------------------------------------------------*/
@@ -18,8 +17,6 @@ gef_fild00,0,0,0,0	monster	Poring	1002,30,5000,0,0
 gef_fild00,0,0,0,0	monster	Fabre	1007,30,5000,0,0
 gef_fild00,95,128,0,0	monster	Planta Azul	1079,1,900000,450000,1
 gef_fild00,124,321,0,0	monster	Planta Azul	1079,1,900000,450000,1
-gef_fild00,54,212,5,5	monster	Planta Verde	1080,3,360000,180000,1
-gef_fild00,54,186,5,5	monster	Planta Verde	1080,3,360000,180000,1
 
 // ------------------------------------------------------------------
 gef_fild01,0,0,0,0	monster	Sapo de Roda	1012,80,5000,0,0
@@ -32,11 +29,7 @@ gef_fild02,0,0,0,0	monster	Coco	1104,140,5000,0,0
 gef_fild02,0,0,0,0	monster	Poporing	1031,20,5000,0,0
 gef_fild02,0,0,0,0	monster	Besouro-Chifre	1128,20,5000,0,0
 gef_fild02,0,0,0,0	monster	Salgueiro Ancião	1033,20,5000,0,0
-gef_fild02,227,316,6,6	monster	Planta Verde	1080,8,360000,180000,1
 gef_fild02,87,48,6,6	monster	Cogumelo Vermelho	1085,5,360000,180000,1
-gef_fild02,215,209,2,1	monster	Planta Azul	1079,2,360000,180000,1
-gef_fild02,207,214,1,1	monster	Planta Azul	1079,1,360000,180000,1
-gef_fild02,220,214,1,1	monster	Planta Azul	1079,1,360000,180000,1
 gef_fild02,164,194,1,1	monster	Planta Brilhante	1083,1,1800000,900000,1
 
 // ------------------------------------------------------------------
@@ -108,9 +101,8 @@ gef_fild07,0,0,0,0	monster	Poring	1002,20,5000,0,0
 gef_fild07,0,0,0,0	monster	Fabre	1007,20,5000,0,0
 gef_fild07,0,0,0,0	monster	Chonchon	1011,20,5000,0,0
 gef_fild07,122,221,0,0	monster	Planta Verde	1080,3,360000,180000,1
-gef_fild07,185,247,0,0	monster	Planta Brilhante	1083,1,1800000,900000,1
-gef_fild07,269,289,0,0	monster	Planta Azul	1079,1,900000,450000,1
 gef_fild07,269,289,3,3	monster	Planta Verde	1080,3,360000,180000,1
+gef_fild07,185,247,0,0	monster	Planta Brilhante	1083,1,1800000,900000,1
 
 // ------------------------------------------------------------------
 gef_fild08,0,0,0,0	monster	Petite	1156,130,5000,0,0
@@ -126,7 +118,6 @@ gef_fild08,325,311,0,0	monster	Planta Azul	1079,1,900000,450000,1
 gef_fild08,162,247,0,0	monster	Planta Azul	1079,1,900000,450000,1
 
 // ------------------------------------------------------------------
-gef_fild09,0,0,0,0	monster	Ambernite	1094,80,5000,0,0
 gef_fild09,0,0,0,0	monster	Sapo de Roda	1012,20,5000,0,0
 gef_fild09,51,43,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
 gef_fild09,125,53,0,0	monster	Cogumelo Vermelho	1085,1,180000,90000,1
@@ -144,10 +135,9 @@ gef_fild09,277,201,5,5	monster	Planta Azul	1079,3,900000,450000,1
 gef_fild10,0,0,0,0	monster	Guerreiro Orc	1023,130,5000,0,0
 gef_fild10,0,0,0,0	monster	Senhora Orc	1273,40,5000,0,0
 gef_fild10,0,0,0,0	monster	Filhote de Orc	1686,20,5000,0,0
-gef_fild10,0,0,0,0	boss_monster	Orc Lord	1190,1,7200000,600000,0
+gef_fild10,0,0,0,0	boss_monster	Senhor dos Orcs	1190,1,7200000,600000,0
 gef_fild10,46,350,5,5	monster	Planta Azul	1079,3,900000,450000,1
 gef_fild10,287,61,5,5	monster	Planta Azul	1079,3,900000,450000,1
-gef_fild10,300,253,5,5	monster	Planta Verde	1080,3,360000,180000,1
 
 // ------------------------------------------------------------------
 gef_fild11,0,0,0,0	monster	Goblin	1122,50,5000,0,0
@@ -155,10 +145,3 @@ gef_fild11,0,0,0,0	monster	Goblin	1123,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin	1124,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin	1125,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin Líder	1299,1,1800000,1200000,0
-gef_fild11,101,277,4,1	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,176,288,1,4	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,253,357,1,4	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,247,249,1,4	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,257,209,1,4	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,174,240,1,3	monster	Cogumelo Negro	1084,3,360000,180000,1
-gef_fild11,283,100,4,1	monster	Cogumelo Negro	1084,3,360000,180000,1

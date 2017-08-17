@@ -8,9 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-|                     Projeto Ragnarok Online                       |
-+-------------------------------------------------------------------+
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Dicastes           |
 \*-----------------------------------------------------------------*/

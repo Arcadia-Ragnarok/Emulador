@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Hugel              |
 \*-----------------------------------------------------------------*/
@@ -31,9 +30,6 @@ hu_fild04,0,0,0,0	monster	Novus	1715,30,5000,0,0
 hu_fild04,0,0,0,0	monster	Planta Carnívora	1368,30,5000,0,0
 hu_fild04,0,0,0,0	monster	Ovo de Dragão	1721,20,5000,0,0
 hu_fild04,0,0,0,0	monster	Planta Verde	1080,10,10000,0,1
-hu_fild04,0,0,0,0	monster	Planta Amarela	1081,10,10000,0,1
-hu_fild04,206,210,30,18	monster	Planta Azul	1079,4,120000,600000,1
-hu_fild04,206,120,10,10	monster	Planta Azul	1079,2,120000,600000,1
 
 // ------------------------------------------------------------------
 hu_fild05,0,0,0,0	monster	Novus	1718,130,5000,0,0

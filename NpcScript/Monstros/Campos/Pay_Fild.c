@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos arredores de Payon              |
 \*-----------------------------------------------------------------*/
@@ -16,28 +15,12 @@
 pay_fild01,0,0,0,0	monster	Salgueiro	1010,140,5000,0,0
 pay_fild01,0,0,0,0	monster	Poring	1002,30,5000,0,0
 pay_fild01,0,0,0,0	monster	Fabre	1007,30,5000,0,0
-pay_fild01,340,89,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,336,116,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,231,258,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,215,323,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,340,89,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,225,310,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,129,288,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,75,269,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,80,226,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,89,177,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,95,85,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,57,85,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,64,113,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,64,190,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
-pay_fild01,70,246,0,0	monster	Cogumelo Negro	1084,1,180000,90000,1
 pay_fild01,0,0,0,0	monster	Planta Verde	1080,5,180000,90000,1
 
 // ------------------------------------------------------------------
 pay_fild02,0,0,0,0	monster	Jobóia	1025,140,5000,0,0
 pay_fild02,0,0,0,0	monster	Rabo de Verme	1024,30,5000,0,0
 pay_fild02,0,0,0,0	monster	Esporo	1014,30,5000,0,0
-pay_fild02,105,256,10,10	monster	Planta Verde	1080,4,360000,180000,1
 pay_fild02,105,256,10,10	monster	Cogumelo Vermelho	1085,4,360000,180000,1
 
 // ------------------------------------------------------------------
@@ -46,7 +29,6 @@ pay_fild03,0,0,0,0	monster	Poring	1002,25,5000,0,0
 pay_fild03,0,0,0,0	monster	Salgueiro	1010,25,5000,0,0
 pay_fild03,0,0,0,0	monster	Pupa	1008,20,5000,0,0
 pay_fild03,153,216,10,10	monster	Cogumelo Vermelho	1085,6,900000,450000,1
-pay_fild03,372,64,15,15	monster	Planta Verde	1080,4,180000,90000,1
 
 // ------------------------------------------------------------------
 pay_fild04,0,0,0,0	monster	Poporing	1031,130,5000,0,0
@@ -65,7 +47,6 @@ pay_fild06,0,0,0,0	monster	Rabo de Verme	1024,140,5000,0,0
 pay_fild06,0,0,0,0	monster	Jobóia	1025,30,5000,0,0
 pay_fild06,0,0,0,0	monster	Esporo	1014,30,5000,0,0
 pay_fild06,211,191,2,10	monster	Cogumelo Vermelho	1085,8,180000,90000,1
-pay_fild06,268,155,20,20	monster	Planta Verde	1080,10,360000,180000,1
 pay_fild06,268,155,20,20	monster	Planta Brilhante	1083,1,1800000,900000,1
 
 // ------------------------------------------------------------------
@@ -90,6 +71,3 @@ pay_fild10,0,0,0,0	boss_monster	Eddga	1115,1,7200000,600000,1
 pay_fild10,213,157,10,10	monster	Planta Verde	1080,5,360000,180000,1
 pay_fild10,281,307,10,10	monster	Planta Verde	1080,5,360000,180000,1
 pay_fild10,66,332,10,10	monster	Planta Verde	1080,5,360000,180000,1
-pay_fild10,213,157,10,10	monster	Planta Azul	1079,1,360000,180000,1
-pay_fild10,281,307,10,10	monster	Planta Azul	1079,1,360000,180000,1
-pay_fild10,66,332,10,10	monster	Planta Azul	1079,1,360000,180000,1
