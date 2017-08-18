@@ -8,22 +8,19 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros Samtuário de Odin                   |
 \*-----------------------------------------------------------------*/
 
 odin_tem01,0,0,0,0	monster	Plasma	1693,10,5000,0,0
-odin_tem01,0,0,0,0	monster	Breeze	1692,10,5000,0,0
-odin_tem01,0,0,0,0	monster	Frus	1753,5,5000,0,0
-odin_tem01,0,0,0,0	monster	Skogul	1752,5,5000,0,0
 odin_tem01,0,0,0,0	monster	Plasma	1697,3,5000,0,0
 odin_tem01,0,0,0,0	monster	Plasma	1695,3,5000,0,0
 odin_tem01,0,0,0,0	monster	Plasma	1696,3,5000,0,0
+odin_tem01,0,0,0,0	monster	Breeze	1692,10,5000,0,0
 odin_tem01,0,0,0,0	monster	Plasma	1694,3,5000,0,0
-odin_tem01,0,0,0,0	monster	Planta Verde	1080,5,60000,30000,1
+odin_tem01,0,0,0,0	monster	Frus	1753,5,5000,0,0
+odin_tem01,0,0,0,0	monster	Skogul	1752,5,5000,0,0
 odin_tem01,0,0,0,0	monster	Planta Amarela	1081,5,60000,30000,1
-odin_tem01,0,0,0,0	monster	Planta Azul	1079,5,600000,300000,1
 
 // ------------------------------------------------------------------
 odin_tem02,0,0,0,0	monster	Skogul	1752,30,5000,0,0
@@ -44,6 +41,6 @@ odin_tem03,0,0,0,0	monster	Frus	1762,5,5000,0,0
 odin_tem03,0,0,0,0	monster	Skogul	1752,4,5000,0,0
 odin_tem03,0,0,0,0	monster	Frus	1753,4,5000,0,0
 odin_tem03,0,0,0,0	monster	Valquíria	1765,2,5400000,1800000,0
-odin_tem03,0,0,0,0	boss_monster	Valkyrie Randgris	1751,1,28800000,600000,1
+odin_tem03,0,0,0,0	boss_monster	Valquíria Randgris	1751,1,28800000,600000,1
 odin_tem03,0,0,0,0	monster	Planta Azul	1079,15,1800000,900000,1
 odin_tem03,0,0,0,0	monster	Planta Brilhante	1083,15,1800000,900000,1

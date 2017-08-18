@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros na Pirâmide                         |
 \*-----------------------------------------------------------------*/
@@ -42,7 +41,7 @@ moc_pryd04,0,0,0,0	boss_monster	Osiris	1038,1,3600000,600000,0
 // ------------------------------------------------------------------
 moc_pryd05,0,0,0,0	monster	Minorous	1149,60,5000,0,0
 moc_pryd05,0,0,0,0	monster	Verit	1032,50,5000,0,0
-moc_pryd05,0,0,0,0	monster	Mummy	1041,10,5000,0,0
+moc_pryd05,0,0,0,0	monster	Múmia	1041,10,5000,0,0
 
 // ------------------------------------------------------------------
 moc_pryd06,0,0,0,0	monster	Mímico	1191,30,5000,0,0

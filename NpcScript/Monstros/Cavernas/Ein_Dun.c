@@ -8,15 +8,14 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros na Mina de Carvão                   |
 \*-----------------------------------------------------------------*/
 
 ein_dun01,0,0,0,0	monster	Minérios	1616,70,5000,0,0
-ein_dun01,0,0,0,0	monster	Noxious	1620,30,5000,0,0
-ein_dun01,0,0,0,0	monster	Porcellio	1619,30,5000,0,0
+ein_dun01,0,0,0,0	monster	Nuvem Tóxica	1620,30,5000,0,0
 ein_dun01,0,0,0,0	monster	Nuvem Venenosa	1621,10,5000,0,0
+ein_dun01,0,0,0,0	monster	Porcellio	1619,30,5000,0,0
 ein_dun01,0,0,0,0	monster	Fornalha Velha	1617,1,5000,0,0
 ein_dun01,0,0,0,0	monster	Ungoliant	1618,1,3600000,3000000,0
 

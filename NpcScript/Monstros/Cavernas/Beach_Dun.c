@@ -8,14 +8,13 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nas Cavernas de Comodo              |
 \*-----------------------------------------------------------------*/
 
 beach_dun,0,0,0,0	monster	Medusa	1148,60,5000,0,0
 beach_dun,0,0,0,0	monster	Nereid	1255,20,5000,0,0
-beach_dun,0,0,0,0	monster	Pest	1256,20,5000,0,0
+beach_dun,0,0,0,0	monster	Peste	1256,20,5000,0,0
 beach_dun,0,0,0,0	monster	Tritão	1264,3,5000,0,0
 beach_dun,0,0,0,0	boss_monster	Tao Gunka	1583,1,18000000,600000,0
 

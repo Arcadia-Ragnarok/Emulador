@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros no Calabouço dos Orcs               |
 \*-----------------------------------------------------------------*/
@@ -20,8 +19,6 @@ orcsdun01,0,0,0,0	monster	Orc Esqueleto	1152,10,5000,0,0
 orcsdun01,0,0,0,0	monster	Drainliar	1111,5,5000,0,0
 orcsdun01,167,133,5,5	monster	Cogumelo Negro	1084,5,900000,450000,1
 orcsdun01,67,34,5,5	monster	Cogumelo Negro	1084,5,900000,450000,1
-orcsdun01,83,50,5,5	monster	Planta Branca	1082,2,180000,90000,1
-orcsdun01,58,67,10,10	monster	Planta Branca	1082,3,180000,90000,1
 
 // ------------------------------------------------------------------
 orcsdun02,0,0,0,0	monster	Orc Esqueleto	1152,50,5000,0,0

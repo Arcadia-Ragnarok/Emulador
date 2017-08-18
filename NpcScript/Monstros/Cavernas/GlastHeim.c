@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros em GlastHeim                        |
 \*-----------------------------------------------------------------*/
@@ -165,3 +164,17 @@ gl_sew04,0,0,0,0	monster	Drainliar	1111,10,5000,0,0
 gl_step,0,0,0,0	monster	Xamã do Vento	1263,100,5000,0,0
 gl_step,0,0,0,0	monster	Raydric Arqueiro	1276,10,5000,0,0
 gl_step,0,0,0,0	monster	Mímico	1191,5,5000,0,0
+
+// ------------------------------------------------------------------
+//gl_cas02_,0,0,0,0	monster	Druida Malígno (Nightmare)	2480,20,0,0,0
+//gl_cas02_,0,0,0,0	monster	Quiméra (Nightmare)	2485,10,0,0,0
+//gl_cas02_,0,0,0,0	monster	Mimic (Nightmare)	2479,40,0,0,0
+//gl_cas02_,0,0,0,0	monster	Rideword (Nightmare)	2478,40,0,0,0
+//gl_cas02_,0,0,0,0	monster	Wanderer (Nightmare)	2477,120,0,0,0
+//gl_cas02_,0,0,0,0	monster	Swift Wanderer	2734,2,180000,0,0
+//gl_cas02_,0,0,0,0	monster	Baphomet (Nightmare)	2483,1,7200000,0,0
+
+//gl_chyard_,0,0,0,0	monster	Alma Penada Dead (Nightmare)	2481,200,0,0,0
+//gl_chyard_,0,0,0,0	monster	Elusive Alma Penada Dead	2733,2,180000,0,0
+//gl_chyard_,0,0,0,0	monster	Druida Malígno (Nightmare)	2480,5,60000,0,0
+//gl_chyard_,0,0,0,0	monster	Mimic (Nightmare)	2479,5,60000,0,0

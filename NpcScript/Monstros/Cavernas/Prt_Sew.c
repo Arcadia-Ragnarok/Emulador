@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos Esgotos de Prontera             |
 \*-----------------------------------------------------------------*/
@@ -37,10 +36,10 @@ prt_sewb3,0,0,0,0	monster	Esporo Venenoso	1077,15,5000,0,0
 prt_sewb3,0,0,0,0	monster	Ovo de Besouro-Ladrão	1048,10,5000,0,0
 
 // ------------------------------------------------------------------
+prt_sewb4,0,0,0,0	monster	Drainliar	1111,20,5000,0,0
+prt_sewb4,0,0,0,0	monster	Cãibra	1209,5,5000,0,0
+prt_sewb4,0,0,0,0	monster	Ovo de Besouro-Ladrão	1048,10,5000,0,0
 prt_sewb4,0,0,0,0	monster	Besouro-Ladrão Macho	1054,70,5000,0,0
 prt_sewb4,0,0,0,0	monster	Besouro-Ladrão	1051,20,5000,0,0
 prt_sewb4,0,0,0,0	monster	Besouro-Ladrão Fêmea	1053,20,5000,0,0
-prt_sewb4,0,0,0,0	monster	Drainliar	1111,20,5000,0,0
-prt_sewb4,0,0,0,0	monster	Ovo de Besouro-Ladrão	1048,10,5000,0,0
-prt_sewb4,0,0,0,0	monster	Cãibra	1209,5,5000,0,0
 prt_sewb4,0,0,0,0	boss_monster	Besouro Ladrão Dourado	1086,1,3600000,600000,1

@@ -8,22 +8,16 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nos subterranos da torre de Geffen  |
 \*-----------------------------------------------------------------*/
 
-gef_dun00,0,0,0,0	monster	Mosca Caçadora	1035,30,5000,0,0
-gef_dun00,0,0,0,0	monster	Esporo Venenoso	1077,25,5000,0,0
-gef_dun00,0,0,0,0	monster	Poporing	1031,15,5000,0,0
-gef_dun00,91,106,0,0	monster	Planta Vermelha	1078,1,300000,150000,0
-gef_dun00,92,108,0,0	monster	Planta Amarela	1081,1,300000,150000,0
-gef_dun00,114,106,0,0	monster	Planta Verde	1080,1,300000,150000,0
-gef_dun00,0,0,0,0	monster	Planta Vermelha	1078,1,300000,150000,0
-gef_dun00,0,0,0,0	monster	Planta Brilhante	1083,1,3000000,1500000,0
-gef_dun00,0,0,0,0	monster	Planta Vermelha	1078,10,180000,90000,1
 gef_dun00,89,111,3,3	monster	Cogumelo Negro	1084,3,180000,90000,1
 gef_dun00,121,109,3,3	monster	Cogumelo Negro	1084,3,180000,90000,1
+gef_dun00,0,0,0,0	monster	Planta Brilhante	1083,1,3000000,1500000,0
+gef_dun00,0,0,0,0	monster	Esporo Venenoso	1077,25,5000,0,0
+gef_dun00,0,0,0,0	monster	Poporing	1031,15,5000,0,0
+gef_dun00,0,0,0,0	monster	Mosca Caçadora	1035,30,5000,0,0
 
 // ------------------------------------------------------------------
 gef_dun01,0,0,0,0	monster	Carniçal	1036,40,5000,0,0
@@ -32,12 +26,7 @@ gef_dun01,0,0,0,0	monster	Pesadelo	1061,30,5000,0,0
 gef_dun01,0,0,0,0	monster	Zumbi	1015,25,5000,0,0
 gef_dun01,0,0,0,0	monster	Drainliar	1111,20,5000,0,0
 gef_dun01,0,0,0,0	boss_monster	Dracula	1389,1,3600000,600000,1
-gef_dun01,234,121,0,0	monster	Planta Azul	1079,1,300000,100000,0
 gef_dun01,0,0,0,0	monster	Cogumelo Negro	1084,5,180000,90000,1
-gef_dun01,188,104,10,10	monster	Planta Branca	1082,3,180000,90000,1
-gef_dun01,263,115,10,10	monster	Planta Branca	1082,3,180000,90000,1
-gef_dun01,48,67,10,10	monster	Planta Branca	1082,2,180000,90000,1
-gef_dun01,150,237,10,10	monster	Planta Branca	1082,2,180000,90000,1
 
 // ------------------------------------------------------------------
 gef_dun02,0,0,0,0	monster	Deviruchi	1109,45,5000,0,0

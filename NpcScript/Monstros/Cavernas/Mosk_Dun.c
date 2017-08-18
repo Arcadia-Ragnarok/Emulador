@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros na Floresta Encantada               |
 \*-----------------------------------------------------------------*/
@@ -29,6 +28,5 @@ mosk_dun03,0,0,0,0	monster	Baba Yaga	1882,60,5000,0,0
 mosk_dun03,0,0,0,0	monster	Uzhas	1883,35,5000,0,0
 mosk_dun03,0,0,0,0	monster	Mavka	1884,15,5000,0,0
 mosk_dun03,0,0,0,0	monster	Planta Amarela	1081,10,5000,0,0
-mosk_dun03,0,0,0,0	monster	Planta Branca	1082,10,5000,0,0
 mosk_dun03,0,0,0,0	monster	Planta Brilhante	1083,5,10000,0,0
 mosk_dun03,207,221,5,5	boss_monster	Gopinich	1885,1,7200000,600000,1

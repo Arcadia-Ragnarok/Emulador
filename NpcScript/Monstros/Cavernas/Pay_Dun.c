@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros na Caverna de Payon                 |
 \*-----------------------------------------------------------------*/
@@ -35,6 +34,9 @@ pay_dun02,0,0,0,0	monster	Bongun	1188,30,5000,0,0
 pay_dun02,0,0,0,0	monster	Esqueleto Arqueiro	1016,20,5000,0,0
 pay_dun02,0,0,0,0	monster	Poporing	1031,10,5000,0,0
 pay_dun02,0,0,0,0	monster	Nove Caudas	1180,1,5000,0,0
+pay_dun02,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun02,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun02,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
 pay_dun02,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
 pay_dun02,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
 pay_dun02,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
@@ -49,9 +51,6 @@ pay_dun02,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
 pay_dun02,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
 pay_dun02,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
 pay_dun02,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
-pay_dun02,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
-pay_dun02,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
-pay_dun02,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
 pay_dun02,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
 pay_dun02,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
 pay_dun02,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
@@ -71,10 +70,6 @@ pay_dun02,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
 pay_dun02,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
 pay_dun02,37,243,0,0	monster	Cogumelo Negro	1084,1,600000,300000,1
 pay_dun02,111,199,10,10	monster	Cogumelo Negro	1084,7,900000,450000,1
-pay_dun02,110,216,20,10	monster	Planta Branca	1082,3,180000,90000,1
-pay_dun02,132,84,10,10	monster	Planta Branca	1082,3,180000,90000,1
-pay_dun02,197,113,10,10	monster	Planta Vermelha	1078,4,180000,90000,1
-pay_dun02,55,254,10,10	monster	Planta Vermelha	1078,4,180000,90000,1
 
 // ------------------------------------------------------------------
 pay_dun03,0,0,0,0	monster	Sohee	1170,70,5000,0,0
@@ -138,3 +133,4 @@ pay_dun04,0,0,0,0	monster	Planta Vermelha	1078,10,180000,90000,1
 pay_dun04,107,206,5,5	monster	Planta Branca	1082,2,180000,90000,1
 pay_dun04,28,110,10,10	monster	Planta Branca	1082,2,180000,90000,1
 pay_dun04,190,207,5,5	monster	Planta Branca	1082,2,180000,90000,1
+

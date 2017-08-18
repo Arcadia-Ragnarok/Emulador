@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros no Volcão de Thor                   |
 \*-----------------------------------------------------------------*/
@@ -18,8 +17,8 @@ thor_v01,0,0,0,0	monster	Imp	1837,25,5000,0,0
 thor_v01,0,0,0,0	monster	Magmaring	1836,10,5000,0,0
 thor_v01,0,0,0,0	monster	Salamandra	1831,7,5000,0,0
 thor_v01,0,0,0,0	monster	Guardião Arqueiro	1830,5,5000,0,0
-thor_v01,0,0,0,0	monster	Guardião Espadachim	1829,5,5000,0,0
 thor_v01,0,0,0,0	monster	Guardião Arqueiro	1830,5,420000,0,0
+thor_v01,0,0,0,0	monster	Guardião Espadachim	1829,5,5000,0,0
 thor_v01,0,0,0,0	monster	Guardião Espadachim	1829,5,420000,0,0
 thor_v01,0,0,0,0	monster	Byrogue	1839,1,5000,0,0
 

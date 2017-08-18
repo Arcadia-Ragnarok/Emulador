@@ -8,7 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Invocação de Monstros nas Cavernas de Kunlun              |
 \*-----------------------------------------------------------------*/
@@ -17,8 +16,6 @@ gon_dun01,0,0,0,0	monster	Borboleta Sanguinária	1408,55,5000,0,0
 gon_dun01,0,0,0,0	monster	Persegueira Encantada	1410,35,5000,0,0
 gon_dun01,0,0,0,0	monster	Zipper	1417,30,5000,0,0
 gon_dun01,0,0,0,0	monster	Planta Amarela	1081,10,5000,0,0
-gon_dun01,0,0,0,0	monster	Planta Branca	1082,10,5000,0,0
-gon_dun01,0,0,0,0	monster	Planta Vermelha	1078,5,5000,0,0
 
 // ------------------------------------------------------------------
 gon_dun02,0,0,0,0	monster	Persegueira Encantada	1410,21,5000,0,0
