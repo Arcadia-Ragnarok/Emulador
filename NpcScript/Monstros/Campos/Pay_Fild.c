@@ -50,6 +50,13 @@ pay_fild06,211,191,2,10	monster	Cogumelo Vermelho	1085,8,180000,90000,1
 pay_fild06,268,155,20,20	monster	Planta Brilhante	1083,1,1800000,900000,1
 
 // ------------------------------------------------------------------
+pay_fild07,0,0,0,0	monster	Pé Grande	1060,130,5000,0,0
+pay_fild07,0,0,0,0	monster	Caramelo	1103,30,5000,0,0
+pay_fild07,0,0,0,0	monster	Percevejo	1174,20,5000,0,0
+pay_fild07,0,0,0,0	monster	Creamy	1018,20,5000,0,0
+pay_fild07,171,331,20,20	monster	Planta Verde	1080,8,900000,450000,1
+
+// ------------------------------------------------------------------
 pay_fild08,0,0,0,0	monster	Esporo	1014,140,5000,0,0
 pay_fild08,0,0,0,0	monster	Rabo de Verme	1024,30,5000,0,0
 pay_fild08,0,0,0,0	monster	Jobóia	1025,30,5000,0,0

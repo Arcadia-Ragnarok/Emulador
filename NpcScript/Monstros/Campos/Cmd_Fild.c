@@ -51,6 +51,12 @@ cmd_fild06,293,235,5,5	monster	Planta Amarela	1081,2,1800000,900000,1
 cmd_fild06,84,375,10,10	monster	Planta Amarela	1081,3,1800000,900000,1
 
 // ------------------------------------------------------------------
+cmd_fild07,0,0,0,0	monster	Raggler	1254,100,5000,0,0
+cmd_fild07,0,0,0,0	monster	Estrela do Mar	1266,30,5000,0,0
+cmd_fild07,0,0,0,0	monster	Molusco	1074,30,5000,0,0
+cmd_fild07,0,0,0,0	monster	Caranguejo	1073,30,5000,0,0
+
+// ------------------------------------------------------------------
 cmd_fild08,0,0,0,0	monster	Deniro	1105,50,5000,0,0
 cmd_fild08,0,0,0,0	monster	Piere	1160,50,5000,0,0
 cmd_fild08,0,0,0,0	monster	André	1095,50,5000,0,0
