@@ -8,11 +8,9 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos arredores de Dewata                            |
 \*-----------------------------------------------------------------*/
 
-dew_fild01,375,212,0	warp	dewata0002	1,1,dewata,46,251
-dew_fild01,57,273,0	warp	dewata0003	1,1,dew_in01,15,33
-dew_fild01,48,65,0	warp	dewata0005	1,1,dew_dun02,302,30
+dew_fild01,375,212,0	warp	dewfildwarp_1	1,1,dewata,46,251
+dew_fild01,48,65,0	warp	dewfildwarp_2	1,1,dew_dun02,302,30
+dew_fild01,57,273,0	warp	dewfildwarp_3	1,1,dew_in01,15,33

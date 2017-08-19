@@ -8,11 +8,9 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos aredores de Amatsu                             |
 \*-----------------------------------------------------------------*/
 
-ama_fild01,75,30,0	warp	ama_fild1-2	1,1,amatsu,248,289
-ama_fild01,174,331,0	warp	ama_shrine1-1	1,1,ama_in01,175,174
-ama_fild01,330,141,0	warp	ama_craftsman1-1	1,1,ama_in01,174,124
+ama_fild01,75,30,0	warp	amafildwarp_1	1,1,amatsu,248,289
+ama_fild01,174,331,0	warp	amafildwarp_2	1,1,ama_in01,175,174
+ama_fild01,330,141,0	warp	amafildwarp_3	1,1,ama_in01,174,124

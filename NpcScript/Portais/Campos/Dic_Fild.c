@@ -8,13 +8,12 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos arredores de Dicastes                          |
 \*-----------------------------------------------------------------*/
 
-dic_fild01,24,79,0	warp	dic_field0002	1,1,dic_dun01,366,45
-dic_fild01,69,23,0	warp	dic_field0003	1,1,dic_fild02,70,373
+dic_fild01,24,79,0	warp	dicfildwarp_1	1,1,dic_dun01,366,45
+dic_fild01,69,23,0	warp	dicfildwarp_2	1,1,dic_fild02,70,373
 
 // ------------------------------------------------------------------
-dic_fild02,71,375,0	warp	dic_field0004	1,1,dic_fild01,69,25
+dic_fild02,71,375,0	warp	dicfildwarp_3	1,1,dic_fild01,69,25
+

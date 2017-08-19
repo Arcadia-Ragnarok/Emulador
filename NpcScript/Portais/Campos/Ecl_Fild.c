@@ -8,11 +8,9 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos arredores de Eclage                            |
 \*-----------------------------------------------------------------*/
 
-ecl_fild01,207,72,0	warp	fild01-1_biffild	1,1,bif_fild02,294,350
-ecl_fild01,182,82,0	warp	Tenter_TOut	1,1,ecl_tdun01,60,13
-ecl_fild01,183,70,0	warp	ttop_tdun4-1	1,1,ecl_tdun04,33,19
+ecl_fild01,207,72,0	warp	eclfildwarp_1	1,1,bif_fild02,293,341
+ecl_fild01,182,82,0	warp	eclfildwarp_2	1,1,ecl_tdun01,60,13
+//ecl_fild01,183,70,0	warp	eclfildwarp_3	1,1,ecl_tdun04,33,19

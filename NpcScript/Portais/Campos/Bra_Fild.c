@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potal nos arredores de Brasilis                           |
 \*-----------------------------------------------------------------*/
 
-bra_fild01,72,34,0	warp	bra_fild01_brasilis	1,1,brasilis,309,334
+bra_fild01,72,34,0	warp	brafildwarp	1,1,brasilis,309,334
