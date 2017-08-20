@@ -8,12 +8,10 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais na Caverna de Cataratas                            |
 \*-----------------------------------------------------------------*/
 
-bra_dun01,199,35,0	warp	brad1tobrad2	1,1,bra_dun02,261,263
+bra_dun01,199,35,0	warp	bradunwarp_1	1,1,bra_dun02,261,263
 
 // ------------------------------------------------------------------
-bra_dun02,261,265,0	warp	brad2tobrad1	1,1,bra_dun01,199,37
+bra_dun02,261,265,0	warp	bradunwarp_2	1,1,bra_dun01,199,37

@@ -8,14 +8,12 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Formigueiro Infernal                            |
 \*-----------------------------------------------------------------*/
 
-anthell01,35,267,0	warp	moc_ant1-2	1,1,cmd_fild08,330,355
-anthell01,253,32,0	warp	ant01	2,1,anthell02,34,263
+anthell01,253,32,0	warp	anthellwarp_1	2,1,anthell02,34,263
+anthell01,35,267,0	warp	anthellwarp_2	1,1,cmd_fild08,330,355
 
 // ------------------------------------------------------------------
-anthell02,172,169,0	warp	moc_ant2-2	1,1,cmd_fild08,344,82
-anthell02,32,267,0	warp	ant01-1	2,2,anthell01,253,35
+anthell02,32,265,0	warp	aanthellwarp_3	2,2,anthell01,253,35
+anthell02,171,170,0	warp	anthellwarp_4	1,1,cmd_fild08,344,82

@@ -8,17 +8,15 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nas Cavernas de Comodo                             |
 \*-----------------------------------------------------------------*/
 
-beach_dun,276,67,0	warp	cmd_beach_dun1-2	1,1,comodo,31,215
+beach_dun,276,67,0	warp	beachdunwarp_1	1,1,comodo,31,215
 
 // ------------------------------------------------------------------
-beach_dun2,154,13,0	warp	cmd_beach_dun2-2	2,1,comodo,176,353
-beach_dun2,258,244,0	warp	um_fild1-4	1,1,um_fild01,35,276
+beach_dun2,258,244,0	warp	beachdunwarp_2	1,1,um_fild01,35,276
+beach_dun2,154,13,0	warp	beachdunwarp_3	2,1,comodo,176,353
 
 // ------------------------------------------------------------------
-beach_dun3,17,265,0	warp	cmd_beach_dun3-2	1,1,comodo,328,175
-beach_dun3,286,57,0	warp	cmd_beach_dun4-1	1,1,cmd_fild01,30,317
+beach_dun3,17,265,0	warp	beachdunwarp_4	1,1,comodo,328,175
+beach_dun3,286,57,0	warp	beachdunwarp_5	1,1,cmd_fild01,30,317

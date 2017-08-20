@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no subterraneo de Dewata                           |
 \*-----------------------------------------------------------------*/
 
-dew_dun02,305,30,0	warp	dewata0006	1,1,dew_fild01,50,65
+dew_dun02,305,30,0	warp	dewdunwarp	1,1,dew_fild01,50,65

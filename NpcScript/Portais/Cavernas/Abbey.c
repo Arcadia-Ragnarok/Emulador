@@ -8,19 +8,17 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no subterraneos de Nameless                        |
 \*-----------------------------------------------------------------*/
 
-abbey01,51,9,0	warp	namelesswarp0101	1,1,nameless_n,160,184
-abbey01,87,122,0	warp	namelesswarp4001	1,1,abbey01,13,201
-abbey01,13,204,0	warp	namelesswarp4002	1,1,abbey01,88,118
-abbey01,321,102,0	warp	namelesswarp4003	1,1,abbey02,149,11
+abbey01,87,122,0	warp	abbeywarp_1	1,1,abbey01,12,200
+abbey01,322,101,0	warp	abbeywarp_2	1,1,abbey02,149,12
+abbey01,51,10,0	warp	abbeywarp_3	1,1,nameless_n,162,184
+abbey01,12,205,0	warp	abbeywarp_4	1,1,abbey01,89,118
 
 // ------------------------------------------------------------------
-abbey02,149,8,0	warp	namelesswarp4004	1,1,abbey01,321,99
-abbey02,149,290,0	warp	namelesswarp4005	1,1,abbey03,119,8
+abbey02,149,290,0	warp	abbeywarp_5	1,1,abbey03,119,9
+abbey02,149,7,0	warp	abbeywarp_6	1,1,abbey01,322,96
 
 // ------------------------------------------------------------------
-abbey03,119,5,0	warp	namelesswarp4006	1,1,abbey02,149,287
+abbey03,119,6,0	warp	abbeywarp_7	1,1,abbey02,149,285

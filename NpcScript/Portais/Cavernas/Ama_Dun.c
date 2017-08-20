@@ -8,16 +8,14 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Labirinto de Tatames                            |
 \*-----------------------------------------------------------------*/
 
-ama_dun01,235,144,0	warp	ama_dun1-1	1,1,ama_dun02,33,40
+ama_dun01,235,144,0	warp	amadunwarp_1	1,1,ama_dun02,33,40
 
 // ------------------------------------------------------------------
-ama_dun02,30,40,0	warp	ama_dun1-2	1,1,ama_dun01,232,144
-ama_dun02,196,123,0	warp	ama_dun2-1	1,1,ama_dun03,120,12
+ama_dun02,30,40,0	warp	amadunwarp_2	1,1,ama_dun01,232,144
+ama_dun02,196,123,0	warp	amadunwarp_3	1,1,ama_dun03,120,12
 
 // ------------------------------------------------------------------
-ama_dun03,120,9,0	warp	ama_dun2-2	1,1,ama_dun02,196,120
+ama_dun03,120,9,0	warp	amadunwarp_4	1,1,ama_dun02,196,120

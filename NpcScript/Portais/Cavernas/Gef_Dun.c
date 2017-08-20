@@ -8,21 +8,15 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Subterraneo da Torre de Geffen                  |
 \*-----------------------------------------------------------------*/
 
-gef_dun00,104,103,0	warp	gef024	3,3,gef_tower,153,31
-gef_dun00,107,169,0	warp	gefd01	2,1,gef_dun01,115,236
+gef_dun00,104,103,0	warp	gefdunwarp_1	3,3,gef_tower,153,31
+gef_dun00,105,167,0	warp	gefdunwarp_2	2,1,gef_dun01,115,236
 
 // ------------------------------------------------------------------
-gef_dun01,115,240,0	warp	gefd01-1	2,2,gef_dun00,107,165
-gef_dun01,197,38,0	warp	gefd02	2,1,gef_dun02,106,132
+gef_dun01,197,38,0	warp	gefdunwarp_3	2,1,gef_dun02,106,132
+gef_dun01,115,240,0	warp	gefdunwarp_4	2,2,gef_dun00,107,165
 
 // ------------------------------------------------------------------
-gef_dun02,106,134,0	warp	gefd02-1	2,1,gef_dun01,197,40
-gef_dun02,215,67,0	warp	gefd03	2,1,gef_dun03,203,200
-
-// ------------------------------------------------------------------
-gef_dun03,203,204,0	warp	gefd03-1	2,1,gef_dun02,215,63
+gef_dun02,106,134,0	warp	gefdunwarp_5	2,1,gef_dun01,197,40

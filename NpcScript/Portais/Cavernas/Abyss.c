@@ -8,17 +8,16 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Potais no subterraneo do Lago do Abismo                   |
 \*-----------------------------------------------------------------*/
 
-abyss_01,25,24,0	warp	abysslakedunwarp001	1,1,abyss_02,271,270
-abyss_01,265,274,0	warp	abysslakedunwarp005	1,1,hu_fild05,177,211
+abyss_01,25,24,0	warp	abysswarp_1	1,1,abyss_02,271,270
+abyss_01,265,274,0	warp	abysswarp_2	1,1,hu_fild05,177,211
 
 // ------------------------------------------------------------------
-abyss_02,145,280,0	warp	abysslakedunwarp002	1,1,abyss_03,115,30
-abyss_02,277,270,0	warp	abysslakedunwarp003	1,1,abyss_01,25,30
+abyss_02,145,280,0	warp	abysswarp_3	1,1,abyss_03,115,30
+abyss_02,277,270,0	warp	abysswarp_4	1,1,abyss_01,25,30
 
 // ------------------------------------------------------------------
-abyss_03,115,25,0	warp	abysslakedunwarp004	1,1,abyss_02,145,275
+abyss_03,115,25,0	warp	abysswarp_5	1,1,abyss_02,145,275

@@ -8,13 +8,11 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Labirinto Ancestral                             |
 \*-----------------------------------------------------------------*/
 
-ayo_dun01,274,14,0	warp	ayo_dun1-2	1,1,ayo_fild02,279,150
+ayo_dun01,274,14,0	warp	ayodunwarp_1	1,1,ayo_fild02,279,150
 
 // ------------------------------------------------------------------
-ayo_dun02,24,22,0	warp	ayo_dun2-1	1,1,ayo_dun01,24,279
-ayo_dun02,276,22,0	warp	ayo_dun2-2	1,1,ayo_dun01,24,279
+ayo_dun02,24,22,0	warp	ayodunwarp_2	1,1,ayo_dun01,24,279
+ayo_dun02,276,22,0	warp	ayodunwarp_3	1,1,ayo_dun01,24,279

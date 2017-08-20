@@ -8,8 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Subterraneo da Torre do Relógio                 |
 \*-----------------------------------------------------------------*/
 
@@ -25,10 +23,9 @@ alde_dun02,187,234,0	warp	ald007	2,2,c_tower3,65,147
 
 alde_dun02,267,41,4	script	ald008r	WARPNPC,1,1,{
 	if (rand(2)) {
-		warp "c_tower3",168,252;
-	}
-	else {
-		warp "alde_dun02",262,141;
+		warp ("c_tower3",168,252);
+	} else {
+		warp ("alde_dun02",262,141);
 	}
 	end;
 }
@@ -41,17 +38,17 @@ alde_dun03,276,48,0	warp	ald012	2,2,c_tower1,235,223
 
 alde_dun03,130,125,4	script	ald014r	WARPNPC,1,1,{
 	switch(rand(3)) {
-		case 0: warp "c_tower2",228,267; end;
-		case 1: warp "alde_dun03",130,130; end;
-		case 2: warp "c_tower3",252,29; end;
+		case 0: warp ("c_tower2",228,267); end;
+		case 1: warp ("alde_dun03",130,130); end;
+		case 2: warp ("c_tower3",252,29); end;
 	}
 }
 
 alde_dun03,171,127,4	script	ald015r	WARPNPC,1,1,{
 	switch(rand(3)) {
-		case 0: warp "c_tower2",13,282; end;
-		case 1: warp "alde_dun03",175,131; end;
-		case 2: warp "c_tower3",235,7; end;
+		case 0: (warp "c_tower2",13,282); end;
+		case 1: (warp "alde_dun03",175,131); end;
+		case 2: (warp "c_tower3",235,7); end;
 	}
 }
 
@@ -65,9 +62,9 @@ alde_dun04,272,74,0	warp	aldd021	2,2,alde_dun04,204,62
 
 alde_dun04,80,34,4	script	ald022r	WARPNPC,1,1,{
 	switch(rand(4)) {
-		case 0: warp "c_tower2",13,282; end;
-		case 1: warp "alde_dun03",175,131; end;
-		case 2: warp "c_tower3",235,7; end;
-		case 3: warp "alde_dun04",84,36; end;
+		case 0: (warp "c_tower2",13,282); end;
+		case 1: (warp "alde_dun03",175,131); end;
+		case 2: (warp "c_tower3",235,7); end;
+		case 3: (warp "alde_dun04",84,36); end;
 	}
 }
