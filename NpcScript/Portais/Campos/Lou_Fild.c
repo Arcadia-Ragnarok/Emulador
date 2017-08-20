@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potal nos arredores de Louyang                            | 
 \*-----------------------------------------------------------------*/
 
-lou_fild01,233,356,0	warp	lou_fild1-2	1,1,louyang,218,22
+lou_fild01,233,356,0	warp	loufildwarp	1,1,louyang,218,22

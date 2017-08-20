@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos Arredores de Moscovia                          |
 \*-----------------------------------------------------------------*/
 
-mosk_fild02,190,257,0	warp	moscoviawarp0401	1,1,mosk_dun01,189,45
+mosk_fild02,190,257,0	warp	moskfildwarp	1,1,mosk_dun01,189,45

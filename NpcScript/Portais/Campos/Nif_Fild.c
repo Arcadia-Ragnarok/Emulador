@@ -8,13 +8,11 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos aerodores de Nifheim                           |
 \*-----------------------------------------------------------------*/
 
-nif_fild01,345,323,0	warp	nwarp7	1,1,nif_fild02,23,312
+nif_fild01,344,322,0	warp	niffildwarp_1	1,1,nif_fild02,26,311
 
 // ------------------------------------------------------------------
-nif_fild02,21,312,0	warp	nwarp8	1,1,nif_fild01,343,322
-nif_fild02,379,235,0	warp	nwarp9	1,1,niflheim,20,153
+nif_fild02,22,311,0	warp	niffildwarp_2	1,1,nif_fild01,340,322
+nif_fild02,378,235,0	warp	niffildwarp_3	1,1,niflheim,23,154

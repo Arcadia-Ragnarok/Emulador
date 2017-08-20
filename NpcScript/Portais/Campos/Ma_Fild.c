@@ -8,15 +8,13 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos arredores de Malaya                            |
 \*-----------------------------------------------------------------*/
 
-ma_fild01,37,272,0	warp	mal_fild01_malaya	1,1,malaya,367,277
-ma_fild01,266,359,0	warp	mafild01_to02	1,1,ma_fild02,248,36
-ma_fild01,288,52,0	warp	mafild01_tobknw	1,1,ma_scene01,142,78
-ma_fild01,251,190,0	warp	mf_minga_mf_in_minga	1,1,ma_in01,108,160
+ma_fild01,37,272,0	warp	mafildwarp_1	1,1,malaya,367,277
+ma_fild01,266,359,0	warp	mafildwarp_2	1,1,ma_fild02,248,36
+ma_fild01,288,52,0	warp	mafildwarp_3	1,1,ma_scene01,142,78
+ma_fild01,251,190,0	warp	mafildwarp_4	1,1,ma_in01,108,160
 
 // ------------------------------------------------------------------
-ma_fild02,248,33,0	warp	mafild02_to01	1,1,ma_fild01,266,356
+ma_fild02,248,33,0	warp	mafildwarp_5	1,1,ma_fild01,266,356

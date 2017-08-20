@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos aredores de Kunlun                             |
 \*-----------------------------------------------------------------*/
 
-gon_fild01,192,265,0	warp	gon_fild1-2	1,1,gonryun,161,11
+gon_fild01,192,265,0	warp	gonfildwarp	1,1,gonryun,161,11
