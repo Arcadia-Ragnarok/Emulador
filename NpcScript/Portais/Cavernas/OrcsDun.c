@@ -8,14 +8,12 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Calabouço dos Orcs                              |
 \*-----------------------------------------------------------------*/
 
-orcsdun01,32,172,0	warp	orc01-1	3,1,in_orcs01,30,180
-orcsdun01,183,8,0	warp	orc03	4,2,orcsdun02,21,185
+orcsdun01,32,172,0	warp	orcsdunwarp_1	3,1,in_orcs01,30,180
+orcsdun01,183,8,0	warp	orcsdunwarp_2	4,2,orcsdun02,21,185
 
 // ------------------------------------------------------------------
-orcsdun02,180,15,0	warp	orc02-1	2,1,in_orcs01,108,112
-orcsdun02,21,188,0	warp	orc03-1	8,2,orcsdun01,183,11
+orcsdun02,180,15,0	warp	orcsdunwarp_3	2,1,in_orcs01,108,112
+orcsdun02,21,188,0	warp	orcsdunwarp_4	8,2,orcsdun01,183,11

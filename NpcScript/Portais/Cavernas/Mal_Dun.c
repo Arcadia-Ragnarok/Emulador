@@ -8,9 +8,8 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
 | - Versão: Spell Master                                            |
 | - Nota: Potal na Caverna de Malangdo                              |
 \*-----------------------------------------------------------------*/
 
-mal_dun01,30,230,0	warp	malangdo0028	1,1,malangdo,75,236
+mal_dun01,30,230,0	warp	maldunwarp	1,1,malangdo,75,236

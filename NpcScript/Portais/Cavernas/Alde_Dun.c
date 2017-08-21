@@ -46,9 +46,9 @@ alde_dun03,130,125,4	script	ald014r	WARPNPC,1,1,{
 
 alde_dun03,171,127,4	script	ald015r	WARPNPC,1,1,{
 	switch(rand(3)) {
-		case 0: (warp "c_tower2",13,282); end;
-		case 1: (warp "alde_dun03",175,131); end;
-		case 2: (warp "c_tower3",235,7); end;
+		case 0: warp ("c_tower2",13,282); end;
+		case 1: warp ("alde_dun03",175,131); end;
+		case 2: warp ("c_tower3",235,7); end;
 	}
 }
 
@@ -62,9 +62,9 @@ alde_dun04,272,74,0	warp	aldd021	2,2,alde_dun04,204,62
 
 alde_dun04,80,34,4	script	ald022r	WARPNPC,1,1,{
 	switch(rand(4)) {
-		case 0: (warp "c_tower2",13,282); end;
-		case 1: (warp "alde_dun03",175,131); end;
-		case 2: (warp "c_tower3",235,7); end;
-		case 3: (warp "alde_dun04",84,36); end;
+		case 0: warp ("c_tower2",13,282); end;
+		case 1: warp ("alde_dun03",175,131); end;
+		case 2: warp ("c_tower3",235,7); end;
+		case 3: warp ("alde_dun04",84,36); end;
 	}
 }

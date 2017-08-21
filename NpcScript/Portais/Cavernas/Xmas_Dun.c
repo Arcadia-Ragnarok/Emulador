@@ -8,13 +8,11 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais na Fábrica de Brinquedos                           |
 \*-----------------------------------------------------------------*/
 
-xmas_dun01,205,13,0	warp	xmas_dun1-2	1,1,xmas,143,311
-xmas_dun01,129,130,0	warp	xmas_dun2-1	1,1,xmas_dun02,131,130
+xmas_dun01,205,13,0	warp	xmasdunwarp_1	1,1,xmas,143,311
+xmas_dun01,129,130,0	warp	xmasdunwarp_2	1,1,xmas_dun02,131,130
 
 // ------------------------------------------------------------------
-xmas_dun02,129,130,0	warp	xmas_dun2-2	1,1,xmas_dun01,132,130
+xmas_dun02,129,130,0	warp	xmasdunwarp_3	1,1,xmas_dun01,132,130

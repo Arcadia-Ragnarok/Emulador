@@ -8,28 +8,26 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais em Gefenia                                         |
 \*-----------------------------------------------------------------*/
 
-gefenia01,37,103,0	warp	gefeniawarp014	1,1,gefenia04,283,95
-gefenia01,199,269,0	warp	gefeniawarp001	1,1,gefenia02,203,34
-gefenia01,220,256,0	warp	gefeniawarp003	1,1,gefenia02,240,23
+gefenia01,199,268,0	warp	gefeniawarp_1	1,1,gefenia02,203,31
+gefenia01,236,258,0	warp	gefeniawarp_2	1,1,gefenia02,249,25
+gefenia01,38,103,0	warp	gefeniawarp_3	1,1,gefenia04,264,85
 
 // ------------------------------------------------------------------
-gefenia02,17,175,0	warp	gefeniawarp005	1,1,gefenia03,266,168
-gefenia02,19,237,0	warp	gefeniawarp007	1,1,gefenia03,264,236
-gefenia02,203,31,0	warp	gefeniawarp002	1,1,gefenia01,199,266
-gefenia02,240,20,0	warp	gefeniawarp004	1,1,gefenia01,223,256
+gefenia02,17,175,0	warp	gefeniawarp_4	1,1,gefenia03,266,168
+gefenia02,30,232,0	warp	gefeniawarp_5	1,1,gefenia03,265,235
+gefenia02,204,29,0	warp	gefeniawarp_6	1,1,gefenia01,199,265
+gefenia02,249,20,0	warp	gefeniawarp_7	1,1,gefenia01,236,255
 
 // ------------------------------------------------------------------
-gefenia03,58,26,0	warp	gefeniawarp011	1,1,gefenia04,33,270
-gefenia03,145,27,0	warp	gefeniawarp009	1,1,gefenia04,130,272
-gefenia03,267,236,0	warp	gefeniawarp008	1,1,gefenia02,22,237
-gefenia03,269,168,0	warp	gefeniawarp006	1,1,gefenia02,20,175
+gefenia03,268,235,0	warp	gefeniawarp_8	1,1,gefenia02,34,229
+gefenia03,269,171,0	warp	gefeniawarp_9	1,1,gefenia02,20,164
+gefenia03,145,27,0	warp	gefeniawarp_10	1,1,gefenia04,130,270
+gefenia03,58,27,0	warp	gefeniawarp_11	1,1,gefenia04,39,269
 
 // ------------------------------------------------------------------
-gefenia04,130,275,0	warp	gefeniawarp010	1,1,gefenia03,145,30
-gefenia04,33,273,0	warp	gefeniawarp012	1,1,gefenia03,58,29
-gefenia04,287,95,0	warp	gefeniawarp013	1,1,gefenia01,40,103
+gefenia04,39,272,0	warp	gefeniawarp_12	1,1,gefenia03,58,31
+gefenia04,130,274,0	warp	gefeniawarp_13	1,1,gefenia03,145,31
+gefenia04,286,85,0	warp	gefeniawarp_14	1,1,gefenia01,40,103

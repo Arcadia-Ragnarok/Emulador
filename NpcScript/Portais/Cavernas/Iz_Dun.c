@@ -8,31 +8,29 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Túneo Submarino                                 |
 \*-----------------------------------------------------------------*/
 
-iz_dun00,168,173,0	warp	izd01-1	3,3,izlu2dun,108,88
-iz_dun00,352,342,0	warp	izd02	5,2,iz_dun01,253,252
-iz_dun00,39,41,0	warp	izd03	5,2,iz_dun01,41,37
+iz_dun00,168,173,0	warp	izdunwarp_1	3,3,izlu2dun,108,88
+iz_dun00,39,41,0	warp	izdunwarp_2	5,2,iz_dun01,41,37
+iz_dun00,352,342,0	warp	izdunwarp_3	5,2,iz_dun01,253,252
 
 // ------------------------------------------------------------------
-iz_dun01,118,170,0	warp	izd04	5,2,iz_dun02,236,204
-iz_dun01,253,258,0	warp	izd02-1	2,2,iz_dun00,352,337
-iz_dun01,41,32,0	warp	izd03-1	2,2,iz_dun00,39,46
+iz_dun01,118,170,0	warp	izdunwarp_4	5,2,iz_dun02,236,204
+iz_dun01,253,258,0	warp	izdunwarp_5	2,2,iz_dun00,352,337
+iz_dun01,41,32,0	warp	izdunwarp_6	2,2,iz_dun00,39,46
 
 // ------------------------------------------------------------------
-iz_dun02,236,198,0	warp	izd04-1	5,3,iz_dun01,118,165
-iz_dun02,339,331,0	warp	izd05	2,2,iz_dun03,32,63
+iz_dun02,339,331,0	warp	izdunwarp_7	2,2,iz_dun03,32,63
+iz_dun02,236,198,0	warp	izdunwarp_8	5,3,iz_dun01,118,165
 
 // ------------------------------------------------------------------
-iz_dun03,264,245,0	warp	izd06	1,2,iz_dun04,26,27
-iz_dun03,29,63,0	warp	izd05-1	2,2,iz_dun02,339,328
+iz_dun03,29,63,0	warp	izdunwarp_9	2,2,iz_dun02,339,328
+iz_dun03,264,245,0	warp	izdunwarp_10	1,2,iz_dun04,26,27
 
 // ------------------------------------------------------------------
-iz_dun04,26,24,0	warp	izd06-1	2,2,iz_dun03,261,245
-iz_dun04,130,234,0	warp	tokraken	2,2,iz_dun05,141,187
+iz_dun04,26,24,0	warp	izdunwarp_11	2,2,iz_dun03,261,245
+iz_dun04,130,234,0	warp	izdunwarp_12	2,2,iz_dun05,141,187
 
 // ------------------------------------------------------------------
-iz_dun05,142,190,0	warp	exitkraken	2,2,iz_dun04,129,232
+iz_dun05,142,190,0	warp	izdunwarp_13	2,2,iz_dun04,129,232

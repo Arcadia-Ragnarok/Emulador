@@ -8,17 +8,15 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Vulcão de Thor                                  |
 \*-----------------------------------------------------------------*/
 
-thor_v01,21,224,0	warp	thor_v1-2	1,1,ve_fild03,168,235
-thor_v01,201,37,0	warp	thor_v2-1	1,1,thor_v02,78,203
+thor_v01,201,37,0	warp	thorvwarp_1	1,1,thor_v02,78,203
+thor_v01,21,224,0	warp	thorvwarp_2	1,1,ve_fild03,168,235
 
 // ------------------------------------------------------------------
-thor_v02,192,60,0	warp	thor_v2-2	1,1,thor_v03,35,262
-thor_v02,73,203,0	warp	thor_v3-1	1,1,thor_v01,196,37
+thor_v02,192,60,0	warp	thorvwarp_3	1,1,thor_v03,35,262
+thor_v02,73,203,0	warp	thorvwarp_4	1,1,thor_v01,196,37
 
 // ------------------------------------------------------------------
-thor_v03,30,262,0	warp	thor_v3-2	1,1,thor_v02,187,58
+thor_v03,30,262,0	warp	thorvwarp_5	1,1,thor_v02,187,58

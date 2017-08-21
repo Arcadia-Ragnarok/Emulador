@@ -8,20 +8,18 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais na Caverna de Gelo                                 |
 \*-----------------------------------------------------------------*/
 
-ice_dun01,157,10,0	warp	ice001	1,1,ra_fild01,233,327
-ice_dun01,146,161,0	warp	ice002	1,1,ice_dun02,151,139
+ice_dun01,157,10,0	warp	icedunwarp_1	1,1,ra_fild01,233,327
+ice_dun01,146,161,0	warp	icedunwarp_2	1,1,ice_dun02,151,139
 
 // ------------------------------------------------------------------
-ice_dun02,151,145,0	warp	ice003	1,1,ice_dun01,146,157
-ice_dun02,150,285,0	warp	ice004	1,1,ice_dun03,149,24
+ice_dun02,150,285,0	warp	icedunwarp_3	1,1,ice_dun03,149,24
+ice_dun02,151,145,0	warp	icedunwarp_4	1,1,ice_dun01,146,157
 
 // ------------------------------------------------------------------
-ice_dun03,149,19,0	warp	ice005	1,1,ice_dun02,150,280
+ice_dun03,149,19,0	warp	icedunwarp_5	1,1,ice_dun02,150,280
 
 // ------------------------------------------------------------------
-ice_dun04,33,140,0	warp	ice006	1,1,ice_dun03,149,130
+ice_dun04,33,140,0	warp	icedunwarp_	1,1,ice_dun03,149,130

@@ -8,13 +8,11 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais no Calabouço de Magma                              |
 \*-----------------------------------------------------------------*/
 
-mag_dun01,126,66,0	warp	mag01-yunfild	1,1,yuno_fild03,34,139
-mag_dun01,242,241,0	warp	mag01-02	1,1,mag_dun02,47,30
+mag_dun01,243,240,0	warp	magdunwarp_1	1,1,mag_dun02,48,37
+mag_dun01,125,67,0	warp	magdunwarp_2	1,1,yuno_fild03,37,140
 
 // ------------------------------------------------------------------
-mag_dun02,47,28,0	warp	mag02-01	1,1,mag_dun01,242,239
+mag_dun02,48,33,0	warp	magdunwarp_3	1,1,mag_dun01,239,240
