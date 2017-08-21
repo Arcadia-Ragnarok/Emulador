@@ -44,6 +44,7 @@ gef_dun02,58,167,10,10	monster	Planta Brilhante	1083,1,1800000,900000,1
 gef_dun02,185,83,3,3	monster	Planta Brilhante	1083,1,1800000,900000,1
 
 // ------------------------------------------------------------------
+/*
 gef_dun03,0,0,0,0	monster	Alma Penada	1192,8,5000,0,0
 gef_dun03,0,0,0,0	monster	Xamã do Vento	1263,3,5000,0,0
 gef_dun03,0,0,0,0	monster	Aparição	1291,2,5000,0,0
@@ -51,3 +52,4 @@ gef_dun03,0,0,0,0	monster	Aparição	1291,2,60000,30000,0
 gef_dun03,0,0,0,0	monster	Espectro de Hellion	1626,1,600000,300000,0
 gef_dun03,0,0,0,0	monster	Planta Brilhante	1083,3,1800000,900000,1
 gef_dun03,0,0,0,0	monster	Planta Branca	1082,10,180000,90000,1
+*/
