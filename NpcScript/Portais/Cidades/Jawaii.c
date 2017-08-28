@@ -8,25 +8,17 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais em Jawaii                                          | 
 \*-----------------------------------------------------------------*/
 
-jawaii,192,215,0	warp	jawaiiwarp005	1,1,jawaii_in,28,94
+jawaii,192,215,0	warp	jawaiiwarp_1	1,1,jawaii_in,28,94
 
 // ------------------------------------------------------------------
-jawaii_in,90,78,0	warp	jawaiiwarp001	1,1,jawaii,115,172
-jawaii_in,113,61,0	warp	jawaiiwarp002	1,1,jawaii,138,202
-jawaii_in,133,107,0	warp	jawaiiwarp003	1,1,jawaii,111,199
-jawaii_in,88,117,0	warp	jawaiiwarp004	1,1,jawaii,109,186
-jawaii_in,27,91,4	script	jawaiiwarp006	WARPNPC,1,1,{
-	if (getpartnerid() > 0) {
-		end;
-	}
-	else {
-		warp "jawaii_in",27,94;
-		end;
-	}
+jawaii_in,90,78,0	warp	jawaiiwarp_2	1,1,jawaii,115,172
+jawaii_in,88,117,0	warp	jawaiiwarp_3	1,1,jawaii,111,186
+jawaii_in,132,107,0	warp	jawaiiwarp_4	1,1,jawaii,114,196
+jawaii_in,113,61,0	warp	jawaiiwarp_5	1,1,jawaii,136,203
+jawaii_in,27,91,4	script	jawaiiwarp_6	WARPNPC,1,1,{
+	if (getpartnerid() > 0) { end; }
+	else { warp ("jawaii_in",192,218); end; }
 }
-
