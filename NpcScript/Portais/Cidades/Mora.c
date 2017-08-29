@@ -8,11 +8,9 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais na Vila de Mora                                    |
 \*-----------------------------------------------------------------*/
 
-mora,182,74,0	warp	bifrost_field0003	1,1,bif_fild02,286,327
-mora,20,159,0	warp	bifrost_field0004	1,1,bif_fild02,99,308
-mora,56,25,0	warp	bifrost_field0005	1,1,bif_fild02,176,162
+mora,182,74,0	warp	morawarp_1	1,1,bif_fild02,286,327
+mora,20,159,0	warp	morawarp_2	1,1,bif_fild02,99,308
+mora,56,25,0	warp	morawarp_3	1,1,bif_fild02,176,162
