@@ -8,11 +8,10 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Por: Spell Master                                               |
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Portais na Arvore de Vida                                 |
 \*-----------------------------------------------------------------*/
 
-yggdrasil01,249,262,0	warp	nwarp5	1,1,nif_fild01,315,66
-yggdrasil01,271,51,0	warp	nwarp3	1,1,yggdrasil01,26,196
-yggdrasil01,26,193,0	warp	nwarp4	1,1,yggdrasil01,269,53
+yggdrasil01,249,262,0	warp	yggwarp_1	1,1,nif_fild01,315,66
+yggdrasil01,271,51,0	warp	yggwarp_2	1,1,yggdrasil01,26,196
+yggdrasil01,26,193,0	warp	yggwarp_3	1,1,yggdrasil01,269,53

@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Por: Spell Master                                               |
+| - Desenvolvido por: Spell Master                                  |
 | - Nota: Portais na ante-sala das batalhas campais                 |
 \*-----------------------------------------------------------------*/
 

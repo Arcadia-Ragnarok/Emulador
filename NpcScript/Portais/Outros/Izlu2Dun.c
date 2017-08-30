@@ -8,9 +8,8 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potal na Ilha de Byalan                                   |
 \*-----------------------------------------------------------------*/
 
-izlu2dun,108,83,0	warp	izd01	3,2,iz_dun00,168,168
+izlu2dun,108,83,0	warp	izlu2dunDungeon	3,2,iz_dun00,168,168

@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potais no subterraneo do Lago do Abismo                   |
 \*-----------------------------------------------------------------*/
 

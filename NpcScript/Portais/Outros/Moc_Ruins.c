@@ -8,11 +8,10 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potais nas Ruínas de Morroc                               |
 \*-----------------------------------------------------------------*/
 
-moc_ruins,159,39,0	warp	moc02-2	2,4,morocc,30,290
-moc_ruins,54,161,0	warp	moc006	2,3,moc_pryd01,192,9
-moc_ruins,71,16,0	warp	moc007	8,2,moc_fild19,71,167
+moc_ruins,71,16,0	warp	ruinsm19a	8,2,moc_fild19,71,167
+moc_ruins,159,39,0	warp	ruinmoc	2,4,morocc,30,290
+moc_ruins,54,161,0	warp	ruin01	2,3,moc_pryd01,192,9

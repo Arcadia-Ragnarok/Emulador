@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potal na Caverna de Malangdo                              |
 \*-----------------------------------------------------------------*/
 

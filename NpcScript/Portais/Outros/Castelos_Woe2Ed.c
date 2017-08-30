@@ -8,6 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potais nos Catelos e seus Feudos Woe 2.0                  |
 \*-----------------------------------------------------------------*/
 

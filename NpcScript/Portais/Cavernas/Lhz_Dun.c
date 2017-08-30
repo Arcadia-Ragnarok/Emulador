@@ -8,6 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
+| - Desenvolvimento: Spell Master                                   |
 | - Nota: Potais no Laboratório de Somatologia                      |
 \*-----------------------------------------------------------------*/
 
@@ -20,6 +21,7 @@ lhz_dun01,149,291,0	warp	lhzdunwarp_4	1,1,lhz_in01,19,129
 lhz_dun02,282,161,0	warp	lhzdunwarp_5	1,1,lhz_dun01,281,154
 lhz_dun02,146,19,0	warp	lhzdunwarp_6	1,1,lhz_dun01,144,9
 lhz_dun02,17,156,0	warp	lhzdunwarp_7	1,1,lhz_dun01,18,150
+lhz_dun02,224,6,0	warp	lhz_cuberoom	1,1,lhz_cube,231,90
 
 lhz_dun02,149,149,4	script	lhzdunwarp_8	WARPNPC,2,2,{
 	OnTouch:
