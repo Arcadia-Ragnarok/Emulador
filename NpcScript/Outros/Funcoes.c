@@ -31,6 +31,7 @@ function	script	ClearJobVar	{
 	if (merchantq) { merchantq = 0; }
 	if (merchantq_1) { merchantq_1 = 0; }
 	if (merchantq_2) { merchantq_2 = 0; }
+	if (gunslingerq) { gunslingerq = 0; }
 	return;
 }
 
