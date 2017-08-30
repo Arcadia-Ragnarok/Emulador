@@ -69,13 +69,11 @@ new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 		mes "Você já viu a Janela de Informação de Missões?";
 		mes "Eu vou esperar você no campo de treinamento, do outro lado da ponte.";
 		close;
-	}
-	else if (new_quest == 1) {
+	} else if (new_quest == 1) {
 		mes "[Sprakki]";
 		mes "Eu vou esperar você no campo de treinamento, do outro lado da ponte.";
 		close;
-	}
-	else {
+	} else {
 		warp ("new_1-2",100,9);
 		savepoint ("new_1-2",100,9);
 		new_quest = 1;
@@ -179,17 +177,15 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		next;
 		mes "[Sprakki]";
 		mes "Mas seu treinamento ainda não começou.";
-		mes "Primiro vamos a sua inscrição oficial.";
+		mes "Primeiro vamos a sua inscrição oficial.";
 		next;
 		mes "[Sprakki]";
 		mes "Por favor me diga seu nome.";
-		mes "Você deve digitar corretamente, letras maiúlulas e mínusculs se tiver.";
-	}
-	else if (new_quest == 2) {
+		mes "Você deve digitar corretamente, letras maiúsculas e mínusculas se tiver.";
+	} else if (new_quest == 2) {
 		mes "[Sprakki]";
 		mes "Tente digitar seu nome novamente.";
-	}
-	else if (new_quest > 2) {
+	} else if (new_quest > 2) {
 		savepoint (strnpcinfo(NPC_MAP),100,100);
 		warp (strnpcinfo(NPC_MAP),100,100);
 		new_quest = 3;
@@ -202,8 +198,7 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		mes "Acho que você digitou seu nome errado não foi?";
 		if (new_quest !=2) { new_quest = 2; }
 		close;
-	}
-	else {
+	} else {
 		mes "[Sprakki]";
 		mes "Deixe-me preencher esses papéis para sua inscrição.";
 		next;
@@ -212,9 +207,9 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		next;
 		mes "[Sprakki]";
 		mes "Certo! Tudo pronto.";
-		mes "Seja bem vindo ao treinamento de Aprendizes ^4a4aff"+.@charname$+"^000000.";
+		mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" ao Treinamento de Aprendizes ^4a4aff"+.@charname$+"^000000.";
 		next;
-		mes "Te levarei a próxima sala fala com o instrutor ^bb0000Brade^000000.";
+		mes "Te levarei a próxima sala, chegando lá fale com o instrutor ^bb0000Brade^000000.";
 		mes "Ele continuará seu treinamento.";
 		mes "Boa sorte!";
 		close2;
@@ -236,7 +231,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		}
 		mes "[Instrutor Brade]";
 		mes "Muito bom!";
-		mes "O fato de você ter chegado a mim quer dizer que tem ido bem em seu treinamento.";
+		mes "O fato de você ter chegado a mim, quer dizer que tem ido bem em seu treinamento.";
 		next;
 		mes "[Instrutor Brade]";
 		mes "Notou a experiência que ganhou ao complear a missão?";
@@ -274,7 +269,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		mes "Para equipar um item, ou usar-lo clique duas vezes com o botão esquerdo do mouse.";
 		mes "Sobre o item em seu inventário.";
 		mes "Ou para equipar abra a janela de equipamentos.";
-		mes "Segure o item com o botão direito do mouse, arraste-o e solte na janela de equipamentos.";
+		mes "Segure o item com o botão esquerdo do mouse, arraste-o e solte na janela de equipamentos.";
 		next;
 		cutin ("",255);
 		mes "[Instrutor Brade]";
@@ -290,15 +285,13 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		setquest (7119);
 		new_quest = 4;
 		close;
-	}
-	else if (new_quest == 4) {
+	} else if (new_quest == 4) {
 		if (!isequipped(Novice_Plate) || !isequipped(Novice_Hood) || !isequipped(Novice_Boots) || !isequipped(Novice_Egg_Cap) || !isequipped(Novice_Guard)) {
 			mes "[Instrutor Brade]";
 			mes "Equipe os 6 dos equipamentos que eu te dei.";
 			mes "Coloque os sapatos, vista as roupas, e se arme com arma.";
 			close;
-		}
-		else {
+		} else {
 			mes "[Instrutor Brade]";
 			mes "Bom.... Muito bom!";
 			mes "Vejo que você é uma pessoa experta!";
@@ -333,14 +326,12 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			new_quest = 5;
 			close;
 		}
-	}
-	else if (new_quest == 5) {
+	} else if (new_quest == 5) {
 		mes "[Instrutor Brade]";
 		mes "Eu disse para você ir aprender a usar habilidades com a ^4d4dffInstrutora Jinha^000000.";
 		mes "Sei que vai conseguir encontra-la.";
 		close;
-	}
-	else if (new_quest == 6) {
+	} else if (new_quest == 6) {
 		mes "[Instrutor Brade]";
 		mes "Exelente você aprendeu sobre as habilidades.";
 		mes "Muitas outras habilidades podem ser aprendidas.";
@@ -356,7 +347,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		next;
 		mes "[Instrutor Brade]";
 		mes "É muito simples elas simplesmente vão lhe informar sobre os principais serviços.";
-		mes "Que poderá encontrar quando completar seu treinamento.";
+		mes "Que poderá encontrar quando estiver fora desse local.";
 		next;
 		mes "[Instrutor Brade]";
 		mes "Depois então nos veremos novamente em seu treinamento de combate.";
@@ -370,14 +361,12 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			getexp (1000,20);
 		}
 		close;
-	}
-	else if (new_quest == 7) {
+	} else if (new_quest == 7) {
 		mes "[Instrutor Brade]";
 		mes "Atravesse o portal ao oeste dessa sala.";
 		mes "Fale com as pessoas de lá para continuar seu treinamento.";
 		close;
-	}
-	else {
+	} else {
 		warp (strnpcinfo(NPC_MAP),41,172);
 		savepoint (strnpcinfo(NPC_MAP),41,172);
 		new_quest = 7;
@@ -394,8 +383,7 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		mes "^4d4dffInstrutor Brade^000000.";
 		mes "Talvez ele possa lhe ajudar.";
 		close;
-	}
-	else if (new_quest == 5) {
+	} else if (new_quest == 5) {
 		mes "[Instrutora Jinha]";
 		mes "Me parece que está perdid"+(Sex == SEX_MALE ? "o":"a")+", não é.";
 		mes "Porque não procura pelo";
@@ -450,7 +438,7 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		next;
 		cutin ("tutorial05",3);
 		mes "[Instrutora Jinha]";
-		mes "Uma forma mais fácil de usar não só habilidades como também itens.";
+		mes "Uma forma mais fácil de usar, não só habilidades como também itens.";
 		mes "É se favorecer das teclas de atalho que são da tecla ^4a4afdF1^000000 a tecla ^4a4afdF9^000000.";
 		next;
 		mes "[Instrutora Jinha]";
@@ -495,14 +483,12 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		// Execto pelo comando @allskill
 		else { new_quest = 6; close; }
 		close;
-	}
-	else if (new_quest == 6) {
+	} else if (new_quest == 6) {
 		mes "[Instrutora Jinha]";
 		mes "Tudo que eu sabia já lhe ensinei.";
 		mes "Acho que o ^4d4dffInstrutor Brade^000000 poderá lhe ajudar.";
 		close;
-	}
-	else {
+	} else {
 		warp (strnpcinfo(NPC_MAP),41,172);
 		savepoint (strnpcinfo(NPC_MAP),41,172);
 		new_quest = 7;
@@ -541,9 +527,9 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 		mes "Eu vou informar você sobre os Serviços Kafra que usará com uma frequência maior:";
 		next;
 		mes "[Funcionária Kafra]";
-		mes "Salvar Ponto de Retorno";
-		mes "Usar Armazém";
-		mes "Serviço de Teletransporte.";
+		mes "- Salvar Ponto de Retorno";
+		mes "- Usar Armazém";
+		mes "- Serviço de Teletransporte.";
 		next;
 		mes "[Funcionária Kafra]";
 		mes "Quando você falar com uma Funcionária Kafra e pedir pelo serviço de Salvar Ponto de Retorno";
@@ -556,19 +542,18 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 		mes "Usar uma Asa de Borboleta levará você de volta para o lugar em que você salvou.";
 		next;
 		mes "[Funcionária Kafra]";
-		mes "Este serviço é gratuito, então sinta-se livre para usar o Serviço de Salvamento sempre que quiser.";
+		mes "Este serviço é gratuito, então sinta-se livre para usar o Serviço de Salvamento sempre que desejar.";
 		next;
 		if (new_quest == 8) {
 			mes "[Funcionária Kafra]";
-			mes "^ff0000Além da Corporação Kafra, outra empresa presta esses tipos de serviços^000000.";
+			mes "^ff0000Além da Corporação Kafra, outra empresa presta alguns desses de serviços^000000.";
 			next;
 			mes "[Funcionária Kafra]";
 			mes "^ff0000A Corporação de Eventos Incríveis.";
 			mes "Nesta sala há uma representante.";
 			mes "Vá falar com ela para conhecê-la^000000.";
 			next;
-		}
-		else if (new_quest == 9) {
+		} else if (new_quest == 9) {
 			mes "[Funcionária Kafra]";
 			mes "^ff0000Em praticalmente todas as cidades exitem guias.";
 			mes "Que podem lhe orientar onde ficam os principais locais^000000.";
@@ -577,15 +562,13 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 			mes "^ff0000Nesta sala há um representante.";
 			mes "Porque não vai conversar com ele para conhecer-lo?^000000";
 			next;
-		}
-		else if (new_quest == 10) {
+		} else if (new_quest == 10) {
 			mes "[Funcionária Kafra]";
 			mes "Não há mais nada para fazer aqui.";
 			mes "Atravesse o portal e vá falar com o ^4a4afdInstrutor Brade^000000.";
 			mes "Para começar a última etapa do seu treinamento.";
 			close;
-		}
-		else if (new_quest == 7 ) {
+		} else if (new_quest == 7 ) {
 			getitem Cargo_Free_Ticket,40;
 			getitem Warp_Free_Ticket,60;
 			new_quest = 8;
@@ -597,14 +580,11 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 				mes "Quando você morre em uma batalha, pode ressuscitar no lugar que você salvou com esse serviço.";
 				next;
 				mes "[Funcionária Kafra]";
-				mes "Se você salvar em uma Kafra em cada cidade.";
+				mes "Se você salvar em uma cidade.";
 				mes "Poderá ressuscitar na última cidade em que salvou.";
 				next;
 				mes "[Funcionária Kafra]";
-				mes "O local salvo é sempre onde você salvou na última vez e, usando a Asa de Borboleta.";
-				next;
-				mes "[Funcionária Kafra]";
-				mes "Você pode se teletransportar diretamente para o ponto salvo.";
+				mes "Usando a Asa de Borboleta, você pode se teletransportar diretamente para o ponto salvo.";
 				mes "Então, sinta-se à vontade para usar esse serviço.";
 				next; break;
 				case 2:
@@ -641,17 +621,13 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 				case 3:
 				mes "[Funcionária Kafra]";
 				mes "Nós também diponibilizamos um Serviço de Teletransporte";
-				mes "Para fazer suas viagens facilmente quando é uma longa distância.";
+				mes "Para fazer suas viagens facilmente quando uma distância for longa.";
 				next;
 				mes "[Funcionária Kafra]";
 				mes "Com nossa avançada habilidade de teletransporte, sua viagem será mais segura e confortável.";
 				next;
 				mes "[Funcionária Kafra]";
 				mes "Ah e lembre-se que os lugares para onde você pode teletransportar variam de cidade para cidade.";
-				next;
-				mes "[Funcionária Kafra]";
-				mes "Tudo isto é para sempre apoiar você.";
-				mes "Nós estamos trabalhando muito para pagar nossa dívida com nossos clientes.";
 				next; break;
 				case 4:
 				mes "[Funcionária Kafra]";
@@ -659,8 +635,7 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 				close2; cutin ("",255); end;
 			}
 		}
-	}
-	else if (new_quest > 10) {
+	} else if (new_quest > 10) {
 		new_quest = 11;
 		warp ("new_1-3",102,27);
 		savepoint ("new_1-3",102,27);
@@ -674,8 +649,7 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		mes "[Eventos Incríveis]";
 		mes "Você já conversou com a funcionária kafra?";
 		close;
-	}
-	else if (new_quest == 8) {
+	} else if (new_quest == 8) {
 		cutin ("zonda_01",2);
 		mes "[Eventos Incríveis]";
 		mes "Basicamente nossa empresa presta suporte a Corporação Kafra.";
@@ -692,8 +666,7 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		cutin ("",255);
 		new_quest = 9;
 		end;
-	}
-	else if (new_quest == 9) {
+	} else if (new_quest == 9) {
 		mes "[Eventos Incríveis]";
 		mes "^ff0000Em praticalmente todas as cidades exitem guias.";
 		mes "Que podem lhe orientar onde ficam os principais locais^000000.";
@@ -702,15 +675,13 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		mes "^ff0000Nesta sala há um representante.";
 		mes "Porque não vai conversar com ele para conhecer-lo?^000000";
 		close;
-	}
-	else if (new_quest == 10) {
+	} else if (new_quest == 10) {
 		mes "[Eventos Incríveis]";
 		mes "Não há mais nada para fazer aqui.";
 		mes "Atravesse o portal e vá falar com o ^4a4afdInstrutor Brade^000000.";
 		mes "Para começar a última etapa do seu treinamento.";
 		close;
-	}
-	else {
+	} else {
 		new_quest = 11;
 		warp ("new_1-3",102,27);
 		savepoint ("new_1-3",102,27);
@@ -724,14 +695,12 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		mes "[Guia]";
 		mes "Você já conversou com a funcionária kafra?";
 		close;
-	}
-	else if (new_quest == 8) {
+	} else if (new_quest == 8) {
 		mes "[Guia]";
 		mes "Na minha esquerda, jeva uma funcionária da Corporação Eventos Incríveis.";
 		mes "Você já conversou com ela?";
 		close;
-	}
-	else if (new_quest == 9) {
+	} else if (new_quest == 9) {
 		cutin ("prt_soldier",2);
 		mes "[Guia]";
 		mes "Os Guias estão em cada cidade para guiar você para lugares úteis.";
@@ -744,15 +713,13 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		completequest (7121);
 		cutin ("",255);
 		end;
-	}
-	else if (new_quest == 10) {
+	} else if (new_quest == 10) {
 		mes "[Guia]";
 		mes "Não há mais nada para fazer aqui.";
 		mes "Atravesse o portal e vá falar com o ^4a4afdInstrutor Brade^000000.";
 		mes "Para começar a última etapa do seu treinamento.";
 		close;
-	}
-	else {
+	} else {
 		warp ("prontera",273,354);
 		savepoint ("prontera",273,354);
 		new_quest = 0;
@@ -772,7 +739,7 @@ new_1-2,23,190,0	script	newWarp3#new	WARPNPC,2,2,{
 }
 
 // ------------------------------------------------------------------
-// - [ Terceira Parte ] -
+// - [ Quarta Parte ] -
 // ------------------------------------------------------------------
 new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 	if (new_quest == 11) {
@@ -792,8 +759,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 		getitem (Novice_Potion,100);
 		setquest (7122);
 		close;
-	}
-	else if ((new_quest >= 12) && (new_quest < 17)) {
+	} else if ((new_quest >= 12) && (new_quest < 17)) {
 		if (questprogress(7122,HUNTING) == 2) {
 			completequest (7122);
 			getexp (3000,0);
@@ -823,14 +789,13 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 				mes "Fale com os representantes das Guildas atrás de mim.";
 				next;
 				mes "[Instrutor Brade]";
-				mes "Caso queira eles também podem lhe levar direto para o local.";
+				mes "Caso queira, eles também podem lhe levar direto para o local.";
 				mes "Onde poderá fazer o teste de mudança de classe.";
 				next;
 				mes "[Instrutor Brade]";
 				mes "Contudo podemos dizer que você completou seu treinamento.";
 				close;
-			}
-			else {
+			} else {
 				mes "[Instrutor Brade]";
 				mes "Quando quiser deixar o campo de treinamento.";
 				mes "Fale comigo novamente.";
@@ -852,8 +817,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 				mes "Contudo podemos dizer que você completou seu treinamento.";
 				close;
 			}
-		}
-		else {
+		} else {
 			mes "[Instrutor Brade]";
 			mes "Ainda não derrou o Poring?";
 			mes "Vamos lá! Sei que você consegue!";
@@ -864,8 +828,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 			}
 			close;
 		}
-	}
-	else {
+	} else {
 		if (getskilllv("NV_BASIC") < 9) {
 			mes "[Instrutor Brade]";
 			mes "A partir de agora seu único objetivo aqui.";
@@ -890,8 +853,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 			mes "[Instrutor Brade]";
 			mes "Contudo podemos dizer que você completou seu treinamento.";
 			close;
-		}
-		else {
+		} else {
 			mes "[Instrutor Brade]";
 			mes "É parece que você não tem mais nada para fazer aqui.";
 			mes "Mas poderá ficar o tempo que quiser.";
@@ -975,8 +937,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Espadachim]";
 		mes "Em que posso ajudar?";
 		next;
@@ -988,7 +949,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 			mes "Mas podem equipar quase todo tipo de arma, execto arcos e cajados.";
 			next;
 			mes "[Espadachim]";
-			mes "A principal vantagem do espadachim é seu HP muito maior que a das outras classes.";
+			mes "A principal vantagem do espadachim é seu HP muito maior que das outras classes.";
 			mes "E seu poder de ataque físico também muito superior as outras classes.";
 			next;
 			mes "[Espadachim]";
@@ -997,7 +958,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 			next;
 			mes "[Espadachim]";
 			mes "Em um grupo o espadachim assume a postura de \"Tanque\".";
-			mes "Um tanque é aquele que suporta ataques dos oponetes para proteger as outros mais fracos.";
+			mes "Um tanque é aquele que suporta ataques dos oponetes para proteger os outros mais fracos.";
 			next;
 			mes "[Espadachim]";
 			mes "O espadachim quando atinge o Level 50 de classe ele pode ser tornar:";
@@ -1059,12 +1020,10 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 				mes "Estarei esperando seu regreço.";
 				setquest (7123);
 				close;
-			}
-			else if (questprogress(7123) == 2) {
+			} else if (questprogress(7123) == 2) {
 				mes "Eu não tenho mais missões para você.";
 				close;
-			}
-			else {
+			} else {
 				if (questprogress(7123,HUNTING) == 2) {
 					mes "Muito bem!";
 					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo":"uma ótima")+" espadachim!";
@@ -1075,8 +1034,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 					getitem (Novice_Potion,200);
 					getexp (5000,100);
 					close;
-				}
-				else {
+				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
 					close;
 				}
@@ -1090,8 +1048,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 				mes "[Espadachim]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar espadachim.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar espadachim.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1127,8 +1084,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Mago]";
 		mes "Em que posso ajudar?";
 		next;
@@ -1136,7 +1092,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 			case 1:
 			mes "[Mago]";
 			mes "Um mago como já deve perceber, é aquele que se utiliza de magia.";
-			mes "Tanto para ataque e defesa.";
+			mes "Tanto para ataque quanto para defesa.";
 			next;
 			mes "[Mago]";
 			mes "A principal vantagem do Mago é seu SP muito maior que a das outras classes.";
@@ -1178,11 +1134,11 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					next;
 					mes "[Mago]";
 					mes "Sábios não possuem grande poder de ataque mágico.";
-					mes "E seus poucos ataques mágicos vem dos que eles aprenderam quando ainda eram magos.";
+					mes "E seus poucos ataques mágicos, vem dos que eles aprenderam quando ainda eram magos.";
 					next;
 					mes "[Mago]";
 					mes "As suas principais habilidades são voltadas para a defesa.";
-					mes "Sendo praticalmente impossível atingir um sábio com ataques físicos ou diretos.";
+					mes "Sendo muito difícil atingir um sábio com ataques físicos ou mágicos.";
 					next; break;
 					case 3:
 					mes "[Mago]";
@@ -1209,12 +1165,10 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 				mes "Estarei esperando seu regreço.";
 				setquest (7124);
 				close;
-			}
-			else if (questprogress(7124) == 2) {
+			} else if (questprogress(7124) == 2) {
 				mes "Eu não tenho mais missões para você.";
 				close;
-			}
-			else {
+			} else {
 				if (questprogress(7124,HUNTING) == 2) {
 					mes "Muito bem!";
 					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Mago":"uma ótima Maga")+"!";
@@ -1225,8 +1179,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					getitem (N_Butterfly_Wing,60);
 					getexp (5000,100);
 					close;
-				}
-				else {
+				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
 					close;
 				}
@@ -1240,8 +1193,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 				mes "[Mago]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar Mago.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Mago.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1277,8 +1229,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Mercador]";
 		mes "Em que posso ajudar?";
 		next;
@@ -1324,7 +1275,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					mes "São capazes de produzir uma infinidade de armas diferentes.";
 					next;
 					mes "[Mercador]";
-					mes "Seu ataque descomunal pois junta uma alta velocidade de ataque com muito poder de ataque.";
+					mes "Seu ataque é descomunal, pois junta uma alta velocidade de ataque com muito poder de ataque.";
 					mes "Porém apesar de luterem muito bem corpo a corpo não são resistentes.";
 					next; break;
 					case 3:
@@ -1353,12 +1304,10 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 				mes "Estarei esperando seu regreço.";
 				setquest (7126);
 				close;
-			}
-			else if (questprogress(7126) == 2) {
+			} else if (questprogress(7126) == 2) {
 				mes "Eu não tenho mais missões para você.";
 				close;
-			}
-			else {
+			} else {
 				if (Zeny >= 300) {
 					mes "Muito bem!";
 					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Mercador":"uma ótima Mercadora")+"!";
@@ -1369,8 +1318,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					getitem (Novice_Potion,500);
 					getexp (5000,100);
 					close;
-				}
-				else {
+				} else {
 					mes "Ainda estou esperando você acumular os 300 Zenys.";
 					close;
 				}
@@ -1384,8 +1332,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 				mes "[Mercador]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar Mercador.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Mercador.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1421,8 +1368,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Gaturno]";
 		mes "Em que posso ajudar?";
 		next;
@@ -1433,7 +1379,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 			mes "Apesar que somos ótimos nisso, podemos roubar zenys e itens de monstros com facilidade.";
 			next;
 			mes "[Gaturno]";
-			mes "A principal vantagem do Gaturno é sua velocidade de ataque e esquiva muito.";
+			mes "A principal vantagem do Gaturno é sua velocidade de ataque e esquiva muito elevada.";
 			mes "Cujo as outras classes nem chegam perto.";
 			mes "Tornando o gaturno muito habilidoso no combate corpo a corpo.";
 			next;
@@ -1499,13 +1445,11 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 				mes "Estarei esperando seu regreço.";
 				setquest (7127);
 				close;
-			}
-			else if (questprogress(7127) == 2) {
+			} else if (questprogress(7127) == 2) {
 				mes "[Gaturno]";
 				mes "Eu não tenho mais missões para você.";
 				close;
-			}
-			else {
+			} else {
 				if (questprogress(7127,HUNTING) == 2) {
 					mes "Muito bem!";
 					mes "Sabia que você seria "+(Sex == SEX_MALE ? "um ótimo Gaturno":"uma ótima Gaturna")+"!";
@@ -1516,8 +1460,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 					getitem (N_Fly_Wing,100);
 					getexp (5000,100);
 					close;
-				}
-				else {
+				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
 					close;
 				}
@@ -1531,8 +1474,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 				mes "[Gaturno]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar Gaturno.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Gaturno.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1568,8 +1510,7 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Arqueiro]";
 		mes "Em que posso ajudar?";
 		next;
@@ -1597,7 +1538,7 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 					case 1:
 					mes "[Arqueiro]";
 					mes "Caçadores como o próprio nome diz são mestre na caça, devido alto grau de habilidade com Arco e Flecha.";
-					mes "Ninigualavel quando o assunto for derrotar enimigos.";
+					mes "Ninigualável quando o assunto for derrotar enimigos.";
 					mes "Geralmente quando o caçador ataca sua vítima ele o elimina em poucos segundos, com ataques avassaladores a longa distância.";
 					next;
 					mes "[Arqueiro]";
@@ -1606,19 +1547,18 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 					next; break;
 					case 2:
 					mes "[Arqueiro]";
-					if (.@jobsex$ == "Bardo") {
+					if (Sex == SEX_MALE) {
 						mes "Bardos não bons em combate.";
-						mes "No que eles são bons são em tocar canções";
+						mes "No que eles são bons são em tocar canções...";
 						next;
 						mes "[Arqueiro]";
 						mes "Mas não se engane, que são simples músicas.";
 						mes "Essas mesmas canções podem almentar os poderes dele mesmo e de aliados.";
-						mes "Ao mesmo tempo de pode resuzir drasticamente as forças dos enimigos.";
+						mes "Ao mesmo tempo de pode reduzir drasticamente as forças dos enimigos.";
 						next;
 						mes "[Arqueiro]";
 						mes "Principalmente se a canção for tocada em \"Dueto com as Odaliscas\"!";
-					}
-					else {
+					} else {
 						mes "Odaliscas não boas em combate.";
 						mes "No que eles são bons são em dançar";
 						next;
@@ -1655,8 +1595,7 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 				mes "[Arqueiro]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar Arqueiro.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Arqueiro.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1692,8 +1631,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Noviço]";
 		mes "Em que posso ajudar?";
 		next;
@@ -1705,7 +1643,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 			next;
 			mes "[Noviço]";
 			mes "Um Noviço sempre é bem vindo em um grupo.";
-			mes "Pois eles podem curar e ampliar tanto ataque físico, mágico ou defesa de seus aliados.";
+			mes "Pois eles podem curar e ampliar o ataque físico, mágico ou defesa de seus aliados.";
 			next;
 			mes "[Noviço]";
 			mes "O Noviço quando atinge o Level 50 de classe ele pode ser tornar:";
@@ -1722,7 +1660,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 					mes "É muito resistente, dificilmente será derrotado por um enimigo.";
 					next;
 					mes "[Noviço]";
-					mes "Mas continuam obsoletos no ataque, execto se o enimigo for dos tipos sombrios.";
+					mes "Mas continuam obsoletos no ataque, execto se o enimigo for do tipo sombrio.";
 					mes "Pois ele possui muitas habilidades para enfrentar-los.";
 					next; break;
 					case 2:
@@ -1760,8 +1698,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 				mes "[Noviço]";
 				mes "Só aí então venha falar comigo, caso ainda queira ser tornar Noviço.";
 				close;
-			}
-			else {
+			} else {
 				mes "Então teremos "+(Sex == SEX_MALE ? "um candidato":"uma candidata")+" a ser tornar Noviço.";
 				mes "Nada mau, mas é realmente isso que deseja?";
 				mes "Se sair não vai mais poder voltar a esse lugar.";
@@ -1797,8 +1734,7 @@ new_1-3,112,19,1	script	Bruce#new	1_M_LIBRARYMASTER,{
 		mes "Fale com o ^0000ffInstrutor Brade^000000.";
 		mes "Ele pode lhe instruir melhor sobre isso.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Bruce]";
 		mes "Além das Classes dos representantes daqui existem outras.";
 		mes "As quais são adicionais.";
