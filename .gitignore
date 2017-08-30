@@ -9,32 +9,6 @@ Thumbs.db
 
 # /
 /*.exe
-/*.ilk
-/*.log
-/*.ncb
-/*.opensdf
-/*.opt
-/*.pdb
-/*.pid
-/*.sdf
-/*.stackdump
-/*.suo
-/*.exp
-/*.lib
-/*.v11
-/*.v12
-/autom4te.cache/
-/start-log.txt
-/char-server
-/config.log
-/config.status
-/core
-/ipch
-/login-server
-/Makefile
-/Makefile.cache
-/map-server
-/mapcache
 
 # libconfig
 /Source/3rdparty/libconfig/*.o

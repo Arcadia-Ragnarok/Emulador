@@ -44,8 +44,8 @@ desenvolvimento é mostrado abertamente.
 * Remover todos módulos pré renovação. (Completado)
 
 * Adesão dos scripts. (Em andamento)
+* Sincronizar 100% source, databases, scripts e client. (Em andamento)
 
-* Sincronizar 100% source, databases, scripts e client. (A fazer)
 * Remover arquivo obsoletos dos databases. (A fazer)
 * Remover todos pacotes módulos não usados. (A fazer)
 * Limpesa do código fonte. (A fazer)
