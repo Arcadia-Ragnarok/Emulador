@@ -8,8 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos Catelos e seus Feudos Woe 2.0                  |
 \*-----------------------------------------------------------------*/
 
@@ -17,7 +15,7 @@
 // - [ Feudos ] -
 // ------------------------------------------------------------------
 
-sch_gld,354,89,0	warp	schg002	1,1,yuno,16,126
+sch_gld,354,89,0	warp	schg_yuno	1,1,yuno,16,126
 sch_gld,293,90,0	warp	schg102	1,1,schg_cas01,119,8
 sch_gld,288,258,0	warp	schg202	1,1,schg_cas02,339,78
 sch_gld,97,183,0	warp	schg302	1,1,schg_cas03,337,330
@@ -25,7 +23,7 @@ sch_gld,137,98,0	warp	schg402	1,1,schg_cas04,119,8
 sch_gld,65,315,0	warp	schg502	1,1,schg_cas05,119,8
 
 // ------------------------------------------------------------------
-aru_gld,195,363,0	warp	arug002	1,1,ve_fild02,191,24
+aru_gld,195,363,0	warp	arug_vefild	1,1,ve_fild02,191,24
 aru_gld,155,274,0	warp	arug102	1,1,arug_cas01,275,93
 aru_gld,78,47,0	warp	arug202	1,1,arug_cas02,139,31
 aru_gld,68,150,0	warp	arug302	1,1,arug_cas03,141,45

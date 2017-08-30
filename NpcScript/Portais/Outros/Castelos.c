@@ -8,8 +8,6 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nos Catelos, Calabouços e seus Feudos Woe 1.0      |
 \*-----------------------------------------------------------------*/
 
@@ -118,12 +116,12 @@ aldeg_cas04,17,196,0	warp	aldeg-4-17_aldeg-4-15	1,1,aldeg_cas04,132,228
 
 aldeg_cas04,132,231,0	script	aldeg-4-15_aldeg-4-	WARPNPC,1,1,{
 	OnTouch:
-	switch (rand(1,5)) {
-		case 1:	warp strnpcinfo(NPC_MAP),152,210; end;
-		case 2:	warp strnpcinfo(NPC_MAP),111,210; end;
-		case 3:	warp strnpcinfo(NPC_MAP),129,212; end;
-		case 4:	warp strnpcinfo(NPC_MAP),129,212; end;
-		case 5:	warp strnpcinfo(NPC_MAP),14,196; end;
+	switch (rand(5)) {
+		case 1: warp (strnpcinfo(NPC_MAP),152,210); end;
+		case 2: warp (strnpcinfo(NPC_MAP),111,210); end;
+		case 3: warp (strnpcinfo(NPC_MAP),129,212); end;
+		case 4: warp (strnpcinfo(NPC_MAP),129,212); end;
+		default: warp (strnpcinfo(NPC_MAP),14,196); end;
 	}
 }
 

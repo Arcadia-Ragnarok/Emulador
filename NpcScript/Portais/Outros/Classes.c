@@ -8,39 +8,37 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais nas Areas de Mudança de Classe                     |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
 // - [ Monje ] -
 // ------------------------------------------------------------------
-monk_in,128,46,0	warp	monk03	1,3,monk_in,161,38
-monk_in,128,84,0	warp	monk04	1,3,monk_in,161,90
-monk_in,159,38,0	warp	monk03-1	1,3,monk_in,126,46
-monk_in,159,90,0	warp	monk04-1	1,3,monk_in,126,84
-monk_in,40,38,0	warp	monk05	1,3,monk_in,71,46
-monk_in,40,92,0	warp	monk06	1,3,monk_in,71,84
-monk_in,69,46,0	warp	monk05-1	1,3,monk_in,38,38
-monk_in,69,84,0	warp	monk06-1	1,3,monk_in,38,92
-monk_in,98,186,0	warp	monk02-1	3,2,prt_monk,245,139
-monk_in,98,27,0	warp	monk01-1	5,2,prt_monk,245,104
-monk_in,99,102,0	warp	monk07	5,1,monk_in,99,143
-monk_in,99,141,0	warp	monk07-1	3,1,monk_in,99,100
+monk_in,98,186,0	warp	monkinwarp_1	3,2,prt_monk,245,139
+monk_in,98,27,0	warp	monkinwarp_2	5,2,prt_monk,245,104
+monk_in,69,84,0	warp	monkinwarp_3	1,3,monk_in,38,92
+monk_in,40,92,0	warp	monkinwarp_4	1,3,monk_in,71,84
+monk_in,69,46,0	warp	monkinwarp_5	1,3,monk_in,38,38
+monk_in,40,38,0	warp	monkinwarp_6	1,3,monk_in,71,46
+monk_in,128,46,0	warp	monkinwarp_7	1,3,monk_in,161,38
+monk_in,159,38,0	warp	monkinwarp_8	1,3,monk_in,126,46
+monk_in,128,84,0	warp	monkinwarp_9	1,3,monk_in,161,90
+monk_in,159,90,0	warp	monkinwarp_10	1,3,monk_in,126,84
+monk_in,99,141,0	warp	monkinwarp_11	3,1,monk_in,99,100
+monk_in,99,102,0	warp	monkinwarp_12	5,1,monk_in,99,143
 
 // ------------------------------------------------------------------
-prt_monk,22,248,0	warp	monk001	2,2,prt_fild03,368,256
-prt_monk,245,106,0	warp	monk01	1,1,monk_in,98,30
-prt_monk,245,137,0	warp	monk02	1,1,monk_in,98,183
-prt_monk,192,172,0	warp	monk15	1,1,monk_test,329,50
+prt_monk,22,248,0	warp	prtmonkwarp_1	2,2,prt_fild03,368,256
+prt_monk,245,106,0	warp	prtmonkwarp_2	1,1,monk_in,98,30
+prt_monk,245,137,0	warp	prtmonkwarp_3	1,1,monk_in,98,183
+prt_monk,192,172,0	warp	prtmonkwarp_4	1,1,monk_test,329,50
 
 // ------------------------------------------------------------------
-monk_test,329,47,0	warp	monk16	1,1,prt_monk,193,166
-monk_test,329,76,0	warp	monk17	1,1,monk_test,259,118
-monk_test,259,115,0	warp	monk18	1,1,monk_test,329,71
-monk_test,272,125,0	warp	monk19	1,1,monk_test,301,127
-monk_test,298,127,0	warp	monk20	1,1,monk_test,268,125
+monk_test,270,123,0	warp	monktestwarp_1	1,1,monk_test,301,127
+monk_test,329,76,0	warp	monktestwarp_2	1,1,monk_test,259,118
+monk_test,329,47,0	warp	monktestwarp_3	1,1,prt_monk,193,166
+monk_test,259,115,0	warp	monktestwarp_4	1,1,monk_test,329,71
+monk_test,298,127,0	warp	monktestwarp_5	1,1,monk_test,268,125
 
 // ------------------------------------------------------------------
 // - [ Gaturno ] -
@@ -60,39 +58,39 @@ in_hunter,100,15,0	warp	jhun01	0,0,pay_fild10,143,250
 // ------------------------------------------------------------------
 // - [ Alquimista ] -
 // ------------------------------------------------------------------
-alde_alche,19,171,0	warp	alche#1-1	1,1,aldebaran,68,56
-alde_alche,42,171,0	warp	alche#1-2	1,1,aldebaran,56,68
-alde_alche,41,186,0	warp	alche#1F_2F	1,1,alde_alche,113,178
-alde_alche,114,183,0	warp	alche#2F_1F	1,1,alde_alche,42,182
-alde_alche,13,184,0	warp	alche#1F_B1	1,1,alde_alche,88,113
-alde_alche,88,117,0	warp	alche#B1_1F	1,1,alde_alche,13,181
-alde_alche,46,104,0	warp	alche#B1_r1	1,1,alde_alche,157,17
-alde_alche,160,17,0	warp	alche#r1_b1	1,1,alde_alche,50,103
-alde_alche,46,77,0	warp	alche#B1_r2	1,1,alde_alche,88,17
-alde_alche,93,17,0	warp	alche#r2_b1	1,1,alde_alche,50,77
-alde_alche,89,62,0	warp	alche#B1_r3	1,1,alde_alche,17,23
-alde_alche,17,29,0	warp	alche#r3_b1	1,1,alde_alche,89,67
-alde_alche,133,77,0	warp	alche#B1_r4	1,1,alde_alche,162,107
-alde_alche,158,107,0	warp	alche#r4_b1	1,1,alde_alche,129,77
-alde_alche,133,103,0	warp	alche#B1_r5	1,1,alde_alche,164,164
-alde_alche,158,163,0	warp	alche#r5_b1	1,1,alde_alche,129,103
+alde_alche,19,171,0	warp	alche1_1	1,1,aldebaran,68,56
+alde_alche,42,171,0	warp	alche1_2	1,1,aldebaran,56,68
+alde_alche,41,186,0	warp	alche_1F2F	1,1,alde_alche,113,178
+alde_alche,114,183,0	warp	alche_2F1F	1,1,alde_alche,42,182
+alde_alche,13,184,0	warp	alche_1FB1	1,1,alde_alche,88,113
+alde_alche,88,117,0	warp	alche_B11F	1,1,alde_alche,13,181
+alde_alche,46,104,0	warp	alche_B1r1	1,1,alde_alche,157,17
+alde_alche,160,17,0	warp	alche_r1b1	1,1,alde_alche,50,103
+alde_alche,46,77,0	warp	alche_B1r2	1,1,alde_alche,88,17
+alde_alche,93,17,0	warp	alche_r2b1	1,1,alde_alche,50,77
+alde_alche,89,62,0	warp	alche_B1r3	1,1,alde_alche,17,23
+alde_alche,17,29,0	warp	alche_r3b1	1,1,alde_alche,89,67
+alde_alche,133,77,0	warp	alche_B1r4	1,1,alde_alche,162,107
+alde_alche,158,107,0	warp	alche_r4b1	1,1,alde_alche,129,77
+alde_alche,133,103,0	warp	alche_B1r5	1,1,alde_alche,164,164
+alde_alche,158,163,0	warp	alche_r5b1	1,1,alde_alche,129,103
 
 // ------------------------------------------------------------------
 // - [ Arruaceiro ] -
 // ------------------------------------------------------------------
-in_rogue,375,46,0	warp	rogue00-fild07	1,1,cmd_fild07,196,117
-in_rogue,375,34,0	warp	rogue01-02	1,1,in_rogue,380,125
-in_rogue,375,125,0	warp	rogue02-01	1,1,in_rogue,379,33
-in_rogue,247,122,0	warp	rogue03-fild07	1,1,cmd_fild07,349,285
-in_rogue,244,21,0	warp	rogue04-fild09	1,1,cmd_fild09,106,191
-in_rogue,172,34,0	warp	rogue05-fild09	1,1,cmd_fild09,341,143
-in_rogue,161,103,0	warp	rogue06-fild04	1,1,cmd_fild04,302,177
 in_rogue,8,9,0	warp	stair_to_ro	1,1,in_rogue,389,389
+in_rogue,244,21,0	warp	rogue_out	1,1,cmd_fild09,106,191
+in_rogue,172,34,0	warp	rogue_out2	1,1,cmd_fild09,341,143
+in_rogue,161,103,0	warp	rogue_out3	1,1,cmd_fild04,302,177
+in_rogue,375,33,0	warp	warp_rogue1	1,1,in_rogue,380,125
+in_rogue,375,125,0	warp	warp_rogue2	1,1,in_rogue,379,33
+in_rogue,375,46,0	warp	warp_rogue3	1,1,cmd_fild07,196,117
+in_rogue,247,122,0	warp	rogue_fild07	1,1,cmd_fild07,349,285
 
 // ------------------------------------------------------------------
 // - [ Odalisca ] -
 // ------------------------------------------------------------------
-job_duncer,69,43,0	warp	duncer1	1,1,comodo,185,156
+job_duncer,69,43,0	warp	warp_dance	1,1,comodo,185,156
 
 // ------------------------------------------------------------------
 // - [ Justiceiro ] -

@@ -8,9 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: eAthena/ rAthena/ Hercules (Emuladores)                 |
-| - Versão: Spell Master                                            |
 | - Nota: Potais na Ilha de Alberta                                 |
 \*-----------------------------------------------------------------*/
 
-alb2trea,88,111,0	warp	alb002	1,1,treasure01,69,24
+alb2trea,88,111,0	warp	alb2treawarp	1,1,treasure01,69,24
