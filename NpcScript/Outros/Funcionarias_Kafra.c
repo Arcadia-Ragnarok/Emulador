@@ -68,7 +68,7 @@
 		if (merchantq == 3) {
 			mes "[Funcionária Kafra]";
 			mes "Hunn..?!";
-			mes "Você é a pessoa que foi enviada para me entregar e encomenda que estava esperando.";
+			mes "Você é a pessoa que foi enviada para me entregar a encomenda que estava esperando.";
 			if (merchantq_3 == 3318702 || merchantq_3 == 3543625) {
 				if (countitem(Merchant_Box_1) || countitem(Merchant_Box_2)) {
 					if (countitem(Merchant_Box_1)) {
@@ -201,39 +201,23 @@
 			mes "Me desculpe mas você deve possuir pelo menos 40 Zenys.";
 			mes "Para pagar a taxa de uso do Armazém.";
 			close2; cutin ("",255); end;
-		}
-		else if (#kafra_code) {
-			mes "[Funcionária Kafra]";
-			mes "Digite a senha do seu armazém";
-			input (.@storagecode);
-			next;
-			if (.@storagecode != #kafra_code) {
+		} else {
+			if (#kafra_code) {
 				mes "[Funcionária Kafra]";
-				mes "Você não digitou a senha corretamente.";
-				close2; cutin ("",255); end;
-			}
-			else {
-				mes "[Funcionária Kafra]";
-				mes "A Corporação Kafra agradece por você utilizar nossos serviços.";
-				if (countitem(Cargo_Free_Ticket)) {
-					delitem (Cargo_Free_Ticket,1);
+				mes "Digite a senha do seu armazém";
+				input (.@storagecode);
+				next;
+				if (.@storagecode != #kafra_code) {
+					mes "[Funcionária Kafra]";
+					mes "Você não digitou a senha corretamente.";
+					close2; cutin ("",255); end;
 				}
-				else {
-					Zeny -= 40;
-				}
-				if (RESRVPTS < 100000) { RESRVPTS += 5; }
-				close2;
-				openstorage;
-				cutin ("",255); end;
 			}
-		}
-		else {
 			mes "[Funcionária Kafra]";
 			mes "A Corporação Kafra agradece por você utilizar nossos serviços.";
 			if (countitem(Cargo_Free_Ticket)) {
 				delitem (Cargo_Free_Ticket,1);
-			}
-			else {
+			} else {
 				Zeny -= 40;
 			}
 			if (RESRVPTS < 100000) { RESRVPTS += 5; }
@@ -362,14 +346,12 @@
 			mes "Me desculpe mas você deve possuir pelo menos "+.@price+" Zenys.";
 			mes "Para pagar a taxa de uso do Teletransporte.";
 			close2; cutin ("",255); end;
-		}
-		else {
+		} else {
 			mes "[Funcionária Kafra]";
 			mes "A Corporação Kafra agradece por você utilizar nossos serviços.";
 			if (countitem(Warp_Free_Ticket)) {
 				delitem (Warp_Free_Ticket,1);
-			}
-			else {
+			} else {
 				Zeny -= .@price;
 			}
 			if (RESRVPTS < 100000) { RESRVPTS += 5; }
@@ -393,8 +375,7 @@
 			mes "Vejo que você já possui um carrinho.";
 			mes "Assim não pode ter outro, o serviço somente está disponível em um carrinho para cada cliente.";
 			close2; cutin ("",255); end;
-		}
-		else {
+		} else {
 			if ((Zeny < 1200) && (!countitem(Cart_Free_Ticket))) {
 				mes "[Funcionária Kafra]";
 				mes "Me desculpe mas você deve possuir pelo menos 1.200 Zenys.";
@@ -404,8 +385,7 @@
 			else {
 				if (countitem(Cart_Free_Ticket)) {
 					delitem (Cart_Free_Ticket,1);
-				}
-				else {
+				} else {
 					Zeny -= 1200;
 				}
 				mes "[Funcionária Kafra]";
@@ -425,8 +405,7 @@
 			mes "[Funcionária Kafra]";
 			if (!RESRVPTS) {
 				mes "Atualmente você não possui nenhum ponto de reserva.";
-			}
-			else {
+			} else {
 				mes "Seu saldo de pontos de reserva é de: \"^0000bb"+RESRVPTS+"^000000\".";
 			}
 			mes "Os pontos de reserva podem ser usados para participar da loteria da Corporação Kafra.";
@@ -448,43 +427,41 @@
 						mes "Me desculpe mas você deve possuir pelo menos 5.000 Zenys.";
 						mes "Para poder modificar sua senha do armazém.";
 						close2; cutin ("",255); end;
-					}
-					mes "Por favor digite sua senha atual para verificação.";
-					input (.@storagecode);
-					next;
-					if (.@storagecode != #kafra_code) {
-						mes "[Funcionária Kafra]";
-						mes "Você não digitou a senha corretamente.";
-						close2; cutin ("",255); end;
-					}
-					else {
-						mes "[Funcionária Kafra]";
-						mes "Certo agora podemos prosseguir.";
-						mes "Por favor digite sua nova senha.";
-						mes "Sua senha deve ser maior que ^0000bb1000^000000 e menor que ^7777779999^000000.";
-						input (.@newstoragecode);
+					} else {
+						mes "Por favor digite sua senha atual para verificação.";
+						input (.@storagecode);
 						next;
-						if (.@newstoragecode == #kafra_code) {
+						if (.@storagecode != #kafra_code) {
 							mes "[Funcionária Kafra]";
-							mes "Você deve digitar uma senha diferente.";
+							mes "Você não digitou a senha corretamente.";
 							close2; cutin ("",255); end;
-						}
-						else if ((.@newstoragecode < 1000) || (.@newstoragecode > 9999)) {
+						} else {
 							mes "[Funcionária Kafra]";
-							mes "A senha digitada é inválida!";
-							close2; cutin ("",255); end;
-						}
-						else {
-							mes "[Funcionária Kafra]";
-							mes "Sua senha foi modificada.";
-							mes "Use-a na próxima vez que for usar o armazém.";
-							Zeny -= 5000;
-							#kafra_code = .@newstoragecode;
+							mes "Certo agora podemos prosseguir.";
+							mes "Por favor digite sua nova senha.";
+							mes "Sua senha deve ser maior que ^0000bb1000^000000 e menor que ^7777779999^000000.";
+							input (.@newstoragecode);
 							next;
-							mes "[Funcionária Kafra]";
-							mes "A Corporação Kafra agradece por você utilizar nossos serviços.";
-							if (RESRVPTS < 100000) { RESRVPTS += 5; }
-							close2; cutin ("",255); end;
+							if (.@newstoragecode == #kafra_code) {
+								mes "[Funcionária Kafra]";
+								mes "Você deve digitar uma senha diferente.";
+								close2; cutin ("",255); end;
+							} else if ((.@newstoragecode < 1000) || (.@newstoragecode > 9999)) {
+								mes "[Funcionária Kafra]";
+								mes "A senha digitada é inválida!";
+								close2; cutin ("",255); end;
+							} else {
+								mes "[Funcionária Kafra]";
+								mes "Sua senha foi modificada.";
+								mes "Use-a na próxima vez que for usar o armazém.";
+								Zeny -= 5000;
+								#kafra_code = .@newstoragecode;
+								next;
+								mes "[Funcionária Kafra]";
+								mes "A Corporação Kafra agradece por você utilizar nossos serviços.";
+								if (RESRVPTS < 100000) { RESRVPTS += 5; }
+								close2; cutin ("",255); end;
+							}
 						}
 					}
 					case 2: // Remover a senha
@@ -501,8 +478,7 @@
 						mes "[Funcionária Kafra]";
 						mes "Você não digitou a senha corretamente.";
 						close2; cutin ("",255); end;
-					}
-					else {
+					} else {
 						mes "[Funcionária Kafra]";
 						mes "Você quer realmenter remover sua senha?!";
 						mes "Não se preocupe, a qualquer momento poderá solicitar outra.";
@@ -523,14 +499,13 @@
 						close2; cutin ("",255); end;
 					}
 				}
-			}
-			else {
+			} else {
 				mes "No momento seu armazém não possui senha.";
 				mes "Deseja adicionar a senha?";
 				next;
 				switch(select("Adicionar Senha > 1.000 Zenys","Cancelar")) {
 					case 1:
-					while (1) {
+					while (true) {
 						mes "[Funcionária Kafra]";
 						mes "Por favor digite a senha para seu armazém.";
 						mes "Ela deve ser maior que ^0000bb1000^000000 e menor que ^7777779999^000000.";
@@ -658,7 +633,6 @@ ayothaya,212,169,5	duplicate(KafraCorp)	Funcionária Kafra#kafra_02::ayokaf	4_F_K
 umbala,87,160,4	duplicate(KafraCorp)	Funcionária Kafra#kafra_07::umbkaf	4_F_KAFRA7
 
 // ------------------------------------------------------------------
-// NOTA: IMAGEM kafra_nif.bmp é custom
 niflheim,202,180,3	duplicate(KafraCorp)	Funcionária Kafra#kafra_nif::nifkaf	4_F_NFDEADKAFRA
 
 // ------------------------------------------------------------------
