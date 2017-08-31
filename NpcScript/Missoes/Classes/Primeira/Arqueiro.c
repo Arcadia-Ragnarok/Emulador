@@ -180,16 +180,16 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			mes "É realmente isso que deseja?";
 			next;
 			if (select("Sim","Não") == 1) {
-				callfunc("ClearJobVar");
-				completequest(1004);
-				jobchange(Job_Archer);
-				getitem(N_Composite_Bow,1);
-				getitem(Arrow,.@wooden_quant);
+				getitem (N_Composite_Bow,1);
+				getitem (Arrow,.@wooden_quant);
 				if (.@wooden_quant >= 40) {
-					getitem(Arrow_Container,1);
-					getitem(Silver_Arrow_Container,1);
-					getitem(Fire_Arrow_Container,1);
+					getitem (Arrow_Container,1);
+					getitem (Silver_Arrow_Container,1);
+					getitem (Fire_Arrow_Container,1);
 				}
+				jobchange (Job_Archer);
+				completequest (1004);
+				callfunc ("ClearJobQuest");
 				mes "[Guia dos Arqueiros]";
 				mes "Parabéns!";
 				mes "De agora em diante você é "+(Sex == SEX_MALE ? "um Arqueiro":"uma Arqueira");
@@ -201,8 +201,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			}
 			mes "[Guia dos Arqueiros]";
 			mes "Não lhe culpo, grandes decisões devem ser bem pensadas.";
-			callfunc("ClearJobVar");
-			erasequest (1004);
+			callfunc ("ClearJobQuest");
 			close;
 		}
 	}

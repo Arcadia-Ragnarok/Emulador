@@ -149,7 +149,7 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				close;
 			}
 			jobchange (Job_Mage);
-			callfunc ("ClearJobVar");
+			callfunc ("ClearJobQuest");
 			getitem (N_Rod,1);
 			mes "[Líder da Guilda]";
 			mes "Agora você é "+(Sex == SEX_MALE ? "um Mago":"uma Maga")+", estude mais e mais o uso da magia.";

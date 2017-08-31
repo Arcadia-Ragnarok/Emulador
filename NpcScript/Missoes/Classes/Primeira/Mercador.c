@@ -248,8 +248,7 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 			mes "[Chefe Mansur]";
 			mes "Que de agora em diante possa fazer fortuna como "+(Sex == SEX_MALE ? "um Mercador":"uma Mercadora")+".";
 			jobchange (Job_Merchant);
-			callfunc ("ClearJobVar");
-			getitem (N_Battle_Axe,1);
+			callfunc ("ClearJobQuest");
 			close;
 		}
 	}

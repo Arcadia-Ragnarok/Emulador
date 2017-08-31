@@ -11,7 +11,7 @@
 | - Desenvolvido por: Spell Master 08/04/2017                       |
 | - Nota: Campo de Treinamento para Aprendizes.                     |
 | - Observação:                                                     |
-|   * Script desenvolvido com base no script  oficial do            |
+|   * Script desenvolvido com base no script oficial do             |
 |     bRO (Brasil Ragnarok Online)                                  |
 |   * Provém de adaptações para o servidor.                         |
 \*-----------------------------------------------------------------*/

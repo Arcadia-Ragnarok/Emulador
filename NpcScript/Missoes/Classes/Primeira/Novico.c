@@ -132,9 +132,9 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				mes "Neste momento o recebo nos caminhos do Senhor e o torno "+(Sex == SEX_MALE ? "um Noviço":"uma Noviça")+".";
 				mes "Do mesmo modo que você não hesitou em sua penitência.";
 				mes "Espero que você nunca hesite frente ás tentações do pecado.";
-				jobchange (Job_Acolyte);
 				getitem (N_Mace,1);
-				callfunc ("ClearJobVar");
+				jobchange (Job_Acolyte);
+				callfunc ("ClearJobQuest");
 				next;
 				mes "[Bispo]";
 				mes "Agora vá, e leve a esperança ao mundo.";

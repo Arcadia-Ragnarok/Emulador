@@ -100,18 +100,19 @@ que_ng,152,167,3	script	Mestre Miller#gunslingerq	4_M_HUOLDARMY,{
 			next;
 			mes "[Mestre Miller]";
 			mes "Você pode ter a chance de conhecê-la um dia desses.";
-			mes "De qualquer forma, agora temos que controlar a venda de armas e projéteis para mantê-los longe de pessoas más ou irresponsáveis.";
-			next;
-			mes "[Mestre Miller]";
-			mes "De qualquer forma, para mim é sempre um prazer conversar com outro Justiceiro, então mantenha contato.";
-			mes "Que o poder da Terra te proteja em todas as suas aventuras.";
-			jobchange (Job_Gunslinger);
-			callfunc ("ClearJobVar");
-			completequest (6024);
+			mes "Agora temos que controlar a venda de armas e projéteis para mantê-los longe de pessoas más ou irresponsáveis.";
 			switch (rand(2)) {
 				case 0: getitem (Six_Shooter,1); close;
 				case 1: getitem (Branch,1); close;
 			}
+			completequest (6024);
+			jobchange (Job_Gunslinger);
+			callfunc ("ClearJobQuest");
+			next;
+			mes "[Mestre Miller]";
+			mes "De qualquer forma, para mim é sempre um prazer conversar com outro Justiceiro, então mantenha contato.";
+			mes "Que o poder da Terra te proteja em todas as suas aventuras.";
+			close;
 		}
 	} else {
 		if (Class == Job_Gunslinger) {

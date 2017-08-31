@@ -106,9 +106,10 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Tem certesa que é isso mesmo que deseja?";
 			next;
 			if (select("Sim quero ser Espadachim","Melhor eu pensar mais") == 1) {
-				callfunc ("ClearJobVar");
-				jobchange (Job_Swordman);
 				getitem (N_Falchion,1);
+				completequest (1014);
+				jobchange (Job_Swordman);
+				callfunc ("ClearJobQuest");
 				mes "[Líder dos Espadachins]";
 				mes "Pois bem, de agora em diante você é Espadachim!";
 				close;

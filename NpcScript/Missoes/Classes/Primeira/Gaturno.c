@@ -299,15 +299,14 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 				if (select("Quero ser Gaturno agora mesmo","Vou pensar mais no assunto") == 1) {
 					mes "[Brad]";
 					mes "Então de agora em diante você é membro da guilda dos gaturnos.";
-					completequest (1013);
-					jobchange (Job_Thief);
 					getitem (N_Main_Gauche,1);
-					callfunc ("ClearJobVar");
+					jobchange (Job_Thief);
+					completequest (1013);
+					callfunc ("ClearJobQuest");
 					close;
 				}
 				mes "[Brad]";
 				mes "Tudo bem, quando se decidir volte a me procurar.";
-				completequest(1013);
 				thiefq = 3;
 				close;
 			}
@@ -320,9 +319,10 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 		if (select("Sim","Não") == 1) {
 			mes "[Brad]";
 			mes "Então de agora em diante você é membro da guilda dos gaturnos.";
-			jobchange (Job_Thief);
 			getitem (N_Main_Gauche,1);
-			callfunc ("ClearJobVar");
+			jobchange (Job_Thief);
+			completequest (1013);
+			callfunc ("ClearJobQuest");
 			close;
 		}
 		mes "[Brad]";

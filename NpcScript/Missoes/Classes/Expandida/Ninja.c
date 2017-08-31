@@ -185,12 +185,12 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "[Cougar]";
 			mes "A partir de hoje, você é um membro do esplêndido Grupo Ninja Touga.";
 			mes "Seja tão ágil como o vento, e tão silencioso como a o cair das sombras.";
-			jobchange (Job_Ninja);
-			callfunc ("ClearJobVar");
 			delitem (Cyfar,5);
 			delitem (Phracon,1);
 			getitem (Asura,1);
 			completequest (6018);
+			jobchange (Job_Ninja);
+			callfunc ("ClearJobQuest");
 			close;
 		} else {
 			mes "[Cougar]";
