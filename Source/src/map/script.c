@@ -20720,7 +20720,7 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF(warpguild,"siii"), // [Fredzilla]
 		BUILDIN_DEF(setlook,"ii"),
 		BUILDIN_DEF(changelook,"ii"), // Simulates but don't Store it
-		BUILDIN_DEF2(__setr,"set","rv"),
+		BUILDIN_DEF2(__setr,"setvariable","rv"), // [Spell Master]
 		BUILDIN_DEF(setarray,"rv*"),
 		BUILDIN_DEF(cleararray,"rvi"),
 		BUILDIN_DEF(copyarray,"rri"),
