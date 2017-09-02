@@ -2059,8 +2059,7 @@ void socket_net_config_read(const char *filename)
 	ARR_FIND(0, VECTOR_LENGTH(sockt->allowed_ips), i, SUBNET_MATCH(0, VECTOR_INDEX(sockt->allowed_ips, i).ip, VECTOR_INDEX(sockt->allowed_ips, i).mask));
 #ifndef BUILDBOT
 	if (i != VECTOR_LENGTH(sockt->allowed_ips)) {
-		ShowWarning("Using a wildcard IP range in the allowed server IPs is NOT RECOMMENDED.\n");
-		ShowNotice("Please edit your '%s' allowed list to fit your network configuration.\n", filename);
+		ShowNotice("Nenhum sufixo de IP e DNS configurado, todas conexoes serao aceitas.\n");
 	}
 #endif  // BUILDBOT
 	libconfig->destroy(&network_config);
