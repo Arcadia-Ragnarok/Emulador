@@ -29,6 +29,7 @@ function	script	ClearJobQuest	{
 	if (merchantq) { merchantq = 0; merchantq_2 = 0; merchantq_3 = 0; if (questprogress (1010)) { erasequest (1010); } if (questprogress (1011)) { erasequest (1011); } if (questprogress (1012)) { erasequest (1012); } }
 	if (acolyteq) { acolyteq = 0; if (questprogress (1001)) { erasequest (1001); } if (questprogress (1002)) { erasequest (1002); } if (questprogress (1003)) { erasequest (1003); } }
 	if (gunslingerq) { gunslingerq = 0; if (questprogress (6020)) { erasequest (6020); } if (questprogress (6021)) { erasequest (6021); } if (questprogress (6022)) { erasequest (6022); } if (questprogress (6023)) { erasequest (6023); } if (questprogress (6024)) { erasequest (6024); } }
+	if (taekwonq) { taekwonq = 0; taekwonq_2 = 0; if (questprogress (6000)) { erasequest (6000); } if (questprogress (6001)) { erasequest (6001); } if (questprogress (6002)) { erasequest (6002); } }
 	return;
 }
 
