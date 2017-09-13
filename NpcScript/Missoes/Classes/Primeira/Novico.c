@@ -11,7 +11,7 @@
 | - Desenvolvido por: Spell Master 10/08/2017                       |
 | - Nota: Quest de Mudança de Classe para Noviço.                   |
 | - Observações: Contém trechos da quest de Mudança de Classe       |
-|                para Sacerdote (Ainda não adicionado)              |
+|                para Sacerdote.                                    |
 \*-----------------------------------------------------------------*/
 
 prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
@@ -191,6 +191,26 @@ prt_fild03,365,255,2	script	Irmão Simão#nov	4_M_ORIENT02,{
 			mes "Siga em paz.";
 			close;
 		}
+	} else if (BaseJob == Job_Acolyte) {
+		if (priestq == 2) {
+			mes "[Irmão Simão]";
+			mes "Ah, então você é o jovem Noviço que deseja se tornar "+(Sex == SEX_MALE ? "um Sacerdote":"uma Sacerdotisa")+".";
+			next;
+			mes "[Irmão Simão]";
+			mes "Eu recebi a mensagem do Bispo Paul.";
+			mes "Aqui é um lugar sagrado para a nossa igreja.";
+			next;
+			mes "[Irmão Simão]";
+			mes "Bem então, por favor dirija-se ao seu próximo destino da sua jornada.";
+			mes "E fique seguro em suas viagens.";
+			priestq = 3;
+			close;
+		} else {
+			mes "[Irmão Simão]";
+			mes "Posso te perguntar por que você voltou?";
+			mes "Por favor, continue sua prática religiosa.";
+			close;
+		}
 	} else {
 		mes "[Simão]";
 		mes "Seja você quem for, por favor cuide de si mesmo.";
@@ -231,6 +251,42 @@ moc_fild07,41,355,4	script	Irmã Matilda#acolyteq	4_F_SISTER,{
 			mes "Siga em paz.";
 			close;
 		}
+	} else if (BaseJob == Job_Acolyte) {
+		if (priestq == 2) {
+			mes "[Irmã Matilda]";
+			mes "Parece que você está treinando para se tornar "+(Sex == SEX_MALE ? "um Sacerdote":"uma Sacerdotisa")+".";
+			next;
+			mes "[Irmã Matilda]";
+			mes "Entretanto, no momento não sou a pessoa que você deve visitar.";
+			next;
+			mes "[Irmã Matilda]";
+			mes "Talvez você deva falar novamente com o Bispo Paul ou com a Irmã Cecilia.";
+			mes "Bem, que Deus esteja com você...";
+			close;
+		} else if (priestq == 3) {
+			mes "[Irmã Matilda]";
+			mes "Ah, você é";
+			mes "um aprendiz de Sacerdote...?";
+			mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+"!";
+			next;
+			mes "[Irmã Matilda]";
+			mes "Nós Sacerdotes somos obrigados a espalhar a mensagem de Deus para as pessoas na Terra.";
+			next;
+			mes "[Irmã Matilda]";
+			mes "Depois de se tornar Sacerdote, suas viagens poderão levá-lo as Pirâmides de Morroc.";
+			mes "E eu espero que você possa libertar os Mortos-vivos de lá do mal que está os arrondando.";
+			next;
+			mes "[Irmã Matilda]";
+			mes "Bem...";
+			mes "Então eu orarei a Deus para que você fique seguro em sua jornada.";
+			priestq = 4;
+			close;
+		} else {
+			mes "[Irmã Matilda]";
+			mes "Posso te perguntar por que você voltou?";
+			mes "Por favor, continue sua prática religiosa.";
+			close;
+		}
 	} else {
 		mes "[Matilda]";
 		mes "Seja você quem for, por favor cuide de si mesmo.";
@@ -268,6 +324,37 @@ prt_fild00,208,218,6	script	Irmão Bartolomeu#acolyteq	4W_M_02,{
 			mes "Vá "+(Sex == SEX_MALE ? "meu filho":"minha filha")+" retorne a Catedral de Prontera.";
 			mes "O Bispo lhe espera.";
 			mes "Siga em paz.";
+			close;
+		}
+	} else if (BaseJob == Job_Acolyte) {
+		if (priestq < 4) {
+			mes "[Irmão Bartolomeu]";
+			mes "Hum...";
+			mes "Um aprendiz de Sacerdote, em?";
+			next;
+			mes "[Irmão Bartolomeu]";
+			mes "Bem, você está falando com a pessoa errada.";
+			mes "Ainda não é o momento certo de nos encontrarmos.";
+			close;
+		} else if (priestq == 4) {
+			mes "[Irmão Bartolomeu]";
+			mes "Hum.";
+			mes "Um aprendiz de Sacerdote, em?";
+			mes "Seja bem-vind"+(Sex == SEX_MALE ? "o":"a")+".";
+			next;
+			mes "[Irmão Bartolomeu]";
+			mes "Eu não vou te dizer mais nada.";
+			mes "Apenas dedique sua vida a Deus";
+			next;
+			mes "[Irmão Bartolomeu]";
+			mes "Agora volte para a igreja.";
+			mes "Pronto, seu primeiro exame está concluído.";
+			priestq = 5;
+			close;
+		} else {
+			mes "[Irmão Bartolomeu]";
+			mes "Posso te perguntar por que você voltou?";
+			mes "Por favor, continue sua prática religiosa.";
 			close;
 		}
 	} else {
