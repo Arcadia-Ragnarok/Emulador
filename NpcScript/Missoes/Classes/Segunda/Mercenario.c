@@ -13,16 +13,6 @@
 \*-----------------------------------------------------------------*/
 
 in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
-	if (Upper == 1) {
-		mes "[Homem Furioso]";
-		mes "Hum Você ....?";
-		mes "Sinto que você é diferente do que a maioria das pessoas ...";
-		next;
-		mes "[Homem Furioso]";
-		mes "Eu nunca conheci ninguém tão intimidador como você.";
-		mes "Por alguma razão, eu não gosto de você.";
-		close;
-	}
 	if (SkillPoint) {
 		mes "[Homem Furioso]";
 		mes "Você não pode mudar o sua classe se você tiver quaisquer pontos de habilidade sobrando.";

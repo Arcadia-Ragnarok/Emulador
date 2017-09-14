@@ -773,7 +773,6 @@ job_knt,89,106,4	script	Senhor Windsor#2knightq	4_M_JOB_KNIGHT1,{
 	}
 
 	OnInit:
-	//disablenpc "Senhor Windsor#2knightq";
 	waitingroom "Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1;
 	enablewaitingroomevent;
 	end;
@@ -1307,7 +1306,7 @@ job_knt,4,1,0	script	Patience#knightq	HIDDEN_NPC,{
 	enablenpc ("Senhor Edmond#2knightq");
 	end;
 
-	OnTimer61000:
+	OnTimer120000:
 	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 }

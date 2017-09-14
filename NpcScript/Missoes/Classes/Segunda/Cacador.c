@@ -295,6 +295,7 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 	}
 }
 
+// ------------------------------------------------------------------
 hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 	if (!hunterq || hunterq == 1) {
 		if (BaseJob == Job_Archer) {
@@ -408,6 +409,7 @@ hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 	}
 }
 
+// ------------------------------------------------------------------
 payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 	if (!hunterq) {
 		mes "[Caçador]";
@@ -560,6 +562,7 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 }
 payon_in02,21,31,1	duplicate(Caçador#1_hunterq)	Caçador#2_hunterq	1_M_ORIENT01
 
+// ------------------------------------------------------------------
 job_hunte,178,32,1	script	Guia#hunterq	1_M_PAY_ELDER,{
 	if (hunterq != 5) {
 		mes "[Guia]";
@@ -601,6 +604,7 @@ job_hunte,178,32,1	script	Guia#hunterq	1_M_PAY_ELDER,{
 	}
 }
 
+// ------------------------------------------------------------------
 job_hunte,178,38,1	script	Sala de Espera#hunterq	1_F_01,{
 	end;
 
@@ -620,6 +624,7 @@ job_hunte,178,38,1	script	Sala de Espera#hunterq	1_F_01,{
 	end;
 }
 
+// ------------------------------------------------------------------
 job_hunte,1,1,1	script	hunterengine#hunterq	1_F_01,{
 	OnInit:
 	disablenpc (strnpcinfo(NPC_NAME));
@@ -777,6 +782,7 @@ job_hunte,1,1,1	script	hunterengine#hunterq	1_F_01,{
 
 }
 
+// ------------------------------------------------------------------
 job_hunte,93,101,1	script	Interruptor#hunterq	1_SHADOW_NPC,1,1,{
 	OnTouch:
 	mes "^3355FFExistem 2 botões no interruptor.^000000";
@@ -803,6 +809,7 @@ job_hunte,93,101,1	script	Interruptor#hunterq	1_SHADOW_NPC,1,1,{
 	end;
 }
 
+// ------------------------------------------------------------------
 job_hunte,89,139,0	script	exithnt#hunterqtest	WARPNPC,2,2,{
 	OnInit:
 	disablenpc ("exithnt#hunterqtest");
@@ -820,6 +827,7 @@ job_hunte,89,139,0	script	exithnt#hunterqtest	WARPNPC,2,2,{
 	}
 }
 
+// ------------------------------------------------------------------
 job_hunte,52,140,0	script	HntTrap_1_1::HntTrap	FAKE_NPC,0,1,{
 	OnTouch:
 	mapannounce (strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
@@ -1055,6 +1063,7 @@ job_hunte,64,92,0	duplicate(HntTrap)	HntTrap_57_1	FAKE_NPC,0,0
 job_hunte,64,93,0	duplicate(HntTrap)	HntTrap_57_2	FAKE_NPC,0,0
 job_hunte,65,92,0	duplicate(HntTrap)	HntTrap_57_3	FAKE_NPC,0,0
 
+// ------------------------------------------------------------------
 job_hunte,65,93,0	script	HntTrap_57_4::HntTrap2	FAKE_NPC,{
 	OnTouch:
 	mapannounce (strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
