@@ -22,7 +22,6 @@ airplane	mapflag	nosave	SavePoint
 airplane_01	mapflag	nosave	SavePoint
 airport	mapflag	nosave	SavePoint
 alb_ship	mapflag	nosave	SavePoint
-alde_alche	mapflag	nosave	SavePoint
 alde_dun01	mapflag	nosave	SavePoint
 alde_dun02	mapflag	nosave	SavePoint
 alde_dun03	mapflag	nosave	SavePoint
