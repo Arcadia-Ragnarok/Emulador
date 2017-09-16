@@ -8,7 +8,7 @@
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - VersÃ£o: Spell Master                                            |
+| - Versão: Spell Master                                            |
 | - Nota: Npcs comuns na cidade Lutie                               |
 \*-----------------------------------------------------------------*/
 
@@ -21,8 +21,8 @@ xmas,206,168,4	script	Garotinho#xmas	4_M_KID1,{
 	mes "Heheheheheh.!";
 	next;
 	mes "[Charu Charu]";
-	mes "VocÃª falou com o palhaÃ§o ali?";
-	mes "Ele Ã© tÃ£Ã£o entediante.";
+	mes "Você falou com o palhaço ali?";
+	mes "Ele é tãão entediante.";
 	next;
 	mes "[Charu Charu]";
 	mes "Quando Marcell e eu vamos no show dele, nos sentimos meio idiotas!";
@@ -30,19 +30,19 @@ xmas,206,168,4	script	Garotinho#xmas	4_M_KID1,{
 	mes "[Marcell]";
 	mes "Charu Charu!";
 	mes "Fique quieto!";
-	mes "Como vocÃª se atreve a falar assim do Hashokii?!";
+	mes "Como você se atreve a falar assim do Hashokii?!";
 	mes "Ele sempre tenta nos fazer sorrir!";
 	next;
 	mes "[Charu Charu]";
-	mes "Ã‰, Ã©.";
+	mes "É, é.";
 	mes "Que seja.";
 	mes "Eu sei disso!";
-	mes "Mas ele nÃ£o Ã© engraÃ§ado!";
+	mes "Mas ele não é engraçado!";
 	mes "Prefiro conversar com o ^3355FFBoneco de Neve^000000.";
 	next;
 	mes "[Charu Charu]";
-	mes "Bem, se vocÃª nÃ£o visitou Boneco de Neve ainda, deveria ir pelo menos uma vez.";
-	mes "Ele Ã© legal!";
+	mes "Bem, se você não visitou Boneco de Neve ainda, deveria ir pelo menos uma vez.";
+	mes "Ele é legal!";
 	next;
 	mes "[Charu Charu]";
 	mes "Feliz Natal!";
@@ -58,16 +58,16 @@ xmas_in,100,96,4	script	Papai Noel#xmas	4_M_SANTA,{
 	mes "Ho Ho Ho.";
 	mes "Feliiiiz Nataaal !!";
 	next;
-	mes "^3355FFÃ‰...^000000";
-	mes "^3355FFÃ‰ o Papai Noel de verdade!^000000";
+	mes "^3355FFÉ...^000000";
+	mes "^3355FFÉ o Papai Noel de verdade!^000000";
 	next;
 	mes "[Papai Noel]";
 	mes "Ho Ho Ho.";
-	mes "Sou o Papai Noel, e no Natal levo presentes para todas as crianÃ§as boazinhas!";
+	mes "Sou o Papai Noel, e no Natal levo presentes para todas as crianças boazinhas!";
 	next;
 	mes "[Papai Noel]";
-	mes "Se vocÃª quiser sair de Lutie, vÃ¡ para o Sul do primeiro mapa apÃ³s a cidade.";
-	mes "VocÃª encontrarÃ¡ um warp que te levarÃ¡ de volta a Al de Baran.";
+	mes "Se você quiser sair de Lutie, vá para o Sul do primeiro mapa após a cidade.";
+	mes "Você encontrará um warp que te levará de volta a Al de Baran.";
 	next;
 	mes "[Papai Noel]";
 	mes "Ho ho ho.";
