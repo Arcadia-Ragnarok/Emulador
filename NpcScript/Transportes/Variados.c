@@ -15,21 +15,50 @@
 // ------------------------------------------------------------------
 // - [gonryun > gon_fild01 ] - 
 // ------------------------------------------------------------------
-gonryun,153,64,7	script	Anunciante de Kunlun#gon4	4_M_TWMIDMAN,{
+gonryun,153,64,7	script	Anunciante de Kunlun#gonpasse	4_M_TWMIDMAN,{
 	mes "[Jangchungryong]";
 	mes "Quando desejar terminar sua visita a Kunlun.";
-	mes "Eu irei leva-lo para o porto.";
+	mes "Eu irei leva-l"+(Sex == SEX_MALE ? "o":"a")+" para o porto.";
 	next;
 	if (select("Retornar ao porto.","Cancelar.") == 1) {
 		mes "[Jangchungryong]";
 		mes "Eu espero que você tenha se divertido conosco.";
 		mes "Vamos indo então?";
 		close2;
-		warp "gon_fild01",258,82;
+		warp ("gon_fild01",258,82);
 		end;
 	}
 	mes "[Jangchungryong]";
 	mes "Demore o tempo que quiser aqui.";
-	mes "Existem muitos lugares misteriosos em Kunlun pra você visitar.";
+	mes "Existem muitos lugares misteriosos em Kunlun para você visitar.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [comodo > job_duncer ] - 
+// ------------------------------------------------------------------
+comodo,193,151,4	script	Bor Robin#1	4_M_04,{
+	mes "[Bor Robin]";
+	mes "Aah....";
+	mes "Uma prima donna no centro das atenções!";
+	mes "Vou poder vê-las se transformarem em Odaliscas com meus próprios olhos...!";
+	mes "Como é bom ser homem neste dia!";
+	next;
+	mes "[Bor Robin]";
+	mes "Mm?";
+	mes "Você quer ir, também?";
+	mes "É uma boa oportunidade de ver os testes para Odaliscas.";
+	next;
+	if (select("Vamos para a área de troca de classe","Cancelar") == 1) {
+		mes "[Bor Robin]";
+		mes "Yaay!!";
+		close2;
+		warp ("job_duncer",70,49);
+		end;
+	}
+	mes "[Bor Robin]";
+	mes "Huh...";
+	mes "Bem, eu não posso";
+	mes "ajudá-l"+(Sex == SEX_MALE ? "o":"a")+" se você não quiser me acompanhar.";
 	close;
 }

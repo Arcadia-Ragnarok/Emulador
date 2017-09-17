@@ -109,6 +109,21 @@ comodo,171,137,1	script	Haith#com::cmdla	4_F_03,{
 comodo,170,137,7	duplicate(cmdla)	La Ed#com	4_M_02
 
 // ------------------------------------------------------------------
+comodo,180,153,4	script	Sonotora#com	4_F_01,{
+	mes "[Athena Sonotora]";
+	mes "Dizem que uma famosa escola de dança aqui em Comodo vai abrir em breve.";
+	next;
+	mes "[Athena Sonotora]";
+	mes "Aah...";
+	mes "Para ser como uma prima donna no centro das atenções!";
+	next;
+	mes "[Athena Sonotora]";
+	mes "Eu quero me inscrever também, mais os requisitos são muito específicos.";
+	mes "Eu me pergunto se devo tentar mesmo assim...";
+	close;
+}
+
+// ------------------------------------------------------------------
 // - [ Casas ] -
 // ------------------------------------------------------------------
 cmd_in01,175,120,3	script	Iriya#um	1_F_04,{
