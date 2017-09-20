@@ -664,7 +664,7 @@ job_duncer,32,154,1	script	Sala de Espera#dancerq	1_F_01,{
 	OnStartArena:
 	warpwaitingpc (strnpcinfo(NPC_MAP),69,110,1);
 	donpcevent ("dance_timer#dancerq::OnStart");
-	donpcevent ("dance#1dancerq::OnPoints");
+	donpcevent ("dance#dancerq::OnPoints");
 	disablewaitingroomevent;
 	end;
 
@@ -802,9 +802,14 @@ job_duncer,2,1,0	script	dance#dancerq	FAKE_NPC,{
 	.@npcId = atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0));
 	.@DanceDir = getvariableofnpc(.DanceDir,"dance_timer#dancerq");
 
+	OnPoints:
+	.DancePoints = 1;
+	end;
+
 	if (.@npcId == .@DanceDir) {
 		donpcevent ("Instrutora#dancerq::OnAccept");
 		++.DancePoints;
+		end;
 	} else {
 		--.DancePoints;
 		donpcevent ("Instrutora#dancerq::OnError");
@@ -813,12 +818,8 @@ job_duncer,2,1,0	script	dance#dancerq	FAKE_NPC,{
 			donpcevent ("dance_timer#dancerq::OnStop");
 			warp ("comodo",188,162);
 		}
+		end;
 	}
-	end;
-
-	OnPoints:
-	.DancePoints = 1;
-	end;
 }
 // Cima
 job_duncer,71,113,0	duplicate(dance#dancerq)	dance#1dancerq	FAKE_NPC,4,1
