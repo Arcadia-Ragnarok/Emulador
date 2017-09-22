@@ -60,3 +60,27 @@ job_thief1,0,0,0,0	monster	Cogumelo	1182,200,0,0,0
 job_thief1,0,0,0,0	monster	Fabre	1184,50,0,0,0
 job_thief1,0,0,0,0	monster	Chonchon	1183,50,0,0,0
 job_thief1,0,0,0,0	monster	Esporo	1014,30,0,0,0
+
+// ------------------------------------------------------------------
+// - [ Quest de mudança de Classe para Monge ] -
+// ------------------------------------------------------------------
+job_monk,219,175,10,7	monster	Cogumelo	1182,20,0,0,0
+
+monk_test,144,277,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,144,291,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,149,268,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,157,284,0,0	monster	Múmia	1041,1,0,0,0
+monk_test,156,261,0,0	monster	Múmia	1041,1,0,0,0
+
+monk_test,140,181,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,150,164,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,162,182,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,158,192,0,0	monster	Múmia	1041,1,0,0,0
+monk_test,165,186,0,0	monster	Múmia	1041,1,0,0,0
+
+monk_test,249,277,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,231,296,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,257,285,0,0	monster	Zumbi	1015,4,0,0,0
+monk_test,264,292,0,0	monster	Múmia	1041,1,0,0,0
+monk_test,252,284,0,0	monster	Múmia	1041,1,0,0,0
+
