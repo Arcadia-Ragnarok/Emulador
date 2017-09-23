@@ -56,4 +56,11 @@ desenvolvimento é mostrado abertamente.
 
 ***
 
-> Sugestões, criticas e erros podem ser reportados aqui: https://github.com/Spell-Master/Arcadia/issues
+#### Compilador - Windows: ([VS Express 2012 for Desktop](https://mega.nz/#!XYdxyZiY!K0zcnNIvgNBVGIfbQ8v5zYjhGM8NoVLxjNFrMYBvkSg))
+
+Senha para descompactar: ****_spell_****
+
+>
+#### Sugestões, criticas e erros podem ser reportados aqui: https://github.com/Spell-Master/Arcadia/issues
+
+***
