@@ -504,3 +504,35 @@ moc_ruins,173,70,4	script	Phlanette#mocr	1_M_02,{
 		close;
 	}
 }
+
+// ------------------------------------------------------------------
+moc_ruins,86,103,1	script	Thug#mocr	2_M_THIEFMASTER,{
+	mes "[Thug]";
+	mes "*Sigh...*";
+	mes "O que é a vida?";
+	mes "E qual utilidade do dinheiro?";
+	mes "...Maldição.";
+	mes "Que maldição de vida!";
+	next;
+	mes "[Thug]";
+	mes "Ei, criança.";
+	mes "Para quem diabos você está olhando?";
+	next;
+	if (select("Eu? N-ninguém!","........") == 1) {
+		mes "[Thug]";
+		mes "Então tire seu olho de mim!";
+		mes "Você não me ouviu?";
+		mes "Saia daqui!";
+		close;
+	} else {
+		mes "[Thug]";
+		mes "Hmmm...";
+		mes "Talvez eu dê um pulo na ^0000FFGuilda dos Arruaceiros^000000.";
+		mes "Póximo ao ^0000FFFarol de Pharos^000000...";
+		next;
+		mes "[Thug]";
+		mes "Preciso de meu dinheiro, acho bom que eles tenham...";
+		close;
+	}
+}
+

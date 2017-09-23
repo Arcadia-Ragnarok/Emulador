@@ -76,7 +76,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				} else {
 					mes "[Lalo]";
 					mes "Hmm... Eu perdi meus sentidos, terei que me esforçar mais.";
-					mes "De qualquer forma... Obrigado pela atenção.";
+					mes "De qualquer forma...";
+					mes "Obrigado pela atenção.";
 					close2; cutin ("",255); end;
 				}
 				case 3:
