@@ -311,8 +311,13 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 			mes "Estava pensando em outra carne fresca.";
 			close;
 		} else if (rogueq == 16 || rogueq == 17) {
-			mes "[Markie]";
-			if (rogueq == 16) {
+			if (SkillPoint) {
+				mes "[Markie]";
+				mes "Você ainda possui pontos de habilidades sobrando?";
+				mes "Utilize todos os que ainda tiver e venha falar comigo novamente.";
+				close;
+			} else if (rogueq == 16) {
+				mes "[Markie]";
 				mes "Oh ei, é você!";
 				mes "Você fez um bom trabalho.";
 				mes "Agora, deixa eu trocar sua";
@@ -322,6 +327,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "[Markie]";
 				mes "Parabéns.!";
 			} else {
+				mes "[Markie]";
 				mes "Oh! É você!";
 				mes "Você foi realmente capaz de lidar com aquele cara?";
 				mes "Passou muitos apertos para coletar todos os itens, eh?";
