@@ -739,6 +739,8 @@ CREATE TABLE IF NOT EXISTS `ragsrvinfo` (
 	`drop` INT(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM;
 
+INSERT IGNORE INTO `ragsrvinfo` (`index`, `name`, `exp`, `jexp`, `drop`) VALUES (3, 'Arcadia', 100, 100, 100);
+
 --
 -- Table structure for table `skill`
 --

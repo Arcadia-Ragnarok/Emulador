@@ -3545,15 +3545,10 @@ void char_parse_frommap_divorce_char(int fd)
 	RFIFOSKIP(fd,10);
 }
 
-void char_parse_frommap_ragsrvinfo(int fd)
-{
+void char_parse_frommap_ragsrvinfo(int fd) {
 	char esc_server_name[sizeof(chr->server_name)*2+1];
-
 	SQL->EscapeString(inter->sql_handle, esc_server_name, chr->server_name);
-
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "INSERT INTO `%s` SET `index`='%d',`name`='%s',`exp`='%u',`jexp`='%u',`drop`='%u'",
-		ragsrvinfo_db, fd, esc_server_name, RFIFOL(fd,2), RFIFOL(fd,6), RFIFOL(fd,10)) )
-	{
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "UPDATE `%s` SET `index`='%d', `name`='%s',`exp`='%u',`jexp`='%u',`drop`='%u' LIMIT 1", ragsrvinfo_db, fd, esc_server_name, RFIFOL(fd,2), RFIFOL(fd,6), RFIFOL(fd,10))) {
 		Sql_ShowDebug(inter->sql_handle);
 	}
 	RFIFOSKIP(fd,14);
