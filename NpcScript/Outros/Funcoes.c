@@ -43,9 +43,7 @@ function	script	ClearJobQuest	{
 		if (questprogress (1008)) { erasequest (1008); }
 	}
 	if (merchantq) {
-		merchantq = 0;
-		merchantq_2 = 0;
-		merchantq_3 = 0;
+		merchantq = 0; merchantq_2 = 0; merchantq_3 = 0;
 		if (questprogress (1010)) { erasequest (1010); }
 		if (questprogress (1011)) { erasequest (1011); }
 		if (questprogress (1012)) { erasequest (1012); }
@@ -65,8 +63,7 @@ function	script	ClearJobQuest	{
 		if (questprogress (6024)) { erasequest (6024); }
 	}
 	if (taekwonq) {
-		taekwonq = 0;
-		taekwonq_2 = 0;
+		taekwonq = 0; taekwonq_2 = 0;
 		if (questprogress (6000)) { erasequest (6000); }
 		if (questprogress (6001)) { erasequest (6001); }
 		if (questprogress (6002)) { erasequest (6002); }
