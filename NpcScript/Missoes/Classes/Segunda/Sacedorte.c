@@ -239,7 +239,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 				.@acolyteLv = JobLevel;
 				jobchange (Job_Priest);
 				completequest (8015);
-				priestq = 0;
+				callfunc ("ClearJobQuest2nd",8);
 				mes "[Bispo Paul]";
 				mes "Agora sendo Sacerdote.";
 				mes "Eu te parabenizo, e que você ajude outras pessoas pelo resto de sua vida.";

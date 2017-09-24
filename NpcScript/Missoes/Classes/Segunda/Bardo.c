@@ -403,12 +403,10 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				changequest (3003,3004);
 				close2; cutin ("",255); end;
 			}
-			
 		} else if (bardq == 14) {
 			cutin ("job_bard_aiolo02",2);
 			mes "[Lalo]";
-			if (
-				(countitem(Wooden_Block) < 60) && (countitem(Tree_Of_Archer_1) < 60) && (countitem(Tree_Of_Archer_2) < 60) && (countitem(Tree_Of_Archer_3) < 60)) {
+			if ((countitem(Wooden_Block) < 60) && (countitem(Tree_Of_Archer_1) < 60) && (countitem(Tree_Of_Archer_2) < 60) && (countitem(Tree_Of_Archer_3) < 60)) {
 				mes "Mmm? Parece que você não preparou todos os troncos ainda?";
 				mes "Traga 60 troncos de qualquer tipo.";
 				close2; cutin ("",255); end;
@@ -439,9 +437,9 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 					mes "[Lalo]";
 					mes "Te vejo na próxima vez!";
 					jobchange (Job_Bard);
-					getitem (.@item,1);
-					bardq = 0;
 					completequest (3004);
+					callfunc ("ClearJobQuest2nd",19);
+					getitem (.@item,1);
 					close2; cutin ("",255); end;
 				}
 			}

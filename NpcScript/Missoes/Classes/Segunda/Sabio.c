@@ -2285,8 +2285,8 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 					mes "Ah, sim... você parece ser proficiente em estudar.";
 					next;
 					jobchange (Job_Sage);
-					sageq = 0;
 					completequest (2052);
+					callfunc ("ClearJobQuest2nd",16);
 					mes "[Kayron Grik]";
 					mes "Parabéns!";
 					mes "Você se tornou "+(Sex == SEX_MALE ? "um Sábio":"uma Sábia")+".";

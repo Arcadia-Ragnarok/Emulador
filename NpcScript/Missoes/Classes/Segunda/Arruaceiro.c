@@ -338,8 +338,8 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 			}
 			.@jlevel = JobLevel;
 			jobchange (Job_Rogue);
-			rogueq = 0;
 			completequest (2026);
+			callfunc ("ClearJobQuest2nd",17);
 			next;
 			mes "[Markie]";
 			mes "Agora...";

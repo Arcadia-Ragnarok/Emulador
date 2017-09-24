@@ -130,10 +130,10 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 			} else {
 				mes "[Altiregen]";
 				mes "Ótimo "+strcharinfo(PC_NAME)+" você completou todos os testes de nossa guilda";
-				mes "Sem dúvida você merece ser chamado de Ferreiro";
+				mes "Sem dúvida você merece ser chamado de Ferreiro.";
 				jobchange (Job_Blacksmith);
-				blacksmithq = 0;
 				completequest (2015);
+				callfunc ("ClearJobQuest2nd",10);
 				close;
 			}
 		}

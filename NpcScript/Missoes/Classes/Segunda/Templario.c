@@ -232,9 +232,9 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 				mes "[Michael Halig]";
 				mes "Juntos, vamos vencer a Guerra Santa e derrotar o mal e a tirania!";
 				next;
-				crusaderq = 0;
-				completequest (3015);
 				jobchange (Job_Crusader);
+				completequest (3015);
+				callfunc ("ClearJobQuest2nd",14);
 				mes "[Michael Halig]";
 				mes "Quando a Guerra Sagrada começar, nós estaremos do mesmo lado para derrotar o mal.";
 				next;

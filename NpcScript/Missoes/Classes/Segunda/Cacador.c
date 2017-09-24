@@ -262,9 +262,8 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 				next;
 				.@chararcherlv = JobLevel;
 				jobchange (Job_Hunter);
-				hunterq = 0;
-				hunterq3 = 0;
 				completequest (4013);
+				callfunc ("ClearJobQuest2nd",11);
 				mes "[Caçadora Dejiko]";
 				mes "Torne-se uma pessoa nobre e seja um digno representante da nossa guilda de Caçadores.";
 				mes "Mostre seu amor pela natureza como Caçador.";

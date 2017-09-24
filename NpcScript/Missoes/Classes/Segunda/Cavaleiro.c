@@ -272,7 +272,7 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 				.@level = JobLevel;
 				jobchange (Job_Knight);
 				completequest (9012);
-				knightq = 0;
+				callfunc ("ClearJobQuest2nd",7);
 				getitem (Awakening_Potion,7);
 				mes "[Capitão Herman]";
 				mes "Declaro você membro da Cavalaria de Prontera.";

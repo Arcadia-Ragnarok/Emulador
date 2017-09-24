@@ -288,9 +288,8 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				next;
 				jobchange (Job_Wizard);
 				completequest (9018);
+				callfunc ("ClearJobQuest2nd",9);
 				getitem (Blue_Potion,6);
-				wizardq = 0;
-				if (wizardq2) { wizardq2 = 0; }
 				next;
 				mes "[Catherine]";
 				mes "Viva uma vida maravilhosa como Bruxo, se torne o mais forte de todos!";

@@ -92,11 +92,9 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		next;
 		delitem (Frozen_Heart,1);
 		//changequest (8007,8008);
-		completequest (8007);
-		assassinq = 0;
-		assassinq2 = 0;
-		assassinq3 = 0;
 		jobchange (Job_Assassin);
+		completequest (8007);
+		callfunc ("ClearJobQuest2nd",12);
 		mes "[Mercenário Huey]";
 		mes "Tudo bem!";
 		mes "Você foi aprovad"+(Sex == SEX_MALE ? "o" : "a")+"!";

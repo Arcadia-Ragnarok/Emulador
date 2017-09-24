@@ -167,7 +167,7 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 						break;
 					}
 				}
-				if(.@i == .@arraysize && Zeny >= 10000) {
+				if (.@i == .@arraysize && Zeny >= 10000) {
 					cutin ("job_dancer_eir02",2);
 					mes "[Aile]";
 					mes "Oh...!";
@@ -593,7 +593,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				.@jl = JobLevel;
 				jobchange (Job_Dancer);
 				completequest (7006);
-				dancerq = 0;
+				callfunc ("ClearJobQuest2nd",20);
 				mes "[Bijou]";
 				mes "Ooh...!";
 				mes "Você está ótima como uma Odalisca.";

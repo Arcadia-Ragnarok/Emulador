@@ -383,7 +383,7 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				.@jl = JobLevel;
 				jobchange (Job_Monk);
 				completequest (3032);
-				monkq = 0;
+				callfunc ("ClearJobQuest2nd",15);
 				mes "[Sensei Moohae]";
 				mes "Você se tornou Monge.";
 				next;

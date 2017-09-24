@@ -1646,14 +1646,14 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 			cutin "",255;
 			end;
 		}
-		if (questprogress(2039)) { changequest 2039,2040; }
-		if (questprogress(2034)) { changequest 2034,2040; }
+		if (questprogress(2039)) { changequest (2039,2040); }
+		if (questprogress(2034)) { changequest (2034,2040); }
 		mes "Ah, bem isso é tudo.";
 		mes "Posso ver que você aprendeu todos os conceitos básicos da Alquimia.";
 		next;
-		alchemistq = 0;
-		completequest (2040);
 		jobchange (Job_Alchemist);
+		completequest (2040);
+		callfunc ("ClearJobQuest2nd",18);
 		mes "[Vincent Carsciallo]";
 		mes "Parabéns, você é agora um membro da nossa ilustre Guilda.";
 		mes "Eu espero que você aprenda muito...";
