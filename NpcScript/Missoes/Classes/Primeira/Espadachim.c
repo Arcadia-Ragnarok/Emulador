@@ -13,7 +13,48 @@
 \*-----------------------------------------------------------------*/
 
 izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1) {
+		if (Class == Job_Novice_High && (ADVJOB == Job_Lord_Knight || ADVJOB == Job_Paladin)) {
+			mes "[Líder dos Espadachins]";
+			mes "É...";
+			mes "Não pode ser...";
+			mes "Você renasceu não é?";
+			next;
+			mes "[Líder dos Espadachins]";
+			mes "Você está no caminho de se renovar como Espadachim!";
+			mes "Depois que você brandir uma espada, você não pode mais voltar atrás";
+			next;
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[Líder dos Espadachins]";
+				mes "Hmm? Ah, antes de ser tornar um Espadachim você deve dominar as Habilidades Básicas.";
+				next;
+				mes "[Líder dos Espadachins]";
+				mes "Volte depois que terminar seu treinamento, e aprender todas habilidades básicas!.";
+				close;
+			} else {
+				mes "[Líder dos Espadachins]";
+				mes "Excelente!";
+				mes "Permita-me transformar você em Espadachim imediatamente!";
+				next;
+				jobchange (Job_Swordman_High);
+				mes "[Líder dos Espadachins]";
+				mes "Hmm...";
+				mes "Você me parece um Espadachim experiente.";
+				mes "Mas estou certo que você precisa treinar para melhorar suas habilidades e ter mais força!";
+				close;
+			}
+		} else {
+			mes "[Líder dos Espadachins]";
+			mes "Hm...?";
+			mes "Você é um guerreiro renascido, não é mesmo?";
+			next;
+			mes "[Líder dos Espadachins]";
+			mes "Hmmm...";
+			mes "Parece que ser um Espadachim não faz parte do seu destino.";
+			mes "Desculpe, mas não há nada que eu possa fazer por você.";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		mes "[Líder dos Espadachins]";
 		if (BaseJob == Job_Swordman) {
 			mes "Lembre-se sempre que os espadachins, não são somentes lutadores com a espada.";
@@ -491,3 +532,4 @@ job_sword1,65,117,0	warp	WarpSword1-a	1,1,job_sword1,10,245
 job_sword1,98,27,0	warp	WarpSword1-b	1,1,job_sword1,11,207
 job_sword1,161,27,0	warp	WarpSword1-c	1,1,job_sword1,11,207
 job_sword1,239,117,0	warp	WarpSword1-d	1,1,job_sword1,11,169
+

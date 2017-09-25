@@ -15,7 +15,31 @@
 \*-----------------------------------------------------------------*/
 
 prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1 && BaseJob == Job_Novice_High) {
+		if (ADVJOB == Job_High_Priest || ADVJOB == Job_Champion) {
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[Bispo]";
+				mes "Você ainda não está pront"+(Sex == SEX_MALE ? "o":"a")+" para se tornar um Noviço.";
+				mes "Por favor, conclua o aprendizado de todas as Habilidades Básicas primeiro.";
+				close;
+			} else {
+				mes "[Bispo]";
+				mes "Ah, eu sinto seu vigor e experiência.";
+				mes "Você deve ter aprendido muitas coisas antes de entrar em Valhalla.";
+				jobchange (Job_Acolyte_High);
+				close;
+			}
+		} else {
+			mes "[Bispo]";
+			mes "Sinto que você passou por uma experiência de vida passada.";
+			mes "Você deve ter aprendido muitas coisas antes de entrar em Valhalla.";
+			next;
+			mes "[Bispo]";
+			mes "No entanto, posso dizer que você não está preparado para ser Noviço.";
+			mes "Lembre-se de quem você era em sua vida passada e encontre o seu caminho.";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Acolyte) {
 			mes "[Bispo]";
 			mes "Que você possa levar um pouco de alento a todos aqueles que sofrem.";
@@ -364,3 +388,4 @@ prt_fild00,208,218,6	script	Irmão Bartolomeu#acolyteq	4W_M_02,{
 		close;
 	}
 }
+

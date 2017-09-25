@@ -13,7 +13,56 @@
 \*-----------------------------------------------------------------*/
 
 geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1) {
+		if (ADVJOB == Job_High_Wizard || ADVJOB == Job_Professor) {
+			if (Class == Job_Novice_High) {
+				mes "[Líder da Guilda]";
+				mes "Olá, faz bastante tempo que não nos vemos!";
+				mes "Mas você não deveria estar morto?";
+				next;
+				mes "[Líder da Guilda]";
+				mes "Ah, você deve ter sido renascido.";
+				mes "Bem, eu estou contente em vê-lo novamente.";
+				next;
+				if (getskilllv("NV_BASIC") < 9) {
+					mes "[Líder da Guilda]";
+					mes "Sinto muito, mas eu acho que você ainda não está pronto para se tornar um Mago.";
+					mes "Por que você não termina de aprender as habilidades básicas primeiro?";
+					next;
+					mes "[Líder da Guilda]";
+					mes "Fique à vontade.";
+					mes "Quanto mais você aprende, mais você estará pronto para aprender magia.";
+					close;
+				} else {
+					mes "[Líder da Guilda]";
+					mes "Bem, já que que você passou no teste de Mago uma vez.";
+					mes "Não vou questionar a sua qualificação.";
+					mes "Você quer ter suas habilidades mágicas de volta imediatamente, não é?";
+					next;
+					jobchange (Job_Mage_High);
+					mes "[Líder da Guilda]";
+					mes "Uau, por alguma razão você está bem melhor do que antes.";
+					mes "De qualquer forma, acredito que você irá fazer um trabalho melhor dessa vez.";
+					close;
+				}
+			} else {
+				mes "[Líder da Guilda]";
+				mes "Há algo mais que eu possa ajudá-lo?";
+				mes "Se não, por que você não vai testar suas habilidades?";
+				mes "O mundo está esperando por você~!";
+				close;
+			}
+		} else {
+			mes "[Líder da Guilda]";
+			mes "O que, você está interessado na Guilda dos Magos?";
+			mes "Eu não queria dizer isso, mas você não pertence a ela.";
+			next;
+			mes "[Líder da Guilda]";
+			mes "Eu não sei por que você ainda está na minha frente.";
+			mes "Mas eu posso dizer que você não está destinado a ser um Mago.";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Mage) {
 			mes "[Líder da Guilda]";
 			mes "Um dia você irá perceber quão grande é o poder que existe dentro de você.";
@@ -571,3 +620,4 @@ pay_arche,122,100,0	script	Dollshoi#mageq	4_M_ORIENT01,{
 }
 
 moc_ruins,91,150,0	duplicate(Dollshoi#mageq)	Ponka-Hontas#mageq	4_F_04
+

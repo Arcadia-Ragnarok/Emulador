@@ -14,7 +14,44 @@
 
 payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 	mes "[Guia dos Arqueiros]";
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1) {
+		if (Class == Job_Novice_High && (ADVJOB == Job_Sniper || ADVJOB == Job_Clown || ADVJOB == Job_Gypsy)) {
+			mes "Ei, eu te conheço.";
+			mes "Você já deve ter feito este teste antes, não foi?";
+			next;
+			mes "[Guia dos Arqueiros]";
+			mes "Ah, você deve ter ido a Valhala para renascer.";
+			mes "Humm, muito impressionante!";
+			next;
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[Guia dos Arqueiros]";
+				mes "Err...";
+				mes "O melhor a fazer é aprender todas as habilidades básicas antes de se tornar Arqueiro.";
+				next;
+				mes "[Guia dos Arqueiros]";
+				mes "Tudo bem, te vejo mas tarde.";
+				close;
+			} else {
+				mes "[Guia dos Arqueiros]";
+				mes "Bem, então eu não preciso dizer mais nada.";
+				mes "Eu sei que você pode se tornar um grande Arqueiro...";
+				next;
+				jobchange (Job_Archer_High);
+				mes "[Guia dos Arqueiros]";
+				mes "Embora não haja uma recompensa especial para você desta vez, espero que compreenda.";
+				mes "Tome muito cuidado.";
+				close;
+			}
+		} else {
+			mes "[Guia dos Arqueiros]";
+			mes "Oh...?";
+			mes "Ei, o que você está fazendo aqui...?";
+			next;
+			mes "[Guia dos Arqueiros]";
+			mes "Eu posso dizer que você não está destinado para ser um Arqueiro. Algo me da a entender que você deve procurar fazer uma outra coisa...";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Archer) {
 			mes "Agora que és " + (Sex == SEX_MALE ? "um arqueiro":"uma arqueira") + " aprenda ao máximo o uso do Arco e Flecha.";
 			close;
@@ -206,3 +243,4 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 		}
 	}
 }
+

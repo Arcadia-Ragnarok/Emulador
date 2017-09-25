@@ -10,10 +10,56 @@
 +-------------------------------------------------------------------+
 | - Desenvolvido por: Spell Master 14/08/2017                       |
 | - Nota: Quest de Mudança de Classe para Mercador.                 |
+| - Observações:                                                    |
+|   * Entrega na Cidade Morroc                                      |
+|        Npc: morocc_in,146,99 (Dullihan#dyestuff)                  |
+|        Arquivo: NpcScript/Comerciantes/Tinturas                   |
+|   * Entrega na Ilha de Byalan                                     |
+|        Npc: izlu2dun,106,58 (Funcionária Kafra#kafra_03::izlkaf2) |
+|        Arquivo: NpcScript/Outros/Funcionarias_Kafra               |
 \*-----------------------------------------------------------------*/
 
 alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1) {
+		if (Class == Job_Novice_High && (ADVJOB == Job_Whitesmith || ADVJOB == Job_Creator)) {
+			mes "[Chefe Mansur]";
+			mes "Faz bastante tempo que não nos vemos!";
+			mes "Ei, você não deixou sua classe, não foi?";
+			mes "Está feliz?";
+			next;
+			mes "[Chefe Mansur]";
+			mes "Nossa... Você realmente veio de Valhalla?!";
+			mes "Uau, você já percorreu um longo caminho...";
+			next;
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[Chefe Mansur]";
+				mes "Humm... Parece que você não está pronto para se tornar mercador de novo.";
+				mes "Primeiro termine de aprender as Habilidades Básicas.";
+				next;
+				mes "[Chefe Mansur]";
+				mes "Não se preocupe, nós vamos ter sempre um lugar nos Mercadores aberto para você.";
+				mes "Basta voltar quando estiver pronto, ok?";
+				close;
+			} else {
+				mes "[Chefe Mansur]";
+				mes "Eu acho que é o destino nos encontrarmos denovo.";
+				mes "Deixe-me transformá-lo em um Mercador!";
+				next;
+				jobchange (Job_Merchant_High);
+				mes "[Chefe Mansur]";
+				mes "Ah. Como é nostálgico.";
+				mes "Assim como nos velhos tempos!";
+				mes "Tudo bem, dê o seu melhor!";
+				close;
+			}
+		} else {
+			mes "[Chefe Mansur]";
+			mes "^333333*Suspiro*^000000";
+			mes "Estou tão entediado...";
+			mes "Quando vou ouvir minha linda flor?";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Merchant) {
 			mes "[Chefe Mansur]";
 			mes "Agora como mercador, você pode acumular riquezas facilmente.";
@@ -411,14 +457,3 @@ geffen_in,155,122,4	script	Estudioso#merchantq	1_M_01,{
 	}
 }
 
-// ------------------------------------------------------------------
-// - [Entrega na Cidade Morroc] -
-// - Npc: morocc_in,146,99
-//        Dullihan#dyestuff
-// - Arquivo: NpcScript/Comerciantes/Tinturas
-
-// ------------------------------------------------------------------
-// - [Entrega na Ilha de Byalan] -
-// - Npc: izlu2dun,106,58
-//        Funcionária Kafra#kafra_03::izlkaf2
-// - Arquivo: NpcScript/Outros/Funcionarias_Kafra

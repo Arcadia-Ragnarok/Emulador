@@ -13,7 +13,50 @@
 \*-----------------------------------------------------------------*/
 
 moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
-	if (BaseJob != Job_Novice) {
+	if (Upper == 1) {
+		if (ADVJOB == Job_Assassin_Cross || ADVJOB == Job_Stalker) {
+			if (Class == Job_Novice_High) {
+				mes "[Gatuna Ajudante]";
+				mes "Eu te conheço?";
+				mes "É assustador que você me parece tão familiar.";
+				next;
+				if (getskilllv("NV_BASIC") < 9) {
+					mes "[Gatuna Ajudante]";
+					mes "O quê, você quer ser Gatuno?";
+					mes "Sinto muito, mas parece que você precisa de mais treinamento.";
+					next;
+					mes "[Gatuna Ajudante]";
+					mes "Não tenha pressa e aprenda todas as Habilidades Básicas.";
+					mes "Então, vejo você mais tarde!";
+					close;
+				} else {
+					mes "[Gatuna Ajudante]";
+					mes "Bem, eu tive o pressentimento que você teve uma vida de lutas.";
+					mes "Então estou te promovendo para Gatuno neste minuto.";
+					mes "É melhor eu dar o que você quer...";
+					next;
+					jobchange (Job_Thief_High);
+					mes "[Gatuna Ajudante]";
+					mes "Desde que você se tornar Gatuno, viver como um Gatuno.";
+					mes "Agora, vá por isso!";
+					close;
+				}
+			} else {
+				mes "[Gatuna Ajudante]";
+				if (Sex == SEX_MALE) {
+					mes "Ei, cara.";
+				} else {
+					mes "Ei, bebê.";
+				}
+				close;
+			}
+		} else {
+			mes "[Gatuna Ajudante]";
+			mes "...Ei! Você parece muito estranho para querer ser um Gatuno!";
+			mes "Agora suma, estou ocupada!";
+			close;
+		}
+	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Thief) {
 			mes "[Gatuna Ajudante]";
 			mes "No momento a guilda não tem qualquer missão para você agora.";
@@ -330,3 +373,4 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 		close;
 	}
 }
+
