@@ -267,6 +267,22 @@ function	script	ClearJobQuest2nd	{
 			if (questprogress (8014)) { erasequest (8014); }
 			if (questprogress (8015)) { erasequest (8015); }
 		}
+	} else if (getarg(0) == 4047 || getarg(0) == 4049) {
+		if (sgladiatorq) {
+			sgladiatorq = 0;
+			if (questprogress (7007)) { erasequest (7007); }
+			if (questprogress (7008)) { erasequest (7008); }
+			if (questprogress (7009)) { erasequest (7009); }
+			if (questprogress (7010)) { erasequest (7010); }
+			if (questprogress (7011)) { erasequest (7011); }
+		}
+		if (slinkerq) {
+			slinkerq = 0;
+			if (questprogress (6005)) { erasequest (6005); }
+			if (questprogress (6006)) { erasequest (6006); }
+			if (questprogress (6007)) { erasequest (6007); }
+			if (questprogress (6008)) { erasequest (6008); }
+		}
 	}
 	return;
 }
