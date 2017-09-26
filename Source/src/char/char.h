@@ -348,6 +348,6 @@ void char_load_defaults(void);
 void char_defaults(void);
 #endif // HPM_MAIN_CORE
 
-HPShared struct char_interface *chr;
+struct char_interface *chr;
 
 #endif /* CHAR_CHAR_H */

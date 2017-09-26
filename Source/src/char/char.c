@@ -27,7 +27,6 @@
 #include "config/core.h" // CONSOLE_INPUT
 #include "char.h"
 
-#include "char/HPMchar.h"
 #include "char/geoip.h"
 #include "char/int_auction.h"
 #include "char/int_elemental.h"
@@ -2532,15 +2531,6 @@ int char_parse_fromlogin(int fd) {
 
 	while (RFIFOREST(fd) >= 2) {
 		uint16 command = RFIFOW(fd,0);
-
-		if (VECTOR_LENGTH(HPM->packets[hpParse_FromLogin]) > 0) {
-			int result = HPM->parse_packets(fd,command,hpParse_FromLogin);
-			if (result == 1)
-				continue;
-			if (result == 2)
-				return 0;
-		}
-
 		switch (command) {
 			// acknowledgment of connect-to-loginserver request
 			case 0x2711:
@@ -3779,17 +3769,6 @@ int char_parse_frommap(int fd)
 
 	while (RFIFOREST(fd) >= 2) {
 		int packet_id = RFIFOW(fd,0);
-		if (VECTOR_LENGTH(HPM->packets[hpParse_FromMap]) > 0) {
-			int result = HPM->parse_packets(fd,packet_id,hpParse_FromMap);
-			if (result == 1) {
-				if (sockt->session[fd] == NULL)
-					return 0;
-				continue;
-			}
-			if (result == 2)
-				return 0;
-		}
-
 		switch (packet_id) {
 			case 0x2b0a:
 				if( RFIFOREST(fd) < RFIFOW(fd, 2) )
@@ -4969,15 +4948,6 @@ int char_parse_char(int fd)
 
 //For use in packets that depend on an sd being present [Skotlex]
 #define FIFOSD_CHECK(rest) do { if(RFIFOREST(fd) < (rest)) return 0; if (sd==NULL || !sd->auth) { RFIFOSKIP(fd,(rest)); return 0; } } while (0)
-
-		if (VECTOR_LENGTH(HPM->packets[hpParse_Char]) > 0) {
-			int result = HPM->parse_packets(fd,cmd,hpParse_Char);
-			if (result == 1)
-				continue;
-			if (result == 2)
-				return 0;
-		}
-
 		switch (cmd) {
 			// request to connect
 			// 0065 <account id>.L <login id1>.L <login id2>.L <???>.W <sex>.B
@@ -5380,9 +5350,10 @@ bool char_sql_config_read(const char *filename, bool imported)
 		}
 	}
 
+	/*
 	if (!HPM->parse_conf(&config, filename, HPCT_CHAR_INTER, imported))
 		retval = false;
-
+	*/
 	libconfig->destroy(&config);
 	return retval;
 }
@@ -5535,9 +5506,10 @@ bool char_config_read(const char *filename, bool imported)
 	if (!pincode->config_read(filename, &config, imported))
 		retval = false;
 
+	/*
 	if (!HPM->parse_conf(&config, filename, HPCT_CHAR, imported))
 		retval = false;
-
+	*/
 	ShowInfo("Done reading %s.\n", filename);
 
 	// import should overwrite any previous configuration, so it should be called last
@@ -6007,21 +5979,13 @@ bool char_config_set_ip(const char *type, const char *value, uint32 *out_ip, cha
 
 int do_final(void) {
 	int i;
-
 	ShowStatus("Terminating...\n");
-
-	HPM->event(HPET_FINAL);
-
 	chr->set_all_offline(-1);
 	chr->set_all_offline_sql();
-
 	inter->final();
-
 	sockt->flush_fifos();
-
 	do_final_mapif();
 	loginif->final();
-
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s`", ragsrvinfo_db) )
 		Sql_ShowDebug(inter->sql_handle);
 
@@ -6033,8 +5997,6 @@ int do_final(void) {
 		sockt->close(chr->char_fd);
 		chr->char_fd = -1;
 	}
-
-	HPM_char_do_final();
 
 	SQL->Free(inter->sql_handle);
 	mapindex->final();
@@ -6048,8 +6010,6 @@ int do_final(void) {
 	aFree(chr->NET_CONF_NAME);
 	aFree(chr->SQL_CONF_NAME);
 	aFree(chr->INTER_CONF_NAME);
-
-	HPM->event(HPET_POST_FINAL);
 
 	ShowStatus("Finished.\n");
 	return EXIT_SUCCESS;
@@ -6160,10 +6120,7 @@ int do_init(int argc, char **argv) {
 	for (i = 0; i < MAX_MAP_SERVERS; i++)
 		VECTOR_INIT(chr->server[i].maps);
 
-	HPM_char_do_init();
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
-	HPM->config_read();
-	HPM->event(HPET_PRE_INIT);
 
 	//Read map indexes
 	mapindex->init();
@@ -6209,8 +6166,6 @@ int do_init(int argc, char **argv) {
 
 	auth_db = idb_alloc(DB_OPT_RELEASE_DATA);
 	chr->online_char_db = idb_alloc(DB_OPT_RELEASE_DATA);
-
-	HPM->event(HPET_INIT);
 
 	chr->mmo_char_sql_init();
 	chr->read_fame_list(); //Read fame lists.
@@ -6278,9 +6233,6 @@ int do_init(int argc, char **argv) {
 		core->shutdown_callback = do_shutdown;
 		core->runflag = CHARSERVER_ST_RUNNING;
 	}
-
-	HPM->event(HPET_READY);
-
 	return 0;
 }
 
