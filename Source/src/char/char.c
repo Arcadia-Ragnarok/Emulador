@@ -6267,7 +6267,6 @@ int do_init(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
-	Sql_UpdateCheck(inter->sql_handle);
 #ifdef CONSOLE_INPUT
 	console->input->setSQL(inter->sql_handle);
 	console->display_gplnotice();

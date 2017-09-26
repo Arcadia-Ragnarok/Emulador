@@ -261,12 +261,8 @@ struct sql_interface {
 };
 
 #ifdef HPM_MAIN_CORE
-void sql_defaults(void);
-
-void Sql_Init(void);
-
-void Sql_UpdateCheck(struct Sql *self);
-void Sql_UpdateSkip(struct Sql *self, const char *filename);
+	void sql_defaults(void);
+	void Sql_Init(void);
 #endif // HPM_MAIN_CORE
 
 HPShared struct sql_interface *SQL;

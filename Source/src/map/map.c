@@ -6539,8 +6539,6 @@ int do_init(int argc, char *argv[])
 	if (battle_config.pk_mode)
 		ShowNotice("Server is running on '"CL_WHITE"PK Mode"CL_RESET"'.\n");
 
-	Sql_UpdateCheck(map->mysql_handle);
-
 #ifdef CONSOLE_INPUT
 	console->input->setSQL(map->mysql_handle);
 	if (!minimal && core->runflag != CORE_ST_STOP)

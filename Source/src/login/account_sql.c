@@ -153,7 +153,6 @@ static bool account_db_sql_init(AccountDB* self)
 	if (db->codepage[0] != '\0' && SQL_ERROR == SQL->SetEncoding(sql_handle, db->codepage))
 		Sql_ShowDebug(sql_handle);
 
-	Sql_UpdateCheck(db->accounts);
 #ifdef CONSOLE_INPUT
 	console->input->setSQL(db->accounts);
 #endif

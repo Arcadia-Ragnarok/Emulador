@@ -179,19 +179,6 @@ CPCMD_C(malloc_usage, server)
 }
 
 /**
- * Skips an sql update
- * Usage: sql update skip UPDATE-FILE.sql
- **/
-CPCMD_C(skip, update)
-{
-	if( !line ) {
-		ShowDebug("usage example: sql update skip 2013-02-14--16-15.sql\n");
-		return;
-	}
-	Sql_UpdateSkip(console->input->SQL, line);
-}
-
-/**
  * Loads console commands list
  **/
 void console_load_defaults(void)
@@ -248,7 +235,6 @@ void console_load_defaults(void)
 		 **/
 		CP_DEF_C(sql),
 		CP_DEF_C2(update,sql),
-		CP_DEF_S(skip,update),
 	};
 	int len = ARRAYLENGTH(default_list);
 	struct CParseEntry *cmd;
