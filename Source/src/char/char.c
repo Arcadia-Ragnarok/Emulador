@@ -5349,11 +5349,6 @@ bool char_sql_config_read(const char *filename, bool imported)
 				retval = false;
 		}
 	}
-
-	/*
-	if (!HPM->parse_conf(&config, filename, HPCT_CHAR_INTER, imported))
-		retval = false;
-	*/
 	libconfig->destroy(&config);
 	return retval;
 }
@@ -5506,10 +5501,6 @@ bool char_config_read(const char *filename, bool imported)
 	if (!pincode->config_read(filename, &config, imported))
 		retval = false;
 
-	/*
-	if (!HPM->parse_conf(&config, filename, HPCT_CHAR, imported))
-		retval = false;
-	*/
 	ShowInfo("Done reading %s.\n", filename);
 
 	// import should overwrite any previous configuration, so it should be called last

@@ -68,6 +68,10 @@ function	script	ClearJobQuest	{
 		if (questprogress (6001)) { erasequest (6001); }
 		if (questprogress (6002)) { erasequest (6002); }
 	}
+	if (supernovq) {
+		supernovq = 0;
+		if (questprogress (6010)) { erasequest (6010); }
+	}
 	return;
 }
 
