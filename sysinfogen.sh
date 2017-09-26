@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Copyright (c) Hercules Dev Team, licensed under GNU GPL.
-# See the LICENSE file
-# Base Author: Haru @ http://hercules.ws
-
 do_fail() {
 	echo 'Error writing output file'
 	exit 1
@@ -32,19 +28,16 @@ if ! touch "$OUTFILE"; then
 fi
 
 cat > "$OUTFILE" << EOF
-// Copyright (c) Hercules Dev Team, licensed under GNU GPL.
-// See the LICENSE file
-
 // This file was automatically generated. Any edit to it will be lost.
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-HERC_PLATFORM="$( uname -s )"
-HERC_CORES="0"
-HERC_CPU="Unknown"
+ARCADIA_PLATFORM="$( uname -s )"
+ARCADIA_CORES="0"
+ARCADIA_CPU="Unknown"
 
-case $HERC_PLATFORM in
+case $ARCADIA_PLATFORM in
 	Linux)
 		DIST=''
 		DESCRIPTION=''
@@ -140,119 +133,119 @@ case $HERC_PLATFORM in
 		if [ -n "$DESCRIPTION" ]; then
 			DIST="$DESCRIPTION"
 		fi
-		HERC_OSVERSION="$DIST"
+		ARCADIA_OSVERSION="$DIST"
 
-		HERC_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
-		HERC_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
+		ARCADIA_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
+		ARCADIA_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
 		;;
 	Darwin)
-		HERC_PLATFORM="Mac OS X"
+		ARCADIA_PLATFORM="Mac OS X"
 		if type sw_vers >/dev/null 2>&1; then
-			HERC_OSVERSION="$( sw_vers -productName ) $( sw_vers -productVersion ) $( sw_vers -buildVersion )"
+			ARCADIA_OSVERSION="$( sw_vers -productName ) $( sw_vers -productVersion ) $( sw_vers -buildVersion )"
 		else
-			HERC_OSVERSION="Unknown"
+			ARCADIA_OSVERSION="Unknown"
 		fi
 		if type system_profiler >/dev/null 2>&1; then
 			HWDATA="$( system_profiler SPHardwareDataType )"
 			HWDATA_CPU="$( echo "$HWDATA" | grep "Processor Name:" | cut -d: -f2- )"
 			HWDATA_CPUSPEED="$( cleanstring "$( echo "$HWDATA" | grep "Processor Speed:" | cut -d: -f2- )" )"
-			HERC_CORES="$( echo "$HWDATA" | grep "Total Number of Cores:" | cut -d: -f2- )"
-			HERC_CPU="${HWDATA_CPU} (${HWDATA_CPUSPEED})"
+			ARCADIA_CORES="$( echo "$HWDATA" | grep "Total Number of Cores:" | cut -d: -f2- )"
+			ARCADIA_CPU="${HWDATA_CPU} (${HWDATA_CPUSPEED})"
 		fi
 		;;
 	SunOS)
-		HERC_PLATFORM="Solaris"
-		HERC_OSVERSION="${HERC_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
+		ARCADIA_PLATFORM="Solaris"
+		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
 		;;
 	AIX)
-		HERC_OSVERSION="AIX $( oslevel ) ($(`oslevel -r`))"
+		ARCADIA_OSVERSION="AIX $( oslevel ) ($(`oslevel -r`))"
 		;;
 	CYGWIN*)
-		HERC_PLATFORM="Cygwin Windows"
-		HERC_OSVERSION="$( cleanstring "$( uname -s )" )"
-		HERC_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
-		HERC_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
+		ARCADIA_PLATFORM="Cygwin Windows"
+		ARCADIA_OSVERSION="$( cleanstring "$( uname -s )" )"
+		ARCADIA_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
+		ARCADIA_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
 		;;
 	OpenBSD)
-		HERC_OSVERSION="${HERC_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
-		HERC_CPU="$( sysctl hw.model | cut -d= -f2- )"
-		HERC_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
+		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
+		ARCADIA_CPU="$( sysctl hw.model | cut -d= -f2- )"
+		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
 		;;
 	FreeBSD)
-		HERC_OSVERSION="${HERC_PLATFORM} $( uname -r ) ($( uname -p))"
-		HERC_CPU="$( sysctl hw.model | cut -d: -f2- )"
-		HERC_CORES="$( sysctl hw.ncpu | cut -d: -f2- )"
+		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p))"
+		ARCADIA_CPU="$( sysctl hw.model | cut -d: -f2- )"
+		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d: -f2- )"
 		;;
 	NetBSD)
-		HERC_OSVERSION="${HERC_PLATFORM} $( uname -r ) ($( uname -p))"
-		HERC_CPU="$( sysctl hw.model | cut -d= -f2- )"
-		HERC_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
+		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p))"
+		ARCADIA_CPU="$( sysctl hw.model | cut -d= -f2- )"
+		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
 		;;
 	*)
-		HERC_OSVERSION="Unknown"
+		ARCADIA_OSVERSION="Unknown"
 		;;
 esac
 
 cat >> "$OUTFILE" << EOF
 // Platform (uname -s)
-#define SYSINFO_PLATFORM "$( cleanstring "${HERC_PLATFORM}" )"
+#define SYSINFO_PLATFORM "$( cleanstring "${ARCADIA_PLATFORM}" )"
 
 // Operating System version (Platform-dependent)
-#define SYSINFO_OSVERSION "$( cleanstring "${HERC_OSVERSION}" )"
+#define SYSINFO_OSVERSION "$( cleanstring "${ARCADIA_OSVERSION}" )"
 
 // CPU Model (Platform-dependent)
-#define SYSINFO_CPU "$( cleanstring "${HERC_CPU}" )"
+#define SYSINFO_CPU "$( cleanstring "${ARCADIA_CPU}" )"
 
 // CPU Cores (Platform-dependent)
-#define SYSINFO_CPUCORES ( $( cleanstring "${HERC_CORES}" ) )
+#define SYSINFO_CPUCORES ( $( cleanstring "${ARCADIA_CORES}" ) )
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-HERC_ARCH="$( uname -m )"
+ARCADIA_ARCH="$( uname -m )"
 
 cat >> "$OUTFILE" << EOF
 // OS Architecture (uname -m)
-#define SYSINFO_ARCH "$( cleanstring "${HERC_ARCH}" )"
+#define SYSINFO_ARCH "$( cleanstring "${ARCADIA_ARCH}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-HERC_CFLAGS="$@"
-HERC_CFLAGS="$( echo "${HERC_CFLAGS}" | sed 's/"//g' )"
+ARCADIA_CFLAGS="$@"
+ARCADIA_CFLAGS="$( echo "${ARCADIA_CFLAGS}" | sed 's/"//g' )"
 
 cat >> "$OUTFILE" << EOF
 // Compiler Flags
-#define SYSINFO_CFLAGS "$( cleanstring "${HERC_CFLAGS}" )"
+#define SYSINFO_CFLAGS "$( cleanstring "${ARCADIA_CFLAGS}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-HERC_VCSREV=""
+ARCADIA_VCSREV=""
 if [ -d .git ]; then
-	HERC_VCSTYPE="VCSTYPE_GIT"
+	ARCADIA_VCSTYPE="VCSTYPE_GIT"
 	if type git >/dev/null 2>&1; then
-		HERC_VCSREV="$( git rev-parse HEAD )"
+		ARCADIA_VCSREV="$( git rev-parse HEAD )"
 	else
-		HERC_VCSREV="Unknown"
+		ARCADIA_VCSREV="Unknown"
 	fi
 elif [ -d .svn ]; then
-	HERC_VCSTYPE="VCSTYPE_SVN"
+	ARCADIA_VCSTYPE="VCSTYPE_SVN"
 	if type svnversion >/dev/null 2>&1; then
-		HERC_VCSREV="$( svnversion )"
+		ARCADIA_VCSREV="$( svnversion )"
 	else
-		HERC_VCSREV="Unknown"
+		ARCADIA_VCSREV="Unknown"
 	fi
 else
-	HERC_VCSTYPE="VCSTYPE_NONE"
+	ARCADIA_VCSTYPE="VCSTYPE_NONE"
 fi
 
 cat >> "$OUTFILE" << EOF
 // VCS Type
-#define SYSINFO_VCSTYPE ${HERC_VCSTYPE}
+#define SYSINFO_VCSTYPE ${ARCADIA_VCSTYPE}
 
 // VCS Revision
-#define SYSINFO_VCSREV "$( cleanstring "${HERC_VCSREV}" )"
+#define SYSINFO_VCSREV "$( cleanstring "${ARCADIA_VCSREV}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
