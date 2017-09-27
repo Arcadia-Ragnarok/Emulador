@@ -178,3 +178,4 @@ morocc,54,251,0	script	Bêbado#mocr	4_M_ORIENT02,{
 	mes "Ou, uns quinhentos anos se passaram???!";
 	close;
 }
+

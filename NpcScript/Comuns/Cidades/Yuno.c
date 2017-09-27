@@ -272,3 +272,246 @@ yuno,263,320,4	script	Soldado#yun7	4_M_EIN_SOLDIER,{
 	mes "É especialmente poderoso contra Demônios e Mortos-Vivos.";
 	close;
 }
+
+//-------------------------------------------------------------------
+// - [ Casas ] -
+//-------------------------------------------------------------------
+yuno_in04,20,123,7	script	Representante#yun	4_F_SISTER,{
+	mes "[Marlin Putiur]";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" a Organização de Pesquisa de Monstros.";
+	next;
+	mes "[Marlin Putiur]";
+	mes "Nós estamos pesquisando monstros baseado em informações de aventureiros.";
+	mes "A fim de lidar eficientemente com monstros no estado selvagem.";
+	next;
+	mes "[Marlin Putiur]";
+	mes "Nós estamos aceitando qualquer tipo de informação relacionada com monstros.";
+	mes "Então se você tiver qualquer novidade ou informação, por favor não hesite em dizer-me.";
+	next;
+	mes "[Marlin Putiur]";
+	mes "Você pode usar o formulário de relatório neste quarto a sua conveniência.";
+	next;
+	mes "[Marlin Putiur]";
+	mes "Nós estamos investigando monstros neste mundo no intento de ajudar os aventureiros em suas jornadas.";
+	close;
+}
+
+//-------------------------------------------------------------------
+yuno_in04,33,119,3	script	Aventureiro#yun	4_M_ROGUE,{
+	mes "...";
+	next;
+	mes "...";
+	mes ".......";
+	next;
+	mes "^3355FF*Rabisca Rabisca*^000000";
+	next;
+	mes "[Jovem Dinâmico]";
+	mes "Err...?";
+	mes "O que é isto?";
+	next;
+	if (Sex == SEX_FEMALE) {
+		emotion e_heh;
+		mes "[Jovem Dinâmico]";
+		mes "Oh...!";
+		mes "Uma linda, mocinha!";
+		next;
+		mes "[Jovem Dinâmico]";
+		mes "Olá aí.";
+		mes "Meu nome é Pane.";
+		mes "Posso perguntar o seu?";
+		input (.@input$);
+		next;
+		mes "[Jovem Dinâmico]";
+		mes "Oh...";
+		if (strcharinfo(PC_NAME) == .@input$) {
+			next;
+			mes "[Jovem Dinâmico]";
+			mes "^FF6699"+@input$+"!";
+			mes "Um nome maravilhoso!";
+			next;
+			mes "[Jovem Dinâmico]";
+			mes "Irei lembrar de seu nome, minha senhora.";
+			mes "Oh, mas eu sinto muito.";
+			mes "Eu estou muito ocupado agora.";
+			mes "Você poderia voltar mais tarde?";
+			mes "Farei o meu melhor para agradá-la na próxima vez.";
+			emotion (e_kis);
+			close;
+		} else {
+			mes "Esse é o seu nome?";
+			next;
+			mes "[Jovem Dinâmico]";
+			mes "Eh, que seja.";
+			mes "Oh, mas eu sinto muito.";
+			mes "Eu estou muito ocupado agora.";
+			mes "Você poderia voltar mais tarde?";
+			mes "Farei o meu melhor para agradá-la na próxima vez.";
+			emotion (e_heh);
+			close;
+		}
+	} else {
+		mes "[Jovem Dinâmico]";
+		mes "O quê, cara...!";
+		mes "Deixe-me sozinho.";
+		mes "Não está vendo que estou ocupado?";
+		close;
+	}
+}
+
+//-------------------------------------------------------------------
+yuno_in01,173,92,0	script	Maçãs de Idun#yun	HIDDEN_NPC,{
+	mes "[Maçãs de Idun]";
+	mes "Esta canção elogia as maçãs de ouro da deusa Idun.";
+	mes "Estes foram a fonte do poder do deuses, uma vez que os impediu de envelhecer.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Todo deus nunca envelhecem por causa da bela Deusa, Idun.";
+	mes "Guardiã das maçãs da juventude Deusa da imortalidade.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Todo deus nunca cresce velho.";
+	mes "Idun, a esposa de Bragi, Idun, é filha de Odin.";
+	mes "As maçãs ela mantém na sua cesta.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Sem Idun, todos os deuses sucumbiriam à idade.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Mesmo Thor, o mais forte dos deuses, teria um crescimento débil.";
+	mes "Megingjard ia escorregar de sua cintura, e Mjölnir nunca iria voar novamente.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Loki foi negligente uma só vez, e fez com que perdesse para os deuses.";
+	mes "Ele foi obrigado a levá-la de volta.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "A minha deusa vive no campo de Asgard ela me dá frutos do céu.";
+	mes "Você será amada por todos os deuses...";
+	mes "Você será abençoada Por cada deus...";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Se você compartilha a Maçã da juventude comigo.";
+	mes "Mesmo sendo uma mordida com este pobre poeta.";
+	next;
+	mes "[Maçãs de Idun]";
+	mes "Você será amada por todos os deuses...";
+	mes "Você será abençoada";
+	mes "Por cada deus...";
+	close;
+}
+
+//-------------------------------------------------------------------
+yuno_in01,173,94,0	script	Canções de Batalha#yun	HIDDEN_NPC,{
+	mes "[Canções de Batalha]";
+	mes "Esta canção foi escrita para dar coragem aos soldados no campo de batalha.";
+	next;
+	mes "[Canções de Batalha]";
+	mes "Os sons do galope ecoam à distância.";
+	mes "Uma nuvem nebulosa de poeira";
+	next;
+	mes "[Canções de Batalha]";
+	mes "Preenche o sol poente milhares de olhos abertos.";
+	mes "Tochas no castelo chamas como milhares de Ifrits.";
+	next;
+	mes "[Canções de Batalha]";
+	mes "Escute meu coração latejante, o sangue flui nas minhas veias.";
+	mes "Sentido o peso da minha armadura.";
+	mes "O inimigo tem aparecido antes de nós.";
+	next;
+	mes "[Canções de Batalha]";
+	mes "Toque forte os tambores, mais forte!";
+	mes "Coragem, soldados, marchem pra frente!";
+	mes "Gritem alto, soldados, mais alto!";
+	mes "Hoje nunca vai voltar!";
+	next;
+	mes "[Canções de Batalha]";
+	mes "Atordoar o céu provocar a terra.";
+	mes "Sinto novamente meu coração.";
+	mes "Toquem as cornetas para balançar a fortaleza.";
+	mes "Hoje nunca vai voltar!";
+	close;
+}
+
+//-------------------------------------------------------------------
+yuno_in01,173,96,0	script	Canções de Luke#yun	HIDDEN_NPC,{
+	mes "[Preface]";
+	mes "Eu, Luke de Izlude, o maior dos bardos do meu tempo.";
+	mes "Deixo as letras das minhas canções essenciais para a posteridade.";
+	mes " ";
+	mes "Sumário";
+	next;
+	switch(select("Canção do Casamento","A vida, moinho de água","Nós")) {
+		case 1:
+		mes "[Canção do Casamento]";
+		mes "Santuário de Prontera é onde está todo mundo.";
+		mes "Para festejar a união no seu casamento feliz.";
+		next;
+		mes "[Canção do Casamento]";
+		mes "Com alegria eu arranho meu alaúde como esse é o meu comércio.";
+		mes "Trazer uma canção alegre para seu casamento.";
+		next;
+		mes "[Canção do Casamento]";
+		mes "Para minhas canções, pagam-me não Zeny ou ouro.";
+		mes "Mas o sorriso da noiva, se me permitem ser tão ousado.";
+		next;
+		mes "[Canção do Casamento]";
+		mes "Os olhos brilhantes de uma bela moça aquelas fechaduras acetinadas";
+		mes "E essa empresa...";
+		next;
+		mes "[Canção do Casamento]";
+		mes "Perdoe-me, noivo!";
+		mes "Mas ela é tão linda!";
+		mes "Que a vossa união seja abençoada!";
+		mes "Er, faça sua esposa ser obediente.";
+		next;
+		mes "[Notas de Luke]";
+		mes "Esta canção é sobre um certo bardo.";
+		mes "Que foi convidado para uma cerimônia de casamento.";
+		mes "E que não pôde resistir à beleza da noiva.";
+		mes "Ele acabou cantando a noiva.";
+		next;
+		mes "[Notas de Luke]";
+		mes "As letras, claro, são fictícias e não são anedóticas.";
+		close;
+		case 2:
+		mes "[A vida, moinho de água]";
+		mes "Eu persegui a fama.";
+		mes "Ela me iludiu.";
+		mes "Corri depois da felicidade, mas nunca peguei ela.";
+		next;
+		mes "[A vida, moinho de água]";
+		mes "Mas o amanhã ainda será será, tenho certeza.";
+		mes "Como o moinho de água em Al de Baran.";
+		mes "Que transforma e a vida continua.";
+		next;
+		mes "[A vida, moinho de água]";
+		mes "Anima-te! a vida continua.";
+		mes "De certo como a água ao moinho retorna, amanhã virá.";
+		next;
+		mes "[Notas de Luke]";
+		mes "Esta canção foi feita pra confortar pessoas em desespero.";
+		close;
+		case 3:
+		mes "[Nós]";
+		mes "Um bom bardo canta para agradar seus ouvintes.";
+		mes "Então, não espere uma canção triste isso aumenta a sua angústia.";
+		next;
+		mes "[Nós]";
+		mes "Uma boa Odalisca dança para agradar seu público-alvo.";
+		mes "Vamos dançar juntos?";
+		mes "Basta segurar a minha mão.";
+		mes "*La la la* *La la la*";
+		next;
+		mes "[Nós]";
+		mes "Morador: 'Então porque as vezes vocês brigam?!'";
+		mes "Bardo: 'Bem... ninguém é perfeito!'";
+		next;
+		mes "[Notas de Luke]";
+		mes "Esta música é boa para ser cantada durante festas.";
+		mes "Pois a discórdia intencional incentiva o público a participar.";
+		mes "Fora isso, esta canção tem um significado bonito.";
+		close;
+	}
+}
+
+//-------------------------------------------------------------------
