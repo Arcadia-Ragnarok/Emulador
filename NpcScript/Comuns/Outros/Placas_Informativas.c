@@ -294,7 +294,7 @@ niflheim,200,191,5	script	Quadro de Avisos#Boardnif	2_BULLETIN_BOARD,{
 }
 
 // Izlude ----------------------------------------------------------
-izlude,131,116,4	script#pre	Quadro de Avisos#Boardiz	2_BULLETIN_BOARD,{
+izlude,131,116,4	script	Quadro de Avisos#Boardiz	2_BULLETIN_BOARD,{
 	mes "[A Cidade Satélite, Izlude]";
 	mes "Bem-vindo a Izlude, a cidade satélite de Prontera.";
 	mes "Izlude foi construída para apoiar a defesa de Prontera e para acomodar sua crescente população.";
