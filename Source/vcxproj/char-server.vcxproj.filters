@@ -58,9 +58,6 @@
 		<ClCompile Include="..\src\common\utils.c">
 			<Filter>common</Filter>
 		</ClCompile>
-		<ClCompile Include="..\src\char\HPMchar.c">
-			<Filter>char</Filter>
-		</ClCompile>
 		<ClCompile Include="..\src\char\char.c">
 			<Filter>char</Filter>
 		</ClCompile>
@@ -203,9 +200,6 @@
 		</ClInclude>
 		<ClInclude Include="..\src\common\utils.h">
 			<Filter>common</Filter>
-		</ClInclude>
-		<ClInclude Include="..\src\char\HPMchar.h">
-			<Filter>char</Filter>
 		</ClInclude>
 		<ClInclude Include="..\src\char\char.h">
 			<Filter>char</Filter>
