@@ -1,15 +1,25 @@
 /*-----------------------------------------------------------------*\
-|              ____                     _                           |
-|             /    |                   | |_                         |
-|            /     |_ __ ____  __ _  __| |_  __ _                   |
-|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
-|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|               ____                     _                          |
+|              /    |                   | |_                        |
+|             /     |_ __ ____  __ _  __| |_  __ _                  |
+|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
+|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
+|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
+|         /__/   |__|  [ Ragnarok Emulator ]                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Informativos em geral                                     |
+| - Crédito de desenvolvimento                                      |
+| Copyright (C) Spell Master / Euphy / SinSloth / Silent / Nexon    |
+|               Lupus / L0ne_W0lf /kobra_k88                        |
++-------------------------------------------------------------------+
+| - Informações                                                     |
+| * Placas de informativos em geral                                 |
++-------------------------------------------------------------------+
+| - Licença de uso                                                  |
+| Arcadia é um software livre: você pode redistribuí-lo ou          |
+| modificá-lo de acordo com os termos da GNU General Public License,|
+| conforme publicado pela Free Software Foundation, seja na versão  |
+| 3 da Licença, ou qualquer versão posterior.                       |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
@@ -108,7 +118,7 @@ morocc,32,174,1	script	Informativo#Signmoc3	HIDDEN_NPC,{
 }
 
 morocc,168,264,1	script	Informativo#Signmoc4	HIDDEN_NPC,{
-	mes "^993300- Quadro de avisos -^000000";
+	mes "^993300- Informativo -^000000";
 	mes "^CC0033Guerreiro Leal!^000000";
 	mes "Se você é alguem que gosta de uma batalha e sente que não pode ser parado, jogador contra jogador até a morte!";
 	mes "Apresente-se em Prontera se acha que tem o que é necessário!";
@@ -116,15 +126,15 @@ morocc,168,264,1	script	Informativo#Signmoc4	HIDDEN_NPC,{
 }
 
 morocc,298,211,1	script	Informativo#Signmoc5	HIDDEN_NPC,{
-	mes "^993300- Avisos de Geffen -^000000";
-	mes "Lembrem-se Bruxos... O que importa não são todas suas habilidades, mas é o mago que as usa que conta!";
+	mes "^993300- Informativo -^000000";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Morroc.";
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen,116,58,1	script	Informativo#Signgef	HIDDEN_NPC,{
-	mes "^993300- The Geffen Bulletin Reads -^000000";
-	mes "Remember Wizard's...It's not how many skills you know, it's the magic that counts!";
+	mes "^993300- Avisos de Geffen -^000000";
+	mes "Lembrem-se Bruxos... O que importa não são todas suas habilidades, mas é o mago que as usa que conta!";
 	close;
 }
 
@@ -153,6 +163,13 @@ geffen,119,190,1	script	Informativo#Signgef3	HIDDEN_NPC,{
 	mes "Campos de Geffen ao Oeste";
 	close;
 }
+
+geffen,168,175,1	script	Informativo#Signgef4	HIDDEN_NPC,{
+	mes "^993300- Sinal -^000000";
+	mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Geffen.";
+	close;
+}
+geffen,183,61,1	duplicate(Informativo#Signgef4)	Informativo#Signgef5	HIDDEN_NPC
 
 // ------------------------------------------------------------------
 aldebaran,181,172,1	script	Informativo#Signald	HIDDEN_NPC,{
@@ -216,6 +233,6 @@ alberta,196,152,1	script	Informativo#Signalb4	HIDDEN_NPC,{
 
 alberta,149,54,1	script	Informativo#Signalb5	HIDDEN_NPC,{
 	mes "^993300- Quadro de avisos -^000000";
-	mes "Bem vindo.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+".";
 	close;
 }

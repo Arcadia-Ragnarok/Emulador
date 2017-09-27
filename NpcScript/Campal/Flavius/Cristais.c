@@ -1,15 +1,24 @@
 /*-----------------------------------------------------------------*\
-|              ____                     _                           |
-|             /    |                   | |_                         |
-|            /     |_ __ ____  __ _  __| |_  __ _                   |
-|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
-|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|               ____                     _                          |
+|              /    |                   | |_                        |
+|             /     |_ __ ____  __ _  __| |_  __ _                  |
+|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
+|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
+|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
+|         /__/   |__|  [ Ragnarok Emulator ]                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Criação: Spell Master 21/02/2017                                |
-| - Nota: Cristais da Batalha Campal Flavius                        |
+| - Crédito de desenvolvimento                                      |
+| Copyright (C) 21/02/2017 Spell Master                             |
++-------------------------------------------------------------------+
+| - Informações                                                     |
+| * Cristais da Batalha Campal Flavius                              |
++-------------------------------------------------------------------+
+| - Licença de uso                                                  |
+| Arcadia é um software livre: você pode redistribuí-lo ou          |
+| modificá-lo de acordo com os termos da GNU General Public License,|
+| conforme publicado pela Free Software Foundation, seja na versão  |
+| 3 da Licença, ou qualquer versão posterior.                       |
 \*-----------------------------------------------------------------*/
 
 bat_b01,1,3,0	script	FlaviusCrystal	CLEAR_NPC,{

@@ -1,15 +1,25 @@
 /*-----------------------------------------------------------------*\
-|              ____                     _                           |
-|             /    |                   | |_                         |
-|            /     |_ __ ____  __ _  __| |_  __ _                   |
-|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
-|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|               ____                     _                          |
+|              /    |                   | |_                        |
+|             /     |_ __ ____  __ _  __| |_  __ _                  |
+|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
+|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
+|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
+|         /__/   |__|  [ Ragnarok Emulator ]                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Diversas placas de informações                            |
+| - Crédito de desenvolvimento                                      |
+| Copyright (C) Spell Master  Euphy / Masao / L0ne_W0lf / Silent    |
+|               Kayla / Nexon / MasterOfMuppets                     |
++-------------------------------------------------------------------+
+| - Informações                                                     |
+| * Diversas placas de informações                                  |
++-------------------------------------------------------------------+
+| - Licença de uso                                                  |
+| Arcadia é um software livre: você pode redistribuí-lo ou          |
+| modificá-lo de acordo com os termos da GNU General Public License,|
+| conforme publicado pela Free Software Foundation, seja na versão  |
+| 3 da Licença, ou qualquer versão posterior.                       |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
@@ -280,6 +290,25 @@ niflheim,200,191,5	script	Quadro de Avisos#Boardnif	2_BULLETIN_BOARD,{
 	mes "[A Cidade dos Mortos, Nifflheim]";
 	mes "Indo a oeste, você chegará ao ^6B1312Vale de Gyoll^000000 onde todos os monstros poderosos e temíveis de Nifflheim habitam.";
 	mes "Sugere-se deixar a área imediatamente caso seja um novo aventureiro.";
+	close;
+}
+
+// Izlude ----------------------------------------------------------
+izlude,131,116,4	script#pre	Quadro de Avisos#Boardiz	2_BULLETIN_BOARD,{
+	mes "[A Cidade Satélite, Izlude]";
+	mes "Bem-vindo a Izlude, a cidade satélite de Prontera.";
+	mes "Izlude foi construída para apoiar a defesa de Prontera e para acomodar sua crescente população.";
+	next;
+	mes "[A Cidade Satélite, Izlude]";
+	mes "Pontos interessantes de Izlude incluem:";
+	mes "A Associação de Espadachins, lugar onde Aprendizes podem mudar de classe e se tornarem um Espadachim, e há também a Arena de Batalha que está localizada ao Norte de Izlude.";
+	next;
+	mes "[A Cidade Satélite, Izlude]";
+	mes "Nas estações de barco, você pode alugar um barco e ir até ^123972Alberta^000000 ou a ^2F0400Ilha Byalan^000000.";
+	next;
+	mes "[A Cidade Satélite, Izlude]";
+	mes "De Izlude, ^6D6FE0Prontera^000000 está localizada a Noroeste, e ^1F3A11Payon^000000 está localizada ao Sul.";
+	mes "Aproveite sua viagem no Reino de Rune-Midgard.";
 	close;
 }
 
