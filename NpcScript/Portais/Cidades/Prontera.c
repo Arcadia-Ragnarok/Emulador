@@ -27,7 +27,7 @@ prontera,120,267,0	warp	pronterawarp_12	2,2,prt_in,180,97
 prontera,192,267,0	warp	pronterawarp_13	2,2,prt_in,178,55
 prontera,42,67,0	warp	pronterawarp_14	2,2,prt_in,44,29
 prontera,208,154,0	warp	pronterawarp_15	2,2,prt_in,172,29
-prontera,130,220,0	warp	pronterawarp_16	2,2,prt_in,131,71
+prontera,134,221,0	warp	pronterawarp_16	2,2,prt_in,131,71
 prontera,133,183,0	warp	pronterawarp_17	2,2,prt_in,50,105
 prontera,45,346,0	warp	pronterawarp_18	2,2,prt_in,80,110
 prontera,156,360,0	warp	pronterawarp_19	4,2,prt_castle,102,20

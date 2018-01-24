@@ -567,7 +567,7 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 			mes "Não há mais nada para fazer aqui.";
 			mes "Atravesse o portal e vá falar com o ^4a4afdInstrutor Brade^000000.";
 			mes "Para começar a última etapa do seu treinamento.";
-			close;
+			close2; cutin ("",255); end;
 		} else if (new_quest == 7 ) {
 			getitem Cargo_Free_Ticket,40;
 			getitem Warp_Free_Ticket,60;
@@ -697,7 +697,7 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		close;
 	} else if (new_quest == 8) {
 		mes "[Guia]";
-		mes "Na minha esquerda, jeva uma funcionária da Corporação Eventos Incríveis.";
+		mes "Na minha esquerda, tem uma funcionária da Corporação Eventos Incríveis.";
 		mes "Você já conversou com ela?";
 		close;
 	} else if (new_quest == 9) {

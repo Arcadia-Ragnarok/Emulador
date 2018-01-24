@@ -48,8 +48,8 @@ moc_pryd06,197,10,0	warp	mocprydwarp_17	2,3,moc_pryd05,220,9
 // ------------------------------------------------------------------
 moc_prydb1,100,55,0	warp	mocprydbwarp_1	2,1,moc_pryd05,94,96
 moc_prydb1,100,191,0	warp	mocprydbwarp_2	2,2,moc_pryd01,90,105
-moc_prydb1,88,113,0	warp	mocprydbwarp_3	2,6,moc_prydb1,56,115
-moc_prydb1,59,115,0	warp	mocprydbwarp_4	2,6,moc_prydb1,90,115
+moc_prydb1,88,115,0	warp	mocprydbwarp_3	2,6,moc_prydb1,56,115
+moc_prydb1,59,115,0	warp	mocprydbwarp_4	2,6,moc_prydb1,92,115
 moc_prydb1,111,115,0	warp	mocprydbwarp_5	2,6,moc_prydb1,145,115
 moc_prydb1,142,115,0	warp	mocprydbwarp_6	2,6,moc_prydb1,108,115
 moc_prydb1,100,104,0	warp	mocprydbwarp_7	5,2,moc_prydb1,100,74
