@@ -58,7 +58,7 @@ prt_in,183,97,0	warp	pronterawarp_41	1,2,prontera,120,264
 prt_in,181,55,0	warp	pronterawarp_42	1,2,prontera,192,264
 prt_in,47,29,0	warp	pronterawarp_43	2,1,prontera,46,67
 prt_in,172,33,0	warp	pronterawarp_44	2,1,prontera,205,157
-prt_in,135,71,0	warp	pronterawarp_45	1,2,prontera,136,219
+prt_in,135,71,0	warp	pronterawarp_45	1,2,prontera,137,218
 prt_in,53,105,0	warp	pronterawarp_46	1,2,prontera,136,186
 prt_in,80,113,0	warp	pronterawarp_47	2,1,prontera,48,343
 prt_in,285,130,0	warp	pronterawarp_48	2,1,prontera,147,287
