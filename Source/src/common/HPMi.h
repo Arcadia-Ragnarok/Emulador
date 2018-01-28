@@ -68,9 +68,6 @@ enum hp_event_types {
 enum HPluginPacketHookingPoints {
 	hpClif_Parse,      ///< map-server (client-map)
 	hpChrif_Parse,     ///< map-server (char-map)
-	hpParse_FromMap,   ///< char-server (map-char)
-	hpParse_FromLogin, ///< char-server (login-char)
-	hpParse_Char,      ///< char-server (client-char)
 	hpParse_FromChar,  ///< login-server (char-login)
 	hpParse_Login,     ///< login-server (client-login)
 	/* */

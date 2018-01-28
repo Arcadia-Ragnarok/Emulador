@@ -26,7 +26,6 @@
 
 #include "login.h"
 
-#include "login/HPMlogin.h"
 #include "login/account.h"
 #include "login/ipban.h"
 #include "login/loginlog.h"
@@ -1911,12 +1910,8 @@ int do_final(void)
 
 	lclif->final();
 
-	HPM_login_do_final();
-
 	aFree(login->LOGIN_CONF_NAME);
 	aFree(login->NET_CONF_NAME);
-
-	HPM->event(HPET_POST_FINAL);
 
 	ShowStatus("Finished.\n");
 	return EXIT_SUCCESS;
@@ -2043,11 +2038,7 @@ int do_init(int argc, char** argv)
 	}
 
 	lclif->init();
-
-	HPM_login_do_init();
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
-	HPM->config_read();
-	HPM->event(HPET_PRE_INIT);
 
 	cmdline->exec(argc, argv, CMDLINE_OPT_NORMAL);
 	login->config_read(login->LOGIN_CONF_NAME, false);
