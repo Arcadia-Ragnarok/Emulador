@@ -22,7 +22,7 @@
 new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 	if (!new_quest) {
 		mes "[Sprakki]";
-		mes "Bem-vind"+(Sex == SEX_MALE ? "o":a)+" ao mundo de Ragnarök Online.";
+		mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao mundo de Ragnarök Online.";
 		mes "Meu nome é Sprakki e eu estou encarregada de dar a você o guia básico do jogo.";
 		next;
 		mes "[Sprakki]";

@@ -60,7 +60,7 @@
 //1620:2535,{ bonus bMatkRate,5; bonus2 bSubEle,Ele_Neutral,25; }
 //1625:18542,{ bonus bHealPower,getequiprefinerycnt(EQI_HAND_R); }
 //1629:5045,{ bonus bDex,2; bonus bInt,2; bonus bSPrecovRate,5; bonus bMatkRate,getequiprefinerycnt(EQI_HAND_R); }
-//1631:2129,{ bonus2 bSkillAtk,PR_MAGNUS,20; bonus3 bAutoSpellWhenHit,PR_TURNUNDEAD,1,20; }
+1631:2129,{ bonus2 bSkillAtk,PR_MAGNUS,20; bonus3 bAutoSpellWhenHit,PR_TURNUNDEAD,1,20; }
 //1631:18542,{ bonus bHealPower,getequiprefinerycnt(EQI_HAND_R)*3; }
 //1636:18539,{ bonus bMatk,10*getequiprefinerycnt(EQI_HAND_R); bonus bVariableCastrate,-10; }
 //1636:18804,{ bonus bMatk,getequiprefinerycnt(EQI_HAND_R)*10; }
