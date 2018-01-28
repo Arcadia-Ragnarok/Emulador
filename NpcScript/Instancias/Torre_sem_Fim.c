@@ -234,7 +234,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 	.@etower_timer = questprogress(60200,PLAYTIME); // 1 Semana
 	.@etower_timer2 = questprogress(60201,PLAYTIME); // 4 Horas
 
-	if (!instance_check_party(.@party_id,1)) { // *****
+	if (!instance_check_party(.@party_id,4)) { // 4 Mínimo de 4 membros no grupo
 		mes "Me desculpe mas seu grupo não cumpre com as exigências para entrar na Torre.";
 		close;
 	}
