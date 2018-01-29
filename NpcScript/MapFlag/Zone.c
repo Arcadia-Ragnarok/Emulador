@@ -115,8 +115,8 @@ yuno_in05	mapflag	zone	Towns
 6@tower	mapflag	zone	Instance
 1@orcs	mapflag	zone	Instance
 2@orcs	mapflag	zone	Instance
-1@cata	mapflag	zone	Instance
-2@cata	mapflag	zone	Instance
+1@cata	mapflag	zone	SealedShrine
+2@cata	mapflag	zone	SealedShrine
 1@nyd	mapflag	zone	Instance
 2@nyd	mapflag	zone	Instance
 1@mist	mapflag	zone	Instance

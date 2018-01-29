@@ -5079,7 +5079,39 @@
 // 1926,JAKK_H
 // 1927,WHISPER_H
 // 1928,DEVIRUCHI_H
-// 1929,BAPHOMET_I
+
+1929,Bafomé@NPC_TALK,chase,682,1,10000,0,6000000,yes,target,myhpltmaxrate,2,,,,,,,25
+1929,Bafomé@NPC_TALK,attack,682,1,10000,0,6000000,yes,target,myhpltmaxrate,2,,,,,,,25
+1929,Bafomé@NPC_TALK,chase,682,1,10000,0,6000000,yes,target,always,0,,,,,,,19
+1929,Bafomé@NPC_ALLHEAL,idle,687,1,3000,10000,10000,no,self,rudeattacked,,,,,,,,
+1929,Bafomé@NPC_ALLHEAL,walk,687,1,3000,10000,10000,no,self,rudeattacked,,,,,,,,
+1929,Bafomé@MO_BODYRELOCATION,chase,264,1,2000,200,1000,yes,target,always,0,,,,,,,
+1929,Bafomé@NPC_DARKSTRIKE,chase,340,10,2000,0,1000,yes,target,always,0,,,,,,,
+1929,Bafomé@AS_SONICBLOW,attack,136,5,500,0,20000,no,target,myhpltmaxrate,30,,,,,,,20
+1929,Bafomé@NPC_DARKNESSBREATH,attack,658,3,2000,800,5000,no,target,myhpltmaxrate,50,,,,,,29,
+1929,Bafomé@NPC_EVILLAND,chase,670,10,10000,1000,50000,no,target,myhpltmaxrate,70,,,,,,,24
+1929,Bafomé@NPC_EVILLAND,attack,670,10,10000,1000,50000,no,target,myhpltmaxrate,70,,,,,,,24
+1929,Bafomé@NPC_HELLJUDGEMENT,chase,662,3,10000,800,15000,no,self,myhpltmaxrate,50,,,,,,,24
+1929,Bafomé@NPC_HELLJUDGEMENT,attack,662,3,10000,800,15000,no,self,myhpltmaxrate,50,,,,,,,22
+1929,Bafomé@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,self,always,0,,,,,,,
+1929,Bafomé@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,,
+1929,Bafomé@NPC_SUMMONSLAVE,attack,196,6,10000,700,10000,no,self,slavele,2,1431,,,,,,
+1929,Bafomé@NPC_SUMMONSLAVE,idle,196,6,10000,700,10000,no,self,slavele,2,1431,,,,,,
+1929,Bafomé@NPC_INVINCIBLE,idle,685,1,10000,1000,60000,no,self,always,0,,,,,,,19
+1929,Bafomé@NPC_INVINCIBLE,chase,685,1,10000,1000,60000,no,self,always,0,,,,,,,19
+1929,Bafomé@NPC_INVINCIBLE,attack,685,1,10000,1000,60000,no,self,always,0,,,,,,,19
+1929,Bafomé@NPC_PULSESTRIKE,chase,661,5,10000,2500,30000,no,self,always,0,,,,,,,20
+1929,Bafomé@NPC_PULSESTRIKE,attack,661,5,10000,2500,30000,no,self,always,0,,,,,,,21
+1929,Bafomé@KN_BRANDISHSPEAR,chase,57,20,10000,1000,20000,no,target,always,0,,,,,,,
+1929,Bafomé@KN_BRANDISHSPEAR,attack,57,20,10000,1000,20000,no,target,always,0,,,,,,,
+1929,Bafomé@NPC_DARKBREATH,chase,202,1,2000,800,5000,no,target,always,0,,,,,,29,
+1929,Bafomé@NPC_DARKBREATH,attack,202,1,2000,800,5000,no,target,always,0,,,,,,29,
+1929,Bafomé@NPC_ARMORBRAKE,attack,344,10,2000,0,5000,no,target,always,0,,,,,,,
+1929,Bafomé@WZ_VERMILION,attack,85,10,2000,500,10000,no,target,always,0,,,,,,29,
+1929,Bafomé@WZ_VERMILION,chase,85,20,5000,500,10000,no,target,skillused,18,,,,,,29,
+1929,Bafomé@WZ_VERMILION,chase,85,20,2000,500,10000,no,target,always,0,,,,,,29,
+1929,Bafomé@NPC_ALLHEAL,idle,687,1,10000,30000,30000,yes,self,myhpltmaxrate,60,,,,,,,23
+
 // 1930,PIAMETTE
 // 1931,WISH_MAIDEN
 // 1932,GARDEN_KEEPER

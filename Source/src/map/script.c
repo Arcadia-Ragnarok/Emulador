@@ -767,7 +767,7 @@ const char* skip_word(const char* p)
 			++p; break;
 		case '#':// account variable
 			p += ( p[1] == '#' ? 2 : 1 ); break;
-		case '\'':// instance variable
+		case '`':// instance variable
 			++p; break;
 		case '.':// npc variable
 			p += ( p[1] == '@' ? 2 : 1 ); break;
@@ -775,7 +775,7 @@ const char* skip_word(const char* p)
 			p += ( p[1] == '@' ? 2 : 1 ); break;
 	}
 
-	while( ISALNUM(*p) || *p == '_' || *p == '\'' )
+	while( ISALNUM(*p) || *p == '_' || *p == '`' )
 		++p;
 
 	// postfix
@@ -2885,7 +2885,7 @@ struct script_data *get_val(struct script_state* st, struct script_data* data) {
 				else
 					str = script->get_val_npc_str(st, &st->script->local, data);
 				break;
-			case '\'':
+			case '`':
 				str = script->get_val_instance_str(st, name, data);
 				break;
 			default:
@@ -2932,7 +2932,7 @@ struct script_data *get_val(struct script_state* st, struct script_data* data) {
 					else
 						data->u.num = script->get_val_npc_num(st, &st->script->local, data);
 					break;
-				case '\'':
+				case '`':
 					data->u.num = script->get_val_instance_num(st, name, data);
 					break;
 				default:
@@ -3133,7 +3133,7 @@ struct reg_db *script_array_src(struct script_state *st, struct map_session_data
 				src = (name[1] == '@') ? &st->stack->scope : &st->script->local;
 			}
 			break;
-		case '\'':/* instance */
+		case '`':/* instance */
 			nullpo_retr(NULL, st);
 			if( st->instance_id >= 0 ) {
 				src = &instance->list[st->instance_id].regs;
@@ -3317,7 +3317,7 @@ int set_reg(struct script_state *st, struct map_session_data *sd, int64 num, con
 				else
 					script->set_reg_npc_str(st, &st->script->local, num, name, str);
 				return 1;
-			case '\'':
+			case '`':
 				set_reg_instance_str(st, num, name, str);
 				return 1;
 			default:
@@ -3362,7 +3362,7 @@ int set_reg(struct script_state *st, struct map_session_data *sd, int64 num, con
 				else
 					script->set_reg_npc_num(st, &st->script->local, num, name, val);
 				return 1;
-			case '\'':
+			case '`':
 				set_reg_instance_num(st, num, name, val);
 				return 1;
 			default:
