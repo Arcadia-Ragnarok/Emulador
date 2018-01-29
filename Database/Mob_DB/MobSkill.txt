@@ -5261,10 +5261,28 @@
 1979,Zukadam@NPC_SUMMONSLAVE,idle,196,2,10000,0,0,no,self,onspawn,0,1668,,,,,,
 
 // 1980,KUBLIN
-// 1981,I_HIGH_ORC
-// 1982,I_ORC_ARCHER
-// 1983,I_ORC_SKELETON
-// 1984,I_ORC_LADY
+
+1981,Orc Elite Guard@CR_AUTOGUARD,chase,249,5,500,0,300000,yes,self,longrangeattacked,,,,,,,,
+1981,Orc Elite Guard@NPC_DARKNESSATTACK,attack,190,3,500,500,5000,no,target,always,,,,,,,6,
+1981,Orc Elite Guard@NPC_EMOTION,chase,197,1,2000,0,5000,yes,self,always,,0,,,,,,
+1981,Orc Elite Guard@NPC_PULSESTRIKE,attack,661,2,500,0,10000,yes,self,always,,,,,,,,
+1981,Orc Elite Guard@NPC_PULSESTRIKE,chase,661,2,2000,0,10000,yes,self,always,,,,,,,,
+1981,Orc Elite Guard@SM_BASH,attack,5,10,500,1000,5000,no,target,always,,,,,,,,
+1981,Orc Elite Guard@SM_BASH,chase,5,10,500,1000,5000,no,target,always,,,,,,,,
+1981,Orc Elite Guard@SM_MAGNUM,attack,7,7,500,500,5000,no,self,always,,,,,,,6,
+
+1982,Orc Bowman@AC_DOUBLE,attack,46,1,2000,1000,5000,no,target,always,,,,,,,,
+1982,Orc Bowman@AC_SHOWER,attack,47,5,2000,1000,5000,no,target,attackpcge,2,,,,,,6,
+1982,Orc Bowman@NPC_EMOTION,attack,197,1,100,0,60000,yes,self,myhpltmaxrate,60,6,0xB695,,,,,
+
+1983,Orc Undead@NPC_CRITICALWOUND,attack,673,2,500,0,5000,yes,target,always,,,,,,,,
+1983,Orc Undead@NPC_CURSEATTACK,chase,181,1,1000,800,5000,yes,target,always,,,,,,,6,
+1983,Orc Undead@NPC_WIDECURSE,attack,677,1,500,800,5000,no,self,always,,,,,,,,
+
+1984,Orc Lady@NPC_EMOTION,chase,197,1,2000,0,5000,yes,self,always,,3,,,,,,
+1984,Orc Lady@NPC_EVILLAND,attack,670,1,500,0,5000,yes,self,always,,,,,,,,
+1984,Orc Lady@WZ_QUAGMIRE,chase,92,5,500,700,5000,yes,target,always,,,,,,,12,
+
 // 1985,DANDELION
 
 1986,Tatacho@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,,
