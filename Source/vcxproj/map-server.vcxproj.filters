@@ -37,9 +37,6 @@
 		<ClCompile Include="..\src\map\homunculus.c">
 			<Filter>map</Filter>
 		</ClCompile>
-		<ClCompile Include="..\src\map\HPMmap.c">
-			<Filter>map</Filter>
-		</ClCompile>
 		<ClCompile Include="..\src\map\instance.c">
 			<Filter>map</Filter>
 		</ClCompile>
@@ -241,9 +238,6 @@
 			<Filter>map</Filter>
 		</ClInclude>
 		<ClInclude Include="..\src\map\homunculus.h">
-			<Filter>map</Filter>
-		</ClInclude>
-		<ClInclude Include="..\src\map\HPMmap.h">
 			<Filter>map</Filter>
 		</ClInclude>
 		<ClInclude Include="..\src\map\instance.h">

@@ -27,7 +27,6 @@
 #include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, SV_VERSION
 #include "map.h"
 
-#include "map/HPMmap.h"
 #include "map/atcommand.h"
 #include "map/battle.h"
 #include "map/battleground.h"
@@ -6004,8 +6003,6 @@ int do_final(void) {
 	map->list_final();
 	vending->final();
 
-	HPM_map_do_final();
-
 	map->map_db->destroy(map->map_db, map->db_final);
 
 	mapindex->final();
@@ -6371,7 +6368,6 @@ int do_init(int argc, char *argv[])
 	map->MSG_CONF_NAME           = aStrdup("Config/System/Messages.conf");
 	map->GRF_PATH_FILENAME       = aStrdup("Config/Common/grf-files.txt");
 
-	HPM_map_do_init();
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
 	HPM->config_read();
 

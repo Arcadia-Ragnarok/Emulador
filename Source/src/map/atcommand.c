@@ -27,7 +27,6 @@
 #include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT()
 #include "atcommand.h"
 
-#include "map/HPMmap.h"
 #include "map/battle.h"
 #include "map/channel.h"
 #include "map/chat.h"
@@ -9643,10 +9642,6 @@ void atcommand_basecommands(void) {
 			continue;
 		}
 	}
-
-	/* @commands from plugins */
-	HPM_map_atcommands();
-
 	return;
 }
 #undef ACMD_DEF
@@ -10169,16 +10164,6 @@ bool atcommand_can_use2(struct map_session_data *sd, const char *command, AtComm
 
 	return false;
 }
-bool atcommand_hp_add(char *name, AtCommandFunc func) {
-	/* if commands are added after group permissions are thrown in, they end up with no permissions */
-	/* so we restrict commands to be linked in during boot */
-	if( core->runflag == MAPSERVER_ST_RUNNING ) {
-		ShowDebug("atcommand_hp_add: Commands can't be added after server is ready, skipping '%s'...\n",name);
-		return false;
-	}
-
-	return HPM_map_add_atcommand(name,func);
-}
 
 /**
  * @see DBApply
@@ -10245,7 +10230,6 @@ void atcommand_defaults(void) {
 	atcommand->final = do_final_atcommand;
 
 	atcommand->exec = atcommand_exec;
-	atcommand->create = atcommand_hp_add;
 	atcommand->can_use = atcommand_can_use;
 	atcommand->can_use2 = atcommand_can_use2;
 	atcommand->load_groups = atcommand_db_load_groups;
