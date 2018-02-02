@@ -106,7 +106,7 @@ mt19937ar: Source/3rdparty/mt19937ar/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/3rdparty/mt19937ar
 
-libconfig: 3rdparty/libconfig/Makefile
+libconfig: Source/3rdparty/libconfig/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/3rdparty/libconfig
 
