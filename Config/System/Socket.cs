@@ -43,13 +43,13 @@ socket_configuration: {
 
 	//----- IP Rules Settings -----
 	ip_rules: {
-		// If IP's are checked when connecting.
-		// This also enables DDoS protection.
+		// O IP deve ser checado na conexão?.
+		// Isso habilita a proteção DDoS.
 		enable: true
 
-		//   deny,allow     : Checa as regras de proibição e então as de permissão. Permite caso as regras não coincidam.
-		//   allow,deny     : Checa as regras de permissão e então as de proibição. Permite caso as regras não coincidam.
-		//   mutual-failure : Permite apenas se as regras de permissão e de proibição concidirem.
+		// deny,allow     : Checa as regras de proibição e então as de permissão. Permite caso as regras não coincidam.
+		// allow,deny     : Checa as regras de permissão e então as de proibição. Permite caso as regras não coincidam.
+		// mutual-failure : Permite apenas se as regras de permissão e de proibição concidirem.
 		// (o padrão é deny,allow)
 		order: "deny,allow"
 

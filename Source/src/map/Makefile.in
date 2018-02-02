@@ -1,16 +1,14 @@
 #####################################################################
-#             ______ ____ _____ ___   __                            #
-#            / ____ / _  / ____/  /  /  /                           #
-#            \___  /  __/ __/ /  /__/  /___                         #
-#           /_____/_ / /____//_____/______/                         #
-#                /\  /|   __    __________ _________                #
-#               /  \/ |  /  |  /  ___  __/ ___/ _  /                #
-#              /      | / ' | _\  \ / / / __//  __/                 #
-#             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  #
-#            /__/   |_|    Source code          \/                  #
+#              ____                     _                           #
+#             /    |                   | |_                         #
+#            /     |_ __ ____  __ _  __| |_  __ _                   #
+#           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  #
+#          /  __   | | |  |__| (_| | (_| | | (_| |                  #
+#         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  #
+#        /__/   |__|  [ Ragnarok Emulator ]                         #
 #                                                                   #
 #####################################################################
-#                      Projeto Ragnarok Online                      #
+#                  Idealizado por: Spell Master                     #
 #####################################################################
 # - Este código é livre para editar, redistribuir de acordo com os  #
 # termos da GNU General Public License, publicada sobre conselho    #
@@ -49,20 +47,21 @@ MAP_C = atcommand.c battle.c battleground.c buyingstore.c channel.c chat.c \
         chrif.c clif.c date.c duel.c elemental.c guild.c homunculus.c \
         instance.c intif.c irc-bot.c itemdb.c log.c mail.c map.c mapreg_sql.c \
         mercenary.c mob.c npc.c npc_chat.c party.c path.c pc.c pc_groups.c \
-        pet.c quest.c script.c searchstore.c skill.c status.c storage.c \
+        pet.c quest.c rodex.c script.c searchstore.c skill.c status.c storage.c \
         trade.c unit.c vending.c
 MAP_OBJ = $(addprefix obj_sql/, $(patsubst %c,%o,$(MAP_C)))
 MAP_H = atcommand.h battle.h battleground.h buyingstore.h channel.h chat.h \
         chrif.h clif.h date.h duel.h elemental.h guild.h homunculus.h \
         instance.h intif.h irc-bot.h itemdb.h log.h mail.h map.h mapreg.h \
-        mercenary.h mob.h npc.h packets.h packets_struct.h party.h path.h \
-        pc.h pc_groups.h pet.h quest.h script.h searchstore.h skill.h \
-        status.h storage.h trade.h unit.h vending.h
+        mercenary.h mob.h npc.h packets.h packets_keys_main.h packets_keys_zero.h \
+        packets_shuffle_main.h packets_shuffle_zero.h packets_struct.h party.h \
+        path.h pc.h pc_groups.h pet.h quest.h rodex.h script.h searchstore.h \
+        skill.h status.h storage.h trade.h unit.h vending.h
 MAP_PH =
 
 HAVE_MYSQL=@HAVE_MYSQL@
 ifeq ($(HAVE_MYSQL),yes)
-	MAP_SERVER_SQL_DEPENDS=$(MAP_OBJ) $(COMMON_D)/obj_sql/common_sql.a $(COMMON_D)/obj_all/common.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ $(SYSINFO_INC))
+	MAP_SERVER_SQL_DEPENDS=$(MAP_OBJ) $(COMMON_D)/obj_all/common.a $(COMMON_D)/obj_sql/common_sql.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ) $(SYSINFO_INC)
 else
 	MAP_SERVER_SQL_DEPENDS=needs_mysql
 endif
@@ -121,8 +120,8 @@ map-server: ../../map-server@EXEEXT@
 
 ../../map-server@EXEEXT@: $(MAP_SERVER_SQL_DEPENDS) Makefile
 	@echo "	LD	$(notdir $@)"
-	@$(CC) @STATIC@ @LDFLAGS@ -o ../../map-server@EXEEXT@ $(MAP_OBJ) $(COMMON_D)/obj_sql/common_sql.a \
-		$(COMMON_D)/obj_all/common.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ) @LIBS@ @MYSQL_LIBS@
+	@$(CC) @STATIC@ @LDFLAGS@ -o ../../map-server@EXEEXT@ $(MAP_OBJ) $(COMMON_D)/obj_all/common.a $(COMMON_D)/obj_sql/common_sql.a \
+		$(MT19937AR_OBJ) $(LIBCONFIG_OBJ) @LIBS@ @MYSQL_LIBS@
 
 # missing object files
 $(COMMON_D)/obj_all/common.a:

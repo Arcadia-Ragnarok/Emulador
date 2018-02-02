@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "date.h"
 
@@ -79,6 +77,27 @@ int date_get_sec(void)
 	t = time(NULL);
 	lt = localtime(&t);
 	return lt->tm_sec;
+}
+
+int date_get_dayofweek(void)
+{
+	time_t t = time(NULL);
+	struct tm *lt = localtime(&t);
+	return lt->tm_wday;
+}
+
+// Returns YYYYMMDD of now
+int date_get_date(void)
+{
+	time_t t;
+	struct tm * lt;
+	t = time(NULL);
+	lt = localtime(&t);
+
+	return
+		(lt->tm_year + 1900) * 10000 +
+		(lt->tm_mon + 1) * 100 +
+		(lt->tm_mday);
 }
 
 /*==========================================

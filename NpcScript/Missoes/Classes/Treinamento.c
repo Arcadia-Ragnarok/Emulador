@@ -463,9 +463,9 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 			next;
 			mes "[Instrutora Jinha]";
 			mes "......";
-			specialeffect2 (EF_BEGINSPELL6);
+			specialeffect(EF_BEGINSPELL6, AREA, playerattached());
 			next;
-			specialeffect2 (EF_SPELLBREAKER);
+			specialeffect(EF_SPELLBREAKER, AREA, playerattached());
 			skill ("NV_FIRSTAID",1,0);
 			new_quest = 6;
 			mes "[Instrutora Jinha]";

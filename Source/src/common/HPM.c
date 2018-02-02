@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "config/core.h" // CONSOLE_INPUT
 #include "HPM.h"
@@ -637,13 +635,13 @@ void hplugins_config_read(void)
 {
 	struct config_t plugins_conf;
 	struct config_setting_t *plist = NULL;
-	const char *config_filename = "Config/Common/Plugins.conf"; // FIXME hardcoded name
+	const char *config_filename = "Config/Depreciated/plugins.conf"; // FIXME hardcoded name
 	FILE *fp;
 	int i;
 
-	/* yes its ugly, its temporary and will be gone as soon as the new inter-server.conf is set */
-	if( (fp = fopen("conf/import/plugins.conf","r")) ) {
-		config_filename = "conf/import/plugins.conf";
+	/* yes its ugly, its temporary and will be gone as soon as the new inter-server.cs is set */
+	if( (fp = fopen("Config/import/plugins.conf","r")) ) {
+		config_filename = "Config/import/plugins.conf";
 		fclose(fp);
 	}
 
@@ -767,7 +765,7 @@ unsigned char hplugins_parse_packets(int fd, int packet_id, enum HPluginPacketHo
  *
  * @param pid The plugin identifier.
  * @return The plugin name.
- * @retval "core" if the plugin ID.
+ * @retval "core" if the plugin ID belongs to the core.
  * @retval "UnknownPlugin" if the plugin wasn't found.
  */
 char *hplugins_id2name(unsigned int pid)
@@ -868,8 +866,11 @@ bool hplugins_parse_conf_entry(const char *w1, const char *w2, enum HPluginConfT
  * @retval true in case of data found
  * @retval false in case of no data found
  */
-bool hplugins_get_battle_conf(const char *w1, int *value){
+bool hplugins_get_battle_conf(const char *w1, int *value)
+{
 	int i;
+
+	nullpo_retr(false, w1);
 	nullpo_retr(false, value);
 
 	ARR_FIND(0, VECTOR_LENGTH(HPM->config_listeners[HPCT_BATTLE]), i, strcmpi(w1, VECTOR_INDEX(HPM->config_listeners[HPCT_BATTLE], i).key) == 0);

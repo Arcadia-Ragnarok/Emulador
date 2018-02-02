@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,8 +20,8 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#ifndef COMMON_HP
-#define COMMON_HP
+#ifndef COMMON_ARCADIA_H
+#define COMMON_ARCADIA_H
 
 #include "config/core.h"
 #include "common/cbasetypes.h"
@@ -36,8 +34,8 @@
 
 #define HPShared extern
 
-#ifndef HPM_MAIN_CORE
+#ifndef MAIN_CORE
 #include "common/HPMi.h"
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
-#endif // COMMON_HP
+#endif // COMMON_ARCADIA_H

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -30,7 +28,7 @@
 /* Forward Declarations */
 struct config_t; // common/conf.h
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 // TODO: Interface
 // initialize
 void ipban_init(void);
@@ -46,6 +44,6 @@ void ipban_log(uint32 ip);
 
 // parses configuration options
 bool ipban_config_read(const char *filename, struct config_t *config, bool imported);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 #endif /* LOGIN_IPBAN_H */

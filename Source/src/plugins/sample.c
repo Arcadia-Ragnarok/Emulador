@@ -1,29 +1,7 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
 
+/// Sample Hercules Plugin
 
-#include "common/HPExport.h" /* Should always be the first file included! (if you don't make it first, you won't be able to use interfaces) */
+#include "common/HPExport.h" /* Should always be the first Hercules file included! (if you don't make it first, you won't be able to use interfaces) */
 #include "common/memmgr.h"
 #include "common/mmo.h"
 #include "common/socket.h"
@@ -33,7 +11,7 @@
 #include "map/script.h"
 
 #include "plugins/HPMHooking.h"
-#include "common/HPMDataCheck.h" /* should always be the last file included! (if you don't make it last, it'll intentionally break compile time) */
+#include "common/HPMDataCheck.h" /* should always be the last Hercules file included! (if you don't make it last, it'll intentionally break compile time) */
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -124,7 +122,7 @@ struct homun_data {
 	struct map_session_data *master;      //pointer back to its master
 	int hungry_timer;                     //[orn]
 	unsigned int exp_next;
-	char blockskill[MAX_SKILL];           // [orn]
+	char blockskill[MAX_SKILL_DB];        // [orn]
 
 	int64 masterteleport_timer;
 };
@@ -148,7 +146,7 @@ enum homun_type {
 };
 
 struct homun_dbs {
-	unsigned int exptable[150]; // MAX_LEVEL
+	unsigned int exptable[MAX_LEVEL];
 	struct view_data viewdb[MAX_HOMUNCULUS_CLASS];
 	struct s_homunculus_db db[MAX_HOMUNCULUS_CLASS];
 	struct homun_skill_tree_entry skill_tree[MAX_HOMUNCULUS_CLASS][MAX_SKILL_TREE];
@@ -208,9 +206,9 @@ struct homunculus_interface {
 	int8 (*get_intimacy_grade) (struct homun_data *hd);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void homunculus_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct homunculus_interface *homun;
 

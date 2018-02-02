@@ -1,27 +1,3 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
 #include "config/core.h"
 
 #include "common/HPExport.h"
@@ -77,18 +53,11 @@ CMDLINEARG(generatetranslations)
 		char timestring[128] = "";
 		strftime(timestring, sizeof(timestring), "%Y-%m-%d %H:%M:%S%z", lt);
 		fprintf(lang_export_fp,
-				"# This program is distributed in the hope that it will be useful,\n"
-				"# but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-				"# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-				"# GNU General Public License for more details.\n"
-				"#\n"
-				"# You should have received a copy of the GNU General Public License\n"
-				"# along with this program.  If not, see <http://www.gnu.org/licenses/>.\n\n"
-
 				"#,fuzzy\n"
 				"msgid \"\"\n"
 				"msgstr \"\"\n"
 				"\"Project-Id-Version: %s\\n\"\n"
+				"\"Report-Msgid-Bugs-To: dev@herc.ws\\n\"\n"
 				"\"POT-Creation-Date: %s\\n\"\n"
 				"\"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n\"\n"
 				"\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"\n"
@@ -223,7 +192,7 @@ bool msg_config_read_posthook(bool retVal, const char *cfg_name, bool allow_over
 		for (i = 0; i < MAX_MSG; i++) {
 			if (atcommand->msg_table[0][i] == NULL)
 				continue;
-			fprintf(lang_export_fp, "msgctxt \"Messages.conf\"\n"
+			fprintf(lang_export_fp, "msgctxt \"messages.conf\"\n"
 					"msgid \"%s\"\n"
 					"msgstr \"\"\n",
 					atcommand->msg_table[0][i]

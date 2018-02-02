@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -25,6 +23,7 @@
 #ifndef CHAR_INT_STORAGE_H
 #define CHAR_INT_STORAGE_H
 
+#include "common/db.h"
 #include "common/HPExport.h"
 
 struct storage_data;
@@ -34,8 +33,8 @@ struct guild_storage;
  * inter_storage interface
  **/
 struct inter_storage_interface {
-	int (*tosql) (int account_id, struct storage_data* p);
-	int (*fromsql) (int account_id, struct storage_data* p);
+	int (*tosql) (int account_id, const struct storage_data *p);
+	int (*fromsql) (int account_id, struct storage_data *p);
 	int (*guild_storage_tosql) (int guild_id, const struct guild_storage *p);
 	int (*guild_storage_fromsql) (int guild_id, struct guild_storage* p);
 	int (*sql_init) (void);
@@ -45,9 +44,9 @@ struct inter_storage_interface {
 	int (*parse_frommap) (int fd);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void inter_storage_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct inter_storage_interface *inter_storage;
 

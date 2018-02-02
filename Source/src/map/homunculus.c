@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,9 +20,9 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
-#include "config/core.h" // SV_VERSION
+#include "config/core.h"
 #include "homunculus.h"
 
 #include "map/atcommand.h"
@@ -687,7 +685,12 @@ int homunculus_hunger_timer(int tid, int64 tick, int id, intptr_t data) {
 	} else if(hd->homunculus.hunger == 75) {
 		clif->emotion(&hd->bl, E_OK);
 	}
-
+	if (battle_config.feature_enable_homun_autofeed != 0) {
+		if (hd->homunculus.autofeed) {
+			if (hd->homunculus.hunger < 30)
+				homun->feed(sd, hd);
+		}
+	}
 	if(hd->homunculus.hunger < 0) {
 		hd->homunculus.hunger = 0;
 		// Delete the homunculus if intimacy <= 100
@@ -1213,13 +1216,13 @@ bool homunculus_read_db_sub(char* str[], int columns, int current) {
 
 void homunculus_read_db(void) {
 	int i;
-	const char *filename[]={"Summon_DB/Homunculus.txt","Custom_DB/Homun2DB.txt"};
+	const char *filename[]={"Summon_DB/Homunculus.txt","homunculus_db2.txt"};
 	memset(homun->dbs->db, 0, sizeof(homun->dbs->db));
 	for(i = 0; i<ARRAYLENGTH(filename); i++) {
 		if( i > 0 ) {
 			char filepath[256];
 
-			snprintf(filepath, 256, "%s/%s", map->db_path, filename[i]);
+			safesnprintf(filepath, 256, "%s/%s", map->db_path, filename[i]);
 
 			if( !exists(filepath) ) {
 				continue;
@@ -1299,7 +1302,9 @@ void homunculus_skill_db_read(void) {
 void homunculus_exp_db_read(void) {
 	char line[1024];
 	int i, j=0;
-	char *filename[]={"Summon_DB/HomunExp.txt","Custom_DB/Homun2Exp.txt"};
+	char *filename[]={
+		"Summon_DB/HomunExp.txt",
+		"exp_homun2.txt"};
 
 	memset(homun->dbs->exptable, 0, sizeof(homun->dbs->exptable));
 	for(i = 0; i < 2; i++) {
@@ -1311,7 +1316,7 @@ void homunculus_exp_db_read(void) {
 			ShowError("can't read %s\n",line);
 			return;
 		}
-		while(fgets(line, sizeof(line), fp) && j < 150) { // MAX_LEVEL
+		while(fgets(line, sizeof(line), fp) && j < MAX_LEVEL) {
 			if(line[0] == '/' && line[1] == '/')
 				continue;
 
@@ -1319,12 +1324,12 @@ void homunculus_exp_db_read(void) {
 				break;
 		}
 		// Last permitted level have to be 0!
-		if (homun->dbs->exptable[150 - 1]) { // MAX_LEVEL
-			ShowWarning("homunculus_exp_db_read: Reached max level in exp_homun [%d]. Remaining lines were not read.\n ", 150); // MAX_LEVEL
-			homun->dbs->exptable[150 - 1] = 0; // MAX_LEVEL
+		if (homun->dbs->exptable[MAX_LEVEL - 1]) {
+			ShowWarning("homunculus_exp_db_read: Reached max level in exp_homun [%d]. Remaining lines were not read.\n ", MAX_LEVEL);
+			homun->dbs->exptable[MAX_LEVEL - 1] = 0;
 		}
 		fclose(fp);
-		ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' levels in '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);
+		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' levels em '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);
 	}
 }
 
@@ -1352,7 +1357,7 @@ void do_init_homunculus(bool minimal) {
 	//Stock view data for homuncs
 	memset(homun->dbs->viewdb, 0, sizeof(homun->dbs->viewdb));
 	for (class_ = 0; class_ < MAX_HOMUNCULUS_CLASS; class_++)
-		homun->dbs->viewdb[class_].class_ = HM_CLASS_BASE+class_;
+		homun->dbs->viewdb[class_].class = HM_CLASS_BASE + class_;
 }
 
 void do_final_homunculus(void) {

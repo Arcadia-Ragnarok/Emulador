@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -73,7 +71,7 @@ struct quest_interface {
 	/* */
 	struct quest_db *(*db) (int quest_id);
 	int (*pc_login) (struct map_session_data *sd);
-	int (*add) (struct map_session_data *sd, int quest_id);
+	int (*add) (struct map_session_data *sd, int quest_id, unsigned int time_limit);
 	int (*change) (struct map_session_data *sd, int qid1, int qid2);
 	int (*delete) (struct map_session_data *sd, int quest_id);
 	int (*update_objective_sub) (struct block_list *bl, va_list ap);
@@ -85,9 +83,9 @@ struct quest_interface {
 	struct quest_db *(*read_db_sub) (struct config_setting_t *cs, int n, const char *source);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void quest_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct quest_interface *quest;
 

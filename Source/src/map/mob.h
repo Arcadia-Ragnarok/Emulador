@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -72,6 +70,12 @@ struct hplugin_data_store;
 // target, might be CPU intensive.
 // Disable this to make monsters not do any path search when looking for a target (old behavior).
 #define ACTIVEPATHSEARCH
+
+enum e_bosstype {
+	BTYPE_NONE = 0,
+	BTYPE_BOSS = 1,
+	BTYPE_MVP = 2,
+};
 
 //Mob skill states.
 enum MobSkillState {
@@ -185,10 +189,10 @@ struct mob_data {
 		unsigned int spotted: 1;
 		unsigned int npc_killmonster: 1; //for new killmonster behavior
 		unsigned int rebirth: 1; // NPC_Rebirth used
-		unsigned int boss : 1;
 		enum MobSkillState skillstate;
 		unsigned char steal_flag; //number of steal tries (to prevent steal exploit on mobs with few items) [Lupus]
 		unsigned char attacked_count; //For rude attacked.
+		uint8 boss;
 		int provoke_flag; // Celest
 	} state;
 	struct guardian_data* guardian_data;
@@ -404,6 +408,7 @@ enum mob_id {
 // The data structures for storing delayed item drops
 struct item_drop {
 	struct item item_data;
+	bool showdropeffect;
 	struct item_drop* next;
 };
 struct item_drop_list {
@@ -538,9 +543,9 @@ struct mob_interface {
 	void (*destroy_mob_db) (int index);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void mob_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct mob_interface *mob;
 

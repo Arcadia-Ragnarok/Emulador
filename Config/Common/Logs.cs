@@ -7,14 +7,12 @@
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
-|----------------------------------------------------------------------|
-|                      Projeto Ragnarok Online                         |
 +----------------------------------------------------------------------+
 | - Descrição: Configuação para Logs                                   |
 \*--------------------------------------------------------------------*/
 
 map_log: {
-	// Habilitar Registros? (Nota 3)
+	// Habilitar Registros?
 	// 0x00000 - Não fazer logs.
 	// 0x00001 - (T) Log de negociações.
 	// 0x00002 - (V) Log de vendas.
@@ -38,11 +36,10 @@ map_log: {
 	// Mover itens do inventário para o carrinho não é gravado propositalmente.
 	enable: 0xFFFFF
 
-	// Logging files/tables
 	// As configurações a seguir indicam o local de registro.
 	// Se 'use_sql' for true, as tabelas SQL são assumidas, caso contrário arquivos flat.
 	database: {
-		// Utilizar Registros em MySQL? (Nota 1)
+		// Utilizar Registros em MySQL?
 		use_sql: true
 		// log_gm_db: "log/atcommandlog.log"
 		// log_branch_db: "log/branchlog.log"
@@ -61,7 +58,7 @@ map_log: {
 		log_zeny_db: "zenylog"
 	}
 
-	// Registrar uso de Galho Seco? (Nota 1)
+	// Registrar uso de Galho Seco?
 	log_branch: false
 
 	// Rastrear Circulação de Zeny
@@ -69,16 +66,16 @@ map_log: {
 	// 0 - não registrar; 1 - registrar qualquer circulação de zeny; 2.....1000000 - mínimo absoluto para registrar o valor
 	log_zeny: 0
 
-	// Registro de Itens de MVPs (Nota 1)
+	// Registro de Itens de MVPs
 	// Obsoleto. Use Pick_Log. Mas este pode ser útil para rastrear MVPs derrotados
 	log_mvpdrop: false
 
-	// Log AtCommands & Charcommands (Note 1)
-	// Somente os comandos emitidos por grupos de jogadores ('Config/System/Groups.cs') with
+	// Log de Comandos
+	// Somente os comandos emitidos por grupos de jogadores ('Config/System/Groups.cs')
 	// 'log_commands' configuração definida para 'true' serão registradas.
 	log_commands: false
 
-	// Registrar o comando de NPC 'logmes' (Nota 1)
+	// Registrar o comando de NPC 'logmes'
 	log_npc: false
 
 	// Filtros
@@ -111,16 +108,16 @@ map_log: {
 			// Log de itens refinados 
 			refine_items_log: 7
 
-			// Registrar log de item
+			// Registrar log de item raros?
 			// Nota: 1 = 0.01%, 100 = 1%
 			rare_items_log: 0
 
 			// Redistrar log de preço em item
-			price_items_log: 0
+			price_items_log: 10000000
 
 			// Registrar log na quantidade de item
 			amount_items_log: 0
-		} // item
+		}
 
 		chat: {
 			// Log CHAT (Global, Whisper, Party, Guild, Main chat) (Nota 3)
@@ -140,7 +137,7 @@ map_log: {
 			log_chat: 0x00
 
 			// Desativar o log de bate-papo quando o WoE está sendo executado? (Nota 1)
-			log_chat_woe_disable: false
+			log_chat_woe_disable: true
 		}
 	}
 }

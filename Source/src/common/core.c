@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "config/core.h"
 #include "core.h"
@@ -79,7 +77,7 @@
  * since it is a very bad idea.
  * Please note that NO SUPPORT will be given if you uncomment the following line.
  */
-//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT
+//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
 // And don't complain to us if the XYZ plugin you installed wiped your hard disk, or worse.
 // Note: This feature is deprecated, and should not be used.
 
@@ -217,21 +215,21 @@ bool usercheck(void)
 #ifdef BUILDBOT
 			return true;
 #else  // BUILDBOT
-			ShowFatalError("You are running with root privileges, it is not necessary, nor recommended. "
+			ShowFatalError("You are running emulator with root privileges, it is not necessary, nor recommended. "
 					"Aborting.\n");
 			return false; // Don't allow noninteractive execution regardless.
 #endif  // BUILDBOT
 		}
-		ShowError("You are running with root privileges, it is not necessary, nor recommended.\n");
-#ifdef I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT
+		ShowError("You are running emulator with root privileges, it is not necessary, nor recommended.\n");
+#ifdef I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
 #ifndef BUILDBOT
-#warning This build is not eligible to obtain support by the developers.
-#warning The setting I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT is deprecated and should not be used.
+#warning This emulator build is not eligible to obtain support by the developers.
+#warning The setting I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT is deprecated and should not be used.
 #endif  // BUILDBOT
-#else // not I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT
+#else // not I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
 		ShowNotice("Execution will be paused for 60 seconds. Press Ctrl-C if you wish to quit.\n");
 		ShowNotice("If you want to get rid of this message, please open %s and uncomment, near the top, the line saying:\n"
-				"\t\"//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT\"\n", __FILE__);
+				"\t\"//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT\"\n", __FILE__);
 		ShowNotice("Note: In a near future, this courtesy notice will go away. "
 				"Please update your infrastructure not to require root privileges before then.\n");
 		ShowWarning("It's recommended that you " CL_WHITE "press CTRL-C now!" CL_RESET "\n");
@@ -245,9 +243,9 @@ bool usercheck(void)
 		ShowMessage("\n");
 		ShowNotice("Resuming operations with root privileges. "
 				CL_RED "If anything breaks, you get to keep the pieces, "
-				"and the developers won't be able to help you."
+				"and the emulator developers won't be able to help you."
 				CL_RESET "\n");
-#endif // I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_AS_ROOT
+#endif // I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
 	}
 #endif // not _WIN32
 	return true;
@@ -353,8 +351,9 @@ static CMDLINEARG(help)
 /**
  * Info screen to be displayed by '--version'.
  */
-static CMDLINEARG(version) {
-	ShowInfo(CL_GREEN"IRC Channel:"CL_RESET"\tirc://irc.rizon.net/\n");
+static CMDLINEARG(version)
+{
+	ShowInfo("Open "CL_WHITE"readme.txt"CL_RESET" for more information.\n");
 	return false;
 }
 
@@ -404,6 +403,8 @@ int cmdline_exec(int argc, char **argv, unsigned int options)
 		struct CmdlineArgData *data = NULL;
 		const char *arg = argv[i];
 		if (arg[0] != '-') { // All arguments must begin with '-'
+			if ((options&(CMDLINE_OPT_SILENT|CMDLINE_OPT_PREINIT)) != 0)
+				continue;
 			ShowError("Invalid option '%s'.\n", argv[i]);
 			exit(EXIT_FAILURE);
 		}

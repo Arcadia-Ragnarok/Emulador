@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -106,6 +104,11 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 	#else
 		#define CHAR_INT_QUEST_H
 	#endif // CHAR_INT_QUEST_H
+	#ifdef CHAR_INT_RODEX_H
+		{ "inter_rodex_interface", sizeof(struct inter_rodex_interface), SERVER_TYPE_CHAR },
+	#else
+		#define CHAR_INT_RODEX_H
+	#endif // CHAR_INT_RODEX_H
 	#ifdef CHAR_INT_STORAGE_H
 		{ "inter_storage_interface", sizeof(struct inter_storage_interface), SERVER_TYPE_CHAR },
 	#else
@@ -212,6 +215,8 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 		{ "party_member", sizeof(struct party_member), SERVER_TYPE_ALL },
 		{ "point", sizeof(struct point), SERVER_TYPE_ALL },
 		{ "quest", sizeof(struct quest), SERVER_TYPE_ALL },
+		{ "rodex_maillist", sizeof(struct rodex_maillist), SERVER_TYPE_ALL },
+		{ "rodex_message", sizeof(struct rodex_message), SERVER_TYPE_ALL },
 		{ "s_elemental", sizeof(struct s_elemental), SERVER_TYPE_ALL },
 		{ "s_friend", sizeof(struct s_friend), SERVER_TYPE_ALL },
 		{ "s_homunculus", sizeof(struct s_homunculus), SERVER_TYPE_ALL },
@@ -323,6 +328,7 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 		{ "packet_CA_LOGIN3", sizeof(struct packet_CA_LOGIN3), SERVER_TYPE_LOGIN },
 		{ "packet_CA_LOGIN4", sizeof(struct packet_CA_LOGIN4), SERVER_TYPE_LOGIN },
 		{ "packet_CA_LOGIN_HAN", sizeof(struct packet_CA_LOGIN_HAN), SERVER_TYPE_LOGIN },
+		{ "packet_CA_LOGIN_OTP", sizeof(struct packet_CA_LOGIN_OTP), SERVER_TYPE_LOGIN },
 		{ "packet_CA_LOGIN_PCBANG", sizeof(struct packet_CA_LOGIN_PCBANG), SERVER_TYPE_LOGIN },
 		{ "packet_CA_SSO_LOGIN_REQ", sizeof(struct packet_CA_SSO_LOGIN_REQ), SERVER_TYPE_LOGIN },
 		{ "packet_SC_NOTIFY_BAN", sizeof(struct packet_SC_NOTIFY_BAN), SERVER_TYPE_LOGIN },
@@ -457,6 +463,7 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 		{ "item_combo", sizeof(struct item_combo), SERVER_TYPE_MAP },
 		{ "item_data", sizeof(struct item_data), SERVER_TYPE_MAP },
 		{ "item_group", sizeof(struct item_group), SERVER_TYPE_MAP },
+		{ "item_option", sizeof(struct item_option), SERVER_TYPE_MAP },
 		{ "item_package", sizeof(struct item_package), SERVER_TYPE_MAP },
 		{ "item_package_must_entry", sizeof(struct item_package_must_entry), SERVER_TYPE_MAP },
 		{ "item_package_rand_entry", sizeof(struct item_package_rand_entry), SERVER_TYPE_MAP },
@@ -547,8 +554,38 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 	#ifdef MAP_PACKETS_STRUCT_H
 		{ "EQUIPITEM_INFO", sizeof(struct EQUIPITEM_INFO), SERVER_TYPE_MAP },
 		{ "EQUIPSLOTINFO", sizeof(struct EQUIPSLOTINFO), SERVER_TYPE_MAP },
+		{ "ItemOptions", sizeof(struct ItemOptions), SERVER_TYPE_MAP },
 		{ "NORMALITEM_INFO", sizeof(struct NORMALITEM_INFO), SERVER_TYPE_MAP },
-		{ "RndOptions", sizeof(struct RndOptions), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_ADD_ITEM_TO_MAIL", sizeof(struct PACKET_CZ_ADD_ITEM_TO_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_CHECKNAME", sizeof(struct PACKET_CZ_CHECKNAME), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_DELETE_MAIL", sizeof(struct PACKET_CZ_REQ_DELETE_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_ITEM_FROM_MAIL", sizeof(struct PACKET_CZ_REQ_ITEM_FROM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_NEXT_MAIL_LIST", sizeof(struct PACKET_CZ_REQ_NEXT_MAIL_LIST), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_OPEN_MAIL", sizeof(struct PACKET_CZ_REQ_OPEN_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_OPEN_WRITE_MAIL", sizeof(struct PACKET_CZ_REQ_OPEN_WRITE_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_READ_MAIL", sizeof(struct PACKET_CZ_REQ_READ_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_REFRESH_MAIL_LIST", sizeof(struct PACKET_CZ_REQ_REFRESH_MAIL_LIST), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_REMOVE_ITEM_MAIL", sizeof(struct PACKET_CZ_REQ_REMOVE_ITEM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_REQ_ZENY_FROM_MAIL", sizeof(struct PACKET_CZ_REQ_ZENY_FROM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_CZ_SEND_MAIL", sizeof(struct PACKET_CZ_SEND_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ACK_DELETE_MAIL", sizeof(struct PACKET_ZC_ACK_DELETE_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ACK_ITEM_FROM_MAIL", sizeof(struct PACKET_ZC_ACK_ITEM_FROM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ACK_OPEN_WRITE_MAIL", sizeof(struct PACKET_ZC_ACK_OPEN_WRITE_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ACK_REMOVE_ITEM_MAIL", sizeof(struct PACKET_ZC_ACK_REMOVE_ITEM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ACK_ZENY_FROM_MAIL", sizeof(struct PACKET_ZC_ACK_ZENY_FROM_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ADD_ITEM_TO_MAIL", sizeof(struct PACKET_ZC_ADD_ITEM_TO_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_ADD_MEMBER_TO_GROUP", sizeof(struct PACKET_ZC_ADD_MEMBER_TO_GROUP), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_CHECKNAME", sizeof(struct PACKET_ZC_CHECKNAME), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_GROUP_LIST", sizeof(struct PACKET_ZC_GROUP_LIST), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_GROUP_LIST_SUB", sizeof(struct PACKET_ZC_GROUP_LIST_SUB), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_MAIL_LIST", sizeof(struct PACKET_ZC_MAIL_LIST), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_NOTIFY_UNREADMAIL", sizeof(struct PACKET_ZC_NOTIFY_UNREADMAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_READ_MAIL", sizeof(struct PACKET_ZC_READ_MAIL), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_SKILL_SCALE", sizeof(struct PACKET_ZC_SKILL_SCALE), SERVER_TYPE_MAP },
+		{ "PACKET_ZC_WRITE_MAIL_RESULT", sizeof(struct PACKET_ZC_WRITE_MAIL_RESULT), SERVER_TYPE_MAP },
+		{ "ZC_PROGRESS_ACTOR", sizeof(struct ZC_PROGRESS_ACTOR), SERVER_TYPE_MAP },
+		{ "mail_item", sizeof(struct mail_item), SERVER_TYPE_MAP },
+		{ "maillistinfo", sizeof(struct maillistinfo), SERVER_TYPE_MAP },
 		{ "packet_additem", sizeof(struct packet_additem), SERVER_TYPE_MAP },
 		{ "packet_authok", sizeof(struct packet_authok), SERVER_TYPE_MAP },
 		{ "packet_banking_check", sizeof(struct packet_banking_check), SERVER_TYPE_MAP },
@@ -676,6 +713,11 @@ HPExport const struct s_HPMDataCheck HPMDataCheck[] = {
 	#else
 		#define MAP_QUEST_H
 	#endif // MAP_QUEST_H
+	#ifdef MAP_RODEX_H
+		{ "rodex_interface", sizeof(struct rodex_interface), SERVER_TYPE_MAP },
+	#else
+		#define MAP_RODEX_H
+	#endif // MAP_RODEX_H
 	#ifdef MAP_SCRIPT_H
 		{ "Script_Config", sizeof(struct Script_Config), SERVER_TYPE_MAP },
 		{ "casecheck_data", sizeof(struct casecheck_data), SERVER_TYPE_MAP },

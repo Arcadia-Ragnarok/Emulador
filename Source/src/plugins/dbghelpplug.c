@@ -1,27 +1,3 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
 
 // Ported from eAthena Dev Team's version @ http://eathena-project.googlecode.com/svn/trunk/src/plugins/dbghelpplug.c
 // Currently supported dbghelp 5.1
@@ -234,7 +210,7 @@ typedef struct _InternalData {
 #define DBGHELP_DLL "dbghelp.dll"
 
 // Default report filename, used when the module path is unavailable
-#define DBG_DEFAULT_FILENAME "Arcadia"
+#define DBG_DEFAULT_FILENAME "arcadia"
 
 // Extended information printed in the console
 #define DBG_EXTENDED_INFORMATION \

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "ipban.h"
 
@@ -134,7 +132,7 @@ bool ipban_config_read_inter(const char *filename, bool imported)
 
 	// import should overwrite any previous configuration, so it should be called last
 	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Common/Inter-Server.cs") == 0) {
+		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Servers/Inter-Server.cs") == 0) {
 			ShowWarning("ipban_config_read_inter: Loop detected! Skipping 'import'...\n");
 		} else {
 			if (!ipban_config_read_inter(import, true))
@@ -240,7 +238,7 @@ bool ipban_config_read(const char *filename, struct config_t *config, bool impor
 	libconfig->setting_lookup_bool_real(setting, "enabled", &login->config->ipban);
 	libconfig->setting_lookup_uint32(setting, "cleanup_interval", &login->config->ipban_cleanup_interval);
 
-	if (!ipban_config_read_inter("Config/Common/Inter-Server.cs", imported))
+	if (!ipban_config_read_inter("Config/Servers/Inter-Server.cs", imported))
 		retval = false;
 	if (!ipban_config_read_connection(filename, config, imported))
 		retval = false;

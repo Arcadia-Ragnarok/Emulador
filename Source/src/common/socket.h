@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -83,7 +81,6 @@ struct config_setting_t;
 #define RFIFO2PTR(fd) ((const void *)(sockt->session[fd]->rdata + sockt->session[fd]->rdata_pos))
 #define RP2PTR(fd) RFIFO2PTR(fd)
 
-/* [Hemagx] */
 #define WFIFO2PTR(fd) ((void *)(sockt->session[fd]->wdata + sockt->session[fd]->wdata_size))
 #define WP2PTR(fd) WFIFO2PTR(fd)
 
@@ -196,7 +193,7 @@ struct socket_interface {
 	void (*final) (void);
 	/* */
 	int (*perform) (int next);
-	/* Socket_datasync */
+	/* socket_datasync */
 	void (*datasync) (int fd, bool send);
 	/* */
 	int (*make_listen_bind) (uint32 ip, uint16 port);
@@ -232,9 +229,9 @@ struct socket_interface {
 	void (*net_config_read) (const char *filename);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void socket_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct socket_interface *sockt;
 

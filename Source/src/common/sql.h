@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -63,6 +61,8 @@ enum SqlDataType {
 	SQLDT_UINT,
 	SQLDT_ULONG,
 	SQLDT_ULONGLONG,
+	SQLDT_BOOL,
+	SQLDT_TIME,
 	// floating point
 	SQLDT_FLOAT,
 	SQLDT_DOUBLE,
@@ -260,10 +260,10 @@ struct sql_interface {
 
 };
 
-#ifdef HPM_MAIN_CORE
-	void sql_defaults(void);
-	void Sql_Init(void);
-#endif // HPM_MAIN_CORE
+#ifdef MAIN_CORE
+void sql_defaults(void);
+void Sql_Init(void);
+#endif // MAIN_CORE
 
 HPShared struct sql_interface *SQL;
 

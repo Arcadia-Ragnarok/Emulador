@@ -1,23 +1,3 @@
-/* ----------------------------------------------------------------------------
-   libconfig - A library for processing structured configuration files
-   Copyright (C) 2005-2014  Mark A Lindner
-
-   This file is part of libconfig.
-
-   This library is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
-
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this library.  If not, see <http://www.gnu.org/licenses/>.
-   ----------------------------------------------------------------------------
-*/
 
 #ifdef HAVE_CONFIG_H
 #include "ac_config.h"
@@ -96,6 +76,8 @@ static void __config_locale_override(void)
 
 #else
 
+//#warning "No way to modify calling thread's locale!"
+
 #endif
 }
 
@@ -119,6 +101,8 @@ static void __config_locale_restore(void)
   freelocale(loc);
 
 #else
+
+//#warning "No way to modify calling thread's locale!"
 
 #endif
 }
@@ -851,6 +835,7 @@ static int __config_setting_get_int(const struct config_setting_t *setting,
       }
       else
       { /* fall through */ }
+      return(CONFIG_FALSE);
 
     default:
       return(CONFIG_FALSE);
@@ -889,6 +874,7 @@ static int __config_setting_get_int64(const struct config_setting_t *setting,
       }
       else
       { /* fall through */ }
+      return(CONFIG_FALSE);
 
     default:
       return(CONFIG_FALSE);
@@ -956,6 +942,7 @@ static int __config_setting_get_float(const struct config_setting_t *setting,
       }
       else
       { /* fall through */ }
+      return(CONFIG_FALSE);
 
     default:
       return(CONFIG_FALSE);

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -104,7 +102,7 @@ struct guild_interface {
 	struct map_session_data *(*getavailablesd) (struct guild *g);
 	int (*getindex) (const struct guild *g, int account_id, int char_id);
 	int (*getposition) (struct guild *g, struct map_session_data *sd);
-	unsigned int (*payexp) (struct map_session_data *sd,unsigned int exp);
+	uint64 (*payexp) (struct map_session_data *sd, uint64 exp);
 	int (*getexp) (struct map_session_data *sd,int exp); // [Celest]
 	/* */
 	int (*create) (struct map_session_data *sd, const char *name);
@@ -130,7 +128,7 @@ struct guild_interface {
 	int (*check_alliance) (int guild_id1, int guild_id2, int flag);
 	/* */
 	int (*send_memberinfoshort) (struct map_session_data *sd,int online);
-	int (*recv_memberinfoshort) (int guild_id,int account_id,int char_id,int online,int lv,int class_);
+	int (*recv_memberinfoshort) (int guild_id, int account_id, int char_id, int online, int lv, int16 class);
 	int (*change_memberposition) (int guild_id,int account_id,int char_id,short idx);
 	int (*memberposition_changed) (struct guild *g,int idx,int pos);
 	int (*change_position) (int guild_id,int idx,int mode,int exp_mode,const char *name);
@@ -145,7 +143,7 @@ struct guild_interface {
 	int (*skillupack) (int guild_id,uint16 skill_id,int account_id);
 	int (*dobreak) (struct map_session_data *sd, const char *name);
 	int (*broken) (int guild_id,int flag);
-	int (*gm_change) (int guild_id, struct map_session_data *sd);
+	int (*gm_change) (int guild_id, int char_id);
 	int (*gm_changed) (int guild_id, int account_id, int char_id);
 	/* */
 	void (*castle_map_init) (void);
@@ -185,9 +183,9 @@ struct guild_interface {
 	void (*castle_reconnect_sub) (void *key, void *data, va_list ap);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void guild_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct guild_interface *guild;
 

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "elemental.h"
 
@@ -708,7 +706,7 @@ int elemental_ai_sub_timer(struct elemental_data *ed, struct map_session_data *s
 	if( DIFF_TICK(tick,ed->last_spdrain_time) >= 10000 ){// Drain SP every 10 seconds
 		int sp = 5;
 
-		switch (ed->vd->class_) {
+		switch (ed->vd->class) {
 			case ELEID_EL_AGNI_M:
 			case ELEID_EL_AQUA_M:
 			case ELEID_EL_VENTUS_M:
@@ -838,7 +836,7 @@ int read_elementaldb(void) {
 
 	fp = fopen(line, "r");
 	if( !fp ) {
-		ShowError("read_elementaldb : can't read Elemental.txt\n");
+		ShowError("read_elementaldb : can't read Summon_DB/Elemental.txt\n");
 		return -1;
 	}
 
@@ -857,7 +855,7 @@ int read_elementaldb(void) {
 			p = strtok(NULL, ",");
 		}
 		if( i < 26 ) {
-			ShowError("read_elementaldb : Incorrect number of columns at Elemental.txt line %d.\n", k);
+			ShowError("read_elementaldb : Incorrect number of columns at elemental.txt line %d.\n", k);
 			continue;
 		}
 
@@ -868,7 +866,7 @@ int read_elementaldb(void) {
 		db->lv = atoi(str[3]);
 
 		estatus = &db->status;
-		db->vd.class_ = db->class_;
+		db->vd.class = db->class_;
 
 		estatus->max_hp = atoi(str[4]);
 		estatus->max_sp = atoi(str[5]);
@@ -889,7 +887,7 @@ int read_elementaldb(void) {
 		estatus->race = atoi(str[20]);
 
 		ele = atoi(str[21]);
-		estatus->def_ele = ele%10;
+		estatus->def_ele = ele % ELE_MAX;
 		estatus->ele_lv = ele/20;
 		if( estatus->def_ele >= ELE_MAX ) {
 			ShowWarning("Elemental %d has invalid element type %d (max element is %d)\n", db->class_, estatus->def_ele, ELE_MAX - 1);
@@ -910,7 +908,7 @@ int read_elementaldb(void) {
 	}
 
 	fclose(fp);
-	ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' elementals in '"CL_WHITE"Database/Summon_DB/Elemental.txt"CL_RESET"'.\n",j);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' elementais em '"CL_WHITE"Database/Summon_DB/Elemental.txt"CL_RESET"'.\n",j);
 
 	return 0;
 }
@@ -927,7 +925,7 @@ int read_elemental_skilldb(void) {
 	sprintf(line, "%s/%s", map->db_path, "Summon_DB/ElementSkill.txt");
 	fp = fopen(line, "r");
 	if( !fp ) {
-		ShowError("read_elemental_skilldb : can't read elemental_skill_db.txt\n");
+		ShowError("read_elemental_skilldb : can't read Summon_DB/ElementSkill.txt\n");
 		return -1;
 	}
 
@@ -946,7 +944,7 @@ int read_elemental_skilldb(void) {
 			p = strtok(NULL, ",");
 		}
 		if( i < 4 ) {
-			ShowError("read_elemental_skilldb : Incorrect number of columns at elemental_skill_db.txt line %d.\n", k);
+			ShowError("read_elemental_skilldb : Incorrect number of columns at ElementSkill.txt line %d.\n", k);
 			continue;
 		}
 
@@ -983,7 +981,7 @@ int read_elemental_skilldb(void) {
 	}
 
 	fclose(fp);
-	ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' entries in '"CL_WHITE"Database/elemental_skill_db.txt"CL_RESET"'.\n",j);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"Database/Summon_DB/ElementSkill.txt"CL_RESET"'.\n",j);
 	return 0;
 }
 
@@ -1015,7 +1013,6 @@ void do_final_elemental(void) {
 
 /*=====================================
 * Default Functions : elemental.h
-* Generated by InterfaceMaker
 * created by Susu
 *-------------------------------------*/
 void elemental_defaults(void) {

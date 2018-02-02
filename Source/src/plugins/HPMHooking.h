@@ -1,27 +1,3 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
 #ifndef PLUGINS_HPMHOOKING_H
 #define PLUGINS_HPMHOOKING_H
 
@@ -38,14 +14,14 @@ struct HPMHooking_interface {
 	bool (*HookStopped) (void);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 struct HPMHooking_core_interface {
 	bool enabled;
 	bool force_return;
 	bool (*addhook_sub) (enum HPluginHookType type, const char *target, void *hook, unsigned int pID);
 	const char *(*Hooked)(bool *fr);
 };
-#else // ! HPM_MAIN_CORE
+#else // ! MAIN_CORE
 HPExport struct HPMHooking_interface HPMHooking_s;
 
 #include "HPMHooking/HPMHooking.Defs.inc"
@@ -65,6 +41,6 @@ HPExport struct HPMHooking_interface HPMHooking_s;
 #define hookStop() (HPMi->hooking->HookStop(__func__,HPMi->pid))
 #define hookStopped() (HPMi->hooking->HookStopped())
 
-#endif // ! HPM_MAIN_CORE
+#endif // ! MAIN_CORE
 
 #endif // PLUGINS_HPMHOOKING_H

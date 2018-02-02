@@ -1,15 +1,38 @@
+#####################################################################
+#              ____                     _                           #
+#             /    |                   | |_                         #
+#            /     |_ __ ____  __ _  __| |_  __ _                   #
+#           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  #
+#          /  __   | | |  |__| (_| | (_| | | (_| |                  #
+#         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  #
+#        /__/   |__|  [ Ragnarok Emulator ]                         #
+#                                                                   #
+#####################################################################
+#                  Idealizado por: Spell Master                     #
+#####################################################################
+# - Este código é livre para editar, redistribuir de acordo com os  #
+# termos da GNU General Public License, publicada sobre conselho    #
+# pela Free Software Foundation.                                    #
+#                                                                   #
+# - Qualquer ato de comercialização desse software está previsto    #
+# em leis internacionais, junto com este(s) código(s) você recebeu  #
+# uma cópia de licença de uso.                                      #
+# - Caso não tenha recebido veja: http://www.gnu.org/licenses/      #
+#####################################################################
+
 # @configure_input@
 
 @SET_MAKE@
 
 HAVE_MYSQL=@HAVE_MYSQL@
 ifeq ($(HAVE_MYSQL),yes)
-	ALL_DEPENDS=common_sql login_sql char_sql map_sql sysinfo | import
+	ALL_DEPENDS=common_sql login_sql char_sql map_sql tools sysinfo | import
 	SQL_DEPENDS=common_sql login_sql char_sql map_sql sysinfo | import
 	COMMON_SQL_DEPENDS=mt19937ar libconfig sysinfo
 	LOGIN_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
 	CHAR_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
 	MAP_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
+	TOOLS_DEPENDS=mt19937ar libconfig common_sql sysinfo
 else
 	ALL_DEPENDS=needs_mysql
 	SQL_DEPENDS=needs_mysql
@@ -17,6 +40,7 @@ else
 	LOGIN_SQL_DEPENDS=needs_mysql
 	CHAR_SQL_DEPENDS=needs_mysql
 	MAP_SQL_DEPENDS=needs_mysql
+	TOOLS_DEPENDS=needs_mysql
 endif
 
 WITH_PLUGINS=@WITH_PLUGINS@
@@ -28,7 +52,6 @@ else
 endif
 
 HAVE_PERL=@HAVE_PERL@
-HAVE_DOXYGEN=@HAVE_DOXYGEN@
 
 MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
              Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map Source/src/plugins \
@@ -44,6 +67,7 @@ export CC
 	login_sql \
 	char_sql \
 	map_sql \
+	tools \
 	plugins \
 	import \
 	test \
@@ -82,7 +106,7 @@ mt19937ar: Source/3rdparty/mt19937ar/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/3rdparty/mt19937ar
 
-libconfig: Source/3rdparty/libconfig/Makefile
+libconfig: 3rdparty/libconfig/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/3rdparty/libconfig
 
@@ -98,6 +122,10 @@ map_sql: $(MAP_SQL_DEPENDS) Source/src/map/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/src/map sql
 
+tools: $(TOOLS_DEPENDS) Source/src/tool/Makefile
+	@echo "	MAKE	$@"
+	@$(MAKE) -C Source/src/tool
+
 test: Source/src/test/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/src/test
@@ -111,11 +139,11 @@ plugin.%: $(PLUGIN_DEPENDS) Source/src/plugins/Makefile
 	@$(MAKE) -C Source/src/plugins $(patsubst plugin.%,%,$@)
 
 import: Makefile
-	@# 1) create conf/import folder
+	@# 1) create Config/import folder
 	@# 2) add missing files
-	@echo "building conf/import folder..."
-#	@if test ! -d conf/import ; then mkdir conf/import ; fi
-#	@for f in $$(ls conf/import-tmpl) ; do if test ! -e conf/import/$$f ; then cp conf/import-tmpl/$$f conf/import ; fi ; done
+	@echo "building Config/import folder..."
+	@if test ! -d Config/import ; then mkdir Config/import ; fi
+	@for f in $$(ls Config/import-tmpl) ; do if test ! -e Config/import/$$f ; then cp Config/import-tmpl/$$f Config/import ; fi ; done
 
 clean buildclean: $(MF_TARGETS)
 	@$(MAKE) -C Source/src/common $@
@@ -131,10 +159,7 @@ clean buildclean: $(MF_TARGETS)
 distclean: clean
 	@-rm -f $(MF_TARGETS) config.status config.log
 
-sysinfo:
-	@chmod 777 sysinfogen.sh
-	@chmod 777 auto.sh
-	@chmod 777 servidor
+sysinfo: config.status
 	@./sysinfogen.sh Source/src/common/sysinfo_new.inc @CFLAGS@ @CPPFLAGS@
 	@if cmp -s Source/src/common/sysinfo.inc Source/src/common/sysinfo_new.inc; then \
 		rm Source/src/common/sysinfo_new.inc ; \
@@ -155,7 +180,8 @@ help: Makefile
 	@echo "'login_sql'   - builds login server"
 	@echo "'char_sql'    - builds char server"
 	@echo "'map_sql'     - builds map server"
-	@echo "'import'      - builds conf/import folder from the template conf/import-tmpl"
+	@echo "'tools'       - builds all the tools in Source/src/tools"
+	@echo "'import'      - builds Config/import folder from the template Config/import-tmpl"
 	@echo "'all'         - builds all the above targets"
 	@echo "'sql'         - builds sql servers (targets 'common_sql' 'login_sql' 'char_sql'"
 	@echo "                'map_sql' and 'import')"
@@ -167,11 +193,8 @@ help: Makefile
 	@echo "                executables"
 	@echo "'distclean'   - cleans files generated by ./configure"
 	@echo "'sysinfo'     - re-generates the System Info include"
-ifeq ($(HAVE_DOXYGEN),yes)
-	@echo "'docs'        - Generate the Doxygen source code documentation"
 ifeq ($(HAVE_PERL),yes)
 	@echo "'hooks'       - re-generates the definitions for the HPM"
-endif
 endif
 	@echo "'help'        - outputs this message"
 

@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -88,7 +86,7 @@ struct mapif_interface {
 	int (*parse_GuildInfo) (int fd, int guild_id);
 	int (*parse_GuildAddMember) (int fd, int guild_id, const struct guild_member *m);
 	int (*parse_GuildLeave) (int fd, int guild_id, int account_id, int char_id, int flag, const char *mes);
-	int (*parse_GuildChangeMemberInfoShort) (int fd, int guild_id, int account_id, int char_id, int online, int lv, int class_);
+	int (*parse_GuildChangeMemberInfoShort) (int fd, int guild_id, int account_id, int char_id, int online, int lv, int16 class);
 	int (*parse_BreakGuild) (int fd, int guild_id);
 	int (*parse_GuildMessage) (int fd, int guild_id, int account_id, const char *mes, int len);
 	int (*parse_GuildBasicInfoChange) (int fd, int guild_id, int type, const void *data, int len);
@@ -181,10 +179,23 @@ struct mapif_interface {
 	int (*parse_quest_save) (int fd);
 	void (*send_quests) (int fd, int char_id, struct quest *tmp_questlog, int num_quests);
 	int (*parse_quest_load) (int fd);
+	int(*parse_rodex_requestinbox) (int fd);
+	void(*rodex_sendinbox) (int fd, int char_id, int8 opentype, int8 flag, int count, struct rodex_maillist *mails);
+	int(*parse_rodex_checkhasnew) (int fd);
+	void(*rodex_sendhasnew) (int fd, int char_id, bool has_new);
+	int(*parse_rodex_updatemail) (int fd);
+	int(*parse_rodex_send) (int fd);
+	void(*rodex_send) (int fd, int sender_id, int receiver_id, int receiver_accountid, bool result);
+	int(*parse_rodex_checkname) (int fd);
+	void(*rodex_checkname) (int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name);
 	int (*load_guild_storage) (int fd, int account_id, int guild_id, char flag);
 	int (*save_guild_storage_ack) (int fd, int account_id, int guild_id, int fail);
 	int (*parse_LoadGuildStorage) (int fd);
 	int (*parse_SaveGuildStorage) (int fd);
+	int (*account_storage_load) (int fd, int account_id);
+	int (*pAccountStorageLoad) (int fd);
+	int (*pAccountStorageSave) (int fd);
+	void (*sAccountStorageSaveAck) (int fd, int account_id, bool save);
 	int (*itembound_ack) (int fd, int aid, int guild_id);
 	int (*parse_ItemBoundRetrieve_sub) (int fd);
 	void (*parse_ItemBoundRetrieve) (int fd);
@@ -207,9 +218,9 @@ struct mapif_interface {
 	int (*parse_NameChangeRequest) (int fd);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void mapif_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct mapif_interface *mapif;
 

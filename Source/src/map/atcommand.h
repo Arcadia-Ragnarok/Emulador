@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -83,8 +81,10 @@ struct AtCommandInfo {
 struct atcmd_binding_data {
 	char command[ATCOMMAND_LENGTH];
 	char npc_event[ATCOMMAND_LENGTH];
-	int group_lv;
-	int group_lv_char;
+	int group_lv; // DEPRECATED
+	int group_lv_char; // DEPRECATED
+	char *at_groups; // quick @commands "can-use" lookup
+	char *char_groups; // quick @charcommands "can-use" lookup
 	bool log;
 };
 
@@ -149,9 +149,9 @@ struct atcommand_interface {
 	const char* (*msgsd) (struct map_session_data *sd, int msg_number);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void atcommand_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct atcommand_interface *atcommand;
 

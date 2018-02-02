@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -112,6 +110,14 @@
 // disable attributed stuff on non-GNU
 #if !defined(__GNUC__) && !defined(MINGW)
 #  define  __attribute__(x)
+#endif
+
+/// Feature/extension checking macros
+#ifndef __has_extension /* Available in clang and gcc >= 3 */
+#define __has_extension(x) 0
+#endif
+#ifndef __has_feature /* Available in clang and gcc >= 5 */
+#define __has_feature(x) __has_extension(x)
 #endif
 
 //////////////////////////////////////////////////////////////////////////
@@ -303,6 +309,13 @@ typedef uintptr_t uintptr;
 #define PRAGMA_GCC46(str)
 #endif // ! defined(__GNUC__) && (defined(__clang__) || GCC_VERSION >= 40600)
 
+// Pragma macro only enabled on gcc >= 5 or clang - borrowed from Mana Plus
+#if defined(__GNUC__) && (GCC_VERSION >= 50000)
+#define PRAGMA_GCC5(str) _Pragma(#str)
+#else // ! defined(__GNUC__) && (GCC_VERSION >= 50000)
+#define PRAGMA_GCC5(str)
+#endif // ! defined(__GNUC__) && (GCC_VERSION >= 50000)
+
 // fallthrough attribute only enabled on gcc >= 7.0
 #if defined(__GNUC__) && (GCC_VERSION >= 70000)
 #define FALLTHROUGH __attribute__ ((fallthrough));
@@ -438,12 +451,31 @@ typedef char bool;
 #endif
 
 /** Support macros for marking blocks to memset to 0 */
-#define BEGIN_ZEROED_BLOCK int8 RDBR__zeroed_block_BEGIN
-#define END_ZEROED_BLOCK int8 RDBR__zeroed_block_END
-#define ZEROED_BLOCK_POS(x) (&(x)->RDBR__zeroed_block_BEGIN)
-#define ZEROED_BLOCK_SIZE(x) ((char*)&((x)->RDBR__zeroed_block_END) - (char*)&((x)->RDBR__zeroed_block_BEGIN) + sizeof((x)->RDBR__zeroed_block_END))
+#define BEGIN_ZEROED_BLOCK int8 ARCADIA__zeroed_block_BEGIN
+#define END_ZEROED_BLOCK int8 ARCADIA__zeroed_block_END
+#define ZEROED_BLOCK_POS(x) (&(x)->ARCADIA__zeroed_block_BEGIN)
+#define ZEROED_BLOCK_SIZE(x) ((char*)&((x)->ARCADIA__zeroed_block_END) - (char*)&((x)->ARCADIA__zeroed_block_BEGIN) + sizeof((x)->ARCADIA__zeroed_block_END))
 
 /** Support macros for marking structs as unavailable */
-#define UNAVAILABLE_STRUCT int8 RDBR__unavailable_struct
+#define UNAVAILABLE_STRUCT int8 ARCADIA__unavailable_struct
+
+/** Static assertion (only on compilers that support it) */
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+// C11 version
+#define STATIC_ASSERT(ex, msg) _Static_assert(ex, msg)
+#elif __has_feature(c_static_assert)
+// Clang support (as per http://clang.llvm.org/docs/LanguageExtensions.html)
+#define STATIC_ASSERT(ex, msg) _Static_assert(ex, msg)
+#elif defined(__GNUC__) && GCC_VERSION >= 40700
+// GCC >= 4.7 is known to support it
+#define STATIC_ASSERT(ex, msg) _Static_assert(ex, msg)
+#elif defined(_MSC_VER)
+// MSVC doesn't support it, but it accepts the C++ style version
+#define STATIC_ASSERT(ex, msg) static_assert(ex, msg)
+#else
+// Otherise just ignore it until it's supported
+#define STATIC_ASSERT(ex, msg)
+#endif
+
 
 #endif /* COMMON_CBASETYPES_H */

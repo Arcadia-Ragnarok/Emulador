@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "config/core.h" // GP_BOUND_ITEMS
 #include "guild.h"
@@ -94,7 +92,7 @@ int guild_checkskill(struct guild *g, int id) {
 }
 
 /*==========================================
- * guild_skill_tree.txt reading - from jA [Komurka]
+ * GuildSkill.txt reading - from jA [Komurka]
  *------------------------------------------*/
 bool guild_read_guildskill_tree_db(char* split[], int columns, int current)
 {// <skill id>,<max lv>,<req id1>,<req lv1>,<req id2>,<req lv2>,<req id3>,<req lv3>,<req id4>,<req lv4>,<req id5>,<req lv5>
@@ -272,7 +270,7 @@ void guild_makemember(struct guild_member *m,struct map_session_data *sd)
 	m->hair       = sd->status.hair;
 	m->hair_color = sd->status.hair_color;
 	m->gender     = sd->status.sex;
-	m->class_     = sd->status.class_;
+	m->class      = sd->status.class;
 	m->lv         = sd->status.base_level;
 	//m->exp        = 0;
 	//m->exp_payper = 0;
@@ -981,7 +979,7 @@ int guild_send_memberinfoshort(struct map_session_data *sd,int online)
 		return 0;
 
 	intif->guild_memberinfoshort(g->guild_id,
-		sd->status.account_id,sd->status.char_id,online,sd->status.base_level,sd->status.class_);
+		sd->status.account_id,sd->status.char_id,online,sd->status.base_level,sd->status.class);
 
 	if(!online){
 		int i = guild->getindex(g,sd->status.account_id,sd->status.char_id);
@@ -1000,7 +998,7 @@ int guild_send_memberinfoshort(struct map_session_data *sd,int online)
 	return 0;
 }
 
-int guild_recv_memberinfoshort(int guild_id,int account_id,int char_id,int online,int lv,int class_)
+int guild_recv_memberinfoshort(int guild_id, int account_id, int char_id, int online, int lv, int16 class)
 { // cleaned up [LuzZza]
 	int i, alv, c, idx = INDEX_NOT_FOUND, om = 0, oldonline = -1;
 	struct guild *g = guild->search(guild_id);
@@ -1015,7 +1013,7 @@ int guild_recv_memberinfoshort(int guild_id,int account_id,int char_id,int onlin
 			oldonline=m->online;
 			m->online=online;
 			m->lv=lv;
-			m->class_=class_;
+			m->class = class;
 			idx=i;
 		}
 		alv+=m->lv;
@@ -1286,7 +1284,8 @@ struct DBData create_expcache(union DBKey key, va_list args)
 /*====================================================
  * Return taxed experience from player sd to guild
  *---------------------------------------------------*/
-unsigned int guild_payexp(struct map_session_data *sd,unsigned int exp) {
+uint64 guild_payexp(struct map_session_data *sd, uint64 exp)
+{
 	struct guild *g;
 	struct guild_expcache *c;
 	int per;
@@ -1763,7 +1762,7 @@ int castle_guild_broken_sub(union DBKey key, struct DBData *data, va_list ap)
 	if (gc->guild_id == guild_id) {
 		char name[EVENT_NAME_LENGTH];
 		// We call castle_event::OnGuildBreak of all castles of the guild
-		// You can set all castle_events in the 'db/castle_db.txt'
+		// You can set all castle_events in the 'Database/castle_db.txt'
 		safestrncpy(name, gc->castle_event, sizeof(name));
 		npc->event_do(strcat(name, "::OnGuildBreak"));
 
@@ -1818,23 +1817,28 @@ int guild_broken(int guild_id,int flag)
 }
 
 //Changes the Guild Master to the specified player. [Skotlex]
-int guild_gm_change(int guild_id, struct map_session_data *sd)
+int guild_gm_change(int guild_id, int char_id)
 {
-	struct guild *g;
-	nullpo_ret(sd);
-
-	if (sd->status.guild_id != guild_id)
-		return 0;
-
-	g=guild->search(guild_id);
+	struct guild *g = guild->search(guild_id);
+	char *name;
+	int i;
 
 	nullpo_ret(g);
 
-	if (strcmp(g->master, sd->status.name) == 0) //Nothing to change.
+	ARR_FIND(0, MAX_GUILD, i, g->member[i].char_id == char_id);
+
+	if (i == MAX_GUILD ) {
+		// Not part of the guild
+		return 0;
+	}
+
+	name = g->member[i].name;
+
+	if (strcmp(g->master, name) == 0) //Nothing to change.
 		return 0;
 
 	//Notify servers that master has changed.
-	intif->guild_change_gm(guild_id, sd->status.name, (int)strlen(sd->status.name)+1);
+	intif->guild_change_gm(guild_id, name, (int)strlen(name) + 1);
 	return 1;
 }
 
@@ -1868,6 +1872,7 @@ int guild_gm_changed(int guild_id, int account_id, int char_id)
 	if (g->member[pos].sd && g->member[pos].sd->fd) {
 		clif->message(g->member[pos].sd->fd, msg_sd(g->member[pos].sd,878)); //"You no longer are the Guild Master."
 		g->member[pos].sd->state.gmaster_flag = 0;
+		clif->charnameack(0, &g->member[pos].sd->bl);
 	}
 
 	if (g->member[0].sd && g->member[0].sd->fd) {
@@ -1875,6 +1880,7 @@ int guild_gm_changed(int guild_id, int account_id, int char_id)
 		g->member[0].sd->state.gmaster_flag = 1;
 		//Block his skills for 5 minutes to prevent abuse.
 		guild->block_skill(g->member[0].sd, 300000);
+		clif->charnameack(0, &g->member[pos].sd->bl);
 	}
 
 	// announce the change to all guild members
@@ -1884,6 +1890,7 @@ int guild_gm_changed(int guild_id, int account_id, int char_id)
 		{
 			clif->guild_basicinfo(g->member[i].sd);
 			clif->guild_memberlist(g->member[i].sd);
+			clif->guild_belonginfo(g->member[i].sd, g); // Update clientside guildmaster flag
 		}
 	}
 

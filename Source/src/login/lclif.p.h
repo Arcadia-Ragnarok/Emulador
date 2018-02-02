@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -40,7 +38,7 @@
 
 // Packet DB
 #define MIN_PACKET_DB 0x0064
-#define MAX_PACKET_DB 0x08ff
+#define MAX_PACKET_DB 0x0acf
 
 /* Enums */
 
@@ -56,12 +54,15 @@ enum login_packet_id {
 	PACKET_ID_CA_LOGIN4               = 0x027c,
 	PACKET_ID_CA_LOGIN_HAN            = 0x02b0,
 	PACKET_ID_CA_SSO_LOGIN_REQ        = 0x0825,
+	PACKET_ID_CA_LOGIN_OTP            = 0x0acf,
 	PACKET_ID_CA_REQ_HASH             = 0x01db,
-	PACKET_ID_CA_CHARSERVERCONNECT    = 0x2710,
+	PACKET_ID_CA_CHARSERVERCONNECT    = 0x2710, // Custom Packet
 	//PACKET_ID_CA_SSO_LOGIN_REQa       = 0x825a, /* unused */
 
 	// AC (Login to Client)
+
 	PACKET_ID_AC_ACCEPT_LOGIN         = 0x0069,
+	PACKET_ID_AC_ACCEPT_LOGIN2        = 0x0ac4,
 	PACKET_ID_AC_REFUSE_LOGIN         = 0x006a,
 	PACKET_ID_SC_NOTIFY_BAN           = 0x0081,
 	PACKET_ID_AC_ACK_HASH             = 0x01dc,
@@ -163,6 +164,19 @@ struct packet_CA_SSO_LOGIN_REQ {
 	char t1[];            ///< SSO Login Token (variable length)
 } __attribute__((packed));
 
+/**
+ * Packet structure for CA_LOGIN_OTP.
+ */
+struct packet_CA_LOGIN_OTP {
+	int16 packet_id;      ///< Packet ID (#PACKET_ID_CA_LOGIN_OTP)
+#if PACKETVER >= 20171113
+	uint32 devFlags;      ///< flags including dev flag
+#endif
+	char login[25];       ///< Username
+	char password[32];    ///< Password encrypted by rijndael
+	char flagsStr[5];     ///< Unknown flags. Normally string: G000
+} __attribute__((packed));
+
 #if 0 // Unused
 struct packet_CA_SSO_LOGIN_REQa {
 	int16 packet_id;
@@ -261,6 +275,9 @@ struct packet_AC_ACCEPT_LOGIN {
 	uint32 last_login_ip;     ///< Last login IP
 	char last_login_time[26]; ///< Last login timestamp
 	uint8 sex;                ///< Account sex
+#if PACKETVER >= 20170315
+	char unknown1[17];
+#endif
 	struct {
 		uint32 ip;        ///< Server IP address
 		int16 port;       ///< Server port
@@ -268,6 +285,9 @@ struct packet_AC_ACCEPT_LOGIN {
 		uint16 usercount; ///< Online users
 		uint16 state;     ///< Server state
 		uint16 property;  ///< Server property
+#if PACKETVER >= 20170315
+		char unknown2[128];
+#endif
 	} server_list[];          ///< List of charservers
 } __attribute__((packed));
 
@@ -322,6 +342,7 @@ struct lclif_interface_private {
 	LoginParseFunc *parse_CA_LOGIN_PCBANG;         ///< Packet handler for #packet_CA_LOGIN_PCBANG.
 	LoginParseFunc *parse_CA_LOGIN_HAN;            ///< Packet handler for #packet_CA_LOGIN_HAN.
 	LoginParseFunc *parse_CA_SSO_LOGIN_REQ;        ///< Packet handler for #packet_CA_SSO_LOGIN_REQ.
+	LoginParseFunc *parse_CA_LOGIN_OTP;            ///< Packet handler for #packet_CA_LOGIN_OTP.
 	LoginParseFunc *parse_CA_REQ_HASH;             ///< Packet handler for #packet_CA_REQ_HASH.
 	LoginParseFunc *parse_CA_CHARSERVERCONNECT;    ///< Packet handler for #packet_CA_CHARSERVERCONNECT.
 };

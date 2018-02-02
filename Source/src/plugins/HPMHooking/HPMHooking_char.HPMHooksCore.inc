@@ -1,4 +1,6 @@
-/* * NOTE: This file was auto-generated and should never be manually edited,
+
+/*
+ * NOTE: This file was auto-generated and should never be manually edited,
  *       as it will get overwritten.
  */
 
@@ -41,6 +43,8 @@ struct {
 	struct HPMHookPoint *HP_chr_create_charstatus_post;
 	struct HPMHookPoint *HP_chr_mmo_char_tosql_pre;
 	struct HPMHookPoint *HP_chr_mmo_char_tosql_post;
+	struct HPMHookPoint *HP_chr_getitemdata_from_sql_pre;
+	struct HPMHookPoint *HP_chr_getitemdata_from_sql_post;
 	struct HPMHookPoint *HP_chr_memitemdata_to_sql_pre;
 	struct HPMHookPoint *HP_chr_memitemdata_to_sql_post;
 	struct HPMHookPoint *HP_chr_mmo_gender_pre;
@@ -603,6 +607,20 @@ struct {
 	struct HPMHookPoint *HP_inter_pet_parse_frommap_post;
 	struct HPMHookPoint *HP_inter_quest_parse_frommap_pre;
 	struct HPMHookPoint *HP_inter_quest_parse_frommap_post;
+	struct HPMHookPoint *HP_inter_rodex_sql_init_pre;
+	struct HPMHookPoint *HP_inter_rodex_sql_init_post;
+	struct HPMHookPoint *HP_inter_rodex_sql_final_pre;
+	struct HPMHookPoint *HP_inter_rodex_sql_final_post;
+	struct HPMHookPoint *HP_inter_rodex_parse_frommap_pre;
+	struct HPMHookPoint *HP_inter_rodex_parse_frommap_post;
+	struct HPMHookPoint *HP_inter_rodex_fromsql_pre;
+	struct HPMHookPoint *HP_inter_rodex_fromsql_post;
+	struct HPMHookPoint *HP_inter_rodex_hasnew_pre;
+	struct HPMHookPoint *HP_inter_rodex_hasnew_post;
+	struct HPMHookPoint *HP_inter_rodex_checkname_pre;
+	struct HPMHookPoint *HP_inter_rodex_checkname_post;
+	struct HPMHookPoint *HP_inter_rodex_savemessage_pre;
+	struct HPMHookPoint *HP_inter_rodex_savemessage_post;
 	struct HPMHookPoint *HP_inter_storage_tosql_pre;
 	struct HPMHookPoint *HP_inter_storage_tosql_post;
 	struct HPMHookPoint *HP_inter_storage_fromsql_pre;
@@ -1075,6 +1093,24 @@ struct {
 	struct HPMHookPoint *HP_mapif_send_quests_post;
 	struct HPMHookPoint *HP_mapif_parse_quest_load_pre;
 	struct HPMHookPoint *HP_mapif_parse_quest_load_post;
+	struct HPMHookPoint *HP_mapif_parse_rodex_requestinbox_pre;
+	struct HPMHookPoint *HP_mapif_parse_rodex_requestinbox_post;
+	struct HPMHookPoint *HP_mapif_rodex_sendinbox_pre;
+	struct HPMHookPoint *HP_mapif_rodex_sendinbox_post;
+	struct HPMHookPoint *HP_mapif_parse_rodex_checkhasnew_pre;
+	struct HPMHookPoint *HP_mapif_parse_rodex_checkhasnew_post;
+	struct HPMHookPoint *HP_mapif_rodex_sendhasnew_pre;
+	struct HPMHookPoint *HP_mapif_rodex_sendhasnew_post;
+	struct HPMHookPoint *HP_mapif_parse_rodex_updatemail_pre;
+	struct HPMHookPoint *HP_mapif_parse_rodex_updatemail_post;
+	struct HPMHookPoint *HP_mapif_parse_rodex_send_pre;
+	struct HPMHookPoint *HP_mapif_parse_rodex_send_post;
+	struct HPMHookPoint *HP_mapif_rodex_send_pre;
+	struct HPMHookPoint *HP_mapif_rodex_send_post;
+	struct HPMHookPoint *HP_mapif_parse_rodex_checkname_pre;
+	struct HPMHookPoint *HP_mapif_parse_rodex_checkname_post;
+	struct HPMHookPoint *HP_mapif_rodex_checkname_pre;
+	struct HPMHookPoint *HP_mapif_rodex_checkname_post;
 	struct HPMHookPoint *HP_mapif_load_guild_storage_pre;
 	struct HPMHookPoint *HP_mapif_load_guild_storage_post;
 	struct HPMHookPoint *HP_mapif_save_guild_storage_ack_pre;
@@ -1083,6 +1119,14 @@ struct {
 	struct HPMHookPoint *HP_mapif_parse_LoadGuildStorage_post;
 	struct HPMHookPoint *HP_mapif_parse_SaveGuildStorage_pre;
 	struct HPMHookPoint *HP_mapif_parse_SaveGuildStorage_post;
+	struct HPMHookPoint *HP_mapif_account_storage_load_pre;
+	struct HPMHookPoint *HP_mapif_account_storage_load_post;
+	struct HPMHookPoint *HP_mapif_pAccountStorageLoad_pre;
+	struct HPMHookPoint *HP_mapif_pAccountStorageLoad_post;
+	struct HPMHookPoint *HP_mapif_pAccountStorageSave_pre;
+	struct HPMHookPoint *HP_mapif_pAccountStorageSave_post;
+	struct HPMHookPoint *HP_mapif_sAccountStorageSaveAck_pre;
+	struct HPMHookPoint *HP_mapif_sAccountStorageSaveAck_post;
 	struct HPMHookPoint *HP_mapif_itembound_ack_pre;
 	struct HPMHookPoint *HP_mapif_itembound_ack_post;
 	struct HPMHookPoint *HP_mapif_parse_ItemBoundRetrieve_sub_pre;
@@ -1518,6 +1562,8 @@ struct {
 	int HP_chr_create_charstatus_post;
 	int HP_chr_mmo_char_tosql_pre;
 	int HP_chr_mmo_char_tosql_post;
+	int HP_chr_getitemdata_from_sql_pre;
+	int HP_chr_getitemdata_from_sql_post;
 	int HP_chr_memitemdata_to_sql_pre;
 	int HP_chr_memitemdata_to_sql_post;
 	int HP_chr_mmo_gender_pre;
@@ -2080,6 +2126,20 @@ struct {
 	int HP_inter_pet_parse_frommap_post;
 	int HP_inter_quest_parse_frommap_pre;
 	int HP_inter_quest_parse_frommap_post;
+	int HP_inter_rodex_sql_init_pre;
+	int HP_inter_rodex_sql_init_post;
+	int HP_inter_rodex_sql_final_pre;
+	int HP_inter_rodex_sql_final_post;
+	int HP_inter_rodex_parse_frommap_pre;
+	int HP_inter_rodex_parse_frommap_post;
+	int HP_inter_rodex_fromsql_pre;
+	int HP_inter_rodex_fromsql_post;
+	int HP_inter_rodex_hasnew_pre;
+	int HP_inter_rodex_hasnew_post;
+	int HP_inter_rodex_checkname_pre;
+	int HP_inter_rodex_checkname_post;
+	int HP_inter_rodex_savemessage_pre;
+	int HP_inter_rodex_savemessage_post;
 	int HP_inter_storage_tosql_pre;
 	int HP_inter_storage_tosql_post;
 	int HP_inter_storage_fromsql_pre;
@@ -2552,6 +2612,24 @@ struct {
 	int HP_mapif_send_quests_post;
 	int HP_mapif_parse_quest_load_pre;
 	int HP_mapif_parse_quest_load_post;
+	int HP_mapif_parse_rodex_requestinbox_pre;
+	int HP_mapif_parse_rodex_requestinbox_post;
+	int HP_mapif_rodex_sendinbox_pre;
+	int HP_mapif_rodex_sendinbox_post;
+	int HP_mapif_parse_rodex_checkhasnew_pre;
+	int HP_mapif_parse_rodex_checkhasnew_post;
+	int HP_mapif_rodex_sendhasnew_pre;
+	int HP_mapif_rodex_sendhasnew_post;
+	int HP_mapif_parse_rodex_updatemail_pre;
+	int HP_mapif_parse_rodex_updatemail_post;
+	int HP_mapif_parse_rodex_send_pre;
+	int HP_mapif_parse_rodex_send_post;
+	int HP_mapif_rodex_send_pre;
+	int HP_mapif_rodex_send_post;
+	int HP_mapif_parse_rodex_checkname_pre;
+	int HP_mapif_parse_rodex_checkname_post;
+	int HP_mapif_rodex_checkname_pre;
+	int HP_mapif_rodex_checkname_post;
 	int HP_mapif_load_guild_storage_pre;
 	int HP_mapif_load_guild_storage_post;
 	int HP_mapif_save_guild_storage_ack_pre;
@@ -2560,6 +2638,14 @@ struct {
 	int HP_mapif_parse_LoadGuildStorage_post;
 	int HP_mapif_parse_SaveGuildStorage_pre;
 	int HP_mapif_parse_SaveGuildStorage_post;
+	int HP_mapif_account_storage_load_pre;
+	int HP_mapif_account_storage_load_post;
+	int HP_mapif_pAccountStorageLoad_pre;
+	int HP_mapif_pAccountStorageLoad_post;
+	int HP_mapif_pAccountStorageSave_pre;
+	int HP_mapif_pAccountStorageSave_post;
+	int HP_mapif_sAccountStorageSaveAck_pre;
+	int HP_mapif_sAccountStorageSaveAck_post;
 	int HP_mapif_itembound_ack_pre;
 	int HP_mapif_itembound_ack_post;
 	int HP_mapif_parse_ItemBoundRetrieve_sub_pre;
@@ -2977,6 +3063,7 @@ struct {
 	struct inter_party_interface inter_party;
 	struct inter_pet_interface inter_pet;
 	struct inter_quest_interface inter_quest;
+	struct inter_rodex_interface inter_rodex;
 	struct inter_storage_interface inter_storage;
 	struct libconfig_interface libconfig;
 	struct loginif_interface loginif;

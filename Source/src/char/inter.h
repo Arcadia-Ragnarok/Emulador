@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -43,7 +41,7 @@ struct inter_interface {
 	const char* (*msg_txt) (int msg_number);
 	bool (*msg_config_read) (const char *cfg_name, bool allow_override);
 	void (*do_final_msg) (void);
-	const char* (*job_name) (int class_);
+	const char* (*job_name) (int class);
 	void (*vmsg_to_fd) (int fd, int u_fd, int aid, char* msg, va_list ap);
 	void (*msg_to_fd) (int fd, int u_fd, int aid, char *msg, ...) __attribute__((format(printf, 4, 5)));
 	void (*savereg) (int account_id, int char_id, const char *key, unsigned int index, intptr_t val, bool is_string);
@@ -62,11 +60,11 @@ struct inter_interface {
 	bool (*config_read_connection) (const char *filename, const struct config_t *config, bool imported);
 };
 
-#ifdef HPM_MAIN_CORE
-extern unsigned int party_share_level; ///< Share range for parties.
+#ifdef MAIN_CORE
+extern int party_share_level; ///< Share range for parties.
 
 void inter_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct inter_interface *inter;
 

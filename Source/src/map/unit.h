@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -84,11 +82,7 @@ struct unit_data {
 };
 
 struct view_data {
-#ifdef __64BIT__
-	uint32 class_; // FIXME: This shouldn't really depend on the architecture.
-#else // not __64BIT__
-	uint16 class_;
-#endif // __64BIT__
+	int16 class;
 	uint16 weapon,
 		shield, //Or left-hand weapon.
 		robe,
@@ -156,12 +150,12 @@ struct unit_interface {
 	int (*free) (struct block_list *bl, clr_type clrtype);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 extern const short dirx[8];
 extern const short diry[8];
 
 void unit_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct unit_interface *unit;
 

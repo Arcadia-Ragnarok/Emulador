@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "inter.h"
 
@@ -37,6 +35,7 @@
 #include "char/int_party.h"
 #include "char/int_pet.h"
 #include "char/int_quest.h"
+#include "char/int_rodex.h"
 #include "char/int_storage.h"
 #include "char/mapif.h"
 #include "common/cbasetypes.h"
@@ -67,12 +66,12 @@ char char_server_pw[100] = "ragnarok";
 char char_server_db[32] = "ragnarok";
 char default_codepage[32] = ""; //Feature by irmin.
 
-unsigned int party_share_level = 10;
+int party_share_level = 10;
 
 // recv. packet list
 int inter_recv_packet_length[] = {
 	-1,-1, 7,-1, -1,13,36, (2 + 4 + 4 + 4 + NAME_LENGTH),  0, 0, 0, 0,  0, 0,  0, 0, // 3000-
-	 6,-1, 0, 0,  0, 0, 0, 0, 10,-1, 0, 0,  0, 0,  0, 0,    // 3010-
+	 6,-1, 0, 0,  0, 0, 0, 0, 10,-1, 0, 0,  0, 0,  0, 0,    // 3010- Account Storage [Smokexyz]
 	-1,10,-1,14, 14,19, 6,-1, 14,14, 0, 0,  0, 0,  0, 0,    // 3020- Party
 	-1, 6,-1,-1, 55,19, 6,-1, 14,-1,-1,-1, 18,19,186,-1,    // 3030-
 	-1, 9, 0, 0,  0, 0, 0, 0,  7, 6,10,10, 10,-1,  0, 0,    // 3040-
@@ -80,7 +79,7 @@ int inter_recv_packet_length[] = {
 	 6,-1, 0, 0,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0,    // 3060-  Quest system [Kevin] [Inkfish]
 	-1,10, 6,-1,  0, 0, 0, 0,  0, 0, 0, 0, -1,10,  6,-1,    // 3070-  Mercenary packets [Zephyrus], Elemental packets [pakpil]
 	48,14,-1, 6,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0,    // 3080-
-	-1,10,-1, 6,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0,    // 3090-  Homunculus packets [albator]
+	-1,10,-1, 6,  0, 20,10,11, -1,6 + NAME_LENGTH, 0, 0,  0, 0,  0, 0,    // 3090-  Homunculus packets [albator], RoDEX packets
 };
 
 struct WisData {
@@ -172,9 +171,9 @@ void inter_do_final_msg(void)
 		aFree(msg_table[i]);
 }
 /* from pc.c due to @accinfo. any ideas to replace this crap are more than welcome. */
-const char* inter_job_name(int class_)
+const char* inter_job_name(int class)
 {
-	switch (class_) {
+	switch (class) {
 		case JOB_NOVICE:   // 550
 		case JOB_SWORDMAN: // 551
 		case JOB_MAGE:     // 552
@@ -182,7 +181,7 @@ const char* inter_job_name(int class_)
 		case JOB_ACOLYTE:  // 554
 		case JOB_MERCHANT: // 555
 		case JOB_THIEF:    // 556
-			return inter->msg_txt(550 - JOB_NOVICE+class_);
+			return inter->msg_txt(550 - JOB_NOVICE + class);
 
 		case JOB_KNIGHT:     // 557
 		case JOB_PRIEST:     // 558
@@ -190,7 +189,7 @@ const char* inter_job_name(int class_)
 		case JOB_BLACKSMITH: // 560
 		case JOB_HUNTER:     // 561
 		case JOB_ASSASSIN:   // 562
-			return inter->msg_txt(557 - JOB_KNIGHT+class_);
+			return inter->msg_txt(557 - JOB_KNIGHT + class);
 
 		case JOB_KNIGHT2:
 			return inter->msg_txt(557);
@@ -202,7 +201,7 @@ const char* inter_job_name(int class_)
 		case JOB_ALCHEMIST: // 567
 		case JOB_BARD:      // 568
 		case JOB_DANCER:    // 569
-			return inter->msg_txt(563 - JOB_CRUSADER+class_);
+			return inter->msg_txt(563 - JOB_CRUSADER + class);
 
 		case JOB_CRUSADER2:
 			return inter->msg_txt(563);
@@ -212,7 +211,7 @@ const char* inter_job_name(int class_)
 		case JOB_GUNSLINGER:   // 572
 		case JOB_NINJA:        // 573
 		case JOB_XMAS:         // 574
-			return inter->msg_txt(570 - JOB_WEDDING+class_);
+			return inter->msg_txt(570 - JOB_WEDDING + class);
 
 		case JOB_SUMMER:
 			return inter->msg_txt(621);
@@ -224,7 +223,7 @@ const char* inter_job_name(int class_)
 		case JOB_ACOLYTE_HIGH:  // 579
 		case JOB_MERCHANT_HIGH: // 580
 		case JOB_THIEF_HIGH:    // 581
-			return inter->msg_txt(575 - JOB_NOVICE_HIGH+class_);
+			return inter->msg_txt(575 - JOB_NOVICE_HIGH + class);
 
 		case JOB_LORD_KNIGHT:    // 582
 		case JOB_HIGH_PRIEST:    // 583
@@ -232,7 +231,7 @@ const char* inter_job_name(int class_)
 		case JOB_WHITESMITH:     // 585
 		case JOB_SNIPER:         // 586
 		case JOB_ASSASSIN_CROSS: // 587
-			return inter->msg_txt(582 - JOB_LORD_KNIGHT+class_);
+			return inter->msg_txt(582 - JOB_LORD_KNIGHT + class);
 
 		case JOB_LORD_KNIGHT2:
 			return inter->msg_txt(582);
@@ -244,7 +243,7 @@ const char* inter_job_name(int class_)
 		case JOB_CREATOR:   // 592
 		case JOB_CLOWN:     // 593
 		case JOB_GYPSY:     // 594
-			return inter->msg_txt(588 - JOB_PALADIN + class_);
+			return inter->msg_txt(588 - JOB_PALADIN + class);
 
 		case JOB_PALADIN2:
 			return inter->msg_txt(588);
@@ -256,7 +255,7 @@ const char* inter_job_name(int class_)
 		case JOB_BABY_ACOLYTE:  // 599
 		case JOB_BABY_MERCHANT: // 600
 		case JOB_BABY_THIEF:    // 601
-			return inter->msg_txt(595 - JOB_BABY + class_);
+			return inter->msg_txt(595 - JOB_BABY + class);
 
 		case JOB_BABY_KNIGHT:     // 602
 		case JOB_BABY_PRIEST:     // 603
@@ -264,7 +263,7 @@ const char* inter_job_name(int class_)
 		case JOB_BABY_BLACKSMITH: // 605
 		case JOB_BABY_HUNTER:     // 606
 		case JOB_BABY_ASSASSIN:   // 607
-			return inter->msg_txt(602 - JOB_BABY_KNIGHT + class_);
+			return inter->msg_txt(602 - JOB_BABY_KNIGHT + class);
 
 		case JOB_BABY_KNIGHT2:
 			return inter->msg_txt(602);
@@ -276,7 +275,7 @@ const char* inter_job_name(int class_)
 		case JOB_BABY_ALCHEMIST: // 612
 		case JOB_BABY_BARD:      // 613
 		case JOB_BABY_DANCER:    // 614
-			return inter->msg_txt(608 - JOB_BABY_CRUSADER + class_);
+			return inter->msg_txt(608 - JOB_BABY_CRUSADER + class);
 
 		case JOB_BABY_CRUSADER2:
 			return inter->msg_txt(608);
@@ -295,7 +294,7 @@ const char* inter_job_name(int class_)
 		case JOB_GANGSI:         // 622
 		case JOB_DEATH_KNIGHT:   // 623
 		case JOB_DARK_COLLECTOR: // 624
-			return inter->msg_txt(622 - JOB_GANGSI+class_);
+			return inter->msg_txt(622 - JOB_GANGSI + class);
 
 		case JOB_RUNE_KNIGHT:      // 625
 		case JOB_WARLOCK:          // 626
@@ -303,7 +302,7 @@ const char* inter_job_name(int class_)
 		case JOB_ARCH_BISHOP:      // 628
 		case JOB_MECHANIC:         // 629
 		case JOB_GUILLOTINE_CROSS: // 630
-			return inter->msg_txt(625 - JOB_RUNE_KNIGHT+class_);
+			return inter->msg_txt(625 - JOB_RUNE_KNIGHT + class);
 
 		case JOB_RUNE_KNIGHT_T:      // 656
 		case JOB_WARLOCK_T:          // 657
@@ -311,7 +310,7 @@ const char* inter_job_name(int class_)
 		case JOB_ARCH_BISHOP_T:      // 659
 		case JOB_MECHANIC_T:         // 660
 		case JOB_GUILLOTINE_CROSS_T: // 661
-			return inter->msg_txt(656 - JOB_RUNE_KNIGHT_T+class_);
+			return inter->msg_txt(656 - JOB_RUNE_KNIGHT_T + class);
 
 		case JOB_ROYAL_GUARD:   // 631
 		case JOB_SORCERER:      // 632
@@ -320,7 +319,7 @@ const char* inter_job_name(int class_)
 		case JOB_SURA:          // 635
 		case JOB_GENETIC:       // 636
 		case JOB_SHADOW_CHASER: // 637
-			return inter->msg_txt(631 - JOB_ROYAL_GUARD+class_);
+			return inter->msg_txt(631 - JOB_ROYAL_GUARD + class);
 
 		case JOB_ROYAL_GUARD_T:   // 662
 		case JOB_SORCERER_T:      // 663
@@ -329,7 +328,7 @@ const char* inter_job_name(int class_)
 		case JOB_SURA_T:          // 666
 		case JOB_GENETIC_T:       // 667
 		case JOB_SHADOW_CHASER_T: // 668
-			return inter->msg_txt(662 - JOB_ROYAL_GUARD_T+class_);
+			return inter->msg_txt(662 - JOB_ROYAL_GUARD_T + class);
 
 		case JOB_RUNE_KNIGHT2:
 			return inter->msg_txt(625);
@@ -368,7 +367,7 @@ const char* inter_job_name(int class_)
 		case JOB_BABY_SURA:     // 648
 		case JOB_BABY_GENETIC:  // 649
 		case JOB_BABY_CHASER:   // 650
-			return inter->msg_txt(638 - JOB_BABY_RUNE+class_);
+			return inter->msg_txt(638 - JOB_BABY_RUNE + class);
 
 		case JOB_BABY_RUNE2:
 			return inter->msg_txt(638);
@@ -384,11 +383,11 @@ const char* inter_job_name(int class_)
 
 		case JOB_SUPER_NOVICE_E: // 651
 		case JOB_SUPER_BABY_E:   // 652
-			return inter->msg_txt(651 - JOB_SUPER_NOVICE_E+class_);
+			return inter->msg_txt(651 - JOB_SUPER_NOVICE_E + class);
 
 		case JOB_KAGEROU: // 653
 		case JOB_OBORO:   // 654
-			return inter->msg_txt(653 - JOB_KAGEROU+class_);
+			return inter->msg_txt(653 - JOB_KAGEROU + class);
 
 		case JOB_REBELLION:
 			return inter->msg_txt(655);
@@ -481,18 +480,18 @@ void mapif_parse_accinfo(int fd)
 			} else {// more than one, listing... [Dekamaster/Nightroad]
 				inter->msg_to_fd(fd, u_fd, aid, "Your query returned the following %d results, please be more specific...",(int)SQL->NumRows(inter->sql_handle));
 				while ( SQL_SUCCESS == SQL->NextRow(inter->sql_handle) ) {
-					int class_;
+					int class;
 					int base_level, job_level, online;
 					char name[NAME_LENGTH];
 
 					SQL->GetData(inter->sql_handle, 0, &data, NULL); account_id = atoi(data);
 					SQL->GetData(inter->sql_handle, 1, &data, NULL); safestrncpy(name, data, sizeof(name));
-					SQL->GetData(inter->sql_handle, 2, &data, NULL); class_ = atoi(data);
+					SQL->GetData(inter->sql_handle, 2, &data, NULL); class = atoi(data);
 					SQL->GetData(inter->sql_handle, 3, &data, NULL); base_level = atoi(data);
 					SQL->GetData(inter->sql_handle, 4, &data, NULL); job_level = atoi(data);
 					SQL->GetData(inter->sql_handle, 5, &data, NULL); online = atoi(data);
 
-					inter->msg_to_fd(fd, u_fd, aid, "[AID: %d] %s | %s | Level: %d/%d | %s", account_id, name, inter->job_name(class_), base_level, job_level, online?"Online":"Offline");
+					inter->msg_to_fd(fd, u_fd, aid, "[AID: %d] %s | %s | Level: %d/%d | %s", account_id, name, inter->job_name(class), base_level, job_level, online?"Online":"Offline");
 				}
 				SQL->FreeResult(inter->sql_handle);
 				return;
@@ -553,19 +552,19 @@ void mapif_parse_accinfo2(bool success, int map_fd, int u_fd, int u_aid, int acc
 	} else {
 		while ( SQL_SUCCESS == SQL->NextRow(inter->sql_handle) ) {
 			char *data;
-			int char_id, class_;
+			int char_id, class;
 			int char_num, base_level, job_level, online;
 			char name[NAME_LENGTH];
 
 			SQL->GetData(inter->sql_handle, 0, &data, NULL); char_id = atoi(data);
 			SQL->GetData(inter->sql_handle, 1, &data, NULL); safestrncpy(name, data, sizeof(name));
 			SQL->GetData(inter->sql_handle, 2, &data, NULL); char_num = atoi(data);
-			SQL->GetData(inter->sql_handle, 3, &data, NULL); class_ = atoi(data);
+			SQL->GetData(inter->sql_handle, 3, &data, NULL); class = atoi(data);
 			SQL->GetData(inter->sql_handle, 4, &data, NULL); base_level = atoi(data);
 			SQL->GetData(inter->sql_handle, 5, &data, NULL); job_level = atoi(data);
 			SQL->GetData(inter->sql_handle, 6, &data, NULL); online = atoi(data);
 
-			inter->msg_to_fd(map_fd, u_fd, u_aid, "[Slot/CID: %d/%d] %s | %s | Level: %d/%d | %s", char_num, char_id, name, inter->job_name(class_), base_level, job_level, online?"On":"Off");
+			inter->msg_to_fd(map_fd, u_fd, u_aid, "[Slot/CID: %d/%d] %s | %s | Level: %d/%d | %s", char_num, char_id, name, inter->job_name(class), base_level, job_level, online?"On":"Off");
 		}
 	}
 	SQL->FreeResult(inter->sql_handle);
@@ -888,12 +887,12 @@ bool inter_config_read(const char *filename, bool imported)
 		ShowError("inter_config_read: inter_configuration was not found in %s!\n", filename);
 		return false;
 	}
-	libconfig->setting_lookup_int(setting, "party_share_level", &party_share_level);
+	//libconfig->setting_lookup_int(setting, "party_share_level", &party_share_level);
 
 	if (!inter->config_read_log(filename, &config, imported))
 		retval = false;
 
-	ShowInfo("Done reading %s.\n", filename);
+	ShowInfo("Feita a leitura de %s.\n", filename);
 
 	// import should overwrite any previous configuration, so it should be called last
 	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
@@ -978,6 +977,7 @@ int inter_init_sql(const char *file)
 	inter_elemental->sql_init();
 	inter_mail->sql_init();
 	inter_auction->sql_init();
+	inter_rodex->sql_init();
 
 	geoip->init();
 	inter->msg_config_read("Config/System/Messages.conf", false);
@@ -998,6 +998,7 @@ void inter_final(void)
 	inter_elemental->sql_final();
 	inter_mail->sql_final();
 	inter_auction->sql_final();
+	inter_rodex->sql_final();
 
 	geoip->final(true);
 	inter->do_final_msg();
@@ -1420,6 +1421,7 @@ int inter_parse_frommap(int fd)
 		  || inter_mail->parse_frommap(fd)
 		  || inter_auction->parse_frommap(fd)
 		  || inter_quest->parse_frommap(fd)
+		  || inter_rodex->parse_frommap(fd)
 		   )
 			break;
 		else

@@ -11,6 +11,9 @@
 | - Descrição: Configuação para máscaras de comandos                   |
 \*--------------------------------------------------------------------*/
 
+atcommand_symbol : "@"
+charcommand_symbol: "#"
+
 aliases: {
 	mobinfo: ["monsterinfo", "mi"]
 	iteminfo: ["ii"]
@@ -51,14 +54,13 @@ aliases: {
 	autoloottype: ["aloottype"]
 }
 
-/* List of commands that should not be logged at all */
-/* Add as many commands as you like */
+/* Lista de comando que não vão ser salvos em LOG */
 nolog: {
-	iteminfo: 0
-	mobinfo: 0
+	iteminfo: 1
+	mobinfo: 1
 }
 
 /* Commands help file */
 help: {
-	@include "Config/help.txt"
+	@include "Config/Help.txt"
 }

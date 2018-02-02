@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -68,6 +66,9 @@ enum hp_event_types {
 enum HPluginPacketHookingPoints {
 	hpClif_Parse,      ///< map-server (client-map)
 	hpChrif_Parse,     ///< map-server (char-map)
+	hpParse_FromMap,   ///< char-server (map-char)
+	hpParse_FromLogin, ///< char-server (login-char)
+	hpParse_Char,      ///< char-server (client-char)
 	hpParse_FromChar,  ///< login-server (char-login)
 	hpParse_Login,     ///< login-server (client-login)
 	/* */
@@ -207,6 +208,7 @@ enum HPluginConfType {
 /* HPMi->addPCGPermission */
 #define addGroupPermission(pcgname,maskptr) HPMi->addPCGPermission(HPMi->pid,pcgname,&maskptr)
 
+/* Plugin Mananger Include Interface */
 struct HPMi_interface {
 	/* */
 	unsigned int pid;
@@ -234,14 +236,14 @@ struct HPMi_interface {
 	struct HPMHooking_interface *hooking;
 	struct malloc_interface *memmgr;
 };
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 #define HPM_SYMBOL(n, s) (HPM->share((s), (n)), true)
-#else // ! HPM_MAIN_CORE
+#else // ! MAIN_CORE
 HPExport struct HPMi_interface HPMi_s;
 HPExport struct HPMi_interface *HPMi;
 HPExport void *(*import_symbol) (char *name, unsigned int pID);
 #define HPM_SYMBOL(n, s) ((s) = import_symbol((n),HPMi->pid))
-#endif // !HPM_MAIN_CORE
+#endif // !MAIN_CORE
 
 
 #endif /* COMMON_HPMI_H */

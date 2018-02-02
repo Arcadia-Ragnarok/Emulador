@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -50,7 +48,7 @@ struct libconfig_interface {
 	void (*destroy) (struct config_t *config);
 
 	int (*setting_get_int) (const struct config_setting_t *setting);
-	long long (*setting_get_int64) (const struct config_setting_t *setting);
+	int64 (*setting_get_int64) (const struct config_setting_t *setting);
 	double (*setting_get_float) (const struct config_setting_t *setting);
 
 	int (*setting_get_bool) (const struct config_setting_t *setting);
@@ -59,12 +57,12 @@ struct libconfig_interface {
 
 	struct config_setting_t * (*setting_lookup) (struct config_setting_t *setting, const char *name);
 	int (*setting_lookup_int) (const struct config_setting_t *setting, const char *name, int *value);
-	int (*setting_lookup_int64) (const struct config_setting_t *setting, const char *name, long long *value);
+	int (*setting_lookup_int64) (const struct config_setting_t *setting, const char *name, int64 *value);
 	int (*setting_lookup_float) (const struct config_setting_t *setting, const char *name, double *value);
 	int (*setting_lookup_bool) (const struct config_setting_t *setting, const char *name, int *value);
 	int (*setting_lookup_string) (const struct config_setting_t *setting, const char *name, const char **value);
-	int (*setting_set_int) (struct config_setting_t *setting ,int value);
-	int (*setting_set_int64) (struct config_setting_t *setting, long long value);
+	int (*setting_set_int) (struct config_setting_t *setting, int value);
+	int (*setting_set_int64) (struct config_setting_t *setting, int64 value);
 	int (*setting_set_float) (struct config_setting_t *setting, double value);
 	int (*setting_set_bool) (struct config_setting_t *setting, int value);
 	int (*setting_set_string) (struct config_setting_t *setting, const char *value);
@@ -73,12 +71,12 @@ struct libconfig_interface {
 	short (*setting_get_format) (const struct config_setting_t *setting);
 
 	int (*setting_get_int_elem) (const struct config_setting_t *setting, int idx);
-	long long (*setting_get_int64_elem) (const struct config_setting_t *setting, int idx);
+	int64 (*setting_get_int64_elem) (const struct config_setting_t *setting, int idx);
 	double (*setting_get_float_elem) (const struct config_setting_t *setting, int idx);
 	int (*setting_get_bool_elem) (const struct config_setting_t *setting, int idx);
 	const char * (*setting_get_string_elem) (const struct config_setting_t *setting, int idx);
 	struct config_setting_t * (*setting_set_int_elem) (struct config_setting_t *setting, int idx, int value);
-	struct config_setting_t * (*setting_set_int64_elem) (struct config_setting_t *setting, int idx, long long value);
+	struct config_setting_t * (*setting_set_int64_elem) (struct config_setting_t *setting, int idx, int64 value);
 	struct config_setting_t * (*setting_set_float_elem) (struct config_setting_t *setting, int idx, double value);
 	struct config_setting_t * (*setting_set_bool_elem) (struct config_setting_t *setting, int idx, int value);
 	struct config_setting_t * (*setting_set_string_elem) (struct config_setting_t *setting, int idx, const char *value);
@@ -97,7 +95,7 @@ struct libconfig_interface {
 
 	struct config_setting_t * (*lookup) (const struct config_t *config, const char *filepath);
 	int (*lookup_int) (const struct config_t *config, const char *filepath, int *value);
-	int (*lookup_int64) (const struct config_t *config, const char *filepath, long long *value);
+	int (*lookup_int64) (const struct config_t *config, const char *filepath, int64 *value);
 	int (*lookup_float) (const struct config_t *config, const char *filepath, double *value);
 	int (*lookup_bool) (const struct config_t *config, const char *filepath, int *value);
 	int (*lookup_string) (const struct config_t *config, const char *filepath, const char **value);
@@ -123,9 +121,9 @@ struct libconfig_interface {
 	int (*lookup_mutable_string) (const struct config_t *config, const char *name, char *out, size_t out_size);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void libconfig_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct libconfig_interface *libconfig;
 

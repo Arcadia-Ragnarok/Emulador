@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "int_homun.h"
 
@@ -133,10 +131,10 @@ bool mapif_homunculus_create(struct s_homunculus *hd)
 	SQL->EscapeStringLen(inter->sql_handle, esc_name, hd->name, strnlen(hd->name, NAME_LENGTH));
 
 	if (SQL_ERROR == SQL->Query(inter->sql_handle, "INSERT INTO `%s` "
-			"(`char_id`, `class`,`prev_class`,`name`,`level`,`exp`,`intimacy`,`hunger`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `hp`,`max_hp`,`sp`,`max_sp`,`skill_point`, `rename_flag`, `vaporize`) "
-			"VALUES ('%d', '%d', '%d', '%s', '%d', '%u', '%u', '%d', '%d', %d, '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d')",
+			"(`char_id`, `class`,`prev_class`,`name`,`level`,`exp`,`intimacy`,`hunger`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `hp`,`max_hp`,`sp`,`max_sp`,`skill_point`, `rename_flag`, `vaporize`, `autofeed`) "
+			"VALUES ('%d', '%d', '%d', '%s', '%d', '%u', '%u', '%d', '%d', %d, '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d')",
 			homunculus_db, hd->char_id, hd->class_, hd->prev_class, esc_name, hd->level, hd->exp, hd->intimacy, hd->hunger, hd->str, hd->agi, hd->vit, hd->int_, hd->dex, hd->luk,
-			hd->hp, hd->max_hp, hd->sp, hd->max_sp, hd->skillpts, hd->rename_flag, hd->vaporize)) {
+			hd->hp, hd->max_hp, hd->sp, hd->max_sp, hd->skillpts, hd->rename_flag, hd->vaporize, hd->autofeed)) {
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
 	}
@@ -160,9 +158,9 @@ bool mapif_homunculus_save(const struct s_homunculus *hd)
 
 	SQL->EscapeStringLen(inter->sql_handle, esc_name, hd->name, strnlen(hd->name, NAME_LENGTH));
 
-	if (SQL_ERROR == SQL->Query(inter->sql_handle, "UPDATE `%s` SET `char_id`='%d', `class`='%d',`prev_class`='%d',`name`='%s',`level`='%d',`exp`='%u',`intimacy`='%u',`hunger`='%d', `str`='%d', `agi`='%d', `vit`='%d', `int`='%d', `dex`='%d', `luk`='%d', `hp`='%d',`max_hp`='%d',`sp`='%d',`max_sp`='%d',`skill_point`='%d', `rename_flag`='%d', `vaporize`='%d' WHERE `homun_id`='%d'",
+	if (SQL_ERROR == SQL->Query(inter->sql_handle, "UPDATE `%s` SET `char_id`='%d', `class`='%d',`prev_class`='%d',`name`='%s',`level`='%d',`exp`='%u',`intimacy`='%u',`hunger`='%d', `str`='%d', `agi`='%d', `vit`='%d', `int`='%d', `dex`='%d', `luk`='%d', `hp`='%d',`max_hp`='%d',`sp`='%d',`max_sp`='%d',`skill_point`='%d', `rename_flag`='%d', `vaporize`='%d', `autofeed`='%d' WHERE `homun_id`='%d'",
 			homunculus_db, hd->char_id, hd->class_, hd->prev_class, esc_name, hd->level, hd->exp, hd->intimacy, hd->hunger, hd->str, hd->agi, hd->vit, hd->int_, hd->dex, hd->luk,
-			hd->hp, hd->max_hp, hd->sp, hd->max_sp, hd->skillpts, hd->rename_flag, hd->vaporize, hd->hom_id)) {
+			hd->hp, hd->max_hp, hd->sp, hd->max_sp, hd->skillpts, hd->rename_flag, hd->vaporize, hd->autofeed, hd->hom_id)) {
 		Sql_ShowDebug(inter->sql_handle);
 		flag = false;
 	} else {
@@ -175,9 +173,9 @@ bool mapif_homunculus_save(const struct s_homunculus *hd)
 		} else {
 			for (i = 0; i < MAX_HOMUNSKILL; ++i) {
 				if (hd->hskill[i].id > 0 && hd->hskill[i].lv != 0) {
-					SQL->StmtBindParam(stmt, 0, SQLDT_USHORT, &hd->hskill[i].id, 0);
-					SQL->StmtBindParam(stmt, 1, SQLDT_USHORT, &hd->hskill[i].lv, 0);
-					if (SQL_ERROR == SQL->StmtExecute(stmt)) {
+					if (SQL_ERROR == SQL->StmtBindParam(stmt, 0, SQLDT_USHORT, &hd->hskill[i].id, sizeof hd->hskill[i].id)
+					 || SQL_ERROR == SQL->StmtBindParam(stmt, 1, SQLDT_UCHAR,  &hd->hskill[i].lv, sizeof hd->hskill[i].lv)
+					 || SQL_ERROR == SQL->StmtExecute(stmt)) {
 						SqlStmt_ShowDebug(stmt);
 						flag = false;
 						break;
@@ -200,7 +198,7 @@ bool mapif_homunculus_load(int homun_id, struct s_homunculus* hd)
 	nullpo_ret(hd);
 	memset(hd, 0, sizeof(*hd));
 
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `homun_id`,`char_id`,`class`,`prev_class`,`name`,`level`,`exp`,`intimacy`,`hunger`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `hp`,`max_hp`,`sp`,`max_sp`,`skill_point`,`rename_flag`, `vaporize` FROM `%s` WHERE `homun_id`='%d'", homunculus_db, homun_id) )
+	if (SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `homun_id`,`char_id`,`class`,`prev_class`,`name`,`level`,`exp`,`intimacy`,`hunger`, `str`, `agi`, `vit`, `int`, `dex`, `luk`, `hp`,`max_hp`,`sp`,`max_sp`,`skill_point`,`rename_flag`, `vaporize`, `autofeed` FROM `%s` WHERE `homun_id`='%d'", homunculus_db, homun_id))
 	{
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
@@ -240,6 +238,7 @@ bool mapif_homunculus_load(int homun_id, struct s_homunculus* hd)
 	SQL->GetData(inter->sql_handle, 19, &data, NULL); hd->skillpts = atoi(data);
 	SQL->GetData(inter->sql_handle, 20, &data, NULL); hd->rename_flag = atoi(data);
 	SQL->GetData(inter->sql_handle, 21, &data, NULL); hd->vaporize = atoi(data);
+	SQL->GetData(inter->sql_handle, 22, &data, NULL); hd->autofeed = atoi(data);
 	SQL->FreeResult(inter->sql_handle);
 
 	hd->intimacy = cap_value(hd->intimacy, 0, 100000);

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -58,6 +56,7 @@ struct status_data;
 
 enum {
 	// Flag of the final calculation
+	BF_NONE       = 0x0000,
 	BF_WEAPON     = 0x0001,
 	BF_MAGIC      = 0x0002,
 	BF_MISC       = 0x0004,
@@ -244,12 +243,13 @@ struct Battle_Config {
 	int combo_delay_rate;
 	int item_check;
 	int item_use_interval; //[Skotlex]
-	int cashfood_use_interval;
 	int wedding_modifydisplay;
 	int wedding_ignorepalette; //[Skotlex]
 	int xmas_ignorepalette; // [Valaris]
 	int summer_ignorepalette; // [Zephyrus]
 	int hanbok_ignorepalette;
+	int oktoberfest_ignorepalette;
+	int summer2_ignorepalette;
 	int natural_healhp_interval;
 	int natural_healsp_interval;
 	int natural_heal_skill_interval;
@@ -301,6 +301,7 @@ struct Battle_Config {
 	int show_steal_in_same_party;
 	int party_share_type;
 	int party_hp_mode;
+	int party_change_leader_same_map;
 	int party_show_share_picker;
 	int show_picker_item_type;
 	int attack_attr_none;
@@ -366,6 +367,7 @@ struct Battle_Config {
 
 	int castrate_dex_scale; // added by [MouseJstr]
 	int area_size; // added by [MouseJstr]
+	int chat_area_size; // added by [gumi]
 
 	int max_def, over_def_bonus; //added by [Skotlex]
 
@@ -398,7 +400,7 @@ struct Battle_Config {
 	int berserk_cancels_buffs; // [Aru]
 	int mob_ai; //Configures various mob_ai settings to make them smarter or dumber(official). [Skotlex]
 	int hom_setting; //Configures various homunc settings which make them behave unlike normal characters.. [Skotlex]
-	int dynamic_mobs; // Dynamic Mobs [Wizputer] - battle.cs flag implemented by [random]
+	int dynamic_mobs; // Dynamic Mobs [Wizputer] - battle.conf flag implemented by [random]
 	int mob_remove_damaged; // Dynamic Mobs - Remove mobs even if damaged [Wizputer]
 	int mob_remove_delay; // Dynamic Mobs - delay before removing mobs from a map [Skotlex]
 	int mob_active_time; //Duration through which mobs execute their Hard AI after players leave their area of sight.
@@ -410,7 +412,6 @@ struct Battle_Config {
 	int mob_npc_event_type; //Determines on who the npc_event is executed. [Skotlex]
 
 	int character_size; // if riders have size=2, and baby class riders size=1 [Lupus]
-	int rare_drop_announce; // chance <= to show rare drops global announces
 
 	int retaliate_to_master; //Whether when a mob is attacked by another mob, it will retaliate versus the mob or the mob's master. [Skotlex]
 
@@ -503,7 +504,6 @@ struct Battle_Config {
 	int mob_icewall_walk_block; //How a normal monster should be trapped in icewall [Playtester]
 	int boss_icewall_walk_block; //How a boss monster should be trapped in icewall [Playtester]
 
-	/** **/
 	int skill_trap_type;
 	int item_restricted_consumption_type;
 	int unequip_restricted_equipment;
@@ -549,7 +549,20 @@ struct Battle_Config {
 
 	int atcommand_levelup_events;	// Enable atcommands trigger level up events for NPCs
 
+	int bow_unequip_arrow;
+
 	int max_summoner_parameter; // Summoner Max Stats
+	int mvp_exp_reward_message;
+
+	int mob_eye_range_bonus; //Vulture's Eye and Snake's Eye range bonus
+
+	int prevent_logout_trigger;
+	int boarding_halter_speed;
+
+	int feature_rodex;
+	int feature_rodex_use_accountmail;
+
+	int feature_enable_homun_autofeed;
 };
 
 /* criteria for battle_config.idletime_critera */
@@ -687,11 +700,11 @@ struct battle_interface {
 	void (*calc_misc_attack_unknown) (struct block_list *src, struct block_list *target, uint16 *skill_id, uint16 *skill_lv, int *mflag, struct Damage *md);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 extern struct Battle_Config battle_config;
 
 void battle_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct battle_interface *battle;
 

@@ -1,0 +1,21 @@
+Esta pasta contém atualizações das tabelas.
+
+- Se você já possui o emulador instalado, e quer reaproveitar as tabelas e dados já criados.
+- Exemplo: Você já fez todo o processo de instalação e já possui registros válidos no banco de dados.
+Ao atulizar o emulador, não precizará apagar o banco e reinstalar os arquivos mail.sql e logs.sql,
+perdendo assim todos seus registros.
+
+Basta que olhe a data dos arquivos, se a data em que você fez o download do emulador for inferior a
+data dos arquivos de update, é sinal que suas atuais tabelas são incompatíveis com a versão atual
+usada pelo emulador, então siga esses prossedimentos para a atualização:
+
+1 - Acesse o banco de dados atual usados por você para o emulador.
+2 - Faça a importação do arquivo cujo a data for a mais antiga a data em que fez o download o emulador.
+
+Com esse procedimento seu banco de dados será atualizado para a nova versão.
+
+Observação: É desnecessário esse procedimento para novas instalações do emulador, como dito, somente
+é para quem já possui o emulador arcadia rodando em um servidor e vai atualizar-lo.
+
+
+

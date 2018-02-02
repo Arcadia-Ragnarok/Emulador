@@ -12,7 +12,7 @@
 +----------------------------------------------------------------------+
 | - NOTA: É necessário cincronia com os npcs e client para que isso    |
 |         funcione.                                                    |
-//        Estes npcs ainda não foram criados                           |
+|         Estes npcs ainda não foram criados                           |
 \*--------------------------------------------------------------------*/
 
 battlegrounds: ({

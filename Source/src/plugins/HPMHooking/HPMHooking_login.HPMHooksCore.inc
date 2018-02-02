@@ -1,4 +1,6 @@
-/* * NOTE: This file was auto-generated and should never be manually edited,
+
+/*
+ * NOTE: This file was auto-generated and should never be manually edited,
  *       as it will get overwritten.
  */
 
@@ -117,6 +119,8 @@ struct {
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_LOGIN_HAN_post;
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_SSO_LOGIN_REQ_pre;
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_SSO_LOGIN_REQ_post;
+	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_LOGIN_OTP_pre;
+	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_LOGIN_OTP_post;
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_REQ_HASH_pre;
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_REQ_HASH_post;
 	struct HPMHookPoint *HP_PRIV__lclif_parse_CA_CHARSERVERCONNECT_pre;
@@ -347,6 +351,8 @@ struct {
 	struct HPMHookPoint *HP_login_auth_failed_post;
 	struct HPMHookPoint *HP_login_client_login_pre;
 	struct HPMHookPoint *HP_login_client_login_post;
+	struct HPMHookPoint *HP_login_client_login_otp_pre;
+	struct HPMHookPoint *HP_login_client_login_otp_post;
 	struct HPMHookPoint *HP_login_char_server_connection_status_pre;
 	struct HPMHookPoint *HP_login_char_server_connection_status_post;
 	struct HPMHookPoint *HP_login_parse_request_connection_pre;
@@ -355,6 +361,32 @@ struct {
 	struct HPMHookPoint *HP_login_config_set_defaults_post;
 	struct HPMHookPoint *HP_login_config_read_pre;
 	struct HPMHookPoint *HP_login_config_read_post;
+	struct HPMHookPoint *HP_login_config_read_inter_pre;
+	struct HPMHookPoint *HP_login_config_read_inter_post;
+	struct HPMHookPoint *HP_login_config_read_console_pre;
+	struct HPMHookPoint *HP_login_config_read_console_post;
+	struct HPMHookPoint *HP_login_config_read_log_pre;
+	struct HPMHookPoint *HP_login_config_read_log_post;
+	struct HPMHookPoint *HP_login_config_read_account_pre;
+	struct HPMHookPoint *HP_login_config_read_account_post;
+	struct HPMHookPoint *HP_login_config_read_permission_pre;
+	struct HPMHookPoint *HP_login_config_read_permission_post;
+	struct HPMHookPoint *HP_login_config_read_permission_hash_pre;
+	struct HPMHookPoint *HP_login_config_read_permission_hash_post;
+	struct HPMHookPoint *HP_login_config_read_permission_blacklist_pre;
+	struct HPMHookPoint *HP_login_config_read_permission_blacklist_post;
+	struct HPMHookPoint *HP_login_config_read_users_pre;
+	struct HPMHookPoint *HP_login_config_read_users_post;
+	struct HPMHookPoint *HP_login_clear_dnsbl_servers_pre;
+	struct HPMHookPoint *HP_login_clear_dnsbl_servers_post;
+	struct HPMHookPoint *HP_login_config_set_dnsbl_servers_pre;
+	struct HPMHookPoint *HP_login_config_set_dnsbl_servers_post;
+	struct HPMHookPoint *HP_login_clear_client_hash_nodes_pre;
+	struct HPMHookPoint *HP_login_clear_client_hash_nodes_post;
+	struct HPMHookPoint *HP_login_config_set_md5hash_pre;
+	struct HPMHookPoint *HP_login_config_set_md5hash_post;
+	struct HPMHookPoint *HP_login_convert_users_to_colors_pre;
+	struct HPMHookPoint *HP_login_convert_users_to_colors_post;
 	struct HPMHookPoint *HP_md5_string_pre;
 	struct HPMHookPoint *HP_md5_string_post;
 	struct HPMHookPoint *HP_md5_binary_pre;
@@ -790,6 +822,8 @@ struct {
 	int HP_PRIV__lclif_parse_CA_LOGIN_HAN_post;
 	int HP_PRIV__lclif_parse_CA_SSO_LOGIN_REQ_pre;
 	int HP_PRIV__lclif_parse_CA_SSO_LOGIN_REQ_post;
+	int HP_PRIV__lclif_parse_CA_LOGIN_OTP_pre;
+	int HP_PRIV__lclif_parse_CA_LOGIN_OTP_post;
 	int HP_PRIV__lclif_parse_CA_REQ_HASH_pre;
 	int HP_PRIV__lclif_parse_CA_REQ_HASH_post;
 	int HP_PRIV__lclif_parse_CA_CHARSERVERCONNECT_pre;
@@ -1020,6 +1054,8 @@ struct {
 	int HP_login_auth_failed_post;
 	int HP_login_client_login_pre;
 	int HP_login_client_login_post;
+	int HP_login_client_login_otp_pre;
+	int HP_login_client_login_otp_post;
 	int HP_login_char_server_connection_status_pre;
 	int HP_login_char_server_connection_status_post;
 	int HP_login_parse_request_connection_pre;
@@ -1028,6 +1064,32 @@ struct {
 	int HP_login_config_set_defaults_post;
 	int HP_login_config_read_pre;
 	int HP_login_config_read_post;
+	int HP_login_config_read_inter_pre;
+	int HP_login_config_read_inter_post;
+	int HP_login_config_read_console_pre;
+	int HP_login_config_read_console_post;
+	int HP_login_config_read_log_pre;
+	int HP_login_config_read_log_post;
+	int HP_login_config_read_account_pre;
+	int HP_login_config_read_account_post;
+	int HP_login_config_read_permission_pre;
+	int HP_login_config_read_permission_post;
+	int HP_login_config_read_permission_hash_pre;
+	int HP_login_config_read_permission_hash_post;
+	int HP_login_config_read_permission_blacklist_pre;
+	int HP_login_config_read_permission_blacklist_post;
+	int HP_login_config_read_users_pre;
+	int HP_login_config_read_users_post;
+	int HP_login_clear_dnsbl_servers_pre;
+	int HP_login_clear_dnsbl_servers_post;
+	int HP_login_config_set_dnsbl_servers_pre;
+	int HP_login_config_set_dnsbl_servers_post;
+	int HP_login_clear_client_hash_nodes_pre;
+	int HP_login_clear_client_hash_nodes_post;
+	int HP_login_config_set_md5hash_pre;
+	int HP_login_config_set_md5hash_post;
+	int HP_login_convert_users_to_colors_pre;
+	int HP_login_convert_users_to_colors_post;
 	int HP_md5_string_pre;
 	int HP_md5_string_post;
 	int HP_md5_binary_pre;

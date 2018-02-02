@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "sql.h"
 
@@ -41,7 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h> // strtoul
 
-void mysql_error_handler(unsigned int ecode);
+void arcadia_mysql_error_handler(unsigned int ecode);
 
 int mysql_reconnect_type = 2;
 int mysql_reconnect_count = 1;
@@ -95,7 +93,10 @@ struct Sql *Sql_Malloc(void)
 	self->lengths = NULL;
 	self->result = NULL;
 	self->keepalive = INVALID_TIMER;
-	self->handle.reconnect = 1;
+	{
+		my_bool reconnect = 1;
+		mysql_options(&self->handle, MYSQL_OPT_RECONNECT, &reconnect);
+	}
 	return self;
 }
 
@@ -264,14 +265,14 @@ int Sql_QueryV(struct Sql *self, const char *query, va_list args)
 	if( mysql_real_query(&self->handle, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
 		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
-		mysql_error_handler(mysql_errno(&self->handle));
+		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	self->result = mysql_store_result(&self->handle);
 	if( mysql_errno(&self->handle) != 0 )
 	{
 		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
-		mysql_error_handler(mysql_errno(&self->handle));
+		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	return SQL_SUCCESS;
@@ -289,14 +290,14 @@ int Sql_QueryStr(struct Sql *self, const char *query)
 	if( mysql_real_query(&self->handle, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
 		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
-		mysql_error_handler(mysql_errno(&self->handle));
+		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	self->result = mysql_store_result(&self->handle);
 	if( mysql_errno(&self->handle) != 0 )
 	{
 		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
-		mysql_error_handler(mysql_errno(&self->handle));
+		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	return SQL_SUCCESS;
@@ -424,68 +425,99 @@ static int Sql_P_BindSqlDataType(MYSQL_BIND* bind, enum SqlDataType buffer_type,
 	memset(bind, 0, sizeof(MYSQL_BIND));
 	switch( buffer_type )
 	{
-	case SQLDT_NULL: bind->buffer_type = MYSQL_TYPE_NULL;
+	case SQLDT_NULL:
+		bind->buffer_type = MYSQL_TYPE_NULL;
 		buffer_len = 0;// FIXME length = ? [FlavioJS]
 		break;
 		// fixed size
-	case SQLDT_UINT8: bind->is_unsigned = 1;
+	case SQLDT_UINT8:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_INT8: bind->buffer_type = MYSQL_TYPE_TINY;
-		buffer_len = 1;
+	case SQLDT_INT8:
+		bind->buffer_type = MYSQL_TYPE_TINY;
+		Assert_retr(SQL_ERROR, buffer_len == 1);
 		break;
-	case SQLDT_UINT16: bind->is_unsigned = 1;
+	case SQLDT_UINT16:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_INT16: bind->buffer_type = MYSQL_TYPE_SHORT;
-		buffer_len = 2;
+	case SQLDT_INT16:
+		bind->buffer_type = MYSQL_TYPE_SHORT;
+		Assert_retr(SQL_ERROR, buffer_len == 2);
 		break;
-	case SQLDT_UINT32: bind->is_unsigned = 1;
+	case SQLDT_UINT32:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_INT32: bind->buffer_type = MYSQL_TYPE_LONG;
-		buffer_len = 4;
+	case SQLDT_INT32:
+		bind->buffer_type = MYSQL_TYPE_LONG;
+		Assert_retr(SQL_ERROR, buffer_len == 4);
 		break;
-	case SQLDT_UINT64: bind->is_unsigned = 1;
+	case SQLDT_UINT64:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_INT64: bind->buffer_type = MYSQL_TYPE_LONGLONG;
-		buffer_len = 8;
+	case SQLDT_INT64:
+		bind->buffer_type = MYSQL_TYPE_LONGLONG;
+		Assert_retr(SQL_ERROR, buffer_len == 8);
 		break;
 		// platform dependent size
-	case SQLDT_UCHAR: bind->is_unsigned = 1;
+	case SQLDT_UCHAR:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_CHAR: bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(char));
-		buffer_len = sizeof(char);
+	case SQLDT_CHAR:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(char));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(char));
 		break;
-	case SQLDT_USHORT: bind->is_unsigned = 1;
+	case SQLDT_USHORT:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_SHORT: bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(short));
-		buffer_len = sizeof(short);
+	case SQLDT_SHORT:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(short));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(short));
 		break;
-	case SQLDT_UINT: bind->is_unsigned = 1;
+	case SQLDT_UINT:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_INT: bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(int));
-		buffer_len = sizeof(int);
+	case SQLDT_INT:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(int));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(int));
 		break;
-	case SQLDT_ULONG: bind->is_unsigned = 1;
+	case SQLDT_ULONG:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_LONG: bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(long));
-		buffer_len = sizeof(long);
+	case SQLDT_LONG:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(long));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(long));
 		break;
-	case SQLDT_ULONGLONG: bind->is_unsigned = 1;
+	case SQLDT_ULONGLONG:
+		bind->is_unsigned = 1;
 		FALLTHROUGH
-	case SQLDT_LONGLONG: bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(int64));
-		buffer_len = sizeof(int64);
+	case SQLDT_LONGLONG:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(long long));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(long long));
+		break;
+	case SQLDT_BOOL:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(bool));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(bool));
+		break;
+	case SQLDT_TIME:
+		bind->buffer_type = Sql_P_SizeToMysqlIntType(sizeof(time_t));
+		Assert_retr(SQL_ERROR, buffer_len == sizeof(time_t));
 		break;
 		// floating point
-	case SQLDT_FLOAT: bind->buffer_type = MYSQL_TYPE_FLOAT;
-		buffer_len = 4;
+	case SQLDT_FLOAT:
+		bind->buffer_type = MYSQL_TYPE_FLOAT;
+		Assert_retr(SQL_ERROR, buffer_len == 4);
 		break;
-	case SQLDT_DOUBLE: bind->buffer_type = MYSQL_TYPE_DOUBLE;
-		buffer_len = 8;
+	case SQLDT_DOUBLE:
+		bind->buffer_type = MYSQL_TYPE_DOUBLE;
+		Assert_retr(SQL_ERROR, buffer_len == 8);
 		break;
 		// other
 	case SQLDT_STRING:
-	case SQLDT_ENUM: bind->buffer_type = MYSQL_TYPE_STRING;
+	case SQLDT_ENUM:
+		bind->buffer_type = MYSQL_TYPE_STRING;
 		break;
-	case SQLDT_BLOB: bind->buffer_type = MYSQL_TYPE_BLOB;
+	case SQLDT_BLOB:
+		bind->buffer_type = MYSQL_TYPE_BLOB;
 		break;
 	default:
 		ShowDebug("Sql_P_BindSqlDataType: unsupported buffer type (%u)\n", buffer_type);
@@ -611,7 +643,7 @@ int SqlStmt_PrepareV(struct SqlStmt *self, const char *query, va_list args)
 	if( mysql_stmt_prepare(self->stmt, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
 		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
-		mysql_error_handler(mysql_stmt_errno(self->stmt));
+		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 	self->bind_params = false;
@@ -631,7 +663,7 @@ int SqlStmt_PrepareStr(struct SqlStmt *self, const char *query)
 	if( mysql_stmt_prepare(self->stmt, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
 		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
-		mysql_error_handler(mysql_stmt_errno(self->stmt));
+		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 	self->bind_params = false;
@@ -696,14 +728,14 @@ int SqlStmt_Execute(struct SqlStmt *self)
 		mysql_stmt_execute(self->stmt) )
 	{
 		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
-		mysql_error_handler(mysql_stmt_errno(self->stmt));
+		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 	self->bind_columns = false;
 	if( mysql_stmt_store_result(self->stmt) )// store all the data
 	{
 		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
-		mysql_error_handler(mysql_stmt_errno(self->stmt));
+		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 
@@ -824,7 +856,7 @@ int SqlStmt_NextRow(struct SqlStmt *self)
 	}
 	if (err) {
 		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
-		mysql_error_handler(mysql_stmt_errno(self->stmt));
+		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 
@@ -885,7 +917,7 @@ void SqlStmt_Free(struct SqlStmt *self)
 }
 
 /* receives mysql error codes during runtime (not on first-time-connects) */
-void mysql_error_handler(unsigned int ecode)
+void arcadia_mysql_error_handler(unsigned int ecode)
 {
 	switch( ecode ) {
 	case 2003:/* Can't connect to MySQL (this error only happens here when failing to reconnect) */
@@ -941,7 +973,7 @@ bool Sql_inter_server_read(const char *filename, bool imported)
 
 	// import should overwrite any previous configuration, so it should be called last
 	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Common/Inter-Server.cs") == 0) { // FIXME: Hardcoded path
+		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Servers/Inter-Server.cs") == 0) { // FIXME: Hardcoded path
 			ShowWarning("Sql_inter_server_read: Loop detected in %s! Skipping 'import'...\n", filename);
 		} else {
 			if (!Sql_inter_server_read(import, true))
@@ -955,7 +987,7 @@ bool Sql_inter_server_read(const char *filename, bool imported)
 
 void Sql_Init(void)
 {
-	Sql_inter_server_read("Config/Common/Inter-Server.cs", false); // FIXME: Hardcoded path
+	Sql_inter_server_read("Config/Servers/Inter-Server.cs", false); // FIXME: Hardcoded path
 }
 
 void sql_defaults(void)

@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -25,7 +23,6 @@
 #ifndef CHAR_CHAR_H
 #define CHAR_CHAR_H
 
-#include "common/HPExport.h"
 #include "common/core.h" // CORE_ST_LAST
 #include "common/db.h"
 #include "common/mmo.h"
@@ -143,7 +140,8 @@ struct char_interface {
 	void (*set_all_offline_sql) (void);
 	struct DBData (*create_charstatus) (union DBKey key, va_list args);
 	int (*mmo_char_tosql) (int char_id, struct mmo_charstatus* p);
-	int (*memitemdata_to_sql) (const struct item items[], int max, int id, int tableswitch);
+	int (*getitemdata_from_sql) (struct item *items, int max, int guid, enum inventory_table_type table);
+	int (*memitemdata_to_sql) (const struct item items[], int id, enum inventory_table_type table);
 	int (*mmo_gender) (const struct char_session_data *sd, const struct mmo_charstatus *p, char sex);
 	int (*mmo_chars_fromsql) (struct char_session_data* sd, uint8* buf);
 	int (*mmo_char_fromsql) (int char_id, struct mmo_charstatus* p, bool load_everything);
@@ -151,7 +149,7 @@ struct char_interface {
 	bool (*char_slotchange) (struct char_session_data *sd, int fd, unsigned short from, unsigned short to);
 	int (*rename_char_sql) (struct char_session_data *sd, int char_id);
 	int (*check_char_name) (char * name, char * esc_name);
-	int (*make_new_char_sql) (struct char_session_data *sd, const char *name_, int str, int agi, int vit, int int_, int dex, int luk, int slot, int hair_color, int hair_style, short starting_job);
+	int (*make_new_char_sql) (struct char_session_data *sd, const char *name_, int str, int agi, int vit, int int_, int dex, int luk, int slot, int hair_color, int hair_style, short starting_job, uint8 sex);
 	int (*divorce_char_sql) (int partner_id1, int partner_id2);
 	int (*count_users) (void);
 	int (*mmo_char_tobuf) (uint8* buffer, struct mmo_charstatus* p);
@@ -303,7 +301,7 @@ struct char_interface {
 	bool (*config_read_top) (const char *filename, const struct config_t *config, bool imported);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 extern int char_name_option;
 extern char char_name_letters[];
 extern bool char_gm_read;
@@ -331,6 +329,8 @@ extern char pet_db[256];
 extern char mail_db[256];
 extern char auction_db[256];
 extern char quest_db[256];
+extern char rodex_db[256];
+extern char rodex_item_db[256];
 extern char homunculus_db[256];
 extern char skill_homunculus_db[256];
 extern char mercenary_db[256];
@@ -346,7 +346,7 @@ extern int guild_exp_rate;
 
 void char_load_defaults(void);
 void char_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 struct char_interface *chr;
 

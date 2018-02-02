@@ -7,8 +7,6 @@
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
-|----------------------------------------------------------------------|
-| - Descrição: Configuação para os Consoles                            |
 \*--------------------------------------------------------------------*/
 
 console: {
@@ -37,7 +35,7 @@ console: {
 
 	// [CHAR] Exibe informações no console sempre que os personagens / guildas / partes / 
 	// animais de estimação são carregados / salvos?
-	save_log: false
+	save_log: true
 
 	// [MAP] Faz com que o log do servidor selecione tipos de mensagem em um arquivo na pasta / log /
 	// 1: Registrar mensagens de aviso

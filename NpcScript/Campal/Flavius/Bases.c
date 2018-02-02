@@ -25,7 +25,7 @@
 // - [Terapeutas]
 //-------------------------------------------------------------------
 bat_b01,1,4,0	script	FlaviusTherapist	CLEAR_NPC,{
-	specialeffect2 (EF_HEAL);
+	specialeffect(EF_HEAL, AREA, playerattached());
 	mes "[Terapeuta]";
 	mes "Por enquanto apenas descanse, suas dores serão curadas em breve.";
 	close;

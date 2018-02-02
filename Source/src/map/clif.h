@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -69,9 +67,11 @@ struct view_data;
 #define MAX_ROULETTE_COLUMNS 9 /** client-defined value **/
 #define RGB2BGR(c) (((c) & 0x0000FF) << 16 | ((c) & 0x00FF00) | ((c) & 0xFF0000) >> 16)
 
+#define COLOR_CYAN    0x00ffffU
 #define COLOR_RED     0xff0000U
 #define COLOR_GREEN   0x00ff00U
 #define COLOR_WHITE   0xffffffU
+#define COLOR_YELLOW  0xffff00U
 #define COLOR_DEFAULT COLOR_GREEN
 
 /**
@@ -361,30 +361,33 @@ typedef enum useskill_fail_cause { // clif_skill_fail
 }useskill_fail_cause;
 
 enum clif_messages {
-	MSG_ITEM_CANT_OBTAIN_WEIGHT  = 0x034, ///< You cannot carry more items because you are overweight.
-	MSG_ITEM_NEED_STANDING       = 0x297, ///< You cannot use this item while sitting.
-	MSG_MERCENARY_EXPIRED        = 0x4f2, ///< The mercenary contract has expired.
-	MSG_MERCENARY_DIED           = 0x4f3, ///< The mercenary has died.
-	MSG_MERCENARY_RELEASED       = 0x4f4, ///< You have released the mercenary.
-	MSG_MERCENARY_ESCAPED        = 0x4f5, ///< The mercenary has run away.
-	MSG_SKILL_CANT_USE_AREA      = 0x536, ///< This skill cannot be used within this area
-	MSG_ITEM_CANT_USE_AREA       = 0x537, ///< This item cannot be used within this area.
-	MSG_EQUIP_NOT_PUBLIC         = 0x54d, ///< This character's equipment information is not open to the public.
-	MSG_ITEM_NEED_MADO           = 0x59b, ///< Item can only be used when Mado Gear is mounted.
-	MSG_ITEM_NEED_CART           = 0x5ef, ///< Usable only when cart is put on
-	MSG_RUNE_STONE_MAX_AMOUNT    = 0x61b, ///< Cannot create Rune stone more than the maximum amount.
-	MSG_SKILL_POINTS_LEFT_JOB1   = 0x61e, ///< You must consume all '%d' remaining points in your 1st Job tab.
-	MSG_SKILL_POINTS_LEFT_JOB2   = 0x61f, ///< You must consume all '%d' remaining points in your 2nd Job tab. 1st Tab is already done.
-	MSG_SKILL_ITEM_NOT_FOUND     = 0x623, // FIXME[Haru]: This seems to be 0x622 in the msgstringtable files I found.
-	MSG_SKILL_SUCCESS            = 0x627, // FIXME[Haru]: This seems to be 0x626 in the msgstringtable files I found.
-	MSG_SKILL_FAILURE            = 0x628, // FIXME[Haru]: This seems to be 0x627 in the msgstringtable files I found.
-	MSG_SKILL_ITEM_NEED_IDENTIFY = 0x62d, ///< Unable to use unchecked items as materials.
-	MSG_ITEM_CANT_EQUIP_LVL      = 0x6ed, // FIXME[Haru]: This seems to be 0x6ee in the msgstringtable files I found.
-	MSG_ITEM_CANT_USE_LVL        = 0x6ee, // FIXME[Haru]: This seems to be 0x6ef in the msgstringtable files I found.
-	MSG_COOKING_LIST_FAIL        = 0x625, // FIXME[Haru]: This might be a wrong message ID. Not sure what it should be.
-	MSG_SECONDS_UNTIL_USE        = 0x746, ///< %d seconds left until you can use
-	MSG_NPC_WORK_IN_PROGRESS     = 0x783, // FIXME[Haru]: This seems to be 0x784 in the msgstringtable files I found.
-	MSG_REINS_CANT_USE_MOUNTED   = 0x78b, // FIXME[Haru]: This seems to be 0x785 in the msgstringtalbe files I found.
+	MSG_ITEM_CANT_OBTAIN_WEIGHT    = 0x034, ///< You cannot carry more items because you are overweight.
+	MSG_ITEM_NEED_STANDING         = 0x297, ///< You cannot use this item while sitting.
+	MSG_MERCENARY_EXPIRED          = 0x4f2, ///< The mercenary contract has expired.
+	MSG_MERCENARY_DIED             = 0x4f3, ///< The mercenary has died.
+	MSG_MERCENARY_RELEASED         = 0x4f4, ///< You have released the mercenary.
+	MSG_MERCENARY_ESCAPED          = 0x4f5, ///< The mercenary has run away.
+	MSG_PARTY_MEMBER_NOT_SUMMONED  = 0x4c5, ///< The party member was not summoned because you are not the party leader.
+	MSG_PARTY_NO_MEMBER_IN_MAP     = 0x4c6, ///< There is no party member to summon in the current map.
+	MSG_SKILL_CANT_USE_AREA        = 0x536, ///< This skill cannot be used within this area
+	MSG_ITEM_CANT_USE_AREA         = 0x537, ///< This item cannot be used within this area.
+	MSG_EQUIP_NOT_PUBLIC           = 0x54d, ///< This character's equipment information is not open to the public.
+	MSG_ITEM_NEED_MADO             = 0x59b, ///< Item can only be used when Mado Gear is mounted.
+	MSG_ITEM_NEED_CART             = 0x5ef, ///< Usable only when cart is put on
+	MSG_RUNE_STONE_MAX_AMOUNT      = 0x61b, ///< Cannot create Rune stone more than the maximum amount.
+	MSG_SKILL_POINTS_LEFT_JOB1     = 0x61e, ///< You must consume all '%d' remaining points in your 1st Job tab.
+	MSG_SKILL_POINTS_LEFT_JOB2     = 0x61f, ///< You must consume all '%d' remaining points in your 2nd Job tab. 1st Tab is already done.
+	MSG_SKILL_ITEM_NOT_FOUND       = 0x623, // FIXME[Haru]: This seems to be 0x622 in the msgstringtable files I found.
+	MSG_SKILL_SUCCESS              = 0x627, // FIXME[Haru]: This seems to be 0x626 in the msgstringtable files I found.
+	MSG_SKILL_FAILURE              = 0x628, // FIXME[Haru]: This seems to be 0x627 in the msgstringtable files I found.
+	MSG_SKILL_ITEM_NEED_IDENTIFY   = 0x62d, ///< Unable to use unchecked items as materials.
+	MSG_ITEM_CANT_EQUIP_LVL        = 0x6ed, // FIXME[Haru]: This seems to be 0x6ee in the msgstringtable files I found.
+	MSG_ITEM_CANT_USE_LVL          = 0x6ee, // FIXME[Haru]: This seems to be 0x6ef in the msgstringtable files I found.
+	MSG_COOKING_LIST_FAIL          = 0x625, // FIXME[Haru]: This might be a wrong message ID. Not sure what it should be.
+	MSG_SECONDS_UNTIL_USE          = 0x746, ///< %d seconds left until you can use
+	MSG_NPC_WORK_IN_PROGRESS       = 0x783, // FIXME[Haru]: This seems to be 0x784 in the msgstringtable files I found.
+	MSG_REINS_CANT_USE_MOUNTED     = 0x78b, // FIXME[Haru]: This seems to be 0x785 in the msgstringtalbe files I found.
+	MSG_PARTY_LEADER_SAMEMAP       = 0x82e, //< It is only possible to change the party leader while on the same map.
 };
 
 /**
@@ -562,7 +565,15 @@ enum clif_unittype {
 	CLUT_MERCNARY  = 0x9,
 	CLUT_ELEMENTAL = 0xa,
 };
-
+/**
+* Receive configuration types
+**/
+enum CZ_CONFIG {
+	CZ_CONFIG_OPEN_EQUIPMENT_WINDOW  = 0,
+	// Unknown                       = 1,
+	CZ_CONFIG_PET_AUTOFEEDING        = 2,
+	CZ_CONFIG_HOMUNCULUS_AUTOFEEDING = 3,
+};
 /**
  * Structures
  **/
@@ -675,7 +686,7 @@ struct clif_interface {
 	void (*changetraplook) (struct block_list *bl,int val);
 	void (*refreshlook) (struct block_list *bl,int id,int type,int val,enum send_target target);
 	void (*sendlook) (struct block_list *bl, int id, int type, int val, int val2, enum send_target target);
-	void (*class_change) (struct block_list *bl,int class_,int type);
+	void (*class_change) (struct block_list *bl,int class_,int type, struct map_session_data *sd);
 	void (*skill_delunit) (struct skill_unit *su);
 	void (*skillunit_update) (struct block_list* bl);
 	int (*clearunit_delayed_sub) (int tid, int64 tick, int id, intptr_t data);
@@ -780,13 +791,14 @@ struct clif_interface {
 	void (*mission_info) (struct map_session_data *sd, int mob_id, unsigned char progress);
 	void (*feel_hate_reset) (struct map_session_data *sd);
 	void (*partytickack) (struct map_session_data* sd, bool flag);
-	void (*equiptickack) (struct map_session_data* sd, int flag);
+	void (*zc_config) (struct map_session_data *sd, int type, int flag);
 	void (*viewequip_ack) (struct map_session_data* sd, struct map_session_data* tsd);
 	void (*equpcheckbox) (struct map_session_data* sd);
-	void (*displayexp) (struct map_session_data *sd, unsigned int exp, char type, bool is_quest);
+	void (*displayexp) (struct map_session_data *sd, uint64 exp, char type, bool is_quest);
 	void (*font) (struct map_session_data *sd);
 	void (*progressbar) (struct map_session_data * sd, unsigned int color, unsigned int second);
 	void (*progressbar_abort) (struct map_session_data * sd);
+	void (*progressbar_unit) (struct block_list *bl, uint32 color, uint32 time);
 	void (*showdigit) (struct map_session_data* sd, unsigned char type, int value);
 	int (*elementalconverter_list) (struct map_session_data *sd);
 	int (*spellbook_list) (struct map_session_data *sd);
@@ -917,6 +929,7 @@ struct clif_interface {
 	void (*party_created) (struct map_session_data *sd,int result);
 	void (*party_member_info) (struct party_data *p, struct map_session_data *sd);
 	void (*party_info) (struct party_data* p, struct map_session_data *sd);
+	void (*party_job_and_level) (struct map_session_data *sd);
 	void (*party_invite) (struct map_session_data *sd,struct map_session_data *tsd);
 	void (*party_inviteack) (struct map_session_data* sd, const char* nick, int result);
 	void (*party_option) (struct party_data *p,struct map_session_data *sd,int flag);
@@ -1300,7 +1313,7 @@ struct clif_interface {
 	void (*pAdopt_request) (int fd, struct map_session_data *sd);
 	void (*pAdopt_reply) (int fd, struct map_session_data *sd);
 	void (*pViewPlayerEquip) (int fd, struct map_session_data* sd);
-	void (*pEquipTick) (int fd, struct map_session_data* sd);
+	void (*p_cz_config) (int fd, struct map_session_data *sd);
 	void (*pquestStateAck) (int fd, struct map_session_data * sd);
 	void (*pmercenary_action) (int fd, struct map_session_data* sd);
 	void (*pBattleChat) (int fd, struct map_session_data* sd);
@@ -1355,7 +1368,7 @@ struct clif_interface {
 	void (*pNPCMarketClosed) (int fd, struct map_session_data *sd);
 	void (*pNPCMarketPurchase) (int fd, struct map_session_data *sd);
 	/* */
-	void (*add_random_options) (unsigned char* buf, struct item* item);
+	int (*add_item_options) (struct ItemOptions *buf, const struct item *it);
 	void (*pHotkeyRowShift) (int fd, struct map_session_data *sd);
 	void (*dressroom_open) (struct map_session_data *sd, int view);
 	void (*pOneClick_ItemIdentify) (int fd,struct map_session_data *sd);
@@ -1364,11 +1377,41 @@ struct clif_interface {
 	void (*pSelectCart) (int fd, struct map_session_data *sd);
 
 	const char *(*get_bl_name) (const struct block_list *bl);
+
+	/* RoDEX */
+	void (*pRodexOpenWriteMail) (int fd, struct map_session_data *sd);
+	void (*rodex_open_write_mail) (int fd, const char *receiver_name, int8 result);
+	void (*pRodexAddItem) (int fd, struct map_session_data *sd);
+	void (*rodex_add_item_result) (struct map_session_data *sd, int16 idx, int16 amount, int8 result);
+	void (*pRodexRemoveItem) (int fd, struct map_session_data *sd);
+	void (*rodex_remove_item_result) (struct map_session_data *sd, int16 idx, int16 amount);
+	void (*pRodexSendMail) (int fd, struct map_session_data *sd);
+	void (*rodex_send_mail_result) (int fd, struct map_session_data *sd, int8 result);
+	void (*rodex_send_maillist) (int fd, struct map_session_data *sd, int8 open_type, int64 page_start);
+	void (*rodex_send_refresh) (int fd, struct map_session_data *sd, int8 open_type, int count);
+	void (*rodex_send_mails_all) (int fd, struct map_session_data *sd);
+	void (*pRodexReadMail) (int fd, struct map_session_data *sd);
+	void (*rodex_read_mail) (struct map_session_data *sd, int8 opentype, struct rodex_message *msg);
+	void (*pRodexNextMaillist) (int fd, struct map_session_data *sd);
+	void (*pRodexCloseMailbox) (int fd, struct map_session_data *sd);
+	void (*pRodexCancelWriteMail) (int fd, struct map_session_data *sd);
+	void (*pRodexOpenMailbox) (int fd, struct map_session_data *sd);
+	void (*pRodexCheckName) (int fd, struct map_session_data *sd);
+	void (*rodex_checkname_result) (struct map_session_data *sd, int char_id, short class_, int base_level, const char *name);
+	void (*pRodexDeleteMail) (int fd, struct map_session_data *sd);
+	void (*rodex_delete_mail) (struct map_session_data *sd, int8 opentype, int64 mail_id);
+	void (*pRodexRefreshMaillist) (int fd, struct map_session_data *sd);
+	void (*pRodexRequestZeny) (int fd, struct map_session_data *sd);
+	void (*rodex_request_zeny) (struct map_session_data *sd, int8 opentype, int64 mail_id, int8 result);
+	void (*pRodexRequestItems) (int fd, struct map_session_data *sd);
+	void (*rodex_request_items) (struct map_session_data *sd, int8 opentype, int64 mail_id, int8 result);
+	void (*rodex_icon) (int fd, bool show);
+	void (*skill_scale) (struct block_list *bl, int src_id, int x, int y, uint16 skill_id, uint16 skill_lv, int casttime);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void clif_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct clif_interface *clif;
 

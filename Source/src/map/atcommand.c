@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,9 +20,9 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
-#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT()
+#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT(), RENEWAL, RENEWAL_DROP, RENEWAL_EXP
 #include "atcommand.h"
 
 #include "map/battle.h"
@@ -642,7 +640,7 @@ ACMD(who) {
 					if (pc_get_group_id(pl_sd) > 0) // Player title, if exists
 						StrBuf->Printf(&buf, msg_fd(fd,344), pcg->get_name(pl_sd->group)); // "(%s) "
 					StrBuf->Printf(&buf, msg_fd(fd,347), pl_sd->status.base_level, pl_sd->status.job_level,
-									 pc->job_name(pl_sd->status.class_)); // "| Lv:%d/%d | Job: %s"
+									 pc->job_name(pl_sd->status.class)); // "| Lv:%d/%d | Job: %s"
 					break;
 				}
 				case 3: {
@@ -751,7 +749,7 @@ ACMD(whogm)
 
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,915), // BLvl: %d | Job: %s (Lvl: %d)
 				pl_sd->status.base_level,
-				pc->job_name(pl_sd->status.class_), pl_sd->status.job_level);
+				pc->job_name(pl_sd->status.class), pl_sd->status.job_level);
 		clif->message(fd, atcmd_output);
 
 		p = party->search(pl_sd->status.party_id);
@@ -940,7 +938,7 @@ ACMD(hide) {
 		if (sd->disguise != -1 )
 			status->set_viewdata(&sd->bl, sd->disguise);
 		else
-			status->set_viewdata(&sd->bl, sd->status.class_);
+			status->set_viewdata(&sd->bl, sd->status.class);
 		clif->message(fd, msg_fd(fd,10)); // Invisible: Off
 
 		// increment the number of pvp players on the map
@@ -954,7 +952,7 @@ ACMD(hide) {
 		map->foreachinmovearea(clif->insight, &sd->bl, AREA_SIZE, sd->bl.x, sd->bl.y, BL_ALL, &sd->bl);
 	} else {
 		sd->sc.option |= OPTION_INVISIBLE;
-		sd->vd.class_ = INVISIBLE_CLASS;
+		sd->vd.class = INVISIBLE_CLASS;
 		clif->message(fd, msg_fd(fd,11)); // Invisible: On
 
 		// decrement the number of pvp players on the map
@@ -1013,15 +1011,13 @@ ACMD(jobchange)
 	}
 
 	// Deny direct transformation into dummy jobs
-	if (
-	 job == JOB_KNIGHT2 || job == JOB_CRUSADER2  || job == JOB_WEDDING || job == JOB_XMAS || job == JOB_SUMMER || job == JOB_PALADIN2 || job == JOB_STAR_GLADIATOR2
+	if (job == JOB_KNIGHT2 || job == JOB_CRUSADER2 || job == JOB_WEDDING || job == JOB_XMAS || job == JOB_SUMMER || job == JOB_PALADIN2 || job == JOB_STAR_GLADIATOR2
 	 || (job >= JOB_BABY && job <= JOB_SUPER_BABY)
 	 || (job >= JOB_GANGSI && job <= JOB_DARK_COLLECTOR)
 	 || (job >= JOB_BABY && job <= JOB_SUPER_BABY)
 	 || (job >= JOB_RUNE_KNIGHT_T && job <= JOB_GUILLOTINE_CROSS_T)
 	 || (job >= JOB_ROYAL_GUARD_T && job <= JOB_SHADOW_CHASER_T)
-	 || (job >= JOB_RUNE_KNIGHT2 && job <= JOB_SUPER_BABY_E)
-	) {
+	 || (job >= JOB_RUNE_KNIGHT2 && job <= JOB_SUPER_BABY_E)) {
 		/* WHY DO WE LIST THEM THEN? */
 		clif->message(fd, msg_fd(fd,923)); //"You can not change to this job by command."
 		return true;
@@ -1412,7 +1408,7 @@ ACMD(baselevelup)
 	pc->baselevelchanged(sd);
 	if(sd->status.party_id)
 		party->send_levelup(sd);
-	
+
 	if (level > 0 && battle_config.atcommand_levelup_events)
 		npc->script_event(sd, NPCE_BASELVUP); // Trigger OnPCBaseLvUpEvent
 
@@ -1718,7 +1714,23 @@ ACMD(bodystyle)
 
 	memset(atcmd_output, '\0', sizeof(atcmd_output));
 
-	if (!*message || sscanf(message, "%d", &body_style) < 1) {
+	if ((sd->job & MAPID_THIRDMASK) != MAPID_GUILLOTINE_CROSS
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_GENETIC
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_MECHANIC
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_ROYAL_GUARD
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_ARCH_BISHOP
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_RANGER
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_WARLOCK
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_SHADOW_CHASER
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_MINSTRELWANDERER
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_SORCERER
+	 && (sd->job & MAPID_THIRDMASK) != MAPID_SURA
+	 ) {
+		clif->message(fd, msg_fd(fd, 35)); // This job has no alternate body styles.
+		return false;
+	}
+
+	if (*message == '\0' || sscanf(message, "%d", &body_style) < 1) {
 		sprintf(atcmd_output, "Please, enter a body style (usage: @bodystyle <body ID: %d-%d>).", MIN_BODY_STYLE, MAX_BODY_STYLE);
 		clif->message(fd, atcmd_output);
 		return false;
@@ -1726,9 +1738,9 @@ ACMD(bodystyle)
 
 	if (body_style >= MIN_BODY_STYLE && body_style <= MAX_BODY_STYLE) {
 		pc->changelook(sd, LOOK_BODY2, body_style);
-		clif->message(fd, msg_txt(36)); // Appearence changed.
+		clif->message(fd, msg_fd(fd, 36)); // Appearence changed.
 	} else {
-		clif->message(fd, msg_txt(37)); // An invalid number was specified.
+		clif->message(fd, msg_fd(fd, 37)); // An invalid number was specified.
 		return false;
 	}
 
@@ -1840,7 +1852,7 @@ ACMD(go) {
 		{ MAP_UMBALA,       89, 157, 3 }, // 12 = Umbala
 		{ MAP_NIFLHEIM,     21, 153, 3 }, // 13 = Niflheim
 		{ MAP_LOUYANG,     217,  40, 3 }, // 14 = Luoyang
-		{ MAP_NOVICE,       97,  90, 3 }, // 15 = Training Grounds
+		{ MAP_NOVICE,       53, 111, 3 }, // 15 = Training Grounds
 		{ MAP_JAIL,         23,  61, 3 }, // 16 = Prison
 		{ MAP_JAWAII,      249, 127, 3 }, // 17 = Jawaii
 		{ MAP_AYOTHAYA,    151, 117, 3 }, // 18 = Ayothaya
@@ -3579,20 +3591,20 @@ ACMD(reloadskilldb)
 }
 
 /*==========================================
- * @reloadatcommand - reloads conf/atcommand.cs conf/groups.cs
+ * @reloadatcommand - reloads Config/atcommand.cs Config/groups.conf
  *------------------------------------------*/
 ACMD(reloadatcommand) {
 	struct config_t run_test;
 
 	if (!libconfig->load_file(&run_test, "Config/System/Groups.cs")) {
-		clif->message(fd, msg_fd(fd,1036)); // Error reading groups.cs, reload failed.
+		clif->message(fd, msg_fd(fd,1036)); // Error reading groups.conf, reload failed.
 		return false;
 	}
 
 	libconfig->destroy(&run_test);
 
 	if (!libconfig->load_file(&run_test, map->ATCOMMAND_CONF_FILENAME)) {
-		clif->message(fd, msg_fd(fd,1037)); // Error reading atcommand.cs, reload failed.
+		clif->message(fd, msg_fd(fd,1037)); // Error reading atcommand.conf, reload failed.
 		return false;
 	}
 
@@ -3604,7 +3616,7 @@ ACMD(reloadatcommand) {
 	return true;
 }
 /*==========================================
- * @reloadbattleconf - reloads /conf/battle.cs
+ * @reloadbattleconf - reloads /Config/battle.conf
  *------------------------------------------*/
 ACMD(reloadbattleconf)
 {
@@ -3653,7 +3665,7 @@ ACMD(reloadbattleconf)
 	return true;
 }
 /*==========================================
- * @reloadstatusdb - reloads job_db1.txt job_db2.txt job_db2-2.txt refine_db.txt size_fix.txt
+ * @reloadstatusdb - reloads job_db1.txt LvStatus.txt job_db2-2.txt refine_db.txt SizeFix.txt
  *------------------------------------------*/
 ACMD(reloadstatusdb) {
 	status->readdb();
@@ -3661,7 +3673,7 @@ ACMD(reloadstatusdb) {
 	return true;
 }
 /*==========================================
- * @reloadpcdb - reloads exp.txt skill_tree.txt attr_fix.txt statpoint.txt
+ * @reloadpcdb - reloads exp.txt skill_tree.txt AttrFix.txt statpoint.txt
  *------------------------------------------*/
 ACMD(reloadpcdb)
 {
@@ -3892,6 +3904,8 @@ ACMD(mapinfo)
 		strcat(atcmd_output, msg_fd(fd,1096)); // PartyLock |
 	if (map->list[m_id].flag.guildlock)
 		strcat(atcmd_output, msg_fd(fd,1097)); // GuildLock |
+	if (map->list[m_id].flag.noautoloot)
+		strcat(atcmd_output, msg_fd(fd, 1063)); // NoAutoloot |
 	if (map->list[m_id].flag.noviewid != EQP_NONE)
 		strcat(atcmd_output, msg_fd(fd,1079)); // NoViewID |
 	clif->message(fd, atcmd_output);
@@ -3975,7 +3989,7 @@ ACMD(mount_peco)
 		return false;
 	}
 
-	if ((sd->class_&MAPID_THIRDMASK) == MAPID_RUNE_KNIGHT) {
+	if ((sd->job & MAPID_THIRDMASK) == MAPID_RUNE_KNIGHT) {
 		if (!pc->checkskill(sd,RK_DRAGONTRAINING)) {
 			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,213), skill->get_desc(RK_DRAGONTRAINING)); // You need %s to mount!
 			clif->message(fd, atcmd_output);
@@ -3990,7 +4004,7 @@ ACMD(mount_peco)
 		}
 		return true;
 	}
-	if ((sd->class_&MAPID_THIRDMASK) == MAPID_RANGER) {
+	if ((sd->job & MAPID_THIRDMASK) == MAPID_RANGER) {
 		if (!pc->checkskill(sd,RA_WUGRIDER)) {
 			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,213), skill->get_desc(RA_WUGRIDER)); // You need %s to mount!
 			clif->message(fd, atcmd_output);
@@ -4005,7 +4019,7 @@ ACMD(mount_peco)
 		}
 		return true;
 	}
-	if ((sd->class_&MAPID_THIRDMASK) == MAPID_MECHANIC) {
+	if ((sd->job & MAPID_THIRDMASK) == MAPID_MECHANIC) {
 		if (!pc_ismadogear(sd)) {
 			clif->message(sd->fd,msg_fd(fd,1123)); // You have mounted your Mado Gear.
 			pc->setmadogear(sd, true);
@@ -4015,7 +4029,7 @@ ACMD(mount_peco)
 		}
 		return true;
 	}
-	if (sd->class_&MAPID_SWORDMAN && sd->class_&JOBL_2) {
+	if ((sd->job & MAPID_BASEMASK) == MAPID_SWORDMAN && (sd->job & JOBL_2) != 0) {
 		if (!pc_isridingpeco(sd)) { // if actually no peco
 			if (!pc->checkskill(sd, KN_RIDING)) {
 				safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,213), skill->get_desc(KN_RIDING)); // You need %s to mount!
@@ -4850,21 +4864,19 @@ ACMD(undisguiseguild)
  *------------------------------------------*/
 ACMD(exp)
 {
-	char output[CHAT_SIZE_MAX];
-	double nextb, nextj;
-
-	memset(output, '\0', sizeof(output));
+	double percentb = 0.0, percentj = 0.0;
+	uint64 nextb, nextj;
 
 	nextb = pc->nextbaseexp(sd);
-	if (nextb)
-		nextb = sd->status.base_exp*100.0/nextb;
+	if (nextb != 0)
+		percentb = sd->status.base_exp * 100.0 / nextb;
 
 	nextj = pc->nextjobexp(sd);
-	if (nextj)
-		nextj = sd->status.job_exp*100.0/nextj;
+	if (nextj != 0)
+		percentj = sd->status.job_exp * 100.0 / nextj;
 
-	sprintf(output, msg_fd(fd,1148), sd->status.base_level, nextb, sd->status.job_level, nextj); // Base Level: %d (%.3f%%) | Job Level: %d (%.3f%%)
-	clif->message(fd, output);
+	sprintf(atcmd_output, msg_fd(fd,1148), sd->status.base_level, percentb, sd->status.job_level, percentj); // Base Level: %d (%.3f%%) | Job Level: %d (%.3f%%)
+	clif->message(fd, atcmd_output);
 	return true;
 }
 
@@ -5145,6 +5157,11 @@ ACMD(storeall)
 		}
 	}
 
+	if (sd->storage.received == false) {
+		clif->message(fd, msg_fd(fd, 27)); // "Storage has not been loaded yet"
+		return false;
+	}
+
 	for (i = 0; i < MAX_INVENTORY; i++) {
 		if (sd->status.inventory[i].amount) {
 			if(sd->status.inventory[i].equip != 0)
@@ -5160,17 +5177,25 @@ ACMD(storeall)
 
 ACMD(clearstorage)
 {
-	int i, j;
+	int i;
 
 	if (sd->state.storage_flag == STORAGE_FLAG_NORMAL) {
 		clif->message(fd, msg_fd(fd,250));
 		return false;
 	}
 
-	j = sd->status.storage.storage_amount;
-	for (i = 0; i < j; ++i) {
-		storage->delitem(sd, i, sd->status.storage.items[i].amount);
+	if (sd->storage.received == false) {
+		clif->message(fd, msg_fd(fd, 27)); // "Storage has not been loaded yet"
+		return false;
 	}
+
+	for (i = 0; i < VECTOR_LENGTH(sd->storage.item); ++i) {
+		if (VECTOR_INDEX(sd->storage.item, i).nameid == 0)
+			continue; // we skip the already deleted items.
+
+		storage->delitem(sd, i, VECTOR_INDEX(sd->storage.item, i).amount);
+	}
+
 	storage->close(sd);
 
 	clif->message(fd, msg_fd(fd,1394)); // Your storage was cleaned.
@@ -5267,12 +5292,13 @@ ACMD(skillid)
 	iter = db_iterator(skill->name2id_db);
 
 	for (data = iter->first(iter,&key); iter->exists(iter); data = iter->next(iter,&key)) {
-		int idx = skill->get_index(DB->data2i(data));
-		if (strnicmp(key.str, message, skillen) == 0 || strnicmp(skill->dbs->db[idx].desc, message, skillen) == 0) {
-			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1164), DB->data2i(data), skill->dbs->db[idx].desc, key.str); // skill %d: %s (%s)
+		int skill_id = DB->data2i(data);
+		const char *skill_desc = skill->get_desc(skill_id);
+		if (strnicmp(key.str, message, skillen) == 0 || strnicmp(skill_desc, message, skillen) == 0) {
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd, 1164), skill_id, skill_desc, key.str); // skill %d: %s (%s)
 			clif->message(fd, atcmd_output);
-		} else if ( found < MAX_SKILLID_PARTIAL_RESULTS && ( stristr(key.str,message) || stristr(skill->dbs->db[idx].desc,message) ) ) {
-			snprintf(partials[found], MAX_SKILLID_PARTIAL_RESULTS_LEN, msg_fd(fd,1164), DB->data2i(data), skill->dbs->db[idx].desc, key.str);
+		} else if (found < MAX_SKILLID_PARTIAL_RESULTS && (stristr(key.str, message) != NULL || stristr(skill_desc, message) != NULL)) {
+			snprintf(partials[found], MAX_SKILLID_PARTIAL_RESULTS_LEN, msg_fd(fd, 1164), skill_id, skill_desc, key.str);
 			found++;
 		}
 	}
@@ -5399,7 +5425,7 @@ ACMD(skilltree)
 	for (j = 0; j < VECTOR_LENGTH(entry->need); j++) {
 		struct skill_tree_requirement *req = &VECTOR_INDEX(entry->need, j);
 		if (pc->checkskill(sd, req->id) < req->lv) {
-			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1170), req->lv, skill->dbs->db[req->id].desc); // Player requires level %d of skill %s.
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1170), req->lv, skill->get_desc(req->id)); // Player requires level %d of skill %s.
 			clif->message(fd, atcmd_output);
 			meets = 0;
 		}
@@ -5427,7 +5453,7 @@ void atcommand_getring(struct map_session_data* sd) {
 
 	if((flag = pc->additem(sd,&item_tmp,1,LOG_TYPE_COMMAND))) {
 		clif->additem(sd,0,0,flag);
-		map->addflooritem(&sd->bl, &item_tmp, 1, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0);
+		map->addflooritem(&sd->bl, &item_tmp, 1, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0, false);
 	}
 }
 
@@ -5578,7 +5604,7 @@ ACMD(changegm) {
 		return false;
 	}
 
-	guild->gm_change(sd->status.guild_id, pl_sd);
+	guild->gm_change(sd->status.guild_id, pl_sd->status.char_id);
 	return true;
 }
 
@@ -6608,23 +6634,23 @@ ACMD(mobinfo)
 
 		// stats
 		if (monster->mexp)
-			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1240), monster->name, monster->jname, monster->sprite, monster->vd.class_); // MVP Monster: '%s'/'%s'/'%s' (%d)
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1240), monster->name, monster->jname, monster->sprite, monster->vd.class); // MVP Monster: '%s'/'%s'/'%s' (%d)
 		else
-			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1241), monster->name, monster->jname, monster->sprite, monster->vd.class_); // Monster: '%s'/'%s'/'%s' (%d)
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1241), monster->name, monster->jname, monster->sprite, monster->vd.class); // Monster: '%s'/'%s'/'%s' (%d)
 		clif->message(fd, atcmd_output);
 
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1242), monster->lv, monster->status.max_hp, base_exp, job_exp, MOB_HIT(monster), MOB_FLEE(monster)); //  Lv:%d  HP:%d  Base EXP:%u  Job EXP:%u  HIT:%d  FLEE:%d
 		clif->message(fd, atcmd_output);
 
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1243), //  DEF:%d  MDEF:%d  STR:%d  AGI:%d  VIT:%d  INT:%d  DEX:%d  LUK:%d
-		monster->status.def, monster->status.mdef, monster->status.str, monster->status.agi,
-		monster->status.vit, monster->status.int_, monster->status.dex, monster->status.luk);
+				monster->status.def, monster->status.mdef, monster->status.str, monster->status.agi,
+				monster->status.vit, monster->status.int_, monster->status.dex, monster->status.luk);
 		clif->message(fd, atcmd_output);
 
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1291), //  ATK : %d~%d MATK : %d~%d Range : %d~%d~%d  Size : %s  Race : %s  Element : %s(Lv : %d)
-		MOB_ATK1(monster), MOB_ATK2(monster), MOB_MATK1(monster), MOB_MATK2(monster), monster->status.rhw.range,
-		monster->range2 , monster->range3, msize[monster->status.size],
-		mrace[monster->status.race], melement[monster->status.def_ele], monster->status.ele_lv);
+				MOB_ATK1(monster), MOB_ATK2(monster), MOB_MATK1(monster), MOB_MATK2(monster), monster->status.rhw.range,
+				monster->range2 , monster->range3, msize[monster->status.size],
+				mrace[monster->status.race], melement[monster->status.def_ele], monster->status.ele_lv);
 		clif->message(fd, atcmd_output);
 
 		// drops
@@ -7240,7 +7266,7 @@ ACMD(whereis)
 }
 
 ACMD(version) {
-	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1296), sysinfo->is64bit() ? 64 : 32, sysinfo->platform()); //%d-bit for %s
+	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1296), sysinfo->is64bit() ? 64 : 32, sysinfo->platform()); // %d-bit for %s
 	clif->message(fd, atcmd_output);
 	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1295), sysinfo->vcstype(), sysinfo->vcsrevision_src(), sysinfo->vcsrevision_scripts()); // %s revision '%s' (src) / '%s' (scripts)
 	clif->message(fd, atcmd_output);
@@ -8016,8 +8042,8 @@ ACMD(itemlist)
 
 	if( strcmpi(info->command, "storagelist") == 0 ) {
 		location = "storage";
-		items = sd->status.storage.items;
-		size = MAX_STORAGE;
+		items = VECTOR_DATA(sd->storage.item);
+		size = VECTOR_LENGTH(sd->storage.item);
 	} else if( strcmpi(info->command, "cartlist") == 0 ) {
 		location = "cart";
 		items = sd->status.cart;
@@ -8038,7 +8064,7 @@ ACMD(itemlist)
 		const struct item* it = &items[i];
 		struct item_data* itd;
 
-		if( it->nameid == 0 || (itd = itemdb->exists(it->nameid)) == NULL )
+		if (it->nameid == 0 || (itd = itemdb->exists(it->nameid)) == NULL)
 			continue;
 
 		counter += it->amount;
@@ -8199,7 +8225,7 @@ ACMD(stats)
 	output_table[14].value = sd->change_level_2nd;
 	output_table[15].value = sd->change_level_3rd;
 
-	sprintf(job_jobname, "Job - %s %s", pc->job_name(sd->status.class_), "(level %d)");
+	sprintf(job_jobname, "Job - %s %s", pc->job_name(sd->status.class), "(level %d)");
 	sprintf(output, msg_fd(fd,53), sd->status.name); // '%s' stats:
 
 	clif->message(fd, output);
@@ -8355,6 +8381,38 @@ void atcommand_commands_sub(struct map_session_data* sd, const int fd, AtCommand
 	dbi_destroy(iter);
 	clif->message(fd,line_buff);
 
+	if (atcommand->binding_count > 0) {
+		int i, count_bind = 0;
+		int gm_lvl = pc_get_group_level(sd);
+
+		for (i = 0; i < atcommand->binding_count; i++) {
+			if (gm_lvl >= ((type == COMMAND_ATCOMMAND) ? atcommand->binding[i]->group_lv : atcommand->binding[i]->group_lv_char)
+				|| (type == COMMAND_ATCOMMAND && atcommand->binding[i]->at_groups[pcg->get_idx(sd->group)] > 0)
+				|| (type == COMMAND_CHARCOMMAND && atcommand->binding[i]->char_groups[pcg->get_idx(sd->group)] > 0)) {
+				size_t slen = strlen(atcommand->binding[i]->command);
+				if (count_bind == 0) {
+					cur = line_buff;
+					memset(line_buff, ' ', CHATBOX_SIZE);
+					line_buff[CHATBOX_SIZE - 1] = 0;
+					clif->message(fd, "------------------");
+					clif->message(fd, "Custom commands:");
+				}
+				if (slen + cur - line_buff >= CHATBOX_SIZE) {
+					clif->message(fd, line_buff);
+					cur = line_buff;
+					memset(line_buff, ' ', CHATBOX_SIZE);
+					line_buff[CHATBOX_SIZE - 1] = 0;
+				}
+				memcpy(cur, atcommand->binding[i]->command, slen);
+				cur += slen + (10 - slen % 10);
+				count_bind++;
+			}
+		}
+		if (count_bind > 0)
+			clif->message(fd, line_buff);	// Last Line
+		count += count_bind;
+	}
+
 	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,274), count); // "%d commands found."
 	clif->message(fd, atcmd_output);
 
@@ -8379,22 +8437,24 @@ ACMD(charcommands)
 	return true;
 }
 
-/* for new mounts */
+/* For new mounts */
 ACMD(cashmount)
 {
 	if (pc_hasmount(sd)) {
-		clif->message(fd, msg_fd(fd,1476)); // You are already mounting something else
+		clif->message(fd, msg_fd(fd, 1476)); // You are already mounting something else
 		return false;
 	}
 
-	clif->message(sd->fd,msg_fd(fd,1362)); // NOTICE: If you crash with mount your LUA is outdated.
+	clif->message(sd->fd, msg_fd(fd, 1362)); // NOTICE: If you crash with mount your LUA is outdated.
+
 	if (!sd->sc.data[SC_ALL_RIDING]) {
-		clif->message(sd->fd,msg_fd(fd,1363)); // You have mounted.
-		sc_start(NULL, &sd->bl, SC_ALL_RIDING, 100, 25, INFINITE_DURATION);
+		clif->message(sd->fd, msg_fd(fd, 1363)); // You have mounted.
+		sc_start(NULL, &sd->bl, SC_ALL_RIDING, 100, battle_config.boarding_halter_speed, INFINITE_DURATION);
 	} else {
-		clif->message(sd->fd,msg_fd(fd,1364)); // You have released your mount.
+		clif->message(sd->fd, msg_fd(fd, 1364)); // You have released your mount.
 		status_change_end(&sd->bl, SC_ALL_RIDING, INVALID_TIMER);
 	}
+
 	return true;
 }
 
@@ -8612,7 +8672,7 @@ ACMD(cart) {
 
 	int val = atoi(message);
 	bool need_skill = pc->checkskill(sd, MC_PUSHCART) ? false : true;
-	unsigned int index = skill->get_index(MC_PUSHCART);
+	int index = skill->get_index(MC_PUSHCART);
 
 	if (!*message || val < 0 || val > MAX_CARTS) {
 		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1390),command,MAX_CARTS); // Unknown Cart (usage: %s <0-%d>).
@@ -8645,7 +8705,7 @@ ACMD(cart) {
 	return true;
 #undef MC_CART_MDFY
 }
-/* */
+
 ACMD(join)
 {
 	struct channel_data *chan = NULL;
@@ -8688,7 +8748,7 @@ ACMD(join)
 
 	return true;
 }
-/* */
+
 void atcommand_channel_help(int fd, const char *command, bool can_create) {
 	nullpo_retv(command);
 	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd,1404),command); // %s failed.
@@ -8739,7 +8799,7 @@ void atcommand_channel_help(int fd, const char *command, bool can_create) {
 		clif->message(fd, msg_fd(fd,1463));// - adds or removes <option name> with <option value> to <channel name> channel
 	}
 }
-/* */
+
 ACMD(channel) {
 	struct channel_data *chan;
 	char subcmd[HCS_NAME_LENGTH], sub1[HCS_NAME_LENGTH], sub2[HCS_NAME_LENGTH], sub3[HCS_NAME_LENGTH];
@@ -9207,7 +9267,12 @@ ACMD(searchstore){
 	searchstore->open(sd, 99, val);
 	return true;
 }
-ACMD(costume){
+
+/*==========================================
+* @costume
+*------------------------------------------*/
+ACMD(costume)
+{
 	const char* names[] = {
 		"Wedding",
 		"Xmas",
@@ -9215,6 +9280,9 @@ ACMD(costume){
 		"Hanbok",
 #if PACKETVER >= 20131218
 		"Oktoberfest",
+#endif
+#if PACKETVER >= 20141022
+		"Summer2",
 #endif
 	};
 	const int name2id[] = {
@@ -9225,41 +9293,47 @@ ACMD(costume){
 #if PACKETVER >= 20131218
 		SC_OKTOBERFEST,
 #endif
+#if PACKETVER >= 20141022
+		SC_DRESS_UP,
+#endif
 	};
 	unsigned short k = 0, len = ARRAYLENGTH(names);
 
 	if (!*message) {
-		for( k = 0; k < len; k++ ) {
-			if( sd->sc.data[name2id[k]] ) {
-				safesnprintf(atcmd_output, sizeof(atcmd_output),msg_fd(fd,1473),names[k]);//Costume '%s' removed.
-				clif->message(sd->fd,atcmd_output);
-				status_change_end(&sd->bl,name2id[k],INVALID_TIMER);
+		for (k = 0; k < len; k++) {
+			if (sd->sc.data[name2id[k]]) {
+				safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd, 1473), names[k]); // Costume '%s' removed.
+				clif->message(sd->fd, atcmd_output);
+				status_change_end(&sd->bl, name2id[k], INVALID_TIMER);
 				return true;
 			}
 		}
-		clif->message(sd->fd,msg_fd(fd,1472));
-		for( k = 0; k < len; k++ ) {
-			safesnprintf(atcmd_output, sizeof(atcmd_output),msg_fd(fd,1471),names[k]);//-- %s
-			clif->message(sd->fd,atcmd_output);
+
+		clif->message(sd->fd, msg_fd(fd, 1472)); // - Available Costumes
+
+		for (k = 0; k < len; k++) {
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd, 1471), names[k]); //-- %s
+			clif->message(sd->fd, atcmd_output);
 		}
 		return false;
 	}
 
-	for( k = 0; k < len; k++ ) {
-		if( sd->sc.data[name2id[k]] ) {
-			safesnprintf(atcmd_output, sizeof(atcmd_output),msg_fd(fd,1470),names[k]);// You're already with a '%s' costume, type '@costume' to remove it.
-			clif->message(sd->fd,atcmd_output);
+	for (k = 0; k < len; k++) {
+		if (sd->sc.data[name2id[k]]) {
+			safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd, 1470), names[k]); // You're already with a '%s' costume, type '@costume' to remove it.
+			clif->message(sd->fd, atcmd_output);
 			return false;
 		}
 	}
 
-	for( k = 0; k < len; k++ ) {
-		if( strcmpi(message,names[k]) == 0 )
+	for (k = 0; k < len; k++) {
+		if (strcmpi(message,names[k]) == 0)
 			break;
 	}
-	if( k == len ) {
-		safesnprintf(atcmd_output, sizeof(atcmd_output),msg_fd(fd,1469),message);// '%s' is not a known costume
-		clif->message(sd->fd,atcmd_output);
+
+	if (k == len) {
+		safesnprintf(atcmd_output, sizeof(atcmd_output), msg_fd(fd, 1469), message); // '%s' is not a known costume
+		clif->message(sd->fd, atcmd_output);
 		return false;
 	}
 
@@ -9267,6 +9341,7 @@ ACMD(costume){
 
 	return true;
 }
+
 /* for debugging purposes (so users can easily provide us with debug info) */
 /* should be trashed as soon as its no longer necessary */
 ACMD(skdebug)
@@ -9305,7 +9380,7 @@ ACMD(cddebug) {
 	}
 
 	if (!cd || (*message && !strcmpi(message,"reset"))) {
-		for(i = 0; i < MAX_SKILL; i++) {
+		for (i = 0; i < MAX_SKILL_DB; i++) {
 			if( sd->blockskill[i] ) {
 				clif->messages(fd,"Found skill '%s', unblocking...",skill->dbs->db[i].name);
 				sd->blockskill[i] = false;
@@ -9642,6 +9717,7 @@ void atcommand_basecommands(void) {
 			continue;
 		}
 	}
+
 	return;
 }
 #undef ACMD_DEF
@@ -9872,6 +9948,8 @@ bool atcommand_exec(const int fd, struct map_session_data *sd, const char *messa
 		 && (
 		       (is_atcommand && pc_get_group_level(sd) >= binding->group_lv)
 		    || (!is_atcommand && pc_get_group_level(sd) >= binding->group_lv_char)
+		    || (is_atcommand && binding->at_groups[pcg->get_idx(sd->group)] > 0)
+		    || (!is_atcommand && binding->char_groups[pcg->get_idx(sd->group)] > 0)
 		    )
 		) {
 			if (binding->log) /* log only if this command should be logged */
@@ -10050,7 +10128,7 @@ void atcommand_config_read(const char* config_filename) {
 		}
 	}
 
-	ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' command aliases in '"CL_WHITE"%s"CL_RESET"'.\n", num_aliases, config_filename);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' analizes de comandos em '"CL_WHITE"%s"CL_RESET"'.\n", num_aliases, config_filename);
 
 	libconfig->destroy(&atcommand_config);
 	return;
@@ -10135,31 +10213,34 @@ void atcommand_db_load_groups(GroupSettings **groups, struct config_setting_t **
 }
 
 bool atcommand_can_use(struct map_session_data *sd, const char *command) {
-	AtCommandInfo *info = atcommand->get_info_byname(atcommand->check_alias(command + 1));
+	AtCommandInfo *acmd_d;
+	struct atcmd_binding_data *bcmd_d;
 
 	nullpo_retr(false, sd);
-	nullpo_retr(false, command);
-	if (info == NULL)
-		return false;
 
-	if ((*command == atcommand->at_symbol && info->at_groups[pcg->get_idx(sd->group)] != 0) ||
-		(*command == atcommand->char_symbol && info->char_groups[pcg->get_idx(sd->group)] != 0) ) {
-		return true;
+	if ((acmd_d = atcommand->get_info_byname(atcommand->check_alias(command + 1))) != NULL) {
+		return ((*command == atcommand->at_symbol && acmd_d->at_groups[pcg->get_idx(sd->group)] > 0) ||
+				(*command == atcommand->char_symbol && acmd_d->char_groups[pcg->get_idx(sd->group)] > 0));
+	} else if ((bcmd_d = atcommand->get_bind_byname(atcommand->check_alias(command + 1))) != NULL) {
+		return ((*command == atcommand->at_symbol && bcmd_d->at_groups[pcg->get_idx(sd->group)] > 0) ||
+				(*command == atcommand->char_symbol && bcmd_d->char_groups[pcg->get_idx(sd->group)] > 0));
 	}
 
 	return false;
 }
+
 bool atcommand_can_use2(struct map_session_data *sd, const char *command, AtCommandType type) {
-	AtCommandInfo *info = atcommand->get_info_byname(atcommand->check_alias(command));
+	AtCommandInfo *acmd_d;
+	struct atcmd_binding_data *bcmd_d;
 
 	nullpo_retr(false, sd);
-	nullpo_retr(false, command);
-	if (info == NULL)
-		return false;
 
-	if ((type == COMMAND_ATCOMMAND && info->at_groups[pcg->get_idx(sd->group)] != 0) ||
-		(type == COMMAND_CHARCOMMAND && info->char_groups[pcg->get_idx(sd->group)] != 0) ) {
-		return true;
+	if ((acmd_d = atcommand->get_info_byname(atcommand->check_alias(command))) != NULL) {
+		return ((type == COMMAND_ATCOMMAND && acmd_d->at_groups[pcg->get_idx(sd->group)] > 0) ||
+				(type == COMMAND_CHARCOMMAND && acmd_d->char_groups[pcg->get_idx(sd->group)] > 0));
+	} else if ((bcmd_d = atcommand->get_bind_byname(atcommand->check_alias(command))) != NULL) {
+		return ((type == COMMAND_ATCOMMAND && bcmd_d->at_groups[pcg->get_idx(sd->group)] > 0) ||
+				(type == COMMAND_CHARCOMMAND && bcmd_d->char_groups[pcg->get_idx(sd->group)] > 0));
 	}
 
 	return false;

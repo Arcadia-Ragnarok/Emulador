@@ -864,12 +864,12 @@ dewata,89,191,6	script	Pequeno Santuário#dew1	CLEAR_NPC,{
 		else if (.@stat & 16 && .@bonus) { consumeitem 12048; }
 		else if (.@stat & 32 && .@bonus) { consumeitem 12068; }
 		else if (.@stat & 64) {
-			specialeffect2 EF_ANGEL;
+			specialeffect(EF_ANGEL, AREA, playerattached());
 			mes "- Uma entidade celestial derrama uma bênção sobre você. -";
 			next;
 		} else if (.@stat & 128) {
 			mes "- O santuário lhe envolve em uma amorosa aura. -";
-			specialeffect2 EF_LIGHTSPHERE;
+			specialeffect(EF_LIGHTSPHERE, AREA, playerattached());
 			next;
 		}
 		mes "O sentimento é que o pedido pode se tornar verdadeiro.";
@@ -889,13 +889,13 @@ dewata,89,191,6	script	Pequeno Santuário#dew1	CLEAR_NPC,{
 
 	L_Wish:
 	mes "Misteriosas energias emanam do santuário.";
-	specialeffect EF_FLASHER,AREA,"Pequeno Santuário#dew1";
-	specialeffect EF_FLASHER,AREA,"Pequeno Santuário#dew2";
-	specialeffect EF_FLASHER,AREA,"Pequeno Santuário#dew3";
-	specialeffect EF_FLASHER,AREA,"Pequeno Santuário#dew4";
+	specialeffect (EF_FLASHER,AREA,"Pequeno Santuário#dew1");
+	specialeffect (EF_FLASHER,AREA,"Pequeno Santuário#dew2");
+	specialeffect (EF_FLASHER,AREA,"Pequeno Santuário#dew3");
+	specialeffect (EF_FLASHER,AREA,"Pequeno Santuário#dew4");
 	next;
 	mes "Você recebeu a bênção do santuário.";
-	specialeffect2 EF_BLESSING;
+	specialeffect(EF_BLESSING, AREA, playerattached());
 	next;
 	return;
 }

@@ -1,28 +1,3 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
-
 #include "HPMHooking.h"
 
 #include "common/HPExport.h"
@@ -31,6 +6,8 @@
 #include "common/mmo.h"
 #include "common/socket.h"
 
+PRAGMA_GCC5(GCC diagnostic push)
+PRAGMA_GCC5(GCC diagnostic ignored "-Wdiscarded-qualifiers")
 #if defined (HPMHOOKING_LOGIN)
 #define HPM_SERVER_TYPE SERVER_TYPE_LOGIN
 #define HPM_CORE_INCLUDE "HPMHooking/HPMHooking_login.HPMHooksCore.inc"
@@ -57,6 +34,7 @@
 #include "char/int_party.h"
 #include "char/int_pet.h"
 #include "char/int_quest.h"
+#include "char/int_rodex.h"
 #include "char/int_storage.h"
 #include "char/inter.h"
 #include "char/loginif.h"
@@ -96,6 +74,7 @@
 #include "map/pc.h"
 #include "map/pet.h"
 #include "map/quest.h"
+#include "map/rodex.h"
 #include "map/script.h"
 #include "map/skill.h"
 #include "map/status.h"
@@ -112,6 +91,7 @@
 #define HPM_SOURCES_INCLUDE "HPMHooking/HPMHooking.sources.inc"
 #error HPMHooking plugin needs to be compiled for a specific server type. Please make sure your Makefiles are up to date.
 #endif
+PRAGMA_GCC5(GCC diagnostic pop)
 #include "common/conf.h"
 #include "common/console.h"
 #include "common/db.h"
@@ -215,7 +195,10 @@ HPExport bool HPM_Plugin_AddHook(enum HPluginHookType type, const char *target, 
 	return false;
 }
 
+PRAGMA_GCC5(GCC diagnostic push)
+PRAGMA_GCC5(GCC diagnostic ignored "-Wdiscarded-qualifiers")
 #include HPM_HOOKS_INCLUDE
+PRAGMA_GCC5(GCC diagnostic pop)
 
 void HPM_HP_final(void) {
 	int i, len = HPMHooks.data.total * 2;

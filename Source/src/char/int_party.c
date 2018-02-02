@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "int_party.h"
 
@@ -93,7 +91,7 @@ static void inter_party_calc_state(struct party_data *p)
 	// FIXME[Haru]: What if the occupied positions aren't the first three? It can happen if some party members leave. This is the reason why family sharing some times stops working until you recreate your party
 	if( p->size == 2 && ( chr->char_child(p->party.member[0].char_id,p->party.member[1].char_id) || chr->char_child(p->party.member[1].char_id,p->party.member[0].char_id) ) ) {
 		//Child should be able to share with either of their parents  [RoM]
-		if(p->party.member[0].class_&JOBL_BABY) //first slot is the child?
+		if (p->party.member[0].class >= JOB_BABY && p->party.member[0].class <= JOB_SUPER_BABY) //first slot is the child?
 			p->family = p->party.member[0].char_id;
 		else
 			p->family = p->party.member[1].char_id;
@@ -256,7 +254,7 @@ struct party_data *inter_party_fromsql(int party_id)
 		SQL->GetData(inter->sql_handle, 3, &data, NULL); m->lv = atoi(data);
 		SQL->GetData(inter->sql_handle, 4, &data, NULL); m->map = mapindex->name2id(data);
 		SQL->GetData(inter->sql_handle, 5, &data, NULL); m->online = (atoi(data) ? 1 : 0);
-		SQL->GetData(inter->sql_handle, 6, &data, NULL); m->class_ = atoi(data);
+		SQL->GetData(inter->sql_handle, 6, &data, NULL); m->class = atoi(data);
 		m->leader = (m->account_id == leader_id && m->char_id == leader_char ? 1 : 0);
 	}
 	SQL->FreeResult(inter->sql_handle);
@@ -321,8 +319,9 @@ struct party_data* inter_party_search_partyname(const char *const str)
 int inter_party_check_exp_share(struct party_data *const p)
 {
 	nullpo_ret(p);
-	return (p->party.count < 2 || p->max_lv - p->min_lv <= party_share_level);
+	return (p->party.count < 2 || p->max_lv - p->min_lv <= 10); // party_share_level
 }
+
 
 // Is there any member in the party?
 int inter_party_check_empty(struct party_data *p)
@@ -638,30 +637,20 @@ int mapif_parse_PartyLeave(int fd, int party_id, int account_id, int char_id)
 
 	mapif->party_withdraw(party_id, account_id, char_id);
 
-	if (p->party.member[i].leader){
-		p->party.member[i].account_id = 0;
-		for (j = 0; j < MAX_PARTY; j++) {
-			if (!p->party.member[j].account_id)
-				continue;
-			mapif->party_withdraw(party_id, p->party.member[j].account_id, p->party.member[j].char_id);
-			p->party.member[j].account_id = 0;
-		}
-		//Party gets deleted on the check_empty call below.
-	} else {
-		inter_party->tosql(&p->party,PS_DELMEMBER,i);
-		j = p->party.member[i].lv;
-		if(p->party.member[i].online) p->party.count--;
-		memset(&p->party.member[i], 0, sizeof(struct party_member));
-		p->size--;
-		if (j == p->min_lv || j == p->max_lv || p->family)
-		{
-			if(p->family) p->family = 0; //Family state broken.
-			inter_party->check_lv(p);
-		}
+	j = p->party.member[i].lv;
+	if (p->party.member[i].online > 0)
+		p->party.count--;
+	memset(&p->party.member[i], 0, sizeof(struct party_member));
+	p->size--;
+	if (j == p->min_lv || j == p->max_lv || p->family) {
+		if(p->family) p->family = 0; //Family state broken.
+		inter_party->check_lv(p);
 	}
 
-	if (inter_party->check_empty(p) == 0)
+	if (inter_party->check_empty(p) == 0) {
+		inter_party->tosql(&p->party, PS_DELMEMBER, i);
 		mapif->party_info(-1, &p->party, 0);
+	}
 	return 0;
 }
 // When member goes to other map or levels up.
@@ -731,7 +720,7 @@ int mapif_parse_BreakParty(int fd, int party_id)
 	if(!p)
 		return 0;
 	inter_party->tosql(&p->party,PS_BREAK,0);
-	mapif->party_broken(fd,party_id);
+	mapif->party_broken(party_id, 1);
 	return 0;
 }
 

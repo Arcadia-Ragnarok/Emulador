@@ -7,20 +7,18 @@
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
-|----------------------------------------------------------------------|
-| - Descrição: Configuação para Map-Serve                              |
 \*--------------------------------------------------------------------*/
 
 map_configuration: {
 	@include "Config/System/Console.cs"
 	@include "Config/Connect/Connections.cs"
 
-	// Listas de mapa
+	// Listas de mapas
 	@include "Config/Common/Maps.cs"
 
 	// Quando @help ou @h é digitado quando você é um gm, isso é exibido para ajudar os novos gms a entender os comandos gm.
-	help_txt: "Config/help.txt"
-	charhelp_txt: "Config/charhelp.txt"
+	help_txt: "Config/Help.txt"
+	charhelp_txt: "Config/Char-Help.txt"
 
 	// Ativar os comandos @guildspy e @partyspy em?
 	// Note que habilitá-los diminui o desempenho de envio de pacotes.
@@ -30,11 +28,7 @@ map_configuration: {
 	// como referenciado por grf-files.txt em vez de partir do mapcache?
 	use_grf: false
 
-	// Informações relacionadas ao comportamento entre servidores
 	database: {
-		// Onde devem ser lidos todos os dados do banco de dados?
-		db_path: "Database"
-
 		// Tempo de salvamento automático da base de dados
 		// Todos os caracteres são salvos neste tempo em segundos (exemplo:
 		// autosave de 60 segundos com 60 caracteres on-line -> um char é
@@ -42,9 +36,7 @@ map_configuration: {
 		autosave_time: 300
 
 		// Min banco de dados salvar intervalos (em ms)
-		// Evita salvar caracteres mais rápido do que a essa taxa (evita
-		// char-server save-load ficando muito alto como character-count
-		// aumenta)
+		// Evita salvar caracteres mais rápido do que a essa taxa (evita char-server save-load ficando muito alto como character-count aumenta)
 		minsave_time: 100
 
 		// Além do autosave_time, os jogadores também serão salvos

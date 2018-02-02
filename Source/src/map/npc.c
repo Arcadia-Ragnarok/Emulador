@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "config/core.h" // NPC_SECURE_TIMEOUT_INPUT, NPC_SECURE_TIMEOUT_MENU, NPC_SECURE_TIMEOUT_NEXT, SECURE_NPCTIMEOUT, SECURE_NPCTIMEOUT_INTERVAL
 #include "npc.h"
@@ -117,6 +115,8 @@ bool npc_db_checkid(int id)
 	if (id > 400 && id < MAX_NPC_CLASS) // Second subrange
 		return true;
 	if (id >= MAX_NPC_CLASS2_START && id < MAX_NPC_CLASS2_END) // Second range
+		return true;
+	if (pc->db_checkid(id))
 		return true;
 	// Anything else is invalid
 	return false;
@@ -1562,9 +1562,9 @@ void npc_market_fromsql(void)
 		return;
 	}
 
-	SQL->StmtBindColumn(stmt, 0, SQLDT_STRING, &name[0], sizeof(name), NULL, NULL);
-	SQL->StmtBindColumn(stmt, 1, SQLDT_INT, &itemid, 0, NULL, NULL);
-	SQL->StmtBindColumn(stmt, 2, SQLDT_INT, &amount, 0, NULL, NULL);
+	SQL->StmtBindColumn(stmt, 0, SQLDT_STRING, &name,    sizeof name,   NULL, NULL);
+	SQL->StmtBindColumn(stmt, 1, SQLDT_INT,    &itemid,  sizeof itemid, NULL, NULL);
+	SQL->StmtBindColumn(stmt, 2, SQLDT_INT,    &amount,  sizeof amount, NULL, NULL);
 
 	while ( SQL_SUCCESS == SQL->StmtNextRow(stmt) ) {
 		struct npc_data *nd = NULL;
@@ -2093,6 +2093,8 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 {
 	char npc_ev[EVENT_NAME_LENGTH];
 	char card_slot[NPC_NAME_LENGTH];
+	char opt_index_str[NAME_LENGTH];
+	char opt_value_str[NAME_LENGTH];
 	int i, j;
 	int key_nameid = 0;
 	int key_amount = 0;
@@ -2100,6 +2102,8 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 	int key_attribute = 0;
 	int key_identify = 0;
 	int key_card[MAX_SLOTS];
+	int key_opt_idx[MAX_ITEM_OPTIONS];
+	int key_opt_value[MAX_ITEM_OPTIONS];
 
 	nullpo_ret(sd);
 	nullpo_ret(item_list);
@@ -2117,6 +2121,17 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 		key_card[j] = 0;
 		snprintf(card_slot, sizeof(card_slot), "@sold_card%d", j + 1);
 		script->cleararray_pc(sd, card_slot, (void*)0);
+	}
+
+	for (j = 0; j < MAX_ITEM_OPTIONS; j++) { // Clear Each item option entry
+		key_opt_idx[j] = 0;
+		key_opt_value[j] = 0;
+
+		snprintf(opt_index_str, sizeof(opt_index_str), "@slot_opt_idx%d", j + 1);
+		script->cleararray_pc(sd, opt_index_str, (void*)0);
+
+		snprintf(opt_value_str, sizeof(opt_value_str), "@slot_opt_val%d", j + 1);
+		script->cleararray_pc(sd, opt_value_str, (void*)0);
 	}
 
 	// save list of to be sold items
@@ -2142,6 +2157,17 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 			// store each of the cards/special info from the item in the array
 			snprintf(card_slot, sizeof(card_slot), "@sold_card%d", j + 1);
 			script->setarray_pc(sd, card_slot, i, (void*)card, &key_card[j]);
+		}
+
+		for (j = 0; j < MAX_ITEM_OPTIONS; j++) {
+			intptr_t opt_idx = item->option[j].index;
+			intptr_t opt_value = item->option[j].value;
+
+			snprintf(opt_index_str, sizeof(opt_index_str), "@slot_opt_idx%d", j + 1);
+			script->setarray_pc(sd, opt_index_str, i, (void*)opt_idx, &key_opt_idx[j]);
+
+			snprintf(opt_value_str, sizeof(opt_value_str), "@slot_opt_val%d", j + 1);
+			script->setarray_pc(sd, opt_value_str, i, (void*)opt_value, &key_opt_value[j]);
 		}
 
 	}
@@ -2564,7 +2590,7 @@ void npc_parsename(struct npc_data* nd, const char* name, const char* start, con
 	if( p ) { // <Display name>::<Unique name>
 		size_t len = p-name;
 		if( len > NPC_NAME_LENGTH ) {
-			ShowWarning("npc_parsename: Display name of '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NPC_NAME_LENGTH);
+			ShowWarning("npc_parsename: Display name of '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NAME_LENGTH);
 			safestrncpy(nd->name, name, sizeof(nd->name));
 		} else {
 			memcpy(nd->name, name, len);
@@ -2572,12 +2598,12 @@ void npc_parsename(struct npc_data* nd, const char* name, const char* start, con
 		}
 		len = strlen(p+2);
 		if( len > NPC_NAME_LENGTH )
-			ShowWarning("npc_parsename: Unique name of '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NPC_NAME_LENGTH);
+			ShowWarning("npc_parsename: Unique name of '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NAME_LENGTH);
 		safestrncpy(nd->exname, p+2, sizeof(nd->exname));
 	} else {// <Display name>
 		size_t len = strlen(name);
 		if( len > NPC_NAME_LENGTH )
-			ShowWarning("npc_parsename: Name '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NPC_NAME_LENGTH);
+			ShowWarning("npc_parsename: Name '%s' is too long (len=%u) in file '%s', line '%d'. Truncating to %d characters.\n", name, (unsigned int)len, filepath, strline(buffer,start-buffer), NAME_LENGTH);
 		safestrncpy(nd->name, name, sizeof(nd->name));
 		safestrncpy(nd->exname, name, sizeof(nd->exname));
 	}
@@ -2595,7 +2621,7 @@ void npc_parsename(struct npc_data* nd, const char* name, const char* start, con
 
 		do {
 			++i;
-			snprintf(newname, ARRAYLENGTH(newname), "%d_%d_%d_%d", i, nd->bl.m, nd->bl.x, nd->bl.y);
+			safesnprintf(newname, ARRAYLENGTH(newname), "%d_%d_%d_%d", i, nd->bl.m, nd->bl.x, nd->bl.y);
 		} while( npc->name2id(newname) != NULL );
 
 		strcpy(this_mapname, (nd->bl.m == -1 ? "(not on a map)" : mapindex_id2name(map_id2index(nd->bl.m))));
@@ -2684,6 +2710,7 @@ struct npc_data *npc_create_npc(enum npc_subtype subtype, int m, int x, int y, u
 	nd->area_size = AREA_SIZE + 1;
 	nd->class_ = class_;
 	nd->speed = 200;
+	nd->vd = npc_viewdb[0]; // Copy INVISIBLE_CLASS view data. Actual view data is set by npc->add_to_location() later.
 
 	return nd;
 }
@@ -2702,10 +2729,10 @@ struct npc_data* npc_add_warp(char* name, short from_mapid, short from_x, short 
 		flag = 1;
 
 	if (flag == 1)
-		snprintf(nd->exname, ARRAYLENGTH(nd->exname), "warp_%d_%d_%d", from_mapid, from_x, from_y);
+		safesnprintf(nd->exname, ARRAYLENGTH(nd->exname), "warp_%d_%d_%d", from_mapid, from_x, from_y);
 
 	for( i = 0; npc->name2id(nd->exname) != NULL; ++i )
-		snprintf(nd->exname, ARRAYLENGTH(nd->exname), "warp%d_%d_%d_%d", i, from_mapid, from_x, from_y);
+		safesnprintf(nd->exname, ARRAYLENGTH(nd->exname), "warp%d_%d_%d_%d", i, from_mapid, from_x, from_y);
 	safestrncpy(nd->name, nd->exname, ARRAYLENGTH(nd->name));
 
 	nd->u.warp.mapindex = to_mapindex;
@@ -3634,6 +3661,18 @@ void npc_setclass(struct npc_data* nd, short class_) {
 		clif->spawn(&nd->bl);// fade in
 }
 
+void npc_refresh(struct npc_data* nd)
+{
+	nullpo_retv(nd);
+
+	if (map->list[nd->bl.m].users) {
+		// using here CLR_TRICKDEAD because other flags show effects.
+		// probably need use other flag or other way to refresh npc.
+		clif->clearunit_area(&nd->bl, CLR_TRICKDEAD); // fade out
+		clif->spawn(&nd->bl); // fade in
+	}
+}
+
 // @commands (script based)
 int npc_do_atcmd_event(struct map_session_data* sd, const char* command, const char* message, const char* eventname)
 {
@@ -3821,7 +3860,12 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 
 	memset(&mobspawn, 0, sizeof(struct spawn_data));
 
-	mobspawn.state.boss = (strcmp(w2,"boss_monster") == 0 ? 1 : 0);
+	if (strcmp(w2, "boss_monster") == 0)
+		mobspawn.state.boss = BTYPE_MVP;
+	else if (strcmp(w2, "miniboss_monster") == 0)
+		mobspawn.state.boss = BTYPE_BOSS;
+	else
+		mobspawn.state.boss = BTYPE_NONE;
 
 	// w1=<map name>,<x>,<y>,<xs>,<ys>
 	// w3=<mob name>{,<mob level>}
@@ -3875,7 +3919,7 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 		return strchr(start, '\n');
 	}
 
-	if( (mob_lv == 0 || mob_lv > 150) && mob_lv != -1 ) { // MAX_LEVEL
+	if( (mob_lv == 0 || mob_lv > MAX_LEVEL) && mob_lv != -1 ) {
 		ShowError("npc_parse_mob: Invalid level %d for mob ID %d in file '%s', line '%d'.\n", mob_lv, class_, filepath, strline(buffer, start - buffer));
 		if (retval) *retval = EXIT_FAILURE;
 		return strchr(start, '\n');
@@ -3888,7 +3932,7 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 	mobspawn.y = (unsigned short)y;
 	mobspawn.xs = (signed short)xs;
 	mobspawn.ys = (signed short)ys;
-	if (mob_lv > 0 && mob_lv <= 150) // MAX_LEVEL
+	if (mob_lv > 0 && mob_lv <= MAX_LEVEL)
 		mobspawn.level = mob_lv;
 	if (size > 0 && size <= 2)
 		mobspawn.state.size = size;
@@ -4278,6 +4322,8 @@ const char *npc_parse_mapflag(const char *w1, const char *w2, const char *w3, co
 		map->list[m].flag.reset=state;
 	else if (!strcmpi(w3,"notomb"))
 		map->list[m].flag.notomb=state;
+	else if (!strcmpi(w3, "noautoloot"))
+		map->list[m].flag.noautoloot = state;
 	else if (!strcmpi(w3,"adjust_unit_duration")) {
 		int skill_id, k;
 		char skill_name[MAP_ZONE_MAPFLAG_LENGTH], modifier[MAP_ZONE_MAPFLAG_LENGTH];
@@ -4638,7 +4684,7 @@ int npc_parsesrcfile(const char* filepath, bool runOnInit) {
 		{
 			p = npc->parse_duplicate(w1,w2,w3,w4, p, buffer, filepath, (runOnInit?NPO_ONINIT:NPO_NONE), &success);
 		}
-		else if( (strcmp(w2,"monster") == 0 || strcmp(w2,"boss_monster") == 0) )
+		else if (strcmp(w2,"monster") == 0 || strcmp(w2,"boss_monster") == 0 || strcmp(w2,"miniboss_monster") == 0)
 		{
 			p = npc->parse_mob(w1, w2, w3, w4, p, buffer, filepath, &success);
 		}
@@ -4849,8 +4895,7 @@ int npc_reload(void) {
 
 	map->zone_init();
 
-	npc->motd = npc->name2id("MOTD");
-
+	npc->motd = npc->name2id("MOTD"); 
 	//Re-read the NPC Script Events cache.
 	npc->read_event_script();
 
@@ -4965,12 +5010,11 @@ int do_init_npc(bool minimal) {
 	//Stock view data for normal npcs.
 	memset(&npc_viewdb, 0, sizeof(npc_viewdb));
 
-	npc_viewdb[0].class_ = INVISIBLE_CLASS; //Invisible class is stored here.
+	npc_viewdb[0].class = INVISIBLE_CLASS; //Invisible class is stored here.
 	for( i = 1; i < MAX_NPC_CLASS; i++ )
-		npc_viewdb[i].class_ = i;
+		npc_viewdb[i].class = i;
 	for( i = MAX_NPC_CLASS2_START; i < MAX_NPC_CLASS2_END; i++ )
-		npc_viewdb2[i - MAX_NPC_CLASS2_START].class_ = i;
-
+		npc_viewdb2[i - MAX_NPC_CLASS2_START].class = i;
 	npc->ev_db = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_RELEASE_DATA, EVENT_NAME_LENGTH);
 	npc->ev_label_db = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_RELEASE_DATA, NPC_NAME_LENGTH);
 	npc->name_db = strdb_alloc(DB_OPT_BASE, NPC_NAME_LENGTH);
@@ -4993,8 +5037,7 @@ int do_init_npc(bool minimal) {
 	if (!minimal) {
 		map->zone_init();
 
-		npc->motd = npc->name2id("MOTD");
-
+		npc->motd = npc->name2id("MOTD"); 
 		// set up the events cache
 		memset(script_event, 0, sizeof(script_event));
 		npc->read_event_script();
@@ -5165,4 +5208,5 @@ void npc_defaults(void) {
 	npc->market_delfromsql = npc_market_delfromsql;
 	npc->market_delfromsql_sub = npc_market_delfromsql_sub;
 	npc->db_checkid = npc_db_checkid;
+	npc->refresh = npc_refresh;
 }

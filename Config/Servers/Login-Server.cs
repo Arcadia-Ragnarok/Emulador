@@ -8,23 +8,45 @@
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
 |----------------------------------------------------------------------|
-| - Descrição: Configuação para Login-Serve                            |
+| - Descrição: Configuação para login-serve                            |
 \*--------------------------------------------------------------------*/
 
 login_configuration: {
 	@include "Config/System/Console.cs"
 	@include "Config/Connect/Connections.cs"
 
+	// -----------------------------------------------------------------
+	// - Configuração para salvamento de logs para o login-serve
+	// -----------------------------------------------------------------
 	log: {
-		// Para registrar o servidor de login?
-		// NOTA: O servidor de login-sql precisa dos logs de login para ativar as restrições de falha de passagem dinâmica.
+		// O servidor de login-sql precisa dos logs de login para ativar as restrições de falha de passagem dinâmica.
 		log_login: true
 
 		// Indicar como exibir a data nos logs, nos jogadores, etc.
 		date_format: "%Y-%m-%d %H:%M:%S"
 	}
 
-	// Configuração de conta
+	// -----------------------------------------------------------------
+	// Exibição colorida da contagem de jogadores para o client
+	// NOTA: Usável apenas para hexeds 20170726 ou posterior
+	// (FUNCIONABILIDADE EM TESTE!)
+	// -----------------------------------------------------------------
+	users_count: {
+		// Se habilitado exibibe as diferentes cores se não assume a cor padrão.]
+		send_user_count_description: false
+
+		// Quantos usuários para difinir o tipo?
+		// 'low' Mostra texto em verde
+		// 'medium' Mostra texto em laranja
+		// 'high' Mostra o texto em roxo
+		low: 200
+		medium: 500
+		high: 1000
+	}
+
+	// -----------------------------------------------------------------
+	// - Configuração de conta
+	// -----------------------------------------------------------------
 	account: {
 		// Você pode usar _M / _F para criar novas contas no servidor?
 		new_account: true
@@ -47,12 +69,10 @@ login_configuration: {
 		// Observação: não funcionará com clientes que usam <passwordencrypt>
 		use_MD5_passwords: false
 
-		// Configuração de armazenamento do mecanismo de dados da conta
+		// Configurações de conexão SQL
 		@include "Config/Connect/Connections.cs"
 
-		//==================================================================
 		// IP banning system
-		//==================================================================
 		ipban: {
 			enabled: true
 
@@ -81,9 +101,12 @@ login_configuration: {
 		}
 	}
 
+	// -----------------------------------------------------------------
+	// - Configuração de permissão de acesso
+	// -----------------------------------------------------------------
 	permission: {
 		// ID do grupo de contas necessário para se conectar ao servidor.
-		// -1: disabled
+		// -1: Desabilita
 		// 0 ou mais: id do grupo
 		group_id_to_connect: -1
 
@@ -113,10 +136,6 @@ login_configuration: {
 			// igual ao valor especificado será capaz de fazer logon independentemente de hash (e até mesmo
 			// se seu cliente não envia um hash.)
 			MD5_hashes: (
-			//{
-			//	group_id: group id
-			//	hash: client hash
-			//},
 			//{
 			//	group_id: 0
 			//	hash: "113e195e6c051bb1cfb12a644bb084c5"

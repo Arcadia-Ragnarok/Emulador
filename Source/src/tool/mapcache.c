@@ -1,28 +1,4 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "common/cbasetypes.h"
 #include "common/core.h"
@@ -281,10 +257,10 @@ int do_init(int argc, char** argv)
 	struct map_data map;
 	char name[MAP_NAME_LENGTH_EXT];
 
-	grf_list_file = aStrdup("Config/Common/grf-files.txt");
+	grf_list_file = aStrdup("Config/grf-files.txt");
 	map_list_file = aStrdup("Database/Map_DB/MapIndex.txt");
 	/* setup pre-defined, #define-dependant */
-	map_cache_file = aStrdup("Database/Map_DB/MapCache.dat");
+	map_cache_file = aStrdup("Database/map_cache.dat");
 
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
 	cmdline->exec(argc, argv, CMDLINE_OPT_NORMAL);

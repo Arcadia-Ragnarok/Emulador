@@ -87,7 +87,7 @@ prontera,165,60,2	script	Aprendiz de Artesão	1_F_MERCHANT_01,{
 		mes "[Aprendiz de Artesão]";
 		mes "Então, um aventureiro hein? Bom, vamos.";
 		close2;
-		specialeffect2(EF_MAPPILLAR);
+		specialeffect(EF_MAPPILLAR, AREA, playerattached());
 		if (Zeny < 400000) {
 			mes "[Aprendiz de Artesão]";
 			mes "Desculpe, mas você não tem zeny suficiente.";
@@ -134,7 +134,7 @@ prontera,165,60,2	script	Aprendiz de Artesão	1_F_MERCHANT_01,{
 			case 35:
 			case 36: .@addpart = 4750;break;
 			default:
-			specialeffect2 (EF_PHARMACY_FAIL);
+			specialeffect(EF_PHARMACY_FAIL, AREA, playerattached());
 			mes "[Aprendiz de Artesão]";
 			mes "Bem, isso é muito ruim.";
 			mes "Não consegui encantar seu equipamento.";

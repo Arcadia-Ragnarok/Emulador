@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -33,7 +31,7 @@
 #	include <signal.h>
 #endif
 
-#define RDBR_UNKNOWN_VER '\x02'
+#define ARCADIA_UNKNOWN_VER '\x02'
 
 enum server_types {
 	SERVER_TYPE_UNKNOWN = 0x0,
@@ -94,21 +92,21 @@ struct core_interface {
 #define SERVER_NAME (core->server_name)
 #define SERVER_TYPE (core->server_type)
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 extern void cmdline_args_init_local(void);
 extern int do_init(int,char**);
 extern void set_server_type(void);
 extern void do_abort(void);
 extern int do_final(void);
 
-/// Special plugin ID assigned
+/// Special plugin ID assigned to the core
 #define HPM_PID_CORE ((unsigned int)-1)
 
 #define CMDLINEARG_DEF(name, shortname, help, options) cmdline->arg_add(HPM_PID_CORE, "--" EXPAND_AND_QUOTE(name), shortname, cmdline_arg_ ## name, help, options)
 #define CMDLINEARG_DEF2(name, funcname, help, options) cmdline->arg_add(HPM_PID_CORE, "--" EXPAND_AND_QUOTE(name), '\0', cmdline_arg_ ## funcname, help, options)
 
 void cmdline_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct core_interface *core;
 HPShared struct cmdline_interface *cmdline;

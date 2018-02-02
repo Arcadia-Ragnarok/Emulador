@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "quest.h"
 
@@ -107,22 +105,23 @@ int quest_pc_login(struct map_session_data *sd)
  *
  * New quest will be added as Q_ACTIVE.
  *
- * @param sd       Player's data
- * @param quest_id ID of the quest to add.
+ * @param sd         Player's data
+ * @param quest_id   ID of the quest to add.
+ * @param time_limit Custom time, in UNIX epoch, for this quest
  * @return 0 in case of success, nonzero otherwise
  */
-int quest_add(struct map_session_data *sd, int quest_id)
+int quest_add(struct map_session_data *sd, int quest_id, unsigned int time_limit)
 {
 	int n;
 	struct quest_db *qi = quest->db(quest_id);
 
 	nullpo_retr(-1, sd);
-	if( qi == &quest->dummy ) {
+	if (qi == &quest->dummy) {
 		ShowError("quest_add: quest %d not found in DB.\n", quest_id);
 		return -1;
 	}
 
-	if( quest->check(sd, quest_id, HAVEQUEST) >= 0 ) {
+	if (quest->check(sd, quest_id, HAVEQUEST) >= 0) {
 		ShowError("quest_add: Character %d already has quest %d.\n", sd->status.char_id, quest_id);
 		return -1;
 	}
@@ -134,7 +133,7 @@ int quest_add(struct map_session_data *sd, int quest_id)
 	sd->avail_quests++;
 	RECREATE(sd->quest_log, struct quest, sd->num_quests);
 
-	if( sd->avail_quests != sd->num_quests ) {
+	if (sd->avail_quests != sd->num_quests) {
 		// The character has some completed quests, make room before them so that they will stay at the end of the array
 		memmove(&sd->quest_log[n+1], &sd->quest_log[n], sizeof(struct quest)*(sd->num_quests-sd->avail_quests));
 	}
@@ -142,7 +141,9 @@ int quest_add(struct map_session_data *sd, int quest_id)
 	memset(&sd->quest_log[n], 0, sizeof(struct quest));
 
 	sd->quest_log[n].quest_id = qi->id;
-	if( qi->time )
+	if (time_limit != 0)
+		sd->quest_log[n].time = time_limit;
+	else if (qi->time != 0)
 		sd->quest_log[n].time = (unsigned int)(time(NULL) + qi->time);
 	sd->quest_log[n].state = Q_ACTIVE;
 
@@ -151,8 +152,8 @@ int quest_add(struct map_session_data *sd, int quest_id)
 	clif->quest_add(sd, &sd->quest_log[n]);
 	clif->quest_update_objective(sd, &sd->quest_log[n]);
 
-	if( map->save_settings&64 )
-		chrif->save(sd,0);
+	if ((map->save_settings & 64) != 0)
+		chrif->save(sd, 0);
 
 	return 0;
 }
@@ -545,7 +546,7 @@ int quest_read_db(void)
 	int i = 0, count = 0;
 	const char *filename = "Etc_DB/QuestList.conf";
 
-	snprintf(filepath, 256, "%s/%s", map->db_path, filename);
+	safesnprintf(filepath, 256, "%s/%s", map->db_path, filename);
 	if (!libconfig->load_file(&quest_db_conf, filepath))
 		return -1;
 
@@ -572,7 +573,7 @@ int quest_read_db(void)
 		count++;
 	}
 	libconfig->destroy(&quest_db_conf);
-	ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' entries in '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 	return count;
 }
 

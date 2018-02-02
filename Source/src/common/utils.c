@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "utils.h"
 
@@ -363,6 +361,28 @@ unsigned int get_percentage(const unsigned int A, const unsigned int B)
 	return (unsigned int)floor(result);
 }
 
+/// calculates the value of A / B, in percent (rounded down)
+uint64 get_percentage64(const uint64 A, const uint64 B)
+{
+	double result;
+
+	if( B == 0 )
+	{
+		ShowError("get_percentage(): division by zero! (A=%"PRIu64",B=%"PRIu64")\n", A, B);
+		return ~0U;
+	}
+
+	result = 100 * ((double)A / (double)B);
+
+	if( result > UINT_MAX )
+	{
+		ShowError("get_percentage(): result percentage too high! (A=%"PRIu64",B=%"PRIu64",result=%g)\n", A, B, result);
+		return UINT_MAX;
+	}
+
+	return (uint64)floor(result);
+}
+
 /**
  * Applies a percentual rate modifier.
  *
@@ -417,7 +437,6 @@ const char* timestamp2string(char* str, size_t size, time_t timestamp, const cha
 	return str;
 }
 
-/* Caching */
 bool HCache_check(const char *file)
 {
 	struct stat bufa, bufb;

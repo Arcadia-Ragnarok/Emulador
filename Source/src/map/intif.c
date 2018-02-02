@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "config/core.h" // GP_BOUND_ITEMS
 #include "intif.h"
@@ -42,6 +40,7 @@
 #include "map/pc.h"
 #include "map/pet.h"
 #include "map/quest.h"
+#include "map/rodex.h"
 #include "map/storage.h"
 #include "common/memmgr.h"
 #include "common/nullpo.h"
@@ -443,6 +442,135 @@ int intif_request_registry(struct map_session_data *sd, int flag)
 	return 0;
 }
 
+//=================================================================
+// Account Storage
+//-----------------------------------------------------------------
+
+/**
+ * Request the inter-server for a character's storage data.
+ * @packet 0x3010  [out] <account_id>.L
+ * @param  sd      [in]  pointer to session data.
+ */
+void intif_request_account_storage(const struct map_session_data *sd)
+{
+	nullpo_retv(sd);
+
+	/* Check for character server availability */
+	if (intif->CheckForCharServer())
+		return;
+
+	WFIFOHEAD(inter_fd, 6);
+	WFIFOW(inter_fd, 0) = 0x3010;
+	WFIFOL(inter_fd, 2) = sd->status.account_id;
+	WFIFOSET(inter_fd, 6);
+}
+
+/**
+ * Parse the reception of account storage from the inter-server.
+ * @packet 0x3805 [in] <packet_len>.W <account_id>.L <struct item[]>.P
+ * @param  fd     [in] file/socket descriptor.
+ */
+void intif_parse_account_storage(int fd)
+{
+	int account_id = 0, payload_size = 0, storage_count = 0;
+	int i = 0;
+	struct map_session_data *sd = NULL;
+
+	Assert_retv(fd > 0);
+
+	payload_size = RFIFOW(fd, 2) - 8;
+
+	if ((account_id = RFIFOL(fd, 4)) == 0 || (sd = map->id2sd(account_id)) == NULL) {
+		ShowError("intif_parse_account_storage: Session pointer was null for account id %d!\n", account_id);
+		return;
+	}
+
+	if (sd->storage.received == true) {
+		ShowError("intif_parse_account_storage: Multiple calls from the inter-server received.\n");
+		return;
+	}
+
+	storage_count = (payload_size/sizeof(struct item));
+
+	VECTOR_ENSURE(sd->storage.item, storage_count, 1);
+
+	sd->storage.aggregate = storage_count; // Total items in storage.
+
+	for (i = 0; i < storage_count; i++) {
+		const struct item *it = RFIFOP(fd, 8 + i * sizeof(struct item));
+		VECTOR_PUSH(sd->storage.item, *it);
+	}
+
+	sd->storage.received = true; // Mark the storage state as received.
+	sd->storage.save = false; // Initialize the save flag as false.
+
+	pc->checkitem(sd); // re-check remaining items.
+}
+
+/**
+ * Send account storage information for saving.
+ * @packet 0x3011 [out] <packet_len>.W <account_id>.L <struct item[]>.P
+ * @param  sd     [in]  pointer to session data.
+ */
+void intif_send_account_storage(const struct map_session_data *sd)
+{
+	int len = 0, i = 0, c = 0;
+
+	nullpo_retv(sd);
+
+	// Assert that at this point in the code, both flags are true.
+	Assert_retv(sd->storage.save == true);
+	Assert_retv(sd->storage.received == true);
+
+	if (intif->CheckForCharServer())
+		return;
+
+	len = 8 + sd->storage.aggregate * sizeof(struct item);
+
+	WFIFOHEAD(inter_fd, len);
+
+	WFIFOW(inter_fd, 0) = 0x3011;
+	WFIFOW(inter_fd, 2) = (uint16) len;
+	WFIFOL(inter_fd, 4) = sd->status.account_id;
+	for (i = 0, c = 0; i < VECTOR_LENGTH(sd->storage.item); i++) {
+		if (VECTOR_INDEX(sd->storage.item, i).nameid == 0)
+			continue;
+		memcpy(WFIFOP(inter_fd, 8 + c * sizeof(struct item)), &VECTOR_INDEX(sd->storage.item, i), sizeof(struct item));
+		c++;
+	}
+
+	WFIFOSET(inter_fd, len);
+}
+
+/**
+ * Parse acknowledgement packet for the saving of an account's storage.
+ * @packet 0x3808 [in] <account_id>.L <saved_flag>.B
+ * @param fd      [in] file/socket descriptor.
+ */
+void intif_parse_account_storage_save_ack(int fd)
+{
+	int account_id = RFIFOL(fd, 2);
+	uint8 saved = RFIFOB(fd, 6);
+	struct map_session_data *sd = NULL;
+
+	Assert_retv(account_id > 0);
+	Assert_retv(fd > 0);
+
+	if ((sd = map->id2sd(account_id)) == NULL)
+		return; // character is most probably offline.
+
+	if (saved == 0) {
+		ShowError("intif_parse_account_storage_save_ack: Storage has not been saved! (AID: %d)\n", account_id);
+		return;
+	}
+
+	sd->storage.save = false; // Storage has been saved.
+}
+
+//=================================================================
+// Guild Storage
+//-----------------------------------------------------------------
+
 int intif_request_guild_storage(int account_id,int guild_id)
 {
 	if (intif->CheckForCharServer())
@@ -697,7 +825,7 @@ int intif_guild_leave(int guild_id,int account_id,int char_id,int flag,const cha
 }
 
 //Update request / Lv online status of the guild members
-int intif_guild_memberinfoshort(int guild_id,int account_id,int char_id,int online,int lv,int class_)
+int intif_guild_memberinfoshort(int guild_id, int account_id, int char_id, int online, int lv, int16 class)
 {
 	if (intif->CheckForCharServer())
 		return 0;
@@ -708,7 +836,7 @@ int intif_guild_memberinfoshort(int guild_id,int account_id,int char_id,int onli
 	WFIFOL(inter_fd,10) = char_id;
 	WFIFOB(inter_fd,14) = online;
 	WFIFOW(inter_fd,15) = lv;
-	WFIFOW(inter_fd,17) = class_;
+	WFIFOW(inter_fd,17) = class;
 	WFIFOSET(inter_fd,19);
 	return 0;
 }
@@ -1363,7 +1491,7 @@ void intif_parse_GuildMemberInfoChanged(int fd) {
 		case GMI_HAIR:       g->member[idx].hair       = RFIFOW(fd,18); break;
 		case GMI_HAIR_COLOR: g->member[idx].hair_color = RFIFOW(fd,18); break;
 		case GMI_GENDER:     g->member[idx].gender     = RFIFOW(fd,18); break;
-		case GMI_CLASS:      g->member[idx].class_     = RFIFOW(fd,18); break;
+		case GMI_CLASS:      g->member[idx].class      = RFIFOW(fd,18); break;
 		case GMI_LEVEL:      g->member[idx].lv         = RFIFOW(fd,18); break;
 	}
 }
@@ -2274,6 +2402,234 @@ void intif_parse_Itembound_ack(int fd) {
 		gstor->lock = 0; //Unlock now that operation is completed
 #endif
 }
+
+/*==========================================
+* RoDEX System
+*==========================================*/
+
+/*------------------------------------------
+ * Mail List
+ *------------------------------------------*/
+
+// Rodex Inbox Request
+// char_id: char_id
+// account_id: account_id (used by account mail)
+// flag: 0 - Open/Refresh ; 1 = Next Page
+int intif_rodex_requestinbox(int char_id, int account_id, int8 flag, int8 opentype, int64 mail_id)
+{
+	if (intif->CheckForCharServer())
+		return 0;
+
+	WFIFOHEAD(inter_fd, 20);
+	WFIFOW(inter_fd, 0) = 0x3095;
+	WFIFOL(inter_fd, 2) = char_id;
+	WFIFOL(inter_fd, 6) = account_id;
+	WFIFOL(inter_fd, 10) = flag;
+	WFIFOB(inter_fd, 11) = opentype;
+	WFIFOQ(inter_fd, 12) = mail_id;
+	WFIFOSET(inter_fd, 20);
+
+	return 0;
+}
+
+void intif_parse_RequestRodexOpenInbox(int fd)
+{
+	struct map_session_data *sd;
+#if PACKETVER < 20170419
+	int8 opentype = RFIFOB(fd, 8);
+#endif
+	int8 flag = RFIFOB(fd, 9);
+	int8 is_end = RFIFOB(fd, 10);
+	int is_first = RFIFOB(fd, 11);
+	int count = RFIFOL(fd, 12);
+	int i, j;
+
+	sd = map->charid2sd(RFIFOL(fd, 4));
+
+	if (sd == NULL) // user is not online anymore
+		return;
+
+	if (is_first == false && sd->rodex.total == 0) {
+		ShowError("intif_parse_RodexInboxOpenReceived: mail list received in wrong order.\n");
+		return;
+	}
+
+	if (is_first)
+		sd->rodex.total = count;
+	else
+		sd->rodex.total += count;
+
+	if (RFIFOW(fd, 2) - 16 != count * sizeof(struct rodex_message)) {
+		ShowError("intif_parse_RodexInboxOpenReceived: data size mismatch %d != %"PRIuS"\n", RFIFOW(fd, 2) - 16, count * sizeof(struct rodex_message));
+		return;
+	}
+
+	if (flag == 0 && is_first)
+		VECTOR_CLEAR(sd->rodex.messages);
+
+	for (i = 0, j = 16; i < count; ++i, j += sizeof(struct rodex_message)) {
+		struct rodex_message msg = { 0 };
+		VECTOR_ENSURE(sd->rodex.messages, 1, 1);
+		memcpy(&msg, RFIFOP(fd, j), sizeof(struct rodex_message));
+		VECTOR_PUSH(sd->rodex.messages, msg);
+	}
+
+	if (is_end == true) {
+#if PACKETVER >= 20170419
+		clif->rodex_send_mails_all(sd->fd, sd);
+#else
+		if (flag == 0)
+			clif->rodex_send_maillist(sd->fd, sd, opentype, VECTOR_LENGTH(sd->rodex.messages) - 1);
+		else
+			clif->rodex_send_refresh(sd->fd, sd, opentype, count);
+#endif
+	}
+}
+
+/*------------------------------------------
+ * Notifications
+ *------------------------------------------*/
+int intif_rodex_hasnew(struct map_session_data *sd)
+{
+	nullpo_retr(0, sd);
+
+	if (intif->CheckForCharServer())
+		return 0;
+
+	WFIFOHEAD(inter_fd, 10);
+	WFIFOW(inter_fd, 0) = 0x3096;
+	WFIFOL(inter_fd, 2) = sd->status.char_id;
+	WFIFOL(inter_fd, 6) = sd->status.account_id;
+	WFIFOSET(inter_fd, 10);
+
+	return 0;
+}
+
+void intif_parse_RodexNotifications(int fd)
+{
+	struct map_session_data *sd;
+	bool has_messages;
+
+	sd = map->charid2sd(RFIFOL(fd, 2));
+	has_messages = RFIFOB(fd, 6);
+
+	if (sd == NULL) // user is not online anymore
+		return;
+
+	clif->rodex_icon(sd->fd, has_messages);
+}
+
+/*------------------------------------------
+ * Update Mail
+ *------------------------------------------*/
+
+/// Updates a mail
+/// flag:
+///		0 - user Read
+///		1 - user got Zeny
+///		2 - user got Items
+///		3 - delete
+int intif_rodex_updatemail(int64 mail_id, int8 flag)
+{
+	if (intif->CheckForCharServer())
+		return 0;
+
+	WFIFOHEAD(inter_fd, 11);
+	WFIFOW(inter_fd, 0) = 0x3097;
+	WFIFOQ(inter_fd, 2) = mail_id;
+	WFIFOB(inter_fd, 10) = flag;
+	WFIFOSET(inter_fd, 11);
+
+	return 0;
+}
+
+/*------------------------------------------
+ * Send Mail
+ *------------------------------------------*/
+int intif_rodex_sendmail(struct rodex_message *msg)
+{
+	if (intif->CheckForCharServer())
+		return 0;
+
+	nullpo_retr(0, msg);
+
+	WFIFOHEAD(inter_fd, 4 + sizeof(struct rodex_message));
+	WFIFOW(inter_fd, 0) = 0x3098;
+	WFIFOW(inter_fd, 2) = 4 + sizeof(struct rodex_message);
+	memcpy(WFIFOP(inter_fd, 4), msg, sizeof(struct rodex_message));
+	WFIFOSET(inter_fd, 4 + sizeof(struct rodex_message));
+
+	return 0;
+}
+
+void intif_parse_RodexSendMail(int fd)
+{
+	struct map_session_data *ssd = NULL, *rsd = NULL;
+	int sender_id = RFIFOL(fd, 2);
+	int receiver_id = RFIFOL(fd, 6);
+	int receiver_accountid = RFIFOL(fd, 10);
+
+	if (sender_id > 0)
+		ssd = map->charid2sd(sender_id);
+
+	if (receiver_id > 0)
+		rsd = map->charid2sd(receiver_id);
+	else if (receiver_accountid > 0)
+		rsd = map->id2sd(receiver_accountid);
+
+	rodex->send_mail_result(ssd, rsd, RFIFOL(fd, 14));
+}
+
+/*------------------------------------------
+ * Check Player
+ *------------------------------------------*/
+int intif_rodex_checkname(struct map_session_data *sd, const char *name)
+{
+	if (intif->CheckForCharServer())
+		return 0;
+
+	nullpo_retr(0, sd);
+	nullpo_retr(0, name);
+
+	WFIFOHEAD(inter_fd, 6 + NAME_LENGTH);
+	WFIFOW(inter_fd, 0) = 0x3099;
+	WFIFOL(inter_fd, 2) = sd->status.char_id;
+	safestrncpy(WFIFOP(inter_fd, 6), name, NAME_LENGTH);
+	WFIFOSET(inter_fd, 6 + NAME_LENGTH);
+
+	return 0;
+}
+
+void intif_parse_RodexCheckName(int fd)
+{
+	struct map_session_data *sd = NULL;
+	int reqchar_id = RFIFOL(fd, 2);
+	int target_char_id = RFIFOL(fd, 6);
+	short target_class = RFIFOW(fd, 10);
+	int target_level = RFIFOL(fd, 12);
+	char name[NAME_LENGTH];
+
+	safestrncpy(name, RFIFOP(inter_fd, 16), NAME_LENGTH);
+
+	if (reqchar_id <= 0)
+		return;
+
+	sd = map->charid2sd(reqchar_id);
+
+	if (sd == NULL) // User is not online anymore
+		return;
+
+	if (target_char_id == 0) {
+		clif->rodex_checkname_result(sd, 0, 0, 0, name);
+		return;
+	}
+
+	sd->rodex.tmp.receiver_id = target_char_id;
+	safestrncpy(sd->rodex.tmp.receiver_name, name, NAME_LENGTH);
+
+	clif->rodex_checkname_result(sd, target_char_id, target_class, target_level, name);
+}
+
 //-----------------------------------------------------------------
 // Communication from the inter server
 // Return a 0 (false) if there were any errors.
@@ -2310,8 +2666,10 @@ int intif_parse(int fd)
 		case 0x3802: intif->pWisEnd(fd); break;
 		case 0x3803: intif->pWisToGM(fd); break;
 		case 0x3804: intif->pRegisters(fd); break;
+		case 0x3805: intif->pAccountStorage(fd); break;
 		case 0x3806: intif->pChangeNameOk(fd); break;
 		case 0x3807: intif->pMessageToFD(fd); break;
+		case 0x3808: intif->pAccountStorageSaveAck(fd); break;
 		case 0x3818: intif->pLoadGuildStorage(fd); break;
 		case 0x3819: intif->pSaveGuildStorage(fd); break;
 		case 0x3820: intif->pPartyCreated(fd); break;
@@ -2382,6 +2740,12 @@ int intif_parse(int fd)
 		case 0x3891: intif->pRecvHomunculusData(fd); break;
 		case 0x3892: intif->pSaveHomunculusOk(fd); break;
 		case 0x3893: intif->pDeleteHomunculusOk(fd); break;
+
+		// RoDEX
+		case 0x3895: intif->pRequestRodexOpenInbox(fd); break;
+		case 0x3896: intif->pRodexHasNew(fd); break;
+		case 0x3897: intif->pRodexSendMail(fd); break;
+		case 0x3898: intif->pRodexCheckName(fd); break;
 	default:
 		ShowError("intif_parse : unknown packet %d %x\n",fd,RFIFOW(fd,0));
 		return 0;
@@ -2393,12 +2757,11 @@ int intif_parse(int fd)
 
 /*=====================================
 * Default Functions : intif.h
-* Generated by InterfaceMaker
 * created by Susu
 *-------------------------------------*/
 void intif_defaults(void) {
 	const int packet_len_table [INTIF_PACKET_LEN_TABLE_SIZE] = {
-		-1,-1,27,-1, -1, 0,37,-1,  0, 0, 0, 0,  0, 0,  0, 0, //0x3800-0x380f
+		-1,-1,27,-1, -1,-1,37,-1,  7, 0, 0, 0,  0, 0,  0, 0, //0x3800-0x380f
 		 0, 0, 0, 0,  0, 0, 0, 0, -1,11, 0, 0,  0, 0,  0, 0, //0x3810
 		39,-1,15,15, 14,19, 7,-1,  0, 0, 0, 0,  0, 0,  0, 0, //0x3820
 		10,-1,15, 0, 79,19, 7,-1,  0,-1,-1,-1, 14,67,186,-1, //0x3830
@@ -2407,7 +2770,7 @@ void intif_defaults(void) {
 		-1, 7, 0, 0,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0, //0x3860  Quests [Kevin] [Inkfish]
 		-1, 3, 3, 0,  0, 0, 0, 0,  0, 0, 0, 0, -1, 3,  3, 0, //0x3870  Mercenaries [Zephyrus] / Elemental [pakpil]
 		12,-1, 7, 3,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0, //0x3880
-		-1,-1, 7, 3,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0,  0, 0, //0x3890  Homunculus [albator]
+		-1,-1, 7, 3,  0,-1, 7, 15,16 + NAME_LENGTH, 0, 0, 0, 0, 0, 0, 0, //0x3890  Homunculus [albator] / RoDEX [KirieZ]
 	};
 
 	intif = &intif_s;
@@ -2425,6 +2788,8 @@ void intif_defaults(void) {
 	intif->wis_message_to_gm = intif_wis_message_to_gm;
 	intif->saveregistry = intif_saveregistry;
 	intif->request_registry = intif_request_registry;
+	intif->request_account_storage = intif_request_account_storage;
+	intif->send_account_storage = intif_send_account_storage;
 	intif->request_guild_storage = intif_request_guild_storage;
 	intif->send_guild_storage = intif_send_guild_storage;
 	intif->create_party = intif_create_party;
@@ -2487,6 +2852,12 @@ void intif_defaults(void) {
 	intif->elemental_request = intif_elemental_request;
 	intif->elemental_delete = intif_elemental_delete;
 	intif->elemental_save = intif_elemental_save;
+	// RoDEX
+	intif->rodex_requestinbox = intif_rodex_requestinbox;
+	intif->rodex_checkhasnew = intif_rodex_hasnew;
+	intif->rodex_updatemail = intif_rodex_updatemail;
+	intif->rodex_sendmail = intif_rodex_sendmail;
+	intif->rodex_checkname = intif_rodex_checkname;
 	/* @accinfo */
 	intif->request_accinfo = intif_request_accinfo;
 	/* */
@@ -2501,6 +2872,8 @@ void intif_defaults(void) {
 	intif->pRegisters = intif_parse_Registers;
 	intif->pChangeNameOk = intif_parse_ChangeNameOk;
 	intif->pMessageToFD = intif_parse_MessageToFD;
+	intif->pAccountStorage = intif_parse_account_storage;
+	intif->pAccountStorageSaveAck = intif_parse_account_storage_save_ack;
 	intif->pLoadGuildStorage = intif_parse_LoadGuildStorage;
 	intif->pSaveGuildStorage = intif_parse_SaveGuildStorage;
 	intif->pPartyCreated = intif_parse_PartyCreated;
@@ -2556,4 +2929,9 @@ void intif_defaults(void) {
 	intif->pRecvHomunculusData = intif_parse_RecvHomunculusData;
 	intif->pSaveHomunculusOk = intif_parse_SaveHomunculusOk;
 	intif->pDeleteHomunculusOk = intif_parse_DeleteHomunculusOk;
+	/* RoDEX */
+	intif->pRequestRodexOpenInbox = intif_parse_RequestRodexOpenInbox;
+	intif->pRodexHasNew = intif_parse_RodexNotifications;
+	intif->pRodexSendMail = intif_parse_RodexSendMail;
+	intif->pRodexCheckName = intif_parse_RodexCheckName;
 }

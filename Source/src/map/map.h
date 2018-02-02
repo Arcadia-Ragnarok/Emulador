@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -26,7 +24,6 @@
 #define MAP_MAP_H
 
 #include "map/atcommand.h"
-#include "common/HPExport.h"
 #include "common/core.h" // CORE_ST_LAST
 #include "common/db.h"
 #include "common/mapindex.h"
@@ -41,7 +38,6 @@ struct config_t; // common/conf.h
 struct mob_data;
 struct npc_data;
 struct channel_data;
-struct hplugin_data_store;
 
 enum E_MAPSERVER_ST {
 	MAPSERVER_ST_RUNNING = CORE_ST_LAST,
@@ -51,6 +47,7 @@ enum E_MAPSERVER_ST {
 
 #define MAX_NPC_PER_MAP 512
 #define AREA_SIZE (battle->bc->area_size)
+#define CHAT_AREA_SIZE (battle->bc->chat_area_size)
 #define DAMAGELOG_SIZE 30
 #define LOOTITEM_SIZE 10
 #define MAX_MOBSKILL 50
@@ -78,7 +75,7 @@ enum E_MAPSERVER_ST {
 //Super Novices are considered the 2-1 version of the novice! Novices are considered a first class type.
 enum {
 	//Novice And 1-1 Jobs
-	MAPID_NOVICE = 0x0,
+	MAPID_NOVICE = 0,
 	MAPID_SWORDMAN,
 	MAPID_MAGE,
 	MAPID_ARCHER,
@@ -93,117 +90,248 @@ enum {
 	MAPID_SUMMER,
 	MAPID_GANGSI,
 	MAPID_SUMMONER,
+	MAPID_1_1_MAX,
+
 	//2-1 Jobs
-	MAPID_SUPER_NOVICE = JOBL_2_1|0x0,
-	MAPID_KNIGHT,
-	MAPID_WIZARD,
-	MAPID_HUNTER,
-	MAPID_PRIEST,
-	MAPID_BLACKSMITH,
-	MAPID_ASSASSIN,
-	MAPID_STAR_GLADIATOR,
-	MAPID_REBELLION = JOBL_2_1|0x09,
-	MAPID_KAGEROUOBORO = JOBL_2_1|0x0A,
-	MAPID_DEATH_KNIGHT = JOBL_2_1|0x0E,
+	MAPID_SUPER_NOVICE   = JOBL_2_1 | MAPID_NOVICE,
+	MAPID_KNIGHT         = JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_WIZARD         = JOBL_2_1 | MAPID_MAGE,
+	MAPID_HUNTER         = JOBL_2_1 | MAPID_ARCHER,
+	MAPID_PRIEST         = JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_BLACKSMITH     = JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_ASSASSIN       = JOBL_2_1 | MAPID_THIEF,
+	MAPID_STAR_GLADIATOR = JOBL_2_1 | MAPID_TAEKWON,
+	//                   = JOBL_2_1 | MAPID_WEDDING,
+	MAPID_REBELLION      = JOBL_2_1 | MAPID_GUNSLINGER,
+	MAPID_KAGEROUOBORO   = JOBL_2_1 | MAPID_NINJA,
+	//                   = JOBL_2_1 | MAPID_XMAS,
+	//                   = JOBL_2_1 | MAPID_SUMMER,
+	MAPID_DEATH_KNIGHT   = JOBL_2_1 | MAPID_GANGSI,
+	//                   = JOBL_2_1 | MAPID_SUMMONER,
+
 	//2-2 Jobs
-	MAPID_CRUSADER = JOBL_2_2|0x1,
-	MAPID_SAGE,
-	MAPID_BARDDANCER,
-	MAPID_MONK,
-	MAPID_ALCHEMIST,
-	MAPID_ROGUE,
-	MAPID_SOUL_LINKER,
-	MAPID_DARK_COLLECTOR = JOBL_2_2|0x0E,
+	//                   = JOBL_2_1 | MAPID_NOVICE,
+	MAPID_CRUSADER       = JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_SAGE           = JOBL_2_2 | MAPID_MAGE,
+	MAPID_BARDDANCER     = JOBL_2_2 | MAPID_ARCHER,
+	MAPID_MONK           = JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_ALCHEMIST      = JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_ROGUE          = JOBL_2_2 | MAPID_THIEF,
+	MAPID_SOUL_LINKER    = JOBL_2_2 | MAPID_TAEKWON,
+	//                   = JOBL_2_2 | MAPID_WEDDING,
+	//                   = JOBL_2_2 | MAPID_GUNSLINGER,
+	//                   = JOBL_2_2 | MAPID_NINJA,
+	//                   = JOBL_2_2 | MAPID_XMAS,
+	//                   = JOBL_2_2 | MAPID_SUMMER,
+	MAPID_DARK_COLLECTOR = JOBL_2_2 | MAPID_GANGSI,
+	//                   = JOBL_2_2 | MAPID_SUMMONER,
+
 	//Trans Novice And Trans 1-1 Jobs
-	MAPID_NOVICE_HIGH = JOBL_UPPER|0x0,
-	MAPID_SWORDMAN_HIGH,
-	MAPID_MAGE_HIGH,
-	MAPID_ARCHER_HIGH,
-	MAPID_ACOLYTE_HIGH,
-	MAPID_MERCHANT_HIGH,
-	MAPID_THIEF_HIGH,
+	MAPID_NOVICE_HIGH   = JOBL_UPPER | MAPID_NOVICE,
+	MAPID_SWORDMAN_HIGH = JOBL_UPPER | MAPID_SWORDMAN,
+	MAPID_MAGE_HIGH     = JOBL_UPPER | MAPID_MAGE,
+	MAPID_ARCHER_HIGH   = JOBL_UPPER | MAPID_ARCHER,
+	MAPID_ACOLYTE_HIGH  = JOBL_UPPER | MAPID_ACOLYTE,
+	MAPID_MERCHANT_HIGH = JOBL_UPPER | MAPID_MERCHANT,
+	MAPID_THIEF_HIGH    = JOBL_UPPER | MAPID_THIEF,
+	//                  = JOBL_UPPER | MAPID_TAEKWON,
+	//                  = JOBL_UPPER | MAPID_WEDDING,
+	//                  = JOBL_UPPER | MAPID_GUNSLINGER,
+	//                  = JOBL_UPPER | MAPID_NINJA,
+	//                  = JOBL_UPPER | MAPID_XMAS,
+	//                  = JOBL_UPPER | MAPID_SUMMER,
+	//                  = JOBL_UPPER | MAPID_GANGSI,
+	//                  = JOBL_UPPER | MAPID_SUMMONER,
+
 	//Trans 2-1 Jobs
-	MAPID_LORD_KNIGHT = JOBL_UPPER|JOBL_2_1|0x1,
-	MAPID_HIGH_WIZARD,
-	MAPID_SNIPER,
-	MAPID_HIGH_PRIEST,
-	MAPID_WHITESMITH,
-	MAPID_ASSASSIN_CROSS,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_NOVICE,
+	MAPID_LORD_KNIGHT    = JOBL_UPPER | JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_HIGH_WIZARD    = JOBL_UPPER | JOBL_2_1 | MAPID_MAGE,
+	MAPID_SNIPER         = JOBL_UPPER | JOBL_2_1 | MAPID_ARCHER,
+	MAPID_HIGH_PRIEST    = JOBL_UPPER | JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_WHITESMITH     = JOBL_UPPER | JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_ASSASSIN_CROSS = JOBL_UPPER | JOBL_2_1 | MAPID_THIEF,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_TAEKWON,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_WEDDING,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_GUNSLINGER,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_NINJA,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_XMAS,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_SUMMER,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_GANGSI,
+	//                   = JOBL_UPPER | JOBL_2_1 | MAPID_SUMMONER,
+
 	//Trans 2-2 Jobs
-	MAPID_PALADIN = JOBL_UPPER|JOBL_2_2|0x1,
-	MAPID_PROFESSOR,
-	MAPID_CLOWNGYPSY,
-	MAPID_CHAMPION,
-	MAPID_CREATOR,
-	MAPID_STALKER,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_NOVICE,
+	MAPID_PALADIN    = JOBL_UPPER | JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_PROFESSOR  = JOBL_UPPER | JOBL_2_2 | MAPID_MAGE,
+	MAPID_CLOWNGYPSY = JOBL_UPPER | JOBL_2_2 | MAPID_ARCHER,
+	MAPID_CHAMPION   = JOBL_UPPER | JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_CREATOR    = JOBL_UPPER | JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_STALKER    = JOBL_UPPER | JOBL_2_2 | MAPID_THIEF,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_TAEKWON,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_WEDDING,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_GUNSLINGER,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_NINJA,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_XMAS,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_SUMMER,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_GANGSI,
+	//               = JOBL_UPPER | JOBL_2_2 | MAPID_SUMMONER,
+
 	//Baby Novice And Baby 1-1 Jobs
-	MAPID_BABY = JOBL_BABY|0x0,
-	MAPID_BABY_SWORDMAN,
-	MAPID_BABY_MAGE,
-	MAPID_BABY_ARCHER,
-	MAPID_BABY_ACOLYTE,
-	MAPID_BABY_MERCHANT,
-	MAPID_BABY_THIEF,
+	MAPID_BABY          = JOBL_BABY | MAPID_NOVICE,
+	MAPID_BABY_SWORDMAN = JOBL_BABY | MAPID_SWORDMAN,
+	MAPID_BABY_MAGE     = JOBL_BABY | MAPID_MAGE,
+	MAPID_BABY_ARCHER   = JOBL_BABY | MAPID_ARCHER,
+	MAPID_BABY_ACOLYTE  = JOBL_BABY | MAPID_ACOLYTE,
+	MAPID_BABY_MERCHANT = JOBL_BABY | MAPID_MERCHANT,
+	MAPID_BABY_THIEF    = JOBL_BABY | MAPID_THIEF,
+	//                  = JOBL_BABY | MAPID_TAEKWON,
+	//                  = JOBL_BABY | MAPID_WEDDING,
+	//                  = JOBL_BABY | MAPID_GUNSLINGER,
+	//                  = JOBL_BABY | MAPID_NINJA,
+	//                  = JOBL_BABY | MAPID_XMAS,
+	//                  = JOBL_BABY | MAPID_SUMMER,
+	//                  = JOBL_BABY | MAPID_GANGSI,
+	//                  = JOBL_BABY | MAPID_SUMMONER,
+
 	//Baby 2-1 Jobs
-	MAPID_SUPER_BABY = JOBL_BABY|JOBL_2_1|0x0,
-	MAPID_BABY_KNIGHT,
-	MAPID_BABY_WIZARD,
-	MAPID_BABY_HUNTER,
-	MAPID_BABY_PRIEST,
-	MAPID_BABY_BLACKSMITH,
-	MAPID_BABY_ASSASSIN,
+	MAPID_SUPER_BABY      = JOBL_BABY | JOBL_2_1 | MAPID_NOVICE,
+	MAPID_BABY_KNIGHT     = JOBL_BABY | JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_BABY_WIZARD     = JOBL_BABY | JOBL_2_1 | MAPID_MAGE,
+	MAPID_BABY_HUNTER     = JOBL_BABY | JOBL_2_1 | MAPID_ARCHER,
+	MAPID_BABY_PRIEST     = JOBL_BABY | JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_BABY_BLACKSMITH = JOBL_BABY | JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_BABY_ASSASSIN   = JOBL_BABY | JOBL_2_1 | MAPID_THIEF,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_TAEKWON,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_WEDDING,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_GUNSLINGER,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_NINJA,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_XMAS,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_SUMMER,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_GANGSI,
+	//                    = JOBL_BABY | JOBL_2_1 | MAPID_SUMMONER,
+
 	//Baby 2-2 Jobs
-	MAPID_BABY_CRUSADER = JOBL_BABY|JOBL_2_2|0x1,
-	MAPID_BABY_SAGE,
-	MAPID_BABY_BARDDANCER,
-	MAPID_BABY_MONK,
-	MAPID_BABY_ALCHEMIST,
-	MAPID_BABY_ROGUE,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_NOVICE,
+	MAPID_BABY_CRUSADER   = JOBL_BABY | JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_BABY_SAGE       = JOBL_BABY | JOBL_2_2 | MAPID_MAGE,
+	MAPID_BABY_BARDDANCER = JOBL_BABY | JOBL_2_2 | MAPID_ARCHER,
+	MAPID_BABY_MONK       = JOBL_BABY | JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_BABY_ALCHEMIST  = JOBL_BABY | JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_BABY_ROGUE      = JOBL_BABY | JOBL_2_2 | MAPID_THIEF,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_TAEKWON,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_WEDDING,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_GUNSLINGER,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_NINJA,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_XMAS,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_SUMMER,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_GANGSI,
+	//                    = JOBL_BABY | JOBL_2_2 | MAPID_SUMMONER,
+
 	//3-1 Jobs
-	MAPID_SUPER_NOVICE_E = JOBL_THIRD|JOBL_2_1|0x0,
-	MAPID_RUNE_KNIGHT,
-	MAPID_WARLOCK,
-	MAPID_RANGER,
-	MAPID_ARCH_BISHOP,
-	MAPID_MECHANIC,
-	MAPID_GUILLOTINE_CROSS,
+	MAPID_SUPER_NOVICE_E   = JOBL_THIRD | JOBL_2_1 | MAPID_NOVICE,
+	MAPID_RUNE_KNIGHT      = JOBL_THIRD | JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_WARLOCK          = JOBL_THIRD | JOBL_2_1 | MAPID_MAGE,
+	MAPID_RANGER           = JOBL_THIRD | JOBL_2_1 | MAPID_ARCHER,
+	MAPID_ARCH_BISHOP      = JOBL_THIRD | JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_MECHANIC         = JOBL_THIRD | JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_GUILLOTINE_CROSS = JOBL_THIRD | JOBL_2_1 | MAPID_THIEF,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_TAEKWON,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_WEDDING,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_GUNSLINGER,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_NINJA,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_XMAS,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_SUMMER,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_GANGSI,
+	//                     = JOBL_THIRD | JOBL_2_1 | MAPID_SUMMONER,
+
 	//3-2 Jobs
-	MAPID_ROYAL_GUARD = JOBL_THIRD|JOBL_2_2|0x1,
-	MAPID_SORCERER,
-	MAPID_MINSTRELWANDERER,
-	MAPID_SURA,
-	MAPID_GENETIC,
-	MAPID_SHADOW_CHASER,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_NOVICE,
+	MAPID_ROYAL_GUARD      = JOBL_THIRD | JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_SORCERER         = JOBL_THIRD | JOBL_2_2 | MAPID_MAGE,
+	MAPID_MINSTRELWANDERER = JOBL_THIRD | JOBL_2_2 | MAPID_ARCHER,
+	MAPID_SURA             = JOBL_THIRD | JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_GENETIC          = JOBL_THIRD | JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_SHADOW_CHASER    = JOBL_THIRD | JOBL_2_2 | MAPID_THIEF,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_TAEKWON,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_WEDDING,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_GUNSLINGER,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_NINJA,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_XMAS,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_SUMMER,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_GANGSI,
+	//                     = JOBL_THIRD | JOBL_2_2 | MAPID_SUMMONER,
+
 	//Trans 3-1 Jobs
-	MAPID_RUNE_KNIGHT_T = JOBL_THIRD|JOBL_UPPER|JOBL_2_1|0x1,
-	MAPID_WARLOCK_T,
-	MAPID_RANGER_T,
-	MAPID_ARCH_BISHOP_T,
-	MAPID_MECHANIC_T,
-	MAPID_GUILLOTINE_CROSS_T,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_NOVICE,
+	MAPID_RUNE_KNIGHT_T      = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_WARLOCK_T          = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_MAGE,
+	MAPID_RANGER_T           = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_ARCHER,
+	MAPID_ARCH_BISHOP_T      = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_MECHANIC_T         = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_GUILLOTINE_CROSS_T = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_THIEF,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_TAEKWON,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_WEDDING,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_GUNSLINGER,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_NINJA,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_XMAS,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_SUMMER,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_GANGSI,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_1 | MAPID_SUMMONER,
+
 	//Trans 3-2 Jobs
-	MAPID_ROYAL_GUARD_T = JOBL_THIRD|JOBL_UPPER|JOBL_2_2|0x1,
-	MAPID_SORCERER_T,
-	MAPID_MINSTRELWANDERER_T,
-	MAPID_SURA_T,
-	MAPID_GENETIC_T,
-	MAPID_SHADOW_CHASER_T,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_NOVICE,
+	MAPID_ROYAL_GUARD_T      = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_SORCERER_T         = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_MAGE,
+	MAPID_MINSTRELWANDERER_T = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_ARCHER,
+	MAPID_SURA_T             = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_GENETIC_T          = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_SHADOW_CHASER_T    = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_THIEF,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_TAEKWON,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_WEDDING,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_GUNSLINGER,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_NINJA,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_XMAS,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_SUMMER,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_GANGSI,
+	//                       = JOBL_THIRD | JOBL_UPPER | JOBL_2_2 | MAPID_SUMMONER,
+
 	//Baby 3-1 Jobs
-	MAPID_SUPER_BABY_E = JOBL_THIRD|JOBL_BABY|JOBL_2_1|0x0,
-	MAPID_BABY_RUNE,
-	MAPID_BABY_WARLOCK,
-	MAPID_BABY_RANGER,
-	MAPID_BABY_BISHOP,
-	MAPID_BABY_MECHANIC,
-	MAPID_BABY_CROSS,
+	MAPID_SUPER_BABY_E  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_NOVICE,
+	MAPID_BABY_RUNE     = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_SWORDMAN,
+	MAPID_BABY_WARLOCK  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_MAGE,
+	MAPID_BABY_RANGER   = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_ARCHER,
+	MAPID_BABY_BISHOP   = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_ACOLYTE,
+	MAPID_BABY_MECHANIC = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_MERCHANT,
+	MAPID_BABY_CROSS    = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_THIEF,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_TAEKWON,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_WEDDING,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_GUNSLINGER,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_NINJA,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_XMAS,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_SUMMER,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_GANGSI,
+	//                  = JOBL_THIRD | JOBL_BABY | JOBL_2_1 | MAPID_SUMMONER,
+
 	//Baby 3-2 Jobs
-	MAPID_BABY_GUARD = JOBL_THIRD|JOBL_BABY|JOBL_2_2|0x1,
-	MAPID_BABY_SORCERER,
-	MAPID_BABY_MINSTRELWANDERER,
-	MAPID_BABY_SURA,
-	MAPID_BABY_GENETIC,
-	MAPID_BABY_CHASER,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_NOVICE,
+	MAPID_BABY_GUARD            = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_SWORDMAN,
+	MAPID_BABY_SORCERER         = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_MAGE,
+	MAPID_BABY_MINSTRELWANDERER = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_ARCHER,
+	MAPID_BABY_SURA             = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_ACOLYTE,
+	MAPID_BABY_GENETIC          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_MERCHANT,
+	MAPID_BABY_CHASER           = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_THIEF,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_TAEKWON,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_WEDDING,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_GUNSLINGER,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_NINJA,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_XMAS,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_SUMMER,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_GANGSI,
+	//                          = JOBL_THIRD | JOBL_BABY | JOBL_2_2 | MAPID_SUMMONER,
 };
+
+STATIC_ASSERT(((MAPID_1_1_MAX - 1) | MAPID_BASEMASK) == MAPID_BASEMASK, "First class map IDs do not fit into MAPID_BASEMASK");
 
 // Max size for inputs to Graffiti, Talkie Box and Vending text prompts
 #define MESSAGE_SIZE (79 + 1)
@@ -391,7 +519,7 @@ struct spawn_data {
 		//0: Normal mob | 1: Standard summon, attacks mobs
 		//2: Alchemist Marine Sphere | 3: Alchemist Summon Flora | 4: Summon Zanzou
 		unsigned int dynamic : 1; ///< Whether this data is indexed by a map's dynamic mob list
-		unsigned int boss : 1;    ///< 0: Non-boss monster | 1: Boss monster
+		uint8 boss;    ///< 0: Non-boss monster | 1: Boss monster | 2: MVP
 	} state;
 	char name[NAME_LENGTH], eventname[EVENT_NAME_LENGTH]; //Name/event
 };
@@ -403,6 +531,7 @@ struct flooritem_data {
 	int first_get_charid,second_get_charid,third_get_charid;
 	int64 first_get_tick,second_get_tick,third_get_tick;
 	struct item item_data;
+	bool showdropeffect;
 };
 
 enum status_point_types { //we better clean up this enum and change it name [Hemagx]
@@ -425,6 +554,7 @@ enum status_point_types { //we better clean up this enum and change it name [Hem
 	SP_MOD_EXP=125,
 	SP_MOD_DROP=126,
 	SP_MOD_DEATH=127,
+	SP_BANKVAULT=128,
 
 	// Mercenaries
 	SP_MERCFLEE=165, SP_MERCKILLS=189, SP_MERCFAITH=190,
@@ -723,6 +853,7 @@ struct map_data {
 		unsigned noknockback : 1;
 		unsigned notomb : 1;
 		unsigned nocashshop : 1;
+		unsigned noautoloot : 1;
 		uint32 noviewid; ///< noviewid (bitmask - @see enum equip_pos)
 	} flag;
 	struct point save;
@@ -747,7 +878,7 @@ struct map_data {
 	struct mapflag_skill_adjust **skills;
 	unsigned short skill_count;
 
-	/* Nocast db overhaul */
+	/* nocast db overhaul */
 	struct map_zone_data *zone;
 	char **zone_mf;/* used to store this map's zone mapflags that should be re-applied once zone is removed */
 	unsigned short zone_mf_count;
@@ -783,7 +914,6 @@ struct map_data {
 
 	/* speeds up clif_updatestatus processing by causing hpmeter to run only when someone with the permission can view it */
 	unsigned short hpmeter_visible;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 /// Stores information about a remote map (for multi-mapserver setups).
@@ -947,7 +1077,6 @@ struct map_cache_map_info {
 
 /*=====================================
 * Interface : map.h
-* Generated by InterfaceMaker
 * created by Susu
 *-------------------------------------*/
 struct map_interface {
@@ -1031,8 +1160,7 @@ END_ZEROED_BLOCK;
 	/* */
 	struct map_session_data *cpsd;
 	struct map_data *list;
-	/* */
-	struct eri *iterator_ers;
+		struct eri *iterator_ers;
 	char *cache_buffer; // Has the uncompressed gat data of all maps, so just one allocation has to be made
 	/* */
 	struct eri *flooritem_ers;
@@ -1078,7 +1206,7 @@ END_ZEROED_BLOCK;
 	int (*clearflooritem_timer) (int tid, int64 tick, int id, intptr_t data);
 	int (*removemobs_timer) (int tid, int64 tick, int id, intptr_t data);
 	void (*clearflooritem) (struct block_list* bl);
-	int (*addflooritem) (const struct block_list *bl, struct item *item_data, int amount, int16 m, int16 x, int16 y, int first_charid, int second_charid, int third_charid, int flags);
+	int (*addflooritem) (const struct block_list *bl, struct item *item_data, int amount, int16 m, int16 x, int16 y, int first_charid, int second_charid, int third_charid, int flags, bool showdropeffect);
 	// player to map session
 	void (*addnickdb) (int charid, const char* nick);
 	void (*delnickdb) (int charid, const char* nick);
@@ -1216,11 +1344,11 @@ END_ZEROED_BLOCK;
 	void (*zone_clear_single) (struct map_zone_data *zone);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void map_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
-HPShared struct mapit_interface *mapit;
-HPShared struct map_interface *map;
+struct mapit_interface *mapit;
+struct map_interface *map;
 
 #endif /* MAP_MAP_H */

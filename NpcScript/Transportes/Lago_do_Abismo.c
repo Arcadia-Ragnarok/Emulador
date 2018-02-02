@@ -35,7 +35,7 @@ hu_fild05,168,304,0	script	Coluna#abyss1	HIDDEN_NPC,{
 			mes "^3355FF chão em baixo de seus pés começa violentamente a tremer.^000000";
 			specialeffect (EF_BOWLINGBASH);
 			donpcevent ("AbyssWarp::OnWarp");
-			specialeffect2 (EF_PORTAL);
+			specialeffect(EF_PORTAL, AREA, playerattached());
 			delitem (Dragon_Canine,1);
 			delitem (Dragon_Scale,1);
 			delitem (Dragon_Train,1);
@@ -75,7 +75,7 @@ hu_fild05,171,211,0	script	Coluna#abyss2	HIDDEN_NPC,1,1,{
 		mes "^3355FFA luz vinda do encaixe dica mais luminosa ainda e você sente o chão em baixo de seus pés começar a afundar lentamente...^000000";
 		next;
 		specialeffect (EF_BOWLINGBASH);
-		specialeffect2 (EF_PORTAL);
+		specialeffect(EF_PORTAL, AREA, playerattached());
 		close2;
 		warp (strnpcinfo(NPC_MAP),169,305);
 		end;
@@ -90,7 +90,7 @@ hu_fild05,171,211,0	script	Coluna#abyss2	HIDDEN_NPC,1,1,{
 		mes "O chão começa a termer sendo difícil ficar de pé...^000000";
 		next;
 		specialeffect (EF_BOWLINGBASH);
-		specialeffect2 (EF_PORTAL);
+		specialeffect(EF_PORTAL, AREA, playerattached());
 		close2;
 		warp (strnpcinfo(NPC_MAP),157,284);
 		end;

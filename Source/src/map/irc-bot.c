@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -24,9 +22,9 @@
 
 
 /**
- * Base Author: shennetsind
+ * Base Author: shennetsind @ http://herc.ws
  */
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "irc-bot.h"
 
@@ -78,7 +76,7 @@ int irc_identify_timer(int tid, int64 tick, int id, intptr_t data) {
 	if( !ircbot->isOn )
 		return 0;
 
-	sprintf(send_string, "USER%d 8 * : IRC Bridge",rnd()%777);
+	sprintf(send_string, "USER arcadia%d 8 * : arcadia IRC Bridge",rnd()%777);
 	ircbot->send(send_string, true);
 	sprintf(send_string, "NICK %s", channel->config->irc_nick);
 	ircbot->send(send_string, true);
@@ -331,7 +329,7 @@ void irc_privmsg_ctcp(int fd, char *cmd, char *source, char *target, char *msg) 
 		snprintf(send_string, IRC_MESSAGE_LENGTH, "NOTICE %s :\001TIME %s\001",source_nick,temp);
 		ircbot->send(send_string, false);
 	} else if( strcmpi(cmd,"VERSION") == 0 ) {
-		snprintf(send_string, IRC_MESSAGE_LENGTH, "NOTICE %s :\001VERSION IRC Bridge\001",source_nick);
+		snprintf(send_string, IRC_MESSAGE_LENGTH, "NOTICE %s :\001VERSION Herc.ws IRC Bridge\001",source_nick);
 		ircbot->send(send_string, false);
 #ifdef IRCBOT_DEBUG
 	} else {
@@ -502,7 +500,7 @@ void irc_bot_final(void) {
 	if (!channel->config->irc)
 		return;
 	if( ircbot->isOn ) {
-		ircbot->send("QUIT :Is shutting down", true);
+		ircbot->send("QUIT :arcadia is shutting down", true);
 		sockt->close(ircbot->fd);
 	}
 

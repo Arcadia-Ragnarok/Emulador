@@ -8,23 +8,26 @@
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
 |----------------------------------------------------------------------|
-| - Descrição: Configuação para o Script                               |
+| - Descrição: Configuação para Scripts                                |
 \*--------------------------------------------------------------------*/
 
 script_configuration: {
 	// Especifica se um erro deve ou não ser emitido quando houver uma
-	// incompatibilidade entre o número de argumentos fornecidos
-	// e os argumentos esperados
+	//incompatibilidade entre o número de argumentos fornecidos e os
+	//argumentos esperados
 	// Padrão:  true
 	warn_func_mismatch_paramnum: true
 
-	// Especifica se os argumentos de cada função interna são verificados ou não para o tipo correto.
-	// Quando uma função recebe um argumento diferente do que espera,
-	// um aviso é lançado antes que a função seja executada de qualquer maneira.
+	// Especifica se os argumentos de cada função interna são verificados
+	//ou não para o tipo correto.
+	// Quando uma função recebe um argumento diferente do que espera, um
+	//aviso é lançado antes que a função seja executada de qualquer
+	//maneira.
 	// Padrão:  true
 	warn_func_mismatch_argtypes: true
 
-	// Número máximo de operações antes de considerar um conjunto de operações muito intensas
+	// Número máximo de operações antes de considerar um conjunto de
+	//operações muito intensas
 	// Padrão é 655360
 	check_cmdcount: 655360
 

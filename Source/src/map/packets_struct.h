@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -78,8 +76,10 @@ enum packet_headers {
 	additemType = 0x2d4,
 #elif PACKETVER < 20150226
 	additemType = 0x990,
-#else
+#elif PACKETVER < 20160921
 	additemType = 0xa0c,
+#else
+	additemType = 0xa37,
 #endif
 #if PACKETVER < 4
 	idle_unitType = 0x78,
@@ -143,8 +143,11 @@ enum packet_headers {
 	authokType = 0x73,
 #elif PACKETVER < 20141022
 	authokType = 0x2eb,
-#else
+// Some clients smaller than 20160330 cant be tested [4144]
+#elif PACKETVER < 20160330
 	authokType = 0xa18,
+#else
+	authokType = 0x2eb,
 #endif
 	script_clearType = 0x8d6,
 	package_item_announceType = 0x7fd,
@@ -188,7 +191,9 @@ enum packet_headers {
 	skill_entryType = 0x9ca,
 #endif
 	graffiti_entryType = 0x1c9,
-#if PACKETVER > 20130000 /* not sure date */
+#ifdef PACKETVER_ZERO
+	dropflooritemType = 0xadd,
+#elif PACKETVER > 20130000 /* not sure date */
 	dropflooritemType = 0x84b,
 #else
 	dropflooritemType = 0x9e,
@@ -288,7 +293,7 @@ enum packet_headers {
 	maptypeproperty2Type = 0x99b,
 	npcmarketresultackType = 0x9d7,
 	npcmarketopenType = 0x9d5,
-#if PACKETVER >= 20131223
+#if PACKETVER >= 20131223  // version probably can be 20131030 [4144]
 	wisendType = 0x9df,
 #else
 	wisendType = 0x98,
@@ -304,6 +309,46 @@ enum packet_headers {
 #else // PACKETVER < 20141022
 	questListType = 0x2b1, ///< ZC_ALL_QUEST_LIST
 #endif // PACKETVER >= 20141022
+	/* Rodex */
+	rodexicon = 0x09E7,
+	rodexread = 0x09EB,
+	rodexwriteresult = 0x09ED,
+	rodexnextpage = 0x09F0,
+	rodexgetzeny = 0x09F2,
+	rodexgetitem = 0x09F4,
+	rodexdelete = 0x09F6,
+	rodexadditem = 0x0A05,
+	rodexremoveitem = 0x0A07,
+	rodexopenwrite = 0x0A12,
+#if PACKETVER < 20160601
+	rodexmailList = 0x09F0,
+#elif PACKETVER < 20170419
+	rodexmailList = 0x0A7D,
+#else // PACKETVER >= 20170419
+	rodexmailList = 0x0Ac2,
+#endif
+#if PACKETVER < 20160316
+	rodexcheckplayer = 0x0A14,
+#else // PACKETVER >= 20160316
+	rodexcheckplayer = 0x0A51,
+#endif
+#if PACKETVER >= 20151223
+	skillscale = 0xA41,
+#endif
+#if PACKETVER >= 20130821
+	progressbarunit = 0x09D1,
+#endif
+#if PACKETVER >= 20171207
+	partymemberinfo = 0x0ae4,
+	partyinfo = 0x0ae5,
+#elif PACKETVER >= 20170502
+// [4144] probably 0xa43 packet can works on older clients because in client was added in 2015-10-07
+	partymemberinfo = 0x0a43,
+	partyinfo = 0x0a44,
+#else
+	partymemberinfo = 0x01e9,
+	partyinfo = 0x00fb,
+#endif
 };
 
 #if !defined(sun) && (!defined(__NETBSD__) || __NetBSD_Version__ >= 600000000) // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute
@@ -345,7 +390,7 @@ struct NORMALITEM_INFO {
 #endif
 } __attribute__((packed));
 
-struct RndOptions {
+struct ItemOptions {
 	int16 index;
 	int16 value;
 	uint8 param;
@@ -381,7 +426,7 @@ struct EQUIPITEM_INFO {
 #endif
 #if PACKETVER >= 20150226
 	uint8 option_count;
-	struct RndOptions option_data[5];
+	struct ItemOptions option_data[MAX_ITEM_OPTIONS];
 #endif
 #if PACKETVER >= 20120925
 	struct {
@@ -402,7 +447,8 @@ struct packet_authok {
 #if PACKETVER >= 20080102
 	int16 font;
 #endif
-#if PACKETVER >= 20141022
+// Some clients smaller than 20160330 cant be tested [4144]
+#if PACKETVER >= 20141022 && PACKETVER < 20160330
 	uint8 sex;
 #endif
 } __attribute__((packed));
@@ -444,7 +490,11 @@ struct packet_additem {
 	uint16 bindOnEquipType;
 #endif
 #if PACKETVER >= 20150226
-	struct RndOptions option_data[5];
+	struct ItemOptions option_data[MAX_ITEM_OPTIONS];
+#endif
+#if PACKETVER >= 20160921
+	uint8 favorite;
+	uint16 look;
 #endif
 } __attribute__((packed));
 
@@ -461,6 +511,10 @@ struct packet_dropflooritem {
 	uint8 subX;
 	uint8 subY;
 	int16 count;
+#ifdef PACKETVER_ZERO
+	int8 showdropeffect;
+	int16 dropeffectmode;
+#endif
 } __attribute__((packed));
 struct packet_idle_unit2 {
 #if PACKETVER < 20091103
@@ -591,6 +645,9 @@ struct packet_spawn_unit {
 #endif
 #if PACKETVER >= 20150513
 	int16 body;
+#endif
+/* Might be earlier, this is when the named item bug began */
+#if PACKETVER >= 20131223
 	char name[NAME_LENGTH];
 #endif
 } __attribute__((packed));
@@ -600,7 +657,7 @@ struct packet_unit_walking {
 #if PACKETVER >= 20091103
 	int16 PacketLength;
 #endif
-#if PACKETVER > 20071106
+#if PACKETVER >= 20071106
 	uint8 objecttype;
 #endif
 #if PACKETVER >= 20131223
@@ -659,6 +716,9 @@ struct packet_unit_walking {
 #endif
 #if PACKETVER >= 20150513
 	int16 body;
+#endif
+/* Might be earlier, this is when the named item bug began */
+#if PACKETVER >= 20131223
 	char name[NAME_LENGTH];
 #endif
 } __attribute__((packed));
@@ -725,6 +785,9 @@ struct packet_idle_unit {
 #endif
 #if PACKETVER >= 20150513
 	int16 body;
+#endif
+/* Might be earlier, this is when the named item bug began */
+#if PACKETVER >= 20131223
 	char name[NAME_LENGTH];
 #endif
 } __attribute__((packed));
@@ -1228,6 +1291,275 @@ struct packet_whisper_message {
 	int16 packet_len;
 	char name[NAME_LENGTH];
 	char message[];
+} __attribute__((packed));
+
+/* RoDEX */
+struct PACKET_CZ_ADD_ITEM_TO_MAIL {
+	int16 PacketType;
+	int16 index;
+	int16 count;
+} __attribute__((packed));
+
+struct PACKET_ZC_ADD_ITEM_TO_MAIL {
+	int16 PacketType;
+	int8 result;
+	int16 index;
+	int16 count;
+	uint16 ITID;
+	int8 type;
+	int8 IsIdentified;
+	int8 IsDamaged;
+	int8 refiningLevel;
+	struct EQUIPSLOTINFO slot;
+	struct ItemOptions optionData[MAX_ITEM_OPTIONS];
+	int16 weight;
+	int8 unknow[5];
+} __attribute__((packed));
+
+struct mail_item {
+	int16 count;
+	uint16 ITID;
+	int8 IsIdentified;
+	int8 IsDamaged;
+	int8 refiningLevel;
+	struct EQUIPSLOTINFO slot;
+	int8 unknow1[4];
+	int8 type;
+	int8 unknown[4];
+	struct ItemOptions optionData[MAX_ITEM_OPTIONS];
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_OPEN_WRITE_MAIL {
+	int16 PacketType;
+	char receiveName[NAME_LENGTH];
+} __attribute__((packed));
+
+struct PACKET_ZC_ACK_OPEN_WRITE_MAIL {
+	int16 PacketType;
+	char receiveName[NAME_LENGTH];
+	int8 result;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_REMOVE_ITEM_MAIL {
+	int16 PacketType;
+	int16 index;
+	uint16 cnt;
+} __attribute__((packed));
+
+struct PACKET_ZC_ACK_REMOVE_ITEM_MAIL {
+	int16 PacketType;
+	int8 result;
+	int16 index;
+	uint16 cnt;
+	int16 weight;
+} __attribute__((packed));
+
+struct PACKET_CZ_SEND_MAIL {
+	int16 PacketType;
+	int16 PacketLength;
+	char receiveName[24];
+	char senderName[24];
+	int64 zeny;
+	int16 Titlelength;
+	int16 TextcontentsLength;
+#if PACKETVER > 20160600
+	int32 receiver_char_id;
+#endif // PACKETVER > 20160600
+	char string[];
+} __attribute__((packed));
+
+struct PACKET_ZC_WRITE_MAIL_RESULT {
+	int16 PacketType;
+	int8 result;
+} __attribute__((packed));
+
+struct PACKET_CZ_CHECKNAME {
+	int16 PacketType;
+	char Name[24];
+} __attribute__((packed));
+
+struct PACKET_ZC_CHECKNAME {
+	int16 PacketType;
+	int32 CharId;
+	int16 Class;
+	int16 BaseLevel;
+#if PACKETVER >= 20160316
+	char Name[24];
+#endif
+} __attribute__((packed));
+
+struct PACKET_ZC_NOTIFY_UNREADMAIL {
+	int16 PacketType;
+	char result;
+} __attribute__((packed));
+
+struct maillistinfo {
+#if PACKETVER >= 20170419
+	uint8 openType;
+#endif
+	int64 MailID;
+	int8 Isread;
+	uint8 type;
+	char SenderName[24];
+#if PACKETVER < 20170419
+	int32 regDateTime;
+#endif
+	int32 expireDateTime;
+	int16 Titlelength;
+	char title[];
+} __attribute__((packed));
+
+struct PACKET_ZC_MAIL_LIST {
+	int16 PacketType;
+	int16 PacketLength;
+#if PACKETVER < 20170419
+	int8 opentype;
+	int8 cnt;
+#endif
+	int8 IsEnd;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_NEXT_MAIL_LIST {
+	int16 PacketType;
+	int8 opentype;
+	int64 Lower_MailID;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_OPEN_MAIL {
+	int16 PacketType;
+#if PACKETVER >= 20170419
+	int64 Upper_MailID;
+	int8 unknown[16];
+#else
+	int8 opentype;
+	int64 Upper_MailID;
+#endif
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_READ_MAIL {
+	int16 PacketType;
+	int8 opentype;
+	int64 MailID;
+} __attribute__((packed));
+
+struct PACKET_ZC_READ_MAIL {
+	int16 PacketType;
+	int16 PacketLength;
+	int8 opentype;
+	int64 MailID;
+	int16 TextcontentsLength;
+	int64 zeny;
+	int8 ItemCnt;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_DELETE_MAIL {
+	int16 PacketType;
+	int8 opentype;
+	int64 MailID;
+} __attribute__((packed));
+
+struct PACKET_ZC_ACK_DELETE_MAIL {
+	int16 PacketType;
+	int8 opentype;
+	int64 MailID;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_REFRESH_MAIL_LIST {
+	int16 PacketType;
+#if PACKETVER >= 20170419
+	int64 Upper_MailID;
+	int8 unknown[16];
+#else
+	int8 opentype;
+	int64 Upper_MailID;
+#endif
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_ZENY_FROM_MAIL {
+	int16 PacketType;
+	int64 MailID;
+	int8 opentype;
+} __attribute__((packed));
+
+struct PACKET_ZC_ACK_ZENY_FROM_MAIL {
+	int16 PacketType;
+	int64 MailID;
+	int8 opentype;
+	int8 result;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_ITEM_FROM_MAIL {
+	int16 PacketType;
+	int64 MailID;
+	int8 opentype;
+} __attribute__((packed));
+
+struct PACKET_ZC_ACK_ITEM_FROM_MAIL {
+	int16 PacketType;
+	int64 MailID;
+	int8 opentype;
+	int8 result;
+} __attribute__((packed));
+
+struct PACKET_ZC_SKILL_SCALE {
+	int16 PacketType;
+	uint32 AID;
+	int16 skill_id;
+	int16 skill_lv;
+	int16 x;
+	int16 y;
+	uint32 casttime;
+} __attribute__((packed));
+
+struct ZC_PROGRESS_ACTOR {
+	int16 PacketType;
+	int32 GID;
+	int32 color;
+	uint32 time;
+} __attribute__((packed));
+
+struct PACKET_ZC_ADD_MEMBER_TO_GROUP {
+	int16 packetType;
+	uint32 AID;
+#if PACKETVER >= 20171207
+	uint32 GID;
+#endif
+	uint32 leader;
+// [4144] probably 0xa43 packet can works on older clients because in client was added in 2015-10-07
+#if PACKETVER >= 20170502
+	int16 class;
+	int16 baseLevel;
+#endif
+	int16 x;
+	int16 y;
+	uint8 offline;
+	char partyName[NAME_LENGTH];
+	char playerName[NAME_LENGTH];
+	char mapName[MAP_NAME_LENGTH_EXT];
+	int8 sharePickup;
+	int8 shareLoot;
+} __attribute__((packed));
+
+struct PACKET_ZC_GROUP_LIST_SUB {
+	uint32 AID;
+#if PACKETVER >= 20171207
+	uint32 GID;
+#endif
+	char playerName[NAME_LENGTH];
+	char mapName[MAP_NAME_LENGTH_EXT];
+	uint8 leader;
+	uint8 offline;
+#if PACKETVER >= 20170502
+	int16 class;
+	int16 baseLevel;
+#endif
+} __attribute__((packed));
+
+struct PACKET_ZC_GROUP_LIST {
+	int16 packetType;
+	int16 packetLen;
+	char partyName[NAME_LENGTH];
+	struct PACKET_ZC_GROUP_LIST_SUB members[];
 } __attribute__((packed));
 
 #if !defined(sun) && (!defined(__NETBSD__) || __NetBSD_Version__ >= 600000000) // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute

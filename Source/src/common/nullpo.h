@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -27,15 +25,10 @@
 
 #include "common/HPExport.h"
 
-// enabled by default on debug builds
-#if defined(DEBUG) && !defined(NULLPO_CHECK)
+// if need disable nullpo checks this line can be commented
 #define NULLPO_CHECK
-#endif
-
-// Skip assert checks on release builds
-#if !defined(RELEASE) && !defined(ASSERT_CHECK)
+// if need disable asserts checks this line can be commented
 #define ASSERT_CHECK
-#endif
 
 /** Assert */
 
@@ -160,9 +153,9 @@ struct nullpo_interface {
 	void (*assert_report) (const char *file, int line, const char *func, const char *targetname, const char *title);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void nullpo_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct nullpo_interface *nullpo;
 

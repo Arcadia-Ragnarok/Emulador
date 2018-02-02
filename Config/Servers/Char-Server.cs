@@ -8,7 +8,7 @@
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
 |----------------------------------------------------------------------|
-| - Descrição: Configuação para Char-Serve                             |
+| - Descrição: Configuação para char-Serve                             |
 \*--------------------------------------------------------------------*/
 
 char_configuration: {
@@ -22,9 +22,11 @@ char_configuration: {
 	server_name: "Arcadia"
 
 	// Wisp nome para servidor: usado para enviar wisp do servidor para os jogadores (entre 4 a 23 caracteres)
-	wisp_server_name: "Server"
+	wisp_server_name: "Emulador Arcadia"
 
-	// Permissão de conexão
+	// -----------------------------------------------------------------
+	// - Configuração de permissão de acesso
+	// -----------------------------------------------------------------
 	permission: {
 		// Ativar ou desativar a criação de novos caracteres.
 		enable_char_creation: true
@@ -49,32 +51,38 @@ char_configuration: {
 		// ID de grupo mínimo para ingressar no servidor char quando ele estiver no char_server_type 1 (manutenção)
 		maintenance_min_group_id: 99
 	}
-	// Configuração relacionada ao jogador
+
+	// -----------------------------------------------------------------
+	// - Configuração para jogadores
+	// -----------------------------------------------------------------
 	player: {
 		new: {
+			// Ponto inicial
 			start_point: {
 				map: "new_1-1"
 				x: 55
 				y: 110
 			}
-			// Itens Iniciais
+			// Itens iniciais
 			start_items: (
 				{
-					id: 1201 // Knife
+					id: 1201
 					amount: 1
 					loc: 2
 					stackable: false
 				},
 				{
-					id: 2301 // Cotton_Shirt
+					id: 2301
 					amount: 1
 					loc: 16
 					stackable: false
 				},
 			)
-			// Zeny Inicial
+			// Zeny inicial
 			zeny: 0
 		}
+
+		// -----------------------------------------------------------
 		// Configuração do nome dos personagens
 		name: {
 			// Nome usado para pesonagens desconhecidos
@@ -92,10 +100,15 @@ char_configuration: {
 			name_option: 1
 
 			// Defina as letras / símbolos que você deseja usar com a opção 'nome_do_caracteres'.
-			// Nota: Não adicione espaços a não ser que pretenda adicionar espaço à lista.
-			name_letters: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~^¨+-"
+			// Nota: Antes de modificar esses caracteres leia a respeito de injeção SQL.
+			// Em ferramentas de uso conhecidas como CP-Painel típicas de ragnarok pode abrir brechas
+			// na segurança do servidor.
+			// Mais informações: https://pt.wikipedia.org/wiki/Injeção_de_SQL
+			name_letters: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$%¨&*-+._-^~"
 		}
 
+		// -----------------------------------------------------------
+		// Configuração para apagar personagens
 		deletion: {
 			// Restringir a exclusão de caracteres por BaseLevel
 			// 0: nenhuma restrição (os jogadores podem excluir caracteres de qualquer nível)
@@ -112,7 +125,7 @@ char_configuration: {
 			// Bloqueia a exclusão se o personagem estiver dentro de uma guild ou de uma festa? (BOOL)
 			// official: true
 			// Esta verificação é imposta pela Aegis para evitar entradas mortas nos bancos de dados e _is_not_needed_ como nós limpar dados corretamente!
-			use_aegis_delete: true
+			use_aegis_delete: false
 		}
 		// Tamanho para as listas de Fama
 		fame: {
@@ -123,26 +136,25 @@ char_configuration: {
 	}
 
 	database: {
-		// Quantas vezes o servidor deve salvar todas as informações relacionadas à guilda? (O intervalo de gravação de caracteres é definido na configuração do mapa)
-		// (em segundos)
+		// Quantas vezes o servidor deve salvar todas as informações relacionadas à guilda?
+		// (O intervalo de gravação de caracteres é definido na configuração do mapa, em segundos)
 		autosave_time: 60
-		// Em que pasta estão os arquivos DB (abra_db.txt, etc.)
-		db_path: "Database"
+
 		// Salvar log para o servidor de personagens?
-		log_char: false
+		log_char: true
 	}
 
-	//==================================================================
-	// Pincode system
-	//==================================================================
+	// -----------------------------------------------------------------
+	// - Configuração para uso do sistema de Pincode
+	// -----------------------------------------------------------------
 	pincode: {
 		// Uma janela é aberta antes que você possa selecionar seu personagem e você terá que inserir um código PIN usando apenas o mouse
 		// NOTA: Requer cliente 2011-03-09aragexeRE ou mais recente.
 		enabled: false
 
-		// Request Pincode only on login ou everytime char select é acessado?
-		// 0: somente no login (padrão)
-		// 1: toda vez que a janela de seleção de caracteres é acessada
+		// Solicitar o Pincode apenas no login ou em cada toda vez na seleção de personagens?
+		// 0: Somente no login (Padrão)
+		// 1: Para cada vez que selecionar personagem
 		request: 0
 
 		// Quantas vezes um usuário tem que mudar seu código PIN?

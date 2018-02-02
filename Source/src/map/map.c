@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,9 +20,9 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
-#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, SV_VERSION
+#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT RENEWAL
 #include "map.h"
 
 #include "map/atcommand.h"
@@ -58,9 +56,9 @@
 #include "map/skill.h"
 #include "map/status.h"
 #include "map/storage.h"
+#include "map/rodex.h"
 #include "map/trade.h"
 #include "map/unit.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/console.h"
@@ -449,6 +447,11 @@ int map_count_oncell(int16 m, int16 x, int16 y, int type, int flag) {
 					struct status_change *sc = status->get_sc(bl);
 					if (sc && (sc->option&OPTION_INVISIBLE))
 						continue;
+					if (bl->type == BL_NPC) {
+						const struct npc_data *nd = BL_UCCAST(BL_NPC, bl);
+						if (nd->class_ == FAKE_NPC || nd->class_ == HIDDEN_WARP_CLASS)
+							continue;
+					}
 				}
 				if (flag&0x1) {
 					struct unit_data *ud = unit->bl2ud(bl);
@@ -1691,8 +1694,9 @@ bool map_closest_freecell(int16 m, const struct block_list *bl, int16 *x, int16 
  * @m, @x, @y mapid,x,y
  * @first_charid, @second_charid, @third_charid, looting priority
  * @flag: &1 MVP item. &2 do stacking check.
+ * @showdropeffect: show effect when the item is dropped.
  *------------------------------------------*/
-int map_addflooritem(const struct block_list *bl, struct item *item_data, int amount, int16 m, int16 x, int16 y, int first_charid, int second_charid, int third_charid, int flags)
+int map_addflooritem(const struct block_list *bl, struct item *item_data, int amount, int16 m, int16 x, int16 y, int first_charid, int second_charid, int third_charid, int flags, bool showdropeffect)
 {
 	int r;
 	struct flooritem_data *fitem=NULL;
@@ -1711,6 +1715,7 @@ int map_addflooritem(const struct block_list *bl, struct item *item_data, int am
 	fitem->bl.x = x;
 	fitem->bl.y = y;
 	fitem->bl.id = map->get_new_object_id();
+	fitem->showdropeffect = showdropeffect;
 	if(fitem->bl.id==0){
 		ers_free(map->flooritem_ers, fitem);
 		return 0;
@@ -1837,7 +1842,7 @@ void map_addiddb(struct block_list *bl)
 		struct mob_data *md = BL_UCAST(BL_MOB, bl);
 		idb_put(map->mobid_db,bl->id,bl);
 
-		if( md->state.boss )
+		if (md->state.boss == BTYPE_MVP)
 			idb_put(map->bossid_db, bl->id, bl);
 	}
 
@@ -1918,6 +1923,7 @@ int map_quit(struct map_session_data *sd) {
 	}
 
 	npc->script_event(sd, NPCE_LOGOUT);
+	rodex->clean(sd, 0);
 
 	//Unit_free handles clearing the player related data,
 	//map->quit handles extra specific data which is related to quitting normally
@@ -2994,7 +3000,6 @@ int map_getcellp(struct map_data* m, const struct block_list *bl, int16 x, int16
 	}
 }
 
-/* */
 int map_sub_getcellp(struct map_data* m, const struct block_list *bl, int16 x, int16 y, cell_chk cellchk) {
 	nullpo_ret(m);
 	map->cellfromcache(m);
@@ -3566,8 +3571,6 @@ void do_final_maps(void) {
 
 		if( map->list[i].qi_data )
 			aFree(map->list[i].qi_data);
-
-		HPM->data_store_destroy(&map->list[i].hdata);
 	}
 
 	map->zone_db_clear();
@@ -4059,7 +4062,7 @@ bool map_config_read_map_list(const char *filename, struct config_t *config, boo
 }
 
 /**
- * Reads map-server configuration files (map-server.cs) and initialises
+ * Reads map-server configuration files (map-server.conf) and initialises
  * required variables.
  *
  * @param filename Path to configuration file.
@@ -4142,7 +4145,7 @@ bool map_read_npclist(const char *filename, bool imported)
 	if (!libconfig->load_file(&config, filename))
 		return false;
 
-	deleted_npcs = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_ALLOW_NULL_DATA, MAP_NAME_LENGTH);
+	deleted_npcs = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_ALLOW_NULL_DATA, 0);
 
 	// Remove NPCs
 	if ((setting = libconfig->lookup(&config, "npc_removed_list")) != NULL) {
@@ -4195,8 +4198,7 @@ bool map_read_npclist(const char *filename, bool imported)
 		base_npclist = "NpcScript/Start_Scripts.cs";
 		if (strcmp(import, filename) == 0 || strcmp(import, base_npclist) == 0) {
 			ShowWarning("map_read_npclist: Loop detected! Skipping 'import'...\n");
-		}
-		else {
+		} else {
 			if (!map->read_npclist(import, true))
 				retval = false;
 		}
@@ -4215,7 +4217,6 @@ void map_reloadnpc(bool clear) {
 	int i;
 	if (clear)
 		npc->clearsrcfile();
-
 	map->read_npclist("NpcScript/Start_Scripts.cs", false);
 
 	// Append extra scripts
@@ -4225,7 +4226,7 @@ void map_reloadnpc(bool clear) {
 }
 
 /**
- * Reads inter-server.cs and initializes required variables.
+ * Reads inter-server.conf and initializes required variables.
  *
  * @param filename Path to configuration file
  * @param imported Whether the current config is imported from another file.
@@ -4255,9 +4256,6 @@ bool inter_config_read(const char *filename, bool imported)
 	if (!map->inter_config_read_database_names(filename, &config, imported))
 		retval = false;
 	if (!map->inter_config_read_connection(filename, &config, imported))
-		retval = false;
-
-	if (!HPM->parse_conf(&config, filename, HPCT_MAP_INTER, imported))
 		retval = false;
 
 	// import should overwrite any previous configuration, so it should be called last
@@ -4302,6 +4300,7 @@ bool inter_config_read_connection(const char *filename, const struct config_t *c
 	libconfig->setting_lookup_mutable_string(setting, "log_db_username", logs->db_id, sizeof(logs->db_id));
 	libconfig->setting_lookup_mutable_string(setting, "log_db_password", logs->db_pw, sizeof(logs->db_pw));
 	libconfig->setting_lookup_mutable_string(setting, "log_db_database", logs->db_name, sizeof(logs->db_name));
+
 	return true;
 }
 
@@ -4391,7 +4390,7 @@ struct map_zone_data *map_merge_zone(struct map_zone_data *main, struct map_zone
 	nullpo_retr(NULL, main);
 	nullpo_retr(NULL, other);
 
-	snprintf(newzone, MAP_ZONE_NAME_LENGTH, "%s+%s", main->name, other->name);
+	safesnprintf(newzone, MAP_ZONE_NAME_LENGTH, "%s+%s", main->name, other->name);
 
 	if( (zone = strdb_get(map->zone_db, newzone)) )
 		return zone;/* this zone has already been merged */
@@ -5403,10 +5402,10 @@ enum bl_type map_zone_bl_type(const char *entry, enum map_zone_skill_subtype *su
 	}
 	return bl;
 }
-/* */
 void read_map_zone_db(void) {
 	struct config_t map_zone_db;
 	struct config_setting_t *zones = NULL;
+	/* TODO: #ifndef required for re/pre-re */
 	const char *config_filename = "Database/Map_DB/MapZone.conf"; // FIXME hardcoded name
 	if (!libconfig->load_file(&map_zone_db, config_filename))
 		return;
@@ -5811,7 +5810,7 @@ void read_map_zone_db(void) {
 			}
 		}
 
-		ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' zones in '"CL_WHITE"%s"CL_RESET"'.\n", zone_count, config_filename);
+		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' zonas em '"CL_WHITE"%s"CL_RESET"'.\n", zone_count, config_filename);
 
 		/* post-load processing */
 		if( (zone = strdb_get(map->zone_db, MAP_ZONE_PVP_NAME)) )
@@ -5942,7 +5941,6 @@ int do_final(void) {
 	ShowStatus("Terminating...\n");
 
 	channel->config->closing = true;
-	HPM->event(HPET_FINAL);
 
 	if (map->cpsd) aFree(map->cpsd);
 
@@ -6002,6 +6000,7 @@ int do_final(void) {
 	elemental->final();
 	map->list_final();
 	vending->final();
+	rodex->final();
 
 	map->map_db->destroy(map->map_db, map->db_final);
 
@@ -6040,8 +6039,6 @@ int do_final(void) {
 	aFree(map->GRF_PATH_FILENAME);
 	aFree(map->INTER_CONF_NAME);
 	aFree(map->LOG_CONF_NAME);
-
-	HPM->event(HPET_POST_FINAL);
 
 	ShowStatus("Finished.\n");
 	return map->retval;
@@ -6196,6 +6193,7 @@ void map_load_defaults(void) {
 	path_defaults();
 	quest_defaults();
 	npc_chat_defaults();
+	rodex_defaults();
 }
 /**
  * --run-once handler
@@ -6359,19 +6357,16 @@ int do_init(int argc, char *argv[])
 
 	map_load_defaults();
 
-	map->INTER_CONF_NAME         = aStrdup("Config/Common/Inter-Server.cs");
+	map->INTER_CONF_NAME         = aStrdup("Config/Servers/Inter-Server.cs");
 	map->LOG_CONF_NAME           = aStrdup("Config/Common/Logs.cs");
 	map->MAP_CONF_NAME           = aStrdup("Config/Servers/Map-Server.cs");
-	map->BATTLE_CONF_FILENAME    = aStrdup("Config/Common/Battle.cs");
+	map->BATTLE_CONF_FILENAME    = aStrdup("Config/Common/Battle.conf");
 	map->ATCOMMAND_CONF_FILENAME = aStrdup("Config/System/Atcommand.cs");
 	map->SCRIPT_CONF_NAME        = aStrdup("Config/Common/Script.cs");
 	map->MSG_CONF_NAME           = aStrdup("Config/System/Messages.conf");
-	map->GRF_PATH_FILENAME       = aStrdup("Config/Common/grf-files.txt");
+	map->GRF_PATH_FILENAME       = aStrdup("Config/Depreciated/grf-files.txt");
 
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
-	HPM->config_read();
-
-	HPM->event(HPET_PRE_INIT);
 
 	cmdline->exec(argc, argv, CMDLINE_OPT_NORMAL);
 	minimal = map->minimal;/* temp (perhaps make minimal a mask with options of what to load? e.g. plugin 1 does minimal |= mob_db; */
@@ -6391,12 +6386,12 @@ int do_init(int argc, char *argv[])
 } while (0)
 		struct stat fileinfo;
 
-		CHECK_OLD_LOCAL_CONF("conf/import/map_conf.txt", "conf/import/map-server.conf");
-		CHECK_OLD_LOCAL_CONF("conf/import/inter_conf.txt", "conf/import/inter_conf.conf");
-		CHECK_OLD_LOCAL_CONF("conf/import/log_conf.txt", "conf/import/logs.conf");
-		//CHECK_OLD_LOCAL_CONF("conf/import/script_conf.txt", "conf/import/script.conf");
-		CHECK_OLD_LOCAL_CONF("conf/import/packet_conf.txt", "conf/import/socket.conf");
-		CHECK_OLD_LOCAL_CONF("conf/import/battle_conf.txt", "conf/import/battle.conf");
+		CHECK_OLD_LOCAL_CONF("Config/import/map_conf.txt", "Config/import/map-server.conf");
+		CHECK_OLD_LOCAL_CONF("Config/import/inter_conf.txt", "Config/Servers/Inter-Server.cs");
+		CHECK_OLD_LOCAL_CONF("Config/import/log_conf.txt", "Config/import/logs.conf");
+		CHECK_OLD_LOCAL_CONF("Config/import/script_conf.txt", "Config/import/script.conf");
+		CHECK_OLD_LOCAL_CONF("Config/import/packet_conf.txt", "Config/import/socket.conf");
+		CHECK_OLD_LOCAL_CONF("Config/import/battle_conf.txt", "Config/import/battle.conf");
 
 #undef CHECK_OLD_LOCAL_CONF
 		}
@@ -6411,7 +6406,7 @@ int do_init(int argc, char *argv[])
 			sockt->ip2str(sockt->addr_[0], ip_str);
 
 #ifndef BUILDBOT
-			ShowWarning("Not all IP addresses in Config/Servers/Map-Server.cs configured, auto-detecting...\n");
+			ShowWarning("Not all IP addresses in /Config/Servers/Map-Server.cs configured, auto-detecting...\n");
 #endif
 
 			if (sockt->naddr_ == 0)
@@ -6480,8 +6475,6 @@ int do_init(int argc, char *argv[])
 		timer->add_func_list(map->clearflooritem_timer, "map_clearflooritem_timer");
 		timer->add_func_list(map->removemobs_timer, "map_removemobs_timer");
 		timer->add_interval(timer->gettick()+1000, map->freeblock_timer, 0, 0, 60*1000);
-
-		HPM->event(HPET_INIT);
 	}
 
 	atcommand->init(minimal);
@@ -6512,6 +6505,7 @@ int do_init(int argc, char *argv[])
 	bg->init(minimal);
 	duel->init(minimal);
 	vending->init(minimal);
+	rodex->init(minimal);
 
 	if (map->scriptcheck) {
 		bool failed = map->extra_scripts_count > 0 ? false : true;
@@ -6525,7 +6519,6 @@ int do_init(int argc, char *argv[])
 	}
 
 	if( minimal ) {
-		HPM->event(HPET_READY);
 		exit(EXIT_SUCCESS);
 	}
 
@@ -6535,11 +6528,11 @@ int do_init(int argc, char *argv[])
 	if (battle_config.pk_mode)
 		ShowNotice("Server is running on '"CL_WHITE"PK Mode"CL_RESET"'.\n");
 
-#ifdef CONSOLE_INPUT
-	console->input->setSQL(map->mysql_handle);
-	if (!minimal && core->runflag != CORE_ST_STOP)
-		console->display_gplnotice();
-#endif
+	#ifdef CONSOLE_INPUT
+		console->input->setSQL(map->mysql_handle);
+		if (!minimal && core->runflag != CORE_ST_STOP)
+			console->display_gplnotice();
+	#endif
 
 	ShowStatus("Server is '"CL_GREEN"ready"CL_RESET"' and listening on port '"CL_WHITE"%d"CL_RESET"'.\n\n", map->port);
 
@@ -6550,14 +6543,11 @@ int do_init(int argc, char *argv[])
 
 	map_cp_defaults();
 
-	HPM->event(HPET_READY);
-
 	return 0;
 }
 
 /*=====================================
 * Default Functions : map.h
-* Generated by InterfaceMaker
 * created by Susu
 *-------------------------------------*/
 void map_defaults(void) {
@@ -6573,8 +6563,8 @@ void map_defaults(void) {
 	map->extra_scripts_count = 0;
 
 	sprintf(map->db_path ,"Database");
-	sprintf(map->help_txt ,"conf/help.txt");
-	sprintf(map->charhelp_txt ,"conf/charhelp.txt");
+	sprintf(map->help_txt ,"Config/Help.txt");
+	sprintf(map->charhelp_txt ,"Config/Char-Help.txt");
 
 	sprintf(map->wisp_server_name ,"Server"); // can be modified in char-server configuration file
 
@@ -6586,14 +6576,14 @@ void map_defaults(void) {
 	map->night_flag = 0; // 0=day, 1=night [Yor]
 	map->enable_spy = 0; //To enable/disable @spy commands, which consume too much cpu time when sending packets. [Skotlex]
 
-	map->INTER_CONF_NAME="Config/Common/Inter-Server.cs";
+	map->INTER_CONF_NAME="Config/Servers/Inter-Server.cs";
 	map->LOG_CONF_NAME="Config/Common/Logs.cs";
 	map->MAP_CONF_NAME = "Config/Servers/Map-Server.cs";
-	map->BATTLE_CONF_FILENAME = "Config/Common/Battle.cs";
+	map->BATTLE_CONF_FILENAME = "Config/Common/Battle.conf";
 	map->ATCOMMAND_CONF_FILENAME = "Config/System/Atcommand.cs";
 	map->SCRIPT_CONF_NAME = "Config/Common/Script.cs";
 	map->MSG_CONF_NAME = "Config/System/Messages.conf";
-	map->GRF_PATH_FILENAME = "Config/Common/grf-files.txt";
+	map->GRF_PATH_FILENAME = "Config/grf-files.txt";
 
 	map->default_codepage[0] = '\0';
 	map->server_port = 3306;

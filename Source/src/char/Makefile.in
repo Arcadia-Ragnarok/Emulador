@@ -1,16 +1,14 @@
 #####################################################################
-#             ______ ____ _____ ___   __                            #
-#            / ____ / _  / ____/  /  /  /                           #
-#            \___  /  __/ __/ /  /__/  /___                         #
-#           /_____/_ / /____//_____/______/                         #
-#                /\  /|   __    __________ _________                #
-#               /  \/ |  /  |  /  ___  __/ ___/ _  /                #
-#              /      | / ' | _\  \ / / / __//  __/                 #
-#             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  #
-#            /__/   |_|    Source code          \/                  #
+#              ____                     _                           #
+#             /    |                   | |_                         #
+#            /     |_ __ ____  __ _  __| |_  __ _                   #
+#           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  #
+#          /  __   | | |  |__| (_| | (_| | | (_| |                  #
+#         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  #
+#        /__/   |__|  [ Ragnarok Emulator ]                         #
 #                                                                   #
 #####################################################################
-#                      Projeto Ragnarok Online                      #
+#                  Idealizado por: Spell Master                     #
 #####################################################################
 # - Este código é livre para editar, redistribuir de acordo com os  #
 # termos da GNU General Public License, publicada sobre conselho    #
@@ -47,16 +45,16 @@ MT19937AR_H = $(MT19937AR_D)/mt19937ar.h
 
 CHAR_C = char.c loginif.c mapif.c geoip.c inter.c int_auction.c int_elemental.c int_guild.c \
          int_homun.c int_mail.c int_mercenary.c int_party.c int_pet.c \
-         int_quest.c int_storage.c pincode.c
+         int_quest.c int_rodex.c int_storage.c pincode.c
 CHAR_OBJ = $(addprefix obj_sql/, $(patsubst %.c,%.o,$(CHAR_C)))
 CHAR_H = char.h loginif.h mapif.h geoip.h inter.h int_auction.h int_elemental.h int_guild.h \
          int_homun.h int_mail.h int_mercenary.h int_party.h int_pet.h \
-         int_quest.h int_storage.h pincode.h
+         int_quest.h int_rodex.h int_storage.h pincode.h
 CHAR_PH =
 
 HAVE_MYSQL=@HAVE_MYSQL@
 ifeq ($(HAVE_MYSQL),yes)
-	CHAR_SERVER_SQL_DEPENDS=$(CHAR_OBJ) $(COMMON_D)/obj_sql/common_sql.a $(COMMON_D)/obj_all/common.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ) $(SYSINFO_INC)
+	CHAR_SERVER_SQL_DEPENDS=$(CHAR_OBJ) $(COMMON_D)/obj_all/common.a $(COMMON_D)/obj_sql/common_sql.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ) $(SYSINFO_INC)
 else
 	CHAR_SERVER_SQL_DEPENDS=needs_mysql
 endif
@@ -115,8 +113,8 @@ char-server: ../../char-server@EXEEXT@
 
 ../../char-server@EXEEXT@: $(CHAR_SERVER_SQL_DEPENDS) Makefile
 	@echo "	LD	$(notdir $@)"
-	@$(CC) @STATIC@ @LDFLAGS@ -o ../../char-server@EXEEXT@ $(CHAR_OBJ) $(COMMON_D)/obj_sql/common_sql.a \
-		$(COMMON_D)/obj_all/common.a $(MT19937AR_OBJ) $(LIBCONFIG_OBJ) @LIBS@ @MYSQL_LIBS@
+	@$(CC) @STATIC@ @LDFLAGS@ -o ../../char-server@EXEEXT@ $(CHAR_OBJ) $(COMMON_D)/obj_all/common.a $(COMMON_D)/obj_sql/common_sql.a \
+		$(MT19937AR_OBJ) $(LIBCONFIG_OBJ) @LIBS@ @MYSQL_LIBS@
 
 # missing object files
 $(COMMON_D)/obj_all/common.a:

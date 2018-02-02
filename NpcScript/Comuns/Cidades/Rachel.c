@@ -149,7 +149,7 @@ rachel,206,30,3	script	Sacerdote#rac2	4_F_TRAINEE,{
 	next;
 	if (select("Aqui está uma história engraçada...","Eu vou fazer o que você quer que eu faça.") == 1) {
 		mes "^3355FFVocê contou a ela a primeira história engraçada que você pôde lembrar.^000000";
-		specialeffect2 (EF_TALK_FROSTJOKE);
+		specialeffect(EF_TALK_FROSTJOKE, AREA, playerattached());
 		next;
 		mes "[Sacerdote de Freya]";
 		mes "Isto é supostamente engraçado?";

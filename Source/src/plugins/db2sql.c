@@ -1,27 +1,3 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
-
 #include "config/core.h"
 
 #include "common/HPExport.h"
@@ -49,8 +25,6 @@ HPExport struct hplugin_info pinfo = {
 	"0.5",           // Plugin version
 	HPM_VERSION,     // HPM Version (don't change, macro is automatically updated)
 };
-
-#define DBSUFFIX "_re"
 
 /// Conversion state tracking.
 struct {
@@ -98,14 +72,6 @@ void db2sql_fileheader(void)
 	int year = lt->tm_year+1900;
 
 	fprintf(tosql.fp,
-			"-- This program is distributed in the hope that it will be useful,\n"
-			"-- but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-			"-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-			"-- GNU General Public License for more details.\n"
-			"--\n"
-			"-- You should have received a copy of the GNU General Public License\n"
-			"-- along with this program.  If not, see <http://www.gnu.org/licenses/>.\n\n"
-
 			"-- NOTE: This file was auto-generated and should never be manually edited,\n"
 			"--       as it will get overwritten. If you need to modify this file,\n"
 			"--       please consider modifying the corresponding .conf file inside\n"
@@ -246,6 +212,9 @@ int itemdb2sql_sub(struct config_setting_t *entry, int n, const char *source)
 		// type
 		StrBuf->Printf(&buf, "'%d',", it->flag.delay_consume ? IT_DELAYCONSUME : it->type);
 
+		// subtype
+		StrBuf->Printf(&buf, "'%d',", it->subtype);
+
 		// price_buy
 		StrBuf->Printf(&buf, "'%d',", it->value_buy);
 
@@ -285,10 +254,11 @@ int itemdb2sql_sub(struct config_setting_t *entry, int n, const char *source)
 		StrBuf->Printf(&buf, "'%"PRIu64"',", ui64);
 
 		// equip_upper
-		if (libconfig->setting_lookup_int(entry, "Upper", &i32) && i32 >= 0)
+		if (itemdb->lookup_const_mask(entry, "Upper", &i32) && i32 >= 0)
 			ui32 = (uint32)i32;
 		else
 			ui32 = ITEMUPPER_ALL;
+
 		StrBuf->Printf(&buf, "'%u',", ui32);
 
 		// equip_genders
@@ -312,8 +282,11 @@ int itemdb2sql_sub(struct config_setting_t *entry, int n, const char *source)
 		// refineable
 		StrBuf->Printf(&buf, "'%d',", it->flag.no_refine?0:1);
 
-		// view
-		StrBuf->Printf(&buf, "'%d',", it->look);
+		// disable_options
+		StrBuf->Printf(&buf, "'%d',", it->flag.no_options?1:0);
+
+		// view_sprite
+		StrBuf->Printf(&buf, "'%d',", it->view_sprite);
 
 		// bindonequip
 		StrBuf->Printf(&buf, "'%d',", it->flag.bindonequip?1:0);
@@ -437,6 +410,7 @@ void itemdb2sql_tableheader(void)
 			"  `name_english` varchar(50) NOT NULL DEFAULT '',\n"
 			"  `name_japanese` varchar(50) NOT NULL DEFAULT '',\n"
 			"  `type` tinyint(2) UNSIGNED NOT NULL DEFAULT '0',\n"
+			"  `subtype` tinyint(2) UNSIGNED DEFAULT NULL,\n"
 			"  `price_buy` mediumint(10) DEFAULT NULL,\n"
 			"  `price_sell` mediumint(10) DEFAULT NULL,\n"
 			"  `weight` smallint(5) UNSIGNED DEFAULT NULL,\n"
@@ -453,7 +427,8 @@ void itemdb2sql_tableheader(void)
 			"  `equip_level_min` smallint(5) UNSIGNED DEFAULT NULL,\n"
 			"  `equip_level_max` smallint(5) UNSIGNED DEFAULT NULL,\n"
 			"  `refineable` tinyint(1) UNSIGNED DEFAULT NULL,\n"
-			"  `view` smallint(3) UNSIGNED DEFAULT NULL,\n"
+			"  `disable_options` tinyint(1) UNSIGNED DEFAULT NULL,\n"
+			"  `view_sprite` smallint(3) UNSIGNED DEFAULT NULL,\n"
 			"  `bindonequip` tinyint(1) UNSIGNED DEFAULT NULL,\n"
 			"  `forceserial` tinyint(1) UNSIGNED DEFAULT NULL,\n"
 			"  `buyingstore` tinyint(1) UNSIGNED DEFAULT NULL,\n"
@@ -486,7 +461,7 @@ void do_itemdb2sql(void)
 		const char *source;
 		const char *destination;
 	} files[] = {
-		{"item_db", SV_VERSION"item_db.conf", "sql-files/item_db" DBSUFFIX ".sql"},
+		{"item_db", "Item_DB/ItemList.conf", "sql-files/item_db" DBSUFFIX ".sql"},
 		{"item_db2", "item_db2.conf", "sql-files/item_db2.sql"},
 	};
 
@@ -758,7 +733,7 @@ void do_mobdb2sql(void)
 		const char *source;
 		const char *destination;
 	} files[] = {
-		{"mob_db", SV_VERSION"mob_db.conf", "sql-files/mob_db" DBSUFFIX ".sql"},
+		{"mob_db", "mob_db.conf", "sql-files/mob_db" DBSUFFIX ".sql"},
 		{"mob_db2", "mob_db2.conf", "sql-files/mob_db2.sql"},
 	};
 

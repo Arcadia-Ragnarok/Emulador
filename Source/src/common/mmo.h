@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -27,6 +25,7 @@
 
 #include "config/core.h"
 #include "common/cbasetypes.h"
+#include "common/db.h" // VECTORS
 
 // server->client protocol version
 //        0 - pre-?
@@ -77,9 +76,16 @@
 	#undef ENABLE_PACKETVER_RE
 #endif // DISABLE_PACKETVER_RE
 
+//Uncomment the following line if your client is zero ragexe instead of normal kro clients
+//#define ENABLE_PACKETVER_ZERO
+#ifdef ENABLE_PACKETVER_ZERO
+	#define PACKETVER_ZERO
+	#undef ENABLE_PACKETVER_ZERO
+#endif // DISABLE_PACKETVER_ZERO
+
 // Client support for experimental RagexeRE UI present in 2012-04-10 and 2012-04-18
 #if defined(PACKETVER_RE) && ( PACKETVER == 20120410 || PACKETVER == 20120418 )
-	#define PARTY_RECRUIT
+#define PARTY_RECRUIT
 #endif // PACKETVER_RE && (PACKETVER == 20120410 || PACKETVER == 10120418)
 
 // Comment the following line to disable sc_data saving. [Skotlex]
@@ -118,7 +124,15 @@
 
 #define MAX_INVENTORY 100
 //Max number of characters per account. Note that changing this setting alone is not enough if the client is not hexed to support more characters as well.
-#define MAX_CHARS 9
+#if PACKETVER >= 20100413
+#ifndef MAX_CHARS
+	#define MAX_CHARS 12
+#endif
+#else
+#ifndef MAX_CHARS
+	#define MAX_CHARS 9
+#endif
+#endif
 //Number of slots carded equipment can have. Never set to less than 4 as they are also used to keep the data of forged items/equipment. [Skotlex]
 //Note: The client seems unable to receive data for more than 4 slots due to all related packets having a fixed size.
 #define MAX_SLOTS 4
@@ -129,16 +143,16 @@
 //Official Limit: 2.1b ( the var that stores the money doesn't go much higher than this by default )
 #define MAX_BANK_ZENY INT_MAX
 
-//#ifndef MAX_LEVEL
-//#define MAX_LEVEL 150
-//#endif
+#ifndef MAX_LEVEL
+#define MAX_LEVEL 175
+#endif
 #define MAX_FAME 1000000000
 #define MAX_CART 100
-#ifndef MAX_SKILL
-#define MAX_SKILL 1510
+#ifndef MAX_SKILL_DB
+#define MAX_SKILL_DB 1510 ///< Maximum number of skills in the skill DB (compacted array size)
 #endif
 #ifndef MAX_SKILL_ID
-#define MAX_SKILL_ID 10015   // Max used skill ID
+#define MAX_SKILL_ID 10015   // max used skill ID
 #endif
 #ifndef MAX_SKILL_TREE
 // Update this max as necessary. 86 is the value needed for Expanded Super Novice.
@@ -264,15 +278,32 @@
 #define MAX_ELESKILLTREE 3
 #endif
 
+// Maximum item options [Smokexyz]
+#ifndef MAX_ITEM_OPTIONS
+#define MAX_ITEM_OPTIONS 5
+#endif
+STATIC_ASSERT(MAX_ITEM_OPTIONS <= 5, "This value is limited by the client and database layout and should only be increased if you know the consequences.");
+
+// RoDEX
+#define RODEX_TITLE_LENGTH (40 + 1)
+#define RODEX_BODY_LENGTH (500 + 1)
+#define RODEX_MAX_ITEM (5)
+#define RODEX_EXPIRE (1 * 15 * 24 * 60 * 60)
+#if PACKETVER >= 20170419
+#define RODEX_MAIL_PER_PAGE 32
+#else
+#define RODEX_MAIL_PER_PAGE 7
+#endif
+
 // The following system marks a different job ID system used by the map server,
 // which makes a lot more sense than the normal one. [Skotlex]
 // These marks the "level" of the job.
-#define JOBL_2_1 0x100 //256
-#define JOBL_2_2 0x200 //512
-#define JOBL_2 0x300
-#define JOBL_UPPER 0x1000 //4096
-#define JOBL_BABY 0x2000  //8192
-#define JOBL_THIRD 0x4000 //16384
+#define JOBL_2_1   0x0100
+#define JOBL_2_2   0x0200
+#define JOBL_2     0x0300 // JOBL_2_1 | JOBL_2_2
+#define JOBL_UPPER 0x1000
+#define JOBL_BABY  0x2000
+#define JOBL_THIRD 0x4000
 
 #define SCRIPT_VARNAME_LENGTH 32 ///< Maximum length of a script variable
 
@@ -334,6 +365,12 @@ struct item {
 	char favorite;
 	unsigned char bound;
 	uint64 unique_id;
+	
+	struct {
+		int16 index;
+		int16 value;
+		uint8 param;
+	} option[MAX_ITEM_OPTIONS];
 };
 
 //Equip position constants
@@ -398,7 +435,7 @@ enum e_item_bound_type {
 #endif
 };
 
-enum {
+enum e_option {
 	OPTION_NOTHING      = 0x00000000,
 	OPTION_SIGHT        = 0x00000001,
 	OPTION_HIDE         = 0x00000002,
@@ -424,6 +461,7 @@ enum {
 	OPTION_DRAGON5      = 0x04000000,
 	OPTION_HANBOK       = 0x08000000,
 	OPTION_OKTOBERFEST  = 0x10000000,
+	OPTION_SUMMER2      = 0x20000000,
 #ifndef NEW_CARTS
 	OPTION_CART1     = 0x00000008,
 	OPTION_CART2     = 0x00000080,
@@ -435,7 +473,7 @@ enum {
 #endif
 	// compound constants
 	OPTION_DRAGON    = OPTION_DRAGON1|OPTION_DRAGON2|OPTION_DRAGON3|OPTION_DRAGON4|OPTION_DRAGON5,
-	OPTION_COSTUME   = OPTION_WEDDING|OPTION_XMAS|OPTION_SUMMER|OPTION_HANBOK|OPTION_OKTOBERFEST,
+	OPTION_COSTUME   = OPTION_WEDDING | OPTION_XMAS | OPTION_SUMMER | OPTION_HANBOK | OPTION_OKTOBERFEST | OPTION_SUMMER2,
 };
 
 struct s_skill {
@@ -467,8 +505,10 @@ struct status_change_data {
 };
 
 struct storage_data {
-	int storage_amount;
-	struct item items[MAX_STORAGE];
+	bool save;                     ///< save flag.
+	bool received;                 ///< received flag.
+	int aggregate;                 ///< total item count.
+	VECTOR_DECL(struct item) item; ///< item vector.
 };
 
 struct guild_storage {
@@ -525,6 +565,7 @@ struct s_homunculus { //[orn]
 	int luk_value;
 
 	int8 spiritball; //for homun S [lighta]
+	int autofeed;
 };
 
 struct s_mercenary {
@@ -570,11 +611,11 @@ struct mmo_charstatus {
 	int mother;
 	int child;
 
-	unsigned int base_exp,job_exp;
+	uint64 base_exp, job_exp;
 	int zeny;
 	int bank_vault;
 
-	short class_;
+	int16 class;
 	int status_point, skill_point;
 	int hp,max_hp,sp,max_sp;
 	unsigned int option;
@@ -589,10 +630,14 @@ struct mmo_charstatus {
 	int spear_faith, spear_calls;
 	int sword_faith, sword_calls;
 
-	short weapon; // enum weapon_type
-	short shield; // view-id
-	short head_top,head_mid,head_bottom;
-	short robe;
+	struct {
+		short weapon;      ///< Weapon view sprite id.
+		short shield;      ///< Shield view sprite id.
+		short head_top;    ///< Top headgear view sprite id.
+		short head_mid;    ///< Middle headgear view sprite id.
+		short head_bottom; ///< Bottom headgear view sprite id.
+		short robe;        ///< Robe view sprite id.
+	} look;
 
 	char name[NAME_LENGTH];
 	int base_level, job_level;
@@ -604,8 +649,7 @@ struct mmo_charstatus {
 
 	struct point last_point,save_point,memo_point[MAX_MEMOPOINTS];
 	struct item inventory[MAX_INVENTORY],cart[MAX_CART];
-	struct storage_data storage;
-	struct s_skill skill[MAX_SKILL];
+	struct s_skill skill[MAX_SKILL_DB];
 
 	struct s_friend friends[MAX_FRIENDS]; //New friend system [Skotlex]
 #ifdef HOTKEY_SAVING
@@ -678,7 +722,7 @@ struct party_member {
 	int account_id;
 	int char_id;
 	char name[NAME_LENGTH];
-	unsigned short class_;
+	int16 class;
 	unsigned short map;
 	unsigned short lv;
 	unsigned leader : 1,
@@ -697,7 +741,9 @@ struct party {
 struct map_session_data;
 struct guild_member {
 	int account_id, char_id;
-	short hair,hair_color,gender,class_,lv;
+	short hair,hair_color,gender;
+	int16 class;
+	short lv;
 	uint64 exp;
 	int exp_payper;
 	short online,position;
@@ -785,10 +831,52 @@ struct fame_list {
 };
 
 enum fame_list_type {
+	RANKTYPE_UNKNOWN    = -1,
 	RANKTYPE_BLACKSMITH = 0,
 	RANKTYPE_ALCHEMIST  = 1,
 	RANKTYPE_TAEKWON    = 2,
 	RANKTYPE_PK         = 3, //Not supported yet
+};
+
+struct rodex_message {
+	int64 id;
+	int sender_id;
+	char sender_name[NAME_LENGTH];
+	int receiver_id;
+	int receiver_accountid;
+	char receiver_name[NAME_LENGTH];
+	char title[RODEX_TITLE_LENGTH];
+	char body[RODEX_BODY_LENGTH];
+	struct {
+		struct item item;
+		int idx;
+		
+	} items[RODEX_MAX_ITEM];
+	int64 zeny;
+	uint8 type;
+	int8 opentype;
+	bool is_read;
+	bool is_deleted;
+	int send_date;
+	int expire_date;
+	int weight;
+	int items_count;
+};
+
+VECTOR_STRUCT_DECL(rodex_maillist, struct rodex_message);
+
+enum rodex_opentype {
+	RODEX_OPENTYPE_MAIL = 0,
+	RODEX_OPENTYPE_ACCOUNT = 1,
+	RODEX_OPENTYPE_RETURN = 2,
+	RODEX_OPENTYPE_UNSET = 3,
+};
+
+enum MAIL_TYPE {
+	MAIL_TYPE_TEXT = 0x0,
+	MAIL_TYPE_ZENY = 0x2,
+	MAIL_TYPE_ITEM = 0x4,
+	MAIL_TYPE_NPC = 0x8
 };
 
 /**
@@ -848,7 +936,7 @@ enum {
 };
 
 //These mark the ID of the jobs, as expected by the client. [Skotlex]
-enum {
+enum e_class {
 	JOB_NOVICE,
 	JOB_SWORDMAN,
 	JOB_MAGE,
@@ -1067,6 +1155,7 @@ enum ammo_type {
 	A_KUNAI,       //7
 	A_CANNONBALL,  //8
 	A_THROWWEAPON, //9
+	MAX_AMMO_TYPE
 };
 
 enum e_char_server_type {
@@ -1126,6 +1215,10 @@ enum hz_char_ask_name_answer {
 
 #if MAX_SLOTS < 4
 #error MAX_SLOTS it too small
+#endif
+
+#ifdef MAX_SKILL
+#error MAX_SKILL has been replaced by MAX_SKILL_DB. Please update your custom definitions.
 #endif
 
 #endif /* COMMON_MMO_H */

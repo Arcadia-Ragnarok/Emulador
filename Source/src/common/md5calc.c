@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "md5calc.h"
 
@@ -172,16 +170,15 @@ static void md5_Round_Calculate(const unsigned char *block,
 }
 
 /// @copydoc md5_interface::binary()
-static void md5_string2binary(const char *string, unsigned char *output)
+static void md5_buf2binary(const uint8 *buf, const int buf_size, uint8 *output)
 {
 //var
 	/*8bit*/
 	unsigned char padding_message[64]; //Extended message   512bit 64byte
-	const unsigned char *pstring;      // The position of string in the present scanning notes is held.
+	const uint8 *pbuf;      // The position of string in the present scanning notes is held.
 
 	/*32bit*/
-	unsigned int string_byte_len,     //The byte chief of string is held.
-	             string_bit_len,      //The bit length of string is held.
+	unsigned int buf_bit_len,      //The bit length of string is held.
 	             copy_len,            //The number of bytes which is used by 1-3 and which remained
 	             msg_digest[4];       //Message digest   128bit 4byte
 	unsigned int *A = &msg_digest[0], //The message digest in accordance with RFC (reference)
@@ -199,16 +196,15 @@ static void md5_string2binary(const char *string, unsigned char *output)
 
 	//Step 1.Append Padding Bits (extension of a mark bit)
 	//1-1
-	string_byte_len = (unsigned int)strlen(string);    //The byte chief of a character sequence is acquired.
-	pstring = (const unsigned char *)string; // The position of the present character sequence is set.
+	pbuf = buf; // The position of the present character sequence is set.
 
 	//1-2  Repeat calculation until length becomes less than 64 bytes.
-	for (i=string_byte_len; 64<=i; i-=64,pstring+=64)
-		md5_Round_Calculate(pstring, A,B,C,D);
+	for (i=buf_size; 64<=i; i-=64,pbuf+=64)
+		md5_Round_Calculate(pbuf, A,B,C,D);
 
 	//1-3
-	copy_len = string_byte_len % 64;                               //The number of bytes which remained is computed.
-	strncpy((char *)padding_message, (const char *)pstring, copy_len); // A message is copied to an extended bit sequence.
+	copy_len = buf_size % 64;                               //The number of bytes which remained is computed.
+	strncpy((char *)padding_message, (const char *)pbuf, copy_len); // A message is copied to an extended bit sequence.
 	memset(padding_message+copy_len, 0, 64 - copy_len);           //It buries by 0 until it becomes extended bit length.
 	padding_message[copy_len] |= 0x80;                            //The next of a message is 1.
 
@@ -220,12 +216,12 @@ static void md5_string2binary(const char *string, unsigned char *output)
 	}
 
 	//Step 2.Append Length (the information on length is added)
-	string_bit_len = string_byte_len * 8;             //From the byte chief to bit length (32 bytes of low rank)
-	memcpy(&padding_message[56], &string_bit_len, 4); //32 bytes of low rank is set.
+	buf_bit_len = buf_size * 8;             //From the byte chief to bit length (32 bytes of low rank)
+	memcpy(&padding_message[56], &buf_bit_len, 4); //32 bytes of low rank is set.
 
 	//When bit length cannot be expressed in 32 bytes of low rank, it is a beam raising to a higher rank.
-	if (UINT_MAX / 8 < string_byte_len) {
-		unsigned int high = (string_byte_len - UINT_MAX / 8) * 8;
+	if (UINT_MAX / 8 < (unsigned int)buf_size) {
+		unsigned int high = (buf_size - UINT_MAX / 8) * 8;
 		memcpy(&padding_message[60], &high, 4);
 	} else {
 		memset(&padding_message[60], 0, 4); //In this case, it is good for a higher rank at 0.
@@ -241,12 +237,12 @@ static void md5_string2binary(const char *string, unsigned char *output)
 /// @copydoc md5_interface::string()
 void md5_string(const char *string, char *output)
 {
-	unsigned char digest[16];
+	uint8 digest[16];
 
 	nullpo_retv(string);
 	nullpo_retv(output);
 
-	md5->binary(string,digest);
+	md5->binary((const uint8 *)string, (int)strlen(string), digest);
 	snprintf(output, 33, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
 		digest[ 0], digest[ 1], digest[ 2], digest[ 3],
 		digest[ 4], digest[ 5], digest[ 6], digest[ 7],
@@ -271,7 +267,7 @@ void md5_salt(int len, char *output)
 void md5_defaults(void)
 {
 	md5 = &md5_s;
-	md5->binary = md5_string2binary;
+	md5->binary = md5_buf2binary;
 	md5->string = md5_string;
 	md5->salt = md5_salt;
 }

@@ -1,29 +1,5 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
-|                                                                   |
-+-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
-+-------------------------------------------------------------------+
-| - Este código é livre para editar, redistribuir de acordo com os  |
-| termos da GNU General Public License, publicada sobre conselho    |
-| pela Free Software Foundation.                                    |
-|                                                                   |
-| - Qualquer ato de comercialização desse software está previsto    |
-| em leis internacionais, junto com este(s) código(s) você recebeu  |
-| uma cópia de licença de uso.                                      |
-| - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
-\*-----------------------------------------------------------------*/
 
-
-/// db/constants.conf -> doc/constants.md generator plugin
+/// Database/constants.conf -> doc/constants.md generator plugin
 
 #include "common/HPExport.h"
 //#include "common/memmgr.h"
@@ -112,7 +88,7 @@ void constdb2doc_skilldb(void)
 
 	nullpo_retv(out_fp);
 
-	fprintf(out_fp, "## Skills (db/"SV_VERSION"skill_db.txt)\n\n");
+	fprintf(out_fp, "## Skills (Database/skill_db.txt)\n\n");
 	for (i = 1; i < MAX_SKILL_DB; i++) {
 		if (skill->dbs->db[i].name[0] != '\0')
 			fprintf(out_fp, "- `%s`: %d\n", skill->dbs->db[i].name, skill->dbs->db[i].nameid);
@@ -126,7 +102,7 @@ void constdb2doc_mobdb(void)
 
 	nullpo_retv(out_fp);
 
-	fprintf(out_fp, "## Mobs (db/"SV_VERSION"mob_db.txt)\n\n");
+	fprintf(out_fp, "## Mobs (Database/mob_db.txt)\n\n");
 	for (i = 0; i < MAX_MOB_DB; i++) {
 		struct mob_db *md = mob->db(i);
 		if (md == mob->dummy || md->sprite[0] == '\0')
@@ -151,7 +127,7 @@ void constdb2doc_itemdb(void)
 
 	nullpo_retv(out_fp);
 
-	fprintf(out_fp, "## Items (db/"SV_VERSION"item_db.conf)\n");
+	fprintf(out_fp, "## Items (Database/Item_DB/ItemList.conf)\n");
 	for (i = 0; i < ARRAYLENGTH(itemdb->array); i++) {
 		struct item_data *id = constdb2doc_itemdb_search(i);
 		if (id == NULL || id->name[0] == '\0')

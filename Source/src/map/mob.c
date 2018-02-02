@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,9 +20,9 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
-#include "config/core.h" // AUTOLOOT_DISTANCE, SV_VERSION, DEFTYPE_MAX, DEFTYPE_MIN
+#include "config/core.h" // AUTOLOOT_DISTANCE DEFTYPE_MAX, DEFTYPE_MIN, RENEWAL_DROP, RENEWAL_EXP
 #include "mob.h"
 
 #include "map/atcommand.h"
@@ -299,7 +297,7 @@ struct mob_data* mob_spawn_dataset(struct spawn_data *data) {
 	md->class_ = data->class_;
 	md->state.boss = data->state.boss;
 	md->db = mob->db(md->class_);
-	if (data->level > 0 && data->level <= 150) // MAX_LEVEL
+	if (data->level > 0 && data->level <= MAX_LEVEL)
 		md->level = data->level;
 	memcpy(md->name, data->name, NAME_LENGTH);
 	if (data->state.ai)
@@ -1358,7 +1356,7 @@ int mob_unlocktarget(struct mob_data *md, int64 tick) {
 		md->ud.target_to = 0;
 		unit->set_target(&md->ud, 0);
 	}
-	if(battle_config.official_cell_stack_limit && map->count_oncell(md->bl.m, md->bl.x, md->bl.y, BL_CHAR|BL_NPC, 1) > battle_config.official_cell_stack_limit) {
+	if(battle_config.official_cell_stack_limit && map->count_oncell(md->bl.m, md->bl.x, md->bl.y, BL_CHAR|BL_NPC, 0x1 | 0x2) > battle_config.official_cell_stack_limit) {
 		unit->walktoxy(&md->bl, md->bl.x, md->bl.y, 8);
 	}
 
@@ -1656,7 +1654,7 @@ bool mob_ai_sub_hard(struct mob_data *md, int64 tick) {
 			memmove(&md->lootitem[0], &md->lootitem[1], (LOOTITEM_SIZE-1)*sizeof(md->lootitem[0]));
 			memcpy (&md->lootitem[LOOTITEM_SIZE-1], &fitem->item_data, sizeof(md->lootitem[0]));
 		}
-		if (pc->db_checkid(md->vd->class_)) {
+		if (pc->db_checkid(md->vd->class)) {
 			//Give them walk act/delay to properly mimic players. [Skotlex]
 			clif->takeitem(&md->bl,tbl);
 			md->ud.canact_tick = tick + md->status.amotion;
@@ -1842,11 +1840,13 @@ int mob_ai_hard(int tid, int64 tick, int id, intptr_t data) {
 /*==========================================
  * Initializes the delay drop structure for mob-dropped items.
  *------------------------------------------*/
-struct item_drop* mob_setdropitem(int nameid, int qty, struct item_data *data) {
+struct item_drop* mob_setdropitem(int nameid, int qty, struct item_data *data)
+{
 	struct item_drop *drop = ers_alloc(item_drop_ers, struct item_drop);
 	drop->item_data.nameid = nameid;
 	drop->item_data.amount = qty;
 	drop->item_data.identify = data ? itemdb->isidentified2(data) : itemdb->isidentified(nameid);
+	drop->showdropeffect = true;
 	drop->next = NULL;
 	return drop;
 }
@@ -1861,6 +1861,7 @@ struct item_drop* mob_setlootitem(struct item* item)
 	nullpo_retr(NULL, item);
 	drop = ers_alloc(item_drop_ers, struct item_drop);
 	memcpy(&drop->item_data, item, sizeof(struct item));
+	drop->showdropeffect = false;
 	drop->next = NULL;
 	return drop;
 }
@@ -1868,7 +1869,8 @@ struct item_drop* mob_setlootitem(struct item* item)
 /*==========================================
  * item drop with delay (timer function)
  *------------------------------------------*/
-int mob_delay_item_drop(int tid, int64 tick, int id, intptr_t data) {
+int mob_delay_item_drop(int tid, int64 tick, int id, intptr_t data)
+{
 	struct item_drop_list *list;
 	struct item_drop *ditem;
 	list=(struct item_drop_list *)data;
@@ -1876,8 +1878,9 @@ int mob_delay_item_drop(int tid, int64 tick, int id, intptr_t data) {
 	while (ditem) {
 		struct item_drop *ditem_prev;
 		map->addflooritem(NULL, &ditem->item_data,ditem->item_data.amount,
-		                  list->m,list->x,list->y,
-		                  list->first_charid,list->second_charid,list->third_charid,0);
+		    list->m,list->x,list->y,
+		    list->first_charid,list->second_charid,list->third_charid,0,
+		    ditem->showdropeffect);
 		ditem_prev = ditem;
 		ditem = ditem->next;
 		ers_free(item_drop_ers, ditem_prev);
@@ -1908,6 +1911,7 @@ void mob_item_drop(struct mob_data *md, struct item_drop_list *dlist, struct ite
 
 	if( sd
 		&& (drop_rate <= sd->state.autoloot || pc->isautolooting(sd, ditem->item_data.nameid))
+		&& (!map->list[sd->bl.m].flag.noautoloot)
 		&& (battle_config.idle_no_autoloot == 0 || DIFF_TICK(sockt->last_tick, sd->idletime) < battle_config.idle_no_autoloot)
 		&& (battle_config.homunculus_autoloot?1:!flag)
 #ifdef AUTOLOOT_DISTANCE
@@ -2155,6 +2159,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 	struct map_session_data *sd = BL_CAST(BL_PC, src);
 	struct map_session_data *tmpsd[DAMAGELOG_SIZE] = { NULL };
 	struct map_session_data *mvp_sd = sd, *second_sd = NULL, *third_sd = NULL;
+	struct item_data *id = NULL;
 
 	struct {
 		struct party_data *p;
@@ -2439,22 +2444,12 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 
 			ditem = mob->setdropitem(md->db->dropitem[i].nameid, 1, it);
 
-			//A Rare Drop Global Announce by Lupus
-			if( mvp_sd && drop_rate <= battle_config.rare_drop_announce ) {
-				char message[128];
-				sprintf (message, msg_txt(541), mvp_sd->status.name, md->name, it->jname, (float)drop_rate/100);
-				//MSG: "'%s' won %s's %s (chance: %0.02f%%)"
-				intif->broadcast(message, (int)strlen(message)+1, BC_DEFAULT);
+			// Official Drop Announce [Jedzkie]
+			if (mvp_sd != NULL) {
+				if ((id = itemdb->search(it->nameid)) != NULL && id->flag.drop_announce) {
+					clif->item_drop_announce(mvp_sd, it->nameid, md->name);
+				}
 			}
-
-			/* heres the thing we got the feature set up however we're still discussing how to best define the ids,
-			 * so while we discuss, for a small period of time, the list is hardcoded (yes officially only those 2 use it,
-			 * thus why we're unsure on how to best place the setting) */
-			/* temp, will not be hardcoded for long thudu. */
-			// TODO: This should be a field in the item db.
-			if (mvp_sd != NULL
-			 && (it->nameid == ITEMID_GOLD_KEY77 || it->nameid == ITEMID_SILVER_KEY77)) /* for when not hardcoded: add a check on mvp bonus drop as well */
-				clif->item_drop_announce(mvp_sd, it->nameid, md->name);
 
 			// Announce first, or else ditem will be freed. [Lance]
 			// By popular demand, use base drop rate for autoloot code. [Skotlex]
@@ -2592,17 +2587,9 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 					clif->mvp_item(mvp_sd, item.nameid);
 					log_mvp[0] = item.nameid;
 
-					//A Rare MVP Drop Global Announce by Lupus
-					if (rate <= battle_config.rare_drop_announce) {
-						char message[128];
-						sprintf(message, msg_txt(541), mvp_sd->status.name, md->name, data->jname, rate/100.);
-						//MSG: "'%s' won %s's %s (chance: %0.02f%%)"
-						intif->broadcast(message, (int)strlen(message)+1, BC_DEFAULT);
-					}
-
 					if((temp = pc->additem(mvp_sd,&item,1,LOG_TYPE_PICKDROP_PLAYER)) != 0) {
 						clif->additem(mvp_sd,0,0,temp);
-						map->addflooritem(&md->bl, &item, 1, mvp_sd->bl.m, mvp_sd->bl.x, mvp_sd->bl.y, mvp_sd->status.char_id, (second_sd?second_sd->status.char_id : 0), (third_sd ? third_sd->status.char_id : 0), 1);
+						map->addflooritem(&md->bl, &item, 1, mvp_sd->bl.m, mvp_sd->bl.x, mvp_sd->bl.y, mvp_sd->status.char_id, (second_sd?second_sd->status.char_id : 0), (third_sd ? third_sd->status.char_id : 0), 1, true);
 					}
 
 					//Logs items, MVP prizes [Lupus]
@@ -2635,7 +2622,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 		if( sd ) {
 			if( sd->mission_mobid == md->class_) { //TK_MISSION [Skotlex]
 				if (++sd->mission_count >= 100 && (temp = mob->get_random_id(0, 0xE, sd->status.base_level)) != 0) {
-					pc->addfame(sd, 1);
+					pc->addfame(sd, RANKTYPE_TAEKWON, 1);
 					sd->mission_mobid = temp;
 					pc_setglobalreg(sd,script->add_str("TK_MISSION_ID"), temp);
 					sd->mission_count = 0;
@@ -2684,7 +2671,8 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 
 	if( !rebirth ) {
 
-		if( pc->db_checkid(md->vd->class_) ) {//Player mobs are not removed automatically by the client.
+		if (pc->db_checkid(md->vd->class)) {
+			// Player mobs are not removed automatically by the client.
 			/* first we set them dead, then we delay the out sight effect */
 			clif->clearunit_area(&md->bl,CLR_DEAD);
 			clif->clearunit_delayed(&md->bl, CLR_OUTSIGHT,tick+3000);
@@ -2701,7 +2689,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 		return 5; // Note: Actually, it's 4. Oh well...
 
 	// MvP tomb [GreenBox]
-	if (battle_config.mvp_tomb_enabled && md->spawn->state.boss && map->list[md->bl.m].flag.notomb != 1)
+	if (battle_config.mvp_tomb_enabled && md->spawn->state.boss == BTYPE_MVP && map->list[md->bl.m].flag.notomb != 1)
 		mob->mvptomb_create(md, mvp_sd ? mvp_sd->status.name : NULL, time(NULL));
 
 	if( !rebirth ) {
@@ -2831,7 +2819,7 @@ int mob_class_change (struct mob_data *md, int class_) {
 	mob_stop_walking(md, STOPWALKING_FLAG_NONE);
 	unit->skillcastcancel(&md->bl, 0);
 	status->set_viewdata(&md->bl, class_);
-	clif->class_change(&md->bl, md->vd->class_, 1);
+	clif->class_change(&md->bl, md->vd->class, 1, NULL);
 	status_calc_mob(md, SCO_FIRST);
 	md->ud.state.speed_changed = 1; //Speed change update.
 
@@ -3366,7 +3354,7 @@ int mobskill_use(struct mob_data *md, int64 tick, int event) {
 			char name[NAME_LENGTH];
 			snprintf(name, sizeof name,"%s", md->name);
 			strtok(name, "#"); // discard extra name identifier if present [Daegaladh]
-			snprintf(temp, sizeof temp,"%s : %s", name, mc->msg);
+			safesnprintf(temp, sizeof temp,"%s : %s", name, mc->msg);
 			clif->messagecolor(&md->bl, mc->color, temp);
 		}
 		if(!(battle_config.mob_ai&0x200)) { //pass on delay to same skill.
@@ -3491,8 +3479,8 @@ int mob_clone_spawn(struct map_session_data *sd, int16 m, int16 x, int16 y, cons
 
 	//Go Backwards to give better priority to advanced skills.
 	for (i=0,j = MAX_SKILL_TREE-1;j>=0 && i< MAX_MOBSKILL ;j--) {
-		int idx = pc->skill_tree[pc->class2idx(sd->status.class_)][j].idx;
-		int skill_id = pc->skill_tree[pc->class2idx(sd->status.class_)][j].id;
+		int idx = pc->skill_tree[pc->class2idx(sd->status.class)][j].idx;
+		int skill_id = pc->skill_tree[pc->class2idx(sd->status.class)][j].id;
 		if (!skill_id || sd->status.skill[idx].lv < 1 ||
 			(skill->dbs->db[idx].inf2&(INF2_WEDDING_SKILL|INF2_GUILD_SKILL))
 		)
@@ -3727,7 +3715,7 @@ unsigned int mob_drop_adjust(int baserate, int rate_adjust, unsigned short rate_
 
 /**
  * Check if global item drop rate is overridden for given item
- * in db/mob_item_ratio.txt
+ * in Database/mob_item_ratio.txt
  * @param nameid ID of the item
  * @param mob_id ID of the monster
  * @param rate_adjust pointer to store ratio if found
@@ -4060,6 +4048,7 @@ int mob_db_validate_entry(struct mob_db *entry, int n, const char *source)
 	 * Disabled for renewal since difference of 0 and 1 still has an impact in the formulas
 	 * Just in case there is a mishandled division by zero please let us know. [malufett]
 	 */
+
 	if (entry->range2 < 1)
 		entry->range2 = 1;
 
@@ -4199,7 +4188,7 @@ int mob_read_db_sub(struct config_setting_t *mobt, int n, const char *source)
 		return 0;
 	}
 	md.mob_id = i32;
-	md.vd.class_ = md.mob_id;
+	md.vd.class = md.mob_id;
 
 	if ((t = libconfig->setting_get_member(mobt, "Inherit")) && (inherit = libconfig->setting_get_bool(t))) {
 		if (!mob->db_data[md.mob_id]) {
@@ -4467,12 +4456,10 @@ bool mob_get_const(const struct config_setting_t *it, int *value)
 }
 
 /*==========================================
- * mob_db.txt reading
+ * MobList.txt reading
  *------------------------------------------*/
 void mob_readdb(void) {
-	const char* filename[] = {
-		"Mob_DB/MobList.conf",
-		"Custom_DB/Mob2List.conf" };
+	const char* filename[] = {"Mob_DB/MobList.conf"};
 	int i;
 
 	for (i = 0; i < ARRAYLENGTH(filename); ++i) {
@@ -4480,7 +4467,6 @@ void mob_readdb(void) {
 	}
 	mob->name_constants();
 }
-
 /**
  * Reads from a libconfig-formatted mobdb file and inserts the found entries
  * into the mob database, overwriting duplicate ones (i.e. mob_db2 overriding
@@ -4500,7 +4486,7 @@ int mob_read_libconfig(const char *filename, bool ignore_missing)
 	int i = 0, count = 0;
 
 	nullpo_ret(filename);
-	sprintf(filepath, "%s/%s", map->db_path, filename);
+	safesnprintf(filepath, sizeof(filepath), "%s/%s", map->db_path, filename);
 
 	if (ignore_missing && !exists(filepath))
 		return 0;
@@ -4529,7 +4515,7 @@ int mob_read_libconfig(const char *filename, bool ignore_missing)
 		}
 	}
 	libconfig->destroy(&mob_db_conf);
-	ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' entries in '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 
 	return count;
 }
@@ -4553,7 +4539,7 @@ void mob_name_constants(void) {
  *------------------------------------------*/
 bool mob_readdb_mobavail(char* str[], int columns, int current)
 {
-	int class_, k;
+	int class_, view_class;
 
 	nullpo_retr(false, str);
 	class_=atoi(str[0]);
@@ -4564,13 +4550,13 @@ bool mob_readdb_mobavail(char* str[], int columns, int current)
 		return false;
 	}
 
-	k=atoi(str[1]);
+	view_class = atoi(str[1]);
 
 	memset(&mob->db_data[class_]->vd, 0, sizeof(struct view_data));
-	mob->db_data[class_]->vd.class_=k;
+	mob->db_data[class_]->vd.class = view_class;
 
 	//Player sprites
-	if(pc->db_checkid(k) && columns==12) {
+	if (pc->db_checkid(view_class) && columns == 12) {
 		mob->db_data[class_]->vd.sex=atoi(str[2]);
 		mob->db_data[class_]->vd.hair_style=atoi(str[3]);
 		mob->db_data[class_]->vd.hair_color=atoi(str[4]);
@@ -4651,7 +4637,7 @@ int mob_read_randommonster(void)
 			summon[i].qty = 1;
 		}
 		fclose(fp);
-		ShowStatus("Done reading '"CL_WHITE"%u"CL_RESET"' entries in '"CL_WHITE"%s"CL_RESET"'.\n",count,mobfile[i]);
+		ShowStatus("Feita a leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n",count,mobfile[i]);
 	}
 	return 0;
 }
@@ -4718,15 +4704,15 @@ bool mob_parse_row_chatdb(char** str, const char* source, int line, int* last_ms
 }
 
 /*==========================================
- * mob_chat_db.txt reading [SnakeDrak]
+ * MobSpeak.txt reading [SnakeDrak]
  *-------------------------------------------------------------------------*/
 void mob_readchatdb(void) {
-	char arc[]="Mob_DB/MobChat.txt";
+	char arc[]="Mob_DB/MobSpeak.txt";
 	uint32 lines=0, count=0;
 	char line[1024], filepath[256];
 	int i, tmp=0;
 	FILE *fp;
-	sprintf(filepath, "%s/%s", map->db_path, arc);
+	safesnprintf(filepath, sizeof(filepath), "%s/%s", map->db_path, arc);
 	fp=fopen(filepath, "r");
 	if(fp == NULL) {
 		ShowWarning("mob_readchatdb: File not found \"%s\", skipping.\n", filepath);
@@ -4767,7 +4753,7 @@ void mob_readchatdb(void) {
 		count++;
 	}
 	fclose(fp);
-	ShowStatus("Done reading '"CL_WHITE"%"PRIu32""CL_RESET"' entries in '"CL_WHITE"%s"CL_RESET"'.\n", count, arc);
+	ShowStatus("Feita a leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, arc);
 }
 
 /*==========================================
@@ -4851,7 +4837,7 @@ bool mob_parse_row_mobskilldb(char** str, int columns, int current)
 	struct mob_skill *ms, gms;
 	int mob_id;
 	int i =0, j, tmp;
-	uint16 sidx = 0;
+	int sidx = 0;
 
 	nullpo_retr(false, str);
 	mob_id = atoi(str[0]);
@@ -5036,12 +5022,12 @@ bool mob_parse_row_mobskilldb(char** str, int columns, int current)
 }
 
 /*==========================================
- * mob_skill_db.txt reading
+ * MobSkill.txt reading
  *------------------------------------------*/
 void mob_readskilldb(void) {
 	const char* filename[] = {
 		"Mob_DB/MobSkill.txt",
-		"Custom_DB/Mob2Skill.txt" };
+		"mob_skill_db2.txt" };
 	int fi;
 
 	if( battle_config.mob_skill_rate == 0 ) {
@@ -5052,7 +5038,7 @@ void mob_readskilldb(void) {
 	for( fi = 0; fi < ARRAYLENGTH(filename); ++fi ) {
 		if(fi > 0) {
 			char filepath[256];
-			snprintf(filepath, 256, "%s/%s", map->db_path, filename[fi]);
+			safesnprintf(filepath, 256, "%s/%s", map->db_path, filename[fi]);
 			if(!exists(filepath)) {
 				continue;
 			}
@@ -5063,7 +5049,7 @@ void mob_readskilldb(void) {
 }
 
 /*==========================================
- * mob_race2_db.txt reading
+ * Race.txt reading
  *------------------------------------------*/
 bool mob_readdb_race2(char* fields[], int columns, int current)
 {
@@ -5125,13 +5111,13 @@ void mob_load(bool minimal) {
 		mob->readdb();
 		return;
 	}
-	sv->readdb(map->db_path, "Item_DB/Ratio.txt", ',', 2, 2+MAX_ITEMRATIO_MOBS, -1, mob->readdb_itemratio); // must be read before mobdb
+	sv->readdb(map->db_path, "Item_DB/ChangeRate.txt", ',', 2, 2+MAX_ITEMRATIO_MOBS, -1, mob->readdb_itemratio); // must be read before mobdb
 	mob->readchatdb();
 	mob->readdb();
 	mob->readskilldb();
 	sv->readdb(map->db_path, "Mob_DB/Disguise.txt", ',', 2, 12, -1, mob->readdb_mobavail);
 	mob->read_randommonster();
-	sv->readdb(map->db_path,"Mob_DB/Race.txt", ',', 2, 20, -1, mob->readdb_race2);
+	sv->readdb(map->db_path, "Mob_DB/Race.txt", ',', 2, 20, -1, mob->readdb_race2);
 }
 
 void mob_reload(void) {

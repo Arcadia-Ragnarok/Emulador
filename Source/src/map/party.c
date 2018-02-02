@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,9 +20,9 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
-#include "config/core.h" // GP_BOUND_ITEMS
+#include "config/core.h" // GP_BOUND_ITEMS, RENEWAL_EXP
 #include "party.h"
 
 #include "map/atcommand.h" //msg_txt()
@@ -68,7 +66,7 @@ void party_fill_member(struct party_member* member, struct map_session_data* sd,
 	member->account_id = sd->status.account_id;
 	member->char_id    = sd->status.char_id;
 	safestrncpy(member->name, sd->status.name, NAME_LENGTH);
-	member->class_     = sd->status.class_;
+	member->class      = sd->status.class;
 	member->map        = sd->mapindex;
 	member->lv         = sd->status.base_level;
 	member->online     = 1;
@@ -240,24 +238,29 @@ void party_check_state(struct party_data *p) {
 	int i;
 	nullpo_retv(p);
 	memset(&p->state, 0, sizeof(p->state));
-	for (i = 0; i < MAX_PARTY; i ++) {
+	for (i = 0; i < MAX_PARTY; i++) {
 		if (!p->party.member[i].online) continue; //Those not online shouldn't apart to skill usage and all that.
-		switch (p->party.member[i].class_) {
+		switch (p->party.member[i].class) {
 			case JOB_MONK:
 			case JOB_BABY_MONK:
 			case JOB_CHAMPION:
+			case JOB_SURA:
+			case JOB_SURA_T:
+			case JOB_BABY_SURA:
 				p->state.monk = 1;
-			break;
+				break;
 			case JOB_STAR_GLADIATOR:
 				p->state.sg = 1;
-			break;
+				break;
 			case JOB_SUPER_NOVICE:
 			case JOB_SUPER_BABY:
+			case JOB_SUPER_NOVICE_E:
+			case JOB_SUPER_BABY_E:
 				p->state.snovice = 1;
-			break;
+				break;
 			case JOB_TAEKWON:
 				p->state.tk = 1;
-			break;
+				break;
 		}
 	}
 }
@@ -273,6 +276,7 @@ int party_recv_info(const struct party *sp, int char_id)
 	int added_count = 0;
 	int j;
 	int member_id;
+	int leader_account_id = 0, leader_char_id = 0;
 
 	nullpo_ret(sp);
 
@@ -286,8 +290,12 @@ int party_recv_info(const struct party *sp, int char_id)
 			ARR_FIND(0, MAX_PARTY, i,
 				sp->member[i].account_id == member->account_id &&
 				sp->member[i].char_id == member->char_id);
-			if (i == MAX_PARTY)
+			if (i == MAX_PARTY) {
 				removed[removed_count++] = member_id;
+			} else if (member->leader != 0) {
+				leader_account_id = member->account_id;
+				leader_char_id = member->char_id;
+			}
 		}
 		for (member_id = 0; member_id < MAX_PARTY; ++member_id) {
 			member = &sp->member[member_id];
@@ -315,6 +323,7 @@ int party_recv_info(const struct party *sp, int char_id)
 			continue;// not online
 		party->member_withdraw(sp->party_id, sd->status.account_id, sd->status.char_id);
 	}
+
 	memcpy(&p->party, sp, sizeof(struct party));
 	memset(&p->state, 0, sizeof(p->state));
 	memset(&p->data, 0, sizeof(p->data));
@@ -323,6 +332,8 @@ int party_recv_info(const struct party *sp, int char_id)
 		if ( member->char_id == 0 )
 			continue;// empty
 		p->data[member_id].sd = party->sd_check(sp->party_id, member->account_id, member->char_id);
+		if (member->account_id == leader_account_id && member->char_id == leader_char_id)
+			p->party.member[member_id].leader = 1;
 	}
 	party->check_state(p);
 	while( added_count > 0 ) { // new in party
@@ -590,11 +601,43 @@ int party_member_withdraw(int party_id, int account_id, int char_id)
 		int i;
 		ARR_FIND( 0, MAX_PARTY, i, p->party.member[i].account_id == account_id && p->party.member[i].char_id == char_id );
 		if( i < MAX_PARTY ) {
+			bool was_leader = false;
+			int prev_leader_accountId = 0;
+			if (p->party.member[i].leader != 0) {
+				was_leader = true;
+				prev_leader_accountId = p->party.member[i].account_id;
+			}
+
 			clif->party_withdraw(p,sd,account_id,p->party.member[i].name,0x0);
 			memset(&p->party.member[i], 0, sizeof(p->party.member[0]));
 			memset(&p->data[i], 0, sizeof(p->data[0]));
 			p->party.count--;
 			party->check_state(p);
+
+			if (was_leader) {
+				int k;
+				// Member was party leader, try to pick a new leader from online members
+				ARR_FIND(0, MAX_PARTY, k, p->party.member[k].account_id != 0 && p->party.member[k].online == 1);
+
+				if (k == MAX_PARTY) {
+					// No online members, get an offline one
+					ARR_FIND(0, MAX_PARTY, k, p->party.member[k].account_id != 0);
+				}
+
+				if (k < MAX_PARTY) {
+					// Update party's leader
+					p->party.member[k].leader = 1;
+
+					if (p->data[k].sd != NULL) {
+						/** update members **/
+						clif->PartyLeaderChanged(p->data[k].sd, prev_leader_accountId, p->data[k].sd->status.account_id);
+					}
+
+					//Update info.
+					intif->party_leaderchange(p->party.party_id, p->party.member[k].account_id, p->party.member[k].char_id);
+					clif->party_info(p, NULL);
+				}
+			}
 		}
 	}
 
@@ -687,6 +730,11 @@ bool party_changeleader(struct map_session_data *sd, struct map_session_data *ts
 
 	if (!tsd || tsd->status.party_id != sd->status.party_id) {
 		clif->message(sd->fd, msg_sd(sd,283)); // Target character must be online and in your current party.
+		return false;
+	}
+
+	if (battle_config.party_change_leader_same_map && sd->bl.m != tsd->bl.m) {
+		clif->msgtable(sd, MSG_PARTY_LEADER_SAMEMAP); // It is only possible to change the party leader while on the same map.
 		return false;
 	}
 
@@ -880,15 +928,14 @@ int party_skill_check(struct map_session_data *sd, int party_id, uint16 skill_id
 			continue;
 		switch(skill_id) {
 			case TK_COUNTER: //Increase Triple Attack rate of Monks.
-				if((p_sd->class_&MAPID_UPPERMASK) == MAPID_MONK
-					&& pc->checkskill(p_sd,MO_TRIPLEATTACK)) {
+				if ((p_sd->job & MAPID_UPPERMASK) == MAPID_MONK && pc->checkskill(p_sd, MO_TRIPLEATTACK)) {
 					sc_start4(&p_sd->bl,&p_sd->bl,SC_SKILLRATE_UP,100,MO_TRIPLEATTACK,
 						50+50*skill_lv, //+100/150/200% rate
 						0,0,skill->get_time(SG_FRIEND, 1));
 				}
 				break;
 			case MO_COMBOFINISH: //Increase Counter rate of Star Gladiators
-				if((p_sd->class_&MAPID_UPPERMASK) == MAPID_STAR_GLADIATOR
+				if ((p_sd->job & MAPID_UPPERMASK) == MAPID_STAR_GLADIATOR
 					&& sd->sc.data[SC_COUNTERKICK_READY]
 					&& pc->checkskill(p_sd,SG_FRIEND)) {
 					sc_start4(&p_sd->bl,&p_sd->bl,SC_SKILLRATE_UP,100,TK_COUNTER,
@@ -1159,7 +1206,7 @@ int party_sub_count_chorus(struct block_list *bl, va_list ap)
 	if (battle_config.idle_no_share && pc_isidle(sd))
 		return 0;
 
-	if ( (sd->class_&MAPID_THIRDMASK) != MAPID_MINSTRELWANDERER )
+	if ((sd->job & MAPID_THIRDMASK) != MAPID_MINSTRELWANDERER)
 		return 0;
 
 	return 1;
@@ -1415,7 +1462,6 @@ void do_init_party(bool minimal) {
 }
 /*=====================================
 * Default Functions : party.h
-* Generated by InterfaceMaker
 * created by Susu
 *-------------------------------------*/
 void party_defaults(void) {

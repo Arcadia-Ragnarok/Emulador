@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "lclif.p.h"
 
@@ -221,6 +219,15 @@ enum parsefunc_rcode lclif_parse_CA_SSO_LOGIN_REQ(int fd, struct login_session_d
 	return PACKET_VALID;
 }
 
+/// @copydoc lclif_interface_private::parse_CA_LOGIN_OTP()
+enum parsefunc_rcode lclif_parse_CA_LOGIN_OTP(int fd, struct login_session_data *sd) __attribute__((nonnull (2)));
+enum parsefunc_rcode lclif_parse_CA_LOGIN_OTP(int fd, struct login_session_data *sd)
+{
+	//const struct packet_CA_LOGIN_OTP *packet = RP2PTR(fd);
+	login->client_login_otp(fd, sd);
+	return PACKET_VALID;
+}
+
 /// @copydoc lclif_interface_private::parse_CA_REQ_HASH()
 enum parsefunc_rcode lclif_parse_CA_REQ_HASH(int fd, struct login_session_data *sd) __attribute__((nonnull (2)));
 enum parsefunc_rcode lclif_parse_CA_REQ_HASH(int fd, struct login_session_data *sd)
@@ -267,7 +274,11 @@ bool lclif_send_server_list(struct login_session_data *sd)
 	WFIFOHEAD(sd->fd, length);
 	packet = WP2PTR(sd->fd);
 
+#if PACKETVER < 20170315
 	packet->packet_id = PACKET_ID_AC_ACCEPT_LOGIN;
+#else
+	packet->packet_id = PACKET_ID_AC_ACCEPT_LOGIN2;
+#endif
 	packet->packet_len = length;
 	packet->auth_code = sd->login_id1;
 	packet->aid = sd->account_id;
@@ -285,7 +296,7 @@ bool lclif_send_server_list(struct login_session_data *sd)
 		packet->server_list[n].ip = htonl((subnet_char_ip) ? subnet_char_ip : server[i].ip);
 		packet->server_list[n].port = sockt->ntows(htons(server[i].port)); // [!] LE byte order here [!]
 		safestrncpy(packet->server_list[n].name, server[i].name, 20);
-		packet->server_list[n].usercount = server[i].users;
+		packet->server_list[n].usercount = login->convert_users_to_colors(server[i].users);
 
 		if (server[i].type == CST_PAYING && sd->expiration_time > time(NULL))
 			packet->server_list[n].property = CST_NORMAL;
@@ -503,6 +514,7 @@ void packetdb_loaddb(void)
 		packet_def(CA_LOGIN_PCBANG),
 		packet_def(CA_LOGIN_HAN),
 		packet_def2(CA_SSO_LOGIN_REQ, -1),
+		packet_def(CA_LOGIN_OTP),
 		packet_def(CA_REQ_HASH),
 #undef packet_def
 #undef packet_def2
@@ -513,7 +525,7 @@ void packetdb_loaddb(void)
 
 	for (i = 0; i < length; ++i) {
 		int16 packet_id = packet[i].packet_id;
-		Assert_retb(packet_id >= MIN_PACKET_DB && packet_id < MAX_PACKET_DB);
+		Assert_retb(packet_id >= MIN_PACKET_DB && packet_id <= MAX_PACKET_DB);
 		lclif->p->dbs->packet_db[packet_id].len = packet[i].packet_len;
 		lclif->p->dbs->packet_db[packet_id].pFunc = packet[i].pFunc;
 	}
@@ -566,6 +578,7 @@ void lclif_defaults(void)
 	lclif->p->parse_CA_LOGIN_PCBANG         = lclif_parse_CA_LOGIN_PCBANG;
 	lclif->p->parse_CA_LOGIN_HAN            = lclif_parse_CA_LOGIN_HAN;
 	lclif->p->parse_CA_SSO_LOGIN_REQ        = lclif_parse_CA_SSO_LOGIN_REQ;
+	lclif->p->parse_CA_LOGIN_OTP            = lclif_parse_CA_LOGIN_OTP;
 	lclif->p->parse_CA_REQ_HASH             = lclif_parse_CA_REQ_HASH;
 	lclif->p->parse_CA_CHARSERVERCONNECT    = lclif_parse_CA_CHARSERVERCONNECT;
 }

@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -239,6 +237,7 @@ typedef enum c_op {
 	C_SUB_PRE, // --a
 	C_RE_EQ, // ~=
 	C_RE_NE, // ~!
+	C_POW, // **
 } c_op;
 
 /// Script queue options
@@ -339,6 +338,7 @@ enum {
 	MF_RESET,
 	MF_NOTOMB,
 	MF_NOCASHSHOP,
+	MF_NOAUTOLOOT,
 	MF_NOVIEWID
 };
 
@@ -351,6 +351,108 @@ enum navigation_service {
 	NAV_KAFRA_AND_AIRSHIP  = NAV_KAFRA_ONLY + NAV_AIRSHIP_ONLY, // 101
 	NAV_KAFRA_AND_SCROLL   = NAV_KAFRA_ONLY + NAV_SCROLL_ONLY, // 110
 	NAV_ALL                = NAV_AIRSHIP_ONLY + NAV_SCROLL_ONLY + NAV_KAFRA_ONLY // 111-255
+};
+
+/**
+ * Unit Types for script handling.
+ */
+enum script_unit_types {
+	UNIT_PC = 0,
+	UNIT_NPC,
+	UNIT_PET,
+	UNIT_MOB,
+	UNIT_HOM,
+	UNIT_MER,
+	UNIT_ELEM,
+};
+
+/**
+ * Unit Data Types for script handling.
+ */
+enum script_unit_data_types {
+	UDT_TYPE = 0,
+	UDT_SIZE,
+	UDT_LEVEL,
+	UDT_HP,
+	UDT_MAXHP,
+	UDT_SP,
+	UDT_MAXSP,
+	UDT_MASTERAID,
+	UDT_MASTERCID,
+	UDT_MAPIDXY,
+	UDT_WALKTOXY,
+	UDT_SPEED,
+	UDT_MODE,
+	UDT_AI,
+	UDT_SCOPTION,
+	UDT_SEX,
+	UDT_CLASS,
+	UDT_HAIRSTYLE,
+	UDT_HAIRCOLOR,
+	UDT_HEADBOTTOM,
+	UDT_HEADMIDDLE,
+	UDT_HEADTOP,
+	UDT_CLOTHCOLOR,
+	UDT_SHIELD,
+	UDT_WEAPON,
+	UDT_LOOKDIR,
+	UDT_CANMOVETICK,
+	UDT_STR,
+	UDT_AGI,
+	UDT_VIT,
+	UDT_INT,
+	UDT_DEX,
+	UDT_LUK,
+	UDT_ATKRANGE,
+	UDT_ATKMIN,
+	UDT_ATKMAX,
+	UDT_MATKMIN,
+	UDT_MATKMAX,
+	UDT_DEF,
+	UDT_MDEF,
+	UDT_HIT,
+	UDT_FLEE,
+	UDT_PDODGE,
+	UDT_CRIT,
+	UDT_RACE,
+	UDT_ELETYPE,
+	UDT_ELELEVEL,
+	UDT_AMOTION,
+	UDT_ADELAY,
+	UDT_DMOTION,
+	UDT_HUNGER,
+	UDT_INTIMACY,
+	UDT_LIFETIME,
+	UDT_MERC_KILLCOUNT,
+	UDT_STATPOINT,
+	UDT_ROBE,
+	UDT_BODY2,
+	UDT_MAX
+};
+
+/**
+ * Item Info types.
+ */
+enum script_iteminfo_types {
+	ITEMINFO_BUYPRICE = 0,
+	ITEMINFO_SELLPRICE,
+	ITEMINFO_TYPE,
+	ITEMINFO_MAXCHANCE,
+	ITEMINFO_SEX,
+	ITEMINFO_LOC,
+	ITEMINFO_WEIGHT,
+	ITEMINFO_ATK,
+	ITEMINFO_DEF,
+	ITEMINFO_RANGE,
+	ITEMINFO_SLOTS,
+	ITEMINFO_SUBTYPE,
+	ITEMINFO_ELV,
+	ITEMINFO_WLV,
+	ITEMINFO_VIEWID,
+	ITEMINFO_MATK,
+	ITEMINFO_VIEWSPRITE,
+
+	ITEMINFO_MAX
 };
 
 /**
@@ -675,10 +777,12 @@ struct script_interface {
 	struct script_data* (*push_val)(struct script_stack* stack, enum c_op type, int64 val, struct reg_db *ref);
 	struct script_data *(*get_val) (struct script_state* st, struct script_data* data);
 	char* (*get_val_ref_str) (struct script_state* st, struct reg_db *n, struct script_data* data);
+	char* (*get_val_pc_ref_str) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	char* (*get_val_scope_str) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	char* (*get_val_npc_str) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	char* (*get_val_instance_str) (struct script_state* st, const char* name, struct script_data* data);
 	int (*get_val_ref_num) (struct script_state* st, struct reg_db *n, struct script_data* data);
+	int (*get_val_pc_ref_num) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	int (*get_val_scope_num) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	int (*get_val_npc_num) (struct script_state* st, struct reg_db *n, struct script_data* data);
 	int (*get_val_instance_num) (struct script_state* st, const char* name, struct script_data* data);
@@ -758,10 +862,12 @@ struct script_interface {
 	void (*errorwarning_sub) (StringBuf *buf, const char *src, const char *file, int start_line, const char *error_msg, const char *error_pos);
 	int (*set_reg) (struct script_state *st, struct map_session_data *sd, int64 num, const char *name, const void *value, struct reg_db *ref);
 	void (*set_reg_ref_str) (struct script_state* st, struct reg_db *n, int64 num, const char* name, const char *str);
+	void (*set_reg_pc_ref_str) (struct script_state* st, struct reg_db *n, int64 num, const char* name, const char *str);
 	void (*set_reg_scope_str) (struct script_state* st, struct reg_db *n, int64 num, const char* name, const char *str);
 	void (*set_reg_npc_str) (struct script_state* st, struct reg_db *n, int64 num, const char* name, const char *str);
 	void (*set_reg_instance_str) (struct script_state* st, int64 num, const char* name, const char *str);
 	void (*set_reg_ref_num) (struct script_state* st, struct reg_db *n, int64 num, const char* name, int val);
+	void (*set_reg_pc_ref_num) (struct script_state* st, struct reg_db *n, int64 num, const char* name, int val);
 	void (*set_reg_scope_num) (struct script_state* st, struct reg_db *n, int64 num, const char* name, int val);
 	void (*set_reg_npc_num) (struct script_state* st, struct reg_db *n, int64 num, const char* name, int val);
 	void (*set_reg_instance_num) (struct script_state* st, int64 num, const char* name, int val);
@@ -777,6 +883,9 @@ struct script_interface {
 	int (*db_free_code_sub) (union DBKey key, struct DBData *data, va_list ap);
 	void (*add_autobonus) (const char *autobonus);
 	int (*menu_countoptions) (const char *str, int max_count, int *total);
+	int (*buildin_recovery_sub) (struct map_session_data *sd);
+	int (*buildin_recovery_pc_sub) (struct map_session_data *sd, va_list ap);
+	int (*buildin_recovery_bl_sub) (struct block_list *bl, va_list ap);
 	int (*buildin_areawarp_sub) (struct block_list *bl, va_list ap);
 	int (*buildin_areapercentheal_sub) (struct block_list *bl, va_list ap);
 	void (*buildin_delitem_delete) (struct map_session_data *sd, int idx, int *amount, bool delete_items);
@@ -843,9 +952,9 @@ struct script_interface {
 	void (*run_item_unequip_script) (struct map_session_data *sd, struct item_data *data, int oid);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void script_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct script_interface *script;
 

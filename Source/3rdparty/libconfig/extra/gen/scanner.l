@@ -1,25 +1,4 @@
 /* -*- mode: C -*- */
-/* --------------------------------------------------------------------------
-   libconfig - A library for processing structured configuration files
-   Copyright (C) 2005-2014  Mark A Lindner
-
-   This file is part of libconfig.
-
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public License
-   as published by the Free Software Foundation; either version 2.1 of
-   the License, or (at your option) any later version.
-
-   This library is distributed in the hope that it will be useful, but
-   WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public
-   License along with this library; if not, see
-   <http://www.gnu.org/licenses/>.
-   ----------------------------------------------------------------------------
-*/
 
 %option nounistd
 %option never-interactive
@@ -87,7 +66,7 @@ static unsigned long long fromhex(const char *s)
 
 true              [Tt][Rr][Uu][Ee]
 false             [Ff][Aa][Ll][Ss][Ee]
-name              [A-Za-z0-9\*][-A-Za-z0-9_\*'.]*
+name              [A-Za-z0-9\*][-A-Za-z0-9_\*.]*
 integer           [-+]?[0-9]+
 integer64         [-+]?[0-9]+L(L)?
 hex               0[Xx][0-9A-Fa-f]+

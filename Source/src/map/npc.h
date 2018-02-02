@@ -1,16 +1,14 @@
-/*-----------------------------------------------------------------*\ 
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -74,7 +72,7 @@ struct npc_parse;
 struct npc_data {
 	struct block_list bl;
 	struct unit_data *ud;
-	struct view_data *vd;
+	struct view_data vd;
 	unsigned int option;
 	struct npc_data *master_nd;
 	short class_;
@@ -129,7 +127,6 @@ struct npc_data {
 	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
-
 #define START_NPC_NUM 110000000
 
 enum actor_classes {
@@ -146,7 +143,7 @@ enum actor_classes {
 #define MAX_NPC_CLASS 1000
 // New NPC range
 #define MAX_NPC_CLASS2_START 10001
-#define MAX_NPC_CLASS2_END 10203
+#define MAX_NPC_CLASS2_END 10248
 
 //Script NPC events.
 enum npce_event {
@@ -314,15 +311,16 @@ struct npc_interface {
 	void (*market_delfromsql) (struct npc_data *nd, unsigned short index);
 	void (*market_delfromsql_sub) (const char *npcname, unsigned short index);
 	bool (*db_checkid) (const int id);
+	void (*refresh) (struct npc_data* nd);
 	/**
 	 * For the Secure NPC Timeout option (check config/Secure.h) [RR]
 	 **/
 	int (*secure_timeout_timer) (int tid, int64 tick, int id, intptr_t data);
 };
 
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void npc_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct npc_interface *npc;
 
@@ -386,9 +384,9 @@ struct pcre_interface {
 /**
  * Also defaults libpcre
  **/
-#ifdef HPM_MAIN_CORE
+#ifdef MAIN_CORE
 void npc_chat_defaults(void);
-#endif // HPM_MAIN_CORE
+#endif // MAIN_CORE
 
 HPShared struct npc_chat_interface *npc_chat;
 HPShared struct pcre_interface *libpcre;

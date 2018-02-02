@@ -1,16 +1,14 @@
 /*-----------------------------------------------------------------*\
-|             ______ ____ _____ ___   __                            |
-|            / ____ / _  / ____/  /  /  /                           |
-|            \___  /  __/ __/ /  /__/  /___                         |
-|           /_____/_ / /____//_____/______/                         |
-|                /\  /|   __    __________ _________                |
-|               /  \/ |  /  |  /  ___  __/ ___/ _  /                |
-|              /      | / ' | _\  \ / / / __//  __/                 |
-|             /  /\/| |/_/|_|/____//_/ /____/_/\ \                  |
-|            /__/   |_|    Source code          \/                  |
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-|                      Projeto Ragnarok Online                      |
+|                  Idealizado por: Spell Master                     |
 +-------------------------------------------------------------------+
 | - Este código é livre para editar, redistribuir de acordo com os  |
 | termos da GNU General Public License, publicada sobre conselho    |
@@ -22,7 +20,7 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define HPM_MAIN_CORE
+#define MAIN_CORE
 
 #include "mapif.h"
 
@@ -30,6 +28,7 @@
 #include "char/int_auction.h"
 #include "char/int_guild.h"
 #include "char/int_homun.h"
+#include "char/int_rodex.h"
 #include "common/cbasetypes.h"
 #include "common/mmo.h"
 #include "common/random.h"
@@ -93,7 +92,7 @@ int mapif_parse_CreateGuild(int fd, int account_id, const char *name, const stru
 int mapif_parse_GuildInfo(int fd, int guild_id);
 int mapif_parse_GuildAddMember(int fd, int guild_id, const struct guild_member *m);
 int mapif_parse_GuildLeave(int fd, int guild_id, int account_id, int char_id, int flag, const char *mes);
-int mapif_parse_GuildChangeMemberInfoShort(int fd, int guild_id, int account_id, int char_id, int online, int lv, int class_);
+int mapif_parse_GuildChangeMemberInfoShort(int fd, int guild_id, int account_id, int char_id, int online, int lv, int16 class);
 int mapif_parse_BreakGuild(int fd, int guild_id);
 int mapif_parse_GuildMessage(int fd, int guild_id, int account_id, const char *mes, int len);
 int mapif_parse_GuildBasicInfoChange(int fd, int guild_id, int type, const void *data, int len);
@@ -186,10 +185,24 @@ void mapif_quest_save_ack(int fd, int char_id, bool success);
 int mapif_parse_quest_save(int fd);
 void mapif_send_quests(int fd, int char_id, struct quest *tmp_questlog, int num_quests);
 int mapif_parse_quest_load(int fd);
+/* RoDEX */
+int mapif_parse_rodex_requestinbox(int fd);
+void mapif_rodex_sendinbox(int fd, int char_id, int8 opentype, int8 flag, int count, struct rodex_maillist *mails);
+int mapif_parse_rodex_checkhasnew(int fd);
+void mapif_rodex_sendhasnew(int fd, int char_id, bool has_new);
+int mapif_parse_rodex_updatemail(int fd);
+int mapif_parse_rodex_send(int fd);
+void mapif_rodex_send(int fd, int sender_id, int receiver_id, int receiver_accountid, bool result);
+int mapif_parse_rodex_checkname(int fd);
+void mapif_rodex_checkname(int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name);
 int mapif_load_guild_storage(int fd,int account_id,int guild_id, char flag);
 int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail);
 int mapif_parse_LoadGuildStorage(int fd);
 int mapif_parse_SaveGuildStorage(int fd);
+int mapif_account_storage_load(int fd, int account_id);
+int mapif_parse_AccountStorageLoad(int fd);
+int mapif_parse_AccountStorageSave(int fd);
+void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool save);
 int mapif_itembound_ack(int fd, int aid, int guild_id);
 int mapif_parse_ItemBoundRetrieve_sub(int fd);
 void mapif_parse_ItemBoundRetrieve(int fd);
@@ -363,10 +376,24 @@ void mapif_defaults(void) {
 	mapif->parse_quest_save = mapif_parse_quest_save;
 	mapif->send_quests = mapif_send_quests;
 	mapif->parse_quest_load = mapif_parse_quest_load;
+	/* RoDEX */
+	mapif->parse_rodex_requestinbox = mapif_parse_rodex_requestinbox;
+	mapif->rodex_sendinbox = mapif_rodex_sendinbox;
+	mapif->parse_rodex_checkhasnew = mapif_parse_rodex_checkhasnew;
+	mapif->rodex_sendhasnew = mapif_rodex_sendhasnew;
+	mapif->parse_rodex_updatemail = mapif_parse_rodex_updatemail;
+	mapif->parse_rodex_send = mapif_parse_rodex_send;
+	mapif->rodex_send = mapif_rodex_send;
+	mapif->parse_rodex_checkname = mapif_parse_rodex_checkname;
+	mapif->rodex_checkname = mapif_rodex_checkname;
 	mapif->load_guild_storage = mapif_load_guild_storage;
 	mapif->save_guild_storage_ack = mapif_save_guild_storage_ack;
 	mapif->parse_LoadGuildStorage = mapif_parse_LoadGuildStorage;
 	mapif->parse_SaveGuildStorage = mapif_parse_SaveGuildStorage;
+	mapif->pAccountStorageLoad = mapif_parse_AccountStorageLoad;
+	mapif->pAccountStorageSave = mapif_parse_AccountStorageSave;
+	mapif->sAccountStorageSaveAck = mapif_send_AccountStorageSaveAck;
+	mapif->account_storage_load = mapif_account_storage_load;
 	mapif->itembound_ack = mapif_itembound_ack;
 	mapif->parse_ItemBoundRetrieve_sub = mapif_parse_ItemBoundRetrieve_sub;
 	mapif->parse_ItemBoundRetrieve = mapif_parse_ItemBoundRetrieve;
