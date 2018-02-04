@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -12504,7 +12504,7 @@ BUILDIN(waitingroom)
 	int trigger =  script_hasdata(st,5) ? script_getnum(st,5) : limit;
 	int zeny =  script_hasdata(st,6) ? script_getnum(st,6) : 0;
 	int minLvl =  script_hasdata(st,7) ? script_getnum(st,7) : 1;
-	int maxLvl =  script_hasdata(st,8) ? script_getnum(st,8) : MAX_LEVEL;
+	int maxLvl =  script_hasdata(st,8) ? script_getnum(st,8) : 150; //MAX_LEVEL
 
 	nd = map->id2nd(st->oid);
 	if (nd != NULL) {
@@ -21357,12 +21357,12 @@ BUILDIN(instance_check_party)
 
 	amount = script_hasdata(st,3) ? script_getnum(st,3) : 1; // Amount of needed Partymembers for the Instance.
 	min = script_hasdata(st,4) ? script_getnum(st,4) : 1; // Minimum Level needed to join the Instance.
-	max  = script_hasdata(st,5) ? script_getnum(st,5) : MAX_LEVEL; // Maxium Level allowed to join the Instance.
+	max  = script_hasdata(st,5) ? script_getnum(st,5) : 150; // Maxium Level allowed to join the Instance. //MAX_LEVEL
 
-	if( min < 1 || min > MAX_LEVEL) {
+	if( min < 1 || min > 150) { //MAX_LEVEL
 		ShowError("instance_check_party: Invalid min level, %d\n", min);
 		return true;
-	} else if(  max < 1 || max > MAX_LEVEL) {
+	} else if(  max < 1 || max > 150) { //MAX_LEVEL
 		ShowError("instance_check_party: Invalid max level, %d\n", max);
 		return true;
 	}
@@ -21416,12 +21416,12 @@ BUILDIN(instance_check_guild)
 
 	amount = script_hasdata(st,3) ? script_getnum(st,3) : 1;
 	min = script_hasdata(st,4) ? script_getnum(st,4) : 1;
-	max = script_hasdata(st,5) ? script_getnum(st,5) : MAX_LEVEL;
+	max = script_hasdata(st,5) ? script_getnum(st,5) : 150; //MAX_LEVEL
 
-	if( min < 1 || min > MAX_LEVEL ){
+	if( min < 1 || min > 150 ){ //MAX_LEVEL
 		ShowError("instance_check_guild: Invalid min level, %d\n", min);
 		return true;
-	} else if( max < 1 || max > MAX_LEVEL ){
+	} else if( max < 1 || max > 150 ){ //MAX_LEVEL
 		ShowError("instance_check_guild: Invalid max level, %d\n", max);
 		return true;
 	}
@@ -22265,8 +22265,8 @@ BUILDIN(npcskill)
 		ShowError("npcskill: stat point exceeded maximum of %d.\n",battle_config.max_third_parameter );
 		return false;
 	}
-	if (npc_level > MAX_LEVEL) {
-		ShowError("npcskill: level exceeded maximum of %d.\n", MAX_LEVEL);
+	if (npc_level > 150) { //MAX_LEVEL
+		ShowError("npcskill: level exceeded maximum of %d.\n", 150); //MAX_LEVEL
 		return false;
 	}
 	if (nd == NULL) {
@@ -24611,7 +24611,7 @@ void script_hardcoded_constants(void)
 
 	script->constdb_comment("Server defines");
 	script->set_constant("PACKETVER",PACKETVER,false, false);
-	script->set_constant("MAX_LEVEL",MAX_LEVEL,false, false);
+//	script->set_constant("MAX_LEVEL",MAX_LEVEL,false, false);
 	script->set_constant("MAX_STORAGE",MAX_STORAGE,false, false);
 	script->set_constant("MAX_GUILD_STORAGE",MAX_GUILD_STORAGE,false, false);
 	script->set_constant("MAX_CART",MAX_INVENTORY,false, false);

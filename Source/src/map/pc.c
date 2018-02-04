@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -7393,10 +7393,10 @@ int pc_resetstate(struct map_session_data* sd)
 
 	if (battle_config.use_statpoint_table) {
 		// New statpoint table used here - Dexity
-		if (sd->status.base_level > MAX_LEVEL) {
+		if (sd->status.base_level > 150) { //MAX_LEVEL
 			//pc->statp[] goes out of bounds, can't reset!
 			ShowError("pc_resetstate: Can't reset stats of %d:%d, the base level (%d) is greater than the max level supported (%d)\n",
-				sd->status.account_id, sd->status.char_id, sd->status.base_level, MAX_LEVEL);
+				sd->status.account_id, sd->status.char_id, sd->status.base_level, 150); //MAX_LEVEL
 			return 0;
 		}
 
@@ -10854,7 +10854,7 @@ int pc_level_penalty_mod(int diff, unsigned char race, uint32 mode, int type)
 	int rate = 100, i;
 
 	if( diff < 0 )
-		diff = MAX_LEVEL + ( ~diff + 1 );
+		diff = 150 + ( ~diff + 1 ); //MAX_LEVEL
 
 	for (i = RC_FORMLESS; i < RC_MAX; i++) {
 		int tmp;
@@ -11205,10 +11205,10 @@ bool pc_readdb_levelpenalty(char* fields[], int columns, int current) {
 		return false;
 	}
 
-	diff = min(diff, MAX_LEVEL);
+	diff = min(diff, 150); //MAX_LEVEL
 
 	if( diff < 0 )
-		diff = min(MAX_LEVEL + ( ~(diff) + 1 ), MAX_LEVEL*2);
+		diff = min(150 + ( ~(diff) + 1 ), 150*2); //MAX_LEVEL
 
 	pc->level_penalty[type][race][diff] = atoi(fields[3]);
 	return true;
@@ -11261,9 +11261,9 @@ int pc_readdb(void) {
 			continue;
 		}
 		maxlv = atoi(split[0]);
-		if (maxlv > MAX_LEVEL) {
-			ShowWarning("pc_readdb: Specified max level %d for job %d is beyond server's limit (%d).\n ", maxlv, job_id, MAX_LEVEL);
-			maxlv = MAX_LEVEL;
+		if (maxlv > 150) { //MAX_LEVEL
+			ShowWarning("pc_readdb: Specified max level %d for job %d is beyond server's limit (%d).\n ", maxlv, job_id, 150); //MAX_LEVEL
+			maxlv = 150; //MAX_LEVEL
 		}
 		count++;
 		job = jobs[0] = pc->class2idx(job_id);
@@ -11308,9 +11308,10 @@ int pc_readdb(void) {
 	for( k=1; k < 3; k++ ){ // fill in the blanks
 		for (j = RC_FORMLESS; j < RC_MAX; j++) {
 			int tmp = 0;
-			for( i = 0; i < MAX_LEVEL*2; i++ ){
-				if( i == MAX_LEVEL+1 )
+			for( i = 0; i < 150*2; i++ ){ //MAX_LEVEL
+				if( i == 150+1 ) { //MAX_LEVEL
 					tmp = pc->level_penalty[k][j][0];// reset
+				}
 				if( pc->level_penalty[k][j][i] > 0 )
 					tmp = pc->level_penalty[k][j][i];
 				else
@@ -11387,8 +11388,9 @@ int pc_readdb(void) {
 				continue;
 			if ((stat=(int)strtol(line,NULL,10))<0)
 				stat=0;
-			if (i > MAX_LEVEL)
+			if (i > 150) { //MAX_LEVEL
 				break;
+			}
 			count++;
 			pc->statp[i]=stat;
 			i++;
@@ -11401,8 +11403,9 @@ int pc_readdb(void) {
 	k = battle_config.use_statpoint_table; //save setting
 	battle_config.use_statpoint_table = 0; //temporarily disable to force pc->gets_status_point use default values
 	pc->statp[0] = 45; // seed value
-	for (; i <= MAX_LEVEL; i++)
+	for (i = 0; i <= 150; i++) { //MAX_LEVEL
 		pc->statp[i] = pc->statp[i-1] + pc->gets_status_point(i-1);
+	}
 	battle_config.use_statpoint_table = k; //restore setting
 
 	return 0;

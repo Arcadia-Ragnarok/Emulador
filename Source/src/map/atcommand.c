@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -3616,7 +3616,7 @@ ACMD(reloadatcommand) {
 	return true;
 }
 /*==========================================
- * @reloadbattleconf - reloads /Config/battle.conf
+ * @reloadbattleconf - reloads /Config/settings.conf
  *------------------------------------------*/
 ACMD(reloadbattleconf)
 {

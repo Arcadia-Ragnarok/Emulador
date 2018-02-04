@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -6360,7 +6360,7 @@ int do_init(int argc, char *argv[])
 	map->INTER_CONF_NAME         = aStrdup("Config/Servers/Inter-Server.cs");
 	map->LOG_CONF_NAME           = aStrdup("Config/Common/Logs.cs");
 	map->MAP_CONF_NAME           = aStrdup("Config/Servers/Map-Server.cs");
-	map->BATTLE_CONF_FILENAME    = aStrdup("Config/Common/Battle.conf");
+	map->BATTLE_CONF_FILENAME    = aStrdup("Config/Common/Settings.cs");
 	map->ATCOMMAND_CONF_FILENAME = aStrdup("Config/System/Atcommand.cs");
 	map->SCRIPT_CONF_NAME        = aStrdup("Config/Common/Script.cs");
 	map->MSG_CONF_NAME           = aStrdup("Config/System/Messages.conf");
@@ -6579,7 +6579,7 @@ void map_defaults(void) {
 	map->INTER_CONF_NAME="Config/Servers/Inter-Server.cs";
 	map->LOG_CONF_NAME="Config/Common/Logs.cs";
 	map->MAP_CONF_NAME = "Config/Servers/Map-Server.cs";
-	map->BATTLE_CONF_FILENAME = "Config/Common/Battle.conf";
+	map->BATTLE_CONF_FILENAME = "Config/Common/Settings.cs";
 	map->ATCOMMAND_CONF_FILENAME = "Config/System/Atcommand.cs";
 	map->SCRIPT_CONF_NAME = "Config/Common/Script.cs";
 	map->MSG_CONF_NAME = "Config/System/Messages.conf";

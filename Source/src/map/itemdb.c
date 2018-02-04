@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -1792,7 +1792,7 @@ int itemdb_validate_entry(struct item_data *entry, int n, const char *source) {
 	entry->wlv = cap_value(entry->wlv, REFINE_TYPE_ARMOR, REFINE_TYPE_MAX);
 
 	if( !entry->elvmax )
-		entry->elvmax = MAX_LEVEL;
+		entry->elvmax = 150; //MAX_LEVEL
 	else if( entry->elvmax < entry->elv )
 		entry->elvmax = entry->elv;
 

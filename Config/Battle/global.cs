@@ -1,0 +1,192 @@
+/*--------------------------------------------------------------------*\
+|                ____                     _                            |
+|               /    |                   | |_                          |
+|              /     |_ __ ____  __ _  __| |_  __ _                    |
+|             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
+|            /  __   | | |  |__  (_| | (_| | | (_| |                   |
+|           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
+|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|                                                                      |
++----------------------------------------------------------------------+
+| - Arquivo de configuração da global da Battle.                       |
+\*--------------------------------------------------------------------*/
+
+global_config: {
+	// Quem deve possuir um valor de BaseAtk?
+	//(faz a força afetar o dano)
+	enable_baseatk: 9
+
+	// Quem pode ter Esquiva Perfeita?
+	enable_perfect_flee: 1
+
+	// Quem pode acertar danos críticos?
+	// (Algumas habilidades sempre acertam o alvo, independente de
+	//ser crítico ou não)
+	enable_critical: 17
+
+	// Taxa de ajustes de crítico para não-jogadores
+	mob_critical_rate: 100
+	critical_rate: 100
+
+	// Ataques normais resultam em delay na movimentação?
+	// Se não, os personagens podem se mover logo que iniciam o
+	//ataque (sprite de ataque ou de movimento podem ser omitidas do
+	//client-side, causando ataques interrompidos ou monstros que se
+	//teleportam até você)
+	// Caso contrário, o delay é igual ao 'sprite de ataque'
+	//sem movimentação
+	attack_walk_delay: 15
+
+	// Ajuste no delay de movimento após ser atacado.
+	// O delay onde o jogador não pode andar após receber um ataque
+	//é calculado como porcentagem da duração da animação do ataque.
+	// NOTA: Afeta apenas o atraso normal de um único ataque, não o
+	//atraso adicionado pela opção multihit_delay, logo abaixo.
+	pc_damage_walk_delay_rate: 20
+	damage_walk_delay_rate: 100
+
+	// Ajuste no delay de movimento para ataques múltiplos.
+	// Quando atingido por uma habilidade de múltiplos danos como
+	//Ira de Thor ou Trovão de Júpiter, personagens serão
+	// impossibilitados de se mover por
+	//(número de danos - 1) * multihit_delay" milisegundos adicionais.
+	// 80 é a configuração no estilo Aegis (vs Lâminas Destruidoras)
+	// 230 é a configuração que faz o delay de movimento permanecer
+	//até o último dano (vs Trovão de Júpiter)
+	multihit_delay: 80
+
+	// Taxa do atraso dos danos para jogadores
+	// (Defina no/0 e imitará a habilidade Vigor)
+	player_damage_delay_rate: 100
+
+	// A detecção de morto-vivo deve ser feita através da checagem
+	//da raça ou do elemento?
+	// 0 = elemento morto-vivo
+	// 1 = raça morto-vivo
+	// 2 = ambos (qualquer uma funciona)
+	undead_detect_type: 0
+
+	// Qual é a mínima e máxima taxa de ataque para danos normais? 
+	min_hitrate: 5
+	max_hitrate: 100
+
+	// Penalidade que afeta a ESQUIVA quando o número de monstros
+	//atacando um jogador for maior que agi_penalty_count
+	// 0 = nenhuma penalidade é aplicada
+	// 1 = agi_penalty_num é reduzida da ESQUIVA como uma porcentagem
+	// 2 = agi_penalty_num é reduzida da ESQUIVA como uma quantidade
+	//exata
+	agi_penalty_type: 1
+
+	// Quando a penalidade na agilidade é habilitada, a quem será
+	//aplicada?
+	// Por padrão, apenas jogadorem recebem a penalidade.
+	agi_penalty_target: 1
+
+	// Quantidade de inimigos requeridos para o jogador alvo antes
+	//da ESQUIVA ser penalizada
+	agi_penalty_count: 3
+
+	// Quantidade de ESQUIVA a ser penalizada por cada ataque de
+	//monstro maior que agi_penalty_count
+	agi_penalty_num: 10
+
+	// Tipo de penalidade aplicada para os equipamentos e vit DEF
+	//quando mais do que vit_penalty_count monstros estão atacando
+	//um jogador
+	// 0 = nenhuma penalidade é aplicada
+	// 1 = vit_penalty_num é reduzida da DEF como uma porcentagem
+	// 2 = vit_penalty_num é reduzida da DEF como uma quantidade exata
+	vit_penalty_type: 1
+
+	// Quando a penalidade na agilidade é habilitada, a quem será
+	//aplicada?
+	// Por padrão, apenas jogadorem recebem a penalidade.
+	vit_penalty_target: 1
+
+	// Quantidade de inimigos requeridos para o jogador alvo antes
+	//da defesa ser penalizada
+	vit_penalty_count: 3
+
+	// Quantidade de VIT def a ser penalizada por cada ataque de
+	//monstro maior que vit_penalty_count
+	vit_penalty_num: 5
+
+	// Usar um método alternativo de calcular a DEF para ataques físicos
+	// Com 0, desabilita-a
+	//(use redução normal de def% além da redução de def2)
+	// Sendo 1 ou mais a defesa é subtraida de (DEF*valor)
+	// eg: 10 + 50 def, torna-se 0 + (10*tipo + 50)
+	weapon_defense_type: 0
+
+	// MDEF‚igualmente acima....(MDEF*valor)
+	magic_defense_type: 0
+
+	// Mudar a direção de quem ataca para quem está sendo atacado?
+	attack_direction_change: 0
+
+	// Para quem definir isto, o elemento de ataque natural é
+	//"não-elemental"
+	// (100% contra todos os elementos de defesa)
+	// NOTA: Esta configuração faz com que não-jogadores possam
+	//atacar com dano total contra alvos tipo Fantasma com ataques
+	//normais (eg: vs. Ghostring).
+	attack_attr_none: 14
+
+	// Taxa na qual equipamentos podem ser quebrados (taxa-base
+	//antes de modificada por qualquer habilidade)
+	// 1 = 0.01% chance. Padrão dos servidores oficiais: 0
+	equip_natural_break_rate: 0
+
+	// Taxa na qual seu equipamento é quebrado pelo jogador que
+	//o equipa.
+	// Esta taxa afeta a taxa de penalidade de quebra de habilidades
+	//como Força Violenta e sua taxa natural de quebra
+	//(de equip_natural_break_rate).
+	// Se uma das habilidades de encantamento de um sábio falhar e
+	//for definido acima de 0, o personagem selecionado terá o
+	//armamento quebrado.
+	equip_self_break_rate: 100
+
+	// Taxa na qual você pode quebrar o equipamento do seu alvo.
+	// Afeta o comportamento das habilidades como Terror Ácido
+	//e Golpe Estilhaçante
+	equip_skill_break_rate: 100
+
+	// Ataques com armas tem delay em sua velocidade antes do dano
+	//real ser aplicado?
+	// NOTA: A configuração oficial é yes, mesmo que compromenta
+	//um pouco o desempenho.
+	delay_battle_damage: true
+
+	// Munições/flechas são consumidas quando usadas em arcos/armas?
+	// 0 = Não
+	// 1 = Sim
+	// 2 = Sim, mesmo para habilidades que não especifiquem o consumo de flechas
+	// em habilidades usadas com armas e com armas de alcance
+	//(adivinha automaticamente
+	// quais habilidades devem consumir munição quando é adquirida
+	//por carta ou Plágio)
+	arrow_decrement: 1
+
+	// O item script 'Autospell' deve checar alcance/obstáculos antes
+	//de ser conjurada?
+	// Comportamento oficial é "no", configure para "yes" e então fará
+	//as habilidades utilizarem seu alcance padrão.
+	// Por exemplo, Lâminas Destruidoras precisa de 2 células de
+	//distância antes de ser autoconjurada.
+	// Esta configuração também afeta autospellwhenhit.
+	autospell_check_range: false
+
+	// Caso o trajeto do atacante estiver a beira do trajeto traseiro e o
+	//mesmo for empurrado para atrás, o alvo deverá ser jogado
+	//para a esquerda? 
+	// Em servidores oficiais esta opção está habilitada.
+	knockback_left: true
+
+	// Caso o alvo seja jogado pra fora da tela, poderá fugir
+	//do dano causado?
+	// Em servidores oficiais isto não é possível.
+	// O jogador receberá o dano igualmente.
+	snap_dodge: false
+}

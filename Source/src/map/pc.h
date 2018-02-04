@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -807,10 +807,10 @@ struct pc_interface {
 	/* */
 
 BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when status_defaults() is executed */
-	uint64 exp_table[CLASS_COUNT][2][MAX_LEVEL];
+	uint64 exp_table[CLASS_COUNT][2][150]; //MAX_LEVEL
 	int max_level[CLASS_COUNT][2];
-	unsigned int statp[MAX_LEVEL+1];
-	unsigned int level_penalty[3][RC_MAX][MAX_LEVEL*2+1];
+	unsigned int statp[150+1]; //MAX_LEVEL
+	unsigned int level_penalty[3][RC_MAX][150*2+1]; //MAX_LEVEL
 	/* */
 	struct skill_tree_entry skill_tree[CLASS_COUNT][MAX_SKILL_TREE];
 	struct fame_list smith_fame_list[MAX_FAME_LIST];

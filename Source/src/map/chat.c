@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -119,7 +119,7 @@ bool chat_createpcchat(struct map_session_data* sd, const char* title, const cha
 
 	pc_stop_walking(sd, STOPWALKING_FLAG_FIXPOS);
 
-	cd = chat->create(&sd->bl, title, pass, limit, pub, 0, "", 0, 1, MAX_LEVEL);
+	cd = chat->create(&sd->bl, title, pass, limit, pub, 0, "", 0, 1, 150); //MAX_LEVEL
 	if( cd ) {
 		cd->users = 1;
 		cd->usersd[0] = sd;
@@ -387,7 +387,7 @@ bool chat_createnpcchat(struct npc_data* nd, const char* title, int limit, bool 
 		return false;
 	}
 
-	if (zeny > MAX_ZENY || max_level > MAX_LEVEL) {
+	if (zeny > MAX_ZENY || max_level > 150) { //MAX_LEVEL
 		ShowError("chat_createnpcchat: npc '%s' has a required lvl or amount of zeny over the max limit!\n", nd->exname);
 		return false;
 	}

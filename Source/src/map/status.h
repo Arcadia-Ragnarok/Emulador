@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -2241,8 +2241,8 @@ struct s_refine_info {
 struct s_status_dbs {
 BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when status_defaults() is executed */
 	int max_weight_base[CLASS_COUNT];
-	int HP_table[CLASS_COUNT][MAX_LEVEL + 1];
-	int SP_table[CLASS_COUNT][MAX_LEVEL + 1];
+	int HP_table[CLASS_COUNT][150 + 1]; //MAX_LEVEL
+	int SP_table[CLASS_COUNT][150 + 1]; //MAX_LEVEL
 	int aspd_base[CLASS_COUNT][MAX_SINGLE_WEAPON_TYPE+1]; // +1 for RENEWAL_ASPD
 	sc_type Skill2SCTable[MAX_SKILL_DB];  // skill  -> status
 	int IconChangeTable[SC_MAX];          // status -> "icon" (icon is a bit of a misnomer, since there exist values with no icon associated)
@@ -2254,7 +2254,7 @@ BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when sta
 	struct s_refine_info refine_info[REFINE_TYPE_MAX];
 	/* */
 	int atkmods[3][MAX_SINGLE_WEAPON_TYPE];//ATK weapon modification for size (size_fix.txt)
-	char job_bonus[CLASS_COUNT][MAX_LEVEL];
+	char job_bonus[CLASS_COUNT][150]; //MAX_LEVEL
 	sc_conf_type sc_conf[SC_MAX];
 END_ZEROED_BLOCK; /* End */
 };

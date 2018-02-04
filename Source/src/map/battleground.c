@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -394,9 +394,9 @@ void bg_config_read(void) {
 					ShowWarning("bg_config_read: invalid %d value for arena '%s' minLevel\n",minLevel,aName);
 					minLevel = 0;
 				}
-				if( maxLevel > MAX_LEVEL ) {
+				if( maxLevel > 150 ) { //MAX_LEVEL
 					ShowWarning("bg_config_read: invalid %d value for arena '%s' maxLevel\n",maxLevel,aName);
-					maxLevel = MAX_LEVEL;
+					maxLevel = 150; //MAX_LEVEL
 				}
 
 				if( !(reward = libconfig->setting_get_member(arena, "reward")) ) {

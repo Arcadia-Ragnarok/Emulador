@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -3919,7 +3919,7 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 		return strchr(start, '\n');
 	}
 
-	if( (mob_lv == 0 || mob_lv > MAX_LEVEL) && mob_lv != -1 ) {
+	if( (mob_lv == 0 || mob_lv > 150) && mob_lv != -1 ) { //MAX_LEVEL
 		ShowError("npc_parse_mob: Invalid level %d for mob ID %d in file '%s', line '%d'.\n", mob_lv, class_, filepath, strline(buffer, start - buffer));
 		if (retval) *retval = EXIT_FAILURE;
 		return strchr(start, '\n');
@@ -3932,8 +3932,9 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 	mobspawn.y = (unsigned short)y;
 	mobspawn.xs = (signed short)xs;
 	mobspawn.ys = (signed short)ys;
-	if (mob_lv > 0 && mob_lv <= MAX_LEVEL)
+	if (mob_lv > 0 && mob_lv <= 150) { //MAX_LEVEL
 		mobspawn.level = mob_lv;
+	}
 	if (size > 0 && size <= 2)
 		mobspawn.state.size = size;
 	if (ai > AI_NONE && ai < AI_MAX)

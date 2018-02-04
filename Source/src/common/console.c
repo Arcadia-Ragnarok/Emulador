@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -79,7 +79,7 @@ void display_title(void) {
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"       /    |                   | |_              "CL_CLL""CL_NORMAL"\n");
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"      /     |_ __ ____  __ _  __| |_  __ _        "CL_CLL""CL_NORMAL"\n");
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"     /  /|  | '__/  __|/ _` |/ _  | |/ _` |       "CL_CLL""CL_NORMAL"\n");
-	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"    /  __   | | |  |__| (_| | (_| | | (_| |       "CL_CLL""CL_NORMAL"\n");
+	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"    /  __   | | |  |__  (_| | (_| | | (_| |       "CL_CLL""CL_NORMAL"\n");
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"   /  /  |  |_|  \\____|\\__,_|\\__,_|_|\\__,_|       "CL_CLL""CL_NORMAL"\n");
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"  /__/   |__|      "CL_BT_RED"Ragnarok Emulator"CL_BT_WHITE"              "CL_CLL""CL_NORMAL"\n");
 	ShowMessage(""CL_BG_CYAN""CL_BT_WHITE"                                                  "CL_CLL""CL_NORMAL"\n");

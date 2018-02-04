@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -1316,7 +1316,7 @@ void homunculus_exp_db_read(void) {
 			ShowError("can't read %s\n",line);
 			return;
 		}
-		while(fgets(line, sizeof(line), fp) && j < MAX_LEVEL) {
+		while(fgets(line, sizeof(line), fp) && j < 150) { //MAX_LEVEL
 			if(line[0] == '/' && line[1] == '/')
 				continue;
 
@@ -1324,9 +1324,9 @@ void homunculus_exp_db_read(void) {
 				break;
 		}
 		// Last permitted level have to be 0!
-		if (homun->dbs->exptable[MAX_LEVEL - 1]) {
-			ShowWarning("homunculus_exp_db_read: Reached max level in exp_homun [%d]. Remaining lines were not read.\n ", MAX_LEVEL);
-			homun->dbs->exptable[MAX_LEVEL - 1] = 0;
+		if (homun->dbs->exptable[150 - 1]) { //MAX_LEVEL
+			ShowWarning("homunculus_exp_db_read: Reached max level in exp_homun [%d]. Remaining lines were not read.\n ", 150); //MAX_LEVEL
+			homun->dbs->exptable[150 - 1] = 0; //MAX_LEVEL
 		}
 		fclose(fp);
 		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' levels em '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);

@@ -3,22 +3,21 @@
 |               /    |                   | |_                          |
 |              /     |_ __ ____  __ _  __| |_  __ _                    |
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
-|            /  __   | | |  |__| (_| | (_| | | (_| |                   |
+|            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
 |          /__/   |__|  [ Ragnarok Emulator ]                          |
 |                                                                      |
++----------------------------------------------------------------------+
+| - Arquivo de configuração da Batalha Campal.                         |
 \*--------------------------------------------------------------------*/
 
-// Should skill casting be canceled when inflicted by curse/stun/sleep/etc (includes silence) (Note 3)?
-status_cast_cancel: 0
+bg_config: {
+	// Penalidade na Esquiva na Batalha Campal.
+	// NOTA: A configuração é feita em porcentagem (%), então 20 = -20%
+	//da esquiva total.
+	bg_flee_penalty: 20
 
-// Adjustment for the natural rate of resistance from status changes.
-// If 50, status defense is halved, and you need twice as much stats to block
-// them (eg: 200 vit to completely block stun)
-pc_status_def_rate: 100
-mob_status_def_rate: 100
-
-// Maximum resistance to status changes. (100 = 100%)
-// NOTE: Cards and equipment can go over this limit, so it only applies to natural resist.
-pc_max_status_def: 100
-mob_max_status_def: 100
+	// Intervalo em milissegundos para atualizar os membros da Batalha
+	//Campal em pontos do mini-mapa
+	bg_update_interval: 1000
+}
