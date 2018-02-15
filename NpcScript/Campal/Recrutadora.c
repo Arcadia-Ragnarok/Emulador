@@ -3,7 +3,7 @@
 |             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
 |        /__/   |__|  [ Ragnarok Emulator ]                         |
 |                                                                   |
@@ -16,36 +16,22 @@
 // - [Recrutadora da Batalha Campal]
 //-------------------------------------------------------------------
 -	script	BattlegroundRecruit	FAKE_NPC,{
-	mes "[Emissária de Maroll]";
-	mes "Olá aventureir"+(Sex == SEX_MALE ? "o":"a");
-	mes "Eu venho de um reino distante, onde dois herdeiros do trono lutam para decidir quem vai govenar.";
+	mes("[Emissária de Maroll]\n Olá aventureir" + (Sex == SEX_MALE ? "o":"a") + ".\n Eu venho de um reino distante, onde dois herdeiros do trono lutam para decidir quem vai govenar.");
 	next;
 	if (BaseLevel < 80) {
-		mes "[Emissária de Maroll]";
-		mes "Jovem. Vejo potencial de um grande guerreiro em você.";
-		mes "Quando se tornar mais experiente porque não se une ao um dos herdeiros para decidir o futuro do reino de Maroll?";
+		mes("[Emissária de Maroll]\n Jovem.\n Vejo potencial de um grande guerreiro em você.\n Quando se tornar mais experiente porque não se une ao um dos herdeiros para decidir o futuro do reino de Maroll?");
 		close;
-	}
-	else if ((BaseJob == Job_Novice) || (BaseJob == Job_SuperNovice) || (BaseJob == Job_Novice_High)) {
-		mes "[Emissária de Maroll]";
-		mes "Apesar de jovem vejo que você possui muito poder.";
-		mes "Mas ainda é apenas uma criança, não é quem eu procuro";
+	} else if ((BaseJob == Job_Novice) || (BaseJob == Job_SuperNovice) || (BaseJob == Job_Novice_High)) {
+		mes("[Emissária de Maroll]\n Apesar de jovem vejo que você possui muito poder.\n Mas ainda é apenas uma criança, não é quem eu procuro");
 		close;
-	}
-	else if ((agitcheck()) || (agitcheck2())) {
-		mes "[Emissária de Maroll]";
-		mes "Uma guerra em seu reino está em andamento";
-		mes "Porque não se une a um clã para conquistar o castelo?";
+	} else if ((agitcheck()) || (agitcheck2())) {
+		mes("[Emissária de Maroll]\n Uma guerra em seu reino está em andamento\n Porque não se une a um clã para conquistar o castelo?");
 		close;
-	}
-	else {
-		mes "[Emissária de Maroll]";
-		mes "Ambos estão precisando de guerreiros experientes como você.";
-		mes "Deseja colocar suas forças a prova em uma guerra pelo reino de Maroll?";
+	} else {
+		mes("[Emissária de Maroll]\n Ambos estão precisando de guerreiros experientes como você.\n Deseja colocar suas forças a prova em uma guerra pelo reino de Maroll?");
 		next;
-		if (select("Sim","Não") == 1) {
-			mes "[Emissária de Maroll]";
-			mes "Boa sorte em sua jornarda.";
+		if (select("Sim", "Não") == 1) {
+			mes("[Emissária de Maroll]\n Boa sorte em sua jornarda.");
 			if (strnpcinfo(NPC_MAP)      == "prontera")    { batreturn = 1; }
 			else if (strnpcinfo(NPC_MAP) == "aldebaran")   { batreturn = 2; }
 			else if (strnpcinfo(NPC_MAP) == "geffen")      { batreturn = 3; }
@@ -54,12 +40,10 @@
 			else if (strnpcinfo(NPC_MAP) == "rachel")      { batreturn = 6; }
 			else if (strnpcinfo(NPC_MAP) == "moc_ruins")   { batreturn = 7; }
 			close2;
-			warp ("bat_room",155,150);
+			warp("bat_room", 155, 150);
 			end;
 		}
-		mes "[Emissária de Maroll]";
-		mes "Eu entendo lutar por uma guerra que não é sua, é algo a se pensar.";
-		mes "Mas saiba que todos que ajudam em Maroll são recompensados.";
+		mes("[Emissária de Maroll]\n Eu entendo lutar por uma guerra que não é sua, é algo a se pensar.\n Mas saiba que todos que ajudam em Maroll são recompensados.");
 		close;
 	}
 }
@@ -75,11 +59,10 @@ moc_ruins,75,162,3	duplicate(BattlegroundRecruit)	Emissária de Maroll::BatRecrui
 //-------------------------------------------------------------------
 // - [Saída da Batalha Campal]
 //-------------------------------------------------------------------
-bat_room,148,150,5	script	Emissária de Maroll#bgnpc	4_F_JOB_KNIGHT,{
-	mes "[Emissária de Maroll]";
-	mes "Deseja sair da sala de preparação do campo de batalha?";
+bat_room,148,150,5	script	Emissária de Maroll#bgreturn	4_F_JOB_KNIGHT,{
+	mes("[Emissária de Maroll]\n Deseja sair da sala de preparação do campo de batalha?");
 	next;
-	if (select("Sim desejo voltar","Não eu quero ficar mais tempo") == 1) {
+	if (select("Sim desejo voltar", "Quero ficar mais tempo") == 1) {
 		close2;
 		if (batreturn == 1)      { warp "prontera",116,72; }
 		else if (batreturn == 2) { warp "aldebaran",168,112; }
@@ -91,7 +74,6 @@ bat_room,148,150,5	script	Emissária de Maroll#bgnpc	4_F_JOB_KNIGHT,{
 		batreturn = 0;
 		end;
 	}
-	mes "[Emissária de Maroll]";
-	mes "Fique o tempo que desejar.";
+	mes("[Emissária de Maroll]\n Fique o tempo que desejar.");
 	close;
 }
