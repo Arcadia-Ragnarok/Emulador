@@ -16,7 +16,7 @@
 // ------------------------------------------------------------------
 // - [ Alberta ] - 
 // ------------------------------------------------------------------
-alberta_in,180,15,0	trader	Loja de Armaduras#alb	4W_F_01,{
+alberta_in,180,15,0	trader	Loja de Armaduras#albShop	4W_F_01,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -44,7 +44,7 @@ alberta_in,180,15,0	trader	Loja de Armaduras#alb	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-alberta_in,188,21,0	trader	Loja de Armas#alb	1_M_03,{
+alberta_in,188,21,0	trader	Loja de Armas#albShop2	1_M_03,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -64,14 +64,14 @@ alberta_in,188,21,0	trader	Loja de Armas#alb	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-alberta_in,175,97,4	trader	Loja de Armas#alb2	4_KID01,{
+alberta_in,175,97,4	trader	Loja de Armas#albshop3	4_KID01,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-alberta_in,165,96,0	trader	Colecionador#alb	1_F_MERCHANT_02,{
+alberta_in,165,96,0	trader	Colecionador#albShop4	1_F_MERCHANT_02,{
 	OnInit:
 	sellitem Scell;
 	sellitem Monsters_Feed;
@@ -80,7 +80,7 @@ alberta_in,165,96,0	trader	Colecionador#alb	1_F_MERCHANT_02,{
 // ------------------------------------------------------------------
 // - [ Aldebaran ] - 
 // ------------------------------------------------------------------
-aldeba_in,20,60,0	trader	Loja de Armaduras#alde	4W_F_01,{
+aldeba_in,20,60,0	trader	Loja de Armaduras#aldeShop	4W_F_01,{
 	OnInit:
 	sellitem Helm;
 	sellitem Buckler;
@@ -97,7 +97,7 @@ aldeba_in,20,60,0	trader	Loja de Armaduras#alde	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-aldeba_in,28,54,0	trader	Loja de Armas#alde	1_M_03,{
+aldeba_in,28,54,0	trader	Loja de Armas#aldeShop2	1_M_03,{
 	OnInit:
 	sellitem Knife;
 	sellitem Cutter;
@@ -110,14 +110,14 @@ aldeba_in,28,54,0	trader	Loja de Armas#alde	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-aldeba_in,22,47,4	trader	Loja de Armas#alde2	4_M_06,{
+aldeba_in,22,47,4	trader	Loja de Armas#aldeShop3	4_M_06,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-aldeba_in,94,56,5	trader	Loja de Utilidades#alde	4_M_01,{
+aldeba_in,94,56,5	trader	Loja de Utilidades#aldeShop4	4_M_01,{
 	OnInit:
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
@@ -133,7 +133,7 @@ aldeba_in,94,56,5	trader	Loja de Utilidades#alde	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-aldebaran,165,107,2	trader	Chefe de Cozinha#alde	4W_M_01,{
+aldebaran,165,107,2	trader	Chefe de Cozinha#aldeShop5	4W_M_01,{
 	OnInit:
 	sellitem Red_Spice;
 	sellitem Yellow_Spice;
@@ -143,7 +143,7 @@ aldebaran,165,107,2	trader	Chefe de Cozinha#alde	4W_M_01,{
 // ------------------------------------------------------------------
 // - [ Amatsu ] -
 // ------------------------------------------------------------------
-ama_in01,89,28,5	trader	Loja de Armaduras#ama	4_F_JPN2,{
+ama_in01,89,28,5	trader	Loja de Armaduras#amaShop	4_F_JPN2,{
 	OnInit:
 	sellitem Bandana;
 	sellitem Sandals;
@@ -160,7 +160,7 @@ ama_in01,89,28,5	trader	Loja de Armaduras#ama	4_F_JPN2,{
 }
 
 // ------------------------------------------------------------------
-ama_in01,102,28,3	trader	Loja de Armas#ama	4_M_JPNOJI,{
+ama_in01,102,28,3	trader	Loja de Armas#amaShop2	4_M_JPNOJI,{
 	OnInit:
 	sellitem Main_Gauche;
 	sellitem Stiletto;
@@ -175,7 +175,7 @@ ama_in01,102,28,3	trader	Loja de Armas#ama	4_M_JPNOJI,{
 }
 
 // ------------------------------------------------------------------
-ama_in01,24,30,5	trader	Loja de Utilidades#ama	4_M_JPN,{
+ama_in01,24,30,5	trader	Loja de Utilidades#amaShop3	4_M_JPN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Iron_Arrow;
@@ -193,7 +193,7 @@ ama_in01,24,30,5	trader	Loja de Utilidades#ama	4_M_JPN,{
 }
 
 // ------------------------------------------------------------------
-amatsu,206,150,3	trader	Chefe de Cozinha#ama	4_M_01,{
+amatsu,206,150,3	trader	Chefe de Cozinha#amaShop4	4_M_01,{
 	OnInit:
 	sellitem Sweet_Sauce;
 	sellitem Delicious_Fish;
@@ -202,7 +202,7 @@ amatsu,206,150,3	trader	Chefe de Cozinha#ama	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Ayothaya ] -
 // ------------------------------------------------------------------
-ayo_in01,18,182,1	trader	Loja de Utilidades#ayo	4_F_THAISHAMAN,{
+ayo_in01,18,182,1	trader	Loja de Utilidades#ayoShop	4_F_THAISHAMAN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Iron_Arrow;
@@ -220,7 +220,7 @@ ayo_in01,18,182,1	trader	Loja de Utilidades#ayo	4_F_THAISHAMAN,{
 }
 
 // ------------------------------------------------------------------
-ayo_in01,90,192,3	trader	Loja de Armas#ayo	4_M_THAIONGBAK,{
+ayo_in01,90,192,3	trader	Loja de Armas#ayoShop2	4_M_THAIONGBAK,{
 	OnInit:
 	sellitem Main_Gauche;
 	sellitem Stiletto;
@@ -235,7 +235,7 @@ ayo_in01,90,192,3	trader	Loja de Armas#ayo	4_M_THAIONGBAK,{
 }
 
 // ------------------------------------------------------------------
-ayo_in01,90,160,1	trader	Loja de Armaduras#ayo	4_M_THAIOLD,{
+ayo_in01,90,160,1	trader	Loja de Armaduras#ayoShop3	4_M_THAIOLD,{
 	OnInit:
 	sellitem Bandana;
 	sellitem Sandals;
@@ -252,7 +252,7 @@ ayo_in01,90,160,1	trader	Loja de Armaduras#ayo	4_M_THAIOLD,{
 }
 
 // ------------------------------------------------------------------
-ayothaya,203,178,3	trader	Chefe de Cozinha#ayo	4_M_01,{
+ayothaya,203,178,3	trader	Chefe de Cozinha#ayoShop4	4_M_01,{
 	OnInit:
 	sellitem Hot_Sauce;
 	sellitem Grain;
@@ -261,7 +261,7 @@ ayothaya,203,178,3	trader	Chefe de Cozinha#ayo	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Brasilis ] -
 // ------------------------------------------------------------------
-brasilis,252,257,3	trader	Loja de Utilidades#bra	4_F_BRZ_WOMAN,{
+brasilis,252,257,3	trader	Loja de Utilidades#braShop	4_F_BRZ_WOMAN,{
 	OnInit:
 	sellitem Center_Potion;
 	sellitem Awakening_Potion;
@@ -273,7 +273,7 @@ brasilis,252,257,3	trader	Loja de Utilidades#bra	4_F_BRZ_WOMAN,{
 }
 
 // ------------------------------------------------------------------
-brasilis,244,243,3	trader	Loja de Armas#bra	4_M_BRZ_MAN2,{
+brasilis,244,243,3	trader	Loja de Armas#braShop2	4_M_BRZ_MAN2,{
 	OnInit:
 	sellitem Pike;
 	sellitem Partizan;
@@ -283,14 +283,14 @@ brasilis,244,243,3	trader	Loja de Armas#bra	4_M_BRZ_MAN2,{
 }
 
 // ------------------------------------------------------------------
-brasilis,201,309,3	trader	Trinador#bra	4_M_BRZ_MAN1,{
+brasilis,201,309,3	trader	Adestrador#braShop3	4_M_BRZ_MAN1,{
 	OnInit:
 	sellitem Pet_Food;
 	sellitem Pet_Incubator;
 }
 
 // ------------------------------------------------------------------
-brasilis,221,128,3	trader	Venda de Frutas#bra	4_M_BRZ_MAN2,{
+brasilis,221,128,3	trader	Feirante#braShop4	4_M_BRZ_MAN2,{
 	OnInit:
 	sellitem Coconut;
 	sellitem Banana;
@@ -300,14 +300,14 @@ brasilis,221,128,3	trader	Venda de Frutas#bra	4_M_BRZ_MAN2,{
 // ------------------------------------------------------------------
 // - [ Comodo ] -
 // ------------------------------------------------------------------
-comodo,296,125,4	trader	Loja de Souvenir#cmd	4W_F_01,{
+comodo,296,125,4	trader	Loja de Souvenir#cmdShop	4W_F_01,{
 	OnInit:
 	sellitem Clam_Shell;
 	sellitem Crap_Shell;
 }
 
 // ------------------------------------------------------------------
-cmd_in01,117,165,4	trader	Loja de Armaduras#cmd	4W_F_01,{
+cmd_in01,117,165,4	trader	Loja de Armaduras#cmdShop2	4W_F_01,{
 	OnInit:
 	sellitem Cap;
 	sellitem Helm;
@@ -327,7 +327,7 @@ cmd_in01,117,165,4	trader	Loja de Armaduras#cmd	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-cmd_in01,128,165,2	trader	Loja de Armas#cmd	1_M_03,{
+cmd_in01,128,165,2	trader	Loja de Armas#cmdShop3	1_M_03,{
 	OnInit:
 	sellitem Violin;
 	sellitem Mandolin;
@@ -344,7 +344,7 @@ cmd_in01,128,165,2	trader	Loja de Armas#cmd	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-cmd_in01,79,182,5	trader	Loja de Utilidades#cmd	4_M_01,{
+cmd_in01,79,182,5	trader	Loja de Utilidades#cmdShop4	4_M_01,{
 	OnInit:
 	sellitem Iron_Arrow;
 	sellitem Red_Potion;
@@ -361,7 +361,7 @@ cmd_in01,79,182,5	trader	Loja de Utilidades#cmd	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-cmd_fild07,257,126,5	trader	Loja de Utilidades#cmd2	4_M_01,{
+cmd_fild07,257,126,5	trader	Loja de Utilidades#cmdShop5	4_M_01,{
 	OnInit:
 	sellitem Iron_Arrow;
 	sellitem Red_Potion;
@@ -377,7 +377,7 @@ cmd_fild07,257,126,5	trader	Loja de Utilidades#cmd2	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-cmd_fild07,250,98,2	trader	Loja de Armas#cmd2	1_M_03,{
+cmd_fild07,250,98,2	trader	Loja de Armas#cmdShop6	1_M_03,{
 	OnInit:
 	sellitem Javelin;
 	sellitem Spear;
@@ -391,7 +391,7 @@ cmd_fild07,250,98,2	trader	Loja de Armas#cmd2	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-cmd_fild07,277,85,4	trader	Loja de Armaduras#cmd2	4W_F_01,{
+cmd_fild07,277,85,4	trader	Loja de Armaduras#cmdShop7	4W_F_01,{
 	OnInit:
 	sellitem Cap;
 	sellitem Helm;
@@ -411,7 +411,7 @@ cmd_fild07,277,85,4	trader	Loja de Armaduras#cmd2	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-comodo,225,164,3	trader	Chefe de Cozinha#cmd	4_M_01,{
+comodo,225,164,3	trader	Chefe de Cozinha#cmdShop8	4_M_01,{
 	OnInit:
 	sellitem Hot_Sauce;
 	sellitem Sweet_Sauce;
@@ -422,14 +422,14 @@ comodo,225,164,3	trader	Chefe de Cozinha#cmd	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Einbroch ] -
 // ------------------------------------------------------------------
-einbroch,138,66,4	trader	Loja de Máscaras#ein	4_F_EINWOMAN,{
+einbroch,138,66,4	trader	Loja de Máscaras#einShop	4_F_EINWOMAN,{
 	OnInit:
 	sellitem Fedora;
 	sellitem Flu_Mask;
 }
 
 // ------------------------------------------------------------------
-einbroch,82,199,4	trader	Paddler#ein	4_M_EINMAN,{
+einbroch,82,199,4	trader	Remador Profissional#einShop2	4_M_EINMAN,{
 	OnInit:
 	sellitem Apple;
 	sellitem Center_Potion;
@@ -437,7 +437,7 @@ einbroch,82,199,4	trader	Paddler#ein	4_M_EINMAN,{
 	sellitem Red_Potion;
 }
 
-ein_in01,106,27,4	trader	Armas de Uma Mão#ein	4_F_EINWOMAN,{
+ein_in01,106,27,4	trader	Armas de Uma Mão#einShop3	4_F_EINWOMAN,{
 	OnInit:
 	sellitem Sword;
 	sellitem Falchion;
@@ -478,7 +478,7 @@ ein_in01,106,27,4	trader	Armas de Uma Mão#ein	4_F_EINWOMAN,{
 }
 
 // ------------------------------------------------------------------
-ein_in01,109,27,4	trader	Armas de Duas Mãos#ein	4_F_EINWOMAN,{
+ein_in01,109,27,4	trader	Armas de Duas Mãos#einShop4	4_F_EINWOMAN,{
 	OnInit:
 	sellitem Katana;
 	sellitem Slayer;
@@ -501,7 +501,7 @@ ein_in01,109,27,4	trader	Armas de Duas Mãos#ein	4_F_EINWOMAN,{
 }
 
 // ------------------------------------------------------------------
-ein_in01,119,26,4	trader	Loja de Armas#ein	4_M_EINMAN,{
+ein_in01,119,26,4	trader	Loja de Armas#einShop5	4_M_EINMAN,{
 	OnInit:
 	sellitem Kindling_Dagger;
 	sellitem Obsidian_Dagger;
@@ -510,7 +510,7 @@ ein_in01,119,26,4	trader	Loja de Armas#ein	4_M_EINMAN,{
 }
 
 // ------------------------------------------------------------------
-ein_in01,189,15,1	trader	Loja de Utilidades#ein	4_F_EINWOMAN,{
+ein_in01,189,15,1	trader	Loja de Utilidades#einShop6	4_F_EINWOMAN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Fire_Arrow;
@@ -529,7 +529,7 @@ ein_in01,189,15,1	trader	Loja de Utilidades#ein	4_F_EINWOMAN,{
 }
 
 // ------------------------------------------------------------------
-einbroch,224,207,5	trader	Chefe de Cozinha#ein	4_M_01,{
+einbroch,224,207,5	trader	Chefe de Cozinha#einShop7	4_M_01,{
 	OnInit:
 	sellitem Cooking_Oil;
 }
@@ -537,7 +537,7 @@ einbroch,224,207,5	trader	Chefe de Cozinha#ein	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Geffen ] -
 // ------------------------------------------------------------------
-geffen_in,26,178,4	trader	Loja de Armaduras#gef	1_F_01,{
+geffen_in,26,178,4	trader	Loja de Armaduras#gefShop	1_F_01,{
 	OnInit:
 	sellitem Novice_Armlet;
 	sellitem Guard;
@@ -553,7 +553,7 @@ geffen_in,26,178,4	trader	Loja de Armaduras#gef	1_F_01,{
 }
 
 // ------------------------------------------------------------------
-geffen_in,30,178,4	trader	Loja de Armas#gef2	1_M_01,{
+geffen_in,30,178,4	trader	Loja de Armas#gefShop2	1_M_01,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -572,14 +572,14 @@ geffen_in,30,178,4	trader	Loja de Armas#gef2	1_M_01,{
 }
 
 // ------------------------------------------------------------------
-geffen_in,22,171,7	trader	Loja de Armas#gef	4_M_02,{
+geffen_in,22,171,7	trader	Loja de Armas#gefShop3	4_M_02,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-geffen_in,74,144,0	trader	Loja de Artigos#gef	1_F_01,{
+geffen_in,74,144,0	trader	Loja de Artigos#gefShop4	1_F_01,{
 	OnInit:
 	sellitem Scell;
 	sellitem Garlet;
@@ -587,7 +587,7 @@ geffen_in,74,144,0	trader	Loja de Artigos#gef	1_F_01,{
 }
 
 // ------------------------------------------------------------------
-geffen_in,77,173,0	trader	Itens Mágicos#gef	1_M_WIZARD,{
+geffen_in,77,173,0	trader	Itens Mágicos#gefShop5	1_M_WIZARD,{
 	OnInit:
 	sellitem Blue_Gemstone;
 	sellitem Rod;
@@ -602,7 +602,7 @@ geffen_in,77,173,0	trader	Itens Mágicos#gef	1_M_WIZARD,{
 // ------------------------------------------------------------------
 // - [ Kunlun ] -
 // ------------------------------------------------------------------
-gonryun,147,84,5	trader	Loja de Utilidades#gon	4_M_TWOLDMAN,{
+gonryun,147,84,5	trader	Loja de Utilidades#gonShop	4_M_TWOLDMAN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Iron_Arrow;
@@ -620,7 +620,7 @@ gonryun,147,84,5	trader	Loja de Utilidades#gon	4_M_TWOLDMAN,{
 }
 
 // ------------------------------------------------------------------
-gonryun,174,101,3	trader	Loja de Armas#gon	4_M_TWBOY,{
+gonryun,174,101,3	trader	Loja de Armas#gonShop2	4_M_TWBOY,{
 	OnInit:
 	sellitem Main_Gauche;
 	sellitem Stiletto;
@@ -635,7 +635,7 @@ gonryun,174,101,3	trader	Loja de Armas#gon	4_M_TWBOY,{
 }
 
 // ------------------------------------------------------------------
-gonryun,173,84,3	trader	Loja de Armaduras#gon	4_F_TWGIRL,{
+gonryun,173,84,3	trader	Loja de Armaduras#gonShop3	4_F_TWGIRL,{
 	OnInit:
 	sellitem Bandana;
 	sellitem Sandals;
@@ -652,7 +652,7 @@ gonryun,173,84,3	trader	Loja de Armaduras#gon	4_F_TWGIRL,{
 }
 
 // ------------------------------------------------------------------
-gonryun,147,101,5	trader	Chefe de Cozinha#gon	4_M_01,{
+gonryun,147,101,5	trader	Chefe de Cozinha#gonShop4	4_M_01,{
 	OnInit:
 	sellitem Yellow_Spice;
 	sellitem Bread;
@@ -661,7 +661,7 @@ gonryun,147,101,5	trader	Chefe de Cozinha#gon	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Hugel ] -
 // ------------------------------------------------------------------
-hugel,77,167,3	trader	Feirante#hu	4_F_HUGRANMA,{
+hugel,77,167,3	trader	Feirante#huShop	4_F_HUGRANMA,{
 	OnInit:
 	sellitem Fruit_Of_Mastela;
 	sellitem Apple;
@@ -672,7 +672,7 @@ hugel,77,167,3	trader	Feirante#hu	4_F_HUGRANMA,{
 }
 
 // ------------------------------------------------------------------
-hu_in01,241,368,2	trader	Loja de Utilidades#hu	1_M_INNKEEPER,{
+hu_in01,241,368,2	trader	Loja de Utilidades#huShop2	1_M_INNKEEPER,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Spectacles;
@@ -689,7 +689,7 @@ hu_in01,241,368,2	trader	Loja de Utilidades#hu	1_M_INNKEEPER,{
 }
 
 // ------------------------------------------------------------------
-hu_in01,252,368,3	trader	Loja de Utilidades#hu2	4_F_01,{
+hu_in01,252,368,3	trader	Loja de Utilidades#huShop3	4_F_01,{
 	OnInit:
 	sellitem Blue_Gemstone;
 	sellitem Sunglasses;
@@ -698,7 +698,7 @@ hu_in01,252,368,3	trader	Loja de Utilidades#hu2	4_F_01,{
 }
 
 // ------------------------------------------------------------------
-hu_in01,100,390,3	trader	Loja de Arcos#hu	4_M_04,{
+hu_in01,100,390,3	trader	Loja de Armas#huShop4	4_M_04,{
 	OnInit:
 	sellitem Bow;
 	sellitem Great_Bow;
@@ -707,16 +707,7 @@ hu_in01,100,390,3	trader	Loja de Arcos#hu	4_M_04,{
 }
 
 // ------------------------------------------------------------------
-hu_in01,94,390,3	trader	Loja de Armas#hu	4_M_HUMAN_01,{
-	OnInit:
-	sellitem Katana;
-	sellitem Bastard_Sword;
-	sellitem Hammer;
-	sellitem Knife;
-}
-
-// ------------------------------------------------------------------
-hu_in01,94,313,3	trader	Loja de Armaduras#hu	4_M_04,{
+hu_in01,94,313,3	trader	Loja de Armaduras#huShop5	4_M_04,{
 	OnInit:
 	sellitem Goggle;
 	sellitem Circlet;
@@ -730,7 +721,7 @@ hu_in01,94,313,3	trader	Loja de Armaduras#hu	4_M_04,{
 }
 
 // ------------------------------------------------------------------
-hu_in01,23,311,4	script	Fogos de Artifícios#hu	4_M_HUMAN_01,{
+hu_in01,23,311,4	script	Vendedor de Fogos#huShop6	4_M_HUMAN_01,{
 	OnInit:
 	sellitem Fire_Cracker;
 }
@@ -738,7 +729,7 @@ hu_in01,23,311,4	script	Fogos de Artifícios#hu	4_M_HUMAN_01,{
 // ------------------------------------------------------------------
 // - [ Izlude ] -
 // ------------------------------------------------------------------
-izlude_in,60,127,4	trader	Loja de Armas#iz	1_F_MARIA,{
+izlude_in,60,127,4	trader	Loja de Armas#izShop	1_F_MARIA,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -759,7 +750,7 @@ izlude_in,60,127,4	trader	Loja de Armas#iz	1_F_MARIA,{
 }
 
 // ------------------------------------------------------------------
-izlude_in,70,127,4	trader	Loja de Armaduras#iz	1_M_SIZ,{
+izlude_in,70,127,4	trader	Loja de Armaduras#izShop2	1_M_SIZ,{
 	OnInit:
 	sellitem Buckler;
 	sellitem Shield;
@@ -783,7 +774,7 @@ izlude_in,70,127,4	trader	Loja de Armaduras#iz	1_M_SIZ,{
 // ------------------------------------------------------------------
 // - [ Juno ] -
 // ------------------------------------------------------------------
-yuno,218,97,5	trader	Loja de Utilidades#yuno	4_M_02,{
+yuno,218,97,5	trader	Loja de Utilidades#yunoShop	4_M_02,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Spectacles;
@@ -799,7 +790,7 @@ yuno,218,97,5	trader	Loja de Utilidades#yuno	4_M_02,{
 }
 
 // ------------------------------------------------------------------
-yuno,226,107,5	trader	Loja de Utilidades#yuno1	4_M_01,{
+yuno,226,107,5	trader	Loja de Utilidades#yunoShop2	4_M_01,{
 	OnInit:
 	sellitem Scell;
 	sellitem Garlet;
@@ -807,7 +798,7 @@ yuno,226,107,5	trader	Loja de Utilidades#yuno1	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-yuno,197,114,4	trader	Trinador#yuno	4_F_TELEPORTER,{
+yuno,197,114,4	trader	Adestradora#yunoShop3	4_F_TELEPORTER,{
 	OnInit:
 	sellitem Pet_Food;
 	sellitem Pet_Incubator;
@@ -834,7 +825,7 @@ yuno,197,114,4	trader	Trinador#yuno	4_F_TELEPORTER,{
 }
 
 // ------------------------------------------------------------------
-yuno,205,103,4	trader	Loja do Senhor King#yuno	4_M_TELEPORTER,{
+yuno,205,103,4	trader	Loja de Armas#yunoShop4	4_M_TELEPORTER,{
 	OnInit:
 	sellitem Novice_Breast;
 	sellitem Full_Plate_Armor;
@@ -845,7 +836,7 @@ yuno,205,103,4	trader	Loja do Senhor King#yuno	4_M_TELEPORTER,{
 }
 
 // ------------------------------------------------------------------
-yuno,163,187,5	trader	Itens Mágicos#yuno	4_F_01,{
+yuno,163,187,5	trader	Itens Mágicos#yunoShop5	4_F_01,{
 	OnInit:
 	sellitem Blue_Gemstone;
 	sellitem Rod;
@@ -858,7 +849,7 @@ yuno,163,187,5	trader	Itens Mágicos#yuno	4_F_01,{
 }
 
 // ------------------------------------------------------------------
-yuno_in01,25,34,5	trader	Loja de Utilidades#yuno2	4_M_01,{
+yuno_in01,25,34,5	trader	Loja de Utilidades#yunoShop6	4_M_01,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Spectacles;
@@ -874,7 +865,7 @@ yuno_in01,25,34,5	trader	Loja de Utilidades#yuno2	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-yuno_in01,103,35,2	trader	Loja de Armas#yuno	1_M_03,{
+yuno_in01,103,35,2	trader	Loja de Armas#yunoShop7	1_M_03,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -893,7 +884,7 @@ yuno_in01,103,35,2	trader	Loja de Armas#yuno	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-yuno_in01,112,26,4	trader	Loja de Armaduras#yuno	4W_F_01,{
+yuno_in01,112,26,4	trader	Loja de Armaduras#yunoShop8	4W_F_01,{
 	OnInit:
 	sellitem Novice_Armlet;
 	sellitem Guard;
@@ -909,13 +900,13 @@ yuno_in01,112,26,4	trader	Loja de Armaduras#yuno	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-yuno_in03,176,22,3	trader	Loja de Pergaminhos#yuno03	4_M_ORIENT02,{
+yuno_in03,176,22,3	trader	Loja de Pergaminhos#yunoShop9	4_M_ORIENT02,{
 	OnInit:
 	sellitem Scroll;
 }
 
 // ------------------------------------------------------------------
-yuno,130,173,3	trader	Chefe de Cozinha#yuno	4_M_01,{
+yuno,130,173,3	trader	Chefe de Cozinha#yunoShop10	4_M_01,{
 	OnInit:
 	sellitem Cooking_Oil;
 	sellitem Pot;
@@ -924,14 +915,14 @@ yuno,130,173,3	trader	Chefe de Cozinha#yuno	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Lighthalzen ] -
 // ------------------------------------------------------------------
-lighthalzen,69,75,5	trader	Venda de Frutas#lhz	8_F,{
+lighthalzen,69,75,5	trader	Feirante#lhzShop	8_F,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
 }
 
 // ------------------------------------------------------------------
-lighthalzen,112,44,0	trader	Florista#lhz	4_F_01,{
+lighthalzen,112,44,0	trader	Florista#lhzShop2	4_F_01,{
 	OnInit:
 	sellitem Flower;
 	sellitem Bunch_Of_Flowers;
@@ -939,7 +930,7 @@ lighthalzen,112,44,0	trader	Florista#lhz	4_F_01,{
 }
 
 // ------------------------------------------------------------------
-lighthalzen,124,129,0	trader	Feirante#lhz	4_F_02,{
+lighthalzen,124,129,0	trader	Feirante#lhzShop3	4_F_02,{
 	OnInit:
 	sellitem Carrot;
 	sellitem Sweet_Potato;
@@ -947,7 +938,7 @@ lighthalzen,124,129,0	trader	Feirante#lhz	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-lighthalzen,222,191,4	trader	Trinador#lhz	4_M_TELEPORTER,{
+lighthalzen,222,191,4	trader	Adestrador#lhzShop4	4_M_TELEPORTER,{
 	OnInit:
 	sellitem Pet_Food;
 	sellitem Pet_Incubator;
@@ -962,7 +953,7 @@ lighthalzen,222,191,4	trader	Trinador#lhz	4_M_TELEPORTER,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,286,95,4	trader	Loja do Aprendiz#lhz	1_M_SIZ,{
+lhz_in02,286,95,4	trader	Loja do Aprendiz#lhzShop5	1_M_SIZ,{
 	OnInit:
 	sellitem Super_Novice_Hat;
 	sellitem Novice_Shoes;
@@ -971,7 +962,7 @@ lhz_in02,286,95,4	trader	Loja do Aprendiz#lhz	1_M_SIZ,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,271,99,5	trader	Loja de Armaduras#lhz	4_M_REPAIR,{
+lhz_in02,271,99,5	trader	Loja de Armaduras#lhzShop6	4_M_REPAIR,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -986,7 +977,7 @@ lhz_in02,271,99,5	trader	Loja de Armaduras#lhz	4_M_REPAIR,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,276,99,4	trader	Loja de Armas#lhz	4_M_REPAIR,{
+lhz_in02,276,99,4	trader	Loja de Armas#lhzShop7	4_M_REPAIR,{
 	OnInit:
 	sellitem Knife;
 	sellitem Main_Gauche;
@@ -1003,7 +994,7 @@ lhz_in02,276,99,4	trader	Loja de Armas#lhz	4_M_REPAIR,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,273,35,4	trader	Loja de Cajados#lhz	4_M_EINMAN2,{
+lhz_in02,273,35,4	trader	Loja de Cajados#lhzShop8	4_M_EINMAN2,{
 	OnInit:
 	sellitem Rod;
 	sellitem Wand;
@@ -1013,7 +1004,7 @@ lhz_in02,273,35,4	trader	Loja de Cajados#lhz	4_M_EINMAN2,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,105,21,3	trader	Joalheria#lhz	4_F_02,{
+lhz_in02,105,21,3	trader	Joalheria#lhzShop9	4_F_02,{
 	OnInit:
 	sellitem Azure_Jewel;
 	sellitem Cardinal_Jewel;
@@ -1025,7 +1016,7 @@ lhz_in02,105,21,3	trader	Joalheria#lhz	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,17,220,5	trader	Feirante#lhz2	4_F_02,{
+lhz_in02,17,220,5	trader	Feirante#lhzShop10	4_F_02,{
 	OnInit:
 	sellitem Carrot;
 	sellitem Sweet_Potato;
@@ -1033,20 +1024,20 @@ lhz_in02,17,220,5	trader	Feirante#lhz2	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,21,220,5	trader	Venda de Frutas#lhz2	8_F,{
+lhz_in02,21,220,5	trader	Feirante#lhzShop11	8_F,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
 }
 
 // ------------------------------------------------------------------
-lhz_in02,32,219,5	trader	Açougue#lhz	1_M_JOBGUIDER,{
+lhz_in02,32,219,5	trader	Açougue#lhzShop12	1_M_JOBGUIDER,{
 	OnInit:
 	sellitem Meat;
 }
 
 // ------------------------------------------------------------------
-lhz_in02,38,145,5	trader	Loja de Presentes#lhz	4_F_02,{
+lhz_in02,38,145,5	trader	Loja de Presentes#lhzShop13	4_F_02,{
 	OnInit:
 	sellitem Red_Frame;
 	sellitem Blue_Porcelain;
@@ -1056,7 +1047,7 @@ lhz_in02,38,145,5	trader	Loja de Presentes#lhz	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,47,148,3	trader	Artigos de Casamento#lhz	1_F_LIBRARYGIRL,{
+lhz_in02,47,148,3	trader	Artigos de Casamento#lhzShop14	1_F_LIBRARYGIRL,{
 	OnInit:
 	sellitem Bunch_Of_Flowers;
 	sellitem Wedding_Bouquet;
@@ -1066,7 +1057,7 @@ lhz_in02,47,148,3	trader	Artigos de Casamento#lhz	1_F_LIBRARYGIRL,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,31,145,4	trader	Loja de Utilidades#lhz	4_F_01,{
+lhz_in02,31,145,4	trader	Loja de Utilidades#lhzShop15	4_F_01,{
 	OnInit:
 	sellitem Spectacles;
 	sellitem Yellow_Potion;
@@ -1082,7 +1073,7 @@ lhz_in02,31,145,4	trader	Loja de Utilidades#lhz	4_F_01,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,85,216,5	trader	Loja de Bonecos#lhz	4_F_LGTGIRL,{
+lhz_in02,85,216,5	trader	Loja de Bonecos#lhzSho16	4_F_LGTGIRL,{
 	OnInit:
 	sellitem Stuffed_Doll;
 	sellitem Poring_Doll;
@@ -1090,7 +1081,7 @@ lhz_in02,85,216,5	trader	Loja de Bonecos#lhz	4_F_LGTGIRL,{
 }
 
 // ------------------------------------------------------------------
-lhz_in02,87,208,3	trader	Loja de Brinquedos#lhz	4_M_PIERROT,{
+lhz_in02,87,208,3	trader	Loja de Óculos#lhzShop17	4_M_PIERROT,{
 	OnInit:
 	sellitem Spinning_Eyes;
 	sellitem Eye_Bandage;
@@ -1099,7 +1090,7 @@ lhz_in02,87,208,3	trader	Loja de Brinquedos#lhz	4_M_PIERROT,{
 }
 
 // ------------------------------------------------------------------
-lhz_in03,239,106,5	trader	Loja de Utilidades#lhz2	4_F_EINWOMAN,{
+lhz_in03,239,106,5	trader	Loja de Utilidades#lhzShop18	4_F_EINWOMAN,{
 	OnInit:
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
@@ -1113,7 +1104,7 @@ lhz_in03,239,106,5	trader	Loja de Utilidades#lhz2	4_F_EINWOMAN,{
 }
 
 // ------------------------------------------------------------------
-lhz_in03,258,101,3	trader	Loja de Flechas#lhz	4_M_EINMAN,{
+lhz_in03,258,101,3	trader	Loja de Flechas#lhzShop19	4_M_EINMAN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Iron_Arrow;
@@ -1122,7 +1113,7 @@ lhz_in03,258,101,3	trader	Loja de Flechas#lhz	4_M_EINMAN,{
 }
 
 // ------------------------------------------------------------------
-lhz_in03,249,24,4	trader	Colecionador#lhz	4_M_EINMAN,{
+lhz_in03,249,24,4	trader	Colecionador#lhzShop20	4_M_EINMAN,{
 	OnInit:
 	sellitem Scell;
 	sellitem Garlet;
@@ -1131,7 +1122,7 @@ lhz_in03,249,24,4	trader	Colecionador#lhz	4_M_EINMAN,{
 }
 
 // ------------------------------------------------------------------
-lighthalzen,126,126,3	trader	Chefe de Cozinha#lhz	4_M_01,{
+lighthalzen,126,126,3	trader	Chefe de Cozinha#lhzShop21	4_M_01,{
 	OnInit:
 	sellitem Red_Spice;
 	sellitem Yellow_Spice;
@@ -1140,7 +1131,7 @@ lighthalzen,126,126,3	trader	Chefe de Cozinha#lhz	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Louyang ] -
 // ------------------------------------------------------------------
-lou_in02,121,182,5	trader	Loja de Armaduras#lou	4_F_CHNWOMAN,{
+lou_in02,121,182,5	trader	Loja de Armaduras#louShop	4_F_CHNWOMAN,{
 	OnInit:
 	sellitem Bandana;
 	sellitem Sandals;
@@ -1157,7 +1148,7 @@ lou_in02,121,182,5	trader	Loja de Armaduras#lou	4_F_CHNWOMAN,{
 }
 
 // ------------------------------------------------------------------
-lou_in02,130,182,5	trader	Loja de Armas#lou	4_M_CHNMAN,{
+lou_in02,130,182,5	trader	Loja de Armas#louShop2	4_M_CHNMAN,{
 	OnInit:
 	sellitem Main_Gauche;
 	sellitem Stiletto;
@@ -1172,7 +1163,7 @@ lou_in02,130,182,5	trader	Loja de Armas#lou	4_M_CHNMAN,{
 }
 
 // ------------------------------------------------------------------
-lou_in02,239,176,5	trader	Loja de Utilidades#lou	4_F_CHNWOMAN,{
+lou_in02,239,176,5	trader	Loja de Utilidades#louShop3	4_F_CHNWOMAN,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Iron_Arrow;
@@ -1190,7 +1181,7 @@ lou_in02,239,176,5	trader	Loja de Utilidades#lou	4_F_CHNWOMAN,{
 }
 
 // ------------------------------------------------------------------
-louyang,256,123,5	trader	Chefe de Cozinha#lou	4_M_CHNCOOK,{
+louyang,256,123,5	trader	Chefe de Cozinha#louShop4	4_M_CHNCOOK,{
 	OnInit:
 	sellitem Plain_Sauce;
 	sellitem Grain;
@@ -1199,7 +1190,7 @@ louyang,256,123,5	trader	Chefe de Cozinha#lou	4_M_CHNCOOK,{
 // ------------------------------------------------------------------
 // - [ Lutie ] -
 // ------------------------------------------------------------------
-xmas_in,40,38,5	trader	Loja de Utilidades#xmas	4_M_01,{
+xmas_in,40,38,5	trader	Loja de Utilidades#xmasShop	4_M_01,{
 	OnInit:
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
@@ -1215,7 +1206,7 @@ xmas_in,40,38,5	trader	Loja de Utilidades#xmas	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-xmas_in,168,104,4	trader	Loja de Armaduras#xmas	4W_F_01,{
+xmas_in,168,104,4	trader	Loja de Armaduras#xmasShop2	4W_F_01,{
 	OnInit:
 	sellitem Helm;
 	sellitem Buckler;
@@ -1230,7 +1221,7 @@ xmas_in,168,104,4	trader	Loja de Armaduras#xmas	4W_F_01,{
 }
 
 // ------------------------------------------------------------------
-xmas_in,169,34,2	trader	Loja de Brinquedos#xmas	4_F_GON,{
+xmas_in,169,34,2	trader	Loja de Brinquedos#xmasShop3	4_F_GON,{
 	OnInit:
 	sellitem Flower_Ring;
 	sellitem Bunch_Of_Flowers;
@@ -1242,7 +1233,7 @@ xmas_in,169,34,2	trader	Loja de Brinquedos#xmas	4_F_GON,{
 }
 
 // ------------------------------------------------------------------
-xmas_in,174,98,2	trader	Loja de Armas#xmas	1_M_03,{
+xmas_in,174,98,2	trader	Loja de Armas#xmasShop4	1_M_03,{
 	OnInit:
 	sellitem Knife;
 	sellitem Cutter;
@@ -1255,7 +1246,7 @@ xmas_in,174,98,2	trader	Loja de Armas#xmas	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-xmas,152,137,5	trader	Chefe de Cozinha#xmas	4_M_01,{
+xmas,152,137,5	trader	Chefe de Cozinha#xmasShop5	4_M_01,{
 	OnInit:
 	sellitem Cooking_Oil;
 	sellitem Grain;
@@ -1264,7 +1255,7 @@ xmas,152,137,5	trader	Chefe de Cozinha#xmas	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Morroc ] -
 // ------------------------------------------------------------------
-morocc_in,141,67,0	trader	Loja de Armas#moc1	1_M_MERCHANT,{
+morocc_in,141,67,0	trader	Loja de Armas#mocShop	1_M_MERCHANT,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -1284,7 +1275,7 @@ morocc_in,141,67,0	trader	Loja de Armas#moc1	1_M_MERCHANT,{
 }
 
 // ------------------------------------------------------------------
-morocc_in,141,60,0	trader	Loja de Armaduras#moc	1_M_MERCHANT,{
+morocc_in,141,60,0	trader	Loja de Armaduras#mocShop2	1_M_MERCHANT,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -1307,14 +1298,14 @@ morocc_in,141,60,0	trader	Loja de Armaduras#moc	1_M_MERCHANT,{
 }
 
 // ------------------------------------------------------------------
-morocc_in,132,57,0	trader	Loja de Armas#moc2	4W_M_03,{
+morocc_in,132,57,0	trader	Loja de Armas#mocShop3	4W_M_03,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,93,53,2	trader	Colecionador#moc1	4_M_03,{
+moc_ruins,93,53,2	trader	Colecionador#mocShop4	4_M_03,{
 	OnInit:
 	sellitem Scell;
 	sellitem Monsters_Feed;
@@ -1323,7 +1314,7 @@ moc_ruins,93,53,2	trader	Colecionador#moc1	4_M_03,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,81,113,0	trader	Colecionador#moc2	4_M_03,{
+moc_ruins,81,113,0	trader	Colecionador#mocShop5	4_M_03,{
 	OnInit:
 	sellitem Scell;
 	sellitem Monsters_Feed;
@@ -1332,7 +1323,7 @@ moc_ruins,81,113,0	trader	Colecionador#moc2	4_M_03,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,110,105,2	trader	Joalheria#moc1	8_F,{
+moc_ruins,110,105,2	trader	Joalheria#mocShop6	8_F,{
 	OnInit:
 	sellitem Azure_Jewel;
 	sellitem Cardinal_Jewel;
@@ -1342,32 +1333,32 @@ moc_ruins,110,105,2	trader	Joalheria#moc1	8_F,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,52,85,6	trader	Joalheria#moc2	4W_M_03,{
+moc_ruins,52,85,6	trader	Joalheria#mocShop7	4W_M_03,{
 	OnInit:
 	sellitem Crystal_Jewel;
 	sellitem Diamond_Ring;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,113,126,4	trader	Loja de Artigos#moc1	4W_M_03,{
+moc_ruins,113,126,4	trader	Loja de Artigos#mocShop8	4W_M_03,{
 	OnInit:
 	sellitem Crystal_Mirror;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,131,138,0	trader	Loja de Artigos#moc2	4_F_04,{
+moc_ruins,131,138,0	trader	Loja de Artigos#mocShop9	4_F_04,{
 	OnInit:
 	sellitem Witherless_Rose;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,71,139,5	trader	Loja de Artigos#moc3	4_F_04,{
+moc_ruins,71,139,5	trader	Loja de Artigos#mocShop10	4_F_04,{
 	OnInit:
 	sellitem Flower_Ring;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,125,135,6	trader	Loja de Artigos#moc4	4_M_ORIENT02,{
+moc_ruins,125,135,6	trader	Loja de Artigos#mocShop11	4_M_ORIENT02,{
 	OnInit:
 	sellitem Skul_Ring;
 	sellitem Sword_Mace;
@@ -1375,13 +1366,13 @@ moc_ruins,125,135,6	trader	Loja de Artigos#moc4	4_M_ORIENT02,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,87,109,0	trader	Açougue#moc	1_M_MERCHANT,{
+moc_ruins,87,109,0	trader	Açougue#mocShop12	1_M_MERCHANT,{
 	OnInit:
 	sellitem Meat;
 }
 
 // ------------------------------------------------------------------
-moc_ruins,90,149,6	trader	Loja de Artigos#moc5	4W_M_03,{
+moc_ruins,90,149,6	trader	Feirante#mocShop13	4W_M_03,{
 	OnInit:
 	sellitem Banana;
 }
@@ -1389,7 +1380,7 @@ moc_ruins,90,149,6	trader	Loja de Artigos#moc5	4W_M_03,{
 // ------------------------------------------------------------------
 // - [ Moscovia ] -
 // ------------------------------------------------------------------
-mosk_in,21,254,5	trader	Loja de Utilidades#mosk	4_M_RUSMAN2,{
+mosk_in,21,254,5	trader	Loja de Utilidades#moskShop	4_M_RUSMAN2,{
 	OnInit:
 	sellitem Spectacles;
 	sellitem Red_Potion;
@@ -1406,7 +1397,7 @@ mosk_in,21,254,5	trader	Loja de Utilidades#mosk	4_M_RUSMAN2,{
 }
 
 // ------------------------------------------------------------------
-mosk_in,31,180,3	trader	Loja de Armas#mosk	4_M_RUSMAN2,{
+mosk_in,31,180,3	trader	Loja de Armas#moskShop2	4_M_RUSMAN2,{
 	OnInit:
 	sellitem Main_Gauche;
 	sellitem Stiletto;
@@ -1421,7 +1412,7 @@ mosk_in,31,180,3	trader	Loja de Armas#mosk	4_M_RUSMAN2,{
 }
 
 // ------------------------------------------------------------------
-mosk_in,79,178,1	trader	Loja de Armaduras#mosk	4_F_RUSWOMAN3,{
+mosk_in,79,178,1	trader	Loja de Armaduras#moskShop3	4_F_RUSWOMAN3,{
 	OnInit:
 	sellitem Bandana;
 	sellitem Sandals;
@@ -1438,7 +1429,7 @@ mosk_in,79,178,1	trader	Loja de Armaduras#mosk	4_F_RUSWOMAN3,{
 }
 
 // ------------------------------------------------------------------
-moscovia,152,71,4	trader	Venda de Frutas#mosk	4_M_RUSMAN2,{
+moscovia,152,71,4	trader	Feirante#moskShop4	4_M_RUSMAN2,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
@@ -1449,7 +1440,7 @@ moscovia,152,71,4	trader	Venda de Frutas#mosk	4_M_RUSMAN2,{
 // ------------------------------------------------------------------
 // - [ Niflheim ] -
 // ------------------------------------------------------------------
-nif_in,37,93,1	trader	Loja de Machados#nif	4_NFCOFFIN,{
+nif_in,37,93,1	trader	Loja de Machados#nifShop	4_NFCOFFIN,{
 	OnInit:
 	sellitem Axe;
 	sellitem Battle_Axe;
@@ -1459,7 +1450,8 @@ nif_in,37,93,1	trader	Loja de Machados#nif	4_NFCOFFIN,{
 }
 
 // ------------------------------------------------------------------
-nif_in,37,84,1	trader	Loja de Armaduras#nif	4_NFCOFFIN,{
+/*
+nif_in,37,84,1	trader	Loja de Armaduras#nifShop2	4_NFCOFFIN,{
 	OnInit:
 	sellitem Hood;
 	sellitem Hood;
@@ -1468,9 +1460,10 @@ nif_in,37,84,1	trader	Loja de Armaduras#nif	4_NFCOFFIN,{
 	sellitem Manteau;
 	sellitem Manteau;
 }
+*/
 
 // ------------------------------------------------------------------
-nif_in,145,23,1	trader	Loja de Utilidades#nif	4_NFCOFFIN,{
+nif_in,145,23,1	trader	Loja de Utilidades#nifShop3	4_NFCOFFIN,{
 	OnInit:
 	sellitem Pumpkin;
 	sellitem Pumpkin_Head;
@@ -1483,7 +1476,7 @@ nif_in,145,23,1	trader	Loja de Utilidades#nif	4_NFCOFFIN,{
 }
 
 // ------------------------------------------------------------------
-niflheim,209,180,5	trader	Chefe de Cozinha#nif	4_M_01,{
+niflheim,209,180,5	trader	Chefe de Cozinha#nifShop4	4_M_01,{
 	OnInit:
 	sellitem Mushroom;
 }
@@ -1491,7 +1484,7 @@ niflheim,209,180,5	trader	Chefe de Cozinha#nif	4_M_01,{
 // ------------------------------------------------------------------
 // - [ Payon ] -
 // ------------------------------------------------------------------
-payon_in01,15,119,0	trader	Loja de Armas#pay	1_F_ORIENT_03,{
+payon_in01,15,119,0	trader	Loja de Armas#payShop	1_F_ORIENT_03,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -1512,14 +1505,14 @@ payon_in01,15,119,0	trader	Loja de Armas#pay	1_F_ORIENT_03,{
 }
 
 // ------------------------------------------------------------------
-payon_in01,5,129,7	trader	Loja de Armas#pay2	4_F_KID2,{
+payon_in01,5,129,7	trader	Loja de Armas#payShop2	4_F_KID2,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-payon_in01,7,119,2	trader	Loja de Armaduras#pay	1_F_ORIENT_02,{
+payon_in01,7,119,2	trader	Loja de Armaduras#payShop3	1_F_ORIENT_02,{
 	OnInit:
 	sellitem Sandals;
 	sellitem Shoes;
@@ -1545,35 +1538,35 @@ payon_in01,7,119,2	trader	Loja de Armaduras#pay	1_F_ORIENT_02,{
 // ------------------------------------------------------------------
 // - [ Prontera ] -
 // ------------------------------------------------------------------
-prontera,104,49,0	trader	Venda de Frutas#prt	8_F,{
+prontera,104,49,0	trader	Feirante#prtShop	8_F,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
 }
 
 // ------------------------------------------------------------------
-prontera,64,125,0	trader	Açougue#prt	4_M_BARBER,{
+prontera,64,125,0	trader	Açougue#prtShop2	4_M_BARBER,{
 	OnInit:
 	sellitem Meat;
 	sellitem Monsters_Feed;
 }
 
 // ------------------------------------------------------------------
-prontera,58,182,0	trader	Florista#prt	4W_KID,{
+prontera,58,182,0	trader	Florista#prtShop3	4W_KID,{
 	OnInit:
 	sellitem Flower;
 	sellitem Bunch_Of_Flowers;
 }
 
 // ------------------------------------------------------------------
-prontera,113,42,0	trader	Florista#prt2	4_F_01,{
+prontera,113,42,0	trader	Florista#prtShop4	4_F_01,{
 	OnInit:
 	sellitem Flower;
 	sellitem Bunch_Of_Flowers;
 }
 
 // ------------------------------------------------------------------
-prontera,105,87,0	trader	Loja de Presentes#prt	4_F_02,{
+prontera,105,87,0	trader	Loja de Presentes#prtShop5	4_F_02,{
 	OnInit:
 	sellitem Red_Frame;
 	sellitem Blue_Porcelain;
@@ -1583,7 +1576,7 @@ prontera,105,87,0	trader	Loja de Presentes#prt	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-prontera,248,153,0	trader	Loja de Bonecos#prt	4_M_03,{
+prontera,248,153,0	trader	Loja de Bonecos#prtShop6	4_M_03,{
 	OnInit:
 	sellitem Stuffed_Doll;
 	sellitem Poring_Doll;
@@ -1591,7 +1584,7 @@ prontera,248,153,0	trader	Loja de Bonecos#prt	4_M_03,{
 }
 
 // ------------------------------------------------------------------
-prontera,48,58,0	trader	Feirante#prt	4_F_02,{
+prontera,48,58,0	trader	Feirante#prtShop7	4_F_02,{
 	OnInit:
 	sellitem Carrot;
 	sellitem Sweet_Potato;
@@ -1599,7 +1592,7 @@ prontera,48,58,0	trader	Feirante#prt	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-prt_in,211,169,0	trader	Artigos de Casamento#prt	1_F_LIBRARYGIRL,{
+prt_in,211,169,0	trader	Artigos de Casamento#prtShop8	1_F_LIBRARYGIRL,{
 	OnInit:
 	sellitem Bunch_Of_Flowers;
 	sellitem Wedding_Bouquet;
@@ -1609,7 +1602,7 @@ prt_in,211,169,0	trader	Artigos de Casamento#prt	1_F_LIBRARYGIRL,{
 }
 
 // ------------------------------------------------------------------
-prt_in,172,130,0	trader	Loja de Armas#prt	1_M_JOBGUIDER,{
+prt_in,172,130,0	trader	Loja de Armas#prtShop9	1_M_JOBGUIDER,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Silver_Arrow;
@@ -1633,7 +1626,7 @@ prt_in,172,130,0	trader	Loja de Armas#prt	1_M_JOBGUIDER,{
 }
 
 // ------------------------------------------------------------------
-prt_in,172,132,0	trader	Loja de Armaduras#prt	1_M_02,{
+prt_in,172,132,0	trader	Loja de Armaduras#prtShop10	1_M_02,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -1656,7 +1649,7 @@ prt_in,172,132,0	trader	Loja de Armaduras#prt	1_M_02,{
 }
 
 // ------------------------------------------------------------------
-prt_in,171,140,0	trader	Loja de Armas#prt2	1_M_01,{
+prt_in,171,140,0	trader	Loja de Armas#prtShop11	1_M_01,{
 	OnInit:
 	sellitem Javelin;
 	sellitem Spear;
@@ -1670,14 +1663,14 @@ prt_in,171,140,0	trader	Loja de Armas#prt2	1_M_01,{
 }
 
 // ------------------------------------------------------------------
-prt_in,165,140,4	trader	Loja de Armas#prt3	1_F_01,{
+prt_in,165,140,4	trader	Loja de Armas#prtShop12	1_F_01,{
 	OnInit:
 	sellitem Town_Sword;
 	sellitem Cinquedea;
 }
 
 // ------------------------------------------------------------------
-prt_monk,135,263,5	trader	Loja de Armas#prt4	4_F_JOB_BLACKSMITH,{
+prt_monk,135,263,5	trader	Loja de Armas#prtShop13	4_F_JOB_BLACKSMITH,{
 	OnInit:
 	sellitem Waghnakh;
 	sellitem Knuckle_Duster;
@@ -1687,7 +1680,7 @@ prt_monk,135,263,5	trader	Loja de Armas#prt4	4_F_JOB_BLACKSMITH,{
 // ------------------------------------------------------------------
 // - [ Rachel ] -
 // ------------------------------------------------------------------
-ra_in01,175,364,3	trader	Loja de Armaduras#ra	4_F_SHABBY,{
+ra_in01,175,364,3	trader	Loja de Armaduras#raShop	4_F_SHABBY,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -1702,7 +1695,7 @@ ra_in01,175,364,3	trader	Loja de Armaduras#ra	4_F_SHABBY,{
 }
 
 // ------------------------------------------------------------------
-ra_in01,257,269,3	trader	Loja de Utilidades#ra	4_F_SHABBY,{
+ra_in01,257,269,3	trader	Loja de Utilidades#raShop2	4_F_SHABBY,{
 	OnInit:
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
@@ -1719,7 +1712,7 @@ ra_in01,257,269,3	trader	Loja de Utilidades#ra	4_F_SHABBY,{
 }
 
 // ------------------------------------------------------------------
-ra_in01,176,389,3	trader	Loja de Armas#ra	4_M_RACHMAN1,{
+ra_in01,176,389,3	trader	Loja de Armas#raShop3	4_M_RACHMAN1,{
 	OnInit:
 	sellitem Knife;
 	sellitem Main_Gauche;
@@ -1739,14 +1732,14 @@ ra_in01,176,389,3	trader	Loja de Armas#ra	4_M_RACHMAN1,{
 }
 
 // ------------------------------------------------------------------
-ra_in01,254,300,3	trader	Venda de Frutas#ra	4_M_RACHMAN1,{
+ra_in01,254,300,3	trader	Feirante#raShop4	4_M_RACHMAN1,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
 }
 
 // ------------------------------------------------------------------
-rachel,65,80,1	trader	Feirante#ra	4_F_SHABBY,{
+rachel,65,80,1	trader	Feirante#raShop5	4_F_SHABBY,{
 	OnInit:
 	sellitem Carrot;
 	sellitem Pumpkin;
@@ -1756,7 +1749,7 @@ rachel,65,80,1	trader	Feirante#ra	4_F_SHABBY,{
 // ------------------------------------------------------------------
 // [ Umbala ]
 // ------------------------------------------------------------------
-um_in,104,124,3	trader	Loja de Utilidades#um	4_M_UMOLDMAN,{
+um_in,104,124,3	trader	Loja de Utilidades#umShop	4_M_UMOLDMAN,{
 	OnInit:
 	sellitem Apple;
 	sellitem Carrot;
@@ -1774,14 +1767,14 @@ um_in,104,124,3	trader	Loja de Utilidades#um	4_M_UMOLDMAN,{
 }
 
 // ------------------------------------------------------------------
-umbala,102,154,3	trader	Chefe de Cozinha#um	4_M_01,{
+umbala,102,154,3	trader	Chefe de Cozinha#umShop2	4_M_01,{
 	OnInit:
 	sellitem Red_Spice;
 	sellitem Grain;
 }
 
 // ------------------------------------------------------------------
-um_in,160,125,3	trader	Loja de Armas#um	4_M_UMSOLDIER,{
+um_in,160,125,3	trader	Loja de Armas#umShop3	4_M_UMSOLDIER,{
 	OnInit:
 	sellitem Club;
 	sellitem Mace;
@@ -1797,7 +1790,7 @@ um_in,160,125,3	trader	Loja de Armas#um	4_M_UMSOLDIER,{
 // ------------------------------------------------------------------
 // - [ Veins ] -
 // ------------------------------------------------------------------
-ve_in,386,245,3	trader	Loja de Armas#ve	4_M_RACHMAN1,{
+ve_in,386,245,3	trader	Loja de Armas#veShop	4_M_RACHMAN1,{
 	OnInit:
 	sellitem Knife;
 	sellitem Main_Gauche;
@@ -1809,7 +1802,7 @@ ve_in,386,245,3	trader	Loja de Armas#ve	4_M_RACHMAN1,{
 }
 
 // ------------------------------------------------------------------
-ve_in,336,243,3	trader	Loja de Armas#ve2	4_M_RACHMAN1,{
+ve_in,336,243,3	trader	Loja de Armas#veShop2	4_M_RACHMAN1,{
 	OnInit:
 	sellitem Pike;
 	sellitem Partizan;
@@ -1819,7 +1812,7 @@ ve_in,336,243,3	trader	Loja de Armas#ve2	4_M_RACHMAN1,{
 }
 
 // ------------------------------------------------------------------
-ve_in,374,230,3	trader	Loja de Armaduras#ve	4_F_SHABBY,{
+ve_in,374,230,3	trader	Loja de Armaduras#veShop3	4_F_SHABBY,{
 	OnInit:
 	sellitem Guard;
 	sellitem Buckler;
@@ -1834,7 +1827,7 @@ ve_in,374,230,3	trader	Loja de Armaduras#ve	4_F_SHABBY,{
 }
 
 // ------------------------------------------------------------------
-ve_in,243,303,5	trader	Loja de Utilidades#ve	4_M_DESERT,{
+ve_in,243,303,5	trader	Loja de Utilidades#veShop4	4_M_DESERT,{
 	OnInit:
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
@@ -1851,14 +1844,14 @@ ve_in,243,303,5	trader	Loja de Utilidades#ve	4_M_DESERT,{
 }
 
 // ------------------------------------------------------------------
-ve_in,253,304,5	trader	Venda de Frutas#ve	4_F_DST_CHILD,{
+ve_in,253,304,5	trader	Feirante#veShop5	4_F_DST_CHILD,{
 	OnInit:
 	sellitem Apple;
 	sellitem Banana;
 }
 
 // ------------------------------------------------------------------
-ve_in,252,313,0	trader	Itens Mágicos#ve	4_F_DST_GRAND,{
+ve_in,252,313,0	trader	Itens Mágicos#veShop6	4_F_DST_GRAND,{
 	OnInit:
 	sellitem Blue_Gemstone;
 	sellitem Rod;
@@ -1873,7 +1866,7 @@ ve_in,252,313,0	trader	Itens Mágicos#ve	4_F_DST_GRAND,{
 // ------------------------------------------------------------------
 // - [ Guildas ]
 // ------------------------------------------------------------------
-alde_alche,38,184,3	trader	Loja de Materiais#alche	4_M_SAGE_C,{
+alde_alche,38,184,3	trader	Loja de Materiais#alcheShop	4_M_SAGE_C,{
 	OnInit:
 	sellitem Melange_Pot;
 	sellitem Cooking_Skewer;
@@ -1885,7 +1878,7 @@ alde_alche,38,184,3	trader	Loja de Materiais#alche	4_M_SAGE_C,{
 }
 
 // ------------------------------------------------------------------
-que_ng,72,31,2	trader	Boonji#nin	4_M_01,{
+que_ng,72,31,2	trader	Boonji#ninShop	4_M_01,{
 	OnInit:
 	sellitem Shuriken;
 	sellitem Nimbus_Shuriken;
@@ -1897,7 +1890,7 @@ que_ng,72,31,2	trader	Boonji#nin	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-que_ng,73,26,5	trader	Boonray#nin	4_M_01,{
+que_ng,73,26,5	trader	Boonray#ninShop2	4_M_01,{
 	OnInit:
 	sellitem Arm_Guard;
 	sellitem Flame_Stone;
@@ -1913,7 +1906,7 @@ que_ng,73,26,5	trader	Boonray#nin	4_M_01,{
 }
 
 // ------------------------------------------------------------------
-que_ng,179,91,3	trader	Chivas Lugal#nin	4_M_HUMERCHANT,{
+que_ng,179,91,3	trader	Chivas Lugal#ninShop3	4_M_HUMERCHANT,{
 	OnInit:
 	sellitem Branch;
 	sellitem Crimson_Bolt;
@@ -1926,7 +1919,7 @@ que_ng,179,91,3	trader	Chivas Lugal#nin	4_M_HUMERCHANT,{
 }
 
 // ------------------------------------------------------------------
-que_ng,180,79,3	trader	Johnny Waiker#jus	4_M_HUMERCHANT,{
+que_ng,180,79,3	trader	Johnny Waiker#jusShop	4_M_HUMERCHANT,{
 	OnInit:
 	sellitem Bullet;
 	sellitem Silver_Bullet;
@@ -1934,13 +1927,13 @@ que_ng,180,79,3	trader	Johnny Waiker#jus	4_M_HUMERCHANT,{
 }
 
 // ------------------------------------------------------------------
-in_moc_16,22,20,7	trader	Sepulchral#ass	4_M_MASKMAN,{
+in_moc_16,22,20,7	trader	Sepulchral#assShop	4_M_MASKMAN,{
 	OnInit:
 	sellitem Venom_Knife;
 }
 
 // ------------------------------------------------------------------
-prt_church,108,124,4	trader	Nun#chur	1_F_PRIEST,{
+prt_church,108,124,4	trader	Nun#churShop	1_F_PRIEST,{
 	OnInit:
 	sellitem Rosary;
 	sellitem Biretta;
@@ -1958,7 +1951,8 @@ prt_church,108,124,4	trader	Nun#chur	1_F_PRIEST,{
 // ------------------------------------------------------------------
 // - [ Cavernas ] -
 // ------------------------------------------------------------------
-tur_dun01,158,54,6	trader	Loja de Utilidades#tu	4W_M_03,{
+/*
+tur_dun01,158,54,6	trader	Loja de Utilidades#tuShop	4W_M_03,{
 	OnInit:
 	sellitem Arrow;
 	sellitem Red_Potion;
@@ -1972,13 +1966,14 @@ tur_dun01,158,54,6	trader	Loja de Utilidades#tu	4W_M_03,{
 	sellitem Awakening_Potion;
 	sellitem Luxury_Sunglasses;
 }
+*/
 
 // ------------------------------------------------------------------
 // - [ Outros ] -
 // ------------------------------------------------------------------
 
 // Campo de Aprendizes ----------------------------------------------
-new_1-3,100,50,4	trader	Comerciante#newzone	4_F_04,{
+new_1-3,100,50,4	trader	Comerciante#newShop	4_F_04,{
 	OnInit:
 	sellitem Sweet_Potato;
 }
