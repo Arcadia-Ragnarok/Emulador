@@ -4332,7 +4332,7 @@ int char_search_default_maps_mapserver(struct mmo_charstatus *cd) {
 	}
 	if (i >= 0) {
 		cd->last_point.map = j;
-		ShowWarning("Nao foi possível localizar o personagem '%s', enviado para uma das cidades principais '%s'.\n", mapindex_id2name(cd->last_point.map), mapindex_id2name(j));
+		ShowWarning("Não foi possível localizar o personagem '%s', enviado para uma das cidades principais '%s'.\n", mapindex_id2name(cd->last_point.map), mapindex_id2name(j));
 	}
 	return i;
 }
@@ -5226,7 +5226,7 @@ static int char_online_data_cleanup(int tid, int64 tick, int id, intptr_t data) 
 bool char_sql_config_read(const char *filename) {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
-	//const char *import = NULL;
+	const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -5368,7 +5368,7 @@ bool char_sql_config_read_guild(const char *filename, const struct config_t *con
  */
 bool char_config_read(const char *filename) {
 	struct config_t config;
-	//const char *import = NULL;
+	const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -5746,7 +5746,7 @@ bool char_config_read_player_new(const char *filename, const struct config_t *co
 		if (libconfig->setting_lookup_string(setting2, "map", &str) == CONFIG_TRUE) {
 			start_point.map = mapindex->name2id(str);
 			if (start_point.map == 0) {
-				ShowError("char_config_read_player_new: Mapa para start_point %s nao econtrado no database.\n", str);
+				ShowError("char_config_read_player_new: Mapa para start_point %s não econtrado no database.\n", str);
 			}
 			libconfig->setting_lookup_int16(setting2, "x", &start_point.x);
 			libconfig->setting_lookup_int16(setting2, "y", &start_point.y);

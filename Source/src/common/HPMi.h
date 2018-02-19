@@ -41,7 +41,7 @@ struct hplugin_data_store;
 
 struct hplugin_info {
 	char* name;
-	//enum server_types type;
+	enum server_types type;
 	char* version;
 	char* req_version;
 };
