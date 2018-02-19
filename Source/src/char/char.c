@@ -6232,31 +6232,11 @@ int do_init(int argc, char **argv) {
 	sockt->net_config_read(chr->NET_CONF_NAME);
 	chr->sql_config_read(chr->SQL_CONF_NAME, false);
 
-	{
-		// TODO: Remove this when no longer needed.
-#define CHECK_OLD_LOCAL_CONF(oldname, newname) do { \
-	if (stat((oldname), &fileinfo) == 0 && fileinfo.st_size > 0) { \
-		ShowWarning("An old configuration file \"%s\" was found.\n", (oldname)); \
-		ShowWarning("If it contains settings you wish to keep, please merge them into \"%s\".\n", (newname)); \
-		ShowWarning("Otherwise, just delete it.\n"); \
-		ShowInfo("Resuming in 10 seconds...\n"); \
-		HSleep(10); \
-	} \
-} while (0)
-		struct stat fileinfo;
-
-		CHECK_OLD_LOCAL_CONF("Config/import/char_conf.txt", "Config/import/char-server.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/inter_conf.txt", "Config/import/inter-server.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/packet_conf.txt", "Config/import/socket.conf");
-
-#undef CHECK_OLD_LOCAL_CONF
-	}
-
 #ifndef BUILDBOT
 	if (strcmp(chr->userid, "s1")==0 && strcmp(chr->passwd, "p1")==0) {
 		ShowWarning("Using the default user/password s1/p1 is NOT RECOMMENDED.\n");
 		ShowNotice("Please edit your 'login' table to create a proper inter-server user/password (gender 'S')\n");
-		ShowNotice("And then change the user/password to use in Config/Servers/Char-Server.cs (or Config/import/char-server.conf)\n");
+		ShowNotice("And then change the user/password to use in Config/Servers/Char-Server.cs\n");
 	}
 #endif
 

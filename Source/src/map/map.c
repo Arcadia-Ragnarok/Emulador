@@ -6373,29 +6373,6 @@ int do_init(int argc, char *argv[])
 	if (!minimal) {
 		map->config_read(map->MAP_CONF_NAME, false);
 
-		{
-			// TODO: Remove this when no longer needed.
-#define CHECK_OLD_LOCAL_CONF(oldname, newname) do { \
-	if (stat((oldname), &fileinfo) == 0 && fileinfo.st_size > 0) { \
-		ShowWarning("An old configuration file \"%s\" was found.\n", (oldname)); \
-		ShowWarning("If it contains settings you wish to keep, please merge them into \"%s\".\n", (newname)); \
-		ShowWarning("Otherwise, just delete it.\n"); \
-		ShowInfo("Resuming in 10 seconds...\n"); \
-		HSleep(10); \
-	} \
-} while (0)
-		struct stat fileinfo;
-
-		CHECK_OLD_LOCAL_CONF("Config/import/map_conf.txt", "Config/import/map-server.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/inter_conf.txt", "Config/Servers/Inter-Server.cs");
-		CHECK_OLD_LOCAL_CONF("Config/import/log_conf.txt", "Config/import/logs.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/script_conf.txt", "Config/import/script.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/packet_conf.txt", "Config/import/socket.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/battle_conf.txt", "Config/import/battle.conf");
-
-#undef CHECK_OLD_LOCAL_CONF
-		}
-
 		// loads npcs
 		map->reloadnpc(false);
 

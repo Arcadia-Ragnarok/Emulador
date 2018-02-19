@@ -242,7 +242,7 @@ void chrif_checkdefaultlogin(void) {
 	if (strcmp(chrif->userid, "s1")==0 && strcmp(chrif->passwd, "p1")==0) {
 		ShowWarning("Using the default user/password s1/p1 is NOT RECOMMENDED.\n");
 		ShowNotice("Please edit your 'login' table to create a proper inter-server user/password (gender 'S')\n");
-		ShowNotice("and then edit your user/password in Config/map-server.conf (or Config/import/map_conf.txt)\n");
+		ShowNotice("and then edit your user/password in Config/map-server.conf\n");
 	}
 #endif
 }

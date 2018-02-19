@@ -636,14 +636,8 @@ void hplugins_config_read(void)
 	struct config_t plugins_conf;
 	struct config_setting_t *plist = NULL;
 	const char *config_filename = "Config/Depreciated/plugins.conf"; // FIXME hardcoded name
-	FILE *fp;
+//	FILE *fp;
 	int i;
-
-	/* yes its ugly, its temporary and will be gone as soon as the new inter-server.cs is set */
-	if( (fp = fopen("Config/import/plugins.conf","r")) ) {
-		config_filename = "Config/import/plugins.conf";
-		fclose(fp);
-	}
 
 	if (!libconfig->load_file(&plugins_conf, config_filename))
 		return;

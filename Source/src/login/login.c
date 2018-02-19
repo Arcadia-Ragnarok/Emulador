@@ -2091,26 +2091,6 @@ int do_init(int argc, char** argv)
 	login->LOGIN_CONF_NAME = aStrdup("Config/Servers/Login-Server.cs");
 	login->NET_CONF_NAME   = aStrdup("Config/Connect/NetWork.cs");
 
-	{
-		// TODO: Remove this when no longer needed.
-#define CHECK_OLD_LOCAL_CONF(oldname, newname) do { \
-	if (stat((oldname), &fileinfo) == 0 && fileinfo.st_size > 0) { \
-		ShowWarning("An old configuration file \"%s\" was found.\n", (oldname)); \
-		ShowWarning("If it contains settings you wish to keep, please merge them into \"%s\".\n", (newname)); \
-		ShowWarning("Otherwise, just delete it.\n"); \
-		ShowInfo("Resuming in 10 seconds...\n"); \
-		HSleep(10); \
-	} \
-} while (0)
-		struct stat fileinfo;
-
-		CHECK_OLD_LOCAL_CONF("Config/import/login_conf.txt", "Config/import/login-server.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/inter_conf.txt", "Config/import/inter-server.conf");
-		CHECK_OLD_LOCAL_CONF("Config/import/packet_conf.txt", "Config/import/socket.conf");
-
-#undef CHECK_OLD_LOCAL_CONF
-	}
-
 	lclif->init();
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
 
