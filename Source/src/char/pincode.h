@@ -23,7 +23,7 @@
 #ifndef CHAR_PINCODE_H
 #define CHAR_PINCODE_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /* Forward Declarations */
 struct char_session_data;
@@ -59,13 +59,10 @@ struct pincode_interface {
 	void (*change) (int fd, struct char_session_data* sd);
 	int  (*compare) (int fd, struct char_session_data* sd, char* pin);
 	void (*check) (int fd, struct char_session_data* sd);
-	bool (*config_read) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read) (const char *filename, const struct config_t *config);
 };
 
-#ifdef MAIN_CORE
 void pincode_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct pincode_interface *pincode;
+extern struct pincode_interface *pincode;
 
 #endif /* CHAR_PINCODE_H */

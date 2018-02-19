@@ -74,10 +74,7 @@ struct inter_guild_interface {
 	int (*broken) (int guild_id);
 };
 
-#ifdef MAIN_CORE
 void inter_guild_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct inter_guild_interface *inter_guild;
+extern struct inter_guild_interface *inter_guild;
 
 #endif /* CHAR_INT_GUILD_H */

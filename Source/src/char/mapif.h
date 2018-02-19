@@ -23,7 +23,7 @@
 #ifndef CHAR_MAPIF_H
 #define CHAR_MAPIF_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h"
 
 struct WisData;
@@ -218,10 +218,7 @@ struct mapif_interface {
 	int (*parse_NameChangeRequest) (int fd);
 };
 
-#ifdef MAIN_CORE
 void mapif_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mapif_interface *mapif;
+extern struct mapif_interface *mapif;
 
 #endif /* CHAR_MAPIF_H */

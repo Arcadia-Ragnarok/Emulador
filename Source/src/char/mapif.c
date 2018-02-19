@@ -20,8 +20,6 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define MAIN_CORE
-
 #include "mapif.h"
 
 #include "char/char.h"
