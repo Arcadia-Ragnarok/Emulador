@@ -23,8 +23,8 @@
 #ifndef CHAR_INTER_H
 #define CHAR_INTER_H
 
-#include "common/cbasetypes.h"
-#include "common/sql.h"
+#include "common/HPExport.h"
+#include "common/db.h"
 
 #include <stdarg.h>
 
@@ -55,14 +55,17 @@ struct inter_interface {
 	int (*check_length) (int fd, int length);
 	int (*parse_frommap) (int fd);
 	void (*final) (void);
-	bool (*config_read) (const char *filename);
-	bool (*config_read_log) (const char *filename, const struct config_t *config);
-	bool (*config_read_connection) (const char *filename, const struct config_t *config);
+	bool (*config_read) (const char *filename, bool imported);
+	bool (*config_read_log) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_connection) (const char *filename, const struct config_t *config, bool imported);
 };
 
-//extern int party_share_level; ///< Share range for parties.
-void inter_defaults(void);
+#ifdef MAIN_CORE
+extern int party_share_level; ///< Share range for parties.
 
-extern struct inter_interface *inter;
+void inter_defaults(void);
+#endif // MAIN_CORE
+
+HPShared struct inter_interface *inter;
 
 #endif /* CHAR_INTER_H */

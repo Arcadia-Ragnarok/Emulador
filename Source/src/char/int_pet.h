@@ -23,7 +23,7 @@
 #ifndef CHAR_INT_PET_H
 #define CHAR_INT_PET_H
 
-#include "common/mmo.h"
+#include "common/HPExport.h"
 
 struct s_pet;
 
@@ -40,7 +40,10 @@ struct inter_pet_interface {
 	int (*parse_frommap) (int fd);
 };
 
+#ifdef MAIN_CORE
 void inter_pet_defaults(void);
-extern struct inter_pet_interface *inter_pet;
+#endif // MAIN_CORE
+
+HPShared struct inter_pet_interface *inter_pet;
 
 #endif /* CHAR_INT_PET_H */

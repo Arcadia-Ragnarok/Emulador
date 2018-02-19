@@ -23,7 +23,7 @@
 #ifndef CHAR_INT_MAIL_H
 #define CHAR_INT_MAIL_H
 
-#include "common/mmo.h"
+#include "common/HPExport.h"
 
 struct item;
 struct mail_data;
@@ -43,7 +43,10 @@ struct inter_mail_interface {
 	void (*sendmail) (int send_id, const char* send_name, int dest_id, const char* dest_name, const char* title, const char* body, int zeny, struct item *item);
 };
 
+#ifdef MAIN_CORE
 void inter_mail_defaults(void);
-extern struct inter_mail_interface *inter_mail;
+#endif // MAIN_CORE
+
+HPShared struct inter_mail_interface *inter_mail;
 
 #endif /* CHAR_INT_MAIL_H */

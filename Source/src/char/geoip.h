@@ -23,7 +23,7 @@
 #ifndef CHAR_GEOIP_H
 #define CHAR_GEOIP_H
 
-#include "common/cbasetypes.h"
+#include "common/HPExport.h"
 
 /**
  * GeoIP information
@@ -44,7 +44,10 @@ struct geoip_interface {
 	void (*init) (void);
 };
 
+#ifdef MAIN_CORE
 void geoip_defaults(void);
-extern struct geoip_interface *geoip;
+#endif // MAIN_CORE
+
+HPShared struct geoip_interface *geoip;
 
 #endif /* CHAR_GEOIP_H */

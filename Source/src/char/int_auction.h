@@ -23,7 +23,7 @@
 #ifndef CHAR_INT_AUCTION_H
 #define CHAR_INT_AUCTION_H
 
-#include "common/db.h"
+#include "common/HPExport.h"
 #include "common/mmo.h"
 
 /* Forward Declarations */
@@ -45,7 +45,10 @@ struct inter_auction_interface {
 	void (*sql_final) (void);
 };
 
+#ifdef MAIN_CORE
 void inter_auction_defaults(void);
-extern struct inter_auction_interface *inter_auction;
+#endif // MAIN_CORE
+
+HPShared struct inter_auction_interface *inter_auction;
 
 #endif /* CHAR_INT_AUCTION_H */

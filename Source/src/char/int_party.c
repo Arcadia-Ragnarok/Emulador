@@ -71,7 +71,8 @@ static int inter_party_check_lv(struct party_data *p) {
 	return 1;
 }
 //Calculates the state of a party.
-static void inter_party_calc_state(struct party_data *p) {
+static void inter_party_calc_state(struct party_data *p)
+{
 	int i;
 	nullpo_retv(p);
 	p->min_lv = UINT_MAX;
@@ -122,7 +123,8 @@ static void inter_party_calc_state(struct party_data *p) {
 }
 
 // Save party to mysql
-int inter_party_tosql(struct party *p, int flag, int index) {
+int inter_party_tosql(struct party *p, int flag, int index)
+{
 	// 'party' ('party_id','name','exp','item','leader_id','leader_char')
 	char esc_name[NAME_LENGTH*2+1];// escaped party name
 	int party_id;
@@ -133,7 +135,7 @@ int inter_party_tosql(struct party *p, int flag, int index) {
 	party_id = p->party_id;
 
 #ifdef NOISY
-	ShowInfo("Grupo salvo ("CL_BOLD"%d"CL_RESET" - %s).\n", party_id, p->name);
+	ShowInfo("Save party request ("CL_BOLD"%d"CL_RESET" - %s).\n", party_id, p->name);
 #endif
 	SQL->EscapeStringLen(inter->sql_handle, esc_name, p->name, strnlen(p->name, NAME_LENGTH));
 
@@ -191,12 +193,13 @@ int inter_party_tosql(struct party *p, int flag, int index) {
 	}
 
 	if (chr->show_save_log)
-		ShowInfo("Grupo salvo (%d - %s)\n", party_id, p->name);
+		ShowInfo("Party Saved (%d - %s)\n", party_id, p->name);
 	return 1;
 }
 
 // Read party from mysql
-struct party_data *inter_party_fromsql(int party_id) {
+struct party_data *inter_party_fromsql(int party_id)
+{
 	int leader_id = 0;
 	int leader_char = 0;
 	struct party_data* p;
@@ -206,7 +209,7 @@ struct party_data *inter_party_fromsql(int party_id) {
 	int i;
 
 #ifdef NOISY
-	ShowInfo("Carregado grupo ("CL_BOLD"%d"CL_RESET")\n", party_id);
+	ShowInfo("Load party request ("CL_BOLD"%d"CL_RESET")\n", party_id);
 #endif
 	if( party_id <= 0 )
 		return NULL;
@@ -219,7 +222,8 @@ struct party_data *inter_party_fromsql(int party_id) {
 	p = inter_party->pt;
 	memset(p, 0, sizeof(struct party_data));
 
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `party_id`, `name`,`exp`,`item`, `leader_id`, `leader_char` FROM `%s` WHERE `party_id`='%d'", party_db, party_id) ) {
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `party_id`, `name`,`exp`,`item`, `leader_id`, `leader_char` FROM `%s` WHERE `party_id`='%d'", party_db, party_id) )
+	{
 		Sql_ShowDebug(inter->sql_handle);
 		return NULL;
 	}
@@ -236,12 +240,13 @@ struct party_data *inter_party_fromsql(int party_id) {
 	SQL->FreeResult(inter->sql_handle);
 
 	// Load members
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `account_id`,`char_id`,`name`,`base_level`,`last_map`,`online`,`class` FROM `%s` WHERE `party_id`='%d'", char_db, party_id) ) {
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `account_id`,`char_id`,`name`,`base_level`,`last_map`,`online`,`class` FROM `%s` WHERE `party_id`='%d'", char_db, party_id) )
+	{
 		Sql_ShowDebug(inter->sql_handle);
 		return NULL;
 	}
-
-	for( i = 0; i < MAX_PARTY && SQL_SUCCESS == SQL->NextRow(inter->sql_handle); ++i ) {
+	for( i = 0; i < MAX_PARTY && SQL_SUCCESS == SQL->NextRow(inter->sql_handle); ++i )
+	{
 		m = &p->party.member[i];
 		SQL->GetData(inter->sql_handle, 0, &data, NULL); m->account_id = atoi(data);
 		SQL->GetData(inter->sql_handle, 1, &data, NULL); m->char_id = atoi(data);
@@ -252,7 +257,6 @@ struct party_data *inter_party_fromsql(int party_id) {
 		SQL->GetData(inter->sql_handle, 6, &data, NULL); m->class = atoi(data);
 		m->leader = (m->account_id == leader_id && m->char_id == leader_char ? 1 : 0);
 	}
-
 	SQL->FreeResult(inter->sql_handle);
 
 	if (chr->show_save_log)
@@ -266,12 +270,13 @@ struct party_data *inter_party_fromsql(int party_id) {
 	return p;
 }
 
-int inter_party_sql_init(void) {
+int inter_party_sql_init(void)
+{
 	//memory alloc
 	inter_party->db = idb_alloc(DB_OPT_RELEASE_DATA);
 	inter_party->pt = (struct party_data*)aCalloc(sizeof(struct party_data), 1);
 	if (!inter_party->pt) {
-		ShowFatalError("inter_party->sql_init: Fora da memoria!\n");
+		ShowFatalError("inter_party->sql_init: Out of Memory!\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -284,14 +289,16 @@ int inter_party_sql_init(void) {
 	return 0;
 }
 
-void inter_party_sql_final(void) {
+void inter_party_sql_final(void)
+{
 	inter_party->db->destroy(inter_party->db, NULL);
 	aFree(inter_party->pt);
 	return;
 }
 
 // Search for the party according to its name
-struct party_data* inter_party_search_partyname(const char *const str) {
+struct party_data* inter_party_search_partyname(const char *const str)
+{
 	char esc_name[NAME_LENGTH*2+1];
 	char* data;
 	struct party_data* p = NULL;
@@ -309,14 +316,16 @@ struct party_data* inter_party_search_partyname(const char *const str) {
 }
 
 // Returns whether this party can keep having exp share or not.
-int inter_party_check_exp_share(struct party_data *const p) {
+int inter_party_check_exp_share(struct party_data *const p)
+{
 	nullpo_ret(p);
 	return (p->party.count < 2 || p->max_lv - p->min_lv <= 10); // party_share_level
 }
 
 
 // Is there any member in the party?
-int inter_party_check_empty(struct party_data *p) {
+int inter_party_check_empty(struct party_data *p)
+{
 	int i;
 	if (p==NULL||p->party.party_id==0) return 1;
 	for(i=0;i<MAX_PARTY && !p->party.member[i].account_id;i++);
@@ -332,7 +341,8 @@ int inter_party_check_empty(struct party_data *p) {
 
 
 // Create a party whether or not
-int mapif_party_created(int fd, int account_id, int char_id, struct party *p) {
+int mapif_party_created(int fd, int account_id, int char_id, struct party *p)
+{
 	WFIFOHEAD(fd, 39);
 	WFIFOW(fd,0)=0x3820;
 	WFIFOL(fd,2)=account_id;
@@ -341,8 +351,8 @@ int mapif_party_created(int fd, int account_id, int char_id, struct party *p) {
 		WFIFOB(fd,10)=0;
 		WFIFOL(fd,11)=p->party_id;
 		memcpy(WFIFOP(fd,15),p->name,NAME_LENGTH);
-		ShowInfo("int_party: Grupo criado (%d - %s)\n",p->party_id,p->name);
-	} else {
+		ShowInfo("int_party: Party created (%d - %s)\n",p->party_id,p->name);
+	}else{
 		WFIFOB(fd,10)=1;
 		WFIFOL(fd,11)=0;
 		memset(WFIFOP(fd,15),0,NAME_LENGTH);
@@ -353,18 +363,20 @@ int mapif_party_created(int fd, int account_id, int char_id, struct party *p) {
 }
 
 //Party information not found
-void mapif_party_noinfo(int fd, int party_id, int char_id) {
+void mapif_party_noinfo(int fd, int party_id, int char_id)
+{
 	WFIFOHEAD(fd, 12);
 	WFIFOW(fd,0) = 0x3821;
 	WFIFOW(fd,2) = 12;
 	WFIFOL(fd,4) = char_id;
 	WFIFOL(fd,8) = party_id;
 	WFIFOSET(fd,12);
-	ShowWarning("int_party: informacao nao encontrada (party_id=%d char_id=%d)\n", party_id, char_id);
+	ShowWarning("int_party: info not found (party_id=%d char_id=%d)\n", party_id, char_id);
 }
 
 //Digest party information
-void mapif_party_info(int fd, struct party* p, int char_id) {
+void mapif_party_info(int fd, struct party* p, int char_id)
+{
 	unsigned char buf[8 + sizeof(struct party)];
 	nullpo_retv(p);
 	WBUFW(buf,0) = 0x3821;
@@ -392,7 +404,8 @@ int mapif_party_memberadded(int fd, int party_id, int account_id, int char_id, i
 }
 
 // Party setting change notification
-int mapif_party_optionchanged(int fd, struct party *p, int account_id, int flag) {
+int mapif_party_optionchanged(int fd, struct party *p, int account_id, int flag)
+{
 	unsigned char buf[16];
 	nullpo_ret(p);
 	WBUFW(buf,0)=0x3823;
@@ -421,7 +434,8 @@ int mapif_party_withdraw(int party_id,int account_id, int char_id) {
 }
 
 //Party map update notification
-int mapif_party_membermoved(struct party *p, int idx) {
+int mapif_party_membermoved(struct party *p, int idx)
+{
 	unsigned char buf[20];
 
 	nullpo_ret(p);
@@ -438,7 +452,8 @@ int mapif_party_membermoved(struct party *p, int idx) {
 }
 
 //Dissolution party notification
-int mapif_party_broken(int party_id, int flag) {
+int mapif_party_broken(int party_id, int flag)
+{
 	unsigned char buf[16];
 	WBUFW(buf,0)=0x3826;
 	WBUFL(buf,2)=party_id;
@@ -449,7 +464,8 @@ int mapif_party_broken(int party_id, int flag) {
 }
 
 //Remarks in the party
-int mapif_party_message(int party_id, int account_id, const char *mes, int len, int sfd) {
+int mapif_party_message(int party_id, int account_id, const char *mes, int len, int sfd)
+{
 	unsigned char buf[512];
 	nullpo_ret(mes);
 	WBUFW(buf,0)=0x3827;
@@ -463,8 +479,11 @@ int mapif_party_message(int party_id, int account_id, const char *mes, int len, 
 
 //-------------------------------------------------------------------
 // Communication from the map server
+
+
 // Create Party
-int mapif_parse_CreateParty(int fd, const char *name, int item, int item2, const struct party_member *leader) {
+int mapif_parse_CreateParty(int fd, const char *name, int item, int item2, const struct party_member *leader)
+{
 	struct party_data *p;
 	int i;
 	nullpo_ret(name);
@@ -522,7 +541,8 @@ int mapif_parse_CreateParty(int fd, const char *name, int item, int item2, const
 }
 
 // Party information request
-void mapif_parse_PartyInfo(int fd, int party_id, int char_id) {
+void mapif_parse_PartyInfo(int fd, int party_id, int char_id)
+{
 	struct party_data *p;
 	p = inter_party->fromsql(party_id);
 
@@ -533,7 +553,8 @@ void mapif_parse_PartyInfo(int fd, int party_id, int char_id) {
 }
 
 // Add a player to party request
-int mapif_parse_PartyAddMember(int fd, int party_id, const struct party_member *member) {
+int mapif_parse_PartyAddMember(int fd, int party_id, const struct party_member *member)
+{
 	struct party_data *p;
 	int i;
 
@@ -571,7 +592,8 @@ int mapif_parse_PartyAddMember(int fd, int party_id, const struct party_member *
 }
 
 //Party setting change request
-int mapif_parse_PartyChangeOption(int fd,int party_id,int account_id,int exp,int item) {
+int mapif_parse_PartyChangeOption(int fd,int party_id,int account_id,int exp,int item)
+{
 	struct party_data *p;
 	int flag = 0;
 	p = inter_party->fromsql(party_id);
@@ -591,7 +613,8 @@ int mapif_parse_PartyChangeOption(int fd,int party_id,int account_id,int exp,int
 }
 
 //Request leave party
-int mapif_parse_PartyLeave(int fd, int party_id, int account_id, int char_id) {
+int mapif_parse_PartyLeave(int fd, int party_id, int account_id, int char_id)
+{
 	struct party_data *p;
 	int i,j;
 
@@ -631,7 +654,8 @@ int mapif_parse_PartyLeave(int fd, int party_id, int account_id, int char_id) {
 	return 0;
 }
 // When member goes to other map or levels up.
-int mapif_parse_PartyChangeMap(int fd, int party_id, int account_id, int char_id, unsigned short map, int online, unsigned int lv) {
+int mapif_parse_PartyChangeMap(int fd, int party_id, int account_id, int char_id, unsigned short map, int online, unsigned int lv)
+{
 	struct party_data *p;
 	int i;
 
@@ -687,7 +711,8 @@ int mapif_parse_PartyChangeMap(int fd, int party_id, int account_id, int char_id
 }
 
 //Request party dissolution
-int mapif_parse_BreakParty(int fd, int party_id) {
+int mapif_parse_BreakParty(int fd, int party_id)
+{
 	struct party_data *p;
 
 	p = inter_party->fromsql(party_id);
@@ -700,11 +725,13 @@ int mapif_parse_BreakParty(int fd, int party_id) {
 }
 
 //Party sending the message
-int mapif_parse_PartyMessage(int fd, int party_id, int account_id, const char *mes, int len) {
+int mapif_parse_PartyMessage(int fd, int party_id, int account_id, const char *mes, int len)
+{
 	return mapif->party_message(party_id,account_id,mes,len, fd);
 }
 
-int mapif_parse_PartyLeaderChange(int fd, int party_id, int account_id, int char_id) {
+int mapif_parse_PartyLeaderChange(int fd, int party_id, int account_id, int char_id)
+{
 	struct party_data *p;
 	int i;
 
@@ -732,7 +759,8 @@ int mapif_parse_PartyLeaderChange(int fd, int party_id, int account_id, int char
 // Return :
 //  0 : error
 //  1 : ok
-int inter_party_parse_frommap(int fd) {
+int inter_party_parse_frommap(int fd)
+{
 	RFIFOHEAD(fd);
 	switch(RFIFOW(fd,0)) {
 	case 0x3020: mapif->parse_CreateParty(fd, RFIFOP(fd,4), RFIFOB(fd,28), RFIFOB(fd,29), RFIFOP(fd,30)); break;
@@ -751,11 +779,13 @@ int inter_party_parse_frommap(int fd) {
 }
 
 //Leave request from the server (for delete character)
-int inter_party_leave(int party_id,int account_id, int char_id) {
+int inter_party_leave(int party_id,int account_id, int char_id)
+{
 	return mapif->parse_PartyLeave(-1,party_id,account_id, char_id);
 }
 
-int inter_party_CharOnline(int char_id, int party_id) {
+int inter_party_CharOnline(int char_id, int party_id)
+{
 	struct party_data* p;
 	int i;
 
@@ -781,7 +811,7 @@ int inter_party_CharOnline(int char_id, int party_id) {
 
 	p = inter_party->fromsql(party_id);
 	if(!p) {
-		ShowError("Personagem %d's do grupo %d nao econtrados!\n", char_id, party_id);
+		ShowError("Character %d's party %d not found!\n", char_id, party_id);
 		return 0;
 	}
 
@@ -848,7 +878,8 @@ int inter_party_CharOffline(int char_id, int party_id) {
 	return 1;
 }
 
-void inter_party_defaults(void) {
+void inter_party_defaults(void)
+{
 	inter_party = &inter_party_s;
 
 	inter_party->pt = NULL;

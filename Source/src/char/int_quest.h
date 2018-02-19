@@ -23,6 +23,7 @@
 #ifndef CHAR_INT_QUEST_H
 #define CHAR_INT_QUEST_H
 
+#include "common/HPExport.h"
 
 /**
  * inter_quest interface
@@ -31,8 +32,10 @@ struct inter_quest_interface {
 	int (*parse_frommap) (int fd);
 };
 
+#ifdef MAIN_CORE
 void inter_quest_defaults(void);
+#endif // MAIN_CORE
 
-extern struct inter_quest_interface *inter_quest;
+HPShared struct inter_quest_interface *inter_quest;
 
 #endif /* CHAR_INT_QUEST_H */

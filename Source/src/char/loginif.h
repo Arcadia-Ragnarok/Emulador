@@ -23,8 +23,7 @@
 #ifndef CHAR_LOGINIF_H
 #define CHAR_LOGINIF_H
 
-#include "common/cbasetypes.h"
-#include "char/char.h"
+#include "common/HPExport.h"
 
 struct char_session_data;
 
@@ -47,8 +46,10 @@ struct loginif_interface {
 	void (*connect_to_server) (void);
 };
 
+#ifdef MAIN_CORE
 void loginif_defaults(void);
+#endif // MAIN_CORE
 
-extern struct loginif_interface *loginif;
+HPShared struct loginif_interface *loginif;
 
 #endif /* CHAR_LOGINIF_H */

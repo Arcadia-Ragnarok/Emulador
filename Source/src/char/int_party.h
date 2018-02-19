@@ -23,7 +23,7 @@
 #ifndef CHAR_INT_PARTY_H
 #define CHAR_INT_PARTY_H
 
-#include "common/db.h"
+#include "common/HPExport.h"
 #include "common/mmo.h"
 
 /* Forward Declarations */
@@ -67,7 +67,10 @@ struct inter_party_interface {
 	int (*CharOffline) (int char_id, int party_id);
 };
 
+#ifdef MAIN_CORE
 void inter_party_defaults(void);
-extern struct inter_party_interface *inter_party;
+#endif // MAIN_CORE
+
+HPShared struct inter_party_interface *inter_party;
 
 #endif /* CHAR_INT_PARTY_H */

@@ -23,7 +23,6 @@
 #ifndef CHAR_INT_RODEX_H
 #define CHAR_INT_RODEX_H
 
-#include "common/cbasetypes.h"
 #include "common/mmo.h"
 #include "common/db.h"
 
@@ -42,8 +41,10 @@ struct inter_rodex_interface {
 	int64 (*savemessage) (struct rodex_message* msg);
 };
 
+#ifdef MAIN_CORE
 void inter_rodex_defaults(void);
+#endif // MAIN_CORE
 
-extern struct inter_rodex_interface *inter_rodex;
+HPShared struct inter_rodex_interface *inter_rodex;
 
 #endif /* CHAR_INT_RODEX_H */

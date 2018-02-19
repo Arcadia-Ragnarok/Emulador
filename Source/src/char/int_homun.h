@@ -23,6 +23,8 @@
 #ifndef CHAR_INT_HOMUN_H
 #define CHAR_INT_HOMUN_H
 
+#include "common/HPExport.h"
+
 /**
  * inter_homunculus interface
  **/
@@ -32,7 +34,10 @@ struct inter_homunculus_interface {
 	int (*parse_frommap) (int fd);
 };
 
+#ifdef MAIN_CORE
 void inter_homunculus_defaults(void);
-extern struct inter_homunculus_interface *inter_homunculus;
+#endif // MAIN_CORE
+
+HPShared struct inter_homunculus_interface *inter_homunculus;
 
 #endif /* CHAR_INT_HOMUN_H */

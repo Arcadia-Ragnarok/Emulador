@@ -52,7 +52,8 @@ struct inter_elemental_interface *inter_elemental;
  * @param[in,out] ele The new elemental's data.
  * @retval false in case of errors.
  */
-bool mapif_elemental_create(struct s_elemental *ele) {
+bool mapif_elemental_create(struct s_elemental *ele)
+{
 	nullpo_retr(false, ele);
 	Assert_retr(false, ele->elemental_id == 0);
 
@@ -74,7 +75,8 @@ bool mapif_elemental_create(struct s_elemental *ele) {
  * @param ele The elemental's data.
  * @retval false in case of errors.
  */
-bool mapif_elemental_save(const struct s_elemental *ele) {
+bool mapif_elemental_save(const struct s_elemental *ele)
+{
 	nullpo_retr(false, ele);
 	Assert_retr(false, ele->elemental_id > 0);
 
@@ -129,7 +131,7 @@ bool mapif_elemental_load(int ele_id, int char_id, struct s_elemental *ele) {
 	SQL->GetData(inter->sql_handle, 14, &data, NULL); ele->life_time = atoi(data);
 	SQL->FreeResult(inter->sql_handle);
 	if (chr->show_save_log)
-		ShowInfo("Elemental carregado (%d - %d).\n", ele->elemental_id, ele->char_id);
+		ShowInfo("Elemental loaded (%d - %d).\n", ele->elemental_id, ele->char_id);
 
 	return true;
 }
@@ -139,6 +141,7 @@ bool mapif_elemental_delete(int ele_id) {
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
 	}
+
 	return true;
 }
 
@@ -154,7 +157,8 @@ void mapif_elemental_send(int fd, struct s_elemental *ele, unsigned char flag) {
 	WFIFOSET(fd,size);
 }
 
-void mapif_parse_elemental_create(int fd, const struct s_elemental *ele) {
+void mapif_parse_elemental_create(int fd, const struct s_elemental *ele)
+{
 	struct s_elemental ele_;
 	bool result;
 
@@ -189,7 +193,8 @@ void mapif_elemental_saved(int fd, unsigned char flag) {
 	WFIFOSET(fd,3);
 }
 
-void mapif_parse_elemental_save(int fd, const struct s_elemental *ele) {
+void mapif_parse_elemental_save(int fd, const struct s_elemental *ele)
+{
 	bool result = mapif->elemental_save(ele);
 	mapif->elemental_saved(fd, result);
 }
@@ -219,7 +224,8 @@ int inter_elemental_parse_frommap(int fd) {
 	return 1;
 }
 
-void inter_elemental_defaults(void) {
+void inter_elemental_defaults(void)
+{
 	inter_elemental = &inter_elemental_s;
 
 	inter_elemental->sql_init = inter_elemental_sql_init;

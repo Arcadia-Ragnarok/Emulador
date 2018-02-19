@@ -282,23 +282,23 @@ struct char_interface {
 	int (*online_data_cleanup_sub) (union DBKey key, struct DBData *data, va_list ap);
 	int (*online_data_cleanup) (int tid, int64 tick, int id, intptr_t data);
 
-	bool (*sql_config_read) (const char *filename);
-	bool (*sql_config_read_registry) (const char *filename, const struct config_t *config);
-	bool (*sql_config_read_pc) (const char *filename, const struct config_t *config);
-	bool (*sql_config_read_guild) (const char *filename, const struct config_t *config);
-	bool (*config_read) (const char *filename);
-	bool (*config_read_database) (const char *filename, const struct config_t *config);
-	bool (*config_read_console) (const char *filename, const struct config_t *config);
-	bool (*config_read_player_fame) (const char *filename, const struct config_t *config);
-	bool (*config_read_player_deletion) (const char *filename, const struct config_t *config);
-	bool (*config_read_player_name) (const char *filename, const struct config_t *config);
+	bool (*sql_config_read) (const char *filename, bool imported);
+	bool (*sql_config_read_registry) (const char *filename, const struct config_t *config, bool imported);
+	bool (*sql_config_read_pc) (const char *filename, const struct config_t *config, bool imported);
+	bool (*sql_config_read_guild) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read) (const char *filename, bool imported);
+	bool (*config_read_database) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_console) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_player_fame) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_player_deletion) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_player_name) (const char *filename, const struct config_t *config, bool imported);
 	void (*config_set_start_item) (const struct config_setting_t *setting);
-	bool (*config_read_player_new) (const char *filename, const struct config_t *config);
-	bool (*config_read_player) (const char *filename, const struct config_t *config);
-	bool (*config_read_permission) (const char *filename, const struct config_t *config);
+	bool (*config_read_player_new) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_player) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_permission) (const char *filename, const struct config_t *config, bool imported);
 	bool (*config_set_ip) (const char *type, const char *value, uint32 *out_ip, char *out_ip_str);
-	bool (*config_read_inter) (const char *filename, const struct config_t *config);
-	bool (*config_read_top) (const char *filename, const struct config_t *config);
+	bool (*config_read_inter) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read_top) (const char *filename, const struct config_t *config, bool imported);
 };
 
 #ifdef MAIN_CORE

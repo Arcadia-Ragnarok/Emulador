@@ -53,7 +53,8 @@ struct inter_pet_interface *inter_pet;
  * @return The ID of the saved pet.
  * @retval 0 in case of errors.
  */
-int inter_pet_tosql(const struct s_pet *p) {
+int inter_pet_tosql(const struct s_pet *p)
+{
 	//`pet` (`pet_id`, `class`,`name`,`account_id`,`char_id`,`level`,`egg_id`,`equip`,`intimate`,`hungry`,`rename_flag`,`incubate`)
 	char esc_name[NAME_LENGTH*2+1];// escaped pet name
 	int pet_id = 0, hungry = 0, intimate = 0;
@@ -87,29 +88,32 @@ int inter_pet_tosql(const struct s_pet *p) {
 	}
 
 	if (chr->show_save_log)
-		ShowInfo("Pet salvo %d - %s.\n", pet_id, p->name);
+		ShowInfo("Pet saved %d - %s.\n", pet_id, p->name);
 
 	return pet_id;
 }
 
-int inter_pet_fromsql(int pet_id, struct s_pet* p) {
+int inter_pet_fromsql(int pet_id, struct s_pet* p)
+{
 	char* data;
 	size_t len;
 
 #ifdef NOISY
-	ShowInfo("Carregando pet (%d)...\n",pet_id);
+	ShowInfo("Loading pet (%d)...\n",pet_id);
 #endif
 	nullpo_ret(p);
 	memset(p, 0, sizeof(struct s_pet));
 
 	//`pet` (`pet_id`, `class`,`name`,`account_id`,`char_id`,`level`,`egg_id`,`equip`,`intimate`,`hungry`,`rename_flag`,`incubate`)
 
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `pet_id`, `class`,`name`,`account_id`,`char_id`,`level`,`egg_id`,`equip`,`intimate`,`hungry`,`rename_flag`,`incubate` FROM `%s` WHERE `pet_id`='%d'", pet_db, pet_id) ) {
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `pet_id`, `class`,`name`,`account_id`,`char_id`,`level`,`egg_id`,`equip`,`intimate`,`hungry`,`rename_flag`,`incubate` FROM `%s` WHERE `pet_id`='%d'", pet_db, pet_id) )
+	{
 		Sql_ShowDebug(inter->sql_handle);
 		return 0;
 	}
 
-	if (SQL_SUCCESS == SQL->NextRow(inter->sql_handle)) {
+	if( SQL_SUCCESS == SQL->NextRow(inter->sql_handle) )
+	{
 		p->pet_id = pet_id;
 		SQL->GetData(inter->sql_handle,  1, &data, NULL); p->class_ = atoi(data);
 		SQL->GetData(inter->sql_handle,  2, &data, &len); memcpy(p->name, data, min(len, NAME_LENGTH));
@@ -129,7 +133,7 @@ int inter_pet_fromsql(int pet_id, struct s_pet* p) {
 		p->intimate = cap_value(p->intimate, 0, 1000);
 
 		if (chr->show_save_log)
-			ShowInfo("Pet carregado (%d - %s).\n", pet_id, p->name);
+			ShowInfo("Pet loaded (%d - %s).\n", pet_id, p->name);
 	}
 	return 0;
 }
@@ -146,22 +150,23 @@ void inter_pet_sql_final(void) {
 }
 //----------------------------------
 int inter_pet_delete(int pet_id) {
-	ShowInfo("Requisitando pedido para apagar pet: %d...\n",pet_id);
+	ShowInfo("delete pet request: %d...\n",pet_id);
 
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `pet_id`='%d'", pet_db, pet_id) )
 		Sql_ShowDebug(inter->sql_handle);
 	return 0;
 }
 //------------------------------------------------------
-int mapif_pet_created(int fd, int account_id, struct s_pet *p) {
+int mapif_pet_created(int fd, int account_id, struct s_pet *p)
+{
 	WFIFOHEAD(fd, 12);
 	WFIFOW(fd, 0) = 0x3880;
 	WFIFOL(fd, 2) = account_id;
 	if(p!=NULL){
 		WFIFOW(fd, 6) = p->class_;
 		WFIFOL(fd, 8) = p->pet_id;
-		ShowInfo("int_pet: criado pet %d - %s\n", p->pet_id, p->name);
-	} else {
+		ShowInfo("int_pet: created pet %d - %s\n", p->pet_id, p->name);
+	}else{
 		WFIFOB(fd, 6) = 0;
 		WFIFOL(fd, 8) = 0;
 	}
@@ -170,7 +175,8 @@ int mapif_pet_created(int fd, int account_id, struct s_pet *p) {
 	return 0;
 }
 
-int mapif_pet_info(int fd, int account_id, struct s_pet *p) {
+int mapif_pet_info(int fd, int account_id, struct s_pet *p)
+{
 	nullpo_ret(p);
 	WFIFOHEAD(fd, sizeof(struct s_pet) + 9);
 	WFIFOW(fd, 0) =0x3881;
@@ -183,7 +189,8 @@ int mapif_pet_info(int fd, int account_id, struct s_pet *p) {
 	return 0;
 }
 
-int mapif_pet_noinfo(int fd, int account_id) {
+int mapif_pet_noinfo(int fd, int account_id)
+{
 	WFIFOHEAD(fd, sizeof(struct s_pet) + 9);
 	WFIFOW(fd, 0) =0x3881;
 	WFIFOW(fd, 2) =sizeof(struct s_pet) + 9;
@@ -195,7 +202,8 @@ int mapif_pet_noinfo(int fd, int account_id) {
 	return 0;
 }
 
-int mapif_save_pet_ack(int fd, int account_id, int flag) {
+int mapif_save_pet_ack(int fd, int account_id, int flag)
+{
 	WFIFOHEAD(fd, 7);
 	WFIFOW(fd, 0) =0x3882;
 	WFIFOL(fd, 2) =account_id;
@@ -205,7 +213,8 @@ int mapif_save_pet_ack(int fd, int account_id, int flag) {
 	return 0;
 }
 
-int mapif_delete_pet_ack(int fd, int flag) {
+int mapif_delete_pet_ack(int fd, int flag)
+{
 	WFIFOHEAD(fd, 3);
 	WFIFOW(fd, 0) =0x3883;
 	WFIFOB(fd, 2) =flag;
@@ -253,7 +262,8 @@ int mapif_create_pet(int fd, int account_id, int char_id, short pet_class, short
 	return 0;
 }
 
-int mapif_load_pet(int fd, int account_id, int char_id, int pet_id) {
+int mapif_load_pet(int fd, int account_id, int char_id, int pet_id)
+{
 	memset(inter_pet->pt, 0, sizeof(struct s_pet));
 
 	inter_pet->fromsql(pet_id, inter_pet->pt);
@@ -274,7 +284,8 @@ int mapif_load_pet(int fd, int account_id, int char_id, int pet_id) {
 	return 0;
 }
 
-int mapif_save_pet(int fd, int account_id, const struct s_pet *data) {
+int mapif_save_pet(int fd, int account_id, const struct s_pet *data)
+{
 	//here process pet save request.
 	int len;
 	nullpo_ret(data);
@@ -291,37 +302,44 @@ int mapif_save_pet(int fd, int account_id, const struct s_pet *data) {
 	return 0;
 }
 
-int mapif_delete_pet(int fd, int pet_id) {
+int mapif_delete_pet(int fd, int pet_id)
+{
 	mapif->delete_pet_ack(fd, inter_pet->delete_(pet_id));
+
 	return 0;
 }
 
-int mapif_parse_CreatePet(int fd) {
+int mapif_parse_CreatePet(int fd)
+{
 	RFIFOHEAD(fd);
 	mapif->create_pet(fd, RFIFOL(fd, 2), RFIFOL(fd, 6), RFIFOW(fd, 10), RFIFOW(fd, 12), RFIFOW(fd, 14), RFIFOW(fd, 16), RFIFOW(fd, 18),
 		RFIFOW(fd, 20), RFIFOB(fd, 22), RFIFOB(fd, 23), RFIFOP(fd, 24));
 	return 0;
 }
 
-int mapif_parse_LoadPet(int fd) {
+int mapif_parse_LoadPet(int fd)
+{
 	RFIFOHEAD(fd);
 	mapif->load_pet(fd, RFIFOL(fd, 2), RFIFOL(fd, 6), RFIFOL(fd, 10));
 	return 0;
 }
 
-int mapif_parse_SavePet(int fd) {
+int mapif_parse_SavePet(int fd)
+{
 	RFIFOHEAD(fd);
 	mapif->save_pet(fd, RFIFOL(fd, 4), RFIFOP(fd, 8));
 	return 0;
 }
 
-int mapif_parse_DeletePet(int fd) {
+int mapif_parse_DeletePet(int fd)
+{
 	RFIFOHEAD(fd);
 	mapif->delete_pet(fd, RFIFOL(fd, 2));
 	return 0;
 }
 
-int inter_pet_parse_frommap(int fd) {
+int inter_pet_parse_frommap(int fd)
+{
 	RFIFOHEAD(fd);
 	switch(RFIFOW(fd, 0)){
 	case 0x3080: mapif->parse_CreatePet(fd); break;
@@ -334,8 +352,10 @@ int inter_pet_parse_frommap(int fd) {
 	return 1;
 }
 
-void inter_pet_defaults(void) {
+void inter_pet_defaults(void)
+{
 	inter_pet = &inter_pet_s;
+
 	inter_pet->pt = NULL;
 
 	inter_pet->tosql = inter_pet_tosql;

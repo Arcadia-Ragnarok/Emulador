@@ -23,7 +23,7 @@
 #ifndef CHAR_INT_MERCENARY_H
 #define CHAR_INT_MERCENARY_H
 
-#include "common/mmo.h"
+#include "common/HPExport.h"
 
 struct mmo_charstatus;
 
@@ -39,7 +39,10 @@ struct inter_mercenary_interface {
 	int (*parse_frommap) (int fd);
 };
 
+#ifdef MAIN_CORE
 void inter_mercenary_defaults(void);
-extern struct inter_mercenary_interface *inter_mercenary;
+#endif // MAIN_CORE
+
+HPShared struct inter_mercenary_interface *inter_mercenary;
 
 #endif /* CHAR_INT_MERCENARY_H */
