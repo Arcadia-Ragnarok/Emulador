@@ -27,7 +27,7 @@ bat_room,160,159,3	script	General Guillaume#bg	4_M_KY_KIYOM,{
 		mes("[General Guillaume]\n Aventureir" + (Sex == SEX_MALE ? "o" : "a") + " de sangue quente, não precisamos de sua habilidade para ganhar esta batalha.");
 		next;
 		cutin("bat_kiyom1", 2);
-		mes ("[General Guillaume] Nosso rei, Marcel Marollo VII, estão muito doente.\n Vossa Majestade declarou que seria eu ou Príncipe Croix o próximo rei dentre seus 9 filhos.");
+		mes ("[General Guillaume]\n Nosso rei, Marcel Marollo VII, estão muito doente.\n Vossa Majestade declarou que seria eu ou Príncipe Croix o próximo rei dentre seus 9 filhos.");
 		next;
 		mes("[General Guillaume]\n Dois reis não podem dividir uma nação!\n Somente o vitorioso desta batalha será coroado.");
 		next;

@@ -64,13 +64,14 @@ bat_room,148,150,5	script	Emissária de Maroll#bgreturn	4_F_JOB_KNIGHT,{
 	next;
 	if (select("Sim desejo voltar", "Quero ficar mais tempo") == 1) {
 		close2;
-		if (batreturn == 1)      { warp "prontera",116,72; }
-		else if (batreturn == 2) { warp "aldebaran",168,112; }
-		else if (batreturn == 3) { warp "geffen",120,39; }
-		else if (batreturn == 4) { warp "payon",161,58; }
-		else if (batreturn == 5) { warp "lighthalzen",159,93; }
-		else if (batreturn == 6) { warp "rachel",115,124; }
-		else if (batreturn == 7) { warp "moc_ruins",152,148; }
+		if (batreturn == 1)      { warp("prontera", 116, 72); }
+		else if (batreturn == 2) { warp("aldebaran", 168, 112); }
+		else if (batreturn == 3) { warp("geffen", 120, 39); }
+		else if (batreturn == 4) { warp("payon", 161, 58); }
+		else if (batreturn == 5) { warp("lighthalzen", 159, 93); }
+		else if (batreturn == 6) { warp("rachel", 115, 124); }
+		else if (batreturn == 7) { warp("moc_ruins", 152, 148); }
+		else { warp("prontera", 273, 354); }
 		batreturn = 0;
 		end;
 	}
