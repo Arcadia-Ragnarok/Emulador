@@ -23,8 +23,9 @@
 #ifndef MAP_CHANNEL_H
 #define MAP_CHANNEL_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h"
+#include "common/db.h"
 
 #include "map/map.h" // EVENT_NAME_LENGTH, MAX_EVENTQUEUE
 
@@ -131,10 +132,7 @@ struct channel_interface {
 	void (*config_read) (void);
 };
 
-#ifdef MAIN_CORE
 void channel_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct channel_interface *channel;
+extern struct channel_interface *channel;
 
 #endif /* MAP_CHANNEL_H */

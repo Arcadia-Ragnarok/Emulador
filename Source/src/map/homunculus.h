@@ -25,7 +25,7 @@
 
 #include "map/status.h" // struct status_data, struct status_change
 #include "map/unit.h" // struct unit_data
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h"
 
 struct map_session_data;
@@ -206,10 +206,7 @@ struct homunculus_interface {
 	int8 (*get_intimacy_grade) (struct homun_data *hd);
 };
 
-#ifdef MAIN_CORE
 void homunculus_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct homunculus_interface *homun;
+extern struct homunculus_interface *homun;
 
 #endif /* MAP_HOMUNCULUS_H */

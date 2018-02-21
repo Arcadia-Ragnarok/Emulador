@@ -42,8 +42,7 @@
 struct inter_mail_interface inter_mail_s;
 struct inter_mail_interface *inter_mail;
 
-static int inter_mail_fromsql(int char_id, struct mail_data* md)
-{
+static int inter_mail_fromsql(int char_id, struct mail_data* md) {
 	int i, j;
 	struct mail_message *msg;
 	char *data;
@@ -71,8 +70,7 @@ static int inter_mail_fromsql(int char_id, struct mail_data* md)
 
 	StrBuf->Destroy(&buf);
 
-	for (i = 0; i < MAIL_MAX_INBOX && SQL_SUCCESS == SQL->NextRow(inter->sql_handle); ++i )
-	{
+	for (i = 0; i < MAIL_MAX_INBOX && SQL_SUCCESS == SQL->NextRow(inter->sql_handle); ++i ) {
 		struct item *item;
 		msg = &md->msg[i];
 		SQL->GetData(inter->sql_handle, 0, &data, NULL); msg->id = atoi(data);
@@ -115,11 +113,9 @@ static int inter_mail_fromsql(int char_id, struct mail_data* md)
 
 	md->unchecked = 0;
 	md->unread = 0;
-	for (i = 0; i < md->amount; i++)
-	{
+	for (i = 0; i < md->amount; i++) {
 		msg = &md->msg[i];
-		if( msg->status == MAIL_NEW )
-		{
+		if( msg->status == MAIL_NEW ) {
 			if ( SQL_ERROR == SQL->Query(inter->sql_handle, "UPDATE `%s` SET `status` = '%d' WHERE `id` = '%d'", mail_db, MAIL_UNREAD, msg->id) )
 				Sql_ShowDebug(inter->sql_handle);
 
@@ -130,14 +126,13 @@ static int inter_mail_fromsql(int char_id, struct mail_data* md)
 			md->unread++;
 	}
 
-	ShowInfo("mail load complete from DB - id: %d (total: %d)\n", char_id, md->amount);
+	ShowInfo("Caixa de Mail carregada para - id: %d (total: %d)\n", char_id, md->amount);
 	return 1;
 }
 
 /// Stores a single message in the database.
 /// Returns the message's ID if successful (or 0 if it fails).
-int inter_mail_savemessage(struct mail_message* msg)
-{
+int inter_mail_savemessage(struct mail_message* msg) {
 	StringBuf buf;
 	struct SqlStmt *stmt;
 	int j;
@@ -181,8 +176,7 @@ int inter_mail_savemessage(struct mail_message* msg)
 
 /// Retrieves a single message from the database.
 /// Returns true if the operation succeeds (or false if it fails).
-static bool inter_mail_loadmessage(int mail_id, struct mail_message* msg)
-{
+static bool inter_mail_loadmessage(int mail_id, struct mail_message* msg) {
 	int j;
 	StringBuf buf;
 	nullpo_ret(msg);
@@ -244,8 +238,7 @@ static bool inter_mail_loadmessage(int mail_id, struct mail_message* msg)
 	return true;
 }
 
-void mapif_mail_sendinbox(int fd, int char_id, unsigned char flag, struct mail_data *md)
-{
+void mapif_mail_sendinbox(int fd, int char_id, unsigned char flag, struct mail_data *md) {
 	nullpo_retv(md);
 	//FIXME: dumping the whole structure like this is unsafe [ultramage]
 	WFIFOHEAD(fd, sizeof(struct mail_data) + 9);
@@ -260,8 +253,7 @@ void mapif_mail_sendinbox(int fd, int char_id, unsigned char flag, struct mail_d
 /*==========================================
  * Client Inbox Request
  *------------------------------------------*/
-void mapif_parse_mail_requestinbox(int fd)
-{
+void mapif_parse_mail_requestinbox(int fd) {
 	int char_id = RFIFOL(fd,2);
 	unsigned char flag = RFIFOB(fd,6);
 	struct mail_data md;
@@ -273,8 +265,7 @@ void mapif_parse_mail_requestinbox(int fd)
 /*==========================================
  * Mark mail as 'Read'
  *------------------------------------------*/
-void mapif_parse_mail_read(int fd)
-{
+void mapif_parse_mail_read(int fd) {
 	int mail_id = RFIFOL(fd,2);
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "UPDATE `%s` SET `status` = '%d' WHERE `id` = '%d'", mail_db, MAIL_READ, mail_id) )
 		Sql_ShowDebug(inter->sql_handle);
@@ -283,8 +274,7 @@ void mapif_parse_mail_read(int fd)
 /*==========================================
  * Client Attachment Request
  *------------------------------------------*/
-static bool inter_mail_DeleteAttach(int mail_id)
-{
+static bool inter_mail_DeleteAttach(int mail_id) {
 	StringBuf buf;
 	int i;
 
@@ -307,8 +297,7 @@ static bool inter_mail_DeleteAttach(int mail_id)
 	return true;
 }
 
-void mapif_mail_sendattach(int fd, int char_id, struct mail_message *msg)
-{
+void mapif_mail_sendattach(int fd, int char_id, struct mail_message *msg) {
 	nullpo_retv(msg);
 	WFIFOHEAD(fd, sizeof(struct item) + 12);
 	WFIFOW(fd,0) = 0x384a;
@@ -319,8 +308,7 @@ void mapif_mail_sendattach(int fd, int char_id, struct mail_message *msg)
 	WFIFOSET(fd,WFIFOW(fd,2));
 }
 
-void mapif_mail_getattach(int fd, int char_id, int mail_id)
-{
+void mapif_mail_getattach(int fd, int char_id, int mail_id) {
 	struct mail_message msg;
 	memset(&msg, 0, sizeof(msg));
 
@@ -342,16 +330,14 @@ void mapif_mail_getattach(int fd, int char_id, int mail_id)
 	mapif->mail_sendattach(fd, char_id, &msg);
 }
 
-void mapif_parse_mail_getattach(int fd)
-{
+void mapif_parse_mail_getattach(int fd) {
 	mapif->mail_getattach(fd, RFIFOL(fd,2), RFIFOL(fd,6));
 }
 
 /*==========================================
  * Delete Mail
  *------------------------------------------*/
-void mapif_mail_delete(int fd, int char_id, int mail_id, bool failed)
-{
+void mapif_mail_delete(int fd, int char_id, int mail_id, bool failed) {
 	WFIFOHEAD(fd,11);
 	WFIFOW(fd,0) = 0x384b;
 	WFIFOL(fd,2) = char_id;
@@ -360,13 +346,11 @@ void mapif_mail_delete(int fd, int char_id, int mail_id, bool failed)
 	WFIFOSET(fd,11);
 }
 
-void mapif_parse_mail_delete(int fd)
-{
+void mapif_parse_mail_delete(int fd) {
 	int char_id = RFIFOL(fd,2);
 	int mail_id = RFIFOL(fd,6);
 	bool failed = false;
-	if ( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `id` = '%d'", mail_db, mail_id) )
-	{
+	if ( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `id` = '%d'", mail_db, mail_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
 		failed = true;
 	}
@@ -376,8 +360,7 @@ void mapif_parse_mail_delete(int fd)
 /*==========================================
  * Report New Mail to Map Server
  *------------------------------------------*/
-void mapif_mail_new(struct mail_message *msg)
-{
+void mapif_mail_new(struct mail_message *msg) {
 	unsigned char buf[74];
 
 	if( !msg || !msg->id )
@@ -394,8 +377,7 @@ void mapif_mail_new(struct mail_message *msg)
 /*==========================================
  * Return Mail
  *------------------------------------------*/
-void mapif_mail_return(int fd, int char_id, int mail_id, int new_mail)
-{
+void mapif_mail_return(int fd, int char_id, int mail_id, int new_mail) {
 	WFIFOHEAD(fd,11);
 	WFIFOW(fd,0) = 0x384c;
 	WFIFOL(fd,2) = char_id;
@@ -404,21 +386,18 @@ void mapif_mail_return(int fd, int char_id, int mail_id, int new_mail)
 	WFIFOSET(fd,11);
 }
 
-void mapif_parse_mail_return(int fd)
-{
+void mapif_parse_mail_return(int fd) {
 	int char_id = RFIFOL(fd,2);
 	int mail_id = RFIFOL(fd,6);
 	struct mail_message msg;
 	int new_mail = 0;
 
-	if( inter_mail->loadmessage(mail_id, &msg) )
-	{
-		if( msg.dest_id != char_id)
+	if( inter_mail->loadmessage(mail_id, &msg) ) {
+		if( msg.dest_id != char_id) {
 			return;
-		else if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `id` = '%d'", mail_db, mail_id) )
+		} else if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `id` = '%d'", mail_db, mail_id) ) {
 			Sql_ShowDebug(inter->sql_handle);
-		else
-		{
+		} else {
 			char temp_[MAIL_TITLE_LENGTH];
 
 			// swap sender and receiver
@@ -445,8 +424,7 @@ void mapif_parse_mail_return(int fd)
 /*==========================================
  * Send Mail
  *------------------------------------------*/
-void mapif_mail_send(int fd, struct mail_message* msg)
-{
+void mapif_mail_send(int fd, struct mail_message* msg) {
 	int len = sizeof(struct mail_message) + 4;
 
 	nullpo_retv(msg);
@@ -457,8 +435,7 @@ void mapif_mail_send(int fd, struct mail_message* msg)
 	WFIFOSET(fd,len);
 }
 
-void mapif_parse_mail_send(int fd)
-{
+void mapif_parse_mail_send(int fd) {
 	struct mail_message msg;
 	char esc_name[NAME_LENGTH*2+1];
 	int account_id = 0;
@@ -494,8 +471,7 @@ void mapif_parse_mail_send(int fd)
 	mapif->mail_new(&msg); // notify recipient
 }
 
-void inter_mail_sendmail(int send_id, const char* send_name, int dest_id, const char* dest_name, const char* title, const char* body, int zeny, struct item *item)
-{
+void inter_mail_sendmail(int send_id, const char* send_name, int dest_id, const char* dest_name, const char* title, const char* body, int zeny, struct item *item) {
 	struct mail_message msg;
 	nullpo_retv(send_name);
 	nullpo_retv(dest_name);
@@ -522,8 +498,7 @@ void inter_mail_sendmail(int send_id, const char* send_name, int dest_id, const 
 /*==========================================
  * Packets From Map Server
  *------------------------------------------*/
-int inter_mail_parse_frommap(int fd)
-{
+int inter_mail_parse_frommap(int fd) {
 	switch(RFIFOW(fd,0))
 	{
 		case 0x3048: mapif->parse_mail_requestinbox(fd); break;
@@ -538,18 +513,15 @@ int inter_mail_parse_frommap(int fd)
 	return 1;
 }
 
-int inter_mail_sql_init(void)
-{
+int inter_mail_sql_init(void) {
 	return 1;
 }
 
-void inter_mail_sql_final(void)
-{
+void inter_mail_sql_final(void) {
 	return;
 }
 
-void inter_mail_defaults(void)
-{
+void inter_mail_defaults(void) {
 	inter_mail = &inter_mail_s;
 
 	inter_mail->savemessage = inter_mail_savemessage;

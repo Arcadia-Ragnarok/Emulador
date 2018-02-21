@@ -482,11 +482,12 @@ struct hplugin *hplugin_load(const char* filename)
 		ShowFatalError("HPM:plugin_load: failed to retrieve 'plugin_info' for '"CL_WHITE"%s"CL_RESET"'!\n", filename);
 		exit(EXIT_FAILURE);
 	}
-
+	/*
 	if( !(info->type & SERVER_TYPE) ) {
 		HPM->unload(plugin);
 		return NULL;
 	}
+	*/
 
 	if( !HPM->iscompatible(info->req_version) ) {
 		ShowFatalError("HPM:plugin_load: '"CL_WHITE"%s"CL_RESET"' incompatible version '%s' -> '%s'!\n", filename, info->req_version, HPM_VERSION);

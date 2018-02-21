@@ -38,7 +38,6 @@
 #include "map/pet.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
-#include "common/HPM.h"
 #include "common/memmgr.h"
 #include "common/nullpo.h"
 #include "common/showmsg.h"
@@ -932,9 +931,6 @@ void do_init_battleground(bool minimal) {
 int bg_team_db_final(union DBKey key, struct DBData *data, va_list ap)
 {
 	struct battleground_data* bgd = DB->data2ptr(data);
-
-	HPM->data_store_destroy(&bgd->hdata);
-
 	return 0;
 }
 

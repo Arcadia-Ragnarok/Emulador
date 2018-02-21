@@ -4574,33 +4574,6 @@ bool HP_chr_config_read_player(const char *filename, const struct config_t *conf
 	}
 	return retVal___;
 }
-bool HP_chr_config_read_permission(const char *filename, const struct config_t *config, bool imported) {
-	int hIndex = 0;
-	bool retVal___ = false;
-	if (HPMHooks.count.HP_chr_config_read_permission_pre > 0) {
-		bool (*preHookFunc) (const char **filename, const struct config_t **config, bool *imported);
-		*HPMforce_return = false;
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_permission_pre; hIndex++) {
-			preHookFunc = HPMHooks.list.HP_chr_config_read_permission_pre[hIndex].func;
-			retVal___ = preHookFunc(&filename, &config, &imported);
-		}
-		if (*HPMforce_return) {
-			*HPMforce_return = false;
-			return retVal___;
-		}
-	}
-	{
-		retVal___ = HPMHooks.source.chr.config_read_permission(filename, config, imported);
-	}
-	if (HPMHooks.count.HP_chr_config_read_permission_post > 0) {
-		bool (*postHookFunc) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_permission_post; hIndex++) {
-			postHookFunc = HPMHooks.list.HP_chr_config_read_permission_post[hIndex].func;
-			retVal___ = postHookFunc(retVal___, filename, config, imported);
-		}
-	}
-	return retVal___;
-}
 bool HP_chr_config_set_ip(const char *type, const char *value, uint32 *out_ip, char *out_ip_str) {
 	int hIndex = 0;
 	bool retVal___ = false;

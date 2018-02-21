@@ -24,11 +24,10 @@
 #define MAP_BATTLEGROUND_H
 
 #include "map/map.h" // EVENT_NAME_LENGTH
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/mmo.h" // struct party
 
-struct hplugin_data_store;
 struct block_list;
 struct map_session_data;
 
@@ -71,7 +70,6 @@ struct battleground_data {
 	// Logout Event
 	char logout_event[EVENT_NAME_LENGTH];
 	char die_event[EVENT_NAME_LENGTH];
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 struct bg_arena {
@@ -143,10 +141,7 @@ struct battleground_interface {
 	void (*config_read) (void);
 };
 
-#ifdef MAIN_CORE
 void battleground_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct battleground_interface *bg;
+extern struct battleground_interface *bg;
 
 #endif /* MAP_BATTLEGROUND_H */

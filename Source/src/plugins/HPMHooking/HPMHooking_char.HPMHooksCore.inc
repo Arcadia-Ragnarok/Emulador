@@ -351,8 +351,6 @@ struct {
 	struct HPMHookPoint *HP_chr_config_read_player_new_post;
 	struct HPMHookPoint *HP_chr_config_read_player_pre;
 	struct HPMHookPoint *HP_chr_config_read_player_post;
-	struct HPMHookPoint *HP_chr_config_read_permission_pre;
-	struct HPMHookPoint *HP_chr_config_read_permission_post;
 	struct HPMHookPoint *HP_chr_config_set_ip_pre;
 	struct HPMHookPoint *HP_chr_config_set_ip_post;
 	struct HPMHookPoint *HP_chr_config_read_inter_pre;
@@ -1870,8 +1868,6 @@ struct {
 	int HP_chr_config_read_player_new_post;
 	int HP_chr_config_read_player_pre;
 	int HP_chr_config_read_player_post;
-	int HP_chr_config_read_permission_pre;
-	int HP_chr_config_read_permission_post;
 	int HP_chr_config_set_ip_pre;
 	int HP_chr_config_set_ip_post;
 	int HP_chr_config_read_inter_pre;

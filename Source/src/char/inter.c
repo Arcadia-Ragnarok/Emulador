@@ -112,8 +112,7 @@ const char* inter_msg_txt(int msg_number) {
  * @param[in] allow_override whether to allow duplicate message IDs to override the original value.
  * @return success state.
  */
-bool inter_msg_config_read(const char *cfg_name, bool allow_override)
-{
+bool inter_msg_config_read(const char *cfg_name, bool allow_override) {
 	int msg_number;
 	char line[1024], w1[1024], w2[1024];
 	FILE *fp;
@@ -121,7 +120,7 @@ bool inter_msg_config_read(const char *cfg_name, bool allow_override)
 
 	nullpo_ret(cfg_name);
 	if ((fp = fopen(cfg_name, "r")) == NULL) {
-		ShowError("Messages file not found: %s\n", cfg_name);
+		ShowError("Arquivo de mensagem nao encontrado: %s\n", cfg_name);
 		return 1;
 	}
 
@@ -144,8 +143,7 @@ bool inter_msg_config_read(const char *cfg_name, bool allow_override)
 			if (msg_number >= 0 && msg_number < MAX_JOB_NAMES) {
 				if (msg_table[msg_number] != NULL) {
 					if (!allow_override) {
-						ShowError("Duplicate message: ID '%d' was already used for '%s'. Message '%s' will be ignored.\n",
-						          msg_number, w2, msg_table[msg_number]);
+						ShowError("Mensagem Duplicada: ID '%d' utilizada em '%s'.\n", msg_number, w2, msg_table[msg_number]);
 						continue;
 					}
 					aFree(msg_table[msg_number]);
@@ -164,15 +162,14 @@ bool inter_msg_config_read(const char *cfg_name, bool allow_override)
 /*==========================================
  * Cleanup Message Data
  *------------------------------------------*/
-void inter_do_final_msg(void)
-{
+void inter_do_final_msg(void) {
 	int i;
 	for (i = 0; i < MAX_JOB_NAMES; i++)
 		aFree(msg_table[i]);
 }
+
 /* from pc.c due to @accinfo. any ideas to replace this crap are more than welcome. */
-const char* inter_job_name(int class)
-{
+const char* inter_job_name(int class) {
 	switch (class) {
 		case JOB_NOVICE:   // 550
 		case JOB_SWORDMAN: // 551
@@ -404,8 +401,7 @@ const char* inter_job_name(int class)
  * Argument-list version of inter_msg_to_fd
  * @see inter_msg_to_fd
  */
-void inter_vmsg_to_fd(int fd, int u_fd, int aid, char* msg, va_list ap)
-{
+void inter_vmsg_to_fd(int fd, int u_fd, int aid, char* msg, va_list ap) {
 	char msg_out[512];
 	va_list apcopy;
 	int len = 1;/* yes we start at 1 */
@@ -438,8 +434,7 @@ void inter_vmsg_to_fd(int fd, int u_fd, int aid, char* msg, va_list ap)
  * @param ...  Additional parameters for (v)sprinf
  */
 void inter_msg_to_fd(int fd, int u_fd, int aid, char *msg, ...) __attribute__((format(printf, 4, 5)));
-void inter_msg_to_fd(int fd, int u_fd, int aid, char *msg, ...)
-{
+void inter_msg_to_fd(int fd, int u_fd, int aid, char *msg, ...) {
 	va_list ap;
 	va_start(ap,msg);
 	inter->vmsg_to_fd(fd, u_fd, aid, msg, ap);
@@ -447,8 +442,7 @@ void inter_msg_to_fd(int fd, int u_fd, int aid, char *msg, ...)
 }
 
 /* [Dekamaster/Nightroad] */
-void mapif_parse_accinfo(int fd)
-{
+void mapif_parse_accinfo(int fd) {
 	int u_fd = RFIFOL(fd,2), aid = RFIFOL(fd,6), castergroup = RFIFOL(fd,10);
 	char query[NAME_LENGTH], query_esq[NAME_LENGTH*2+1];
 	int account_id;
@@ -465,10 +459,10 @@ void mapif_parse_accinfo(int fd)
 		if ( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `account_id`,`name`,`class`,`base_level`,`job_level`,`online` FROM `%s` WHERE `name` LIKE '%s' LIMIT 10", char_db, query_esq)
 				|| SQL->NumRows(inter->sql_handle) == 0 ) {
 			if( SQL->NumRows(inter->sql_handle) == 0 ) {
-				inter->msg_to_fd(fd, u_fd, aid, "No matches were found for your criteria, '%s'",query);
+				inter->msg_to_fd(fd, u_fd, aid, "Não foram encontrados resultados para os criterios, '%s'",query);
 			} else {
 				Sql_ShowDebug(inter->sql_handle);
-				inter->msg_to_fd(fd, u_fd, aid, "An error occurred, bother your admin about it.");
+				inter->msg_to_fd(fd, u_fd, aid, "Ocorreu um erro, informe ao administrador sobre isso.");
 			}
 			SQL->FreeResult(inter->sql_handle);
 			return;
@@ -478,7 +472,7 @@ void mapif_parse_accinfo(int fd)
 				SQL->GetData(inter->sql_handle, 0, &data, NULL); account_id = atoi(data);
 				SQL->FreeResult(inter->sql_handle);
 			} else {// more than one, listing... [Dekamaster/Nightroad]
-				inter->msg_to_fd(fd, u_fd, aid, "Your query returned the following %d results, please be more specific...",(int)SQL->NumRows(inter->sql_handle));
+				inter->msg_to_fd(fd, u_fd, aid, "Sua consulta retornou os seguintes resultados %d, seja mais especifico...",(int)SQL->NumRows(inter->sql_handle));
 				while ( SQL_SUCCESS == SQL->NextRow(inter->sql_handle) ) {
 					int class;
 					int base_level, job_level, online;
@@ -509,8 +503,7 @@ void mapif_parse_accinfo(int fd)
 }
 void mapif_parse_accinfo2(bool success, int map_fd, int u_fd, int u_aid, int account_id, const char *userid, const char *user_pass,
 		const char *email, const char *last_ip, const char *lastlogin, const char *pin_code, const char *birthdate,
-		int group_id, int logincount, int state)
-{
+		int group_id, int logincount, int state) {
 	nullpo_retv(userid);
 	nullpo_retv(user_pass);
 	nullpo_retv(email);
@@ -521,32 +514,32 @@ void mapif_parse_accinfo2(bool success, int map_fd, int u_fd, int u_aid, int acc
 		return; // check if we have a valid fd
 
 	if (!success) {
-		inter->msg_to_fd(map_fd, u_fd, u_aid, "No account with ID '%d' was found.", account_id);
+		inter->msg_to_fd(map_fd, u_fd, u_aid, "Nenhuma conta com ID '%d' encontrada.", account_id);
 		return;
 	}
 
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "-- Account %d --", account_id);
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "User: %s | GM Group: %d | State: %d", userid, group_id, state);
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "-- Conta %d --", account_id);
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "Usuario: %s | Grupo: %d | Status: %d", userid, group_id, state);
 
 	if (*user_pass != '\0') { /* password is only received if your gm level is greater than the one you're searching for */
 		if (pin_code && *pin_code != '\0')
-			inter->msg_to_fd(map_fd, u_fd, u_aid, "Password: %s (PIN:%s)", user_pass, pin_code);
+			inter->msg_to_fd(map_fd, u_fd, u_aid, "Sehna: %s (PIN:%s)", user_pass, pin_code);
 		else
-			inter->msg_to_fd(map_fd, u_fd, u_aid, "Password: %s", user_pass );
+			inter->msg_to_fd(map_fd, u_fd, u_aid, "Senha: %s", user_pass );
 	}
 
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "Account e-mail: %s | Birthdate: %s", email, birthdate);
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "Last IP: %s (%s)", last_ip, geoip->getcountry(sockt->str2ip(last_ip)));
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "This user has logged %d times, the last time were at %s", logincount, lastlogin);
-	inter->msg_to_fd(map_fd, u_fd, u_aid, "-- Character Details --");
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "E-Mail: %s | Aniversario: %s", email, birthdate);
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "Ultimo IP: %s (%s)", last_ip, geoip->getcountry(sockt->str2ip(last_ip)));
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "Este usuario logou %d vezes, a ultima vez foi em %s", logincount, lastlogin);
+	inter->msg_to_fd(map_fd, u_fd, u_aid, "-- Detalhes do Personagem --");
 
 	if ( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `char_id`, `name`, `char_num`, `class`, `base_level`, `job_level`, `online` "
 	                                         "FROM `%s` WHERE `account_id` = '%d' ORDER BY `char_num` LIMIT %d", char_db, account_id, MAX_CHARS)
 	  || SQL->NumRows(inter->sql_handle) == 0 ) {
 		if (SQL->NumRows(inter->sql_handle) == 0) {
-			inter->msg_to_fd(map_fd, u_fd, u_aid, "This account doesn't have characters.");
+			inter->msg_to_fd(map_fd, u_fd, u_aid, "Esta conta nao possui personagens.");
 		} else {
-			inter->msg_to_fd(map_fd, u_fd, u_aid, "An error occurred, bother your admin about it.");
+			inter->msg_to_fd(map_fd, u_fd, u_aid, "Um erro ocorreu, comunique ao administrador sobre isso.");
 			Sql_ShowDebug(inter->sql_handle);
 		}
 	} else {
@@ -586,7 +579,7 @@ void inter_savereg(int account_id, int char_id, const char *key, unsigned int in
 		if (sockt->session_is_valid(chr->login_fd))
 			chr->global_accreg_to_login_add(key,index,val,is_string);
 		else {
-			ShowError("Login server unavailable, cant perform update on '%s' variable for AID:%d CID:%d\n",key,account_id,char_id);
+			ShowError("Servidor de login nao disponivel, nao pode executar a atualizacao na variavel '%s' para AID:%d CID:%d\n",key,account_id,char_id);
 		}
 	} else if ( key[0] == '#' ) {/* local account reg */
 		if( is_string ) {
@@ -646,10 +639,10 @@ int inter_accreg_fromsql(int account_id,int char_id, int fd, int type)
 				Sql_ShowDebug(inter->sql_handle);
 			break;
 		case 1: //account2 reg
-			ShowError("inter->accreg_fromsql: Char server shouldn't handle type 1 registry values (##). That is the login server's work!\n");
+			ShowError("inter->accreg_fromsql: O servidor personagens não deve lidar com os valores de registro do tipo 1. Esse é o trabalho do servidor de login!\n");
 			return 0;
 		default:
-			ShowError("inter->accreg_fromsql: Invalid type %d\n", type);
+			ShowError("inter->accreg_fromsql: Tipo invalido %d\n", type);
 			return 0;
 	}
 
@@ -803,21 +796,17 @@ int inter_accreg_fromsql(int account_id,int char_id, int fd, int type)
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read_log(const char *filename, const struct config_t *config, bool imported)
-{
+bool inter_config_read_log(const char *filename, const struct config_t *config) {
 	const struct config_setting_t *setting = NULL;
 
 	nullpo_retr(false, filename);
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "inter_configuration/log")) == NULL) {
-		if (imported)
-			return true;
-		ShowError("sql_config_read: inter_configuration/log was not found in %s!\n", filename);
+		ShowError("sql_config_read: Configuracao de LOG nao encontrada em %s!\n", filename);
 		return false;
 	}
 
@@ -831,22 +820,18 @@ bool inter_config_read_log(const char *filename, const struct config_t *config, 
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read_connection(const char *filename, const struct config_t *config, bool imported)
-{
+bool inter_config_read_connection(const char *filename, const struct config_t *config) {
 	const struct config_setting_t *setting = NULL;
 
 	nullpo_retr(false, filename);
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "char_configuration/sql_connection")) == NULL) {
-		if (imported)
-			return true;
-		ShowError("char_config_read: char_configuration/sql_connection was not found in %s!\n", filename);
-		ShowWarning("inter_config_read_connection: Defaulting sql_connection...\n");
+		ShowError("char_config_read: Conexao com SQL nao encontrada em %s!\n", filename);
+		ShowWarning("inter_config_read_connection: Definindo a configuracao padrao...\n");
 		return false;
 	}
 
@@ -864,12 +849,10 @@ bool inter_config_read_connection(const char *filename, const struct config_t *c
  * Reads the 'inter_configuration' config file and initializes required variables.
  *
  * @param filename Path to configuration file
- * @param imported Whether the current config is from an imported file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read(const char *filename, bool imported)
-{
+bool inter_config_read(const char *filename) {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
 	const char *import = NULL;
@@ -882,27 +865,15 @@ bool inter_config_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
-		ShowError("inter_config_read: inter_configuration was not found in %s!\n", filename);
+		ShowError("inter_config_read: inter_configuration nao econtrada em %s!\n", filename);
 		return false;
 	}
 	//libconfig->setting_lookup_int(setting, "party_share_level", &party_share_level);
 
-	if (!inter->config_read_log(filename, &config, imported))
+	if (!inter->config_read_log(filename, &config))
 		retval = false;
 
 	ShowInfo("Feita a leitura de %s.\n", filename);
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, chr->INTER_CONF_NAME) == 0) {
-			ShowWarning("inter_config_read: Loop detected in %s! Skipping 'import'...\n", filename);
-		} else {
-			if (!inter->config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;
@@ -912,8 +883,7 @@ bool inter_config_read(const char *filename, bool imported)
  * Save interlog into sql (arglist version)
  * @see inter_log
  */
-int inter_vlog(char* fmt, va_list ap)
-{
+int inter_vlog(char* fmt, va_list ap) {
 	char str[255];
 	char esc_str[sizeof(str)*2+1];// escaped str
 	va_list apcopy;
@@ -935,8 +905,7 @@ int inter_vlog(char* fmt, va_list ap)
  * @param ... Additional (printf-like) arguments
  * @return Always 0 // FIXME
  */
-int inter_log(char* fmt, ...)
-{
+int inter_log(char* fmt, ...) {
 	va_list ap;
 	int ret;
 
@@ -948,13 +917,12 @@ int inter_log(char* fmt, ...)
 }
 
 // initialize
-int inter_init_sql(const char *file)
-{
-	inter->config_read(file, false);
+int inter_init_sql(const char *file) {
+	inter->config_read(file);
 
 	//DB connection initialized
 	inter->sql_handle = SQL->Malloc();
-	ShowInfo("Connect Character DB server.... (Character Server)\n");
+	ShowInfo("Conectando ao char-serve....\n");
 	if( SQL_ERROR == SQL->Connect(inter->sql_handle, char_server_id, char_server_pw, char_server_ip, (uint16)char_server_port, char_server_db) )
 	{
 		Sql_ShowDebug(inter->sql_handle);
@@ -985,8 +953,7 @@ int inter_init_sql(const char *file)
 }
 
 // finalize
-void inter_final(void)
-{
+void inter_final(void) {
 	wis_db->destroy(wis_db, NULL);
 
 	inter_guild->sql_final();
@@ -1005,8 +972,7 @@ void inter_final(void)
 	return;
 }
 
-int inter_mapif_init(int fd)
-{
+int inter_mapif_init(int fd) {
 	return 0;
 }
 
@@ -1014,8 +980,7 @@ int inter_mapif_init(int fd)
 //--------------------------------------------------------
 
 // broadcast sending
-int mapif_broadcast(const unsigned char *mes, int len, unsigned int fontColor, short fontType, short fontSize, short fontAlign, short fontY, int sfd)
-{
+int mapif_broadcast(const unsigned char *mes, int len, unsigned int fontColor, short fontType, short fontSize, short fontAlign, short fontY, int sfd) {
 	unsigned char *buf = (unsigned char*)aMalloc((len)*sizeof(unsigned char));
 
 	nullpo_ret(mes);
@@ -1035,8 +1000,7 @@ int mapif_broadcast(const unsigned char *mes, int len, unsigned int fontColor, s
 }
 
 // Wis sending
-int mapif_wis_message(struct WisData *wd)
-{
+int mapif_wis_message(struct WisData *wd) {
 	unsigned char buf[2048];
 	nullpo_ret(wd);
 	//if (wd->len > 2047-56) wd->len = 2047-56; //Force it to fit to avoid crashes. [Skotlex]
@@ -1056,8 +1020,7 @@ int mapif_wis_message(struct WisData *wd)
 	return 0;
 }
 
-void mapif_wis_response(int fd, const unsigned char *src, int flag)
-{
+void mapif_wis_response(int fd, const unsigned char *src, int flag) {
 	unsigned char buf[27];
 	nullpo_retv(src);
 	WBUFW(buf, 0)=0x3802;
@@ -1067,8 +1030,7 @@ void mapif_wis_response(int fd, const unsigned char *src, int flag)
 }
 
 // Wis sending result
-int mapif_wis_end(struct WisData *wd, int flag)
-{
+int mapif_wis_end(struct WisData *wd, int flag) {
 	nullpo_ret(wd);
 	mapif->wis_response(wd->fd, wd->src, flag);
 	return 0;
@@ -1085,17 +1047,14 @@ static void mapif_account_reg(int fd, unsigned char *src)
 #endif // 0
 
 // Send the requested account_reg
-int mapif_account_reg_reply(int fd,int account_id,int char_id, int type)
-{
+int mapif_account_reg_reply(int fd,int account_id,int char_id, int type) {
 	inter->accreg_fromsql(account_id,char_id,fd,type);
 	return 0;
 }
 
 //Request to kick char from a certain map server. [Skotlex]
-int mapif_disconnectplayer(int fd, int account_id, int char_id, int reason)
-{
-	if (fd >= 0)
-	{
+int mapif_disconnectplayer(int fd, int account_id, int char_id, int reason) {
+	if (fd >= 0) {
 		WFIFOHEAD(fd,7);
 		WFIFOW(fd,0) = 0x2b1f;
 		WFIFOL(fd,2) = account_id;
@@ -1112,8 +1071,7 @@ int mapif_disconnectplayer(int fd, int account_id, int char_id, int reason)
  * Existence check of WISP data
  * @see DBApply
  */
-int inter_check_ttl_wisdata_sub(union DBKey key, struct DBData *data, va_list ap)
-{
+int inter_check_ttl_wisdata_sub(union DBKey key, struct DBData *data, va_list ap) {
 	int64 tick;
 	struct WisData *wd = DB->data2ptr(data);
 	nullpo_ret(wd);
@@ -1125,8 +1083,7 @@ int inter_check_ttl_wisdata_sub(union DBKey key, struct DBData *data, va_list ap
 	return 0;
 }
 
-int inter_check_ttl_wisdata(void)
-{
+int inter_check_ttl_wisdata(void) {
 	int64 tick = timer->gettick();
 	int i;
 
@@ -1148,16 +1105,14 @@ int inter_check_ttl_wisdata(void)
 //--------------------------------------------------------
 
 // broadcast sending
-int mapif_parse_broadcast(int fd)
-{
+int mapif_parse_broadcast(int fd) {
 	mapif->broadcast(RFIFOP(fd,16), RFIFOW(fd,2), RFIFOL(fd,4), RFIFOW(fd,8), RFIFOW(fd,10), RFIFOW(fd,12), RFIFOW(fd,14), fd);
 	return 0;
 }
 
 
 // Wisp/page request to send
-int mapif_parse_WisRequest(int fd)
-{
+int mapif_parse_WisRequest(int fd) {
 	struct WisData* wd;
 	char name[NAME_LENGTH];
 	char esc_name[NAME_LENGTH*2+1];// escaped name
@@ -1168,10 +1123,10 @@ int mapif_parse_WisRequest(int fd)
 	if ( fd <= 0 ) {return 0;} // check if we have a valid fd
 
 	if (RFIFOW(fd,2)-52 >= sizeof(wd->msg)) {
-		ShowWarning("inter: Wis message size too long.\n");
+		ShowWarning("inter: Tamanho da mensagem Wisper muito longo.\n");
 		return 0;
 	} else if (RFIFOW(fd,2)-52 <= 0) { // normally, impossible, but who knows...
-		ShowError("inter: Wis message doesn't exist.\n");
+		ShowError("inter: Messagem Wisper inexistente.\n");
 		return 0;
 	}
 
@@ -1182,12 +1137,11 @@ int mapif_parse_WisRequest(int fd)
 		Sql_ShowDebug(inter->sql_handle);
 
 	// search if character exists before to ask all map-servers
-	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) )
-	{
+	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) ) {
 		mapif->wis_response(fd, RFIFOP(fd, 4), 1);
 	}
-	else
-	{// Character exists. So, ask all map-servers
+	else {
+		// Character exists. So, ask all map-servers
 		// to be sure of the correct name, rewrite it
 		SQL->GetData(inter->sql_handle, 0, &data, &len);
 		memset(name, 0, NAME_LENGTH);
@@ -1195,9 +1149,7 @@ int mapif_parse_WisRequest(int fd)
 		// if source is destination, don't ask other servers.
 		if (strncmp(RFIFOP(fd,4), name, NAME_LENGTH) == 0) {
 			mapif->wis_response(fd, RFIFOP(fd, 4), 1);
-		}
-		else
-		{
+		} else {
 			static int wisid = 0;
 			CREATE(wd, struct WisData, 1);
 
@@ -1222,8 +1174,7 @@ int mapif_parse_WisRequest(int fd)
 
 
 // Wisp/page transmission result
-int mapif_parse_WisReply(int fd)
-{
+int mapif_parse_WisReply(int fd) {
 	int id, flag;
 	struct WisData *wd;
 
@@ -1242,8 +1193,7 @@ int mapif_parse_WisReply(int fd)
 }
 
 // Received wisp message from map-server for ALL gm (just copy the message and resends it to ALL map-servers)
-int mapif_parse_WisToGM(int fd)
-{
+int mapif_parse_WisToGM(int fd) {
 	unsigned char buf[2048]; // 0x3003/0x3803 <packet_len>.w <wispname>.24B <min_gm_level>.w <message>.?B
 
 	memcpy(WBUFP(buf,0), RFIFOP(fd,0), RFIFOW(fd,2)); // Message contains the NUL terminator (see intif_wis_message_to_gm())
@@ -1254,8 +1204,7 @@ int mapif_parse_WisToGM(int fd)
 }
 
 // Save account_reg into sql (type=2)
-int mapif_parse_Registry(int fd)
-{
+int mapif_parse_Registry(int fd) {
 	int account_id = RFIFOL(fd, 4), char_id = RFIFOL(fd, 8), count = RFIFOW(fd, 12);
 
 	if( count ) {
@@ -1295,7 +1244,7 @@ int mapif_parse_Registry(int fd)
 					inter->savereg(account_id,char_id,key,index,0,true);
 					break;
 				default:
-					ShowError("mapif->parse_Registry: unknown type %d\n",RFIFOB(fd, cursor - 1));
+					ShowError("mapif->parse_Registry: Tipo desconhecido %d\n",RFIFOB(fd, cursor - 1));
 					return 1;
 			}
 
@@ -1308,8 +1257,7 @@ int mapif_parse_Registry(int fd)
 }
 
 // Request the value of all registries.
-int mapif_parse_RegistryRequest(int fd)
-{
+int mapif_parse_RegistryRequest(int fd) {
 	//Load Char Registry
 	if (RFIFOB(fd,12)) mapif->account_reg_reply(fd,RFIFOL(fd,2),RFIFOL(fd,6),3); // 3: char reg
 	//Load Account Registry
@@ -1319,8 +1267,7 @@ int mapif_parse_RegistryRequest(int fd)
 	return 1;
 }
 
-void mapif_namechange_ack(int fd, int account_id, int char_id, int type, int flag, const char *const name)
-{
+void mapif_namechange_ack(int fd, int account_id, int char_id, int type, int flag, const char *const name) {
 	nullpo_retv(name);
 	WFIFOHEAD(fd, NAME_LENGTH+13);
 	WFIFOW(fd, 0) = 0x3806;
@@ -1332,8 +1279,7 @@ void mapif_namechange_ack(int fd, int account_id, int char_id, int type, int fla
 	WFIFOSET(fd, NAME_LENGTH+13);
 }
 
-int mapif_parse_NameChangeRequest(int fd)
-{
+int mapif_parse_NameChangeRequest(int fd) {
 	int account_id, char_id, type;
 	const char *name;
 	int i;
@@ -1372,8 +1318,7 @@ int mapif_parse_NameChangeRequest(int fd)
 /// or 0 if no complete packet exists in the queue.
 ///
 /// @param length The minimum allowed length, or -1 for dynamic lookup
-int inter_check_length(int fd, int length)
-{
+int inter_check_length(int fd, int length) {
 	if( length == -1 )
 	{// variable-length packet
 		if( RFIFOREST(fd) < 4 )
@@ -1387,8 +1332,7 @@ int inter_check_length(int fd, int length)
 	return length;
 }
 
-int inter_parse_frommap(int fd)
-{
+int inter_parse_frommap(int fd) {
 	int cmd;
 	int len = 0;
 	cmd = RFIFOW(fd,0);
@@ -1432,8 +1376,7 @@ int inter_parse_frommap(int fd)
 	return 1;
 }
 
-void inter_defaults(void)
-{
+void inter_defaults(void) {
 	inter = &inter_s;
 
 	inter->enable_logs = true;

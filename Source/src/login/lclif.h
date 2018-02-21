@@ -23,8 +23,10 @@
 #ifndef LOGIN_LCLIF_H
 #define LOGIN_LCLIF_H
 
-#include "common/HPExport.h"
+//#include "common/HPExport.h"
 
+//#include "common/cbasetypes.h"
+#include "login/login.h"
 /** @file
  * Login Client Interface.
  **/
@@ -144,10 +146,7 @@ struct lclif_interface {
 	int (*parse)(int fd);
 };
 
-#ifdef MAIN_CORE
 void lclif_defaults(void);
-#endif
-
-HPShared struct lclif_interface *lclif;
+extern struct lclif_interface *lclif;
 
 #endif // LOGIN_LCLIF_H

@@ -27,15 +27,15 @@
 #include "common/cbasetypes.h"
 
 #ifdef WIN32
-	#define HPExport __declspec(dllexport)
+	//#define HPExport __declspec(dllexport)
 #else
-	#define HPExport __attribute__((visibility("default")))
+	//#define HPExport __attribute__((visibility("default")))
 #endif
 
 #define HPShared extern
 
 #ifndef MAIN_CORE
-#include "common/HPMi.h"
+//#include "common/HPMi.h"
 #endif // MAIN_CORE
 
 #endif // COMMON_ARCADIA_H

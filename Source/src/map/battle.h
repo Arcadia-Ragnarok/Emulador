@@ -24,7 +24,7 @@
 #define MAP_BATTLE_H
 
 #include "map/map.h" //ELE_MAX
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /**
  * Declarations
@@ -683,7 +683,7 @@ struct battle_interface {
 	int64 (*add_mastery) (struct map_session_data *sd,struct block_list *target,int64 dmg,int type);
 	int (*calc_drain) (int64 damage, int rate, int per);
 	/* battle_config */
-	bool (*config_read) (const char *filename, bool imported);
+	bool (*config_read) (const char *filename);
 	void (*config_set_defaults) (void);
 	bool (*config_set_value_sub) (int index, int value);
 	bool (*config_set_value) (const char *param, const char *value);
@@ -700,12 +700,9 @@ struct battle_interface {
 	void (*calc_misc_attack_unknown) (struct block_list *src, struct block_list *target, uint16 *skill_id, uint16 *skill_lv, int *mflag, struct Damage *md);
 };
 
-#ifdef MAIN_CORE
 extern struct Battle_Config battle_config;
-
 void battle_defaults(void);
-#endif // MAIN_CORE
 
-HPShared struct battle_interface *battle;
+extern struct battle_interface *battle;
 
 #endif /* MAP_BATTLE_H */

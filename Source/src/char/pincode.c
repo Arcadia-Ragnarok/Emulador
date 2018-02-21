@@ -20,8 +20,6 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#define MAIN_CORE
-
 #include "pincode.h"
 
 #include "char/char.h"
@@ -46,24 +44,26 @@ void pincode_handle (int fd, struct char_session_data* sd) {
 
 	nullpo_retv(sd);
 	character = (struct online_char_data*)idb_get(chr->online_char_db, sd->account_id);
-	if( character && character->pincode_enable > pincode->charselect ){
+	if (character && character->pincode_enable > pincode->charselect){
 		character->pincode_enable = pincode->charselect * 2;
-	}else{
+	} else {
 		pincode->sendstate( fd, sd, PINCODE_OK );
 		return;
 	}
 
-	if( strlen(sd->pincode) == 4 ){
-		if( pincode->changetime && time(NULL) > (sd->pincode_change+pincode->changetime) ){ // User hasn't changed his PIN code for a long time
+	if(strlen(sd->pincode) == 4) {
+		if (pincode->changetime && time(NULL) > (sd->pincode_change+pincode->changetime)){ // User hasn't changed his PIN code for a long time
 			pincode->sendstate( fd, sd, PINCODE_EXPIRED );
 		} else { // Ask user for his PIN code
 			pincode->sendstate( fd, sd, PINCODE_ASK );
 		}
-	} else // No PIN code has been set yet
+	} else {// No PIN code has been set yet
 		pincode->sendstate( fd, sd, PINCODE_NOTSET );
+	}
 
-	if( character )
+	if (character) {
 		character->pincode_enable = -1;
+	}
 }
 
 void pincode_check(int fd, struct char_session_data* sd) {
@@ -186,30 +186,27 @@ void pincode_decrypt(unsigned int userSeed, char* pin) {
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool pincode_config_read(const char *filename, const struct config_t *config, bool imported)
+bool pincode_config_read(const char *filename, const struct config_t *config)
 {
 	const struct config_setting_t *setting = NULL;
 	nullpo_retr(false, filename);
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "char_configuration/pincode")) == NULL) {
-		if (imported)
-			return true;
-		ShowError("char_config_read: char_configuration/pincode was not found in %s!\n", filename);
+		ShowError("char_config_read: Configuracoes do pincode nao encontradas em %s!\n", filename);
 		return false;
 	}
 
 	if (libconfig->setting_lookup_bool(setting, "enabled", &pincode->enabled) == CONFIG_TRUE) {
-#if PACKETVER < 20110309
+		#if PACKETVER < 20110309
 		if (pincode->enabled) {
-			ShowWarning("pincode_enabled requires PACKETVER 20110309 or higher. disabling...\n");
+			ShowWarning("o uso do pincode requer pacotes PACKETVER 20110309 sou superior. a configutacao foi desabilitada\n");
 			pincode->enabled = 0;
 		}
-#endif
+		#endif
 	}
 
 	if (libconfig->setting_lookup_int(setting, "change_time", &pincode->changetime) == CONFIG_TRUE)
@@ -217,14 +214,14 @@ bool pincode_config_read(const char *filename, const struct config_t *config, bo
 
 	if (libconfig->setting_lookup_int(setting, "max_tries", &pincode->maxtry) == CONFIG_TRUE) {
 		if (pincode->maxtry > 3) {
-			ShowWarning("pincode_maxtry is too high (%d); Maximum allowed: 3! Capping to 3...\n",pincode->maxtry);
+			ShowWarning("pincode_maxtry muito alta (%d); Maximp permitido: 3! definido o valor padrao de 3\n",pincode->maxtry);
 			pincode->maxtry = 3;
 		}
 	}
 
 	if (libconfig->setting_lookup_int(setting, "request", &pincode->charselect) == CONFIG_TRUE) {
 		if (pincode->charselect != 1 && pincode->charselect != 0) {
-			ShowWarning("Invalid pincode/request! Defaulting to 0\n");
+			ShowWarning("Requerimento do pincode invalido! Definido valor padrao de 0\n");
 			pincode->charselect = 0;
 		}
 	}

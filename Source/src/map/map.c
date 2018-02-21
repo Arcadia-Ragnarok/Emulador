@@ -6399,7 +6399,7 @@ int do_init(int argc, char *argv[])
 				chrif->setip(ip_str);
 		}
 
-		battle->config_read(map->BATTLE_CONF_FILENAME, false);
+		battle->config_read(map->BATTLE_CONF_FILENAME);
 		atcommand->msg_read(map->MSG_CONF_NAME, false);
 		map->inter_config_read(map->INTER_CONF_NAME, false);
 		logs->config_read(map->LOG_CONF_NAME, false);

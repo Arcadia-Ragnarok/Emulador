@@ -23,9 +23,10 @@
 #ifndef MAP_CHRIF_H
 #define MAP_CHRIF_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/mmo.h"
+#include "map/status.h"
 
 struct eri;
 struct map_session_data;
@@ -167,10 +168,7 @@ struct chrif_interface {
 	void (*del_scdata_single) (int account_id, int char_id, short type);
 };
 
-#ifdef MAIN_CORE
 void chrif_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct chrif_interface *chrif;
+extern struct chrif_interface *chrif;
 
 #endif /* MAP_CHRIF_H */

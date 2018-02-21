@@ -24,7 +24,7 @@
 #define MAP_CHAT_H
 
 #include "map/map.h" // struct block_list, CHATROOM_TITLE_SIZE
-#include "common/HPExport.h"
+#include "common/db.h"
 
 /* Forward Declarations */
 struct DBMap; // common/db.h
@@ -73,10 +73,7 @@ struct chat_interface {
 	struct chat_data* (*create) (struct block_list* bl, const char* title, const char* pass, int limit, bool pub, int trigger, const char* ev, int zeny, int min_level, int max_level);
 };
 
-#ifdef MAIN_CORE
 void chat_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct chat_interface *chat;
+extern struct chat_interface *chat;
 
 #endif /* MAP_CHAT_H */

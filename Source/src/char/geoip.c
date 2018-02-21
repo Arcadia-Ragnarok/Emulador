@@ -71,8 +71,7 @@ const char * geoip_countryname[GEOIP_MAX_COUNTRIES] = {"Unknown","Asia/Pacific R
 
 /* [Dekamaster/Nightroad] */
 /* WHY NOT A DBMAP: There are millions of entries in GeoIP and it has its own algorithm to go quickly through them, a DBMap wouldn't be efficient */
-const char* geoip_getcountry(uint32 ipnum)
-{
+const char* geoip_getcountry(uint32 ipnum) {
 	int depth;
 	unsigned int x;
 	unsigned int offset = 0;
@@ -103,8 +102,8 @@ const char* geoip_getcountry(uint32 ipnum)
 		}
 		offset = x;
 	}
-	ShowError("geoip_getcountry(): Error traversing database for ipnum %u\n", ipnum);
-	ShowWarning("geoip_getcountry(): Possible database corruption!\n");
+	ShowError("geoip_getcountry(): Banco de dados de percurso de erro para ipnum %u\n", ipnum);
+	ShowWarning("geoip_getcountry(): Possivel corrupcao de banco de dados!\n");
 
 	return geoip_countryname[0];
 }
@@ -113,8 +112,7 @@ const char* geoip_getcountry(uint32 ipnum)
  * Disables GeoIP
  * frees geoip.cache
  **/
-void geoip_final(bool shutdown)
-{
+void geoip_final(bool shutdown) {
 	if (geoip->data->cache) {
 		aFree(geoip->data->cache);
 		geoip->data->cache = NULL;
@@ -122,7 +120,7 @@ void geoip_final(bool shutdown)
 
 	if (geoip->data->active) {
 		if (!shutdown)
-			ShowStatus("GeoIP "CL_RED"disabled"CL_RESET".\n");
+			ShowStatus("GeoIP "CL_RED"desabilitado"CL_RESET".\n");
 		geoip->data->active = false;
 	}
 }
@@ -132,8 +130,7 @@ void geoip_final(bool shutdown)
  * geoip.cache should be freed after use!
  * http://dev.maxmind.com/geoip/legacy/geolite/
  **/
-void geoip_init(void)
-{
+void geoip_init(void) {
 	int fno;
 	char db_type = 1;
 	struct stat bufa;
@@ -143,20 +140,20 @@ void geoip_init(void)
 
 	db = fopen("./Database/Etc_DB/GeoIP.dat","rb");
 	if (db == NULL) {
-		ShowError("geoip_readdb: Error reading GeoIP.dat!\n");
+		ShowError("geoip_readdb: Error de leitura do GeoIP.dat!\n");
 		geoip->final(false);
 		return;
 	}
 	fno = fileno(db);
 	if (fstat(fno, &bufa) < 0) {
-		ShowError("geoip_readdb: Error stating GeoIP.dat! Error %d\n", errno);
+		ShowError("geoip_readdb: Error de iniciacao do GeoIP.dat! %d\n", errno);
 		fclose(db);
 		geoip->final(false);
 		return;
 	}
 	geoip->data->cache = aMalloc(sizeof(unsigned char) * bufa.st_size);
 	if (fread(geoip->data->cache, sizeof(unsigned char), bufa.st_size, db) != bufa.st_size) {
-		ShowError("geoip_cache: Couldn't read all elements!\n");
+		ShowError("geoip_cache: Nao foi possivel ler todos elementos!\n");
 		fclose(db);
 		geoip->final(false);
 		return;
@@ -189,19 +186,19 @@ void geoip_init(void)
 	fclose(db);
 
 	if (db_type != 1) {
-		if (db_type)
-			ShowError("geoip_init(): Database type is not supported %d!\n", db_type);
-		else
-			ShowError("geoip_init(): GeoIP is corrupted!\n");
+		if (db_type) {
+			ShowError("geoip_init(): Tipo de Database %d nao suportado!\n", db_type);
+		} else {
+			ShowError("geoip_init(): GeoIP esta corrompido!\n");
+		}
 
 		geoip->final(false);
 		return;
 	}
-	ShowStatus("Finished Reading "CL_GREEN"GeoIP"CL_RESET" Database.\n");
+	ShowStatus("Terminada a leitura do "CL_GREEN"GeoIP"CL_RESET" no Database.\n");
 }
 
-void geoip_defaults(void)
-{
+void geoip_defaults(void) {
 	geoip = &geoip_s;
 
 	geoip->data = &geoip_data;

@@ -24,7 +24,7 @@
 #define MAP_GUILD_H
 
 #include "map/map.h" // EVENT_NAME_LENGTH
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/mmo.h"
 
@@ -183,10 +183,7 @@ struct guild_interface {
 	void (*castle_reconnect_sub) (void *key, void *data, va_list ap);
 };
 
-#ifdef MAIN_CORE
 void guild_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct guild_interface *guild;
+extern struct guild_interface *guild;
 
 #endif /* MAP_GUILD_H */

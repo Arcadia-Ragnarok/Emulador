@@ -42,8 +42,7 @@
 #define ACCOUNT_SQL_DB_VERSION 20110114
 
 /// internal structure
-typedef struct AccountDB_SQL
-{
+typedef struct AccountDB_SQL {
 	AccountDB vtable;    // public interface
 
 	struct Sql *accounts; // SQL accounts storage
@@ -65,8 +64,7 @@ typedef struct AccountDB_SQL
 } AccountDB_SQL;
 
 /// internal structure
-typedef struct AccountDBIterator_SQL
-{
+typedef struct AccountDBIterator_SQL {
 	AccountDBIterator vtable;    // public interface
 
 	AccountDB_SQL* db;
@@ -77,7 +75,7 @@ typedef struct AccountDBIterator_SQL
 static bool account_db_sql_init(AccountDB* self);
 static void account_db_sql_destroy(AccountDB* self);
 static bool account_db_sql_get_property(AccountDB* self, const char* key, char* buf, size_t buflen);
-static bool account_db_sql_set_property(AccountDB* self, struct config_t *config, bool imported);
+static bool account_db_sql_set_property(AccountDB* self, struct config_t *config);
 static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc);
 static bool account_db_sql_remove(AccountDB* self, const int account_id);
 static bool account_db_sql_save(AccountDB* self, const struct mmo_account* acc);
@@ -91,8 +89,7 @@ static bool mmo_auth_fromsql(AccountDB_SQL* db, struct mmo_account* acc, int acc
 static bool mmo_auth_tosql(AccountDB_SQL* db, const struct mmo_account* acc, bool is_new);
 
 /// public constructor
-AccountDB* account_db_sql(void)
-{
+AccountDB* account_db_sql(void) {
 	AccountDB_SQL* db = (AccountDB_SQL*)aCalloc(1, sizeof(AccountDB_SQL));
 
 	// set up the vtable
@@ -130,8 +127,7 @@ AccountDB* account_db_sql(void)
 
 
 /// establishes database connection
-static bool account_db_sql_init(AccountDB* self)
-{
+static bool account_db_sql_init(AccountDB* self) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	struct Sql *sql_handle = NULL;
 
@@ -140,16 +136,16 @@ static bool account_db_sql_init(AccountDB* self)
 	db->accounts = SQL->Malloc();
 	sql_handle = db->accounts;
 
-	if (SQL_ERROR == SQL->Connect(sql_handle, db->db_username, db->db_password,
-	                              db->db_hostname, db->db_port, db->db_database)) {
+	if (SQL_ERROR == SQL->Connect(sql_handle, db->db_username, db->db_password, db->db_hostname, db->db_port, db->db_database)) {
 		Sql_ShowDebug(sql_handle);
 		SQL->Free(db->accounts);
 		db->accounts = NULL;
 		return false;
 	}
 
-	if (db->codepage[0] != '\0' && SQL_ERROR == SQL->SetEncoding(sql_handle, db->codepage))
+	if (db->codepage[0] != '\0' && SQL_ERROR == SQL->SetEncoding(sql_handle, db->codepage)) {
 		Sql_ShowDebug(sql_handle);
+	}
 
 	#ifdef CONSOLE_INPUT
 		console->input->setSQL(db->accounts);
@@ -158,8 +154,7 @@ static bool account_db_sql_init(AccountDB* self)
 }
 
 /// disconnects from database
-static void account_db_sql_destroy(AccountDB* self)
-{
+static void account_db_sql_destroy(AccountDB* self) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 
 	nullpo_retv(db);
@@ -169,80 +164,7 @@ static void account_db_sql_destroy(AccountDB* self)
 }
 
 /// Gets a property from this database.
-static bool account_db_sql_get_property(AccountDB* self, const char* key, char* buf, size_t buflen)
-{
-	/* TODO:
-	 * This functionality is not being used as of now, it was removed in
-	 * commit 5479f9631f8579d03fbfd14d8a49c7976226a156, it is meant to get
-	 * engine properties when more than one engine is available.  I'll
-	 * re-add it as soon as I can, following the new standards.  If anyone
-	 * is interested in this functionality you can contact me in our boards
-	 * and I'll try to add it sooner (Pan) [Panikon]
-	 */
-#if 0
-	AccountDB_SQL* db = (AccountDB_SQL*)self;
-	const char* signature;
-
-	nullpo_ret(db);
-	nullpo_ret(key);
-	nullpo_ret(buf);
-	signature = "engine.";
-	if( strncmpi(key, signature, strlen(signature)) == 0 )
-	{
-		key += strlen(signature);
-		if( strcmpi(key, "name") == 0 )
-			safesnprintf(buf, buflen, "sql");
-		else
-		if( strcmpi(key, "version") == 0 )
-			safesnprintf(buf, buflen, "%d", ACCOUNT_SQL_DB_VERSION);
-		else
-		if( strcmpi(key, "comment") == 0 )
-			safesnprintf(buf, buflen, "SQL Account Database");
-		else
-			return false;// not found
-		return true;
-	}
-
-	signature = "account.sql.";
-	if( strncmpi(key, signature, strlen(signature)) == 0 )
-	{
-		key += strlen(signature);
-		if( strcmpi(key, "db_hostname") == 0 )
-			safesnprintf(buf, buflen, "%s", db->db_hostname);
-		else
-		if( strcmpi(key, "db_port") == 0 )
-			safesnprintf(buf, buflen, "%d", db->db_port);
-		else
-		if( strcmpi(key, "db_username") == 0 )
-			safesnprintf(buf, buflen, "%s", db->db_username);
-		else
-		if( strcmpi(key, "db_password") == 0 )
-			safesnprintf(buf, buflen, "%s", db->db_password);
-		else
-		if( strcmpi(key, "db_database") == 0 )
-			safesnprintf(buf, buflen, "%s", db->db_database);
-		else
-		if( strcmpi(key, "codepage") == 0 )
-			safesnprintf(buf, buflen, "%s", db->codepage);
-		else
-		if( strcmpi(key, "case_sensitive") == 0 )
-			safesnprintf(buf, buflen, "%d", (db->case_sensitive ? 1 : 0));
-		else
-		if( strcmpi(key, "account_db") == 0 )
-			safesnprintf(buf, buflen, "%s", db->account_db);
-		else
-		if( strcmpi(key, "global_acc_reg_str_db") == 0 )
-			safesnprintf(buf, buflen, "%s", db->global_acc_reg_str_db);
-		else
-		if( strcmpi(key, "global_acc_reg_num_db") == 0 )
-			safesnprintf(buf, buflen, "%s", db->global_acc_reg_num_db);
-		else
-			return false;// not found
-		return true;
-	}
-
-	return false;// not found
-#endif // 0
+static bool account_db_sql_get_property(AccountDB* self, const char* key, char* buf, size_t buflen) {
 	return false;
 }
 
@@ -251,12 +173,10 @@ static bool account_db_sql_get_property(AccountDB* self, const char* key, char* 
  *
  * @param db       Self.
  * @param filename Path to configuration file
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool account_db_read_inter(AccountDB_SQL *db, const char *filename, bool imported)
-{
+bool account_db_read_inter(AccountDB_SQL *db, const char *filename) {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
 
@@ -268,24 +188,18 @@ bool account_db_read_inter(AccountDB_SQL *db, const char *filename, bool importe
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/database_names")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
-		ShowError("account_db_sql_set_property: inter_configuration/database_names was not found!\n");
+		ShowError("account_db_sql_set_property: Configuracao 'database_names' nao encontrada!\n");
 		return false;
 	}
 	libconfig->setting_lookup_mutable_string(setting, "account_db", db->account_db, sizeof(db->account_db));
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/database_names/registry")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
-		ShowError("account_db_sql_set_property: inter_configuration/database_names/registry was not found!\n");
+		ShowError("account_db_sql_set_property: Configuraco 'registry' nao encontrada!\n");
 		return false;
 	}
 	libconfig->setting_lookup_mutable_string(setting, "global_acc_reg_str_db", db->global_acc_reg_str_db, sizeof(db->global_acc_reg_str_db));
 	libconfig->setting_lookup_mutable_string(setting, "global_acc_reg_num_db", db->global_acc_reg_num_db, sizeof(db->global_acc_reg_num_db));
-
-	// TODO: Proper import mechanism for this file
 
 	libconfig->destroy(&config);
 	return true;
@@ -296,12 +210,10 @@ bool account_db_read_inter(AccountDB_SQL *db, const char *filename, bool importe
  *
  * @param self   Self.
  * @param config The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-static bool account_db_sql_set_property(AccountDB* self, struct config_t *config, bool imported)
-{
+static bool account_db_sql_set_property(AccountDB* self, struct config_t *config) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	struct config_setting_t *setting = NULL;
 
@@ -309,10 +221,7 @@ static bool account_db_sql_set_property(AccountDB* self, struct config_t *config
 	nullpo_ret(config);
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/sql_connection")) == NULL) {
-		if (imported)
-			return true;
-		ShowError("account_db_sql_set_property: login_configuration/account/sql_connection was not found!\n");
-		ShowWarning("account_db_sql_set_property: Defaulting sql_connection...\n");
+		ShowError("account_db_sql_set_property: Configuracao 'sql_connection' nao encontrada!\n");
 		return false;
 	}
 
@@ -324,7 +233,7 @@ static bool account_db_sql_set_property(AccountDB* self, struct config_t *config
 	libconfig->setting_lookup_uint16(setting, "db_port", &db->db_port);
 	libconfig->setting_lookup_bool_real(setting, "case_sensitive", &db->case_sensitive);
 
-	account_db_read_inter(db, "Config/Servers/Inter-Server.cs", imported);
+	account_db_read_inter(db, "Config/Servers/Inter-Server.cs");
 
 	return true;
 }
@@ -332,8 +241,7 @@ static bool account_db_sql_set_property(AccountDB* self, struct config_t *config
 /// create a new account entry
 /// If acc->account_id is -1, the account id will be auto-generated,
 /// and its value will be written to acc->account_id if everything succeeds.
-static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc)
-{
+static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	struct Sql *sql_handle;
 
@@ -342,22 +250,19 @@ static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc)
 	nullpo_ret(db);
 	nullpo_ret(acc);
 	sql_handle = db->accounts;
-	if( acc->account_id != -1 )
-	{// caller specifies it manually
+	// caller specifies it manually
+	if( acc->account_id != -1 ) {
 		account_id = acc->account_id;
-	}
-	else
-	{// ask the database
+	} else {
+		// ask the database
 		char* data;
 		size_t len;
 
-		if( SQL_SUCCESS != SQL->Query(sql_handle, "SELECT MAX(`account_id`)+1 FROM `%s`", db->account_db) )
-		{
+		if( SQL_SUCCESS != SQL->Query(sql_handle, "SELECT MAX(`account_id`)+1 FROM `%s`", db->account_db) ) {
 			Sql_ShowDebug(sql_handle);
 			return false;
 		}
-		if( SQL_SUCCESS != SQL->NextRow(sql_handle) )
-		{
+		if( SQL_SUCCESS != SQL->NextRow(sql_handle) ) {
 			Sql_ShowDebug(sql_handle);
 			SQL->FreeResult(sql_handle);
 			return false;
@@ -367,18 +272,21 @@ static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc)
 		account_id = ( data != NULL ) ? atoi(data) : 0;
 		SQL->FreeResult(sql_handle);
 
-		if( account_id < START_ACCOUNT_NUM )
+		if( account_id < START_ACCOUNT_NUM ) {
 			account_id = START_ACCOUNT_NUM;
+		}
 
 	}
 
 	// zero value is prohibited
-	if( account_id == 0 )
+	if( account_id == 0 ) {
 		return false;
+	}
 
 	// absolute maximum
-	if( account_id > END_ACCOUNT_NUM )
+	if( account_id > END_ACCOUNT_NUM ) {
 		return false;
+	}
 
 	// insert the data into the database
 	acc->account_id = account_id;
@@ -386,8 +294,7 @@ static bool account_db_sql_create(AccountDB* self, struct mmo_account* acc)
 }
 
 /// delete an existing account entry + its regs
-static bool account_db_sql_remove(AccountDB* self, const int account_id)
-{
+static bool account_db_sql_remove(AccountDB* self, const int account_id) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	struct Sql *sql_handle;
 	bool result = false;
@@ -398,10 +305,11 @@ static bool account_db_sql_remove(AccountDB* self, const int account_id)
 	||  SQL_SUCCESS != SQL->Query(sql_handle, "DELETE FROM `%s` WHERE `account_id` = %d", db->account_db, account_id)
 	||  SQL_SUCCESS != SQL->Query(sql_handle, "DELETE FROM `%s` WHERE `account_id` = %d", db->global_acc_reg_num_db, account_id)
 	||  SQL_SUCCESS != SQL->Query(sql_handle, "DELETE FROM `%s` WHERE `account_id` = %d", db->global_acc_reg_str_db, account_id)
-	)
+	) {
 		Sql_ShowDebug(sql_handle);
-	else
+	} else {
 		result = true;
+	}
 
 	result &= ( SQL_SUCCESS == SQL->QueryStr(sql_handle, (result == true) ? "COMMIT" : "ROLLBACK") );
 
@@ -409,22 +317,19 @@ static bool account_db_sql_remove(AccountDB* self, const int account_id)
 }
 
 /// update an existing account with the provided new data (both account and regs)
-static bool account_db_sql_save(AccountDB* self, const struct mmo_account* acc)
-{
+static bool account_db_sql_save(AccountDB* self, const struct mmo_account* acc) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	return mmo_auth_tosql(db, acc, false);
 }
 
 /// retrieve data from db and store it in the provided data structure
-static bool account_db_sql_load_num(AccountDB* self, struct mmo_account* acc, const int account_id)
-{
+static bool account_db_sql_load_num(AccountDB* self, struct mmo_account* acc, const int account_id) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	return mmo_auth_fromsql(db, acc, account_id);
 }
 
 /// retrieve data from db and store it in the provided data structure
-static bool account_db_sql_load_str(AccountDB* self, struct mmo_account* acc, const char* userid)
-{
+static bool account_db_sql_load_str(AccountDB* self, struct mmo_account* acc, const char* userid) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	struct Sql *sql_handle;
 	char esc_userid[2*NAME_LENGTH+1];
@@ -436,22 +341,20 @@ static bool account_db_sql_load_str(AccountDB* self, struct mmo_account* acc, co
 	SQL->EscapeString(sql_handle, esc_userid, userid);
 
 	// get the list of account IDs for this user ID
-	if( SQL_ERROR == SQL->Query(sql_handle, "SELECT `account_id` FROM `%s` WHERE `userid`= %s '%s'",
-		db->account_db, (db->case_sensitive ? "BINARY" : ""), esc_userid) )
-	{
+	if( SQL_ERROR == SQL->Query(sql_handle, "SELECT `account_id` FROM `%s` WHERE `userid`= %s '%s'", db->account_db, (db->case_sensitive ? "BINARY" : ""), esc_userid) ) {
 		Sql_ShowDebug(sql_handle);
 		return false;
 	}
 
-	if( SQL->NumRows(sql_handle) > 1 )
-	{// serious problem - duplicate account
-		ShowError("account_db_sql_load_str: multiple accounts found when retrieving data for account '%s'!\n", userid);
+	// serious problem - duplicate account
+	if( SQL->NumRows(sql_handle) > 1 ) {
+		ShowError("account_db_sql_load_str: multiplos registros de conta '%s'!\n", userid);
 		SQL->FreeResult(sql_handle);
 		return false;
 	}
 
-	if( SQL_SUCCESS != SQL->NextRow(sql_handle) )
-	{// no such entry
+	// no such entry
+	if( SQL_SUCCESS != SQL->NextRow(sql_handle) ) {
 		SQL->FreeResult(sql_handle);
 		return false;
 	}
@@ -464,8 +367,7 @@ static bool account_db_sql_load_str(AccountDB* self, struct mmo_account* acc, co
 
 
 /// Returns a new forward iterator.
-static AccountDBIterator* account_db_sql_iterator(AccountDB* self)
-{
+static AccountDBIterator* account_db_sql_iterator(AccountDB* self) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	AccountDBIterator_SQL* iter;
 
@@ -484,16 +386,14 @@ static AccountDBIterator* account_db_sql_iterator(AccountDB* self)
 
 
 /// Destroys this iterator, releasing all allocated memory (including itself).
-static void account_db_sql_iter_destroy(AccountDBIterator* self)
-{
+static void account_db_sql_iter_destroy(AccountDBIterator* self) {
 	AccountDBIterator_SQL* iter = (AccountDBIterator_SQL*)self;
 	aFree(iter);
 }
 
 
 /// Fetches the next account in the database.
-static bool account_db_sql_iter_next(AccountDBIterator* self, struct mmo_account* acc)
-{
+static bool account_db_sql_iter_next(AccountDBIterator* self, struct mmo_account* acc) {
 	AccountDBIterator_SQL* iter = (AccountDBIterator_SQL*)self;
 	AccountDB_SQL* db;
 	struct Sql *sql_handle;
@@ -504,17 +404,13 @@ static bool account_db_sql_iter_next(AccountDBIterator* self, struct mmo_account
 	nullpo_ret(db);
 	sql_handle = db->accounts;
 	// get next account ID
-	if( SQL_ERROR == SQL->Query(sql_handle, "SELECT `account_id` FROM `%s` WHERE `account_id` > '%d' ORDER BY `account_id` ASC LIMIT 1",
-		db->account_db, iter->last_account_id) )
-	{
+	if( SQL_ERROR == SQL->Query(sql_handle, "SELECT `account_id` FROM `%s` WHERE `account_id` > '%d' ORDER BY `account_id` ASC LIMIT 1", db->account_db, iter->last_account_id) ) {
 		Sql_ShowDebug(sql_handle);
 		return false;
 	}
 
-	if( SQL_SUCCESS == SQL->NextRow(sql_handle) &&
-		SQL_SUCCESS == SQL->GetData(sql_handle, 0, &data, NULL) &&
-		data != NULL )
-	{// get account data
+	if( SQL_SUCCESS == SQL->NextRow(sql_handle) && SQL_SUCCESS == SQL->GetData(sql_handle, 0, &data, NULL) && data != NULL ) {
+		// get account data
 		int account_id;
 		account_id = atoi(data);
 		if( mmo_auth_fromsql(db, acc, account_id) )
@@ -529,8 +425,7 @@ static bool account_db_sql_iter_next(AccountDBIterator* self, struct mmo_account
 }
 
 
-static bool mmo_auth_fromsql(AccountDB_SQL* db, struct mmo_account* acc, int account_id)
-{
+static bool mmo_auth_fromsql(AccountDB_SQL* db, struct mmo_account* acc, int account_id) {
 	struct Sql *sql_handle;
 	char* data;
 
@@ -538,16 +433,13 @@ static bool mmo_auth_fromsql(AccountDB_SQL* db, struct mmo_account* acc, int acc
 	nullpo_ret(acc);
 	sql_handle = db->accounts;
 	// retrieve login entry for the specified account
-	if( SQL_ERROR == SQL->Query(sql_handle,
-	    "SELECT `account_id`,`userid`,`user_pass`,`sex`,`email`,`group_id`,`state`,`unban_time`,`expiration_time`,`logincount`,`lastlogin`,`last_ip`,`birthdate`,`character_slots`,`pincode`,`pincode_change` FROM `%s` WHERE `account_id` = %d",
-		db->account_db, account_id )
-	) {
+	if( SQL_ERROR == SQL->Query(sql_handle, "SELECT `account_id`,`userid`,`user_pass`,`sex`,`email`,`group_id`,`state`,`unban_time`,`expiration_time`,`logincount`,`lastlogin`,`last_ip`,`birthdate`,`character_slots`,`pincode`,`pincode_change` FROM `%s` WHERE `account_id` = %d", db->account_db, account_id )) {
 		Sql_ShowDebug(sql_handle);
 		return false;
 	}
 
-	if( SQL_SUCCESS != SQL->NextRow(sql_handle) )
-	{// no such entry
+	// no such entry
+	if( SQL_SUCCESS != SQL->NextRow(sql_handle) ) {
 		SQL->FreeResult(sql_handle);
 		return false;
 	}
@@ -574,8 +466,7 @@ static bool mmo_auth_fromsql(AccountDB_SQL* db, struct mmo_account* acc, int acc
 	return true;
 }
 
-static bool mmo_auth_tosql(AccountDB_SQL* db, const struct mmo_account* acc, bool is_new)
-{
+static bool mmo_auth_tosql(AccountDB_SQL* db, const struct mmo_account* acc, bool is_new) {
 	struct Sql *sql_handle;
 	struct SqlStmt *stmt;
 	bool result = false;
@@ -586,17 +477,15 @@ static bool mmo_auth_tosql(AccountDB_SQL* db, const struct mmo_account* acc, boo
 	stmt = SQL->StmtMalloc(sql_handle);
 
 	// try
-	do
-	{
+	do {
 
-	if( SQL_SUCCESS != SQL->QueryStr(sql_handle, "START TRANSACTION") )
-	{
+	if( SQL_SUCCESS != SQL->QueryStr(sql_handle, "START TRANSACTION") ) {
 		Sql_ShowDebug(sql_handle);
 		break;
 	}
 
-	if( is_new )
-	{// insert into account table
+	// insert into account table
+	if( is_new ) {
 		if( SQL_SUCCESS != SQL->StmtPrepare(stmt,
 			"INSERT INTO `%s` (`account_id`, `userid`, `user_pass`, `sex`, `email`, `group_id`, `state`, `unban_time`, `expiration_time`, `logincount`, `lastlogin`, `last_ip`, `birthdate`, `character_slots`, `pincode`, `pincode_change`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 			db->account_db)
@@ -669,13 +558,11 @@ static bool mmo_auth_tosql(AccountDB_SQL* db, const struct mmo_account* acc, boo
 	return result;
 }
 
-struct Sql *account_db_sql_up(AccountDB* self)
-{
+struct Sql *account_db_sql_up(AccountDB* self) {
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	return db ? db->accounts : NULL;
 }
-void mmo_save_accreg2(AccountDB* self, int fd, int account_id, int char_id)
-{
+void mmo_save_accreg2(AccountDB* self, int fd, int account_id, int char_id) {
 	struct Sql *sql_handle;
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	int count = RFIFOW(fd, 12);
@@ -719,15 +606,14 @@ void mmo_save_accreg2(AccountDB* self, int fd, int account_id, int char_id)
 						Sql_ShowDebug(sql_handle);
 					break;
 				default:
-					ShowError("mmo_save_accreg2: DA HOO UNKNOWN TYPE %d\n",RFIFOB(fd, cursor - 1));
+					ShowError("mmo_save_accreg2: Erro desconhecido %d\n",RFIFOB(fd, cursor - 1));
 					return;
 			}
 		}
 	}
 }
 
-void mmo_send_accreg2(AccountDB* self, int fd, int account_id, int char_id)
-{
+void mmo_send_accreg2(AccountDB* self, int fd, int account_id, int char_id) {
 	struct Sql *sql_handle;
 	AccountDB_SQL* db = (AccountDB_SQL*)self;
 	char* data;

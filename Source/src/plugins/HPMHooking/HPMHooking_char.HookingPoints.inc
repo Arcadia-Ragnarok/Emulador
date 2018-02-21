@@ -181,7 +181,6 @@ struct HookingPointData HookingPoints[] = {
 	{ HP_POP(chr->config_set_start_item, HP_chr_config_set_start_item) },
 	{ HP_POP(chr->config_read_player_new, HP_chr_config_read_player_new) },
 	{ HP_POP(chr->config_read_player, HP_chr_config_read_player) },
-	{ HP_POP(chr->config_read_permission, HP_chr_config_read_permission) },
 	{ HP_POP(chr->config_set_ip, HP_chr_config_set_ip) },
 	{ HP_POP(chr->config_read_inter, HP_chr_config_read_inter) },
 	{ HP_POP(chr->config_read_top, HP_chr_config_read_top) },

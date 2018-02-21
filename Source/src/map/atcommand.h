@@ -24,7 +24,7 @@
 #define MAP_ATCOMMAND_H
 
 #include "map/pc_groups.h"
-#include "common/HPExport.h"
+#include "common/conf.h"
 #include "common/db.h"
 
 #include <stdarg.h>
@@ -149,11 +149,9 @@ struct atcommand_interface {
 	const char* (*msgsd) (struct map_session_data *sd, int msg_number);
 };
 
-#ifdef MAIN_CORE
 void atcommand_defaults(void);
-#endif // MAIN_CORE
 
-HPShared struct atcommand_interface *atcommand;
+extern struct atcommand_interface *atcommand;
 
 /* stay here */
 #define ACMD(x) \
