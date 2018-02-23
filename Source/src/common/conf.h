@@ -23,7 +23,7 @@
 #ifndef COMMON_CONF_H
 #define COMMON_CONF_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #include <libconfig/libconfig.h>
 
@@ -121,10 +121,7 @@ struct libconfig_interface {
 	int (*lookup_mutable_string) (const struct config_t *config, const char *name, char *out, size_t out_size);
 };
 
-#ifdef MAIN_CORE
 void libconfig_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct libconfig_interface *libconfig;
+extern struct libconfig_interface *libconfig;
 
 #endif // COMMON_CONF_H

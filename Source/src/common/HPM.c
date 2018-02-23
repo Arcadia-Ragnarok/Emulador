@@ -767,9 +767,6 @@ char *hplugins_id2name(unsigned int pid)
 {
 	int i;
 
-	if (pid == HPM_PID_CORE)
-		return "core";
-
 	for (i = 0; i < VECTOR_LENGTH(HPM->plugins); i++) {
 		struct hplugin *plugin = VECTOR_INDEX(HPM->plugins, i);
 		if (plugin->idx == pid)

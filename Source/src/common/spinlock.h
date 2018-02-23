@@ -52,7 +52,6 @@ struct spin_lock {
 } __attribute__((aligned(64)));
 #endif
 
-#ifdef MAIN_CORE
 static forceinline void InitializeSpinLock(struct spin_lock *lck)
 {
 	lck->lock = 0;
@@ -109,7 +108,5 @@ static forceinline void LeaveSpinLock(struct spin_lock *lck)
 
 	dropsynclock(&lck->sync_lock);
 }
-
-#endif // MAIN_CORE
 
 #endif /* COMMON_SPINLOCK_H */

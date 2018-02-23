@@ -23,7 +23,7 @@
 #ifndef COMMON_NULLPO_H
 #define COMMON_NULLPO_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 // if need disable nullpo checks this line can be commented
 #define NULLPO_CHECK
@@ -153,10 +153,7 @@ struct nullpo_interface {
 	void (*assert_report) (const char *file, int line, const char *func, const char *targetname, const char *title);
 };
 
-#ifdef MAIN_CORE
 void nullpo_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct nullpo_interface *nullpo;
+extern struct nullpo_interface *nullpo;
 
 #endif /* COMMON_NULLPO_H */

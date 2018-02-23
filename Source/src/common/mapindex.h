@@ -23,7 +23,7 @@
 #ifndef COMMON_MAPINDEX_H
 #define COMMON_MAPINDEX_H
 
-#include "common/HPExport.h"
+#include "common/db.h"
 #include "common/mmo.h"
 
 /* Forward Declarations */
@@ -115,10 +115,7 @@ struct mapindex_interface {
 	bool (*check_default) (void);
 };
 
-#ifdef MAIN_CORE
 void mapindex_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mapindex_interface *mapindex;
+extern struct mapindex_interface *mapindex;
 
 #endif /* COMMON_MAPINDEX_H */

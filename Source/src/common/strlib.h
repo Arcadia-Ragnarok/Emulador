@@ -23,8 +23,7 @@
 #ifndef COMMON_STRLIB_H
 #define COMMON_STRLIB_H
 
-#include "common/HPExport.h"
-
+#include "common/cbasetypes.h"
 #include <stdarg.h>
 #include <string.h>
 
@@ -186,12 +185,10 @@ struct sv_interface {
 	bool (*readdb) (const char* directory, const char* filename, char delim, int mincols, int maxcols, int maxrows, bool (*parseproc)(char* fields[], int columns, int current));
 };
 
-#ifdef MAIN_CORE
 void strlib_defaults(void);
-#endif // MAIN_CORE
 
-HPShared struct strlib_interface *strlib;
-HPShared struct stringbuf_interface *StrBuf;
-HPShared struct sv_interface *sv;
+extern struct strlib_interface *strlib;
+extern struct stringbuf_interface *StrBuf;
+extern struct sv_interface *sv;
 
 #endif /* COMMON_STRLIB_H */

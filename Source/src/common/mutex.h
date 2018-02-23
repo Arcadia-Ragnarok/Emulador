@@ -23,7 +23,7 @@
 #ifndef COMMON_MUTEX_H
 #define COMMON_MUTEX_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /** @file
  * Mutex and conditional variables implementation.
@@ -124,10 +124,7 @@ struct mutex_interface {
 	void (*cond_broadcast) (struct cond_data *c);
 };
 
-#ifdef MAIN_CORE
 void mutex_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mutex_interface *mutex; ///< Pointer to the mutex interface.
+extern struct mutex_interface *mutex; ///< Pointer to the mutex interface.
 
 #endif /* COMMON_MUTEX_H */

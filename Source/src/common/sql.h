@@ -23,7 +23,7 @@
 #ifndef COMMON_SQL_H
 #define COMMON_SQL_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #include <stdarg.h>// va_list
 
@@ -260,12 +260,10 @@ struct sql_interface {
 
 };
 
-#ifdef MAIN_CORE
 void sql_defaults(void);
 void Sql_Init(void);
-#endif // MAIN_CORE
 
-HPShared struct sql_interface *SQL;
+extern struct sql_interface *SQL;
 
 #if defined(SQL_REMOVE_SHOWDEBUG)
 #define Sql_ShowDebug(self) (void)(self)

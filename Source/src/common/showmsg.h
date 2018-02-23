@@ -23,7 +23,7 @@
 #ifndef COMMON_SHOWMSG_H
 #define COMMON_SHOWMSG_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #include <stdarg.h>
 
@@ -142,10 +142,7 @@ struct showmsg_interface {
 #define ShowFatalError(fmt, ...) (showmsg->showFatalError((fmt), ##__VA_ARGS__))
 #define ShowConfigWarning(config, fmt, ...) (showmsg->showConfigWarning((config), (fmt), ##__VA_ARGS__))
 
-#ifdef MAIN_CORE
 void showmsg_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct showmsg_interface *showmsg;
+extern struct showmsg_interface *showmsg;
 
 #endif /* COMMON_SHOWMSG_H */

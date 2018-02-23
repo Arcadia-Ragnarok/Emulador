@@ -31,17 +31,15 @@
 #include "common/showmsg.h"
 #include "common/sysinfo.h"
 
-#ifndef MINICORE
-#	include "common/atomic.h"
-#	include "common/ers.h"
-#	include "common/memmgr.h"
-#	include "common/mutex.h"
-#	include "common/spinlock.h"
-#	include "common/sql.h"
-#	include "common/strlib.h"
-#	include "common/thread.h"
-#	include "common/timer.h"
-#endif
+#include "common/atomic.h"
+#include "common/ers.h"
+#include "common/memmgr.h"
+#include "common/mutex.h"
+#include "common/spinlock.h"
+#include "common/sql.h"
+#include "common/strlib.h"
+#include "common/thread.h"
+#include "common/timer.h"
 
 #include <stdio.h>
 #include <stdlib.h>

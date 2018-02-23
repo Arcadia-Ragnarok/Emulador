@@ -936,15 +936,14 @@ void arcadia_mysql_error_handler(unsigned int ecode)
  * Parses mysql_reconnect from inter_configuration.
  *
  * @param filename Path to configuration file.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool Sql_inter_server_read(const char *filename, bool imported)
+bool Sql_inter_server_read(const char *filename)
 {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -954,8 +953,6 @@ bool Sql_inter_server_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/mysql_reconnect")) == NULL) {
 		config_destroy(&config);
-		if (imported)
-			return true;
 		ShowError("Sql_inter_server_read: inter_configuration/mysql_reconnect was not found in %s!\n", filename);
 		return false;
 	}
@@ -971,23 +968,13 @@ bool Sql_inter_server_read(const char *filename, bool imported)
 			mysql_reconnect_count = 1;
 	}
 
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Servers/Inter-Server.cs") == 0) { // FIXME: Hardcoded path
-			ShowWarning("Sql_inter_server_read: Loop detected in %s! Skipping 'import'...\n", filename);
-		} else {
-			if (!Sql_inter_server_read(import, true))
-				retval = false;
-		}
-	}
-
 	libconfig->destroy(&config);
 	return retval;
 }
 
 void Sql_Init(void)
 {
-	Sql_inter_server_read("Config/Servers/Inter-Server.cs", false); // FIXME: Hardcoded path
+	Sql_inter_server_read("Config/Servers/Inter-Server.cs"); // FIXME: Hardcoded path
 }
 
 void sql_defaults(void)

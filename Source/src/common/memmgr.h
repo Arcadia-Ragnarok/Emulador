@@ -23,7 +23,7 @@
 #ifndef COMMON_MEMMGR_H
 #define COMMON_MEMMGR_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #define ALC_MARK __FILE__, __LINE__, __func__
 
@@ -99,14 +99,8 @@ struct malloc_interface {
 	void (*init_messages) (void);
 };
 
-#ifdef MAIN_CORE
 void malloc_defaults(void);
-
 void memmgr_report(int extra);
-
-HPShared struct malloc_interface *iMalloc;
-#else
-#define iMalloc HPMi->memmgr
-#endif // MAIN_CORE
+extern struct malloc_interface *iMalloc;
 
 #endif /* COMMON_MEMMGR_H */
