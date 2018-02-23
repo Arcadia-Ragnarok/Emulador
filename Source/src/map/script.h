@@ -24,7 +24,7 @@
 #define MAP_SCRIPT_H
 
 #include "map/map.h" //EVENT_NAME_LENGTH
-#include "common/HPExport.h"
+#include "common/sql.h"
 #include "common/db.h"
 #include "common/mmo.h" // struct item
 #include "common/strlib.h" //StringBuf
@@ -810,7 +810,7 @@ struct script_interface {
 	void (*run_autobonus) (const char *autobonus,int id, int pos);
 	void (*cleararray_pc) (struct map_session_data* sd, const char* varname, void* value);
 	void (*setarray_pc) (struct map_session_data* sd, const char* varname, uint32 idx, void* value, int* refcache);
-	bool (*config_read) (const char *filename, bool imported);
+	bool (*config_read) (const char *filename);
 	int (*add_str) (const char* p);
 	const char* (*get_str) (int id);
 	int (*search_str) (const char* p);
@@ -952,10 +952,7 @@ struct script_interface {
 	void (*run_item_unequip_script) (struct map_session_data *sd, struct item_data *data, int oid);
 };
 
-#ifdef MAIN_CORE
 void script_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct script_interface *script;
+extern struct script_interface *script;
 
 #endif /* MAP_SCRIPT_H */

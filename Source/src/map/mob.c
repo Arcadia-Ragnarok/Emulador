@@ -46,7 +46,6 @@
 #include "map/script.h"
 #include "map/skill.h"
 #include "map/status.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/db.h"
@@ -5187,7 +5186,6 @@ void mob_destroy_mob_db(int index)
 	struct mob_db *data;
 	Assert_retv(index >= 0 && index <= MAX_MOB_DB);
 	data = mob->db_data[index];
-	HPM->data_store_destroy(&data->hdata);
 	aFree(data);
 	mob->db_data[index] = NULL;
 }

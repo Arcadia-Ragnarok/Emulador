@@ -3834,11 +3834,10 @@ int map_readallmaps (void) {
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read_console(const char *filename, struct config_t *config, bool imported)
+bool map_config_read_console(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -3846,8 +3845,6 @@ bool map_config_read_console(const char *filename, struct config_t *config, bool
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_configuration/console")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("map_config_read: map_configuration/console was not found in %s!\n", filename);
 		return false;
 	}
@@ -3868,11 +3865,10 @@ bool map_config_read_console(const char *filename, struct config_t *config, bool
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read_connection(const char *filename, struct config_t *config, bool imported)
+bool map_config_read_connection(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -3880,8 +3876,6 @@ bool map_config_read_connection(const char *filename, struct config_t *config, b
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_configuration/sql_connection")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("map_config_read: map_configuration/sql_connection was not found in %s!\n", filename);
 		ShowWarning("map_config_read_connection: Defaulting sql_connection...\n");
 		return false;
@@ -3901,11 +3895,10 @@ bool map_config_read_connection(const char *filename, struct config_t *config, b
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read_inter(const char *filename, struct config_t *config, bool imported)
+bool map_config_read_inter(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 	const char *str = NULL;
@@ -3916,8 +3909,6 @@ bool map_config_read_inter(const char *filename, struct config_t *config, bool i
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_configuration/inter")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("map_config_read: map_configuration/inter was not found in %s!\n", filename);
 		return false;
 	}
@@ -3951,11 +3942,10 @@ bool map_config_read_inter(const char *filename, struct config_t *config, bool i
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read_database(const char *filename, struct config_t *config, bool imported)
+bool map_config_read_database(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -3963,8 +3953,6 @@ bool map_config_read_database(const char *filename, struct config_t *config, boo
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_configuration/database")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("map_config_read: map_configuration/database was not found in %s!\n", filename);
 		return false;
 	}
@@ -3991,11 +3979,10 @@ bool map_config_read_database(const char *filename, struct config_t *config, boo
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read_map_list(const char *filename, struct config_t *config, bool imported)
+bool map_config_read_map_list(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 	int i, count = 0;
@@ -4016,16 +4003,11 @@ bool map_config_read_map_list(const char *filename, struct config_t *config, boo
 				continue;
 
 			strdb_put(deleted_maps, mapname, NULL);
-
-			if (imported) // Map list is empty on the first run, only do this for imported files.
-				map->delmap(mapname);
 		}
 	}
 
 	if ((setting = libconfig->lookup(config, "map_configuration/map_list")) == NULL) {
 		db_destroy(deleted_maps);
-		if (imported)
-			return true;
 		ShowError("map_config_read_map_list: map_configuration/map_list was not found in %s!\n", filename);
 		return false;
 	}
@@ -4035,8 +4017,6 @@ bool map_config_read_map_list(const char *filename, struct config_t *config, boo
 
 	if (count <= 0) {
 		db_destroy(deleted_maps);
-		if (imported)
-			return true;
 		ShowWarning("map_config_read_map_list: no maps found in %s!\n", filename);
 		return false;
 	}
@@ -4066,15 +4046,14 @@ bool map_config_read_map_list(const char *filename, struct config_t *config, boo
  * required variables.
  *
  * @param filename Path to configuration file.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_config_read(const char *filename, bool imported)
+bool map_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -4084,8 +4063,6 @@ bool map_config_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "map_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("map_config_read: map_configuration was not found in %s!\n", filename);
 		return false;
 	}
@@ -4096,26 +4073,16 @@ bool map_config_read(const char *filename, bool imported)
 	libconfig->setting_lookup_bool(setting, "use_grf", &map->enable_grf);
 	libconfig->setting_lookup_mutable_string(setting, "default_language", map->default_lang_str, sizeof(map->default_lang_str));
 
-	if (!map_config_read_console(filename, &config, imported))
+	if (!map_config_read_console(filename, &config))
 		retval = false;
-	if (!map_config_read_connection(filename, &config, imported))
+	if (!map_config_read_connection(filename, &config))
 		retval = false;
-	if (!map_config_read_inter(filename, &config, imported))
+	if (!map_config_read_inter(filename, &config))
 		retval = false;
-	if (!map_config_read_database(filename, &config, imported))
+	if (!map_config_read_database(filename, &config))
 		retval = false;
-	if (!map_config_read_map_list(filename, &config, imported))
+	if (!map_config_read_map_list(filename, &config))
 		retval = false;
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, map->MAP_CONF_NAME) == 0) {
-			ShowWarning("map_config_read: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!map->config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;
@@ -4126,15 +4093,14 @@ bool map_config_read(const char *filename, bool imported)
  * from map-server.
  *
  * @param filename Path to configuration file (used in error and warning messages).
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool map_read_npclist(const char *filename, bool imported)
+bool map_read_npclist(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 	bool remove_all = false;
 
@@ -4169,10 +4135,8 @@ bool map_read_npclist(const char *filename, bool imported)
 	if ((setting = libconfig->lookup(&config, "npc_global_list")) != NULL) {
 		int i, count = libconfig->setting_length(setting);
 		if (count <= 0) {
-			if (!imported) {
 				ShowWarning("map_read_npclist: no NPCs found in %s!\n", filename);
 				retval = false;
-			}
 		}
 		for (i = 0; i < count; i++) {
 			const char *scriptname;
@@ -4192,18 +4156,6 @@ bool map_read_npclist(const char *filename, bool imported)
 
 	db_destroy(deleted_npcs);
 
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		const char *base_npclist = NULL;
-		base_npclist = "NpcScript/Start_Scripts.cs";
-		if (strcmp(import, filename) == 0 || strcmp(import, base_npclist) == 0) {
-			ShowWarning("map_read_npclist: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!map->read_npclist(import, true))
-				retval = false;
-		}
-	}
-
 	libconfig->destroy(&config);
 	return retval;
 }
@@ -4217,7 +4169,7 @@ void map_reloadnpc(bool clear) {
 	int i;
 	if (clear)
 		npc->clearsrcfile();
-	map->read_npclist("NpcScript/Start_Scripts.cs", false);
+	map->read_npclist("NpcScript/Start_Scripts.cs");
 
 	// Append extra scripts
 	for( i = 0; i < map->extra_scripts_count; i++ ) {
@@ -4229,15 +4181,14 @@ void map_reloadnpc(bool clear) {
  * Reads inter-server.conf and initializes required variables.
  *
  * @param filename Path to configuration file
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read(const char *filename, bool imported)
+bool inter_config_read(const char *filename)
 {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -4247,26 +4198,14 @@ bool inter_config_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("inter_config_read: inter_configuration was not found in %s!\n", filename);
 		return false;
 	}
 
-	if (!map->inter_config_read_database_names(filename, &config, imported))
+	if (!map->inter_config_read_database_names(filename, &config))
 		retval = false;
-	if (!map->inter_config_read_connection(filename, &config, imported))
+	if (!map->inter_config_read_connection(filename, &config))
 		retval = false;
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, map->INTER_CONF_NAME) == 0) {
-			ShowWarning("inter_config_read: Loop detected in %s! Skipping 'import'...\n", filename);
-		} else {
-			if (!map->inter_config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;
@@ -4277,11 +4216,10 @@ bool inter_config_read(const char *filename, bool imported)
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read_connection(const char *filename, const struct config_t *config, bool imported)
+bool inter_config_read_connection(const char *filename, const struct config_t *config)
 {
 	const struct config_setting_t *setting = NULL;
 
@@ -4289,8 +4227,6 @@ bool inter_config_read_connection(const char *filename, const struct config_t *c
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "inter_configuration/log/sql_connection")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("inter_config_read: inter_configuration/log/sql_connection was not found in %s!\n", filename);
 		return false;
 	}
@@ -4309,11 +4245,10 @@ bool inter_config_read_connection(const char *filename, const struct config_t *c
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool inter_config_read_database_names(const char *filename, const struct config_t *config, bool imported)
+bool inter_config_read_database_names(const char *filename, const struct config_t *config)
 {
 	const struct config_setting_t *setting = NULL;
 	bool retval = true;
@@ -4322,8 +4257,6 @@ bool inter_config_read_database_names(const char *filename, const struct config_
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "inter_configuration/database_names")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("inter_config_read: inter_configuration/database_names was not found in %s!\n", filename);
 		return false;
 	}
@@ -4332,12 +4265,10 @@ bool inter_config_read_database_names(const char *filename, const struct config_
 	libconfig->setting_lookup_mutable_string(setting, "autotrade_data_db", map->autotrade_data_db, sizeof(map->autotrade_data_db));
 	libconfig->setting_lookup_mutable_string(setting, "npc_market_data_db", map->npc_market_data_db, sizeof(map->npc_market_data_db));
 
-	if (!mapreg->config_read(filename, setting, imported))
+	if (!mapreg->config_read(filename, setting))
 		retval = false;
 
 	if ((setting = libconfig->lookup(config, "inter_configuration/database_names/registry")) == NULL) {
-		if (imported)
-			return retval;
 		ShowError("inter_config_read: inter_configuration/database_names/registry was not found in %s!\n", filename);
 		return false;
 	}
@@ -6371,7 +6302,7 @@ int do_init(int argc, char *argv[])
 	cmdline->exec(argc, argv, CMDLINE_OPT_NORMAL);
 	minimal = map->minimal;/* temp (perhaps make minimal a mask with options of what to load? e.g. plugin 1 does minimal |= mob_db; */
 	if (!minimal) {
-		map->config_read(map->MAP_CONF_NAME, false);
+		map->config_read(map->MAP_CONF_NAME);
 
 		// loads npcs
 		map->reloadnpc(false);
@@ -6401,10 +6332,10 @@ int do_init(int argc, char *argv[])
 
 		battle->config_read(map->BATTLE_CONF_FILENAME);
 		atcommand->msg_read(map->MSG_CONF_NAME, false);
-		map->inter_config_read(map->INTER_CONF_NAME, false);
-		logs->config_read(map->LOG_CONF_NAME, false);
+		map->inter_config_read(map->INTER_CONF_NAME);
+		logs->config_read(map->LOG_CONF_NAME);
 	}
-	script->config_read(map->SCRIPT_CONF_NAME, false);
+	script->config_read(map->SCRIPT_CONF_NAME);
 
 	map->id_db     = idb_alloc(DB_OPT_BASE);
 	map->pc_db     = idb_alloc(DB_OPT_BASE); //Added for reliable map->id2sd() use. [Skotlex]

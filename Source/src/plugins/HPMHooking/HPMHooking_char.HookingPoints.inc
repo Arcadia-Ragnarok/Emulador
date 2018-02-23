@@ -173,8 +173,6 @@ struct HookingPointData HookingPoints[] = {
 	{ HP_POP(chr->sql_config_read_pc, HP_chr_sql_config_read_pc) },
 	{ HP_POP(chr->sql_config_read_guild, HP_chr_sql_config_read_guild) },
 	{ HP_POP(chr->config_read, HP_chr_config_read) },
-	{ HP_POP(chr->config_read_database, HP_chr_config_read_database) },
-	{ HP_POP(chr->config_read_console, HP_chr_config_read_console) },
 	{ HP_POP(chr->config_read_player_fame, HP_chr_config_read_player_fame) },
 	{ HP_POP(chr->config_read_player_deletion, HP_chr_config_read_player_deletion) },
 	{ HP_POP(chr->config_read_player_name, HP_chr_config_read_player_name) },
@@ -284,7 +282,6 @@ struct HookingPointData HookingPoints[] = {
 	{ HP_POP(inter->final, HP_inter_final) },
 	{ HP_POP(inter->config_read, HP_inter_config_read) },
 	{ HP_POP(inter->config_read_log, HP_inter_config_read_log) },
-	{ HP_POP(inter->config_read_connection, HP_inter_config_read_connection) },
 /* inter_mail_interface */
 	{ HP_POP(inter_mail->sql_init, HP_inter_mail_sql_init) },
 	{ HP_POP(inter_mail->sql_final, HP_inter_mail_sql_final) },

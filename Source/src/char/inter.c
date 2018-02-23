@@ -855,7 +855,7 @@ bool inter_config_read_connection(const char *filename, const struct config_t *c
 bool inter_config_read(const char *filename) {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);

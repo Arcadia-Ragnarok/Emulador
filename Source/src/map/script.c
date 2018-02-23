@@ -72,7 +72,6 @@
 #include "common/sysinfo.h"
 #include "common/timer.h"
 #include "common/utils.h"
-#include "common/HPM.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -4774,15 +4773,14 @@ void run_script_main(struct script_state *st) {
  * Reads 'script_configuration' and initializes required variables.
  *
  * @param filename Path to configuration file.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool script_config_read(const char *filename, bool imported)
+bool script_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t * setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -4792,8 +4790,6 @@ bool script_config_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "script_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("script_config_read: script_configuration was not found in %s!\n", filename);
 		return false;
 	}
@@ -4805,18 +4801,7 @@ bool script_config_read(const char *filename, bool imported)
 	libconfig->setting_lookup_int(setting, "input_min_value", &script->config.input_min_value);
 	libconfig->setting_lookup_int(setting, "input_max_value", &script->config.input_max_value);
 
-	if (!HPM->parse_conf(&config, filename, HPCT_SCRIPT, imported))
-		retval = false;
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, map->SCRIPT_CONF_NAME) == 0) {
-			ShowWarning("script_config_read: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!script->config_read(import, true))
-				retval = false;
-		}
-	}
+	retval = false;
 
 	libconfig->destroy(&config);
 	return retval;

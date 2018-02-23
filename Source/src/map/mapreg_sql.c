@@ -355,11 +355,10 @@ void mapreg_init(void) {
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool mapreg_config_read(const char *filename, const struct config_setting_t *config, bool imported)
+bool mapreg_config_read(const char *filename, const struct config_setting_t *config)
 {
 	nullpo_retr(false, filename);
 	nullpo_retr(false, config);

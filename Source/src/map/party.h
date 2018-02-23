@@ -23,7 +23,7 @@
 #ifndef MAP_PARTY_H
 #define MAP_PARTY_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/mmo.h" // struct party
 
@@ -33,7 +33,6 @@
 #define PARTY_BOOKING_RESULTS 10
 
 struct block_list;
-struct hplugin_data_store;
 struct map_session_data;
 
 struct party_member_data {
@@ -54,7 +53,6 @@ struct party_data {
 		unsigned snovice :1; ///< There's a Super Novice
 		unsigned tk : 1;     ///< There's a taekwon
 	} state;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 #define PB_NOTICE_LENGTH (36 + 1)
@@ -149,10 +147,7 @@ struct party_interface {
 	int (*db_final) (union DBKey key, struct DBData *data, va_list ap);
 };
 
-#ifdef MAIN_CORE
 void party_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct party_interface *party;
+extern struct party_interface *party;
 
 #endif /* MAP_PARTY_H */

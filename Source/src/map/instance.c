@@ -32,7 +32,6 @@
 #include "map/npc.h"
 #include "map/party.h"
 #include "map/pc.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/memmgr.h"
@@ -631,8 +630,6 @@ void instance_destroy(int instance_id) {
 	instance->list[instance_id].map = NULL;
 	instance->list[instance_id].state = INSTANCE_FREE;
 	instance->list[instance_id].num_map = 0;
-
-	HPM->data_store_destroy(&instance->list[instance_id].hdata);
 }
 
 /*--------------------------------------

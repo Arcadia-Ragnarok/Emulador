@@ -50,7 +50,6 @@
 #include "map/storage.h"
 #include "map/trade.h"
 #include "map/vending.h"
-#include "common/HPM.h"
 #include "common/db.h"
 #include "common/memmgr.h"
 #include "common/nullpo.h"
@@ -2755,7 +2754,6 @@ int unit_free(struct block_list *bl, clr_type clrtype)
 				sd->quest_log = NULL;
 				sd->num_quests = sd->avail_quests = 0;
 			}
-			HPM->data_store_destroy(&sd->hdata);
 			break;
 		}
 		case BL_PET:
@@ -2865,8 +2863,6 @@ int unit_free(struct block_list *bl, clr_type clrtype)
 				mob->clone_delete(md);
 			if( md->tomb_nid )
 				mob->mvptomb_destroy(md);
-
-			HPM->data_store_destroy(&md->hdata);
 			break;
 		}
 		case BL_HOM:

@@ -335,10 +335,6 @@ struct {
 	struct HPMHookPoint *HP_chr_sql_config_read_guild_post;
 	struct HPMHookPoint *HP_chr_config_read_pre;
 	struct HPMHookPoint *HP_chr_config_read_post;
-	struct HPMHookPoint *HP_chr_config_read_database_pre;
-	struct HPMHookPoint *HP_chr_config_read_database_post;
-	struct HPMHookPoint *HP_chr_config_read_console_pre;
-	struct HPMHookPoint *HP_chr_config_read_console_post;
 	struct HPMHookPoint *HP_chr_config_read_player_fame_pre;
 	struct HPMHookPoint *HP_chr_config_read_player_fame_post;
 	struct HPMHookPoint *HP_chr_config_read_player_deletion_pre;
@@ -535,8 +531,6 @@ struct {
 	struct HPMHookPoint *HP_inter_config_read_post;
 	struct HPMHookPoint *HP_inter_config_read_log_pre;
 	struct HPMHookPoint *HP_inter_config_read_log_post;
-	struct HPMHookPoint *HP_inter_config_read_connection_pre;
-	struct HPMHookPoint *HP_inter_config_read_connection_post;
 	struct HPMHookPoint *HP_inter_mail_sql_init_pre;
 	struct HPMHookPoint *HP_inter_mail_sql_init_post;
 	struct HPMHookPoint *HP_inter_mail_sql_final_pre;
@@ -1852,10 +1846,6 @@ struct {
 	int HP_chr_sql_config_read_guild_post;
 	int HP_chr_config_read_pre;
 	int HP_chr_config_read_post;
-	int HP_chr_config_read_database_pre;
-	int HP_chr_config_read_database_post;
-	int HP_chr_config_read_console_pre;
-	int HP_chr_config_read_console_post;
 	int HP_chr_config_read_player_fame_pre;
 	int HP_chr_config_read_player_fame_post;
 	int HP_chr_config_read_player_deletion_pre;
@@ -2052,8 +2042,6 @@ struct {
 	int HP_inter_config_read_post;
 	int HP_inter_config_read_log_pre;
 	int HP_inter_config_read_log_post;
-	int HP_inter_config_read_connection_pre;
-	int HP_inter_config_read_connection_post;
 	int HP_inter_mail_sql_init_pre;
 	int HP_inter_mail_sql_init_post;
 	int HP_inter_mail_sql_final_pre;

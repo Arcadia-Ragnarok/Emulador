@@ -23,7 +23,7 @@
 #ifndef MAP_STORAGE_H
 #define MAP_STORAGE_H
 
-#include "common/HPExport.h"
+#include "common/mmo.h"
 #include "common/db.h"
 
 struct guild_storage;
@@ -80,12 +80,9 @@ struct guild_storage_interface {
 	struct DBData (*create) (union DBKey key, va_list args);
 };
 
-#ifdef MAIN_CORE
 void storage_defaults(void);
 void gstorage_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct storage_interface *storage;
-HPShared struct guild_storage_interface *gstorage;
+extern struct storage_interface *storage;
+extern struct guild_storage_interface *gstorage;
 
 #endif /* MAP_STORAGE_H */

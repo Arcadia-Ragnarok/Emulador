@@ -457,13 +457,6 @@ void do_init_pc_groups(void) {
 			ShowError("do_init_pc_groups: %s error : %u != %u\n", pc_g_defaults[i].name, p, pc_g_defaults[i].permission);
 	}
 
-	/**
-	 * Handle plugin-provided permissions
-	 **/
-	for(i = 0; i < pcg->HPMpermissions_count; i++) {
-		*pcg->HPMpermissions[i].mask = pc_groups_add_permission(pcg->HPMpermissions[i].name);
-	}
-
 	pcg->db = idb_alloc(DB_OPT_RELEASE_DATA);
 	pcg->name_db = stridb_alloc(DB_OPT_DUP_KEY, 0);
 
@@ -538,9 +531,6 @@ void pc_groups_defaults(void) {
 	/* */
 	pcg->permissions = NULL;
 	pcg->permission_count = 0;
-	/* */
-	pcg->HPMpermissions = NULL;
-	pcg->HPMpermissions_count = 0;
 	/* */
 	pcg->init = do_init_pc_groups;
 	pcg->final = do_final_pc_groups;

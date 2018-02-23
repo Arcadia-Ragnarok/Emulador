@@ -26,13 +26,12 @@
 #include "map/map.h" // struct block_list
 #include "map/status.h" // struct status_change
 #include "map/unit.h" // struct unit_data
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 
 #include <pcre.h>
 
 /* Forward declarations */
-struct hplugin_data_store;
 struct itemlist; // map/itemdb.h
 struct view_data;
 
@@ -124,7 +123,6 @@ struct npc_data {
 			char killer_name[NPC_NAME_LENGTH];
 		} tomb;
 	} u;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 #define START_NPC_NUM 110000000
@@ -318,11 +316,8 @@ struct npc_interface {
 	int (*secure_timeout_timer) (int tid, int64 tick, int id, intptr_t data);
 };
 
-#ifdef MAIN_CORE
 void npc_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct npc_interface *npc;
+extern struct npc_interface *npc;
 
 /**
  * Structure containing all info associated with a single pattern block
@@ -384,11 +379,9 @@ struct pcre_interface {
 /**
  * Also defaults libpcre
  **/
-#ifdef MAIN_CORE
 void npc_chat_defaults(void);
-#endif // MAIN_CORE
 
-HPShared struct npc_chat_interface *npc_chat;
-HPShared struct pcre_interface *libpcre;
+extern struct npc_chat_interface *npc_chat;
+extern struct pcre_interface *libpcre;
 
 #endif /* MAP_NPC_H */

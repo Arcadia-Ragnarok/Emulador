@@ -24,7 +24,7 @@
 #define MAP_RODEX_H
 
 #include "common/mmo.h"
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #define RODEX_WEIGHT_LIMIT (2000 * 10)
 
@@ -79,10 +79,7 @@ struct rodex_interface {
 	void (*clean) (struct map_session_data *sd, int8 flag);
 };
 
-#ifdef MAIN_CORE
 void rodex_defaults(void);
-#endif
-
-HPShared struct rodex_interface *rodex;
+extern struct rodex_interface *rodex;
 
 #endif

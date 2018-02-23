@@ -38,7 +38,7 @@
 #include "map/vending.h" // struct s_vending
 #include "common/db.h"
 #include "common/ers.h" // struct eri
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h" // JOB_*, MAX_FAME_LIST, struct fame_list, struct mmo_charstatus, NEW_CARTS
 
 /**
@@ -583,7 +583,6 @@ END_ZEROED_BLOCK;
 	unsigned short (*parse_cmd_func)(int fd, struct map_session_data *sd); ///< parse_cmd_func used by this player
 
 	unsigned char delayed_damage;//ref. counter bugreport:7307 [Ind]
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 
 	/* expiration_time timer id */
 	int expiration_tid;
@@ -788,7 +787,6 @@ struct autotrade_vending {
 	struct item list[MAX_VENDING];
 	struct s_vending vending[MAX_VENDING];
 	unsigned char vend_num;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 /*=====================================
@@ -1113,10 +1111,7 @@ END_ZEROED_BLOCK; /* End */
 	bool (*check_basicskill) (struct map_session_data *sd, int level);
 };
 
-#ifdef MAIN_CORE
 void pc_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct pc_interface *pc;
+extern struct pc_interface *pc;
 
 #endif /* MAP_PC_H */

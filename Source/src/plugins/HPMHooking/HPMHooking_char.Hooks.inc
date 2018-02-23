@@ -4359,60 +4359,6 @@ bool HP_chr_config_read(const char *filename, bool imported) {
 	}
 	return retVal___;
 }
-bool HP_chr_config_read_database(const char *filename, const struct config_t *config, bool imported) {
-	int hIndex = 0;
-	bool retVal___ = false;
-	if (HPMHooks.count.HP_chr_config_read_database_pre > 0) {
-		bool (*preHookFunc) (const char **filename, const struct config_t **config, bool *imported);
-		*HPMforce_return = false;
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_database_pre; hIndex++) {
-			preHookFunc = HPMHooks.list.HP_chr_config_read_database_pre[hIndex].func;
-			retVal___ = preHookFunc(&filename, &config, &imported);
-		}
-		if (*HPMforce_return) {
-			*HPMforce_return = false;
-			return retVal___;
-		}
-	}
-	{
-		retVal___ = HPMHooks.source.chr.config_read_database(filename, config, imported);
-	}
-	if (HPMHooks.count.HP_chr_config_read_database_post > 0) {
-		bool (*postHookFunc) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_database_post; hIndex++) {
-			postHookFunc = HPMHooks.list.HP_chr_config_read_database_post[hIndex].func;
-			retVal___ = postHookFunc(retVal___, filename, config, imported);
-		}
-	}
-	return retVal___;
-}
-bool HP_chr_config_read_console(const char *filename, const struct config_t *config, bool imported) {
-	int hIndex = 0;
-	bool retVal___ = false;
-	if (HPMHooks.count.HP_chr_config_read_console_pre > 0) {
-		bool (*preHookFunc) (const char **filename, const struct config_t **config, bool *imported);
-		*HPMforce_return = false;
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_console_pre; hIndex++) {
-			preHookFunc = HPMHooks.list.HP_chr_config_read_console_pre[hIndex].func;
-			retVal___ = preHookFunc(&filename, &config, &imported);
-		}
-		if (*HPMforce_return) {
-			*HPMforce_return = false;
-			return retVal___;
-		}
-	}
-	{
-		retVal___ = HPMHooks.source.chr.config_read_console(filename, config, imported);
-	}
-	if (HPMHooks.count.HP_chr_config_read_console_post > 0) {
-		bool (*postHookFunc) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_chr_config_read_console_post; hIndex++) {
-			postHookFunc = HPMHooks.list.HP_chr_config_read_console_post[hIndex].func;
-			retVal___ = postHookFunc(retVal___, filename, config, imported);
-		}
-	}
-	return retVal___;
-}
 bool HP_chr_config_read_player_fame(const char *filename, const struct config_t *config, bool imported) {
 	int hIndex = 0;
 	bool retVal___ = false;
@@ -7063,33 +7009,6 @@ bool HP_inter_config_read_log(const char *filename, const struct config_t *confi
 		bool (*postHookFunc) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 		for (hIndex = 0; hIndex < HPMHooks.count.HP_inter_config_read_log_post; hIndex++) {
 			postHookFunc = HPMHooks.list.HP_inter_config_read_log_post[hIndex].func;
-			retVal___ = postHookFunc(retVal___, filename, config, imported);
-		}
-	}
-	return retVal___;
-}
-bool HP_inter_config_read_connection(const char *filename, const struct config_t *config, bool imported) {
-	int hIndex = 0;
-	bool retVal___ = false;
-	if (HPMHooks.count.HP_inter_config_read_connection_pre > 0) {
-		bool (*preHookFunc) (const char **filename, const struct config_t **config, bool *imported);
-		*HPMforce_return = false;
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_inter_config_read_connection_pre; hIndex++) {
-			preHookFunc = HPMHooks.list.HP_inter_config_read_connection_pre[hIndex].func;
-			retVal___ = preHookFunc(&filename, &config, &imported);
-		}
-		if (*HPMforce_return) {
-			*HPMforce_return = false;
-			return retVal___;
-		}
-	}
-	{
-		retVal___ = HPMHooks.source.inter.config_read_connection(filename, config, imported);
-	}
-	if (HPMHooks.count.HP_inter_config_read_connection_post > 0) {
-		bool (*postHookFunc) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-		for (hIndex = 0; hIndex < HPMHooks.count.HP_inter_config_read_connection_post; hIndex++) {
-			postHookFunc = HPMHooks.list.HP_inter_config_read_connection_post[hIndex].func;
 			retVal___ = postHookFunc(retVal___, filename, config, imported);
 		}
 	}

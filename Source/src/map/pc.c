@@ -58,7 +58,6 @@
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/core.h" // get_svn_revision()
-#include "common/HPM.h"
 #include "common/memmgr.h"
 #include "common/mmo.h" // NAME_LENGTH, MAX_CARTS, NEW_CARTS
 #include "common/nullpo.h"
@@ -11807,8 +11806,6 @@ void pc_autotrade_populate(struct map_session_data *sd) {
 
 	pc->autotrade_update(sd,PAUC_START);
 
-	HPM->data_store_destroy(&data->hdata);
-
 	idb_remove(pc->at_db, sd->status.char_id);
 }
 
@@ -11819,7 +11816,6 @@ int pc_autotrade_final(union DBKey key, struct DBData *data, va_list ap)
 {
 	struct autotrade_vending* at_v = DB->data2ptr(data);
 	nullpo_ret(at_v);
-	HPM->data_store_destroy(&at_v->hdata);
 	return 0;
 }
 

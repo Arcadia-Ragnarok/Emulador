@@ -20773,17 +20773,7 @@ void skill_validate_unit_flag(struct config_setting_t *conf, struct s_skill_db *
 		}
 	}
 }
-/**
- * Validate additional field settings via plugins
- * when parsing SkillList.conf
- * @param   conf    struct, pointer to the skill configuration
- * @param   sk      struct, struct, pointer to s_skill_db
- * @return  (void)
- */
-void skill_validate_additional_fields(struct config_setting_t *conf, struct s_skill_db *sk)
-{
-	// Does nothing like a boss. *cough* plugins *cough*
-}
+
 
 /**
  * Validates a skill entry and adds it to the database. [ Smokexyz ]
@@ -21053,9 +21043,6 @@ bool skill_read_skilldb(const char *filename)
 			/* Target */
 			skill->validate_unit_target(t, &tmp_db);
 		}
-
-		/* Additional Fields for Plugins */
-		skill->validate_additional_fields(conf, &tmp_db);
 
 		// Validate the skill entry, add it to the duplicate array and increment count on success.
 		if ((duplicate[idx] = skill->validate_skilldb(&tmp_db, filepath)))
@@ -21412,7 +21399,6 @@ void skill_defaults(void)
 	skill->validate_item_requirements = skill_validate_item_requirements;
 	skill->validate_unit_target = skill_validate_unit_target;
 	skill->validate_unit_flag = skill_validate_unit_flag;
-	skill->validate_additional_fields = skill_validate_additional_fields;
 	skill->validate_skilldb = skill_validate_skilldb;
 	skill->validate_weapontype_sub = skill_validate_weapontype_sub;
 	skill->validate_ammotype_sub = skill_validate_ammotype_sub;

@@ -23,7 +23,7 @@
 #ifndef MAP_QUEST_H
 #define MAP_QUEST_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h" // enum quest_state
 
 /* Forward Declarations */
@@ -83,10 +83,7 @@ struct quest_interface {
 	struct quest_db *(*read_db_sub) (struct config_setting_t *cs, int n, const char *source);
 };
 
-#ifdef MAIN_CORE
 void quest_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct quest_interface *quest;
+extern struct quest_interface *quest;
 
 #endif /* MAP_QUEST_H */

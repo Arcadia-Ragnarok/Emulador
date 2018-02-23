@@ -653,10 +653,6 @@ typedef bool (*HPMHOOK_pre_chr_sql_config_read_guild) (const char **filename, co
 typedef bool (*HPMHOOK_post_chr_sql_config_read_guild) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 typedef bool (*HPMHOOK_pre_chr_config_read) (const char **filename, bool *imported);
 typedef bool (*HPMHOOK_post_chr_config_read) (bool retVal___, const char *filename, bool imported);
-typedef bool (*HPMHOOK_pre_chr_config_read_database) (const char **filename, const struct config_t **config, bool *imported);
-typedef bool (*HPMHOOK_post_chr_config_read_database) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-typedef bool (*HPMHOOK_pre_chr_config_read_console) (const char **filename, const struct config_t **config, bool *imported);
-typedef bool (*HPMHOOK_post_chr_config_read_console) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 typedef bool (*HPMHOOK_pre_chr_config_read_player_fame) (const char **filename, const struct config_t **config, bool *imported);
 typedef bool (*HPMHOOK_post_chr_config_read_player_fame) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 typedef bool (*HPMHOOK_pre_chr_config_read_player_deletion) (const char **filename, const struct config_t **config, bool *imported);
@@ -2921,8 +2917,6 @@ typedef bool (*HPMHOOK_pre_inter_config_read) (const char **filename, bool *impo
 typedef bool (*HPMHOOK_post_inter_config_read) (bool retVal___, const char *filename, bool imported);
 typedef bool (*HPMHOOK_pre_inter_config_read_log) (const char **filename, const struct config_t **config, bool *imported);
 typedef bool (*HPMHOOK_post_inter_config_read_log) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-typedef bool (*HPMHOOK_pre_inter_config_read_connection) (const char **filename, const struct config_t **config, bool *imported);
-typedef bool (*HPMHOOK_post_inter_config_read_connection) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 #endif // CHAR_INTER_H
 #ifdef CHAR_INT_MAIL_H /* inter_mail */
 typedef int (*HPMHOOK_pre_inter_mail_sql_init) (void);
@@ -4123,10 +4117,6 @@ typedef bool (*HPMHOOK_pre_map_read_npclist) (const char **filename, bool *impor
 typedef bool (*HPMHOOK_post_map_read_npclist) (bool retVal___, const char *filename, bool imported);
 typedef bool (*HPMHOOK_pre_map_inter_config_read) (const char **filename, bool *imported);
 typedef bool (*HPMHOOK_post_map_inter_config_read) (bool retVal___, const char *filename, bool imported);
-typedef bool (*HPMHOOK_pre_map_inter_config_read_database_names) (const char **filename, const struct config_t **config, bool *imported);
-typedef bool (*HPMHOOK_post_map_inter_config_read_database_names) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
-typedef bool (*HPMHOOK_pre_map_inter_config_read_connection) (const char **filename, const struct config_t **config, bool *imported);
-typedef bool (*HPMHOOK_post_map_inter_config_read_connection) (bool retVal___, const char *filename, const struct config_t *config, bool imported);
 typedef int (*HPMHOOK_pre_map_sql_init) (void);
 typedef int (*HPMHOOK_post_map_sql_init) (int retVal___);
 typedef int (*HPMHOOK_pre_map_sql_close) (void);

@@ -23,7 +23,8 @@
 #ifndef MAP_LOG_H
 #define MAP_LOG_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
+#include "common/sql.h"
 
 /**
  * Declarations
@@ -149,7 +150,7 @@ struct log_interface {
 	void (*branch_sub) (struct map_session_data* sd);
 	void (*mvpdrop_sub) (struct map_session_data* sd, int monster_id, int* log_mvp);
 
-	bool (*config_read) (const char *filename, bool imported);
+	bool (*config_read) (const char *filename);
 	void (*config_done) (void);
 	void (*sql_init) (void);
 	void (*sql_final) (void);
@@ -159,10 +160,7 @@ struct log_interface {
 	bool (*should_log_item) (int nameid, int amount, int refine, struct item_data *id);
 };
 
-#ifdef MAIN_CORE
 void log_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct log_interface *logs;
+extern struct log_interface *logs;
 
 #endif /* MAP_LOG_H */
