@@ -23,8 +23,6 @@
 #ifndef LOGIN_LCLIF_H
 #define LOGIN_LCLIF_H
 
-//#include "common/HPExport.h"
-
 //#include "common/cbasetypes.h"
 #include "login/login.h"
 /** @file

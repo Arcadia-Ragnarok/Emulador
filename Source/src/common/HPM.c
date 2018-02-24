@@ -41,7 +41,6 @@
 #include "common/timer.h"
 #include "common/utils.h"
 #include "common/nullpo.h"
-#include "plugins/HPMHooking.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,7 +54,6 @@ struct malloc_interface iMalloc_HPM;
 struct malloc_interface *HPMiMalloc;
 struct HPM_interface HPM_s;
 struct HPM_interface *HPM;
-struct HPMHooking_core_interface HPMHooking_core_s;
 
 /**
  * (char*) data name -> (unsigned int) HPMDataCheck[] index
@@ -349,16 +347,6 @@ void hplugins_removeFromHPData(enum HPluginDataTypes type, uint32 pluginID, stru
 /* TODO: add ability for tracking using pID for the upcoming runtime load/unload support. */
 bool HPM_AddHook(enum HPluginHookType type, const char *target, void *hook, unsigned int pID)
 {
-	if (!HPM->hooking->enabled) {
-		ShowError("HPM:AddHook Fail! '%s' tried to hook to '%s' but HPMHooking is disabled!\n",HPM->pid2name(pID),target);
-		return false;
-	}
-	/* search if target is a known hook point within 'common' */
-	/* if not check if a sub-hooking list is available (from the server) and run it by */
-	if (HPM->hooking->addhook_sub != NULL && HPM->hooking->addhook_sub(type,target,hook,pID))
-		return true;
-
-	ShowError("HPM:AddHook: unknown Hooking Point '%s'!\n",target);
 
 	return false;
 }
@@ -366,12 +354,10 @@ bool HPM_AddHook(enum HPluginHookType type, const char *target, void *hook, unsi
 void HPM_HookStop(const char *func, unsigned int pID)
 {
 	/* track? */
-	HPM->hooking->force_return = true;
 }
 
 bool HPM_HookStopped(void)
 {
-	return HPM->hooking->force_return;
 }
 
 /**
@@ -581,18 +567,9 @@ struct hplugin *hplugin_load(const char* filename)
 	plugin->hpi->removeFromHPData   = hplugins_removeFromHPData;
 	plugin->hpi->addArg             = hpm_add_arg;
 	plugin->hpi->addConf            = hplugins_addconf;
-	if ((plugin->hpi->hooking = plugin_import(plugin->dll, "HPMHooking_s", struct HPMHooking_interface *)) != NULL) {
-		plugin->hpi->hooking->AddHook     = HPM_AddHook;
-		plugin->hpi->hooking->HookStop    = HPM_HookStop;
-		plugin->hpi->hooking->HookStopped = HPM_HookStopped;
-	}
 	/* server specific */
 	if( HPM->load_sub )
 		HPM->load_sub(plugin);
-
-	ShowStatus("HPM: Loaded plugin '"CL_WHITE"%s"CL_RESET"' (%s)%s.\n",
-			plugin->info->name, plugin->info->version,
-			plugin->hpi->hooking != NULL ? " built with HPMHooking support" : "");
 
 	return plugin;
 }
@@ -652,7 +629,6 @@ void hplugins_config_read(void)
 	if (plist != NULL) {
 		int length = libconfig->setting_length(plist);
 		char filename[60];
-		char hooking_plugin_name[32];
 		const char *plugin_name_suffix = "";
 		if (SERVER_TYPE == SERVER_TYPE_LOGIN)
 			plugin_name_suffix = "_login";
@@ -660,34 +636,11 @@ void hplugins_config_read(void)
 			plugin_name_suffix = "_char";
 		else if (SERVER_TYPE == SERVER_TYPE_MAP)
 			plugin_name_suffix = "_map";
-		snprintf(hooking_plugin_name, sizeof(hooking_plugin_name), "HPMHooking%s", plugin_name_suffix);
 
 		for (i = 0; i < length; i++) {
 			const char *plugin_name = libconfig->setting_get_string_elem(plist,i);
-			if (strcmpi(plugin_name, "HPMHooking") == 0 || strcmpi(plugin_name, hooking_plugin_name) == 0) { //must load it first
-				struct hplugin *plugin;
-				snprintf(filename, 60, "plugins/%s%s", hooking_plugin_name, DLL_EXT);
-				if ((plugin = HPM->load(filename))) {
-					const char * (*func)(bool *fr);
-					bool (*addhook_sub) (enum HPluginHookType type, const char *target, void *hook, unsigned int pID);
-					if ((func = plugin_import(plugin->dll, "Hooked",const char * (*)(bool *))) != NULL
-					 && (addhook_sub = plugin_import(plugin->dll, "HPM_Plugin_AddHook",bool (*)(enum HPluginHookType, const char *, void *, unsigned int))) != NULL) {
-						const char *failed = func(&HPM->hooking->force_return);
-						if (failed) {
-							ShowError("HPM: failed to retrieve '%s' for '"CL_WHITE"%s"CL_RESET"'!\n", failed, plugin_name);
-						} else {
-							HPM->hooking->enabled = true;
-							HPM->hooking->addhook_sub = addhook_sub;
-							HPM->hooking->Hooked = func; // The purpose of this is type-checking 'func' at compile time.
-						}
-					}
-				}
-				break;
-			}
 		}
 		for (i = 0; i < length; i++) {
-			if (strncmpi(libconfig->setting_get_string_elem(plist,i),"HPMHooking", 10) == 0) // Already loaded, skip
-				continue;
 			snprintf(filename, 60, "plugins/%s%s", libconfig->setting_get_string_elem(plist,i), DLL_EXT);
 			HPM->load(filename);
 		}
@@ -731,28 +684,8 @@ CPCMD(plugins)
  * @retval 1 OK
  * @retval 2 incomplete packet
  */
-unsigned char hplugins_parse_packets(int fd, int packet_id, enum HPluginPacketHookingPoints point)
+unsigned char hplugins_parse_packets(int fd, int packet_id)
 {
-	struct HPluginPacket *packet = NULL;
-	int i;
-	int16 length;
-
-	ARR_FIND(0, VECTOR_LENGTH(HPM->packets[point]), i, VECTOR_INDEX(HPM->packets[point], i).cmd == packet_id);
-
-	if (i == VECTOR_LENGTH(HPM->packets[point]))
-		return 0;
-
-	packet = &VECTOR_INDEX(HPM->packets[point], i);
-	length = packet->len;
-	if (length == -1)
-		length = RFIFOW(fd, 2);
-
-	if (length > (int)RFIFOREST(fd))
-		return 2;
-
-	packet->receive(fd);
-	RFIFOSKIP(fd, length);
-	return 1;
 }
 
 /**
@@ -1174,7 +1107,6 @@ void hpm_final(void)
 void hpm_defaults(void)
 {
 	HPM = &HPM_s;
-	HPM->hooking = &HPMHooking_core_s;
 
 	memset(&HPM->filenames, 0, sizeof(HPM->filenames));
 	VECTOR_INIT(HPM->cmdline_load_plugins);
@@ -1192,7 +1124,6 @@ void hpm_defaults(void)
 	HPM->share = hplugin_export_symbol;
 	HPM->config_read = hplugins_config_read;
 	HPM->pid2name = hplugins_id2name;
-	HPM->parse_packets = hplugins_parse_packets;
 	HPM->load_sub = NULL;
 	HPM->parse_conf_entry = hplugins_parse_conf_entry;
 	HPM->parse_conf = hplugins_parse_conf;
@@ -1207,8 +1138,4 @@ void hpm_defaults(void)
 	HPM->data_store_validate = hplugin_data_store_validate;
 	HPM->data_store_validate_sub = NULL;
 
-	HPM->hooking->enabled = false;
-	HPM->hooking->force_return = false;
-	HPM->hooking->addhook_sub = NULL;
-	HPM->hooking->Hooked = NULL;
 }

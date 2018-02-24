@@ -25,7 +25,6 @@
 
 #include "map/map.h"
 #include "map/packets_struct.h"
-#include "common/HPExport.h"
 #include "common/mmo.h"
 
 #include <stdarg.h>
@@ -1409,10 +1408,7 @@ struct clif_interface {
 	void (*skill_scale) (struct block_list *bl, int src_id, int x, int y, uint16 skill_id, uint16 skill_lv, int casttime);
 };
 
-#ifdef MAIN_CORE
 void clif_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct clif_interface *clif;
+extern struct clif_interface *clif;
 
 #endif /* MAP_CLIF_H */

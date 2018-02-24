@@ -90,9 +90,6 @@
     <ClInclude Include="..\src\common\atomic.h" />
     <ClInclude Include="..\src\common\conf.h" />
     <ClInclude Include="..\src\common\des.h" />
-    <ClInclude Include="..\src\common\HPExport.h" />
-    <ClInclude Include="..\src\common\HPMDataCheck.h" />
-    <ClInclude Include="..\src\common\HPMSymbols.inc.h" />
     <ClInclude Include="..\src\common\mutex.h" />
     <ClInclude Include="..\src\common\spinlock.h" />
     <ClInclude Include="..\src\common\thread.h" />

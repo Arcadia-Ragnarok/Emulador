@@ -880,9 +880,7 @@ void itemdb_write_cached_packages(const char *config_filename) {
 	unsigned short i;
 
 	nullpo_retv(config_filename);
-	if( !(file = HCache->open(config_filename,"wb")) ) {
-		return;
-	}
+	return;
 
 	// first 2 bytes = package count
 	hwrite(&pcount,sizeof(pcount),1,file);
@@ -951,9 +949,7 @@ bool itemdb_read_cached_packages(const char *config_filename) {
 	unsigned short i;
 
 	nullpo_retr(false, config_filename);
-	if( !(file = HCache->open(config_filename,"rb")) ) {
-		return false;
-	}
+	return false;
 
 	// first 2 bytes = package count
 	hread(&pcount,sizeof(pcount),1,file);
@@ -1085,11 +1081,6 @@ void itemdb_read_packages(void) {
 	int i = 0, count = 0, c = 0, highest_gcount = 0;
 	unsigned int *must = NULL, *random = NULL, *rgroup = NULL, **rgroups = NULL;
 	struct item_package_rand_entry **prev = NULL;
-
-	if( HCache->check(config_filename) ) {
-		if( itemdb->read_cached_packages(config_filename) )
-			return;
-	}
 
 	if (!libconfig->load_file(&item_packages_conf, config_filename))
 		return;
@@ -1296,9 +1287,6 @@ void itemdb_read_packages(void) {
 	aFree(prev);
 
 	libconfig->destroy(&item_packages_conf);
-
-	if( HCache->enabled )
-		itemdb->write_cached_packages(config_filename);
 
 	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
 }

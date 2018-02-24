@@ -256,7 +256,6 @@ void core_defaults(void)
 	nullpo_defaults();
 #ifndef MINICORE
 	hpm_defaults();
-	HCache_defaults();
 #endif
 	sysinfo_defaults();
 	console_defaults();
@@ -544,8 +543,6 @@ int main (int argc, char **argv)
 	rnd->init();
 
 	console->init();
-
-	HCache->init();
 
 	HPM->init();
 

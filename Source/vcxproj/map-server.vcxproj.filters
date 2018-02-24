@@ -432,15 +432,6 @@
     <ClInclude Include="..\src\common\atomic.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\common\HPExport.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMDataCheck.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMSymbols.inc.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\common\spinlock.h">
       <Filter>common</Filter>
     </ClInclude>

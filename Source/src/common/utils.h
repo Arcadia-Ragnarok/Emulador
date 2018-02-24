@@ -20,18 +20,12 @@
 | - Caso não tenha recebido veja: http://www.gnu.org/licenses/      |
 \*-----------------------------------------------------------------*/
 
-#ifndef COMMON_UTILS_H
-#define COMMON_UTILS_H
-
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #include <stdio.h> // FILE*
 #ifndef WIN32
 #	include <unistd.h> // sleep()
 #endif
-
-/* [HCache] 1-byte key to ensure our method is the latest, we can modify to ensure the method matches */
-#define HCACHE_KEY 'k'
 
 //Caps values to min/max
 #define cap_value(a, min, max) (((a) >= (max)) ? (max) : ((a) <= (min)) ? (min) : (a))
@@ -82,21 +76,3 @@ size_t hwrite(const void * ptr, size_t size, size_t count, FILE * stream);
 #define HSleep(x) sleep(x)
 #endif
 
-/* Caching */
-struct HCache_interface {
-	void (*init) (void);
-	/* */
-	bool (*check) (const char *file);
-	FILE *(*open) (const char *file, const char *opt);
-	/* */
-	time_t recompile_time;
-	bool enabled;
-};
-
-#ifdef MAIN_CORE
-void HCache_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct HCache_interface *HCache;
-
-#endif /* COMMON_UTILS_H */

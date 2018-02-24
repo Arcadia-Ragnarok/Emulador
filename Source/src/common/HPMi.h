@@ -23,7 +23,6 @@
 #ifndef COMMON_HPMI_H
 #define COMMON_HPMI_H
 
-#include "common/HPExport.h"
 #include "common/console.h"
 #include "common/core.h"
 #include "common/showmsg.h"

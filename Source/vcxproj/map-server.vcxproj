@@ -93,11 +93,8 @@
     <ClInclude Include="..\src\common\des.h" />
     <ClInclude Include="..\src\common\ers.h" />
     <ClInclude Include="..\src\common\grfio.h" />
-    <ClInclude Include="..\src\common\HPExport.h" />
     <ClInclude Include="..\src\common\HPM.h" />
-    <ClInclude Include="..\src\common\HPMDataCheck.h" />
     <ClInclude Include="..\src\common\HPMi.h" />
-    <ClInclude Include="..\src\common\HPMSymbols.inc.h" />
     <ClInclude Include="..\src\common\memmgr.h" />
     <ClInclude Include="..\src\common\mapindex.h" />
     <ClInclude Include="..\src\common\md5calc.h" />

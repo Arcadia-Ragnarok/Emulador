@@ -23,7 +23,6 @@
 #ifndef COMMON_CORE_H
 #define COMMON_CORE_H
 
-#include "common/HPExport.h"
 #include "common/db.h"
 
 /* so that developers with --enable-debug can raise signals from any section of the code they'd like */
@@ -108,7 +107,7 @@ extern int do_final(void);
 void cmdline_defaults(void);
 #endif // MAIN_CORE
 
-HPShared struct core_interface *core;
-HPShared struct cmdline_interface *cmdline;
+extern struct core_interface *core;
+extern struct cmdline_interface *cmdline;
 
 #endif /* COMMON_CORE_H */
