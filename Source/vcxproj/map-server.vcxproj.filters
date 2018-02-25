@@ -130,9 +130,6 @@
     <ClCompile Include="..\src\common\grfio.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\HPM.c">
-      <Filter>common</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\common\memmgr.c">
       <Filter>common</Filter>
     </ClCompile>
@@ -340,12 +337,6 @@
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\grfio.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPM.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMi.h">
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\memmgr.h">

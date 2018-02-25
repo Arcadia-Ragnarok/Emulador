@@ -56,7 +56,6 @@
 #include "map/trade.h"
 #include "map/unit.h"
 #include "map/vending.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/ers.h"
@@ -19942,14 +19941,6 @@ int clif_parse(int fd) {
 			parse_cmd_func = clif->parse_cmd;
 
 		cmd = parse_cmd_func(fd,sd);
-
-		if (VECTOR_LENGTH(HPM->packets[hpClif_Parse]) > 0) {
-			int result = HPM->parse_packets(fd,cmd,hpClif_Parse);
-			if (result == 1)
-				continue;
-			if (result == 2)
-				return 0;
-		}
 
 		// filter out invalid / unsupported packets
 		if (cmd > MAX_PACKET_DB || cmd < MIN_PACKET_DB || packet_db[cmd].len == 0) {
