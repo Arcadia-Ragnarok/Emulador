@@ -19,13 +19,7 @@ Licença:
 O Arcadia nasceu devido a nenhum outro software semelhante atender os requisitos necessários para a criação de um
 futuro servidor.
 
-De desenvolvimento indepedente por spell master, esse emulador quando estiver pronto visa a deixar o 
-software 99% semelhante aos padrões dos servidores oficiais de ragnarok.
-Sua linha de desenvolvimento segue a deixar-lo semelhante ao bRO(Brasil Ragnarok Online).
-Seu código será limpo/liso usando somente o necessário, removendo uso de pacotes e funções que são usados.
-
-Na prática o Arcadia Emulador é um projeto de criação de um servidor de ragnarok onde seu
-desenvolvimento é mostrado abertamente.
+De desenvolvimento e uso pessoal.
 
 ```
 
@@ -42,25 +36,15 @@ desenvolvimento é mostrado abertamente.
 * Limpesa de databases. (Completado)
 * Remover scripts obsoletos. (Completado)
 * Remover todos módulos pré renovação. (Completado)
+* Remover arquivo obsoletos dos databases. (Completado)
 
+* Limpesa das sujeiras e má instruções no código fonte. (Em andamento)
 * Adesão dos scripts. (Em andamento)
 * Sincronizar 100% source, databases, scripts e client. (Em andamento)
+* Remover todos pacotes módulos não usados. (Em andamento)
 
-* Remover arquivo obsoletos dos databases. (A fazer)
-* Remover todos pacotes módulos não usados. (A fazer)
-* Limpesa do código fonte. (A fazer)
 * Iniciar testes maciços em busca de erros e solucionar. (A fazer)
 * Remover compatibilidade com windows e fixar no Linux. (A fazer)
 * Buscar e corrigir todos problemas com Linux. (A fazer)
 * Concluir o emulador. (A fazer)
 
-***
-
-#### Compilador - Windows: ([VS Express 2012 for Desktop](https://mega.nz/#!XYdxyZiY!K0zcnNIvgNBVGIfbQ8v5zYjhGM8NoVLxjNFrMYBvkSg))
-
-Senha para descompactar: ****_spell_****
-
->
-#### Sugestões, criticas e erros podem ser reportados aqui: https://github.com/Spell-Master/Arcadia/issues
-
-***
