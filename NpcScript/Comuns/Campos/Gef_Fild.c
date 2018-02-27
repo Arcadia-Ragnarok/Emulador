@@ -13,58 +13,31 @@
 \*-----------------------------------------------------------------*/
 
 gef_fild10,238,202,6	script	Cientista Maluco#orc	4_LGTSCIENCE,{
-	if (BaseLevel < 50) {
-		mes "O cientista parece não perceber a sua entrada e continua a resmungar para si mesmo.";
-		close;
-	}
-	mes "[Cientista Maluco]";
-	mes "Haha, nenhum orc está vindo me atacar!";
-	mes "O poder da Máquina do Tempo é invencível!!";
+	mes("[Cientista Maluco]\n Haha, nenhum orc está vindo me atacar!\n O poder da Máquina do Tempo é invencível!!");
 	next;
-	switch(select("Os orcs não te atacam?","Você só deseja isso...")) {
+	switch(select("Os orcs não te atacam?", "O faz aqui?!...")) {
 		case 1:
-		mes "[Cientista Maluco]";
-		mes "Pois é.. sei que é difícil de acreditar.";
-		mes "Mas eu não te culpo.";
-		mes "Eu comecei a estudar uma Máquina do Tempo, descoberta próximo de Morroc.";
-		mes "De acordo com a minha pesquisa.";
-		mes "Os minerais encontrados dentro dela contém extremo poder!";
+		mes("[Cientista Maluco]\n Pois é..\n Sei que é difícil de acreditar.\n Mas eu não te culpo.\n Eu comecei a estudar uma Máquina do Tempo, descoberta próximo de Morroc.\n De acordo com a minha pesquisa.\n Os minerais encontrados dentro dela contém extremo poder!");
 		next;
 		break;
 		case 2:
-		mes "[Cientista Maluco]";
-		mes "Você é uma pessoa bem desconfiada, né?";
+		mes("[Cientista Maluco]\n Você é uma pessoa bem desconfiada, né?");
 		next;
-		select("Nossa! Como... viagens para outras dimensões!?");
-		mes "[Cientista Maluco]";
-		mes "Muito espert"+(Sex == SEX_MALE ? "o" : "a")+"!";
-		mes "Na verdade eu só fiz isso!";
-		mes "Consegue ver aquela estátua ali?";
-		mes "Não é seu monolito natural!";
+		mes("[Cientista Maluco]\n Consegue ver aquela estátua ali?\n Não é seu monolito natural!");
 		next;
-		mes "[Cientista Maluco]";
-		mes "Eu a criei a partir de uma junção da nossa tecnologia com a energia ilimitada que encontrei!";
-		mes "Gostaria de tentar?";
+		mes("[Cientista Maluco]\n Eu a criei a partir de uma junção da nossa tecnologia com a energia ilimitada que encontrei!\n Gostaria de tentar?");
 		next;
 		select("... Hm, isso não seria ilegal?");
-		mes "[Cientista Maluco]";
-		mes "Como que algo tão interessante assim pode ser ilegal!?";
-		mes "Você pode falar com os orcs!!";
-		mes "Vamos lá!";
+		mes("[Cientista Maluco]\n Como que algo tão interessante assim pode ser ilegal!?\n Você pode falar com os orcs!!\n Vamos lá!");
 		next;
-		mes "[Cientista Maluco]";
-		mes "Provavelmente eles irão lhe dar milhões de instruções.";
-		mes "Uma vez que eles o verem vão sempre repetir a mesma coisa!";
+		mes("[Cientista Maluco]\n Provavelmente eles irão lhe dar milhões de instruções.\n Uma vez que eles o verem vão sempre repetir a mesma coisa!");
 		next;
-		switch(select("Ok... O quê eu faço?","Hmm, acho que não.")) {
+		switch(select("Ok... O quê eu faço?", "Hmm, acho que não")) {
 			case 1:
-			mes "[Cientista Maluco]";
-			mes "Muito bom!";
-			mes "Apenas coloque suas mãos na estátua e tente agir naturalmente enquanto estiver lá!";
+			mes("[Cientista Maluco]\n Muito bom!\n Apenas coloque suas mãos na estátua e tente agir naturalmente enquanto estiver lá!");
 			close;
 			case 2:
-			mes "[Cientista Maluco]";
-			mes "Tudo bem... então que assim seja!";
+			mes("[Cientista Maluco]\n Tudo bem...\n Então que assim seja!");
 			close;
 		}
 		break;

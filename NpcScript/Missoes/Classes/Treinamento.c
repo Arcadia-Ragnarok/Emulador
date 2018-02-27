@@ -214,7 +214,7 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		mes "Boa sorte!";
 		close2;
 		new_quest = 3;
-		getexp (100,5);
+		getexp (500,5);
 		changequest (7117,7118);
 		savepoint (strnpcinfo(NPC_MAP),100,100);
 		warp (strnpcinfo(NPC_MAP),100,100);
@@ -227,7 +227,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 	if (new_quest == 3) {
 		if (questprogress(7118)) {
 			completequest (7118);
-			getexp (300,10);
+			getexp (150,10);
 		}
 		mes "[Instrutor Brade]";
 		mes "Muito bom!";
@@ -321,7 +321,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			mes "Depois venha falar comigo novamente.";
 			if (questprogress(7118)) {
 				changequest (7119,7120);
-				getexp (600,20);
+				getexp (300,20);
 			}
 			new_quest = 5;
 			close;
@@ -358,7 +358,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		new_quest = 7;
 		if (questprogress(7120)) {
 			changequest (7120,7121);
-			getexp (1000,20);
+			getexp (500,20);
 		}
 		close;
 	} else if (new_quest == 7) {
@@ -762,7 +762,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 	} else if ((new_quest >= 12) && (new_quest < 17)) {
 		if (questprogress(7122,HUNTING) == 2) {
 			completequest (7122);
-			getexp (3000,0);
+			getexp (1500,0);
 			getitem (N_Cutter,1);
 			getitem (Novice_Potion,500);
 			npcskill ("AL_HEAL",11,99,99);
@@ -1032,7 +1032,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 					mes "Está aqui sua recompensa.";
 					completequest (7123);
 					getitem (Novice_Potion,200);
-					getexp (5000,100);
+					getexp (2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
@@ -1177,7 +1177,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					mes "Está aqui sua recompensa.";
 					completequest (7124);
 					getitem (N_Butterfly_Wing,60);
-					getexp (5000,100);
+					getexp (2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
@@ -1316,7 +1316,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					mes "Está aqui sua recompensa.";
 					completequest (7126);
 					getitem (Novice_Potion,500);
-					getexp (5000,100);
+					getexp (2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você acumular os 300 Zenys.";
@@ -1458,7 +1458,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 					mes "Está aqui sua recompensa.";
 					completequest (7127);
 					getitem (N_Fly_Wing,100);
-					getexp (5000,100);
+					getexp (2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";

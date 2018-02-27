@@ -13,23 +13,17 @@
 \*-----------------------------------------------------------------*/
 
 ice_dun04,33,166,3	script	Garoto congelado#ice	4_M_FROZEN,{
-	cutin ("ra_sboy.bmp",2);
-	mes "["+strcharinfo(PC_NAME)+"]";
-	mes "Este garoto deve ser o que Ktullanux tenta proteger.";
+	cutin("ra_sboy.bmp", 2);
+	mes("[" + strcharinfo(PC_NAME) + "]\n Este garoto deve ser o que Ktullanux tenta proteger.");
 	next;
-	mes "- O garoto está congelado dentro de uma grande pedra de gelo e parece mais que ele está dormindo do que morto. -";
+	mes("^777777O garoto está congelado dentro de uma grande pedra de gelo e parece mais que ele está dormindo do que morto -^000000");
 	next;
-	mes "- Você se sente congelando ao se aproximar da grande pedra de gelo que prende o garoto,";
-	mes "- mas por alguma razão, você sente uma força misteriosa vindo da pedra. -";
+	mes("^777777Você se sente congelando ao se aproximar da grande pedra de gelo que prende o garoto mas por alguma razão, você sente uma força misteriosa vindo da pedra^000000.");
 	next;
-	mes "- O garoto parece ser branco como a neve, e bonito da cabeça aos pés. -";
+	mes("^777777O garoto parece ser branco como a neve, e bonito da cabeça aos pés^000000.");
 	next;
-	mes "- Você se pergunta porquê um jovem garoto teve de ser confinado nesta caverna isolada, -";
-	mes "- você instintivamente sabe que nenhuma magia no mundo seria capaz de libertá-lo desta pedra de gelo. -";
+	mes("^777777Você se pergunta porquê um jovem garoto teve de ser confinado nesta caverna isolada,\n você instintivamente sabe que nenhuma magia no mundo seria capaz de libertá-lo desta pedra de gelo^000000.");
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
-	mes "O que aconteceu a este garoto?";
-	close2;
-	cutin ("",255);
-	end;
+	mes("[" + strcharinfo(PC_NAME) + "]\n O que aconteceu a este garoto?");
+	close2; cutin("", 255); end;
 }

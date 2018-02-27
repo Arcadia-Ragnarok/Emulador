@@ -16,414 +16,210 @@
 // - [ Ruas ] -
 // ------------------------------------------------------------------
 comodo,171,137,1	script	Haith#com::cmdla	4_F_03,{
-	mes "[La Ed]";
-	mes "Deve haver um tesouro escondido naquele lugar!";
+	mes("[La Ed]\n Deve haver um tesouro escondido naquele lugar!");
 	next;
-	mes "[Haith]";
-	mes "Se nós acharmos ele, as pessoas não pensaram mais que somos perdedores~!!";
+	mes("[Haith]\n Se nós acharmos ele, as pessoas não pensaram mais que somos perdedores!!");
 	next;
-	mes "[La Ed]";
-	mes "Finalmente!";
+	mes("[La Ed]\n Finalmente!");
 	next;
-	mes "[Haith]";
-	mes "Vamos encontrar o tesouro!";
+	mes("[Haith]\n Vamos encontrar o tesouro!");
 	next;
-	mes "[La Ed]";
-	mes "Vamos fazer isso~!!";
-	emotion e_gg;
+	mes("[La Ed]\n Vamos fazer isso!!");
+	emotion(e_gg);
 	next;
-	mes "[Haith]";
-	mes "................";
+	mes("[Haith]\n ................");
 	next;
-	mes "[La Ed]";
-	mes "A propósito... você acha que ele iria nos falar facilmente sobre";
-	mes "o grande tesouro?";
-	emotion (e_hmm);
-	emotion (e_hmm,0,"La Ed#com");
+	mes("[La Ed]\n A propósito...\n Você acha que ele iria nos falar facilmente sobre o grande tesouro?");
+	emotion(e_hmm);
+	emotion(e_hmm, 0, "La Ed#com");
 	next;
 	select("Hm? Que tesouro?");
-	mes "[La Ed]";
-	mes "Quê--?!";
-	mes "Quando você começou a nos escutar?!";
+	mes("[La Ed]\n Quê...?!\n Quando você começou a nos escutar?!");
 	next;
-	mes "[Haith]";
-	mes "Hã... parece que você que saber mais sobre o tesouro.";
-	mes "Bem, essa informação não sairá barata...";
-	emotion (e_gg);
+	mes("[Haith]\n Hã... parece que você que saber mais sobre o tesouro.\n Bem, essa informação não sairá barata...");
+	emotion(e_gg);
 	next;
-	mes "[La Ed]";
-	mes "Além disso, precisamos de um pouco, uma coisa no caso de...";
-	mes "*tosse!*";
-	mes "^555555Nós não acharmos absolutamente nada.^000000";
+	mes("[La Ed]\n Além disso, precisamos de um pouco, uma coisa no caso de...\n *tosse!*\n ^555555Nós não acharmos absolutamente nada.^000000");
 	next;
-	mes "[La Ed, Haith]";
-	mes "Se você nos pagar 1,000 Zenys, nós falamos para você!";
-	emotion (e_gg);
-	emotion (e_gg,0,"La Ed#um");
+	mes("[La Ed, Haith]\n Se você nos pagar 1,000 Zenys, nós falamos para você!");
+	emotion(e_gg);
+	emotion(e_gg, 0, "La Ed#um");
 	next;
-	if (select("Ouvir Mais","Sair") == 1) {
-		mes "[Haith]";
-		mes "Hahahaha! Você é o cara!";
+	if (select("Ouvir Mais", "Sair") == 1) {
+		mes("[Haith]\n Hahahaha!\n Você é o cara!");
 		next;
-		mes "[La Ed]";
-		mes "Ok, não muito tempo atrás, um famoso aventureiro chamado Niels voltou de uma de suas viagens.";
+		mes("[La Ed]\n Ok, não muito tempo atrás, um famoso aventureiro chamado Niels voltou de uma de suas viagens.");
 		next;
-		mes "[Haith]";
-		mes "*Sussurros*";
-		mes "^555555Ele trouxe consigo uma caixa enorme.^000000";
+		mes("[Haith]\n *Sussurros*\n ^555555Ele trouxe consigo uma caixa enorme.^000000");
 		next;
-		mes "[La Ed]";
-		mes "Além disso, ele voltou no meio da noite sem ter falado nada a ninguém.";
-		mes "Então, evidentemente que ele tem algum segredo, não acha?";
+		mes("[La Ed]\n Além disso, ele voltou no meio da noite sem ter falado nada a ninguém.\n Então, evidentemente que ele tem algum segredo, não acha?");
 		next;
-		mes "[Haith]";
-		mes "O que poderia estar dentro da caixa.?";
-		mes "Só pode ser um tesouro!!";
+		mes("[Haith]\n O que poderia estar dentro da caixa?\n Só pode ser um tesouro!!");
 		next;
-		mes "[La Ed]";
-		mes "Então! Nós decidimos ir em uma jornada atrás do nosso próprio tesouro-!!";
+		mes("[La Ed]\n Então!\n Nós decidimos ir em uma jornada atrás do nosso próprio tesouro!!");
 		next;
-		mes "[Haith]";
-		mes "O problema é que nós não temos certeza de que o Niels vá nos dizer onde ele encontrou o tesouro...";
-		emotion (e_hmm);
+		mes("[Haith]\n O problema é que nós não temos certeza de que o Niels vá nos dizer onde ele encontrou o tesouro...");
+		emotion(e_hmm);
 		next;
-		mes "[La Ed]";
-		mes "Porque o Niels sempre nos trata como se nós fomossemos estúpidos!!";
-		mes "Bah!!";
+		mes("[La Ed]\n Porque o Niels sempre nos trata como se nós fomossemos estúpidos!!\n Bah!!");
 		next;
 		select("Onde está o Niels?");
-		mes "[La Ed]";
-		mes "Ele está hospedado na parte norte desta vila.";
+		mes("[La Ed]\n Ele está hospedado na parte norte desta vila.");
 		next;
-		mes "[Haith]";
-		mes "Nós vamos lhe dar boas informações, desde que nos pague!";
+		mes("[Haith]\n Nós vamos lhe dar boas informações, desde que nos pague!");
 		next;
-		mes "[La Ed, Haith]";
-		mes "Boa sorte!";
+		mes("[La Ed, Haith]\n Boa sorte!");
 		close;
 	}
-	mes "[Haith]";
-	emotion (e_hmm);
+	emotion(e_hmm);
 	close;
 }
 comodo,170,137,7	duplicate(cmdla)	La Ed#com	4_M_02
 
 // ------------------------------------------------------------------
 comodo,180,153,4	script	Sonotora#com	4_F_01,{
-	mes "[Athena Sonotora]";
-	mes "Dizem que uma famosa escola de dança aqui em Comodo vai abrir em breve.";
+	mes("[Athena Sonotora]\n Dizem que uma famosa escola de dança aqui em Comodo vai abrir em breve.");
 	next;
-	mes "[Athena Sonotora]";
-	mes "Aah...";
-	mes "Para ser como uma prima donna no centro das atenções!";
+	mes("[Athena Sonotora]\n Aah...\n Para ser como uma prima donna no centro das atenções!");
 	next;
-	mes "[Athena Sonotora]";
-	mes "Eu quero me inscrever também, mais os requisitos são muito específicos.";
-	mes "Eu me pergunto se devo tentar mesmo assim...";
+	mes("[Athena Sonotora]\n Eu quero me inscrever também, mais os requisitos são muito específicos.\n Eu me pergunto se devo tentar mesmo assim...");
 	close;
 }
 
 // ------------------------------------------------------------------
 // - [ Casas ] -
 // ------------------------------------------------------------------
-cmd_in01,175,120,3	script	Iriya#um	1_F_04,{
-	mes "[Iriya]";
-	mes "O Sr. Niels está na mesa na esquina.";
-	mes "Ele tem muitas notícias sobre o mundo.";
+cmd_in01,175,120,3	script	Iriya#com	1_F_04,{
+	mes("[Iriya]\n O Sr. Niels está na mesa na esquina.\n Ele tem muitas notícias sobre o mundo.");
 	next;
-	mes "[Iriya]";
-	mes "Não tenho certeza onde ele esteve desta vez.";
-	mes "Ele só da risadas e diz:";
-	mes "'Eu não acho que estou apto para este trabalho docente.'";
+	mes("[Iriya]\n Não tenho certeza onde ele esteve desta vez.\n Ele só da risadas e diz:\n 'Eu não acho que estou apto para este trabalho docente.'");
 	next;
-	mes "[Iriya]";
-	mes "Entretanto, manter as pessoas visitando o Sr. Niels...";
-	mes "Eu não poder ajudar, mas pergunto...";
-	mes "Onde ele tem ido?";
+	mes("[Iriya]\n Entretanto, manter as pessoas visitando o Sr. Niels...\n Eu não poder ajudar, mas pergunto...\n Onde ele tem ido?");
 	close;
 }
 
 // ------------------------------------------------------------------
-cmd_in01,164,115,1	script	Niels#um	4_M_JOB_BLACKSMITH,{
-	mes "[Niels]";
-	mes "Hmm? O que você está procurando?";
-	mes "Ah! Você deve ter ouvido os rumores de que eu achei algum tipo de tesouro.";
-	mes "Sim, isto é compreensível...";
+cmd_in01,164,115,1	script	Niels#com	4_M_JOB_BLACKSMITH,{
+	mes("[Niels]\n Hmm?\n O que você está procurando?\n Ah! Você deve ter ouvido os rumores de que eu achei algum tipo de tesouro.\n Sim, isto é compreensível...");
 	next;
-	mes "[Niels]";
-	mes "Bem, estes rumores de que eu tropeço em algum tesouro maravilhoso é apenas o resultado de imaginações férteis.";
-	mes "Tudo o que tenho encontrado são coisas para acrescentar na minha coleção.";
+	mes("[Niels]\n Bem, estes rumores de que eu tropeço em algum tesouro maravilhoso é apenas o resultado de imaginações férteis.\n Tudo o que tenho encontrado são coisas para acrescentar na minha coleção.");
 	next;
-	mes "[Niels]";
-	mes "Mas... desde que eu tenha provado que 'isto' realmente existe por ver com meus prãpios olhos";
-	mes "Para mim, o que eu obtive foi um valioso tesouro.";
+	mes("[Niels]\n Mas... desde que eu tenha provado que 'isto' realmente existe por ver com meus prãpios olhos\n Para mim, o que eu obtive foi um valioso tesouro.");
 	next;
-	mes "[Niels]";
-	mes "Esta aldeia de Comodo!";
-	mes "Você não acha que as cavernas são muito pequenas e estreista por alguma razão?";
+	mes("[Niels]\n Esta aldeia de Comodo!\n Você não acha que as cavernas são muito pequenas e estreista por alguma razão?");
 	next;
-	mes "[Niels]";
-	mes "Então, eu estava pensando nisso...";
-	mes "E eu cheguei a conclusão de que deve haver alguma coisa escondida dentro da caverna...";
+	mes("[Niels]\n Então, eu estava pensando nisso...\n E eu cheguei a conclusão de que deve haver alguma coisa escondida dentro da caverna...");
 	next;
-	mes "[Niels]";
-	mes "E então!";
-	mes "Eu finalmente encontrei.";
-	mes "A passagem para 'o lugar' que ninguém jamais encontrou!";
+	mes("[Niels]\n E então!\n Eu finalmente encontrei.\n A passagem para 'o lugar' que ninguém jamais encontrou!");
 	next;
-	mes "[Niels]";
-	mes "................";
+	mes("[Niels]\n ................");
 	next;
-	mes "[Niels]";
-	mes ".......Hm?";
+	mes("[Niels]\n ................\n Hm?");
 	next;
-	mes "[Niels]";
-	mes "Eu estava esperando um espetacular e dramático efeito sonoro para a minha declaração!";
-	mes "Eh, oh bem...";
-	emotion (e_hmm);
+	mes("[Niels]\n Eu estava esperando um espetacular e dramático efeito sonoro para a minha declaração!\n Eh, oh bem...");
+	emotion(e_hmm);
 	next;
-	mes "[Niels]";
-	mes "Bem, no espírito da descobrta, nunca pense em me perguntar sobre direções para 'o lugar' ou sobre o que tem 'no lugar'.";
-	mes "Eu não quero estragar a surpresa.";
+	mes("[Niels]\n Bem, no espírito da descobrta, nunca pense em me perguntar sobre direções para 'o lugar' ou sobre o que tem 'no lugar'.\n Eu não quero estragar a surpresa.");
 	next;
-	mes "[Niels]";
-	mes "Se você é um verdadeiro aventureiro.";
-	mes "Eu espero que você grite com toda a força de seus pulmões...";
+	mes("[Niels]\n Se você é um verdadeiro aventureiro.\n Eu espero que você grite com toda a força de seus pulmões...");
 	next;
-	mes "[Niels]";
-	mes "'Ahhhh! Eu preciso saber o que é isto!!'";
-	mes "Chute a porta aberta e corra como se estivesse fugindo do inferno para encontrar o lugar por conta própria!!";
+	mes("[Niels]\n 'Ahhhh!\n Eu preciso saber o que é isto!!'\n Chute a porta aberta e corra como se estivesse fugindo do inferno para encontrar o lugar por conta própria!!");
 	next;
-	mes "[Niels]";
-	mes "Agora! Rápido saia e busque por esse lugar!";
-	mes "Será este lugar um mundo totalmente novo ou uma armadilha para o inferno?!";
-	mes "Vá adiante, satisfaça seu destino, aventureiro!";
+	mes("[Niels]\n Agora!\n Rápido saia e busque por esse lugar!\n Será este lugar um mundo totalmente novo ou uma armadilha para o inferno?!\n Vá adiante, satisfaça seu destino, aventureiro!");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,73,81,4	script	Martine#com	1_M_02,{
-	mes "[Martine]";
-	mes "Jogatina?!";
-	mes "Não! Não é isso!";
-	mes "Não julgue o Cassino de Comodo como outro qualquer.";
-	mes "Aqui existem os melhores jogos do mundo.";
-	mes "São jogos de alto nível, e não simples jogos de azar";
-	mes "Você percebe?!";
+	mes("[Martine]\n Jogatina?!\n Não!\n Não é isso!\n Não julgue o Cassino de Comodo como outro qualquer.\n Aqui existem os melhores jogos do mundo.\n São jogos de alto nível, e não simples jogos de azar percebe?!");
 	next;
-	mes "[Martine]";
-	mes "Por que você está me olhando desse jeito?!";
-	mes "Não me olhe assim!";
-	mes "Eu não me importo com o que você acha...";
-	mes "Eu perdi todo o meu dinheiro nesse cassino, mas eu não me importo!";
+	mes("[Martine]\n Por que você está me olhando desse jeito?!\n Não me olhe assim!\n Eu não me importo com o que você acha...\n Eu perdi todo o meu dinheiro nesse cassino, mas eu não me importo!");
 	next;
-	mes "[Martine]";
-	mes "Eu preciso ir as cavernas de Comodo...";
-	mes "Matar alguns monstros e conseguir alguns zenys.";
-	mes "Para voltar e continuar a jogar!!";
-	mes "HaHaHa....";
+	mes("[Martine]\n Eu preciso ir as cavernas de Comodo...\n Matar alguns monstros e conseguir alguns zenys.\n Para voltar e continuar a jogar!!\n HaHaHa....");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,48,55,4	script	Scoursege#com	1_M_BARD,{
-	mes "[Scoursege]";
-	mes "Onde foi parar o cara que pegou meu dinheiro emprestado?";
-	mes "Onde ele foi?";
-	mes "Ele me disse que ia dobrar meu dinheiro!";
-	mes "Oh! Meu Deus!";
+	mes("[Scoursege]\n Onde foi parar o cara que pegou meu dinheiro emprestado?\n Onde ele foi?\n Ele me disse que ia dobrar meu dinheiro!\n Oh! Meu Deus!");
 	next;
-	mes "[Scoursege]";
-	mes "Será que fui trapaceado?";
-	mes "Eu fui?";
-	mes "Mesmo?!";
-	mes "Meu dinheiro!!!";
-	mes "Aaaahhhnnnn!";
+	mes("[Scoursege]\n Será que fui trapaceado?\n Eu fui?\n Mesmo?!\n Meu dinheiro!!!\n Aaaahhhnnnn!");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,64,43,4	script	Roberto#com	4_M_SEAMAN,{
-	mes "[Roberto]";
-	mes "Outro otário...";
-	mes "Consegui enrolar mais um!..";
-	mes "HaHaHaHaHa......";
-	mes "...hmm...";
-	mes "Quem é você?";
-	mes "Sai! Sai!";
-	mes "Vai embora!";
-	mes "Nunca viu ninguém contando dinheiro antes?";
+	mes("[Roberto]\n Outro otário...\n Consegui enrolar mais um!..\n HaHaHaHaHa......\n ...hmm...\n Quem é você?\n Sai! Sai!\n Vai embora!\n Nunca viu ninguém contando dinheiro antes?");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,89,72,4	script	Deniroz#com	4_M_ORIENT02,{
-	mes "[Deniroz]";
-	mes "Se essa bolinha cair agora...";
-	mes "Eu vou ficar muito rico!!";
-	mes "Tudo que é preciso fazer nesse jogo é fazer a bolinha entrar naquele buraco.";
-	mes "Vamos lá!!";
-	mes "É um buraco bem pequeno.";
+	mes("[Deniroz]\n Se essa bolinha cair agora...\n Eu vou ficar muito rico!!\n Tudo que é preciso fazer nesse jogo é fazer a bolinha entrar naquele buraco.\n Vamos lá!!\n É um buraco bem pequeno.");
 	next;
-	mes "[Deniroz]";
-	mes "A maioria das pessoas desiste depois de algumas tentativas...";
-	mes "Mas eu não!..";
-	mes "Essa lata de cerveja na minha mão";
-	mes "É um imã!";
-	mes "HaHaHaHaHa!";
+	mes("[Deniroz]\n A maioria das pessoas desiste depois de algumas tentativas...\n Mas eu não!..\n Essa lata de cerveja na minha mão.\n É um imã!\n HaHaHaHaHa!");
 	next;
-	mes "[Deniroz]";
-	mes "Eu vou ficar rico com meu plano secreto!!";
+	mes("[Deniroz]\n Eu vou ficar rico com meu plano secreto!!");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,178,92,4	script	Shalone#com	4W_F_01,{
-	mes "[Shalone]";
-	mes "A 4!!!!";
-	mes "Parece que o senhor perdeu de novo...";
-	mes "...";
-	mes "Hmm... Se você quer um conselho...";
-	mes "O senhor deveria parar quando sua sorte está tão ruim...";
+	mes("[Shalone]\n Parece que o senhor perdeu de novo...\n Hmm... Se você quer um conselho...\n O senhor deveria parar quando sua sorte está tão ruim...");
 	next;
-	mes "[Shalone]";
-	mes "Coitado...";
-	mes "Ainda não ganhou nenhuma vez...";
+	mes("[Shalone]\n Coitado...\n Ainda não ganhou nenhuma vez...");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,178,86,4	script	Stonae#com	4W_M_02,{
-	mes "[Stonae]";
-	mes "Oh Não!";
-	mes "Meu Deus! De novo?!";
-	mes "Ai ai ai...";
-	mes "Ai ai... Não posso desistir agora...";
-	mes "Vou continuar até ganhar!";
-	mes "Ugh!!";
+	mes("[Stonae]\n Oh Não!\n De novo?!\n Ai ai ai...\n Ai ai... Não posso desistir agora...\n Vou continuar até ganhar!\n Ugh!!");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,172,105,4	script	GJ#com	4_M_04,{
-	mes "[G . J]";
-	mes "Quanto mais eu penso...";
-	mes "Melhor eu percebo que é mais fácil e certo ganhar dinheiro trabalhando e economizando, que jogando no cassino.";
-	mes "É muito mais inteligente...";
-	mes "Eu consigo ter mais dinheiro assim, mesmo depois de pagar os imposto e contas...";
+	mes("[G . J]\n Quanto mais eu penso...\n Melhor eu percebo que é mais fácil e certo ganhar dinheiro trabalhando e economizando, que jogando no cassino.\n É muito mais inteligente...\n Eu consigo ter mais dinheiro assim, mesmo depois de pagar os imposto e contas...");
 	next;
-	mes "[G . J]";
-	mes "Só o trabalho duro faz o dinheiro ter valor mesmo.";
-	mes "O dinheiro ganho com o trabalho é mais nobre que o dinheiro fácil...";
-	mes "O dinheiro que um homem ganha com seu trabalho me parece mais limpo.";
-	mes "Não acha?";
+	mes("[G . J]\n Só o trabalho duro faz o dinheiro ter valor mesmo.\n O dinheiro ganho com o trabalho é mais nobre que o dinheiro fácil...\n O dinheiro que um homem ganha com seu trabalho me parece mais limpo.\n Não acha?");
 	next;
-	mes "[G . J]";
-	mes "Pense nisso...";
-	mes "Se você não trabalha e passa o tempo jogando aqui com um amigo e ele ganha muito dinheiro...";
-	mes "Fica rico!";
+	mes("[G . J]\n Pense nisso...\n Se você não trabalha e passa o tempo jogando aqui com um amigo e ele ganha muito dinheiro...\n Fica rico!");
 	next;
-	mes "[G . J]";
-	mes "Você não pediria a ele para lhe pagar um jantar...";
-	mes "Ou até mesmo lhe emprestar uma parte do dinheiro?";
-	mes "Como seu amigo ganhou o dinheiro fácil,";
-	mes "esse dinheiro não parece ter tanto valor.";
+	mes("[G . J]\n Você não pediria a ele para lhe pagar um jantar...\n Ou até mesmo lhe emprestar uma parte do dinheiro?\n Como seu amigo ganhou o dinheiro fácil, esse dinheiro não parece ter tanto valor.");
 	next;
-	mes "[G . J]";
-	mes "Mas se seu amigo ganhou esse dinheiro trabalhando duro...";
-	mes "Você pediria a esse mesmo amigo para pagar o jantar ou pediria emprestado?!";
-	mes "Você não ousaria...";
-	mes "Já que ele ganhou o dinheiro com dificuldade.";
+	mes("[G . J]\n Mas se seu amigo ganhou esse dinheiro trabalhando duro...\n Você pediria a esse mesmo amigo para pagar o jantar ou pediria emprestado?!\n Você não ousaria...\n Já que ele ganhou o dinheiro com dificuldade.");
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_in02,174,126,4	script	Loyar#com	4_M_01,{
-	mes "[Loyar]";
-	mes "Esse Cassino de Comodo tem uma atmosfera tão agradável!";
-	mes "Tudo simples e limpo...";
-	mes "Tudo muito bem organizado!";
-	mes "Realmente dá vontade de pssar o tempo aqui!!";
-	mes "Vamos lá jogar!";
+	mes("[Loyar]\n Esse Cassino de Comodo tem uma atmosfera tão agradável!\n Tudo simples e limpo...\n Tudo muito bem organizado!\n Realmente dá vontade de pssar o tempo aqui!!\n Vamos lá jogar!");
 	next;
 	switch(rand(1,3)) {
 		case 1:
-		mes "[Loyar]";
-		mes "O quê?";
-		mes "Estou vendo uma sujeira aqui?!";
-		mes "Ah...(esfrega...).";
-		mes "Não posso ver sujeira!";
-		mes "*esfrega* *esfrega* *esfrega*";
-		mes "Eu vou deixar isso tudo limpo!";
+		mes("[Loyar]\n O quê?\n Estou vendo uma sujeira aqui?!\n Ah...(esfrega...).\n Não posso ver sujeira!\n *esfrega* *esfrega* *esfrega*\n Eu vou deixar isso tudo limpo!");
 		next;
-		mes "[Loyar]";
-		mes "*esfrega* *esfrega* *esfrega* *esfrega*";
-		mes "Ufa! Fiquei cansado...";
-		mes "... ...Ufffff... ...";
-		mes "Agora está limpo!";
-		mes "*varre* *varre*";
-		mes "Perfeito!";
-		mes "Agora sim as pessoas podem se divertir!";
+		mes("[Loyar]\n *esfrega* *esfrega* *esfrega* *esfrega*\n Ufa! Fiquei cansado...\n ...Ufffff... ...\n Agora está limpo!\n *varre* *varre*\n Perfeito!\n Agora sim as pessoas podem se divertir!");
 		close;
 		case 2:
-		mes "[Loyar]";
-		mes "Um lugar limpo é tudo quando se trata de diversão!";
-		mes "Não importa se o jogo é interessante...";
-		mes "Ninguém, vai querer ficar muito tempo em um lugar sujo e mal cheiroso...";
-		mes "Ninguém iria se sentir bem!";
+		mes("[Loyar]\n Um lugar limpo é tudo quando se trata de diversão!\n Não importa se o jogo é interessante...\n Ninguém, vai querer ficar muito tempo em um lugar sujo e mal cheiroso...\n Ninguém iria se sentir bem!");
 		next;
-		mes "[Loyar]";
-		mes "O Cassino de Comodo é o melhor!";
-		mes "Nenhum no mundo se iguala...";
-		mes "Toda essa beleza faz as pessoas se sentirem com sorte!";
-		mes "Não é perfeito?";
+		mes("[Loyar]\n O Cassino de Comodo é o melhor!\n Nenhum no mundo se iguala...\n Toda essa beleza faz as pessoas se sentirem com sorte!\n Não é perfeito?");
 		close;
 		case 3:
-		mes "[Loyar]";
-		mes "Hmmm... péssima aposta...";
-		mes "Ai! Você não é bom nisso...";
-		mes "Hmmm... Que amador!..";
-		mes ".........Hã?";
-		mes "Não, sou apenas um morador de Comodo";
-		mes "que ama esse cassino!";
+		mes("[Loyar]\n Hmmm... péssima aposta...\n Ai! Você não é bom nisso...\n Hmmm... Que amador!..\n .........Hã?\n Não, sou apenas um morador de Comodo que ama esse cassino!");
 		next;
-		mes "[Loyar]";
-		mes "..........";
-		mes "Alguma coisa contra?";
+		mes("[Loyar]\n ..........\n Alguma coisa contra?");
 		close;
 	}
 }
 
 // ------------------------------------------------------------------
 cmd_in02,57,62,4	script	Moo#com	4_M_MANAGER,{
-	mooz = rand(1,10);
-	if (mooz == 1) {
-		mes "[Moo]";
-		mes ".....Sonho?!";
-		mes "Fantasia?!......";
-		mes ".....Hmm?";
-		mes "Olá! Eu estava distraído...";
-		mes "Hã?";
-		mes "Eu sou o gerente do Cassino de Comodo.";
-		mes "Meu nome é ^3355FFMoo^000000.";
-		close;
-	}
-	else {
-		mes "[Moo]";
-		mes "Eu sou o gerente do Cassino de Comodo.";
-		mes "Meu nome é ^3355FFMoo^000000.";
-		mes "Aqui nós temos o melhor serviço para fazer nossos clientes se sentirem bem.";
-		mes "Não podemos relaxar nunca!";
-		mes "Aproveite sua visita...";
-		next;
-		mes "[Moo]";
-		mes "Nesse momento estou trabalhando no andar VIP.";
-		mes "Especiamente feito para visitantes especiais.";
-		mes "Por favor, sinta-se a vontade e conheça nossas instalações.";
-		next;
-		mes "[Moo]";
-		mes "No andar de baixo também...";
-		mes "Toda a renda do cassino de Comodo é destinada ao bem-estar da comunidade da Cidade de Comodo.";
-		close;
-	}
+	mes("[Moo]\n Eu sou o gerente do Cassino de Comodo.\n Meu nome é ^3355FFMoo^000000.\n Aqui nós temos o melhor serviço para fazer nossos clientes se sentirem bem.\n Não podemos relaxar nunca!\n Aproveite sua visita...");
+	next;
+	mes("[Moo]\n Nesse momento estou trabalhando no andar VIP.\n Especiamente feito para visitantes especiais.\n Por favor, sinta-se a vontade e conheça nossas instalações.");
+	next;
+	mes("[Moo]\n No andar de baixo também...\n Toda a renda do cassino de Comodo é destinada ao bem-estar da comunidade da Cidade de Comodo.");
+	close;
 }
