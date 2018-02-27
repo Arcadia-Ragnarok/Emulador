@@ -2187,6 +2187,8 @@ ac_config_files="$ac_config_files Source/3rdparty/mt19937ar/Makefile Source/3rdp
 
 ac_config_files="$ac_config_files Source/src/char/Makefile Source/src/login/Makefile"
 
+ac_config_files="$ac_config_files Source/src/map/Makefile Source/src/tool/Makefile"
+
 ac_config_files="$ac_config_files Source/src/test/Makefile"
 
 ac_ext=c
@@ -7941,6 +7943,7 @@ CFLAGS="$OLD_CFLAGS"
 if test "$compiler_supports_shared_objects" = "no" ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: not supported" >&5
 $as_echo "not supported" >&6; }
+
 else
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $compiler_shared_objects $compiler_supports_shared_objects" >&5
 $as_echo "$compiler_shared_objects $compiler_supports_shared_objects" >&6; }

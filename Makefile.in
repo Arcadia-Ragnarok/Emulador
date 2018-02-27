@@ -43,6 +43,7 @@ else
 	TOOLS_DEPENDS=needs_mysql
 endif
 
+
 HAVE_PERL=@HAVE_PERL@
 
 MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
@@ -154,6 +155,7 @@ config.status: configure
 	@./config.status --recheck && ./config.status
 
 help: Makefile
+	@echo "most common targets are 'all' 'sql' 'clean' 'help'"
 	@echo "possible targets are:"
 	@echo "'common_sql'  - builds object files used in SQL servers"
 	@echo "'mt19937ar'   - builds object file of Mersenne Twister MT19937"
@@ -182,3 +184,4 @@ endif
 needs_mysql:
 	@echo "MySQL not found or disabled by the configure script"
 	@exit 1
+
