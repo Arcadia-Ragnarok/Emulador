@@ -46,7 +46,7 @@ endif
 HAVE_PERL=@HAVE_PERL@
 
 MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
-             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map
+             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map \
              Source/src/tool Source/src/test)
 
 CC = @CC@
