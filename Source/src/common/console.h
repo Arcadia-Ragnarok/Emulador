@@ -23,7 +23,8 @@
 #ifndef COMMON_CONSOLE_H
 #define COMMON_CONSOLE_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
+#include "common/sql.h"
 #include "common/db.h"
 #include "common/spinlock.h"
 
@@ -112,10 +113,7 @@ struct console_interface {
 	struct console_input_interface *input;
 };
 
-#ifdef MAIN_CORE
 void console_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct console_interface *console;
+extern struct console_interface *console;
 
 #endif /* COMMON_CONSOLE_H */

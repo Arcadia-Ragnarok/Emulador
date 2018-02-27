@@ -43,8 +43,7 @@ struct inter_storage_interface inter_storage_s;
 struct inter_storage_interface *inter_storage;
 
 /// Save storage data to sql
-int inter_storage_tosql(int account_id, const struct storage_data *p)
-{
+int inter_storage_tosql(int account_id, const struct storage_data *p) {
 	int i = 0, j = 0;
 	bool matched_p[MAX_STORAGE] = { false };
 	int delete[MAX_STORAGE] = { 0 };
@@ -69,12 +68,12 @@ int inter_storage_tosql(int account_id, const struct storage_data *p)
 			struct item *p_it = NULL;
 
 			ARR_FIND(0, VECTOR_LENGTH(p->item), j,
-					 matched_p[j] != true
-					 && (p_it = &VECTOR_INDEX(p->item, j)) != NULL
-					 && cp_it->nameid == p_it->nameid
-					 && cp_it->unique_id == p_it->unique_id
-					 && memcmp(p_it->card, cp_it->card, sizeof(short) * MAX_SLOTS) == 0
-					 && memcmp(p_it->option, cp_it->option, 5 * MAX_ITEM_OPTIONS) == 0);
+				matched_p[j] != true
+				&& (p_it = &VECTOR_INDEX(p->item, j)) != NULL
+				&& cp_it->nameid == p_it->nameid
+				&& cp_it->unique_id == p_it->unique_id
+				&& memcmp(p_it->card, cp_it->card, sizeof(short) * MAX_SLOTS) == 0
+				&& memcmp(p_it->option, cp_it->option, 5 * MAX_ITEM_OPTIONS) == 0);
 
 			if (j < VECTOR_LENGTH(p->item)) {
 				int k = 0;
@@ -89,7 +88,7 @@ int inter_storage_tosql(int account_id, const struct storage_data *p)
 					}
 
 					StrBuf->Printf(&buf, "%s('%d', '%d', '%d', '%d', '%u', '%d', '%d', '%d'",
-								   total_updates > 0 ? ", " : "", cp_it->id, account_id, p_it->nameid, p_it->amount, p_it->equip, p_it->identify, p_it->refine, p_it->attribute);
+						total_updates > 0 ? ", " : "", cp_it->id, account_id, p_it->nameid, p_it->amount, p_it->equip, p_it->identify, p_it->refine, p_it->attribute);
 					for (k = 0; k < MAX_SLOTS; k++)
 						StrBuf->Printf(&buf, ", '%d'", p_it->card[k]);
 					for (k = 0; k < MAX_ITEM_OPTIONS; ++k)
@@ -104,8 +103,9 @@ int inter_storage_tosql(int account_id, const struct storage_data *p)
 			}
 		}
 
-		if (total_updates > 0 && SQL_ERROR == SQL->QueryStr(inter->sql_handle, StrBuf->Value(&buf)))
+		if (total_updates > 0 && SQL_ERROR == SQL->QueryStr(inter->sql_handle, StrBuf->Value(&buf))) {
 			Sql_ShowDebug(inter->sql_handle);
+		}
 
 		/**
 		 * Handle deletions, if any.
@@ -144,8 +144,8 @@ int inter_storage_tosql(int account_id, const struct storage_data *p)
 		}
 
 		StrBuf->Printf(&buf, "%s('%d', '%d', '%d', '%u', '%d', '%d', '%d', '%u', '%d', '%"PRIu64"'",
-					   total_inserts > 0 ? ", " : "", account_id, p_it->nameid, p_it->amount, p_it->equip, p_it->identify, p_it->refine,
-					   p_it->attribute, p_it->expire_time, p_it->bound, p_it->unique_id);
+			total_inserts > 0 ? ", " : "", account_id, p_it->nameid, p_it->amount, p_it->equip, p_it->identify, p_it->refine,
+			p_it->attribute, p_it->expire_time, p_it->bound, p_it->unique_id);
 		for (j = 0; j < MAX_SLOTS; ++j)
 			StrBuf->Printf(&buf, ", '%d'", p_it->card[j]);
 		for (j = 0; j < MAX_ITEM_OPTIONS; ++j)
@@ -167,8 +167,7 @@ int inter_storage_tosql(int account_id, const struct storage_data *p)
 }
 
 /// Load storage data to mem
-int inter_storage_fromsql(int account_id, struct storage_data *p)
-{
+int inter_storage_fromsql(int account_id, struct storage_data *p) {
 	StringBuf buf;
 	char* data;
 	int i;
@@ -231,23 +230,21 @@ int inter_storage_fromsql(int account_id, struct storage_data *p)
 
 	SQL->FreeResult(inter->sql_handle);
 
-	ShowInfo("storage load complete from DB - id: %d (total: %d)\n", account_id, VECTOR_LENGTH(p->item));
+	ShowInfo("Carregamento do storage completo para - id: %d (total: %d)\n", account_id, VECTOR_LENGTH(p->item));
 
 	return VECTOR_LENGTH(p->item);
 }
 
 /// Save guild_storage data to sql
-int inter_storage_guild_storage_tosql(int guild_id, const struct guild_storage *p)
-{
+int inter_storage_guild_storage_tosql(int guild_id, const struct guild_storage *p) {
 	nullpo_ret(p);
 	chr->memitemdata_to_sql(p->items, guild_id, TABLE_GUILD_STORAGE);
-	ShowInfo ("guild storage save to DB - guild: %d\n", guild_id);
+	ShowInfo ("Salvo storage da guild: %d\n", guild_id);
 	return 0;
 }
 
 /// Load guild_storage data to mem
-int inter_storage_guild_storage_fromsql(int guild_id, struct guild_storage* p)
-{
+int inter_storage_guild_storage_fromsql(int guild_id, struct guild_storage* p) {
 	StringBuf buf;
 	char* data;
 	int i;
@@ -300,31 +297,27 @@ int inter_storage_guild_storage_fromsql(int guild_id, struct guild_storage* p)
 	p->storage_amount = i;
 	SQL->FreeResult(inter->sql_handle);
 
-	ShowInfo("guild storage load complete from DB - id: %d (total: %d)\n", guild_id, p->storage_amount);
+	ShowInfo("Carregamento do storage completo para - id: %d (total: %d)\n", guild_id, p->storage_amount);
 	return 0;
 }
 
 //---------------------------------------------------------
 // storage data initialize
-int inter_storage_sql_init(void)
-{
+int inter_storage_sql_init(void){
 	return 1;
 }
 // storage data finalize
-void inter_storage_sql_final(void)
-{
+void inter_storage_sql_final(void) {
 	return;
 }
 
 // q?f[^?
-int inter_storage_delete(int account_id)
-{
+int inter_storage_delete(int account_id) {
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `account_id`='%d'", storage_db, account_id) )
 		Sql_ShowDebug(inter->sql_handle);
 	return 0;
 }
-int inter_storage_guild_storage_delete(int guild_id)
-{
+int inter_storage_guild_storage_delete(int guild_id) {
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `guild_id`='%d'", guild_storage_db, guild_id) )
 		Sql_ShowDebug(inter->sql_handle);
 	return 0;
@@ -332,9 +325,7 @@ int inter_storage_guild_storage_delete(int guild_id)
 
 //---------------------------------------------------------
 // packet from map server
-
-int mapif_load_guild_storage(int fd, int account_id, int guild_id, char flag)
-{
+int mapif_load_guild_storage(int fd, int account_id, int guild_id, char flag) {
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `guild_id` FROM `%s` WHERE `guild_id`='%d'", guild_db, guild_id) )
 		Sql_ShowDebug(inter->sql_handle);
 	else if( SQL->NumRows(inter->sql_handle) > 0 )
@@ -359,8 +350,8 @@ int mapif_load_guild_storage(int fd, int account_id, int guild_id, char flag)
 	WFIFOSET(fd, 12);
 	return 0;
 }
-int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail)
-{
+
+int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail) {
 	WFIFOHEAD(fd,11);
 	WFIFOW(fd,0)=0x3819;
 	WFIFOL(fd,2)=account_id;
@@ -379,8 +370,7 @@ int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail)
  * @param  fd     [in] file/socket descriptor
  * @return 1 on success, 0 on failure.
  */
-int mapif_parse_AccountStorageLoad(int fd)
-{
+int mapif_parse_AccountStorageLoad(int fd) {
 	int account_id = RFIFOL(fd, 2);
 
 	Assert_ret(fd > 0);
@@ -398,8 +388,7 @@ int mapif_parse_AccountStorageLoad(int fd)
  * @param  account_id [in]  account id of the session.
  * @return 1 on success, 0 on failure.
  */
-int mapif_account_storage_load(int fd, int account_id)
-{
+int mapif_account_storage_load(int fd, int account_id) {
 	struct storage_data stor = { 0 };
 	int count = 0, i = 0, len = 0;
 
@@ -429,8 +418,7 @@ int mapif_account_storage_load(int fd, int account_id)
  * @param  fd     [in] file/socket descriptor.
  * @return 1 on success, 0 on failure.
  */
-int mapif_parse_AccountStorageSave(int fd)
-{
+int mapif_parse_AccountStorageSave(int fd) {
 	int payload_size = RFIFOW(fd, 2) - 8, account_id = RFIFOL(fd, 4);
 	int i = 0, count = 0;
 	struct storage_data p_stor = { 0 };
@@ -471,8 +459,7 @@ int mapif_parse_AccountStorageSave(int fd)
  * @param  account_id [in]  Account ID of the storage in question.
  * @param  flag       [in]  Save flag, true for success and false for failure.
  */
-void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool flag)
-{
+void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool flag) {
 	WFIFOHEAD(fd, 7);
 	WFIFOW(fd, 0) = 0x3808;
 	WFIFOL(fd, 2) = account_id;
@@ -483,8 +470,7 @@ void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool flag)
 //=========================================================
 // Guild Storage
 //---------------------------------------------------------
-int mapif_parse_LoadGuildStorage(int fd)
-{
+int mapif_parse_LoadGuildStorage(int fd) {
 	RFIFOHEAD(fd);
 
 	mapif->load_guild_storage(fd,RFIFOL(fd,2),RFIFOL(fd,6),1);
@@ -492,8 +478,7 @@ int mapif_parse_LoadGuildStorage(int fd)
 	return 0;
 }
 
-int mapif_parse_SaveGuildStorage(int fd)
-{
+int mapif_parse_SaveGuildStorage(int fd) {
 	int guild_id;
 	int len;
 
@@ -520,8 +505,7 @@ int mapif_parse_SaveGuildStorage(int fd)
 	return 0;
 }
 
-int mapif_itembound_ack(int fd, int aid, int guild_id)
-{
+int mapif_itembound_ack(int fd, int aid, int guild_id) {
 #ifdef GP_BOUND_ITEMS
 	WFIFOHEAD(fd,8);
 	WFIFOW(fd,0) = 0x3856;
@@ -536,8 +520,7 @@ int mapif_itembound_ack(int fd, int aid, int guild_id)
 //Guild bound items pull for offline characters [Akinari]
 //Revised by [Mhalicot]
 //------------------------------------------------
-int mapif_parse_ItemBoundRetrieve_sub(int fd)
-{
+int mapif_parse_ItemBoundRetrieve_sub(int fd) {
 #ifdef GP_BOUND_ITEMS
 	StringBuf buf;
 	struct SqlStmt *stmt;
@@ -559,7 +542,7 @@ int mapif_parse_ItemBoundRetrieve_sub(int fd)
 
 	stmt = SQL->StmtMalloc(inter->sql_handle);
 	if( SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
-	||  SQL_ERROR == SQL->StmtExecute(stmt) )
+		||  SQL_ERROR == SQL->StmtExecute(stmt) )
 	{
 		Sql_ShowDebug(inter->sql_handle);
 		SQL->StmtFree(stmt);
@@ -611,29 +594,27 @@ int mapif_parse_ItemBoundRetrieve_sub(int fd)
 		if( items[j].bound && items[j].equip ) {
 			// Only the items that are also stored in `char` `equip`
 			if( items[j].equip&EQP_HAND_R
-			||  items[j].equip&EQP_HAND_L
-			||  items[j].equip&EQP_HEAD_TOP
-			||  items[j].equip&EQP_HEAD_MID
-			||  items[j].equip&EQP_HEAD_LOW
-			||  items[j].equip&EQP_GARMENT
-			) {
+				||  items[j].equip&EQP_HAND_L
+				||  items[j].equip&EQP_HEAD_TOP
+				||  items[j].equip&EQP_HEAD_MID
+				||  items[j].equip&EQP_HEAD_LOW
+				||  items[j].equip&EQP_GARMENT
+				) {
 				bound_item[bound_qt] = items[j].equip;
-				bound_qt++;
-			}
+			bound_qt++;
 		}
 	}
+}
 
-	if( SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
-	||  SQL_ERROR == SQL->StmtExecute(stmt) )
-	{
-		Sql_ShowDebug(inter->sql_handle);
-		SQL->StmtFree(stmt);
-		StrBuf->Destroy(&buf);
-		return 1;
-	}
+if(SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf)) || SQL_ERROR == SQL->StmtExecute(stmt) ) {
+	Sql_ShowDebug(inter->sql_handle);
+	SQL->StmtFree(stmt);
+	StrBuf->Destroy(&buf);
+	return 1;
+}
 
 	// Removes any view id that was set by an item that was removed
-	if( bound_qt ) {
+if( bound_qt ) {
 
 #define CHECK_REMOVE(var,mask,token) do { /* Verifies equip bitmasks (see item.equip) and handles the sql statement */ \
 	if ((var)&(mask)) { \
@@ -644,29 +625,29 @@ int mapif_parse_ItemBoundRetrieve_sub(int fd)
 	} \
 } while(0)
 
-		StrBuf->Clear(&buf);
-		StrBuf->Printf(&buf, "UPDATE `%s` SET ", char_db);
-		for( j = 0; j < bound_qt; j++ ) {
+StrBuf->Clear(&buf);
+StrBuf->Printf(&buf, "UPDATE `%s` SET ", char_db);
+for( j = 0; j < bound_qt; j++ ) {
 			// Equips can be at more than one slot at the same time
-			CHECK_REMOVE(bound_item[j],EQP_HAND_R,weapon);
-			CHECK_REMOVE(bound_item[j],EQP_HAND_L,shield);
-			CHECK_REMOVE(bound_item[j],EQP_HEAD_TOP,head_top);
-			CHECK_REMOVE(bound_item[j],EQP_HEAD_MID,head_mid);
-			CHECK_REMOVE(bound_item[j],EQP_HEAD_LOW,head_bottom);
-			CHECK_REMOVE(bound_item[j],EQP_GARMENT,robe);
-		}
-		StrBuf->Printf(&buf, " WHERE `char_id`='%d'", char_id);
+	CHECK_REMOVE(bound_item[j],EQP_HAND_R,weapon);
+	CHECK_REMOVE(bound_item[j],EQP_HAND_L,shield);
+	CHECK_REMOVE(bound_item[j],EQP_HEAD_TOP,head_top);
+	CHECK_REMOVE(bound_item[j],EQP_HEAD_MID,head_mid);
+	CHECK_REMOVE(bound_item[j],EQP_HEAD_LOW,head_bottom);
+	CHECK_REMOVE(bound_item[j],EQP_GARMENT,robe);
+}
+StrBuf->Printf(&buf, " WHERE `char_id`='%d'", char_id);
 
-		if( SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
-		||  SQL_ERROR == SQL->StmtExecute(stmt) )
-		{
-			Sql_ShowDebug(inter->sql_handle);
-			SQL->StmtFree(stmt);
-			StrBuf->Destroy(&buf);
-			return 1;
-		}
+if( SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
+	||  SQL_ERROR == SQL->StmtExecute(stmt) )
+{
+	Sql_ShowDebug(inter->sql_handle);
+	SQL->StmtFree(stmt);
+	StrBuf->Destroy(&buf);
+	return 1;
+}
 #undef CHECK_REMOVE
-	}
+}
 
 	//Now let's update the guild storage with those deleted items
 	/// TODO/FIXME:
@@ -674,60 +655,58 @@ int mapif_parse_ItemBoundRetrieve_sub(int fd)
 	/// the latter compares current database values and this is not needed in this case
 	/// maybe sometime separate chr->memitemdata_to_sql into different methods in order to use
 	/// call that function here as well [Panikon]
-	StrBuf->Clear(&buf);
-	StrBuf->Printf(&buf,"INSERT INTO `%s` (`guild_id`,`nameid`,`amount`,`equip`,`identify`,`refine`,"
-						"`attribute`,`expire_time`,`bound`,`unique_id`",
-					guild_storage_db);
+StrBuf->Clear(&buf);
+StrBuf->Printf(&buf,"INSERT INTO `%s` (`guild_id`,`nameid`,`amount`,`equip`,`identify`,`refine`,"
+	"`attribute`,`expire_time`,`bound`,`unique_id`",
+	guild_storage_db);
+for (s = 0; s < MAX_SLOTS; ++s)
+	StrBuf->Printf(&buf, ", `card%d`", s);
+for (s = 0; s < MAX_ITEM_OPTIONS; ++s)
+	StrBuf->Printf(&buf, ", `opt_idx%d`, `opt_val%d`", s, s);
+StrBuf->AppendStr(&buf," ) VALUES ");
+
+for (j = 0; j < i; ++j) {
+	if (j != 0)
+		StrBuf->AppendStr(&buf, ",");
+
+	StrBuf->Printf(&buf, "('%d', '%d', '%d', '%u', '%d', '%d', '%d', '%u', '%d', '%"PRIu64"'",
+		guild_id, items[j].nameid, items[j].amount, items[j].equip, items[j].identify, items[j].refine,
+		items[j].attribute, items[j].expire_time, items[j].bound, items[j].unique_id);
 	for (s = 0; s < MAX_SLOTS; ++s)
-		StrBuf->Printf(&buf, ", `card%d`", s);
+		StrBuf->Printf(&buf, ", '%d'", items[j].card[s]);
 	for (s = 0; s < MAX_ITEM_OPTIONS; ++s)
-		StrBuf->Printf(&buf, ", `opt_idx%d`, `opt_val%d`", s, s);
-	StrBuf->AppendStr(&buf," ) VALUES ");
-
-	for (j = 0; j < i; ++j) {
-		if (j != 0)
-			StrBuf->AppendStr(&buf, ",");
-
-		StrBuf->Printf(&buf, "('%d', '%d', '%d', '%u', '%d', '%d', '%d', '%u', '%d', '%"PRIu64"'",
-			guild_id, items[j].nameid, items[j].amount, items[j].equip, items[j].identify, items[j].refine,
-			items[j].attribute, items[j].expire_time, items[j].bound, items[j].unique_id);
-		for (s = 0; s < MAX_SLOTS; ++s)
-			StrBuf->Printf(&buf, ", '%d'", items[j].card[s]);
-		for (s = 0; s < MAX_ITEM_OPTIONS; ++s)
-			StrBuf->Printf(&buf, ", '%d', '%d'", items[j].option[s].index, items[j].option[s].value);
-		StrBuf->AppendStr(&buf, ")");
-	}
-
-	if (SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
-	||  SQL_ERROR == SQL->StmtExecute(stmt))
-	{
-		Sql_ShowDebug(inter->sql_handle);
-		SQL->StmtFree(stmt);
-		StrBuf->Destroy(&buf);
-		return 1;
-	}
-
-	StrBuf->Destroy(&buf);
-	SQL->StmtFree(stmt);
-
-	//Finally reload storage and tell map we're done
-	mapif->load_guild_storage(fd,aid,guild_id,0);
-
-	// If character is logged in char, disconnect
-	chr->disconnect_player(aid);
-#endif
-	return 0;
+		StrBuf->Printf(&buf, ", '%d', '%d'", items[j].option[s].index, items[j].option[s].value);
+	StrBuf->AppendStr(&buf, ")");
 }
 
-void mapif_parse_ItemBoundRetrieve(int fd)
+if (SQL_ERROR == SQL->StmtPrepareStr(stmt, StrBuf->Value(&buf))
+	||  SQL_ERROR == SQL->StmtExecute(stmt))
 {
+	Sql_ShowDebug(inter->sql_handle);
+	SQL->StmtFree(stmt);
+	StrBuf->Destroy(&buf);
+	return 1;
+}
+
+StrBuf->Destroy(&buf);
+SQL->StmtFree(stmt);
+
+	//Finally reload storage and tell map we're done
+mapif->load_guild_storage(fd,aid,guild_id,0);
+
+	// If character is logged in char, disconnect
+chr->disconnect_player(aid);
+#endif
+return 0;
+}
+
+void mapif_parse_ItemBoundRetrieve(int fd) {
 	mapif->parse_ItemBoundRetrieve_sub(fd);
 	/* tell map server the operation is over and it can unlock the storage */
 	mapif->itembound_ack(fd,RFIFOL(fd,6),RFIFOW(fd,10));
 }
 
-int inter_storage_parse_frommap(int fd)
-{
+int inter_storage_parse_frommap(int fd) {
 	RFIFOHEAD(fd);
 	switch(RFIFOW(fd,0)){
 		case 0x3010: mapif->pAccountStorageLoad(fd); break;
@@ -738,13 +717,12 @@ int inter_storage_parse_frommap(int fd)
 		case 0x3056: mapif->parse_ItemBoundRetrieve(fd); break;
 #endif
 		default:
-			return 0;
+		return 0;
 	}
 	return 1;
 }
 
-void inter_storage_defaults(void)
-{
+void inter_storage_defaults(void) {
 	inter_storage = &inter_storage_s;
 
 	inter_storage->tosql = inter_storage_tosql;

@@ -23,7 +23,8 @@
 #ifndef MAP_PC_GROUPS_H
 #define MAP_PC_GROUPS_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
+#include "common/db.h"
 
 /* Forward Declarations */
 struct DBMap; // common/db.h
@@ -84,13 +85,6 @@ struct pc_groups_permission_table {
 	unsigned int permission;
 };
 
-/* used by plugins to list permissions */
-struct pc_groups_new_permission {
-	unsigned int pID;/* plugin identity (for the future unload during runtime support) */
-	char *name;/* aStrdup' of the permission name */
-	unsigned int *mask;/* pointer to the plugin val that will store the value of the mask */
-};
-
 struct pc_groups_interface {
 	/* */
 	struct DBMap *db; // id -> GroupSettings
@@ -98,9 +92,6 @@ struct pc_groups_interface {
 	/* */
 	struct pc_groups_permission_table *permissions;
 	unsigned char permission_count;
-	/* */
-	struct pc_groups_new_permission *HPMpermissions;
-	unsigned char HPMpermissions_count;
 	/* */
 	void (*init) (void);
 	void (*final) (void);
@@ -116,10 +107,7 @@ struct pc_groups_interface {
 	int (*get_idx) (GroupSettings *group);
 };
 
-#ifdef MAIN_CORE
 void pc_groups_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct pc_groups_interface *pcg;
+extern struct pc_groups_interface *pcg;
 
 #endif /* MAP_PC_GROUPS_H */

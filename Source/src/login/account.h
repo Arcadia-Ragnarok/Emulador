@@ -114,7 +114,7 @@ struct AccountDB
 	/// @param self Database
 	/// @param config Configuration node
 	/// @return true if successful
-	bool (*set_property)(AccountDB* self, struct config_t *config, bool imported);
+	bool (*set_property)(AccountDB* self, struct config_t *config); //******************* Talvez
 
 	/// Creates a new account in this database.
 	/// If acc->account_id is not -1, the provided value will be used.

@@ -26,10 +26,8 @@
 #include "map/map.h" // struct block_list
 #include "map/status.h" // struct status_data, struct status_change
 #include "map/unit.h" // struct unit_data, view_data
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h" // struct item
-
-struct hplugin_data_store;
 
 #define MAX_RANDOMMONSTER 5
 
@@ -165,7 +163,6 @@ struct mob_db {
 	int maxskill;
 	struct mob_skill skill[MAX_MOBSKILL];
 	struct spawn_info spawn[10];
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 struct mob_data {
@@ -232,7 +229,6 @@ struct mob_data {
 	 * MvP Tombstone NPC ID
 	 **/
 	int tomb_nid;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 
@@ -543,10 +539,7 @@ struct mob_interface {
 	void (*destroy_mob_db) (int index);
 };
 
-#ifdef MAIN_CORE
 void mob_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mob_interface *mob;
+extern struct mob_interface *mob;
 
 #endif /* MAP_MOB_H */

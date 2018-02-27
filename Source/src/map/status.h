@@ -23,7 +23,7 @@
 #ifndef MAP_STATUS_H
 #define MAP_STATUS_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h" // NEW_CARTS
 
 struct block_list;
@@ -2408,10 +2408,7 @@ struct status_interface {
 	unsigned short (*base_matk_max) (const struct status_data *st);
 };
 
-#ifdef MAIN_CORE
 void status_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct status_interface *status;
+extern struct status_interface *status;
 
 #endif /* MAP_STATUS_H */

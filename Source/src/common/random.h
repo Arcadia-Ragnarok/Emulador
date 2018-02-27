@@ -23,7 +23,7 @@
 #ifndef COMMON_RANDOM_H
 #define COMMON_RANDOM_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /** @file
  * The random number generator interface.
@@ -94,10 +94,7 @@ struct rnd_interface {
  */
 #define rnd() rnd->random()
 
-#ifdef MAIN_CORE
 void rnd_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct rnd_interface *rnd; ///< Pointer to the random interface.
+extern struct rnd_interface *rnd; ///< Pointer to the random interface.
 
 #endif /* COMMON_RANDOM_H */

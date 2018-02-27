@@ -104,16 +104,15 @@ void ipban_final(void)
  * configuration.
  *
  * @param filename Path to configuration file (used in error and warning messages).
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
 
  */
-bool ipban_config_read_inter(const char *filename, bool imported)
+bool ipban_config_read_inter(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -123,22 +122,10 @@ bool ipban_config_read_inter(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/database_names")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("ipban_config_read: inter_configuration/database_names was not found!\n");
 		return false;
 	}
 	libconfig->setting_lookup_mutable_string(setting, "ipban_table", ipban_table, sizeof(ipban_table));
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, "Config/Servers/Inter-Server.cs") == 0) {
-			ShowWarning("ipban_config_read_inter: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!ipban_config_read_inter(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;
@@ -149,11 +136,10 @@ bool ipban_config_read_inter(const char *filename, bool imported)
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool ipban_config_read_connection(const char *filename, struct config_t *config, bool imported)
+bool ipban_config_read_connection(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -161,8 +147,6 @@ bool ipban_config_read_connection(const char *filename, struct config_t *config,
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/ipban/sql_connection")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("account_db_sql_set_property: login_configuration/account/ipban/sql_connection was not found in %s!\n", filename);
 		return false;
 	}
@@ -183,11 +167,10 @@ bool ipban_config_read_connection(const char *filename, struct config_t *config,
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool ipban_config_read_dynamic(const char *filename, struct config_t *config, bool imported)
+bool ipban_config_read_dynamic(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -195,8 +178,6 @@ bool ipban_config_read_dynamic(const char *filename, struct config_t *config, bo
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/ipban/dynamic_pass_failure")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("account_db_sql_set_property: login_configuration/account/ipban/dynamic_pass_failure was not found in %s!\n", filename);
 		return false;
 	}
@@ -214,11 +195,10 @@ bool ipban_config_read_dynamic(const char *filename, struct config_t *config, bo
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool ipban_config_read(const char *filename, struct config_t *config, bool imported)
+bool ipban_config_read(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 	bool retval = true;
@@ -230,19 +210,17 @@ bool ipban_config_read(const char *filename, struct config_t *config, bool impor
 		return false; // settings can only be changed before init
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/ipban")) == NULL) {
-		if (!imported)
-			ShowError("login_config_read: login_configuration/log was not found in %s!\n", filename);
 		return false;
 	}
 
 	libconfig->setting_lookup_bool_real(setting, "enabled", &login->config->ipban);
 	libconfig->setting_lookup_uint32(setting, "cleanup_interval", &login->config->ipban_cleanup_interval);
 
-	if (!ipban_config_read_inter("Config/Servers/Inter-Server.cs", imported))
+	if (!ipban_config_read_inter("Config/Servers/Inter-Server.cs"))
 		retval = false;
-	if (!ipban_config_read_connection(filename, config, imported))
+	if (!ipban_config_read_connection(filename, config))
 		retval = false;
-	if (!ipban_config_read_dynamic(filename, config, imported))
+	if (!ipban_config_read_dynamic(filename, config))
 		retval = false;
 
 	return retval;

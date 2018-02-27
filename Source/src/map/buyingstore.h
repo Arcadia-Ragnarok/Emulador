@@ -23,7 +23,7 @@
 #ifndef MAP_BUYINGSTORE_H
 #define MAP_BUYINGSTORE_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h" // MAX_SLOTS
 
 struct map_session_data;
@@ -89,10 +89,7 @@ struct buyingstore_interface {
 	unsigned int (*getuid) (void);
 };
 
-#ifdef MAIN_CORE
 void buyingstore_defaults (void);
-#endif // MAIN_CORE
-
-HPShared struct buyingstore_interface *buyingstore;
+extern struct buyingstore_interface *buyingstore;
 
 #endif  // MAP_BUYINGSTORE_H

@@ -25,7 +25,7 @@
 
 #include "map/map.h" // struct block_list
 #include "map/status.h" // enum sc_type
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/mmo.h" // MAX_SKILL_DB, struct square
 
@@ -2108,7 +2108,6 @@ struct skill_interface {
 	void (*validate_item_requirements) (struct config_setting_t *conf, struct s_skill_db *sk);
 	void (*validate_unit_target) (struct config_setting_t *conf, struct s_skill_db *sk);
 	void (*validate_unit_flag) (struct config_setting_t *conf,  struct s_skill_db *sk);
-	void (*validate_additional_fields) (struct config_setting_t *conf, struct s_skill_db *sk);
 	bool (*validate_skilldb) (struct s_skill_db *skt, const char *source);
 	int (*validate_weapontype_sub) (const char *type, bool on, struct s_skill_db *sk);
 	int (*validate_ammotype_sub) (const char *type, bool on, struct s_skill_db *sk);
@@ -2182,10 +2181,7 @@ struct skill_interface {
 	int (*count_wos) (struct block_list *bl, va_list ap);
 };
 
-#ifdef MAIN_CORE
 void skill_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct skill_interface *skill;
+extern struct skill_interface *skill;
 
 #endif /* MAP_SKILL_H */

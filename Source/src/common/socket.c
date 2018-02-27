@@ -25,7 +25,6 @@
 #include "config/core.h" // SHOW_SERVER_STATS
 #include "socket.h"
 
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/db.h"
@@ -730,7 +729,7 @@ static int create_session(int fd, RecvFunc func_recv, SendFunc func_send, ParseF
 	sockt->session[fd]->func_parse = func_parse;
 	sockt->session[fd]->rdata_tick = sockt->last_tick;
 	sockt->session[fd]->session_data = NULL;
-	sockt->session[fd]->hdata = NULL;
+	//sockt->session[fd]->hdata = NULL;
 	return 0;
 }
 
@@ -745,7 +744,6 @@ static void delete_session(int fd)
 		aFree(sockt->session[fd]->wdata);
 		if( sockt->session[fd]->session_data )
 			aFree(sockt->session[fd]->session_data);
-		HPM->data_store_destroy(&sockt->session[fd]->hdata);
 		aFree(sockt->session[fd]);
 		sockt->session[fd] = NULL;
 	}
@@ -1328,11 +1326,10 @@ bool access_list_add(struct config_setting_t *setting, const char *list_name, st
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool socket_config_read_iprules(const char *filename, struct config_t *config, bool imported)
+bool socket_config_read_iprules(const char *filename, struct config_t *config)
 {
 #ifndef MINICORE
 	struct config_setting_t *setting = NULL;
@@ -1342,8 +1339,6 @@ bool socket_config_read_iprules(const char *filename, struct config_t *config, b
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("socket_config_read: socket_configuration/ip_rules was not found in %s!\n", filename);
 		return false;
 	}
@@ -1365,15 +1360,13 @@ bool socket_config_read_iprules(const char *filename, struct config_t *config, b
 	}
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules/allow_list")) == NULL) {
-		if (!imported)
-			ShowError("socket_config_read: socket_configuration/ip_rules/allow_list was not found in %s!\n", filename);
+		ShowError("socket_config_read: socket_configuration/ip_rules/allow_list was not found in %s!\n", filename);
 	} else {
 		access_list_add(setting, "allow_list", &access_allow);
 	}
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules/deny_list")) == NULL) {
-		if (!imported)
-			ShowError("socket_config_read: socket_configuration/ip_rules/deny_list was not found in %s!\n", filename);
+		ShowError("socket_config_read: socket_configuration/ip_rules/deny_list was not found in %s!\n", filename);
 	} else {
 		access_list_add(setting, "deny_list", &access_deny);
 	}
@@ -1387,11 +1380,10 @@ bool socket_config_read_iprules(const char *filename, struct config_t *config, b
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool socket_config_read_ddos(const char *filename, struct config_t *config, bool imported)
+bool socket_config_read_ddos(const char *filename, struct config_t *config)
 {
 #ifndef MINICORE
 	struct config_setting_t *setting = NULL;
@@ -1400,8 +1392,6 @@ bool socket_config_read_ddos(const char *filename, struct config_t *config, bool
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ddos")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("socket_config_read: socket_configuration/ddos was not found in %s!\n", filename);
 		return false;
 	}
@@ -1418,15 +1408,14 @@ bool socket_config_read_ddos(const char *filename, struct config_t *config, bool
  * Reads 'socket_configuration' and initializes required variables.
  *
  * @param filename Path to configuration file.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool socket_config_read(const char *filename, bool imported)
+bool socket_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	const char *import;
+	//const char *import;
 	int i32 = 0;
 	bool retval = true;
 
@@ -1437,8 +1426,6 @@ bool socket_config_read(const char *filename, bool imported)
 
 	if ((setting = libconfig->lookup(&config, "socket_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("socket_config_read: socket_configuration was not found in %s!\n", filename);
 		return false;
 	}
@@ -1466,21 +1453,11 @@ bool socket_config_read(const char *filename, bool imported)
 		}
 	}
 
-	if (!socket_config_read_iprules(filename, &config, imported))
+	if (!socket_config_read_iprules(filename, &config))
 		retval = false;
-	if (!socket_config_read_ddos(filename, &config, imported))
+	if (!socket_config_read_ddos(filename, &config))
 		retval = false;
 #endif // MINICORE
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, SOCKET_CONF_FILENAME) == 0) {
-			ShowWarning("socket_config_read: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!socket_config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;
@@ -1687,7 +1664,7 @@ void socket_init(void)
 	// Get initial local ips
 	sockt->naddr_ = sockt->getips(sockt->addr_,16);
 
-	socket_config_read(SOCKET_CONF_FILENAME, false);
+	socket_config_read(SOCKET_CONF_FILENAME);
 
 #ifndef SOCKET_EPOLL
 	// Select based Event Dispatcher:

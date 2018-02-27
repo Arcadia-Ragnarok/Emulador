@@ -23,7 +23,7 @@
 #ifndef MAP_INTIF_H
 #define MAP_INTIF_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /**
  * Declarations
@@ -215,10 +215,7 @@ struct intif_interface {
 	void(*pRodexCheckName) (int fd);
 };
 
-#ifdef MAIN_CORE
 void intif_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct intif_interface *intif;
+extern struct intif_interface *intif;
 
 #endif /* MAP_INTIF_H */

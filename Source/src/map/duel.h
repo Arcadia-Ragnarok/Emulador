@@ -23,7 +23,7 @@
 #ifndef MAP_DUEL_H
 #define MAP_DUEL_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 struct map_session_data;
 
@@ -59,10 +59,7 @@ struct duel_interface {
 	void (*final) (void);
 };
 
-#ifdef MAIN_CORE
 void duel_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct duel_interface *duel;
+extern struct duel_interface *duel;
 
 #endif /* MAP_DUEL_H */

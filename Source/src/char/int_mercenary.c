@@ -43,19 +43,16 @@
 struct inter_mercenary_interface inter_mercenary_s;
 struct inter_mercenary_interface *inter_mercenary;
 
-bool inter_mercenary_owner_fromsql(int char_id, struct mmo_charstatus *status)
-{
+bool inter_mercenary_owner_fromsql(int char_id, struct mmo_charstatus *status) {
 	char* data;
 
 	nullpo_ret(status);
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `merc_id`, `arch_calls`, `arch_faith`, `spear_calls`, `spear_faith`, `sword_calls`, `sword_faith` FROM `%s` WHERE `char_id` = '%d'", mercenary_owner_db, char_id) )
-	{
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `merc_id`, `arch_calls`, `arch_faith`, `spear_calls`, `spear_faith`, `sword_calls`, `sword_faith` FROM `%s` WHERE `char_id` = '%d'", mercenary_owner_db, char_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
 	}
 
-	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) )
-	{
+	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) ) {
 		SQL->FreeResult(inter->sql_handle);
 		return false;
 	}
@@ -72,8 +69,7 @@ bool inter_mercenary_owner_fromsql(int char_id, struct mmo_charstatus *status)
 	return true;
 }
 
-bool inter_mercenary_owner_tosql(int char_id, struct mmo_charstatus *status)
-{
+bool inter_mercenary_owner_tosql(int char_id, struct mmo_charstatus *status) {
 	nullpo_ret(status);
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "REPLACE INTO `%s` (`char_id`, `merc_id`, `arch_calls`, `arch_faith`, `spear_calls`, `spear_faith`, `sword_calls`, `sword_faith`) VALUES ('%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d')",
 		mercenary_owner_db, char_id, status->mer_id, status->arch_calls, status->arch_faith, status->spear_calls, status->spear_faith, status->sword_calls, status->sword_faith) )
@@ -85,13 +81,14 @@ bool inter_mercenary_owner_tosql(int char_id, struct mmo_charstatus *status)
 	return true;
 }
 
-bool inter_mercenary_owner_delete(int char_id)
-{
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `char_id` = '%d'", mercenary_owner_db, char_id) )
+bool inter_mercenary_owner_delete(int char_id) {
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `char_id` = '%d'", mercenary_owner_db, char_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
+	}
 
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `char_id` = '%d'", mercenary_db, char_id) )
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `char_id` = '%d'", mercenary_db, char_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
+	}
 
 	return true;
 }
@@ -106,8 +103,7 @@ bool inter_mercenary_owner_delete(int char_id)
  * @param[in,out] merc The new mercenary's data.
  * @retval false in case of errors.
  */
-bool mapif_mercenary_create(struct s_mercenary *merc)
-{
+bool mapif_mercenary_create(struct s_mercenary *merc) {
 	nullpo_retr(false, merc);
 	Assert_retr(false, merc->mercenary_id == 0);
 
@@ -128,8 +124,7 @@ bool mapif_mercenary_create(struct s_mercenary *merc)
  * @param merc The mercenary's data.
  * @retval false in case of errors.
  */
-bool mapif_mercenary_save(const struct s_mercenary *merc)
-{
+bool mapif_mercenary_save(const struct s_mercenary *merc) {
 	nullpo_retr(false, merc);
 	Assert_retr(false, merc->mercenary_id > 0);
 
@@ -143,8 +138,7 @@ bool mapif_mercenary_save(const struct s_mercenary *merc)
 	return true;
 }
 
-bool mapif_mercenary_load(int merc_id, int char_id, struct s_mercenary *merc)
-{
+bool mapif_mercenary_load(int merc_id, int char_id, struct s_mercenary *merc) {
 	char* data;
 
 	nullpo_ret(merc);
@@ -152,14 +146,12 @@ bool mapif_mercenary_load(int merc_id, int char_id, struct s_mercenary *merc)
 	merc->mercenary_id = merc_id;
 	merc->char_id = char_id;
 
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `class`, `hp`, `sp`, `kill_counter`, `life_time` FROM `%s` WHERE `mer_id` = '%d' AND `char_id` = '%d'", mercenary_db, merc_id, char_id) )
-	{
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `class`, `hp`, `sp`, `kill_counter`, `life_time` FROM `%s` WHERE `mer_id` = '%d' AND `char_id` = '%d'", mercenary_db, merc_id, char_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
 	}
 
-	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) )
-	{
+	if( SQL_SUCCESS != SQL->NextRow(inter->sql_handle) ) {
 		SQL->FreeResult(inter->sql_handle);
 		return false;
 	}
@@ -171,15 +163,13 @@ bool mapif_mercenary_load(int merc_id, int char_id, struct s_mercenary *merc)
 	SQL->GetData(inter->sql_handle,  4, &data, NULL); merc->life_time = atoi(data);
 	SQL->FreeResult(inter->sql_handle);
 	if (chr->show_save_log)
-		ShowInfo("Mercenary loaded (%d - %d).\n", merc->mercenary_id, merc->char_id);
+		ShowInfo("Mercenario carregado (%d - %d).\n", merc->mercenary_id, merc->char_id);
 
 	return true;
 }
 
-bool mapif_mercenary_delete(int merc_id)
-{
-	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `mer_id` = '%d'", mercenary_db, merc_id) )
-	{
+bool mapif_mercenary_delete(int merc_id) {
+	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `mer_id` = '%d'", mercenary_db, merc_id) ) {
 		Sql_ShowDebug(inter->sql_handle);
 		return false;
 	}
@@ -187,8 +177,7 @@ bool mapif_mercenary_delete(int merc_id)
 	return true;
 }
 
-void mapif_mercenary_send(int fd, struct s_mercenary *merc, unsigned char flag)
-{
+void mapif_mercenary_send(int fd, struct s_mercenary *merc, unsigned char flag) {
 	int size = sizeof(struct s_mercenary) + 5;
 
 	nullpo_retv(merc);
@@ -200,8 +189,7 @@ void mapif_mercenary_send(int fd, struct s_mercenary *merc, unsigned char flag)
 	WFIFOSET(fd,size);
 }
 
-void mapif_parse_mercenary_create(int fd, const struct s_mercenary *merc)
-{
+void mapif_parse_mercenary_create(int fd, const struct s_mercenary *merc) {
 	struct s_mercenary merc_;
 	bool result;
 
@@ -211,23 +199,20 @@ void mapif_parse_mercenary_create(int fd, const struct s_mercenary *merc)
 	mapif->mercenary_send(fd, &merc_, result);
 }
 
-void mapif_parse_mercenary_load(int fd, int merc_id, int char_id)
-{
+void mapif_parse_mercenary_load(int fd, int merc_id, int char_id) {
 	struct s_mercenary merc;
 	bool result = mapif->mercenary_load(merc_id, char_id, &merc);
 	mapif->mercenary_send(fd, &merc, result);
 }
 
-void mapif_mercenary_deleted(int fd, unsigned char flag)
-{
+void mapif_mercenary_deleted(int fd, unsigned char flag) {
 	WFIFOHEAD(fd,3);
 	WFIFOW(fd,0) = 0x3871;
 	WFIFOB(fd,2) = flag;
 	WFIFOSET(fd,3);
 }
 
-void mapif_parse_mercenary_delete(int fd, int merc_id)
-{
+void mapif_parse_mercenary_delete(int fd, int merc_id) {
 	bool result = mapif->mercenary_delete(merc_id);
 	mapif->mercenary_deleted(fd, result);
 }
@@ -240,26 +225,22 @@ void mapif_mercenary_saved(int fd, unsigned char flag)
 	WFIFOSET(fd,3);
 }
 
-void mapif_parse_mercenary_save(int fd, struct s_mercenary* merc)
-{
+void mapif_parse_mercenary_save(int fd, struct s_mercenary* merc) {
 	bool result = mapif->mercenary_save(merc);
 	mapif->mercenary_saved(fd, result);
 }
 
-int inter_mercenary_sql_init(void)
-{
+int inter_mercenary_sql_init(void) {
 	return 0;
 }
-void inter_mercenary_sql_final(void)
-{
+void inter_mercenary_sql_final(void) {
 	return;
 }
 
 /*==========================================
  * Inter Packets
  *------------------------------------------*/
-int inter_mercenary_parse_frommap(int fd)
-{
+int inter_mercenary_parse_frommap(int fd) {
 	unsigned short cmd = RFIFOW(fd,0);
 
 	switch (cmd) {
@@ -273,8 +254,7 @@ int inter_mercenary_parse_frommap(int fd)
 	return 1;
 }
 
-void inter_mercenary_defaults(void)
-{
+void inter_mercenary_defaults(void) {
 	inter_mercenary = &inter_mercenary_s;
 
 	inter_mercenary->owner_fromsql = inter_mercenary_owner_fromsql;

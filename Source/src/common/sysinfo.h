@@ -30,7 +30,7 @@
  *
  */
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 struct sysinfo_private;
 
@@ -64,10 +64,7 @@ struct sysinfo_interface {
 	void (*final) (void);
 };
 
-#ifdef MAIN_CORE
 void sysinfo_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct sysinfo_interface *sysinfo;
+extern struct sysinfo_interface *sysinfo;
 
 #endif /* COMMON_SYSINFO_H */

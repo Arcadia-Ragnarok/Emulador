@@ -24,7 +24,7 @@
 #define MAP_MAPREG_H
 
 #include "map/script.h" // struct reg_db
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 
 /* Forward Declarations */
@@ -65,13 +65,10 @@ struct mapreg_interface {
 	int (*save_timer) (int tid, int64 tick, int id, intptr_t data);
 	int (*destroyreg) (union DBKey key, struct DBData *data, va_list ap);
 	void (*reload) (void);
-	bool (*config_read) (const char *filename, const struct config_setting_t *config, bool imported);
+	bool (*config_read) (const char *filename, const struct config_setting_t *config);
 };
 
-#ifdef MAIN_CORE
 void mapreg_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mapreg_interface *mapreg;
+extern struct mapreg_interface *mapreg;
 
 #endif /* MAP_MAPREG_H */

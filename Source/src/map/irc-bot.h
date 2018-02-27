@@ -27,7 +27,7 @@
 #ifndef MAP_IRC_BOT_H
 #define MAP_IRC_BOT_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #define IRC_NICK_LENGTH 40
 #define IRC_IDENT_LENGTH 40
@@ -199,10 +199,7 @@ struct irc_bot_interface {
 	void (*usernick) (int fd, char *cmd, char *source, char *target, char *msg);
 };
 
-#ifdef MAIN_CORE
 void ircbot_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct irc_bot_interface *ircbot;
+extern struct irc_bot_interface *ircbot;
 
 #endif /* MAP_IRC_BOT_H */

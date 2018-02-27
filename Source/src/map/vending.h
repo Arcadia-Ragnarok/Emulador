@@ -23,7 +23,7 @@
 #ifndef MAP_VENDING_H
 #define MAP_VENDING_H
 
-#include "common/HPExport.h"
+#include "common/db.h"
 
 /* Forward Declarations */
 struct DBMap; // common/db.h
@@ -51,10 +51,7 @@ struct vending_interface {
 	bool (*searchall) (struct map_session_data* sd, const struct s_search_store_search* s);
 };
 
-#ifdef MAIN_CORE
 void vending_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct vending_interface *vending;
+extern struct vending_interface *vending;
 
 #endif /* MAP_VENDING_H */

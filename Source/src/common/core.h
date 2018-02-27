@@ -23,7 +23,6 @@
 #ifndef COMMON_CORE_H
 #define COMMON_CORE_H
 
-#include "common/HPExport.h"
 #include "common/db.h"
 
 /* so that developers with --enable-debug can raise signals from any section of the code they'd like */
@@ -56,7 +55,6 @@ enum cmdline_options {
 };
 typedef bool (*CmdlineExecFunc)(const char *name, const char *params);
 struct CmdlineArgData {
-	unsigned int pluginID; ///< Plugin ID (HPM_PID_CORE if used by the core)
 	unsigned int options;  ///< Command line argument options (@see enum cmdline_options)
 	char *name;            ///< Command-line argument (i.e. "--my-arg", "--version", "--whatever")
 	char shortname;        ///< Short form (i.e. "-v") - only store the 'v' part.
@@ -69,7 +67,7 @@ struct cmdline_interface {
 
 	void (*init) (void);
 	void (*final) (void);
-	bool (*arg_add) (unsigned int pluginID, const char *name, char shortname, CmdlineExecFunc func, const char *help, unsigned int options);
+	bool (*arg_add) (const char *name, char shortname, CmdlineExecFunc func, const char *help, unsigned int options);
 	int (*exec) (int argc, char **argv, unsigned int options);
 	bool (*arg_next_value) (const char *name, int current_arg, int argc);
 	const char *(*arg_source) (struct CmdlineArgData *arg);
@@ -99,16 +97,13 @@ extern void set_server_type(void);
 extern void do_abort(void);
 extern int do_final(void);
 
-/// Special plugin ID assigned to the core
-#define HPM_PID_CORE ((unsigned int)-1)
-
-#define CMDLINEARG_DEF(name, shortname, help, options) cmdline->arg_add(HPM_PID_CORE, "--" EXPAND_AND_QUOTE(name), shortname, cmdline_arg_ ## name, help, options)
-#define CMDLINEARG_DEF2(name, funcname, help, options) cmdline->arg_add(HPM_PID_CORE, "--" EXPAND_AND_QUOTE(name), '\0', cmdline_arg_ ## funcname, help, options)
+#define CMDLINEARG_DEF(name, shortname, help, options)
+#define CMDLINEARG_DEF2(name, funcname, help, options)
 
 void cmdline_defaults(void);
 #endif // MAIN_CORE
 
-HPShared struct core_interface *core;
-HPShared struct cmdline_interface *cmdline;
+extern struct core_interface *core;
+extern struct cmdline_interface *cmdline;
 
 #endif /* COMMON_CORE_H */

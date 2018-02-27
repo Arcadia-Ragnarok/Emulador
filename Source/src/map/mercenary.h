@@ -25,7 +25,7 @@
 
 #include "map/status.h" // struct status_data, struct status_change
 #include "map/unit.h" // struct unit_data
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 struct map_session_data;
 
@@ -150,10 +150,7 @@ struct mercenary_interface {
 	bool (*read_skill_db_sub) (char* str[], int columns, int current);
 };
 
-#ifdef MAIN_CORE
 void mercenary_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mercenary_interface *mercenary;
+extern struct mercenary_interface *mercenary;
 
 #endif /* MAP_MERCENARY_H */

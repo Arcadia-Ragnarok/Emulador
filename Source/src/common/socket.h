@@ -23,7 +23,7 @@
 #ifndef COMMON_SOCKET_H
 #define COMMON_SOCKET_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/db.h"
 
 #ifdef WIN32
@@ -36,7 +36,6 @@
 #endif
 
 /* Forward Declarations */
-struct hplugin_data_store;
 struct config_setting_t;
 
 #define FIFOSIZE_SERVERLINK 256*1024
@@ -137,7 +136,6 @@ struct socket_data {
 	ParseFunc func_parse;
 
 	void* session_data; // stores application-specific data related to the session
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store.
 };
 
 struct hSockOpt {
@@ -229,10 +227,7 @@ struct socket_interface {
 	void (*net_config_read) (const char *filename);
 };
 
-#ifdef MAIN_CORE
 void socket_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct socket_interface *sockt;
+extern struct socket_interface *sockt;
 
 #endif /* COMMON_SOCKET_H */

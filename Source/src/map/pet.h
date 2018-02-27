@@ -26,7 +26,6 @@
 #include "map/map.h" // struct block_list
 #include "map/status.h" // enum sc_type
 #include "map/unit.h" // struct unit_data
-#include "common/HPExport.h"
 #include "common/mmo.h" // NAME_LENGTH, struct s_pet
 
 #define MAX_PET_DB       300
@@ -171,10 +170,7 @@ struct pet_interface {
 	int (*read_db) (void);
 };
 
-#ifdef MAIN_CORE
 void pet_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct pet_interface *pet;
+extern struct pet_interface *pet;
 
 #endif /* MAP_PET_H */

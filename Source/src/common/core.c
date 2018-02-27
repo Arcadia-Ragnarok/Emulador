@@ -40,7 +40,6 @@
 #include "common/utils.h"
 
 #ifndef MINICORE
-#	include "common/HPM.h"
 #	include "common/conf.h"
 #	include "common/ers.h"
 #	include "common/md5calc.h"
@@ -78,7 +77,6 @@
  * Please note that NO SUPPORT will be given if you uncomment the following line.
  */
 //#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
-// And don't complain to us if the XYZ plugin you installed wiped your hard disk, or worse.
 // Note: This feature is deprecated, and should not be used.
 
 /// Called when a terminate signal is received.
@@ -254,10 +252,6 @@ bool usercheck(void)
 void core_defaults(void)
 {
 	nullpo_defaults();
-#ifndef MINICORE
-	hpm_defaults();
-	HCache_defaults();
-#endif
 	sysinfo_defaults();
 	console_defaults();
 	strlib_defaults();
@@ -280,22 +274,16 @@ void core_defaults(void)
 }
 
 /**
- * Returns the source (core or plugin name) for the given command-line argument
+ * Returns the source core for the given command-line argument
  */
 const char *cmdline_arg_source(struct CmdlineArgData *arg)
 {
-#ifdef MINICORE
 	return "core";
-#else // !MINICORE
-	nullpo_retr(NULL, arg);
-	return HPM->pid2name(arg->pluginID);
-#endif // MINICORE
 }
 
 /**
  * Defines a command line argument.
  *
- * @param pluginID  the source plugin ID (use HPM_PID_CORE if loading from the core).
  * @param name      the command line argument name, including the leading '--'.
  * @param shortname an optional short form (single-character, it will be prefixed with '-'). Use '\0' to skip.
  * @param func      the triggered function.
@@ -303,7 +291,7 @@ const char *cmdline_arg_source(struct CmdlineArgData *arg)
  * @param options   options associated to the command-line argument. @see enum cmdline_options.
  * @return the success status.
  */
-bool cmdline_arg_add(unsigned int pluginID, const char *name, char shortname, CmdlineExecFunc func, const char *help, unsigned int options)
+bool cmdline_arg_add(const char *name, char shortname, CmdlineExecFunc func, const char *help, unsigned int options)
 {
 	struct CmdlineArgData *data = NULL;
 
@@ -311,7 +299,6 @@ bool cmdline_arg_add(unsigned int pluginID, const char *name, char shortname, Cm
 	VECTOR_ENSURE(cmdline->args_data, 1, 1);
 	VECTOR_PUSHZEROED(cmdline->args_data);
 	data = &VECTOR_LAST(cmdline->args_data);
-	data->pluginID = pluginID;
 	data->name = aStrdup(name);
 	data->shortname = shortname;
 	data->func = func;
@@ -448,15 +435,8 @@ int cmdline_exec(int argc, char **argv, unsigned int options)
  */
 void cmdline_init(void)
 {
-#ifdef MINICORE
-	// Minicore has no HPM. This value isn't used, but the arg_add function requires it, so we're (re)defining it here
-#define HPM_PID_CORE ((unsigned int)-1)
-#endif
 	CMDLINEARG_DEF(help, 'h', "Displays this help screen", CMDLINE_OPT_NORMAL);
 	CMDLINEARG_DEF(version, 'v', "Displays the server's version.", CMDLINE_OPT_NORMAL);
-#ifndef MINICORE
-	CMDLINEARG_DEF2(load-plugin, loadplugin, "Loads an additional plugin (can be repeated).", CMDLINE_OPT_PARAM|CMDLINE_OPT_PREINIT);
-#endif // !MINICORE
 	cmdline_args_init_local();
 }
 
@@ -481,7 +461,6 @@ void cmdline_defaults(void)
 
 	cmdline->init = cmdline_init;
 	cmdline->final = cmdline_final;
-	cmdline->arg_add = cmdline_arg_add;
 	cmdline->exec = cmdline_exec;
 	cmdline->arg_next_value = cmdline_arg_next_value;
 	cmdline->arg_source = cmdline_arg_source;
@@ -545,10 +524,6 @@ int main (int argc, char **argv)
 
 	console->init();
 
-	HCache->init();
-
-	HPM->init();
-
 	sockt->init();
 
 	do_init(argc,argv);
@@ -562,7 +537,6 @@ int main (int argc, char **argv)
 	console->final();
 
 	retval = do_final();
-	HPM->final();
 	timer->final();
 	sockt->final();
 	DB->final();

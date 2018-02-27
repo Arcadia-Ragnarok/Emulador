@@ -41,7 +41,6 @@
 #include "map/skill.h"
 #include "map/status.h"
 #include "map/unit.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/db.h"
 #include "common/ers.h"
@@ -2437,8 +2436,6 @@ int npc_unload(struct npc_data* nd, bool single)
 		aFree(nd->ud);
 		nd->ud = NULL;
 	}
-
-	HPM->data_store_destroy(&nd->hdata);
 
 	aFree(nd);
 

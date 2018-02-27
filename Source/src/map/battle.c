@@ -41,7 +41,6 @@
 #include "map/pet.h"
 #include "map/skill.h"
 #include "map/status.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/ers.h"
@@ -6907,8 +6906,6 @@ bool battle_set_value(const char *param, const char *value)
 
 	ARR_FIND(0, ARRAYLENGTH(battle_data), i, strcmpi(param, battle_data[i].str) == 0);
 	if (i == ARRAYLENGTH(battle_data)) {
-		if (HPM->parse_conf_entry(param, value, HPCT_BATTLE)) /* if plugin-owned, succeed */
-			return true;
 		return false; // not found
 	}
 
@@ -6923,13 +6920,9 @@ bool battle_get_value(const char *w1, int *value)
 	nullpo_retr(false, value);
 
 	ARR_FIND(0, ARRAYLENGTH(battle_data), i, strcmpi(w1, battle_data[i].str) == 0);
-	if (i == ARRAYLENGTH(battle_data)) {
-		if (HPM->getBattleConf(w1,value))
-			return true;
-	} else {
-		*value = *battle_data[i].val;
-		return true;
-	}
+	*value = *battle_data[i].val;
+	return true;
+
 
 	return false;
 }
@@ -7014,15 +7007,14 @@ void battle_adjust_conf(void) {
  * Dynamically reads battle configuration and initializes required variables.
  *
  * @param filename Path to configuration file.
- * @param imported Whether the current config is imported from another file.
  * @retval false in case of error.
  */
-bool battle_config_read(const char *filename, bool imported)
+bool battle_config_read(const char *filename)
 {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
 	int i;
-	const char *import = NULL;
+	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -7030,8 +7022,7 @@ bool battle_config_read(const char *filename, bool imported)
 	if (!libconfig->load_file(&config, filename))
 		return false; // Error message is already shown by libconfig->load_file()
 
-	if (!imported)
-		battle->config_set_defaults();
+	battle->config_set_defaults(); // **
 
 	for (i = 0; i < ARRAYLENGTH(battle_data); i++) {
 		int type, val;
@@ -7039,10 +7030,6 @@ bool battle_config_read(const char *filename, bool imported)
 		safesnprintf(config_name, sizeof config_name, "battle_configuration/%s", battle_data[i].str);
 
 		if ((setting = libconfig->lookup(&config, config_name)) == NULL) {
-			if (!imported) {
-				ShowWarning("Missing configuration '%s' in file %s!\n", config_name, filename);
-				retval = false;
-			}
 			continue;
 		}
 
@@ -7063,24 +7050,10 @@ bool battle_config_read(const char *filename, bool imported)
 			retval = false;
 	}
 
-	if (!HPM->parse_battle_conf(&config, filename, imported))
-		retval = false;
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, map->BATTLE_CONF_FILENAME) == 0) {
-			ShowWarning("battle_config_read: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!battle->config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
-	if (!imported) {
-		battle->config_adjust();
-		clif->bc_ready();
-	}
+	battle->config_adjust();
+	clif->bc_ready();
 	return retval;
 }
 

@@ -1320,11 +1320,11 @@ END_ZEROED_BLOCK;
 	int (*waterheight) (char *mapname);
 	int (*readgat) (struct map_data *m);
 	int (*readallmaps) (void);
-	bool (*config_read) (const char *filename, bool imported);
-	bool (*read_npclist) (const char *filename, bool imported);
-	bool (*inter_config_read) (const char *filename, bool imported);
-	bool (*inter_config_read_database_names) (const char *filename, const struct config_t *config, bool imported);
-	bool (*inter_config_read_connection) (const char *filename, const struct config_t *config, bool imported);
+	bool (*config_read) (const char *filename);
+	bool (*read_npclist) (const char *filename);
+	bool (*inter_config_read) (const char *filename);
+	bool (*inter_config_read_database_names) (const char *filename, const struct config_t *config);
+	bool (*inter_config_read_connection) (const char *filename, const struct config_t *config);
 	int (*sql_init) (void);
 	int (*sql_close) (void);
 	bool (*zone_mf_cache) (int m, char *flag, char *params);
@@ -1344,9 +1344,7 @@ END_ZEROED_BLOCK;
 	void (*zone_clear_single) (struct map_zone_data *zone);
 };
 
-#ifdef MAIN_CORE
 void map_defaults(void);
-#endif // MAIN_CORE
 
 struct mapit_interface *mapit;
 struct map_interface *map;

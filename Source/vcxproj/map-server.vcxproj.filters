@@ -130,9 +130,6 @@
     <ClCompile Include="..\src\common\grfio.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\HPM.c">
-      <Filter>common</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\common\memmgr.c">
       <Filter>common</Filter>
     </ClCompile>
@@ -342,12 +339,6 @@
     <ClInclude Include="..\src\common\grfio.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\common\HPM.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMi.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\common\memmgr.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -430,15 +421,6 @@
       <Filter>map</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\atomic.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPExport.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMDataCheck.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\HPMSymbols.inc.h">
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\spinlock.h">

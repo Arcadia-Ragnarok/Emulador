@@ -23,7 +23,7 @@
 #ifndef COMMON_TIMER_H
 #define COMMON_TIMER_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #define DIFF_TICK(a,b) ((a)-(b))
 #define DIFF_TICK32(a,b) ((int32)((a)-(b)))
@@ -79,10 +79,7 @@ struct timer_interface {
 	void (*final) (void);
 };
 
-#ifdef MAIN_CORE
 void timer_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct timer_interface *timer;
+extern struct timer_interface *timer;
 
 #endif /* COMMON_TIMER_H */

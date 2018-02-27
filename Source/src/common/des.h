@@ -23,7 +23,7 @@
 #ifndef COMMON_DES_H
 #define COMMON_DES_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /**
  * @file
@@ -62,10 +62,7 @@ struct des_interface {
 	void (*decrypt) (unsigned char *data, size_t size);
 };
 
-#ifdef MAIN_CORE
 void des_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct des_interface *des; ///< Pointer to the des interface implementation.
+extern struct des_interface *des; ///< Pointer to the des interface implementation.
 
 #endif // COMMON_DES_H

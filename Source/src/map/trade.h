@@ -23,7 +23,7 @@
 #ifndef MAP_TRADE_H
 #define MAP_TRADE_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 //Max distance from traders to enable a trade to take place.
 //TODO: battle_config candidate?
@@ -43,10 +43,7 @@ struct trade_interface {
 	void (*commit) (struct map_session_data *sd);
 };
 
-#ifdef MAIN_CORE
 void trade_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct trade_interface *trade;
+extern struct trade_interface *trade;
 
 #endif /* MAP_TRADE_H */

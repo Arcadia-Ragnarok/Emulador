@@ -28,7 +28,6 @@
 /* Forward Declarations */
 struct config_t; // common/conf.h
 
-#ifdef MAIN_CORE
 // TODO: Interface
 // initialize
 void ipban_init(void);
@@ -43,7 +42,6 @@ bool ipban_check(uint32 ip);
 void ipban_log(uint32 ip);
 
 // parses configuration options
-bool ipban_config_read(const char *filename, struct config_t *config, bool imported);
-#endif // MAIN_CORE
+bool ipban_config_read(const char *filename, struct config_t *config);
 
 #endif /* LOGIN_IPBAN_H */

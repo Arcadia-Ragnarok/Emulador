@@ -23,7 +23,7 @@
 #ifndef COMMON_THREAD_H
 #define COMMON_THREAD_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /** @file
  * Basic Threading abstraction (for pthread / win32 based systems).
@@ -149,10 +149,7 @@ struct thread_interface {
 	void (*yield) (void);
 };
 
-#ifdef MAIN_CORE
 void thread_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct thread_interface *thread; ///< Pointer to the thread interface.
+extern struct thread_interface *thread; ///< Pointer to the thread interface.
 
 #endif /* COMMON_THREAD_H */

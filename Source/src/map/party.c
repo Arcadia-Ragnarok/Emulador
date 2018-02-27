@@ -37,7 +37,6 @@
 #include "map/pc.h"
 #include "map/skill.h"
 #include "map/status.h"
-#include "common/HPM.h"
 #include "common/cbasetypes.h"
 #include "common/memmgr.h"
 #include "common/nullpo.h"
@@ -134,8 +133,6 @@ int party_db_final(union DBKey key, struct DBData *data, va_list ap)
 	if ((p = DB->data2ptr(data))) {
 		if (p->instance)
 			aFree(p->instance);
-
-		HPM->data_store_destroy(&p->hdata);
 	}
 	return 0;
 }
@@ -686,8 +683,6 @@ int party_broken(int party_id)
 
 	if( p->instance )
 		aFree(p->instance);
-
-	HPM->data_store_destroy(&p->hdata);
 
 	idb_remove(party->db,party_id);
 	return 0;

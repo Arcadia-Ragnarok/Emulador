@@ -23,7 +23,7 @@
 #ifndef COMMON_MD5CALC_H
 #define COMMON_MD5CALC_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /** @file
  * md5 calculation algorithm.
@@ -59,10 +59,7 @@ struct md5_interface {
 	void (*salt) (int len, char *output);
 };
 
-#ifdef MAIN_CORE
 void md5_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct md5_interface *md5; ///< Pointer to the md5 interface.
+extern struct md5_interface *md5; ///< Pointer to the md5 interface.
 
 #endif /* COMMON_MD5CALC_H */

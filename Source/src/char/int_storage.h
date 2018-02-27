@@ -23,8 +23,9 @@
 #ifndef CHAR_INT_STORAGE_H
 #define CHAR_INT_STORAGE_H
 
+#include "common/cbasetypes.h"
 #include "common/db.h"
-#include "common/HPExport.h"
+#include "common/mmo.h"
 
 struct storage_data;
 struct guild_storage;
@@ -44,10 +45,8 @@ struct inter_storage_interface {
 	int (*parse_frommap) (int fd);
 };
 
-#ifdef MAIN_CORE
 void inter_storage_defaults(void);
-#endif // MAIN_CORE
 
-HPShared struct inter_storage_interface *inter_storage;
+extern struct inter_storage_interface *inter_storage;
 
 #endif /* CHAR_INT_STORAGE_H */

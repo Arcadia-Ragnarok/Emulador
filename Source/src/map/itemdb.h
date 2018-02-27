@@ -24,13 +24,13 @@
 #define MAP_ITEMDB_H
 
 /* #include "map/map.h" */
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
+#include "map/script.h"
 #include "common/db.h"
 #include "common/mmo.h" // ITEM_NAME_LENGTH
 
 struct config_setting_t;
 struct script_code;
-struct hplugin_data_store;
 
 /**
  * Defines
@@ -518,7 +518,6 @@ struct item_data {
 	/* TODO add a pointer to some sort of (struct extra) and gather all the not-common vals into it to save memory */
 	struct item_group *group;
 	struct item_package *package;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 #define itemdb_name(n)        (itemdb->search(n)->name)
@@ -656,10 +655,7 @@ struct itemdb_interface {
 	bool (*lookup_const_mask) (const struct config_setting_t *it, const char *name, int *value);
 };
 
-#ifdef MAIN_CORE
 void itemdb_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct itemdb_interface *itemdb;
+extern struct itemdb_interface *itemdb;
 
 #endif /* MAP_ITEMDB_H */

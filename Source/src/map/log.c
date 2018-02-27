@@ -35,7 +35,6 @@
 #include "common/showmsg.h"
 #include "common/sql.h" // SQL_INNODB
 #include "common/strlib.h"
-#include "common/HPM.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -513,11 +512,10 @@ void log_set_defaults(void)
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool log_config_read_database(const char *filename, struct config_t *config, bool imported)
+bool log_config_read_database(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -525,8 +523,6 @@ bool log_config_read_database(const char *filename, struct config_t *config, boo
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_log/database")) == NULL) {
-		if (imported)
-			return true;
 		ShowError("log_config_read: map_log/database was not found in %s!\n", filename);
 		return false;
 	}
@@ -569,11 +565,10 @@ bool log_config_read_database(const char *filename, struct config_t *config, boo
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool log_config_read_filter_item(const char *filename, struct config_t *config, bool imported)
+bool log_config_read_filter_item(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -581,8 +576,6 @@ bool log_config_read_filter_item(const char *filename, struct config_t *config, 
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_log/filter/item")) == NULL) {
-		if (!imported)
-			ShowError("log_config_read: map_log/filter/item was not found in %s!\n", filename);
 		return false;
 	}
 	libconfig->setting_lookup_int(setting, "log_filter", &logs->config.filter);
@@ -598,11 +591,10 @@ bool log_config_read_filter_item(const char *filename, struct config_t *config, 
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool log_config_read_filter_chat(const char *filename, struct config_t *config, bool imported)
+bool log_config_read_filter_chat(const char *filename, struct config_t *config)
 {
 	struct config_setting_t *setting = NULL;
 
@@ -610,8 +602,6 @@ bool log_config_read_filter_chat(const char *filename, struct config_t *config, 
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_log/filter/chat")) == NULL) {
-		if (!imported)
-			ShowError("log_config_read: map_log/filter/chat was not found in %s!\n", filename);
 		return false;
 	}
 	libconfig->setting_lookup_int(setting, "log_chat", &logs->config.chat);
@@ -624,20 +614,19 @@ bool log_config_read_filter_chat(const char *filename, struct config_t *config, 
  *
  * @param filename Path to configuration file (used in error and warning messages).
  * @param config   The current config being parsed.
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool log_config_read_filter(const char *filename, struct config_t *config, bool imported)
+bool log_config_read_filter(const char *filename, struct config_t *config)
 {
 	bool retval = true;
 
 	nullpo_retr(false, filename);
 	nullpo_retr(false, config);
 
-	if (!log_config_read_filter_item(filename, config, imported))
+	if (!log_config_read_filter_item(filename, config))
 		retval = false;
-	if (!log_config_read_filter_chat(filename, config, imported))
+	if (!log_config_read_filter_chat(filename, config))
 		retval = false;
 
 	return retval;
@@ -647,31 +636,27 @@ bool log_config_read_filter(const char *filename, struct config_t *config, bool 
  * Reads 'map_log' and initializes required variables.
  *
  * @param filename Path to configuration file (used in error and warning messages).
- * @param imported Whether the current config is imported from another file.
  *
  * @retval false in case of error.
  */
-bool log_config_read(const char *filename, bool imported)
+bool log_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	const char *import;
+	//const char *import;
 	const char *target; // Type of storage 'file'/'table'
 	int temp;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
 
-	if (!imported)
-		log_set_defaults();
+	log_set_defaults();
 
 	if (!libconfig->load_file(&config, filename))
 		return false;
 
 	if ((setting = libconfig->lookup(&config, "map_log")) == NULL) {
 		libconfig->destroy(&config);
-		if (imported)
-			return true;
 		ShowError("log_config_read: map_log was not found in %s!\n", filename);
 		return false;
 	}
@@ -685,12 +670,9 @@ bool log_config_read(const char *filename, bool imported)
 	libconfig->setting_lookup_bool_real(setting, "log_commands", &logs->config.commands);
 	libconfig->setting_lookup_bool_real(setting, "log_npc", &logs->config.npc);
 
-	if (!log_config_read_database(filename, &config, imported))
+	if (!log_config_read_database(filename, &config))
 		retval = false;
-	if (!log_config_read_filter(filename, &config, imported))
-		retval = false;
-
-	if (!HPM->parse_conf(&config, filename, HPCT_LOG, imported))
+	if (!log_config_read_filter(filename, &config))
 		retval = false;
 
 	target = logs->config.sql_logs ? "table" : "file";
@@ -717,16 +699,6 @@ bool log_config_read(const char *filename, bool imported)
 		ShowInfo("Logging Zeny transactions to %s '%s'.\n", target, logs->config.log_zeny);
 
 	logs->config_done();
-
-	// import should overwrite any previous configuration, so it should be called last
-	if (libconfig->lookup_string(&config, "import", &import) == CONFIG_TRUE) {
-		if (strcmp(import, filename) == 0 || strcmp(import, map->LOG_CONF_NAME) == 0) {
-			ShowWarning("log_config_read: Loop detected! Skipping 'import'...\n");
-		} else {
-			if (!logs->config_read(import, true))
-				retval = false;
-		}
-	}
 
 	libconfig->destroy(&config);
 	return retval;

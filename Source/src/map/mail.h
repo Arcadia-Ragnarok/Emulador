@@ -23,7 +23,7 @@
 #ifndef MAP_MAIL_H
 #define MAP_MAIL_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 struct item;
 struct mail_message;
@@ -41,10 +41,7 @@ struct mail_interface {
 	bool (*invalid_operation) (struct map_session_data *sd);
 };
 
-#ifdef MAIN_CORE
 void mail_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct mail_interface *mail;
+extern struct mail_interface *mail;
 
 #endif /* MAP_MAIL_H */

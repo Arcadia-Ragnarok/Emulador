@@ -23,7 +23,7 @@
 #ifndef COMMON_GRFIO_H
 #define COMMON_GRFIO_H
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 /** @file
  * GRF I/O library.
@@ -118,9 +118,7 @@ struct grfio_interface {
  */
 #define grfio_read(fn) grfio->reads((fn), NULL)
 
-#ifdef MAIN_CORE
 void grfio_defaults(void);
-#endif // MAIN_CORE
+extern struct grfio_interface *grfio; ///< Pointer to the grfio interface.
 
-HPShared struct grfio_interface *grfio; ///< Pointer to the grfio interface.
 #endif /* COMMON_GRFIO_H */

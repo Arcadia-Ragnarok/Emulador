@@ -24,7 +24,7 @@
 #define MAP_PATH_H
 
 #include "map/map.h" // enum cell_chk
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 
 #define MOVE_COST 10
 #define MOVE_DIAGONAL_COST 14
@@ -71,10 +71,7 @@ struct path_interface {
 	int (*distance_client) (int dx, int dy);
 };
 
-#ifdef MAIN_CORE
 void path_defaults(void);
-#endif // MAIN_CORE
-
-HPShared struct path_interface *path;
+extern struct path_interface *path;
 
 #endif /* MAP_PATH_H */

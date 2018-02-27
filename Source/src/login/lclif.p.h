@@ -29,7 +29,7 @@
 
 #include "login/lclif.h"
 
-#include "common/HPExport.h"
+#include "common/cbasetypes.h"
 #include "common/mmo.h"
 
 /* Definitions and macros */

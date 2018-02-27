@@ -305,8 +305,6 @@ STATIC_ASSERT(MAX_ITEM_OPTIONS <= 5, "This value is limited by the client and da
 
 #define INFINITE_DURATION (-1) // Infinite duration for status changes
 
-struct hplugin_data_store;
-
 enum item_types {
 	IT_HEALING = 0,
 	IT_UNKNOWN, //1
@@ -795,7 +793,6 @@ struct guild {
 	unsigned short instances;
 
 	struct channel_data *channel;
-	struct hplugin_data_store *hdata; ///< HPM Plugin Data Store
 };
 
 struct guild_castle {
