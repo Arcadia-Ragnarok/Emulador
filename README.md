@@ -3,8 +3,7 @@ Arcadia - Ragnarok Emulador
 
 Status de funcionamento:
 
-[![Build Status](https://travis-ci.org/RagnaDBR/Emulador.svg?branch=master)](https://travis-ci.org/Spell-Master/Arcadia)
-
+[![Build Status](https://travis-ci.org/RagnaDBR/Emulador.svg?branch=master)](https://travis-ci.org/RagnaDBR/Emulador)
 
 Licença:
 
