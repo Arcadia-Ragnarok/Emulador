@@ -624,7 +624,6 @@ ac_includes_default="\
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 HAVE_PERL
-PLUGINSTATIC
 STATIC
 MYSQL_LIBS
 MYSQL_CFLAGS
@@ -633,7 +632,6 @@ HAVE_MYSQL
 MYSQL_CONFIG_HOME
 DLLEXT
 SOFLAGS
-WITH_PLUGINS
 AR
 SET_MAKE
 EGREP
@@ -2188,8 +2186,6 @@ ac_config_files="$ac_config_files Makefile Source/src/common/Makefile"
 ac_config_files="$ac_config_files Source/3rdparty/mt19937ar/Makefile Source/3rdparty/libconfig/Makefile"
 
 ac_config_files="$ac_config_files Source/src/char/Makefile Source/src/login/Makefile"
-
-ac_config_files="$ac_config_files Source/src/map/Makefile Source/src/plugins/Makefile Source/src/tool/Makefile"
 
 ac_config_files="$ac_config_files Source/src/test/Makefile"
 
@@ -7945,14 +7941,8 @@ CFLAGS="$OLD_CFLAGS"
 if test "$compiler_supports_shared_objects" = "no" ; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: not supported" >&5
 $as_echo "not supported" >&6; }
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: compiler is unable to generate shared objects, disabled plugins (optional)" >&5
-$as_echo "$as_me: compiler is unable to generate shared objects, disabled plugins (optional)" >&6;}
-	WITH_PLUGINS="no"
+
 else
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $compiler_shared_objects $compiler_supports_shared_objects" >&5
-$as_echo "$compiler_shared_objects $compiler_supports_shared_objects" >&6; }
-	SOFLAGS="$SOFLAGS $compiler_shared_objects"
-	WITH_PLUGINS="yes"
 
 	#
 	# On certain platforms, undefined references on shared libraries won't be checked
@@ -9278,8 +9268,6 @@ fi
 if test "$enable_static" != "no" ; then
 
 	STATIC="-static"
-	PLUGINSTATIC="-static-libgcc"
-
 	OLD_CFLAGS="$CFLAGS"
 	OLD_LDFLAGS="$LDFLAGS"
 	OLD_LIBS="$LIBS"
@@ -9329,11 +9317,6 @@ fi
 $as_echo_n "checking whether $CC supports -static-libgcc... " >&6; }
 	if test "$cross_compiling" = yes; then :
 
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: guessing no" >&5
-$as_echo "guessing no" >&6; }
-			PLUGINSTATIC=""
-
-
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -9349,10 +9332,6 @@ if ac_fn_c_try_run "$LINENO"; then :
 $as_echo "yes" >&6; }
 
 else
-
-			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-			PLUGINSTATIC=""
 
 fi
 rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
@@ -9410,8 +9389,6 @@ fi
 fi
 
 STATIC=${STATIC}
-
-PLUGINSTATIC=${PLUGINSTATIC}
 
 # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
@@ -10166,7 +10143,6 @@ do
     "Source/src/char/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/char/Makefile" ;;
     "Source/src/login/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/login/Makefile" ;;
     "Source/src/map/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/map/Makefile" ;;
-    "Source/src/plugins/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/plugins/Makefile" ;;
     "Source/src/tool/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/tool/Makefile" ;;
     "Source/src/test/Makefile") CONFIG_FILES="$CONFIG_FILES Source/src/test/Makefile" ;;
 

@@ -43,18 +43,10 @@ else
 	TOOLS_DEPENDS=needs_mysql
 endif
 
-WITH_PLUGINS=@WITH_PLUGINS@
-ifeq ($(WITH_PLUGINS),yes)
-	ALL_DEPENDS+=plugins
-	PLUGIN_DEPENDS=common_sql
-else
-	PLUGIN_DEPENDS=no_plugins
-endif
-
 HAVE_PERL=@HAVE_PERL@
 
 MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
-             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map Source/src/plugins \
+             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map
              Source/src/tool Source/src/test)
 
 CC = @CC@
@@ -68,7 +60,6 @@ export CC
 	char_sql \
 	map_sql \
 	tools \
-	plugins \
 	import \
 	test \
 	clean \
@@ -130,14 +121,6 @@ test: Source/src/test/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/src/test
 
-plugins: $(PLUGIN_DEPENDS) Source/src/plugins/Makefile
-	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/plugins
-
-plugin.%: $(PLUGIN_DEPENDS) Source/src/plugins/Makefile
-	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/plugins $(patsubst plugin.%,%,$@)
-
 import: Makefile
 	@# 1) create Config/import folder
 	@# 2) add missing files
@@ -152,7 +135,6 @@ clean buildclean: $(MF_TARGETS)
 	@$(MAKE) -C Source/src/login $@
 	@$(MAKE) -C Source/src/char $@
 	@$(MAKE) -C Source/src/map $@
-	@$(MAKE) -C Source/src/plugins $@
 	@$(MAKE) -C Source/src/tool $@
 	@$(MAKE) -C Source/src/test $@
 
@@ -172,7 +154,6 @@ config.status: configure
 	@./config.status --recheck && ./config.status
 
 help: Makefile
-	@echo "most common targets are 'all' 'sql' 'clean' 'plugins' 'help'"
 	@echo "possible targets are:"
 	@echo "'common_sql'  - builds object files used in SQL servers"
 	@echo "'mt19937ar'   - builds object file of Mersenne Twister MT19937"
@@ -185,8 +166,6 @@ help: Makefile
 	@echo "'all'         - builds all the above targets"
 	@echo "'sql'         - builds sql servers (targets 'common_sql' 'login_sql' 'char_sql'"
 	@echo "                'map_sql' and 'import')"
-	@echo "'plugins'     - builds all available plugins"
-	@echo "'plugin.Name' - builds plugin named 'Name'"
 	@echo "'test'        - builds tests"
 	@echo "'clean'       - cleans executables and objects"
 	@echo "'buildclean'  - cleans build temporary (object) files, without deleting the"
@@ -202,8 +181,4 @@ endif
 
 needs_mysql:
 	@echo "MySQL not found or disabled by the configure script"
-	@exit 1
-
-no_plugins:
-	@echo "Plugins disabled by the configure script"
 	@exit 1
