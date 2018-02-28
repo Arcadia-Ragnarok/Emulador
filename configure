@@ -9326,6 +9326,7 @@ $as_echo_n "checking whether $CC supports -static-libgcc... " >&6; }
 			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: guessing no" >&5
 $as_echo "guessing no" >&6; }
 
+
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
