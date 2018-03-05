@@ -63,7 +63,6 @@ groups: (
 		request: true
 		go: true
 		breakguild: true
-		channel: true
 	}
 	permissions: {
 	}

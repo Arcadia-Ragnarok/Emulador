@@ -24,7 +24,6 @@
  * Declarations
  **/
 struct battleground_data;
-struct channel_data;
 struct chat_data;
 struct eri;
 struct flooritem_data;
@@ -1091,9 +1090,6 @@ struct clif_interface {
 	void (*user_count) (struct map_session_data* sd, int count);
 	void (*noask_sub) (struct map_session_data *src, struct map_session_data *target, int type);
 	void (*bc_ready) (void);
-	/* Channel System */
-	void (*channel_msg) (struct channel_data *chan, struct map_session_data *sd, char *msg);
-	void (*channel_msg2) (struct channel_data *chan, char *msg);
 	int (*undisguise_timer) (int tid, int64 tick, int id, intptr_t data);
 	/* Bank System [Yommy] */
 	void (*bank_deposit) (struct map_session_data *sd, enum e_BANKING_DEPOSIT_ACK reason);

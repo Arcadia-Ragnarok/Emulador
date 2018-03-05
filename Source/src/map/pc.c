@@ -19,7 +19,6 @@
 #include "map/atcommand.h" // get_atcommand_level()
 #include "map/battle.h" // battle_config
 #include "map/battleground.h"
-#include "map/channel.h"
 #include "map/chat.h"
 #include "map/chrif.h"
 #include "map/clif.h"
@@ -5650,10 +5649,6 @@ int pc_setpos(struct map_session_data* sd, unsigned short map_index, int x, int 
 		if (sd->state.vending && map->list[m].flag.novending) {
 			clif->message (sd->fd, msg_sd(sd,276)); // "You can't open a shop on this map"
 			vending->close(sd);
-		}
-
-		if (map->list[sd->bl.m].channel) {
-			channel->leave(map->list[sd->bl.m].channel,sd);
 		}
 	}
 

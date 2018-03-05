@@ -19,7 +19,6 @@
 #include "map/atcommand.h"
 #include "map/battle.h"
 #include "map/battleground.h"
-#include "map/channel.h"
 #include "map/chat.h"
 #include "map/chrif.h"
 #include "map/elemental.h"
@@ -27,7 +26,6 @@
 #include "map/homunculus.h"
 #include "map/instance.h"
 #include "map/intif.h"
-#include "map/irc-bot.h"
 #include "map/itemdb.h"
 #include "map/log.h"
 #include "map/mail.h"
@@ -9297,71 +9295,6 @@ bool clif_process_whisper_message(struct map_session_data *sd, const struct pack
 	return true;
 }
 
-void clif_channel_msg(struct channel_data *chan, struct map_session_data *sd, char *msg)
-{
-	struct DBIterator *iter;
-	struct map_session_data *user;
-	int msg_len;
-	uint32 color;
-
-	nullpo_retv(chan);
-	nullpo_retv(sd);
-	nullpo_retv(msg);
-	iter = db_iterator(chan->users);
-	msg_len = (int)strlen(msg) + 1;
-	Assert_retv(msg_len <= INT16_MAX - 12);
-	color = channel->config->colors[chan->color];
-
-	WFIFOHEAD(sd->fd,msg_len + 12);
-	WFIFOW(sd->fd,0) = 0x2C1;
-	WFIFOW(sd->fd,2) = msg_len + 12;
-	WFIFOL(sd->fd,4) = 0;
-	WFIFOL(sd->fd,8) = RGB2BGR(color);
-	safestrncpy(WFIFOP(sd->fd,12), msg, msg_len);
-
-	for (user = dbi_first(iter); dbi_exists(iter); user = dbi_next(iter)) {
-		if( user->fd == sd->fd )
-			continue;
-		WFIFOHEAD(user->fd,msg_len + 12);
-		memcpy(WFIFOP(user->fd,0), WFIFOP(sd->fd,0), msg_len + 12);
-		WFIFOSET(user->fd, msg_len + 12);
-	}
-
-	WFIFOSET(sd->fd, msg_len + 12);
-
-	dbi_destroy(iter);
-}
-
-void clif_channel_msg2(struct channel_data *chan, char *msg)
-{
-	struct DBIterator *iter;
-	struct map_session_data *user;
-	unsigned char buf[210];
-	int msg_len;
-	uint32 color;
-
-	nullpo_retv(chan);
-	nullpo_retv(msg);
-	iter = db_iterator(chan->users);
-	msg_len = (int)strlen(msg) + 1;
-	Assert_retv(msg_len <= INT16_MAX - 12);
-	color = channel->config->colors[chan->color];
-
-	WBUFW(buf,0) = 0x2C1;
-	WBUFW(buf,2) = msg_len + 12;
-	WBUFL(buf,4) = 0;
-	WBUFL(buf,8) = RGB2BGR(color);
-	safestrncpy(WBUFP(buf,12), msg, msg_len);
-
-	for (user = dbi_first(iter); dbi_exists(iter); user = dbi_next(iter)) {
-		WFIFOHEAD(user->fd,msg_len + 12);
-		memcpy(WFIFOP(user->fd,0), WBUFP(buf,0), msg_len + 12);
-		WFIFOSET(user->fd, msg_len + 12);
-	}
-
-	dbi_destroy(iter);
-}
-
 // ------------
 // clif_parse_*
 // ------------
@@ -9721,13 +9654,6 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) {
 		map->iwall_get(sd); // Updates Walls Info on this Map to Client
 		status_calc_pc(sd, SCO_NONE);/* some conditions are map-dependent so we must recalculate */
 		sd->state.changemap = false;
-
-		if (channel->config->local && channel->config->local_autojoin) {
-			channel->map_join(sd);
-		}
-		if (channel->config->irc && channel->config->irc_autojoin) {
-			channel->irc_join(sd);
-		}
 	}
 
 	mail->clear(sd);
@@ -10097,11 +10023,6 @@ void clif_parse_GlobalMessage(int fd, struct map_session_data *sd)
 
 	pc->check_supernovice_call(sd, message);
 
-	if (sd->gcbind != NULL) {
-		channel->send(sd->gcbind, sd, message);
-		return;
-	}
-
 	if (sd->fakename[0] != '\0') {
 		is_fakename = true;
 		outlen = (int)strlen(sd->fakename) + (int)strlen(message) + 3 + 1;
@@ -10124,8 +10045,6 @@ void clif_parse_GlobalMessage(int fd, struct map_session_data *sd)
 			if ((td = timer->get(sd->fontcolor_tid)) != NULL)
 				timer->settick(sd->fontcolor_tid, td->tick+5000);
 		}
-
-		color = channel->config->colors[sd->fontcolor - 1];
 		WFIFOHEAD(fd, outlen + 12);
 		WFIFOW(fd,0) = 0x2C1;
 		WFIFOW(fd,2) = outlen + 12;
@@ -10509,21 +10428,6 @@ void clif_parse_WisMessage(int fd, struct map_session_data* sd)
 		}
 	} else if( target[0] == '#' ) {
 		const char *chname = target;
-		struct channel_data *chan = channel->search(chname, sd);
-
-		if (chan) {
-			int k;
-			ARR_FIND(0, sd->channel_count, k, sd->channels[k] == chan);
-			if (k < sd->channel_count || channel->join(chan, sd, "", true) == HCS_STATUS_OK) {
-				channel->send(chan,sd,message);
-			} else {
-				clif->message(fd, msg_fd(fd,1402)); //You're not in that channel, type '@join <#channel_name>'
-			}
-			return;
-		} else if (strcmpi(&chname[1], channel->config->ally_name) == 0) {
-			clif->message(fd, msg_fd(fd,1294)); // You're not allowed to talk on this channel
-			return;
-		}
 	}
 
 	// searching destination character
@@ -20650,9 +20554,6 @@ void clif_defaults(void) {
 	clif->user_count = clif_user_count;
 	clif->noask_sub = clif_noask_sub;
 	clif->bc_ready = clif_bc_ready;
-	/* Channel System */
-	clif->channel_msg = clif_channel_msg;
-	clif->channel_msg2 = clif_channel_msg2;
 	/* */
 	clif->undisguise_timer = clif_undisguise_timer;
 	/* Bank System [Yommy] */

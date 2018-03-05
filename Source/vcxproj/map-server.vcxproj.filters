@@ -43,9 +43,6 @@
     <ClCompile Include="..\src\map\intif.c">
       <Filter>map</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\map\irc-bot.c">
-      <Filter>map</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\map\itemdb.c">
       <Filter>map</Filter>
     </ClCompile>
@@ -196,9 +193,6 @@
     <ClCompile Include="..\src\common\mutex.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\map\channel.c">
-      <Filter>map</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\map\rodex.c">
       <Filter>map</Filter>
     </ClCompile>
@@ -244,9 +238,6 @@
       <Filter>map</Filter>
     </ClInclude>
     <ClInclude Include="..\src\map\intif.h">
-      <Filter>map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\map\irc-bot.h">
       <Filter>map</Filter>
     </ClInclude>
     <ClInclude Include="..\src\map\itemdb.h">
@@ -416,9 +407,6 @@
     </ClInclude>
     <ClInclude Include="..\src\common\mutex.h">
       <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\map\channel.h">
-      <Filter>map</Filter>
     </ClInclude>
     <ClInclude Include="..\src\common\atomic.h">
       <Filter>common</Filter>

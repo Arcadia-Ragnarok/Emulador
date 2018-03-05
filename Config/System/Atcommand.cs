@@ -50,7 +50,6 @@ aliases: {
 	guildstorage: ["gstorage"]
 	accinfo: ["accountinfo"]
 	itemreset: ["clearinventory"]
-	channel: ["main"]
 	autoloottype: ["aloottype"]
 }
 

@@ -19,7 +19,6 @@
 #include "map/atcommand.h"
 #include "map/battle.h"
 #include "map/battleground.h"
-#include "map/channel.h"
 #include "map/chat.h"
 #include "map/chrif.h"
 #include "map/clif.h"
@@ -29,7 +28,6 @@
 #include "map/homunculus.h"
 #include "map/instance.h"
 #include "map/intif.h"
-#include "map/irc-bot.h"
 #include "map/itemdb.h"
 #include "map/log.h"
 #include "map/mail.h"
@@ -1895,9 +1893,6 @@ int map_quit(struct map_session_data *sd) {
 	if( sd->bg_id && !sd->bg_queue.arena ) /* TODO: dump this chunk after bg_queue is fully enabled */
 		bg->team_leave(sd,BGTL_QUIT);
 
-	if (sd->state.autotrade && core->runflag != MAPSERVER_ST_SHUTDOWN && !channel->config->closing)
-		pc->autotrade_update(sd,PAUC_REMOVE);
-
 	skill->cooldown_save(sd);
 	pc->itemcd_do(sd,false);
 
@@ -1953,8 +1948,6 @@ int map_quit(struct map_session_data *sd) {
 		elemental->clean_effect(sd->ed);
 		unit->remove_map(&sd->ed->bl,CLR_TELEPORT,ALC_MARK);
 	}
-
-	channel->quit(sd);
 
 	unit->remove_map_pc(sd,CLR_RESPAWN);
 
@@ -3497,9 +3490,6 @@ void map_clean(int i) {
 		}
 		map->list[i].zone_mf_count = 0;
 	}
-
-	if( map->list[i].channel )
-		channel->delete(map->list[i].channel);
 }
 void do_final_maps(void) {
 	int i, v = 0;
@@ -3556,9 +3546,6 @@ void do_final_maps(void) {
 		}
 		if( map->list[i].drop_list != NULL )
 			aFree(map->list[i].drop_list);
-
-		if( map->list[i].channel )
-			channel->delete(map->list[i].channel);
 
 		if( map->list[i].qi_data )
 			aFree(map->list[i].qi_data);
@@ -5062,15 +5049,6 @@ bool map_zone_mf_cache(int m, char *flag, char *params) {
 	} else if (!strcmpi(flag,"zone")) {
 		ShowWarning("You can't add a zone through a zone! ERROR, skipping for '%s'...\n",map->list[m].name);
 		return true;
-	} else if ( !strcmpi(flag,"nomapchannelautojoin") ) {
-		if( state && map->list[m].flag.chsysnolocalaj )
-			;/* nothing to do */
-		else {
-			if( state )
-				map_zone_mf_cache_add(m,"nomapchannelautojoin\toff");
-			else if( map->list[m].flag.chsysnolocalaj )
-				map_zone_mf_cache_add(m,"nomapchannelautojoin");
-		}
 	} else if ( !strcmpi(flag,"invincible_time_inc") ) {
 		if( !state ) {
 			if( map->list[m].invincible_time_inc != 0 ) {
@@ -5862,8 +5840,6 @@ int do_final(void) {
 
 	ShowStatus("Terminating...\n");
 
-	channel->config->closing = true;
-
 	if (map->cpsd) aFree(map->cpsd);
 
 	//Ladies and babies first.
@@ -5897,8 +5873,6 @@ int do_final(void) {
 
 	atcommand->final();
 	battle->final();
-	ircbot->final();/* before channel. */
-	channel->final();
 	chrif->final();
 	clif->final();
 	npc->final();
@@ -6081,14 +6055,12 @@ void map_load_defaults(void) {
 	battle_defaults();
 	battleground_defaults();
 	buyingstore_defaults();
-	channel_defaults();
 	clif_defaults();
 	chrif_defaults();
 	guild_defaults();
 	gstorage_defaults();
 	homunculus_defaults();
 	instance_defaults();
-	ircbot_defaults();
 	itemdb_defaults();
 	log_defaults();
 	mail_defaults();
@@ -6379,10 +6351,8 @@ int do_init(int argc, char *argv[])
 	atcommand->init(minimal);
 	battle->init(minimal);
 	instance->init(minimal);
-	channel->init(minimal);
 	chrif->init(minimal);
 	clif->init(minimal);
-	ircbot->init(minimal);
 	script->init(minimal);
 	itemdb->init(minimal);
 	skill->init(minimal);

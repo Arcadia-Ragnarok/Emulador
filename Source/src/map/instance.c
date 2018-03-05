@@ -16,7 +16,6 @@
 #include "config/core.h" // CELL_NOSTACK
 #include "instance.h"
 
-#include "map/channel.h"
 #include "map/clif.h"
 #include "map/guild.h"
 #include "map/map.h"
@@ -217,8 +216,6 @@ int instance_add_map(const char *name, int instance_id, bool usebasename, const 
 	} else
 		snprintf(map->list[im].name, MAP_NAME_LENGTH, (usebasename ? "%.3d#%s" : "%.3d%s"), instance_id, name); // Generate Name for Instance Map
 	map->list[im].index = mapindex->addmap(-1, map->list[im].name); // Add map index
-
-	map->list[im].channel = NULL;
 
 	if( !map->list[im].index ) {
 		map->list[im].name[0] = '\0';
@@ -515,9 +512,6 @@ void instance_del_map(int16 m) {
 
 	if( i == instance->list[map->list[m].instance_id].num_map )
 		ShowError("map_instance_del: failed to remove %s from instance list (%s): %d\n", map->list[m].name, instance->list[map->list[m].instance_id].name, m);
-
-	if( map->list[m].channel )
-		channel->delete(map->list[m].channel);
 
 	map->removemapdb(&map->list[m]);
 	memset(&map->list[m], 0x00, sizeof(map->list[0]));

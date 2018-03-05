@@ -546,9 +546,6 @@ END_ZEROED_BLOCK;
 
 	int shadowform_id;
 
-		struct channel_data **channels;
-	unsigned char channel_count;
-	struct channel_data *gcbind;
 	unsigned char fontcolor;
 	int fontcolor_tid;
 	int64 hchsysch_tick;

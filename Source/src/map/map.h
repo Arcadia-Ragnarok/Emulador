@@ -28,7 +28,6 @@ struct Sql; // common/sql.h
 struct config_t; // common/conf.h
 struct mob_data;
 struct npc_data;
-struct channel_data;
 
 enum E_MAPSERVER_ST {
 	MAPSERVER_ST_RUNNING = CORE_ST_LAST,
@@ -874,9 +873,6 @@ struct map_data {
 	char **zone_mf;/* used to store this map's zone mapflags that should be re-applied once zone is removed */
 	unsigned short zone_mf_count;
 	struct map_zone_data *prev_zone;
-
-	/* Local Chat */
-	struct channel_data *channel;
 
 	/* invincible_time_inc mapflag */
 	unsigned int invincible_time_inc;

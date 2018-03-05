@@ -17,7 +17,6 @@
 #include "guild.h"
 
 #include "map/battle.h"
-#include "map/channel.h"
 #include "map/clif.h"
 #include "map/instance.h"
 #include "map/intif.h"
@@ -478,7 +477,6 @@ int guild_recv_info(const struct guild *sg)
 	struct DBData data;
 	struct map_session_data *sd;
 	bool guild_new = false;
-	struct channel_data *aChSysSave = NULL;
 	short *instance_save = NULL;
 	unsigned short instances_save = 0;
 
@@ -490,48 +488,7 @@ int guild_recv_info(const struct guild *sg)
 		g->instance = NULL;
 		g->instances = 0;
 		idb_put(guild->db,sg->guild_id,g);
-		if (channel->config->ally) {
-			struct channel_data *chan = channel->create(HCS_TYPE_ALLY, channel->config->ally_name, channel->config->ally_color);
-			if (channel->config->ally_autojoin) {
-				struct s_mapiterator* iter = mapit_getallusers();
-				struct guild *tg[MAX_GUILDALLIANCE];
 
-				for (i = 0; i < MAX_GUILDALLIANCE; i++) {
-					tg[i] = NULL;
-					if( sg->alliance[i].opposition == 0 && sg->alliance[i].guild_id )
-						tg[i] = guild->search(sg->alliance[i].guild_id);
-				}
-
-				for (sd = BL_UCAST(BL_PC, mapit->first(iter)); mapit->exists(iter); sd = BL_UCAST(BL_PC, mapit->next(iter))) {
-					if (!sd->status.guild_id)
-						continue; // Not interested in guildless users
-
-					if (sd->status.guild_id == sg->guild_id) {
-						// Guild member
-						channel->join_sub(chan,sd,false);
-						sd->guild = g;
-
-						for (i = 0; i < MAX_GUILDALLIANCE; i++) {
-							// Join channels from allied guilds
-							if (tg[i] && !(tg[i]->channel->banned && idb_exists(tg[i]->channel->banned, sd->status.account_id)))
-								channel->join_sub(tg[i]->channel, sd, false);
-						}
-						continue;
-					}
-
-					for (i = 0; i < MAX_GUILDALLIANCE; i++) {
-						if (tg[i] && sd->status.guild_id == tg[i]->guild_id) { // Shortcut to skip the alliance checks again
-							// Alliance member
-							if( !(chan->banned && idb_exists(chan->banned, sd->status.account_id)))
-								channel->join_sub(chan, sd, false);
-						}
-					}
-				}
-				mapit->free(iter);
-			}
-			aChSysSave = chan;
-
-		}
 		before=*sg;
 		//Perform the check on the user because the first load
 		guild->check_member(sg);
@@ -549,8 +506,6 @@ int guild_recv_info(const struct guild *sg)
 		}
 	} else {
 		before=*g;
-		if( g->channel )
-			aChSysSave = g->channel;
 		if( g->instance )
 			instance_save = g->instance;
 		if( g->instances )
@@ -558,7 +513,6 @@ int guild_recv_info(const struct guild *sg)
 	}
 	memcpy(g,sg,sizeof(struct guild));
 
-	g->channel = aChSysSave;
 	g->instance = instance_save;
 	g->instances = instances_save;
 
@@ -755,11 +709,6 @@ void guild_member_joined(struct map_session_data *sd)
 	} else {
 		g->member[i].sd = sd;
 		sd->guild = g;
-
-		if (channel->config->ally && channel->config->ally_autojoin) {
-			channel->join(g->channel, sd, "", true);
-		}
-
 	}
 }
 
@@ -916,9 +865,6 @@ int guild_member_withdraw(int guild_id, int account_id, int char_id, int flag, c
 		if (sd->state.storage_flag == STORAGE_FLAG_GUILD) //Close the guild storage.
 			gstorage->close(sd);
 		guild->send_dot_remove(sd);
-		if (channel->config->ally) {
-			channel->quit_guild(sd);
-		}
 		sd->status.guild_id = 0;
 		sd->guild = NULL;
 		sd->guild_emblem_id = 0;
@@ -1657,18 +1603,6 @@ int guild_allianceack(int guild_id1,int guild_id2,int account_id1,int account_id
 		return 0;
 	}
 
-	if (g[0] && g[1] && channel->config->ally && ( flag & 1 ) == 0) {
-		if( !(flag & 0x08) ) {
-			if (channel->config->ally_autojoin) {
-				channel->guild_join_alliance(g[0],g[1]);
-				channel->guild_join_alliance(g[1],g[0]);
-			}
-		} else {
-			channel->guild_leave_alliance(g[0],g[1]);
-			channel->guild_leave_alliance(g[1],g[0]);
-		}
-	}
-
 	if (!(flag & 0x08)) { // new relationship
 		for(i=0;i<2-(flag&1);i++) {
 			if(g[i]!=NULL) {
@@ -1792,11 +1726,7 @@ int guild_broken(int guild_id,int flag)
 	guild->db->foreach(guild->db,guild->broken_sub,guild_id);
 	guild->castle_db->foreach(guild->castle_db,guild->castle_broken_sub,guild_id);
 	gstorage->delete(guild_id);
-	if (channel->config->ally) {
-		if( g->channel != NULL ) {
-			channel->delete(g->channel);
-		}
-	}
+
 	if( g->instance )
 		aFree(g->instance);
 
@@ -2294,8 +2224,6 @@ void do_final_guild(void)
 	struct guild *g;
 
 	for( g = dbi_first(iter); dbi_exists(iter); g = dbi_next(iter) ) {
-		if( g->channel != NULL )
-			channel->delete(g->channel);
 		if( g->instance != NULL ) {
 			aFree(g->instance);
 			g->instance = NULL;

@@ -19,7 +19,6 @@
 #include "map/atcommand.h"
 #include "map/battle.h"
 #include "map/battleground.h"
-#include "map/channel.h"
 #include "map/chat.h"
 #include "map/chrif.h"
 #include "map/clif.h"
@@ -23348,80 +23347,6 @@ BUILDIN(shopcount)
 	return true;
 }
 
-/**
- * @call channelmes("#channel", "message");
- *
- * Sends a message through the specified chat channel.
- *
- */
-BUILDIN(channelmes)
-{
-	struct map_session_data *sd = map->id2sd(st->rid);
-	const char *channelname = script_getstr(st, 2);
-	struct channel_data *chan = channel->search(channelname, sd);
-
-	if (!chan) {
-		script_pushint(st, 0);
-		return true;
-	}
-
-	channel->send(chan, NULL, script_getstr(st, 3));
-
-	script_pushint(st, 1);
-	return true;
-}
-
-BUILDIN(addchannelhandler)
-{
-	int i;
-	struct map_session_data *sd = map->id2sd(st->rid);
-	const char *channelname = script_getstr(st, 2);
-	const char *eventname = script_getstr(st, 3);
-	struct channel_data *chan = channel->search(channelname, sd);
-
-	if (!chan) {
-		script_pushint(st, 0);
-		return true;
-	}
-
-	ARR_FIND(0, MAX_EVENTQUEUE, i, chan->handlers[i][0] == '\0');
-
-	if (i < MAX_EVENTQUEUE) {
-		safestrncpy(chan->handlers[i], eventname, EVENT_NAME_LENGTH); //Event enqueued.
-		script_pushint(st, 1);
-		return true;
-	}
-
-	ShowWarning("script:addchannelhandler: too many handlers for channel %s.\n", channelname);
-	script_pushint(st, 0);
-	return true;
-}
-
-BUILDIN(removechannelhandler)
-{
-	int i;
-	struct map_session_data *sd = map->id2sd(st->rid);
-	const char *channelname = script_getstr(st, 2);
-	const char *eventname = script_getstr(st, 3);
-	struct channel_data *chan = channel->search(channelname, sd);
-
-	if (!chan) {
-		script_pushint(st, 0);
-		return true;
-	}
-
-	for (i = 0; i < MAX_EVENTQUEUE; i++) {
-		if (strcmp(chan->handlers[i], eventname) == 0) {
-			chan->handlers[i][0] = '\0';
-			script_pushint(st, 1);
-			return true;
-		}
-	}
-
-	script_pushint(st, 0);
-	return true;
-}
-
 /** By Cydh
 Display script message
 showscript "<message>"{,<GID>};
@@ -24537,9 +24462,6 @@ void script_parse_builtin(void) {
 		/* Navigation */
 		BUILDIN_DEF(navigateto, "s??????"),
 
-		BUILDIN_DEF(channelmes, "ss"),
-		BUILDIN_DEF(addchannelhandler, "ss"),
-		BUILDIN_DEF(removechannelhandler, "ss"),
 		BUILDIN_DEF(showscript, "s?"),
 		BUILDIN_DEF(mergeitem,""),
 		BUILDIN_DEF(getcalendartime, "ii??"),

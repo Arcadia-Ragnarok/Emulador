@@ -4439,8 +4439,6 @@ const char *npc_parse_mapflag(const char *w1, const char *w2, const char *w3, co
 		} else if( map->list[m].zone != zone ) {
 			map->zone_change(m,zone,start,buffer,filepath);
 		}
-	} else if ( !strcmpi(w3,"nomapchannelautojoin") ) {
-		map->list[m].flag.chsysnolocalaj = state;
 	} else if ( !strcmpi(w3,"invincible_time_inc") ) {
 		map->list[m].invincible_time_inc = (state) ? atoi(w4) : 0;
 	} else if ( !strcmpi(w3,"noknockback") ) {
