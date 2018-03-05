@@ -215,7 +215,7 @@ aldebaran,86,228,4	script	Criança#alde	1_M_SIZ,{
 		next;
 		mes("[Criança]\n Fiquei tão assustado, começamos a correr.\n Eu joguei pedras nela, mas acho que não a machuquei.");
 		next;
-		mes("[Criança]\n O que realmente me surpreendeu foi que a planta que me atacou era uma planta gigante com o rosto de uma pessoa!\m Então tome cuidado com essas, elas são perigosas!");
+		mes("[Criança]\n O que realmente me surpreendeu foi que a planta que me atacou era uma planta gigante com o rosto de uma pessoa!\n Então tome cuidado com essas, elas são perigosas!");
 		close;
 		case 2:
 		mes("[Criança]\n Apesar de que as pessoas são fascinadas pela beleza do Mt. Mjolnir, lá está cheio de monstros perigosos!");
@@ -498,7 +498,7 @@ aldeba_in,156,179,4	script	Gerente do Bar#alde	1_M_PUBMASTER,{
 // ------------------------------------------------------------------
 aldeba_in,83,245,4	script	Tatiana#alde	4_F_KAFRA2,{
 	cutin("kafra_02", 2);
-	mes("[Kafra Tatiana]\n Bem-vind"(Sex == SEX_MALE ? "o" : "a")" a Corporação Kafra.\n As Funcionárias Kafras estarão sempre aqui para servir você.");
+	mes("[Kafra Tatiana]\n Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " a Corporação Kafra.\n As Funcionárias Kafras estarão sempre aqui para servir você.");
 	next;
 	mes("[Kafra Tatiana]\n Nós apreciamos o seu contínuo uso do Serviço Kafra.\n Por favor se sinta livre para perguntar se tiver alguma dúvida.");
 	next;
@@ -535,7 +535,7 @@ aldeba_in,83,245,4	script	Tatiana#alde	4_F_KAFRA2,{
 // ------------------------------------------------------------------
 aldeba_in,24,245,4	script	Marianne#alde	4_F_KAFRA3,{
 	cutin("kafra_03", 2);
-	mes("[Kafra Marianne]\n Bem-vind"(Sex == SEX_MALE ? "o" : "a")"!\n O Serviço Kafra está sempre ao seu lado.");
+	mes("[Kafra Marianne]\n Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + "!\n O Serviço Kafra está sempre ao seu lado.");
 	next;
 	mes("[Kafra Marianne]\n Obrigada por vir nos visitar na Sede da Corporação Kafra aqui em Al De Baran!");
 	next;

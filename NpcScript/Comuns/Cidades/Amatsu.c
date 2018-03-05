@@ -149,8 +149,7 @@ amatsu,283,203,1	script	Bonubonu#ama2	HIDDEN_NPC,{
 
 // ------------------------------------------------------------------
 amatsu,274,178,7	script	Veterinario#ama	4_M_JOB_WIZARD,{
-	mes "[Sakura Seiichi]";
-	mes "Ah... Não, eu não sou um louco.\n Não tenha medo.\n Eu sou um simples veterinário.\n Meu trabalho e tratar e curar animais doentes.");
+	mes("[Sakura Seiichi]\n Ah... Não, eu não sou um louco.\n Não tenha medo.\n Eu sou um simples veterinário.\n Meu trabalho e tratar e curar animais doentes.");
 	next;
 	mes("[Sakura Seiichi]\n Por sinal...\n Você conhece a história da cerejeira da colina...\n Aposto que ainda nao ouviu falar nela.");
 	next;
@@ -160,10 +159,7 @@ amatsu,274,178,7	script	Veterinario#ama	4_M_JOB_WIZARD,{
 		mes("[Sakura Seiichi]\n Hehehe... Poderia ser...\n Por sinal, você gostaria de fazer uma aposta...?");
 		next;
 		emotion(e_dots);
-		mes "[Sakura Seiichi]";
-		mes "Se eu..........";
-		mes "............";
-		mes ".........";
+		mes("[Sakura Seiichi]\n Se eu..........\n ............\n .........");
 		next;
 		mes("^3355FFSua voz foi ficando cada vez mais baixa enquanto o vento soprava.\n Até que nao se ouvia mais nem um suspiro.\n Por mais que se tente, não possivel nem lembrar sobre o que ele falava...^000000");
 		close;

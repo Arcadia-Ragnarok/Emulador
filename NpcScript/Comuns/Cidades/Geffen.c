@@ -16,363 +16,194 @@
 // - [Ruas] -
 // ------------------------------------------------------------------
 geffen,59,143,0	script	Meera#gef	4_F_02,{
-	mes "[Meera]";
-	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Geffen, a Cidade da Magia!";
+	mes("[Meera]\n Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Geffen, a Cidade da Magia!");
 	next;
-	mes "[Meera]";
-	mes "Você gosta de mel?";
+	mes("[Meera]\n Você gosta de mel?");
 	next;
-	mes "[Meera]";
-	mes "Isto é muiiiito doce e delicioso.";
-	mes "Não tenho certeza se é um afrodiziaco, mas eu sei de um fato que vai alivia-lo da fadiga e recuperar sua saúde!";
+	mes("[Meera]\n Isto é muiiiito doce e delicioso.\n Não tenho certeza se é um afrodiziaco, mas eu sei de um fato que vai alivia-lo da fadiga e recuperar sua saúde!");
 	next;
-	mes "[Meera]";
-	mes "Os zangões vivem nos campos e passam a vida recolhendo o néctar sob comando da Abelha Rainha.";
-	mes "O Mel é feito a partir do nectar que eles reúnem.";
+	mes("[Meera]\n Os zangões vivem nos campos e passam a vida recolhendo o néctar sob comando da Abelha Rainha.\n O Mel é feito a partir do nectar que eles reúnem.");
 	next;
-	mes "[Meera]";
-	mes "Mas isso não é tudo. Há um tipo especial de mel que é feito somente para as Abelhas Rainhas comerem:";
-	mes "^CC6600Geléia Real^000000!";
+	mes("[Meera]\n Mas isso não é tudo.\n Há um tipo especial de mel que é feito somente para as Abelhas Rainhas comerem:\n ^CC6600Geléia Real^000000!");
 	next;
-	mes "[Meera]";
-	mes "Nada se compara ao delicioso sabor da Geléia Real.";
-	mes "E eu acho que é melhor pra você do que o mel comum!";
+	mes("[Meera]\n Nada se compara ao delicioso sabor da Geléia Real.\n E eu acho que é melhor pra você do que o mel comum!");
 	close;
 }
 
 // ------------------------------------------------------------------
-geffen,156,190,0	script	Orwalk	4_KID01,{
-	mes "[Orwalk]";
-	mes "...Interessante.";
-	mes "Muito intrigante.";
-	mes "Deixe-me lhe contar esta história maravilhosa.";
+geffen,156,190,0	script	Orwalk#gef	4_KID01,{
+	mes("[Orwalk]\n Interessante.\n Muito intrigante.\n Deixe-me lhe contar esta história maravilhosa.");
 	next;
-	mes "[Orwalk]";
-	mes "Quando eu estava pesquisando magia, eu descobri este pergaminho misterioso.";
-	mes "Ele descrevia esta árvore chamada Yggdrasil.";
+	mes("[Orwalk]\n Quando eu estava pesquisando magia, eu descobri este pergaminho misterioso.\n Ele descrevia esta árvore chamada Yggdrasil.");
 	next;
-	mes "[Orwalk]";
-	mes "As folhas, sementes e frutos de Yggdrasil ligam todos os seres vivos deste mundo.";
-	mes "De acordo com este pergaminho, Yggdrasil também está envolvido com a criação do mundo.";
+	mes("[Orwalk]\n As folhas, sementes e frutos de Yggdrasil ligam todos os seres vivos deste mundo.\n De acordo com este pergaminho, Yggdrasil também está envolvido com a criação do mundo.");
 	next;
-	mes "[Orwalk]";
-	mes "Falando nisso, também ouvi falar de um rumor sobre uma árvore em um terreno perto de Comodo.";
-	mes "Eles devem ser ligados, tenho certeza disso!";
-	close;
-}
-
-// ------------------------------------------------------------------
-geffen_in,172,101,0	script	Bruxo Stanza#gef	1_M_WIZARD,{
-	mes "[Stanza]";
-	mes "Eu senti a presença de um espírito poderoso.";
-	mes "Pode ser você...?";
-	next;
-	mes "[Stanza]";
-	if (BaseJob == Job_Mage) {
-		mes "Parece que você está treinado nas artes místicas.";
-		mes "Magia... Seu poder é regido pelas leis da causa e efeito.";
-	}
-	else if (BaseJob == Job_Acolyte) {
-		mes "Ah...";
-		mes "Vejo que você exerce o poder santo, de uma forma ou de outra.";
-		mes "Suponho que o Poder Santo pode ser considerado uma forma de energia mística.";
-	}
-	else if (Class == Job_Novice) {
-		mes "Embora você não seja capaz de usar magia ou qualquer tipo de habilidades poderosas por agora.";
-		mes "Este conhecimento pode lhe ser útil no futuro, jovem Noviço...";
-	}
-	else {
-		mes "Embora você não seja formamelmente treinado no uso de magias.";
-		mes "você usa as habilidades que atraem sob as energias do além, quer você saiba disso ou não...";
-	}
-	next;
-	mes "[Stanza]";
-	mes "Se você usa a energia mística pra prejudicar os outros ou para desafiar as regras da Mãe Natureza.";
-	mes "O poder irá naturalmente se virar contra você. Lembre-se, você colhe o que planta.";
-	next;
-	mes "[Stanza]";
-	mes "Mas há um item que pode lhe proteger do lançador de consequencia doente.";
-	mes "Permitindo o uso seguro de certos mágicos.";
-	mes "Estas são as brilhantes pedras místicas chamadas Pedras Preciosas.";
-	next;
-	mes "[Stanza]";
-	mes "Pedra Preciosa...";
-	mes "Se você deseja usar seus poderes ao máximo, lembre-se deste item.";
+	mes("[Orwalk]\n Falando nisso, também ouvi falar de um rumor sobre uma árvore em um terreno perto de Comodo.\n Eles devem ser ligados, tenho certeza disso!");
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen,147,26,0	script	Ralphie#gef	4W_M_01,{
-	mes "[Ralphie]";
-	mes "Em algum lugar neste mundo...";
-	mes "Há uma equipe rara que pode transformar energia psíquica em vigor físico.";
-	mes "Dotando seu dono com ^990000poder destrutivo^000000...";
+	mes("[Ralphie]\n Em algum lugar neste mundo...\n Há uma equipe rara que pode transformar energia psíquica em vigor físico.\n Dotando seu dono com ^990000poder destrutivo^000000...");
 	next;
-	mes "[Ralphie]";
-	mes "Com isso, qualquer um poderia ser forte como Hercules...";
-	mes "Mesmo um fracote como eu!";
-	mes "Hahahahahah.";
-	mes "Tenho que ter isso!";
+	mes("[Ralphie]\n Com isso, qualquer um poderia ser forte como Hercules...\n Mesmo um fracote como eu!\n Hahahahahah.\n Tenho que ter isso!");
 	next;
-	emotion (e_gasp);
-	mes "[Ralphie]";
-	mes "...Céus!";
-	mes "Desde quando você estava ouvindo?";
+	emotion(e_gasp);
+	mes("[Ralphie]\n ...Céus!\n Desde quando você estava ouvindo?");
 	next;
-	mes "[Ralphie]";
-	mes "Por acaso você não ouviu nada disso?";
-	mes "Muhwaha... ha. Ha.";
+	mes("[Ralphie]\n Por acaso você não ouviu nada disso?\n Muhwaha... ha. Ha.");
 	next;
-	mes "[Ralphie]";
-	mes "Bem...";
-	mes "Eu não disse nada.";
-	mes "Mas se eu disse, esqueça tudo sobre isso, o que quer que fosse.";
+	mes("[Ralphie]\n Bem...\n Eu não disse nada.\n Mas se eu disse, esqueça tudo sobre isso, o que quer que fosse.");
 	next;
-	mes "[Ralphie]";
-	mes "...Rapaz, isso é estranho.";
+	mes("[Ralphie]\n ...isso é estranho.");
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen,111,48,0	script	Stacey#gef	4W_F_01,{
-	if (getequipid(1) == Viking_Helm) {
-		mes "[Stacey]";
-		mes "Oh...!";
-		mes "É um Elmo de Orc que você está vestindo?!";
-		mes "Isso é muito legal!";
-		mes "Agora...";
+	if (getequipid(EQI_HEAD_TOP) == Viking_Helm) {
+		mes("[Stacey]\n Oh...!\n É um Elmo de Orc que você está vestindo?!\n Isso é muito legal!\n Agora...");
 		next;
-		mes "[Stacey]";
+		mes("[Stacey]");
 		if (Sex == SEX_MALE) {
-			mes "Você parece tão...";
-			mes "Robusto e viril.";
-		}
-		else {
-			mes "Oooh!";
-			mes "Estou com tanta inveja!";
+			mes(" Você parece tão...\n Robusto e viril.");
+		} else {
+			mes(" Oooh!\n Estou com tanta inveja!");
 		}
 		close;
-	}
-	else if (getequipid(1) == Orc_Hero_Helm) {
-		mes "[Stacey]";
-		mes "Oh...";
+	} else if (getequipid(EQI_HEAD_TOP) == Orc_Hero_Helm) {
+		mes("[Stacey]\n Oh...");
 		next;
-		mes "[Stacey]";
-		mes "Isto...";
-		mes "Isto é um capacete de orc Herói!";
+		mes("[Stacey]\n Isto...\n Isto é um capacete de orc Herói!");
 		next;
-		mes "[Stacey]";
 		if (Sex == SEX_MALE) {
-			mes "Isto...";
-			mes "É como se você estivesse cercado por uma aurea masculina!";
-			mes "Oooh! Você deve ser irresistível para todas as garotas!";
+			mes("[Stacey]\n Isto...\n É como se você estivesse cercado por uma aurea masculina!\n Oooh! Você deve ser irresistível para todas as garotas!");
 			next;
-			emotion (e_lv);
-			mes "[Stacey]";
-			mes "E eu não sou exceção.";
-		}
-		else {
-			mes "Nossa, você deve ser tão forte!";
-			mes "Mas eu pensei que apenas membros da Tribo de Orcs usavam isso?";
+			emotion(e_lv);
+			mes("[Stacey]\n E eu não sou exceção.");
+		} else {
+			mes("[Stacey]\n Nossa, você deve ser tão forte!\n Mas eu pensei que apenas membros da Tribo de Orcs usavam isso?");
 		}
 		close;
-	}
-	else {
-		mes "[Stacey]";
-		mes "Olá!";
-		mes "Oh, você não é "+(Sex?"um aventureiro":"uma aventureira")+"?";
+	} else {
+		mes("[Stacey]\n Olá!\n Oh, você não é " + (Sex == SEX_MALE ? "um aventureiro" : "uma aventureira") + "?");
 		next;
-		mes "[Stacey]";
-		mes "Você já viu alguns Orcs da tribo de Demi-Human?";
-		mes "Se você descer para o sul a partir daqui, eu acho que você pode encontrar Orcs na floresta profunda.";
+		mes("[Stacey]\n Você já viu alguns Orcs da tribo de Demi-Human?\n Se você descer para o sul a partir daqui, eu acho que você pode encontrar Orcs na floresta profunda.");
 		next;
-		mes "[Stacey]";
-		mes "Eu ouvi que os Orcs possuem uma cultura e linguagem própria, supostamente apenas como nós humanos.";
-		mes "Será que os Orcs vão a encontros...?";
+		mes("[Stacey]\n Eu ouvi que os Orcs possuem uma cultura e linguagem própria, supostamente apenas como nós humanos.\n Será que os Orcs vão a encontros...?");
 		next;
-		mes "[Stacey]";
-		mes "Sabe, onde eles sussuram coisas bonitas e depois...";
-		mes "Ah! Eu realmente queria saber!";
+		mes("[Stacey]\n Sabe, onde eles sussuram coisas bonitas e depois...\n Ah! Eu realmente queria saber!");
 		close;
 	}
+}
+
+// ------------------------------------------------------------------
+geffen,203,146,5	script	Cidadão#gef	4W_M_01,{
+	mes("[Cidadão]\n Havia um hábil criador de armas em Al De Baran, e ele tinha 4 filhos.\n Infelizmente, ele perdeu todos enquanto desenvolvia uma arma poderosa.\n Somente ele sobreviveu à tragédia.");
+	next;
+	mes("[Cidadão]\n Como deve ter sido triste para ele...\n Graças ao incidente, o criador de armas se aposentou e foi embora, viver em outro lugar.\n Depois disso, ninguém nunca pôde ver a arma que eles estavam desenvolvendo.");
+	next;
+	mes("[Cidadão]\n Não acho que os filhos dele foram para o céu com a ansiedade.");
+	close;
 }
 
 // ------------------------------------------------------------------
 // - [Casas] -
 // ------------------------------------------------------------------
 geffen_in,34,170,0	script	Theodoro#gef	1_M_01,{
-	mes "[Theodoro]";
-	mes "Olá!";
-	mes "Não está um maravilhoso dia hoje?";
+	mes("[Theodoro]\n Olá!\n Não está um maravilhoso dia hoje?");
 	next;
-	mes "[Theodoro]";
-	mes "Bem, eu não sei.";
-	mes "Venho estudando duro para me tornar um Mago.";
-	mes "Fico acordado a noite toda, agonizando sobre tudo que é mágico.";
+	mes("[Theodoro]\n Bem, eu não sei.\n Venho estudando duro para me tornar um Mago.\n Fico acordado a noite toda, agonizando sobre tudo que é mágico.");
 	next;
-	mes "[Theodoro]";
-	mes "*Suspiro..*";
-	mes "Eu me preocupo especialmente sobre todas as desvantagens de utilizar magia.";
+	mes("[Theodoro]\n *Suspiro..*\n Eu me preocupo especialmente sobre todas as desvantagens de utilizar magia.");
 	next;
-	mes "[Theodoro]";
-	mes "Foi realmente irritante quando um inimigo de longa data me encontrou na ultima vez que estava explorando.";
-	mes "Esse monstro miserável interrompeu todos os meus feitiços!";
-	mes "Não consegui atingir tudo!";
+	mes("[Theodoro]\n Foi realmente irritante quando um inimigo de longa data me encontrou na ultima vez que estava explorando.\n Esse monstro miserável interrompeu todos os meus feitiços!\n Não consegui atingir tudo!");
 	next;
-	mes "[Theodoro]";
-	mes "Depois disso, eu percebi que precisava de algum tipo de arma para combater os ataques de longo alcance dos inimigos.";
-	mes "Algo que posso atacar a longas distâncias...";
+	mes("[Theodoro]\n Depois disso, eu percebi que precisava de algum tipo de arma para combater os ataques de longo alcance dos inimigos.\n Algo que posso atacar a longas distâncias...");
 	next;
-	mes "[Theodoro]";
-	mes "Algum tipo de...";
-	mes "Afiação, perfuração lançador de projétil, preferencialmente feito com madeira.";
+	mes("[Theodoro]\n Algum tipo de...\n Afiação, perfuração lançador de projétil, preferencialmente feito com madeira.");
 	next;
-	mes "[Theodoro]";
-	mes "Mas onde eu poderia encontrar algo como isso?!";
+	mes("[Theodoro]\n Mas onde eu poderia encontrar algo como isso?!");
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
-	mes "[Elenore]";
-	mes "Esse lugar...";
-	mes "Tem uma atmosfera diferente.";
+	mes("[Elenore]\n Esse lugar...\n Tem uma atmosfera diferente.");
 	next;
-	mes "[Elenore]";
-	mes "Nós temos uma espécie de vidente que está sempre por aí.";
-	mes "É um bêbado que passa o dia inteiro reclamando dos magos.";
+	mes("[Elenore]\n Nós temos uma espécie de vidente que está sempre por aí.\n É um bêbado que passa o dia inteiro reclamando dos magos.");
 	next;
-	mes "[Elenore]";
-	mes "Bem...";
-	mes "O que posso fazer por você?";
+	mes("[Elenore]\n Bem...\n O que posso fazer por você?");
 	next;
-	if (select("Posso beber algo?","Você tem novidades para me contar?") == 1) {
-		mes "[Elenore]";
-		mes "Bem...";
-		mes "Se você quiser algo alcoólico, o Rei Tristam III proibiu a venda.";
-		mes "Ouvi dizer que agora só podem serví-lo em determinados lugares.";
+	if (select("Posso beber algo?", "Você tem novidades para me contar?") == 1) {
+		mes("[Elenore]\n Bem...\n Se você quiser algo alcoólico, o Rei Tristam III proibiu a venda.\n Ouvi dizer que agora só podem serví-lo em determinados lugares.");
 		next;
-		mes "[Elenore]";
-		mes "Mesmo assim as pessoas conseguem ficar bêbadas com os drinques sem álcool que servimos aqui.";
-		mes "Acho que é psicológico.";
+		mes("[Elenore]\n Mesmo assim as pessoas conseguem ficar bêbadas com os drinques sem álcool que servimos aqui.\n Acho que é psicológico.");
 		next;
-		mes "[Elenore]";
-		mes "Eu realmentee queria poder visitar o lugar em que servem drinques de verdade.";
-		mes "Ouvi dizer que é o paraíso!";
+		mes("[Elenore]\n Eu realmentee queria poder visitar o lugar em que servem drinques de verdade.\n Ouvi dizer que é o paraíso!");
 		close;
 	}
-	switch(rand(1,4)) {
+	switch(rand(1, 4)) {
 		case 1:
-		mes "[Elenore]";
-		mes "Novidades...?";
-		mes "Bem, ouvi dizer que estão abrindo um novo aeroporto em Juno!";
+		mes("[Elenore]\n Novidades...?\n Bem, ouvi dizer que estão abrindo um novo aeroporto em Juno!");
 		next;
-		mes "[Elenore]";
-		mes "Ou pelo menos, estão planejando.";
-		mes "O avião ainda não está pronto para decolar.";
-		mes "Enquanto isso existe uma espécie de representante da corporação lá, oferecendo serviços de teletransporte.";
+		mes("[Elenore]\n Ou pelo menos, estão planejando.\n O avião ainda não está pronto para decolar.\n Enquanto isso existe uma espécie de representante da corporação lá, oferecendo serviços de teletransporte.");
 		next;
-		mes "[Elenore]";
-		mes "Parece que a Corporação Kafra finalmente tem concorrência!";
-		mes "Mas não acho que existam muitas garotas atraentes como as garotas Kafra...";
+		mes("[Elenore]\n Parece que a Corporação Kafra finalmente tem concorrência!\n Mas não acho que existam muitas garotas atraentes como as garotas Kafra...");
 		close;
 		case 2:
-		mes "[Elenore]";
-		mes "Você não ouviu?";
-		mes "Há uma nova moda no Reino de Rune-Midgard!";
+		mes("[Elenore]\n Você não ouviu?\n Há uma nova moda no Reino de Rune-Midgard!");
 		next;
-		mes "[Elenore]";
-		mes "As pessoas estão vindo, usando chapéus novos e bonitinhos!";
-		mes "Vi um de ursinho, e teve uma garota que chegou usando orelhinhas de gato pretas...";
+		mes("[Elenore]\n As pessoas estão vindo, usando chapéus novos e bonitinhos!\n Vi um de ursinho, e teve uma garota que chegou usando orelhinhas de gato pretas...");
 		next;
-		mes "[Elenore]";
-		mes "Claro, nem todo estilo popular me agrada.";
-		mes "Porque sabe, eu vi um cara andando com um cogumelo na cabeça.";
-		mes "E ouvi dizer que tem alguém fazendo chapéus de peixes!";
+		mes("[Elenore]\n Claro, nem todo estilo popular me agrada.\n Porque sabe, eu vi um cara andando com um cogumelo na cabeça.\n E ouvi dizer que tem alguém fazendo chapéus de peixes!");
 		next;
-		mes "[Elenore]";
-		mes "Acho que chapéus como esses são artísticos demais para o meu gosto.";
+		mes("[Elenore]\n Acho que chapéus como esses são artísticos demais para o meu gosto.");
 		close;
 		case 3:
-		mes "[Elenore]";
-		mes "Novidades?";
+		mes("[Elenore]\n Novidades?");
 		next;
-		mes "[Elenore]";
-		mes "Bem...";
-		mes "Ouvi dizer que tem uma pessoa em Rune-Midgard...";
+		mes("[Elenore]\n Bem...\n Ouvi dizer que tem uma pessoa em Rune-Midgard...");
 		next;
-		mes "[Elenore]";
-		mes "Você ouviu falar de "+strcharinfo(PC_NAME)+"?";
+		mes("[Elenore]\n Você ouviu falar de " + strcharinfo(PC_NAME) + "?");
 		if (Sex == SEX_MALE) {
-			mes "Ele é supostamente o herói mais lindo da região!";
-		}
-		else {
-			mes "Dizem que ela é uma das meninas mais bonitas de Rune-Midgard!";
+			mes(" Ele é supostamente o herói mais lindo da região!");
+		} else {
+			mes(" Dizem que ela é uma das meninas mais bonitas de Rune-Midgard!");
 		}
 		close;
 		case 4:
-		switch(rand(1,2)) {
+		switch(rand(1, 2)) {
 			case 1:
-			mes "[Elenore]";
-			mes "Novidades?";
-			mes "E-espere...";
+			mes("[Elenore]\n Novidades?\n E-espere...");
 			next;
-			mes "[Elenore]";
-			mes "Ugh...";
-			mes "Ooooh...";
-			mes "Minha c-cabeça...";
-			mes "Está doendo...";
+			mes("[Elenore]\n Ugh...\n Ooooh...\n Minha c-cabeça...\n Está doendo...");
 			next;
-			mes "[Espírito de William]";
-			mes "^990000Saia de perto da minha filha, escória, antes que eu venda seus orgãos por zeny!";
-			mes "Tá me ouvindo?!^000000";
+			mes("[Espírito de William]\n ^990000Saia de perto da minha filha, escória, antes que eu venda seus orgãos por zeny!\n Tá me ouvindo?!^000000");
 			next;
-			mes "[Elenore]";
-			mes "*cof*";
-			mes "Oh...!";
-			mes "Desculpe por isso!";
-			mes "Eu devo estar com um começo de gripe!";
-			mes "...Ou algo do tipo.";
+			mes("[Elenore]\n *cof*\n Oh...!\n Desculpe por isso!\n Eu devo estar com um começo de gripe!\n ...Ou algo do tipo.");
 			next;
-			mes "^3355FFEstranho...";
-			mes "A voz dela tava realmente grossa por um minuto, ali...";
+			mes("^3355FFEstranho...\n A voz dela tava realmente grossa por um minuto, ali...");
 			close;
 			case 2:
-			mes "[Espírito de William]";
-			mes "^990000Ei, seu maníaco sexual!!!";
-			mes "Pare de olhar pra minha filha desse jeito.";
-			mes "Antes que eu arranque seus olhos e os coma com macarrão!^000000";
+			mes("[Espírito de William]\n ^990000Ei, seu maníaco sexual!!!\n Pare de olhar pra minha filha desse jeito.\n Antes que eu arranque seus olhos e os coma com macarrão!^000000");
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
-			if (Sex) {
-				mes "Huh...?";
-				mes "D-de novo?";
+			mes("[" + strcharinfo(PC_NAME) + "]");
+			if (Sex == SEX_MALE) {
+				mes(" Huh...?\n D-de novo?");
 				next;
-				mes "[Elenore]";
-				mes "Huh...?";
-				mes "Oh, papai deve ter me possuído de novo.";
-				mes "Acontece comigo e minha irmã o tempo todo.";
+				mes("[Elenore]\n Huh...?\n Oh, papai deve ter me possuído de novo.\n Acontece comigo e minha irmã o tempo todo.");
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
-				mes "Sério?";
-				mes "Huh.";
-				mes "É uma chatice.";
+				mes("[" + strcharinfo(PC_NAME) + "]\n Sério?\n Huh.\n É uma chatice.");
 				next;
-				mes "[Elenore]";
-				mes "É...";
-				mes "Me fala disso.";
+				mes("[Elenore]\n É...\n Me fala disso.");
 				close;
-			}
-			else {
-				mes "E-espeeeeeera~";
-				mes "Mas, mas eu sou uma garota!";
+			} else {
+				mes(" E-espeeeeeera...\n Mas, mas eu sou uma garota!");
 				next;
-				mes "[Espírito de William]";
-				mes "^990000Que parte do ^FF0000eu vou gritar onde você estiver^000000 ^990000você não entendeu?!";
-				mes "Agora sai daqui, pervertido!^000000";
+				mes("[Espírito de William]\n ^990000Que parte do ^FF0000eu vou gritar onde você estiver^000000 ^990000você não entendeu?!\n Agora sai daqui, pervertido!^000000");
 				next;
-				mes "^3355FFAaaah!";
-				mes "Como ela ficou tão assustadora?!^000000";
+				mes("^3355FFAaaah!\n Como ela ficou tão assustadora?!^000000");
 				close;
 			}
 		}
@@ -380,110 +211,40 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 }
 
 // ------------------------------------------------------------------
-geffen_in,70,67,3	script	Garçonete#gef2	4_F_01,{
-	mes "[Elisa]";
-	mes "Olá";
-	mes "Posso te ajudar com alguma coisa?";
+geffen_in,70,67,3	script	Arrumadeira#gef	4_F_01,{
+	mes("[Elisa]\n Olá\n Posso te ajudar com alguma coisa?");
 	next;
-	if (select("Um drink, por favor!","Tem alguma fofoca interessante recentemente?") == 1) {
-		mes "[Elisa]";
-		mes "Um...";
-		mes "Drink?";
-		next;
-		mes "[Elisa]";
-		mes "Você sabe que nós não servimos mais álcool por aqui.";
-		mes "Só temos esses drinks falsos que nem tem gosto nem efeito.";
-		mes "É, eles são chatos...";
-		next;
-		mes "[Elisa]";
-		mes "Só servimos praticamente água, aqui.";
-		mes "Isso e umas imitações ruins de drinks alcóolicos.";
-		next;
-		mes "[Elisa]";
-		mes "É horrível que o Rei Tristram III proibiu álcool no nosso reino!";
-		mes "É provavelmente a única decisão ruim que ele tomou durante todo seu reinado!";
-		close;
-	}
-	mes "[Elisa]";
-	mes "Sabe o que é tão estranho?";
+	select("Tem alguma fofoca interessante recentemente?");
+	mes("[Elisa]\n Sabe o que é tão estranho?");
 	next;
-	mes "[Elisa]";
-	mes "Fui pro santuário de Prontera e tenho certeza que vi um sacerdote casando com uma sacerdotisa!";
+	mes("[Elisa]\n Fui pro santuário de Prontera e tenho certeza que vi um sacerdote casando com uma sacerdotisa!");
 	next;
-	mes "[Elisa]";
-	mes "Eu não tinha ideia se sacerdotes poderiam se casar ou não.";
-	mes "Mas até o Rei Tristram estava lá, então acho que está tudo bem!";
+	mes("[Elisa]\n Eu não tinha ideia se sacerdotes poderiam se casar ou não.\n Mas até o Rei Tristram estava lá, então acho que está tudo bem!");
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen_in,79,76,2	script	Mercador Daven#gef	2_M_PHARMACIST,{
-	mes "[Mercador Daven]";
-	mes "Eu lembro de Geffen quando ainda era chata. ";
+	mes("[Mercador Daven]\n Eu lembro de Geffen quando ainda era chata.");
 	next;
-	mes "[Mercador Daven]";
-	mes "Mas agora tem Magos e Bruxos e uma economia próspera nessa cidade!";
+	mes("[Mercador Daven]\n Mas agora tem Magos e Bruxos e uma economia próspera nessa cidade!");
 	next;
-	switch(select("Magos...?","Economia?","Quem é você?")) {
+	switch(select("Magos...?", "Economia?")) {
 		case 1:
-		if (BaseJob == Job_Mage) {
-			mes "[Mercador Daven]";
-			mes "Magos são os manejadores de magia.";
-			mes "Mas você vai saber mais sobre esse tópico agora, né?";
-		}
-		else {
-			mes "[Mercador Daven]";
-			mes "Magos e Bruxos estão sempre carregando livros e estudando magia.";
-			mes "É assim que eles são.";
-			next;
-			mes "[Mercador Daven]";
-			mes "Tem uma escola de magia no noroeste da cidade, para aprendizes interessados em se tornar Magos.";
-			mes "Lá, eles podem aprender o básico de magia.";
-			next;
-			mes "[Mercador Daven]";
-			mes "Depois de se tornar experiente no uso de magia, Magos podem se qualificar para se tornar Bruxos.";
-			next;
-			mes "[Mercador Daven]";
-			mes "Bruxos tem acesso a magias mais poderosas e destrutivas do que os Magos.";
-			mes "Magos podem aplicar para se tornar Bruxos no topo da Torre de Geffen.";
-		}
+		mes("[Mercador Daven]\n Magos e Bruxos estão sempre carregando livros e estudando magia.\n É assim que eles são.");
+		next;
+		mes("[Mercador Daven]\n Tem uma escola de magia no noroeste da cidade, para aprendizes interessados em se tornar Magos.\n Lá, eles podem aprender o básico de magia.");
+		next;
+		mes("[Mercador Daven]\n Depois de se tornar experiente no uso de magia, Magos podem se qualificar para se tornar Bruxos.");
+		next;
+		mes("[Mercador Daven]\n Bruxos tem acesso a magias mais poderosas e destrutivas do que os Magos.\n Magos podem aplicar para se tornar Bruxos no topo da Torre de Geffen.");
 		break;
 		case 2:
-		if (Class == Job_Blacksmith) {
-			mes "[Mercador Daven]";
-			mes "A economia...?";
-			mes "Isso é tudo graças aos Ferreiros!";
-			mes "Mas você já deve saber disso, não é mesmo?";
-		}
-		else {
-			mes "[Mercador Daven]";
-			mes "Bem, acho que você pode agradecer aos Ferreiros pela economia aqui em Geffen.";
-			mes "Com certeza, eles sempre sujos, suados, fedendo e falam meio rude...";
-			next;
-			mes "[Mercador Daven]";
-			mes "Mas são pessoas que trabalham duro.";
-			mes "E também, os minérios que eles refinam e as armas que criam tem alta demanda.";
-			next;
-			mes "[Mercador Daven]";
-			mes "Aventureiros pagam aos Ferreiros um monte do seus suados zenys por armas de alta qualidade que somente eles podem criar.";
-		}
-		break;
-		case 3:
-		mes "[Mercador Daven]";
-		mes "Eu? Eu sou o vendedor de rua mais lindo do mundo.";
+		mes("[Mercador Daven]\n Bem, acho que você pode agradecer aos Ferreiros pela economia aqui em Geffen.\n Com certeza, eles sempre sujos, suados, fedendo e falam meio rude...");
 		next;
-		select("...^EE0000Impacto Explosivo^000000!");
-		if (Class == Job_Swordman) {
-			mes "[Mercador Daven]";
-			mes "Opa, opa!";
-			mes "Era só uma piada!";
-			mes "Me desculpe!";
-		}
-		else {
-			mes "[Mercador Daven]";
-			mes "Impacto Explosivo?";
-			mes "Mas você nem sabe fazer isso, sabe?";
-		}
+		mes("[Mercador Daven]\n Mas são pessoas que trabalham duro.\n E também, os minérios que eles refinam e as armas que criam tem alta demanda.");
+		next;
+		mes("[Mercador Daven]\n Aventureiros pagam aos Ferreiros um monte do seus suados zenys por armas de alta qualidade que somente eles podem criar.");
 		break;
 	}
 	close;
@@ -491,651 +252,370 @@ geffen_in,79,76,2	script	Mercador Daven#gef	2_M_PHARMACIST,{
 
 // ------------------------------------------------------------------
 geffen_in,114,73,5	script	Hadenheim#gef	4_M_SEAMAN,{
-	mes "[Hans Hadenheim]";
-	mes "Cara, o continente de Rune-Midgard é tão grande!";
-	mes "Como vai você, jovem?";
+	mes("[Hans Hadenheim]\n Cara, o continente de Rune-Midgard é tão grande!\n Como vai você, jovem?");
 	next;
-	mes "[Hans Hadenheim]";
-	mes "Essa Geffen é estranha.";
-	mes "Mas valeu a pena viajar da República de Schubaltzwald até aqui.";
+	mes("[Hans Hadenheim]\n Essa Geffen é estranha.\n Mas valeu a pena viajar da República de Schubaltzwald até aqui.");
 	next;
-	if (select("República de Schubaltzwald?","Então, por que você está viajando?") == 1) {
-		mes "[Hans Hadenheim]";
-		mes "Você...";
-		mes "Não conhece a República de Schubaltzwald?";
+	if (select("República de Schubaltzwald?", "Então, por que você está viajando?") == 1) {
+		mes("[Hans Hadenheim]\n Você...\n Não conhece a República de Schubaltzwald?");
 		next;
-		mes "[Hans Hadenheim]";
-		mes "Voce sabe, aliado do reino de Rune-Midgarts.";
-		mes "Um... Nossa cidade capital é Juno?";
+		mes("[Hans Hadenheim]\n Voce sabe, aliado do reino de Rune-Midgarts.\n Um... Nossa cidade capital é Juno?");
 		next;
-		mes "[Hans Hadenheim]";
-		mes "Você realmente deveria se atualizar nos eventos globais!";
+		mes("[Hans Hadenheim]\n Você realmente deveria se atualizar nos eventos globais!");
 		close;
 	}
-	mes "[Hans Hadenheim]";
-	mes "Ah, estou viajando a negócios.";
-	mes "Parece que o comércio estrangeiro dá muito dinheiro.";
+	mes("[Hans Hadenheim]\n Ah, estou viajando a negócios.\n Parece que o comércio estrangeiro dá muito dinheiro.");
 	next;
-	mes "[Hans Hadenheim]";
-	mes "Todas essas cidades que estão sendo descobertas por exploradores.";
-	mes "Estão fazendo as importações e exportações explodirem!";
+	mes("[Hans Hadenheim]\n Todas essas cidades que estão sendo descobertas por exploradores.\n Estão fazendo as importações e exportações explodirem!");
 	next;
-	mes "[Hans Handenheim]";
-	mes "Enfim...";
+	mes("[Hans Handenheim]\n Enfim...");
 	next;
-	mes "[Hans Hadenheim]";
-	mes "Você foi a alguma das terras novas?";
-	mes "Elas são muito interessantes, e você pode aprender muito com a cultura estrangeira.";
+	mes("[Hans Hadenheim]\n Você foi a alguma das terras novas?\n Elas são muito interessantes, e você pode aprender muito com a cultura estrangeira.");
 	next;
-	mes "[Hans Hadenheim]";
-	mes "Mas se você quiser apreciar uma bela vista.";
-	mes "Sugiro que visita minha cidade natal, Juno.";
-	mes "É muito bonita, sabe.";
+	mes("[Hans Hadenheim]\n Mas se você quiser apreciar uma bela vista.\n Sugiro que visita minha cidade natal, Juno.\n É muito bonita, sabe.");
 	close;
 }
 
 // ------------------------------------------------------------------
 geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
-	mes "[Vidente]";
-	mes "Ah...";
-	mes "Não diga!";
-	mes "Você veio saber seu futuro, não? Eu sei...";
-	mes "Eu sei...";
-	mes "Posso prever o futuro!";
-	mes "Então, sobre o que você quer saber?";
+	mes("[Vidente]\n Ah...\n Não diga!\n Você veio saber seu futuro, não?\n Eu sei...\n Eu sei...\n Posso prever o futuro!\n Então, sobre o que você quer saber?");
 	next;
-	switch(select("Vida!","Amor!","Dinheiro!","Notas!","Futuro!","Moda!")) {
+	switch(select("Vida!", "Amor!", "Dinheiro!", "Notas!", "Futuro!", "Moda!")) {
 		case 1:
-		mes "[Vidente]";
+		mes("[Vidente]");
 		switch(rand(1,5)) {
 			case 1:
-			mes "Vida...?";
-			mes "Nossa, é uma categoria ampla.";
-			mes "Mas vou entrar em contato com alguns espíritos e verei o que posso fazer.";
+			mes(" Vida...?\n Nossa, é uma categoria ampla.\n Mas vou entrar em contato com alguns espíritos e verei o que posso fazer.");
 			next;
-			mes "[Vidente]";
-			mes "Hmmm...";
-			mes "Certo, consegui algo.";
-			mes "Hmmm você viverá até uma idade avançada.";
-			mes "Até quando?";
+			mes("[Vidente]\n Hmmm...\n Certo, consegui algo.\n Hmmm você viverá até uma idade avançada.\n Até quando?");
 			next;
-			mes "[Vidente]";
-			mes "^333333*cof!*^000000enta e nove anos.";
-			mes "Isso não é ótimo?";
-			mes "É uma idade avançada, e você ainda tem muitos anos abençoados para aproveitar.";
+			mes("[Vidente]\n ^333333*cof!*^000000enta e nove anos.\n Isso não é ótimo?\n É uma idade avançada, e você ainda tem muitos anos abençoados para aproveitar.");
 			next;
-			mes "[Vidente]";
-			mes "E você também terá sucesso sempre.";
-			mes "Você terá sucesso em obter vitórias e derrotas!";
+			mes("[Vidente]\n E você também terá sucesso sempre.\n Você terá sucesso em obter vitórias e derrotas!");
 			next;
-			mes "[Vidente]";
-			mes "Você talvez não entenda esse pedaço de sabedoria agora.";
-			mes "Mas quando souber mais sobre esse mundo maluco, ele fará sentido.";
+			mes("[Vidente]\n Você talvez não entenda esse pedaço de sabedoria agora.\n Mas quando souber mais sobre esse mundo maluco, ele fará sentido.");
 			next;
 			break;
 			case 2:
-			mes "Hmm...";
-			mes "O que posso te contar sobre a vida?";
-			mes "Vou entrar em contato com o mundo dos espíritos~";
+			mes(" Hmm...\n O que posso te contar sobre a vida?\n Vou entrar em contato com o mundo dos espíritos.");
 			next;
-			mes "[Vidente]";
-			mes "Certo, entendi!";
-			mes "Seus sonhos se tornarão realidade!";
+			mes("[Vidente]\n Certo, entendi!\n Seus sonhos se tornarão realidade!");
 			next;
-			mes "[Vidente]";
-			mes "Claro, não sei bem quais sonhos.";
-			mes "Mas espero que sejam os agradáveis que se tornarão realidade, e não aqueles seus pesadelos estranhos.";
+			mes("[Vidente]\n Claro, não sei bem quais sonhos.\n Mas espero que sejam os agradáveis que se tornarão realidade, e não aqueles seus pesadelos estranhos.");
 			next;
-			mes "[Vidente]";
-			mes "Qual sonhos exatamente?";
-			mes "Bem, os espíritos estão meio reticentes hoje.";
-			mes "Eles não estão com humor para falar.";
-			mes "Eles também têm vida, sabe.";
-			mes "Espere, isso não faz sentido.";
+			mes("[Vidente]\n Qual sonhos exatamente?\n Bem, os espíritos estão meio reticentes hoje.\n Eles não estão com humor para falar.\n Eles também têm vida, sabe.\n Espere, isso não faz sentido.");
 			next;
 			break;
 			case 3:
-			mes "Sinto que você está prestes a tomar uma decisão que talvez se arrependa.";
-			mes "Aconselho que você espere e reflita.";
+			mes(" Sinto que você está prestes a tomar uma decisão que talvez se arrependa.\n Aconselho que você espere e reflita.");
 			next;
-			mes "[Vidente]";
-			mes "Embora a pressão seja grande, lembre-se de que as decisões tomadas impulsivamente são normalmente ruins.";
-			mes "Respire fundo e relaxe.";
+			mes("[Vidente]\n Embora a pressão seja grande, lembre-se de que as decisões tomadas impulsivamente são normalmente ruins.\n Respire fundo e relaxe.");
 			next;
-			mes "[Vidente]";
-			mes "Mesmo se você estiver sem tempo.";
-			mes "É melhor planejar tudo cuidadosamente para não desperdiçar esforços ou cometer erros.";
+			mes("[Vidente]\n Mesmo se você estiver sem tempo.\n É melhor planejar tudo cuidadosamente para não desperdiçar esforços ou cometer erros.");
 			next;
-			mes "[Vidente]";
-			mes "Lembre-se de que calma e paciência são as chaves para resolver qualquer crise.";
+			mes("[Vidente]\n Lembre-se de que calma e paciência são as chaves para resolver qualquer crise.");
 			next;
 			break;
 			case 4:
-			mes "Hmmm... Sinto que você está passando por uma fase difícil.";
-			mes "Você deveria priorizar segurança ou felicidade?";
+			mes(" Hmmm... Sinto que você está passando por uma fase difícil.\n Você deveria priorizar segurança ou felicidade?");
 			next;
-			mes "[Vidente]";
-			mes "Sugiro que você pense cuidadosamente antes de decidir o seu caminho.";
-			mes "E lembre-se, você apenas aprenderá quando cometer erros.";
+			mes("[Vidente]\n Sugiro que você pense cuidadosamente antes de decidir o seu caminho.\n E lembre-se, você apenas aprenderá quando cometer erros.");
 			next;
-			mes "[Vidente]";
-			mes "Se você planejar cuidadosamente e realizar ações positivas, você pode ter tudo!";
+			mes("[Vidente]\n Se você planejar cuidadosamente e realizar ações positivas, você pode ter tudo!");
 			next;
 			break;
 			case 5:
-			mes "Hmm...";
-			mes "Sinto que você brigou com alguém próximo a você Alguém com quem você se importa muito.";
+			mes(" Hmm...\n Sinto que você brigou com alguém próximo a você Alguém com quem você se importa muito.");
 			next;
-			mes "[Vidente]";
-			mes "Você precisa tomar a iniciativa!";
-			mes "Resolva esse problema sem se deixar abalar por suas emoções.";
+			mes("[Vidente]\n Você precisa tomar a iniciativa!\n Resolva esse problema sem se deixar abalar por suas emoções.");
 			next;
-			mes "[Vidente]";
-			mes "Tente consertar seus erros, engula seu orgulho e peça desculpas sinceramente se precisar.";
-			mes "Uma amizade vale isso? Eu acho que sim.";
+			mes("[Vidente]\n Tente consertar seus erros, engula seu orgulho e peça desculpas sinceramente se precisar.\n Uma amizade vale isso? Eu acho que sim.");
 			next;
 		}
-		mes "[Vidente]";
-		mes "Bem, espero ter sanado todas as suas dúvidas sobre o futuro.";
-		mes "Afinal, meu trabalho é ser um consultor psíquico. Volte quando quiser~";
+		mes("[Vidente]\n Bem, espero ter sanado todas as suas dúvidas sobre o futuro.\n Afinal, meu trabalho é ser um consultor psíquico. Volte quando quiser.");
 		close;
 		case 2:
-		mes "[Vidente]";
+		mes("[Vidente]"); 
 		switch(rand(1,4)) {
 			case 1:
-			mes "Quer saber seu futuro no amor?";
-			mes "Oh ho Então você gosta de alguém!";
-			mes "Vamos, pode me contar!";
+			mes("Quer saber seu futuro no amor?\n Oh ho Então você gosta de alguém!\n Vamos, pode me contar!");
 			next;
-			mes "[Vidente]";
-			mes "Certo...";
-			mes "Sinto uma forte energia amorosa emanando da sua alma.";
-			mes "É intimidadora, e afasta os fracos.";
+			mes("[Vidente]\n Certo...\n Sinto uma forte energia amorosa emanando da sua alma.\n É intimidadora, e afasta os fracos.");
 			next;
-			mes "[Vidente]";
-			mes "Então basicamente, prevejo que você logo atrairá pessoas realmente fortes.";
-			mes "Atletas, fisiculturistas, pedreiros, gente desse tipo.";
+			mes("[Vidente]\n Então basicamente, prevejo que você logo atrairá pessoas realmente fortes.\n Atletas, fisiculturistas, pedreiros, gente desse tipo.");
 			next;
-			mes "[Vidente]";
-			mes "Então se é isso que você quer, parabéns!";
-			mes "A sorte lhe sorri hoje.";
+			mes("[Vidente]\n Então se é isso que você quer, parabéns!\n A sorte lhe sorri hoje.");
 			next;
-			mes "[Vidente]";
-			mes "Mas se você quer o oposto, sinto muito.";
-			mes "A sorte sorri sarcasticamente hoje.";
-			mes "Mas não é tarde demais para mudar o destino!";
+			mes("[Vidente]\n Mas se você quer o oposto, sinto muito.\n A sorte sorri sarcasticamente hoje.\n Mas não é tarde demais para mudar o destino!");
 			next;
 			break;
 			case 2:
-			mes "Amoooor, então?";
-			mes "Deixe-me entrar em contato com os espíritos rapidamente.";
+			mes(" Amoooor, então?\n Deixe-me entrar em contato com os espíritos rapidamente.");
 			next;
-			mes "[Vidente]";
-			mes "Ah! Uma velha chama se reacenderá!";
-			mes "Não sei se a pessoa se apaixonará por você de novo.";
-			mes "Se pedirá dinheiro ou se está de volta para se vingar...";
+			mes("[Vidente]\n Ah! Uma velha chama se reacenderá!\n Não sei se a pessoa se apaixonará por você de novo.\n Se pedirá dinheiro ou se está de volta para se vingar...");
 			next;
-			mes "[Vidente]";
-			mes "Mas um velho amor voltará à sua vida.";
-			mes "De alguma forma.";
-			mes "Então, se isso for uma boa notícia, parabéns!";
-			mes "Mas se for uma notícia ruim, tome cuidado!";
+			mes("[Vidente]\n Mas um velho amor voltará à sua vida.\n De alguma forma.\n Então, se isso for uma boa notícia, parabéns!\n Mas se for uma notícia ruim, tome cuidado!");
 			next;
 			break;
 			case 3:
-			mes "Um...";
 			if (Sex == SEX_MALE) {
-				mes "A menina com quem você está saindo agora é ideal para você!";
-			}
-			else {
-				mes "O menino com quem você está saindo agora é ideal para você!";
+				mes(" Um... A menina com quem você está saindo agora é ideal para você!");
+			} else {
+				mes(" Um... O menino com quem você está saindo agora é ideal para você!");
 			}
 			next;
-			switch(select("Como você sabe?","Você está errado!","Estou solteiro!")) {
+			switch(select("Como você sabe?", "Você está errado!", "Estou solteiro!")) {
 				case 1:
-				mes "[Vidente]";
-				mes "Bem...";
-				mes "Nós que temos poderes psíquicos somos muito bons nesse tipo de coisa.";
-				mes "E é tão bom ver que você está feliz com a pessoa que você gosta!";
+				mes("[Vidente]\n Bem...\n Nós que temos poderes psíquicos somos muito bons nesse tipo de coisa.\n E é tão bom ver que você está feliz com a pessoa que você gosta!");
 				close;
 				case 2:
-				mes "[Vidente]";
-				mes "Você não me deixou terminar a frase.";
+				mes("[Vidente]\n Você não me deixou terminar a frase.");
 				next;
-				mes "[Vidente]";
 				if (Sex == SEX_MALE) {
-					mes "A menina com quem você está saindo agora é ideal para você.";
+					mes("[Vidente]\n A menina com quem você está saindo agora é ideal para você.");
+				} else {
+					mes("[Vidente]\n O menino com quem você está saindo agora é ideal para você.");
 				}
-				else {
-					mes "O menino com quem você está saindo agora é ideal para você.";
-				}
-				mes "Se você quiser passar o resto da vida infeliz!";
+				mes(" Se você quiser passar o resto da vida infeliz!");
 				next;
-				mes "[Vidente]";
-				mes "Mas se você for terminar, faça isso logo e tente manter a amizade.";
+				mes("[Vidente]\n Mas se você for terminar, faça isso logo e tente manter a amizade.");
 				next;
-				mes "[Vidente]";
-				mes "Isso fará com que vocês dois se tornem melhores.";
-				mes "Pelo menos é o que eu acho.";
+				mes("[Vidente]\n Isso fará com que vocês dois se tornem melhores.\n Pelo menos é o que eu acho.");
 				close;
 				case 3:
-				mes "[Vidente]";
-				mes "Oh...";
-				mes "Bem, me desculpe.";
-				mes "As vezes eu misturo o presente e o futuro.";
-				mes "Você entende não é, já que estou sempre prevendo o futuro...";
+				mes("[Vidente]\n Oh...\n Bem, me desculpe.\n As vezes eu misturo o presente e o futuro.\n Você entende não é, já que estou sempre prevendo o futuro...");
 				next;
-				mes "[Vidente]";
 				if (Sex == SEX_MALE) {
-					mes "O que eu quis dizer na verdade foi que ^3355FFvocê encontrará a mulher perfeita em breve^000000.";
-				}
-				else {
-					mes "O que eu quis dizer na verdade foi que ^3355FFvocê encontrará o homem perfeito em breve^000000.";
+					mes("[Vidente]\n O que eu quis dizer na verdade foi que ^3355FFvocê encontrará a mulher perfeita em breve^000000.");
+				} else {
+					mes("[Vidente]\n O que eu quis dizer na verdade foi que ^3355FFvocê encontrará o homem perfeito em breve^000000.");
 				}
 				close;
 			}
 			break;
 			case 4:
-			mes "Querendo um romance, eh?";
-			mes "Sempre bom ter novas emoções.";
+			mes(" Querendo um romance, eh?\n Sempre bom ter novas emoções.");
 			next;
-			mes "[Vidente]";
-			mes "Estranho, eu vejo um triângulo amoroso em seu futuro.";
-			mes "Não, espere!";
-			mes "Na verdade...";
-			mes "Um decágono amoroso?";
+			mes("[Vidente]\n Estranho, eu vejo um triângulo amoroso em seu futuro.\n Não, espere!\n Na verdade...\n Um decágono amoroso?");
 			next;
-			mes "[Vidente]";
-			mes "Qual o polígono com onze lados?";
-			mes "Ah, você não pode esperar que eu saiba qual é.";
-			mes "Sou um vidente, não um matemático.";
+			mes("[Vidente]\n Qual o polígono com onze lados?\n Ah, você não pode esperar que eu saiba qual é.\n Sou um vidente, não um matemático.");
 			next;
 		}
-		mes "[Vidente]";
-		mes "O amor é sempre divertido!";
-		mes "Mesmo nesse mundo sombrio, o amor nos rodeia com seu brilho convidativo.";
-		mes "Cuide de quem for especial para você, e volte para outra leitura!";
+		mes("[Vidente]\n O amor é sempre divertido!\n Mesmo nesse mundo sombrio, o amor nos rodeia com seu brilho convidativo.\n Cuide de quem for especial para você, e volte para outra leitura!");
 		close;
 		case 3:
-		mes "[Vidente]";
+		mes("[Vidente]"); 
 		switch(rand(1,3)) {
 			case 1:
-			mes "Dinheiro?";
-			mes "Bem, aposto que você tem mais sorte com isso do que eu.";
-			mes "Afinal, eu fico sentado aqui o dia inteiro, fazendo consultas de graça!";
+			mes(" Dinheiro?\n Bem, aposto que você tem mais sorte com isso do que eu.\n Afinal, eu fico sentado aqui o dia inteiro, fazendo consultas de graça!");
 			next;
-			mes "[Vidente]";
-			mes "Bem...";
-			mes "Os espíritos me dizem que você talvez não ganhe na loteria.";
-			mes "Não importa quantos tíquetes você compre. Me desculpe, mas é verdade.";
+			mes("[Vidente]\n Bem...\n Os espíritos me dizem que você talvez não ganhe na loteria.\n Não importa quantos tíquetes você compre. Me desculpe, mas é verdade.");
 			next;
-			mes "[Vidente]";
-			mes "Mas eu impedi você de continuar perdendo dinheiro com isso!";
-			mes "Se você comprasse tíquetes de loteria durante toda a vida, gastaria quase uma fortuna!";
+			mes("[Vidente]\n Mas eu impedi você de continuar perdendo dinheiro com isso!\n Se você comprasse tíquetes de loteria durante toda a vida, gastaria quase uma fortuna!");
 			next;
 			break;
 			case 2:
-			mes "Ah sim.";
-			mes "Entrarei em contato com os espíritos.";
-			mes "Eles normalmentes dão bons conselhos financeiros, mesmo não tendo nenhum tipo de economia lá.";
+			mes("Ah sim.\n Entrarei em contato com os espíritos.\n Eles normalmentes dão bons conselhos financeiros, mesmo não tendo nenhum tipo de economia lá.");
 			next;
-			mes "[Vidente]";
-			mes "Primeiro, controle seu dinheiro e só gaste o que puder.";
-			mes "Quer uma dica?";
-			mes "De cada dez zenys que você ganhar, guarde um para investir ou deixar de reserva.";
+			mes("[Vidente]\n Primeiro, controle seu dinheiro e só gaste o que puder.\n Quer uma dica?\n De cada dez zenys que você ganhar, guarde um para investir ou deixar de reserva.");
 			next;
-			mes "[Vidente]";
-			mes "E, não importa o que você faça, não seja um vidente em Rune-Midgard.";
-			mes "Parece que o que dá dinheiro mesmo é descobrir novas terras.";
-			mes "Por que eu não fiz isso?";
+			mes("[Vidente]\n E, não importa o que você faça, não seja um vidente em Rune-Midgard.\n Parece que o que dá dinheiro mesmo é descobrir novas terras.\n Por que eu não fiz isso?");
 			next;
 			break;
 			case 3:
-			mes "Então você quer saber sobre dinheiro.";
-			mes "Vou entrar em contato com os espíritos...";
+			mes(" Então você quer saber sobre dinheiro.\n Vou entrar em contato com os espíritos...");
 			next;
-			mes "[Vidente]";
-			mes "Ah, sim.";
-			mes "Eles estão me dizendo que é melhor ser sempre cauteloso.";
-			mes "Certamente você deve saber que exploradores nunca gastam mais do que a verba destinada a eles.";
+			mes("[Vidente]\n Ah, sim.\n Eles estão me dizendo que é melhor ser sempre cauteloso.\n Certamente você deve saber que exploradores nunca gastam mais do que a verba destinada a eles.");
 			next;
-			mes "[Vidente]";
-			mes "E você também deve evitar apostar com seu dinheiro.";
-			mes "Quero dizer que você deve guardar e investir cuidadosamente.";
-			mes "Não se deixe cair na tentação de entrar em esquemas do tipo fique-rico-rápido!";
+			mes("[Vidente]\n E você também deve evitar apostar com seu dinheiro.\n Quero dizer que você deve guardar e investir cuidadosamente.\n Não se deixe cair na tentação de entrar em esquemas do tipo fique-rico-rápido!");
 			next;
-			mes "[Vidente]";
-			mes "Mas por outro lado, esquemas desse tipo podem ser bons, se você souber o que está fazendo.";
-			mes "Estou certo, não?";
+			mes("[Vidente]\n Mas por outro lado, esquemas desse tipo podem ser bons, se você souber o que está fazendo.\n Estou certo, não?");
 			next;
 		}
-		mes "[Vidente]";
-		mes "Bem, precisamos de dinheiro para viver, mas ter dinheiro não significa ter uma vida plena.";
-		mes "Não esqueça que existem outras coisas que são importantes também.";
-		mes "E tente não ficar muito nervoso, certo?";
+		mes("[Vidente]\n Bem, precisamos de dinheiro para viver, mas ter dinheiro não significa ter uma vida plena.\n Não esqueça que existem outras coisas que são importantes também.\n E tente não ficar muito nervoso, certo?");
 		close;
 		case 4:
-		mes "[Vidente]";
+		mes("[Vidente]");
 		switch(rand(1,4)) {
 			case 1:
-			mes "Suas notas? Você ainda está na escola?";
-			mes "Estou impressionado!";
-			mes "Seus olhos me dizem que você é muito maduro para a sua idade.";
-			mes "Certo, vou consultar os espíritos...";
+			mes(" Suas notas? Você ainda está na escola?\n Estou impressionado!\n Seus olhos me dizem que você é muito maduro para a sua idade.\n Certo, vou consultar os espíritos...");
 			next;
-			mes "[Vidente]";
-			mes "Hm? Tudo que eles disseram foi 'Você estuda?'";
-			mes "Bem, acho que acabei respondendo sua pergunta com outra pergunta!";
+			mes("[Vidente]\n Hm? Tudo que eles disseram foi 'Você estuda?'\n Bem, acho que acabei respondendo sua pergunta com outra pergunta!");
 			next;
 			break;
 			case 2:
-			mes "Você está me perguntando sobre as suas notas?";
-			mes "Que estranho.";
-			mes "Digo, você está querendo saber sobre o seu boletim?";
+			mes(" Você está me perguntando sobre as suas notas?\n Que estranho.\n Digo, você está querendo saber sobre o seu boletim?");
 			next;
-			mes "[Vidente]";
-			mes "A educação é muito importante, mas não desanime se suas notas não são tão boas quanto você gostaria.";
+			mes("[Vidente]\n A educação é muito importante, mas não desanime se suas notas não são tão boas quanto você gostaria.");
 			next;
-			mes "[Vidente]";
-			mes "Talvez o seu estilo de aprendizado não seja condizente com o método da sua escola.";
-			mes "Ou talvez você não esteja muito interessado nos assuntos que ensinam lá.";
-			mes "É compreensível.";
+			mes("[Vidente]\n Talvez o seu estilo de aprendizado não seja condizente com o método da sua escola.\n Ou talvez você não esteja muito interessado nos assuntos que ensinam lá.\n É compreensível.");
 			next;
-			mes "[Vidente]";
-			mes "Os espíritos me dizem que você deve tentar diferentes estilos de aprendizagem.";
-			mes "Para garantir que obtenha as notas que quer.";
+			mes("[Vidente]\n Os espíritos me dizem que você deve tentar diferentes estilos de aprendizagem.\n Para garantir que obtenha as notas que quer.");
 			next;
-			mes "[Vidente]";
-			mes "Sim...";
-			mes "Os espíritos estão incrivelmente preguiçosos hoje.";
+			mes("[Vidente]\n Sim...\n Os espíritos estão incrivelmente preguiçosos hoje.");
 			next;
 			break;
 			case 3:
-			mes "[Vidente]";
-			mes "Hmm. Os espíritos estão rudes hoje.";
-			mes "Eles estão dizendo 'Se você está tão preocupado com suas notas.";
-			mes "Por que não vai falar com seu professor?'";
+			mes("[Vidente]\n Hmm. Os espíritos estão rudes hoje.\n Eles estão dizendo 'Se você está tão preocupado com suas notas.\n Por que não vai falar com seu professor?'");
 			next;
-			mes "[Vidente]";
-			mes "Agora que estou pensando nisso, eles tem razão.";
-			mes "Por que você não vai falar com seu professor para ver se há algum problema?";
+			mes("[Vidente]\n Agora que estou pensando nisso, eles tem razão.\n Por que você não vai falar com seu professor para ver se há algum problema?");
 			next;
-			mes "[Vidente]";
-			mes "Eles são pagos para te ajudar.";
-			mes "E minha consulta é de graça.";
-			mes "Então...";
+			mes("[Vidente]\n Eles são pagos para te ajudar.\n E minha consulta é de graça.\n Então...");
 			next;
 			break;
 			case 4:
-			mes "Ah, legal!";
-			mes "Sinto que você logo vai tirar um Dez...";
-			mes "Em Esforço!";
+			mes("Ah, legal!\n Sinto que você logo vai tirar um Dez...\n Em Esforço!");
 			next;
-			mes "[Vidente]";
-			mes "Não posso te dizer quais as suas notas.";
-			mes "Talvez você esteja destinado a tirar dez em todas as matérias, mas se eu falar isso...";
+			mes("[Vidente]\n Não posso te dizer quais as suas notas.\n Talvez você esteja destinado a tirar dez em todas as matérias, mas se eu falar isso...");
 			next;
-			mes "[Vidente]";
-			mes "Você provavelmente relaxaria, pararia de estudar, reprovaria e causaria um paradoxo no tempo.";
-			mes "Porque eu realmente preciso ir para o futuro para ver o que vai acontecer, entende?";
+			mes("[Vidente]\n Você provavelmente relaxaria, pararia de estudar, reprovaria e causaria um paradoxo no tempo.\n Porque eu realmente preciso ir para o futuro para ver o que vai acontecer, entende?");
 			next;
-			mes "[Vidente]";
-			mes "Ao invés de se preocupar com paradoxos no tempo, por que você não faz o seu próprio destino?";
+			mes("[Vidente]\n Ao invés de se preocupar com paradoxos no tempo, por que você não faz o seu próprio destino?");
 			next;
 		}
-		mes "[Vidente]";
-		mes "De qualquer forma, é difícil se concentrar nos estudos, mas pode compensar.";
-		mes "Espero que você se dê bem no que você decida fazer.";
+		mes("[Vidente]\n De qualquer forma, é difícil se concentrar nos estudos, mas pode compensar.\n Espero que você se dê bem no que você decida fazer.");
 		close;
 		case 5:
-		mes "[Vidente]";
-		mes "O futuro?";
-		mes "Achei que estava implícito que tudo que eu falar será sobre o futuro, de qualquer tema que você escolha.";
+		mes("[Vidente]\n O futuro?\n Achei que estava implícito que tudo que eu falar será sobre o futuro, de qualquer tema que você escolha.");
 		next;
-		mes "[Vidente]";
-		mes "Acho que você quer saber sobre o futuro em geral.";
-		mes "Vou consultar os espíritos, e veremos o que eles têm a dizer, ok?";
+		mes("[Vidente]\n Acho que você quer saber sobre o futuro em geral.\n Vou consultar os espíritos, e veremos o que eles têm a dizer, ok?");
 		next;
-		mes "[Vidente]";
+		mes("[Vidente]");
 		switch(rand(1,4)) {
 			case 1:
-			mes "Hmm...";
-			mes "No futuro, Sexo, Violência e Rock and Roll serão abolidos.";
-			mes "A humanidade viverá numa era de paz e chatice.";
+			mes(" Hmm...\n No futuro, Sexo, Violência e Rock and Roll serão abolidos.\n A humanidade viverá numa era de paz e chatice.");
 			next;
-			mes "[Vidente]";
-			mes "Não sei quando isso vai acontecer, mas espero que demore bastante!";
+			mes("[Vidente]\n Não sei quando isso vai acontecer, mas espero que demore bastante!");
 			next;
 			break;
 			case 2:
-			mes "No futuro a Terra será protegida por um único robô:";
-			mes "Plutonium Overdrive Ignition Negatron G, ou POING.";
+			mes("No futuro a Terra será protegida por um único robô:\n Plutonium Overdrive Ignition Negatron G, ou POING.");
 			next;
-			mes "[Vidente]";
-			mes "POING expulsou os invasores Kylorianos por muito tempo, até ser derrotado pelo Nyxltron 47, feito pelo Dr. Hubris.";
+			mes("[Vidente]\n POING expulsou os invasores Kylorianos por muito tempo, até ser derrotado pelo Nyxltron 47, feito pelo Dr. Hubris.");
 			next;
-			mes "[Vidente]";
-			mes "Mas felizmente o doutor Pyeus finalizou bem a tempo o Dispostivo de Desconhecimento de Gravidade para o POING.";
+			mes("[Vidente]\n Mas felizmente o doutor Pyeus finalizou bem a tempo o Dispostivo de Desconhecimento de Gravidade para o POING.");
 			next;
-			mes "[Vidente]";
-			mes "Então POING levantou-se novamente, renascido como o Herói Automático: GOD-POING.";
-			mes "Que obviamente destruiu o Nyxltron 47.";
+			mes("[Vidente]\n Então POING levantou-se novamente, renascido como o Herói Automático: GOD-POING.\n Que obviamente destruiu o Nyxltron 47.");
 			next;
-			mes "[Vidente]";
-			mes "Essa é provavelmente a coisa mais importante que posso te contar sobre o futuro.";
-			mes "O resto é muito sem graça.";
+			mes("[Vidente]\n Essa é provavelmente a coisa mais importante que posso te contar sobre o futuro.\n O resto é muito sem graça.");
 			next;
 			break;
 			case 3:
-			mes "No futuro, acredite ou não, a internet será substituída por um grande cérebro.";
-			mes "Não sei como, mas acredite, o cérebro é enorme.";
+			mes(" No futuro, acredite ou não, a internet será substituída por um grande cérebro.\n Não sei como, mas acredite, o cérebro é enorme.");
 			next;
-			mes "[Vidente]";
-			mes "Graças ao grande número de blogs, o cérebro se torna pacífico, e decide não dominar o mundo.";
-			mes "Como tinha planejado antes.";
+			mes("[Vidente]\n Graças ao grande número de blogs, o cérebro se torna pacífico, e decide não dominar o mundo.\n Como tinha planejado antes.");
 			next;
-			mes "[Vidente]";
-			mes "Sim...";
-			mes "Esse cérebro se torna uma fonte do bem, um benfeitor da raça humana.";
-			mes "Pelo menos enquanto as pessoas continuarem a escrever assuntos pessoais na internet.";
+			mes("[Vidente]\n Sim...\n Esse cérebro se torna uma fonte do bem, um benfeitor da raça humana.\n Pelo menos enquanto as pessoas continuarem a escrever assuntos pessoais na internet.");
 			next;
 			break;
 			case 4:
-			mes "No futuro, muitas plantas serão modificadas geneticamente.";
-			mes "Existirão muitos tipos diferentes!";
-			mes "É bem estranho!";
+			mes(" No futuro, muitas plantas serão modificadas geneticamente.\n Existirão muitos tipos diferentes!\n É bem estranho!");
 			next;
-			mes "[Vidente]";
-			mes "Eventualmente surgirão árvores que ao invés de frutos, originam clones de celebridades.";
-			mes "Hoje, isso parece um milagre da ciência, e uma ameaça às estrelas de Hollywood.";
+			mes("[Vidente]\n Eventualmente surgirão árvores que ao invés de frutos, originam clones de celebridades.\n Hoje, isso parece um milagre da ciência, e uma ameaça às estrelas de Hollywood.");
 			next;
-			mes "[Vidente]";
-			mes "Mas as pessoas que compram essas árvores são as mesmas que usam aquelas camisetas estranhas...";
+			mes("[Vidente]\n Mas as pessoas que compram essas árvores são as mesmas que usam aquelas camisetas estranhas...");
 			next;
-			mes "[Vidente]";
-			mes "Sabe, que tem um senso de humor tosco, com a palavra 'Gatostrófico' e o desenho de um gatinho vestido como um cientista maluco ou algo do gênero.";
+			mes("[Vidente]\n Sabe, que tem um senso de humor tosco, com a palavra 'Gatostrófico' e o desenho de um gatinho vestido como um cientista maluco ou algo do gênero.");
 			next;
 		}
-		mes "[Vidente]";
-		mes "Bem...";
-		mes "Essa é a minha predição.";
-		mes "Você pode argumentar com a sabedoria do mundo dos espíritos?";
+		mes("[Vidente]\n Bem...\n Essa é a minha predição.\n Você pode argumentar com a sabedoria do mundo dos espíritos?");
 		close;
 		case 6:
-		mes "[Vidente]";
-		mes "Moda...?";
-		mes "O que isso tem a ver com o sobrenatural?";
-		mes "Bem, entrarei em contato com os espíritos.";
-		mes "Lá vamos nós...";
+		mes("[Vidente]\n Moda...?\n O que isso tem a ver com o sobrenatural?\n Bem, entrarei em contato com os espíritos.\n Lá vamos nós...");
 		next;
-		mes "[Vidente]";
+		mes("[Vidente]"); 
 		switch(rand(1,5)) {
 			case 1:
-			mes "...";
+			mes("[Vidente]\n .........");
 			next;
-			mes "[Vidente]";
-			mes "...";
-			mes "......";
+			mes("[Vidente]\n Estou vendo algo...\n Parece, com...");
 			next;
-			mes "[Vidente]";
-			mes "Estou vendo algo...";
-			mes "Parece, com...";
+			mes("[Vidente]\n Um... Peixe?\n Na cabeça de alguém?");
 			next;
-			mes "[Vidente]";
-			mes "Um...";
-			mes "Um... Peixe?";
-			mes "Na cabeça de alguém?";
-			next;
-			mes "[Vidente]";
-			mes "...";
-			mes "Que visão horrível!";
+			mes("[Vidente]\n Que visão horrível!");
 			next;
 			break;
 			case 2:
-			mes "É bom usar elmos valiosos!";
-			mes "E também é bom usar roupas bonitas!";
-			mes "Mas lembre-se...";
+			mes(" É bom usar elmos valiosos!\n E também é bom usar roupas bonitas!\n Mas lembre-se...");
 			next;
-			mes "[Vidente]";
-			mes "Não importa o quanto você gastou no seu guarda-roupa, você ainda vai parecer bobo se não usar peças que combinem.";
+			mes("[Vidente]\n Não importa o quanto você gastou no seu guarda-roupa, você ainda vai parecer bobo se não usar peças que combinem.");
 			next;
-			mes "[Vidente]";
-			mes "Vou te dar um exemplo de gente que não sabe se vestir.";
-			mes "Imagine um Crusader usando uma coroa, orelhas de elfo e um Iron Cain.";
+			mes("[Vidente]\n Vou te dar um exemplo de gente que não sabe se vestir.\n Imagine um Crusader usando uma coroa, orelhas de elfo e um Iron Cain.");
 			next;
-			mes "[Vidente]";
-			mes "Ele não ia parecer na moda, ia parecer o Príncipe da Breguice.";
+			mes("[Vidente]\n Ele não ia parecer na moda, ia parecer o Príncipe da Breguice.");
 			next;
 			break;
 			case 3:
-			mes "Eu vejo...";
-			mes "Que chapéus de caubói serão muito populares entre garotas Super Novices em breve!";
+			mes(" Eu vejo...\n Que chapéus de caubói serão muito populares entre garotas Super Novices em breve!");
 			next;
-			mes "[Vidente]";
-			mes "Você não concorda?";
-			mes "Chapéus de caubói ficam ótimos em Super Novices!";
+			mes("[Vidente]\n Você não concorda?\n Chapéus de caubói ficam ótimos em Super Novices!");
 			next;
 			break;
 			case 4:
-			mes "Pode ser uma boa idéia seguir um tema.";
-			mes "Por exemplo, você pode usar Asas de Anjo e Orelhas de Anjo ao mesmo tempo.";
+			mes(" Pode ser uma boa idéia seguir um tema.\n Por exemplo, você pode usar Asas de Anjo e Orelhas de Anjo ao mesmo tempo.");
 			next;
-			mes "[Vidente]";
-			mes "Claro que isso pode ser caro demais para a maioria das pessoas, mas você entendeu.";
+			mes("[Vidente]\n Claro que isso pode ser caro demais para a maioria das pessoas, mas você entendeu.");
 			next;
 			break;
 			case 5:
-			mes "Eu prevejo que sombreros se tornarão muito populares quando um grande grupo de Bardos formarem uma guild na qual os membros só usarão sombreros.";
+			mes(" Eu prevejo que sombreros se tornarão muito populares quando um grande grupo de Bardos formarem uma guild na qual os membros só usarão sombreros.");
 			next;
-			mes "[Vidente]";
-			mes "Ou será que é o Boina Alada que estourará em popularidade?";
-			mes "Os dois chapéus são muito estilosos, principamente em bardos...";
+			mes("[Vidente]\n Ou será que é o Boina Alada que estourará em popularidade?\n Os dois chapéus são muito estilosos, principamente em bardos...");
 			next;
 		}
-		mes "[Vidente]";
-		mes "Bem...";
-		mes "Nós, videntes, não sabemos muito sobre moda, mas eu espero ter ajudado.";
+		mes("[Vidente]\n Bem...\n Nós, videntes, não sabemos muito sobre moda, mas eu espero ter ajudado.");
 		close;
 	}
 }
 
 // ------------------------------------------------------------------
-geffen_in,109,72,2	script	Professor de Monstros#gef	4_F_01,{
-	mes "[Estheres]";
-	mes "Olá, sou o especialista em Monstros daqui de Geffen. Você gostaria de saber alguma coisa?";
+geffen_in,109,72,2	script	Perito em Monstros#gef	4_F_01,{
+	mes("[Estheres]\n Olá, sou o especialista em Monstros daqui de Geffen. Você gostaria de saber alguma coisa?");
 	next;
-	switch(select("Area de Monstros.","Notícias Recentes.:Era dos Monstros:Teoria do Jellopy.")) {
+	switch(select("Area de Monstros", "Notícias Recentes", "Era dos Monstros", "Teoria do Jellopy")) {
 		case 1:
-		mes "[Estheres]";
-		mes "Bem, como você talvez saiba, já que Mages e Wizards treinam em Geffen.";
-		mes "Os monstros não chegam muito perto da cidade. Então aventureiros fatigados podem descansar aqui.";
+		mes("[Estheres]\n Bem, como você talvez saiba, já que Mages e Wizards treinam em Geffen.\n Os monstros não chegam muito perto da cidade.\n Então aventureiros fatigados podem descansar aqui.");
 		next;
-		mes "[Estheres]";
-		mes "Mas se você quiser caçar monstros fortes, pode cruzar a ponte a oeste e lutar com Kobolds.";
+		mes("[Estheres]\n Mas se você quiser caçar monstros fortes, pode cruzar a ponte a oeste e lutar com Kobolds.");
 		next;
-		mes "[Estheres]";
-		if (BaseLevel > 40) {
-			mes "Você parece forte o suficiente para ir até lá.";
-			mes "Mas se vir alguém com menos experiência atravessando a ponte, poderia avisá-lo do perigo.";
-		}
-		else {
-			mes "Mas se você está planejando ir lá, melhor não ir sozinho.";
-			mes "Recomendo que você vá preparado se quiser lutar com esse tipo de monstros.";
+		mes("[Estheres]"); 
+		if (BaseLevel > 80) {
+			mes(" Você parece forte o suficiente para ir até lá.\n Mas se vir alguém com menos experiência atravessando a ponte, poderia avisá-lo do perigo.");
+		} else {
+			mes(" Mas se você está planejando ir lá, melhor não ir sozinho.\n Recomendo que você vá preparado se quiser lutar com esse tipo de monstros.");
 		}
 		break;
 		case 2:
-		mes "[Estheres]";
-		mes "Novidades?";
-		mes "Bem, o Museu de Monstros de Juno está aberto ao público.";
-		mes "Há uma exposição fascinante, e vários monstros estão a mostra.";
+		mes("[Estheres]\n Novidades?\n Bem, o Museu de Monstros de Juno está aberto ao público.\n Há uma exposição fascinante, e vários monstros estão a mostra.");
 		next;
-		mes "[Estheres]";
-		mes "Eu li sobre todos os tipos de monstros nas livrarias de Juno e de Prontera, e cacei alguns.";
-		mes "Mas agora tenho a chance de ver monstros muito fortes pessoalmente!";
+		mes("[Estheres]\n Eu li sobre todos os tipos de monstros nas livrarias de Juno e de Prontera, e cacei alguns.\n Mas agora tenho a chance de ver monstros muito fortes pessoalmente!");
 		next;
-		mes "[Estheres]";
-		mes "E os aventureiros de Rune-Midgarts fizeram descobertas fantásticas em suas explorações.";
+		mes("[Estheres]\n E os aventureiros de Rune-Midgarts fizeram descobertas fantásticas em suas explorações.");
 		next;
-		mes "[Estheres]";
-		mes "Quando uma nova terra é encontrada, normalmente existem lá monstros desconhecidos.";
+		mes("[Estheres]\n Quando uma nova terra é encontrada, normalmente existem lá monstros desconhecidos.");
 		next;
-		mes "[Estheres]";
-		mes "Então estamos descobrindo monstros novos o tempo todo!";
-		mes "A variedade de criaturas que povoam o planeta é impressionante.";
+		mes("[Estheres]\n Então estamos descobrindo monstros novos o tempo todo!\n A variedade de criaturas que povoam o planeta é impressionante.");
 		break;
 		case 3:
-		mes "[Estheres]";
-		mes "A verdade é que os monstros existem desde tempos antigos.";
-		mes "A Era dos Monstros ocorreu quando o poder deles estava no auge.";
+		mes("[Estheres]\n A verdade é que os monstros existem desde tempos antigos.\n A Era dos Monstros ocorreu quando o poder deles estava no auge.");
 		next;
-		mes "[Estheres]";
-		mes "Eles oprimiram os humanos por muito tempo.";
-		mes "Mas foram aniquilados numa guerra entre os monstros e a humanidade.";
+		mes("[Estheres]\n Eles oprimiram os humanos por muito tempo.\n Mas foram aniquilados numa guerra entre os monstros e a humanidade.");
 		next;
-		mes "[Estheres]";
-		mes "Entretanto, o equilíbrio da natureza mudou, e os monstros retornaram.";
-		mes "Poucas pessoas sabem disso, mas os monstros já foram criaturas gentis.";
-		mes "É triste...";
+		mes("[Estheres]\n Entretanto, o equilíbrio da natureza mudou, e os monstros retornaram.\n Poucas pessoas sabem disso, mas os monstros já foram criaturas gentis.\n É triste...");
 		break;
 		case 4:
-		mes "[Estheres]";
-		mes "Ah sim, Jellopy.";
-		mes "Parece que todos os monstros daqui são compostos de Jellopy.";
-		mes "Mas isso é apenas uma cristalização formada por alguns monstros...";
-		mes "Ou é mais que isso?";
+		mes("[Estheres]\n Ah sim, Jellopy.\n Parece que todos os monstros daqui são compostos de Jellopy.\n Mas isso é apenas uma cristalização formada por alguns monstros...\n Ou é mais que isso?");
 		next;
-		mes "[Estheres]";
-		mes "Nossas pesquisas sobre monstros antigos e estudos feitos com monstros descobertos recentemente mostram que nenhum traço de Jellopy é encontrado em monstros fortes.";
+		mes("[Estheres]\n Nossas pesquisas sobre monstros antigos e estudos feitos com monstros descobertos recentemente mostram que nenhum traço de Jellopy é encontrado em monstros fortes.");
 		next;
-		mes "[Estheres]";
-		mes "Mas mesmo assim, muitos acreditam numa relação entre Jellopys e monstros.";
-		mes "Apesar de ser difícil de acreditar nisso.";
+		mes("[Estheres]\n Mas mesmo assim, muitos acreditam numa relação entre Jellopys e monstros.\n Apesar de ser difícil de acreditar nisso.");
 		next;
-		mes "[Estheres]";
-		mes "É possível que as Jellopys estejam relacionadas com a personalidade e a força dos monstros.";
-		mes "Então, se você misturar Jellopy com alguma coisa, poderia criar um monstro mais forte.";
+		mes("[Estheres]\n É possível que as Jellopys estejam relacionadas com a personalidade e a força dos monstros.\n Então, se você misturar Jellopy com alguma coisa, poderia criar um monstro mais forte.");
 		next;
-		mes "[Estheres]";
-		mes "Mas fazer esse tipo de experimento pode ser perigoso.";
-		mes "Você pode acabar soltando monstros assustadores no mundo...";
+		mes("[Estheres]\n Mas fazer esse tipo de experimento pode ser perigoso.\n Você pode acabar soltando monstros assustadores no mundo...");
 		break;
 	}
 	close;
 }
 
-// ------------------------------------------------------------------
-geffen,203,146,5	script	Cidadão#gef	4W_M_01,{
-	mes "[Cidadão]";
-	mes "Havia um hábil criador de armas em Al De Baran, e ele tinha 4 filhos.";
-	mes "Infelizmente, ele perdeu todos enquanto desenvolvia uma arma poderosa.";
-	mes "Somente ele sobreviveu à tragédia.";
-	next;
-	mes "[Cidadão]";
-	mes "Como deve ter sido triste para ele...";
-	mes "Graças ao incidente, o criador de armas se aposentou e foi embora, viver em outro lugar.";
-	mes "Depois disso, ninguém nunca pôde ver a arma que eles estavam desenvolvendo.";
-	next;
-	mes "[Cidadão]";
-	mes "Não acho que os filhos dele foram para o céu com a ansiedade.";
-	close;
-}
+

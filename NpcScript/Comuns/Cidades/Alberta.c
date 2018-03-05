@@ -73,9 +73,7 @@ alberta,131,139,2	script	Velho Bêbado#alb	1_M_JOBGUIDER,{
 			next;
 			mes("[Velho Bêbado]\n AH Capitão.\n Sinto falta do nosso capitão mais do que tudo....\n Nenhum monstro sobrevivia ao golpe da espada do capitão.\n CAPITÃO!!! (HICCUP) Ele usava sua espada ASSIM!...\n Depois ASSIM... e ASSIM...!!!");
 			next; 
-			mes "[Velho Bêbado]"; 
-			mes "O inimigo e tudo ao redor dele ardiam em chamas!";
-			mes "Agora quando penso nisso, a espada devia ter algum tipo de poder misterioso."; 
+			mes("[Velho Bêbado]\n O inimigo e tudo ao redor dele ardiam em chamas!\n Agora quando penso nisso, a espada devia ter algum tipo de poder misterioso.");
 			next; 
 			mes("[Velho Bêbado]\n (sigh!) (sob, sob)... Como eu sinto falta de todos...\n Agora me deprimi.\n Vá embora e me deixe sozinho.....");
 			emotion(e_sob); 
@@ -133,6 +131,6 @@ alberta,93,174,2	script	Vovó#alb	8_F_GRANDMOTHER,{
 	next;
 	mes("[Vovó]\n Nós nunca fomos capazes de fazer algo sobre esse estranho navio.\n Então apenas o deixamos lá, esperando que um dia ele afundasse ou fosse embora.");
 	next;
-	mes "[Vovó]\n Assim, pode ser uma boa experiência para um jovem aventureiro como você.\n Mas, ainda não vale a pena arriscar sua vida se você não é forte o suficiente.");
+	mes("[Vovó]\n Assim, pode ser uma boa experiência para um jovem aventureiro como você.\n Mas, ainda não vale a pena arriscar sua vida se você não é forte o suficiente.");
 	close;
 }

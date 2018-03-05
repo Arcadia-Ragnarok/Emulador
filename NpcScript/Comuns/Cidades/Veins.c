@@ -16,649 +16,209 @@
 // - [ Ruas ] -
 // ------------------------------------------------------------------
 veins,162,34,5	script	Cidadão#vei	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Eu adoro cactos.";
-	mes "São as plantas mais lindas do deserto.";
-	mes "Às vezes, são os únicos sinais de vida nessa terra árida.";
+	mes("[Cidadão]\n Eu adoro cactos.\n São as plantas mais lindas do deserto.\n Às vezes, são os únicos sinais de vida nessa terra árida.");
 	next;
-	mes "[Cidadão]";
-	mes "Se você sentir uma palpitação em seu coração quando olhar para um cacto.";
-	mes "Você deve apreciar a verdadeira beleza do deserto.";
+	mes("[Cidadão]\n Se você sentir uma palpitação em seu coração quando olhar para um cacto.\n Você deve apreciar a verdadeira beleza do deserto.");
 	next;
-	mes "[Cidadão]";
-	mes "Bem, eu não sei se posso encontrar alguém que ache o deserto maravilhoso e encantador quanto eu.";
-	mes "Realmente é uma pena.";
+	mes("[Cidadão]\n Bem, eu não sei se posso encontrar alguém que ache o deserto maravilhoso e encantador quanto eu.\n Realmente é uma pena.");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,148,41,3	script	Cidadão#vei2	4_F_DESERT,{
-	mes "[Cidadão]";
-	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" à Veins,";
-	mes "a cidade próxima do templo de Cheshrumnir.";
-	mes "Você pode achar que essa é uma cidade monótona e deserta, mas você verá que ela é tão viva como qualquer outro lugar.";
+veins,137,179,5	script	Cidadão#vei2	4_M_DESERT,{
+	mes("[Cidadão]\n Ahh, por que a nossa loja de armas é tão chata?\n Não há anda aqui além do velho lixo.\n É triste dizer, mas não há nada de especial.");
 	next;
-	mes "[Cidadão]";
-	mes "Claro que tem algumas figuras na cidade, como o louco que adora cactos ali, mas todos gostam dele.";
-	mes "Há muitas pessoas legais que você pode conhecer.";
-	next;
-	mes "[Cidadão]";
-	mes "Pois bem, eu espero que você aprecie a sua estadia";
+	mes("[Cidadão]\n Não seria ótimo se houvesse uma loja que vendesse os itens divinos?\n Claro que isso é pedir demais.");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,137,179,5	script	Cidadão#vei3	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Ahh, por que a nossa loja de armas é tão chata?";
-	mes "Não há anda aqui além do velho lixo.";
-	mes "É triste dizer, mas não há nada de especial.";
+veins,310,195,1	script	Cidadão#vei3	4_M_DST_MASTER,{
+	mes("[Cidadão]\n Cactos são maravilhosos, eles são as plantas mais bonitas do Deserto.\n Sim, devemos cuidar delas.");
 	next;
-	mes "[Cidadão]";
-	mes "Não seria ótimo se houvesse uma loja que vendesse os itens divinos?";
-	mes "Claro que isso é pedir demais.";
+	mes("[Cidadão]\n Cactos regulares são muito incomuns, mas eu ouvi que no deserto tem um tipo de cacto que faz barulhos irritantes e passeia por aí.\n Como isso pode ser verdade?");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,166,91,5	script	Cidadão#vei4	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Estamos no meio do deserto";
-	mes "e mesmo assim nossos inimigos continuam sendo uma ameaça.";
-	mes "Tolos! A Deusa Freya irá sempre nos proteger!";
-	next;
-	mes "[Cidadão]";
-	mes "Enquanto continuarmos treinando,";
-	mes "Freya irá nos proteger e nos abençoará com a vitória sobre nosses inimigos.";
-	mes "Isso amigo, é o poder da fé.";
+veins,333,318,3	script	Cidadão#vei4	4_F_DESERT,{
+	mes("[Cidadão]\n O que um aventureiro está fazendo numa cidade tão isolada e monótona?\n Você não deveria estar procurando por aventuras?\n Acredite em mim, este lugar é chato.");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,310,195,1	script	Cidadão#vei5	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Cactos são maravilhosos, eles são as plantas mais bonitas do Deserto.";
-	mes "Sim, devemos cuidar delas";
-	next;
-	mes "[Cidadão]";
-	mes "Cactos regulares são muito incomuns,";
-	mes "mas eu ouvi que no deserto tem um tipo de cacto que faz barulhos irritantes e passeia por aí.";
-	mes "Como isso pode ser verdade?";
+veins,171,256,3	script	Cidadão#vei5	4_M_DESERT,{
+	mes("[Cidadão]\n Não me interpretem mal, eu daria minha vida à Freya.\n Mas este chamado templo, parece tão estranho e suspeito.\n Como pode ser um lugar para cultuar?");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,320,254,5	script	Cidadão#vei6	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "................";
+veins,111,50,3	script	Cidadão#vei6	4_M_DESERT,{
+	mes("[Cidadão]\n As pessoas valorizam água por aqui, mas eu tenho algo mais precioso para mim.\n Sim, até mais precioso que água...\n Você advinhou...\n Amor verdadeiro.");
 	next;
-	mes "[Cidadão]";
-	mes "................";
-	next;
-	mes "[Cidadão]";
-	mes "O que você quer?";
-	mes "Desculpe, mas eu sou apenas um cara normal com problemas normais.";
-	mes "Nada que eu não possa resolver por conta própria.";
-	next;
-	mes "[Cidadão]";
-	mes "A menos que ... Você pode pagar meus impostos?";
-	mes "Pagar minha hipoteca?";
-	mes "Heh.";
-	mes "Imaginava que não.";
+	mes("[Cidadão]\n Na verdade, começamos a namorar aqui, por isso que este lugar realmente significa muito para mim.\n É o meu lugar favorito para passar o tempo com a minha namorada.");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,333,318,3	script	Cidadão#vei7	4_F_DESERT,{
-	mes "[Cidadão]";
-	mes "O que um aventureiro está fazendo numa cidade tão isolada e monótona?";
-	mes "Você não deveria estar procurando por aventuras?";
-	mes "Acredite em mim, este lugar é chato.";
+veins,263,153,5	script	Cidadão#vei7	4_M_DESERT,{
+	mes("[Cidadão]\n As roupas que fazemos aqui são leves, arejadas, e com tecido de qualidade.\n Evidentemente, precisamos de usar coisas assim desde que o tempo está insuportavelmente quente.");
+	next;
+	mes("[Cidadão]\n O tecido? Bem, eu vou te dar uma dica.\n É feita de algo relacionado com camelos.\n Heh! Vou deixar que você descubra por conta própria.");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,218,323,1	script	Cidadão#vei8	4_M_DST_GRAND,{
-	mes "[Cidadão]";
-	mes "Uau, já faz muito tempo que não vejo turistas aqui.";
-	mes "Você deve achar que não tem nada aqui, mas olhe atentamente.";
-	mes "Você pode aprender alguma coisa.";
+veins,296,184,3	script	Cidadão#vei8	4_F_DESERT,{
+	mes("[Cidadão]\n Vou te contar um segredo.\n Mas prometa que não vai contar para ninguem, ok?");
 	next;
-	mes "[Cidadão]";
-	mes "Assim como as pessoas, você não pode saber tudo sobre um lugar com apenas um piscar de olhos.";
-	mes "Se você dar uma chance, eu tenho certeza que vai achar algo de que goste nesta cidade.";
+	mes("[Cidadão]\n Quando chegar a hora, o Templo de Cheshrumnir se abrirá e um robô gingante de Freya sairá!\n Irá destruir todos os países exceto Arunafeltz");
 	next;
-	mes "[Cidadão]";
-	mes "O que eu quero dizer com 'Olhar atentamente'?";
-	mes "Heh, talvez você veja...";
-	mes "De qualquer, modo isso não importa...";
-	mes "Que Freya te abençoe";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,171,256,3	script	Cidadão#vei9	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Não me interpretem mal, eu daria minha vida à Freya.";
-	mes "Mas este chamado templo, parece tão estranho e suspeito.";
-	mes "Como pode ser um lugar para cultuar?";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,197,219,5	script	Cidadão#vei10	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Eu acho que você pode dizer por essa árvore morta que aqui tem pouca água.";
-	mes "Acho que é uma consequência natural da vida aqui no deserto...";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,111,50,3	script	Cidadão#vei11	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "As pessoas valorizam água por aqui, mas eu tenho algo mais precioso para mim.";
-	mes "Sim, até mais precioso que água...";
-	mes "Você advinhou -- amor verdadeiro.";
+	mes("[Cidadão]\n Esse robô pode soprar furacões de sua boca, e atirar raios de seus chifres.\n Pode atirar seus punhos longe, e o seu toráx é um lança-chamas.");
 	next;
-	mes "[Cidadão]";
-	mes "Na verdade, começamos a namorar aqui,";
-	mes "por isso que este lugar realmente significa muito para mim.";
-	mes "É o meu lugar favorito para passar o tempo com a minha namorada.";
-	mes "Hahaha.";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,112,51,3	script	Cidadão#vei12	4_F_DESERT,{
-	mes "[Cidadão]";
-	mes "Bem, eu realmente estou um pouco cansada de vir aqui o tempo todo.";
-	mes "Eu quero tentar ir em outro lugar, mas eu sei que ele adora vir aqui.";
+	mes("[Cidadão]\n ...........");
 	next;
-	mes "[Cidadão]";
-	mes "Seria muito triste se parássemos de vir aqui juntos.";
-	mes "Eu estou feliz pelo tempo que ele esta aqui comigo.";
-	mes "Hoho";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,263,153,5	script	Cidadão#vei13	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "As roupas que fazemos aqui são leves, arejadas, e com tecido de qualidade.";
-	mes "Evidentemente, precisamos de usar coisas assim desde que o tempo está insuportavelmente quente.";
-	next;
-	mes "[Cidadão]";
-	mes "O tecido? Bem, eu vou te dar uma dica.";
-	mes "É feita de algo relacionado com camelos.";
-	mes "Heh! Vou deixar que você descubra por conta própria.";
-	mes "Haha!";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,296,184,3	script	Cidadão#vei14	4_F_DESERT,{
-	mes "[Cidadão]";
-	mes "Vou te contar um segredo.";
-	mes "Mas prometa que não vai contar para ninguem, ok?";
-	next;
-	mes "[Cidadão]";
-	mes "Quando chegar a hora,";
-	mes "o Templo de Cheshrumnir se abrirá e um robô gingante de Freya sairá!";
-	mes "Irá destruir todos os países exceto Arunafeltz";
-	next;
-	mes "[Cidadão]";
-	mes "Esse robô pode soprar furacões de sua boca, e atirar raios de seus chifres.";
-	mes "Pode atirar seus punhos longe, e o seu toráx é um lança-chamas.";
-	next;
-	mes "[Cidadão]";
-	mes "...........";
-	next;
-	mes "[Cidadão]";
-	mes "Então você não acredita em mim.";
-	mes "O que você disse? Zinger?";
-	mes "Incrível Z?";
-	mes "Que droga é essa?";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,157,123,3	script	Cidadão#vei15	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Você sabe o que é bom sobre o deserto?";
-	mes "Não?";
-	next;
-	mes "[Cidadão]";
-	mes "O deserto te deixa forte.";
-	mes "Entende o que digo?";
-	mes "Heh, você vai saber quando ficar mais tempo no deserto.";
+	mes("[Cidadão]\n Então você não acredita em mim.\n O que você disse? Zinger?\n Incrível Z?\n Que droga é essa?");
 	close;
 }
 
 // ------------------------------------------------------------------
 veins,138,71,5	script	Criança#vei	4_F_DST_CHILD,{
-	mes "[Criança]";
-	mes "EI! Saia daqui!";
-	mes "Você não vê que estou brincando de esconde-esconde?!";
-	mes "Saia antes que eles me achem!";
+	mes("[Criança]\n EI! Saia daqui!\n Você não vê que estou brincando de esconde-esconde?!\n Saia antes que eles me achem!");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,253,133,3	script	Criança#vei2	4_M_DST_CHILD,{
-	mes "[Criança]";
-	mes "Meu Deus, onde será que ela se escondeu?";
-	mes "Eu odeio ter que procurar...";
-	mes "Há tantos lugares para se esconder por aqui.";
-	mes "Deve ter algum lugar que eu ainda não procurei...";
-	mes "Vejamos...";
+veins,206,275,3	script	Criança#vei2	4_F_DST_CHILD,{
+	mes("[Criança]\n Eu queria olhar por dentro do templo, mas ele parece assustador por fora!\n Eu me pergunto por que parece assim?");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,206,275,3	script	Criança#vei3	4_F_DST_CHILD,{
-	mes "[Criança]";
-	mes "Eu queria olhar por dentro do templo, mas ele parece assustador por fora!";
-	mes "Eu me pergunto por que parece assim?";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,223,165,5	script	Criança#vei4	4_M_DST_CHILD,{
-	mes "[Criança]";
-	mes "Ei, você acha que eu consigo alcançar a ponte se eu pular daqui?";
-	mes "Você acha que pode tentar isso?";
+veins,291,205,3	script	Criança#vei3	4_M_DST_CHILD,{
+	mes("[Criança]\n Argh! Sou um deus da guerra protegendo Freya e Arunafeltz!\n Ahhhhh! Morte para todos os seus inimigos!");
 	next;
-	mes "[Criança]";
-	mes "O que? você não consegue?";
-	mes "Bem, eu serei diferente quando crescer!";
-	mes "Serei o melhor saltador do mundo!";
-	mes "Serei capaz de saltar todo o caminho até a luaaa!";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,291,205,3	script	Criança#vei5	4_M_DST_CHILD,{
-	mes "[Criança]";
-	mes "Argh! Sou um deus da guerra protegendo Freya e Arunafeltz!";
-	mes "Ahhhhh! Morte para todos os seus inimigos!";
+	mes("[Criança]\n Queimem, hereges, queeimeeem!\n Destruam vossas casas, vossas famílias, e construam um novo e perfeito mundo para Freya!");
 	next;
-	mes "[Criança]";
-	mes "Queimem, hereges, queeimeeem!";
-	mes "Destruam vossas casas, vossas famílias, e construam um novo e perfeito mundo para Freya!";
-	next;
-	mes "[Criança]";
-	mes "Hee hee! Isso não soa maravilhoso?!";
-	mes "Quando eu crescer, quero ser esse tipo de herói!";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,248,301,3	script	Criança#vei6	4_M_DST_CHILD,{
-	mes "[Criança]";
-	mes "Hã? Você não mora aqui.";
-	mes "Você é... Você é um viajante?";
-	mes "Você deve ter ido à vários lugares, não é?";
-	mes "Como eles são?";
-	mes "Quero viajar muito quando eu crescer.";
-	next;
-	mes "[Criança]";
-	mes "Eu gosto desta cidade, mas quero ver como outras pessoas vivem.";
-	mes "Apesar de que os adultos acham isso uma má idéia.";
-	mes "Eles dizem que Freya odeia isso.";
-	mes "É tão ruim que eu tenha que parar de imaginar?";
+	mes("[Criança]\n Hee hee! Isso não soa maravilhoso?!\n Quando eu crescer, quero ser esse tipo de herói!");
 	close;
 }
 
 // ------------------------------------------------------------------
 veins,270,164,5	script	Velho#vei	4_M_DST_GRAND,{
-	mes "[Velho]";
-	mes "Bendita seja Freya que me abençoou com vida longa, mas me pergunto se vivi bem a vida.";
+	mes("[Velho]\n Bendita seja Freya que me abençoou com vida longa, mas me pergunto se vivi bem a vida.");
 	next;
-	mes "[Velho]";
-	mes "Não tenho qualquer dúvida ou lamento, mas talvez haja algumas coisas que perdi.";
-	mes "Eu acho que estou velho, mas também não ajuda pensar nesse tipo de coisas...";
+	mes("[Velho]\n Não tenho qualquer dúvida ou lamento, mas talvez haja algumas coisas que perdi.\n Eu acho que estou velho, mas também não ajuda pensar nesse tipo de coisas...");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,121,199,3	script	Velho#vei2	4_M_DST_GRAND,{
-	mes "[Velho]";
-	mes "Isto não é bom.";
-	mes "Os velhos sobrepõe os novos aqui em Veins.";
-	mes "Nós estamos muito perto de se tornar uma comunidade de aposentadoria.";
-	mes "Você vê isso, certo?";
+veins,191,134,3	script	Velho#vei2	4_M_DST_GRAND,{
+	mes("[Velho]\n Por que você não da uma olhada nas minhas mercadorias?\n Eu tenho muitas coisas que devem te interessar.");
 	next;
-	mes "[Velho]";
-	mes "Acho que os jovens não são contentes vivendo aqui, visto que muita coisa excitante como nas outras cidades.";
-	mes "Eles não conseguem apreciar o que é realmente especial aqui...";
+	mes("[Velho]\n Bendita seja Freya, que nos protege, e nos abençoa com água e comida.\n Você não acha isso maravilhoso, jovem aventureir" + (Sex == SEX_MALE ? "o" : "a") +"?");
 	close;
 }
 
 // ------------------------------------------------------------------
-veins,191,134,3	script	Velho#vei3	4_M_DST_GRAND,{
-	mes "[Velho]";
-	mes "Por que você não da uma olhada nas minhas mercadorias?";
-	mes "Eu tenho muitas coisas que devem te interessar";
+veins,161,63,3	script	Velho#vei3	4_M_DST_GRAND,{
+	mes("[Velho]\n Ah. Você deve estar de passagem.\n Hmm, Veins é uma cidade pequena, talvez pague uma visita ao Templo Cheshrumnir?");
 	next;
-	mes "[Velho]";
-	mes "Bendita seja Freya, que nos protege,";
-	mes "e nos abençoa com água e comida.";
-	mes "Você não acha isso maravilhoso,";
-	mes "jovem aventureiro?";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,291,259,3	script	Velho#vei4	4_M_DST_GRAND,{
-	mes "[Velho]";
-	mes "Fr... Fr...";
+	mes("[Velho]\n Eu espero que você aprecie a sua estadia.\n Agora se me der licença...\n Eu gostaria de continuar com as minhas orações para Freya.");
 	next;
-	mes "[Velho]";
-	mes "Fr...";
-	next;
-	mes "[Velho]";
-	mes "Louvada Freya ^333333*tosse*^000000";
-	mes "^333333*tosse tosse*^000000 Fre...";
-	mes "^333333*tosse*^000000 Louvada Freya!";
-	mes "Freya! Conquieste os que blafemam contra ti!";
-	mes "Deixe-me ver isso antes de morrer!";
-	next;
-	mes "[Velho]";
-	mes "Eu nuca lamentei...";
-	mes "^333333*tosse*^000000";
-	mes "Minha fé por você, minha deusa!";
-	mes "^333333*náusea*^000000";
-	mes "Pode ser que o sofrimento de nossos inimigos os façam loucos e os mate antes de nós";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,161,63,3	script	Velho#vei5	4_M_DST_GRAND,{
-	mes "[Velho]";
-	mes "Ah. Você deve estar de passagem.";
-	mes "Hmm, Veins é uma cidade pequena, talvez pague uma visita ao Templo Cheshrumnir?";
-	next;
-	mes "[Velho]";
-	mes "Eu espero que você aprecie a sua estadia.";
-	mes "Agora se me der licença...";
-	mes "Eu gostaria de continuar com as minhas orações para Freya.";
-	next;
-	mes "[Velho]";
-	mes "Oh, graciosa Freya, seu servo humildemente se ajoelha perante ti...";
-	mes "Me cure dessa enfermidade!";
-	mes "O corpo está fraco, mas o espírito é de boa vontade...!";
-	mes "Deve ser...";
-	mes "O Templo de Cheshrumnir.";
+	mes("[Velho]\n Oh, graciosa Freya, seu servo humildemente se ajoelha perante ti...\n Me cure dessa enfermidade!\n O corpo está fraco, mas o espírito é de boa vontade...!\n Deve ser...\n O Templo de Cheshrumnir.");
 	close;
 }
 
 // ------------------------------------------------------------------
 veins,232,169,5	script	Senhora#vei	4_F_DST_GRAND,{
-	mes "[Senhora]";
-	mes "...........";
-	mes "Quando eu olho a cidade daqui,";
-	mes "Percebo muitas coisas.";
-	mes "Acho que você não entenderia, não importa o quanto eu explique.";
+	mes("[Senhora]\n ...........\n Quando eu olho a cidade daqui, percebo muitas coisas.\n Acho que você não entenderia, não importa o quanto eu explique.");
 	next;
-	mes "[Senhora]";
-	mes "EU acho que isso é uma das coisas que você aprende com a idade.";
-	mes "Sim, não há nada que substitua a experiência quando se trata de algumas coisas";
-	mes "Você verá.";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,177,147,3	script	Senhora#vei2	4_F_DST_GRAND,{
-	mes "[Senhora]";
-	mes "Ter um monte de coisas pode paracer legal.";
-	mes "Mas muitas coisas não são assim tão importante quando você pensa em valor emocional.";
-	next;
-	mes "[Senhora]";
-	mes "Bem, isso parece ser uma observação perigosas quando estou tentando vender as coisas para meus clientes.";
-	mes "Ainda assim, gostaria de poder ter uma vasta variedade de produtos.";
-	next;
-	mes "[Senhora]";
-	mes "Claro, estamos no meio do deserto,";
-	mes "então talvez eu esteja pedindo demais.";
-	close;
-}
-
-// ------------------------------------------------------------------
-veins,291,284,3	script	Senhora#vei3	4_F_DST_GRAND,{
-	mes "[Senhora]";
-	mes "Eu pergunto como é meu caminhar como Freya.";
-	mes "Felizmente, , ela terá piedade de mim, quando eu deixar este mundo.";
-	mes "Meus dias aqui estão contados...";
+	mes("[Senhora]\n Eu acho que isso é uma das coisas que você aprende com a idade.\n Sim, não há nada que substitua a experiência quando se trata de algumas coisas, você verá.");
 	close;
 }
 
 // ------------------------------------------------------------------
 // - [ Casas ] -
 // ------------------------------------------------------------------
-ve_in,101,314,1	script	Cidadão#vei16	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "^333333*ofegante*^000000";
-	mes "Eu devo estar muito para o agrado de da deusa Freya.";
+ve_in,101,314,1	script	Habitante#vei	4_M_DESERT,{
+	mes("[Habitante]\n ^333333*ofegante*^000000\n Eu devo estar muito para o agrado de da deusa Freya.");
 	next;
-	mes "[Cidadão]";
-	mes "Eu acredito que eu posso servi-la se expandir minha sabedoria.";
+	mes("[Habitante]\n Eu acredito que eu posso servi-la se expandir minha sabedoria.");
 	close;
 }
 
 // ------------------------------------------------------------------
-ve_in,90,298,3	script	Cidadão#vei17	4_M_DIEMAN,{
-	mes "[Cidadão]";
-	mes "Está tão quente...";
+ve_in,361,243,5	script	Habitante#vei2	4_M_DIEMAN,{
+	mes("[Habitante]\n ...............\n ...............\n ...............");
 	next;
-	mes "[Cidadão]";
-	mes "Tão suado...";
+	mes("[Habitante]\n ...............\n ...............\n ...............");
+	next;
+	mes("[Habitante]\n Te enganei!\n Achou que eu estava morto não foi?");
 	close;
 }
 
 // ------------------------------------------------------------------
-ve_in,361,243,5	script	Cidadão#vei18	4_M_DIEMAN,{
-	mes "[Cidadão]";
-	mes "...............";
-	mes "...............";
-	mes "...............";
+ve_in,180,232,5	script	Habitante#vei3	4_M_DST_MASTER,{
+	mes("[Habitante]\n É bom quando uma cidade é pacífica e tranquila.\n Mas é horrivel quando um bar é tão quieto assim.");
 	next;
-	mes "[Cidadão]";
-	mes "...............";
-	mes "...............";
-	mes "...............";
+	mes("[Habitante]\n Bem, tem pontos bons e maus em tudo.\n Talvez as coisas melhorem se mais aventureiros como você nos visitarem");
+	close;
+}
+
+
+// ------------------------------------------------------------------
+ve_in,190,215,3	script	Habitante#vei4	4_M_DST_MASTER,{
+	mes("[Habitante]\n Bem, nossa cidade não tem outra alternativa sem ser se defender em tempos perigosos.\n Os jovens aqui são fortes para nos proteger.");
 	next;
-	mes "[Cidadão]";
-	mes "Te enganei!";
-	mes "Achou que eu estava morto não foi?";
-	mes "Hahaha";
+	mes("[Habitante]\n Eles não são bonitos, mas tem um bom coração.\n É uma pena que as mulheres aqui estão mais preocupados com aparências.");
+	next;
+	mes("[Habitante]\n Não julgue um livro pela capa, mas sim pelo conteúdo.");
 	close;
 }
 
 // ------------------------------------------------------------------
-ve_in,242,124,3	script	Cidadão#vei19	4_M_DIEMAN,{
-	mes "[Cidadão]";
-	mes "As bebidas na cidade são...";
-	mes "Elas são...";
-	mes "Elas são extremamente forte!";
+ve_in,222,125,5	script	Habitante#vei5	4_M_DESERT,{
+	mes("[Habitante]\n Eu quero perguntar á mulher que está na minha frente.\n Acha que ela vai...?");
 	next;
-	mes "[Cidadão]";
-	mes "Por que?...";
-	mes "Porque a terra continua balançando?!";
-	mes "Isso...";
-	mes "Isso parece estar tentando me atrair!!";
-	mes "Toda hora!";
-	next;
-	mes "[Cidadão]";
-	mes "^333333*Hiccup*^000000";
+	mes("[Habitante]\n Eu falei isso muito alto?\n E-eu Não queria que ela ouvisse!");
 	close;
 }
 
 // ------------------------------------------------------------------
-ve_in,180,232,5	script	Cidadão#vei20	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "É bom quando uma cidade é pacífica e tranquila.";
-	mes "Mas é horrivel quando um bar é tão quieto assim.";
+ve_in,232,135,5	script	Habitante#vei6	4_M_DST_MASTER,{
+	mes("[Habitante]\n Se você gosta de uma boa bebida, então você tem que ir para o Bar de Veins.");
 	next;
-	mes "[Cidadão]";
-	mes "Bem, tem pontos bons e maus em tudo.";
-	mes "Talvez as coisas melhorem se mais aventureiros como você nos visitarem";
+	mes("[Habitante]\n Se você não gosta de beber então esse é o lugar perfeito para aprender!\n ...a gostar... de beber...");
 	close;
 }
 
 // ------------------------------------------------------------------
-ve_in,163,212,3	script	Cidadão#vei21	4_F_DESERT,{
-	mes "[Cidadã]";
-	mes "Não há nada aqui além de velhos e crianças.";
-	mes "Onde tem um homem que vale a pena casar?";
-	mes "Tem alguns solteirões da minha idade, mas... Bem...";
+ve_in,232,124,5	script	Habitante#vei7	4_M_DESERT,{
+	mes("[Habitante]\n Um lobo solitário no deserto.\n Este sou eu.\n Bem, é por isso que estou bebendo aqui sozinho.");
 	next;
-	mes "[Cidadã]";
-	mes "Eles são ou muito peludos ou muito musculosos..";
-	mes "Eu não acho que vou me casar tão cedo!";
-	mes "Oh, que sofrimento!";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,190,215,3	script	Cidadão#vei22	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Bem, nossa cidade não tem outra alternativa sem ser se defender em tempos perigosos.";
-	mes "Os jovens aqui são fortes para nos proteger.";
-	next;
-	mes "[Cidadão]";
-	mes "Eles não são bonitos, mas tem um bom coração.";
-	mes "É uma pena que as mulheres aqui estão mais preocupados com aparências.";
-	next;
-	mes "[Cidadão]";
-	mes "Não julgue um livro pela capa, mas sim pelo conteúdo.";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,318,121,3	script	Cidadão#vei23	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Essa loja só existe para os bêbados.";
-	mes "Se fechar, todos na cidade vão ficar loucos.";
-	mes "Loucura, né?";
-	next;
-	mes "[Cidadão]";
-	mes "Veins é famosa por sua grande variedade de deliciosos e irresistíveis licores.";
-	mes "Só um gole já te derruba.";
-	next;
-	mes "[Cidadão]";
-	mes "Louvada seja Freya por nos abençoar com esse maravilhoso licor.";
-	mes "Sua graciosidade, sua compaixão, aqui licor é ilimitado.";
-	mes "Oremos.";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,222,125,5	script	Cidadão#vei24	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Eu quero perguntar á mulher que está na minha frente.";
-	mes "Acha que ela vai...?";
-	next;
-	mes "[Cidadão]";
-	mes "Eu falei isso muito alto?";
-	mes "E-eu Não queria que ela ouvisse!";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,222,122,1	script	Cidadão#vei25	4_F_DESERT,{
-	mes "[Cidadã]";
-	mes "Eu ouvi tudo...";
-	mes "Ele é tão ingênuo.";
-	mes "Eu não odeio ele, mas ele deve mostrar um pouco mais de determinação se quiser me impressionar.";
-	mes "Hmmm...";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,232,135,5	script	Cidadão#vei26	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Se você gosta de uma boa bebida, então você tem que ir para o Bar de Veins.";
-	next;
-	mes "[Cidadão]";
-	mes "Se você não gosta de beber então esse é o lugar perfeito para aprender!";
-	mes "...a gostar... de beber...";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,239,135,5	script	Cidadão#vei27	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "O sol não está tão quente?";
-	mes "Ele não faz você se sentir sedento?";
-	mes "Bem, você pode querer saciar sua sede com um licor!";
-	next;
-	mes "[Cidadão]";
-	mes "Meu trabalho é servir deliciosos licores aos meus clientes para que possam matar a sede.";
-	mes "Ver seus sorrisos bêbados alegra meu dia.";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,232,124,5	script	Cidadão#vei28	4_M_DESERT,{
-	mes "[Cidadão]";
-	mes "Um lobo solitário no deserto.";
-	mes "Este sou eu.";
-	mes "Bem, é por isso que estou bebendo aqui sozinho.";
-	next;
-	mes "[Cidadão]";
-	mes "Doce Freya, esses drinques são muito bons..";
-	mes "Eu poderia beber o dia inteiro.";
-	close;
-}
-
-// ------------------------------------------------------------------
-ve_in,234,105,3	script	Cidadão#vei29	4_M_DST_MASTER,{
-	mes "[Cidadão]";
-	mes "Cara o mundo é justo...";
-	mes "É apenas um desejo...!";
-	mes "Fé? isto ajuda, sabia?";
-	mes "Porque desejos não são nada!";
-	mes "Eles não são NAAADA!";
-	next;
-	mes "[Cidadão]";
-	mes "AH! O que é a vida?!";
-	mes "Eu não sei mais no que acreditar! Freya!";
-	mes "Freya te amaaaaaa!";
+	mes("[Habitante]\n Doce Freya, esses drinques são muito bons..\n Eu poderia beber o dia inteiro.");
 	close;
 }
 
 // ------------------------------------------------------------------
 ve_in,119,386,3	script	Prisioneiro#vei	4_M_DST_MASTER,{
-	mes "[Prisoneiro]";
-	mes "Inacreditável!";
-	mes "Que tipo de país é este?!";
-	mes "Como vocês podem me prender só por que eu não acredito em Freya?!";
+	mes("[Prisoneiro]\n Inacreditável!\n Que tipo de país é este?!\n Como vocês podem me prender só por que eu não acredito em Freya?!");
 	next;
-	mes "[Prisoneiro]";
-	mes "Isso não é civilizado!";
-	mes "Se vocês não respeitam minha crenças, vocês são um bando de selvagens, sabia disso?";
-	mes "Alguém, algém me ajude!";
+	mes("[Prisoneiro]\n Isso não é civilizado!\n Se vocês não respeitam minha crenças, vocês são um bando de selvagens, sabia disso?\n Alguém, algém me ajude!");
 	close;
 }
 
 // ------------------------------------------------------------------
 ve_in,111,379,0	script	Guarda#vei	4_M_DST_MASTER,{
-	mes "[Guarda]";
-	mes "Esse lugar assegura que os criminosos perigosos não estão ameaçando o públi..";
-	mes "Espere.";
-	mes "Por que você está nesse lugar?!";
-	mes "Esse lugar não é seguro para você!";
-	mes "Saia!";
+	mes("[Guarda]\n Esse lugar assegura que os criminosos perigosos não estão ameaçando o públi..\n Espere.\n Por que você está nesse lugar?!\n Esse lugar não é seguro para você!\n Saia!");
 	close;
 }
 
 // ------------------------------------------------------------------
 ve_in,126,378,3	script	Guarda#vei2	4_M_DST_MASTER,{
-	mes "[Guarda]";
-	mes "Sou grato por nossa cidade ser pacífica.";
-	mes "Se fosse qualquer outro lugar, essa pequena cela estaria cheia de criminosos.";
+	mes("[Guarda]\n Sou grato por nossa cidade ser pacífica.\n Se fosse qualquer outro lugar, essa pequena cela estaria cheia de criminosos.");
 	next;
-	mes "[Guarda]";
-	mes "Agradeço Freya por eu ter sido enviado a um lugar pacífico e quieto.";
+	mes("[Guarda]\n Agradeço Freya por eu ter sido enviado a um lugar pacífico e quieto.");
 	close;
 }

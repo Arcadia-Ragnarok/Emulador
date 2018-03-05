@@ -21,12 +21,12 @@ dewata,181,88,6	script	Jovem#dew	4_M_DEWMAN,{
 
 // ------------------------------------------------------------------
 dewata,179,204,4	script	Jovenzinha#dew	4_M_DEWWOMAN,{
-	mes("[Jovenzinha]\n Quando se está do lado de fora da cidade, e encontra ^FF0000Tigres, Mongeeys, ou porcos^000000.\n Tenha a certeza de evitá-los.")
+	mes("[Jovenzinha]\n Quando se está do lado de fora da cidade, e encontra ^FF0000Tigres, Mongeeys, ou porcos^000000.\n Tenha a certeza de evitá-los.");
 	next;
 	select("O que quer dizer?");
-	mes("[Jovenzinha]\n Eu ainda não vi, mas a lenda diz que há um monstro cruel chamado ^FF0000Vazamento^000000.\n Que pode se transformar em um animal hipnotizar as pessoas e matá-las.")
+	mes("[Jovenzinha]\n Eu ainda não vi, mas a lenda diz que há um monstro cruel chamado ^FF0000Vazamento^000000.\n Que pode se transformar em um animal hipnotizar as pessoas e matá-las.");
 	next;
-	mes("[Jovenzinha]\n Você conhece os perigos deste mundo.\n Não faz mal tomar um pouco de cuidado mesmo se for somente uma lenda urbana.")
+	mes("[Jovenzinha]\n Você conhece os perigos deste mundo.\n Não faz mal tomar um pouco de cuidado mesmo se for somente uma lenda urbana.");
 	close;
 }
 
@@ -211,12 +211,12 @@ dewata,75,122,6	script	Monge#dewt5	4_M_BUDDHIST,{
 	next;
 	switch(select("Estou visitando", "Não há motivos especiais")) {
 		case 1:
-		mes "[Monge]\n Oh, você é turista.\n Essa é a '^0000FFPagoda^000000' adorando ao Grande Buddha.\n Por favor, tenha respeito aos monges orando por aqui.");
-close;
-case 2:
-mes("[Monge]\n Tenha um bom dia...");
-close;
-}
+		mes("[Monge]\n Oh, você é turista.\n Essa é a '^0000FFPagoda^000000' adorando ao Grande Buddha.\n Por favor, tenha respeito aos monges orando por aqui.");
+		close;
+		case 2:
+		mes("[Monge]\n Tenha um bom dia...");
+		close;
+	}
 }
 
 // ------------------------------------------------------------------
@@ -724,10 +724,10 @@ dewata,146,109,5	script	Cozinheiro#dew	4_COOK,{
 				Zeny -= 5000;
 				getitem(.@food,1);
 				close;
-				case 2:
-				mes("[Cozinheiro]\n É uma pena que não irá provar deste delicioso prato...");
-				close;
 			}
+			case 2:
+			mes("[Cozinheiro]\n É uma pena que não irá provar deste delicioso prato...");
+			close;
 		}
 		case 3:
 		mes("[Cozinheiro]\n Está falando sério?\n Isso não é nem um pouco engraçado.");
