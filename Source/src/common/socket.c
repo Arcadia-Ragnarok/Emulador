@@ -330,7 +330,7 @@ void set_nonblocking(int fd, unsigned long yes)
 	// FIONBIO Use with a nonzero argp parameter to enable the nonblocking mode of socket s.
 	// The argp parameter is zero if nonblocking is to be disabled.
 	if( sIoctl(fd, FIONBIO, &yes) != 0 )
-		ShowError("set_nonblocking: Failed to set socket #%d to non-blocking mode (%s) - Please report this!!!\n", fd, error_msg());
+		ShowError("set_nonblocking: Falha ao definir socket #%d para non-blocking modulo (%s) - Please report this!!!\n", fd, error_msg());
 }
 
 /**
@@ -355,17 +355,17 @@ void setsocketopts(int fd, struct hSockOpt *opt)
 	// the previous owner of the socket to give up, which is not desirable
 	// in most cases, neither compatible with unix.
 	if (sSetsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&yes, sizeof(yes)))
-		ShowWarning("setsocketopts: Unable to set SO_REUSEADDR mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir para SO_REUSEADDR modo de conexao #%d!\n", fd);
 #ifdef SO_REUSEPORT
 	if (sSetsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (char *)&yes, sizeof(yes)))
-		ShowWarning("setsocketopts: Unable to set SO_REUSEPORT mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir SO_REUSEPORT mode modo de conexao #%d!\n", fd);
 #endif // SO_REUSEPORT
 #endif // WIN32
 
 	// Set the socket into no-delay mode; otherwise packets get delayed for up to 200ms, likely creating server-side lag.
 	// The RO protocol is mainly single-packet request/response, plus the FIFO model already does packet grouping anyway.
 	if (sSetsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (char *)&yes, sizeof(yes)))
-		ShowWarning("setsocketopts: Unable to set TCP_NODELAY mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir TCP_NODELAY modo de conexao #%d!\n", fd);
 
 	if (opt && opt->setTimeo) {
 #if defined(WIN32)
@@ -376,9 +376,9 @@ void setsocketopts(int fd, struct hSockOpt *opt)
 #endif // WIN32
 
 		if (sSetsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout)))
-			ShowWarning("setsocketopts: Unable to set SO_RCVTIMEO for connection #%d!\n", fd);
+			ShowWarning("setsocketopts: Incapaz de definir SO_RCVTIMEO para conexao #%d!\n", fd);
 		if (sSetsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, (char *)&timeout, sizeof(timeout)))
-			ShowWarning("setsocketopts: Unable to set SO_SNDTIMEO for connection #%d!\n", fd);
+			ShowWarning("setsocketopts: Incapaz de definir SO_SNDTIMEO para conexao #%d!\n", fd);
 	}
 
 	// force the socket into no-wait, graceful-close mode (should be the default, but better make sure)
@@ -386,15 +386,15 @@ void setsocketopts(int fd, struct hSockOpt *opt)
 	lopt.l_onoff = 0; // SO_DONTLINGER
 	lopt.l_linger = 0; // Do not care
 	if (sSetsockopt(fd, SOL_SOCKET, SO_LINGER, (char *)&lopt, sizeof(lopt)))
-		ShowWarning("setsocketopts: Unable to set SO_LINGER mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir SO_LINGER para conexao #%d!\n", fd);
 
 #ifdef TCP_THIN_LINEAR_TIMEOUTS
 	if (sSetsockopt(fd, IPPROTO_TCP, TCP_THIN_LINEAR_TIMEOUTS, (char *)&yes, sizeof(yes)))
-		ShowWarning("setsocketopts: Unable to set TCP_THIN_LINEAR_TIMEOUTS mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir TCP_THIN_LINEAR_TIMEOUTS para conexao #%d!\n", fd);
 #endif  // TCP_THIN_LINEAR_TIMEOUTS
 #ifdef TCP_THIN_DUPACK
 	if (sSetsockopt(fd, IPPROTO_TCP, TCP_THIN_DUPACK, (char *)&yes, sizeof(yes)))
-		ShowWarning("setsocketopts: Unable to set TCP_THIN_DUPACK mode for connection #%d!\n", fd);
+		ShowWarning("setsocketopts: Incapaz de definir TCP_THIN_DUPACK para conexao #%d!\n", fd);
 #endif  // TCP_THIN_DUPACK
 }
 
@@ -522,16 +522,16 @@ int connect_client(int listen_fd)
 
 	fd = sAccept(listen_fd, (struct sockaddr*)&client_address, &len);
 	if ( fd == -1 ) {
-		ShowError("connect_client: accept failed (%s)!\n", error_msg());
+		ShowError("connect_client: falha (%s)!\n", error_msg());
 		return -1;
 	}
 	if( fd == 0 ) { // reserved
-		ShowError("connect_client: Socket #0 is reserved - Please report this!!!\n");
+		ShowError("connect_client: Socket #0 esta resevado!\n");
 		sClose(fd);
 		return -1;
 	}
 	if( fd >= FD_SETSIZE ) { // socket number too big
-		ShowError("connect_client: New socket #%d is greater than can we handle! Increase the value of FD_SETSIZE (currently %d) for your OS to fix this!\n", fd, FD_SETSIZE);
+		ShowError("connect_client: Novo socket #%d maior que para controlar! Aumente o valor de FD_SETSIZE (currently %d) para os limites dos OS!\n", fd, FD_SETSIZE);
 		sClose(fd);
 		return -1;
 	}
@@ -556,7 +556,7 @@ int connect_client(int listen_fd)
 	epevent.events = EPOLLIN;
 
 	if(epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &epevent) == SOCKET_ERROR){
-		ShowError("connect_client: New Socket #%d failed to add to epoll event dispatcher: %s\n", fd, error_msg());
+		ShowError("connect_client: Novo Socket #%d nao acrescentou a dispatcher de evento de epoll: %s\n", fd, error_msg());
 		sClose(fd);
 		return -1;
 	}
@@ -580,16 +580,16 @@ int make_listen_bind(uint32 ip, uint16 port)
 	fd = sSocket(AF_INET, SOCK_STREAM, 0);
 
 	if( fd == -1 ) {
-		ShowError("make_listen_bind: socket creation failed (%s)!\n", error_msg());
+		ShowError("make_listen_bind: ciacao do socket falhou (%s)!\n", error_msg());
 		exit(EXIT_FAILURE);
 	}
 	if( fd == 0 ) { // reserved
-		ShowError("make_listen_bind: Socket #0 is reserved - Please report this!!!\n");
+		ShowError("make_listen_bind: Socket #0 esta resevado!\n");
 		sClose(fd);
 		return -1;
 	}
 	if( fd >= FD_SETSIZE ) { // socket number too big
-		ShowError("make_listen_bind: New socket #%d is greater than can we handle! Increase the value of FD_SETSIZE (currently %d) for your OS to fix this!\n", fd, FD_SETSIZE);
+		ShowError("make_listen_bind: Novo socket #%d muito alto para controlar! Aumente o valor de FD_SETSIZE (atual %d)!\n", fd, FD_SETSIZE);
 		sClose(fd);
 		return -1;
 	}
@@ -603,12 +603,12 @@ int make_listen_bind(uint32 ip, uint16 port)
 
 	result = sBind(fd, (struct sockaddr*)&server_address, sizeof(server_address));
 	if( result == SOCKET_ERROR ) {
-		ShowError("make_listen_bind: bind failed (socket #%d, %s)!\n", fd, error_msg());
+		ShowError("make_listen_bind: bind falha (socket #%d, %s)!\n", fd, error_msg());
 		exit(EXIT_FAILURE);
 	}
 	result = sListen(fd,5);
 	if( result == SOCKET_ERROR ) {
-		ShowError("make_listen_bind: listen failed (socket #%d, %s)!\n", fd, error_msg());
+		ShowError("make_listen_bind: falha na listagem (socket #%d, %s)!\n", fd, error_msg());
 		exit(EXIT_FAILURE);
 	}
 
@@ -623,7 +623,7 @@ int make_listen_bind(uint32 ip, uint16 port)
 	epevent.events = EPOLLIN;
 
 	if(epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &epevent) == SOCKET_ERROR){
-		ShowError("make_listen_bind: failed to add listener socket #%d to epoll event dispatcher: %s\n", fd, error_msg());
+		ShowError("make_listen_bind: Falha ao adicionar ouvinte ao socket #%d para evento de epoll: %s\n", fd, error_msg());
 		sClose(fd);
 		exit(EXIT_FAILURE);
 	}
@@ -649,16 +649,16 @@ int make_connection(uint32 ip, uint16 port, struct hSockOpt *opt)
 	fd = sSocket(AF_INET, SOCK_STREAM, 0);
 
 	if (fd == -1) {
-		ShowError("make_connection: socket creation failed (%s)!\n", error_msg());
+		ShowError("make_connection: Criacao de socket falhou (%s)!\n", error_msg());
 		return -1;
 	}
 	if( fd == 0 ) {// reserved
-		ShowError("make_connection: Socket #0 is reserved - Please report this!!!\n");
+		ShowError("make_connection: Socket #0 esta resevado!\n");
 		sClose(fd);
 		return -1;
 	}
 	if( fd >= FD_SETSIZE ) {// socket number too big
-		ShowError("make_connection: New socket #%d is greater than can we handle! Increase the value of FD_SETSIZE (currently %d) for your OS to fix this!\n", fd, FD_SETSIZE);
+		ShowError("make_connection: Novo socket #%d muito alto! Almente o valor do FD_SETSIZE (atual %d) para seu OS fixar isto!\n", fd, FD_SETSIZE);
 		sClose(fd);
 		return -1;
 	}
@@ -670,12 +670,12 @@ int make_connection(uint32 ip, uint16 port, struct hSockOpt *opt)
 	remote_address.sin_port        = htons(port);
 
 	if( !( opt && opt->silent ) )
-		ShowStatus("Connecting to %u.%u.%u.%u:%i\n", CONVIP(ip), port);
+		ShowStatus("Conectando a %u.%u.%u.%u:%i\n", CONVIP(ip), port);
 
 	result = sConnect(fd, (struct sockaddr *)(&remote_address), sizeof(struct sockaddr_in));
 	if( result == SOCKET_ERROR ) {
 		if( !( opt && opt->silent ) )
-			ShowError("make_connection: connect failed (socket #%d, %s)!\n", fd, error_msg());
+			ShowError("make_connection: Falha na conexao (socket #%d, %s)!\n", fd, error_msg());
 		sockt->close(fd);
 		return -1;
 	}
@@ -693,7 +693,7 @@ int make_connection(uint32 ip, uint16 port, struct hSockOpt *opt)
 	epevent.events = EPOLLIN;
 
 	if(epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &epevent) == SOCKET_ERROR){
-		ShowError("make_connection: failed to add socket #%d to epoll event dispatcher: %s\n", fd, error_msg());
+		ShowError("make_connection: falha ao adicionar socket #%d para despachante de evento de epoll: %s\n", fd, error_msg());
 		sClose(fd);
 		return -1;
 	}
@@ -795,7 +795,7 @@ int rfifoskip(int fd, size_t len)
 	s = sockt->session[fd];
 
 	if (s->rdata_size < s->rdata_pos + len) {
-		ShowError("RFIFOSKIP: skipped past end of read buffer! Adjusting from %"PRIuS" to %"PRIuS" (session #%d)\n", len, RFIFOREST(fd), fd);
+		ShowError("RFIFOSKIP: pulando leitura de buffer! Ajuste de %"PRIuS" para %"PRIuS" (sessao #%d)\n", len, RFIFOREST(fd), fd);
 		len = RFIFOREST(fd);
 	}
 
@@ -822,8 +822,8 @@ int wfifoset(int fd, size_t len)
 	if (s->wdata_size+len > s->max_wdata) {
 		// actually there was a buffer overflow already
 		uint32 ip = s->client_addr;
-		ShowFatalError("WFIFOSET: Write Buffer Overflow. Connection %d (%u.%u.%u.%u) has written %u bytes on a %u/%u bytes buffer.\n", fd, CONVIP(ip), (unsigned int)len, (unsigned int)s->wdata_size, (unsigned int)s->max_wdata);
-		ShowDebug("Likely command that caused it: 0x%x\n", (*(uint16*)(s->wdata + s->wdata_size)));
+		ShowFatalError("WFIFOSET: Escrita de Buffer em sobrecarga. Conexao %d (%u.%u.%u.%u) escreveu %u bytes em %u/%u bytes buffer.\n", fd, CONVIP(ip), (unsigned int)len, (unsigned int)s->wdata_size, (unsigned int)s->max_wdata);
+		ShowDebug("Comando provavel que causou isto: 0x%x\n", (*(uint16*)(s->wdata + s->wdata_size)));
 		// no other chance, make a better fifo model
 		exit(EXIT_FAILURE);
 	}
@@ -832,7 +832,7 @@ int wfifoset(int fd, size_t len)
 	{
 		// dynamic packets allow up to UINT16_MAX bytes (<packet_id>.W <packet_len>.W ...)
 		// all known fixed-size packets are within this limit, so use the same limit
-		ShowFatalError("WFIFOSET: Packet 0x%x is too big. (len=%u, max=%u)\n", (*(uint16*)(s->wdata + s->wdata_size)), (unsigned int)len, 0xFFFFU);
+		ShowFatalError("WFIFOSET: Packet 0x%x muito grande. (len=%u, max=%u)\n", (*(uint16*)(s->wdata + s->wdata_size)), (unsigned int)len, 0xFFFFU);
 		exit(EXIT_FAILURE);
 	}
 	else if( len == 0 )
@@ -840,15 +840,14 @@ int wfifoset(int fd, size_t len)
 		// abuses the fact, that the code that did WFIFOHEAD(fd,0), already wrote
 		// the packet type into memory, even if it could have overwritten vital data
 		// this can happen when a new packet was added on map-server, but packet len table was not updated
-		ShowWarning("WFIFOSET: Attempted to send zero-length packet, most likely 0x%04x (please report this).\n", WFIFOW(fd,0));
+		ShowWarning("WFIFOSET: Tentado enviar pacote de comprimento zero, 0x%04x.\n", WFIFOW(fd,0));
 		return 0;
 	}
 
 	if( !s->flag.server ) {
 
 		if (len > socket_max_client_packet) { // see declaration of socket_max_client_packet for details
-			ShowError("WFIFOSET: Dropped too large client packet 0x%04x (length=%"PRIuS", max=%"PRIuS").\n",
-			          WFIFOW(fd,0), len, socket_max_client_packet);
+			ShowError("WFIFOSET: Pacote de cliente muito grande derrubado 0x%04x (length=%"PRIuS", max=%"PRIuS").\n", WFIFOW(fd,0), len, socket_max_client_packet);
 			return 0;
 		}
 
@@ -911,7 +910,7 @@ int do_sockets(int next)
 	{
 		if( sErrno != S_EINTR )
 		{
-			ShowFatalError("do_sockets: select() failed, %s!\n", error_msg());
+			ShowFatalError("do_sockets: Falha em select(), %s!\n", error_msg());
 			exit(EXIT_FAILURE);
 		}
 		return 0; // interrupted by a signal, just loop and try again
@@ -924,7 +923,7 @@ int do_sockets(int next)
 	{
 		if( sErrno != S_EINTR )
 		{
-			ShowFatalError("do_sockets: epoll_wait() failed, %s!\n", error_msg());
+			ShowFatalError("do_sockets: Falha em epoll_wait(), %s!\n", error_msg());
 			exit(EXIT_FAILURE);
 		}
 		return 0; // interrupted by a signal, just loop and try again
@@ -1009,7 +1008,7 @@ int do_sockets(int next)
 				if( sockt->session[i]->flag.ping != 2 )/* only update if necessary otherwise it'd resend the ping unnecessarily */
 					sockt->session[i]->flag.ping = 1;
 			} else {
-				ShowInfo("Session #%d timed out\n", i);
+				ShowInfo("Tempo de espera esgotado de #%d \n", i);
 				sockt->eof(i);
 			}
 		}
@@ -1089,7 +1088,7 @@ static int connect_check(uint32 ip)
 {
 	int result = connect_check_(ip);
 	if( access_debug ) {
-		ShowInfo("connect_check: Connection from %u.%u.%u.%u %s\n", CONVIP(ip),result ? "allowed." : "denied!");
+		ShowInfo("connect_check: Conexao para %u.%u.%u.%u %s\n", CONVIP(ip),result ? "allowed." : "denied!");
 	}
 	return result;
 }
@@ -1110,7 +1109,7 @@ static int connect_check_(uint32 ip)
 		struct access_control *entry = &VECTOR_INDEX(access_allow, i);
 		if (SUBNET_MATCH(ip, entry->ip, entry->mask)) {
 			if (access_debug) {
-				ShowInfo("connect_check: Found match from allow list:%u.%u.%u.%u IP:%u.%u.%u.%u Mask:%u.%u.%u.%u\n",
+				ShowInfo("connect_check: Partida de lista allow:%u.%u.%u.%u IP:%u.%u.%u.%u Mask:%u.%u.%u.%u\n",
 					CONVIP(ip),
 					CONVIP(entry->ip),
 					CONVIP(entry->mask));
@@ -1124,7 +1123,7 @@ static int connect_check_(uint32 ip)
 		struct access_control *entry = &VECTOR_INDEX(access_deny, i);
 		if (SUBNET_MATCH(ip, entry->ip, entry->mask)) {
 			if (access_debug) {
-				ShowInfo("connect_check: Found match from deny list:%u.%u.%u.%u IP:%u.%u.%u.%u Mask:%u.%u.%u.%u\n",
+				ShowInfo("connect_check: Partida de lista deny:%u.%u.%u.%u IP:%u.%u.%u.%u Mask:%u.%u.%u.%u\n",
 					CONVIP(ip),
 					CONVIP(entry->ip),
 					CONVIP(entry->mask));
@@ -1171,7 +1170,7 @@ static int connect_check_(uint32 ip)
 				hist->tick = timer->gettick();
 				if( ++hist->count >= ddos_count ) {// DDoS attack detected
 					hist->ddos = 1;
-					ShowWarning("connect_check: DDoS Attack detected from %u.%u.%u.%u!\n", CONVIP(ip));
+					ShowWarning("connect_check: Ataque DDoS detectado de %u.%u.%u.%u!\n", CONVIP(ip));
 					return (connect_ok == 2 ? 1 : 0);
 				}
 				return connect_ok;
@@ -1215,7 +1214,7 @@ static int connect_check_clear(int tid, int64 tick, int id, intptr_t data)
 	dbi_destroy(iter);
 
 	if( access_debug ){
-		ShowInfo("connect_check_clear: Cleared %d of %d from IP list.\n", clear, list);
+		ShowInfo("connect_check_clear: Limpesa %d de %d para lista de IP.\n", clear, list);
 	}
 
 	return list;
@@ -1263,7 +1262,7 @@ int access_ipmask(const char *str, struct access_control *acc)
 		}
 	}
 	if( access_debug ){
-		ShowInfo("access_ipmask: Loaded IP:%u.%u.%u.%u mask:%u.%u.%u.%u\n", CONVIP(ip), CONVIP(mask));
+		ShowInfo("access_ipmask: Carregado IP:%u.%u.%u.%u mask:%u.%u.%u.%u\n", CONVIP(ip), CONVIP(mask));
 	}
 	acc->ip   = ip;
 	acc->mask = mask;
@@ -1299,7 +1298,7 @@ bool access_list_add(struct config_setting_t *setting, const char *list_name, st
 		}
 
 		if (!access_ipmask(temp, &acc)) {
-			ShowError("access_list_add: Invalid ip or ip range %s '%d'!\n", list_name, i);
+			ShowError("access_list_add: Invalido ip ou gama de ip %s '%d'!\n", list_name, i);
 			continue;
 		}
 		VECTOR_PUSH(*access_list, acc);
@@ -1330,7 +1329,7 @@ bool socket_config_read_iprules(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules")) == NULL) {
-		ShowError("socket_config_read: socket_configuration/ip_rules was not found in %s!\n", filename);
+		ShowError("socket_config_read: Configuracao ip_rules nao encontrada em %s!\n", filename);
 		return false;
 	}
 	libconfig->setting_lookup_bool(setting, "enable", &ip_rules);
@@ -1346,18 +1345,18 @@ bool socket_config_read_iprules(const char *filename, struct config_t *config)
 		} else if (strcmpi(temp, "mutual-failure") == 0) {
 			access_order = ACO_MUTUAL_FAILURE;
 		} else {
-			ShowWarning("socket_config_read: invalid value '%s' for socket_configuration/ip_rules/order.\n", temp);
+			ShowWarning("socket_config_read: Valor invalido '%s' para socket_configuration/ip_rules/order.\n", temp);
 		}
 	}
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules/allow_list")) == NULL) {
-		ShowError("socket_config_read: socket_configuration/ip_rules/allow_list was not found in %s!\n", filename);
+		ShowError("socket_config_read: Configuracao allow_list nao encontrada em %s!\n", filename);
 	} else {
 		access_list_add(setting, "allow_list", &access_allow);
 	}
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ip_rules/deny_list")) == NULL) {
-		ShowError("socket_config_read: socket_configuration/ip_rules/deny_list was not found in %s!\n", filename);
+		ShowError("socket_config_read: Configuracao deny_list nao encontrada em %s!\n", filename);
 	} else {
 		access_list_add(setting, "deny_list", &access_deny);
 	}
@@ -1383,7 +1382,7 @@ bool socket_config_read_ddos(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "socket_configuration/ddos")) == NULL) {
-		ShowError("socket_config_read: socket_configuration/ddos was not found in %s!\n", filename);
+		ShowError("socket_config_read: Configuracap ddos nao encontrada em %s!\n", filename);
 		return false;
 	}
 
@@ -1417,7 +1416,7 @@ bool socket_config_read(const char *filename)
 
 	if ((setting = libconfig->lookup(&config, "socket_configuration")) == NULL) {
 		libconfig->destroy(&config);
-		ShowError("socket_config_read: socket_configuration was not found in %s!\n", filename);
+		ShowError("socket_config_read: socket_configuration nao encontrada em %s!\n", filename);
 		return false;
 	}
 
@@ -1533,13 +1532,13 @@ int socket_getips(uint32* ips, int max)
 		// are stored in the registry is annoyingly complex, so I'll leave
 		// this as T.B.D. [Meruru]
 		if (gethostname(fullhost, sizeof(fullhost)) == SOCKET_ERROR) {
-			ShowError("socket_getips: No hostname defined!\n");
+			ShowError("socket_getips: Nenhum hostname definido!\n");
 			return 0;
 		} else {
 			u_long** a;
 			struct hostent *hent =gethostbyname(fullhost);
 			if( hent == NULL ){
-				ShowError("socket_getips: Cannot resolve our own hostname to an IP address\n");
+				ShowError("socket_getips: Nao pode solucionar o proprio hostname a um endereco de IP\n");
 				return 0;
 			}
 			a = (u_long**)hent->h_addr_list;
@@ -1556,7 +1555,7 @@ int socket_getips(uint32* ips, int max)
 
 		fd = sSocket(AF_INET, SOCK_STREAM, 0);
 		if (fd == -1) {
-			ShowError("socket_getips: Unable to create a socket!\n");
+			ShowError("socket_getips: Inpossivel criacao de socket!\n");
 			return 0;
 		}
 
@@ -1567,7 +1566,7 @@ int socket_getips(uint32* ips, int max)
 		ic.ifc_len = sizeof(buf);
 		ic.ifc_buf = buf;
 		if (sIoctl(fd, SIOCGIFCONF, &ic) == -1) {
-			ShowError("socket_getips: SIOCGIFCONF failed!\n");
+			ShowError("socket_getips: SIOCGIFCONF falhou!\n");
 			sClose(fd);
 			return 0;
 		} else {
@@ -1606,14 +1605,13 @@ void socket_init(void)
 	{// Start up windows networking
 		WSADATA wsaData;
 		WORD wVersionRequested = MAKEWORD(2, 0);
-		if( WSAStartup(wVersionRequested, &wsaData) != 0 )
-		{
-			ShowError("socket_init: WinSock not available!\n");
+		if( WSAStartup(wVersionRequested, &wsaData) != 0 ) {
+			ShowError("socket_init: WinSock nao permitido!\n");
 			return;
 		}
 		if( LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 0 )
 		{
-			ShowError("socket_init: WinSock version mismatch (2.0 or compatible required)!\n");
+			ShowError("socket_init: WinSock mismatch de versao (2.0 ou outro compativel e necessario)!\n");
 			return;
 		}
 	}
@@ -1640,7 +1638,7 @@ void socket_init(void)
 					// report limit
 					getrlimit(RLIMIT_NOFILE, &rlp);
 					rlim_cur = rlp.rlim_cur;
-					ShowWarning("socket_init: failed to set socket limit to %d, setting to maximum allowed (original limit=%d, current limit=%d, maximum allowed=%d, %s).\n", FD_SETSIZE, rlim_ori, (int)rlp.rlim_cur, (int)rlp.rlim_max, errmsg);
+					ShowWarning("socket_init: Falha ao definir limite do socket para %d, fixando o maximo permitido (original limit=%d, atual limit=%d, maximo permitido=%d, %s).\n", FD_SETSIZE, rlim_ori, (int)rlp.rlim_cur, (int)rlp.rlim_max, errmsg);
 				}
 			}
 		}
@@ -1660,20 +1658,20 @@ void socket_init(void)
 #ifndef SOCKET_EPOLL
 	// Select based Event Dispatcher:
 	sFD_ZERO(&readfds);
-	ShowInfo("Server uses '" CL_WHITE "select" CL_RESET "' as event dispatcher\n");
+	ShowInfo("Usos de servidor selecionados como despachante de evento\n");
 
 #else  // SOCKET_EPOLL
 	// Epoll based Event Dispatcher:
 	epfd = epoll_create(FD_SETSIZE);	// 2.6.8 or newer ignores the expected socket amount argument
 	if(epfd == SOCKET_ERROR){
-		ShowError("Failed to Create Epoll Event Dispatcher: %s\n", error_msg());
+		ShowError("Falha ao criar Epoll Event Dispatcher: %s\n", error_msg());
 		exit(EXIT_FAILURE);
 	}
 
 	memset(&epevent, 0x00, sizeof(struct epoll_event));
 	epevents = aCalloc(epoll_maxevents, sizeof(struct epoll_event));
 
-	ShowInfo("Server uses '" CL_WHITE "epoll" CL_RESET "' with up to " CL_WHITE "%d" CL_RESET " events per cycle as event dispatcher\n", epoll_maxevents);
+	ShowInfo("Usos '" CL_WHITE "epoll" CL_RESET "' com " CL_WHITE "%d" CL_RESET " eventos por ciclo\n", epoll_maxevents);
 
 #endif  // SOCKET_EPOLL
 
@@ -1697,22 +1695,19 @@ void socket_init(void)
 	timer->add_interval(timer->gettick()+1000, connect_check_clear, 0, 0, 5*60*1000);
 #endif  // MINICORE
 
-	ShowInfo("Server supports up to '"CL_WHITE"%"PRIu64""CL_RESET"' concurrent connections.\n", rlim_cur);
+	ShowInfo("Suportando '"CL_WHITE"%"PRIu64""CL_RESET"' conexoes simultaneas sem comprometer o funcionamento.\n", rlim_cur);
 }
 
-bool session_is_valid(int fd)
-{
+bool session_is_valid(int fd) {
 	return ( fd > 0 && fd < FD_SETSIZE && sockt->session[fd] != NULL );
 }
 
-bool session_is_active(int fd)
-{
+bool session_is_active(int fd) {
 	return ( sockt->session_is_valid(fd) && !sockt->session[fd]->flag.eof );
 }
 
 // Resolves hostname into a numeric ip.
-uint32 host2ip(const char *hostname)
-{
+uint32 host2ip(const char *hostname) {
 	struct hostent* h;
 	nullpo_ret(hostname);
 	h = gethostbyname(hostname);
@@ -1805,7 +1800,7 @@ void socket_datasync(int fd, bool send)
 				WFIFOSET(fd, 8);
 				sockt->flush(fd);
 				/* shut down */
-				ShowFatalError("Servers are out of sync! recompile from scratch (%d)\n",i);
+				ShowFatalError("Servidores estao fora de sinconizacao! recompilado para (%d)\n",i);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -1830,8 +1825,7 @@ void send_shortlist_add_fd(int fd)
 		return;// already in the list
 
 	if (send_shortlist_count >= ARRAYLENGTH(send_shortlist_array)) {
-		ShowDebug("send_shortlist_add_fd: shortlist is full, ignoring... (fd=%d shortlist.count=%d shortlist.length=%d)\n",
-		          fd, send_shortlist_count, ARRAYLENGTH(send_shortlist_array));
+		ShowDebug("send_shortlist_add_fd: shortlist está cheio, enquanto ignorando... (fd=%d shortlist.count=%d shortlist.length=%d)\n", fd, send_shortlist_count, ARRAYLENGTH(send_shortlist_array));
 		return;
 	}
 
@@ -1859,12 +1853,12 @@ void send_shortlist_do_sends(void)
 
 		if( fd <= 0 || fd >= FD_SETSIZE )
 		{
-			ShowDebug("send_shortlist_do_sends: fd is out of range, corrupted memory? (fd=%d)\n", fd);
+			ShowDebug("send_shortlist_do_sends: fd fora do alcance, memoria corrompida? (fd=%d)\n", fd);
 			continue;
 		}
 		if( ((send_shortlist_set[idx]>>bit)&1) == 0 )
 		{
-			ShowDebug("send_shortlist_do_sends: fd is not set, why is it in the shortlist? (fd=%d)\n", fd);
+			ShowDebug("send_shortlist_do_sends: fd nao fixo, por que esta no shortlist? (fd=%d)\n", fd);
 			continue;
 		}
 		send_shortlist_set[idx]&=~(1<<bit);// unset fd
@@ -1976,7 +1970,7 @@ int socket_net_config_read_sub(struct config_setting_t *t, struct s_subnet_vecto
 		struct s_subnet *entry = NULL;
 
 		if (sscanf(subnet, "%63[^:]:%63[^:]", ipbuf, maskbuf) != 2) {
-			ShowWarning("Invalid IP:Subnet entry in configuration file %s: '%s' (%s)\n", filename, subnet, groupname);
+			ShowWarning("Invalid IP:Entrada de Subnet em arquivo de configuracao %s: '%s' (%s)\n", filename, subnet, groupname);
 			continue;
 		}
 		VECTOR_PUSHZEROED(*list);
@@ -1999,28 +1993,28 @@ void socket_net_config_read(const char *filename)
 	nullpo_retv(filename);
 
 	if (!libconfig->load_file(&network_config, filename)) {
-		ShowError("LAN Support configuration file is not found: '%s'. This server won't be able to accept connections from any servers.\n", filename);
+		ShowError("Arquivo de configuracao LAN Support nao econtrado: '%s'. Este servidor nao podera aceitar conexoes de qualquer lugar.\n", filename);
 		return;
 	}
 
 	VECTOR_CLEAR(sockt->lan_subnets);
 	if (sockt->net_config_read_sub(libconfig->lookup(&network_config, "lan_subnets"), &sockt->lan_subnets, filename, "lan_subnets") > 0)
-		ShowStatus("Read information about %d LAN subnets.\n", (int)VECTOR_LENGTH(sockt->lan_subnets));
+		ShowStatus("Lendo informacao sobre %d LAN subnets.\n", (int)VECTOR_LENGTH(sockt->lan_subnets));
 
 	VECTOR_CLEAR(sockt->trusted_ips);
 	if (sockt->net_config_read_sub(libconfig->lookup(&network_config, "trusted"), &sockt->trusted_ips, filename, "trusted") > 0)
-		ShowStatus("Read information about %d trusted IP ranges.\n", (int)VECTOR_LENGTH(sockt->trusted_ips));
+		ShowStatus("Lendo informacao sobre verdadeiros IP %d.\n", (int)VECTOR_LENGTH(sockt->trusted_ips));
 	ARR_FIND(0, VECTOR_LENGTH(sockt->trusted_ips), i, SUBNET_MATCH(0, VECTOR_INDEX(sockt->trusted_ips, i).ip, VECTOR_INDEX(sockt->trusted_ips, i).mask));
 	if (i != VECTOR_LENGTH(sockt->trusted_ips)) {
-		ShowError("Using a wildcard IP range in the trusted server IPs is NOT RECOMMENDED.\n");
-		ShowNotice("Please edit your '%s' trusted list to fit your network configuration.\n", filename);
+		ShowError("Usando um wildcard IP no servidor confiado que IPs NAO RECOMENDADO.\n");
+		ShowNotice("Por favor edite '%s' para ajustar sua configuracao de rede.\n", filename);
 	}
 
 	VECTOR_CLEAR(sockt->allowed_ips);
 	if (sockt->net_config_read_sub(libconfig->lookup(&network_config, "allowed"), &sockt->allowed_ips, filename, "allowed") > 0)
-		ShowStatus("Read information about %d allowed server IP ranges.\n", (int)VECTOR_LENGTH(sockt->allowed_ips));
+		ShowStatus("Lendo informacao sobre %d se o IP e permitido.\n", (int)VECTOR_LENGTH(sockt->allowed_ips));
 	if (VECTOR_LENGTH(sockt->allowed_ips) + VECTOR_LENGTH(sockt->trusted_ips) == 0) {
-		ShowError("No allowed server IP ranges configured. This server won't be able to accept connections from any char servers.\n");
+		ShowError("Nenhum servidor permitido que gamas de configuracao de IP. Este servidor nao podera aceitar conexoes vindas do char-serve.\n");
 	}
 	ARR_FIND(0, VECTOR_LENGTH(sockt->allowed_ips), i, SUBNET_MATCH(0, VECTOR_INDEX(sockt->allowed_ips, i).ip, VECTOR_INDEX(sockt->allowed_ips, i).mask));
 #ifndef BUILDBOT

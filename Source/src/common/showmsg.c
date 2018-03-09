@@ -66,7 +66,7 @@ struct showmsg_interface *showmsg;
 		(buf).d_ = StrBuf->Malloc(); \
 		(buf).l_ = StrBuf->Vprintf((buf).d_, (fmt), args); \
 		(buf).v_ = StrBuf->Value((buf).d_); \
-		ShowDebug("showmsg: dynamic buffer used, increase the static buffer size to %d or more.\n", (buf).l_+1); \
+		ShowDebug("showmsg: dynamic buffer uso, aumente o tamanho estatico a mais para %d ou maior.\n", (buf).l_+1); \
 	} \
 } while(0) //define BUFVPRINTF
 
@@ -600,7 +600,7 @@ int vShowMessage_(enum msg_type flag, const char *string, va_list ap)
 	char prefix[100];
 
 	if (!string || *string == '\0') {
-		ShowError("Empty string passed to vShowMessage_().\n");
+		ShowError("Empty string passada para vShowMessage_().\n");
 		return 1;
 	}
 	if(
@@ -671,7 +671,7 @@ int vShowMessage_(enum msg_type flag, const char *string, va_list ap)
 			strcat(prefix,CL_RED"[Fatal Error]"CL_RESET":");
 			break;
 		default:
-			ShowError("In function vShowMessage_() -> Invalid flag passed.\n");
+			ShowError("Na funcao vShowMessage_() -> Invalida flag passada.\n");
 			return 1;
 	}
 
@@ -695,7 +695,7 @@ int vShowMessage_(enum msg_type flag, const char *string, va_list ap)
 	if (strlen(DEBUGLOGPATH) > 0) {
 		FILE *fp = fopen(DEBUGLOGPATH,"a");
 		if (fp == NULL) {
-			FPRINTF(STDERR, CL_RED"[ERROR]"CL_RESET": Could not open '"CL_WHITE"%s"CL_RESET"', access denied.\n", DEBUGLOGPATH);
+			FPRINTF(STDERR, CL_RED"[ERROR]"CL_RESET": Nao pode abrir '"CL_WHITE"%s"CL_RESET"', access denied.\n", DEBUGLOGPATH);
 			FFLUSH(STDERR);
 		} else {
 			fprintf(fp,"%s ", prefix);
@@ -705,7 +705,7 @@ int vShowMessage_(enum msg_type flag, const char *string, va_list ap)
 			fclose(fp);
 		}
 	} else {
-		FPRINTF(STDERR, CL_RED"[ERROR]"CL_RESET": DEBUGLOGPATH not defined!\n");
+		FPRINTF(STDERR, CL_RED"[ERROR]"CL_RESET": DEBUGLOGPATH nao definido!\n");
 		FFLUSH(STDERR);
 	}
 #endif

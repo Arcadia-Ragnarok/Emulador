@@ -732,9 +732,7 @@ static void db_free_add(struct DBMap_impl *db, struct DBNode *node, struct DBNod
 
 	DB_COUNTSTAT(db_free_add);
 	if (db->free_lock == (unsigned int)~0) {
-		ShowFatalError("db_free_add: free_lock overflow\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowFatalError("db_free_add: free_lock overflow\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 		exit(EXIT_FAILURE);
 	}
 	if (!(db->options&DB_OPT_DUP_KEY)) { // Make sure we have a key until the node is freed
@@ -746,9 +744,7 @@ static void db_free_add(struct DBMap_impl *db, struct DBNode *node, struct DBNod
 		db->free_max = (db->free_max<<2) +3; // = db->free_max*4 +3
 		if (db->free_max <= db->free_count) {
 			if (db->free_count == (unsigned int)~0) {
-				ShowFatalError("db_free_add: free_count overflow\n"
-						"Database allocated at %s:%d\n",
-						db->alloc_file, db->alloc_line);
+				ShowFatalError("db_free_add: free_lock overflow\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 				exit(EXIT_FAILURE);
 			}
 			db->free_max = (unsigned int)~0;
@@ -790,7 +786,7 @@ static void db_free_remove(struct DBMap_impl *db, struct DBNode *node)
 	}
 	node->deleted = 0;
 	if (i == db->free_count) {
-		ShowWarning("db_free_remove: node was not found - database allocated at %s:%d\n", db->alloc_file, db->alloc_line);
+		ShowWarning("db_free_remove: nao foi encontrado - Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 	} else {
 		db->free_count--;
 	}
@@ -808,9 +804,7 @@ static void db_free_lock(struct DBMap_impl *db)
 {
 	DB_COUNTSTAT(db_free_lock);
 	if (db->free_lock == (unsigned int)~0) {
-		ShowFatalError("db_free_lock: free_lock overflow\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowFatalError("db_free_lock: free_lock overflow\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 		exit(EXIT_FAILURE);
 	}
 	db->free_lock++;
@@ -833,9 +827,7 @@ static void db_free_unlock(struct DBMap_impl *db)
 
 	DB_COUNTSTAT(db_free_unlock);
 	if (db->free_lock == 0) {
-		ShowWarning("db_free_unlock: free_lock was already 0\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowWarning("db_free_unlock: free_lock ja estava 0\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 	} else {
 		db->free_lock--;
 	}
@@ -1553,7 +1545,7 @@ static bool db_obj_exists(struct DBMap *self, union DBKey key)
 	if (db->cache && db->cmp(key, db->cache->key, db->maxlen) == 0) {
 #if defined(DEBUG)
 		if (db->cache->deleted) {
-			ShowDebug("db_exists: Cache contains a deleted node. Please report this!!!\n");
+			ShowDebug("db_exists: O cache contem um node excluido. Por favor informe isso!!!\n");
 			return false;
 		}
 #endif
@@ -1597,14 +1589,14 @@ static struct DBData *db_obj_get(struct DBMap *self, union DBKey key)
 	DB_COUNTSTAT(db_get);
 	if (db == NULL) return NULL; // nullpo candidate
 	if (!(db->options&DB_OPT_ALLOW_NULL_KEY) && db_is_key_null(db->type, key)) {
-		ShowError("db_get: Attempted to retrieve non-allowed NULL key for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_get: Houve uma tentativa de recuperar uma chave NULL nao permitida para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return NULL; // nullpo candidate
 	}
 
 	if (db->cache && db->cmp(key, db->cache->key, db->maxlen) == 0) {
 #if defined(DEBUG)
 		if (db->cache->deleted) {
-			ShowDebug("db_get: Cache contains a deleted node. Please report this!!!\n");
+			ShowDebug("db_get: O cache contem um node excluido. Por favor informe isso!!!\n");
 			return NULL;
 		}
 #endif
@@ -1758,11 +1750,11 @@ static struct DBData *db_obj_vensure(struct DBMap *self, union DBKey key, DBCrea
 	DB_COUNTSTAT(db_vensure);
 	if (db == NULL) return NULL; // nullpo candidate
 	if (create == NULL) {
-		ShowError("db_ensure: Create function is NULL for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_ensure: A funcao criada e NULL para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return NULL; // nullpo candidate
 	}
 	if (!(db->options&DB_OPT_ALLOW_NULL_KEY) && db_is_key_null(db->type, key)) {
-		ShowError("db_ensure: Attempted to use non-allowed NULL key for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_ensure: Tentou usar uma chave NULL nao permitida para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return NULL; // nullpo candidate
 	}
 
@@ -1787,9 +1779,7 @@ static struct DBData *db_obj_vensure(struct DBMap *self, union DBKey key, DBCrea
 	if (node == NULL) {
 		va_list argscopy;
 		if (db->item_count == UINT32_MAX) {
-			ShowError("db_vensure: item_count overflow, aborting item insertion.\n"
-					"Database allocated at %s:%d",
-					db->alloc_file, db->alloc_line);
+			ShowError("db_vensure: item_count overflow, abortando a insercao do item.\n Banco de dados alocado em %s:%d", db->alloc_file, db->alloc_line);
 				return NULL;
 		}
 		DB_COUNTSTAT(db_node_alloc);
@@ -1887,24 +1877,20 @@ static int db_obj_put(struct DBMap *self, union DBKey key, struct DBData data, s
 	DB_COUNTSTAT(db_put);
 	if (db == NULL) return 0; // nullpo candidate
 	if (db->global_lock) {
-		ShowError("db_put: Database is being destroyed, aborting entry insertion.\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowError("db_put: O banco de dados esta sendo destruido, anulando a insercao de entrada.\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 	if (!(db->options&DB_OPT_ALLOW_NULL_KEY) && db_is_key_null(db->type, key)) {
-		ShowError("db_put: Attempted to use non-allowed NULL key for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_put: Tentou usar uma chave NULL nao permitida para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 	if (!(db->options&DB_OPT_ALLOW_NULL_DATA) && (data.type == DB_DATA_PTR && data.u.ptr == NULL)) {
-		ShowError("db_put: Attempted to use non-allowed NULL data for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_put: Tentou usar uma chave NULL nao permitida para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 
 	if (db->item_count == UINT32_MAX) {
-		ShowError("db_put: item_count overflow, aborting item insertion.\n"
-				"Database allocated at %s:%d",
-				db->alloc_file, db->alloc_line);
+		ShowError("db_put: item_count overflow, abortando a insercao do item.\n Banco de dados alocado em %s:%d", db->alloc_file, db->alloc_line);
 		return 0;
 	}
 	// search for an equal node
@@ -1991,13 +1977,11 @@ static int db_obj_remove(struct DBMap *self, union DBKey key, struct DBData *out
 	DB_COUNTSTAT(db_remove);
 	if (db == NULL) return 0; // nullpo candidate
 	if (db->global_lock) {
-		ShowError("db_remove: Database is being destroyed. Aborting entry deletion.\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowError("db_remove: O banco de dados esta sendo destruido. Abortando a exclusao de entrada.\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 	if (!(db->options&DB_OPT_ALLOW_NULL_KEY) && db_is_key_null(db->type, key)) {
-		ShowError("db_remove: Attempted to use non-allowed NULL key for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_remove: Tentou usar uma chave NULL nao permitida para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 
@@ -2047,7 +2031,7 @@ static int db_obj_vforeach(struct DBMap *self, DBApply func, va_list args)
 	DB_COUNTSTAT(db_vforeach);
 	if (db == NULL) return 0; // nullpo candidate
 	if (func == NULL) {
-		ShowError("db_foreach: Passed function is NULL for db allocated at %s:%d\n",db->alloc_file, db->alloc_line);
+		ShowError("db_foreach: A funcao passada e NULL para a db alocada em %s:%d\n",db->alloc_file, db->alloc_line);
 		return 0; // nullpo candidate
 	}
 
@@ -2233,15 +2217,11 @@ static int db_obj_vdestroy(struct DBMap *self, DBApply func, va_list args)
 	DB_COUNTSTAT(db_vdestroy);
 	if (db == NULL) return 0; // nullpo candidate
 	if (db->global_lock) {
-		ShowError("db_vdestroy: Database is already locked for destruction. Aborting second database destruction.\n"
-				"Database allocated at %s:%d\n",
-				db->alloc_file, db->alloc_line);
+		ShowError("db_vdestroy: Banco de dados ja esta bloqueado para a delecao. Abortando a segunda delecao do banco de dados.\n Banco de dados alocado em %s:%d\n", db->alloc_file, db->alloc_line);
 		return 0;
 	}
 	if (db->free_lock)
-		ShowWarning("db_vdestroy: Database is still in use, %u lock(s) left. Continuing database destruction.\n"
-				"Database allocated at %s:%d\n",
-				db->free_lock, db->alloc_file, db->alloc_line);
+		ShowWarning("db_vdestroy: O banco de dados ainda esta em uso, %u lock(s) left. Continuando a delecao dos dados.\n Banco de dados alocado em %s:%d\n", db->free_lock, db->alloc_file, db->alloc_line);
 
 #ifdef DB_ENABLE_STATS
 	switch (db->type) {
@@ -2410,7 +2390,7 @@ enum DBOptions db_fix_options(enum DBType type, enum DBOptions options)
 			return (enum DBOptions)(options&~(DB_OPT_DUP_KEY|DB_OPT_RELEASE_KEY));
 
 		default:
-			ShowError("db_fix_options: Unknown database type %u with options %x\n", type, options);
+			ShowError("db_fix_options: Tipo de database desconhecida %u com as opcoes %x\n", type, options);
 			FALLTHROUGH
 		case DB_STRING:
 		case DB_ISTRING: // String databases, no fix required
@@ -2441,7 +2421,7 @@ DBComparator db_default_cmp(enum DBType type)
 		case DB_INT64:   return &db_int64_cmp;
 		case DB_UINT64:  return &db_uint64_cmp;
 		default:
-			ShowError("db_default_cmp: Unknown database type %u\n", type);
+			ShowError("db_default_cmp: Tipo de database desconhecida %u\n", type);
 			return NULL;
 	}
 }
@@ -2469,7 +2449,7 @@ DBHasher db_default_hash(enum DBType type)
 		case DB_INT64:   return &db_int64_hash;
 		case DB_UINT64:  return &db_uint64_hash;
 		default:
-			ShowError("db_default_hash: Unknown database type %u\n", type);
+			ShowError("db_default_hash: Tipo de database desconhecida %u\n", type);
 			return NULL;
 	}
 }
@@ -2525,7 +2505,7 @@ DBReleaser db_custom_release(enum DBReleaseOption which)
 		case DB_RELEASE_DATA:    return &db_release_data;
 		case DB_RELEASE_BOTH:    return &db_release_both;
 		default:
-			ShowError("db_custom_release: Unknown release options %u\n", which);
+			ShowError("db_custom_release: Opcoes de lancamento desconhecida %u\n", which);
 			return NULL;
 	}
 }
@@ -2806,16 +2786,14 @@ void db_final(void)
 {
 #ifdef DB_ENABLE_STATS
 	DB_COUNTSTAT(db_final);
-	ShowInfo(CL_WHITE"Database nodes"CL_RESET":\n"
-			"allocated %u, freed %u\n",
-			stats.db_node_alloc, stats.db_node_free);
+	ShowInfo(CL_WHITE"Database nodes"CL_RESET":\n alocado %u, livres %u\n", stats.db_node_alloc, stats.db_node_free);
 	ShowInfo(CL_WHITE"Database types"CL_RESET":\n"
-			"DB_INT     : allocated %10u, destroyed %10u\n"
-			"DB_UINT    : allocated %10u, destroyed %10u\n"
-			"DB_STRING  : allocated %10u, destroyed %10u\n"
-			"DB_ISTRING : allocated %10u, destroyed %10u\n"
-			"DB_INT64   : allocated %10u, destroyed %10u\n"
-			"DB_UINT64  : allocated %10u, destroyed %10u\n",
+			"DB_INT     : alocado %10u, deletado %10u\n"
+			"DB_UINT    : alocado %10u, deletado %10u\n"
+			"DB_STRING  : alocado %10u, deletado %10u\n"
+			"DB_ISTRING : alocado %10u, deletado %10u\n"
+			"DB_INT64   : alocado %10u, deletado %10u\n"
+			"DB_UINT64  : alocado %10u, deletado %10u\n",
 			stats.db_int_alloc,     stats.db_int_destroy,
 			stats.db_uint_alloc,    stats.db_uint_destroy,
 			stats.db_string_alloc,  stats.db_string_destroy,

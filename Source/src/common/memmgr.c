@@ -113,7 +113,7 @@ void* aMalloc_(size_t size, const char *file, int line, const char *func)
 	void *ret = MALLOC(size, file, line, func);
 	// ShowMessage("%s:%d: in func %s: aMalloc %d\n",file,line,func,size);
 	if (ret == NULL){
-		ShowFatalError("%s:%d: in func %s: aMalloc error out of memory!\n",file,line,func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aMalloc fora de memoria!\n",file,line,func);
 		exit(EXIT_FAILURE);
 	}
 
@@ -124,7 +124,7 @@ void* aCalloc_(size_t num, size_t size, const char *file, int line, const char *
 	void *ret = CALLOC(num, size, file, line, func);
 	// ShowMessage("%s:%d: in func %s: aCalloc %d %d\n",file,line,func,num,size);
 	if (ret == NULL){
-		ShowFatalError("%s:%d: in func %s: aCalloc error out of memory!\n", file, line, func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aCalloc fora de memoria!\n", file, line, func);
 		exit(EXIT_FAILURE);
 	}
 	return ret;
@@ -134,7 +134,7 @@ void* aRealloc_(void *p, size_t size, const char *file, int line, const char *fu
 	void *ret = REALLOC(p, size, file, line, func);
 	// ShowMessage("%s:%d: in func %s: aRealloc %p %d\n",file,line,func,p,size);
 	if (ret == NULL){
-		ShowFatalError("%s:%d: in func %s: aRealloc error out of memory!\n",file,line,func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aRealloc fora de memoria!\n",file,line,func);
 		exit(EXIT_FAILURE);
 	}
 	return ret;
@@ -161,7 +161,7 @@ void* aReallocz_(void *p, size_t size, const char *file, int line, const char *f
 	}
 #endif
 	if (ret == NULL) {
-		ShowFatalError("%s:%d: in func %s: aRealloc error out of memory!\n",file,line,func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aRealloc fora de memoria!\n",file,line,func);
 		exit(EXIT_FAILURE);
 	}
 	return ret;
@@ -172,7 +172,7 @@ char* aStrdup_(const char *p, const char *file, int line, const char *func)
 	char *ret = STRDUP(p, file, line, func);
 	// ShowMessage("%s:%d: in func %s: aStrdup %p\n",file,line,func,p);
 	if (ret == NULL){
-		ShowFatalError("%s:%d: in func %s: aStrdup error out of memory!\n", file, line, func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aStrdup fora de memoria!\n", file, line, func);
 		exit(EXIT_FAILURE);
 	}
 	return ret;
@@ -199,7 +199,7 @@ char *aStrndup_(const char *p, size_t size, const char *file, int line, const ch
 	size_t len = strnlen(p, size);
 	char *ret = MALLOC(len + 1, file, line, func);
 	if (ret == NULL) {
-		ShowFatalError("%s:%d: in func %s: aStrndup error out of memory!\n", file, line, func);
+		ShowFatalError("%s:%d: na funcao %s: erro de aStrndup fora de memoria!\n", file, line, func);
 		exit(EXIT_FAILURE);
 	}
 	memcpy(ret, p, len);
@@ -299,7 +299,7 @@ static size_t        memmgr_usage_bytes_t;
 
 
 #define block2unit(p, n) ((struct unit_head*)(&(p)->data[ p->unit_size * (n) ]))
-#define memmgr_assert(v) do { if(!(v)) { ShowError("Memory manager: assertion '" #v "' failed!\n"); } } while(0)
+#define memmgr_assert(v) do { if(!(v)) { ShowError("Memory manager: afirmacao '" #v "' falha!\n"); } } while(0)
 
 static unsigned short size2hash( size_t size )
 {
@@ -359,8 +359,7 @@ void *mmalloc_(size_t size, const char *file, int line, const char *func) {
 			*(long*)((char*)p + sizeof(struct unit_head_large) - sizeof(long) + size) = 0xdeadbeaf;
 			return (char *)p + sizeof(struct unit_head_large) - sizeof(long);
 		} else {
-			ShowFatalError("Memory manager::memmgr_alloc failed (allocating %"PRIuS"+%"PRIuS" bytes at %s:%d).\n",
-			               sizeof(struct unit_head_large), size, file, line);
+			ShowFatalError("Memory manager::memmgr_alloc falhou (alocado %"PRIuS"+%"PRIuS" bytes a %s:%d).\n", sizeof(struct unit_head_large), size, file, line);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -401,17 +400,12 @@ void *mmalloc_(size_t size, const char *file, int line, const char *func) {
 #ifdef DEBUG_MEMMGR
 	{
 		size_t i, sz = hash2size( size_hash );
-		for( i=0; i<sz; i++ )
-		{
-			if( ((unsigned char*)head)[ sizeof(struct unit_head) - sizeof(long) + i] != 0xfd )
-			{
-				if( head->line != 0xfdfd )
-				{
-					ShowError("Memory manager: freed-data is changed. (freed in %s line %d)\n", head->file,head->line);
-				}
-				else
-				{
-					ShowError("Memory manager: not-allocated-data is changed.\n");
+		for( i=0; i<sz; i++ ) {
+			if( ((unsigned char*)head)[ sizeof(struct unit_head) - sizeof(long) + i] != 0xfd ) {
+				if( head->line != 0xfdfd ) {
+					ShowError("Memory manager: freed-data foi mudada. (listando em %s linha %d)\n", head->file,head->line);
+				} else {
+					ShowError("Memory manager: not-allocated-data nao alterado.\n");
 				}
 				break;
 			}
@@ -546,7 +540,7 @@ void mfree_(void *ptr, const char *file, int line, const char *func) {
 			*(long*)((char*)head_large + sizeof(struct unit_head_large) - sizeof(long) + head_large->size)
 			!= 0xdeadbeaf)
 		{
-			ShowError("Memory manager: args of aFree 0x%p is overflowed pointer %s line %d\n", ptr, file, line);
+			ShowError("Memory manager: args de aFree 0x%p alagou ponteiro %s linha %d\n", ptr, file, line);
 		} else {
 			head->size = 0xFFFF;
 			if(head_large->prev) {
@@ -569,11 +563,11 @@ void mfree_(void *ptr, const char *file, int line, const char *func) {
 		/* Release unit */
 		struct block *block = head->block;
 		if( (char*)head - (char*)block > sizeof(struct block) ) {
-			ShowError("Memory manager: args of aFree 0x%p is invalid pointer %s line %d\n", ptr, file, line);
+			ShowError("Memory manager: args de aFree 0x%p ponteiro invalido %s linha %d\n", ptr, file, line);
 		} else if(head->block == NULL) {
-			ShowError("Memory manager: args of aFree 0x%p is freed pointer %s:%d@%s\n", ptr, file, line, func);
+			ShowError("Memory manager: args de aFree 0x%p livrado ponteiro %s:%d@%s\n", ptr, file, line, func);
 		} else if(*(long*)((char*)head + sizeof(struct unit_head) - sizeof(long) + head->size) != 0xdeadbeaf) {
-			ShowError("Memory manager: args of aFree 0x%p is overflowed pointer %s line %d\n", ptr, file, line);
+			ShowError("Memory manager: args de aFree 0x%p alagou ponteiro %s linha %d\n", ptr, file, line);
 		} else {
 			memmgr_usage_bytes -= head->size;
 			head->block         = NULL;
@@ -617,7 +611,7 @@ static struct block* block_malloc(unsigned short hash)
 		p = (struct block*)MALLOC(sizeof(struct block) * (BLOCK_ALLOC), __FILE__, __LINE__, __func__ );
 		memmgr_usage_bytes_t += sizeof(struct block) * (BLOCK_ALLOC);
 		if(p == NULL) {
-			ShowFatalError("Memory manager::block_alloc failed.\n");
+			ShowFatalError("Memory manager::block_alloc falha.\n");
 			exit(EXIT_FAILURE);
 		}
 
@@ -698,7 +692,7 @@ static void memmgr_log(char *buf, char *vcsinfo) {
 
 		time(&raw);
 		t = localtime(&raw);
-		fprintf(log_fp, "\nMemory manager: Memory leaks found at %d/%02d/%02d %02dh%02dm%02ds (%s).\n",
+		fprintf(log_fp, "\nMemory manager: Vazamentos de memoria encontrada %d/%02d/%02d %02dh%02dm%02ds (%s).\n",
 			(t->tm_year+1900), (t->tm_mon+1), t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, vcsinfo);
 	}
 	fprintf(log_fp, "%s", buf);
@@ -773,7 +767,7 @@ static void memmgr_final (void)
 #ifdef LOG_MEMMGR
 					char buf[1024];
 					sprintf (buf,
-						"%04d : %s line %d size %lu address 0x%p\n", ++count,
+						"%04d : %s linha %d tamanho %lu endereco 0x%p\n", ++count,
 						head->file, head->line, (unsigned long)head->size, ptr);
 					memmgr_log(buf, vcsinfo);
 #endif /* LOG_MEMMGR */
@@ -790,7 +784,7 @@ static void memmgr_final (void)
 #ifdef LOG_MEMMGR
 		char buf[1024];
 		sprintf (buf,
-			"%04d : %s line %d size %lu address 0x%p\n", ++count,
+			"%04d : %s linha %d tamanho %lu endereco 0x%p\n", ++count,
 			large->unit_head.file, large->unit_head.line, (unsigned long)large->size, &large->unit_head.checksum);
 		memmgr_log(buf, vcsinfo);
 #endif /* LOG_MEMMGR */
@@ -800,9 +794,9 @@ static void memmgr_final (void)
 	}
 #ifdef LOG_MEMMGR
 	if(count == 0) {
-		ShowInfo("Memory manager: No memory leaks found.\n");
+		ShowInfo("Memory manager: Nenhum vazamento de memoria encontrada.\n");
 	} else {
-		ShowWarning("Memory manager: Memory leaks found and fixed.\n");
+		ShowWarning("Memory manager: Vazamentos de memoria encontrada e fixada.\n");
 		fclose(log_fp);
 	}
 #endif /* LOG_MEMMGR */
@@ -874,16 +868,16 @@ void memmgr_report (int extra) {
 	}
 	for( j = 0; j < 100; j++ ) {
 		if( data[j].size != 0 ) {
-			ShowMessage("[malloc] : "CL_WHITE"%s"CL_RESET":"CL_WHITE"%d"CL_RESET" %u instances => %.2f MB\n",data[j].file,data[j].line,data[j].count,(double)((data[j].size)/1024)/1024);
+			ShowMessage("[malloc] : "CL_WHITE"%s"CL_RESET":"CL_WHITE"%d"CL_RESET" %u instancias => %.2f MB\n",data[j].file,data[j].line,data[j].count,(double)((data[j].size)/1024)/1024);
 		}
 	}
-	ShowMessage("[malloc] : reporting %u instances | %.2f MB\n",count,(double)((size)/1024)/1024);
-	ShowMessage("[malloc] : internal usage %.2f MB | %.2f MB\n",(double)((memmgr_usage_bytes_t-memmgr_usage_bytes)/1024)/1024,(double)((memmgr_usage_bytes_t)/1024)/1024);
+	ShowMessage("[malloc] : reportando %u instancias | %.2f MB\n",count,(double)((size)/1024)/1024);
+	ShowMessage("[malloc] : uso interno %.2f MB | %.2f MB\n",(double)((memmgr_usage_bytes_t-memmgr_usage_bytes)/1024)/1024,(double)((memmgr_usage_bytes_t)/1024)/1024);
 
 	if (extra) {
 		ShowMessage("[malloc] : unit_head_large: %"PRIuS" bytes\n", sizeof(struct unit_head_large));
 		ShowMessage("[malloc] : unit_head: %"PRIuS" bytes\n", sizeof(struct unit_head));
-		ShowMessage("[malloc] : block: %"PRIuS" bytes\n", sizeof(struct block));
+		ShowMessage("[malloc] : Bloco: %"PRIuS" bytes\n", sizeof(struct block));
 	}
 
 }
@@ -905,7 +899,7 @@ static void memmgr_init_messages(void)
 {
 #ifdef LOG_MEMMGR
 	sprintf(memmer_logfile, "log/%s.leaks", SERVER_NAME);
-	ShowStatus("Memory manager initialized: "CL_WHITE"%s"CL_RESET"\n", memmer_logfile);
+	ShowStatus("Gerenciamento de momoria iniciada: "CL_WHITE"%s"CL_RESET"\n", memmer_logfile);
 #endif /* LOG_MEMMGR */
 }
 #endif /* USE_MEMMGR */

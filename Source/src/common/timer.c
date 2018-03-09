@@ -87,9 +87,9 @@ int timer_add_func_list(TimerFunc func, char* name) {
 		for( tfl=tfl_root; tfl != NULL; tfl=tfl->next )
 		{// check suspicious cases
 			if( func == tfl->func )
-				ShowWarning("timer_add_func_list: duplicating function %p(%s) as %s.\n",tfl->func,tfl->name,name);
+				ShowWarning("timer_add_func_list: funcao duplicada %p(%s) como %s.\n",tfl->func,tfl->name,name);
 			else if( strcmp(name,tfl->name) == 0 )
-				ShowWarning("timer_add_func_list: function %p has the same name as %p(%s)\n",func,tfl->func,tfl->name);
+				ShowWarning("timer_add_func_list: funcao %p possui o mesmo nome como %p(%s)\n",func,tfl->func,tfl->name);
 		}
 		CREATE(tfl,struct timer_func_list,1);
 		tfl->next = tfl_root;
@@ -134,7 +134,7 @@ static void rdtsc_calibrate(void){
 	uint64 t1, t2;
 	int32 i;
 
-	ShowStatus("Calibrating Timer Source, please wait... ");
+	ShowStatus("Source calibrando... ");
 
 	RDTSC_CLOCK = 0;
 
@@ -148,7 +148,7 @@ static void rdtsc_calibrate(void){
 
 	RDTSC_BEGINTICK = rdtsc_();
 
-	ShowMessage(" done. (Frequency: %u Mhz)\n", (uint32)(RDTSC_CLOCK/1000) );
+	ShowMessage(" done. (Frequencia: %u Mhz)\n", (uint32)(RDTSC_CLOCK/1000) );
 }
 
 #endif
@@ -300,12 +300,12 @@ int timer_add(int64 tick, TimerFunc func, int id, intptr_t data) {
 	tid = acquire_timer();
 	if (timer_data[tid].type != 0 && timer_data[tid].type != TIMER_REMOVE_HEAP)
 	{
-		ShowError("timer_add error: wrong tid type: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_add error: tipo errado: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(INVALID_TIMER, 0);
 	}
 	if (timer_data[tid].func != NULL)
 	{
-		ShowError("timer_add error: func non NULL: [%d]%p(%s) -> %p(%s)\n", tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_add error: funcao NULL: [%d]%p(%s) -> %p(%s)\n", tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(INVALID_TIMER, 0);
 	}
 	timer_data[tid].tick     = tick;
@@ -327,21 +327,20 @@ int timer_add_interval(int64 tick, TimerFunc func, int id, intptr_t data, int in
 
 	nullpo_retr(INVALID_TIMER, func);
 	if (interval < 1) {
-		ShowError("timer_add_interval: invalid interval (tick=%"PRId64" %p[%s] id=%d data=%"PRIdPTR" diff_tick=%"PRId64")\n",
-		          tick, func, search_timer_func_list(func), id, data, DIFF_TICK(tick, timer->gettick()));
+		ShowError("timer_add_interval: intervalo invalido (tick=%"PRId64" %p[%s] id=%d data=%"PRIdPTR" diff_tick=%"PRId64")\n", tick, func, search_timer_func_list(func), id, data, DIFF_TICK(tick, timer->gettick()));
 		return INVALID_TIMER;
 	}
 
 	tid = acquire_timer();
 	if (timer_data[tid].type != 0 && timer_data[tid].type != TIMER_REMOVE_HEAP)
 	{
-		ShowError("timer_add_interval: wrong tid type: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_add_interval: tipo de tid desconhecido: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(INVALID_TIMER, 0);
 		return INVALID_TIMER;
 	}
 	if (timer_data[tid].func != NULL)
 	{
-		ShowError("timer_add_interval: func non NULL: [%d]%p(%s) -> %p(%s)\n", tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_add_interval: funcao como NULL: [%d]%p(%s) -> %p(%s)\n", tid, func, search_timer_func_list(func), timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(INVALID_TIMER, 0);
 		return INVALID_TIMER;
 	}
@@ -370,19 +369,19 @@ int timer_do_delete(int tid, TimerFunc func)
 	nullpo_ret(func);
 
 	if (tid < 1 || tid >= timer_data_num) {
-		ShowError("timer_do_delete error : no such timer [%d](%p(%s))\n", tid, func, search_timer_func_list(func));
+		ShowError("timer_do_delete error : nenhuma contagem [%d](%p(%s))\n", tid, func, search_timer_func_list(func));
 		Assert_retr(-1, 0);
 		return -1;
 	}
 	if( timer_data[tid].func != func ) {
-		ShowError("timer_do_delete error : function mismatch [%d]%p(%s) != %p(%s)\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func), func, search_timer_func_list(func));
+		ShowError("timer_do_delete error : funcao mismatch [%d]%p(%s) != %p(%s)\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func), func, search_timer_func_list(func));
 		Assert_retr(-2, 0);
 		return -2;
 	}
 
 	if (timer_data[tid].type == 0 || timer_data[tid].type == TIMER_REMOVE_HEAP)
 	{
-		ShowError("timer_do_delete: timer already deleted: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), func, search_timer_func_list(func));
+		ShowError("timer_do_delete: timer apagado: %d, [%d]%p(%s) -> %p(%s)\n", timer_data[tid].type, tid, func, search_timer_func_list(func), func, search_timer_func_list(func));
 		Assert_retr(-3, 0);
 		return -3;
 	}
@@ -397,7 +396,7 @@ int timer_do_delete(int tid, TimerFunc func)
 /// Returns the new tick value, or -1 if it fails.
 int64 timer_addtick(int tid, int64 tick) {
 	if (tid < 1 || tid >= timer_data_num) {
-		ShowError("timer_addtick error : no such timer [%d]\n", tid);
+		ShowError("timer_addtick error : nenhum timer [%d]\n", tid);
 		Assert_retr(-1, 0);
 		return -1;
 	}
@@ -419,18 +418,18 @@ int64 timer_settick(int tid, int64 tick)
 	// search timer position
 	ARR_FIND(0, BHEAP_LENGTH(timer_heap), i, BHEAP_DATA(timer_heap)[i] == tid);
 	if (i == BHEAP_LENGTH(timer_heap)) {
-		ShowError("timer_settick: no such timer [%d](%p(%s))\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_settick: nenhum timer [%d](%p(%s))\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(-1, 0);
 		return -1;
 	}
 
 	if (timer_data[tid].type == 0 || timer_data[tid].type == TIMER_REMOVE_HEAP) {
-		ShowError("timer_settick error: set tick for deleted timer %d, [%d](%p(%s))\n", timer_data[tid].type, tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_settick error: definindo para apagar timer %d, [%d](%p(%s))\n", timer_data[tid].type, tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(-1, 0);
 		return -1;
 	}
 	if (timer_data[tid].func == NULL) {
-		ShowError("timer_settick error: set tick for timer with wrong func [%d](%p(%s))\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
+		ShowError("timer_settick error: fixando timer com func errado [%d](%p(%s))\n", tid, timer_data[tid].func, search_timer_func_list(timer_data[tid].func));
 		Assert_retr(-1, 0);
 		return -1;
 	}

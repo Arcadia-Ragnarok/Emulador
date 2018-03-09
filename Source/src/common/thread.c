@@ -98,7 +98,7 @@ void thread_final(void)
 	// Shouldn't happen ... Kill 'em all!
 	for (i = 1; i < THREADS_MAX; i++) {
 		if (l_threads[i].proc != NULL){
-			ShowWarning("thread_final: unterminated Thread (tid %d entry_point %p) - forcing to terminate (kill)\n", i, l_threads[i].proc);
+			ShowWarning("thread_final: Indeterminada Thread (tid %d entry_point %p) - forcado a terminar\n", i, l_threads[i].proc);
 			thread->destroy(&l_threads[i]);
 		}
 	}
@@ -192,7 +192,7 @@ struct thread_handle *thread_create_opt(threadFunc entry_point, void *param, siz
 	}
 
 	if (handle == NULL) {
-		ShowError("thread_create_opt: cannot create new thread (entry_point: %p) - no free thread slot found!", entry_point);
+		ShowError("thread_create_opt: nao pode criar a nova thread (entry_point: %p) - nenhuma thread livre encontrada!", entry_point);
 		return NULL;
 	}
 

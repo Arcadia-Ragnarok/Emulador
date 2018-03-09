@@ -51,7 +51,7 @@ void assert_report(const char *file, int line, const char *func, const char *tar
 		func = "unknown";
 
 	ShowError("--- %s --------------------------------------------\n", title);
-	ShowError("%s:%d: '%s' in function `%s'\n", file, line, targetname, func);
+	ShowError("%s:%d: '%s' na funcao `%s'\n", file, line, targetname, func);
 #ifdef HAVE_EXECINFO
 	size = (int)backtrace(array, 10);
 	strings = backtrace_symbols(array, size);
@@ -59,7 +59,7 @@ void assert_report(const char *file, int line, const char *func, const char *tar
 		ShowError("%s\n", strings[i]);
 	free(strings);
 #endif // HAVE_EXECINFO
-	ShowError("--- end %s ----------------------------------------\n", title);
+	ShowError("--- fim %s ----------------------------------------\n", title);
 }
 
 /**

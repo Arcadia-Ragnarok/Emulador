@@ -62,7 +62,7 @@ struct mutex_data *mutex_create(void)
 {
 	struct mutex_data *m = aMalloc(sizeof(struct mutex_data));
 	if (m == NULL) {
-		ShowFatalError("ramutex_create: OOM while allocating %"PRIuS" bytes.\n", sizeof(struct mutex_data));
+		ShowFatalError("ramutex_create: OOM enquanto alocando %"PRIuS" bytes.\n", sizeof(struct mutex_data));
 		return NULL;
 	}
 
@@ -131,7 +131,7 @@ struct cond_data *cond_create(void)
 {
 	struct cond_data *c = aMalloc(sizeof(struct cond_data));
 	if (c == NULL) {
-		ShowFatalError("racond_create: OOM while allocating %"PRIuS" bytes\n", sizeof(struct cond_data));
+		ShowFatalError("racond_create: OOM enquanto alocando %"PRIuS" bytes\n", sizeof(struct cond_data));
 		return NULL;
 	}
 

@@ -109,7 +109,7 @@ int Sql_Connect(struct Sql *self, const char *user, const char *passwd, const ch
 	self->keepalive = Sql_P_Keepalive(self);
 	if( self->keepalive == INVALID_TIMER )
 	{
-		ShowSQL("Failed to establish keepalive for DB connection!\n");
+		ShowSQL("Nao estabeleceu keepalive para conexao de DB!\n");
 		return SQL_ERROR;
 	}
 
@@ -149,7 +149,7 @@ int Sql_GetColumnNames(struct Sql *self, const char *table, char *out_buf, size_
 		len = strnlen(data, len);
 		if( off + len + 2 > buf_len )
 		{
-			ShowDebug("Sql_GetColumns: output buffer is too small\n");
+			ShowDebug("Sql_GetColumns: saida do buffer muito pequena\n");
 			*out_buf = '\0';
 			return SQL_ERROR;
 		}
@@ -184,7 +184,7 @@ int Sql_Ping(struct Sql *self)
 static int Sql_P_KeepaliveTimer(int tid, int64 tick, int id, intptr_t data)
 {
 	struct Sql *self = (struct Sql *)data;
-	ShowInfo("Pinging SQL server to keep connection alive...\n");
+	ShowInfo("Pinging no servidor SQL para manter conexao ativa...\n");
 	Sql_Ping(self);
 	return 0;
 }
@@ -255,14 +255,14 @@ int Sql_QueryV(struct Sql *self, const char *query, va_list args)
 	StrBuf->Vprintf(&self->buf, query, args);
 	if( mysql_real_query(&self->handle, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
-		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
+		ShowSQL("DB erro - %s\n", mysql_error(&self->handle));
 		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	self->result = mysql_store_result(&self->handle);
 	if( mysql_errno(&self->handle) != 0 )
 	{
-		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
+		ShowSQL("DB erro - %s\n", mysql_error(&self->handle));
 		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
@@ -280,14 +280,14 @@ int Sql_QueryStr(struct Sql *self, const char *query)
 	StrBuf->AppendStr(&self->buf, query);
 	if( mysql_real_query(&self->handle, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
-		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
+		ShowSQL("DB erro - %s\n", mysql_error(&self->handle));
 		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
 	self->result = mysql_store_result(&self->handle);
 	if( mysql_errno(&self->handle) != 0 )
 	{
-		ShowSQL("DB error - %s\n", mysql_error(&self->handle));
+		ShowSQL("DB erro - %s\n", mysql_error(&self->handle));
 		arcadia_mysql_error_handler(mysql_errno(&self->handle));
 		return SQL_ERROR;
 	}
@@ -366,11 +366,11 @@ void Sql_FreeResult(struct Sql *self)
 void Sql_ShowDebug_(struct Sql *self, const char *debug_file, const unsigned long debug_line)
 {
 	if( self == NULL )
-		ShowDebug("at %s:%lu - self is NULL\n", debug_file, debug_line);
+		ShowDebug("a %s:%lu - NULL\n", debug_file, debug_line);
 	else if( StrBuf->Length(&self->buf) > 0 )
-		ShowDebug("at %s:%lu - %s\n", debug_file, debug_line, StrBuf->Value(&self->buf));
+		ShowDebug("a %s:%lu - %s\n", debug_file, debug_line, StrBuf->Value(&self->buf));
 	else
-		ShowDebug("at %s:%lu\n", debug_file, debug_line);
+		ShowDebug("a %s:%lu\n", debug_file, debug_line);
 }
 
 /// Frees a Sql handle returned by Sql_Malloc.
@@ -402,7 +402,7 @@ static enum enum_field_types Sql_P_SizeToMysqlIntType(int sz)
 	case 4: return MYSQL_TYPE_LONG;
 	case 8: return MYSQL_TYPE_LONGLONG;
 	default:
-		ShowDebug("SizeToMysqlIntType: unsupported size (%d)\n", sz);
+		ShowDebug("SizeToMysqlIntType: tamanho insuportavel (%d)\n", sz);
 		return MYSQL_TYPE_NULL;
 	}
 }
@@ -511,7 +511,7 @@ static int Sql_P_BindSqlDataType(MYSQL_BIND* bind, enum SqlDataType buffer_type,
 		bind->buffer_type = MYSQL_TYPE_BLOB;
 		break;
 	default:
-		ShowDebug("Sql_P_BindSqlDataType: unsupported buffer type (%u)\n", buffer_type);
+		ShowDebug("Sql_P_BindSqlDataType: insuportavel tipo de buffer (%u)\n", buffer_type);
 		return SQL_ERROR;
 	}
 	bind->buffer = buffer;
@@ -569,7 +569,7 @@ static void SqlStmt_P_ShowDebugTruncatedColumn(struct SqlStmt *self, size_t i)
 	nullpo_retv(self);
 	meta = mysql_stmt_result_metadata(self->stmt);
 	field = mysql_fetch_field_direct(meta, (unsigned int)i);
-	ShowSQL("DB error - data of field '%s' was truncated.\n", field->name);
+	ShowSQL("DB erro - dados de campo '%s' truncado.\n", field->name);
 	ShowDebug("column - %lu\n", (unsigned long)i);
 	Sql_P_ShowDebugMysqlFieldInfo("data   - ", field->type, field->flags&UNSIGNED_FLAG, self->column_lengths[i].length, "");
 	column = &self->columns[i];
@@ -591,7 +591,7 @@ struct SqlStmt *SqlStmt_Malloc(struct Sql *sql)
 
 	stmt = mysql_stmt_init(&sql->handle);
 	if( stmt == NULL ) {
-		ShowSQL("DB error - %s\n", mysql_error(&sql->handle));
+		ShowSQL("DB erro - %s\n", mysql_error(&sql->handle));
 		return NULL;
 	}
 	CREATE(self, struct SqlStmt, 1);
@@ -633,7 +633,7 @@ int SqlStmt_PrepareV(struct SqlStmt *self, const char *query, va_list args)
 	StrBuf->Vprintf(&self->buf, query, args);
 	if( mysql_stmt_prepare(self->stmt, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
-		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
+		ShowSQL("DB erro - %s\n", mysql_stmt_error(self->stmt));
 		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
@@ -653,7 +653,7 @@ int SqlStmt_PrepareStr(struct SqlStmt *self, const char *query)
 	StrBuf->AppendStr(&self->buf, query);
 	if( mysql_stmt_prepare(self->stmt, StrBuf->Value(&self->buf), (unsigned long)StrBuf->Length(&self->buf)) )
 	{
-		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
+		ShowSQL("DB erro - %s\n", mysql_stmt_error(self->stmt));
 		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
@@ -718,14 +718,14 @@ int SqlStmt_Execute(struct SqlStmt *self)
 	if( (self->bind_params && mysql_stmt_bind_param(self->stmt, self->params)) ||
 		mysql_stmt_execute(self->stmt) )
 	{
-		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
+		ShowSQL("DB erro - %s\n", mysql_stmt_error(self->stmt));
 		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
 	self->bind_columns = false;
 	if( mysql_stmt_store_result(self->stmt) )// store all the data
 	{
-		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
+		ShowSQL("DB erro - %s\n", mysql_stmt_error(self->stmt));
 		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
@@ -759,7 +759,7 @@ int SqlStmt_BindColumn(struct SqlStmt *self, size_t idx, enum SqlDataType buffer
 
 	if (buffer_type == SQLDT_STRING || buffer_type == SQLDT_ENUM) {
 		if (buffer_len < 1) {
-			ShowDebug("SqlStmt_BindColumn: buffer_len(%"PRIuS") is too small, no room for the null-terminator\n", buffer_len);
+			ShowDebug("SqlStmt_BindColumn: buffer_len(%"PRIuS") pequena, nenhum quarto para o nulo-terminator\n", buffer_len);
 			return SQL_ERROR;
 		}
 		--buffer_len;// null-terminator
@@ -825,7 +825,7 @@ int SqlStmt_NextRow(struct SqlStmt *self)
 		my_bool truncated;
 
 		if (!self->bind_columns) {
-			ShowSQL("DB error - data truncated (unknown source, columns are not bound)\n");
+			ShowSQL("DB erro - dados truncaram (fonte desconhecida, colunas nao sao encadernadas)\n");
 			return SQL_ERROR;
 		}
 
@@ -842,11 +842,11 @@ int SqlStmt_NextRow(struct SqlStmt *self)
 				return SQL_ERROR;
 			}
 		}
-		ShowSQL("DB error - data truncated (unknown source)\n");
+		ShowSQL("DB erro - dados truncaram (fonte desconhecida)\n");
 		return SQL_ERROR;
 	}
 	if (err) {
-		ShowSQL("DB error - %s\n", mysql_stmt_error(self->stmt));
+		ShowSQL("DB erro - %s\n", mysql_stmt_error(self->stmt));
 		arcadia_mysql_error_handler(mysql_stmt_errno(self->stmt));
 		return SQL_ERROR;
 	}
@@ -881,7 +881,7 @@ void SqlStmt_FreeResult(struct SqlStmt *self)
 void SqlStmt_ShowDebug_(struct SqlStmt *self, const char *debug_file, const unsigned long debug_line)
 {
 	if( self == NULL )
-		ShowDebug("at %s:%lu -  self is NULL\n", debug_file, debug_line);
+		ShowDebug("a %s:%lu - NULL\n", debug_file, debug_line);
 	else if( StrBuf->Length(&self->buf) > 0 )
 		ShowDebug("at %s:%lu - %s\n", debug_file, debug_line, StrBuf->Value(&self->buf));
 	else
@@ -915,7 +915,7 @@ void arcadia_mysql_error_handler(unsigned int ecode)
 		if( mysql_reconnect_type == 1 ) {
 			static int retry = 1;
 			if( ++retry > mysql_reconnect_count ) {
-				ShowFatalError("MySQL has been unreachable for too long, %d reconnects were attempted. Shutting Down\n", retry);
+				ShowFatalError("MySQL foi muito muito tempo inalcancavel para, %d reconectar, foi tentado. Fechando\n", retry);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -944,13 +944,13 @@ bool Sql_inter_server_read(const char *filename)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/mysql_reconnect")) == NULL) {
 		config_destroy(&config);
-		ShowError("Sql_inter_server_read: inter_configuration/mysql_reconnect was not found in %s!\n", filename);
+		ShowError("Sql_inter_server_read: Configuracao mysql_reconnect nao encontrada em %s!\n", filename);
 		return false;
 	}
 
 	if (libconfig->setting_lookup_int(setting, "type", &mysql_reconnect_type) == CONFIG_TRUE) {
 		if (mysql_reconnect_type != 1 && mysql_reconnect_type != 2) {
-			ShowError("%s::inter_configuration/mysql_reconnect/type is set to %d which is not valid, defaulting to 1...\n", filename, mysql_reconnect_type);
+			ShowError("%s::inter_configuration/mysql_reconnect/type seja fixado %d que nao e valido, padronizando a 1...\n", filename, mysql_reconnect_type);
 			mysql_reconnect_type = 1;
 		}
 	}

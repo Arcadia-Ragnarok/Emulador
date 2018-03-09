@@ -67,8 +67,7 @@
  * since it is a very bad idea.
  * Please note that NO SUPPORT will be given if you uncomment the following line.
  */
-//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
-// Note: This feature is deprecated, and should not be used.
+
 
 /// Called when a terminate signal is received.
 void (*shutdown_callback)(void) = NULL;
@@ -132,7 +131,7 @@ static BOOL WINAPI console_handler(DWORD c_event)
 static void cevents_init(void)
 {
 	if (SetConsoleCtrlHandler(console_handler,TRUE)==FALSE)
-		ShowWarning ("Unable to install the console handler!\n");
+		ShowWarning ("Nao foi possivel instalar o manipulador de console!\n");
 }
 #endif
 
@@ -163,7 +162,7 @@ static void sig_proc(int sn)
 	#ifndef _WIN32
 		case SIGXFSZ:
 			// ignore and allow it to set errno to EFBIG
-			ShowWarning ("Max file size reached!\n");
+			ShowWarning ("Tamanho maximo de arquivo alcancado!\n");
 			//run_flag = 0; // should we quit?
 			break;
 		case SIGPIPE:
@@ -196,48 +195,11 @@ void signals_init (void)
  *
  * @retval false if the check didn't pass and the program should be terminated.
  */
-bool usercheck(void)
-{
-#ifndef _WIN32
+
+void usercheck(void) {
 	if (sysinfo->is_superuser()) {
-		if (!isatty(fileno(stdin))) {
-#ifdef BUILDBOT
-			return true;
-#else  // BUILDBOT
-			ShowFatalError("You are running emulator with root privileges, it is not necessary, nor recommended. "
-					"Aborting.\n");
-			return false; // Don't allow noninteractive execution regardless.
-#endif  // BUILDBOT
-		}
-		ShowError("You are running emulator with root privileges, it is not necessary, nor recommended.\n");
-#ifdef I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
-#ifndef BUILDBOT
-#warning This emulator build is not eligible to obtain support by the developers.
-#warning The setting I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT is deprecated and should not be used.
-#endif  // BUILDBOT
-#else // not I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
-		ShowNotice("Execution will be paused for 60 seconds. Press Ctrl-C if you wish to quit.\n");
-		ShowNotice("If you want to get rid of this message, please open %s and uncomment, near the top, the line saying:\n"
-				"\t\"//#define I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT\"\n", __FILE__);
-		ShowNotice("Note: In a near future, this courtesy notice will go away. "
-				"Please update your infrastructure not to require root privileges before then.\n");
-		ShowWarning("It's recommended that you " CL_WHITE "press CTRL-C now!" CL_RESET "\n");
-		{
-			int i;
-			for (i = 0; i < 60; i++) {
-				ShowMessage("\a *");
-				HSleep(1);
-			}
-		}
-		ShowMessage("\n");
-		ShowNotice("Resuming operations with root privileges. "
-				CL_RED "If anything breaks, you get to keep the pieces, "
-				"and the emulator developers won't be able to help you."
-				CL_RESET "\n");
-#endif // I_AM_AWARE_OF_THE_RISK_AND_STILL_WANT_TO_RUN_ARCADIA_AS_ROOT
+		ShowWarning("Voce esta executando o emulador com privilegios root, isto nao e necessario.\n");
 	}
-#endif // not _WIN32
-	return true;
 }
 
 void core_defaults(void)
@@ -308,9 +270,9 @@ bool cmdline_arg_add(const char *name, char shortname, CmdlineExecFunc func, con
 static CMDLINEARG(help)
 {
 	int i;
-	ShowInfo("Usage: %s [options]\n", SERVER_NAME);
+	ShowInfo("Uso: %s [opcoes]\n", SERVER_NAME);
 	ShowInfo("\n");
-	ShowInfo("Options:\n");
+	ShowInfo("Opcoes:\n");
 
 	for (i = 0; i < VECTOR_LENGTH(cmdline->args_data); i++) {
 		struct CmdlineArgData *data = &VECTOR_INDEX(cmdline->args_data, i);
@@ -331,8 +293,6 @@ static CMDLINEARG(help)
  */
 static CMDLINEARG(version)
 {
-	ShowInfo("Open "CL_WHITE"readme.txt"CL_RESET" for more information.\n");
-	return false;
 }
 
 /**
@@ -346,7 +306,7 @@ static CMDLINEARG(version)
 bool cmdline_arg_next_value(const char *name, int current_arg, int argc)
 {
 	if (current_arg >= argc-1) {
-		ShowError("Missing value for option '%s'.\n", name);
+		ShowError("Valores perdidos na opcao '%s'.\n", name);
 		return false;
 	}
 
@@ -383,7 +343,7 @@ int cmdline_exec(int argc, char **argv, unsigned int options)
 		if (arg[0] != '-') { // All arguments must begin with '-'
 			if ((options&(CMDLINE_OPT_SILENT|CMDLINE_OPT_PREINIT)) != 0)
 				continue;
-			ShowError("Invalid option '%s'.\n", argv[i]);
+			ShowError("Invalido '%s'.\n", argv[i]);
 			exit(EXIT_FAILURE);
 		}
 		if (arg[1] != '-' && strlen(arg) == 2) {
@@ -394,7 +354,7 @@ int cmdline_exec(int argc, char **argv, unsigned int options)
 		if (j == VECTOR_LENGTH(cmdline->args_data)) {
 			if (options&(CMDLINE_OPT_SILENT|CMDLINE_OPT_PREINIT))
 				continue;
-			ShowError("Unknown option '%s'.\n", arg);
+			ShowError("Desconhecido '%s'.\n", arg);
 			exit(EXIT_FAILURE);
 		}
 		data = &VECTOR_INDEX(cmdline->args_data, j);
@@ -426,8 +386,8 @@ int cmdline_exec(int argc, char **argv, unsigned int options)
  */
 void cmdline_init(void)
 {
-	CMDLINEARG_DEF(help, 'h', "Displays this help screen", CMDLINE_OPT_NORMAL);
-	CMDLINEARG_DEF(version, 'v', "Displays the server's version.", CMDLINE_OPT_NORMAL);
+	CMDLINEARG_DEF(help, 'h', "Tela de ajuda", CMDLINE_OPT_NORMAL);
+	CMDLINEARG_DEF(version, 'v', "Versao.", CMDLINE_OPT_NORMAL);
 	cmdline_args_init_local();
 }
 
@@ -489,9 +449,6 @@ int main (int argc, char **argv)
 
 	if (!(showmsg->silent&0x1))
 		console->display_title();
-
-	if (!usercheck())
-		return EXIT_FAILURE;
 
 #ifdef MINICORE // minimalist Core
 	do_init(argc,argv);
