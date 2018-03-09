@@ -183,7 +183,7 @@ enum parsefunc_rcode lclif_parse_CA_SSO_LOGIN_REQ(int fd, struct login_session_d
 	int tokenlen = (int)RFIFOREST(fd) - (int)sizeof(*packet);
 
 	if (tokenlen > PASSWD_LEN || tokenlen < 1) {
-		ShowError("packet_CA_SSO_LOGIN_REQ: Token length is not between allowed password length, kicking player ('%s')", packet->id);
+		ShowError("packet_CA_SSO_LOGIN_REQ: Comprimento simbolico nao esta entre comprimento de contra-senha permitido, enquanto chutando o jogador ('%s')", packet->id);
 		sockt->eof(fd);
 		return PACKET_VALID;
 	}

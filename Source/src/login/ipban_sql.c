@@ -113,7 +113,7 @@ bool ipban_config_read_inter(const char *filename)
 
 	if ((setting = libconfig->lookup(&config, "inter_configuration/database_names")) == NULL) {
 		libconfig->destroy(&config);
-		ShowError("ipban_config_read: inter_configuration/database_names was not found!\n");
+		ShowError("ipban_config_read: Configuracao database_names nao concontrada!\n");
 		return false;
 	}
 	libconfig->setting_lookup_mutable_string(setting, "ipban_table", ipban_table, sizeof(ipban_table));
@@ -138,7 +138,7 @@ bool ipban_config_read_connection(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/ipban/sql_connection")) == NULL) {
-		ShowError("account_db_sql_set_property: login_configuration/account/ipban/sql_connection was not found in %s!\n", filename);
+		ShowError("account_db_sql_set_property: Configuracao sql_connection nao encontrada em %s!\n", filename);
 		return false;
 	}
 
@@ -169,7 +169,7 @@ bool ipban_config_read_dynamic(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "login_configuration/account/ipban/dynamic_pass_failure")) == NULL) {
-		ShowError("account_db_sql_set_property: login_configuration/account/ipban/dynamic_pass_failure was not found in %s!\n", filename);
+		ShowError("account_db_sql_set_property: Configuracao dynamic_pass_failure nao encontrada em %s!\n", filename);
 		return false;
 	}
 

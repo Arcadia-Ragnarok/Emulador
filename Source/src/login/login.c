@@ -210,7 +210,7 @@ void chrif_on_disconnect(int id)
 //-----------------------------------------------------
 static int login_sync_ip_addresses(int tid, int64 tick, int id, intptr_t data) {
 	uint8 buf[2];
-	ShowInfo("Sincronizacaoo de IP em prograsso...\n");
+	ShowInfo("Sincronizacao de IP em prograsso...\n");
 	WBUFW(buf,0) = 0x2735;
 	charif_sendallwos(-1, buf, 2);
 	return 0;
