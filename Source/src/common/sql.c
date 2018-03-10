@@ -915,7 +915,7 @@ void arcadia_mysql_error_handler(unsigned int ecode)
 		if( mysql_reconnect_type == 1 ) {
 			static int retry = 1;
 			if( ++retry > mysql_reconnect_count ) {
-				ShowFatalError("MySQL foi muito muito tempo inalcancavel para, %d reconectar, foi tentado. Fechando\n", retry);
+				ShowFatalError("MySQL foi muito tempo inalcancavel para, %d reconectar, foi tentado. Fechando\n", retry);
 				exit(EXIT_FAILURE);
 			}
 		}

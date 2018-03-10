@@ -1658,7 +1658,7 @@ void socket_init(void)
 #ifndef SOCKET_EPOLL
 	// Select based Event Dispatcher:
 	sFD_ZERO(&readfds);
-	ShowInfo("Usos de servidor selecionados como despachante de evento\n");
+//	ShowInfo("Usos de servidor selecionados como despachante de evento\n");
 
 #else  // SOCKET_EPOLL
 	// Epoll based Event Dispatcher:

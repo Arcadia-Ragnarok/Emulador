@@ -78,7 +78,7 @@ int inter_guild_save_timer(int tid, int64 tick, int id, intptr_t data) {
 		if (g->save_flag == GS_REMOVE) {
 			// Nothing to save, guild is ready for removal.
 			if (chr->show_save_log)
-				ShowInfo("Guild Unloaded (%d - %s)\n", g->guild_id, g->name);
+				ShowInfo("Guild destravada (%d - %s)\n", g->guild_id, g->name);
 			db_remove(inter_guild->guild_db, key);
 		}
 	}
@@ -568,7 +568,7 @@ struct guild_castle* inter_guild_castle_fromsql(int castle_id) {
 	idb_put(inter_guild->castle_db, castle_id, gc);
 
 	if (chr->show_save_log)
-		ShowInfo("Loaded guild castle (%d - guild %d)\n", castle_id, gc->guild_id);
+		ShowInfo("Carregado castelo (%d - guild %d)\n", castle_id, gc->guild_id);
 
 	return gc;
 }
@@ -580,7 +580,7 @@ bool inter_guild_exp_parse_row(char* split[], int column, int current) {
 	nullpo_retr(true, split);
 
 	if (exp < 0 || exp >= UINT_MAX) {
-		ShowError("exp_guild: Invalid exp %"PRId64" (valid range: 0 - %u) at line %d\n", exp, UINT_MAX, current);
+		ShowError("exp_guild: Invalida exp %"PRId64" (valido: 0 - %u) na linha %d\n", exp, UINT_MAX, current);
 		return false;
 	}
 
@@ -615,7 +615,7 @@ int inter_guild_CharOnline(int char_id, int guild_id) {
 
 	g = inter_guild->fromsql(guild_id);
 	if(!g) {
-		ShowError("Character %d's guild %d not found!\n", char_id, guild_id);
+		ShowError("Pesonagem %d da guild %d nao encontrado!\n", char_id, guild_id);
 		return 0;
 	}
 
@@ -1083,12 +1083,12 @@ int mapif_parse_CreateGuild(int fd, int account_id, const char *name, const stru
 	struct guild *g;
 	int i=0;
 #ifdef NOISY
-	ShowInfo("Creating Guild (%s)\n", name);
+	ShowInfo("Criacao de Guild (%s)\n", name);
 #endif
 	nullpo_ret(name);
 	nullpo_ret(master);
 	if(inter_guild->search_guildname(name) != 0){
-		ShowInfo("int_guild: guild with same name exists [%s]\n",name);
+		ShowInfo("int_guild: guild como o mesmo nome existente [%s]\n",name);
 		mapif->guild_created(fd,account_id,NULL);
 		return 0;
 	}
@@ -1138,12 +1138,12 @@ int mapif_parse_CreateGuild(int fd, int account_id, const char *name, const stru
 	// Create the guild
 	if (!inter_guild->tosql(g,GS_BASIC|GS_POSITION|GS_SKILL|GS_MEMBER)) {
 		//Failed to Create guild....
-		ShowError("Failed to create Guild %s (Guild Master: %s)\n", g->name, g->master);
+		ShowError("Falha para em criar guild %s (Lider: %s)\n", g->name, g->master);
 		mapif->guild_created(fd,account_id,NULL);
 		aFree(g);
 		return 0;
 	}
-	ShowInfo("Created Guild %d - %s (Guild Master: %s)\n", g->guild_id, g->name, g->master);
+	ShowInfo("Guild criada %d - %s (Lider: %s)\n", g->guild_id, g->name, g->master);
 
 	//Add to cache
 	idb_put(inter_guild->guild_db, g->guild_id, g);
@@ -1153,7 +1153,7 @@ int mapif_parse_CreateGuild(int fd, int account_id, const char *name, const stru
 	mapif->guild_info(fd,g);
 
 	if (inter->enable_logs)
-		inter->log("guild %s (id=%d) created by master %s (id=%d)\n",
+		inter->log("guild %s (id=%d) alterado lider %s (id=%d)\n",
 			name, g->guild_id, master->name, master->account_id);
 
 	return 0;
@@ -1348,7 +1348,7 @@ int mapif_parse_BreakGuild(int fd, int guild_id) {
 	mapif->guild_broken(guild_id,0);
 
 	if (inter->enable_logs)
-		inter->log("guild %s (id=%d) broken\n", g->name, guild_id);
+		inter->log("guild %s (id=%d) desfeita\n", g->name, guild_id);
 
 	//Remove the guild from memory. [Skotlex]
 	idb_remove(inter_guild->guild_db, guild_id);
@@ -1412,7 +1412,7 @@ int mapif_parse_GuildBasicInfoChange(int fd, int guild_id, int type, const void 
 			break;
 
 		default:
-			ShowError("int_guild: GuildBasicInfoChange: Unknown type %d, see mmo.h::guild_basic_info for more information\n",type);
+			ShowError("int_guild: GuildBasicInfoChange: tipo desconhecido %d, consulte mmo.h::guild_basic_info para mais informacao\n",type);
 			return 0;
 	}
 	mapif->guild_info(-1,g);
@@ -1441,7 +1441,7 @@ int mapif_parse_GuildMemberInfoChange(int fd, int guild_id, int account_id, int 
 
 	// Not Found
 	if(i==g->max_member){
-		ShowWarning("int_guild: GuildMemberChange: Not found %d,%d in guild (%d - %s)\n",
+		ShowWarning("int_guild: GuildMemberChange: Nao econtrado %d,%d na guild (%d - %s)\n",
 			account_id,char_id,guild_id,g->name);
 		return 0;
 	}
@@ -1534,13 +1534,13 @@ int inter_guild_charname_changed(int guild_id, int account_id, int char_id, char
 	nullpo_ret(name);
 	g = inter_guild->fromsql(guild_id);
 	if( g == NULL ) {
-		ShowError("inter_guild_charrenamed: Nao encontado guild %d.\n", guild_id);
+		ShowError("inter_guild_charrenamed: Nao econtrado guild %d.\n", guild_id);
 		return 0;
 	}
 
 	ARR_FIND(0, g->max_member, i, g->member[i].char_id == char_id);
 	if( i == g->max_member ) {
-		ShowError("inter_guild_charrenamed: Nao encontado personagem %d na guild\n", char_id);
+		ShowError("inter_guild_charrenamed: Nao econtrado personagem %d na guild\n", char_id);
 		return 0;
 	}
 
@@ -1702,7 +1702,7 @@ int mapif_parse_GuildCastleDataSave(int fd, int castle_id, int index, int value)
 	struct guild_castle *gc = inter_guild->castle_fromsql(castle_id);
 
 	if (gc == NULL) {
-		ShowError("mapif->parse_GuildCastleDataSave: castle id=%d not found\n", castle_id);
+		ShowError("mapif->parse_GuildCastleDataSave: castelo id=%d nao encontrado\n", castle_id);
 		return 0;
 	}
 
@@ -1728,7 +1728,7 @@ int mapif_parse_GuildCastleDataSave(int fd, int castle_id, int index, int value)
 				gc->guardian[index-10].visible = value;
 				break;
 			}
-			ShowError("mapif->parse_GuildCastleDataSave: Nao encontado indice: %d\n", index);
+			ShowError("mapif->parse_GuildCastleDataSave: Nao econtrado indice: %d\n", index);
 			return 0;
 	}
 	inter_guild->castle_tosql(gc);
@@ -1768,7 +1768,7 @@ int mapif_parse_GuildMasterChange(int fd, int guild_id, const char* name, int le
 	if (len < NAME_LENGTH)
 		g->master[len] = '\0';
 
-	ShowInfo("int_guild: Guildmaster Changed to %s (Guild %d - %s)\n",g->master, guild_id, g->name);
+	ShowInfo("int_guild: Guildmaster alterado para %s (Guild %d - %s)\n",g->master, guild_id, g->name);
 	g->save_flag |= (GS_BASIC|GS_MEMBER); //Save main data and member data.
 	return mapif->guild_master_changed(g, g->member[0].account_id, g->member[0].char_id);
 }

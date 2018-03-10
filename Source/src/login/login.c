@@ -1396,7 +1396,7 @@ void login_parse_request_connection(int fd, struct login_session_data* sd, const
 	type = RFIFOW(fd,82);
 	new_ = RFIFOW(fd,84);
 
-	ShowInfo("Solicitda conexao com o char-server '%s' @ %u.%u.%u.%u:%u (Conta: '%s', Senha: '%s', IP: '%s')\n", server_name, CONVIP(server_ip), server_port, sd->userid, sd->passwd, ip);
+	ShowInfo("Solicitada conexao com o char-server '%s' @ %u.%u.%u.%u:%u (Conta: '%s', Senha: '%s', IP: '%s')\n", server_name, CONVIP(server_ip), server_port, sd->userid, sd->passwd, ip);
 	sprintf(message, "charserver - %s@%u.%u.%u.%u:%u", server_name, CONVIP(server_ip), server_port);
 	login_log(sockt->session[fd]->client_addr, sd->userid, 100, message);
 
