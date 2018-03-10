@@ -315,7 +315,7 @@ enum bg_queue_types bg_str2teamtype (const char *str) {
 		else if( strcmpi(parse,"solo") == 0 )
 			type |= BGQT_INDIVIDUAL;
 		else {
-			ShowError("bg_str2teamtype: '%s' unknown type, skipping...\n",parse);
+			ShowError("bg_str2teamtype: '%s' tipo desconhecido, ignorando...\n",parse);
 		}
 		parse = strtok(NULL,"|");
 	}
@@ -368,12 +368,12 @@ void bg_config_read(void) {
 				bg->arena[i] = NULL;
 
 				if( !libconfig->setting_lookup_string(arena, "name", &aName) ) {
-					ShowError("bg_config_read: failed to find 'name' for arena #%d\n",i);
+					ShowError("bg_config_read: falha ao encontrar 'name' para arena #%d\n",i);
 					continue;
 				}
 
 				if( !libconfig->setting_lookup_string(arena, "event", &aEvent) ) {
-					ShowError("bg_config_read: failed to find 'event' for arena #%d\n",i);
+					ShowError("bg_config_read: falha ao encontrar 'event' para arena #%d\n",i);
 					continue;
 				}
 
@@ -381,16 +381,16 @@ void bg_config_read(void) {
 				libconfig->setting_lookup_int(arena, "maxLevel", &maxLevel);
 
 				if( minLevel < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' minLevel\n",minLevel,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' minLevel\n",minLevel,aName);
 					minLevel = 0;
 				}
 				if( maxLevel > 150 ) { //MAX_LEVEL
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' maxLevel\n",maxLevel,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' maxLevel\n",maxLevel,aName);
 					maxLevel = 150; //MAX_LEVEL
 				}
 
 				if( !(reward = libconfig->setting_get_member(arena, "reward")) ) {
-					ShowError("bg_config_read: failed to find 'reward' for arena '%s'/#%d\n",aName,i);
+					ShowError("bg_config_read: falha ao encontrar 'reward' para arena '%s'/#%d\n",aName,i);
 					continue;
 				}
 
@@ -399,15 +399,15 @@ void bg_config_read(void) {
 				libconfig->setting_lookup_int(reward, "draw", &prizeDraw);
 
 				if( prizeWin < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' reward:win\n",prizeWin,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' reward:win\n",prizeWin,aName);
 					prizeWin = 0;
 				}
 				if( prizeLoss < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' reward:loss\n",prizeLoss,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' reward:loss\n",prizeLoss,aName);
 					prizeLoss = 0;
 				}
 				if( prizeDraw < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' reward:draw\n",prizeDraw,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' reward:draw\n",prizeDraw,aName);
 					prizeDraw = 0;
 				}
 
@@ -416,32 +416,32 @@ void bg_config_read(void) {
 				libconfig->setting_lookup_int(arena, "minTeamPlayers", &minTeamPlayers);
 
 				if( minPlayers < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' minPlayers\n",minPlayers,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' minPlayers\n",minPlayers,aName);
 					minPlayers = 0;
 				}
 				if( maxPlayers > MAX_BG_MEMBERS * 2 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' maxPlayers, change #define MAX_BG_MEMBERS\n",maxPlayers,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' maxPlayers, alterar #define MAX_BG_MEMBERS\n",maxPlayers,aName);
 					maxPlayers = 0;
 				}
 				if( minTeamPlayers < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' minTeamPlayers\n",minTeamPlayers,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' minTeamPlayers\n",minTeamPlayers,aName);
 					minTeamPlayers = 0;
 				}
 
 				if( !libconfig->setting_lookup_string(arena, "delay_var", &aDelayVar) ) {
-					ShowError("bg_config_read: failed to find 'delay_var' for arena '%s'/#%d\n",aName,i);
+					ShowError("bg_config_read: falha ao encontrar 'delay_var' para arena '%s'/#%d\n",aName,i);
 					continue;
 				}
 
 				if( !libconfig->setting_lookup_string(arena, "allowedTypes", &aTeamTypes) ) {
-					ShowError("bg_config_read: failed to find 'allowedTypes' for arena '%s'/#%d\n",aName,i);
+					ShowError("bg_config_read: falha ao encontrar 'allowedTypes' para arena '%s'/#%d\n",aName,i);
 					continue;
 				}
 
 				libconfig->setting_lookup_int(arena, "maxDuration", &maxDuration);
 
 				if( maxDuration < 0 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' maxDuration\n",maxDuration,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' maxDuration\n",maxDuration,aName);
 					maxDuration = 30;
 				}
 
@@ -449,12 +449,12 @@ void bg_config_read(void) {
 				libconfig->setting_lookup_int(arena, "pGameDuration", &pregame_duration);
 
 				if( fillup_duration < 20 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' fillDuration, minimum has to be 20, defaulting to 20.\n",fillup_duration,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' fillDuration, minimo 20.\n",fillup_duration,aName);
 					fillup_duration = 20;
 				}
 
 				if( pregame_duration < 20 ) {
-					ShowWarning("bg_config_read: invalid %d value for arena '%s' pGameDuration, minimum has to be 20, defaulting to 20.\n",pregame_duration,aName);
+					ShowWarning("bg_config_read: valor %d invalido para arena '%s' pGameDuration, minimo 20.\n",pregame_duration,aName);
 					pregame_duration = 20;
 				}
 
@@ -588,7 +588,7 @@ void bg_match_over(struct bg_arena *arena, bool canceled) {
 			bg->queue_pc_cleanup(sd);
 		}
 		if (canceled)
-			clif->messagecolor_self(sd->fd, COLOR_RED, "BG Match Canceled: not enough players");
+			clif->messagecolor_self(sd->fd, COLOR_RED, "BG Match Cancelado: sem jogadores");
 		else
 			pc_setglobalreg(sd, script->add_str(arena->delay_var), (unsigned int)time(NULL));
 	}
@@ -822,9 +822,9 @@ enum BATTLEGROUNDS_QUEUE_ACK bg_canqueue(struct map_session_data *sd, struct bg_
 	if ( ( tick = pc_readglobalreg(sd, script->add_str(bg->gdelay_var)) ) && tsec < tick ) {
 		char response[100];
 		if( (tick-tsec) > 60 )
-			sprintf(response, "You are a deserter! Wait %u minute(s) before you can apply again", (tick - tsec) / 60);
+			sprintf(response, "Você é um desertor! Espera %u minuto(s) para se registrar novamente", (tick - tsec) / 60);
 		else
-			sprintf(response, "You are a deserter! Wait %u seconds before you can apply again", (tick - tsec));
+			sprintf(response, "Você é um desertor! Espera %u segundos para se registrar novamente", (tick - tsec));
 		clif->messagecolor_self(sd->fd, COLOR_RED, response);
 		return BGQA_FAIL_DESERTER;
 	}
@@ -832,9 +832,9 @@ enum BATTLEGROUNDS_QUEUE_ACK bg_canqueue(struct map_session_data *sd, struct bg_
 	if ( ( tick = pc_readglobalreg(sd, script->add_str(arena->delay_var)) ) && tsec < tick ) {
 		char response[100];
 		if( (tick-tsec) > 60 )
-			sprintf(response, "You can't reapply to this arena so fast. Apply to the different arena or wait %u minute(s)", (tick - tsec) / 60);
+			sprintf(response, "Você não pode registrar nesta arena tão rápido. Registre-se em uma arena diferente ou espere %u minuto(s)", (tick - tsec) / 60);
 		else
-			sprintf(response, "You can't reapply to this arena so fast. Apply to the different arena or wait %u seconds", (tick - tsec));
+			sprintf(response, "Você não pode registrar nesta arena tão rápido. Registre-se em uma arena diferente ou espere %u segundos", (tick - tsec));
 		clif->messagecolor_self(sd->fd, COLOR_RED, response);
 		return BGQA_FAIL_COOLDOWN;
 	}
@@ -856,9 +856,9 @@ enum BATTLEGROUNDS_QUEUE_ACK bg_canqueue(struct map_session_data *sd, struct bg_
 				if ( count < arena->min_team_players ) {
 					char response[121];
 					if( count != sd->guild->connect_member && sd->guild->connect_member >= arena->min_team_players )
-						sprintf(response, "Can't apply: not enough members in your team/guild that have not entered the queue in individual mode, minimum is %d", arena->min_team_players);
+						sprintf(response, "Não pode registrar: não há bastante membros, mínimo é %d", arena->min_team_players);
 					else
-						sprintf(response, "Can't apply: not enough members in your team/guild, minimum is %d", arena->min_team_players);
+						sprintf(response, "Não pode registrar: não há bastante membros, mínimo é %d", arena->min_team_players);
 					clif->messagecolor_self(sd->fd, COLOR_RED, response);
 					return BGQA_FAIL_TEAM_COUNT;
 				}
@@ -888,9 +888,9 @@ enum BATTLEGROUNDS_QUEUE_ACK bg_canqueue(struct map_session_data *sd, struct bg_
 					if( count < arena->min_team_players ) {
 						char response[121];
 						if( count != p->party.count && p->party.count >= arena->min_team_players )
-							sprintf(response, "Can't apply: not enough members in your team/party that have not entered the queue in individual mode, minimum is %d", arena->min_team_players);
+							sprintf(response, "Não pode registrar: não há bastante membros, mínimo é %d", arena->min_team_players);
 						else
-							sprintf(response, "Can't apply: not enough members in your team/party, minimum is %d",arena->min_team_players);
+							sprintf(response, "Não pode registrar: não há bastante membros, mínimo é %d",arena->min_team_players);
 						clif->messagecolor_self(sd->fd, COLOR_RED, response);
 						return BGQA_FAIL_TEAM_COUNT;
 					}
@@ -901,7 +901,7 @@ enum BATTLEGROUNDS_QUEUE_ACK bg_canqueue(struct map_session_data *sd, struct bg_
 		case BGQT_INDIVIDUAL:/* already did */
 			break;
 		default:
-			ShowDebug("bg_canqueue: unknown/unsupported type %u\n", type);
+			ShowDebug("bg_canqueue: desconhecido/insuportavel tipo %u\n", type);
 			return BGQA_DUPLICATE_REQUEST;
 	}
 	return BGQA_SUCCESS;

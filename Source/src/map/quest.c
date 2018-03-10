@@ -108,12 +108,12 @@ int quest_add(struct map_session_data *sd, int quest_id, unsigned int time_limit
 
 	nullpo_retr(-1, sd);
 	if (qi == &quest->dummy) {
-		ShowError("quest_add: quest %d not found in DB.\n", quest_id);
+		ShowError("quest_add: Missao %d nao encontrada no DB.\n", quest_id);
 		return -1;
 	}
 
 	if (quest->check(sd, quest_id, HAVEQUEST) >= 0) {
-		ShowError("quest_add: Character %d already has quest %d.\n", sd->status.char_id, quest_id);
+		ShowError("quest_add: Personagem %d ja possui a missao %d.\n", sd->status.char_id, quest_id);
 		return -1;
 	}
 
@@ -164,23 +164,23 @@ int quest_change(struct map_session_data *sd, int qid1, int qid2)
 
 	nullpo_retr(-1, sd);
 	if( qi == &quest->dummy ) {
-		ShowError("quest_change: quest %d not found in DB.\n", qid2);
+		ShowError("quest_change: Missao %d nao encontrada no DB.\n", qid2);
 		return -1;
 	}
 
 	if( quest->check(sd, qid2, HAVEQUEST) >= 0 ) {
-		ShowError("quest_change: Character %d already has quest %d.\n", sd->status.char_id, qid2);
+		ShowError("quest_change: Personagem %d ja possui a missao %d.\n", sd->status.char_id, qid2);
 		return -1;
 	}
 
 	if( quest->check(sd, qid1, HAVEQUEST) < 0 ) {
-		ShowError("quest_change: Character %d doesn't have quest %d.\n", sd->status.char_id, qid1);
+		ShowError("quest_change: Personagem %d nao possui a missao %d.\n", sd->status.char_id, qid1);
 		return -1;
 	}
 
 	ARR_FIND(0, sd->avail_quests, i, sd->quest_log[i].quest_id == qid1);
 	if( i == sd->avail_quests ) {
-		ShowError("quest_change: Character %d has completed quest %d.\n", sd->status.char_id, qid1);
+		ShowError("quest_change: Personagem %d ja completou a missao %d.\n", sd->status.char_id, qid1);
 		return -1;
 	}
 
@@ -218,7 +218,7 @@ int quest_delete(struct map_session_data *sd, int quest_id)
 	ARR_FIND(0, sd->num_quests, i, sd->quest_log[i].quest_id == quest_id);
 
 	if(i == sd->num_quests) {
-		ShowError("quest_delete: Character %d doesn't have quest %d.\n", sd->status.char_id, quest_id);
+		ShowError("quest_delete: Personagem %d nao possui a missao %d.\n", sd->status.char_id, quest_id);
 		return -1;
 	}
 
@@ -343,7 +343,7 @@ int quest_update_status(struct map_session_data *sd, int quest_id, enum quest_st
 	nullpo_retr(-1, sd);
 	ARR_FIND(0, sd->avail_quests, i, sd->quest_log[i].quest_id == quest_id);
 	if( i == sd->avail_quests ) {
-		ShowError("quest_update_status: Character %d doesn't have quest %d.\n", sd->status.char_id, quest_id);
+		ShowError("quest_update_status: Personagem %d nao possui a missao %d.\n", sd->status.char_id, quest_id);
 		return -1;
 	}
 
@@ -413,7 +413,7 @@ int quest_check(struct map_session_data *sd, int quest_id, enum quest_check_type
 			}
 			return 0;
 		default:
-			ShowError("quest_check_quest: Unknown parameter %u", type);
+			ShowError("quest_check_quest: Parametro desconhecido %u",type);
 			break;
 	}
 
@@ -457,16 +457,16 @@ struct quest_db *quest_read_db_sub(struct config_setting_t *cs, int n, const cha
 	 * )
 	 */
 	if (!libconfig->setting_lookup_int(cs, "Id", &quest_id)) {
-		ShowWarning("quest_read_db: Missing id in \"%s\", entry #%d, skipping.\n", source, n);
+		ShowWarning("quest_read_db: Faltando id em \"%s\", entrada #%d, pulando.\n", source, n);
 		return NULL;
 	}
 	if (quest_id < 0 || quest_id >= MAX_QUEST_DB) {
-		ShowWarning("quest_read_db: Invalid quest ID '%d' in \"%s\", entry #%d (min: 0, max: %d), skipping.\n", quest_id, source, n, MAX_QUEST_DB);
+		ShowWarning("quest_read_db: ID de quest invalida'%d' em \"%s\", entrada #%d (min: 0, max: %d), pulando.\n", quest_id, source, n, MAX_QUEST_DB);
 		return NULL;
 	}
 
 	if (!libconfig->setting_lookup_string(cs, "Name", &str) || !*str) {
-		ShowWarning("quest_read_db_sub: Missing Name in quest %d of \"%s\", skipping.\n", quest_id, source);
+		ShowWarning("quest_read_db_sub: Faltando nome na quest %d de \"%s\", pulando.\n", quest_id, source);
 		return NULL;
 	}
 
@@ -542,7 +542,7 @@ int quest_read_db(void)
 		return -1;
 
 	if ((qdb = libconfig->setting_get_member(quest_db_conf.root, "quest_db")) == NULL) {
-		ShowError("can't read %s\n", filepath);
+		ShowError("Nao foi possivel ler %s\n", filepath);
 		return -1;
 	}
 
@@ -552,7 +552,7 @@ int quest_read_db(void)
 			continue;
 
 		if (quest->db_data[entry->id] != NULL) {
-			ShowWarning("quest_read_db: Duplicate quest %d.\n", entry->id);
+			ShowWarning("quest_read_db: Quest duplicada %d.\n", entry->id);
 			if (quest->db_data[entry->id]->dropitem)
 				aFree(quest->db_data[entry->id]->dropitem);
 			if (quest->db_data[entry->id]->objectives)

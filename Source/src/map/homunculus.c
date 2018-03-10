@@ -319,7 +319,7 @@ bool homunculus_levelup(struct homun_data *hd) {
 
 	nullpo_retr(false, hd);
 	if( (htype = homun->class2type(hd->homunculus.class_)) == HT_INVALID ) {
-		ShowError("homunculus_levelup: Invalid class %d. \n", hd->homunculus.class_);
+		ShowError("homunculus_levelup: Classe invalida %d. \n", hd->homunculus.class_);
 		return false;
 	}
 
@@ -417,7 +417,7 @@ bool homunculus_evolve(struct homun_data *hd) {
 	}
 
 	if (!homun->change_class(hd, hd->homunculusDB->evo_class)) {
-		ShowError("homunculus_evolve: Can't evolve homunc from %d to %d", hd->homunculus.class_, hd->homunculusDB->evo_class);
+		ShowError("homunculus_evolve: Nao foi possivel evoluir o homunculo de %d para %d", hd->homunculus.class_, hd->homunculusDB->evo_class);
 		return false;
 	}
 
@@ -475,7 +475,7 @@ bool homunculus_mutate(struct homun_data *hd, int homun_id) {
 	prev_class = hd->homunculus.class_;
 
 	if( !homun->change_class(hd, homun_id) ) {
-		ShowError("homunculus_mutate: Can't evolve homunc from %d to %d", hd->homunculus.class_, homun_id);
+		ShowError("homunculus_mutate: Nao foi possivel evoluir o homunculo de %d para %d", hd->homunculus.class_, homun_id);
 		return false;
 	}
 
@@ -507,7 +507,7 @@ int homunculus_gainexp(struct homun_data *hd,unsigned int exp) {
 		return 1;
 
 	if( (htype = homun->class2type(hd->homunculus.class_)) == HT_INVALID ) {
-		ShowError("homunculus_gainexp: Invalid class %d. \n", hd->homunculus.class_);
+		ShowError("homunculus_gainexp: Classe invalida %d. \n", hd->homunculus.class_);
 		return 0;
 	}
 
@@ -600,7 +600,7 @@ unsigned char homunculus_menu(struct map_session_data *sd,unsigned char menu_num
 			homun->delete(sd->hd, -1);
 			break;
 		default:
-			ShowError("homunculus_menu : unknown menu choice : %d\n", menu_num) ;
+			ShowError("homunculus_menu : escolha de menu desconhecida : %d\n", menu_num) ;
 			break;
 	}
 	return 0;
@@ -796,7 +796,7 @@ bool homunculus_create(struct map_session_data *sd, const struct s_homunculus *h
 
 	i = homun->db_search(hom->class_,HOMUNCULUS_CLASS);
 	if (i == INDEX_NOT_FOUND) {
-		ShowError("homunculus_create: unknown class [%d] for homunculus '%s', requesting deletion.\n", hom->class_, hom->name);
+		ShowError("homunculus_create: classe desconhecida [%d] do homunculo '%s', requisitando deletacao.\n", hom->class_, hom->name);
 		sd->status.hom_id = 0;
 		intif->homunculus_requestdelete(hom->hom_id);
 		return false;
@@ -1102,7 +1102,7 @@ bool homunculus_read_db_sub(char* str[], int columns, int current) {
 	//Base Class,Evo Class
 	classid = atoi(str[0]);
 	if (classid < HM_CLASS_BASE || classid > HM_CLASS_MAX) {
-		ShowError("homunculus_read_db_sub : Invalid class %d\n", classid);
+		ShowError("homunculus_read_db_sub : Classe invalida %d\n", classid);
 		return false;
 	}
 	db = &homun->dbs->db[current];
@@ -1110,7 +1110,7 @@ bool homunculus_read_db_sub(char* str[], int columns, int current) {
 	classid = atoi(str[1]);
 	if (classid < HM_CLASS_BASE || classid > HM_CLASS_MAX) {
 		db->base_class = 0;
-		ShowError("homunculus_read_db_sub : Invalid class %d\n", classid);
+		ShowError("homunculus_read_db_sub : Classe invalida %d\n", classid);
 		return false;
 	}
 	db->evo_class = classid;
@@ -1238,7 +1238,7 @@ bool homunculus_read_skill_db_sub(char* split[], int columns, int current) {
 	classid = atoi(split[0]) - HM_CLASS_BASE;
 
 	if ( classid < 0 || classid >= MAX_HOMUNCULUS_CLASS ) {
-		ShowWarning("homunculus_read_skill_db_sub: Invalid homunculus class %d.\n", atoi(split[0]));
+		ShowWarning("homunculus_read_skill_db_sub: Classe invalida %d.\n", atoi(split[0]));
 		return false;
 	}
 
@@ -1246,7 +1246,7 @@ bool homunculus_read_skill_db_sub(char* split[], int columns, int current) {
 	// Search an empty line or a line with the same skill_id (stored in j)
 	ARR_FIND( 0, MAX_SKILL_TREE, j, !homun->dbs->skill_tree[classid][j].id || homun->dbs->skill_tree[classid][j].id == k );
 	if (j == MAX_SKILL_TREE) {
-		ShowWarning("Unable to load skill %d into homunculus %d's tree. Maximum number of skills per class has been reached.\n", k, classid);
+		ShowWarning("Nao foi possivel carregar a habilidade %d na arvore do homunculo %d's. O numero maximo de habilidade por classe foi atingido.\n", k, classid);
 		return false;
 	}
 
@@ -1304,7 +1304,7 @@ void homunculus_exp_db_read(void) {
 		if( (fp=fopen(line,"r")) == NULL) {
 			if(i != 0)
 				continue;
-			ShowError("can't read %s\n",line);
+			ShowError("Nao foi possivel ler %s\n",line);
 			return;
 		}
 		while(fgets(line, sizeof(line), fp) && j < 150) { //MAX_LEVEL
@@ -1316,7 +1316,7 @@ void homunculus_exp_db_read(void) {
 		}
 		// Last permitted level have to be 0!
 		if (homun->dbs->exptable[150 - 1]) { //MAX_LEVEL
-			ShowWarning("homunculus_exp_db_read: Reached max level in exp_homun [%d]. Remaining lines were not read.\n ", 150); //MAX_LEVEL
+			ShowWarning("homunculus_exp_db_read: Nivel maximo atingido em exp_homun [%d]. Linhas restantes nao foram lidas.\n ", 150); //MAX_LEVEL
 			homun->dbs->exptable[150 - 1] = 0; //MAX_LEVEL
 		}
 		fclose(fp);

@@ -79,7 +79,7 @@ static void read_config(void) {
 			struct config_setting_t *group = libconfig->setting_get_elem(groups, i);
 
 			if (!libconfig->setting_lookup_int(group, "id", &id)) {
-				ShowConfigWarning(group, "pc_groups:read_config: \"groups\" list member #%d has undefined id, removing...", i);
+				ShowConfigWarning(group, "pc_groups:read_config: \"grupos\" lista de membro #%d tem ID indefinido, removendo...", i);
 				libconfig->setting_remove_elem(groups, i);
 				--i;
 				--group_count;
@@ -87,7 +87,7 @@ static void read_config(void) {
 			}
 
 			if (pcg->exists(id)) {
-				ShowConfigWarning(group, "pc_groups:read_config: duplicate group id %d, removing...", i);
+				ShowConfigWarning(group, "pc_groups:read_config: ID de grupo duplicado %d, removendo...", i);
 				libconfig->setting_remove_elem(groups, i);
 				--i;
 				--group_count;
@@ -101,10 +101,8 @@ static void read_config(void) {
 				char temp[20];
 				struct config_setting_t *name = NULL;
 				snprintf(temp, sizeof(temp), "Group %d", id);
-				if ((name = config_setting_add(group, "name", CONFIG_TYPE_STRING)) == NULL ||
-				    !config_setting_set_string(name, temp)) {
-					ShowError("pc_groups:read_config: failed to set missing group name, id=%d, skipping... (%s:%u)\n",
-					          id, config_setting_source_file(group), config_setting_source_line(group));
+				if ((name = config_setting_add(group, "name", CONFIG_TYPE_STRING)) == NULL || !config_setting_set_string(name, temp)) {
+					ShowError("pc_groups:read_config: Falha ao definir o nome do grupo em falta, id=%d, pulando... (%s:%u)\n", id, config_setting_source_file(group), config_setting_source_line(group));
 					--i;
 					--group_count;
 					continue;
@@ -113,7 +111,7 @@ static void read_config(void) {
 			}
 
 			if (name2group(groupname) != NULL) {
-				ShowConfigWarning(group, "pc_groups:read_config: duplicate group name %s, removing...", groupname);
+				ShowConfigWarning(group, "pc_groups:read_config: nome de grupo duplicado %s, removendo...", groupname);
 				libconfig->setting_remove_elem(groups, i);
 				--i;
 				--group_count;
@@ -153,7 +151,7 @@ static void read_config(void) {
 				struct config_setting_t *command = libconfig->setting_get_elem(commands, i);
 				const char *name = config_setting_name(command);
 				if (!atcommand->exists(name)) {
-					ShowConfigWarning(command, "pc_groups:read_config: non-existent command name '%s', removing...", name);
+					ShowConfigWarning(command, "pc_groups:read_config: nome de comando inexistente '%s', removendo...", name);
 					libconfig->setting_remove(commands, name);
 					--i;
 					--count;
@@ -172,7 +170,7 @@ static void read_config(void) {
 
 				ARR_FIND(0, pcg->permission_count, j, strcmp(pcg->permissions[j].name, name) == 0);
 				if (j == pcg->permission_count) {
-					ShowConfigWarning(permission, "pc_groups:read_config: non-existent permission name '%s', removing...", name);
+					ShowConfigWarning(permission, "pc_groups:read_config: nome de permissao inexistente '%s', removendo...", name);
 					libconfig->setting_remove(permissions, name);
 					--i;
 					--count;
@@ -186,9 +184,7 @@ static void read_config(void) {
 		while (i < group_count) {
 			iter = db_iterator(pcg->db);
 			for (group_settings = dbi_first(iter); dbi_exists(iter); group_settings = dbi_next(iter)) {
-				struct config_setting_t *inherit = NULL,
-				                 *commands = group_settings->commands,
-					             *permissions = group_settings->permissions;
+				struct config_setting_t *inherit = NULL, *commands = group_settings->commands, *permissions = group_settings->permissions;
 				int j, inherit_count = 0, done = 0;
 
 				if (group_settings->inheritance_done) // group already processed
@@ -206,12 +202,12 @@ static void read_config(void) {
 					const char *groupname = libconfig->setting_get_string_elem(inherit, j);
 
 					if (groupname == NULL) {
-						ShowConfigWarning(inherit, "pc_groups:read_config: \"inherit\" array member #%d is not a name, removing...", j);
+						ShowConfigWarning(inherit, "pc_groups:read_config: \"inherit\" membro da array #%d nao e um nome, removendo...", j);
 						libconfig->setting_remove_elem(inherit,j);
 						continue;
 					}
 					if ((inherited_group = name2group(groupname)) == NULL) {
-						ShowConfigWarning(inherit, "pc_groups:read_config: non-existent group name \"%s\", removing...", groupname);
+						ShowConfigWarning(inherit, "pc_groups:read_config: nome de grupo inexistente \"%s\", removendo...", groupname);
 						libconfig->setting_remove_elem(inherit,j);
 						continue;
 					}
@@ -242,8 +238,7 @@ static void read_config(void) {
 			dbi_destroy(iter);
 
 			if (++loop > group_count) {
-				ShowWarning("pc_groups:read_config: Could not process inheritance rules, check your config '%s' for cycles...\n",
-				            config_filename);
+				ShowWarning("pc_groups:read_config: Nao pode processar regras de herdanca, cheque sua configuracao '%s' periodicamente...\n", config_filename);
 				break;
 			}
 		} // while(i < group_count)
@@ -382,7 +377,7 @@ unsigned int pc_groups_add_permission(const char *name) {
 
 	for(i = 0; i < pcg->permission_count; i++) {
 		if( strcmpi(name,pcg->permissions[i].name) == 0 ) {
-			ShowError("pc_groups_add_permission(%s): failed! duplicate permission name!\n",name);
+			ShowError("pc_groups_add_permission(%s): falhou! Nome de permissao duplicado!\n",name);
 			return 0;
 		}
 	}
@@ -391,7 +386,7 @@ unsigned int pc_groups_add_permission(const char *name) {
 		key = (uint64)pcg->permissions[i - 1].permission << 1;
 
 	if( key >= UINT_MAX ) {
-		ShowError("pc_groups_add_permission(%s): failed! not enough room, too many permissions!\n",name);
+		ShowError("pc_groups_add_permission(%s): falhou! sem sala suficiente, muitas permissoes!\n",name);
 		return 0;
 	}
 
@@ -445,7 +440,7 @@ void do_init_pc_groups(void) {
 	for(i = 0; i < len; i++) {
 		unsigned int p;
 		if( ( p = pc_groups_add_permission(pc_g_defaults[i].name) ) != pc_g_defaults[i].permission )
-			ShowError("do_init_pc_groups: %s error : %u != %u\n", pc_g_defaults[i].name, p, pc_g_defaults[i].permission);
+			ShowError("do_init_pc_groups: %s erro : %u != %u\n", pc_g_defaults[i].name, p, pc_g_defaults[i].permission);
 	}
 
 	pcg->db = idb_alloc(DB_OPT_RELEASE_DATA);
@@ -503,8 +498,7 @@ void pc_groups_reload(void) {
 	iter = mapit_getallusers();
 	for (sd = BL_UCAST(BL_PC, mapit->first(iter)); mapit->exists(iter); sd = BL_UCAST(BL_PC, mapit->next(iter))) {
 		if (pc->set_group(sd, sd->group_id) != 0) {
-			ShowWarning("pc_groups_reload: %s (AID:%d) has unknown group id (%d)! kicking...\n",
-				sd->status.name, sd->status.account_id, pc_get_group_id(sd));
+			ShowWarning("pc_groups_reload: %s (AID:%d) tem um ID de grupo desconhecido (%d)! chutando...\n", sd->status.name, sd->status.account_id, pc_get_group_id(sd));
 			clif->GM_kick(NULL, sd);
 		}
 	}

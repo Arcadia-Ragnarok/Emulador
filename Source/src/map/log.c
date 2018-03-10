@@ -69,7 +69,7 @@ char log_picktype2char(e_log_pick_type type) {
 	}
 
 	// should not get here, fallback
-	ShowDebug("log_picktype2char: Unknown pick type %u.\n", type);
+	ShowDebug("log_picktype2char: Desconhecido tipo de pick %u.\n", type);
 	return 'X';
 }
 
@@ -84,7 +84,7 @@ char log_chattype2char(e_log_chat_type type) {
 	}
 
 	// should not get here, fallback
-	ShowDebug("log_chattype2char: Unknown chat type %u.\n", type);
+	ShowDebug("log_chattype2char: Desconhecido tipo de chat %u.\n", type);
 	return 'O';
 }
 
@@ -460,17 +460,17 @@ void log_sql_init(void) {
 	// log db connection
 	logs->mysql_handle = SQL->Malloc();
 
-	ShowInfo(""CL_WHITE"[SQL]"CL_RESET": Connecting to the Log Database "CL_WHITE"%s"CL_RESET" At "CL_WHITE"%s"CL_RESET"...\n",logs->db_name,logs->db_ip);
+	ShowInfo(""CL_WHITE"[SQL]"CL_RESET": Conectando ao database de Log "CL_WHITE"%s"CL_RESET" At "CL_WHITE"%s"CL_RESET"...\n",logs->db_name,logs->db_ip);
 	if ( SQL_ERROR == SQL->Connect(logs->mysql_handle, logs->db_id, logs->db_pw, logs->db_ip, logs->db_port, logs->db_name) )
 		exit(EXIT_FAILURE);
-	ShowStatus(""CL_WHITE"[SQL]"CL_RESET": Successfully '"CL_GREEN"connected"CL_RESET"' to Database '"CL_WHITE"%s"CL_RESET"'.\n", logs->db_name);
+	ShowStatus(""CL_WHITE"[SQL]"CL_RESET": Sucesso na conexao com o database '%s'.\n", logs->db_name);
 
 	if (map->default_codepage[0] != '\0')
 		if ( SQL_ERROR == SQL->SetEncoding(logs->mysql_handle, map->default_codepage) )
 			Sql_ShowDebug(logs->mysql_handle);
 }
 void log_sql_final(void) {
-	ShowStatus("Close Log DB Connection....\n");
+	ShowStatus("Fechando conexao com database de Log....\n");
 	SQL->Free(logs->mysql_handle);
 	logs->mysql_handle = NULL;
 }
@@ -514,7 +514,7 @@ bool log_config_read_database(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	if ((setting = libconfig->lookup(config, "map_log/database")) == NULL) {
-		ShowError("log_config_read: map_log/database was not found in %s!\n", filename);
+		ShowError("log_config_read: configuracao 'database' nao encontrada em %s!\n", filename);
 		return false;
 	}
 	libconfig->setting_lookup_bool_real(setting, "use_sql", &logs->config.sql_logs);
@@ -648,7 +648,7 @@ bool log_config_read(const char *filename)
 
 	if ((setting = libconfig->lookup(&config, "map_log")) == NULL) {
 		libconfig->destroy(&config);
-		ShowError("log_config_read: map_log was not found in %s!\n", filename);
+		ShowError("log_config_read: map_log nao encontrada em %s!\n", filename);
 		return false;
 	}
 
@@ -669,25 +669,25 @@ bool log_config_read(const char *filename)
 	target = logs->config.sql_logs ? "table" : "file";
 
 	if (logs->config.enable_logs && logs->config.filter)
-		ShowInfo("Logging item transactions to %s '%s'.\n", target, logs->config.log_pick);
+		ShowInfo("Registrando transacoes de itens %s '%s'.\n", target, logs->config.log_pick);
 
 	if (logs->config.branch)
-		ShowInfo("Logging monster summon item usage to %s '%s'.\n", target, logs->config.log_branch);
+		ShowInfo("Registrando item de invocacao de monstro usado %s '%s'.\n", target, logs->config.log_branch);
 
 	if (logs->config.chat)
-		ShowInfo("Logging chat to %s '%s'.\n", target, logs->config.log_chat);
+		ShowInfo("Registrando chat %s '%s'.\n", target, logs->config.log_chat);
 
 	if (logs->config.commands)
-		ShowInfo("Logging commands to %s '%s'.\n", target, logs->config.log_gm);
+		ShowInfo("Registrando comandos %s '%s'.\n", target, logs->config.log_gm);
 
 	if (logs->config.mvpdrop)
-		ShowInfo("Logging MVP monster rewards to %s '%s'.\n", target, logs->config.log_mvpdrop);
+		ShowInfo("Registrando recompensa de MVP %s '%s'.\n", target, logs->config.log_mvpdrop);
 
 	if (logs->config.npc)
-		ShowInfo("Logging 'logmes' messages to %s '%s'.\n", target, logs->config.log_npc);
+		ShowInfo("Registrando 'logmes' mensagens %s '%s'.\n", target, logs->config.log_npc);
 
 	if (logs->config.zeny)
-		ShowInfo("Logging Zeny transactions to %s '%s'.\n", target, logs->config.log_zeny);
+		ShowInfo("Registrando transacoes de Zeny %s '%s'.\n", target, logs->config.log_zeny);
 
 	logs->config_done();
 

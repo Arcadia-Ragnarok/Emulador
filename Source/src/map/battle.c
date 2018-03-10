@@ -349,7 +349,7 @@ int64 battle_attr_fix(struct block_list *src, struct block_list *target, int64 d
 
 	if (def_type < ELE_NEUTRAL || def_type >= ELE_MAX ||
 		def_lv < 1 || def_lv > 4) {
-		ShowError("battle_attr_fix: unknown attr type: atk=%d def_type=%d def_lv=%d\n",atk_elem,def_type,def_lv);
+		ShowError("battle_attr_fix: tipo de atributo desconhecido: atk=%d def_type=%d def_lv=%d\n",atk_elem,def_type,def_lv);
 		return damage;
 	}
 
@@ -3444,7 +3444,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					if(mflag>0)
 						ad.damage/= mflag;
 					else
-						ShowError("0 enemies targeted by %d:%s, divide per 0 avoided!\n", skill_id, skill->get_name(skill_id));
+						ShowError("0 inimigos alvejados por %d:%s, divisao por 0 evitada!\n", skill_id, skill->get_name(skill_id));
 				}
 
 				if (sc){
@@ -3859,7 +3859,7 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 		if(mflag>0)
 			md.damage/= mflag;
 		else
-			ShowError("0 enemies targeted by %d:%s, divide per 0 avoided!\n", skill_id, skill->get_name(skill_id));
+			ShowError("0 inimigos alvejados por %d:%s, devisao por 0 evitada!\n", skill_id, skill->get_name(skill_id));
 	}
 
 	damage_div_fix(md.damage, md.div_);
@@ -4558,7 +4558,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 					if(wflag>0)
 						wd.damage/= wflag;
 					else
-						ShowError("0 enemies targeted by %d:%s, divide per 0 avoided!\n", skill_id, skill->get_name(skill_id));
+						ShowError("0 inimigos alvejados por %d:%s, devisao por 0 evitada!\n", skill_id, skill->get_name(skill_id));
 				}
 
 				//Add any bonuses that modify the base baseatk+watk (pre-skills)
@@ -5126,7 +5126,7 @@ struct Damage battle_calc_attack(int attack_type,struct block_list *bl,struct bl
 		case BF_MAGIC:  d = battle->calc_magic_attack(bl,target,skill_id,skill_lv,count);  break;
 		case BF_MISC:   d = battle->calc_misc_attack(bl,target,skill_id,skill_lv,count);   break;
 	default:
-		ShowError("battle_calc_attack: unknown attack type! %d\n",attack_type);
+		ShowError("battle_calc_attack: tipo de ataque desconhecido! %d\n",attack_type);
 		memset(&d,0,sizeof(d));
 		break;
 	}
@@ -6877,7 +6877,7 @@ bool battle_set_value_sub(int index, int value)
 {
 	Assert_retr(false, index >= 0);
 	if (value < battle_data[index].min || value > battle_data[index].max) {
-		ShowWarning("Value for setting '%s': %d is invalid (min:%d max:%d)! Defaulting to %d...\n",
+		ShowWarning("Valor da configuracao '%s': %d invalida (min:%d max:%d)! definindo para %d...\n",
 				battle_data[index].str, value, battle_data[index].min, battle_data[index].max, battle_data[index].defval);
 		value = battle_data[index].defval;
 	}
@@ -6947,50 +6947,50 @@ void battle_adjust_conf(void) {
 
 #if PACKETVER < 20100427
 	if( battle_config.feature_buying_store ) {
-		ShowWarning("Config/battle/client.cs buying_store is enabled but it requires PACKETVER 2010-04-27 or newer, disabling...\n");
+		ShowWarning("Config/battle/client.cs buying_store esta ativado mas e necessario PACKETVER 2010-04-27 ou superior, desabilitando...\n");
 		battle_config.feature_buying_store = 0;
 	}
 #endif
 
 #if PACKETVER < 20100803
 	if( battle_config.feature_search_stores ) {
-		ShowWarning("Config/battle/client.cs search_stores is enabled but it requires PACKETVER 2010-08-03 or newer, disabling...\n");
+		ShowWarning("Config/battle/client.cs search_stores esta ativado mas e necessario PACKETVER 2010-08-03 ou superior, desabilitando...\n");
 		battle_config.feature_search_stores = 0;
 	}
 #endif
 
 #if PACKETVER < 20130724
 	if( battle_config.feature_banking ) {
-		ShowWarning("Config/battle/client.cs banking is enabled but it requires PACKETVER 2013-07-24 or newer, disabling...\n");
+		ShowWarning("Config/battle/client.cs banking esta ativado mas e necessario PACKETVER 2013-07-24 ou superior, desabilitando...\n");
 		battle_config.feature_banking = 0;
 	}
 #endif
 
 #if PACKETVER < 20141022
 	if( battle_config.feature_roulette ) {
-		ShowWarning("Config/battle/client.cs roulette is enabled but it requires PACKETVER 2014-10-22 or newer, disabling...\n");
+		ShowWarning("Config/battle/client.cs roulette esta ativado mas e necessario PACKETVER 2014-10-22 ou superior, desabilitando...\n");
 		battle_config.feature_roulette = 0;
 	}
 #endif
 
 #if PACKETVER > 20120000 && PACKETVER < 20130515 /* exact date (when it started) not known */
 	if( battle_config.feature_auction == 1 ) {
-		ShowWarning("Config/battle/client.cs is enabled but it is not stable on PACKETVER "EXPAND_AND_QUOTE(PACKETVER)", disabling...\n");
-		ShowWarning("Config/battle/client.cs change value to '2' to silence this warning and maintain it enabled\n");
+		ShowWarning("Config/battle/client.cs esta ativado mas nao e estavel no PACKETVER "EXPAND_AND_QUOTE(PACKETVER)", desabilitando...\n");
+		ShowWarning("Config/battle/client.cs mudar o valor para '2' para silenciar esse aviso e mante-lo desabilitado\n");
 		battle_config.feature_auction = 0;
 	}
 #endif
 
 #if PACKETVER < 20131223
 	if (battle_config.mvp_exp_reward_message) {
-		ShowWarning("Config/battle/client.cs MVP EXP reward message is enabled but it requires PACKETVER 2013-12-23 or newer, disabling...\n");
+		ShowWarning("Config/battle/client.cs MVP EXP reward esta ativado mas e necessario PACKETVER 2013-12-23 ou superior, desabilitando...\n");
 		battle_config.mvp_exp_reward_message = 0;
 	}
 #endif
 
 #ifndef CELL_NOSTACK
 	if (battle_config.custom_cell_stack_limit != 1)
-		ShowWarning("Battle setting 'custom_cell_stack_limit' takes no effect as this server was compiled without Cell Stack Limit support.\n");
+		ShowWarning("Battle setting 'custom_cell_stack_limit'  nao tem efeito porque o servidor foi compilado sem suporte para o Cell Stack Limit.\n");
 #endif
 }
 
@@ -7032,7 +7032,7 @@ bool battle_config_read(const char *filename)
 			val = libconfig->setting_get_bool(setting);
 			break;
 		default: // Unsupported type
-			ShowWarning("Setting %s has unsupported type %d, ignoring...\n", config_name, type);
+			ShowWarning("Configuracao %s insuportavel tipo %d, ignorando...\n", config_name, type);
 			retval = false;
 			continue;
 		}

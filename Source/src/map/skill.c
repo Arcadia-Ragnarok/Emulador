@@ -123,7 +123,7 @@ int skill_get_index(int skill_id)
 		else if ( skill_id < 5044 ) // 3036 - 5000 are empty - 1020+57+348+35
 			skill_id = (1460) + skill_id - 5001;
 		else
-			ShowWarning("skill_get_index: skill id '%d' is not being handled!\n",skill_id);
+			ShowWarning("skill_get_index: id da skill '%d' nao esta sendo tratado!\n\n",skill_id);
 	}
 
 	// validate result
@@ -1159,7 +1159,7 @@ struct s_skill_unit_layout* skill_get_unit_layout(uint16 skill_id, uint16 skill_
 
 	nullpo_retr(&skill->dbs->unit_layout[0], src);
 	if (pos < -1 || pos >= MAX_SKILL_UNIT_LAYOUT) {
-		ShowError("skill_get_unit_layout: unsupported layout type %d for skill %d (level %d)\n", pos, skill_id, skill_lv);
+		ShowError("skill_get_unit_layout:  nao suportado tipo de layout %d para a habilidade %d (level %d)\n", pos, skill_id, skill_lv);
 		pos = cap_value(pos, 0, MAX_SQUARE_LAYOUT); // cap to nearest square layout
 	}
 
@@ -1175,7 +1175,7 @@ struct s_skill_unit_layout* skill_get_unit_layout(uint16 skill_id, uint16 skill_
 	else if( skill_id == WL_EARTHSTRAIN ) //Warlock
 		return &skill->dbs->unit_layout [skill->earthstrain_unit_pos + dir];
 
-	ShowError("skill_get_unit_layout: unknown unit layout for skill %d (level %d)\n", skill_id, skill_lv);
+	ShowError("skill_get_unit_layout: layout de unidade desconhecido para a habilidade %d (level %d)\n", skill_id, skill_lv);
 	return &skill->dbs->unit_layout[0]; // default 1x1 layout
 }
 
@@ -3556,7 +3556,7 @@ int skill_check_unit_range (struct block_list *bl, int x, int y, uint16 skill_id
 	int range = bl->type == BL_PC ? skill->get_unit_range(skill_id, skill_lv):0;
 	int layout_type = skill->get_unit_layout_type(skill_id,skill_lv);
 	if ( layout_type == - 1 || layout_type > MAX_SQUARE_LAYOUT ) {
-		ShowError("skill_check_unit_range: unsupported layout type %d for skill %d\n",layout_type,skill_id);
+		ShowError("skill_check_unit_range: tipo de layout %d nao suportado para a habilidade %d\n",layout_type,skill_id);
 		return 0;
 	}
 
@@ -3600,7 +3600,7 @@ int skill_check_unit_range2 (struct block_list *bl, int x, int y, uint16 skill_i
 		default: {
 				int layout_type = skill->get_unit_layout_type(skill_id,skill_lv);
 				if (layout_type==-1 || layout_type>MAX_SQUARE_LAYOUT) {
-					ShowError("skill_check_unit_range2: unsupported layout type %d for skill %d\n",layout_type,skill_id);
+					ShowError("skill_check_unit_range2: tipo de layout %d nao suportado para a habilidade %d\n",layout_type,skill_id);
 					return 0;
 				}
 				range = skill->get_unit_range(skill_id,skill_lv) + layout_type;
@@ -5453,7 +5453,7 @@ bool skill_castend_damage_id_unknown(struct block_list* src, struct block_list *
 	nullpo_retr(true, skill_lv);
 	nullpo_retr(true, tick);
 	nullpo_retr(true, tstatus);
-	ShowWarning("skill_castend_damage_id: Unknown skill used:%d\n", *skill_id);
+	ShowWarning("skill_castend_damage_id: Habilidade usada desconhecida:%d\n", *skill_id);
 	clif->skill_damage(src, bl, *tick, status_get_amotion(src), tstatus->dmotion,
 		0, abs(skill->get_num(*skill_id, *skill_lv)),
 		*skill_id, *skill_lv, skill->get_hit(*skill_id));
@@ -5497,7 +5497,7 @@ int skill_castend_id(int tid, int64 tick, int id, intptr_t data)
 
 	if(ud->skill_id != SA_CASTCANCEL && ud->skill_id != SO_SPELLFIST) {// otherwise handled in unit->skillcastcancel()
 		if( ud->skilltimer != tid ) {
-			ShowError("skill_castend_id: Timer mismatch %d!=%d!\n", ud->skilltimer, tid);
+			ShowError("skill_castend_id: Incompatibilidade de Timer %d!=%d!\n", ud->skilltimer, tid);
 			ud->skilltimer = INVALID_TIMER;
 			return 0;
 		}
@@ -5709,8 +5709,7 @@ int skill_castend_id(int tid, int64 tick, int id, intptr_t data)
 			unit->set_walkdelay(src, tick, battle_config.default_walk_delay+skill->get_walkdelay(ud->skill_id, ud->skill_lv), 1);
 
 		if(battle_config.skill_log && battle_config.skill_log&src->type)
-			ShowInfo("Type %u, ID %d skill castend id [id =%d, lv=%d, target ID %d]\n",
-				src->type, src->id, ud->skill_id, ud->skill_lv, target->id);
+			ShowInfo("Tipo %u, ID %d habilidade conjurada [id =%d, lv=%d, target ID %d]\n", src->type, src->id, ud->skill_id, ud->skill_lv, target->id);
 
 		map->freeblock_lock();
 
@@ -10534,7 +10533,7 @@ bool skill_castend_nodamage_id_unknown(struct block_list *src, struct block_list
 {
 	nullpo_retr(true, skill_id);
 	nullpo_retr(true, skill_lv);
-	ShowWarning("skill_castend_nodamage_id: Unknown skill used:%d\n", *skill_id);
+	ShowWarning("skill_castend_nodamage_id: Habilidade usada desconhecida:%d\n", *skill_id);
 	clif->skill_nodamage(src, bl, *skill_id, *skill_lv, 1);
 	map->freeblock_unlock();
 	return true;
@@ -10563,7 +10562,7 @@ int skill_castend_pos(int tid, int64 tick, int id, intptr_t data)
 
 	if( ud->skilltimer != tid )
 	{
-		ShowError("skill_castend_pos: Timer mismatch %d!=%d\n", ud->skilltimer, tid);
+		ShowError("skill_castend_pos: Incompatibilidade de Timer %d!=%d\n", ud->skilltimer, tid);
 		ud->skilltimer = INVALID_TIMER;
 		return 0;
 	}
@@ -10643,7 +10642,7 @@ int skill_castend_pos(int tid, int64 tick, int id, intptr_t data)
 		}
 
 		if(battle_config.skill_log && battle_config.skill_log&src->type)
-			ShowInfo("Type %u, ID %d skill castend pos [id =%d, lv=%d, (%d,%d)]\n",
+			ShowInfo("Tipo %u, ID %d pos habilidade conjurada [id =%d, lv=%d, (%d,%d)]\n",
 				src->type, src->id, ud->skill_id, ud->skill_lv, ud->skillx, ud->skilly);
 
 		if (ud->walktimer != INVALID_TIMER)
@@ -10775,7 +10774,7 @@ int skill_castend_map (struct map_session_data *sd, uint16 skill_id, const char 
 	pc_stop_attack(sd);
 
 	if(battle_config.skill_log && battle_config.skill_log&BL_PC)
-		ShowInfo("PC %d skill castend skill =%d map=%s\n",sd->bl.id,skill_id,mapname);
+		ShowInfo("PC %d habilidade conjurada =%d mapa=%s\n",sd->bl.id,skill_id,mapname);
 
 	if(strcmp(mapname,"cancel")==0) {
 		skill_failed(sd);
@@ -11664,7 +11663,7 @@ void skill_castend_pos2_effect_unknown(struct block_list* src, int *x, int *y, u
 }
 
 bool skill_castend_pos2_unknown(struct block_list* src, int *x, int *y, uint16 *skill_id, uint16 *skill_lv, int64 *tick, int *flag) {
-	ShowWarning("skill_castend_pos2: Unknown skill used:%d\n", *skill_id);
+	ShowWarning("skill_castend_pos2: Habilidade usada desconhecida:%d\n", *skill_id);
 	return true;
 }
 
@@ -11737,9 +11736,7 @@ bool skill_dance_switch(struct skill_unit* su, int flag)
 
 	if( flag == prevflag ) {
 		// protection against attempts to read an empty backup / write to a full backup
-		ShowError("skill_dance_switch: Attempted to %s (skill_id=%d, skill_lv=%d, src_id=%d).\n",
-			flag ? "read an empty backup" : "write to a full backup",
-			group->skill_id, group->skill_lv, group->src_id);
+		ShowError("skill_dance_switch: Tentativa de %s (skill_id=%d, skill_lv=%d, src_id=%d).\n", flag ? "leia um backup vazio" : "escreva para um backup completo", group->skill_id, group->skill_lv, group->src_id);
 		return false;
 	}
 	prevflag = flag;
@@ -12618,7 +12615,7 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, int6
 			case UNT_MANHOLE:
 				return 0;
 			default:
-				ShowError("skill_unit_onplace_timer: interval error (unit id %x)\n", (unsigned int)sg->unit_id);
+				ShowError("skill_unit_onplace_timer: erro de intervalo (unit id %x)\n", (unsigned int)sg->unit_id);
 				return 0;
 		}
 	}
@@ -16987,7 +16984,7 @@ int skill_get_new_group_id(void)
 				return skill->unit_group_newid++;// available
 		}
 		// full loop, nothing available
-		ShowFatalError("skill_get_new_group_id: All ids are taken. Exiting...");
+		ShowFatalError("skill_get_new_group_id: Todos ids estao ocupados. Saindo...");
 		exit(1);
 	}
 }
@@ -17062,7 +17059,7 @@ int skill_delunitgroup(struct skill_unit_group *group, const char *file, int lin
 	struct map_session_data *sd = NULL;
 
 	if( group == NULL ) {
-		ShowDebug("skill_delunitgroup: group is NULL (source=%s:%d, %s)! Please report this! (#3504)\n", file, line, func);
+		ShowDebug("skill_delunitgroup: Grupo NULL (source=%s:%d, %s)! Favor reportar! (#3504)\n", file, line, func);
 		return 0;
 	}
 
@@ -17070,7 +17067,7 @@ int skill_delunitgroup(struct skill_unit_group *group, const char *file, int lin
 	ud = unit->bl2ud(src);
 	sd = BL_CAST(BL_PC, src);
 	if (src == NULL || ud == NULL) {
-		ShowError("skill_delunitgroup: Group's source not found! (src_id: %d skill_id: %d)\n", group->src_id, group->skill_id);
+		ShowError("skill_delunitgroup: Grupo source nao encontrado! (src_id: %d skill_id: %d)\n", group->src_id, group->skill_id);
 		return 0;
 	}
 
@@ -17182,7 +17179,7 @@ int skill_delunitgroup(struct skill_unit_group *group, const char *file, int lin
 		ud->skillunit[j] = NULL;
 		ers_free(skill->unit_ers, group);
 	} else
-		ShowError("skill_delunitgroup: Group not found! (src_id: %d skill_id: %d)\n", group->src_id, group->skill_id);
+		ShowError("skill_delunitgroup: Grupo nao econtrado! (src_id: %d skill_id: %d)\n", group->src_id, group->skill_id);
 
 	return 1;
 }
@@ -17235,7 +17232,7 @@ struct skill_unit_group_tickset *skill_unitgrouptickset_search(struct block_list
 	}
 
 	if (j == -1) {
-		ShowWarning ("skill_unitgrouptickset_search: tickset is full. ( failed for skill '%s' on unit %u )\n", skill->get_name(group->skill_id), bl->type);
+		ShowWarning ("skill_unitgrouptickset_search: tickset esta cheio. ( falhou para a habilidade '%s' na unidade %u )\n", skill->get_name(group->skill_id), bl->type);
 		j = id % MAX_SKILLUNITGROUPTICKSET;
 	}
 
@@ -17558,7 +17555,7 @@ int skill_unit_move_sub(struct block_list* bl, va_list ap)
 					if( i < ARRAYLENGTH(skill->unit_temp) )
 						skill->unit_temp[i] = skill_id;
 					else
-						ShowError("skill_unit_move_sub: Reached limit of unit objects per cell!\n");
+						ShowError("skill_unit_move_sub: Alcancado o limite de objetos de unidade por celula!\n");
 				}
 
 			}
@@ -17585,7 +17582,7 @@ int skill_unit_move_sub(struct block_list* bl, va_list ap)
 				if( i < ARRAYLENGTH(skill->unit_temp) )
 					skill->unit_temp[i] = skill_id;
 				else
-					ShowError("skill_unit_move_sub: Reached limit of unit objects per cell!\n");
+					ShowError("skill_unit_move_sub: Alcancado o limite de objetos de unidade por celula!\n");
 			}
 		}
 
@@ -17877,7 +17874,7 @@ int skill_produce_mix(struct map_session_data *sd, uint16 skill_id, int nameid, 
 				if(y>x)y=x;
 				pc->delitem(sd, j, y, 0, DELITEM_NORMAL, LOG_TYPE_PRODUCE); // FIXME: is this the correct reason flag?
 			} else
-				ShowError("skill_produce_mix: material item error\n");
+				ShowError("skill_produce_mix: erro de alquimia de item\n");
 
 			x-=y;
 		}while( j>=0 && x>0 );
@@ -18794,7 +18791,7 @@ int skill_blockpc_end(int tid, int64 tick, int id, intptr_t data)
 		}
 
 		if (i == cd->cursor) {
-			ShowError("skill_blockpc_end: '%s': no data found for '%"PRIdPTR"'\n", sd->status.name, data);
+			ShowError("skill_blockpc_end: '%s': dados nao encontrados para '%"PRIdPTR"'\n", sd->status.name, data);
 		} else {
 			int cursor = 0;
 
@@ -18891,7 +18888,7 @@ int skill_blockpc_start_(struct map_session_data *sd, uint16 skill_id, int tick)
 	}
 
 	if( cd->cursor == MAX_SKILL_TREE ) {
-		ShowError("skill_blockpc_start: '%s' got over '%d' skill cooldowns, no room to save!\n",sd->status.name,MAX_SKILL_TREE);
+		ShowError("skill_blockpc_start: '%s' superado '%d' cooldowns de habilidade, sem espaco para salvar!\n",sd->status.name,MAX_SKILL_TREE);
 		return -1;
 	}
 
@@ -19330,7 +19327,7 @@ void skill_init_unit_layout (void)
 void skill_init_unit_layout_unknown(int skill_idx)
 {
 	Assert_retv(skill_idx >= 0 && skill_idx < MAX_SKILL_DB);
-	ShowError("unknown unit layout at skill %d\n", skill->dbs->db[skill_idx].nameid);
+	ShowError("Unidade de layout para skill %d desconhecida\n", skill->dbs->db[skill_idx].nameid);
 }
 
 int skill_block_check(struct block_list *bl, sc_type type , uint16 skill_id)
@@ -19614,11 +19611,11 @@ bool skill_parse_row_spellbookdb(char* split[], int columns, int current)
 	nameid = atoi(split[2]);
 
 	if( !skill->get_index(skill_id) || !skill->get_max(skill_id) )
-		ShowError("spellbook_db: Invalid skill ID %d\n", skill_id);
+		ShowError("spellbook_db: habilidade invalida %d\n", skill_id);
 	if ( !skill->get_inf(skill_id) )
-		ShowError("spellbook_db: Passive skills cannot be memorized (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("spellbook_db: Habilidades passivas nao podem ser memorizadas (%d/%s)\n", skill_id, skill->get_name(skill_id));
 	if( points < 1 )
-		ShowError("spellbook_db: PreservePoints have to be 1 or above! (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("spellbook_db: Pontos de Preservar precisa ser 1 ou mais! (%d/%s)\n", skill_id, skill->get_name(skill_id));
 	else {
 		skill->dbs->spellbook_db[current].skill_id = skill_id;
 		skill->dbs->spellbook_db[current].point = points;
@@ -19641,19 +19638,19 @@ bool skill_parse_row_improvisedb(char* split[], int columns, int current)
 	j = atoi(split[1]);
 
 	if( !skill->get_index(skill_id) || !skill->get_max(skill_id) ) {
-		ShowError("skill_improvise_db: Invalid skill ID %d\n", skill_id);
+		ShowError("skill_improvise_db: ID de Habilidade %d invalido\n", skill_id);
 		return false;
 	}
 	if ( !skill->get_inf(skill_id) ) {
-		ShowError("skill_improvise_db: Passive skills cannot be casted (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("skill_improvise_db: Habilidades passivas nao podem ser conjuradas (%d/%s)\n", skill_id, skill->get_name(skill_id));
 		return false;
 	}
 	if( j < 1 ) {
-		ShowError("skill_improvise_db: Chances have to be 1 or above! (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("skill_improvise_db: Chance tem que ser 1 ou acima! (%d/%s)\n", skill_id, skill->get_name(skill_id));
 		return false;
 	}
 	if( current >= MAX_SKILL_IMPROVISE_DB ) {
-		ShowError("skill_improvise_db: Maximum amount of entries reached (%d), increase MAX_SKILL_IMPROVISE_DB\n",MAX_SKILL_IMPROVISE_DB);
+		ShowError("skill_improvise_db: Quantidade maxima de entradas alcancada (%d), aumente MAX_SKILL_IMPROVISE_DB\n",MAX_SKILL_IMPROVISE_DB);
 		return false;
 	}
 	skill->dbs->improvise_db[current].skill_id = skill_id;
@@ -19670,11 +19667,11 @@ bool skill_parse_row_magicmushroomdb(char* split[], int column, int current)
 	nullpo_retr(false, split);
 	skill_id = atoi(split[0]);
 	if( !skill->get_index(skill_id) || !skill->get_max(skill_id) ) {
-		ShowError("magicmushroom_db: Invalid skill ID %d\n", skill_id);
+		ShowError("magicmushroom_db: ID de Habilidade %d invalida\n", skill_id);
 		return false;
 	}
 	if ( !skill->get_inf(skill_id) ) {
-		ShowError("magicmushroom_db: Passive skills cannot be casted (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("magicmushroom_db: Habilidades passivas nao podem ser conjuradas (%d/%s)\n", skill_id, skill->get_name(skill_id));
 		return false;
 	}
 
@@ -19690,11 +19687,11 @@ bool skill_parse_row_abradb(char* split[], int columns, int current)
 	nullpo_retr(false, split);
 	skill_id = atoi(split[0]);
 	if( !skill->get_index(skill_id) || !skill->get_max(skill_id) ) {
-		ShowError("abra_db: Invalid skill ID %d\n", skill_id);
+		ShowError("abra_db: ID de Habilidade %d invalida\n", skill_id);
 		return false;
 	}
 	if ( !skill->get_inf(skill_id) ) {
-		ShowError("abra_db: Passive skills cannot be casted (%d/%s)\n", skill_id, skill->get_name(skill_id));
+		ShowError("abra_db: Habilidades passivas nao podem ser conjuradas (%d/%s)\n", skill_id, skill->get_name(skill_id));
 		return false;
 	}
 
@@ -19722,12 +19719,12 @@ bool skill_parse_row_changematerialdb(char* split[], int columns, int current)
 	}
 
 	if( x >= MAX_SKILL_PRODUCE_DB ){
-		ShowError("changematerial_db: Not supported item ID(%d) for Change Material. \n", skill_id);
+		ShowError("changematerial_db: ID de Item (%d) nao suportado para Reacao Alquimica. \n", skill_id);
 		return false;
 	}
 
 	if( current >= MAX_SKILL_PRODUCE_DB ) {
-		ShowError("skill_changematerial_db: Maximum amount of entries reached (%d), increase MAX_SKILL_PRODUCE_DB\n",MAX_SKILL_PRODUCE_DB);
+		ShowError("skill_changematerial_db: Numero maximo de entradas alcancado (%d), aumente MAX_SKILL_PRODUCE_DB\n",MAX_SKILL_PRODUCE_DB);
 		return false;
 	}
 
@@ -19742,8 +19739,8 @@ bool skill_parse_row_changematerialdb(char* split[], int columns, int current)
 	return true;
 }
 
-#define skilldb_duplicate_warning(name, setting, skill) (ShowError("skill_read_skilldb: Duplicate entry '%s' in setting '%s' for Skill Id %d in '%s', skipping...\n", name, setting, skill, "Database/Skill_DB/SkillList.conf"))
-#define skilldb_invalid_error(name, setting, skill) (ShowError("skill_read_skilldb: Invalid entry '%s' in setting '%s' for Skill Id %d in '%s', skipping...\n", name, setting, skill, "Database/Skill_DB/SkillList.conf"))
+#define skilldb_duplicate_warning(name, setting, skill) (ShowError("skill_read_skilldb: Entrada duplicada '%s' na configuracao '%s' para id de habilidade %d em '%s', pulando...\n", name, setting, skill, "Database/Skill_DB/SkillList.conf"))
+#define skilldb_invalid_error(name, setting, skill) (ShowError("skill_read_skilldb: Entrada duplicada '%s' na configuracao '%s' para id de habilidade %d em '%s', pulando...\n", name, setting, skill, "Database/Skill_DB/SkillList.conf"))
 
 /**
  * Sets Level based configuration for skill groups from SkillList.conf [ Smokexyz ]
@@ -20388,7 +20385,7 @@ int skill_validate_weapontype_sub(const char *type, bool on, struct s_skill_db *
 	} else if (strcmpi(type, "All") == 0) {
 		sk->weapon = 0;
 	} else {
-		ShowError("Item %d. Unknown weapon type %s\n", sk->nameid, type);
+		ShowError("Item %d. Tipo de arma desconhecida %s\n", sk->nameid, type);
 		return 1; // invalid type
 	}
 
@@ -20588,7 +20585,7 @@ void skill_validate_item_requirements(struct config_setting_t *conf, struct s_sk
 			if( type[0] == 'I' && type[1] == 'D' && itemdb->exists(atoi(type+2)) )
 				sk->itemid[itx] = atoi(type+2);
 			else if(!script->get_constant(type, &sk->itemid[itx])) {
-				ShowWarning("skill_read_skilldb: Invalid required Item '%s' given for skill Id %d in '%s', skipping...\n",type, sk->nameid, "Skill_DB/SkillList.conf");
+				ShowWarning("skill_read_skilldb: Item necessario '%s' invalido para habilidade Id %d em '%s', pulando...\n",type, sk->nameid, "Skill_DB/SkillList.conf");
 				continue;
 			}
 
@@ -20779,11 +20776,10 @@ bool skill_validate_skilldb(struct s_skill_db *sk, const char *source)
 	nullpo_retr(false, sk);
 	idx = skill->get_index(sk->nameid);
 	if (idx  == 0) {
-		ShowWarning("skill_validate_skilldb: Invalid skill Id %d provided in '%s'! ... skipping\n", sk->nameid, source);
-		ShowInfo("It is possible that the skill Id is 0 or unavailable (interferes with guild/homun/mercenary skill mapping).\n");
+		ShowWarning("skill_validate_skilldb: Id de habilidade %d invalida contanto em '%s'! ... pulando\n", sk->nameid, source);
 		return false;
 	} else if (sk->max <= 0) {
-		ShowError("skill_validate_skilldb: Invalid Max Level %d specified for skill Id %d in '%s', skipping...\n", sk->max, sk->nameid, source);
+		ShowError("skill_validate_skilldb: Invalido Max Level %d especificado para habilidade %d em '%s', pulando...\n", sk->max, sk->nameid, source);
 		return false;
 	}
 
@@ -20821,7 +20817,7 @@ bool skill_read_skilldb(const char *filename)
 
 	// Possible Syntax error.
 	if ((sk=libconfig->setting_get_member(skilldb.root, "skill_db")) == NULL) {
-		ShowError("skill_read_skilldb: Skill DB could not be loaded, please check '%s'.\n", filepath);
+		ShowError("skill_read_skilldb: Skill DB nao pode ser carregado, por favor confira '%s'.\n", filepath);
 		libconfig->destroy(&skilldb);
 		return false;
 	}
@@ -20833,25 +20829,25 @@ bool skill_read_skilldb(const char *filename)
 
 		/* Skill ID */
 		if (!libconfig->setting_lookup_int(conf, "Id", &skill_id)) {
-			ShowError("skill_read_skilldb: Skill Id not specified for entry %d in '%s', skipping...\n", index, filepath );
+			ShowError("skill_read_skilldb: Id de habilidade nao especificada para entrada %d em '%s', pulando...\n", index, filepath );
 			continue;
 		}
 
 		tmp_db.nameid = skill_id;
 
 		if((idx = skill->get_index(skill_id)) == 0) {
-			ShowError("skill_read_skilldb: Skill Id %d is out of range, or within a reserved range (for guild, homunculus, mercenary or elemental skills). skipping...\n", idx);
+			ShowError("skill_read_skilldb: Id da habilidade %d fora do alcance, ou dentro de uma gama reservada (para habilidades de guild, homunculus, mercenary ou elemental). pulando...\n", idx);
 			continue;
 		}
 
 		if (duplicate[idx]) {
-			ShowWarning("skill_read_skilldb: Duplicate Skill Id %d in entry %d in '%s', skipping...\n", skill_id, index, filepath);
+			ShowWarning("skill_read_skilldb: Habilidade de Id %d duplicada na entrada %d em '%s', pulando...\n", skill_id, index, filepath);
 			continue;
 		}
 
 		/* Skill Name Constant */
 		if (!libconfig->setting_lookup_mutable_string(conf, "Name", tmp_db.name, sizeof(tmp_db.name))) {
-			ShowError("skill_read_skilldb: Name not specified for skill Id %d in '%s', skipping...\n", skill_id, filepath);
+			ShowError("skill_read_skilldb: Nome nao especificado para habilidade %d em '%s', pulando...\n", skill_id, filepath);
 			continue;
 		}
 
@@ -20860,7 +20856,7 @@ bool skill_read_skilldb(const char *filename)
 
 		/* Max Level */
 		if (!libconfig->setting_lookup_int(conf, "MaxLevel", &temp)) {
-			ShowError("skill_read_skilldb: MaxLevel not specified for skill Id %d in '%s', skipping...\n", skill_id, filepath);
+			ShowError("skill_read_skilldb: MaxLevel nao especificado para habilidade %d em '%s', pulando...\n", skill_id, filepath);
 			continue;
 		} else {
 			tmp_db.max = temp;

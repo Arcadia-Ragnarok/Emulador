@@ -248,7 +248,7 @@ int intif_wis_message(struct map_session_data *sd, const char *nick, const char 
 	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
 
 	if (battle_config.etc_log)
-		ShowInfo("intif_wis_message from %s to %s (message: '%s')\n", sd->status.name, nick, mes);
+		ShowInfo("intif_wis_message de %s para %s (mensagem: '%s')\n", sd->status.name, nick, mes);
 
 	return 0;
 }
@@ -290,7 +290,7 @@ int intif_wis_message_to_gm(char *wisp_name, int permission, char *mes)
 	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
 
 	if (battle_config.etc_log)
-		ShowNotice("intif_wis_message_to_gm: from: '%s', required permission: %d, message: '%s'.\n", wisp_name, permission, mes);
+		ShowNotice("intif_wis_message_to_gm: de: '%s', permissao requisitada: %d, mensagem: '%s'.\n", wisp_name, permission, mes);
 
 	return 0;
 }
@@ -331,7 +331,7 @@ int intif_saveregistry(struct map_session_data *sd)
 			continue;
 
 		if (strlen(varname) > SCRIPT_VARNAME_LENGTH) {
-			ShowError("Variable name too big: %s\n", varname);
+			ShowError("Nome da variavel muito grande: %s\n", varname);
 			continue;
 		}
 		src = DB->data2ptr(data);
@@ -472,12 +472,12 @@ void intif_parse_account_storage(int fd)
 	payload_size = RFIFOW(fd, 2) - 8;
 
 	if ((account_id = RFIFOL(fd, 4)) == 0 || (sd = map->id2sd(account_id)) == NULL) {
-		ShowError("intif_parse_account_storage: Session pointer was null for account id %d!\n", account_id);
+		ShowError("intif_parse_account_storage: Ponteiro de sessao nulo para id de conta %d!\n", account_id);
 		return;
 	}
 
 	if (sd->storage.received == true) {
-		ShowError("intif_parse_account_storage: Multiple calls from the inter-server received.\n");
+		ShowError("intif_parse_account_storage: Chamadas multiplas do inter-server recebido.\n");
 		return;
 	}
 
@@ -551,7 +551,7 @@ void intif_parse_account_storage_save_ack(int fd)
 		return; // character is most probably offline.
 
 	if (saved == 0) {
-		ShowError("intif_parse_account_storage_save_ack: Storage has not been saved! (AID: %d)\n", account_id);
+		ShowError("intif_parse_account_storage_save_ack: Storage nao pode ser salvo! (AID: %d)\n", account_id);
 		return;
 	}
 

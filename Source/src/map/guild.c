@@ -92,7 +92,7 @@ bool guild_read_guildskill_tree_db(char* split[], int columns, int current)
 
 	if( id < 0 || id >= MAX_GUILDSKILL )
 	{
-		ShowWarning("guild_read_guildskill_tree_db: Invalid skill id %d.\n", skill_id);
+		ShowWarning("guild_read_guildskill_tree_db: ID de habilidade invalida %d.\n", skill_id);
 		return false;
 	}
 
@@ -445,7 +445,7 @@ int guild_check_member(const struct guild *g)
 		if (i == INDEX_NOT_FOUND) {
 			sd->status.guild_id=0;
 			sd->guild_emblem_id=0;
-			ShowWarning("guild: check_member %d[%s] is not member\n",sd->status.account_id,sd->status.name);
+			ShowWarning("guild: check_member %d[%s] nao e um membro\n",sd->status.account_id,sd->status.name);
 		}
 	}
 	mapit->free(iter);
@@ -517,7 +517,7 @@ int guild_recv_info(const struct guild *sg)
 	g->instances = instances_save;
 
 	if(g->max_member > MAX_GUILD) {
-		ShowError("guild_recv_info: Received guild with %d members, but MAX_GUILD is only %d. Extra guild-members have been lost!\n", g->max_member, MAX_GUILD);
+		ShowError("guild_recv_info: Recebido guild com %d membros, mas MAX_GUILD e apenas de %d. Membros extras foram perdidos!\n", g->max_member, MAX_GUILD);
 		g->max_member = MAX_GUILD;
 	}
 
@@ -725,7 +725,7 @@ int guild_member_added(int guild_id,int account_id,int char_id,int flag) {
 	if(sd==NULL || sd->guild_invite==0){
 		// cancel if player not present or invalid guild_id invitation
 		if (flag == 0) {
-			ShowError("guild: member added error %d is not online\n",account_id);
+			ShowError("guild: erro em adicao do membro %d, nao esta conectado\n",account_id);
 			intif->guild_leave(guild_id,account_id,char_id,0,"** Data Error **");
 		}
 		return 0;
@@ -922,7 +922,7 @@ int guild_send_memberinfoshort(struct map_session_data *sd,int online)
 		if (i != INDEX_NOT_FOUND)
 			g->member[i].sd=NULL;
 		else
-			ShowError("guild_send_memberinfoshort: Failed to locate member %d:%d in guild %d!\n", sd->status.account_id, sd->status.char_id, g->guild_id);
+			ShowError("guild_send_memberinfoshort: Falha em localizar membro %d:%d na guild %d!\n", sd->status.account_id, sd->status.char_id, g->guild_id);
 		return 0;
 	}
 
@@ -965,7 +965,7 @@ int guild_recv_memberinfoshort(int guild_id, int account_id, int char_id, int on
 			sd->status.guild_id=0;
 			sd->guild_emblem_id=0;
 		}
-		ShowWarning("guild: not found member %d,%d on %d[%s]\n", account_id,char_id,guild_id,g->name);
+		ShowWarning("guild: nao foram encontrado membros %d,%d em %d[%s]\n", account_id,char_id,guild_id,g->name);
 		return 0;
 	}
 
@@ -1857,7 +1857,7 @@ int guild_break(struct map_session_data *sd, const char *name)
 				case GD_SOULCOLD:
 				case GD_HAWKEYES:
 					if( count == 4 )
-						ShowWarning("guild_break:'%s' got more than 4 guild aura instances! (%d)\n",sd->status.name,ud->skillunit[i]->skill_id);
+						ShowWarning("guild_break:'%s' obteve mais de 4 guild aura instances! (%d)\n",sd->status.name,ud->skillunit[i]->skill_id);
 					else
 						groups[count++] = ud->skillunit[i];
 					break;
@@ -1897,7 +1897,7 @@ void guild_castle_map_init(void)
 		}
 		dbi_destroy(iter);
 		if (intif->guild_castle_dataload(num, castle_ids))
-			ShowStatus("Requested '"CL_WHITE"%d"CL_RESET"' guild castles from char-server...\n", num);
+			ShowStatus("Requisitado '"CL_WHITE"%d"CL_RESET"' castelos de guild do char-server...\n", num);
 		aFree(castle_ids);
 	}
 }
@@ -1915,7 +1915,7 @@ int guild_castledatasave(int castle_id, int index, int value)
 	struct guild_castle *gc = guild->castle_search(castle_id);
 
 	if (gc == NULL) {
-		ShowWarning("guild_castledatasave: guild castle '%d' not found\n", castle_id);
+		ShowWarning("guild_castledatasave: castelo de guild '%d' nao encontrado\n", castle_id);
 		return 0;
 	}
 
@@ -1961,7 +1961,7 @@ int guild_castledatasave(int castle_id, int index, int value)
 			gc->guardian[index-10].visible = value;
 			break;
 		}
-		ShowWarning("guild_castledatasave: index = '%d' is out of allowed range\n", index);
+		ShowWarning("guild_castledatasave: index = '%d' esta fora do intervalo permitido\n", index);
 		return 0;
 	}
 
@@ -2019,7 +2019,7 @@ int guild_castledataloadack(int len, const struct guild_castle *gc)
 		for( i = 0; i < n; i++, gc++ ) {
 			struct guild_castle *c = guild->castle_search(gc->castle_id);
 			if (!c) {
-				ShowError("guild_castledataloadack: castle id=%d not found.\n", gc->castle_id);
+				ShowError("guild_castledataloadack: id do castelo=%d nao encontrado.\n", gc->castle_id);
 				continue;
 			}
 
@@ -2036,7 +2036,7 @@ int guild_castledataloadack(int len, const struct guild_castle *gc)
 			}
 		}
 	}
-	ShowStatus("Received '"CL_WHITE"%d"CL_RESET"' guild castles from char-server.\n", n);
+	ShowStatus("Recebido '"CL_WHITE"%d"CL_RESET"' castelos de guild do char-server.\n", n);
 	return 0;
 }
 
@@ -2047,7 +2047,7 @@ void guild_agit_start(void)
 {
 	// Run All NPC_Event[OnAgitStart]
 	int c = npc->event_doall("OnAgitStart");
-	ShowStatus("NPC_Event:[OnAgitStart] Run (%d) Events by @AgitStart.\n",c);
+	ShowStatus("NPC_Event:[OnAgitStart] Executado (%d) Eventos de @AgitStart.\n",c);
 }
 
 /*====================================================
@@ -2057,7 +2057,7 @@ void guild_agit_end(void)
 {
 	// Run All NPC_Event[OnAgitEnd]
 	int c = npc->event_doall("OnAgitEnd");
-	ShowStatus("NPC_Event:[OnAgitEnd] Run (%d) Events by @AgitEnd.\n",c);
+	ShowStatus("NPC_Event:[OnAgitEnd] Executado (%d) Eventos de @AgitEnd.\n",c);
 }
 
 /*====================================================
@@ -2067,7 +2067,7 @@ void guild_agit2_start(void)
 {
 	// Run All NPC_Event[OnAgitStart2]
 	int c = npc->event_doall("OnAgitStart2");
-	ShowStatus("NPC_Event:[OnAgitStart2] Run (%d) Events by @AgitStart2.\n",c);
+	ShowStatus("NPC_Event:[OnAgitStart2] Executado (%d) Eventos de @AgitStart2.\n",c);
 }
 
 /*====================================================
@@ -2077,7 +2077,7 @@ void guild_agit2_end(void)
 {
 	// Run All NPC_Event[OnAgitEnd2]
 	int c = npc->event_doall("OnAgitEnd2");
-	ShowStatus("NPC_Event:[OnAgitEnd2] Run (%d) Events by @AgitEnd2.\n",c);
+	ShowStatus("NPC_Event:[OnAgitEnd2] Executados (%d) Eventos de @AgitEnd2.\n",c);
 }
 
 // How many castles does this guild have?
