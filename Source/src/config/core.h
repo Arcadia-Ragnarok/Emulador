@@ -50,9 +50,6 @@
 /// Maximum number of characters 'CONSOLE_INPUT' will support per line.
 #define MAX_CONSOLE_INPUT 150
 
-/// We kindly ask you to consider keeping it enabled.
-//#define STATS_OPT_OUT
-
 /// Uncomment to enable the Cell Stack Limit mod.
 /// It's only config is the battle_config custom_cell_stack_limit.
 /// Only chars affected are those defined in BL_CHAR

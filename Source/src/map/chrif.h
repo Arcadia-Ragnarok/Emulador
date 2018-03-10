@@ -117,7 +117,6 @@ struct chrif_interface {
 	bool (*divorce) (int partner_id1, int partner_id2);
 
 	bool (*removefriend) (int char_id, int friend_id);
-	void (*send_report) (char* buf, int len);
 
 	bool (*flush) (void);
 	void (*skillid2idx) (int fd);
