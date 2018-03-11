@@ -13,15 +13,20 @@
 \*-----------------------------------------------------------------*/
 
 malangdo,151,120,3	script	Menestrel Andarilho#mal	4_M_MINSTREL,{
-	mes("[Menestrel]\n Que gato preguiçoso me faz querer cochilar o dia todo.");
+	mes "[Menestrel]";
+	mes "Que gato preguiçoso me faz querer cochilar o dia todo.";
 	next;
-	mes("[Menestrel]\n Assim a vida tão simples.");
+	mes "[Menestrel]";
+	mes "Assim a vida tão simples.";
 	close;
 }
 
 // ------------------------------------------------------------------
 malangdo,149,120,5	script	Cigana Andarilha#mal	4_F_WANDERER,5,1,{
-	mes("[Cigana]\n Os gatos que vivem em aqui são tão enérgicos.\n É estranho, eles me fazem querer dançar todo o dia?\n La di dah di dah!");
+	mes "[Cigana]";
+	mes "Os gatos que vivem em aqui são tão enérgicos.";
+	mes "É estranho, eles me fazem querer dançar todo o dia?";
+	mes "La di dah di dah!";
 	close;
 	OnTouch:
 	switch(rand(5)) {
@@ -48,15 +53,24 @@ malangdo,149,120,5	script	Cigana Andarilha#mal	4_F_WANDERER,5,1,{
 // ------------------------------------------------------------------
 malangdo,216,168,3	script	Treinador de Gato#mal	4_F_ALCHE_A,{
 	emotion(e_gg);
-	mes("[Treinador de Gato]\n Meu cartão, ^FF0000Silvervine Fruit^000000.\n Pode fazer todos os gatos em Malangdo meus escravos!");
+	mes "[Treinador de Gato]";
+	mes "Meu cartão, ^FF0000Silvervine Fruit^000000.";
+	mes "Pode fazer todos os gatos em Malangdo meus escravos!";
 	next;
-	mes("[Treinador de Gato]\n É um artigo raro!\n Estes gatos de cudly não resistiriam a isto.");
+	mes "[Treinador de Gato]";
+	mes "É um artigo raro!";
+	mes "Estes gatos de cudly não resistiriam a isto.";
 	next;
-	select("Onde eu posso conseguir isso...\n ^ FF0000Silvervine Fruit^000000?");
-	mes("[Treinador de Gato]\n Por que eu lhe falaria quando eu posso ter-lo somente para mim?\n Não lhe conto nem por todo Zeny do mundo!");
+	select("Onde eu posso conseguir isso...");
+	mes "^ FF0000Silvervine Fruit^000000?";
+	mes "[Treinador de Gato]";
+	mes "Por que eu lhe falaria quando eu posso ter-lo somente para mim?";
+	mes "Não lhe conto nem por todo Zeny do mundo!";
 	next;
 	emotion(e_gg);
-	mes("[Treinador de Gato]\n Todos os gatos de Malangdo serão meus!\n Muahahahaha!");
+	mes "[Treinador de Gato]";
+	mes "Todos os gatos de Malangdo serão meus!";
+	mes "Muahahahaha!";
 	close;
 }
 malangdo,164,203,3	duplicate(Treinador de Gato#mal)	Treinador de Gato#mal2	4_M_YURI

@@ -63,17 +63,21 @@ bat_c01,142,58,3	duplicate(KvmEffect)	#KvmEffect-r7	HIDDEN_WARP_NPC
 //-------------------------------------------------------------------
 // Azul
 bat_c01,51,130,5	script	Axl Rose#K_blueTean	4_M_KY_HEAD,{
-	mes("[Axl Rose]");
+	mes "[Axl Rose]";
 	if ($@KvmScoreBlue > $@KvmScoreRed) {
-		mes("Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!\n Muito obrigado pelo seu esforço e está aqui sua recompensa!");
+		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
+		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
 		getitem(War_Badge, 2);
 	} else if ($@KvmScoreBlue < $@KvmScoreRed) {
-		mes("Infelismente o exêrcito de Croix venceu.\n Mas essa guerra está longe de terminar e essa só foi mais uma batalha!");
+		mes "Infelismente o exêrcito de Croix venceu.";
+		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
-		mes("[Axl Rose]\n Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.");
+		mes "[Axl Rose]";
+		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
 		getitem(War_Badge, 1);
 	} else {
-		mes("Nossa essa batalha foi intença!\n Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.");
+		mes "Nossa essa batalha foi intença!";
+		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
 		getitem(War_Badge, 1);
 	}
 	next;
@@ -89,17 +93,21 @@ bat_c01,51,130,5	script	Axl Rose#K_blueTean	4_M_KY_HEAD,{
 //-------------------------------------------------------------------
 // Vermelho
 bat_c01,148,53,1	script	Swandery#K_redTean	4_M_CRU_HEAD,{
-	mes("[Swandery]");
+	mes "[Swandery]";
 	if ($@KvmScoreRed > $@KvmScoreBlue) {
-		mes("Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!\n Muito obrigado pelo seu esforço e está aqui sua recompensa!");
+		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
+		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
 		getitem(War_Badge, 2);
 	} else if ($@KvmScoreRed < $@KvmScoreBlue) {
-		mes("Infelismente o exêrcito de Guillaume venceu.\n Mas essa guerra está longe de terminar e essa só foi mais uma batalha!");
+		mes "Infelismente o exêrcito de Guillaume venceu.";
+		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
-		mes("[Swandery]\n Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.");
+		mes "[Swandery]";
+		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
 		getitem(War_Badge, 1);
 	} else {
-		mes("Nossa essa batalha foi intença!\n Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.");
+		mes "Nossa essa batalha foi intença!";
+		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
 		getitem(War_Badge, 1);
 	}
 	next;

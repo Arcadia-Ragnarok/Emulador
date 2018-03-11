@@ -13,17 +13,23 @@
 \*-----------------------------------------------------------------*/
 
 prontera,165,60,2	script	Aprendiz de Artesão#prtEcht	1_F_MERCHANT_01,{
-	mes("[Aprendiz de Artesão]");
+	mes "[Aprendiz de Artesão]";
 	if (Zeny >= 400000) {
-		mes(" Venho estudando maneiras de melhorar uma armadura para aumentar a sua real capacidade.");
+		mes " Venho estudando maneiras de melhorar uma armadura para aumentar a sua real capacidade.";
 		next;
-		mes("[Aprendiz de Artesão]\n Encantar é uma habilidade incrível que funde um poder misterioso em um espaço escondido da armadura.");
+		mes "[Aprendiz de Artesão]";
+		mes "Encantar é uma habilidade incrível que funde um poder misterioso em um espaço escondido da armadura.";
 		next;
-		mes("[Aprendiz de Artesão]\n No entanto, você tem que ter em mente que, se houver duas armaduras do mesmo tipo em seu inventário.\n O encantamento será aplicado na ordem em que estão colocados no seu inventário.");
+		mes "[Aprendiz de Artesão]";
+		mes "No entanto, você tem que ter em mente que, se houver duas armaduras do mesmo tipo em seu inventário.";
+		mes "O encantamento será aplicado na ordem em que estão colocados no seu inventário.";
 		next;
-		mes("[Aprendiz de Artesão]\n Nesse caso, o encantamento pode ser aplicado a um item que você não queira encantar.\n Então basta trazer ^5555ffUMA Armadura^000000 que você deseja, podendo então encantar com segurança.");
+		mes "[Aprendiz de Artesão]";
+		mes "Nesse caso, o encantamento pode ser aplicado a um item que você não queira encantar.";
+		mes "Então basta trazer ^5555ffUMA Armadura^000000 que você deseja, podendo então encantar com segurança.";
 		next;
-		mes("[Aprendiz de Artesão]\n Eu não sou responsável por aquilo que pode acontecer se você tiver mais de um equipamento do mesmo tipo em seu inventário.");
+		mes "[Aprendiz de Artesão]";
+		mes "Eu não sou responsável por aquilo que pode acontecer se você tiver mais de um equipamento do mesmo tipo em seu inventário.";
 		next;
 		switch(select("Armadura sem Slot.","Armadura com Slot.","Armadura de Alto Nível.","Talvez na próxima.")) {
 			case 1:
@@ -40,7 +46,8 @@ prontera,165,60,2	script	Aprendiz de Artesão#prtEcht	1_F_MERCHANT_01,{
 			.@j = 60;
 			break;
 			case 4:
-			mes("[Aprendiz de Artesão]\n Por favor, volte quando você tiver algum interesse em encantar sua armadura.");
+			mes "[Aprendiz de Artesão]";
+			mes "Por favor, volte quando você tiver algum interesse em encantar sua armadura.";
 			close;
 		}
 		.@menu$ = "";
@@ -50,32 +57,45 @@ prontera,165,60,2	script	Aprendiz de Artesão#prtEcht	1_F_MERCHANT_01,{
 		callsub(S_EnchantArmor, .@items[select(.@menu$)-1], .@j);
 		end;
 	}
-	mes( "Estou encarregado de encantar armaduras.\n Basta pôr, estive estudando formas de aumentar o poder das armaduras.");
+	mes "Estou encarregado de encantar armaduras.";
+	mes "Basta pôr, estive estudando formas de aumentar o poder das armaduras.";
 	next;
-	mes("[Aprendiz de Artesão]\n Se por acaso, você quiser encantar a sua armadura, traga-me 400,000 zeny e a armadura que pretende encantar e então tudo estará pronto.");
+	mes "[Aprendiz de Artesão]";
+	mes "Se por acaso, você quiser encantar a sua armadura, traga-me 400,000 zeny e a armadura que pretende encantar e então tudo estará pronto.";
 	close;
 
 	S_EnchantArmor:
 	.@itemid = getarg(0);
 	.@failrate = getarg(1);
-	mes("[Aprendiz de Artesão]");
+	mes "[Aprendiz de Artesão]";
 	if (countitem(.@itemid) == 1) {
-		mes(" Adicionar um slot irá lhe custar 400,000 zeny.\n E haverá uma opção aleatória encantamento.\n Naturalmente, há uma chance de quebrar sua armadura.");
+		mes " Adicionar um slot irá lhe custar 400,000 zeny.";
+		mes "E haverá uma opção aleatória encantamento.";
+		mes "Naturalmente, há uma chance de quebrar sua armadura.";
 		next;
-		mes("[Aprendiz de Artesão]\n Primeiro e mais importante.\n ^FF5555Refinamento existente ou carta na armadura serão perdidos.^000000\n Você ainda quer tentar encantar?");
+		mes "[Aprendiz de Artesão]";
+		mes "Primeiro e mais importante.";
+		mes "^FF5555Refinamento existente ou carta na armadura serão perdidos.^000000";
+		mes "Você ainda quer tentar encantar?";
 		next;
 		if(select("Deixe-me pensar mais.", "Vá em frente.") == 1) {
-			mes("[Aprendiz de Artesão]\n Bem, eu não posso culpá-lo.\n Segurança em primeiro lugar, certo?\n Agora tenha um bom dia.");
+			mes "[Aprendiz de Artesão]";
+			mes "Bem, eu não posso culpá-lo.";
+			mes "Segurança em primeiro lugar, certo?";
+			mes "Agora tenha um bom dia.";
 			close;
 		}
-		mes("[Aprendiz de Artesão]\n Então, um aventureiro hein?\n Bom, vamos.");
+		mes "[Aprendiz de Artesão]";
+		mes "Então, um aventureiro hein?";
+		mes "Bom, vamos.";
 		close2;
 		specialeffect(EF_MAPPILLAR, AREA, playerattached());
 		if (Zeny < 400000) {
-			mes("[Aprendiz de Artesão]\n Desculpe, mas você não tem zeny suficiente.");
+			mes "[Aprendiz de Artesão]";
+			mes "Desculpe, mas você não tem zeny suficiente.";
 			close;
 		}
-		progressbar ("ffff00",7);
+		progressbar("ffff00",7);
 		Zeny -= 400000;
 		delitem (.@itemid,1);
 		switch(rand(1, .@failrate)) {
@@ -117,12 +137,16 @@ prontera,165,60,2	script	Aprendiz de Artesão#prtEcht	1_F_MERCHANT_01,{
 			case 36: .@addpart = 4750;break;
 			default:
 			specialeffect(EF_PHARMACY_FAIL, AREA, playerattached());
-			mes("[Aprendiz de Artesão]\n Bem, isso é muito ruim.\n Não consegui encantar seu equipamento.");
+			mes "[Aprendiz de Artesão]";
+			mes "Bem, isso é muito ruim.";
+			mes "Não consegui encantar seu equipamento.";
 			close;
 		}
 		getitem2(.@itemid, 1, 1, 0, 0, 0, 0, 0, .@addpart);
 	} else {
-		mes(" Hmm?\n Não há nada para se encantar!\n Por favor, volte com apenas um equipamento para encantar.");
+		mes " Hmm?";
+		mes "Não há nada para se encantar!";
+		mes "Por favor, volte com apenas um equipamento para encantar.";
 		close;
 	}
 }

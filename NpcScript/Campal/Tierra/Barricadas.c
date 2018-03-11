@@ -80,22 +80,37 @@ bat_a01,6,1,0	script	TierraWall	CLEAR_NPC,{
 -	script	TierraWallRepair	FAKE_NPC,{
 	if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Guillaume" && $@TierraNorthWall < 1) { end; }
 	if (getcharid(CHAR_ID_BG) == $@TierraTeanRed && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Croix" && $@TierraSouthWall < 1) { end; }
-	mes("[Reparador]\n Mes a barricada foi destruída, posso recontruíla.\n Para isso vou precisar de 50 Pedras, 5 Aço, 2 Minérios de Elunium e 1 Ferro.");
+	mes "[Reparador]";
+	mes "Mes a barricada foi destruída, posso recontruíla.";
+	mes "Para isso vou precisar de 50 Pedras, 5 Aço, 2 Minérios de Elunium e 1 Ferro.";
 	next;
 	switch(select("Realizar Reparo", "Cancelar")) {
 		case 1:
 		if ((countitem(Stone) >= 50) && (countitem(Steel) >= 5) && (countitem(Elunium_Stone) >= 2) && (countitem(Iron) >= 1)) {
-			mes("[Reparador]\n Muito bem iniciarei agora o processo de reparo\n Aguarde um momento.");
+			mes "[Reparador]";
+			mes "Muito bem iniciarei agora o processo de reparo.";
+			mes "Aguarde um momento.";
 			next;
-			mes("[Reparador]\n ......\n .......\n ........");
+			mes "[Reparador]";
+			mes "......";
+			mes ".......";
+			mes "........";
 			next;
-			mes("[Reparador]\n .......\n ........\n .........");
+			mes "[Reparador]";
+			mes ".......";
+			mes "........";
+			mes ".........";
 			next;
-			mes("[Reparador]\n ........\n .........\n ..........");
+			mes "[Reparador]";
+			mes "........";
+			mes ".........";
+			mes "..........";
 			progressbar("ffff00", 2); sleep(2000); specialeffect(EF_REPAIRWEAPON);
 			delitem(Stone, 50); delitem(Steel, 5); delitem(Elunium_Stone, 2); delitem(Iron, 1);
 			next;
-			mes("[Reparador]\n O preparo foi realizado com sucesso!\n Agora vou me descançar.");
+			mes "[Reparador]";
+			mes "O preparo foi realizado com sucesso!";
+			mes "Agora vou me descançar.";
 			// Azul
 			if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue) {
 				if ($@TierraNorthWall < 1) {
@@ -115,11 +130,18 @@ bat_a01,6,1,0	script	TierraWall	CLEAR_NPC,{
 				end;
 			}
 		} else {
-			mes("[Reparador]\n Você não possui os itens necessários:\n 50 ^777777Pedras^000000\n 5 ^777777Aço^000000\n 2 ^777777Minérios de Elunium^000000\n 1 ^777777Ferro^000000");
+			mes "[Reparador]";
+			mes "Você não possui os itens necessários:";
+			mes "50 ^777777Pedras^000000";
+			mes "5 ^777777Aço^000000";
+			mes "2 ^777777Minérios de Elunium^000000";
+			mes "1 ^777777Ferro^000000";
 			close;
 		}
 		case 2:
-		mes("[Reparador]\n Tudo bem.\n Volte se desejar fazer os reparos na barricada.");
+		mes "[Reparador]";
+		mes "Tudo bem.";
+		mes "Volte se desejar fazer os reparos na barricada.";
 		close;
 	}
 	OnInit:

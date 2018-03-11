@@ -14,48 +14,106 @@
 
 // ------------------------------------------------------------------
 cmd_fild04,188,74,4	script	Menina das Algas#cmd	4_F_04,{
-	mes("[Menina das Algas]\n Oi! Oi!\n Eu vivo aqui, mergulhando no mar...\n Juntando conchas e algas...\n Para vender e ganhar a vida...\n Eu sou a Garota Marinha.\n Menina das Algas!");
+	mes "[Menina das Algas]";
+	mes "Oi! Oi!";
+	mes "Eu vivo aqui, mergulhando no mar...";
+	mes "Juntando conchas e algas...";
+	mes "Para vender e ganhar a vida...";
+	mes "Eu sou a Garota Marinha.";
+	mes "Menina das Algas!";
 	next;
-	mes("[Menina das Algas]\n É bom viver em um lugar cercado por natureza...\n E sempre comer frutos do mar frescos também não é ruim...\n Mas uma garota como eu...\n Sente falta da vida de uma cidade grande...\n Muita falta...");
+	mes "[Menina das Algas]";
+	mes "É bom viver em um lugar cercado por natureza...";
+	mes "E sempre comer frutos do mar frescos também não é ruim...";
+	mes "Mas uma garota como eu...";
+	mes "Sente falta da vida de uma cidade grande...";
+	mes "Muita falta...";
 	next;
-	mes("[Menina das Algas]\n Eu tento conseguir muitas algas, para conseguir dinheiro para me mudar...\n Eu sei que eu vou conseguir!");
+	mes "[Menina das Algas]";
+	mes "Eu tento conseguir muitas algas, para conseguir dinheiro para me mudar...";
+	mes "Eu sei que eu vou conseguir!";
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_fild04,248,86,4	script	Marinheiro Ziyaol#cmd	4_M_SEAMAN,{
-	mes("[Ziyaol]\n Não entendo...\n Por que você me olha assim?\n Eu sou um Marinheiro de verdade!\n Estou descansando agora.\n Tive um dia de trabalho muito duro hoje...\n Estou cansado...");
+	mes "[Ziyaol]";
+	mes "Não entendo...";
+	mes "Por que você me olha assim?";
+	mes "Eu sou um Marinheiro de verdade!";
+	mes "Estou descansando agora.";
+	mes "Tive um dia de trabalho muito duro hoje...";
+	mes "Estou cansado...";
 	next;
-	mes("[Ziyaol]\n Mas o que me deixa desanimado\n É que minha filha ali...\n Só fala em se mudar para uma cidade.\n Eu não entendo...\n Aqui nós temos ar puro, água limpa e um ambiente agradável.\n Eu queria que ela ficasse comigo.");
+	mes "[Ziyaol]";
+	mes "Mas o que me deixa desanimado";
+	mes "É que minha filha ali...";
+	mes "Só fala em se mudar para uma cidade.";
+	mes "Eu não entendo...";
+	mes "Aqui nós temos ar puro, água limpa e um ambiente agradável.";
+	mes "Eu queria que ela ficasse comigo.";
 	next;
-	mes("[Ziyaol]\n Minha criança cresceu!\n E quer fugir de mim...\n Meu Deus!");
+	mes "[Ziyaol]";
+	mes "Minha criança cresceu!";
+	mes "E quer fugir de mim...";
+	mes "Meu Deus!";
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_fild04,267,137,4	script	Menina da Praia#cmd	4_F_KID2,{
-	mes("[Daeguro]\n Eu adoro brincar com a areia!\n A areia da praia é tão limpa e fofa. E tem cheiro de mar...\n Um dia, eu vou entrar...\n No barco para Alberta...\n E velejar até a cidade!");
+	mes "[Daeguro]";
+	mes "Eu adoro brincar com a areia!";
+	mes "A areia da praia é tão limpa e fofa. E tem cheiro de mar...";
+	mes "Um dia, eu vou entrar...";
+	mes "No barco para Alberta...";
+	mes "E velejar até a cidade!";
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_fild07,192,58,4	script	Rahasu#cmd	4W_SAILOR,{
-	mes("[Rahasu]\n Olá?\n O meu trabalho\n é mostrar o ^3355FFFarol de Pharos^000000 às pessoas...\n Ramadi, o Guarda do Farol...\n E guia de Pharos.");
+	mes "[Rahasu]";
+	mes "Olá?";
+	mes "O meu trabalho";
+	mes "é mostrar o ^3355FFFarol de Pharos^000000 às pessoas...";
+	mes "Ramadi, o Guarda do Farol...";
+	mes "E guia de Pharos.";
 	next;
 	if (select("Farol de Pharos?", "Cancelar") == 1) {
-		mes("[Rahasu]\n A ilha do Farol de Pharos, consiste em dois antigos faróis.\n Construídos para alertar contra a entrada de invasores.\n Agora se tornou a cidade portuária do sul do reino, e está ficando famosa pelo comércio.");
+		mes "[Rahasu]";
+		mes "A ilha do Farol de Pharos, consiste em dois antigos faróis.";
+		mes "Construídos para alertar contra a entrada de invasores.";
+		mes "Agora se tornou a cidade portuária do sul do reino, e está ficando famosa pelo comércio.";
 		next;
-		mes("[Rahasu]\n Como o farol está sendo reformado...\n Não é permitida a entrada de visitantes...\n Existem muitas pinturas lindas lá dentro.\n Muitas!");
+		mes "[Rahasu]";
+		mes "Como o farol está sendo reformado...";
+		mes "Não é permitida a entrada de visitantes...";
+		mes "Existem muitas pinturas lindas lá dentro.";
+		mes "Muitas!";
 		close;
 	}
-	mes("[Rahasu]\n Que pena!\n Perder a chance de conhecer um monumento antigo.\n Você deveria voltar em outra oportunidade...\n Você voltará?");
+	mes "[Rahasu]";
+	mes "Que pena!";
+	mes "Perder a chance de conhecer um monumento antigo.";
+	mes "Você deveria voltar em outra oportunidade...";
+	mes "Você voltará?";
 	close;
 }
 
 // ------------------------------------------------------------------
 cmd_fild07,52,280,4	script	Hallosu#cmd	4W_SAILOR,{
-	mes("[Hallosu]\n Certo!\n Este é um dos...\n Faróis de Pharos!\n Como está sendo reformado a entrada não é permitida!\n Até que as obras tenham terminado.");
+	mes "[Hallosu]";
+	mes "Certo!";
+	mes "Este é um dos...";
+	mes "Faróis de Pharos!";
+	mes "Como está sendo reformado a entrada não é permitida!";
+	mes "Até que as obras tenham terminado.";
 	next;
-	mes("[Hallosu]\n E for organizada a reinauguração.\n Aí sim, você poderá vir visitar...\n Obrigado!!\n ^3355FFO guarda está ficando inquieto...^000000");
+	mes "[Hallosu]";
+	mes "E for organizada a reinauguração.";
+	mes "Aí sim, você poderá vir visitar...";
+	mes "Obrigado!!";
+	mes "^3355FFO guarda está ficando inquieto...^000000";
 	close;
 }

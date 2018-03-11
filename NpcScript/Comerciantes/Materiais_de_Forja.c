@@ -13,75 +13,113 @@
 \*-----------------------------------------------------------------*/
 
 -	script	BlacksmithSupplier	FAKE_NPC,{
-	mes("["+strnpcinfo(NPC_NAME)+"]\n Seja bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " à minha loja.\n Você pode achar tudo relacionado a forja aqui.\n O que traz você até mim?");
+	mes "["+strnpcinfo(NPC_NAME)+"]";
+	mes "Seja bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " à minha loja.";
+	mes "Você pode achar tudo relacionado a forja aqui.";
+	mes "O que traz você até mim?";
 	next;
 	switch(select("Comprar uma bigorna", "Comprar itens de forja", "Comprar metais", "Purificar minérios", "Cancelar")) {
 		case 1:
-		mes("[" + strnpcinfo(NPC_NAME) + "]\n Uma boa bigorna aumenta muito as suas chances de se fazer uma boa arma, você sabe né?\n Mas irá custar mais zeny.\n Escolha a que melhor se encaixa em suas finalidade.");
+		mes "[" + strnpcinfo(NPC_NAME) + "]";
+		mes "Uma boa bigorna aumenta muito as suas chances de se fazer uma boa arma, você sabe né?";
+		mes "Mas irá custar mais zeny.";
+		mes "Escolha a que melhor se encaixa em suas finalidade.";
 		next;
 		switch(select("Bigorna - 30,000 zeny", "Bigorna de Oridecon - 120,000 zeny", "Bigorna de Ouro - 300,000 zeny", "Uma bigorna melhor que as outras", "Cancelar.")) {
 			case 1:
 			if (Zeny < 30000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu não posso vende-la pra você se você não tem o dinheiro.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Eu não posso vende-la pra você se você não tem o dinheiro.";
 				close;
 			} else if (checkweight(Anvil,1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-la.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-la.";
 				close;
 			} else {
 				Zeny -= 30000;
 				getitem(Anvil, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Este é um dos mais baratos, mas suficiente para forjar vários itens.\n Obrigado por comprar na minha oficina.\n Sinta-se livre para voltar a qualquer hora, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Este é um dos mais baratos, mas suficiente para forjar vários itens.";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para voltar a qualquer hora, sempre que precisar.";
 				close;
 			}
 			case 2:
 			if (Zeny < 120000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu não posso vende-la pra você se você não tem o dinheiro.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Eu não posso vende-la pra você se você não tem o dinheiro.";
 				close;
 			} else if (checkweight(Oridecon_Anvil,1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-la.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-la.";
 				close;
 			} else {
 				Zeny -= 120000;
 				getitem(Oridecon_Anvil, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Humm, muitos compram essa bigorna.\n Essa é uma bigorna própria para forjadores, não é?\n Obrigado por comprar na minha oficina.\n Sinta-se livre para voltar a qualquer hora, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Humm, muitos compram essa bigorna.";
+				mes "Essa é uma bigorna própria para forjadores, não é?";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para voltar a qualquer hora, sempre que precisar.";
 				close;
 			}
 			case 3:
 			if (Zeny < 300000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu não posso vende-la pra você se você não tem o dinheiro.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Eu não posso vende-la pra você se você não tem o dinheiro.";
 				close;
 			} else if (checkweight(Golden_Anvil,1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-la.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-la.";
 				close;
 			} else {
 				Zeny -= 300000;
 				getitem(Golden_Anvil, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Essa é a melhor bigorna que eu vendo na minha oficina!\n Com ela, você irá dominar o mundo da forja!\n Obrigado por comprar na minha oficina.\n Sinta-se livre para voltar a qualquer hora, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Essa é a melhor bigorna que eu vendo na minha oficina!";
+				mes "Com ela, você irá dominar o mundo da forja!";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para voltar a qualquer hora, sempre que precisar.";
 				close;
 			}
 			case 4:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Bem, sinto muito.\n Mas eu não tenha nada melhor que a Bigorna de Ouro.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Bem, sinto muito.";
+			mes "Mas eu não tenha nada melhor que a Bigorna de Ouro.";
 			next;
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu acho, que o lendário criador de bigornas tem uma.\n Mas, eu não acho que você possa achá-lo, embora ele esteja em algum lugar do mundo.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Eu acho, que o lendário criador de bigornas tem uma.";
+			mes "Mas, eu não acho que você possa achá-lo, embora ele esteja em algum lugar do mundo.";
 			close;
 			case 5:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n OK, sinta-se a vontade para voltar quando quiser, quando precisar.\n Até mais.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "OK, sinta-se a vontade para voltar quando quiser, quando precisar.";
+			mes "Até mais.";
 			close;
 		}
 		case 2:
-		mes("[" + strnpcinfo(NPC_NAME) + "]\n Um forjador respeitável deve usar ótimas ferramentas.\n Você pode comprá-las aqui.\n Escolha qual quer.");
+		mes "[" + strnpcinfo(NPC_NAME) + "]";
+		mes "Um forjador respeitável deve usar ótimas ferramentas.";
+		mes "Você pode comprá-las aqui.";
+		mes "Escolha qual quer.";
 		next;
 		switch(select("Mini-Fornalha - 150 zeny", "Martelo de Ferro - 1000 zeny", "Martelo de Ouro - 3000 zeny", "Martelo de Oridecon - 5000 zeny", "Cancelar.")) {
 			case 1:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n É uma ferramenta muito útil para se refinar metais!\n Mas, quantas você irá comprar?\n Se você quiser desistir, basta colocar o número 0.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "É uma ferramenta muito útil para se refinar metais!";
+			mes "Mas, quantas você irá comprar?";
+			mes "Se você quiser desistir, basta colocar o número 0.";
 			next;
 			while(true) {
 				input(.@input);
 				if (.@input == 0) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n Bem, a negociação foi cancelada.\n Até mais.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "Bem, a negociação foi cancelada.";
+					mes "Até mais.";
 					close;
 				} else if ((.@input < 0) || (.@input > 500)) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n Você pode comprar 500, ou menos.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "Você pode comprar 500, ou menos.";
 					next;
 				} else {
 					break;
@@ -89,74 +127,100 @@
 			}
 			.@sell = .@input * 150;
 			if (Zeny < .@sell) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não possui zenys o suficiente.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não possui zenys o suficiente.";
 				close;
 			} else if (checkweight(Portable_Furnace,.@input) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Me parece que você não tem espaço suficiente no seu inventário.\n Porque você não coloca seus itens no armazém da Kafra?");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Me parece que você não tem espaço suficiente no seu inventário.";
+				mes "Porque você não coloca seus itens no armazém da Kafra?";
 				close;
 			} else {
 				Zeny -= .@sell;
 				getitem(Portable_Furnace, .@input);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina.\n Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 2:
 			if (Zeny < 1000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não possui zenys o suficiente.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não possui zenys o suficiente.";
 				close;
 			} else if (checkweight(Iron_Hammer, 1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-lo.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-lo.";
 				close;
 			} else {
 				Zeny -= 1000;
 				getitem(Iron_Hammer, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina.\n Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 3:
 			if (Zeny < 3000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não possui zenys o suficiente.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não possui zenys o suficiente.";
 				close;
 			} else if (checkweight(Golden_Hammer, 1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-lo.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-lo.";
 				close;
 			} else {
 				Zeny -= 3000;
 				getitem(Golden_Hammer, 1);
-				mes("["+strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina.\n Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "["+strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 4:
 			if (Zeny < 5000) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não possui zenys o suficiente.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não possui zenys o suficiente.";
 				close;
 			} else if (checkweight(Oridecon_Hammer, 1) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você está levando muito peso e não vai poder carrega-lo.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você está levando muito peso e não vai poder carrega-lo.";
 				close;
 			} else {
 				Zeny -= 5000;
 				getitem(Oridecon_Hammer, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina.\n Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 5:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Volte aqui quando quiser, sempre que precisar.\n Até mais.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Volte aqui quando quiser, sempre que precisar.";
+			mes "Até mais.";
 			close;
 		}
 		case 3:
-		mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu preparo muitos metais, e todos com grande qualidade.\n Mas então, qual deles você precisa?");
+		mes "[" + strnpcinfo(NPC_NAME) + "]";
+		mes "Eu preparo muitos metais, e todos com grande qualidade.";
+		mes "Mas então, qual deles você precisa?";
 		next;
 		switch(select("Fracon - 200z.", "Emveretarcon - 1000z.", "Cancelar.")) {
 			case 1:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Bem, quantos você deseja comprar?\n Se você quiser cancelar a negociação, basta colocar o número 0.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Bem, quantos você deseja comprar?";
+			mes "Se você quiser cancelar a negociação, basta colocar o número 0.";
 			next;
 			while(true) {
 				input (.@input);
 				if (.@input == 0) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n A negociação foi cancelada.\n Até mais.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "A negociação foi cancelada.";
+					mes "Até mais.";
 					close;
 				} else if ((.@input < 0) || (.@input > 500)) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n Você só pode comprar 500, ou menos.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "Você só pode comprar 500, ou menos.";
 					next;
 				} else {
 					break;
@@ -164,27 +228,38 @@
 			}
 			.@sell = .@input * 200;
 			if (Zeny < .@sell) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não tem o dinheiro.\n Você sabe que eu não posso vender por um baixo preço...\n Minha esposa reclama muito sobre a falta de Zeny.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não tem o dinheiro.";
+				mes "Você sabe que eu não posso vender por um baixo preço...";
+				mes "Minha esposa reclama muito sobre a falta de Zeny.";
 				close;
 			} else if (checkweight(Phracon,.@input) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Me parece que você não tem espaço suficiente no seu inventário.\n Porque você não coloca seus itens no armazém da Kafra?");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Me parece que você não tem espaço suficiente no seu inventário.";
+				mes "Porque você não coloca seus itens no armazém da Kafra?";
 				close;
 			} else {
 				Zeny -= .@sell;
 				getitem(Phracon, .@input);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina. Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina. Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 2:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Bem, quantos você deseja comprar?\n Se você quiser cancelar a negociação, basta colocar o número 0.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Bem, quantos você deseja comprar?";
+			mes "Se você quiser cancelar a negociação, basta colocar o número 0.";
 			next;
 			while(true) {
 				input (.@input);
 				if (.@input == 0) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n A negociação foi cancelada.\n Até mais.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "A negociação foi cancelada.";
+					mes "Até mais.";
 					close;
 				} else if ((.@input < 0) || (.@input > 500)) {
-					mes("[" + strnpcinfo(NPC_NAME) + "]\n Você só pode comprar 500, ou menos.");
+					mes "[" + strnpcinfo(NPC_NAME) + "]";
+					mes "Você só pode comprar 500, ou menos.";
 					next;
 				} else {
 					break;
@@ -192,51 +267,75 @@
 			}
 			.@sell = .@input * 1000;
 			if (Zeny < .@sell) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Você não tem o dinheiro.\n Você sabe que eu não posso vender por um baixo preço...\n Minha esposa reclama muito sobre a falta de Zeny.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Você não tem o dinheiro.";
+				mes "Você sabe que eu não posso vender por um baixo preço...";
+				mes "Minha esposa reclama muito sobre a falta de Zeny.";
 				close;
 			} else if (checkweight(Emveretarcon, .@input) == 0) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Meu amigo...\n Você não tem espaço suficiente no inventário.\n Porque não guarda algumas coisas no armazém da Kafra primeiro?");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Meu amigo...";
+				mes "Você não tem espaço suficiente no inventário.";
+				mes "Porque não guarda algumas coisas no armazém da Kafra primeiro?";
 				close;
 			} else {
 				Zeny -= .@sell;
 				getitem(Emveretarcon, .@input);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Obrigado por comprar na minha oficina.\n Sinta-se livre para vir aqui, sempre que precisar.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Obrigado por comprar na minha oficina.";
+				mes "Sinta-se livre para vir aqui, sempre que precisar.";
 				close;
 			}
 			case 3:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Sinta-se livre para voltar, sempre que precisar.\n Até mais.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Sinta-se livre para voltar, sempre que precisar.";
+			mes "Até mais.";
 			close;
 		}
 		case 4:
-		mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu posso purificar Oridecons e Eluniuns.\n Eu crio um metal refinado a partir de 5 metais brutos, seus minérios.\n Bem...\n Qual deles você quer fazer?");
+		mes "[" + strnpcinfo(NPC_NAME) + "]";
+		mes "Eu posso purificar Oridecons e Eluniuns.";
+		mes "Eu crio um metal refinado a partir de 5 metais brutos, seus minérios.";
+		mes "Bem...";
+		mes "Qual deles você quer fazer?";
 		next;
 		switch(select("Fazer um Oridecon", "Fazer um Elunium", "Cancelar")) {
 			case 1:
 			if (countitem(Oridecon_Stone) < 5) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu lhe disse, eu preciso de 5 Minérios de Oridecon para fazer um Oridecon.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Eu lhe disse, eu preciso de 5 Minérios de Oridecon para fazer um Oridecon.";
 				close;
 			} else {
 				delitem(Oridecon_Stone, 5);
 				getitem(Oridecon, 1); 
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Ótimo, aqui está o seu Oridecon.\n Volte sempre que precisar, espero sua visita.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Ótimo, aqui está o seu Oridecon.";
+				mes "Volte sempre que precisar, espero sua visita.";
 				close;
 			}
 			case 2:
 			if (countitem(Elunium_Stone) < 5) {
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Eu lhe disse, eu preciso de 5 Minérios de Eluniuns para fazer um Elunium.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Eu lhe disse, eu preciso de 5 Minérios de Eluniuns para fazer um Elunium.";
 				close;
 			} else {
 				delitem(Elunium_Stone, 5);
 				getitem(Elunium, 1);
-				mes("[" + strnpcinfo(NPC_NAME) + "]\n Ótimo, aqui está o seu Elunium.\n Volte sempre que precisar, espero sua visita.");
+				mes "[" + strnpcinfo(NPC_NAME) + "]";
+				mes "Ótimo, aqui está o seu Elunium.";
+				mes "Volte sempre que precisar, espero sua visita.";
 				close;
 			}
 			case 3:
-			mes("[" + strnpcinfo(NPC_NAME) + "]\n Sinta-se livre para vir aqui, sempre que precisar.\n Até mais.");
+			mes "[" + strnpcinfo(NPC_NAME) + "]";
+			mes "Sinta-se livre para vir aqui, sempre que precisar.";
+			mes "Até mais.";
 			close;
 		}
 		case 5:
-		mes("[" + strnpcinfo(NPC_NAME) + "]\n Volte sempre, sempre que precisar ou que quiser.\n Até mais.");
+		mes "[" + strnpcinfo(NPC_NAME) + "]";
+		mes "Volte sempre, sempre que precisar ou que quiser.";
+		mes "Até mais.";
 		close;
 	}
 }

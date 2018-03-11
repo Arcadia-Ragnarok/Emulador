@@ -17,7 +17,8 @@
 //-------------------------------------------------------------------
 bat_a01,4,1,0	script	TierraTherapist	CLEAR_NPC,{
 	specialeffect(EF_HEAL, AREA, playerattached());
-	mes("[Terapeuta]\n Por enquanto apenas descanse, suas dores serão curadas em breve.");
+	mes "[Terapeuta]";
+	mes "Por enquanto apenas descanse, suas dores serão curadas em breve.";
 	close;
 
 	OnInit:
@@ -56,17 +57,21 @@ bat_a01,45,19,3	duplicate(TierraTherapist)	Terapeuta#T_redTean	4_F_SISTER
 //-------------------------------------------------------------------
 // Azul
 bat_a01,53,377,3	script	Axl Rose#T_blueTean	4_M_KY_HEAD,{
-	mes("[Axl Rose]");
+	mes "[Axl Rose]";
 	if ($@TierraBlueVictory == 1) {
-		mes("Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!\n Muito obrigado pelo seu esforço e está aqui sua recompensa!");
+		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
+		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
 		getitem(BF_Badge1, 3);
 	} else if ($@TierraRedVictory) {
-		mes("Infelismente o exêrcito de Croix venceu.\n Mas essa guerra está longe de terminar e essa só foi mais uma batalha!");
+		mes "Infelismente o exêrcito de Croix venceu.";
+		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
-		mes("[Axl Rose]\n Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.");
+		mes "[Axl Rose]";
+		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
 		getitem(BF_Badge1, 1);
 	} else {
-		mes("Nossa essa batalha foi intença!\n Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.");
+		mes "Nossa essa batalha foi intença!";
+		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
 		getitem(BF_Badge1, 2);
 	}
 	warp("bat_room", 155, 150);
@@ -81,17 +86,21 @@ bat_a01,53,377,3	script	Axl Rose#T_blueTean	4_M_KY_HEAD,{
 //-------------------------------------------------------------------
 // Vermelho
 bat_a01,45,19,3	script	Swandery#T_redTean	4_M_CRU_HEAD,{
-	mes("[Swandery]");
+	mes "[Swandery]";
 	if ($@TierraRedVictory == 1) {
-		mes("Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!\n Muito obrigado pelo seu esforço e está aqui sua recompensa!");
+		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
+		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
 		getitem(BF_Badge1, 3);
 	} else if ($@TierraBlueVictory == 1) {
-		mes("Infelismente o exêrcito de Guillaume venceu.\n Mas essa guerra está longe de terminar e essa só foi mais uma batalha!");
+		mes "Infelismente o exêrcito de Guillaume venceu.";
+		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
-		mes("[Swandery]\n Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.");
+		mes "[Swandery]";
+		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
 		getitem(BF_Badge1, 1);
 	} else {
-		mes("Nossa essa batalha foi intença!\n Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.");
+		mes "Nossa essa batalha foi intença!";
+		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
 		getitem(BF_Badge1, 2);
 	}
 	warp("bat_room", 155, 150);

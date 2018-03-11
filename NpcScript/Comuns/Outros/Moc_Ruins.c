@@ -103,7 +103,7 @@ moc_ruins,109,138,0	script	Jovem#mocr4	4W_M_03,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,128,153,0	script	Grampa#mocr	1_M_PUBMASTER,{
+moc_ruins,128,153,0	script	Velho#mocr	1_M_PUBMASTER,{
 	mes "[Velho Sábio]";
 	mes "Eu tenho dedicado minha vida à pesquisa das misteriosas pirâmides perto de Morroc.";
 	mes "Eu não fui capaz para confirmar concretamente nada ainda, mas...";
@@ -111,35 +111,6 @@ moc_ruins,128,153,0	script	Grampa#mocr	1_M_PUBMASTER,{
 	mes "[Velho Sábio]";
 	mes "Tenho certeza que a maior pirâmide contém o túmulo do antigo rei, Osíris!";
 	mes "Estou disposto a apostar minha vida nisso!";
-	close;
-}
-
-// ------------------------------------------------------------------
-moc_ruins,94,117,0	script	Homem Pálido#mocr	1_M_02,{
-	mes "[Homem Pálido]";
-	mes "Neste dia... eu vi a lua sangrenta no céu. Era tão silencioso que pareceu assustador.";
-	next;
-	mes "[Homem Pálido]";
-	mes "Nem mesmo um sopro e vento seco, e o ar tão pesado e abafado, que eu mal podia respirar.";
-	next;
-	mes "[Homem Pálido]";
-	mes "Mas então, Bang!";
-	mes "Foi justamente na hora que eu vi uma quantidade enorme de fumaça saindo do Castelo de Morroc.";
-	mes "Com um som ensurdecedor.";
-	next;
-	mes "[Homem Pálido]";
-	mes "Tudo aconteceu muito rápido.";
-	mes "O Oasis do Castelo secou completamente e a cidade foi destruída.";
-	mes "E... e aquela voz... eu ouvi uma voz.";
-	next;
-	mes "[Homem Pálido]";
-	mes "Sangue... Sangue é o que ele pega para pagar pela alma...";
-	mes "E aquele som obscuro da risada...";
-	mes "Aah!!! Está... ainda está ecoando nas meus ouvidos!!!";
-	mes "Aahhhhh!!!!";
-	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
-	mes "- É melhor não perturbá-lo mais -";
 	close;
 }
 
@@ -184,70 +155,6 @@ moc_ruins,118,82,1	script	Garoto#mocr	4_M_KID1,{
 	mes "Eu... eu posso te dar um sorvete se você parar de chorar.";
 	mes "Não chore, Eliese, por favor...";
 	close;
-}
-
-// ------------------------------------------------------------------
-moc_ruins,121,116,4	script	Senhorita#mocr	1_F_01,{
-	mes "[Syvia]";
-	mes "Os campos de Rune-Midgard estão infestados de monstros selvagens e perigosos...";
-	mes "Mas, você tem que admitir que uma porção deles é uma gracinha!";
-	mes "Você sabe, como o Esporo joga a língua para fora depois que você mata ele...";
-	next;
-	mes "[Syvia]";
-	mes "Ou, como o pequeno Picky usa aquela casca de ovo às vezes?...";
-	next;
-	mes "[Syvia]";
-	mes "Eu não posso acreditar no que aconteceu...";
-	mes "Nossa cidade usada pelos pequeninos monstros adoráveis.";
-	mes "Não parecia ter um terrível mal dormindo ali!";
-	next;
-	mes "[Syvia]";
-	mes "Estou com muito medo...";
-	mes "Eu só quero aliviar minha mente assistindo aqueles pequenos e adoráveis Porings...";
-	next;
-	switch(select("E quanto ao Angeling?","E quanto ao Ghostring?","Sair da Conversa")) {
-		case 1:
-		mes "[Syvia]";
-		mes "Ooh! Angeling é como Poring, exceto por ter asas de anjo!";
-		mes "É claro, eu não sei se atualmente eles podem voar...";
-		next;
-		mes "[Syvia]";
-		mes "Angelings são raramente vistos.";
-		mes "Mas podem ser encontrados entre os grandes grupos de Porings vivendo nos campos ao sul de Prontera.";
-		mes "Angeling é uma monstro de alto nível com propriedades Sagradas.";
-		mes "Então ele é imune à maioria das magias.";
-		mes "Tirando os feitiços que tem propriedades de ataque Neutro e Sombra.";
-		next;
-		mes "[Syvia]";
-		mes "Você acha que eu sei muito sobre Porings?";
-		mes "Eu amo eles demaaaais";
-		next;
-		mes "[Syvia]";
-		mes "Hehe... Poring... Hee......";
-		close;
-		case 2:
-		mes "[Syvia]";
-		mes "Ghostring é um fantasma malvado de Poring.";
-		mes "É raramente visto, mas pode ser encontrado entre os grandes grupos de Porings.";
-		mes "Vivendo nos campos ao sul de Prontera.";
-		next;
-		mes "[Syvia]";
-		mes "Ghostring é uma monstro de alto nível com propriedades Fantasma.";
-		mes "Então ele pode resistir a todos os ataques físicos.";
-		mes "Danos só poderão ser causados ao Ghostring através da magias ou armas com uma propriedade específica.";
-		next;
-		mes "[Syvia]";
-		mes "Você acha que eu sei muito sobre Porings?";
-		mes "Eu amo eles demaaaais";
-		next;
-		mes "[Syvia]";
-		mes "Hehe... Poring... Teehee......";
-		close;
-		case 3:
-		mes "[Syvia]";
-		mes "Hehe... Poring... Teehee......";
-		close;
-	}
 }
 
 // ------------------------------------------------------------------
@@ -318,69 +225,6 @@ moc_ruins,155,107,4	script	Akira#mocr	1_M_01,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,143,43,4	script	Gaturno#mocr	2_M_THIEFMASTER,{
-	mes "[Gaturno]";
-	mes "Imbatíveis nas lutas mano-a-mano, Mercenários sempre superam seus inimigos!";
-	mes "Eee, sempre derrotam seus inimigos sem deixar rastros.";
-	next;
-	mes "[Gaturno]";
-	mes "Mas o que fizeram quando aconteceu a destruição de Morroc!!!";
-	next;
-	switch(select("?????","Onde fica a Guilda dos mercenários?","Terminar Conversa")) {
-		case 1:
-		mes "[Gaturno]";
-		mes "Eu ouvi mercenários assassinando pessoas, quietos e sorrateiramente...";
-		next;
-		mes "[Gaturno]";
-		mes "Saí de casa há três anos, e tenho procurado por sua base secreta desde...";
-		mes "Eles são realmente invisíveis?!";
-		next;
-		mes "[Gaturno]";
-		mes "Bem.. Talvez seja tarde demais agora...";
-		mes "Agora que toda a cidade foi destruída...";
-		mes "Não me importo com o que vai acontecer...";
-		close;
-		case 2:
-		mes "[Gaturno]";
-		mes "Você sabe que...";
-		mes "Ela parecia ser impossível de encontrar.";
-		next;
-		mes "[Gaturno]";
-		mes "Bem, eu ouvi dizer que se você deixar esta cidade e ir dois mapas para o leste.";
-		mes "Em seguida, dois mapas para o Sul, você deve encontrá-lo..";
-		next;
-		mes "[Gaturno]";
-		mes "A 'Torre da Miragem', a principal construção do Deserto de Sograt.";
-		mes "Supostamente aparece naquela terrível tempestade de areia!";
-		mes "Mas, eu ainda não consegui encontrá-la.";
-		next;
-		mes "[Gaturno]";
-		mes "Se você encontrá-los, e o líder do clã achar que está qualificado.";
-		mes "Você pode se tornar um Mercenário!";
-		mes "Ou, pelo menos, eu acho..";
-		next;
-		mes "[Gaturno]";
-		mes "E eu ouvi que o Mercenário mais incrível de todos é o Algoz!";
-		mes "Mas, isso ainda é um mistério maior.";
-		mes "Você não será capaz de vê-los a menos que seja é um grande gatuno!";
-		next;
-		mes "[Gaturno]";
-		mes "Mas então...";
-		mes "Que diabos eles estavam fazendo quando Morroc foi destruída?!!!";
-		close;
-		case 3:
-		mes "[Gaturno]";
-		mes "Mercenário é uma das classes avançadas para Gatuno";
-		mes "Especializado em combate com as propriedades de ataque Neutro e Veneno.";
-		next;
-		mes "[Gaturno]";
-		mes "Eles são também muito sorrateiros!";
-		mes "Ouvi dizer que eles são capazes de se camuflar de modo que ninguém possa vê-los!";
-		close;
-	}
-}
-
-// ------------------------------------------------------------------
 moc_ruins,173,141,4	script	Dimitri#mocr	1_M_03,{
 	mes "[Dimitri]";
 	mes "O deserto de Morroc tem a maior temperatura média em Midgard.";
@@ -429,39 +273,6 @@ moc_ruins,173,141,4	script	Dimitri#mocr	1_M_03,{
 }
 
 // ------------------------------------------------------------------
-moc_ruins,174,120,4	script	Armani#mocr	1_M_JOBGUIDER,{
-	mes "[Armani]";
-	mes "Ooh, Woooowwww.";
-	next;
-	mes "[Armani]";
-	mes "Eu... eu realmente o vi...";
-	mes "O Lorde das Moscas ficou em pedaços num piscar de olhos...";
-	next;
-	mes "[Armani]";
-	mes "O que está realmente acontecendo?";
-	mes "Seria possível para nós sobrevivermos??";
-	next;
-	select("O Lorde das Moscas?!");
-	mes "[Armani]";
-	mes "Sim, sim! Estou falando da Libélula, mestra de todas as moscas!!";
-	mes "O Lorde Mosca é um ser especial que fica no Nordeste desta cidade.";
-	next;
-	mes "[Armani]";
-	mes "Ela é muito mais forte que as outras moscas.";
-	next;
-	mes "[Armani]";
-	mes "E quando você o mata, há a chance de ganhar o item ^880000Presilha^000000 .";
-	next;
-	mes "[Armani]";
-	mes "Mas de qualquer forma, você não acha o Satan Morroc muito cruel?";
-	mes "Eles podem não ser do mesmo tipo, mas ainda é cruel pegar a alma daquele monstro com um único golpe?";
-	next;
-	mes "[Armani]";
-	mes "O que deveríamos fazer quando este enorme mal voltar à vida novamente!";
-	close;
-}
-
-// ------------------------------------------------------------------
 moc_ruins,173,70,4	script	Phlanette#mocr	1_M_02,{
 	mes "[Phlanette]";
 	mes "Morroc está localizada em uma região extremamente seca, cercada por um deserto.";
@@ -504,35 +315,3 @@ moc_ruins,173,70,4	script	Phlanette#mocr	1_M_02,{
 		close;
 	}
 }
-
-// ------------------------------------------------------------------
-moc_ruins,86,103,1	script	Thug#mocr	2_M_THIEFMASTER,{
-	mes "[Thug]";
-	mes "*Sigh...*";
-	mes "O que é a vida?";
-	mes "E qual utilidade do dinheiro?";
-	mes "...Maldição.";
-	mes "Que maldição de vida!";
-	next;
-	mes "[Thug]";
-	mes "Ei, criança.";
-	mes "Para quem diabos você está olhando?";
-	next;
-	if (select("Eu? N-ninguém!","........") == 1) {
-		mes "[Thug]";
-		mes "Então tire seu olho de mim!";
-		mes "Você não me ouviu?";
-		mes "Saia daqui!";
-		close;
-	} else {
-		mes "[Thug]";
-		mes "Hmmm...";
-		mes "Talvez eu dê um pulo na ^0000FFGuilda dos Arruaceiros^000000.";
-		mes "Póximo ao ^0000FFFarol de Pharos^000000...";
-		next;
-		mes "[Thug]";
-		mes "Preciso de meu dinheiro, acho bom que eles tenham...";
-		close;
-	}
-}
-

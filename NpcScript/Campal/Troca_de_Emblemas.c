@@ -13,16 +13,21 @@
 \*-----------------------------------------------------------------*/
 
 bat_room,160,150,3	script	Erundek#BgBadge	4_M_MANAGER,{
-	mes("[Erundek]\n Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + ".\n O que eu posso fazer por você?");
+	mes "[Erundek]";
+	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + ".";
+	mes "O que eu posso fazer por você?";
 	next;
 	switch(select("Ler Catálago", "Trocar Emlemas de Bravura", "Trocar Emlemas de Valor", "Trocar Emlemas de Guerra")) {
 		case 1:
-		mes("[Erundek]\n Temos muitos itens...\n Fique à vontade para olhar antes de trocar.");
+		mes "[Erundek]";
+		mes "Temos muitos itens...";
+		mes "Fique à vontade para olhar antes de trocar.";
 		close2;
 		readbook(11010,1);
 		end;
 		case 2:
-		mes("[Erundek]\n Você quer trocar ^0000FFEmblemas de Bravura^000000 por quais tipos de itens?");
+		mes "[Erundek]";
+		mes "Você quer trocar ^0000FFEmblemas de Bravura^000000 por quais tipos de itens?";
 		.@BG_Badge = 7828;
 		next;
 		switch(select("Armas (100)", "Capas (50)", "Calçados (50)", "Armaduras (80)", "Acessórios (500)")) {
@@ -49,10 +54,11 @@ bat_room,160,150,3	script	Erundek#BgBadge	4_M_MANAGER,{
 		}
 		break;
 		case 3:
-		mes("[Erundek]\n Você quer trocar ^0000FFEmblemas de Valor^000000 por quais tipos de itens?");
+		mes "[Erundek]";
+		mes "Você quer trocar ^0000FFEmblemas de Valor^000000 por quais tipos de itens?";
 		.@BG_Badge = 7829;
 		next;
-		switch(select("Armas (100)", "Capas (50)", "Calçados (50)", "Armaduras (80)", "Acessórios (500)") ) {
+		switch(select("Armas (100)", "Capas (50)", "Calçados (50)", "Armaduras (80)", "Acessórios (500)")) {
 			case 1: // Armas
 			setarray(.@BG_Item[0], 13037, 13410, 1633, 1635, 1542, 1923, 1977, 1575, 1823, 1184, 1482, 1379, 13306, 1280, 1738, 13171, 13173, 13174);
 			.@BgBadgeValue = 100;
@@ -76,7 +82,8 @@ bat_room,160,150,3	script	Erundek#BgBadge	4_M_MANAGER,{
 		}
 		break;
 		case 4:
-		mes("[Erundek]\n Você quer trocar ^0000FFEmblemas de Guerra^000000 por quais tipos de itens?");
+		mes "[Erundek]";
+		mes "Você quer trocar ^0000FFEmblemas de Guerra^000000 por quais tipos de itens?";
 		.@BG_Badge = 7773;
 		next;
 		switch(select("Armas (2000)","Capas/Calçados/Armaduras/Acessórios")) {
@@ -85,7 +92,9 @@ bat_room,160,150,3	script	Erundek#BgBadge	4_M_MANAGER,{
 			.@BgBadgeValue = 2000;
 			break;
 			case 2: // Capas/Calçados/Armaduras/Acessórios
-			mes("[Erundek]\n Exitem 3 níveis para esses equipamentos com custo diferente para cada nível e para cada equipamento.\n Por favor selecione o Nível.");
+			mes "[Erundek]";
+			mes "Exitem 3 níveis para esses equipamentos com custo diferente para cada nível e para cada equipamento.";
+			mes "Por favor selecione o Nível.";
 			.@KvmItemTrade2 = 1; // Pular menu de arrays nos itens Capa Calçado Armadura e Acessórios KVM
 			next;
 			switch( select("Nível 1", "Nível 2", "Nível 3") ) {
@@ -149,25 +158,34 @@ bat_room,160,150,3	script	Erundek#BgBadge	4_M_MANAGER,{
 			.@Menu$ += getitemname(.@BG_Item[.@i]) + ":";
 		}
 		.@Item_ID = .@BG_Item[select(.@Menu$) - 1];
-		mes("[Erundek]\n Você gostaria de trocar\n ^FF0000" + .@BgBadgeValue + " " + getitemname(.@BG_Badge) + "^000000 por um(a)\n ^0000FF" + getitemname(.@Item_ID) + "^000000?");
+		mes "[Erundek]";
+		mes "Você gostaria de trocar";
+		mes "^FF0000" + .@BgBadgeValue + " " + getitemname(.@BG_Badge) + "^000000 por um(a)";
+		mes "^0000FF" + getitemname(.@Item_ID) + "^000000?";
 		next;
 	} else {
 		.@Item_ID = .@BG_Item;
-		mes("[Erundek]\n Você gostaria de trocar\n ^FF0000" + .@BgBadgeValue + " " + getitemname(.@BG_Badge) + "^000000 por um(a)\n ^0000FF" + getitemname(.@Item_ID) + "^000000?");
+		mes "[Erundek]";
+		mes "Você gostaria de trocar";
+		mes "^FF0000" + .@BgBadgeValue + " " + getitemname(.@BG_Badge) + "^000000 por um(a)";
+		mes "^0000FF" + getitemname(.@Item_ID) + "^000000?";
 		next;
 	}
 	switch(select("Sim", "Não")) {
 		case 1:
 		if(countitem(.@BG_Badge) < .@BgBadgeValue ) {
-			mes("[Erundek]\n Eu sinto muito, mas você não possui emblemas suficientes para trocar.");
+			mes "[Erundek]";
+			mes "Eu sinto muito, mas você não possui emblemas suficientes para trocar.";
 			close;
 		}
-		mes("[Erundek]\n Aqui está o seu item.");
+		mes "[Erundek]";
+		mes "Aqui está o seu item.";
 		delitem(.@BG_Badge,.@BgBadgeValue);
 		getitem(.@Item_ID,1);
 		close;
 		case 2:
-		mes("[Erundek]\n Tudo bem volte quando quiser fazer alguma troca.");
+		mes "[Erundek]";
+		mes "Tudo bem volte quando quiser fazer alguma troca.";
 		close;
 	}
 }

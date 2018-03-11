@@ -13,11 +13,15 @@
 \*-----------------------------------------------------------------*/
 
 -	script	InnHouse	FAKE_NPC,{
-	mes("[" + strnpcinfo(NPC_NAME_VISIBLE) + "]\n Bom dia, seja bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a nossa estalagem.\n Em que posso ajudar?");
+	mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+	mes "Bom dia, seja bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a nossa estalagem.";
+	mes "Em que posso ajudar?";
 	next;
 	switch(select("Salvar Retorno", "Descançar -> 5000 zeny", "Cancelar")) {
 		case 1:
-		mes("["+strnpcinfo(NPC_NAME_VISIBLE)+"]\n Seu Ponto de Retorno foi salvo.\n Curta sua estadia na cidade.");
+		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+		mes "Seu Ponto de Retorno foi salvo.";
+		mes "Curta sua estadia na cidade.";
 		// Prontera
 		if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn1") { savepoint("prt_in", 238, 130); }
 		if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn2") { savepoint("prt_in", 64, 136); }
@@ -49,12 +53,13 @@
 		if (strnpcinfo(NPC_MAP) == "mora") { savepoint("mora", 56, 143); }
 		close;
 		case 2:
-		mes("["+strnpcinfo(NPC_NAME_VISIBLE)+"]");
+		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 		if(Zeny < 5000) {
-			mes(" Me desculpe mas a taxa para descanso é de 5.000 zenys.");
+			mes " Me desculpe mas a taxa para descanso é de 5.000 zenys.";
 			close;
 		} else {
-			mes(" Curta sua estadia.\n E aproveite seu descanso.");
+			mes " Curta sua estadia.";
+			mes "E aproveite seu descanso.";
 			close2;
 			Zeny -= 5000;
 			percentheal(100, 100);
@@ -90,7 +95,8 @@
 			end;
 		}
 		case 3:
-		mes("[" + strnpcinfo(NPC_NAME_VISIBLE) + "]\n Volte sempre.");
+		mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+		mes "Volte sempre.";
 		close;
 	}
 }

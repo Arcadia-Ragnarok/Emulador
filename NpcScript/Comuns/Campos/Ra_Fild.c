@@ -13,7 +13,9 @@
 \*-----------------------------------------------------------------*/
 
 ra_fild12,45,230,3	script	Guia do Aeroplano#rafild	4_M_RASWORD,{
-	mes("[Guia do Aeroplano]\n O serviço de Dirigível internacional da República de Schwaltzvalt para Arunafeltz só pode ser acessado em Rachel.\n Por favor siga a marca no seu Mini-Mapa para encontrar o Aeroporto.");
+	mes "[Guia do Aeroplano]";
+	mes "O serviço de Dirigível internacional da República de Schwaltzvalt para Arunafeltz só pode ser acessado em Rachel.";
+	mes "Por favor siga a marca no seu Mini-Mapa para encontrar o Aeroporto.";
 	viewpoint(1, 293, 208, 1, 0xFF0000);
 	close;
 }

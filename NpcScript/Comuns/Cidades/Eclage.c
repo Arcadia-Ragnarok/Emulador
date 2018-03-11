@@ -14,25 +14,44 @@
 
 // ------------------------------------------------------------------
 ecl_in01,8,71,5	script	Guarda de Eclage#ecl	4_M_FAIRYSOLDIER,{
-	mes("[Guarda de Eclage]\n Este caminho o levará à parte baixa de Eclage.\n Você achará uma prisão e uma clínica lá.");
+	mes "[Guarda de Eclage]";
+	mes "Este caminho o levará à parte baixa de Eclage.";
+	mes "Você achará uma prisão e uma clínica lá.";
 	close;
 }
 
 // ------------------------------------------------------------------
 ecl_in02,135,45,5	script	Laphine Ferido#ecl	4_F_FAIRYKID6,{
-	mes("[Laphine Ferido]\n Ooww...\n Onde... é... que eu estou?");
+	mes "[Laphine Ferido]";
+	mes "Ooww...";
+	mes "Onde... é... que eu estou?";
 	next;
-	mes("[Doctor]\n Você está em uma clínica.\n Não preocupe.\n Nós paramos a hemorragia com feitiços de emergência.\n Você estava sangrando muito.\n Isso era muito perigoso para você.");
+	mes "[Doctor]";
+	mes "Você está em uma clínica.";
+	mes "Não preocupe.";
+	mes "Nós paramos a hemorragia com feitiços de emergência.";
+	mes "Você estava sangrando muito.";
+	mes "Isso era muito perigoso para você.";
 	next;
-	mes("[Laphine Ferido]\n ......\n O que, não, eu... eu não sinto nada... o no qual vai?");
+	mes "[Laphine Ferido]";
+	mes "......";
+	mes "O que, não, eu... eu não sinto nada... o no qual vai?";
 	next;
-	mes("[Doutor]\n Uma... flecha danificou sua asa gravimente...");
+	mes "[Doutor]";
+	mes "Uma... flecha danificou sua asa gravimente...";
 	next;
-	mes("[Laphine Ferido]\n ...o que quer dizer?");
+	mes "[Laphine Ferido]";
+	mes "...o que quer dizer?";
 	next;
-	mes("[Doutor]\n Bem... eu ia lhe falar depois que você recupera, mas você deve saber.\n Você não pode decorar o Yai mais.\n Em outras palavras, a flecha feril irrecuperavelmente sua asa.");
+	mes "[Doutor]";
+	mes "Bem... eu ia lhe falar depois que você recupera, mas você deve saber.";
+	mes "Você não pode decorar o Yai mais.";
+	mes "Em outras palavras, a flecha feril irrecuperavelmente sua asa.";
 	next;
-	mes("[Laphine Ferido]\n O que?\n Não pode... por favor... o doutor!!\n Nãooo!!");
+	mes "[Laphine Ferido]";
+	mes "O que?";
+	mes "Não pode... por favor... o doutor!!";
+	mes "Nãooo!!";
 	close;
 }
 

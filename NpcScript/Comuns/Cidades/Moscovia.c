@@ -16,7 +16,10 @@
 // - [ Ruas ] -
 // ------------------------------------------------------------------
 moscovia,253,166,4	script	Soldado#mosk1	4_M_RUSKNIGHT,{
-	mes("[Soldado]\n Lá está nosso Czar no palácio.\n Ele governa a nossa Moscovia.\n Por favor, tome cuidado para não irritá-lo.");
+	mes "[Soldado]";
+	mes "Lá está nosso Czar no palácio.";
+	mes "Ele governa a nossa Moscovia.";
+	mes "Por favor, tome cuidado para não irritá-lo.";
 	close;
 }
 
@@ -24,7 +27,8 @@ moscovia,253,166,4	script	Soldado#mosk1	4_M_RUSKNIGHT,{
 // - [ Casas ] -
 // ------------------------------------------------------------------
 -	script	Soldado#mosk::MoscSoldier	4_M_RUSKNIGHT,{
-	mes("[Soldado]\n Por favor, fique quieto ou o Czar vai se irritar.");
+	mes "[Soldado]";
+	mes "Por favor, fique quieto ou o Czar vai se irritar.";
 	close;
 }
 mosk_in,118,66,5	duplicate(MoscSoldier)	Soldado#mosk02	4_M_RUSKNIGHT
