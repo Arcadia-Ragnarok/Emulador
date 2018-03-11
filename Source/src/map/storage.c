@@ -101,13 +101,13 @@ int storage_storageopen(struct map_session_data *sd)
 		return 1; //Already open?
 
 	if (sd->storage.received == false) {
-		clif->message(sd->fd, msg_sd(sd, 27)); // Storage has not been loaded yet.
+		clif->message(sd->fd, msg_txt(27)); // Storage has not been loaded yet.
 		return 1;
 	}
 
 	if( !pc_can_give_items(sd) ) {
 		//check is this GM level is allowed to put items to storage
-		clif->message(sd->fd, msg_sd(sd,246)); // Your GM level doesn't authorize you to perform this action.
+		clif->message(sd->fd, msg_txt(246)); // Your GM level doesn't authorize you to perform this action.
 		return 1;
 	}
 
@@ -169,12 +169,12 @@ int storage_additem(struct map_session_data* sd, struct item* item_data, int amo
 
 	if (!itemdb_canstore(item_data, pc_get_group_level(sd))) {
 		//Check if item is storable. [Skotlex]
-		clif->message (sd->fd, msg_sd(sd, 264)); // This item cannot be stored.
+		clif->message (sd->fd, msg_txt(264)); // This item cannot be stored.
 		return 1;
 	}
 
 	if (item_data->bound > IBT_ACCOUNT && !pc_can_give_bound_items(sd)) {
-		clif->message(sd->fd, msg_sd(sd, 294)); // This bound item cannot be stored there.
+		clif->message(sd->fd, msg_txt(294)); // This bound item cannot be stored there.
 		return 1;
 	}
 
@@ -486,7 +486,7 @@ int storage_guild_storageopen(struct map_session_data* sd)
 		return 1; //Can't open both storages at a time.
 
 	if( !pc_can_give_items(sd) ) { //check is this GM level can open guild storage and store items [Lupus]
-		clif->message(sd->fd, msg_sd(sd,246)); // Your GM level doesn't authorize you to perform this action.
+		clif->message(sd->fd, msg_txt(246)); // Your GM level doesn't authorize you to perform this action.
 		return 1;
 	}
 
@@ -535,12 +535,12 @@ int guild_storage_additem(struct map_session_data* sd, struct guild_storage* sto
 
 	if (!itemdb_canguildstore(item_data, pc_get_group_level(sd)) || item_data->expire_time) {
 		//Check if item is storable. [Skotlex]
-		clif->message (sd->fd, msg_sd(sd,264)); // This item cannot be stored.
+		clif->message (sd->fd, msg_txt(264)); // This item cannot be stored.
 		return 1;
 	}
 
 	if( item_data->bound && item_data->bound != IBT_GUILD && !pc_can_give_bound_items(sd) ) {
-		clif->message(sd->fd, msg_sd(sd,294)); // This bound item cannot be stored there.
+		clif->message(sd->fd, msg_txt(294)); // This bound item cannot be stored there.
 		return 1;
 	}
 

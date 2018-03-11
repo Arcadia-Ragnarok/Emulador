@@ -738,7 +738,7 @@ bool homunculus_change_name_ack(struct map_session_data *sd, const char *name, i
 	normalize_name(newname, " ");//bugreport:3032 // FIXME[Haru]: This should be normalized by the inter-server (so that it's const here)
 
 	if (flag == 0 || strlen(newname) == 0) {
-		clif->message(sd->fd, msg_sd(sd,280)); // You cannot use this name
+		clif->message(sd->fd, msg_txt(280)); // You cannot use this name
 		aFree(newname);
 		return false;
 	}

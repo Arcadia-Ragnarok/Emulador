@@ -4048,7 +4048,6 @@ bool map_config_read(const char *filename)
 	libconfig->setting_lookup_mutable_string(setting, "charhelp_txt", map->charhelp_txt, sizeof(map->charhelp_txt));
 	libconfig->setting_lookup_bool(setting, "enable_spy", &map->enable_spy);
 	libconfig->setting_lookup_bool(setting, "use_grf", &map->enable_grf);
-	libconfig->setting_lookup_mutable_string(setting, "default_language", map->default_lang_str, sizeof(map->default_lang_str));
 
 	if (!map_config_read_console(filename, &config))
 		retval = false;
@@ -6461,7 +6460,6 @@ void map_defaults(void) {
 	sprintf(map->server_pw,"ragnarok");
 	sprintf(map->server_db,"ragnarok");
 	map->mysql_handle = NULL;
-	map->default_lang_str[0] = '\0';
 
 	map->cpsd_active = false;
 

@@ -44,7 +44,7 @@ void trade_traderequest(struct map_session_data *sd, struct map_session_data *ta
 	nullpo_retv(sd);
 
 	if (map->list[sd->bl.m].flag.notrade) {
-		clif->message (sd->fd, msg_sd(sd,272)); // You can't trade in this map
+		clif->message (sd->fd, msg_txt(272)); // You can't trade in this map
 		return;
 	}
 
@@ -83,7 +83,7 @@ void trade_traderequest(struct map_session_data *sd, struct map_session_data *ta
 
 	if (!pc_can_give_items(sd) || !pc_can_give_items(target_sd)) //check if both GMs are allowed to trade
 	{
-		clif->message(sd->fd, msg_sd(sd,246)); // Your GM level doesn't authorize you to perform this action.
+		clif->message(sd->fd, msg_txt(246)); // Your GM level doesn't authorize you to perform this action.
 		clif->tradestart(sd, 2); // GM is not allowed to trade
 		return;
 	}
@@ -373,14 +373,14 @@ void trade_tradeadditem(struct map_session_data *sd, short index, short amount)
 	if( !itemdb_cantrade(item, src_lv, dst_lv) && //Can't trade
 		(pc->get_partner(sd) != target_sd || !itemdb_canpartnertrade(item, src_lv, dst_lv)) ) //Can't partner-trade
 	{
-		clif->message (sd->fd, msg_sd(sd,260)); // This item cannot be traded.
+		clif->message (sd->fd, msg_txt(260)); // This item cannot be traded.
 		clif->tradeitemok(sd, index+2, TIO_INDROCKS);
 		return;
 	}
 
 	if( item->expire_time )
 	{ // Rental System
-		clif->message (sd->fd, msg_sd(sd,260)); // This item cannot be traded.
+		clif->message (sd->fd, msg_txt(260)); // This item cannot be traded.
 		clif->tradeitemok(sd, index+2, TIO_INDROCKS);
 		return;
 	}
@@ -389,7 +389,7 @@ void trade_tradeadditem(struct map_session_data *sd, short index, short amount)
 			!( item->bound == IBT_GUILD && sd->status.guild_id == target_sd->status.guild_id ) &&
 			!( item->bound == IBT_PARTY && sd->status.party_id == target_sd->status.party_id )
 					&& !pc_can_give_bound_items(sd) ) {
-		clif->message(sd->fd, msg_sd(sd,293)); // This bound item cannot be traded to that character.
+		clif->message(sd->fd, msg_txt(293)); // This bound item cannot be traded to that character.
 		clif->tradeitemok(sd, index+2, TIO_INDROCKS);
 		return;
 	}

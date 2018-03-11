@@ -15,7 +15,7 @@
 
 #include "chat.h"
 
-#include "map/atcommand.h" // msg_sd(sd,)
+#include "map/atcommand.h"
 #include "map/battle.h" // struct battle_config
 #include "map/clif.h"
 #include "map/map.h"
@@ -99,12 +99,12 @@ bool chat_createpcchat(struct map_session_data* sd, const char* title, const cha
 	}
 
 	if( map->list[sd->bl.m].flag.nochat ) {
-		clif->message(sd->fd, msg_sd(sd,281)); // You can't create chat rooms in this map
+		clif->message(sd->fd, msg_txt(281)); // You can't create chat rooms in this map
 		return false;
 	}
 
 	if (map->getcell(sd->bl.m, &sd->bl, sd->bl.x, sd->bl.y, CELL_CHKNOCHAT) ) {
-		clif->message (sd->fd, msg_sd(sd,865)); // "Can't create chat rooms in this area."
+		clif->message (sd->fd, msg_txt(865)); // "Can't create chat rooms in this area."
 		return false;
 	}
 

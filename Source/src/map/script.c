@@ -5098,10 +5098,7 @@ void script_load_translations(void) {
 
 	script->add_language("English");/* 0 is default, which is whatever is in the npc files hardcoded (in our case, English) */
 
-/* 
- * [Remover Traslations.conf]
- *	if (!libconfig->load_file(&translations_conf, config_filename))
-*/
+
 
 	if ((translations = libconfig->lookup(&translations_conf, "translations")) == NULL) {
 //		ShowError("load_translations: invalid format on '%s'\n",config_filename);
@@ -5133,9 +5130,6 @@ void script_load_translations(void) {
 		main_iter = db_iterator(script->translation_db);
 		for (string_db = dbi_first(main_iter); dbi_exists(main_iter); string_db = dbi_next(main_iter)) {
 			struct DBIterator *sub_iter = db_iterator(string_db);
-			for (st = dbi_first(sub_iter); dbi_exists(sub_iter); st = dbi_next(sub_iter)) {
-				VECTOR_PUSH(script->translation_buf, st->buf);
-			}
 			dbi_destroy(sub_iter);
 		}
 		dbi_destroy(main_iter);
@@ -5147,15 +5141,7 @@ void script_load_translations(void) {
 		}
 	}
 
-/*
-	if( k == script->max_lang_id ) {
-		ShowError("load_translations: map server default_language setting '%s' is not a loaded language\n",map->default_lang_str);
-		map->default_lang_id = 0;
-	} else {
-		map->default_lang_id = k;
-	}
-*/
-	map->default_lang_id = k; // Remove traslations [Spell Master]
+	map->default_lang_id = k; // Remove traslations
 }
 
 /**
@@ -5235,12 +5221,14 @@ bool script_load_translation_addstring(const char *file, uint8 lang_id, const ch
 	if (strcasecmp(msgctxt, "Messages.conf") == 0) {
 		int i;
 		for (i = 0; i < MAX_MSG; i++) {
+			/*
 			if (atcommand->msg_table[0][i] != NULL && strcmpi(atcommand->msg_table[0][i], VECTOR_DATA(*msgid)) == 0) {
 				if (atcommand->msg_table[lang_id][i] != NULL)
 					aFree(atcommand->msg_table[lang_id][i]);
 				atcommand->msg_table[lang_id][i] = aStrdup(VECTOR_DATA(*msgstr));
 				break;
 			}
+			*/
 		}
 	} else {
 		int msgstr_len = VECTOR_LENGTH(*msgstr);
@@ -5296,8 +5284,10 @@ int script_load_translation(const char *file, uint8 lang_id)
 	VECTOR_INIT(msgstr);
 
 	script->add_language(script->get_translation_file_name(file));
+	/*
 	if (lang_id >= atcommand->max_message_table)
 		atcommand->expand_message_table();
+	*/
 
 	while (fgets(line, sizeof(line), fp) != NULL) {
 		int len = (int)strlen(line);
@@ -22317,12 +22307,12 @@ BUILDIN(montransform)
 			return true;
 
 		if( battle_config.mon_trans_disable_in_gvg && map_flag_gvg2(sd->bl.m) ) {
-			clif->message(sd->fd, msg_sd(sd,1488)); // Transforming into monster is not allowed in Guild Wars.
+			clif->message(sd->fd, msg_txt(1488)); // Transforming into monster is not allowed in Guild Wars.
 			return true;
 		}
 
 		if( sd->disguise != -1 ) {
-			clif->message(sd->fd, msg_sd(sd,1486)); // Cannot transform into monster while in disguise.
+			clif->message(sd->fd, msg_txt(1486)); // Cannot transform into monster while in disguise.
 			return true;
 		}
 

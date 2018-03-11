@@ -365,7 +365,7 @@ int party_invite(struct map_session_data *sd,struct map_session_data *tsd)
 	ARR_FIND(0, MAX_PARTY, i, p->data[i].sd == sd);
 
 	if( i == MAX_PARTY || !p->party.member[i].leader ) {
-		clif->message(sd->fd, msg_sd(sd,282)); // You need to be a party leader to use this command.
+		clif->message(sd->fd, msg_txt(282)); // You need to be a party leader to use this command.
 		return 0;
 	}
 
@@ -379,7 +379,7 @@ int party_invite(struct map_session_data *sd,struct map_session_data *tsd)
 
 	// confirm whether the account has the ability to invite before checking the player
 	if( !pc_has_permission(sd, PC_PERM_PARTY) || (tsd && !pc_has_permission(tsd, PC_PERM_PARTY)) ) {
-		clif->message(sd->fd, msg_sd(sd,81)); // "Your GM level doesn't authorize you to preform this action on the specified player."
+		clif->message(sd->fd, msg_txt(81)); // "Your GM level doesn't authorize you to preform this action on the specified player."
 		return 0;
 	}
 
@@ -715,7 +715,7 @@ bool party_changeleader(struct map_session_data *sd, struct map_session_data *ts
 		return false;
 
 	if (!tsd || tsd->status.party_id != sd->status.party_id) {
-		clif->message(sd->fd, msg_sd(sd,283)); // Target character must be online and in your current party.
+		clif->message(sd->fd, msg_txt(283)); // Target character must be online and in your current party.
 		return false;
 	}
 
@@ -725,7 +725,7 @@ bool party_changeleader(struct map_session_data *sd, struct map_session_data *ts
 	}
 
 	if( map->list[sd->bl.m].flag.partylock ) {
-		clif->message(sd->fd, msg_sd(sd,287)); // You cannot change party leaders in this map.
+		clif->message(sd->fd, msg_txt(287)); // You cannot change party leaders in this map.
 		return false;
 	}
 
@@ -737,7 +737,7 @@ bool party_changeleader(struct map_session_data *sd, struct map_session_data *ts
 		return false; //Shouldn't happen
 
 	if (!p->party.member[mi].leader) {
-		clif->message(sd->fd, msg_sd(sd,282)); // You need to be a party leader to use this command.
+		clif->message(sd->fd, msg_txt(282)); // You need to be a party leader to use this command.
 		return false;
 	}
 

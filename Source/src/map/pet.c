@@ -623,7 +623,7 @@ int pet_menu(struct map_session_data *sd,int menunum)
 	egg_id = itemdb->exists(sd->pd->petDB->EggID);
 	if (egg_id) {
 		if ((egg_id->flag.trade_restriction&ITR_NODROP) && !pc->inventoryblank(sd)) {
-			clif->message(sd->fd, msg_sd(sd,451)); // You can't return your pet because your inventory is full.
+			clif->message(sd->fd, msg_txt(451)); // You can't return your pet because your inventory is full.
 			return 1;
 		}
 	}
@@ -680,7 +680,7 @@ int pet_change_name_ack(struct map_session_data *sd, const char *name, int flag)
 	normalize_name(newname, " ");//bugreport:3032 // FIXME[Haru]: This should be normalized by the inter-server (so that it's const here)
 
 	if (flag == 0 || strlen(newname) == 0) {
-		clif->message(sd->fd, msg_sd(sd,280)); // You cannot use this name for your pet.
+		clif->message(sd->fd, msg_txt(280)); // You cannot use this name for your pet.
 		clif->send_petstatus(sd); //Send status so client knows oet name change got rejected.
 		aFree(newname);
 		return 0;
