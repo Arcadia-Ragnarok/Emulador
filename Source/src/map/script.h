@@ -197,7 +197,6 @@ typedef enum c_op {
 	C_USERFUNC, // internal script function
 	C_USERFUNC_POS, // internal script function label
 	C_REF, // the next call to c_op2 should push back a ref to the left operand
-	C_LSTR, //Language Str (struct script_code_str)
 
 	// operators
 	C_OP3, // a ? b : c
@@ -607,11 +606,7 @@ struct script_syntax_data {
 	} curly[256]; // Information right parenthesis
 	int curly_count; // The number of right brackets
 	int index; // Number of the syntax used in the script
-	int last_func; // buildin index of the last parsed function
-	unsigned int nested_call; //Dont really know what to call this
-	bool lang_macro_active; // Used to generate translation strings
-	bool lang_macro_fmtstring_active; // Used to generate translation strings
-	struct DBMap *translation_db; //non-null if this npc has any translated strings to be linked
+
 };
 
 struct casecheck_data {
@@ -633,17 +628,6 @@ struct script_array {
 	unsigned int *members;/* member list */
 };
 
-struct string_translation_entry {
-	uint8 lang_id;
-	char string[];
-};
-
-struct string_translation {
-	int string_id;
-	uint8 translations;
-	int len;
-	uint8 *buf; // Array of struct string_translation_entry
-};
 
 /**
  * Interface
@@ -677,10 +661,6 @@ struct script_interface {
 	/* */
 	char *word_buf;
 	size_t word_size;
-	/* Script string storage */
-	char *string_list;
-	int string_list_size;
-	int string_list_pos;
 	/*  */
 	unsigned short current_item_id;
 	/* */
@@ -726,24 +706,8 @@ struct script_interface {
 	/* */
 	unsigned int *generic_ui_array;
 	unsigned int generic_ui_array_size;
-	/* set and unset on npc_parse_script */
-	const char *parser_current_npc_name;
-	/* */
-	int buildin_mes_offset;
-	int buildin_mesf_offset;
-	int buildin_select_offset;
-	int buildin_lang_macro_offset;
-	int buildin_lang_macro_fmtstring_offset;
-	/* */
-	struct DBMap *translation_db;/* npc_name => DBMap (strings) */
-	VECTOR_DECL(uint8 *) translation_buf;
-	/* */
-	char **languages;
-	uint8 max_lang_id;
-	/* */
 	struct script_string_buf parse_simpleexpr_strbuf;
-	/* */
-	int parse_cleanup_timer_id;
+
 	/*  */
 	void (*init) (bool minimal);
 	void (*final) (void);
@@ -843,7 +807,6 @@ struct script_interface {
 	const char *(*parse_simpleexpr_number) (const char *p);
 	const char *(*parse_simpleexpr_string) (const char *p);
 	const char *(*parse_simpleexpr_name) (const char *p);
-	void (*add_translatable_string) (const struct script_string_buf *string, const char *start_point);
 	const char *(*parse_expr) (const char *p);
 	const char *(*parse_line) (const char *p);
 	void (*read_constdb) (void);
@@ -928,16 +891,7 @@ struct script_interface {
 	/* */
 	void (*hardcoded_constants) (void);
 	unsigned short (*mapindexname2id) (struct script_state *st, const char* name);
-	int (*string_dup) (char *str);
-	void (*load_translations) (void);
-	bool (*load_translation_addstring) (const char *file, uint8 lang_id, const char *msgctxt, const struct script_string_buf *msgid, const struct script_string_buf *msgstr);
-	int (*load_translation) (const char *file, uint8 lang_id);
-	int (*translation_db_destroyer) (union DBKey key, struct DBData *data, va_list ap);
-	void (*clear_translations) (bool reload);
-	int (*parse_cleanup_timer) (int tid, int64 tick, int id, intptr_t data);
-	uint8 (*add_language) (const char *name);
-	const char *(*get_translation_file_name) (const char *file);
-	void (*parser_clean_leftovers) (void);
+
 	void (*run_use_script) (struct map_session_data *sd, struct item_data *data, int oid);
 	void (*run_item_equip_script) (struct map_session_data *sd, struct item_data *data, int oid);
 	void (*run_item_unequip_script) (struct map_session_data *sd, struct item_data *data, int oid);

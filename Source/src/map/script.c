@@ -110,7 +110,6 @@ const char* script_op2name(int op) {
 	RETURN_OP_NAME(C_USERFUNC_POS);
 
 	RETURN_OP_NAME(C_REF);
-	RETURN_OP_NAME(C_LSTR);
 
 	// operators
 	RETURN_OP_NAME(C_OP3);
@@ -809,29 +808,14 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 	char *arg = NULL;
 	char null_arg = '\0';
 	int func;
-	bool macro = false;
 
 	nullpo_retr(NULL, p);
 	// is need add check for arg null pointer below?
 	func = script->add_word(p);
 	if (script->str_data[func].type == C_FUNC) {
-		script->syntax.nested_call++;
-		if (script->syntax.last_func != -1) {
-			if (script->str_data[func].val == script->buildin_lang_macro_offset) {
-				script->syntax.lang_macro_active = true;
-				macro = true;
-			} else if (script->str_data[func].val == script->buildin_lang_macro_fmtstring_offset) {
-				script->syntax.lang_macro_fmtstring_active = true;
-				macro = true;
-			}
-		}
 
-		if( !macro ) {
-			// buildin function
-			script->syntax.last_func = script->str_data[func].val;
-			script->addl(func);
-			script->addc(C_ARG);
-		}
+		script->addl(func);
+		script->addc(C_ARG);
 
 		arg = script->buildin[script->str_data[func].val];
 		if (script->str_data[func].deprecated)
@@ -917,17 +901,10 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 			disp_error_message("parse_callfunc: expected ')' to close argument list",p);
 		++p;
 
-		if (script->str_data[func].val == script->buildin_lang_macro_offset)
-			script->syntax.lang_macro_active = false;
-		else if (script->str_data[func].val == script->buildin_lang_macro_fmtstring_offset)
-			script->syntax.lang_macro_fmtstring_active = false;
 	}
 
-	if (!macro) {
-		if (0 == --script->syntax.nested_call)
-			script->syntax.last_func = -1;
-		script->addc(C_FUNC);
-	}
+	script->addc(C_FUNC);
+
 	return p;
 }
 
@@ -1066,8 +1043,6 @@ const char* parse_variable(const char* p)
 	}
 
 	// push the set function onto the stack
-	script->syntax.nested_call++;
-	script->syntax.last_func = script->str_data[script->buildin_set_ref].val;
 	script->addl(script->buildin_set_ref);
 	script->addc(C_ARG);
 
@@ -1119,8 +1094,6 @@ const char* parse_variable(const char* p)
 
 	// close the script by appending the function operator
 	script->addc(C_FUNC);
-	if (--script->syntax.nested_call == 0)
-		script->syntax.last_func = -1;
 
 	// push the buffer from the method
 	return p;
@@ -1162,43 +1135,15 @@ bool is_number(const char *p) {
 	return false;
 }
 
-/**
- * Duplicates a script string into the script string list.
- *
- * Grows the script string list as needed.
- *
- * @param str The string to insert.
- * @return the string position in the script string list.
- */
-int script_string_dup(char *str)
-{
-	int len;
-	int pos = script->string_list_pos;
-
-	nullpo_retr(pos, str);
-	len = (int)strlen(str);
-
-	while (pos+len+1 >= script->string_list_size) {
-		script->string_list_size += (1024*1024)/2;
-		RECREATE(script->string_list,char,script->string_list_size);
-	}
-
-	safestrncpy(script->string_list+pos, str, len+1);
-	script->string_list_pos += len+1;
-
-	return pos;
-}
-
 /*==========================================
  * Analysis section
  *------------------------------------------*/
-const char *parse_simpleexpr(const char *p)
-{
+const char *parse_simpleexpr(const char *p) {
 	p=script->skip_space(p);
 
 	nullpo_retr(NULL, p);
 	if (*p == ';' || *p == ',')
-		disp_error_message("parse_simpleexpr: unexpected end of expression",p);
+		disp_error_message("parse_simpleexpr: fim inesperado de expressao",p);
 	if (*p == '(') {
 		return script->parse_simpleexpr_paren(p);
 	} else if (is_number(p)) {
@@ -1210,181 +1155,121 @@ const char *parse_simpleexpr(const char *p)
 	}
 }
 
-const char *parse_simpleexpr_paren(const char *p)
-{
-	int i = script->syntax.curly_count - 1;
+const char *parse_simpleexpr_paren(const char *p) {
+	int i = script->syntax.curly_count-1;
 	nullpo_retr(NULL, p);
-	if (i >= 0 && script->syntax.curly[i].type == TYPE_ARGLIST)
-		++script->syntax.curly[i].count;
 
-	p = script->parse_subexpr(p + 1, -1);
-	p = script->skip_space(p);
-	if ((i = script->syntax.curly_count - 1) >= 0
-	 && script->syntax.curly[i].type == TYPE_ARGLIST
-	 && script->syntax.curly[i].flag == ARGLIST_UNDEFINED
-	 && --script->syntax.curly[i].count == 0
-	) {
-		if (*p == ',') {
+	if (i >= 0 && script->syntax.curly[i].type == TYPE_ARGLIST) {
+		++script->syntax.curly[i].count;
+	}
+	p=script->parse_subexpr(p+1,-1);
+	p=script->skip_space(p);
+	if( (i=script->syntax.curly_count-1) >= 0 && script->syntax.curly[i].type == TYPE_ARGLIST && script->syntax.curly[i].flag == ARGLIST_UNDEFINED && --script->syntax.curly[i].count == 0) {
+		if( *p == ',' ) {
 			script->syntax.curly[i].flag = ARGLIST_PAREN;
 			return p;
 		} else {
 			script->syntax.curly[i].flag = ARGLIST_NO_PAREN;
 		}
 	}
-	if (*p != ')')
-		disp_error_message("parse_simpleexpr: unmatched ')'", p);
+	if( *p != ')' ) {
+		disp_error_message("parse_simpleexpr: incomparavel ')'",p);
+	}
 
 	return p + 1;
 }
 
-const char *parse_simpleexpr_number(const char *p)
-{
+const char *parse_simpleexpr_number(const char *p) {
+
 	char *np = NULL;
 	long long lli;
 
 	nullpo_retr(NULL, p);
-	while (*p == '0' && ISDIGIT(p[1]))
-		p++; // Skip leading zeros, we don't support octal literals
 
-	lli = strtoll(p, &np, 0);
-	if (lli < INT_MIN) {
-		lli = INT_MIN;
-		script->disp_warning_message("parse_simpleexpr: underflow detected, capping value to INT_MIN", p);
-	} else if (lli > INT_MAX) {
-		lli = INT_MAX;
-		script->disp_warning_message("parse_simpleexpr: overflow detected, capping value to INT_MAX", p);
+	while(*p == '0' && ISDIGIT(p[1])) {
+		p++;
 	}
-	script->addi((int)lli); // Cast is safe, as it's already been checked for overflows
+	lli=strtoll(p,&np,0);
+	if( lli < INT_MIN ) {
+		lli = INT_MIN;
+		script->disp_warning_message("parse_simpleexpr: underflow detectado, nivelando para o valor INT_MIN",p);
+	} else if( lli > INT_MAX ) {
+		lli = INT_MAX;
+		script->disp_warning_message("parse_simpleexpr: overflow detectado, nivelando para o valor INT_MAX",p);
+	}
+	script->addi((int)lli);
 
 	return np;
 }
 
-const char *parse_simpleexpr_string(const char *p)
-{
-	const char *start_point = p;
-
+const char *parse_simpleexpr_string(const char *p) {
 	nullpo_retr(NULL, p);
+	script->addc(C_STR);
+
 	do {
 		p++;
-		while (*p != '\0' && *p != '"') {
-			if ((unsigned char)p[-1] <= 0x7e && *p == '\\') {
+		while(*p && *p != '"') {
+			if((unsigned char)p[-1] <= 0x7e && *p == '\\') {
 				char buf[8];
 				size_t len = sv->skip_escaped_c(p) - p;
 				size_t n = sv->unescape_c(buf, p, len);
-				if (n != 1)
-					ShowDebug("parse_simpleexpr: comprimento inesperado %d depois de unescape (\"%.*s\" -> %.*s)\n", (int)n, (int)len, p, (int)n, buf);
+				if( n != 1 )
+					ShowDebug("parse_simpleexpr: cumprimento inesperado %d apos unescape (\"%.*s\" -> %.*s)\n", (int)n, (int)len, p, (int)n, buf);
 				p += len;
-				VECTOR_ENSURE(script->parse_simpleexpr_strbuf, 1, 512);
-				VECTOR_PUSH(script->parse_simpleexpr_strbuf, buf[0]);
+				script->addb(*buf);
 				continue;
+			} else if( *p == '\n' ) {
+				disp_error_message("parse_simpleexpr: nova linha inesperada @ string",p);
 			}
-			if (*p == '\n') {
-				disp_error_message("parse_simpleexpr: inesperada newline @ string", p);
-			}
-			VECTOR_ENSURE(script->parse_simpleexpr_strbuf, 1, 512);
-			VECTOR_PUSH(script->parse_simpleexpr_strbuf, *p++);
+			script->addb(*p++);
 		}
-		if (*p == '\0')
-			disp_error_message("parse_simpleexpr: fim inesperado de arquivo @ string", p);
-		p++; //'"'
+		if(!*p)
+			disp_error_message("parse_simpleexpr: fim de arquivo inesperado @ string",p);
+		p++;
 		p = script->skip_space(p);
-	} while (*p != '\0' && *p == '"');
+	} while( *p && *p == '"' );
 
-	VECTOR_ENSURE(script->parse_simpleexpr_strbuf, 1, 512);
-	VECTOR_PUSH(script->parse_simpleexpr_strbuf, '\0');
-
-	script->add_translatable_string(&script->parse_simpleexpr_strbuf, start_point);
-
-	VECTOR_TRUNCATE(script->parse_simpleexpr_strbuf);
-
+	script->addb(0);
 	return p;
 }
 
-const char *parse_simpleexpr_name(const char *p)
-{
+const char *parse_simpleexpr_name(const char *p) {
 	int l;
 	const char *pv = NULL;
 
-	// label , register , function etc
-	if (script->skip_word(p) == p)
-		disp_error_message("parse_simpleexpr: inesperado caractere", p);
-
-	l = script->add_word(p);
-	if (script->str_data[l].type == C_FUNC || script->str_data[l].type == C_USERFUNC || script->str_data[l].type == C_USERFUNC_POS) {
-		return script->parse_callfunc(p,1,0);
-#ifdef SCRIPT_CALLFUNC_CHECK
-	} else {
-		const char *name = script->get_str(l);
-		if (strdb_get(script->userfunc_db,name) != NULL) {
-			return script->parse_callfunc(p, 1, 1);
-		}
-#endif
+	if(script->skip_word(p)==p) {
+		disp_error_message("parse_simpleexpr: caractere inesperado",p);
 	}
-
-	if ((pv = script->parse_variable(p)) != NULL) {
-		// successfully processed a variable assignment
+	l=script->add_word(p);
+	if( script->str_data[l].type == C_FUNC || script->str_data[l].type == C_USERFUNC || script->str_data[l].type == C_USERFUNC_POS) {
+		return script->parse_callfunc(p,1,0);
+	#ifdef SCRIPT_CALLFUNC_CHECK
+	} else {
+		const char* name = script->get_str(l);
+		if( strdb_get(script->userfunc_db,name) != NULL ) {
+			return script->parse_callfunc(p,1,1);
+		}
+	#endif
+	}
+	if( (pv = script->parse_variable(p)) ) {
 		return pv;
 	}
-
-	if (script->str_data[l].type == C_INT && script->str_data[l].deprecated) {
-		disp_warning_message("This constant is deprecated and it will be removed in a future version. Please see the script documentation and constants.conf for an alternative.\n", p);
-	}
-
-	p = script->skip_word(p);
-	if (*p == '[') {
-		// array(name[i] => getelementofarray(name,i) )
+	p=script->skip_word(p);
+	if( *p == '[' ) {
 		script->addl(script->buildin_getelementofarray_ref);
 		script->addc(C_ARG);
 		script->addl(l);
-
-		p = script->parse_subexpr(p + 1, -1);
-		p = script->skip_space(p);
-		if (*p != ']')
-			disp_error_message("parse_simpleexpr: incomparavel ']'", p);
+		p=script->parse_subexpr(p+1,-1);
+		p=script->skip_space(p);
+		if( *p != ']' ) {
+			disp_error_message("parse_simpleexpr: incomparavel ']'",p);
+		}
 		++p;
 		script->addc(C_FUNC);
 	} else {
 		script->addl(l);
 	}
-
 	return p;
-}
-
-void script_add_translatable_string(const struct script_string_buf *string, const char *start_point)
-{
-	struct string_translation *st = NULL;
-
-	nullpo_retv(string);
-	if (script->syntax.translation_db == NULL
-	 || (st = strdb_get(script->syntax.translation_db, VECTOR_DATA(*string))) == NULL) {
-		script->addc(C_STR);
-
-		VECTOR_ENSURE(script->buf, VECTOR_LENGTH(*string), SCRIPT_BLOCK_SIZE);
-
-		VECTOR_PUSHARRAY(script->buf, VECTOR_DATA(*string), VECTOR_LENGTH(*string));
-	} else {
-		unsigned char u;
-		int st_cursor = 0;
-
-		script->addc(C_LSTR);
-
-		VECTOR_ENSURE(script->buf, (int)(sizeof(st->string_id) + sizeof(st->translations)), SCRIPT_BLOCK_SIZE);
-		VECTOR_PUSHARRAY(script->buf, (void *)&st->string_id, sizeof(st->string_id));
-		VECTOR_PUSHARRAY(script->buf, (void *)&st->translations, sizeof(st->translations));
-
-		for (u = 0; u != st->translations; u++) {
-			struct string_translation_entry *entry = (void *)(st->buf+st_cursor);
-			char *stringptr = &entry->string[0];
-			st_cursor += sizeof(*entry);
-			VECTOR_ENSURE(script->buf, (int)(sizeof(entry->lang_id) + sizeof(char *)), SCRIPT_BLOCK_SIZE);
-			VECTOR_PUSHARRAY(script->buf, (void *)&entry->lang_id, sizeof(entry->lang_id));
-			VECTOR_PUSHARRAY(script->buf, (void *)&stringptr, sizeof(stringptr));
-			st_cursor += sizeof(uint8); // FIXME: What are we skipping here?
-			while (st->buf[st_cursor++] != 0)
-				(void)0; // Skip string
-			st_cursor += sizeof(uint8); // FIXME: What are we skipping here?
-		}
-	}
 }
 
 /*==========================================
@@ -2528,18 +2413,7 @@ struct script_code* parse_script(const char *src,const char *file,int line,int o
 	if( src == NULL )
 		return NULL;// empty script
 
-	if( script->parse_cleanup_timer_id == INVALID_TIMER ) {
-		script->parse_cleanup_timer_id = timer->add(timer->gettick() + 10, script->parse_cleanup_timer, 0, 0);
-	}
-
 	memset(&script->syntax,0,sizeof(script->syntax));
-	script->syntax.last_func = -1;/* as valid values are >= 0 */
-	if( script->parser_current_npc_name ) {
-		if( !script->translation_db )
-			script->load_translations();
-		if( script->translation_db )
-			script->syntax.translation_db = strdb_get(script->translation_db, script->parser_current_npc_name);
-	}
 
 	VECTOR_TRUNCATE(script->buf);
 	script->parse_nextline(true, NULL);
@@ -4622,36 +4496,6 @@ void run_script_main(struct script_state *st) {
 				while (VECTOR_INDEX(st->script->script_buf, st->pos++) != 0)
 					(void)0; // Skip string
 				break;
-			case C_LSTR:
-			{
-				struct map_session_data *lsd = NULL;
-				uint8 translations = 0;
-				int string_id = *((int *)(&VECTOR_INDEX(st->script->script_buf, st->pos)));
-				st->pos += sizeof(string_id);
-				translations = *((uint8 *)(&VECTOR_INDEX(st->script->script_buf, st->pos)));
-				st->pos += sizeof(translations);
-
-				if( (!st->rid || !(lsd = map->id2sd(st->rid)) || !lsd->lang_id) && !map->default_lang_id )
-					script->push_conststr(stack, script->string_list+string_id);
-				else {
-					uint8 k, wlang_id = lsd ? lsd->lang_id : map->default_lang_id;
-					int offset = st->pos;
-
-					for(k = 0; k < translations; k++) {
-						uint8 lang_id = *(uint8 *)(&VECTOR_INDEX(st->script->script_buf, offset));
-						offset += sizeof(uint8);
-						if( lang_id == wlang_id )
-							break;
-						offset += sizeof(char*);
-					}
-					if (k == translations)
-						script->push_conststr(stack, script->string_list+string_id);
-					else
-						script->push_conststr(stack, *(const char**)(&VECTOR_INDEX(st->script->script_buf, offset)));
-				}
-				st->pos += ( ( sizeof(char*) + sizeof(uint8) ) * translations );
-			}
-				break;
 			case C_FUNC:
 				script->run_func(st);
 				if(st->state==GOTO) {
@@ -5056,439 +4900,12 @@ void do_final_script(void)
 	if( script->generic_ui_array )
 		aFree(script->generic_ui_array);
 
-	script->clear_translations(false);
-	script->parser_clean_leftovers();
-}
-
-/**
- *
- **/
-uint8 script_add_language(const char *name) {
-	uint8 lang_id = script->max_lang_id;
-	nullpo_ret(name);
-
-	RECREATE(script->languages, char *, ++script->max_lang_id);
-	script->languages[lang_id] = aStrdup(name);
-
-	return lang_id;
-}
-/**
- * Goes thru Database/translations.conf file
- **/
-void script_load_translations(void) {
-	struct config_t translations_conf;
-	//const char *config_filename = "Database/translations.conf"; // FIXME hardcoded name
-	struct config_setting_t *translations = NULL;
-	int i, size;
-	int total = 0;
-	uint8 lang_id = 0, k;
-
-	if (map->minimal) // No translations in minimal mode
-		return;
-
-	script->translation_db = strdb_alloc(DB_OPT_DUP_KEY, NAME_LENGTH*2+1);
-
-	if( script->languages ) {
-		for(i = 0; i < script->max_lang_id; i++)
-			aFree(script->languages[i]);
-		aFree(script->languages);
-	}
-	script->languages = NULL;
-	script->max_lang_id = 0;
-
-	script->add_language("English");/* 0 is default, which is whatever is in the npc files hardcoded (in our case, English) */
-
-
-
-	if ((translations = libconfig->lookup(&translations_conf, "translations")) == NULL) {
-//		ShowError("load_translations: invalid format on '%s'\n",config_filename);
-		return;
-	}
-
-	if( script->string_list )
-		aFree(script->string_list);
-
-	script->string_list = NULL;
-	script->string_list_pos = 0;
-	script->string_list_size = 0;
-
-	size = libconfig->setting_length(translations);
-
-	for(i = 0; i < size; i++) {
-		const char *translation_file = libconfig->setting_get_string_elem(translations, i);
-		total += script->load_translation(translation_file, ++lang_id);
-	}
-	libconfig->destroy(&translations_conf);
-
-	if (total != 0) {
-		struct DBIterator *main_iter;
-		struct DBMap *string_db;
-		struct string_translation *st = NULL;
-
-		VECTOR_ENSURE(script->translation_buf, total, 1);
-
-		main_iter = db_iterator(script->translation_db);
-		for (string_db = dbi_first(main_iter); dbi_exists(main_iter); string_db = dbi_next(main_iter)) {
-			struct DBIterator *sub_iter = db_iterator(string_db);
-			dbi_destroy(sub_iter);
-		}
-		dbi_destroy(main_iter);
-	}
-
-	for(k = 0; k < script->max_lang_id; k++) {
-		if( !strcmpi(script->languages[k],map->default_lang_str) ) {
-			break;
-		}
-	}
-
-	map->default_lang_id = k; // Remove traslations
-}
-
-/**
- * Generates a language name from a translation filename.
- *
- * @param file The filename.
- * @return The corresponding translation name.
- */
-const char *script_get_translation_file_name(const char *file)
-{
-	const char *basename = NULL, *last_dot = NULL;
-
-	nullpo_retr("Unknown", file);
-
-	basename = strrchr(file, '/');;
-#ifdef WIN32
-	{
-		const char *basename_windows = strrchr(file, '\\');
-		if (basename_windows > basename)
-			basename = basename_windows;
-	}
-#endif // WIN32
-	if (basename == NULL)
-		basename = file;
-	else
-		basename++; // Skip slash
-	Assert_retr("Unknown", *basename != '\0');
-
-	last_dot = strrchr(basename, '.');
-	if (last_dot != NULL) {
-		static char file_name[200];
-		if (last_dot == basename)
-			return basename + 1;
-
-		safestrncpy(file_name, basename, last_dot - basename + 1);
-		return file_name;
-	}
-
-	return basename;
-}
-
-/**
- * Parses and adds a translated string to the translations database.
- *
- * @param file    Translations file being parsed (for error messages).
- * @param lang_id Language ID being parsed.
- * @param msgctxt Message context (i.e. NPC name)
- * @param msgid   Message ID (source string)
- * @param msgstr  Translated message
- * @return success state
- * @retval true if a new string was added.
- */
-bool script_load_translation_addstring(const char *file, uint8 lang_id, const char *msgctxt, const struct script_string_buf *msgid, const struct script_string_buf *msgstr)
-{
-	nullpo_retr(false, file);
-	nullpo_retr(false, msgctxt);
-	nullpo_retr(false, msgid);
-	nullpo_retr(false, msgstr);
-
-	if (VECTOR_LENGTH(*msgid) <= 1) {
-		// Empty ID (i.e. header) to be ignored
-		return false;
-	}
-
-	if (VECTOR_LENGTH(*msgstr) <= 1) {
-		// Empty (untranslated) string to be ignored
-		return false;
-	}
-
-	if (msgctxt[0] == '\0') {
-		// Missing context
-		ShowWarning("script_load_translation: Missing context for msgid '%s' in '%s'. Skipping.\n",
-				VECTOR_DATA(*msgid), file);
-		return false;
-	}
-
-	if (strcasecmp(msgctxt, "Messages.conf") == 0) {
-		int i;
-		for (i = 0; i < MAX_MSG; i++) {
-			/*
-			if (atcommand->msg_table[0][i] != NULL && strcmpi(atcommand->msg_table[0][i], VECTOR_DATA(*msgid)) == 0) {
-				if (atcommand->msg_table[lang_id][i] != NULL)
-					aFree(atcommand->msg_table[lang_id][i]);
-				atcommand->msg_table[lang_id][i] = aStrdup(VECTOR_DATA(*msgstr));
-				break;
-			}
-			*/
-		}
-	} else {
-		int msgstr_len = VECTOR_LENGTH(*msgstr);
-		int inner_len = 1 + msgstr_len + 1; //uint8 lang_id + msgstr_len + '\0'
-		struct string_translation *st = NULL;
-		struct DBMap *string_db;
-
-		if ((string_db = strdb_get(script->translation_db, msgctxt)) == NULL) {
-			string_db = strdb_alloc(DB_OPT_DUP_KEY, 0);
-			strdb_put(script->translation_db, msgctxt, string_db);
-		}
-
-		if ((st = strdb_get(string_db, VECTOR_DATA(*msgid))) == NULL) {
-			CREATE(st, struct string_translation, 1);
-			st->string_id = script->string_dup(VECTOR_DATA(*msgid));
-			strdb_put(string_db, VECTOR_DATA(*msgid), st);
-		}
-		RECREATE(st->buf, uint8, st->len + inner_len);
-
-		WBUFB(st->buf, st->len) = lang_id;
-		safestrncpy(WBUFP(st->buf, st->len + 1), VECTOR_DATA(*msgstr), msgstr_len + 1);
-
-		st->translations++;
-		st->len += inner_len;
-	}
-	return true;
-}
-
-/**
- * Parses an individual translation file.
- *
- * @param file The filename to parse.
- * @param lang_id The language identifier.
- * @return The amount of strings loaded.
- */
-int script_load_translation(const char *file, uint8 lang_id)
-{
-	int translations = 0;
-	char line[1024];
-	char msgctxt[NAME_LENGTH*2+1] = { 0 };
-	FILE *fp;
-	int lineno = 0;
-	struct script_string_buf msgid, msgstr;
-
-	nullpo_ret(file);
-
-	if ((fp = fopen(file,"rb")) == NULL) {
-		ShowError("load_translation: failed to open '%s' for reading\n",file);
-		return 0;
-	}
-
-	VECTOR_INIT(msgid);
-	VECTOR_INIT(msgstr);
-
-	script->add_language(script->get_translation_file_name(file));
-	/*
-	if (lang_id >= atcommand->max_message_table)
-		atcommand->expand_message_table();
-	*/
-
-	while (fgets(line, sizeof(line), fp) != NULL) {
-		int len = (int)strlen(line);
-		int i;
-		lineno++;
-
-		if(len <= 1)
-			continue;
-
-		if (line[0] == '#')
-			continue;
-
-		if (VECTOR_LENGTH(msgid) > 0 && VECTOR_LENGTH(msgstr) > 0) {
-			if (line[0] == '"') {
-				// Continuation line
-				(void)VECTOR_POP(msgstr); // Pop final '\0'
-				for (i = 8; i < len - 2; i++) {
-					VECTOR_ENSURE(msgstr, 1, 512);
-					if (line[i] == '\\' && line[i+1] == '"') {
-						VECTOR_PUSH(msgstr, '"');
-						i++;
-					} else {
-						VECTOR_PUSH(msgstr, line[i]);
-					}
-				}
-				VECTOR_ENSURE(msgstr, 1, 512);
-				VECTOR_PUSH(msgstr, '\0');
-				continue;
-			}
-
-			// Add string
-			if (script->load_translation_addstring(file, lang_id, msgctxt, &msgid, &msgstr))
-				translations++;
-
-			msgctxt[0] = '\0';
-			VECTOR_TRUNCATE(msgid);
-			VECTOR_TRUNCATE(msgstr);
-		}
-
-		if (strncasecmp(line,"msgctxt \"", 9) == 0) {
-			int cursor = 0;
-			msgctxt[0] = '\0';
-			for (i = 9; i < len - 2; i++) {
-				if (line[i] == '\\' && line[i+1] == '"') {
-					msgctxt[cursor] = '"';
-					i++;
-				} else {
-					msgctxt[cursor] = line[i];
-				}
-				if (++cursor >= (int)sizeof(msgctxt) - 1)
-					break;
-			}
-			msgctxt[cursor] = '\0';
-
-			// New context, reset everything
-			VECTOR_TRUNCATE(msgid);
-			VECTOR_TRUNCATE(msgstr);
-			continue;
-		}
-
-		if (strncasecmp(line, "msgid \"", 7) == 0) {
-			VECTOR_TRUNCATE(msgid);
-			for (i = 7; i < len - 2; i++) {
-				VECTOR_ENSURE(msgid, 1, 512);
-				if (line[i] == '\\' && line[i+1] == '"') {
-					VECTOR_PUSH(msgid, '"');
-					i++;
-				} else {
-					VECTOR_PUSH(msgid, line[i]);
-				}
-			}
-			VECTOR_ENSURE(msgid, 1, 512);
-			VECTOR_PUSH(msgid, '\0');
-
-			// New id, reset string if any
-			VECTOR_TRUNCATE(msgstr);
-			continue;
-		}
-
-		if (VECTOR_LENGTH(msgid) > 0 && strncasecmp(line, "msgstr \"", 8) == 0) {
-			VECTOR_TRUNCATE(msgstr);
-			for (i = 8; i < len - 2; i++) {
-				VECTOR_ENSURE(msgstr, 1, 512);
-				if (line[i] == '\\' && line[i+1] == '"') {
-					VECTOR_PUSH(msgstr, '"');
-					i++;
-				} else {
-					VECTOR_PUSH(msgstr, line[i]);
-				}
-			}
-			VECTOR_ENSURE(msgstr, 1, 512);
-			VECTOR_PUSH(msgstr, '\0');
-
-			continue;
-		}
-
-		ShowWarning("script_load_translation: Unexpected input at '%s' in file '%s' line %d. Skipping.\n",
-				line, file, lineno);
-	}
-
-	// Add last string
-	if (VECTOR_LENGTH(msgid) > 0 && VECTOR_LENGTH(msgstr) > 0) {
-		if (script->load_translation_addstring(file, lang_id, msgctxt, &msgid, &msgstr))
-			translations++;
-	}
-
-	fclose(fp);
-
-	VECTOR_CLEAR(msgid);
-	VECTOR_CLEAR(msgstr);
-
-	//ShowStatus("Done reading '"CL_WHITE"%d"CL_RESET"' translations in '"CL_WHITE"%s"CL_RESET"'.\n", translations, file);
-	return translations;
-}
-
-/**
- *
- **/
-void script_clear_translations(bool reload) {
-	uint32 i;
-
-	if( script->string_list )
-		aFree(script->string_list);
-
-	script->string_list = NULL;
-	script->string_list_pos = 0;
-	script->string_list_size = 0;
-
-	while (VECTOR_LENGTH(script->translation_buf) > 0) {
-		aFree(VECTOR_POP(script->translation_buf));
-	}
-	VECTOR_CLEAR(script->translation_buf);
-
-	if( script->languages ) {
-		for(i = 0; i < script->max_lang_id; i++)
-			aFree(script->languages[i]);
-		aFree(script->languages);
-	}
-	script->languages = NULL;
-	script->max_lang_id = 0;
-
-	if( script->translation_db ) {
-		script->translation_db->clear(script->translation_db,script->translation_db_destroyer);
-	}
-
-	if( reload )
-		script->load_translations();
-}
-
-/**
- *
- **/
-int script_translation_db_destroyer(union DBKey key, struct DBData *data, va_list ap)
-{
-	struct DBMap *string_db = DB->data2ptr(data);
-
-	if( db_size(string_db) ) {
-		struct string_translation *st = NULL;
-		struct DBIterator *iter = db_iterator(string_db);
-
-		for( st = dbi_first(iter); dbi_exists(iter); st = dbi_next(iter) ) {
-			aFree(st);
-		}
-		dbi_destroy(iter);
-	}
-
-	db_destroy(string_db);
-	return 0;
-}
-
-/**
- *
- **/
-void script_parser_clean_leftovers(void)
-{
-	VECTOR_CLEAR(script->buf);
-
-	if( script->translation_db ) {
-		script->translation_db->destroy(script->translation_db,script->translation_db_destroyer);
-		script->translation_db = NULL;
-	}
-
-	VECTOR_CLEAR(script->parse_simpleexpr_strbuf);
-}
-
-/**
- * Performs cleanup after all parsing is processed
- **/
-int script_parse_cleanup_timer(int tid, int64 tick, int id, intptr_t data) {
-	script->parser_clean_leftovers();
-
-	script->parse_cleanup_timer_id = INVALID_TIMER;
-
-	return 0;
 }
 
 /*==========================================
  * Initialization
  *------------------------------------------*/
 void do_init_script(bool minimal) {
-	script->parse_cleanup_timer_id = INVALID_TIMER;
 	VECTOR_INIT(script->parse_simpleexpr_strbuf);
 
 	script->st_db = idb_alloc(DB_OPT_BASE);
@@ -5514,7 +4931,6 @@ void do_init_script(bool minimal) {
 		return;
 
 	mapreg->init();
-	script->load_translations();
 }
 
 int script_reload(void)
@@ -5550,13 +4966,6 @@ int script_reload(void)
 	atcommand->binding_count = 0;
 
 	db_clear(script->st_db);
-
-	script->clear_translations(true);
-
-	if( script->parse_cleanup_timer_id != INVALID_TIMER ) {
-		timer->delete(script->parse_cleanup_timer_id,script->parse_cleanup_timer);
-		script->parse_cleanup_timer_id = INVALID_TIMER;
-	}
 
 	mapreg->reload();
 
@@ -23464,12 +22873,6 @@ BUILDIN(getcalendartime)
 	return true;
 }
 
-/** place holder for the translation macro **/
-BUILDIN(_)
-{
-	return true;
-}
-
 // declarations that were supposed to be exported from npc_chat.c
 BUILDIN(defpattern);
 BUILDIN(activatepset);
@@ -23806,11 +23209,6 @@ bool script_add_builtin(const struct script_function *buildin, bool override)
 		else if( strcmp(buildin->name, "callsub") == 0 ) script->buildin_callsub_ref = n;
 		else if( strcmp(buildin->name, "callfunc") == 0 ) script->buildin_callfunc_ref = n;
 		else if( strcmp(buildin->name, "getelementofarray") == 0 ) script->buildin_getelementofarray_ref = n;
-		else if( strcmp(buildin->name, "mes") == 0 ) script->buildin_mes_offset = script->buildin_count;
-		else if( strcmp(buildin->name, "mesf") == 0 ) script->buildin_mesf_offset = script->buildin_count;
-		else if( strcmp(buildin->name, "select") == 0 ) script->buildin_select_offset = script->buildin_count;
-		else if( strcmp(buildin->name, "_") == 0 ) script->buildin_lang_macro_offset = script->buildin_count;
-		else if( strcmp(buildin->name, "_$") == 0 ) script->buildin_lang_macro_fmtstring_offset = script->buildin_count;
 
 		offset = script->buildin_count;
 
@@ -24451,8 +23849,6 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF2(rodex_sendmail, "rodex_sendmail_acc", "isss???????????"),
 		BUILDIN_DEF(rodex_sendmail2, "isss?????????????????????????????????????????"),
 		BUILDIN_DEF2(rodex_sendmail2, "rodex_sendmail_acc2", "isss?????????????????????????????????????????"),
-		BUILDIN_DEF(_,"s"),
-		BUILDIN_DEF2(_, "_$", "s"),
 	};
 	int i, len = ARRAYLENGTH(BUILDIN);
 	RECREATE(script->buildin, char *, script->buildin_count + len); // Pre-alloc to speed up
@@ -24829,7 +24225,6 @@ void script_defaults(void)
 	script->labels_size = 0;
 
 	VECTOR_INIT(script->buf);
-	VECTOR_INIT(script->translation_buf);
 
 	script->parse_options = 0;
 	script->buildin_set_ref = 0;
@@ -24961,7 +24356,6 @@ void script_defaults(void)
 	script->parse_simpleexpr_number = parse_simpleexpr_number;
 	script->parse_simpleexpr_string = parse_simpleexpr_string;
 	script->parse_simpleexpr_name = parse_simpleexpr_name;
-	script->add_translatable_string = script_add_translatable_string;
 	script->parse_expr = parse_expr;
 	script->parse_line = parse_line;
 	script->read_constdb = read_constdb;
@@ -25084,16 +24478,6 @@ void script_defaults(void)
 	/* */
 	script->hardcoded_constants = script_hardcoded_constants;
 	script->mapindexname2id = script_mapindexname2id;
-	script->string_dup = script_string_dup;
-	script->load_translations = script_load_translations;
-	script->load_translation_addstring = script_load_translation_addstring;
-	script->load_translation = script_load_translation;
-	script->translation_db_destroyer = script_translation_db_destroyer;
-	script->clear_translations = script_clear_translations;
-	script->parse_cleanup_timer = script_parse_cleanup_timer;
-	script->add_language = script_add_language;
-	script->get_translation_file_name = script_get_translation_file_name;
-	script->parser_clean_leftovers = script_parser_clean_leftovers;
 
 	script->run_use_script = script_run_use_script;
 	script->run_item_equip_script = script_run_item_equip_script;
