@@ -37,7 +37,7 @@ gonryun,153,64,7	script	Anunciante de Kunlun#gonpasse	4_M_TWMIDMAN,{
 // ------------------------------------------------------------------
 // - [comodo > job_duncer ] - 
 // ------------------------------------------------------------------
-comodo,193,151,4	script	Bor Robin#1	4_M_04,{
+comodo,193,151,4	script	Bor Robin#com	4_M_04,{
 	mes "[Bor Robin]";
 	mes "Aah....";
 	mes "Uma prima donna no centro das atenções!";

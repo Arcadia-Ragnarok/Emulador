@@ -12,7 +12,7 @@
 | - Nota: Quest de Mudança de Classe para Mestre-Taekwon.           |
 \*-----------------------------------------------------------------*/
 
-payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,3,3,{
+payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 	if (Class == Job_Taekwon) {
 		if (!sgladiatorq) {
 			mes "[Moohyun]";

@@ -73,9 +73,9 @@ xmas_fild01,84,48,5	script	Sr. Noel#xmas	4_M_SANTA,{
 	mes "Ho Ho Ho";
 	mes "Apreciou o clima natalino desee lugar?";
 	mes "Mas se quiser voltar para aldebaran é só falar.";
-	if (select("Voltar para Aldebaran","Cancelar") == 1) {
+	if (select("Voltar para Aldebaran", "Cancelar") == 1) {
 		close2;
-		warp ("aldebaran",140,234);
+		warp("aldebaran",140,234);
 		end;
 	}
 	mes "[Senhor Noel]";

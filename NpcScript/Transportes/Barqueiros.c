@@ -187,7 +187,7 @@ amatsu,194,79,5	script	Capitão#Walter2	4_M_SEAMAN,{
 // ------------------------------------------------------------------
 // - [Alberta ~ Ayothaya ] - 
 // ------------------------------------------------------------------
-alberta,247,42,3	script	Aibakthing#ayo	4_M_THAIONGBAK,{
+alberta,247,42,3	script	Aibakthing#alb	4_M_THAIONGBAK,{
 	mes "[Aibakthing]";
 	mes "Hmm! Hahh! Hmm! Hahh!";
 	mes "Deixe-me apresentar a você minha cidade, Ayothaya onde vive tudo o que é sagrado e misterioso!";
@@ -243,14 +243,14 @@ alberta,247,42,3	script	Aibakthing#ayo	4_M_THAIONGBAK,{
 	}
 }
 
-ayothaya,152,68,1	script	Barqueiro Aibakthing#ayo2	4_M_THAIONGBAK,{
+ayothaya,152,68,1	script	Aibakthing#ayo	4_M_THAIONGBAK,{
 	mes "[Aibakthing]";
 	mes "Hmm! Hah! Hmm! Hah!";
 	mes "Então, você gostou de conhecer Ayothaya?";
 	mes "Gostou da Sopa Tailandesa?";
 	mes "Já é hora de voltar para seu país!";
 	next;
-	if (select("Voltar para Alberta.","Cancelar.") == 1) {
+	if (select("Voltar para Alberta", "Cancelar") == 1) {
 		mes "[Aibakthing]";
 		mes "Estaremos aqui sempre para dar as boas-vindas.";
 		mes "Espero que possamos nos rever em breve!";
@@ -266,7 +266,7 @@ ayothaya,152,68,1	script	Barqueiro Aibakthing#ayo2	4_M_THAIONGBAK,{
 // ------------------------------------------------------------------
 // - [Alberta ~ Kunlun(Gon_Fild) ] - 
 // ------------------------------------------------------------------
-alberta,245,69,3	script	Wabakho#gon	4_M_TWMIDMAN,{
+alberta,245,69,3	script	Wabakho#alb	4_M_TWMIDMAN,{
 	mes "[Wabakho]";
 	mes "Saudações.";
 	mes "Eu gostaria de convidar todos vocês a Kunlun.";
@@ -327,7 +327,7 @@ alberta,245,69,3	script	Wabakho#gon	4_M_TWMIDMAN,{
 	}
 }
 
-gon_fild01,255,79,7	script	Wabakho#gon2	4_M_TWMIDMAN,{
+gon_fild01,255,79,7	script	Wabakho#gon	4_M_TWMIDMAN,{
 	mes "[Wabakho]";
 	mes "E então ilustre visitante, o que achou de Kunlun?";
 	mes "Podemos partir para o continente quando quiser, basta dar as ordens.";
@@ -347,8 +347,8 @@ gon_fild01,255,79,7	script	Wabakho#gon2	4_M_TWMIDMAN,{
 // ------------------------------------------------------------------
 // - [Alberta ~ Louyang(Lou_Fild01) ] - 
 // ------------------------------------------------------------------
-alberta,246,40,3	script	Garota de Louyang#lou	4_F_CHNDRESS1,{
-	mes "[Garota]";
+alberta,245,45,3	script	Kunyang#alb	4_F_CHNDRESS1,{
+	mes "[Kunyang]";
 	mes "La la la la.";
 	mes "Hoje eu me sinto tão bem.";
 	mes "Estou com vontade de fazer um piquenique em algum lugar."; 
@@ -356,50 +356,50 @@ alberta,246,40,3	script	Garota de Louyang#lou	4_F_CHNDRESS1,{
 	next;
 	switch(select("Sobre Louyang.","Ir para Louyang.","Cancelar.")) {
 		case 1:
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Você está interessad"+(Sex == SEX_MALE ? "o":"a")+" em Louyang?";
 		mes "É um bom lugar para os aventureiros visitarem.";
 		next;
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Louyang tem uma longa história com contos sobre artes marcias e guerreiros ancestrais.";
 		mes "Também é conhecida pelos monstros que rondam a área de Louyang.";
 		next;
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Lá você encontrará medicamentos que curam tudo.";
 		mes "Ocorrências misteriosas, e artistas marciais tudo em um só lugar!"; 
 		next;
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Eu costumava treinar artes marciais todas as manhãs quando eu estava em Louyang.";
 		mes "Pode não parecer, mas eu sou muito forte!";
 		next;
-		mes "[Garota]"; 
+		mes "[Kunyang]"; 
 		mes "Se você quiser visitar Louyang, sinta se à vontade para me dizer.";
 		mes "É só me dar algum zeny que iremos.";
 		close; 
 		case 2:
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Eu te guiarei até Louyang imediatamente.";
 		mes "Pelos meus serviços, eu estou aceitando 10,000 zeny."; 
 		next;
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "E então, você está pronto?";
 		next;
 		if (select("Sim!","Não.") == 1) {
 			if (Zeny > 9999) {
-				mes "[Garota]";
+				mes "[Kunyang]";
 				mes "Okay";
 				mes "Pronto!";
 				mes "Divirta-se!";
 				close2;
 				Zeny -= 10000; warp ("lou_fild01",190,101); end;
 			}
-			mes "[Garota]";
+			mes "[Kunyang]";
 			mes "...";
 			mes "Me parece que você não tem 10,000 zeny...";
 			mes "Vá arrumar algum dinheiro antes!"; 
 			close;
 		}
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Oh..."; 
 		mes "É tão desapontador te ouvir dizer isto.";
 		mes "Bem, tenha um bom dia!";
@@ -412,27 +412,27 @@ alberta,246,40,3	script	Garota de Louyang#lou	4_F_CHNDRESS1,{
 	}
 }
 
-lou_fild01,190,100,7	script	Garota de Louyang#lou2	4_F_CHNDRESS1,{
-	mes "[Garota]"; 
+lou_fild01,190,100,7	script	Kunyang#lou	4_F_CHNDRESS1,{
+	mes "[Kunyang]"; 
 	mes "Você gostaria de voltar para Alberta?";
 	next;
 	if (select("Voltar para Alberta.","Cancelar.") == 1) {
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "Eu espero te ver novamente!";
 		mes "Tchau Tchau!";
 		close2; warp ("alberta",235,45); end;
 	}
-	mes "[Garota]";
+	mes "[Kunyang]";
 	mes "Se você gostar desta área, porque não experimentar a comida e apreciar a paisagem!"; 
 	next;
 	if (Sex == SEX_MALE) {
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "E por paisagem....";
 		mes "Eu quero dizer as garotas!";
 		mes "Tee hee...";
 	}
 	else {
-		mes "[Garota]";
+		mes "[Kunyang]";
 		mes "E os garotos aqui não são tão ruins...";
 	}
 	close;
@@ -441,7 +441,7 @@ lou_fild01,190,100,7	script	Garota de Louyang#lou2	4_F_CHNDRESS1,{
 // ------------------------------------------------------------------
 // - [Alberta ~ Moscovia] - 
 // ------------------------------------------------------------------
-alberta,245,66,4	script	Representante de Moscovia#mosknav	4_F_RUSWOMAN2,{
+alberta,245,66,4	script	Representante de Moscovia#alb	4_F_RUSWOMAN2,{
 	mes "[Relações Públicas]";
 	mes "Moscóvia! Você conhece Moscóvia?";
 	mes "O paraíso em meio ao mar sem fim!";
@@ -498,7 +498,7 @@ alberta,245,66,4	script	Representante de Moscovia#mosknav	4_F_RUSWOMAN2,{
 	}
 }
 
-moscovia,166,53,4	script	Representante de Moscovia#mosknav2	4_F_RUSWOMAN2,{
+moscovia,166,53,4	script	Representante de Moscovia#mosk	4_F_RUSWOMAN2,{
 	mes "[Relações Públicas]";
 	mes "E então, como foi a sua viagem?";
 	mes "Leva boas lembranças de Moscóvia?";
@@ -568,7 +568,7 @@ brasilis,316,57,3	script	Marinheiro Crewman#bra2	4W_SAILOR,{
 // ------------------------------------------------------------------
 // - [ alberta ~ dewata ] - 
 // ------------------------------------------------------------------
-alberta,212,202,4	script	Marinheiro de Dewata#dewata	4_M_DEWMAN,{
+alberta,240,47,4	script	Marinheiro de Dewata#dewata	4_M_DEWMAN,{
 	mes "[Marinheiro de Dewata]";
 	mes "Quer visitar a ^8B4513Ilha Dewata^000000 com ondas deslumbrantes que dão descanso à sua alma?";
 	mes "A taxa de embarque é de 10,000 Zenys.";
@@ -706,7 +706,7 @@ cmd_fild07,94,134,4	duplicate(cmdboard)	Sarumane#cmd	4W_SAILOR
 // ------------------------------------------------------------------
 // - [ Izlude > Izlu2Dun / Izlude > Alberta ] - 
 // ------------------------------------------------------------------
-izlude,199,178,1	script	Marinheiro#izlude	4W_SAILOR,{
+izlude,201,181,1	script	Marinheiro#izlude	4W_SAILOR,{
 	mes "[Marinheiro]";
 	mes "Olá, todo mundo!";
 	mes "Atenção, atenção!";
@@ -748,7 +748,7 @@ izlu2dun,108,27,0	script	Marinheiro#izlude2	4W_SAILOR,{
 // ------------------------------------------------------------------
 // - [Izlude ~ Jawaii] - 
 // ------------------------------------------------------------------
-izlude,171,185,3	script	Auxiliar Lua de Mel#Izl	1_F_LIBRARYGIRL,{
+izlude,171,185,3	script	Agente Matrimonial#Izl	1_F_LIBRARYGIRL,{
 	mes "[Auxiliar]";
 	mes "Recém casados e casais antigos...";
 	mes "Nós os convidamos para passar sua lua de mel aqui!";
@@ -846,7 +846,7 @@ jawaii,122,263,5	script	Marinheiro#jaw2	4W_SAILOR,{
 mosk_fild02,198,53,3	script	Barco#mos_dun	HIDDEN_NPC,{
 	mes "- Você acha um barco ancorado. -";
 	next;
-	if(select("Voltar para Cidade.:Ficar mais.") == 1) {
+	if(select("Voltar para Cidade", "Ficar mais.") == 1) {
 		mes "- Você sobe a bordo do barco e puxa os remos. -";
 		close2; warp ("moscovia",140,54); end;
 	}

@@ -44,62 +44,34 @@ prontera,275,213,0	duplicate(MailBox)	Caixa Postal#prt2	2_POSTBOX
 prontera,34,212,0	duplicate(MailBox)	Caixa Postal#prt3	2_POSTBOX
 
 // ------------------------------------------------------------------
-//izlude,136,94,0	duplicate(MailBox)	Caixa Postal#iz	2_POSTBOX
-
-// ------------------------------------------------------------------
-moc_ruins,72,166,0	duplicate(MailBox)	Caixa Postal#mocr	2_POSTBOX
-moc_ruins,156,52,0	duplicate(MailBox)	Caixa Postal#mocr2	2_POSTBOX
-
-// ------------------------------------------------------------------
 geffen,115,67,0	duplicate(MailBox)	Caixa Postal#gef	2_POSTBOX
-geffen,199,125,0	duplicate(MailBox)	Caixa Postal#gef2	2_POSTBOX
 
 // ------------------------------------------------------------------
 payon,191,104,0	duplicate(MailBox)	Caixa Postal#pay	2_POSTBOX
-payon,171,226,0	duplicate(MailBox)	Caixa Postal#pay2	2_POSTBOX
 
 // ------------------------------------------------------------------
 pay_arche,55,127,0	duplicate(MailBox)	Caixa Postal#paya	2_POSTBOX
 
 // ------------------------------------------------------------------
 alberta,90,60,0	duplicate(MailBox)	Caixa Postal#alb	2_POSTBOX
-alberta,30,240,0	duplicate(MailBox)	Caixa Postal#alb2	2_POSTBOX
 
 // ------------------------------------------------------------------
 aldebaran,135,122,0	duplicate(MailBox)	Caixa Postal#alde	2_POSTBOX
 
 // ------------------------------------------------------------------
 yuno,148,187,0	duplicate(MailBox)	Caixa Postal#yuno	2_POSTBOX
-yuno,332,108,0	duplicate(MailBox)	Caixa Postal#yuno2	2_POSTBOX
 
 // ------------------------------------------------------------------
 lighthalzen,164,85,0	duplicate(MailBox)	Caixa Postal#lhz	2_POSTBOX
-lighthalzen,196,320,0	duplicate(MailBox)	Caixa Postal#lhz2	2_POSTBOX
 
 // ------------------------------------------------------------------
 einbroch,231,215,0	duplicate(MailBox)	Caixa Postal#ein	2_POSTBOX
-einbroch,77,202,0	duplicate(MailBox)	Caixa Postal#ein2	2_POSTBOX
 
 // ------------------------------------------------------------------
 einbech,182,124,0	duplicate(MailBox)	Caixa Postal#einb	2_POSTBOX
 
 // ------------------------------------------------------------------
 comodo,200,150,0	duplicate(MailBox)	Caixa Postal#com	2_POSTBOX
-
-// ------------------------------------------------------------------
-umbala,104,155,0	duplicate(MailBox)	Caixa Postal#umb	2_POSTBOX
-
-// ------------------------------------------------------------------
-amatsu,102,146,0	duplicate(MailBox)	Caixa Postal#ama	2_POSTBOX
-
-// ------------------------------------------------------------------
-gonryun,152,117,0	duplicate(MailBox)	Caixa Postal#gon	2_POSTBOX
-
-// ------------------------------------------------------------------
-ayothaya,205,169,0	duplicate(MailBox)	Caixa Postal#ayo	2_POSTBOX
-
-// ------------------------------------------------------------------
-louyang,204,100,0	duplicate(MailBox)	Caixa Postal#lou	2_POSTBOX
 
 // ------------------------------------------------------------------
 hugel,86,168,0	duplicate(MailBox)	Caixa Postal#hug	HIDDEN_NPC

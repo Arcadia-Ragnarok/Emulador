@@ -104,6 +104,5 @@ einbroch,175,196,5	script	Morei#einTower	4_M_EINMAN2,{
 	}
 }
 
-einbroch,218,198,5	duplicate(EinTower)	Mark#ein	4_M_EINMAN
 einbroch,173,229,5	duplicate(EinTower)	Oberu#ein	4_M_EINMAN
 einbroch,176,172,5	duplicate(EinTower)	Khemko#ein	4_M_EINMAN

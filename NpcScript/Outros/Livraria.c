@@ -1405,7 +1405,7 @@ prt_in,164,96,4	script	Enciclopédia#5pr	HIDDEN_NPC,{
 }
 
 // ------------------------------------------------------------------
-prt_in,172,102,4	script	MEnciclopédia#6pr	HIDDEN_NPC,{
+prt_in,172,102,4	script	Enciclopédia#6pr	HIDDEN_NPC,{
 	mes "^FF0000[Enciclopédia]^000000";
 	mes "Esta enciclopédia descreve monstros vivendo em calabouços e outros mapas especiais.";
 	next;
