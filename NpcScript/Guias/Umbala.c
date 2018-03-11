@@ -71,5 +71,3 @@ umbala,128,94,3	script	Guia#umbguide	4_F_GON,{
 		}
 	}
 }
-
-umbala,99,158,3	duplicate(Guia#umbguide)	Guia#umbguide_b	4_F_GON

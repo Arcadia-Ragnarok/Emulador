@@ -125,6 +125,5 @@ aldebaran,139,63,4	script	Guia#aldguide	8W_SOLDIER,{
 
 }
 
-aldebaran,243,143,2	duplicate(Guia#aldguide)	Guia#aldguide_b	8W_SOLDIER
 aldebaran,135,243,4	duplicate(Guia#aldguide)	Guia#aldguide_c	8W_SOLDIER
 aldebaran,36,135,6	duplicate(Guia#aldguide)	Guia#aldguide_d	8W_SOLDIER

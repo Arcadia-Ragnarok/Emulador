@@ -148,4 +148,3 @@ einbroch,72,202,4	script	Guia#embguide	4_M_EIN_SOLDIER,{
 
 einbroch,155,43,4	duplicate(Guia#embguide)	Guia#embguide_b	4_M_EIN_SOLDIER
 einbroch,162,317,4	duplicate(Guia#embguide)	Guia#embguide_c	4_M_EIN_SOLDIER
-einbroch,252,320,3	duplicate(Guia#embguide)	Guia#embguide_d	4_M_EIN_SOLDIER

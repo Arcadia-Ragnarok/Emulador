@@ -74,5 +74,5 @@ malaya,71,72,4	script	Guia#malyguide	4_F_BARYO_WOMAN,{
 	}
 }
 
-malaya,250,83,6	duplicate(Guia#malyguide)	Guia#malyguide_b	4_F_BARYO_WOMAN
-malaya,224,204,6	duplicate(Guia#malyguide)	Guia#malyguide_c	4_F_BARYO_WOMAN
+//malaya,250,83,6	duplicate(Guia#malyguide)	Guia#malyguide_b	4_F_BARYO_WOMAN
+//malaya,224,204,6	duplicate(Guia#malyguide)	Guia#malyguide_c	4_F_BARYO_WOMAN

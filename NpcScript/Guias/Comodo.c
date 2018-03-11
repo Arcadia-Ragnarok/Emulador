@@ -149,6 +149,5 @@ comodo,322,178,4	script	Guia#comguide	8_F_GIRL,{
 	}
 }
 
-comodo,181,347,4	duplicate(Guia#comguide)	Guia#comguide_b	8_F_GIRL
-comodo,197,149,3	duplicate(Guia#comguide)	Guia#comguide_c	8_F_GIRL
-comodo,37,219,4	duplicate(Guia#comguide)	Guia#comguide_d	8_F_GIRL
+comodo,176,350,4	duplicate(Guia#comguide)	Guia#comguide_b	8_F_GIRL
+comodo,37,219,3	duplicate(Guia#comguide)	Guia#comguide_c	8_F_GIRL

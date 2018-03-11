@@ -13,7 +13,7 @@
 \*-----------------------------------------------------------------*/
 
 alberta,23,238,4	script	Guia#albguide	8W_SOLDIER,{
-	cutin ("prt_soldier",2);
+	cutin("prt_soldier",2);
 	mes "[Guia de Alberta]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Alberta^000000, a Cidade Portuária.";
 	next;
