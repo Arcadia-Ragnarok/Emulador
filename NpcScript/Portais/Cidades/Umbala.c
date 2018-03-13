@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais em Umbala                                          |
+| - Copyright: Spell Master                                         |
+| - Info: Potais em Umbala                                          |
 \*-----------------------------------------------------------------*/
 
 umbala,130,79,0	warp	umbalawarp_1	1,1,um_fild04,215,336
@@ -24,7 +24,7 @@ umbala,106,285,0	warp	umbalawarp_8	1,1,um_dun01,42,30
 
 umbala,220,189,0	script	umbalawarp_10	WARPNPC,1,1,{
 	OnTouch:
-	if (event_umbala == 7) { warp ("um_in",32,71); }
+	if (event_umbala == 7) { warp("um_in", 32, 71); }
 	end;
 }
 

@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Invocação de Monstros nos arredores de Rachel             |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Invocação de Monstros nos arredores de Rachel             |
 \*-----------------------------------------------------------------*/
 
 ra_fild01,0,0,0,0	monster	Lobo do Deserto	1106,130,5000,0,0

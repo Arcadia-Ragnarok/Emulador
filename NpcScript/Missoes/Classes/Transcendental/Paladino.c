@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master.                                           |
-| - Nota: Mudança de Classe para Paladino.                          |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Mudança de Classe para Paladino.                          |
 \*-----------------------------------------------------------------*/
 
 valkyrie,53,39,3	script	Paladin#Valkyrie	4_M_CRU_OLD,{

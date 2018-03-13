@@ -1,25 +1,25 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais no Santuário de Rachel                             |
+| - Copyright: Spell Master                                         |
+| - Info: Potais no Santuário de Rachel                             |
 \*-----------------------------------------------------------------*/
 
 ra_san01,139,139,0	warp	rasanwarp_1	1,1,ra_temin,27,314
 
 ra_san01,139,13,0	script	rasanwarp_2	WARPNPC,1,1,{
-	if (ra_tem_q == 21) { warp ("que_san04",119,110); end; }
+	if (ra_tem_q == 21) { warp("que_san04", 119, 110); end; }
 	switch(rand(3)) {
-		case 1:  warp ("ra_san02",213,275); end;
-		case 2:  warp ("ra_san03",119,283); end;
-		default: warp ("ra_san04",119,110); end;
+		case 1:  warp("ra_san02", 213, 275); end;
+		case 2:  warp("ra_san03", 119, 283); end;
+		default: warp("ra_san04", 119, 110); end;
 	}
 }
 

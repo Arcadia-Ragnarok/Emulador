@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais em Juno                                            |
+| - Copyright: Spell Master                                         |
+| - Info: Potais em Juno                                            |
 \*-----------------------------------------------------------------*/
 
 yuno,158,13,0	warp	yunowarp_1	1,1,yuno_fild04,231,284
@@ -46,7 +46,6 @@ yuno_in01,32,36,0	warp	yunowarp_28	1,1,yuno,193,142
 yuno_in01,116,40,0	warp	yunowarp_29	1,1,yuno,120,138
 yuno_in01,88,36,0	warp	yunowarp_30	1,1,yuno_in01,173,34
 yuno_in01,176,34,0	warp	yunowarp_31	1,1,yuno_in01,91,36
-yuno_in04,33,130,0	warp	yunowarp_32	1,1,yuno,95,184
 
 // ------------------------------------------------------------------
 yuno_in02,172,61,0	warp	yunowarp_33	1,1,yuno,90,321
@@ -80,6 +79,7 @@ yuno_in03,244,52,0	warp	yunowarp_58	1,1,yuno_in03,235,94
 yuno_in03,224,19,0	warp	yunowarp_59	1,1,yuno,284,363
 
 // ------------------------------------------------------------------
+yuno_in04,33,130,0	warp	yunowarp_32	1,1,yuno,95,184
 yuno_in04,29,58,0	warp	yunowarp_60	1,1,yuno,338,203
 yuno_in04,52,58,0	warp	yunowarp_61	1,1,yuno_in04,97,58
 yuno_in04,95,58,0	warp	yunowarp_62	1,1,yuno_in04,50,58

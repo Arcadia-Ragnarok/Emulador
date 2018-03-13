@@ -1,16 +1,17 @@
+
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 26/09/2017                       |
-| - Nota: Quest de Mudança de Classe para Super Aprendiz.           |
-| - Nota2: Possui 1 funcionária Kafra para aluguel de Carrinho.     |
+| - Copyright: Spell Master (26/09/2017)                            |
+| - Info: Quest de Mudança de Classe para Super Aprendiz.           |
+| - Nota: Possui 1 funcionária Kafra para aluguel de Carrinho.      |
 \*-----------------------------------------------------------------*/
 
 aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{

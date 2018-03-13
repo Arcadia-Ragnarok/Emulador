@@ -1,16 +1,17 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
+| - Copyright: Spell Master (14/08/2017)                            |
 | - Desenvolvido por: Spell Master 14/08/2017                       |
-| - Nota: Quest de Mudança de Classe para Mercador.                 |
-| - Observações:                                                    |
+| - Info: Quest de Mudança de Classe para Mercador.                 |
+| - Nota:                                                           |
 |   * Entrega na Cidade Morroc                                      |
 |        Npc: morocc_in,146,99 (Dullihan#dyestuff)                  |
 |        Arquivo: NpcScript/Comerciantes/Tinturas                   |

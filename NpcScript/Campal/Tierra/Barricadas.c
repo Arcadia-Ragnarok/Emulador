@@ -9,7 +9,7 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Criação: Spell Master 22/02/2017                                |
-| - Nota: Barricadas/ Sistemas de reparos/ Portais de acesso da     |
+|  Barricadas/ Sistemas de reparos/ Portais de acesso da            |
 |         batalha campal Tierra.                                    |
 \*-----------------------------------------------------------------*/
 

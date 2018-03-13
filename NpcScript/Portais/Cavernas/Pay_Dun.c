@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais na Caverna de Payon                                |
+| - Copyright: Spell Master                                         |
+| - Info: Potais na Caverna de Payon                                |
 \*-----------------------------------------------------------------*/
 
 pay_dun00,21,186,0	warp	paydunwarp_1	2,2,pay_arche,39,131
@@ -28,10 +28,10 @@ pay_dun03,155,161,0	warp	paydunwarp_7	2,1,pay_dun02,137,126
 
 pay_dun03,127,62,4	script	paydunwarp_8	WARPNPC,2,2,{
 	switch(rand(4)) {
-		case 0: warp ("pay_dun04",201,204); end;
-		case 1: warp ("pay_dun04",189,43); end;
-		case 2: warp ("pay_dun04",43,40); end;
-		case 3: warp ("pay_dun04",34,202); end;
+		case 0: warp("pay_dun04", 201, 204); end;
+		case 1: warp("pay_dun04", 189, 43); end;
+		case 2: warp("pay_dun04", 43, 40); end;
+		case 3: warp("pay_dun04", 34, 202); end;
 	}
 }
 

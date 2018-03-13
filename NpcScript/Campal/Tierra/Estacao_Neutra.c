@@ -9,7 +9,7 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Criação: Spell Master 22/02/2017                                |
-| - Nota: Base neutra da Batalha campal Tierra                      |
+|  Base neutra da Batalha campal Tierra                             |
 \*-----------------------------------------------------------------*/
 
 bat_a01,5,1,0	script	NeutralFlag	CLEAR_NPC,{

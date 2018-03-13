@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Source Script                      |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Acesso ao subterrâneo do Lago do Abismo                   |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Acesso ao subterrâneo do Lago do Abismo                   |
 \*-----------------------------------------------------------------*/
 
 hu_fild05,168,304,0	script	Coluna#abyss1	HIDDEN_NPC,{

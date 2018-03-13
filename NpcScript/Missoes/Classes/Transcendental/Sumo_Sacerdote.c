@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master.                                           |
-| - Nota: Mudança de Classe para Sumo Sacerdote.                    |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Mudança de Classe para Sumo Sacerdote.                    |
 \*-----------------------------------------------------------------*/
 
 valkyrie,44,42,5	script	Sumo-Sacerdote#Valkyrie	1_M_PASTOR,{

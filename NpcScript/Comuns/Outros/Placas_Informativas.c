@@ -1,25 +1,16 @@
 /*-----------------------------------------------------------------*\
-|               ____                     _                          |
-|              /    |                   | |_                        |
-|             /     |_ __ ____  __ _  __| |_  __ _                  |
-|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
-|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
-|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
-|         /__/   |__|  [ Ragnarok Emulator ]                        |
+|              ____                     _                           |
+|             /    |   [ Emulador ]    | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Crédito de desenvolvimento                                      |
-| Copyright (C) Spell Master  Euphy / Masao / L0ne_W0lf / Silent    |
-|               Kayla / Nexon / MasterOfMuppets                     |
-+-------------------------------------------------------------------+
-| - Informações                                                     |
-| * Diversas placas de informações                                  |
-+-------------------------------------------------------------------+
-| - Licença de uso                                                  |
-| Arcadia é um software livre: você pode redistribuí-lo ou          |
-| modificá-lo de acordo com os termos da GNU General Public License,|
-| conforme publicado pela Free Software Foundation, seja na versão  |
-| 3 da Licença, ou qualquer versão posterior.                       |
+| - Copyright: Spell Master Euphy / Masao / L0ne_W0lf / Silent      |
+|              Kayla / Nexon / MasterOfMuppets                      |
+| - Info: Diversas placas de informações                            |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------

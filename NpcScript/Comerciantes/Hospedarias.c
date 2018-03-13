@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
-|         /  /  |  |_|  \____|\__, _|\__, _|_|\__, _|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Por: Spell Master 14/03/2017                                    |
-| - Nota: Hoteis e estalagens                                       |
+| - Copyright: Spell Master (14/03/2017)                            |
+| - Info: Hoteis e estalagens                                       |
 \*-----------------------------------------------------------------*/
 
 -	script	InnHouse	FAKE_NPC,{
@@ -19,7 +19,7 @@
 	next;
 	switch(select("Salvar Retorno", "Descançar -> 5000 zeny", "Cancelar")) {
 		case 1:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+		mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
 		mes "Seu Ponto de Retorno foi salvo.";
 		mes "Curta sua estadia na cidade.";
 		// Prontera

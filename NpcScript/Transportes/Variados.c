@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido Por: Spell Master                                  |
-| - Nota: Npcs que levam personagens a locais variados              |
+| - Copyright: Spell Master                                         |
+| - Info: Npcs que levam personagens a locais variados              |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
@@ -25,7 +25,7 @@ gonryun,153,64,7	script	Anunciante de Kunlun#gonpasse	4_M_TWMIDMAN,{
 		mes "Eu espero que você tenha se divertido conosco.";
 		mes "Vamos indo então?";
 		close2;
-		warp ("gon_fild01",258,82);
+		warp("gon_fild01", 258, 82);
 		end;
 	}
 	mes "[Jangchungryong]";
@@ -53,7 +53,7 @@ comodo,193,151,4	script	Bor Robin#com	4_M_04,{
 		mes "[Bor Robin]";
 		mes "Yaay!!";
 		close2;
-		warp ("job_duncer",70,49);
+		warp ("job_duncer", 70, 49);
 		end;
 	}
 	mes "[Bor Robin]";

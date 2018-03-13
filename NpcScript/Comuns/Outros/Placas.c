@@ -1,25 +1,22 @@
 /*-----------------------------------------------------------------*\
-|               ____                     _                          |
-|              /    |                   | |_                        |
-|             /     |_ __ ____  __ _  __| |_  __ _                  |
-|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
-|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
-|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
-|         /__/   |__|  [ Ragnarok Emulator ]                        |
+|              ____                     _                           |
+|             /    |   [ Emulador ]    | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Crédito de desenvolvimento                                      |
-| Copyright (C) Spell Master / Euphy / SinSloth / Silent / Nexon    |
-|               Lupus / L0ne_W0lf /kobra_k88                        |
-+-------------------------------------------------------------------+
-| - Informações                                                     |
-| * Placas de informativos em geral                                 |
-+-------------------------------------------------------------------+
-| - Licença de uso                                                  |
-| Arcadia é um software livre: você pode redistribuí-lo ou          |
-| modificá-lo de acordo com os termos da GNU General Public License,|
-| conforme publicado pela Free Software Foundation, seja na versão  |
-| 3 da Licença, ou qualquer versão posterior.                       |
+| - Copyright: Spell Master                                         |
+| - Copyright: Euphy                                                |
+| - Copyright: SinSloth                                             |
+| - Copyright: Silent                                               |
+| - Copyright: Nexon                                                |
+| - Copyright: Lupus                                                |
+| - Copyright: L0ne_W0lf                                            |
+| - Copyright: kobra_k88                                            |
+| - Info: Placas de informativos em geral                           |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------

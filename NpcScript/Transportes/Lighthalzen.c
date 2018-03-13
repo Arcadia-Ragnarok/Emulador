@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Source Script                      |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Acesso as áreas dos laboratórios em Lighthalzen           |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Acesso as áreas dos laboratórios em Lighthalzen           |
 \*-----------------------------------------------------------------*/
 
 lhz_in01,35,226,5	script	Guarda Rekenber#lhzpass	4_M_LGTGUARD2,{

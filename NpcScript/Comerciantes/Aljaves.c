@@ -1,17 +1,17 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Criação: Spell Master 15/03/2017                                |
-| - Nota: Troca Flechas e Zenys por Aljaves de Flechas              |
-| - Observações: Mantidos diálagos e var iguais aos dos scripts     |
-|                padrões usados em outros emuladores.               |
+| - Copyright: Spell Master (15/03/2017)                            |
+| - Info: Troca Flechas e Zenys por Aljaves de Flechas              |
+| - Nota: Mantidos diálagos e variáveis iguais aos dos scripts      |
+|         padrões usados em outros emuladores.                      |
 \*-----------------------------------------------------------------*/
 
 payon_in01,5,134,5	script	Inventor Jaax#Quiver	4_M_ORIENT02,{

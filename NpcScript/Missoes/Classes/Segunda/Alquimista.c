@@ -1,18 +1,19 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master.                                           |
-| - Nota: Quest de Mudança de Classe para Alquimista.               |
-| - Observações:                                                    |
-|   * Necessário quest do Antigeno e Mistura.                       |
-|   * Necessário quest dos Irmãos Alquimista de Juno.               |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Quest de Mudança de Classe para Alquimista.               |
+| - Nota:                                                           |
+| * Necessário quest do Antigeno e Mistura.                         |
+| * Necessário quest dos Irmãos Alquimista de Juno.                 |
 \*-----------------------------------------------------------------*/
 
 alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{

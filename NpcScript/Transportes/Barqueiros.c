@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master                                  |
-| - Nota: Diversos npcs Barqueiros                                  |
+| - Copyright: Spell Master                                         |
+| - Info: Diversos npcs Barqueiros                                  |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
@@ -515,7 +515,6 @@ moscovia,166,53,4	script	Representante de Moscovia#mosk	4_F_RUSWOMAN2,{
 	close2; warp ("alberta",243,67); end;
 }
 
-
 // ------------------------------------------------------------------
 // - [ alberta ~ brasilis ] - 
 // ------------------------------------------------------------------
@@ -670,7 +669,7 @@ malaya,276,55,4	script	Marinheiro Optamara#mal	4W_SAILOR,{
 // - [Cmd_Fild > Alberta * Cmd_Fild > Izlude ] - 
 // ------------------------------------------------------------------
 -	script	cmdboard	FAKE_NPC,{
-	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+	mes "[Zain]";
 	mes "Chamando os passageiros da escuna 'Lutifus'...";
 	mes "Com destino a Izlude e Alberta...";
 	mes "O embarque está liberado!";
@@ -680,28 +679,28 @@ malaya,276,55,4	script	Marinheiro Optamara#mal	4W_SAILOR,{
 	switch(select("Porto de Alberta - 600 Zenys","Porto de Izlude - 800 Zenys","Sair")) {
 		case 1:
 		if (Zeny < 600) {
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+			mes "[Zain]";
 			mes "Você não tem dinheiro suficiente para pagar a passagem.";
 			close;
 		}
 		close2; Zeny -= 600; warp ("alberta",192,169); end;
 		case 2:
 		if (Zeny < 800) {
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+			mes "[Zain]";
 			mes "Você não tem dinheiro suficiente para pagar a passagem.";
 			close;
 		}
 		close2;
-		Zeny -= 800; warp ("izlude",176,182); end;
+		Zeny -= 800; warp("izlude",176,182); end;
 		case 3:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+		mes "[Zain]";
 		mes "Muito obrigado por escolher a";
 		mes "'Lutifus'!";
 		close;
 	}
 }
 cmd_fild07,299,83,4	duplicate(cmdboard)	Zain#cmd	4W_SAILOR
-cmd_fild07,94,134,4	duplicate(cmdboard)	Sarumane#cmd	4W_SAILOR
+cmd_fild07,94,134,4	duplicate(cmdboard)	Zain#cmd2	4W_SAILOR
 
 // ------------------------------------------------------------------
 // - [ Izlude > Izlu2Dun / Izlude > Alberta ] - 

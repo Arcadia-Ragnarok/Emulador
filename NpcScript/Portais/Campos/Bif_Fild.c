@@ -1,21 +1,21 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais nos Campos da Fonteira                             |
+| - Copyright: Spell Master                                         |
+| - Info: Potais nos Campos da Fonteira                             |
 \*-----------------------------------------------------------------*/
 
 bif_fild01,318,48,0	warp	biffildwarp_1	1,1,splendide,271,386
 
 // ------------------------------------------------------------------
-bif_fild02,291,346,0	warp	biffildwarp_2	1,1,ecl_fild01,205,76
+bif_fild02,292,351,0	warp	biffildwarp_2	1,1,ecl_fild01,205,76
 
 -	script	biffildwarp_3	FAKE_NPC,2,2,{
 	mes "Você ver um pequeno buraco um jardim de luminoso.";

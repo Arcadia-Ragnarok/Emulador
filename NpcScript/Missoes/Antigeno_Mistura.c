@@ -1,17 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 14/09/2017                       |
-| - Nota: Quest do Antigeno e Mistura (Molgenstein)                 |
-| - Observação:                                                     |
-|   * Necessária para quest de mudança de classe para Alquimista    |
+| - Copyright: Spell Master (14/09/2017)                            |
+| - Info: Quest do Antigeno e Mistura (Molgenstein)                 |
+| - Nota: Necessária para quest de mudança de classe para Alquimista|
 \*-----------------------------------------------------------------*/
 
 alberta_in,133,55,3	script	Louitz#molgenstain	4_M_02,{

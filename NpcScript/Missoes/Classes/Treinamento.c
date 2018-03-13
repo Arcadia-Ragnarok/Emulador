@@ -1,16 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 08/04/2017                       |
-| - Nota: Campo de Treinamento para Aprendizes.                     |
-| - Observação:                                                     |
+| - Copyright: Spell Master (08/04/2017)                            |
+| - Info: Campo de Treinamento para Aprendizes.                     |
+| - Nota:                                                           |
 |   * Script desenvolvido com base no script oficial do             |
 |     bRO (Brasil Ragnarok Online)                                  |
 |   * Provém de adaptações para o servidor.                         |

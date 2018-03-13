@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Troca de Gemas, 2 de uma cor por outra                    |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Troca de Gemas, 2 de uma cor por outra.                   |
 \*-----------------------------------------------------------------*/
 
 payon,173,238,5	script	Jade#GenStone	4_M_SAGE_A,{
@@ -64,8 +65,7 @@ payon,173,238,5	script	Jade#GenStone	4_M_SAGE_A,{
 					mes "Nenhuma!?";
 					mes "Acho que você precisa mudar de ideia...";
 					next;
-				}
-				else {
+				} else {
 					break;
 				}
 			}

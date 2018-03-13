@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 08/08/2017                       |
-| - Nota: Quest de Mudança de Classe para Espadachim.               |
+| - Copyright: Spell Master (08/08/2017)                            |
+| - Info: Quest de Mudança de Classe para Espadachim.               |
 \*-----------------------------------------------------------------*/
 
 izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{

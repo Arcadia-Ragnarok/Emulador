@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master. (11/09/2017)                    |
-| - Nota: Quest de Mudança de Classe para Cavaleiro.                |
+| - Copyright: Spell Master (11/09/2017)                            |
+| - Info: Quest de Mudança de Classe para Cavaleiro.                |
 \*-----------------------------------------------------------------*/
 
 prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{

@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Criação: Spell Master 02/04/2017                                |
-| - Nota: Potais em Dicastes                                        |
+| - Copyright: Spell Master (02/04/2017)                            |
+| - Info: Potais em Dicastes                                        |
 \*-----------------------------------------------------------------*/
 
 dicastes01,136,103,0	warp	dicasteswarp_1	1,1,dic_in01,26,98
@@ -39,7 +39,7 @@ dic_in01,242,182,0	script	dicasteswarp_17	CLEAR_NPC,{
 	} else {
 		select("*-/+.@");
 	}
-	warp (strnpcinfo(NPC_MAP),138,221);
+	warp(strnpcinfo(NPC_MAP), 138, 221);
 	end;
 }
 
@@ -91,11 +91,10 @@ dic_in01,242,182,0	script	dicasteswarp_17	CLEAR_NPC,{
 				case 1: .@x = 385; .@y = 272; break;
 				case 2: .@x = 385; .@y = 208; break;
 			}
-			warp (strnpcinfo(NPC_MAP),.@x,.@y); end;
+			warp(strnpcinfo(NPC_MAP), .@x, .@y); end;
 		}
 	}
 }
-
 dic_in01,46,287,0	duplicate(Elevator#dicasteswarp_18)	dicasteswarp_19	CLEAR_NPC
 dic_in01,122,283,0	duplicate(Elevator#dicasteswarp_18)	dicasteswarp_20	CLEAR_NPC
 dic_in01,121,203,0	duplicate(Elevator#dicasteswarp_18)	dicasteswarp_21	CLEAR_NPC

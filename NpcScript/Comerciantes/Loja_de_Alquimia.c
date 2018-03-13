@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Criação: Spell Master 11/03/2017                                |
-| - Nota: Venda de artigos para realização de alquimia              |
+| - Copyright: Spell Master (11/03/2017)                            |
+| - Info: Venda de artigos para realização de alquimia              |
 \*-----------------------------------------------------------------*/
 
 alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{

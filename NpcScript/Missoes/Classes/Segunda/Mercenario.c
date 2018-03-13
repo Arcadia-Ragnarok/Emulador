@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master.                                           |
-| - Nota: Quest de Mudança de Classe para Mercenário.               |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Quest de Mudança de Classe para Mercenário.               |
 \*-----------------------------------------------------------------*/
 
 in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{

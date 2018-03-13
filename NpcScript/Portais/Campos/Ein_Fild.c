@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais nos aredores de Einbroch                           |
+| - Copyright: Spell Master                                         |
+| - Info: Potais nos aredores de Einbroch                           |
 \*-----------------------------------------------------------------*/
 
 ein_fild01,106,34,0	warp	einfildwarp_1	1,1,ein_fild05,172,366
@@ -25,7 +25,7 @@ ein_fild04,184,26,0	warp	einfildwarp_6	1,1,einbroch,157,327
 ein_fild04,14,205,0	warp	einfildwarp_7	1,1,ein_fild03,355,204
 ein_fild04,14,215,0	warp	einfildwarp_8	1,1,ein_fild03,355,219
 
-ein_fild04,20,251,0	warp	einfildwarp_9	1,1,ein_fild03,361,257
+ein_fild04,20,250,0	warp	einfildwarp_9	1,1,ein_fild03,361,257
 ein_fild04,343,293,0	warp	einfildwarp_10	1,1,ein_fild05,80,294
 
 // ------------------------------------------------------------------
@@ -50,5 +50,5 @@ ein_fild08,361,129,0	warp	einfildwarp_22	1,1,ein_fild09,37,135
 ein_fild08,23,275,0	warp	einfildwarp_23	1,1,lhz_fild03,357,284
 
 // ------------------------------------------------------------------
-ein_fild09,34,132,0	warp	einfildwarp_24	1,1,ein_fild08,361,128
+ein_fild09,34,135,0	warp	einfildwarp_24	1,1,ein_fild08,361,128
 ein_fild09,71,352,0	warp	einfildwarp_25	1,1,einbech,62,32

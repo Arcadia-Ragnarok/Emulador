@@ -9,7 +9,7 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Criação: Spell Master 21/02/2017                                |
-| - Nota: Depósitos de supimentos na batalha campal Tierra          |
+|  Depósitos de supimentos na batalha campal Tierra                 |
 \*-----------------------------------------------------------------*/
 
 bat_a01,3,1,0	script	TierraDepot	CLEAR_NPC,{

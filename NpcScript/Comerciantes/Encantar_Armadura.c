@@ -1,15 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Adiciona +1/+2/+3 de status bonus a armaduras             |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Adiciona +1/+2/+3 de status bonus a armaduras             |
 \*-----------------------------------------------------------------*/
 
 prontera,165,60,2	script	Aprendiz de Artesão#prtEcht	1_F_MERCHANT_01,{

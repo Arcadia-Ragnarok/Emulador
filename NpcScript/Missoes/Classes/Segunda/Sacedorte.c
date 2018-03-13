@@ -1,18 +1,18 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master (12/09/2017)                     |
-| - Nota: Quest de Mudança de Classe para Sacerdote.                |
-| - Nota 2: Requer quest de mudança de classe para Noviço.          |
-| - Nota 3: Ambos arquivos de scripts com ambas quests devem ser    |
-|           do mesmo desenvolvedor.                                 |
+| - Copyright: Spell Master (12/09/2017)                            |
+| - Info: Quest de Mudança de Classe para Sacerdote.                |
+| - Nota: Requer quest de mudança de classe para Noviço.            |
+| - Nota2: Ambos arquivos de scripts com ambas quests devem ser     |
+|          do mesmo desenvolvedor desse script.                     |
 \*-----------------------------------------------------------------*/
 
 prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{

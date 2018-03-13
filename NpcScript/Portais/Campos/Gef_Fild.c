@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvimento: Spell Master                                   |
-| - Nota: Potais nos arredores de Geffen                            |
+| - Copyright: Spell Master                                         |
+| - Info: Potais nos arredores de Geffen                            |
 \*-----------------------------------------------------------------*/
 
 gef_fild00,381,137,0	warp	geffildwarp_1	3,9,prt_fild00,24,125
@@ -50,7 +50,7 @@ gef_fild05,15,201,0	warp	geffildwarp_24	2,4,gef_fild06,379,211
 // ------------------------------------------------------------------
 gef_fild06,382,211,0	warp	geffildwarp_25	2,4,gef_fild05,18,201
 gef_fild06,218,17,0	warp	geffildwarp_26	4,2,gef_fild08,200,352
-gef_fild06,20,304,0	warp	geffildwarp_27	3,3,glast_01,370,304
+gef_fild06,18,304,0	warp	geffildwarp_27	3,3,glast_01,370,304
 
 // ------------------------------------------------------------------
 gef_fild07,18,191,0	warp	geffildwarp_28	2,4,gef_fild08,357,187

@@ -1,18 +1,16 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão corrigida e otimizada: Spell Master                      |
-| - Nota: Fabricação de Tinturas                                    |
-| - Update:                                                         |
-| * 17/08/2017 - Adicionado Suporte a quest de Mudança de Classe    |
-|                para Mercador.                                     |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Fabricação de Tinturas.                                   |
 \*-----------------------------------------------------------------*/
 
 morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
@@ -286,3 +284,9 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 	mes "Então tudo bem...";
 	return;
 }
+
+// ------------------------------------------------------------------
+// - [ Updates ] - 
+// ------------------------------------------------------------------
+// 17/08/2017 - Adicionado Suporte a quest de Mudança de Classe
+//              para Mercador.

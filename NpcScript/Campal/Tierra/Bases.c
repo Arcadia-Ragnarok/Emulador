@@ -9,7 +9,7 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Criação: Spell Master 21/02/2017                                |
-| - Nota: Bases da Batalha Campal Tierra (Terapeuta e Recompensa)   |
+|  Bases da Batalha Campal Tierra (Terapeuta e Recompensa)          |
 \*-----------------------------------------------------------------*/
 
 //-------------------------------------------------------------------

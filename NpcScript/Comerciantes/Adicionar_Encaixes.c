@@ -1,17 +1,17 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por: Spell Master 15/03/2017                       |
-| - Nota: Adiciona Slots(Encaiaxes) em equipamentos                 |
-| - Observações: Esse npc faz o que os conhecidos Seiyablem/Leablem |
-|                fazem, mas em um único npc.                        |
+| - Copyright: Spell Master (15/03/2017)                            |
+| - Info: Adiciona Slots(Encaiaxes) em equipamentos                 |
+| - Nota: Esse npc faz o que os conhecidos Seiyablem/Leablem fazem, |
+| mas em um único npc.                                              |
 \*-----------------------------------------------------------------*/
 
 -	script	SocketEnchant	FAKE_NPC,{

@@ -1,26 +1,17 @@
 /*-----------------------------------------------------------------*\
-|               ____                     _                          |
-|              /    |                   | |_                        |
-|             /     |_ __ ____  __ _  __| |_  __ _                  |
-|            /  /|  | '__/  __|/ _` |/ _  | |/ _` |                 |
-|           /  __   | | |  |__| (_) | (_| | | (_) |                 |
-|          /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                 |
-|         /__/   |__|  [ Ragnarok Emulator ]                        |
+|              ____                     _                           |
+|             /    |   [ Emulador ]    | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Crédito de desenvolvimento                                      |
-| Copyright (C) 27/09/2017 Spell Master                             |
-+-------------------------------------------------------------------+
-| - Informações                                                     |
-| * Quest do bardo de Geffen                                        |
-| * Nota: Necessária para a quest da habilidade                     |
-|         de bardo "Voz Dolorosa"                                   |
-+-------------------------------------------------------------------+
-| - Licença de uso                                                  |
-| Arcadia é um software livre: você pode redistribuí-lo ou          |
-| modificá-lo de acordo com os termos da GNU General Public License,|
-| conforme publicado pela Free Software Foundation, seja na versão  |
-| 3 da Licença, ou qualquer versão posterior.                       |
+| - Copyright: Spell Master (27/09/2017)                            |
+| - Info: Quest do bardo de Geffen                                  |
+| - Nota: Necessária para a quest da habilidade de bardo            |
+|         "Voz Dolorosa"                                            |
 \*-----------------------------------------------------------------*/
 
 geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
