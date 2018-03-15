@@ -11,7 +11,15 @@
 | - Copyright: Spell Master                                         |
 | - Copyright: Playtester                                           |
 | - Info: Mini-Quests de armas usadas por Justiceiros               |
-|         
+| * Garrison                                                        |
+| * Garrison[1]                                                     |
+| * Inferno                                                         |
+| * Destruidora                                                     |
+| * Destruidora[1]                                                  |
+| * Retalhadora                                                     |
+| * Retalhadora[1]                                                  |
+| * Andarilho                                                       |
+| * Raio Vermelho                                                   |
 \*-----------------------------------------------------------------*/
 
 // ------------------------------------------------------------------
