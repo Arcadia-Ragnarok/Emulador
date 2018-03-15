@@ -1,9 +1,9 @@
 Arcadia - Ragnarok Serve Emulador
 ========
 
-Status de funcionamento:
+Status:
 
-[![Build Status](https://travis-ci.org/Arcadia-Ragnarok/Emulador.svg?branch=master)](https://travis-ci.org/Arcadia-Ragnarok/Emulador)
+[![Build Status](https://travis-ci.org/Arcadia-SVRO/Emulador.svg?branch=master)](https://travis-ci.org/Arcadia-SVRO/Emulador)
 
 ![Language](https://img.shields.io/badge/language-C-yellow.svg)
 ![Language](https://img.shields.io/badge/PassiveDocs-txt/Conf-blue.svg)
