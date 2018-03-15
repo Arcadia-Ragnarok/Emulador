@@ -13,7 +13,7 @@ O Arcadia é um emulador sem fins de lucrativos ou por fama para simulação do jog
 
 Originalmente seu código fonte é baseado e usa-se de updates no Hercules-Emulador que por sua vez é baseado no extinto Athena.
 
-#### O que é o diferencial?
+#### Qual é o diferencial?
 Diferente dos demais emuladores que abragem um gama de opções para configuração por parte do usuário. O Arcadia já vem configurado seguindo os padrões do servidor oficial brasileiro de ragnarok.
 Não sendo plausível modificações severas que fogem dos padrões oficiais.
 
@@ -28,7 +28,7 @@ NÃO SENDO ACONSELHAVEL O USO PARA CRIAÇÃO DE NUNHUM SERVIDOR NO MOMENTO!
 -------------
 #### Compilador para testar o emulador.
 ###### Windows
-- Microsoft Visual Studio ([Version 2012 até 2015](https://www.visualstudio.com/))
+- Microsoft Visual Studio ([Versão 2012 até 2015](https://www.visualstudio.com/))
 
 * Compilador sugerido ([Senha para descompactar "spell"](https://mega.nz/#!XYdxyZiY!K0zcnNIvgNBVGIfbQ8v5zYjhGM8NoVLxjNFrMYBvkSg))
 
