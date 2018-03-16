@@ -1,3 +1,24 @@
+/* ----------------------------------------------------------------------------
+   libconfig - A library for processing structured configuration files
+   Copyright (C) 2013-2016  Hercules Dev Team
+   Copyright (C) 2005-2014  Mark A Lindner
+
+   This file is part of libconfig.
+
+   This library is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this library.  If not, see <http://www.gnu.org/licenses/>.
+   ----------------------------------------------------------------------------
+*/
 
 #ifdef HAVE_CONFIG_H
 #include "ac_config.h"
@@ -76,6 +97,8 @@ static void __config_locale_override(void)
 
 #else
 
+/* locale overriding is pretty pointless (Hercules doesn't make use of the area that uses locale functionality),
+ * but I'm actually removing it because it floods the buildbot with warnings  */
 //#warning "No way to modify calling thread's locale!"
 
 #endif
@@ -102,6 +125,8 @@ static void __config_locale_restore(void)
 
 #else
 
+/* locale overriding is pretty pointless (Hercules doesn't make use of the area that uses locale functionality),
+ * but I'm actually removing it because it floods the buildbot with warnings  */
 //#warning "No way to modify calling thread's locale!"
 
 #endif
@@ -1570,6 +1595,13 @@ struct config_setting_t *config_setting_add(struct config_setting_t *parent,
   }
 
 #if 0
+  /* https://github.com/HerculesWS/Hercules/pull/136#discussion_r6363319
+   * With this code, accidental duplicate keys would cause the file parsing to fail
+   * (would cause several issues during runtime on file reloads), while libconfig's code
+   * has no problems with duplicate members so it was ducked out -- TODO: looking now though
+   * I'd think it could be useful to have it display a warning or error message when finding
+   * duplicate keys instead of silently moving on. [Ind]
+   */
   if(config_setting_get_member(parent, name) != NULL)
     return(NULL); /* already exists */
 #endif
