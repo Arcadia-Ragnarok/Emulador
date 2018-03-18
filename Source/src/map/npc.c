@@ -20,6 +20,7 @@
 
 #include "map/battle.h"
 #include "map/chat.h"
+#include "map/clan.h"
 #include "map/clif.h"
 #include "map/guild.h"
 #include "map/instance.h"
@@ -4116,6 +4117,11 @@ const char *npc_parse_mapflag(const char *w1, const char *w2, const char *w3, co
 			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de PvP e GvG no mesmo mapa! removendo flags de GvG de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer,start-buffer));
 			if (retval) *retval = EXIT_FAILURE;
 		}
+		if (state && map->list[m].flag.cvc) {
+			map->list[m].flag.cvc = 0;
+			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de CvC e PvP para o mesmo mapa! Removendo a bandeira CvC de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) *retval = EXIT_FAILURE;
+		}
 		if( state && map->list[m].flag.battleground ) {
 			map->list[m].flag.battleground = 0;
 			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de PvP e BattleGround no mesmo mapa! Removendo flags de BattleGround de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer,start-buffer));
@@ -4168,6 +4174,11 @@ const char *npc_parse_mapflag(const char *w1, const char *w2, const char *w3, co
 			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de PvP e GvG no mesmo mapa! removendo flags de PvP de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer,start-buffer));
 			if (retval) *retval = EXIT_FAILURE;
 		}
+		if (state && map->list[m].flag.cvc) {
+			map->list[m].flag.cvc = 0;
+			ShowWarning("npc_parse_mapflag: Você não pode utilizar flags de CvC e PvP para o mesmo mapa! Removendo a bandeira CvC de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) *retval = EXIT_FAILURE;
+		}
 		if( state && map->list[m].flag.battleground ) {
 			map->list[m].flag.battleground = 0;
 			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de GvG e BattleGround no mesmo mapa! Removendo flags de BattleGround de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer,start-buffer));
@@ -4210,11 +4221,48 @@ const char *npc_parse_mapflag(const char *w1, const char *w2, const char *w3, co
 			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de GvG e BattleGround no mesmo mapa! Removendo flags de GvG de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer,start-buffer));
 			if (retval) *retval = EXIT_FAILURE;
 		}
+		if (map->list[m].flag.cvc) {
+			map->list[m].flag.cvc = 0;
+			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de CvC e BattleGround no mesmo mapa! Removendo flags CvC de %s no arquivo '%s', linha '%d'.\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) *retval = EXIT_FAILURE;
+		}
 
-		if( state && (zone = strdb_get(map->zone_db, MAP_ZONE_BG_NAME)) != NULL && map->list[m].zone != zone ) {
+		if (state && (zone = strdb_get(map->zone_db, MAP_ZONE_BG_NAME)) != NULL && map->list[m].zone != zone) {
 			map->zone_change(m,zone,start,buffer,filepath);
 		}
 	}
+	else if (!strcmpi(w3, "cvc")) {
+		struct map_zone_data *zone;
+
+		map->list[m].flag.cvc = state;
+		if (state && (map->list[m].flag.gvg || map->list[m].flag.gvg_dungeon || map->list[m].flag.gvg_castle)) {
+			map->list[m].flag.gvg = 0;
+			map->list[m].flag.gvg_dungeon = 0;
+			map->list[m].flag.gvg_castle = 0;
+			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de CvC e GVG no mesmo mapa! Removendo flags GVG de %s no arquivo '%s', linha '%d'\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) {
+				*retval = EXIT_FAILURE;
+			}
+		}
+		if (state && map->list[m].flag.pvp) {
+			map->list[m].flag.pvp = 0;
+			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de CvC e PVP no mesmo mapa! Removendo flags PVP de %s no arquivo '%s', linha '%d'\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) {
+				*retval = EXIT_FAILURE;
+			}
+		}
+		if (state && map->list[m].flag.battleground) {
+			map->list[m].flag.battleground = 0;
+			ShowWarning("npc_parse_mapflag: Voce nao pode utilizar flags de CvC e BattleGround no mesmo mapa! Removendo flags BattleGround de %s no arquivo '%s', linha '%d'\n", map->list[m].name, filepath, strline(buffer, start-buffer));
+			if (retval) {
+				*retval = EXIT_FAILURE;
+			}
+		}
+		if (state && (zone = strdb_get(map->zone_db, MAP_ZONE_CVC_NAME)) != NULL && map->list[m].zone != zone) {
+			map->zone_change(m, zone, start, buffer, filepath);
+		}
+	}
+
 	else if (!strcmpi(w3,"noexppenalty"))
 		map->list[m].flag.noexppenalty=state;
 	else if (!strcmpi(w3,"nozenypenalty"))
@@ -4843,6 +4891,7 @@ int npc_reload(void) {
 
 	// Reprocess npc files and reload constants
 	itemdb->name_constants();
+	clan->set_constants();
 	npc_process_files( npc_new_min );
 
 	instance->reload();
@@ -4973,6 +5022,7 @@ int do_init_npc(bool minimal) {
 	// Should be loaded before npc processing, otherwise labels could overwrite constant values
 	// and lead to undefined behavior [Panikon]
 	itemdb->name_constants();
+	clan->set_constants();
 
 	if (!minimal) {
 		npc->timer_event_ers = ers_new(sizeof(struct timer_event_data),"clif.c::timer_event_ers",ERS_OPT_NONE);

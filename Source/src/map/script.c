@@ -23,6 +23,7 @@
 #include "map/battleground.h"
 #include "map/chat.h"
 #include "map/chrif.h"
+#include "map/clan.h"
 #include "map/clif.h"
 #include "map/date.h"
 #include "map/elemental.h"
@@ -4973,6 +4974,8 @@ int script_reload(void)
 
 	itemdb->name_constants();
 
+	clan->set_constants();
+
 	sysinfo->vcsrevision_reload();
 
 	return 0;
@@ -8007,29 +8010,30 @@ BUILDIN(readparam) {
  * 4 : bg_id
  *------------------------------------------*/
 BUILDIN(getcharid) {
-	int num;
+	int num = script_getnum(st, 2);
 	struct map_session_data *sd;
 
-	num = script_getnum(st,2);
-	if( script_hasdata(st,3) )
-		sd=map->nick2sd(script_getstr(st,3));
-	else
-		sd=script->rid2sd(st);
+	if (script_hasdata(st, 3)) {
+		sd = map->nick2sd(script_getstr(st, 3));
+	} else {
+		sd = script->rid2sd(st);
+	}
 
-	if(sd==NULL) {
-		script_pushint(st,0); //return 0, according docs
+	if (sd == NULL) {
+		script_pushint(st, 0); //return 0, according docs
 		return true;
 	}
 
-	switch( num ) {
+	switch(num) {
 		case 0: script_pushint(st,sd->status.char_id); break;
 		case 1: script_pushint(st,sd->status.party_id); break;
 		case 2: script_pushint(st,sd->status.guild_id); break;
 		case 3: script_pushint(st,sd->status.account_id); break;
 		case 4: script_pushint(st,sd->bg_id); break;
+		case 5: script_pushint(st, sd->status.clan_id); break;
 		default:
 			ShowError("buildin_getcharid: parametro invalido (%d).\n", num);
-			script_pushint(st,0);
+			script_pushint(st, 0);
 			break;
 	}
 
@@ -8274,10 +8278,12 @@ BUILDIN(getguildmember)
  * 1 : party_name or ""
  * 2 : guild_name or ""
  * 3 : map_name
+ * 4 : clan_name or ""
  * - : ""
  *------------------------------------------*/
 BUILDIN(strcharinfo)
 {
+	struct clan *c;
 	struct guild* g;
 	struct party_data* p;
 	struct map_session_data *sd;
@@ -8316,6 +8322,13 @@ BUILDIN(strcharinfo)
 		break;
 	case 3:
 		script_pushconststr(st, map->list[sd->bl.m].name);
+		break;
+	case 4:
+		if ((c = sd->clan) != NULL) {
+			script_pushstrcopy(st, c->name);
+		} else {
+			script_pushconststr(st, "");
+		}
 		break;
 	default:
 		ShowWarning("script:strcharinfo: parametro desconhecido.\n");
@@ -23152,6 +23165,82 @@ BUILDIN(rodex_sendmail2)
 }
 
 /**
+ * Clan System: Add a player to a clan
+ */
+BUILDIN(clan_join) {
+	struct map_session_data *sd = NULL;
+	int clan_id = script_getnum(st, 2);
+
+	if (script_hasdata(st, 3)) {
+		sd = map->id2sd(script_getnum(st, 3));
+	} else {
+		sd = map->id2sd(st->rid);
+	}
+	if (sd == NULL) {
+		script_pushint(st, false);
+		return false;
+	}
+	if (clan->join(sd, clan_id)) {
+		script_pushint(st, true);
+	} else {
+		script_pushint(st, false);
+	}
+
+	return true;
+}
+
+/**
+ * Clan System: Remove a player from clan
+ */
+BUILDIN(clan_leave) {
+	struct map_session_data *sd = NULL;
+
+	if (script_hasdata(st, 2)) {
+		sd = map->id2sd(script_getnum(st, 2));
+	} else {
+		sd = map->id2sd(st->rid);
+	}
+	if (sd == NULL) {
+		script_pushint(st, false);
+		return false;
+	}
+	if (clan->leave(sd, false)) {
+		script_pushint(st, true);
+	} else {
+		script_pushint(st, false);
+	}
+
+	return true;
+}
+
+/**
+ * Clan System: Show clan emblem next to npc name
+ */
+BUILDIN(clan_master) {
+	struct npc_data *nd = map->id2nd(st->oid);
+	int clan_id = script_getnum(st, 2);
+	
+	if (nd == NULL) {
+		script_pushint(st, false);
+		return false;
+	} else if (clan_id <= 0) {
+		script_pushint(st, false);
+		ShowError("buildin_clan_master: Recebido ID de clan invalido. %d\n", clan_id);
+		return false;
+	} else if (clan->search(clan_id) == NULL) {
+		script_pushint(st, false);
+		ShowError("buildin_clan_master: Recebido ID de Clan nao existente. %d\n", clan_id);
+		return false;
+	}
+
+	nd->clan_id = clan_id;
+	clif->sc_load(&nd->bl, nd->bl.id, AREA, status->dbs->IconChangeTable[SC_CLAN_INFO], 0, clan_id, 0);
+
+	script_pushint(st, true);
+	return true;
+}
+
+/**
  * Adds a built-in script function.
  *
  * @param buildin Script function data
@@ -23842,6 +23931,11 @@ void script_parse_builtin(void) {
 		/* Navigation */
 		BUILDIN_DEF(navigateto, "s??????"),
 
+		/* Clan System */
+		BUILDIN_DEF(clan_join,"i?"),
+		BUILDIN_DEF(clan_leave,"?"),
+		BUILDIN_DEF(clan_master,"i"),
+
 		BUILDIN_DEF(showscript, "s?"),
 		BUILDIN_DEF(mergeitem,""),
 		BUILDIN_DEF(getcalendartime, "ii??"),
@@ -24176,6 +24270,7 @@ void script_hardcoded_constants(void)
 	script->set_constant("RENEWAL_EDP", 1, false, false);
 	script->set_constant("RENEWAL_ASPD", 1, false, false);
 	script->constdb_comment(NULL);
+	#include "constants.inc"
 }
 
 /**

@@ -103,6 +103,9 @@ typedef enum send_target {
 	BG_AREA_WOS,
 
 	BG_QUEUE,
+
+	CLAN, // Clan System
+
 } send_target;
 
 typedef enum broadcast_flags {
@@ -1395,6 +1398,12 @@ struct clif_interface {
 	void (*rodex_request_items) (struct map_session_data *sd, int8 opentype, int64 mail_id, int8 result);
 	void (*rodex_icon) (int fd, bool show);
 	void (*skill_scale) (struct block_list *bl, int src_id, int x, int y, uint16 skill_id, uint16 skill_lv, int casttime);
+	/* Clan System */
+	void (*clan_basicinfo) (struct map_session_data *sd);
+	void (*clan_onlinecount) (struct clan *c);
+	void (*clan_leave) (struct map_session_data *sd);
+	void (*clan_message) (struct clan *c, const char *mes, int len);
+	void (*pClanMessage) (int fd, struct map_session_data* sd);
 };
 
 void clif_defaults(void);

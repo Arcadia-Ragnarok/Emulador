@@ -298,6 +298,8 @@ STATIC_ASSERT(MAX_ITEM_OPTIONS <= 5, "This value is limited by the client and da
 
 #define INFINITE_DURATION (-1) // Infinite duration for status changes
 
+struct script_code;
+
 enum item_types {
 	IT_HEALING = 0,
 	IT_UNKNOWN, //1
@@ -609,7 +611,7 @@ struct mmo_charstatus {
 	short manner; // Defines how many minutes a char will be muted, each negative point is equivalent to a minute.
 	unsigned char karma;
 	short hair,hair_color,clothes_color,body;
-	int party_id,guild_id,pet_id,hom_id,mer_id,ele_id;
+	int party_id,guild_id,clan_id,pet_id,hom_id,mer_id,ele_id;
 	int fame;
 
 	// Mercenary Guilds Rank
@@ -634,6 +636,7 @@ struct mmo_charstatus {
 	uint32 mapip;
 	uint16 mapport;
 
+	int64 last_login;
 	struct point last_point,save_point,memo_point[MAX_MEMOPOINTS];
 	struct item inventory[MAX_INVENTORY],cart[MAX_CART];
 	struct s_skill skill[MAX_SKILL_DB];
@@ -806,6 +809,59 @@ struct guild_castle {
 	int* temp_guardians; // ids of temporary guardians (mobs)
 	int temp_guardians_max;
 };
+
+
+/**
+ * Clan Member Struct
+ */
+struct clan_member {
+	int char_id; ///< Id do membro
+	short online; ///< Indique para saber se o jogador está online ou não
+	int64 last_login; ///< Último login deste membro, usado para chutar se estiver inativo há muito tempo
+	struct map_session_data *sd; ///< Dados do jogador
+};
+
+/**
+ * Clan Buff Struct
+ */
+struct clan_buff {
+	int icon; ///< Ícone de status a ser mostrado no cliente (use uma das constantes 'SI_')
+	struct script_code *script; ///< O script a ser executado como CLan Buff
+};
+
+/**
+ * Clan Relationship Struct
+ */
+struct clan_relationship {
+	char constant[NAME_LENGTH]; ///< Nome exclusivo do clã relacionado
+	int clan_id; ///< Id do clã relacionado
+};
+
+/**
+ * Clan Struct
+ */
+struct clan {
+	int clan_id; ///< Id do Clan
+	char constant[NAME_LENGTH]; ///< Nome único do clan
+	char name[NAME_LENGTH]; ///< Nome do clan
+	char master[NAME_LENGTH]; ///< Nome do mestre do clã (usado para informações do clã no cliente)
+	char map[MAP_NAME_LENGTH_EXT]; ///< O mapa desse clã (usado para informações do clã no cliente)
+	struct clan_buff buff; ///< O buff para um clã quando um membro se junta
+	short max_member; ///< Limite de membros
+	short member_count; ///< Possui a quantidade de membros neste clã, online e offline
+	short connect_member; ///< Membros que estão online
+	VECTOR_DECL(struct clan_member) members; ///< Vector de Membros
+	VECTOR_DECL(struct clan_relationship) allies; ///< Vector de Aliados
+	VECTOR_DECL(struct clan_relationship) antagonists; ///< Vector de Inimigos
+	int kick_time; /// Tempo inativo necessário para ser chutado
+	int check_time; ///< Intervalo para verificar os jogadores inativos
+	int tid; ///< Timer ID para inatividade kick
+	bool received; ///< Se os dados solicitados foram ou não recebidos
+	int req_state; ///< Flag para saber o que fazer depois de receber os dados do inter servidor
+	int req_count_tid; ///< Timer ID para o temporizador que processa o tempo limite de pedidos de interserver para contar membros
+	int req_kick_tid; ///< Timer ID para o temporizador que lida com o tempo limite de pedidos de interserver para iniciar membros inativos
+};
+
 
 struct fame_list {
 	int id;

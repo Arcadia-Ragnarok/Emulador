@@ -358,6 +358,11 @@ int guild_create(struct map_session_data *sd, const char *name)
 	nullpo_ret(sd);
 	nullpo_ret(name);
 
+	if (sd->clan != NULL) {
+		clif->messagecolor_self(sd->fd, COLOR_RED, "Voce nao pode criar uma alianca porque esta em um clan.");
+		return 0;
+	}
+
 	safestrncpy(tname, name, NAME_LENGTH);
 	trim(tname);
 
