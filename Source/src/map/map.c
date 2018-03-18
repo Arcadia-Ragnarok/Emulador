@@ -4396,21 +4396,25 @@ struct map_zone_data *map_merge_zone(struct map_zone_data *main, struct map_zone
 	return zone;
 }
 
-void map_zone_change2(int m, struct map_zone_data *zone)
-{
+void map_zone_change2(int m, struct map_zone_data *zone) {
 	const char *empty = "";
 
-	Assert_retv(m >= 0 && m < map->count);
-	if( map->list[m].zone == zone )
+	if (zone == NULL) {
 		return;
-
-	if( !map->list[m].zone->info.merged ) /* we don't update it for merged zones! */
+	}
+	Assert_retv(m >= 0 && m < map->count);
+	if (map->list[m].zone == zone) {
+		return;
+	}
+	/* we don't update it for merged zones! */
+	if (!map->list[m].zone->info.merged) {
 		map->list[m].prev_zone = map->list[m].zone;
+	}
 
-	if( map->list[m].zone_mf_count )
+	if (map->list[m].zone_mf_count) {
 		map->zone_remove(m);
-
-	if( zone->merge_type == MZMT_MERGEABLE && map->list[m].prev_zone->merge_type != MZMT_NEVERMERGE ) {
+	}
+	if (zone->merge_type == MZMT_MERGEABLE && map->list[m].prev_zone->merge_type != MZMT_NEVERMERGE) {
 		zone = map->merge_zone(zone,map->list[m].prev_zone);
 	}
 

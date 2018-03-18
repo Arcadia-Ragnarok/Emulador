@@ -1850,7 +1850,7 @@ bool login_config_read(const char *filename)
 		retval = false;
 	}
 
-	if (!loginlog_config_read("Config/Servers/Inter-Server.cs")) {
+	if (!loginlog->config_read("Config/Servers/Inter-Server.cs")) {
 		retval = false;
 	}
 
