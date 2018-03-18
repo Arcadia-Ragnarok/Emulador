@@ -1,21 +1,3 @@
--- This file is part of Hercules.
--- http://herc.ws - http://github.com/HerculesWS/Hercules
---
--- Copyright (C) 2012-2016  Hercules Dev Team
--- Copyright (C)  Athena Dev Teams
---
--- Hercules is free software: you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation, either version 3 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 --
 -- Table structure for table `account_data`
@@ -183,6 +165,7 @@ CREATE TABLE IF NOT EXISTS `char` (
   `manner` SMALLINT(6) NOT NULL DEFAULT '0',
   `party_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
   `guild_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+  `clan_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
   `pet_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
   `homun_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
   `elemental_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
@@ -196,6 +179,7 @@ CREATE TABLE IF NOT EXISTS `char` (
   `head_mid` SMALLINT(6) UNSIGNED NOT NULL DEFAULT '0',
   `head_bottom` SMALLINT(6) UNSIGNED NOT NULL DEFAULT '0',
   `robe` SMALLINT(6) UNSIGNED NOT NULL DEFAULT '0',
+  `last_login` BIGINT(20) NULL DEFAULT '0',
   `last_map` VARCHAR(11) NOT NULL DEFAULT '',
   `last_x` SMALLINT(4) UNSIGNED NOT NULL DEFAULT '53',
   `last_y` SMALLINT(4) UNSIGNED NOT NULL DEFAULT '111',
@@ -910,6 +894,7 @@ CREATE TABLE IF NOT EXISTS `rodex_mail` (
 	`zeny` BIGINT(20) NOT NULL,
 	`type` TINYINT(8) UNSIGNED NOT NULL,
 	`is_read` TINYINT(8) NOT NULL,
+  `sender_read` TINYINT(2) NOT NULL,
 	`send_date` INT(11) NOT NULL,
 	`expire_date` INT(11) NOT NULL,
 	`weight` INT(11) NOT NULL,

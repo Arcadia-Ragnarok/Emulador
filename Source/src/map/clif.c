@@ -6067,11 +6067,25 @@ void clif_wis_end(int fd, int flag) {
 void clif_solved_charname(int fd, int charid, const char* name)
 {
 	nullpo_retv(name);
-	WFIFOHEAD(fd,packet_len(0x194));
-	WFIFOW(fd,0)=0x194;
-	WFIFOL(fd,2)=charid;
-	safestrncpy(WFIFOP(fd,6), name, NAME_LENGTH);
-	WFIFOSET(fd,packet_len(0x194));
+	#if !defined(PACKETVER_ZERO) && (PACKETVER >= 20180307 || (defined(PACKETVER_RE) && PACKETVER >= 20180221))
+	WFIFOHEAD(fd, packet_len(0x0af7));
+	WFIFOW(fd, 0) = 0xaf7;
+	if (*name == 0) {
+		WFIFOW(fd, 2) = 2;
+		memset(WFIFOP(fd, 8), 0, NAME_LENGTH);
+	} else {
+		WFIFOW(fd, 2) = 3;
+		safestrncpy(WFIFOP(fd, 8), name, NAME_LENGTH);
+	}
+	WFIFOL(fd, 4) = charid;
+	WFIFOSET(fd, packet_len(0x0af7));
+	#else
+	WFIFOHEAD(fd, packet_len(0x194));
+	WFIFOW(fd, 0) = 0x194;
+	WFIFOL(fd, 2) = charid;
+	safestrncpy(WFIFOP(fd, 6), name, NAME_LENGTH);
+	WFIFOSET(fd, packet_len(0x194));
+	#endif
 }
 
 /// Presents a list of items that can be carded/composed (ZC_ITEMCOMPOSITION_LIST).
@@ -14083,7 +14097,13 @@ void clif_friendslist_toggle(struct map_session_data *sd,int account_id, int cha
 	WFIFOW(fd, 0) = 0x206;
 	WFIFOL(fd, 2) = sd->status.friends[i].account_id;
 	WFIFOL(fd, 6) = sd->status.friends[i].char_id;
-	WFIFOB(fd,10) = !online; //Yeah, a 1 here means "logged off", go figure...
+	WFIFOB(fd, 10) = !online; //Yeah, a 1 here means "logged off", go figure...
+	#ifndef PACKETVER_ZERO
+	#if PACKETVER >= 20180307 || (defined(PACKETVER_RE) && PACKETVER >= 20180221)
+	memcpy(WFIFOP(fd, 11), sd->status.friends[i].name, NAME_LENGTH);
+	#endif
+	#endif  // PACKETVER_ZERO
+
 	WFIFOSET(fd, packet_len(0x206));
 }
 
@@ -14104,18 +14124,26 @@ void clif_friendslist_send(struct map_session_data *sd)
 {
 	int i = 0, n, fd = sd->fd;
 
+	#if !defined(PACKETVER_ZERO) && (PACKETVER >= 20180307 || (defined(PACKETVER_RE) && PACKETVER >= 20180221))
+	const int offset = 8;
+	#else
+	const int offset = 32;
+	#endif
+
 	nullpo_retv(sd);
 	// Send friends list
-	WFIFOHEAD(fd, MAX_FRIENDS * 32 + 4);
+	WFIFOHEAD(fd, MAX_FRIENDS * offset + 4);
 	WFIFOW(fd, 0) = 0x201;
 	for(i = 0; i < MAX_FRIENDS && sd->status.friends[i].char_id; i++) {
-		WFIFOL(fd, 4 + 32 * i + 0) = sd->status.friends[i].account_id;
-		WFIFOL(fd, 4 + 32 * i + 4) = sd->status.friends[i].char_id;
-		memcpy(WFIFOP(fd, 4 + 32 * i + 8), &sd->status.friends[i].name, NAME_LENGTH);
+		WFIFOL(fd, 4 + offset * i + 0) = sd->status.friends[i].account_id;
+		WFIFOL(fd, 4 + offset * i + 4) = sd->status.friends[i].char_id;
+		#if !(!defined(PACKETVER_ZERO) && (PACKETVER >= 20180307 || (defined(PACKETVER_RE) && PACKETVER >= 20180221)))
+		memcpy(WFIFOP(fd, 4 + offset * i + 8), &sd->status.friends[i].name, NAME_LENGTH);
+		#endif
 	}
 
 	if (i) {
-		WFIFOW(fd,2) = 4 + 32 * i;
+		WFIFOW(fd,2) = 4 + offset * i;
 		WFIFOSET(fd, WFIFOW(fd,2));
 	}
 
@@ -19459,7 +19487,7 @@ void clif_parse_rodex_open_write_mail(int fd, struct map_session_data *sd) __att
 void clif_parse_rodex_open_write_mail(int fd, struct map_session_data *sd)
 {
 	const struct PACKET_CZ_REQ_OPEN_WRITE_MAIL *rPacket = RFIFOP(fd, 0);
-	int8 result = (rodex->isenabled() == true) ? 1 : 0;
+	int8 result = (rodex->isenabled() == true && sd->npc_id == 0) ? 1 : 0;
 
 	clif->rodex_open_write_mail(fd, rPacket->receiveName, result);
 }
@@ -19701,18 +19729,23 @@ void clif_rodex_send_maillist(int fd, struct map_session_data *sd, int8 open_typ
 #endif
 }
 
-void clif_rodex_send_mails_all(int fd, struct map_session_data *sd)
-{
+void clif_rodex_send_mails_all(int fd, struct map_session_data *sd, int64 mail_id) {
 #if PACKETVER >= 20170419
 	struct PACKET_ZC_MAIL_LIST *packet;
 	struct maillistinfo *inner;
 	int16 size = sizeof(*packet);
 	int packetMailCount = 0;
 	int mailListCount = 0;
-	int mailsSize = VECTOR_LENGTH(sd->rodex.messages);
-	int i;
+	int mailsSize, i;
+	int j = -1;
 
 	nullpo_retv(sd);
+
+	mailsSize = VECTOR_LENGTH(sd->rodex.messages);
+
+	if (mail_id > 0) {
+		ARR_FIND(0, VECTOR_LENGTH(sd->rodex.messages), j, (VECTOR_INDEX(sd->rodex.messages, j)).id == mail_id);
+	}
 
 	WFIFOHEAD(fd, sizeof(*packet) + (sizeof(*inner) + RODEX_TITLE_LENGTH) * RODEX_MAIL_PER_PAGE);
 	packet = WFIFOP(fd, 0);
@@ -19720,7 +19753,8 @@ void clif_rodex_send_mails_all(int fd, struct map_session_data *sd)
 	inner = WFIFOP(fd, size);
 
 	i = mailsSize - 1;
-	while (i >= 0) {
+	mailsSize -= (j + 1);
+	while (i > j) {
 		struct rodex_message *msg = &VECTOR_INDEX(sd->rodex.messages, i);
 		--i;
 

@@ -1,41 +1,3 @@
--- This file is part of Hercules.
--- http://herc.ws - http://github.com/HerculesWS/Hercules
---
--- Copyright (C) 2012-2015  Hercules Dev Team
--- Copyright (C)  Athena Dev Teams
---
--- Hercules is free software: you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation, either version 3 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
--- PickLog Types
--- (M)onsters Drop
--- (P)layers Drop/Take
--- Mobs Drop (L)oot Drop/Take
--- Players (T)rade Give/Take
--- Players (V)ending Sell/Take
--- (S)hop Sell/Take
--- (N)PC Give/Take
--- (C)onsumable Items
--- (A)dministrators Create/Delete
--- Sto(R)age
--- (G)uild Storage
--- (E)mail attachment
--- (B)uying Store
--- Pr(O)duced Items/Ingredients
--- Auct(I)oned Items
--- (X) Other
--- (D) Stolen from mobs
--- (U) MVP Prizes
 
 --
 -- Table structure for table `atcommandlog`
@@ -77,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `branchlog` (
 CREATE TABLE IF NOT EXISTS `chatlog` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `time` DATETIME NULL,
-  `type` ENUM('O','W','P','G','M') NOT NULL DEFAULT 'O',
+  `type` ENUM('O','W','P','G','M','C') NOT NULL DEFAULT 'O',
   `type_id` INT(11) NOT NULL DEFAULT '0',
   `src_charid` INT(11) NOT NULL DEFAULT '0',
   `src_accountid` INT(11) NOT NULL DEFAULT '0',
