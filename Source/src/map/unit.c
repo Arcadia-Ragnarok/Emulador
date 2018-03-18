@@ -2192,10 +2192,11 @@ int unit_attack_timer_sub(struct block_list* src, int tid, int64 tick)
 	}
 	//Sync packet only for players.
 	//Non-players use the sync packet on the walk timer. [Skotlex]
-	if (tid == INVALID_TIMER && sd) clif->fixpos(src);
+	if (tid == INVALID_TIMER && sd) {
+		clif->fixpos(src);
+	}
 
 	map->freeblock_lock();
-
 	if( DIFF_TICK(ud->attackabletime,tick) <= 0 ) {
 		if (battle_config.attack_direction_change && (src->type&battle_config.attack_direction_change)) {
 			ud->dir = map->calc_dir(src, target->x,target->y );
