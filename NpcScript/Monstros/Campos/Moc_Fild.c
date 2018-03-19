@@ -51,7 +51,7 @@ moc_fild07,0,0,0,0	monster	Picky	1049,10,5000,0,0
 moc_fild07,162,333,12,12	monster	Planta Amarela	1081,5,360000,180000,1
 
 // ------------------------------------------------------------------
-moc_fild11,0,0,0,0	monster	Filhote de Lobo do Deserto	1107,140,5000,0,0
+moc_fild11,0,0,0,0	monster	Filhote de Lobo	1107,140,5000,0,0
 moc_fild11,0,0,0,0	monster	Condor	1009,30,5000,0,0
 moc_fild11,0,0,0,0	monster	Escorpião	1001,30,5000,0,0
 
@@ -103,7 +103,7 @@ moc_fild17,359,258,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 // ------------------------------------------------------------------
 moc_fild18,0,0,0,0	monster	Escorpião	1001,140,5000,0,0
 moc_fild18,0,0,0,0	monster	Condor	1009,30,5000,0,0
-moc_fild18,0,0,0,0	monster	Filhote de Lobo do Deserto	1107,30,5000,0,0
+moc_fild18,0,0,0,0	monster	Filhote de Lobo	1107,30,5000,0,0
 moc_fild18,0,0,0,0	monster	Libélula	1091,1,3600000,1800000,1
 moc_fild18,143,352,0,0	monster	Planta Amarela	1081,1,180000,90000,1
 moc_fild18,72,333,0,0	monster	Planta Amarela	1081,1,180000,90000,1

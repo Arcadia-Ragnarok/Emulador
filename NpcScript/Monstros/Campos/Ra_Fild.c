@@ -15,7 +15,7 @@
 
 ra_fild01,0,0,0,0	monster	Lobo do Deserto	1106,130,5000,0,0
 ra_fild01,0,0,0,0	monster	Roween	1782,30,5000,0,0
-ra_fild01,0,0,0,0	monster	Filhote de Lobo do Deserto	1107,20,5000,0,0
+ra_fild01,0,0,0,0	monster	Filhote de Lobo	1107,20,5000,0,0
 ra_fild01,0,0,0,0	monster	Anopheles	1627,10,5000,0,0
 
 // ------------------------------------------------------------------
@@ -50,7 +50,7 @@ ra_fild06,0,0,0,0	monster	Líder Kobold	1296,1,1800000,1200000,0
 ra_fild08,0,0,0,0	monster	Anaconda	1030,100,5000,0,0
 ra_fild08,0,0,0,0	monster	Roween	1782,50,5000,0,0
 ra_fild08,0,0,0,0	monster	Vento da Colina	1680,20,5000,0,0
-ra_fild08,0,0,0,0	monster	Filhote de Lobo do Deserto	1107,10,5000,0,0
+ra_fild08,0,0,0,0	monster	Filhote de Lobo	1107,10,5000,0,0
 ra_fild08,0,0,0,0	monster	Anopheles	1627,10,5000,0,0
 
 // ------------------------------------------------------------------

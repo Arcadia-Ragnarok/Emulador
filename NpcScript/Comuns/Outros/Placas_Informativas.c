@@ -694,3 +694,11 @@ moc_ruins,61,164,5	script	Quadro de Avisos#Boardruins	2_BULLETIN_BOARD,{
 	mes "No terceiro nível, o monstro ^6B1312Amon Ra^000000 surge em determinados horários.";
 	close;
 }
+
+// Fábrica de Robôs -------------------------------------------------
+kh_dun01,163,223,4	script	Tabuleta#khd	4_BOARD3,{
+	mes "[Noticia]";
+	mes "Bichinhos de estimação são proibidos nessa área.";
+	mes "Bichinhos que provêm assistência especial para deficientes visuais estão exclusos dessa regra.";
+	close;
+}

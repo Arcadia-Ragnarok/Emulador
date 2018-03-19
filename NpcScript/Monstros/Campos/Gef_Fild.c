@@ -145,4 +145,4 @@ gef_fild11,0,0,0,0	monster	Goblin	1122,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin	1123,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin	1124,50,5000,0,0
 gef_fild11,0,0,0,0	monster	Goblin	1125,50,5000,0,0
-gef_fild11,0,0,0,0	monster	Goblin Líder	1299,1,1800000,1200000,0
+gef_fild11,0,0,0,0	monster	Líder Goblin	1299,1,1800000,1200000,0

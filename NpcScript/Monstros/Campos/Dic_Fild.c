@@ -19,7 +19,7 @@ dic_fild01,0,0,0,0	monster	Tatacho	1986,25,5000,0,0
 dic_fild01,0,0,0,0	monster	Dolomedes	2092,20,5000,0,0
 
 // ------------------------------------------------------------------
-dic_fild02,0,0,0,0	monster	Bradium Golem	2024,3,5000,0,0
+dic_fild02,0,0,0,0	monster	Golem de Bradium	2024,3,5000,0,0
 dic_fild02,0,0,0,0	monster	Centopeia	1987,35,5000,0,0
 dic_fild02,0,0,0,0	monster	Larva de Centopeia	1999,10,5000,0,0
 dic_fild02,0,0,0,0	monster	Tatacho	1986,25,5000,0,0
