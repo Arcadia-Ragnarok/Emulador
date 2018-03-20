@@ -304,7 +304,7 @@ geffen_in,141,140,3	script	Molgenstein#molgenstain	2_M_MOLGENSTEIN,{
 	} else {
 		mes "[Molgenstein]";
 		mes "Heeheeheehee...";
-		mes "Você não está aqui para ser uma cobaia, está? Provavelmente não. Não desde meu pequeno 'acidente'. Heeheeheeee~!";
+		mes "Você não está aqui para ser uma cobaia, está? Provavelmente não. Não desde meu pequeno 'acidente'. Heeheeheeee!";
 		close;
 	}
 }

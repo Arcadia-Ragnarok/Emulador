@@ -346,3 +346,14 @@ ve_in,126,378,3	script	Guarda#vei2	4_M_DST_MASTER,{
 	mes "Agradeço Freya por eu ter sido enviado a um lugar pacífico e quieto.";
 	close;
 }
+
+// ------------------------------------------------------------------
+ve_in,238,120,4	script	Bêbedo#vei	4_F_DESERT,{
+	mes "[Drunkard]";
+	mes "Hohohoho";
+	mes "Oh Hohohoho";
+	next;
+	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "Ela é meio estranha...";
+	close;
+}

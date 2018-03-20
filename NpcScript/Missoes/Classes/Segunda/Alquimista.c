@@ -39,7 +39,7 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 		mes "[Parmy Gianino]";
 		mes "Se você conhece alguns mercadores.";
 		mes "Por favor, fale a ele sobre nossa associação.";
-		mes "Esses tipos de pessoas tendem a ter um talento para a Alquimia e experimentação ~";
+		mes "Esses tipos de pessoas tendem a ter um talento para a Alquimia e experimentação ";
 		close;
 	}
 	if (!alchemistq) {

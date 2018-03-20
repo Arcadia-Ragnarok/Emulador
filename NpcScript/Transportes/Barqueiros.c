@@ -666,6 +666,59 @@ malaya,276,55,4	script	Marinheiro Optamara#mal	4W_SAILOR,{
 }
 
 // ------------------------------------------------------------------
+// - [ alberta ~ tur_dun01 ] - 
+// ------------------------------------------------------------------
+alberta,247,122,4	script	Barqueiro#tur	4_M_SEAMAN,{
+	mes "[Barqueiro]";
+	mes "Hehe...";
+	mes "Seus olhos...";
+	mes "Eu posso ver que você está querendo saber mais sobre a Ilha da Tartaruga.";
+	mes "Você não quer ir até lá?";
+	mes "A taxa é de apenas 10.000 Zenys";
+	next;
+	if (select("Ilha da Tartaruga -> 10.000 zenys", "Cancelar") == 1) {
+		if (Zeny > 9999) {
+			mes "[Barqueiro]";
+			mes "Certo!!";
+			mes "Partiremos agora mesmo.";
+			next;
+			mes "^3355FF*Choo Choo*^000000";
+			Zeny -= 10000;
+			warp("tur_dun01",157,39);
+			close;
+		} else {
+			mes "[Barqueiro]";
+			mes "Hum...";
+			mes "Desculpe, mas você não tem Zeny suficiente.";
+			mes "Espero que você entenda que eu posso deixar meu conhecimento e experiência ser subestimado...";
+			close;
+		}
+	} else {
+		mes "[Barqueiro]";
+		mes "Certo então...";
+		mes "Bem, se o espírito de aventura deve acontecer para pegar você, eu vou estar aqui esperando.";
+		close;
+	}
+}
+
+tur_dun01,165,29,4	script	Barqueiro#tur2	4_M_SEAMAN,{
+	mes "[Barqueiro]";
+	mes "Você deseja retornar a Alberta?";
+	next;
+	if (select("Ir para Alberta","Parar de Falar") == 1) {
+		mes "[Barqueiro]";
+		mes "Hehe...";
+		mes "Eu certamente espero que você encontrar o que você estava procurando. Tudo bem, eu acho que há sempre um tempo para um aventureiro de voltar para casa...";
+		next;
+		mes "^3355FF* Choo Choo *^000000";
+		close2;
+		warp "alberta",241,115;
+		end;
+	}
+	close;
+}
+
+// ------------------------------------------------------------------
 // - [Cmd_Fild > Alberta * Cmd_Fild > Izlude ] - 
 // ------------------------------------------------------------------
 -	script	cmdboard	FAKE_NPC,{
@@ -712,7 +765,7 @@ izlude,201,181,1	script	Marinheiro#izlude	4W_SAILOR,{
 	mes "Venham passear ao vento em um barco fascinante!";
 	mes "Rápido, rápido!";
 	next;
-	switch(select("Ilha Byalan -> 150 Zeny.","Marinha de Alberta  -> 500 Zeny.","Cancelar.")) {
+	switch(select("Ilha Byalan -> 150 Zeny.","Marinha de Alberta -> 500 Zeny","Cancelar.")) {
 		case 1:
 		if (Zeny < 150) {
 			mes "[Marinheiro]";
@@ -789,7 +842,7 @@ izlude,171,185,3	script	Agente Matrimonial#Izl	1_F_LIBRARYGIRL,{
 		mes "Não há melhor forma de aproveitar momentos especiais com sua pessoa amada através de uma viagem secreta para um lugar remoto e exótico.";
 		next;
 		mes "[Auxiliar]";
-		mes "Umas férias em Jawaii poderia ser um incrível presente para quem você ama~";
+		mes "Umas férias em Jawaii poderia ser um incrível presente para quem você ama";
 		close;
 	}
 }

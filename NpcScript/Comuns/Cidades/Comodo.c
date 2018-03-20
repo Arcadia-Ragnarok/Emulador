@@ -415,3 +415,34 @@ cmd_in02,57,62,4	script	Moo#com	4_M_MANAGER,{
 	mes "Toda a renda do cassino de Comodo é destinada ao bem-estar da comunidade da Cidade de Comodo.";
 	close;
 }
+
+// ------------------------------------------------------------------
+cmd_in02,94,208,5	script	Investigador#com	4_M_ROGUE,{
+	if ((diamond_edq == 22) || (diamond_edq == 23)) {
+		if (BaseJob == Job_Rogue) {
+			mes "[Investigador]";
+			mes "Ei, amigo. Você faz parte da guilda?";
+			mes "Legal.";
+			mes "Se mandaram você para ajudar, bem, não há nada para fazer aqui.";
+			mes "Este lugar está praticamente limpo.";
+			close;
+		} else {
+			mes "[Investigador]";
+			mes "O que você quer?";
+			mes "Ah, sua guilda deve ter mandado você para ajudar.";
+			mes "Investigamos....";
+			mes "Não encontramos nada.";
+			mes "A Gangue Z deu o fora.";
+			next;
+			mes "[Investigador]";
+			mes "Fique à vontade para olhar por aí, mas se quer saber, acho uma perda de tempo.";
+			close;
+		}
+	} else {
+		mes "[Investigador]";
+		mes "Puxa, estou preso aqui até receber novas ordens da guilda.";
+		mes "Será que...";
+		mes "Eles não se esqueceram de mim, não é?";
+		close;
+	}
+}

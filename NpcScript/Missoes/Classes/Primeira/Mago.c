@@ -49,7 +49,7 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				mes "[Líder da Guilda]";
 				mes "Há algo mais que eu possa ajudá-lo?";
 				mes "Se não, por que você não vai testar suas habilidades?";
-				mes "O mundo está esperando por você~!";
+				mes "O mundo está esperando por você!";
 				close;
 			}
 		} else {

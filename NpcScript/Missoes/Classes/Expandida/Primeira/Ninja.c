@@ -348,7 +348,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "[Red Leopard Joe]";
 		mes "Cougar te pediu para obter alguns materiais também?";
 		mes "Oh, bem, suponho que não posso culpá-lo.";
-		mes "Aliás, devo ser capaz de vencê-lo em uma luta justa~";
+		mes "Aliás, devo ser capaz de vencê-lo em uma luta justa";
 		close;
 	} else if (BaseClass == Job_Ninja) {
 		mes "[Red Leopard Joe]";

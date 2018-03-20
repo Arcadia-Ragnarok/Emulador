@@ -179,7 +179,7 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				next;
 				mes "[Catherine]";
 				mes "Vá falar com o homem no canto para saber sobre os outros testes.";
-				mes "Eles podem ser um pouco difíceis, então tome cuidado, eu não gostaria que você terminasse como a maioria dos Magos que vêm para esses exames... pobres almas na verdade, que descansem em paz. ~Hehehe.";
+				mes "Eles podem ser um pouco difíceis, então tome cuidado, eu não gostaria que você terminasse como a maioria dos Magos que vêm para esses exames... pobres almas na verdade, que descansem em paz. Hehehe.";
 				close;
 			}
 		} else if (wizardq == 2) {
@@ -226,7 +226,7 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				next;
 				mes "[Catherine]";
 				mes "Vá falar com o homem no canto para saber sobre os outros testes.";
-				mes "Eles podem ser um pouco difíceis, então tome cuidado, eu não gostaria que você terminasse como a maioria dos Magos que vêm para esses exames... pobres almas na verdade, que descansem em paz. ~Hehehe.";
+				mes "Eles podem ser um pouco difíceis, então tome cuidado, eu não gostaria que você terminasse como a maioria dos Magos que vêm para esses exames... pobres almas na verdade, que descansem em paz. Hehehe.";
 				close;
 			}
 		} else if (wizardq == 3) {
@@ -746,7 +746,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 				end;
 			} else {
 				mes "[Raulel]";
-				mes "Bem, é melhor responder esses problemas se você planeja se tornar um Bruxo. Hahahahahahaha~";
+				mes "Bem, é melhor responder esses problemas se você planeja se tornar um Bruxo. Hahahahahahaha";
 				next;
 				mes "[Raulel]";
 				mes "1. Escolha o Monstros com o atributo diferente dos outros.";

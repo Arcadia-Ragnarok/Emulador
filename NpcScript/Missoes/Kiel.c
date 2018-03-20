@@ -4649,7 +4649,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 
 	OnTimer180000:
 	stopnpctimer;
-	mapannounce("kh_kiehl02","Beeeeeeeeeeeeep~",bc_npc,0xFF0000);
+	mapannounce("kh_kiehl02","Beeeeeeeeeeeeep",bc_npc,0xFF0000);
 	donpcevent("KiehlRoom::OnReset");
 	end;
 

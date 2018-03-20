@@ -216,3 +216,77 @@ alberta,93,174,2	script	Vovó#alb	8_F_GRANDMOTHER,{
 	mes "Mas, ainda não vale a pena arriscar sua vida se você não é forte o suficiente.";
 	close;
 }
+
+// ------------------------------------------------------------------
+alberta,127,143,3	script	Belder	4_M_03,{
+	if (diamond_edq == 0) {
+		mes "[Belder]";
+		mes "Preciso contratar gente para promover os negócios...";
+		mes "Umas damas bem bonitas devem atrair os clientes às... Oh!";
+		mes "Bem-vindo à Belder Empréstimos!";
+		next;
+		switch(select("Eu posso promover seus negócios!","Ahn...")) {
+			case 1:
+			if (Sex == SEX_MALE) {
+				mes "[Belder]";
+				mes "Você? Mas você é homem!";
+				mes "Nenhum homem peludo e fedido deve ser a imagem da Belder Empréstimos!";
+				mes "Precisamos exalar competência, confiança e... e charme.";
+				close;
+			} else {
+				mes "[Belder]";
+				mes "Você? Bem, não vá me levar a mal.";
+				mes "Mas está vendo suas curvas?";
+				mes "Estão no lugar errado, boneca.";
+				mes "Até mais!";
+				close;
+			}
+			case 2:
+			mes "[Belder]";
+			mes "Ei, você não está interessado em um empréstimo?";
+			mes "Melhor confiar em mim do que em qualquer outra pessoa, que pode te passar pra trás!";
+			close;
+		}
+	} else if (diamond_edq < 13) {
+		mes "[Belder]";
+		mes "Seja bem-vindo!";
+		mes "Então, você precisa de dinheiro rápido?";
+		mes "A Belder Empréstimos oferece o dinheiro que você precisa a juros baixos!";
+		next;
+		select("Perguntar sobre Muff");
+		mes "[Belder]";
+		mes "Muff? Oh!";
+		mes "Isso é um nome ou o quê?";
+		mes "Pensei que você tinha dito... não.";
+		mes "Não mesmo.";
+		mes "Não faço idéia.";
+		next;
+		mes "[Belder]";
+		mes "Hã? Garantia?";
+		mes "E por que eu recusaria o dinheiro dele se eu tivesse mesmo feito o empréstimo?";
+		mes "Agora me deixe em paz, esse tipo de papo é ruim para os negócios!";
+		close;
+	} else if (diamond_edq > 12) {
+		mes "[Belder]";
+		mes "Ele encontrou mesmo o recibo?";
+		mes "Que surpresa!";
+		mes "Isso é, hum, muito bom pra ele.";
+		mes "Pensando melhor, acho que emprestei dinheiro a um tal Muff, sim.";
+		next;
+		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "......";
+		next;
+		mes "[Belder]";
+		mes "Por que está me olhando torto?";
+		mes "Não tenho nada a esconder!";
+		mes "Não vê que eu sou a vítima aqui? Eu!";
+		mes "Só... Cai fora antes que eu fique nervoso.";
+		close;
+	}
+	mes "[Belder]";
+	mes "Seja bem-vindo!";
+	mes "Você precisa de dinheiro...";
+	mes "Ei, é você de novo, o samaritano.";
+	mes "Por que você não me faz a caridade de voltar para o lugar de onde veio?";
+	close;
+}
