@@ -324,3 +324,209 @@ amatsu,262,197,1	script	Árvore Lendária#ama	HIDDEN_NPC,{
 	mes "Vou perguntar sobre esta arvore.^000000";
 	close;
 }
+
+// ------------------------------------------------------------------
+amatsu,112,164,4	script	Guarda do Portão#ama	8_M_JPNSOLDIER,{
+	mes "[Guarda do Portão]";
+	mes "Este é o grande palácio Toukoujyo.";
+	next;
+	mes "[Guarda do Portão]";
+	mes "Seu traje parece estranho.";
+	mes "Você é de outro continente?";
+	mes "O Senhor concedeu a entrada para turistas, então você pode entrar.";
+	close;
+}
+
+// ------------------------------------------------------------------
+amatsu,119,164,4	script	Guarda do Portão#ama2	8_M_JPNSOLDIER,{
+	mes "[Guarda do Portão]";
+	mes "Você é de Rune-Midgard?";
+	mes "Bem-Vind"+(Sex == SEX_MALE ? "o":"a")+" a Amatsu.";
+	mes "Visite o nosso senhor Chun-Su-Gak enquanto estiver lá dentro.";
+	next;
+	mes "[Guarda do Portão]";
+	mes "Ele é muito gentil.";
+	mes "Ele investiu em diversas áreas de Amatsu, e o comércio intercontinental foi idéia dele.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [ Casas ] -
+// ------------------------------------------------------------------
+ama_in01,169,173,1	script	Xamã#ama	4_F_JPNMU,{
+	mes "[Tokako]";
+	mes "Er, eu não sou realmente um Guia Espiritual...";
+	mes "Meu amigo, Takehue-kun trouxe-me aqui e me convidou para experimentar essas roupas.";
+	next;
+	mes "[Tokako]";
+	mes "Ele me pede para fazer um monte de coisas estranhas, mas ele é engraçado.";
+	mes "Às vezes, eu não sei o que ele está pensando. Ainda assim, ele é um bom amigo.";
+	next;
+	mes "[Tokako]";
+	mes "Se você tiver dúvidas sobre algo, fale com Takehue-kun.";
+	mes "Ele sabe coisas que as pessoas não sabem sobre misticismo e ocultismo.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,207,40,6	script	Guarda do Portão#ama3	8_M_JPNSOLDIER,{
+	mes "[Guarda do Portão]";
+	mes "Bem-Vind"+(Sex == SEX_MALE ? "o":"a")+".";
+	mes "O senhor do palácio permitiu a entrada especial de visitantes vindos de outros continentes.";
+	next;
+	mes "[Guarda do Portão]";
+	mes "Olhe ao redor e aproveite.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,207,49,6	script	Guarda do Portão#ama4	8_M_JPNSOLDIER,{
+	mes "[Guarda do Portão]";
+	mes "O senhor é realmente uma ótima pessoa.";
+	mes "Quem iria saber que a nossa cidade já foi um pequeno vilarejo?";
+	next;
+	mes "[Guarda do Portão]";
+	mes "Agradeço-lhe por me contratar.";
+	mes "Ultimamente, ele parece estar com problemas e está muito triste.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,187,57,2	script	Soldado#ama	8_M_JPNSOLDIER,{
+	mes "[Ichiro]";
+	mes "Bem-Vind"+(Sex == SEX_MALE ? "o":"a")+".";
+	mes "Nossos senhor preparou uma sala de visitantes para viajantes como você.";
+	next;
+	mes "[Ichiro]";
+	mes "Se você estiver tendo problemas, conte me.";
+	mes "Eu agradeceria se você falar com o nosso senhor do palácio.";
+	mes "Isso tudo é fornecido por ele.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,37,157,4	script	Soldado#ama2	8_M_JPNSOLDIER,{
+	mes "[Saburo]";
+	mes "Este é o campo de treinamento onde melhoramos nossas habilidades de batalha.";
+	mes "Por favor, olhe ao redor...";
+	next;
+	mes "[Saburo]";
+	mes "A propósito, recentemente eu senti que os Soldados mudaram. Como posso dizer isso...";
+	mes "Seus rostos estão tristes e alguns deles já não estão mais por aqui.";
+	mes "Eles foram para Rune-Midgard??";
+	next;
+	mes "[Saburo]";
+	mes "Nesse trabalho, me deparo com muitos estrangeiros.";
+	mes "Mas lá embaixo, há um convidado de uma terra distante que parece suspeito...";
+	mes "Eu disse a meus guardas para vê-los...";
+	next;
+	mes "[Saburo]";
+	mes "Claro, meu senhor sabe exatamente tudo o que está acontecendo.";
+	mes "Haha, não leve a sério o que eu disse";
+	mes "Tchau...";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,32,51,6	script	Soldado#ama3	8_M_JPNSOLDIER,{
+	mes "[Shiro]";
+	mes "*Tosse, Tosse* O quê...";
+	mes "Não fale comigo...";
+	mes "*Tosse, tosse*... Ah, meu pescoço maldito.";
+	next;
+	mes "[Shiro]";
+	mes "É uma medicina de charlatões!";
+	mes "Eu nunca deveria ter confiado nas pessoas de Rune-Midgard!";
+	mes "*Tosse, Tosse*...";
+	next;
+	mes "[Shiro]";
+	mes "Eu não sei por que, mas...";
+	mes "Estou ficando cada vez pior...";
+	mes "Que tipo de frio é esse?";
+	mes "*Tosse*... *Tosse*...";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,40,167,3	script	Soldado#ama4	8_M_JPNSOLDIER,{
+	mes "[Goro]";
+	mes "*Psst*... Por favor, fique quieto.";
+	mes "Vou lhe contar uma história, certo?";
+	mes " ";
+	next;
+	mes "[Goro]";
+	mes "Existe um rumor em Amatsu.";
+	mes "Que o senhor desse Palácio não é real... *Psst*, quieto!";
+	mes "Não tenha pânico e me ouça.";
+	next;
+	mes "[Goro]";
+	mes "Não é uma pessoa real por trás do gentil senhor, e ele está tramando algo.";
+	mes "Ele está controlando toda a nossa cidade em algum lugar escondido.";
+	mes "...Nosso senhor é apenas uma marionete!";
+	next;
+	mes "[Goro]";
+	mes "É verdade! Confie em mim";
+	mes "Eu o vi. O senhor que estava rindo da cidade na TenguGak!!";
+	mes "Just don't tell anyone that I've told you this, okay?";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,32,167,5	script	Soldado#ama5	8_M_JPNSOLDIER,{
+	mes "[Rokuro]";
+	mes "Ele sempre fala bobagem.";
+	mes "Ele diz que o nosso senhor não é real, mas é mentira.";
+	mes "Não é mesmo engraçado.";
+	next;
+	mes "[Rokuro]";
+	mes "No entanto, é verdade que recentemente, coisas estranhas estão acontecendo.";
+	mes "Não havia lugares proibidos antes...";
+	next;
+	mes "[Rokuro]";
+	mes "Eu ouço sons estranhos as vezes.";
+	mes "A mãe do Senhor foi visitada por médicos várias vezes.";
+	mes "Eu acho que sua saúde não melhorou após essas visitas...";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,42,34,2	script	Soldado#ama6	8_M_JPNSOLDIER,{
+	mes "[Shichiro]";
+	mes "Divirta-se.";
+	mes "Meu senhor preparou algumas salas para visitas.";
+	next;
+	mes "[Shichiro]";
+	mes "Se você tiver qualquer problema, por favor me chame. Além disso, tente não encomodar os outros convidados.";
+	mes " ";
+	next;
+	mes "[Shichiro]";
+	mes "Tenha um bom dia.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,203,156,4	script	Soldado#ama7	8_M_JPNSOLDIER,{
+	mes "[Hachiro]";
+	mes "Meu senhor está lá dentro.";
+	mes "Se quiser cumprimentá-lo, fique a vontade para entrar.";
+	next;
+	mes "[Hachiro]";
+	mes "Não seja rude na frente dele.";
+	mes "Por alguma razão ele não está se sentindo bem.";
+	mes "Normalmente, ele cumprimenta as pessoas de outros continentes de bom grado, mas...";
+	mes "O que poderia ter acontecido com ele...?";
+	close;
+}
+
+// ------------------------------------------------------------------
+ama_in02,195,156,4	script	Soldado#ama8	8_M_JPNSOLDIER,{
+	mes "[Kyuro]";
+	mes "Isso não é bom.";
+	mes "Meu senhor é gentil, mas recentemente ele não está bem...";
+	next;
+	mes "[Kyuro]";
+	mes "Eu já escutei rumores, mas confio nele.";
+	mes "Ele fez Amatsu se tornar uma grande cidade.";
+	mes "É por isso que eu estou seguindo-o como um Soldado.";
+	close;
+}
