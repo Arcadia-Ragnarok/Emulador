@@ -193,7 +193,7 @@ char* sErr(int code)
 	// strerror does not handle socket codes
 	if( FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM|FORMAT_MESSAGE_IGNORE_INSERTS, NULL,
 			code, MAKELANGID(LANG_ENGLISH, SUBLANG_DEFAULT), (LPTSTR)&sbuf, sizeof(sbuf), NULL) == 0 )
-		snprintf(sbuf, sizeof(sbuf), "unknown error");
+		snprintf(sbuf, sizeof(sbuf), "Erros aleatorios no socket");
 	return sbuf;
 }
 

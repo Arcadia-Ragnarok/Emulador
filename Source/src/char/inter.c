@@ -870,7 +870,7 @@ bool inter_config_read(const char *filename) {
 	if (!inter->config_read_log(filename, &config))
 		retval = false;
 
-	ShowInfo("Feita a leitura de %s.\n", filename);
+	ShowInfo("Leitura de %s.\n", filename);
 
 	libconfig->destroy(&config);
 	return retval;

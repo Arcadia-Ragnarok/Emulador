@@ -9717,7 +9717,7 @@ void atcommand_config_read(const char* config_filename) {
 		}
 	}
 
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' analizes de comandos em '"CL_WHITE"%s"CL_RESET"'.\n", num_aliases, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' analizes de comandos em '"CL_WHITE"%s"CL_RESET"'.\n", num_aliases, config_filename);
 
 	libconfig->destroy(&atcommand_config);
 	return;

@@ -901,7 +901,7 @@ int read_elementaldb(void) {
 	}
 
 	fclose(fp);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' elementais em '"CL_WHITE"Database/Summon_DB/Elemental.txt"CL_RESET"'.\n",j);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' elementais em '"CL_WHITE"Database/Summon_DB/Elemental.txt"CL_RESET"'.\n",j);
 
 	return 0;
 }
@@ -974,7 +974,7 @@ int read_elemental_skilldb(void) {
 	}
 
 	fclose(fp);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"Database/Summon_DB/ElementSkill.txt"CL_RESET"'.\n",j);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"Database/Summon_DB/ElementSkill.txt"CL_RESET"'.\n",j);
 	return 0;
 }
 

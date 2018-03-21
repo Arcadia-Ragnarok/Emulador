@@ -1322,7 +1322,7 @@ void homunculus_exp_db_read(void) {
 			homun->dbs->exptable[150 - 1] = 0; //MAX_LEVEL
 		}
 		fclose(fp);
-		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' levels em '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);
+		ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' levels em '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);
 	}
 }
 

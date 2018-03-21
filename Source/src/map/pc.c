@@ -11269,7 +11269,7 @@ int pc_readdb(void) {
 	}
 	fclose(fp);
 	pc->validate_levels();
-	ShowStatus("Feita a leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"Job_DB/JobExp.txt");
+	ShowStatus("Leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"Job_DB/JobExp.txt");
 	count = 0;
 	// Reset and read skilltree
 	pc->clear_skill_tree();
@@ -11339,7 +11339,7 @@ int pc_readdb(void) {
 		}
 	}
 	fclose(fp);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"Status_DB/AttrFix.txt");
+	ShowStatus("Leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"Status_DB/AttrFix.txt");
 	count = 0;
 	// reset then read statspoint
 	memset(pc->statp,0,sizeof(pc->statp));
@@ -11367,7 +11367,7 @@ int pc_readdb(void) {
 		}
 		fclose(fp);
 
-		ShowStatus("Feita a leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"StatPoint.txt");
+		ShowStatus("Leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s/%s"CL_RESET"'.\n",count,map->db_path,"StatPoint.txt");
 	}
 	// generate the remaining parts of the db if necessary
 	k = battle_config.use_statpoint_table; //save setting

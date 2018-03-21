@@ -4507,7 +4507,7 @@ int mob_read_libconfig(const char *filename, bool ignore_missing)
 		}
 	}
 	libconfig->destroy(&mob_db_conf);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 
 	return count;
 }
@@ -4629,7 +4629,7 @@ int mob_read_randommonster(void)
 			summon[i].qty = 1;
 		}
 		fclose(fp);
-		ShowStatus("Feita a leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n",count,mobfile[i]);
+		ShowStatus("Leitura de '"CL_WHITE"%u"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n",count,mobfile[i]);
 	}
 	return 0;
 }
@@ -4745,7 +4745,7 @@ void mob_readchatdb(void) {
 		count++;
 	}
 	fclose(fp);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, arc);
+	ShowStatus("Leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, arc);
 }
 
 /*==========================================

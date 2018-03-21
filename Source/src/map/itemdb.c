@@ -863,7 +863,7 @@ void itemdb_read_groups(void) {
 
 	libconfig->destroy(&item_group_conf);
 	aFree(gsize);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
 }
 
 /* HCache for Packages */
@@ -1061,7 +1061,7 @@ bool itemdb_read_cached_packages(const char *config_filename) {
 		}
 	}
 	fclose(file);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%hu"CL_RESET"' em '"CL_WHITE"%s"CL_RESET"' ("CL_GREEN"C"CL_RESET").\n", pcount, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%hu"CL_RESET"' em '"CL_WHITE"%s"CL_RESET"' ("CL_GREEN"C"CL_RESET").\n", pcount, config_filename);
 
 	return true;
 }
@@ -1280,7 +1280,7 @@ void itemdb_read_packages(void) {
 
 	libconfig->destroy(&item_packages_conf);
 
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
 }
 
 /**
@@ -1399,7 +1399,7 @@ void itemdb_read_options(void)
 
 	VECTOR_CLEAR(duplicate_id);
 
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filepath);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filepath);
 }
 
 void itemdb_read_chains(void) {
@@ -1462,7 +1462,7 @@ void itemdb_read_chains(void) {
 	else
 		itemdb->chain_cache[ECC_ORE] = i;
 
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, config_filename);
 }
 
 /**
@@ -1593,7 +1593,7 @@ void itemdb_read_combos(void)
 		count++;
 	}
 	fclose(fp);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"item_combo_db"CL_RESET"'.\n", count);
+	ShowStatus("Leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"item_combo_db"CL_RESET"'.\n", count);
 
 	return;
 }
@@ -2302,7 +2302,7 @@ int itemdb_readdb_libconfig(const char *filename) {
 			duplicate[nameid] = true;
 	}
 	libconfig->destroy(&item_db_conf);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 
 	return count;
 }

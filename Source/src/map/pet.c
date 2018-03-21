@@ -1330,7 +1330,7 @@ int read_petdb(void)
 		if (j >= MAX_PET_DB)
 			ShowWarning("read_petdb: Alcancado o numero maximo de Pets [%d]. O resto dos Pets nao foram lidos.\n ", MAX_PET_DB);
 		fclose(fp);
-		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' pets em '"CL_WHITE"%s"CL_RESET"'.\n", entries, filename[i]);
+		ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' pets em '"CL_WHITE"%s"CL_RESET"'.\n", entries, filename[i]);
 	}
 	return 0;
 }

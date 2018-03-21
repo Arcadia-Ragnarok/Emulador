@@ -12835,7 +12835,7 @@ void status_read_job_db(void) /* [malufett] */
 		idx = pc->class2idx(class);
 		status->read_job_db_sub(idx, name, jdb);
 	}
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", i, config_filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", i, config_filename);
 	libconfig->destroy(&job_db_conf);
 }
 
@@ -13031,7 +13031,7 @@ int status_readdb_refine_libconfig(const char *filename)
 		}
 	}
 	libconfig->destroy(&refine_db_conf);
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 
 	return count;
 }

@@ -4809,7 +4809,7 @@ void npc_process_files( int npc_min ) {
 
 	ShowStatus("Carregando NPCs...\r");
 	for( file = npc->src_files; file != NULL; file = file->next ) {
-		ShowStatus("Carregando arquivo de NPC: %s"CL_CLL"\r", file->name);
+		ShowStatus("Carregando NPC: %s"CL_CLL"\r", file->name);
 		if (npc->parsesrcfile(file->name, false) != EXIT_SUCCESS)
 			map->retval = EXIT_FAILURE;
 	}

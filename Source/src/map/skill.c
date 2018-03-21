@@ -21042,7 +21042,7 @@ bool skill_read_skilldb(const char *filename)
 
 	libconfig->destroy(&skilldb);
 
-	ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filepath);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filepath);
 
 	return true;
 }

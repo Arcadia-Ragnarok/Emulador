@@ -5255,7 +5255,7 @@ bool char_sql_config_read(const char *filename) {
 	if (!chr->sql_config_read_guild(filename, &config)) {
 		retval = false;
 	}
-	ShowInfo("Feita a leitura de %s.\n", filename);
+	ShowInfo("Leitura de %s.\n", filename);
 
 	libconfig->destroy(&config);
 	return retval;
@@ -5403,7 +5403,7 @@ bool char_config_read(const char *filename) {
 		retval = false;
 	}
 
-	ShowInfo("Feita a leitura de %s.\n", filename);
+	ShowInfo("Leitura de %s.\n", filename);
 
 	libconfig->destroy(&config);
 	return retval;

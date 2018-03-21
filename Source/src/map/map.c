@@ -5731,7 +5731,7 @@ void read_map_zone_db(void) {
 			}
 		}
 
-		ShowStatus("Feita a leitura de '"CL_WHITE"%d"CL_RESET"' zonas em '"CL_WHITE"%s"CL_RESET"'.\n", zone_count, config_filename);
+		ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' zonas em '"CL_WHITE"%s"CL_RESET"'.\n", zone_count, config_filename);
 
 		/* post-load processing */
 		if((zone = strdb_get(map->zone_db, MAP_ZONE_PVP_NAME))) {
