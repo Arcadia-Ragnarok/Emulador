@@ -31,3 +31,18 @@ umbala,140,197,1	script	BungeeJump	HIDDEN_NPC,0,4,{
 		end;
 	}
 }
+
+// ------------------------------------------------------------------
+nif_in,188,168,3	script	Bruxa#nif	4_F_NFDEADMGCIAN,{
+	mes "[Kirkena]";
+	mes "Huh? ...Você está vivo, não está?";
+	mes "Não sei como você foi capaz de chegar aqui sem eu ter conhecimento disso,";
+	mes "Mas esse lugar é perigoso para se viver.";
+	next;
+	mes "[Kirkena]";
+	mes "Estou te enviando de volta para fora dessa cidade.";
+	mes "Se você quer ajudar, é melhor não voltar a esse lugar.";
+	close2;
+	warp("umbala",138,208);
+	end;
+}
