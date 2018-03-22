@@ -1,0 +1,129 @@
+prt_church,185,106,3	script	Padre Bamph	1_M_PASTOR,{
+	if (prt_curse == 61) {
+		if (aru_monas == 0) {
+			mes "[Padre Bamph]";
+			mes "Me desculpe, mas poderíamos conversar mais tarde?";
+			mes "Eu tenho que cuidar de uma tarefa muito importante agora...";
+			close;
+		} else if (aru_monas == 1) {
+			mes "[Padre Bamph]";
+			mes "Oh, eu estive esperando por você, aventureiro.";
+			mes "Lamento em dar a você este aviso, mas parece que você cresceu e está mais forte do que a última vez que nos vimos.";
+			next;
+			mes "[Padre Bamph]";
+			mes "A Catedral recebeu um pedido do Castelo de Prontera, mas nós não temos recursos para lidar com ele.";
+			mes "Eu acredito que você deve estar bem adaptado para esta tarefa se você quiser ajudar.";
+			next;
+			mes "[Padre Bamph]";
+			mes "Um homem de alto padrão de repente desapareceu há algum tempo.";
+			mes "Embora o Castelo de Prontera pediu para que encontrássemos ele, eu posso dizer que agora é tarde de mais.";
+			next;
+			mes "[Padre Bamph]";
+			mes "Tudo o que sabemos é que ele foi visto pela última vez Comodo.";
+			mes "Por favor fale com nosso informante, ^6B8E23Larjes^000000, e ele o ajudará na busca pelo oficial perdido.";
+			aru_monas = 2;
+			changequest 17000,17001;
+			close;
+		}
+		else if (aru_monas == 2 || aru_monas == 3) {
+			mes "[Padre Bamph]";
+			mes "Por favor vá para Comodo e encontre nosso informante, ^6B8E23Larjes^000000, no Casino.";
+			mes "Ele o ajudará na sua busca pelo oficial que desapareceu.";
+			close;
+		}
+		else if (aru_monas == 4) {
+			mes "[Padre Bamph]";
+			mes "Ah, então você encontrou Larjes?";
+			mes "A sua investigação sobre";
+			mes "desaparecimento do oficial tem";
+			mes "progredido? Eu espero que";
+			mes "você encontre ele são e salvo";
+			next;
+			select("Dizer a ele o que Larjes disse.");
+			mes "[Padre Bamph]";
+			mes "Entendo.";
+			mes "Nós detectamos algumas atividades inquietantes de Arunafeltz ultimamente.";
+			mes "Mas eu não acho que eles vão se mexer tão cedo...";
+			mes "Me dê um momento para pensar.";
+			aru_monas = 5;
+			close;
+		}
+		else if (aru_monas == 5) {
+			if (rand(1,5) == 4) {
+				mes "[Padre Bamph]";
+				mes "Bem, eu tenho que considerar todos os cenários possíveis.";
+				mes "Eu acho eu acho que funciona melhor você continuar sua investigação em nosso nome.";
+				mes "Ou seja, se você está disposto a fazê-lo.";
+				next;
+				mes "[Padre Bamph]";
+				mes "Nós não queremos provocar um conflito internacional com o envolvimento do oficial, mas também não posso forçar você a trabalhar para nós.";
+				mes "Só você pode ajudar em sua escolha.";
+				next;
+				if (select("Deixe me pensar sobre isso.:Certamente vou ajudar.") == 1) {
+					mes "[Padre Bamph]";
+					mes "Eu espero que você decida nos ajudar.";
+					mes "A segurança da nossa nação depende do sucesso desta investigação.";
+					mes "Nós realmente precisaremos da sua ajuda.";
+					close;
+				}
+				mes "[Padre Bamph]";
+				mes "Muito obrigado.";
+				mes "Fico feliz em ouvir que você nos ajudará.";
+				mes "Você deve pegar o aeroplano em Izlude para viajar a Arunafeltz, onde você poderá continuar a sua investigação.";
+				next;
+				mes "[Padre Bamph]";
+				mes "Eu acredito que você poderá conseguir mais informações se você investigar na cidade de ^9370DBRachel^000000.";
+				mes "Por favor aceite este dinheiro para cobri a passagem do Aeroplano.";
+				mes "Obrigado, e boa sorte.";
+				aru_monas = 6;
+				Zeny += (RENEWAL?5000:1500);
+				changequest 17002,17003;
+				close;
+			}
+			else {
+				mes "[Padre Bamph]";
+				mes "Hmm... Qual é a melhor maneira para lidarmos com isso?";
+				mes "Me deixe pensar sobre as opções.";
+				mes "Bem, nós podemos--não. Não funcionaria.";
+				mes "Isso será muito difícil.";
+				close;
+			}
+		}
+		else if (aru_monas == 6) {
+				// Anyone else see the irony in this?
+			mes "[Padre Bamph]";
+			mes "Você pode ter problemas em Rachel já que a cultura deles é muito diferente da nossa.;";
+			mes "O modo de fazerem as coisas, o governo...";
+			mes "Tudo está vinculado à religião.";
+			close;
+		}
+		else if (aru_monas > 6 && aru_monas < 25) {
+			mes "[Padre Bamph]";
+			mes "Muito obrigado por todo o seu trabalho duro.";
+			mes "Nossos agentes entraram em contato com você sempre que os mesmos descobrirem alguma coisa nova.";
+			mes "Lembre-se que ninguém pode o que nós temos feito.";
+			close;
+		}
+		else if (aru_monas == 25 || aru_monas == 26) {
+			mes "[Padre Bamph]";
+			mes "Muito obrigado por nos trazer esta informação importante.";
+			mes "Com a sua ajuda, fomos capazes de resolver alguns casos.";
+			mes "Nós esperávamos algo como isto, mas não tão rápido.";
+			next;
+			mes "[Padre Bamph]";
+			mes "Eu temo que a corte real estão dando prioridade para as suas necessidades egoístas.";
+			mes "Eu rezo para que isto não aumente, desconcentração no caos.";
+			mes "^666666*Suspiro*^000000";
+			mes "Vamos ver...";
+			close;
+		}
+		else {
+			mes "[Padre Bamph]";
+			mes "Muito obrigado por nos trazer esta informação importante.";
+			mes "Com a sua ajuda, fomos capazes de resolver alguns casos.";
+			mes "Nós esperávamos algo como isto, mas não tão rápido.";
+			close;
+		}
+	}
+}
+

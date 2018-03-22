@@ -77,6 +77,8 @@ prt_church,109,81,0	warp	prtchurchwarp_4	1,2,prt_church,172,19
 prt_church,168,19,0	warp	prtchurchwarp_5	1,2,prt_church,105,81
 prt_church,115,122,0	warp	prtchurchwarp_6	1,2,prt_church,168,106
 prt_church,166,106,0	warp	prtchurchwarp_7	1,2,prt_church,112,122
+prt_church,115,122,0	warp	prtchurchwarp_8	1,1,prt_church,168,106
+prt_church,166,106,0	warp	prtchurchwarp_9	1,1,prt_church,112,122
 
 // ------------------------------------------------------------------
 // - [ Castelo ] -
