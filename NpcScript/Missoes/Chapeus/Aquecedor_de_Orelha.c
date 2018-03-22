@@ -30,7 +30,7 @@ payon_in01,18,10,4	script	Senhora Mística	1_F_ORIENT_02,{
 	mes "e ^DDDD005.000 zenys^000000.";
 	emotion e_dots;
 	next;
-	switch(select("Ah é? Isso me parece bom!","Não, obrigado, senhora.")) {
+	switch (select("Ah é? Isso me parece bom!","Não, obrigado, senhora.")) {
 		case 1:
 		if (!checkweight(Ear_Mufs,1)) {
 			mes "^3355FFEspere um segundo!";

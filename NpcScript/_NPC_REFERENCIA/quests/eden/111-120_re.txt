@@ -65,7 +65,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 		mes "[Mingmin]";
 		mes "^0000ffA question: Art thou my servant?^000000";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "(What's this lady talking about?)";
 		emotion e_dot,1;
 		next;
@@ -74,7 +74,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 		mes "Art thou my servant?";
 		emotion e_dot;
 		next;
-		select( "I am not.", "You be trippin'?" );
+		select( "I am not.","You be trippin'?" );
 		mes "[Mingmin]";
 		mes "Thou art not? Splendid...because I deigned that any servant of mine would have more dignity.";
 		emotion e_sigh;
@@ -82,7 +82,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 		mes "[Mingmin]";
 		mes "Well, non-servant...What are you looking for here?";
 		next;
-		if (select( "Nothing in particular.", "Quests! Who are you?" ) == 1) {
+		if (select( "Nothing in particular.","Quests! Who are you?" ) == 1) {
 			mes "[Mingmin]";
 			mes "That is acceptable, I hope ye find what ye seek.";
 			emotion e_ok;
@@ -106,7 +106,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 		cutin "min02",0;
 		mes "^0C0CF2Pop quiz hot shot: Art thou my servant?^000000";
 		next;
-		select("No I'm "+ strcharinfo(PC_NAME) +" remember?");
+		select("No I'm "+strcharinfo(PC_NAME)+" remember?");
 		mes "[Mingmin]";
 		mes "Oh I have met you before, living in a house full of fungus seems to cause memory loss.";
 		emotion e_gasp;
@@ -141,7 +141,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 	}
 	else if (para_110lv01 == 2) {
 		cutin "min02",0;
-		mes "Oh, "+ strcharinfo(PC_NAME) +" its you... it is good you have ed, I was bored.";
+		mes "Oh, "+strcharinfo(PC_NAME)+" its you... it is good you have ed, I was bored.";
 		next;
 		mes "[Mingmin]";
 		mes "Where was I? I just finished talking about the Eden Group's duty to protect others from danger.";
@@ -160,7 +160,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 	}
 	else if (para_110lv01 == 3) {
 		cutin "min02",0;
-		mes "Question "+ strcharinfo(PC_NAME) +"! I was practising because new servant is coming soon.";
+		mes "Question "+strcharinfo(PC_NAME)+"! I was practising because new servant is coming soon.";
 		next;
 		select("Waddya mean new servant?");
 		mes "[Mingmin]";
@@ -206,17 +206,17 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 		mes "Enough dilly-dallying, I want to make a contract with someone who really craves adventure.";
 		next;
 		mes "[Mingmin]";
-		mes "Maybe "+ strcharinfo(PC_NAME) +" I'll let you be my servant if you are interested in doing this Eden Group request for my research.";
+		mes "Maybe "+strcharinfo(PC_NAME)+" I'll let you be my servant if you are interested in doing this Eden Group request for my research.";
 		para_110lv01 = 4;
 	}
 	else if (para_110lv01 > 3) {
 		cutin "min01",0;
 		if (para_110lv01 == 5)
-			mes "Welcome! "+ strcharinfo(PC_NAME) +"...";
+			mes "Welcome! "+strcharinfo(PC_NAME)+"...";
 		else
-			mes "Hello "+ strcharinfo(PC_NAME) +".";
+			mes "Hello "+strcharinfo(PC_NAME)+".";
 			next;
-		switch( select( "Request to research monsters", "Make small-talk" ) ) {
+		switch ( select( "Request to research monsters","Make small-talk" ) ) {
 		case 1:
 			mes "[Mingmin]";
 			if (BaseLevel < 111) {
@@ -239,7 +239,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 					next;
 					mes "She seems to be waiting for a ^FF0000special signal.^000000 What do you want to do?";
 					next;
-					while(select( "Make a heart with two hands.", "Dance around like a crazy person", "Wink at her", "Whistle at her." ) != 2) {
+					while (select( "Make a heart with two hands.","Dance around like a crazy person","Wink at her","Whistle at her." ) != 2) {
 						mes "[Mingmin]";
 						mes "What's that for?";
 						emotion e_hmm;
@@ -288,7 +288,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 					mes "[Mingmin]";
 					mes "Don't worry too much. The Unions require it you know. Just sign on the line that is dotted.";
 					next;
-					if (select( "Sign the contract.", "Take time to think." ) == 2) {
+					if (select( "Sign the contract.","Take time to think." ) == 2) {
 						mes "[Mingmin]";
 						mes "You can take your time....";
 					}
@@ -334,12 +334,12 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 					cutin "min01",0;
 					mes "We need some more information on the following monsters. Choose.";
 					next;
-					switch( select( "Glastheim related requests", "Thanatos tower related requests", "Ash Vacuum related requests", "Mingmin's personal request" ) ) {
+					switch ( select( "Glastheim related requests","Thanatos tower related requests","Ash Vacuum related requests","Mingmin's personal request" ) ) {
 					case 1:
 						mes "[Mingmin]";
 						mes "I heard something is going on in Glastheim. Monsters are afoot.";
 						next;
-						switch( select( "Raydric Research", "Khalitzberg Research", "Wanderer Research" ) ) {
+						switch ( select( "Raydric Research","Khalitzberg Research","Wanderer Research" ) ) {
 						case 1:
 							mes "[Mingmin]";
 							if (questprogress(13068,PLAYTIME) == 1)
@@ -368,7 +368,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I need information and document no matter what happens. Come back to me after dealing with ^FF000030 Raydric^000000's.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please come back to me after dealing with the monsters. I need all your stories for documentation.";
 									callsub S_Quest,13068,13067;
@@ -403,7 +403,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I need information and document no matter what happens. Come back to me after dealing with ^FF000030 Khalitzburg's^000000";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please tell me the story after dealing with them one by one. They will be important documents...";
 									callsub S_Quest,13070,13069;
@@ -438,7 +438,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "It will be a good research. Come back after dealing with ^FF000030 Wanderers^000000.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please tell me the story after dealing with them one by one. They will be important documents...";
 									emotion e_no1;
@@ -451,7 +451,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 						mes "[Mingmin]";
 						mes "We need to research monsters in Thanatos tower.";
 						next;
-						switch( select( "Ancient Mimic research", "Deathword research", "Owl Baron research", "Bloody Page research" ) ) {
+						switch ( select( "Ancient Mimic research","Deathword research","Owl Baron research","Bloody Page research" ) ) {
 						case 1:
 							mes "[Mingmin]";
 							if (questprogress(13074,PLAYTIME) == 1)
@@ -480,7 +480,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I can not find any connection in two areas but they keep coming up so it is worth researching. Come back after taking care of ^FF000030 ancient mimic^000000.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "If you possibly get a good drop from them, you know right? Do not forget about me!";
 									emotion e_flash;
@@ -513,7 +513,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I want to research the background of those creatures. Please check ^FF000030 Deathwords^000000.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please take care of them one by one. Those books contain precious history of Rune Midgard so I want to research them.";
 									callsub S_Quest,13076,13075;
@@ -548,7 +548,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "Please take care of ^FF000020 Owl Barons^000000. It will help other adventurers to explore Thanatos tower.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "It does not mean I am not going to research them. The more documents the better research.";
 									callsub S_Quest,13078,13077;
@@ -591,7 +591,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "Can you please get me 20 ^FF0000Bloody Pages^000000? I will be happy if there is one useful bookshelf we can use when you bring them back.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please, I really want to research this.";
 									callsub S_Quest,13080,13079;
@@ -603,7 +603,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 						mes "[Mingmin]";
 						mes "The research for Ash Vacuum is just beginning. So there are still many thing to study!";
 						next;
-						switch( select( "Dark Pinguicula research", "Nepenthes research", "Naga research", "Centipede Larva research", "Cornus research", "We know the magic power of the horn we saw that day." ) ) {
+						switch ( select( "Dark Pinguicula research","Nepenthes research","Naga research","Centipede Larva research","Cornus research","We know the magic power of the horn we saw that day." ) ) {
 						case 1:
 							mes "[Mingmin]";
 							if (questprogress(13082,PLAYTIME) == 1)
@@ -629,7 +629,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "Hunt ^FF000030 Dark Pinguicula^000000. Battling it will provide some good research materials.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Be careful and safe.";
 									callsub S_Quest,13082,13081;
@@ -661,7 +661,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "Why don't you hunt 30 ^FF0000Nepenthes^000000? Their vines crawl up everywhere so be careful.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "The request like this satisfies me and the Eden Group. Be careful though.";
 									callsub S_Quest,13084,13083;
@@ -693,7 +693,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I have no interest in it but it bothers my time to research the other monsters that I actually want to study. So I want the number of them to be reduced.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Please do your best. This request is also important to unlock additional research.";
 									callsub S_Quest,13086,13085;
@@ -727,7 +727,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "Come back after 20 ^FF0000Centipede Larva^000000 are exterminated. Can you imagine how big they became? Just the thought makes my skin crawl.";
 								next;
 								cutin "min02",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "I'm sorry that I didn't do it myself. I'm not ashamed to admit that it's too disgusting for me.";
 									callsub S_Quest,13088,13087;
@@ -759,7 +759,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I believe that Adventurers will handle Cornus in the future, so go out and deal with ^FF000030 Cornus^000000 so I can research that viability.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "This could be a revolution for Eden Group Adventurers. Be positive with this request please.";
 									callsub S_Quest,13090,13089;
@@ -795,7 +795,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I think I can use this horn for good things. It is easy to get. I will let you know later.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Ye gain experience and I get research material. Good deal right? Excellent!";
 									callsub S_Quest,13092,13091;
@@ -807,7 +807,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 						mes "[Mingmin]";
 						mes "This request is for my personal research. I research for Eden Group and they support me to hire people assisting my research.";
 						next;
-						switch( select( "Ancient Mummy research", "Geffenia survey", "Juperos survey", "Fragment and Rusty Screw collecting." ) ) {
+						switch ( select( "Ancient Mummy research","Geffenia survey","Juperos survey","Fragment and Rusty Screw collecting." ) ) {
 						case 1:
 							mes "[Mingmin]";
 							if (questprogress(13094,PLAYTIME) == 1)
@@ -836,7 +836,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I guess it is rotten but we can make big money if this research goes well. Preservatives can make a strawberry pudding that does not go bad with time.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "This research is necessary so that I can make my strawberry pudding.";
 									callsub S_Quest,13094,13093;
@@ -868,7 +868,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "The request starts from how to find a way in. Please take a look what kind of monsters are in there. first of all, start by hunting ^FF000010^000000 Incubus, Succubus and Violy. Then lets research the details later.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "Try to start from Geffen fountain, if you want more information.";
 									callsub S_Quest,13096,13095;
@@ -904,7 +904,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "I thought they are the same because they look the same. Is it only me? I can not distinguish. Hunt 30 of each Green, Orange and Blue ones just to be sure.";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "It wil not be easy to be alone. But looking for a fellow for adventure is what an adventurer does.";
 									callsub S_Quest,13098,13097;
@@ -941,7 +941,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 								mes "It is core research. I need to know who he is. That will be amazing. Can you bring me 10 ^FF0000Fragment^000000 and 20 ^FF0000Rusty Screw^000000?";
 								next;
 								cutin "min01",0;
-								if (select( "Take the request.", "Quit" ) == 1) {
+								if (select( "Take the request.","Quit" ) == 1) {
 									mes "[Mingmin]";
 									mes "I do not know how many drops you can carry but I want as many as you can. May I ask you to bring 10 ^FF0000Fragment^000000 and 20 ^FF0000Rusty Screw^000000?";
 									callsub S_Quest,13100,13099;
@@ -962,7 +962,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 			}
 			else {
 				cutin "min01",0;
-				mes "Contract is terminated. "+ strcharinfo(PC_NAME) +" reward for completed research. ^FF0000I will delete incompleted research from your quest list.^000000";
+				mes "Contract is terminated. "+strcharinfo(PC_NAME)+" reward for completed research. ^FF0000I will delete incompleted research from your quest list.^000000";
 				para_110lv01 = 6;
 				next;
 				callsub S_Hunting,
@@ -989,7 +989,7 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 				mes "It is a little bit inconvenient. I will read to you politely ^FF0000again^000000 in public.";
 				next;
 				mes "[Mingmin]";
-				mes "Anyway "+ strcharinfo(PC_NAME) +" thank you for helping me start my research.";
+				mes "Anyway "+strcharinfo(PC_NAME)+" thank you for helping me start my research.";
 				next;
 				cutin "min03",0;
 				mes "[Mingmin]";
@@ -1006,9 +1006,9 @@ moc_para01,17,95,5	script	Mingmin#1	4_F_GENETIC,{
 				mes "Do you want to know something? I am busy researching.";
 			else
 				mes "It is fine day for researching. It is always fun to talk to someone of sufficient intelligence.";
-			while(1) {
+			while (1) {
 				next;
-				switch( select( "^0000ffFriends^000000 story", "Something to research", "Orange beard gluey mushroom...", "Finish conversation" ) ) {
+				switch ( select( "^0000ffFriends^000000 story","Something to research","Orange beard gluey mushroom...","Finish conversation" ) ) {
 				case 1:
 					mes "[Mingmin]";
 					if (para_110lv01 < 5) {
@@ -1144,18 +1144,18 @@ S_Hunting:
 	.@total = getargcount();
 	for ( .@i = 0; .@i < .@total; .@i += 3 ) {
 		.@quest_id = getarg(.@i);
-		switch( questprogress(.@quest_id,HUNTING) ) {
+		switch ( questprogress(.@quest_id,HUNTING) ) {
 		case 0:
 			if (questprogress(.@quest_id+1))
-				erasequest (.@quest_id+1);
+				erasequest(.@quest_id+1);
 			continue;
 		case 1:
 			mes "[Mingmin]";
-			mes "I will delete "+ getarg(.@i+2) +" research from request list.";
+			mes "I will delete "+getarg(.@i+2)+" research from request list.";
 			break;
 		case 2:
 			mes "[Mingmin]";
-			mes "You finished researching about "+ getarg(.@i+2) +". Thank you.";
+			mes "You finished researching about "+getarg(.@i+2)+". Thank you.";
 			getexp 700000,getarg(.@i+1);
 			break;
 		}
@@ -1170,9 +1170,9 @@ S_Gathering:
 		mes "[Mingmin]";
 		if (countitem(getarg(3)) >= getarg(4) && .@count_item2 >= getarg(6,0)) {
 			if (.@count_item2)
-				mes "You finished researching about "+ getitemname(getarg(3)) +" and "+ getitemname(getarg(5)) +". Thank you.";
+				mes "You finished researching about "+getitemname(getarg(3))+" and "+getitemname(getarg(5))+". Thank you.";
 			else
-				mes "You finished researching about "+ getitemname(getarg(3)) +". Thank you.";
+				mes "You finished researching about "+getitemname(getarg(3))+". Thank you.";
 			delitem getarg(3),getarg(4);
 			if (getarg(5,0))
 				delitem getarg(5),getarg(6);
@@ -1180,14 +1180,14 @@ S_Gathering:
 		}
 		else {
 			if (getarg(5,0))
-				mes "I will delete "+  getitemname(getarg(3)) +" and "+ getitemname(getarg(5)) +" research from request list.";
+				mes "I will delete "+ getitemname(getarg(3))+" and "+getitemname(getarg(5))+" research from request list.";
 			else
-				mes "I will delete "+  getitemname(getarg(3)) +" research from request list.";
+				mes "I will delete "+ getitemname(getarg(3))+" research from request list.";
 		}
 		erasequest getarg(0);
 		next;
 	}
 	else if (questprogress(getarg(0)+1) > 0)
-		erasequest (getarg(0)+1);
+		erasequest(getarg(0)+1);
 	return;
 }

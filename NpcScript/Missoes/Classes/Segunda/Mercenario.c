@@ -19,8 +19,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		mes "Você não pode mudar o sua classe se você tiver quaisquer pontos de habilidade sobrando.";
 		mes "É melhor você usá-las em primeiro...";
 		close;
-	}
-	if (assassinq == 4) {
+	} else if (assassinq == 4) {
 		mes "[Homem Furioso]";
 		mes "Oh, pare de fazer essa cara.";
 		mes "Você pode realmente estar em tanta dor?";
@@ -29,7 +28,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		mes "*Risada*";
 		mes "Você está sofrendo?";
 		mes "Eu posso ver, vou restaurar HP e SP...";
-		percentheal (100,100);
+		percentheal(100,100);
 		next;
 		mes "[Homem Furioso]";
 		mes "É tão difícil se manter vivo?";
@@ -41,7 +40,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 			mes "Tudo bem então...";
 			close2;
 			assassinq = 0;
-			warp (strnpcinfo(NPC_MAP),19,76);
+			warp(strnpcinfo(NPC_MAP),19,76);
 			end;
 		}
 		mes "Fazer uma pausa?";
@@ -54,11 +53,10 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		assassinq = 0;
 		assassinq2 = 0;
 		assassinq3 = 0;
-		savepoint (strnpcinfo(NPC_MAP),18,14);
-		warp (strnpcinfo(NPC_MAP),18,14);
+		savepoint(strnpcinfo(NPC_MAP),18,14);
+		warp(strnpcinfo(NPC_MAP),18,14);
 		end;
-	}
-	if (BaseJob == Job_Thief && countitem(Frozen_Heart) == 0 && assassinq > 7) {
+	} else if (BaseJob == Job_Thief && countitem(Frozen_Heart) == 0 && assassinq > 7) {
 		mes "[Mercenário Huey]";
 		mes "Ei, o que aconteceu ...";
 		mes "Como é que você não trouxe o ^006699Colar Oblivion^000000.";
@@ -72,8 +70,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		mes "Quando você finalmente tiver econtrado ele, traga-o para mim.";
 		mes "^666666*Sigh ...*^000000!";
 		close;
-	}
-	if (BaseJob == Job_Thief && countitem(Frozen_Heart) > 0 && assassinq > 7) {
+	} else if (BaseJob == Job_Thief && countitem(Frozen_Heart) > 0 && assassinq > 7) {
 		mes "[Mercenário Huey]";
 		mes "Bem, bem, bem, você entendeu.";
 		mes "Mas desde que foi claramente riscado da lista, não posso aceitá-lo.";
@@ -91,16 +88,16 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		mes "...";
 		mes "......";
 		next;
-		delitem (Frozen_Heart,1);
-		//changequest (8007,8008);
-		jobchange (Job_Assassin);
-		completequest (8007);
-		callfunc ("ClearJobQuest2nd",12);
+		delitem(Frozen_Heart,1);
+		//changequest(8007,8008);
+		jobchange(Job_Assassin);
+		completequest(8007);
+		callfunc("ClearJobQuest2nd",12);
 		mes "[Mercenário Huey]";
 		mes "Tudo bem!";
 		mes "Você foi aprovad"+(Sex == SEX_MALE ? "o" : "a")+"!";
 		next;
-		//completequest (8008);
+		//completequest(8008);
 		mes "[Mercenário Huey]";
 		mes "Agora faça o seu melhor para ser "+(Sex == SEX_MALE ? "um grande Mercenário" : "uma grande Mercenária")+".";
 		mes "Viage com fé e matar com dignidade.";
@@ -130,7 +127,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 		mes "[Homem Furioso]";
 		mes "Como você se atreve a pensar em me enganar?!";
 		close2;
-		warp ("moc_fild16",206,229);
+		warp("moc_fild16",206,229);
 		end;
 	} else {
 		mes "[Homem Furioso]";
@@ -169,7 +166,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 				mes "[Homem Furioso]";
 				mes "Então, que tal dar o próximo passo e se tornar um mercenário?";
 				next;
-				switch(select("Sim. Eu escolhi esse caminho","Quais são os requisitos?","Talvez mais tarde")) {
+				switch (select("Sim. Eu escolhi esse caminho","Quais são os requisitos?","Talvez mais tarde")) {
 					case 1:
 					mes "[Homem Furioso]";
 					mes "Faz um bom tempo que não tenho recebido candidatos como você.";
@@ -177,11 +174,11 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 					close2;
 					assassinq = 0;
 					if (questprogress(8000)) {
-						changequest (8000,8001);
+						changequest(8000,8001);
 					} else {
-						setquest (8001);
+						setquest(8001);
 					}
-					warp (strnpcinfo(NPC_MAP),19,76);
+					warp(strnpcinfo(NPC_MAP),19,76);
 					end;
 					case 2:
 					mes "[Homem Furioso]";
@@ -217,7 +214,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 	mes "[Mercenário Khai]";
 	mes "Umm?!";
-	emotion (e_gasp);
+	emotion(e_gasp);
 	next;
 	mes "[Mercenário Khai]";
 	mes "Chegue mais perto eu prefiro conversar com as pessoas cara a cara.";
@@ -247,7 +244,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 		mes "Desculpe por rir, mas isso é hilário Hahaha.";
 		mes "Então você quer que eu lhe dar algumas dicas!?";
 		next;
-		switch(select("Por favor me ajude","Não ria de mim!","Eu não preciso da sua ajuda!")) {
+		switch (select("Por favor me ajude","Não ria de mim!","Eu não preciso da sua ajuda!")) {
 			case 1:
 			mes "[Mercenário Khai]";
 			mes "Haaahahahaha !!!";
@@ -348,7 +345,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				mes "Sim, eu posso confiar em você agora.";
 				mes "Deixe-me dar-lhe algumas dicas importantes..";
 				next;
-				switch(rand(1,3)) {
+				switch (rand(1,3)) {
 					case 1:
 					mes "[Mercenário Khai]";
 					mes "Primeiro de tudo, Tocaia é uma habilidade especificamente para o Katar.";
@@ -448,7 +445,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				mes "[Mercenário Khai]";
 				mes "Bem, então, ir pedir para fazer o teste novamente com \"O Anônimo\".";
 				close2;
-				warp (strnpcinfo(NPC_MAP),19,144);
+				warp(strnpcinfo(NPC_MAP),19,144);
 				end;
 			}
 			mes "[Mercenário Khai]";
@@ -462,7 +459,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 			mes "[Mercenário Khai]";
 			mes "Grrrrr ...";
 			close2;
-			//warp ("c_tower4",64,76);
+			//warp("c_tower4",64,76);
 			end;
 		}
 	} else {
@@ -494,8 +491,8 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				close2;
 				assassinq3 = 1;
 				assassinq = 1;
-				changequest (8001,8002);
-				warp (strnpcinfo(NPC_MAP),19,144);
+				changequest(8001,8002);
+				warp(strnpcinfo(NPC_MAP),19,144);
 				end;
 			} else if (JobLevel < 49) {
 				mes "[Mercenário Khai]";
@@ -513,15 +510,15 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				close2;
 				assassinq3 = 2;
 				assassinq = 1;
-				changequest (8001,8002);
-				warp (strnpcinfo(NPC_MAP),19,144);
+				changequest(8001,8002);
+				warp(strnpcinfo(NPC_MAP),19,144);
 				end;
 			} else {
 				mes "[Mercenário Khai]";
 				mes "Quem é você?";
 				mes "...Guardas!";
 				close2;
-				warp ("moc_fild16",206,229);
+				warp("moc_fild16",206,229);
 				end;
 			}
 		} else {
@@ -538,8 +535,8 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				assassinq = 0;
 				assassinq3 = 0;
 				assassinq2 = 0;
-				erasequest (8001);
-				warp ("moc_fild16",206,229);
+				erasequest(8001);
+				warp("moc_fild16",206,229);
 				end;
 			}
 			mes "[Mercenário Khai]";
@@ -568,8 +565,8 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				next;
 				assassinq3 = 1;
 				assassinq = 1;
-				changequest (8001,8002);
-				warp (strnpcinfo(NPC_MAP),19,144);
+				changequest(8001,8002);
+				warp(strnpcinfo(NPC_MAP),19,144);
 				end;
 			} else if (JobLevel < 49) {
 				mes "[Mercenário Khai]";
@@ -582,15 +579,15 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 				next;
 				assassinq3 = 2;
 				assassinq = 1;
-				changequest (8001,8002);
-				warp (strnpcinfo(NPC_MAP),19,144);
+				changequest(8001,8002);
+				warp(strnpcinfo(NPC_MAP),19,144);
 				end;
 			} else {
 				mes "[Mercenário Khai]";
 				mes "Como entrou aqui?";
 				mes "Saia!";
 				close2;
-				warp ("moc_fild16",206,229);
+				warp("moc_fild16",206,229);
 				end;
 			}
 		}
@@ -642,8 +639,8 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 			mes "Antes de prosseguir, há algo que você gostaria de saber?";
 			next;
 			assassinq2 = 0;
-			while(assassinq2 < 3) {
-				switch(select("Habilidades","Atributos","Eu sei tudo.")) {
+			while (assassinq2 < 3) {
+				switch (select("Habilidades","Atributos","Eu sei tudo.")) {
 					case 1:
 					mes "[O Anônimo]";
 					mes "Habilidades...?";
@@ -773,7 +770,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 				mes "[O Anônimo]";
 				mes "Bem, isso é uma maldita boa pergunta, mas você está banido da Guilda dos Mercenários, por isso não é problema meu ....";
 				close2;
-				warp ("moc_fild16",206,151);
+				warp("moc_fild16",206,151);
 				end;
 			}
 			mes "[O Anônimo]";
@@ -786,7 +783,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 			mes "Boa sorte.";
 		}
 		next;
-		switch(rand(1,3)) {
+		switch (rand(1,3)) {
 			case 1:
 			mes "[O Anônimo]";
 			mes "1. O que aqui não é um pré-requisito da habilidade Tocaia?";
@@ -964,7 +961,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 			mes "[O Anônimo]";
 			mes "9. Quando um Aprendiz quer se tornar um Gatuno, quais cogumelos ele/ela precisa roubar?";
 			next;
-			switch(select("Venenosos e Borrachentos","Vermelhos e Laranja","Do Céu e Inferno","Negros e Brancos")) {
+			switch (select("Venenosos e Borrachentos","Vermelhos e Laranja","Do Céu e Inferno","Negros e Brancos")) {
 				case 1:
 				case 3:
 				.@assassin_t += 10;
@@ -990,7 +987,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 			mes "Você marcou "+.@assassin_t+" pontos...";
 			if (.@assassin_t > 80) {
 				assassinq2 = 5;
-				changequest (8002,8003);
+				changequest(8002,8003);
 				mes "Bom.";
 				mes "Você passou.";
 				next;
@@ -1006,7 +1003,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 				mes "Como você pode espera ser um mercenário com esta pontuação dessas?";
 				mes "Mantenha em aprender mais e volte quando estiver pronto.";
 				close2;
-				warp (strnpcinfo(NPC_MAP),19,76);
+				warp(strnpcinfo(NPC_MAP),19,76);
 				end;
 			}
 		} else if (assassinq2 == 4) {
@@ -1019,7 +1016,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 			mes "Você marcou "+.@assassin_t+" pontos...";
 			if (.@assassin_t > 80) {
 				assassinq2 = 5;
-				changequest (8002,8003);
+				changequest(8002,8003);
 				next;
 				mes "[O Anônimo]";
 				mes "Você não falhou desta vez.";
@@ -1038,7 +1035,7 @@ in_moc_16,19,154,0	script	nameless_one	FAKE_NPC,8,2,{
 				mes "Estou surpreso que você foi capaz de se tornar um gatruno.";
 				mes "Vá embora e volte apenas quando você saber do que está fazendo.";
 				close2;
-				warp (strnpcinfo(NPC_MAP),19,76);
+				warp(strnpcinfo(NPC_MAP),19,76);
 				end;
 			}
 		}
@@ -1053,21 +1050,21 @@ in_moc_16,21,165,2	script	Sala de Espera#assassinq	4_F_JOB_ASSASSIN,{
 	end;
 
 	OnInit:
-	disablenpc ("Sala de Espera#assassinq");
-	waitingroom ("Sala de Espera",10,"Sala de Espera#assassinq::OnStartArena",1);
+	disablenpc("Sala de Espera#assassinq");
+	waitingroom("Sala de Espera",10,"Sala de Espera#assassinq::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	warpwaitingpc (strnpcinfo(NPC_MAP),66,151);
+	warpwaitingpc(strnpcinfo(NPC_MAP),66,151);
 	attachrid($@warpwaitingpc[0]);
 	if (assassinq2 < 5) {
-		warpchar (strnpcinfo(NPC_MAP),20,145,getcharid(CHAR_ID_CHAR));
+		warpchar(strnpcinfo(NPC_MAP),20,145,getcharid(CHAR_ID_CHAR));
 		end;
 	}
-	donpcevent ("Beholder#assassinq::OnEnable");
-	donpcevent ("Guarda da Porta#assassinq::OnDisable");
-	setvariable (getvariableofnpc(.DisableTraps,"Beholder#assassinq"),0);
+	donpcevent("Beholder#assassinq::OnEnable");
+	donpcevent("Guarda da Porta#assassinq::OnDisable");
+	setvariable(getvariableofnpc(.DisableTraps,"Beholder#assassinq"),0);
 	disablewaitingroomevent;
 	end;
 
@@ -1142,8 +1139,8 @@ in_moc_16,21,165,2	script	Guia do Teste#assassinq	4_F_JOB_ASSASSIN,4,4,{
 		assassinq = 0;
 		assassinq3 = 0;
 		assassinq2 = 0;
-		changequest (8003,8000);
-		warp (strnpcinfo(NPC_MAP),19,13);
+		changequest(8003,8000);
+		warp(strnpcinfo(NPC_MAP),19,13);
 		end;
 	}
 
@@ -1153,7 +1150,7 @@ in_moc_16,21,165,2	script	Guia do Teste#assassinq	4_F_JOB_ASSASSIN,4,4,{
 		mes "Você não pode ir ao próximo teste sem passar no teste escrito em primeiro lugar.";
 		mes "É melhor falar com o Anônimo....";
 		close2;
-		warp (strnpcinfo(NPC_MAP),19,76);
+		warp(strnpcinfo(NPC_MAP),19,76);
 	}
 	end;
 }
@@ -1164,147 +1161,147 @@ in_moc_16,1,1,0	script	Beholder#assassinq	FAKE_NPC,{
 	OnEnable:
 	.MyMobs = 6;
 	// Monstros do objetivo
-	monster (strnpcinfo(NPC_MAP),62,161,"Alvo",1002,1,"Beholder#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),85,169,"Alvo",1063,1,"Beholder#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),88,152,"Alvo",1002,1,"Beholder#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),90,143,"Alvo",1113,1,"Beholder#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),74,167,"Alvo",1031,1,"Beholder#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),77,173,"Alvo",1002,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),77,173,"Alvo",PORING,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),62,161,"Alvo",PORING,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),85,169,"Alvo",LUNATIC,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),88,152,"Alvo",PORING,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),90,143,"Alvo",DROPS,1,"Beholder#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),74,167,"Alvo",POPORING,1,"Beholder#assassinq::OnMyMobDead");
 
 	// Monstros misturados
-	monster (strnpcinfo(NPC_MAP),62,161,"Criatura Alvo",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),85,169,"Criatura Alvo",1031,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),79,174,"Criatura Alvo",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),85,156,"Criatura Alvo",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),74,171,"Alvo Guerreiro",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),68,173,"Alvo da Quest",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),65,158,"Teste de Batalha",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),60,158,"Guerreiro Teste",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),64,169,"Alvo da Missão",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),71,173,"Alvo da Missão",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),77,172,"Por favor não me Ataque",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),76,172,"Exemplo",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),75,172,"Eu Não",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),67,167,"Eu tenho o seu aqui",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),86,170,"Alvo pra Mudar Classe",1031,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),86,171,"Alvo pra Mudar Classe",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),85,170,"Alvo pra Mudar Classe",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,171,"Ataque Me",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),85,170,"Monstro de Batalha",1031,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,156,"Bouncer",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,156,"Mungamorp",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,156,"Teste de Batalha",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,156,"Orvalho do Batalha",1113,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),89,156,"Prova do Teste",1031,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),83,169,"Druida Malígno",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),63,158,"Doppelganger",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),63,157,"Qualquer um",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),64,159,"Qualquer um",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),63,159,"Você está pronto",1063,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),63,159,"Missão do Arqueiro",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),63,159,"Missão do Espadachim",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),83,148,"Missão do Gaturno",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),82,148,"Missão do Noviço",1002,1,"Beholder#assassinq::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),84,148,"Missão do Mercador",1002,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),62,161,"Criatura Alvo",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,156,"Criatura Alvo",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),71,173,"Alvo da Missão",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),76,172,"Exemplo",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),67,167,"Eu tenho o seu aqui",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,171,"Ataque Me",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,156,"Teste de Batalha",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),63,158,"Doppelganger",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),63,159,"Você está pronto",LUNATIC,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,169,"Criatura Alvo",POPORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),86,170,"Alvo pra Mudar Classe",POPORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,170,"Monstro de Batalha",POPORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,156,"Prova do Teste",POPORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),79,174,"Criatura Alvo",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),68,173,"Alvo da Quest",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),60,158,"Guerreiro Teste",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),75,172,"Eu Não",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,170,"Alvo pra Mudar Classe",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,156,"Mungamorp",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,156,"Orvalho do Batalha",DROPS,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),74,171,"Alvo Guerreiro",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),65,158,"Teste de Batalha",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),64,169,"Alvo da Missão",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),77,172,"Por favor não me Ataque",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),86,171,"Alvo pra Mudar Classe",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),89,156,"Bouncer",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),83,169,"Druida Malígno",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),63,157,"Qualquer um",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),64,159,"Qualquer um",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),63,159,"Missão do Arqueiro",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),63,159,"Missão do Espadachim",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),83,148,"Missão do Gaturno",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),82,148,"Missão do Noviço",PORING,1,"Beholder#assassinq::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),84,148,"Missão do Mercador",PORING,1,"Beholder#assassinq::OnMyMobDead2");
 	initnpctimer;
 	end;
 
 	OnReset:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
 	stopnpctimer;
-	donpcevent ("Sala de Espera#assassinq::OnStart");
+	donpcevent("Sala de Espera#assassinq::OnStart");
 	end;
 
 	OnResetMob:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
 	stopnpctimer;
 	end;
 
 	OnMyMobDead:
 	--.MyMobs;
 	if (.MyMobs < 1) {
-		mapannounce (strnpcinfo(NPC_MAP),"Você passou nesse teste. Parabéns!",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"Você passou nesse teste. Parabéns!",bc_map);
 		assassinq = 3;
-		changequest (8003,8004);
-		donpcevent ("timestopper#assassinq::OnEnable");
-		donpcevent ("Guarda da Porta#assassinq::OnEnable");
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnResetMob");
+		changequest(8003,8004);
+		donpcevent("timestopper#assassinq::OnEnable");
+		donpcevent("Guarda da Porta#assassinq::OnEnable");
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnResetMob");
 		.DisableTraps = 1;
 		stopnpctimer;
 	} else {
-		mapannounce (strnpcinfo(NPC_MAP),"Ok, está indo bem! Aguente aí, você está quase lá! Restam "+.MyMobs+" Alvo",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"Ok, está indo bem! Aguente aí, você está quase lá! Restam "+.MyMobs+" Alvo",bc_map);
 	}
 	end;
 
 	OnMyMobDead2:
-	mapannounce (strnpcinfo(NPC_MAP),"! Você cometeu um erro! Eu estou lhe trazendo de volta!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"! Você cometeu um erro! Eu estou lhe trazendo de volta!",bc_map);
 	assassinq = 2;
-	warp (strnpcinfo(NPC_MAP),19,161);
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnReset");
+	warp(strnpcinfo(NPC_MAP),19,161);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnReset");
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"Ok, vamos ao teste começar!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Ok, vamos ao teste começar!",bc_map);
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"Como você foi dito antes, encontrar e só matar monstros chamados \"Alvo\"!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Como você foi dito antes, encontrar e só matar monstros chamados \"Alvo\"!",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"O objectivo deste teste é analisar a sua capacidade de distinguir rapidamente os inimigos de outras pessoas!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O objectivo deste teste é analisar a sua capacidade de distinguir rapidamente os inimigos de outras pessoas!",bc_map);
 	end;
 
 	OnTimer4000:
-	mapannounce (strnpcinfo(NPC_MAP),"Você terá 3 minutos para o teste! Vamos informá-lo de cada minuto passado.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Você terá 3 minutos para o teste! Vamos informá-lo de cada minuto passado.",bc_map);
 	end;
 
 	OnTimer5000:
-	mapannounce (strnpcinfo(NPC_MAP),"Ok, agora você tem exatamente 3 minutos. Mova-se! Mova-se!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Ok, agora você tem exatamente 3 minutos. Mova-se! Mova-se!",bc_map);
 	end;
 
 	OnTimer65000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos faltando. Como eu já disse, pegue monstros com o nome \"Alvo\"!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos faltando. Como eu já disse, pegue monstros com o nome \"Alvo\"!",bc_map);
 	end;
 
 	OnTimer125000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto faltando.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto faltando.",bc_map);
 	end;
 
 	OnTimer180000:
-	mapannounce (strnpcinfo(NPC_MAP),"5 segundos faltando...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"5 segundos faltando...",bc_map);
 	end;
 
 	OnTimer181000:
-	mapannounce (strnpcinfo(NPC_MAP),"4 segundos faltando...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"4 segundos faltando...",bc_map);
 	end;
 
 	OnTimer182000:
-	mapannounce (strnpcinfo(NPC_MAP),"3 segundos faltando...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"3 segundos faltando...",bc_map);
 	end;
 
 	OnTimer183000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 segundos faltando...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 segundos faltando...",bc_map);
 	end;
 
 	OnTimer184000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 segundo faltando.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 segundo faltando.",bc_map);
 	end;
 
 	OnTimer185000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou!",bc_map);
-	mapannounce (strnpcinfo(NPC_MAP),"Você só queria desperdiçar seu tempo. Terá que tentar novamente!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Você só queria desperdiçar seu tempo. Terá que tentar novamente!",bc_map);
 	//assassinq = 2;
 	end;
 
 	OnTimer186000:
-	areawarp (strnpcinfo(NPC_MAP),60,136,93,177,strnpcinfo(NPC_MAP),19,161);
+	areawarp(strnpcinfo(NPC_MAP),60,136, 93,177,strnpcinfo(NPC_MAP),19,161);
 	end;
 
 	OnTimer187000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnReset");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnReset");
 	end;
 }
 
@@ -1313,9 +1310,9 @@ in_moc_16,68,158,0	script	SinTrap#assassinq	FAKE_NPC,0,0,{
 	if (getvariableofnpc(.DisableTraps,"Beholder#assassinq") < 1) {
 		mapannounce strnpcinfo(NPC_MAP),"Você será enviado de volta.",bc_map;
 		assassinq = 2;
-		warp (strnpcinfo(NPC_MAP),19,161);
-		donpcevent ("Beholder#assassinq::OnResetMob");
-		donpcevent ("Sala de Espera#assassinq::OnStart");
+		warp(strnpcinfo(NPC_MAP),19,161);
+		donpcevent("Beholder#assassinq::OnResetMob");
+		donpcevent("Sala de Espera#assassinq::OnStart");
 	}
 	end;
 }
@@ -1406,27 +1403,27 @@ in_moc_16,87,147,0	duplicate(SinTrap#assassinq)	18_assassinq_4	FAKE_NPC,0,0
 
 in_moc_16,87,137,0	script	Guarda da Porta#assassinq	WARPNPC,2,1,{
 	OnInit:
-	disablenpc ("Guarda da Porta#assassinq");
+	disablenpc("Guarda da Porta#assassinq");
 	end;
 
 	OnTouch:
-	donpcevent ("Thomas#assassinq::OnDisable");
+	donpcevent("Thomas#assassinq::OnDisable");
 	if (assassinq == 3) {
 		assassinq = 3;
 	} else {
 		assassinq = 4;
 	}
-	warp (strnpcinfo(NPC_MAP),87,102);
-	savepoint (strnpcinfo(NPC_MAP),16,13);
+	warp(strnpcinfo(NPC_MAP),87,102);
+	savepoint(strnpcinfo(NPC_MAP),16,13);
 	end;
 
 	OnEnable:
-	mapannounce (strnpcinfo(NPC_MAP),"A porta nas coordenadas 87 137, abriu, siga para a próxima area.",bc_map);
-	enablenpc (strnpcinfo(NPC_NAME));
+	mapannounce(strnpcinfo(NPC_MAP),"A porta nas coordenadas 87 137, abriu, siga para a próxima area.",bc_map);
+	enablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnDisable:
-	disablenpc (strnpcinfo(NPC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
@@ -1436,7 +1433,7 @@ in_moc_16,3,3,0	script	timestopper#assassinq	FAKE_NPC,{
 	end;
 
 	OnTimer187000:
-	donpcevent ("Thomas#assassinq::OnDisable");
+	donpcevent("Thomas#assassinq::OnDisable");
 	stopnpctimer;
 	end;
 
@@ -1445,11 +1442,11 @@ in_moc_16,3,3,0	script	timestopper#assassinq	FAKE_NPC,{
 	end;
 
 	OnMyMobDead:
-	mapannounce (strnpcinfo(NPC_MAP),"Ei, o que foi isso?! Eu lhe disse para não monstar nenhum monstro!",bc_map);
-	mapannounce (strnpcinfo(NPC_MAP),"Eu estou trazendo você de volta...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Ei, o que foi isso?! Eu lhe disse para não monstar nenhum monstro!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Eu estou trazendo você de volta...",bc_map);
 	assassinq = 3;
-	warp (strnpcinfo(NPC_MAP),87,102);
-	killmonsterall (strnpcinfo(NPC_MAP));
+	warp(strnpcinfo(NPC_MAP),87,102);
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 }
 
@@ -1462,14 +1459,14 @@ in_moc_16,89,98,1	script	Thomas#assassinq	2_M_THIEFMASTER,5,1,{
 		mes "Parece que você está em um muita de dor.";
 		mes "^666666*Sigh000000";
 		mes "Dê-me um segundo, deixe-me tentar restaurar seu HP e SP...";
-		percentheal (100,100);
+		percentheal(100,100);
 		next;
 		mes "[Thomas]";
 		mes "Parece que você está tendo um momento difícil.";
 		mes "Você quer desisitir?";
 		mes "Ou se esforçar o suficiente, para superar esse teste.";
 		next;
-		switch(select("Vou tentar novamente","Desito... Eu parei!")) {
+		switch (select("Vou tentar novamente","Desito... Eu parei!")) {
 			case 1:
 			mes "[Thomas]";
 			mes "Hmm. Tudo bem";
@@ -1488,10 +1485,10 @@ in_moc_16,89,98,1	script	Thomas#assassinq	2_M_THIEFMASTER,5,1,{
 			assassinq = 0;
 			assassinq2 = 0;
 			assassinq3 = 0;
-			changequest (8004,8000);
-			savepoint (strnpcinfo(NPC_MAP),18,14);
-			warp (strnpcinfo(NPC_MAP),18,14);
-			donpcevent ("Sala de Espera#assassinq::OnStart");
+			changequest(8004,8000);
+			savepoint(strnpcinfo(NPC_MAP),18,14);
+			warp(strnpcinfo(NPC_MAP),18,14);
+			donpcevent("Sala de Espera#assassinq::OnStart");
 			end;
 		}
 	}
@@ -1512,68 +1509,68 @@ in_moc_16,89,98,1	script	Thomas#assassinq	2_M_THIEFMASTER,5,1,{
 	close2;
 	assassinq = 4;
 
-	monster (strnpcinfo(NPC_MAP),81,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),82,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),83,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),84,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),85,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),86,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),88,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),89,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),90,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),77,77,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),78,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),79,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),80,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),81,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),91,55,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),92,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),93,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),94,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),95,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),96,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),97,56,"Múmia",1041,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),76,62,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),79,62,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),79,65,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),76,65,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),96,62,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),96,65,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),99,62,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),99,65,"Hydra",1068,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),81,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),82,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),83,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),84,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),85,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),86,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),88,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),89,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),90,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),77,77,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),78,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),79,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),80,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),81,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),91,55,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),92,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),93,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),94,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),95,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),96,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),97,56,"Múmia",MUMMY,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),76,62,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),79,62,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),79,65,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),76,65,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),96,62,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),96,65,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),99,62,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),99,65,"Hydra",HYDRA,1,"timestopper#assassinq::OnMyMobDead");
 	end;
 
 	OnDisable:
-	donpcevent ("Sala de Espera#assassinq::OnStart");
-	killmonsterall (strnpcinfo(NPC_MAP));
+	donpcevent("Sala de Espera#assassinq::OnStart");
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 }
 
 in_moc_16,87,48,2	script	Barcardi#assassinq	4_F_JOB_ASSASSIN,2,2,{
 	OnTouch:
-	donpcevent ("timestopper#assassinq::OnDisable");
-	donpcevent ("Thomas#assassinq::OnDisable");
+	donpcevent("timestopper#assassinq::OnDisable");
+	donpcevent("Thomas#assassinq::OnDisable");
 	mes "[Barcardi]";
 	mes "Oh Parabéns!";
 	mes "Você pode agora avançar para a sala do nosso Lider!";
 	mes "Boa sorte!";
 	close2;
 	assassinq = 5;
-	changequest (8004,8005);
-	warp (strnpcinfo(NPC_MAP),181,183);
+	changequest(8004,8005);
+	warp(strnpcinfo(NPC_MAP),181,183);
 	end;
 }
 
 in_moc_16,182,169,0	script	#maze_assassinq	WARPNPC,1,1,{
 	OnTouch:
 	if (assassinq == 5 || assassinq == 6) {
-		warp (strnpcinfo(NPC_MAP),181,183);
+		warp(strnpcinfo(NPC_MAP),181,183);
 		++assassinq;
-		changequest (8005,8006);
+		changequest(8005,8006);
 	} else {
-		savepoint (strnpcinfo(NPC_MAP),181,183);
-		//donpcevent ("Lider dos Mercenários#assassinq::OnCast");
-		warp (strnpcinfo(NPC_MAP),167,113);
+		savepoint(strnpcinfo(NPC_MAP),181,183);
+		//donpcevent("Lider dos Mercenários#assassinq::OnCast");
+		warp(strnpcinfo(NPC_MAP),167,113);
 		end;
 	}
 }
@@ -1581,7 +1578,7 @@ in_moc_16,182,169,0	script	#maze_assassinq	WARPNPC,1,1,{
 /*
 in_moc_16,167,110,0	script	Lider dos Mercenários#assassinq	FAKE_NPC,3,1,{
 	OnTouch:
-	savepoint (strnpcinfo(NPC_MAP),167,110);
+	savepoint(strnpcinfo(NPC_MAP),167,110);
 	mes "[Lider dos Mercenários]";
 	mes "Bem-vind"+(Sex == SEX_MALE ? "o" : "a")+".";
 	mes "Este minha sala, o lugar mais profundo do clã mercenário.";
@@ -1604,7 +1601,7 @@ in_moc_16,167,110,0	script	Lider dos Mercenários#assassinq	FAKE_NPC,3,1,{
 in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 	end;
 	OnTouch:
-	//savepoint ("morocc",100,100);
+	//savepoint("morocc",100,100);
 	if (assassinq == 7 && BaseJob == Job_Thief) {
 		assassinq = 8;
 		mes "[Lider dos Mercenários]";
@@ -1622,7 +1619,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "[Lider dos Mercenários]";
 		mes "Primeiro, o que você quis se tornar mercenário?";
 		next;
-		switch(select("Ter mais poder","Por orgulho","Prática sem fim.")) {
+		switch (select("Ter mais poder","Por orgulho","Prática sem fim.")) {
 			case 1:
 			mes "[Lider dos Mercenários]";
 			mes "Mais poder...";
@@ -1633,7 +1630,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Para mostrar vingança pessoal?";
 			mes "Para que finalidade você vai usar esse poder?";
 			next;
-			switch(select("Por vingança","Por dinheiro","Eu quero viajar.")) {
+			switch (select("Por vingança","Por dinheiro","Eu quero viajar.")) {
 				case 1:
 				assassinq = 8;
 				mes "[Lider dos Mercenários]";
@@ -1688,7 +1685,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Eu posso entender por que seu orgulho e dignidade seria tão importante para eles agora.";
 			mes "Por que razão você deseja se tornar mercenário?";
 			next;
-			switch(select("Eu gosto da solidão","Fazer riquesas","Por aparência.")) {
+			switch (select("Eu gosto da solidão","Fazer riquesas","Por aparência.")) {
 				case 1:
 				assassinq = 11;
 				mes "[Lider dos Mercenários]";
@@ -1735,7 +1732,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Ao contrário da classe Gaturno, a classe Mercenário não permite a auto-indulgência.";
 			mes "Diga-me a motivo você treinar sem parar.";
 			next;
-			switch(select("Ampliar meus Habilidades","É um objetivo meu","Ser forte")) {
+			switch (select("Ampliar meus Habilidades","É um objetivo meu","Ser forte")) {
 				case 1:
 				assassinq = 14;
 				mes "[Lider dos Mercenários]";
@@ -1793,13 +1790,13 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "[Lider dos Mercenários]";
 		mes "Então, se você pode se tornar um mercenário agora, qual é a primeira coisa que você faria?";
 		next;
-		switch(select("Eu iria deireto caçar","Existe alguém me esperando","Aprender mais sobre os Mercenários.")) {
+		switch (select("Eu iria deireto caçar","Existe alguém me esperando","Aprender mais sobre os Mercenários.")) {
 			case 1:
 			mes "[Lider dos Mercenários]";
 			mes "Caçar...";
 			mes "Isso é tudo...?";
 			next;
-			switch(select("Gostaria de subir de nível rápido","Explorar minhas habilidades","Ir a novos lugares.")) {
+			switch (select("Gostaria de subir de nível rápido","Explorar minhas habilidades","Ir a novos lugares.")) {
 				case 1:
 				.@assassin_sangdam += 10;
 				mes "[Lider dos Mercenários]";
@@ -1833,7 +1830,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "[Lider dos Mercenários]";
 			mes "Quem está esperando?";
 			next;
-			switch(select("Meus amigos","Meu Clã","Uma pessoa amada.")) {
+			switch (select("Meus amigos","Meu Clã","Uma pessoa amada.")) {
 				case 1:
 				.@assassin_sangdam += 5;
 				mes "[Lider dos Mercenários]";
@@ -1872,7 +1869,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Admirável sua atitude.";
 			mes "Existe algo que gostaria de me perguntar?";
 			next;
-			switch(select("Lugares para subir de Level?","Objetivos do Mercenário?","Onde Ganhar dinheiro?")) {
+			switch (select("Lugares para subir de Level?","Objetivos do Mercenário?","Onde Ganhar dinheiro?")) {
 				case 1:
 				.@assassin_sangdam += 5;
 				mes "[Lider dos Mercenários]";
@@ -1916,18 +1913,18 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "[Lider dos Mercenários]";
 			mes "Por favor, dê-me um segundo...";
 			next;
-			mapannounce (strnpcinfo(NPC_MAP),"Aqueles envolvidos com o teste, por favor, venham até aqui.",bc_map);
+			mapannounce(strnpcinfo(NPC_MAP),"Aqueles envolvidos com o teste, por favor, venham até aqui.",bc_map);
 			next;
 			mes "[Lider dos Mercenários]";
 			mes "Eles vão chegar aqui em breve.";
 			next;
-			enablenpc ("[Huey]");
-			enablenpc ("[Khai]");
-			enablenpc ("[O Anônimo]");
-			enablenpc ("[Barcardi]");
-			enablenpc ("[Beholder]");
-			enablenpc ("[Thomas]");
-			enablenpc ("[Gayle Maroubitz]");
+			enablenpc("[Huey]");
+			enablenpc("[Khai]");
+			enablenpc("[O Anônimo]");
+			enablenpc("[Barcardi]");
+			enablenpc("[Beholder]");
+			enablenpc("[Thomas]");
+			enablenpc("[Gayle Maroubitz]");
 		}
 		mes "[O Anônimo]";
 		mes "Estou aqui.";
@@ -1954,7 +1951,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		} else {
 			mes "[Huey]";
 			mes "Apesar "+strcharinfo(PC_NAME)+" parece muito suave e gentil, como uma espécie de gatinho.";
-			mes strcharinfo(PC_NAME) +" tem o requisitos.";
+			mes strcharinfo(PC_NAME)+" tem o requisitos.";
 			next;
 			mes "[Huey]";
 			mes "Se está tudo bem com você, eu gostaria de voltar para o meu trabalho.";
@@ -1970,13 +1967,13 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		next;
 		if (.@assassinqNpc) {
 			.@assassinqNpc = 0;
-			disablenpc ("[Huey]");
-			disablenpc ("[Khai]");
-			disablenpc ("[O Anônimo]");
-			disablenpc ("[Barcardi]");
-			disablenpc ("[Beholder]");
-			disablenpc ("[Thomas]");
-			disablenpc ("[Gayle Maroubitz]");
+			disablenpc("[Huey]");
+			disablenpc("[Khai]");
+			disablenpc("[O Anônimo]");
+			disablenpc("[Barcardi]");
+			disablenpc("[Beholder]");
+			disablenpc("[Thomas]");
+			disablenpc("[Gayle Maroubitz]");
 			close2;
 		}
 		mes "[Beholder]";
@@ -1988,7 +1985,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "Hmm ...";
 		mes "Parece que estamos todos de acordo com as qualificações de "+strcharinfo(PC_NAME)+"...";
 		next;
-		switch(assassinq) {
+		switch (assassinq) {
 			case 8:
 			mes "[Lider dos Mercenários]";
 			mes "Mesmo que você está impulsionado por vingança pessoal.";
@@ -2056,32 +2053,32 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Você pode escolher um Jur, Katar, Main Gauche, ou um Gladius.";
 			mes "Como um mestre, eu amo todos eles..";
 			next;
-			switch(select("Jur","Katar","Main Gauche","Gladius")) {
+			switch (select("Jur","Katar","Main Gauche","Gladius")) {
 				case 1:
 				mes "[Lider dos Mercenários]";
 				mes "Um Jur...";
 				mes "Boa escolha.";
-				getitem (Jur_,1);
+				getitem(Jur_,1);
 				break;
 				case 2:
 				mes "[Lider dos Mercenários]";
 				mes "Um Katar...";
 				mes "Aqui está.";
 				mes "Embora ele é usado, mas sei que irá atende-lo bem.";
-				getitem (Katar_,1);
+				getitem(Katar_,1);
 				break;
 				case 3:
 				mes "[Lider dos Mercenários]";
 				mes "Vejo Você quer usar as duas mãos.";
 				mes "Aqui, tome a sua Main Gauche...";
-				getitem (Main_Gauche_,1);
+				getitem(Main_Gauche_,1);
 				break;
 				case 4:
 				mes "[Lider dos Mercenários]";
 				mes "O Gladius ...";
 				mes "Ele é utilizado para governar o mercado de arma mercenário.";
 				mes "Por favor, cuide bem dele...";
-				getitem (Gladius_,1);
+				getitem(Gladius_,1);
 			}
 			next;
 		} else {
@@ -2090,21 +2087,21 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Bem, eu falei demais.";
 			mes "Por favor, tome isso primeiro.";
 			next;
-			switch(rand(1,5)) {
+			switch (rand(1,5)) {
 				case 1:
-				getitem (Main_Gauche,1);
+				getitem(Main_Gauche,1);
 				break;
 				case 2:
-				getitem (Jur,1);
+				getitem(Jur,1);
 				break;
 				case 3:
-				getitem (Stiletto,1);
+				getitem(Stiletto,1);
 				break;
 				case 4:
-				getitem (Knife,1);
+				getitem(Knife,1);
 				break;
 				case 5:
-				getitem (Katar,1);
+				getitem(Katar,1);
 			}
 		}
 		mes "[Lider dos Mercenários]";
@@ -2117,28 +2114,28 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "[Lider dos Mercenários]";
 		mes "Você, "+strcharinfo(PC_NAME)+", optou por viver como um mercenário.";
 		mes "Que possa aprender com nossos caminhos, e ser um exemplo honra para os outros";
-		savepoint ("morocc",100,100);
-		getitem (Frozen_Heart,1);
-		changequest (8006,8007);
+		savepoint("morocc",100,100);
+		getitem(Frozen_Heart,1);
+		changequest(8006,8007);
 		next;
 		mes "[Lider dos Mercenários]";
 		mes "Ok, todos vocês podem voltar para suas posições, que eu vou enviar "+strcharinfo(PC_NAME)+" para a entrada....";
 		if (.@assassinqNpc) {
 			.@assassinqNpc = 0;
-			disablenpc ("[Huey]");
-			disablenpc ("[Khai]");
-			disablenpc ("[O Anônimo]");
-			disablenpc ("[Barcardi]");
-			disablenpc ("[Beholder]");
-			disablenpc ("[Thomas]");
-			disablenpc ("[Gayle Maroubitz]");
+			disablenpc("[Huey]");
+			disablenpc("[Khai]");
+			disablenpc("[O Anônimo]");
+			disablenpc("[Barcardi]");
+			disablenpc("[Beholder]");
+			disablenpc("[Thomas]");
+			disablenpc("[Gayle Maroubitz]");
 			close2;
 		}
 		mes "[Lider dos Mercenários]";
 		mes strcharinfo(PC_NAME)+" leve esse ^006699Colar Oblivion^000000 para o Huey na entrada da guilda.";
 		mes "Ele cuidará do resto.";
 		next;
-		warp (strnpcinfo(NPC_MAP),17,19);
+		warp(strnpcinfo(NPC_MAP),17,19);
 		end;
 	} else if (assassinq == 17) {
 		mes "[Lider dos Mercenários]";
@@ -2148,7 +2145,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "[Lider dos Mercenários]";
 		mes "Você já terminou o seus testes, leve o ^006699Colar Oblivion^000000 para o Huey, assim você poderá mudar sua classe.";
 		close2;
-		warp (strnpcinfo(NPC_MAP),17,19);
+		warp(strnpcinfo(NPC_MAP),17,19);
 		end;
 	} else if (assassinq > 7 && assassinq < 17) {
 		assassinq = 7;
@@ -2170,7 +2167,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "[Lider dos Mercenários]";
 		mes "Você já terminou o seus testes, leve o ^006699Colar Oblivion^000000 para o Huey, assim você poderá mudar sua classe.";
 		close2;
-		warp (strnpcinfo(NPC_MAP),17,19);
+		warp(strnpcinfo(NPC_MAP),17,19);
 		end;
 	}
 }
@@ -2186,7 +2183,7 @@ in_moc_16,186,81,1	script	Assistente do Mestre#assassinq	1_M_JOBTESTER,1,1,{
 -	script	#moc_assin_dup	FAKE_NPC,{
 	end;
 	OnInit:
-	disablenpc (strnpcinfo(NPC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 in_moc_16,156,87,1	duplicate(#moc_assin_dup)	[Huey]	1_M_JOBTESTER

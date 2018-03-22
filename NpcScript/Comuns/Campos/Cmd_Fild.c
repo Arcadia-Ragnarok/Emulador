@@ -81,7 +81,7 @@ cmd_fild07,192,58,4	script	Rahasu#cmd	4W_SAILOR,{
 	mes "Ramadi, o Guarda do Farol...";
 	mes "E guia de Pharos.";
 	next;
-	if (select("Farol de Pharos?", "Cancelar") == 1) {
+	if (select("Farol de Pharos?","Cancelar") == 1) {
 		mes "[Rahasu]";
 		mes "A ilha do Farol de Pharos, consiste em dois antigos faróis.";
 		mes "Construídos para alertar contra a entrada de invasores.";

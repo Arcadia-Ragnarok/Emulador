@@ -24,7 +24,7 @@ valkyrie,44,55,5	script	Atirador de Elite#Valkyrie	4_F_JOB_HUNTER,{
 			mes "[Atirador de Elite]";
 			mes "O mundo está necessitando de Arqueiros poderosos como você.";
 			next;
-			jobchange (Job_Sniper);
+			jobchange(Job_Sniper);
 			ADVJOB = 0;
 			mes "[Atirador de Elite]";
 			mes "Parabéns!";

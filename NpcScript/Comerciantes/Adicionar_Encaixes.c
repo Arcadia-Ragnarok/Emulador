@@ -20,23 +20,23 @@
 	mes "Não é um trabalho fácil então terei que cobrar por isso.";
 	mes "Me diga se intereça em meus serviços.";
 	next;
-	switch(select("Quero utilizar seus serviços", "Quais são os requisitos?")) {
+	switch (select("Quero utilizar seus serviços","Quais são os requisitos?")) {
 		case 1:
 		mes "[Artesão]";
 		mes "Então me diga em qual tipo de equipamento deseja adicionar encaixes?";
 		next;
-		switch(select("Em Armas", "Em Armaduras", "Cancelar")) {
+		switch (select("Em Armas","Em Armaduras","Cancelar")) {
 			case 1:
 			mes "[Artesão]";
 			mes "Então em armas....";
 			mes "Mas qual o nível?";
 			next;
-			switch(select("C", "B", "A", "S")) {
+			switch (select("C","B","A","S")) {
 				case 1:
 				mes "[Artesão]";
 				mes "Qual arma da classe C você deseja que eu adicione um encaixe?";
 				next;
-				switch(select("Tridente", "Cordel", "Violino", "Livro da Mãe Terra", "Livro das Ondas", "Livro de Golpe de Vento", "Livro de Sol Ardente", "Cancelar")) {
+				switch (select("Tridente","Cordel","Violino","Livro da Mãe Terra","Livro das Ondas","Livro de Golpe de Vento","Livro de Sol Ardente","Cancelar")) {
 					case 1: .@item = 1460; .@itemSlot = 1461; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 1010; .@itemAmount = 10; break;
 					case 2: .@item = 1950; .@itemSlot = 1951; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 1010; .@itemAmount = 10; break;
 					case 3: .@item = 1901; .@itemSlot = 1902; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 1010; .@itemAmount = 10; break;
@@ -54,7 +54,7 @@
 				mes "[Artesão]";
 				mes "Qual arma da classe B você deseja que eu adicione um encaixe?";
 				next;
-				switch(select("Mangual Pesado", "Gladius", "Gakkung", "Pique", "Haedonggum", "Alaúde", "Açoite", "Waghnak", "Arco Arbaleste", "Machado dos Orcs", "Cimitarra", "Clava com Espetos", "Cancelar")) {
+				switch (select("Mangual Pesado","Gladius","Gakkung","Pique","Haedonggum","Alaúde","Açoite","Waghnak","Arco Arbaleste","Machado dos Orcs","Cimitarra","Clava com Espetos","Cancelar")) {
 					case 1:  .@item = 1519; .@itemSlot = 1520; .@maxChoice = 61; .@zenyRequire = 300; .@itemRequire = 1010; .@itemAmount = 10; break;
 					case 2:  .@item = 1219; .@itemSlot = 1220; .@maxChoice = 61; .@zenyRequire = 300; .@itemRequire = 984;  .@itemAmount = 1;  break;
 					case 3:  .@item = 1714; .@itemSlot = 1716; .@maxChoice = 61; .@zenyRequire = 300; .@itemRequire = 984;  .@itemAmount = 2;  break;
@@ -78,7 +78,7 @@
 				mes "Uma categoria de armas de elite.";
 				mes "Qual fabulosa arma da classe A você deseja que eu adicione um encaixe?";
 				next;
-				switch(select("Arco de Caça", "Bastão do Sobrevivente(INT)", "Zweihander", "Flamberge", "Infiltrador", "Balista", "Atordoador", "Fúria Insana", "Claymore", "Matadora de Dragão", "Katar da Espinheira Empoeirada", "Katar da Chama Impetuosa", "Katar Gélida", "Katar do Vento Perfurante", "Maça de Ouro", "Alaúde Oriental", "Chicote da Rainha", "Lança Espectral", "Gae Bolg", "Schweizersabel", "Cancelar")) {
+				switch (select("Arco de Caça","Bastão do Sobrevivente(INT)","Zweihander","Flamberge","Infiltrador","Balista","Atordoador","Fúria Insana","Claymore","Matadora de Dragão","Katar da Espinheira Empoeirada","Katar da Chama Impetuosa","Katar Gélida","Katar do Vento Perfurante","Maça de Ouro","Alaúde Oriental","Chicote da Rainha","Lança Espectral","Gae Bolg","Schweizersabel","Cancelar")) {
 					case 1:  .@item = 1718;  .@itemSlot = 1726;  .@maxChoice = 61; .@zenyRequire = 500; .@itemRequire = 999; .@itemAmount = 10; break;
 					case 2:  .@item = 1619;  .@itemSlot = 1620;  .@maxChoice = 61; .@zenyRequire = 500; .@itemRequire = 999; .@itemAmount = 10; break;
 					case 3:  .@item = 1168;  .@itemSlot = 1171;  .@maxChoice = 61; .@zenyRequire = 800; .@itemRequire = 999; .@itemAmount = 10; break;
@@ -111,7 +111,7 @@
 				mes "Essa é o nível mais alto de armamentos, a chances de sucesso são mínimas.";
 				mes "Mas qual delas você quer um encaixe?";
 				next;
-				switch(select("Gungnir", "Adaga Venenosa", "Rondel", "Sucsamad", "Ginnungagap", "Cutelo", "Foice", "Bastão do Sobrevivente(DEX)", "Zéfiro", "Destruidora de Malhas", "Caçadora de Dragões", "Destruidor de Espadas", "Adaga Assasina", "Grande Cruz", "Executora", "Cancelar")) {
+				switch (select("Gungnir","Adaga Venenosa","Rondel","Sucsamad","Ginnungagap","Cutelo","Foice","Bastão do Sobrevivente(DEX)","Zéfiro","Destruidora de Malhas","Caçadora de Dragões","Destruidor de Espadas","Adaga Assasina","Grande Cruz","Executora","Cancelar")) {
 					case 1:  .@item = 1413;  .@itemSlot = 1418;  .@maxChoice = 51; .@zenyRequire = 1000; .@itemRequire = 999; .@itemAmount = 10; break;
 					case 2:  .@item = 1239;  .@itemSlot = 13016; .@maxChoice = 51; .@zenyRequire = 1000; .@itemRequire = 999; .@itemAmount = 10; break;
 					case 3:  .@item = 1230;  .@itemSlot = 13017; .@maxChoice = 51; .@zenyRequire = 2000; .@itemRequire = 999; .@itemAmount = 10; break;
@@ -141,12 +141,12 @@
 			mes "Eu disse armaduras, mas posso trabalhar com acessórios e equipamentos em geral.";
 			mes "Me diga qual o nível.";
 			next;
-			switch(select("C", "B", "A", "S")) {
+			switch (select("C","B","A","S")) {
 				case 1:
 				mes "[Artesão]";
 				mes "Qual da classe C você deseja que eu adicione um encaixe?";
 				next;
-				switch(select("Capote", "Casaco", "Tiara", "Bireta", "Presilha de Girassol", "Barrete", "Laço Grande", "Quepe", "Cancelar")) {
+				switch (select("Capote","Casaco","Tiara","Bireta","Presilha de Girassol","Barrete","Laço Grande","Quepe","Cancelar")) {
 					case 1: .@item = 2307; .@itemSlot = 2308; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 999; .@itemAmount = 3; break;
 					case 2: .@item = 2309; .@itemSlot = 2310; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 999; .@itemAmount = 3; break;
 					case 3: .@item = 2232; .@itemSlot = 2233; .@maxChoice = 66; .@zenyRequire = 200; .@itemRequire = 999; .@itemAmount = 3; break;
@@ -165,7 +165,7 @@
 				mes "[Artesão]";
 				mes "Qual da classe B você deseja que eu adicione um encaixe?";
 				next;
-				switch(select("Escudo Espelhado", "Cota de Malha", "Manto Sagrado", "Manto de Seda", "Botas", "Sapatos", "Sobrepeliz", "Vembrassa", "Broquel", "Escudo", "Chapéu de Bongun", "Anel de Caveira", "Salto Alto", "Cancelar")) {
+				switch (select("Escudo Espelhado","Cota de Malha","Manto Sagrado","Manto de Seda","Botas","Sapatos","Sobrepeliz","Vembrassa","Broquel","Escudo","Chapéu de Bongun","Anel de Caveira","Salto Alto","Cancelar")) {
 					case 1:  .@item = 2107; .@itemSlot = 2108; .@maxChoice = 61; .@zenyRequire = 250; .@itemRequire = 999; .@itemAmount = 5; break;
 					case 2:  .@item = 2314; .@itemSlot = 2315; .@maxChoice = 61; .@zenyRequire = 250; .@itemRequire = 999; .@itemAmount = 5; break;
 					case 3:  .@item = 2325; .@itemSlot = 2326; .@maxChoice = 61; .@zenyRequire = 300; .@itemRequire = 999; .@itemAmount = 5; break;
@@ -192,7 +192,7 @@
 				mes "Você tem coragem...";
 				mes "Me diga qual delas você quer um encaixe?";
 				next;
-				switch(select("Chapéu de Balde", "Grimório", "Malha", "Armadura Legionária", "Armadura Metálica", "Traje de Gatuno", "Grevas", "Chapéu de Freira", "Manteau", "Elmo", "Indumentária Ninja", "Capacete de Orc", "Capa do Marquês", "Chapéu de Monge", "Peça Dourada", "Broche", "Chapéu de Munak", "Bandana Pirata", "Botas Pretas de Couro", "Cancelar")) {
+				switch (select("Chapéu de Balde","Grimório","Malha","Armadura Legionária","Armadura Metálica","Traje de Gatuno","Grevas","Chapéu de Freira","Manteau","Elmo","Indumentária Ninja","Capacete de Orc","Capa do Marquês","Chapéu de Monge","Peça Dourada","Broche","Chapéu de Munak","Bandana Pirata","Botas Pretas de Couro","Cancelar")) {
 					case 1:  .@item = 5114;  .@itemSlot = 5120;  .@maxChoice = 61; .@zenyRequire = 400; .@itemRequire = 985; .@itemAmount = 1; break;
 					case 2:  .@item = 2109;  .@itemSlot = 2121;  .@maxChoice = 61; .@zenyRequire = 400; .@itemRequire = 985; .@itemAmount = 1; break;
 					case 3:  .@item = 2330;  .@itemSlot = 2331;  .@maxChoice = 61; .@zenyRequire = 400; .@itemRequire = 985; .@itemAmount = 1; break;
@@ -225,7 +225,7 @@
 				mes "Essa é o nível mais alto de equipamento, a chances de sucesso são mínimas.";
 				mes "Mas qual delas você quer um encaixe?";
 				next;
-				switch(select("Chifres Majestosos", "Chifes Pontudos", "Elmo de Osso", "Corsário", "Coroa", "Diadema", "Coroa do Faraó", "Manto da Conjuração", "Brinco", "Anel", "Luva de Puxada", "Vestimenta Arcana", "Batina", "Spiritus Sancti", "Camiseta", "Roupa de Baixo", "Cancelar")) {
+				switch (select("Chifres Majestosos","Chifes Pontudos","Elmo de Osso","Corsário","Coroa","Diadema","Coroa do Faraó","Manto da Conjuração","Brinco","Anel","Luva de Puxada","Vestimenta Arcana","Batina","Spiritus Sancti","Camiseta","Roupa de Baixo","Cancelar")) {
 					case 1:  .@item = 2256; .@itemSlot = 5160; .@maxChoice = 51; .@zenyRequire = 2000; .@itemRequire = 985; .@itemAmount = 2; break;
 					case 2:  .@item = 2258; .@itemSlot = 5161; .@maxChoice = 51; .@zenyRequire = 2000; .@itemRequire = 985; .@itemAmount = 2; break;
 					case 3:  .@item = 5017; .@itemSlot = 5162; .@maxChoice = 51; .@zenyRequire = 2000; .@itemRequire = 985; .@itemAmount = 2; break;
@@ -278,19 +278,19 @@
 		close;
 	}
 	mes "[Artesão]";
-	mes "Para adicionar 1 encaixe em " + getitemname(.@item) + " vou precisar disso:\n" + .@zenyRequire + " Zenys e " + .@itemAmount + " " + getitemname(.@itemRequire) + ".";
-	mes "Lógico também vou precisar que você tenha " + getitemname(.@item) + " no seu iventário.";
+	mes "Para adicionar 1 encaixe em "+getitemname(.@item)+" vou precisar disso:\n"+.@zenyRequire+" Zenys e "+.@itemAmount+" "+getitemname(.@itemRequire)+".";
+	mes "Lógico também vou precisar que você tenha "+getitemname(.@item)+" no seu iventário.";
 	next;
 	mes "[Artesão]";
 	mes "Então o que me diz?";
 	mes "^FF0000Mas vou logo avisando!";
-	mes "Se tentar me passar a perna com mais de 1 " + getitemname(.@item) + " em seu inventário eu não vou trabalhar!^000000";
+	mes "Se tentar me passar a perna com mais de 1 "+getitemname(.@item)+" em seu inventário eu não vou trabalhar!^000000";
 	next;
 	mes "[Artesão]";
 	mes "E também saiba que não vou me responsabilisar caso falhe e você perca seus itens.";
 	mes "Estamos entendidos?";
 	next;
-	switch(select("Claro eu aceito seus termos", "Então é melhor eu desisitr")) {
+	switch (select("Claro eu aceito seus termos","Então é melhor eu desisitr")) {
 		case 1:
 		mes "[Artesão]";
 		mes "Vamos ver se está tudo correto...";
@@ -302,13 +302,13 @@
 			close;
 		} else if (countitem(.@item) > 1) {
 			mes " Está pensando que sou palhaço?!";
-			mes "Não ouviu eu dizer que não vou trabalhar, caso tivesse mais de 1 " + getitemname(.@item) + "?";
+			mes "Não ouviu eu dizer que não vou trabalhar, caso tivesse mais de 1 "+getitemname(.@item)+"?";
 			close;
 		} else if (!countitem(.@item)) {
-			mes " Como vou adicionar um encaixe no " + getitemname(.@item) + ", se você não tem nenhum?";
+			mes " Como vou adicionar um encaixe no "+getitemname(.@item)+", se você não tem nenhum?";
 			close;
 		} else if (countitem(.@itemRequire) < .@itemAmount) {
-			mes " Parece que você não tem a os " + .@itemAmount + " " + getitemname(.@itemRequire) + "...";
+			mes " Parece que você não tem a os "+.@itemAmount+" "+getitemname(.@itemRequire)+"...";
 			mes "Eu preciso desse material para adicionar o encaixe.";
 			close;
 		} else {
@@ -316,13 +316,13 @@
 			next;
 			mes "[Artesão]";
 			mes "É está tudo certo.";
-			mes "Mas pelo perigo de falha no processo, e você perder o " + getitemname(.@item) + ".";
+			mes "Mas pelo perigo de falha no processo, e você perder o "+getitemname(.@item)+".";
 			next;
 			mes "[Artesão]";
 			mes "Devo lhe perguntar novamente.";
 			mes "Tem certeza que deseja que eu tente adicionar o encaixe?";
 			next;
-			switch(select("Claro vá em frente", "Acho melhor não")) {
+			switch (select("Claro vá em frente","Acho melhor não")) {
 				case 1:
 				.@random = rand(1,100);
 				delitem(.@item,1);
@@ -352,9 +352,9 @@
 					next;
 					mes "[Artesão]";
 					mes "Me desculpe fazer você esperar.";
-					mes "Está aqui seu novo " + getitemname(.@itemSlot) + ".";
+					mes "Está aqui seu novo "+getitemname(.@itemSlot)+".";
 					mes "Espero que gote.";
-					getitem(.@itemSlot, 1);
+					getitem(.@itemSlot,1);
 					next;
 					mes "[Artesão]";
 					mes "E fique a vontade em me procurar novamente, se quiser tentar adicionar algum encaixe nos seus itens.";
@@ -363,7 +363,7 @@
 					specialeffect(EF_SUI_EXPLOSION);
 					mes "[Artesão]";
 					mes "^BB0000AH NÃO!!!!";
-					mes "Fiz o que pude mas seu " + getitemname(.@itemSlot) + " quebrou enquanto estava a adiconar um encaixe!^000000";
+					mes "Fiz o que pude mas seu "+getitemname(.@itemSlot)+" quebrou enquanto estava a adiconar um encaixe!^000000";
 					next;
 					mes "[Artesão]";
 					mes "Mas eu te avisei que era um processo delicado de se fazer.";

@@ -26,14 +26,14 @@ valkyrie,53,50,3	script	Criador#Valkyrie	2_M_DYEINGER,{
 			mes "É sobre o tempo.";
 			mes "Nós precisamos de mais gênios como você em Rune-Midgard.";
 			next;
-			jobchange (Job_Creator);
+			jobchange(Job_Creator);
 			ADVJOB = 0;
 			mes "[Criador]";
 			mes "Parabéns!";
 			mes "Como Criador...";
 			mes "Espero que você use seu vasto conhecimento para as finalidades certas.";
 			if (bioeth == 13 && !getskilllv("AM_BIOETHICS")) {
-				skill (AM_BIOETHICS,1,0);
+				skill(AM_BIOETHICS,1,0);
 				bioeth = 0;
 			}
 			close;

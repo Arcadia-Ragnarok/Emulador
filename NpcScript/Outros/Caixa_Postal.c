@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Npc Script                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por por: Spell Master ?/?/2017                     |
-| - Nota: Caixas postais para envio de mensagens                    |
+| - Copyright: Spell Master                                         |
+| - Info: Caixas postais para envio de mensagens                    |
 \*-----------------------------------------------------------------*/
 
 -	script	MailBox	FAKE_NPC,{
@@ -18,7 +18,7 @@
 	mes "Será necessário pagar a quantia de 130 zeny.";
 	mes "Você deseja usar sua caixa de Caixa Postal agora?";
 	next;
-	switch(select("Sim.","Não.")) {
+	switch (select("Sim","Não")) {
 		case 1:
 		mes "[Caixa Postal]";
 		if (Zeny < 130) {

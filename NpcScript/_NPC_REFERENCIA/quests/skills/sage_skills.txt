@@ -38,7 +38,7 @@
 //=========================================================================
 
 yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
-	if(BaseJob != Job_Sage) {
+	if (BaseJob != Job_Sage) {
 		mes "[Mishuna]";
 		mes "Good day, I'm Mishuna, one";
 		mes "of the instructors here in the";
@@ -60,10 +60,10 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		mes "day to you, adventurer.";
 		close;
 	}
-	if(SAG_SK == 100) {
+	if (SAG_SK == 100) {
 		.@Element = getskilllv(SA_ELEMENTFIRE) + getskilllv(SA_ELEMENTGROUND) + getskilllv(SA_ELEMENTWIND) + getskilllv(SA_ELEMENTWATER);
 		.@Convert = getskilllv(SA_CREATECON);
-		if(.@Element && .@Convert) {
+		if (.@Element && .@Convert) {
 			mes "[Mishuna]";
 			mes "If you have any Sage or";
 			mes "Scholar friends who haven't";
@@ -88,7 +88,7 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		mes "skill scroll I gave you? No";
 		mes "matter, I'll help you remember.";
 		next;
-		if(.@Element == 0) {
+		if (.@Element == 0) {
 			mes "[Mishuna]";
 			mes "You'll be given the chance to";
 			mes "choose which kind of ^FF0000Elemental";
@@ -107,9 +107,9 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 			setarray .@ReqSkill$[0],"Blaze","Quake","Tornado","Tsunami";
 			setarray .@skill[0],1018,1017,1019,1008;
 			setarray .@skill$[0],"Fire","Earth","Wind","Water";
-			while(1) {
-				.@i = select("Fire Elemental Change", "Earth Elemental Change", "Wind Elemental Change", "Water Elemental Change")-1;
-				if(getskilllv(.@ReqSkill[.@i]) == 0) {
+			while (1) {
+				.@i = select("Fire Elemental Change","Earth Elemental Change","Wind Elemental Change","Water Elemental Change")-1;
+				if (getskilllv(.@ReqSkill[.@i]) == 0) {
 					mes "[Mishuna]";
 					mes "I'm sorry, but you haven't";
 					mes "learned ^FF0000Endow "+.@ReqSkill$[.@i]+"^000000, the skill";
@@ -141,14 +141,14 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 					mes "Change skill and the Elemental";
 					mes "Converter Creation skill.^000000";
 					skill .@skill[.@i],1,0;
-					if(.@Convert == 0)
+					if (.@Convert == 0)
 						skill "SA_CREATECON",1,0;
 					next;
 					break;
 				}
 			}
 		}
-		else if(.@Convert == 0) {
+		else if (.@Convert == 0) {
 			mes "[Mishuna]";
 			mes "Alright, I'm going";
 			mes "to cast a spell that";
@@ -181,7 +181,7 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		mes "Farewell for now, "+strcharinfo(PC_NAME)+".";
 		close;
 	}
-	else if(SAG_SK == 0) {
+	else if (SAG_SK == 0) {
 		mes "[Mishuna]";
 		mes "Good day, I'm Mishuna, one";
 		mes "of the instructors here in the";
@@ -225,7 +225,7 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		mes "of it. So, do you think you're";
 		mes "ready to learn these skills?";
 		next;
-		if(select("Maybe later.", "Yes, I am.") == 1) {
+		if (select("Maybe later.","Yes, I am.") == 1) {
 			mes "[Mishuna]";
 			mes "Ah, you must be busy right";
 			mes "now. No problem, just come";
@@ -265,7 +265,7 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		SAG_SK = 1;
 		close;
 	}
-	else if(SAG_SK == 1) {
+	else if (SAG_SK == 1) {
 		if (countitem(Scorpions_Tail) < 10 || countitem(Horn) < 7 || countitem(Colorful_Shell) < 12 || countitem(Snails_Shell) < 10 || countitem(Scroll) < 4) {
 			mes "[Mishuna]";
 			mes "Hm, you still haven't";
@@ -358,8 +358,8 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 			close;
 		}
 	}
-	else if(SAG_SK == 2) {
-		if(getskilllv("SA_CREATECON") == 0) {
+	else if (SAG_SK == 2) {
+		if (getskilllv("SA_CREATECON") == 0) {
 			skill "SA_CREATECON",1,0;
 			mes "- I recalled ^ff0000Elemental Converter Creation skill^000000 While I talk to Mishuna! -";
 			next;
@@ -382,9 +382,9 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 		setarray .@ReqSkill$[0],"Blaze","Quake","Tornado","Tsunami";
 		setarray .@ReqItem$[0],"Red Bloods","Green Lives","Wind of Verdure","Crystal Blues";
 		setarray .@skill$[0],"Fire","Earth","Wind","Water";
-		while(1) {
-			.@i = select("Fire Elemental Change", "Earth Elemental Change", "Wind Elemental Change", "Water Elemental Change")-1;
-			if(getskilllv(.@ReqSkill[.@i]) == 0) {
+		while (1) {
+			.@i = select("Fire Elemental Change","Earth Elemental Change","Wind Elemental Change","Water Elemental Change")-1;
+			if (getskilllv(.@ReqSkill[.@i]) == 0) {
 				mes "[Mishuna]";
 				mes "I'm sorry, but you have not";
 				mes "learned ^FF0000Endow "+.@ReqSkill$[.@i]+"^000000, the skill";
@@ -410,8 +410,8 @@ yuno_in03,176,24,3	script	Mischna	4_M_SAGE_C,{
 			}
 		}
 	}
-	else if(SAG_SK == 10 || SAG_SK == 20 || SAG_SK == 30 || SAG_SK == 40) {
-		if(getskilllv("SA_CREATECON") == 0) {
+	else if (SAG_SK == 10 || SAG_SK == 20 || SAG_SK == 30 || SAG_SK == 40) {
+		if (getskilllv("SA_CREATECON") == 0) {
 			skill "SA_CREATECON",1,0;
 			mes "- I recalled ^ff0000Elemental Converter Creation skill^000000 While I talk to Mishuna! -";
 			next;

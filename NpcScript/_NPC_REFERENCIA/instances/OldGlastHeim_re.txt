@@ -63,7 +63,7 @@ glast_01,204,273,6	script	Hugin#ghinstance	4_M_SAGE_C,{
 		mes("[Hugin]");
 		mes("Time will reveal the true answers if we look in the right places.");
 		next;
-		if (select("I don't care about history", "That is interesting. Find anything?") == 1) {
+		if (select("I don't care about history","That is interesting. Find anything?") == 1) {
 			mes("[Hugin]");
 			mes("Really? Hmm, please come back later when you are interested then.");
 			close;
@@ -77,7 +77,7 @@ glast_01,204,273,6	script	Hugin#ghinstance	4_M_SAGE_C,{
 		mes("[Hugin]");
 		mes("Do you want to time travel?");
 		next;
-		if (select("No thanks.", "Yes, of course I do!") == 1) {
+		if (select("No thanks.","Yes, of course I do!") == 1) {
 			mes("[Hugin]");
 			mes("Really? But, jumping gigawatts like this is such a great opportunity.");
 			close;
@@ -105,7 +105,7 @@ glast_01,204,273,6	script	Hugin#ghinstance	4_M_SAGE_C,{
 			.@menu1$ = "Generate Time Gap";
 		else
 			.@menu1$ = "";
-		switch (select(.@menu1$, "Enter Old Glast Heim", "Cancel")) {
+		switch (select(.@menu1$, "Enter Old Glast Heim","Cancel")) {
 		case 1:
 			if (getcharid(CHAR_ID_CHAR) != getpartyleader(.@party_id, 2))
 				end;
@@ -729,7 +729,7 @@ OnEnable:
 OnTouch:
 	.@map1$ = instance_mapname("1@gl_k");
 	.@map2$ = instance_mapname("2@gl_k");
-	switch (atoi(replacestr(strnpcinfo(NPC_NAME_HIDDEN), "ghinstancewarp", ""))) {
+	switch (atoi(replacestr(strnpcinfo(NPC_NAME_HIDDEN), "ghinstancewarp",""))) {
 		case 1: warp .@map1$,80,80; break;
 		case 2: warp .@map1$,105,80; break;
 		case 3: warp .@map1$,215,79; break;
@@ -1469,7 +1469,7 @@ OnMyMobDead:
 		donpcevent instance_npcname("#ghmemorialmob05")+"::OnDisable";
 	} else {
 		.@label$ = instance_npcname("#ghmemorialmob05")+"::OnMyMobDead";
-		switch(rand(5)) {
+		switch (rand(5)) {
 		case 0:
 			areamonster(.@map$, 124, 20, 31, 162, _("Corrupted Palace Guard"), 2468, 1, .@label$);
 			break;
@@ -1994,7 +1994,7 @@ OnTimer80000:
 		mes("[Hugin]");
 		mes("What did you say just before? Anyway that is not important, The gap of time will be closed so, we need to get out of here.");
 		next;
-		switch(select("Let me look around more:Please let me out")) {
+		switch (select("Let me look around more:Please let me out")) {
 		case 1:
 			mes("[Hugin]");
 			mes("Really? This place will be broke down so, please look around quickly.");
@@ -2240,7 +2240,7 @@ glast_01,210,273,5	script	Hugin's Butler	1_F_04,{
 	mes("[Hugin's Butler]");
 	mes("What would you like me to do young adventurer?");
 	next;
-	switch (select("Give me the Temporal Boots", "Upgrade my Temporal Boots")) {
+	switch (select("Give me the Temporal Boots","Upgrade my Temporal Boots")) {
 	case 1:
 		if (countitem(Temporal_Crystal) > 0) {
 			mes("[Hugin's Butler]");
@@ -2272,9 +2272,9 @@ glast_01,210,273,5	script	Hugin's Butler	1_F_04,{
 		mes("[Hugin's Butler]");
 		mes("You can trade ^0000FF1 Temporal Boots and 5 Temporal Crystals^000000 for 1 of the following items. ^FF0000Previous refine rate will not be retained with these new ones^000000.");
 		next;
-		setarray .@type$[0], "Strength", "Intelligence", "Agility", "Vitality", "Dexterity", "Luck";
+		setarray .@type$[0], "Strength","Intelligence","Agility","Vitality","Dexterity","Luck";
 		setarray .@equip_type[0], Temporal_Str_Boots, Temporal_Int_Boots, Temporal_Agi_Boots, Temporal_Vit_Boots, Temporal_Dex_Boots, Temporal_Luk_Boots;
-		.@select = select("Cancel", "Str Boots", "Int Boots", "Agi Boots", "Vit Boots", "Dex Boots", "Luk Boots");
+		.@select = select("Cancel","Str Boots","Int Boots","Agi Boots","Vit Boots","Dex Boots","Luk Boots");
 		switch (.@select) {
 		case 1:
 			mes("[Hugin's Butler]");
@@ -2289,7 +2289,7 @@ glast_01,210,273,5	script	Hugin's Butler	1_F_04,{
 			mes("[Hugin's Butler]");
 			mesf("Are you sure about buying Temporal ^FF0000%s^000000 Boots? There is no refund.", .@type$[.@select-2]);
 			next;
-			if (select("Think again", "Yes, I am sure.") == 2) {
+			if (select("Think again","Yes, I am sure.") == 2) {
 				mes("[Hugin's Butler]");
 				mes("The boots has been upgraded as you want.");
 				delequip .@part;
@@ -2319,7 +2319,7 @@ glast_01,212,273,4	script	Hugin's Magic Master	1_F_01,{ // Custom text due to of
 	mes("[Hugin's Magic Master]"); // Custom text
 	mes("So you came to enchant the Temporal Boots. Be aware that adding a socket do your boots will remove my enchants as well as it's refine. It is only possible for the boots you are wearing.");
 	next;
-	if (select("How does the enchanting work?", "Give effect to my Temporal Boots") == 1) {
+	if (select("How does the enchanting work?","Give effect to my Temporal Boots") == 1) {
 		mes("[Hugin's Magic Master]");
 		mes("You can obtain ^0000FFCoagulated Spell^000000 through your time travels.");
 		next;
@@ -2388,7 +2388,7 @@ glast_01,212,273,4	script	Hugin's Magic Master	1_F_01,{ // Custom text due to of
 			mes("[Hugin's Magic Master]");
 			mesf("Want to enchant ^0000FF%s^000000? For the 1st enchanting, you need ^FF0000%d^000000 ^0000FFCoagulated Spells.^000000", .@equip_name$, .@cost);
 			next;
-			.@select = select("Quit", "Fighting Spirit", "Archery", "Spell", "Vitality", "Attack Speed", "Luck");
+			.@select = select("Quit","Fighting Spirit","Archery","Spell","Vitality","Attack Speed","Luck");
 			switch (.@select) {
 			case 1:
 				mes("[Hugin's Magic Master]");
@@ -2455,7 +2455,7 @@ glast_01,212,273,4	script	Hugin's Magic Master	1_F_01,{ // Custom text due to of
 					mes("[Hugin's Magic Master]");
 					mesf("Enchanting ^0000FF%s^000000's 3rd slot for obtaining a random bonus effect. Requires ^FF0000%d^000000 ^0000FFCoagulated Spells^000000", .@equip_name$, .@cost);
 					next;
-					if (select("Quit", "Effect Upgrade!") == 1) {
+					if (select("Quit","Effect Upgrade!") == 1) {
 						mes("[Hugin's Magic Master]");
 						mes("Ok, come back when you are ready.");
 						close;
@@ -2520,7 +2520,7 @@ glast_01,212,273,4	script	Hugin's Magic Master	1_F_01,{ // Custom text due to of
 			mes("[Hugin's Magic Master]");
 			mesf("Enchanting ^0000FF%s^000000's 4th slot as ^0000FF%d^000000 level effect. Requires ^FF0000%d^000000 ^0000FFCoagulated Spells.^000000", .@equip_name$, .@number, .@cost);
 			next;
-			if (select("Quit", "Effect Upgrade!") == 1) {
+			if (select("Quit","Effect Upgrade!") == 1) {
 				mes("[Hugin's Magic Master]");
 				mes("Ok, come back when you are ready.");
 				close;
@@ -2586,7 +2586,7 @@ glast_01,210,270,0	script	Hugin's Craftsman	4_F_JOB_BLACKSMITH,{
 	mes("[Hugin's Craftsman]");
 	mes("But, it's possible to ^FF0000fail and break the item^000000. Is that ok?");
 	next;
-	if (select("Cancel", "Take the risk and try to add a slot") == 1) {
+	if (select("Cancel","Take the risk and try to add a slot") == 1) {
 		mes("[Hugin's Craftsman]");
 		mes("Ok, come back anytime you want.");
 		close;
@@ -2609,7 +2609,7 @@ glast_01,210,270,0	script	Hugin's Craftsman	4_F_JOB_BLACKSMITH,{
 		mes("The ^FF0000Boots and all enchants or refines will be lost if you fail this.^000000\r"
 				"Still want to risk it?");
 		next;
-		if (select("Cancel", "I am ok with it!") == 1) {
+		if (select("Cancel","I am ok with it!") == 1) {
 			mes("[Hugin's Craftsman]");
 			mes("Ok, come back anytime you want.");
 			close;
@@ -2618,7 +2618,7 @@ glast_01,210,270,0	script	Hugin's Craftsman	4_F_JOB_BLACKSMITH,{
 		mes("Once again, ^FF0000That Magic Master won't enchant any item with a slot.^000000\r"
 				"Still want to proceed?");
 		next;
-		if (select("Cancel", "I understand. Try to slot it.") == 1) {
+		if (select("Cancel","I understand. Try to slot it.") == 1) {
 			mes("[Hugin's Craftsman]");
 			mes("Ok, come back anytime you want.");
 			close;
@@ -2630,7 +2630,7 @@ glast_01,210,270,0	script	Hugin's Craftsman	4_F_JOB_BLACKSMITH,{
 		setarray .@slotpay[0], Temporal_Crystal, Corrupted_Charm;
 		setarray .@slotcost[0], 10, 50;
 		setarray .@slotchance[0], 80, 65; // Custom rates
-		.@select = select("Cancel", "Temporal Crystal", "Contaminated Magic");
+		.@select = select("Cancel","Temporal Crystal","Contaminated Magic");
 		switch (.@select) {
 		case 1:
 			mes("[Hugin's Craftsman]");
@@ -2699,7 +2699,7 @@ glast_01,188,273,5	script	White Knight#1a	4_WHITEKNIGHT,{
 	next;
 	setarray .@item[0], Coagulated_Spell, Corrupted_Charm;
 	setarray .@cost[0], 3000, 70;
-	.@select = select("Cancel", "^0000FFUse Coagulated Spell^000000", "^FF0000Use Contaminated Magic^000000");
+	.@select = select("Cancel","^0000FFUse Coagulated Spell^000000","^FF0000Use Contaminated Magic^000000");
 	switch (.@select) {
 	case 1:
 		mes("[White Knight]");
@@ -2732,7 +2732,7 @@ glast_01,192,273,3	script	Khalitzburg Knight#1a	4_F_KHALITZBURG,{
 	next;
 	setarray .@item[0], Coagulated_Spell, Corrupted_Charm;
 	setarray .@cost[0], 5000, 100;
-	.@select = select("Cancel", "^0000FFUse Coagulated Spell^000000", "^FF0000Use Contaminated Magic^000000");
+	.@select = select("Cancel","^0000FFUse Coagulated Spell^000000","^FF0000Use Contaminated Magic^000000");
 	switch (.@select) {
 	case 1:
 		mes("[Khalitzburg Knight]");

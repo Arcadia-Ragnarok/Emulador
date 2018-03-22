@@ -47,7 +47,7 @@ dic_in01,242,182,0	script	dicasteswarp_17	CLEAR_NPC,{
 	.@warpnumber = atoi(strnpcinfo(NPC_NAME_HIDDEN));
 	if (isequipped(Ring_Of_Wise_King)) {
 		if (.@warpnumber < 5) {
-			switch(select("Administrações civis","Quarto de arquivo","Quarto de situação","Escritório administrativo")) {
+			switch (select("Administrações civis","Quarto de arquivo","Quarto de situação","Escritório administrativo")) {
 				case 1: .@x = 45;  .@y = 286; break;
 				case 2: .@x = 36;  .@y = 212; break;
 				case 3: .@x = 122; .@y = 282; break;
@@ -55,7 +55,7 @@ dic_in01,242,182,0	script	dicasteswarp_17	CLEAR_NPC,{
 			}
 			warp strnpcinfo(NPC_MAP),.@x,.@y; end;
 		} else if (.@warpnumber < 11) {
-			switch(select("Área Residencial 1","Área Residencial 2","Área Residencial 3","Bar Burman Flone")) {
+			switch (select("Área Residencial 1","Área Residencial 2","Área Residencial 3","Bar Burman Flone")) {
 				case 1: .@x = 42;  .@y = 115; break;
 				case 2: .@x = 110; .@y = 108; break;
 				case 3: .@x = 178; .@y = 108; break;
@@ -63,31 +63,31 @@ dic_in01,242,182,0	script	dicasteswarp_17	CLEAR_NPC,{
 			}
 			warp strnpcinfo(NPC_MAP),.@x,.@y; end;
 		} else {
-			switch(select("Estação de Batalha","Quartel Galten")) {
+			switch (select("Estação de Batalha","Quartel Galten")) {
 				case 1: .@x = 385; .@y = 272; break;
 				case 2: .@x = 385; .@y = 208; break;
 			}
-			warp (strnpcinfo(NPC_MAP),.@x,.@y); end;
+			warp(strnpcinfo(NPC_MAP),.@x,.@y); end;
 		}
 	} else {
 		if (.@warpnumber < 5) {
-			switch(select("¢³¡ð¡Ð","¡ñ¡ñ¡ò","¡ø¡ø¡ð","¡÷¡ú¡ð")) {
+			switch (select("¢³¡ð¡Ð","¡ñ¡ñ¡ò","¡ø¡ø¡ð","¡÷¡ú¡ð")) {
 				case 1: .@x = 45;  .@y = 286; break;
 				case 2: .@x = 36;  .@y = 212; break;
 				case 3: .@x = 122; .@y = 282; break;
 				case 4: .@x = 121; .@y = 201; break;
 			}
-			warp (strnpcinfo(NPC_MAP),.@x,.@y); end;
+			warp(strnpcinfo(NPC_MAP),.@x,.@y); end;
 		} else if (.@warpnumber < 11) {
-			switch(select("¡ô¡õ¡ñ ¡þ","¢³¡ü¡Ð ¡ú","¡ï¢³¢¤ ¢²","¢±¡Ð¡ñ")) {
+			switch (select("¡ô¡õ¡ñ ¡þ","¢³¡ü¡Ð ¡ú","¡ï¢³¢¤ ¢²","¢±¡Ð¡ñ")) {
 				case 1: .@x = 42;  .@y = 115; break;
 				case 2: .@x = 110; .@y = 108; break;
 				case 3: .@x = 178; .@y = 108; break;
 				case 4: .@x = 260; .@y = 115; break;
 			}
-			warp (strnpcinfo(NPC_MAP),.@x,.@y); end;
+			warp(strnpcinfo(NPC_MAP),.@x,.@y); end;
 		} else {
-			switch(select("¡ø¡ô¡ï ¡ò","¡ü¡÷¡ó ¡÷ ")) {
+			switch (select("¡ø¡ô¡ï ¡ò","¡ü¡÷¡ó ¡÷ ")) {
 				case 1: .@x = 385; .@y = 272; break;
 				case 2: .@x = 385; .@y = 208; break;
 			}

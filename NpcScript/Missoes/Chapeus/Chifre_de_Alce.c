@@ -39,7 +39,7 @@ alberta_in,122,53,4	script	Cherokee	1_M_01,{
 	mes "Se você me oferecer 20 Chifres Diabólicos, vou lhe dar um ^3355FFChifre^000000 da minha coleção preciosa.";
 	mes "Então, aceita?";
 	next;
-	switch(select("Ok, vamos negociar", "Cale a boca, Dumbo")) {
+	switch (select("Ok, vamos negociar","Cale a boca, Dumbo")) {
 		case 1:
 		if (countitem(Evil_Horn) > 19) {
 			delitem Evil_Horn,20;

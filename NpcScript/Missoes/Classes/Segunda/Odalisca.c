@@ -15,16 +15,16 @@
 job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 	if (Sex == SEX_FEMALE) {
 		if (BaseJob == Job_Dancer) {
-			cutin ("job_dancer_eir01",2);
+			cutin("job_dancer_eir01",2);
 			mes "[Aile]";
 			mes "Muitas pessoas admiram nossa performances de danças.";
 			mes "Porque somos lindas ou somos boas de dança?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (BaseJob == Job_Archer) {
 			if (!dancerq) {
-				cutin ("job_dancer_eir01",2);
+				cutin("job_dancer_eir01",2);
 				mes "Bem-Vinda!";
 				mes "Esta é a \"Escola de Dança de Comodo\", onde ensinamos várias danças de diferentes países.";
 				mes "Nós promovemos entretenimento para viajantes de todas as partes do mundo.";
@@ -38,14 +38,14 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 				mes "Eu acho melhor lhe dizer que nossa escola é seletiva.";
 				mes "Então, não aceitamos estudantes que não parecem ter talento para se tornarem Odaliscas.";
 				next;
-				cutin ("job_dancer_eir02",2);
+				cutin("job_dancer_eir02",2);
 				mes "[Aire]";
 				mes "O que acha?";
 				mes "Quer se inscrever?";
 				mes "Você só tem que preencher alguns desses formulários.";
 				mes "E pode vir para nossas aulas para fazer os testes.";
 				next;
-				cutin ("job_dancer_eir01",2);
+				cutin("job_dancer_eir01",2);
 				mes "[Aire]";
 				mes "Então, o que você quer fazer?";
 				next;
@@ -55,7 +55,7 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 					mes "Pense novamente.";
 					mes "Não se esqueça de voltar se você mudar de idéia.";
 					close2;
-					cutin ("",255);
+					cutin("",255);
 					end;
 				} else {
 					if (JobLevel < 40) {
@@ -68,10 +68,10 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 						mes "[Aire]";
 						mes "Bem, espero que você se inscreva quando atingir os requerimentos.";
 						close2;
-						cutin ("",255);
+						cutin("",255);
 						end;
 					} else {
-						cutin ("job_dancer_eir02",2);
+						cutin("job_dancer_eir02",2);
 						mes "[Aire]";
 						mes "Boa escolha!!";
 						mes "Apenas preencha os formulários aqui...";
@@ -83,7 +83,7 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 						next;
 						mes "^3355FF*Shuffle Shuffle*^000000";
 						next;
-						cutin ("job_dancer_eir01",2);
+						cutin("job_dancer_eir01",2);
 						mes "[Aire]";
 						mes "Seu nome é "+strcharinfo(PC_NAME)+"?";
 						mes "Oh! Que belo nome!";
@@ -92,12 +92,12 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 						close2;
 						cutin "",255;
 						dancerq = 1;
-						setquest (7000);
+						setquest(7000);
 						end;
 					}
 				}
 			} else if (dancerq == 1) {
-				cutin ("job_dancer_eir01",2);
+				cutin("job_dancer_eir01",2);
 				mes "[Aile]";
 				mes "Bom.";
 				mes "Lhe informo sobre algumas coisas que você precisará trazer para suas lições.";
@@ -106,24 +106,24 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 				mes "Nós temos poucos suprimentos, mas você vai usá-los para você de qualquer maneira.";
 				mes "Basta pensar nisso como parte da taxa de matrícula, então não se preocupe demais.";
 				next;
-				switch(rand(3)) {
+				switch (rand(3)) {
 					case 1:
-					setarray (.@item[0], 938, 909, 501, 2403);
-					setarray (.@count[0], 20,   3,   5,    1);
+					setarray(.@item[0], 938, 909, 501, 2403);
+					setarray(.@count[0], 20,   3,   5,    1);
 					dancerq = 2;
-					changequest (7000,7001);
+					changequest(7000,7001);
 					break;
 					case 2:
-					setarray (.@item[0], 1055,2405);
-					setarray (.@count[0],   5,   1);
+					setarray(.@item[0], 1055,2405);
+					setarray(.@count[0],   5,   1);
 					dancerq = 3;
-					changequest (7000,7002);
+					changequest(7000,7002);
 					break;
 					default:
-					setarray (.@item[0], 965,503,909,1020,2401);
-					setarray (.@count[0],  2,  5, 20,  10,   1);
+					setarray(.@item[0], 965,503,909,1020,2401);
+					setarray(.@count[0],  2,  5, 20,  10,   1);
 					dancerq = 4;
-					changequest (7000,7003);
+					changequest(7000,7003);
 					break;
 				}
 				mes "[Aire]";
@@ -147,50 +147,50 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 				end;
 				close;
 			} else if (dancerq >= 2 && dancerq <= 4) {
-				switch(dancerq) {
+				switch (dancerq) {
 					case 2:
-					setarray (.@item[0], 938, 909, 501, 2403);
-					setarray (.@count[0], 20,   3,   5,    1);
+					setarray(.@item[0], 938, 909, 501, 2403);
+					setarray(.@count[0], 20,   3,   5,    1);
 					break;
 					case 3:
-					setarray (.@item[0], 1055,2405);
-					setarray (.@count[0],   5,   1);
+					setarray(.@item[0], 1055,2405);
+					setarray(.@count[0],   5,   1);
 					break;
 					case 4:
-					setarray (.@item[0], 965,503,909,1020,2401);
-					setarray (.@count[0],  2,  5, 20,  10,   1);
+					setarray(.@item[0], 965,503,909,1020,2401);
+					setarray(.@count[0],  2,  5, 20,  10,   1);
 					break;
 				}
 				.@arraysize = getarraysize(.@item);
 				for (.@i = 0; .@i < .@arraysize; .@i++) {
-					if(countitem (.@item[.@i]) < .@count[.@i]) {
+					if (countitem (.@item[.@i]) < .@count[.@i]) {
 						break;
 					}
 				}
 				if (.@i == .@arraysize && Zeny >= 10000) {
-					cutin ("job_dancer_eir02",2);
+					cutin("job_dancer_eir02",2);
 					mes "[Aile]";
 					mes "Oh...!";
 					mes "Você trouxe tudo!";
 					mes "Muito bem!";
 					for (.@i = 0; .@i < .@arraysize; .@i++) {
-						delitem (.@item[.@i],.@count[.@i]);
+						delitem(.@item[.@i],.@count[.@i]);
 					}
 					Zeny -= 10000;
 					next;
-					cutin ("job_dancer_eir01",2);
+					cutin("job_dancer_eir01",2);
 					mes "[Aile]";
 					mes "Agora, vá até ^cd6889Bijou^000000, aquela que está no comando das entrevistas.";
 					mes "Ela precisa te perguntar algumas coisas.";
 					dancerq = 5;
-					if (questprogress(7001)) { changequest (7001,7004); }
-					else if (questprogress(7002)) { changequest (7002,7004); }
-					else if (questprogress(7003)) { changequest (7003,7004); }
+					if (questprogress(7001)) { changequest(7001,7004); }
+					else if (questprogress(7002)) { changequest(7002,7004); }
+					else if (questprogress(7003)) { changequest(7003,7004); }
 					close2;
-					cutin ("",255);
+					cutin("",255);
 					end;
 				} else {
-					cutin ("job_dancer_eir01",2);
+					cutin("job_dancer_eir01",2);
 					mes "[Aile]";
 					mes "Mmm...?";
 					mes "Você ainda não tem os itens que lhe pedi.";
@@ -209,7 +209,7 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 					end;
 				}
 			} else if (dancerq == 5) {
-				cutin ("job_dancer_eir01",2);
+				cutin("job_dancer_eir01",2);
 				mes "[Aile]";
 				mes "Hmm...?";
 				mes "Você está com dificuldades para encontrar";
@@ -219,41 +219,41 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 				mes "Você têm que falar com ela porque ela está a frente das entrevistas.";
 				mes "Não se preocupe, ela deve estar em algum lugar na Escola de Odaliscas.";
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			} else {
-				cutin ("job_dancer_eir01",2);
+				cutin("job_dancer_eir01",2);
 				mes "[Aile]";
 				mes "Estou esperando por uma grande performance, de você!";
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			}
 		} else {
-			cutin ("job_dancer_eir01",2);
+			cutin("job_dancer_eir01",2);
 			mes "[Aile]";
 			mes "Bem-Vinda!";
 			mes "Veio aqui, para ver a habilidade de nós Odaliscas na dança?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (Sex == SEX_MALE) {
 		if (BaseJob == Job_Bard) {
-			cutin ("job_dancer_eir01",2);
+			cutin("job_dancer_eir01",2);
 			mes "[Aile]";
 			mes "Deixe me ver se você possui novas músicas.";
 			mes "Podemos sempre usar algumas músicas novas para complementar nossas performances.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else {
-			cutin ("job_dancer_eir03",2);
+			cutin("job_dancer_eir03",2);
 			mes "[Aire]";
 			mes "Hm?";
 			mes "Ei você não está aqui para ficar de olho em nossas candidatas, ou está?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}
@@ -293,7 +293,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "Tente passar desta vez.";
 				next;
 			}
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Bijou]";
 				mes "1. A dança da Odalisca, ^cd6889LBeijo da Sorte^000000.";
@@ -560,10 +560,10 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "[Bijou]";
 				mes "Muito bem então.";
 				mes "Boa Sorte...!!";
-				changequest (7004,7005);
+				changequest(7004,7005);
 				dancerq = 8;
 				close2;
-				warp ("job_duncer",105,109);
+				warp("job_duncer",105,109);
 				end;
 			}
 		} else if (dancerq == 8) {
@@ -573,7 +573,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 			mes "Não se preocupe, apenas tente sentir o ritmo.";
 			mes "Preste atenção nos comando que lhe são passados.";
 			close2;
-			warp ("job_duncer",105,109);
+			warp("job_duncer",105,109);
 			end;
 		} else if (dancerq == 9) {
 			if (SkillPoint) {
@@ -591,9 +591,9 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "A partir de agora, ninguém vai deixar a sua presença sem um sorriso.";
 				next;
 				.@jl = JobLevel;
-				jobchange (Job_Dancer);
-				completequest (7006);
-				callfunc ("ClearJobQuest2nd",20);
+				jobchange(Job_Dancer);
+				completequest(7006);
+				callfunc("ClearJobQuest2nd",20);
 				mes "[Bijou]";
 				mes "Ooh...!";
 				mes "Você está ótima como uma Odalisca.";
@@ -603,8 +603,8 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "Aqui está um pequeno presente.";
 				mes "Por favor, aceite.";
 				mes "Que a sua performance sempre traga alegria para seus espectadores.";
-				if (.@jl == 50) { getitem (Line_,1); }
-				else { getitem (Rope,1); }
+				if (.@jl == 50) { getitem(Line_,1); }
+				else { getitem(Rope,1); }
 				close;
 			}
 		} else {
@@ -657,14 +657,14 @@ job_duncer,32,154,1	script	Sala de Espera#dancerq	1_F_01,{
 	close;
 
 	OnInit:
-	waitingroom ("Sala de Espera",20,"Sala de Espera#dancerq::OnStartArena",1);
+	waitingroom("Sala de Espera",20,"Sala de Espera#dancerq::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	warpwaitingpc (strnpcinfo(NPC_MAP),69,110,1);
-	donpcevent ("dance_timer#dancerq::OnStart");
-	donpcevent ("dance#dancerq::OnPoints");
+	warpwaitingpc(strnpcinfo(NPC_MAP),69,110,1);
+	donpcevent("dance_timer#dancerq::OnStart");
+	donpcevent("dance#dancerq::OnPoints");
 	disablewaitingroomevent;
 	end;
 
@@ -676,7 +676,7 @@ job_duncer,32,154,1	script	Sala de Espera#dancerq	1_F_01,{
 // ------------------------------------------------------------------
 job_duncer,1,1,0	script	dance_timer#dancerq	4_F_07,3,3,{
 	OnInit:
-	disablenpc ("dance_return#dancerq");
+	disablenpc("dance_return#dancerq");
 	stopnpctimer;
 	end;
 
@@ -686,112 +686,112 @@ job_duncer,1,1,0	script	dance_timer#dancerq	4_F_07,3,3,{
 
 	OnStop:
 	stopnpctimer;
-	disablenpc ("dance_return#dancerq");
-	donpcevent ("Sala de Espera#dancerq::OnEnable");
+	disablenpc("dance_return#dancerq");
+	donpcevent("Sala de Espera#dancerq::OnEnable");
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Certo, vamos começar. Agora relaxe, o teste demora 1 minuto.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Certo, vamos começar. Agora relaxe, o teste demora 1 minuto.",bc_map);
 	end;
 
 	OnTimer6000:
 	.DanceDir = 6;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Baixo",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Baixo",bc_map);
 	end;
 
 	OnTimer9000:
 	.DanceDir = 9;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
 	end;
 
 	OnTimer12000:
 	.DanceDir = 3;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Direita",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Direita",bc_map);
 	end;
 
 	OnTimer15000:
 	.DanceDir = 0;
-	mapannounce (strnpcinfo(NPC_MAP),"Volte ao centro",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Volte ao centro",bc_map);
 	end;
 
 	OnTimer21000:
 	.DanceDir = 9;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
 	end;
 
 	OnTimer24000:
 	.DanceDir = 6;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Baixo",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Baixo",bc_map);
 	end;
 
 	OnTimer27000:
 	.DanceDir = 3;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Direita",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Direita",bc_map);
 	end;
 
 	OnTimer30000:
 	.DanceDir = 1;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Cima",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Cima",bc_map);
 	end;
 
 	OnTimer33000:
 	.DanceDir = 0;
-	mapannounce (strnpcinfo(NPC_MAP),"Volte ao Centro",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Volte ao Centro",bc_map);
 	end;
 
 	OnTimer36000:
 	.DanceDir = 3;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Direita",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Direita",bc_map);
 	end;
 
 	OnTimer39000:
-	mapannounce (strnpcinfo(NPC_MAP),"Para Cima",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Cima",bc_map);
 	.DanceDir = 1;
 	end;
 
 	OnTimer41000:
 	.DanceDir = 3;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Direita",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Direita",bc_map);
 	end;
 
 	OnTimer44000:
 	.DanceDir = 9;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
 	end;
 
 	OnTimer47000:
-	mapannounce (strnpcinfo(NPC_MAP),"Para Cima",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Cima",bc_map);
 	.DanceDir = 1;
 	end;
 
 	OnTimer50000:
 	.DanceDir = 9;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Esquerda",bc_map);
 	end;
 
 	OnTimer56000:
 	.DanceDir = 1;
-	mapannounce (strnpcinfo(NPC_MAP),"Para Cima",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Para Cima",bc_map);
 	end;
 
 	OnTimer59000:
 	.DanceDir = 0;
-	mapannounce (strnpcinfo(NPC_MAP),"Volte ao Centro",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Volte ao Centro",bc_map);
 	end;
 
 	OnTimer60000:
-	mapannounce (strnpcinfo(NPC_MAP),"Finalizando com 'Chuva de Flechas'!",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Finalizando com 'Chuva de Flechas'!",bc_map);
 	end;
 
 	OnTimer62000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou!",bc_map);
-	enablenpc ("dance_return#dancerq");
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou!",bc_map);
+	enablenpc("dance_return#dancerq");
 	end;
 
 	OnTimer63000:
 	stopnpctimer;
-	disablenpc ("dance_return#dancerq");
-	donpcevent ("Sala de Espera#dancerq::OnEnable");
+	disablenpc("dance_return#dancerq");
+	donpcevent("Sala de Espera#dancerq::OnEnable");
 	end;
 }
 
@@ -807,16 +807,16 @@ job_duncer,2,1,0	script	dance#dancerq	FAKE_NPC,{
 	end;
 
 	if (.@npcId == .@DanceDir) {
-		donpcevent ("Instrutora#dancerq::OnAccept");
+		donpcevent("Instrutora#dancerq::OnAccept");
 		++.DancePoints;
 		end;
 	} else {
 		--.DancePoints;
-		donpcevent ("Instrutora#dancerq::OnError");
+		donpcevent("Instrutora#dancerq::OnError");
 		if (!.DancePoints) {
-			mapannounce (strnpcinfo(NPC_MAP),"Você se atrasou no ritmo!!!",bc_map);
-			donpcevent ("dance_timer#dancerq::OnStop");
-			warp ("comodo",188,162);
+			mapannounce(strnpcinfo(NPC_MAP),"Você se atrasou no ritmo!!!",bc_map);
+			donpcevent("dance_timer#dancerq::OnStop");
+			warp("comodo",188,162);
 		}
 		end;
 	}
@@ -836,15 +836,15 @@ job_duncer,69,114,0	script	dance_return#dancerq	FAKE_NPC,8,8,{
 
 	OnTouch:
 	if (getvariableofnpc(.DancePoints,"dance#dancerq") > 12) {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Passou no teste de dança!!",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Passou no teste de dança!!",bc_map);
 		dancerq = 9;
-		changequest (7005,7006);
-		warp (strnpcinfo(NPC_MAP),69,49);
+		changequest(7005,7006);
+		warp(strnpcinfo(NPC_MAP),69,49);
 	} else {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Reprovou no teste de dança!!",bc_map);
-		warp ("comodo",188,162);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Reprovou no teste de dança!!",bc_map);
+		warp("comodo",188,162);
 	}
-	donpcevent ("dance_timer#dancerq::OnStop");
+	donpcevent("dance_timer#dancerq::OnStop");
 	end;
 }
 
@@ -853,11 +853,10 @@ job_duncer,66,113,5	script	Instrutora#dancerq	4W_F_01,{
 	end;
 
 	OnAccept:
-	emotion (e_no1);
+	emotion(e_no1);
 	end;
 
 	OnError:
-	emotion (e_omg);
+	emotion(e_omg);
 	end;
 }
-

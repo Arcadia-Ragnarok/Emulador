@@ -33,12 +33,12 @@ new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 		mes "Todos os ^4a4affmovimentos básicos e a escolha de um item e ataque^000000.";
 		mes "São realizados ao ^4a4affclicar com o botão esquerdo do mouse^000000.";
 		next;
-		cutin ("tutorial01",3);
+		cutin("tutorial01",3);
 		mes "-! Informação !-";
 		mes "Clique no chão para mover o personagem.";
 		mes "Para atacar monstros e conversar com NPCs, basta clicar neles.";
 		next;
-		cutin ("",255);
+		cutin("",255);
 		mes "[Sprakki]";
 		mes "Antes de mais nada, vamos tentar andar um pouco.";
 		mes "Vê aquela ponte de madeira à direita?";
@@ -51,9 +51,9 @@ new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 		mes "Esperarei por você dentro daquele Castelo.";
 		mes "Chegue lá por sua conta própria.";
 		new_quest = 1;
-		setquest (7117);
+		setquest(7117);
 		next;
-		cutin ("tutorial02",3);
+		cutin("tutorial02",3);
 		mes "-! Informação !-";
 		mes "Você tem uma missão dada por Sprakki";
 		mes "Você pode ver o conteúdo dela na Janela de Informação de Missões.";
@@ -64,7 +64,7 @@ new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 		mes "-! Informação !-";
 		mes "Você pode abrir a Janela de Informação de Missões pressionando as teclas ^4a4afdALT + U^000000.";
 		next;
-		cutin ("",255);
+		cutin("",255);
 		mes "[Sprakki]";
 		mes "Você já viu a Janela de Informação de Missões?";
 		mes "Eu vou esperar você no campo de treinamento, do outro lado da ponte.";
@@ -74,8 +74,8 @@ new_1-1,53,114,4	script	Sprakki#new	4_F_01,{
 		mes "Eu vou esperar você no campo de treinamento, do outro lado da ponte.";
 		close;
 	} else {
-		warp ("new_1-2",100,9);
-		savepoint ("new_1-2",100,9);
+		warp("new_1-2",100,9);
+		savepoint("new_1-2",100,9);
 		new_quest = 1;
 		end;
 	}
@@ -160,8 +160,8 @@ new_1-1,144,107,2	duplicate(Guarda#new)	Guarda#new2	8W_SOLDIER
 new_1-1,148,112,0	script	newWarp1#new	WARPNPC,2,2,{
 	if (!new_quest) { end; }
 	else {
-		warp ("new_1-2",100,9);
-		savepoint ("new_1-2",100,9);
+		warp("new_1-2",100,9);
+		savepoint("new_1-2",100,9);
 		end;
 	}
 }
@@ -186,17 +186,17 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		mes "[Sprakki]";
 		mes "Tente digitar seu nome novamente.";
 	} else if (new_quest > 2) {
-		savepoint (strnpcinfo(NPC_MAP),100,100);
-		warp (strnpcinfo(NPC_MAP),100,100);
+		savepoint(strnpcinfo(NPC_MAP),100,100);
+		warp(strnpcinfo(NPC_MAP),100,100);
 		new_quest = 3;
 		end;
 	}
-	input (.@charname$);
+	input(.@charname$);
 	next;
 	if (.@charname$ != strcharinfo(PC_NAME)) {
 		mes "[Sprakki]";
 		mes "Acho que você digitou seu nome errado não foi?";
-		if (new_quest !=2) { new_quest = 2; }
+		if (new_quest != 2) { new_quest = 2; }
 		close;
 	} else {
 		mes "[Sprakki]";
@@ -214,10 +214,10 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 		mes "Boa sorte!";
 		close2;
 		new_quest = 3;
-		getexp (500,5);
-		changequest (7117,7118);
-		savepoint (strnpcinfo(NPC_MAP),100,100);
-		warp (strnpcinfo(NPC_MAP),100,100);
+		getexp(500,5);
+		changequest(7117,7118);
+		savepoint(strnpcinfo(NPC_MAP),100,100);
+		warp(strnpcinfo(NPC_MAP),100,100);
 		end;
 	}
 }
@@ -226,8 +226,8 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 	if (new_quest == 3) {
 		if (questprogress(7118)) {
-			completequest (7118);
-			getexp (150,10);
+			completequest(7118);
+			getexp(150,10);
 		}
 		mes "[Instrutor Brade]";
 		mes "Muito bom!";
@@ -256,7 +256,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		mes "Mas seu poder em geral não é só medido pelo Level!";
 		mes "Itens e equipamentos podem ampliar seus poderes consideravelmente!";
 		next;
-		cutin ("tutorial03",3);
+		cutin("tutorial03",3);
 		mes "[Instrutor Brade]";
 		mes "Pressionando as teclas ^4a4afdALT + E^000000.";
 		mes "Você verá os itens que está carregando em seu iventário.";
@@ -271,18 +271,18 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		mes "Ou para equipar abra a janela de equipamentos.";
 		mes "Segure o item com o botão esquerdo do mouse, arraste-o e solte na janela de equipamentos.";
 		next;
-		cutin ("",255);
+		cutin("",255);
 		mes "[Instrutor Brade]";
 		mes "Agora, pegue esses itens!";
 		mes "Quero que você os use, depois fale comigo novamente.";
-		getitem (Novice_Plate,1);
-		getitem (Novice_Hood,1);
-		getitem (Novice_Boots,1);
-		getitem (Novice_Egg_Cap,1);
-		getitem (Novice_Knife,1);
-		getitem (Novice_Guard,1);
-		getitem (Novice_Potion,300);
-		setquest (7119);
+		getitem(Novice_Plate,1);
+		getitem(Novice_Hood,1);
+		getitem(Novice_Boots,1);
+		getitem(Novice_Egg_Cap,1);
+		getitem(Novice_Knife,1);
+		getitem(Novice_Guard,1);
+		getitem(Novice_Potion,300);
+		setquest(7119);
 		new_quest = 4;
 		close;
 	} else if (new_quest == 4) {
@@ -301,7 +301,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			mes "Você pode clicar com o botão direito do mouse sobre um item.";
 			mes "Para obter informações detalhadas sobre ele.";
 			next;
-			cutin ("tutorial04",3);
+			cutin("tutorial04",3);
 			mes "[Instrutor Brade]";
 			mes "Essa mesma ação pode ser usada para interagir com outras pessoas.";
 			next;
@@ -311,7 +311,7 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			mes "[Instrutor Brade]";
 			mes "Você poderá regitrar amigos, se juntar a grupos e Clãs dentre outros.";
 			next;
-			cutin ("",255);
+			cutin("",255);
 			mes "[Instrutor Brade]";
 			mes "Como isso depende de habilidades.";
 			mes "Quero que você procure pela ^4d4dffInstrutora Jinha^000000.";
@@ -320,8 +320,8 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 			mes "Para aprender como utilizar Habilidades.";
 			mes "Depois venha falar comigo novamente.";
 			if (questprogress(7118)) {
-				changequest (7119,7120);
-				getexp (300,20);
+				changequest(7119,7120);
+				getexp(300,20);
 			}
 			new_quest = 5;
 			close;
@@ -352,13 +352,13 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		mes "[Instrutor Brade]";
 		mes "Depois então nos veremos novamente em seu treinamento de combate.";
 		mes "Até lá pegue esse itens, pode lhe ser útil no futuro.";
-		getitem (N_Adventurers_Suit,1);
-		getitem (N_Fly_Wing,50);
-		getitem (N_Butterfly_Wing,20);
+		getitem(N_Adventurers_Suit,1);
+		getitem(N_Fly_Wing,50);
+		getitem(N_Butterfly_Wing,20);
 		new_quest = 7;
 		if (questprogress(7120)) {
-			changequest (7120,7121);
-			getexp (500,20);
+			changequest(7120,7121);
+			getexp(500,20);
 		}
 		close;
 	} else if (new_quest == 7) {
@@ -367,8 +367,8 @@ new_1-2,100,113,4	script	Brade#new	4_M_JOB_KNIGHT1,{
 		mes "Fale com as pessoas de lá para continuar seu treinamento.";
 		close;
 	} else {
-		warp (strnpcinfo(NPC_MAP),41,172);
-		savepoint (strnpcinfo(NPC_MAP),41,172);
+		warp(strnpcinfo(NPC_MAP),41,172);
+		savepoint(strnpcinfo(NPC_MAP),41,172);
 		new_quest = 7;
 		end;
 	}
@@ -436,7 +436,7 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		mes "Para utilizar uma habilidade primiro abra a janela de habilidades.";
 		mes "E dê dois cliques sobre a habilidade que deseja usar.";
 		next;
-		cutin ("tutorial05",3);
+		cutin("tutorial05",3);
 		mes "[Instrutora Jinha]";
 		mes "Uma forma mais fácil de usar, não só habilidades como também itens.";
 		mes "É se favorecer das teclas de atalho que são da tecla ^4a4afdF1^000000 a tecla ^4a4afdF9^000000.";
@@ -450,7 +450,7 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		mes "Basta que segure a Habilidade ou Item com o botão esquerdo do mouse.";
 		mes "E coloque em um dos compartimentos para habilitar a tecla de atalho.";
 		next;
-		cutin ("",255);
+		cutin("",255);
 		if (!getskilllv("NV_FIRSTAID")) {
 			mes "[Instrutora Jinha]";
 			mes "Para começar vou te ensinar uma habilidade.";
@@ -463,10 +463,10 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 			next;
 			mes "[Instrutora Jinha]";
 			mes "......";
-			specialeffect(EF_BEGINSPELL6, AREA, playerattached());
+			specialeffect(EF_BEGINSPELL6,AREA,playerattached());
 			next;
-			specialeffect(EF_SPELLBREAKER, AREA, playerattached());
-			skill ("NV_FIRSTAID",1,0);
+			specialeffect(EF_SPELLBREAKER,AREA,playerattached());
+			skill("NV_FIRSTAID",1,0);
 			new_quest = 6;
 			mes "[Instrutora Jinha]";
 			mes "Olhe na sua janela de habilidades, para visualizar-la.";
@@ -489,8 +489,8 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 		mes "Acho que o ^4d4dffInstrutor Brade^000000 poderá lhe ajudar.";
 		close;
 	} else {
-		warp (strnpcinfo(NPC_MAP),41,172);
-		savepoint (strnpcinfo(NPC_MAP),41,172);
+		warp(strnpcinfo(NPC_MAP),41,172);
+		savepoint(strnpcinfo(NPC_MAP),41,172);
 		new_quest = 7;
 		end;
 	}
@@ -500,8 +500,8 @@ new_1-2,116,115,4	script	Jinha#new	1_M_ORIENT01,{
 new_1-2,73,106,0	script	newWarp2#new	WARPNPC,2,2,{
 	if (new_quest != 7) { end; }
 	else {
-		warp (strnpcinfo(NPC_MAP),41,172);
-		savepoint (strnpcinfo(NPC_MAP),41,172);
+		warp(strnpcinfo(NPC_MAP),41,172);
+		savepoint(strnpcinfo(NPC_MAP),41,172);
 		end;
 	}
 }
@@ -514,7 +514,7 @@ new_1-2,73,106,0	script	newWarp2#new	WARPNPC,2,2,{
 // ------------------------------------------------------------------
 new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 	if ((new_quest > 6) && (new_quest < 11)) {
-		cutin ("kafra_01",2);
+		cutin("kafra_01",2);
 		mes "[Funcionária Kafra]";
 		mes "Fui designada pelo Escritório Central Kafra a cuidar de Aprendizes como você.";
 		mes "A Corporação Kafra é a maior empresa de todas.";
@@ -567,7 +567,7 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 			mes "Não há mais nada para fazer aqui.";
 			mes "Atravesse o portal e vá falar com o ^4a4afdInstrutor Brade^000000.";
 			mes "Para começar a última etapa do seu treinamento.";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (new_quest == 7 ) {
 			getitem Cargo_Free_Ticket,40;
 			getitem Warp_Free_Ticket,60;
@@ -632,13 +632,13 @@ new_1-2,38,182,4	script	Corporação Kafra#new	4_F_KAFRA1,{
 				case 4:
 				mes "[Funcionária Kafra]";
 				mes "Conte sempre com a Corporação Kafra quando precisar.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		}
 	} else if (new_quest > 10) {
 		new_quest = 11;
-		warp ("new_1-3",102,27);
-		savepoint ("new_1-3",102,27);
+		warp("new_1-3",102,27);
+		savepoint("new_1-3",102,27);
 		end;
 	}
 }
@@ -650,7 +650,7 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		mes "Você já conversou com a funcionária kafra?";
 		close;
 	} else if (new_quest == 8) {
-		cutin ("zonda_01",2);
+		cutin("zonda_01",2);
 		mes "[Eventos Incríveis]";
 		mes "Basicamente nossa empresa presta suporte a Corporação Kafra.";
 		mes "Em locais mais longincos.";
@@ -663,7 +663,7 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		mes "Sobre os demais serviços, acredito que não preciso mais lhe dizer.";
 		mes "Porque a funcionária kafra já lhe explicou tudo.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		new_quest = 9;
 		end;
 	} else if (new_quest == 9) {
@@ -683,8 +683,8 @@ new_1-2,17,182,5	script	Eventos Incríveis#new	4_M_ZONDAMAN,{
 		close;
 	} else {
 		new_quest = 11;
-		warp ("new_1-3",102,27);
-		savepoint ("new_1-3",102,27);
+		warp("new_1-3",102,27);
+		savepoint("new_1-3",102,27);
 		end;
 	}
 }
@@ -701,7 +701,7 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		mes "Você já conversou com ela?";
 		close;
 	} else if (new_quest == 9) {
-		cutin ("prt_soldier",2);
+		cutin("prt_soldier",2);
 		mes "[Guia]";
 		mes "Os Guias estão em cada cidade para guiar você para lugares úteis.";
 		mes "Pergunte-nos onde você quer ir e nós vamos marcar o local em seu mini-mapa com uma ^4a4aff+^000000.";
@@ -710,8 +710,8 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		mes "Não hesite em fazer perguntas, sempre que quiser saber a localização de algo.";
 		close2;
 		new_quest = 10;
-		completequest (7121);
-		cutin ("",255);
+		completequest(7121);
+		cutin("",255);
 		end;
 	} else if (new_quest == 10) {
 		mes "[Guia]";
@@ -720,8 +720,8 @@ new_1-2,28,185,4	script	Guia#new	8W_SOLDIER,{
 		mes "Para começar a última etapa do seu treinamento.";
 		close;
 	} else {
-		warp ("prontera",273,354);
-		savepoint ("prontera",273,354);
+		warp("prontera",273,354);
+		savepoint("prontera",273,354);
 		new_quest = 0;
 		end;
 	}
@@ -732,8 +732,8 @@ new_1-2,23,190,0	script	newWarp3#new	WARPNPC,2,2,{
 	if (new_quest != 10) { end; }
 	else {
 		new_quest = 11;
-		warp ("new_1-3",102,27);
-		savepoint ("new_1-3",102,27);
+		warp("new_1-3",102,27);
+		savepoint("new_1-3",102,27);
 		end;
 	}
 }
@@ -756,16 +756,16 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 		mes "[Instrutor Brade]";
 		mes "Sei que vai conseguir, boa sorte!";
 		new_quest = 12;
-		getitem (Novice_Potion,100);
-		setquest (7122);
+		getitem(Novice_Potion,100);
+		setquest(7122);
 		close;
 	} else if ((new_quest >= 12) && (new_quest < 17)) {
 		if (questprogress(7122,HUNTING) == 2) {
-			completequest (7122);
-			getexp (1500,0);
-			getitem (N_Cutter,1);
-			getitem (Novice_Potion,500);
-			npcskill ("AL_HEAL",11,99,99);
+			completequest(7122);
+			getexp(1500,0);
+			getitem(N_Cutter,1);
+			getitem(Novice_Potion,500);
+			npcskill("AL_HEAL",11,99,99);
 			new_quest = 17;
 			mes "[Instrutor Brade]";
 			mes "Muito bom!";
@@ -824,7 +824,7 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 			// Um bloqueio para ficar impedindo que o usuário usufrua da cura para upar (Max. Uso 3X)!
 			if (new_quest <= 15) {
 				new_quest ++;
-				npcskill ("AL_HEAL",11,99,99);
+				npcskill("AL_HEAL",11,99,99);
 			}
 			close;
 		}
@@ -877,43 +877,43 @@ new_1-3,96,30,1	script	Brade#new2	4_M_JOB_KNIGHT1,{
 				next;
 				switch (select("Prontera","Morroc","Payon","Alberta","Geffen","Ficar mais tempo aqui")) {
 					case 1:
-					callfunc ("F_NewDel");
+					callfunc("F_NewDel");
 					mes "[Instrutor Brade]";
 					mes "Prontera a capital de Rune-Midgard.";
 					close2;
-					savepoint ("prontera",117,72);
-					warp ("prontera",150,50);
+					savepoint("prontera",117,72);
+					warp("prontera",150,50);
 					end;
 					case 2:
-					callfunc ("F_NewDel");
+					callfunc("F_NewDel");
 					mes "[Instrutor Brade]";
 					mes "Morroc a cidade no deserto.";
 					close2;
-					savepoint ("morocc",150,99);
-					warp ("morocc",155,110);
+					savepoint("morocc",150,99);
+					warp("morocc",155,110);
 					end;
 					case 3:
-					callfunc ("F_NewDel");
+					callfunc("F_NewDel");
 					mes "[Instrutor Brade]";
 					mes "Payon a cidade nas Montanhas.";
-					savepoint ("payon",70,100);
-					warp ("payon",166,67);
+					savepoint("payon",70,100);
+					warp("payon",166,67);
 					close2;
 					end;
 					case 4:
-					callfunc ("F_NewDel");
+					callfunc("F_NewDel");
 					mes "[Instrutor Brade]";
 					mes "Alberta a cidade portuária.";
-					savepoint ("alberta",30,232);
-					warp ("alberta",114,58);
+					savepoint("alberta",30,232);
+					warp("alberta",114,58);
 					close2;
 					end;
 					case 5:
-					callfunc ("F_NewDel");
+					callfunc("F_NewDel");
 					mes "[Instrutor Brade]";
 					mes "Geffen a cidade da magia.";
-					savepoint ("geffen",119,37);
-					warp ("geffen",122,65);
+					savepoint("geffen",119,37);
+					warp("geffen",122,65);
 					close2;
 					end;
 					case 6:
@@ -999,7 +999,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 					mes "[Espadachim]";
 					if (!countitem(Swordman_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos espadachins.";
-						getitem (Swordman_Manual,1);
+						getitem(Swordman_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos espadachins.";
@@ -1018,7 +1018,7 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 				next;
 				mes "[Espadachim]";
 				mes "Estarei esperando seu regreço.";
-				setquest (7123);
+				setquest(7123);
 				close;
 			} else if (questprogress(7123) == 2) {
 				mes "Eu não tenho mais missões para você.";
@@ -1030,9 +1030,9 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 					next;
 					mes "[Espadachim]";
 					mes "Está aqui sua recompensa.";
-					completequest (7123);
-					getitem (Novice_Potion,200);
-					getexp (2500,100);
+					completequest(7123);
+					getitem(Novice_Potion,200);
+					getexp(2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
@@ -1060,9 +1060,9 @@ new_1-3,100,19,1	script	Espadachim#new	4_F_JOB_KNIGHT,{
 					mes "[Espadachim]";
 					mes "Certo espero que faça um bom teste para se tornar espadachim.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("izlude",94,103);
-					warp ("izlude_in",74,167);
+					callfunc("F_NewDel");
+					savepoint("izlude",94,103);
+					warp("izlude_in",74,167);
 					end;
 				}
 				mes "[Espadachim]";
@@ -1144,7 +1144,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					mes "[Mago]";
 					if (!countitem(Mage_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos magos.";
-						getitem (Mage_Manual,1);
+						getitem(Mage_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos magos.";
@@ -1163,7 +1163,7 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 				next;
 				mes "[Mago]";
 				mes "Estarei esperando seu regreço.";
-				setquest (7124);
+				setquest(7124);
 				close;
 			} else if (questprogress(7124) == 2) {
 				mes "Eu não tenho mais missões para você.";
@@ -1175,9 +1175,9 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					next;
 					mes "[Mago]";
 					mes "Está aqui sua recompensa.";
-					completequest (7124);
-					getitem (N_Butterfly_Wing,60);
-					getexp (2500,100);
+					completequest(7124);
+					getitem(N_Butterfly_Wing,60);
+					getexp(2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
@@ -1205,9 +1205,9 @@ new_1-3,102,19,1	script	Mago#new	2_F_MAGICMASTER,{
 					mes "[Mago]";
 					mes "Certo espero que faça um bom teste para se tornar Mago.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("geffen",119,38);
-					warp ("geffen_in",163,98);
+					callfunc("F_NewDel");
+					savepoint("geffen",119,38);
+					warp("geffen_in",163,98);
 					end;
 				}
 				mes "[Mago]";
@@ -1282,7 +1282,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					mes "[Mercador]";
 					if (!countitem(Merchant_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos Mercadores.";
-						getitem (Merchant_Manual,1);
+						getitem(Merchant_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos Mercadores.";
@@ -1302,7 +1302,7 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 				next;
 				mes "[Mercador]";
 				mes "Estarei esperando seu regreço.";
-				setquest (7126);
+				setquest(7126);
 				close;
 			} else if (questprogress(7126) == 2) {
 				mes "Eu não tenho mais missões para você.";
@@ -1314,9 +1314,9 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					next;
 					mes "[Mercador]";
 					mes "Está aqui sua recompensa.";
-					completequest (7126);
-					getitem (Novice_Potion,500);
-					getexp (2500,100);
+					completequest(7126);
+					getitem(Novice_Potion,500);
+					getexp(2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você acumular os 300 Zenys.";
@@ -1344,9 +1344,9 @@ new_1-3,104,19,1	script	Mercador#new	4W_M_01,{
 					mes "[Mercador]";
 					mes "Certo espero que faça um bom teste para se tornar Mercador.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("alberta",29,231);
-					warp ("alberta_in",62,44);
+					callfunc("F_NewDel");
+					savepoint("alberta",29,231);
+					warp("alberta_in",62,44);
 					end;
 				}
 				mes "[Mercador]";
@@ -1424,7 +1424,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 					mes "[Gaturno]";
 					if (!countitem(Thief_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos Gaturnos.";
-						getitem (Thief_Manual,1);
+						getitem(Thief_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos Gaturnos.";
@@ -1443,7 +1443,7 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 				next;
 				mes "[Gaturno]";
 				mes "Estarei esperando seu regreço.";
-				setquest (7127);
+				setquest(7127);
 				close;
 			} else if (questprogress(7127) == 2) {
 				mes "[Gaturno]";
@@ -1456,9 +1456,9 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 					next;
 					mes "[Gaturno]";
 					mes "Está aqui sua recompensa.";
-					completequest (7127);
-					getitem (N_Fly_Wing,100);
-					getexp (2500,100);
+					completequest(7127);
+					getitem(N_Fly_Wing,100);
+					getexp(2500,100);
 					close;
 				} else {
 					mes "Ainda estou esperando você derrotar os 2 Picky's que lhe falei.";
@@ -1486,9 +1486,9 @@ new_1-3,106,19,1	script	Gaturno#new	2_M_THIEFMASTER,{
 					mes "[Gaturno]";
 					mes "Certo espero que faça um bom teste para se tornar Gaturno.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("morocc",150,100);
-					warp ("moc_prydb1",99,185);
+					callfunc("F_NewDel");
+					savepoint("morocc",150,100);
+					warp("moc_prydb1",99,185);
 					end;
 				}
 				mes "[Gaturno]";
@@ -1575,7 +1575,7 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 					mes "[Arqueiro]";
 					if (!countitem(Archer_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos Arqueiros.";
-						getitem (Archer_Manual,1);
+						getitem(Archer_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos Arqueiros.";
@@ -1607,9 +1607,9 @@ new_1-3,108,19,1	script	Arqueiro#new	4_F_JOB_HUNTER,{
 					mes "[Arqueiro]";
 					mes "Certo espero que faça um bom teste para se tornar Arqueiro.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("payon",256,242);
-					warp ("payon_in02",64,65);
+					callfunc("F_NewDel");
+					savepoint("payon",256,242);
+					warp("payon_in02",64,65);
 					end;
 				}
 				mes "[Arqueiro]";
@@ -1678,7 +1678,7 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 					mes "[Noviço]";
 					if (!countitem(Acolyte_Manual)) {
 						mes "Pegue esse manual e o equipe para experimentar uma habilidade típica dos Noviços.";
-						getitem (Acolyte_Manual,1);
+						getitem(Acolyte_Manual,1);
 						close;
 					}
 					mes "Equipe o manual que eu lhe dei para experimentar uma habilidade típica dos Noviços.";
@@ -1710,9 +1710,9 @@ new_1-3,110,19,1	script	Noviço#new	4_F_SISTER,{
 					mes "[Noviço]";
 					mes "Certo espero que faça um bom teste para se tornar Noviço.";
 					close2;
-					callfunc ("F_NewDel");
-					savepoint ("prontera",117,72);
-					warp ("prt_church",172,19);
+					callfunc("F_NewDel");
+					savepoint("prontera",117,72);
+					warp("prt_church",172,19);
 					end;
 				}
 				mes "[Noviço]";
@@ -1818,12 +1818,11 @@ function	script	F_NewDel	{
 new_1-1,1,1,0	script	TrainingProtect	HIDDEN_NPC,{
 	OnPCLoadMapEvent:
 	if (BaseJob != Job_Novice) {
-		warp ("prontera",273,354);
-		savepoint ("prontera",273,354);
+		warp("prontera",273,354);
+		savepoint("prontera",273,354);
 	}
 	end;
 }
-
 new_1-2,1,1,0	duplicate(TrainingProtect)	TrainingProtectB	HIDDEN_NPC
 new_1-3,1,1,0	duplicate(TrainingProtect)	TrainingProtectC	HIDDEN_NPC
 

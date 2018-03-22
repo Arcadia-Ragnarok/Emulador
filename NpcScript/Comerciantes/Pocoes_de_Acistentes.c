@@ -20,7 +20,7 @@
 	mes "[Itens para Assistente]";
 	mes "Veja meus produtos e me diga se quer comprar algo.";
 	next;
-	switch(select("Poção Vermelha", "Poção Azul", "Poção de Concentração", "Poção do Despertar", "Poção da Fúria Selvagem", "Nada Obrigado")) {
+	switch (select("Poção Vermelha","Poção Azul","Poção de Concentração","Poção do Despertar","Poção da Fúria Selvagem","Nada Obrigado")) {
 		case 1: .@item = 12184; .@Zeny = 2500; break;
 		case 2: .@item = 12185; .@Zeny = 5000; break;
 		case 3: .@item = 12241; .@Zeny = 800;  break;
@@ -32,7 +32,7 @@
 		close;
 	}
 	mes "[Itens para Assistente]";
-	mes "1 " + getitemname(.@item) + " custa " + .@Zeny + " Zenys.";
+	mes "1 "+getitemname(.@item)+" custa "+.@Zeny+" Zenys.";
 	next;
 	mes "[Itens para Assistente]";
 	mes "Me diga quantos você quer?";
@@ -51,11 +51,11 @@
 		close;
 	} else {
 		.@ZenyRequire = .@Zeny * .@quant;
-		.@weight = getiteminfo(.@item, ITEM_WEIGHT);
+		.@weight = getiteminfo(.@item,ITEM_WEIGHT);
 		.@total_weight = .@quant * .@weight;
 		mes "[Itens para Assistente]";
-		mes "Certo você quer comprar " + .@quant + " " + getitemname(.@item) + ", não é mesmo?";
-		mes "Então serão necessários " + .@ZenyRequire + " Zenys.";
+		mes "Certo você quer comprar "+.@quant+" "+getitemname(.@item)+", não é mesmo?";
+		mes "Então serão necessários "+.@ZenyRequire+" Zenys.";
 		next;
 		mes "[Itens para Assistente]";
 		mes "Deseja comprar-los agora?";
@@ -72,8 +72,8 @@
 				close;
 			} else {
 				Zeny -= .@ZenyRequire;
-				getitem(.@item, .@quant);
-				mes " Estão aqui seus " + getitemname(.@item) + ".";
+				getitem(.@item,.@quant);
+				mes " Estão aqui seus "+getitemname(.@item)+".";
 				mes "Lembrando a você que estes itens só funcionam em acistentes.";
 				close;
 			}

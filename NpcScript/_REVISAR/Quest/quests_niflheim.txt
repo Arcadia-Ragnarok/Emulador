@@ -51,7 +51,7 @@ nif_in,105,81,3	script	Crayu#nif	4_M_NFDEADMAN2,{
 		mes "[Crayu]";
 		mes "Certo, espere!";
 		mes "Aqui está um teste para você!";
-		switch(rand(1,4)) {
+		switch (rand(1,4)) {
 		case 1:
 			.@songline$ = "Por-do-Sol ao oeste da montanha";
 			mes "Anote a primeira linha da canção.";

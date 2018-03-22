@@ -32,7 +32,7 @@ mosk_dun02,53,220,4	script	#babayagain	WARPNPC,1,1,{
 		mes "Nós esperamos que você aparecesse novamente.";
 		mes "Qual foi o negócio com o Csar?";
 		next;
-		if(select("Fugir.:Explicar a situação.") == 1) {
+		if (select("Fugir.:Explicar a situação.") == 1) {
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Eu deveria dar o fora daqui...";
 			close2;
@@ -61,7 +61,7 @@ mosk_dun02,53,220,4	script	#babayagain	WARPNPC,1,1,{
 		mes "Nós esperamos que você aparecesse novamente.";
 		mes "Qual foi o negócio com o Csar?";
 		next;
-		if(select("Fugir.:Explicar a situação") == 1) {
+		if (select("Fugir.:Explicar a situação") == 1) {
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Eu deveria dar o fora daqui...";
 			close2;

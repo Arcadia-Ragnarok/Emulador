@@ -18,7 +18,7 @@ gef_fild10,238,202,6	script	Cientista Maluco#orc	4_LGTSCIENCE,{
 	mes "Haha, nenhum orc está vindo me atacar!";
 	mes "O poder da Máquina do Tempo é invencível!!";
 	next;
-	switch(select("Os orcs não te atacam?", "O faz aqui?!...")) {
+	switch (select("Os orcs não te atacam?","O faz aqui?!...")) {
 		case 1:
 		mes "[Cientista Maluco]";
 		mes "Pois é..";
@@ -51,7 +51,7 @@ gef_fild10,238,202,6	script	Cientista Maluco#orc	4_LGTSCIENCE,{
 		mes "Provavelmente eles irão lhe dar milhões de instruções.";
 		mes "Uma vez que eles o verem vão sempre repetir a mesma coisa!";
 		next;
-		switch(select("Ok... O quê eu faço?", "Hmm, acho que não")) {
+		switch (select("Ok... O quê eu faço?","Hmm, acho que não")) {
 			case 1:
 			mes "[Cientista Maluco]";
 			mes "Muito bom!";

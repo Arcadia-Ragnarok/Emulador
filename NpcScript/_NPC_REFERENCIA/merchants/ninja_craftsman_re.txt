@@ -43,12 +43,12 @@ que_ng,21,72,6	script	Master Craftsman Gyo#arm	4_M_RASWORD,{
 	mes "For that, you must better protect yourself.";
 	mes "You cannot protect 'others' while you hinder your 'own' protection.";
 	next;
-	if (select("Combine armor.", "End conversation.") == 2) {
+	if (select("Combine armor.","End conversation.") == 2) {
 		mes "[Gyo]";
 		mes "Prudence is also an important virtue in battle.";
 		close;
 	}
-	switch (select("Wolf Armguard", "Crescent Armguard", "Ninja Scale Armor", "Shadow King's Armor", "Quit.")) {
+	switch (select("Wolf Armguard","Crescent Armguard","Ninja Scale Armor","Shadow King's Armor","Quit.")) {
 		case 1:
 			mes "[Gyo]";
 			mes "Wolf Armguard... One beastly piece of armor.";
@@ -81,11 +81,11 @@ que_ng,21,72,6	script	Master Craftsman Gyo#arm	4_M_RASWORD,{
 
 L_Menu:
 	.@item_make = getarg(0);
-	while(1){
-		switch(select("Check Ingredients.", "Check Stats.", "Combine.", "Quit.")){
+	while (1){
+		switch (select("Check Ingredients.","Check Stats.","Combine.","Quit.")){
 			case 1:
 				mes "[Gyo]";
-				mes "To make a ^ff0000"+getitemname(.@item_make)+", "+callsub(L_Ingredients,.@item_make)+".^000000";
+				mes "To make a ^ff0000"+getitemname(.@item_make)+","+callsub(L_Ingredients,.@item_make)+".^000000";
 				if (.@item_make==Wolf_Armguard)
 					mes "Can you feel it? The throbbing of the wolf blood...";
 				else if (.@item_make==Crescent_Armguard)
@@ -96,7 +96,7 @@ L_Menu:
 					mes "With the darkness it erases existence itself...";
 				break;
 			case 2:
-				mes "["+ getitemname(getarg(0)) +"]";
+				mes "["+getitemname(getarg(0))+"]";
 				if (.@item_make == Wolf_Armguard){
 					mes "Chance to have 5 sec. of ATK +100, FLEE -50 upon melee attack.";
 					mes "Shield Type, Defense 45, Slot 1";
@@ -123,7 +123,7 @@ L_Menu:
 				mes "Make sure that ^ff0000you have the correct ingredients and equipment at hand.^000000";
 				mes "No use crying over it later.";
 				next;
-				if (select("Combine.", "Quit.") == 2) {
+				if (select("Combine.","Quit.") == 2) {
 					mes "[Gyo]";
 					mes "Looks like you need more time to decide.";
 					close;
@@ -137,7 +137,7 @@ L_Menu:
 					close;
 				}
 				mes "[Gyo]";
-				switch(.@item_make){
+				switch (.@item_make){
 					case 2172:	//Wolf_Armguard
 						if (countitem(Fox_Armguard) && countitem(Wolf_Blood) > 9) {
 							delitem Fox_Armguard,1; //Fox_Armguard
@@ -202,7 +202,7 @@ L_Menu:
 	}
 
 L_Ingredients:
-	switch(getarg(0)){
+	switch (getarg(0)){
 		case 2172:	//Wolf_Armguard
 			return "you need 1 Fox Armguard and 10 Blood of Wolf";
 		case 2173: //Crescent_Armguard
@@ -223,12 +223,12 @@ que_ng,23,70,6	script	Master Craftsman Ki#weap	4_DST_SOLDIER,{
 	mes "[Ki]";
 	mes "Of course, it would be better to have something special at hand.";
 	next;
-	if (select("Combine weapon.", "End conversation.") == 2) {
+	if (select("Combine weapon.","End conversation.") == 2) {
 		mes "[Ki]";
 		mes "Being too careful could sometimes be lethal.";
 		close;
 	}
-	switch (select("Raksasa Dagger", "Mikatsuki", "Petal Shuriken", "Quit.")) {
+	switch (select("Raksasa Dagger","Mikatsuki","Petal Shuriken","Quit.")) {
 		case 1:
 			mes "[Ki]";
 			mes "Raksasa Dagger can only be used after plenty of training.";
@@ -256,11 +256,11 @@ que_ng,23,70,6	script	Master Craftsman Ki#weap	4_DST_SOLDIER,{
 
 L_Menu:
 	.@item_make = getarg(0);
-	while(1){
-		switch(select("Check Ingredients.", "Check Stats.", "Combine.", "Quit.")){
+	while (1){
+		switch (select("Check Ingredients.","Check Stats.","Combine.","Quit.")){
 			case 1:
 				mes "[Ki]";
-				mes "To make a ^ff0000"+getitemname(.@item_make)+", "+callsub(L_Ingredients,.@item_make)+".^000000";
+				mes "To make a ^ff0000"+getitemname(.@item_make)+","+callsub(L_Ingredients,.@item_make)+".^000000";
 				if (.@item_make==Raksasa_Dagger)
 					mes "The garnet gives the Raksasa Dagger its unique color.";
 				else if (.@item_make==Mikatsuki)
@@ -269,7 +269,7 @@ L_Menu:
 					mes "It may seem like too many shurikens are needed... But it is essential for the beautiful fluttering effect.";
 				break;
 			case 2:
-				mes "["+ getitemname(getarg(0)) +"]";
+				mes "["+getitemname(getarg(0))+"]";
 				if (.@item_make == Raksasa_Dagger){
 					mes "INT+3 MATK+100.";
 					mes "Dagger Type, ATK 120, Slot 1";
@@ -293,7 +293,7 @@ L_Menu:
 				mes "Make sure that ^ff0000you have the correct ingredients and equipment at hand.^000000";
 				mes "No use crying over it later.";
 				next;
-				if (select("Combine.", "Quit.") == 2) {
+				if (select("Combine.","Quit.") == 2) {
 					mes "[Ki]";
 					mes "Think carefully";
 					close;
@@ -307,7 +307,7 @@ L_Menu:
 					close;
 				}
 				mes "[Ki]";
-				switch(.@item_make){
+				switch (.@item_make){
 					case 13076:	//Raksasa_Dagger
 						if (countitem(Murasame_) && countitem(Dark_Red_Jewel)) {
 							delitem Murasame_,1; //Murasame_
@@ -359,7 +359,7 @@ L_Menu:
 	}
 
 L_Ingredients:
-	switch(getarg(0)){
+	switch (getarg(0)){
 		case 13076:	//Raksasa_Dagger
 			return "you need 1 Murasame with 2 sockets and 1 Garnet";
 		case 13078: //Mikatsuki

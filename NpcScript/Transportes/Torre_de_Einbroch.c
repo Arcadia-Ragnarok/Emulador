@@ -20,14 +20,14 @@ einbroch,175,196,5	script	Morei#einTower	4_M_EINMAN2,{
 	mes "Se você quiser voltar para o andar térreo, por favor me avise.";
 	mes "Você gostaria de voltar para o térreo?";
 	next;
-	switch(select("Sim", "Não")) {
+	switch (select("Sim","Não")) {
 		case 1:
 		mes "[Morei]";
 		mes "Tudo bem.";
 		mes "Deixe-me levá-lo para o térreo.";
 		mes "Obrigado por usar nossos serviços.";
 		close2;
-		warp("einbroch",170, 229);
+		warp("einbroch",170,229);
 		end;
 		case 2:
 		mes "[Morei]";
@@ -51,7 +51,7 @@ einbroch,175,196,5	script	Morei#einTower	4_M_EINMAN2,{
 	mes "E agora estamos oferecendo uma promoção especial chamada de Combo da Maçã por apenas 20 zenys.";
 	mes "Esse combo conta com o ticket para entrar na Torre de Einbroch e a maçã para um lanchinho.";
 	next;
-	switch(select("Apenas o Ticket", "Combo da Maçã", "Cancelar")) {
+	switch (select("Apenas o Ticket","Combo da Maçã","Cancelar")) {
 		case 1:
 		if (Zeny < 10) {
 			mes "[Oberu]";
@@ -64,7 +64,7 @@ einbroch,175,196,5	script	Morei#einTower	4_M_EINMAN2,{
 			mes "Deixe-me guiá-lo para a Torre agora mesmo.";
 			Zeny -= 10;
 			close2;
-			warp("einbroch", 181, 196);
+			warp("einbroch",181,196);
 			end;
 		}
 		case 2:
@@ -86,9 +86,9 @@ einbroch,175,196,5	script	Morei#einTower	4_M_EINMAN2,{
 				mes "Obrigado por utilizar nossos serviços.";
 				mes "Deixe-me guiá-lo para a Torre agora mesmo.";
 				Zeny -= 20;
-				getitem(Apple, 1);
+				getitem(Apple,1);
 				close2;
-				warp("einbroch", 174, 204);
+				warp("einbroch",174,204);
 				end;
 			}
 		}

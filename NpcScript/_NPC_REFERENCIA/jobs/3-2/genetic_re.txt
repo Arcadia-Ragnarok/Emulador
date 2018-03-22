@@ -69,7 +69,7 @@ alde_alche,35,186,5	script	Alchemist Union Member	1_M_SIGNALCHE,{
 				mes "[Membro da União de Alquimistas]";
 				mes "Que som é esse? Você quer conhecer um bioquímico? ";
 				next;
-				switch(select("Claro, eu quero conhecer um bioquímico.:Não eu não quero conhecer ninguém.")) {
+				switch (select("Claro, eu quero conhecer um bioquímico.:Não eu não quero conhecer ninguém.")) {
 				case 1:
 					mes "[Membro da União Alquimista]";
 					mes "Escolha sábia!";
@@ -136,7 +136,7 @@ job3_gen01,25,58,3	script	Devries#gen	4_LGTSCIENCE,{
 		mes "Porque sou de Rune-Midgard!";
 		mes "Você já foi para Rune-Midgard? Todos em Rune-Midgard falam assim.";
 		next;
-		switch(select("Impossível?!:Eu também sou de Rune-Midgard.")) {
+		switch (select("Impossível?!:Eu também sou de Rune-Midgard.")) {
 		case 1:
 			mes "[Devries]";
 			mes "Impossível?";
@@ -271,7 +271,7 @@ job3_gen01,25,58,3	script	Devries#gen	4_LGTSCIENCE,{
 		mes "Popo, você já ouviu falar da minha pesquisa?";
 		mes "Você veio aqui por causa disso, estou certo?";
 		next;
-		switch(select("Não.:Sim.") == 1){
+		switch (select("Não.:Sim.") == 1){
 		case 1:
 			mes "[Devries]";
 			mes "Bem.";
@@ -399,7 +399,7 @@ job3_gen01,25,58,3	script	Devries#gen	4_LGTSCIENCE,{
 		mes "[Devries]";
 		mes "Existe um problema?";
 		next;
-		switch(select("Nada.: O experimento falhou.")) {
+		switch (select("Nada.: O experimento falhou.")) {
 		case 1:
 			mes "[Devries]";
 			mes "Melhor começar, ou eu vou começar a gritar!!!";
@@ -595,11 +595,11 @@ job3_gen01,83,72,3	script	Delivery Box#generic	HIDDEN_NPC,{
 	mes "- É uma grande caixa. -";
 	if (job_gen == 2) {
 		next;
-		switch(select("Abrir a caixa.:Verificar o endereço.:Nada.")) {
+		switch (select("Abrir a caixa.:Verificar o endereço.:Nada.")) {
 		case 1:
 			mes "- Há vários sacos de biscoitos cuidadosamente embalados na caixa. -";
 			next;
-			switch(select("Pegar um saco de biscoitos.:Nada.")) {
+			switch (select("Pegar um saco de biscoitos.:Nada.")) {
 			case 1:
 				mes "- Você tirou um dos sacos de biscoito que estavam dentro da caixa. -";
 				job_gen = 3;
@@ -624,7 +624,7 @@ job3_gen01,12,56,3	script	Plant Guide#generic	HIDDEN_NPC,{
 	mes "<A mais fácil alquimia no mundo>";
 	mes "Escrito por Bob Ross.";
 	next;
-	switch(select("Animais:Plantas:Minerais:Etc")){
+	switch (select("Animais:Plantas:Minerais:Etc")){
 	case 1:
 		mes "...A utilização de animais em alquimia pode ser facilmente praticada por qualquer pessoa.";
 		mes "Você pode colocar os animais que você deseja usar na bandeja branca, imaginar o que quer e então praticar a alquimia.";
@@ -663,7 +663,7 @@ function	script	Genetic_Job_Plant	{
 		if (!questprogress(getarg(0))) {
 			mes "- "+getarg(2)+" -";
 			next;
-			switch(select("Usá-la como um material?.:Não usá-la.")) {
+			switch (select("Usá-la como um material?.:Não usá-la.")) {
 			case 1:
 				if (getarg(3, 0)) .@str$ = "some of the ";
 				mes "- Você adquiriu "+.@str$+getarg(1)+". -";
@@ -938,7 +938,7 @@ job3_gen01,91,48,3	script	Demi Calberine#gen	4_F_SCIENCE,{
 		mes "Suspiro, você ainda não terminou?";
 		mes "Você ainda quer continuar treinando?";
 		next;
-		switch(select("Sim.:Não.")) {
+		switch (select("Sim.:Não.")) {
 		case 1:
 			mes "[Demi Calberine]";
 			mes "Divirta-se treinando com seu carrinho. ";
@@ -990,7 +990,7 @@ job3_gen01,18,39,3	script	Warning#gen	2_BULLETIN_BOARD,{
 	mes "Se você mexer nos meus esporos, eu vou gritar!!!";
 	if (job_gen < 75) close;
 	next;
-	switch(select("Sair da sala.: Ficar parado.")) {
+	switch (select("Sair da sala.: Ficar parado.")) {
 	case 1:
 		mes "- É melhor sair. -";
 		close2;

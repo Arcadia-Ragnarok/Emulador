@@ -17,11 +17,11 @@ hugel,98,56,3	script	Guia#hugguide	4_F_LGTGRAND,{
 	mes "[Guia de Hegel]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Hugel^000000^000000.";
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Igreja]","[Estalagem]","[Bar]","[Aeroporto]","[Loja de Armas]","[Loja de Utilidades]","[Guilda dos Caçadores]","[Loja de Artigos]","[Expedição ao Santuário]","Menu Anterior")) {
+				switch (select("[Igreja]","[Estalagem]","[Bar]","[Aeroporto]","[Loja de Armas]","[Loja de Utilidades]","[Guilda dos Caçadores]","[Loja de Artigos]","[Expedição ao Santuário]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Hugel]";
 					mes "Posição da^0000FF Igreja^000000 marcada em seu mini mapa.";
@@ -85,7 +85,7 @@ hugel,98,56,3	script	Guia#hugguide	4_F_LGTGRAND,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Representante Eventos Inc.]","Menu Anterior")) {
+				switch (select("[Representante Eventos Inc.]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Hugel]";
 					mes "Posição do^0000FF Representante Eventos Inc.^000000 marcado em seu mini mapa.";

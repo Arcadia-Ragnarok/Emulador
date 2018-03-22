@@ -71,14 +71,14 @@ ma_scene01,174,179,4	script	Taho	4_M_DEWZATIMAN,{
 			mes "[Taho]";
 			mes "Are you the leader of the Bakonawa slayers? The road is not well so we have to go down the cliff with a rope, is that OK?";
 			next;
-			.@i = select("Please weave a rope.", "Now I will go down.", "Cancel.");
+			.@i = select("Please weave a rope.","Now I will go down.","Cancel.");
 		} else {
 			mes "[Taho]";
 			mes "You came for slaying Bakonawa. The leader of your party has to help me weaving the rope for going down.";
 			next;
-			.@i = select("", "Now I will go down.", "Cancel.");
+			.@i = select("","Now I will go down.","Cancel.");
 		}
-		switch(.@i) {
+		switch (.@i) {
 		case 1:
 			.@instance = instance_create(.@md_name$,.@party_id);
 			if (.@instance < 0) {
@@ -97,7 +97,7 @@ ma_scene01,174,179,4	script	Taho	4_M_DEWZATIMAN,{
 			mes "Now I'm weaving, so you can go down when I'm done.";
 			close;
 		case 2:
-			if( has_instance("1@ma_b") == "" ) {
+			if ( has_instance("1@ma_b") == "" ) {
 				mes "The memorial dungeon "+.@md_name$+" does not exist.";
 				mes "The party leader did not generate the dungeon yet.";
 				close;
@@ -146,7 +146,7 @@ sec_in02,26,26,4	script	Bakonawa's Rage	4_M_DEWZATIMAN,{
 		mes "[Taho]";
 		mes "Now I will make Bakonawa spring out from the lake.";
 		next;
-		switch(select("Hold on! I'm not ready yet!", "Let's do it!")) {
+		switch (select("Hold on! I'm not ready yet!","Let's do it!")) {
 		case 1:
 			mes "[Taho]";
 			mes "Oh... alright... tell me when you are ready.";
@@ -466,7 +466,7 @@ OnMobSpawn:
 		.@mob_rg = 50 - .@mob_dead_num;
 		if (.@mob_rg > getarg(0))
 			.@mob_rg = getarg(0);
-		while(1) {
+		while (1) {
 			areamonster .@map$,74,74,82,74,"Bakonawa's Puppet",2334,1,.@label$;
 			.@mob_dead_num = mobcount(.@map$,.@label$);
 			if (.@mob_dead_num >= .@mob_rg) {
@@ -530,7 +530,7 @@ OnTimer10000:
 		mes "[Taho]";
 		mes "Are we going to try again?";
 		next;
-		switch(select("Hold on a sec!", "Of course! We cannot stand back now!")) {
+		switch (select("Hold on a sec!","Of course! We cannot stand back now!")) {
 		case 1:
 			mes "[Taho]";
 			mes "AWW... I almost brought him out.";

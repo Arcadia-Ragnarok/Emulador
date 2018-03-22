@@ -30,7 +30,7 @@ malangdo,149,120,5	script	Cigana Andarilha#mal	4_F_WANDERER,5,1,{
 	mes "La di dah di dah!";
 	close;
 	OnTouch:
-	switch(rand(5)) {
+	switch (rand(5)) {
 		case 0:
 		soundeffect("ring_of_nibelungen.wav", 0);
 		break;

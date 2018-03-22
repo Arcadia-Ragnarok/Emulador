@@ -25,7 +25,7 @@ valkyrie,44,47,5	script	Arquimago#Valkyrie	4_M_JOB_WIZARD,{
 			mes "Chegou a hora.";
 			mes "E Rune-Midgard está precisando daqueles que podem exercer o poder da magia...";
 			next;
-			jobchange (Job_High_Wizard);
+			jobchange(Job_High_Wizard);
 			ADVJOB = 0;
 			mes "[Arquimago]";
 			mes "Parabéns.";

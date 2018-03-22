@@ -80,7 +80,7 @@ dali02,44,129,5	script	Unpleasent Royal Guard	4_M_SAKRAYROYAL,{
 	mes("You run ahead and i will catch up.\r"
 		"We must save her.");
 	next;
-	if (select("I will help.", "This is not a good time.") == 2) {
+	if (select("I will help.","This is not a good time.") == 2) {
 		mes("[Unpleasent Royal Guard]");
 		mes("Even now all the royal guards are fighting and dying to the monsters.");
 		next;
@@ -142,7 +142,7 @@ dali02,41,134,0	script	Interdimensional Device::gpportal	PORTAL,{
 	mes("[Unpleasent Royal Guard]");
 	mes("I can see the secret passage into the Palace... Are you ready to save the princess?!");
 	next;
-	if (select("Enter", "Stop") == 2) {
+	if (select("Enter","Stop") == 2) {
 		mes("[Unpleasent Royal Guard]");
 		mes("Even now all the royal guards are fighting and dying to the monsters.");
 		next;
@@ -243,7 +243,7 @@ OnInstanceInit:
 	mes("Would it be easier for you if I were married and sent off to another country?");
 	npctalk(_("Would it be easier for you if I were married and sent off to another country?"), instance_npcname("Tiara Princess#gp2"));
 	next;
-	cutin("", 255);
+	cutin("",255);
 	mes("[Lurid Royal Guard]");
 	mes("I will alway stand by you and protect you forever.");
 	npctalk(_("I will alway stand by you and protect you forever."), instance_npcname("Lurid Royal Guard#gp2"));
@@ -431,7 +431,7 @@ OnInstanceInit:
 	mes("Aah, aah!!!");
 	npctalk(_("Aah, aah!!!"), instance_npcname("Visiting Prince#gp4"));
 	close2();
-	cutin("", 255);
+	cutin("",255);
 	donpcevent instance_npcname("#gp4control")+"::OnBoss";
 	end;
 }
@@ -527,7 +527,7 @@ OnInstanceInit:
 	mes("I love you...");
 	npctalk(_("I love you..."), instance_npcname("Tiara Princess#gp5"));
 	close2();
-	cutin("", 255);
+	cutin("",255);
 	donpcevent instance_npcname("#gp5control")+"::OnStart2";
 	end;
 }
@@ -587,7 +587,7 @@ OnInstanceInit:
 	mes("[Sakray]");
 	mes("I am willing to hunt you later for Thanatos.");
 	next;
-	cutin("", 255);
+	cutin("",255);
 	mes("[Sakray]");
 	mes("Farewell then.");
 	close2();
@@ -725,7 +725,7 @@ OnInstanceInit:
 		mes("[King]");
 		mesf("to make a ^FF0000%s^000000 \r"
 			 "I need %d ^009900Gray Shard^000000", getitemname(.@items_list[.@choice]), .@cost[.@choice]);
-		switch (select("Cancel", "hand over "+.@cost[.@choice]+" Gray Shard.")) {
+		switch (select("Cancel","hand over "+.@cost[.@choice]+" Gray Shard.")) {
 		case 1:
 			next;
 			mes("[King]");

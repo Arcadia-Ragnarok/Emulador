@@ -57,7 +57,7 @@
 	.@part = select(.@menu$);
 	if (!getequipisequiped(.@part)) {
 		mes "[Blacksmith Mighty Hammer]";
-		switch(.@part) {
+		switch (.@part) {
 		case 1:
 			mes "I'm a blacksmith, not a hairstylist.";
 			break;
@@ -97,7 +97,7 @@
 		mes "I only handle items with refine levels from +7 to +9.";
 		close;
 	}
-	switch(getequipweaponlv(.@part)) {
+	switch (getequipweaponlv(.@part)) {
 	default:
 	case 0:
 		.@price = 20000;
@@ -115,7 +115,7 @@
 	mes "In order to refine the gear you selected you need ^ff9999"+getitemname(.@material)+"^000000 and 20,000 zeny as a fee.";
 	mes "Do you have them ready?";
 	next;
-	if(select("Yes", "No") == 2) {
+	if (select("Yes","No") == 2) {
 		mes "[Blacksmith Mighty Hammer]";
 		mes "I will wait until you are ready.";
 		close;
@@ -126,7 +126,7 @@
 		mes "Well, even if it fails, it only decreases by 1 refine level.";
 		mes "Would you like to continue refining?";
 		next;
-		if(select("Yes", "No") == 2) {
+		if (select("Yes","No") == 2) {
 			mes "[Blacksmith Mighty Hammer]";
 			mes "Only those who overcome fear of failure will obtain a masterpiece.";
 			close;
@@ -190,7 +190,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 	.@part = select(.@menu$);
 	if (!getequipisequiped(.@part)) {
 		mes "[Basta]";
-		switch(.@part) {
+		switch (.@part) {
 		case 1:
 			mes "Is your head an equipment?";
 			break;
@@ -235,7 +235,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 		mes "This weapon is perfect, no need to refine it anymore";
 		close;
 	}
-	switch(getequipweaponlv(.@part)) {
+	switch (getequipweaponlv(.@part)) {
 	default:
 	case 0:
 		.@price = 100000;
@@ -256,7 +256,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 	mes "To refine this equipment, I need 1 ^ff9999"+getitemname(.@material)+"^000000 and 100,000 zeny as a fee.";
 	mes "Do you really want to refine this?";
 	next;
-	if(select("Yes", "No") == 2) {
+	if (select("Yes","No") == 2) {
 		mes "[Basta]";
 		mes "Okay. If that's what you want...";
 		close;
@@ -275,7 +275,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 		mes "Compared to other blacksmiths, the risk is smaller.";
 		mes "I've given all precautions. Do you want to try it?";
 		next;
-		if(select("Yes", "No") == 2) {
+		if (select("Yes","No") == 2) {
 			mes "[Basta]";
 			mes "Well";
 			mes "Not challenging at all could also be a kind of wisdom in life.";
@@ -302,7 +302,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 	}
 	downrefitem .@part;
 	next;
-	emotion (!rand(5))?e_cash:e_omg;
+	emotion(!rand(5))?e_cash:e_omg;
 	mes "[Basta]";
 	mes "Aaaaaaaaaaak!!!";
 	next;

@@ -34,7 +34,7 @@ alberta,97,51,0	script	Mercador#alb	4_M_02,{
 alberta,53,39,0	script	Mercador#alb2	4W_SAILOR,{
 	mes "[Mercador]";
 	mes "Oh, você parece ser de fora da cidade.";
-	mes "Seja bem vind" + (Sex == SEX_MALE ? "o" : "a") + " à Alberta.";
+	mes "Seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Alberta.";
 	emotion(e_gasp);
 	next;
 	mes "[Mercador]";
@@ -49,7 +49,7 @@ alberta,53,39,0	script	Mercador#alb2	4W_SAILOR,{
 
 // ------------------------------------------------------------------
 alberta,58,80,2	script	Mercador#alb3	4W_M_03,{
-	switch(rand(2)) {
+	switch (rand(2)) {
 		case 1:
 		mes "[Mercador]";
 		mes "Nós, mercadores muitas vezes colocamos o pé na estrada para fazer bons negócio.";
@@ -86,7 +86,7 @@ alberta,131,139,2	script	Velho Bêbado#alb	1_M_JOBGUIDER,{
 	mes "O quqquê você está olhando?";
 	mes "Sai fora!!";
 	next;
-	switch(select("Não, vou ficar aqui mesmo.", "Tah tah! Seu velho bêbado.")) {
+	switch (select("Não, vou ficar aqui mesmo.","Tah tah! Seu velho bêbado.")) {
 		case 1:
 		mes "[Velho Bêbado]";
 		mes "Hahahaha ^666666*hiccup*^000000...";
@@ -95,7 +95,7 @@ alberta,131,139,2	script	Velho Bêbado#alb	1_M_JOBGUIDER,{
 		mes "Eu posso parecer um lixo agora.";
 		mes "Mas voltando no tempo, eu era um belo marinheiro à bordo do 'Going Mary.'";
 		next;
-		switch(select("Isso é um navio?", "Sério? Não brinca!")) {
+		switch (select("Isso é um navio?","Sério? Não brinca!")) {
 			case 1:
 			mes "[Velho Bêbado]";
 			mes "O quê?!";
@@ -140,7 +140,7 @@ alberta,131,139,2	script	Velho Bêbado#alb	1_M_JOBGUIDER,{
 
 // ------------------------------------------------------------------
 alberta,62,156,2	script	Phina#alb	8_F,{
-	switch(rand(3)){
+	switch (rand(3)){
 		case 0:
 		mes "[Phina]";
 		mes "Uns dias atrás, eu estava andando na floresta e vi um longo, fino pedaço de grama verde saindo direto do chão.";
@@ -225,7 +225,7 @@ alberta,127,143,3	script	Belder	4_M_03,{
 		mes "Umas damas bem bonitas devem atrair os clientes às... Oh!";
 		mes "Bem-vindo à Belder Empréstimos!";
 		next;
-		switch(select("Eu posso promover seus negócios!","Ahn...")) {
+		switch (select("Eu posso promover seus negócios!","Ahn...")) {
 			case 1:
 			if (Sex == SEX_MALE) {
 				mes "[Belder]";

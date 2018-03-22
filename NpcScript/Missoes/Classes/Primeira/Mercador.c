@@ -9,7 +9,6 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Copyright: Spell Master (14/08/2017)                            |
-| - Desenvolvido por: Spell Master 14/08/2017                       |
 | - Info: Quest de Mudança de Classe para Mercador.                 |
 | - Nota:                                                           |
 |   * Entrega na Cidade Morroc                                      |
@@ -46,7 +45,7 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 				mes "Eu acho que é o destino nos encontrarmos denovo.";
 				mes "Deixe-me transformá-lo em um Mercador!";
 				next;
-				jobchange (Job_Merchant_High);
+				jobchange(Job_Merchant_High);
 				mes "[Chefe Mansur]";
 				mes "Ah. Como é nostálgico.";
 				mes "Assim como nos velhos tempos!";
@@ -91,7 +90,7 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 			mes "Também terá que pagar 1.000 Zenys pela taxa de inscrição.";
 			mes "Você não precisará pagar tudo agora, pode dar 500 Zenys agora, e mais 500 quando terminar o teste.";
 			next;
-			switch(select("Preencer a inscrição","Teste do mercador?","Cancelar")) {
+			switch (select("Preencer a inscrição","Teste do mercador?","Cancelar")) {
 				case 1:
 				mes "[Chefe Mansur]";
 				mes strcharinfo(PC_NAME)+"?!";
@@ -124,7 +123,7 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 					}
 					break;
 				}
-				switch(rand(1,8)) {
+				switch (rand(1,8)) {
 					// Entrega em Prontera
 					case 1: merchantq_3 = 2485741; break;
 					case 2: merchantq_3 = 2328137; break;
@@ -146,15 +145,15 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 				if (merchantq_3 == 2485741 || merchantq_3 == 2328137) {
 					mes "Depois leve até a antiga Associação dos Espadachins em Prontera.";
 					mes "E entregue a Funcionária Kafra que fica lá por perto.";
-					setquest (1009);
+					setquest(1009);
 				} else if (merchantq_3 == 2989396 || merchantq_3 == 2191737) {
 					mes "Depois leve até a Guilda dos Magos em Geffen.";
 					mes "E entregue para o mago.";
-					setquest (1010);
+					setquest(1010);
 				} else if (merchantq_3 == 3012685 || merchantq_3 == 3487372) {
 					mes "Depois leve até a Morroc.";
 					mes "E entregue para Java Dulian, um sujeito que costuma fazer tinturas por lá.";
-					setquest (1011);
+					setquest(1011);
 				} else if (merchantq_3 == 3318702 || merchantq_3 == 3543625) {
 					mes "Depois leve até a Ilha de Byalan.";
 					mes "E entregue para Funcionária Kafra.";
@@ -162,8 +161,8 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 					mes "[Chefe Mansur]";
 					mes "Quando chegar até ela por favor entregue essa mensagem para ela.";
 					mes "Não é nada de mais, apenas um pedido pessoal meu.";
-					getitem (Delivery_Message,1);
-					setquest (1012);
+					getitem(Delivery_Message,1);
+					setquest(1012);
 				}
 				next;
 				mes "[Chefe Mansur]";
@@ -215,10 +214,10 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 				mes "Mas onde está o recibo da entrega?";
 				close;
 			} else {
-				if (questprogress(1009)) { completequest (1009); }
-				if (questprogress(1010)) { completequest (1010); }
-				if (questprogress(1011)) { completequest (1011); }
-				if (questprogress(1012)) { completequest (1012); }
+				if (questprogress(1009)) { completequest(1009); }
+				if (questprogress(1010)) { completequest(1010); }
+				if (questprogress(1011)) { completequest(1011); }
+				if (questprogress(1012)) { completequest(1012); }
 				if (countitem(Merchant_Voucher_1)) { delitem(Merchant_Voucher_1,1); }
 				if (countitem(Merchant_Voucher_2)) { delitem(Merchant_Voucher_2,1); }
 				if (countitem(Merchant_Voucher_3)) { delitem(Merchant_Voucher_3,1); }
@@ -294,8 +293,8 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 			}
 			mes "[Chefe Mansur]";
 			mes "Que de agora em diante possa fazer fortuna como "+(Sex == SEX_MALE ? "um Mercador":"uma Mercadora")+".";
-			jobchange (Job_Merchant);
-			callfunc ("ClearJobQuest");
+			jobchange(Job_Merchant);
+			callfunc("ClearJobQuest");
 			close;
 		}
 	}
@@ -315,7 +314,7 @@ alberta_in,28,29,2	script	Mercador#merchantq	4_M_01,{
 		mes "[Mercador da Guilda]";
 		mes "Claro seu nome está na lista.";
 		mes "Qual é o número de série do pacote de entrega?";
-		input (.@input);
+		input(.@input);
 		next;
 		if ( (!.@input || .@input > 5000000) || (.@input != merchantq_3) ) {
 			mes "[Mercador da Guilda]";
@@ -323,9 +322,9 @@ alberta_in,28,29,2	script	Mercador#merchantq	4_M_01,{
 			close;
 		} else {
 			if (merchantq_3 == 2485741 || merchantq_3 == 2989396 || merchantq_3 == 3012685 || merchantq_3 == 3318702) {
-				getitem (Merchant_Box_1,1);
+				getitem(Merchant_Box_1,1);
 			} else if (merchantq_3 == 2328137 || merchantq_3 == 2191737 || merchantq_3 == 3487372 || merchantq_3 == 3543625) {
-				getitem (Merchant_Box_2,1);
+				getitem(Merchant_Box_2,1);
 			}
 			mes "[Mercador da Guilda]";
 			mes "Aqui está o pacote de entrega, agora vá e tome muito cuidado com a encomenda.";
@@ -337,9 +336,9 @@ alberta_in,28,29,2	script	Mercador#merchantq	4_M_01,{
 		if ( (merchantq_3 == 2485741 || merchantq_3 == 2989396 || merchantq_3 == 3012685 || merchantq_3 == 3318702) && !countitem(Merchant_Box_1) ) {
 			mes "Como você pode perder o pacote de entrega?!";
 			mes "Tome mais cuidado.";
-			getitem (Merchant_Box_1,1);
+			getitem(Merchant_Box_1,1);
 		} else if ( (merchantq_3 == 2328137 || merchantq_3 == 2191737 || merchantq_3 == 3487372 || merchantq_3 == 3543625) && !countitem(Merchant_Box_2)) {
-			getitem (Merchant_Box_2,1);
+			getitem(Merchant_Box_2,1);
 			mes "Como você pode perder o pacote de entrega?!";
 			mes "Tome mais cuidado.";
 			close;
@@ -357,7 +356,7 @@ alberta_in,28,29,2	script	Mercador#merchantq	4_M_01,{
 
 // ------------------------------------------------------------------
 prontera,248,42,0	script	Funcionária Kafra#merchantq	4_F_KAFRA2,{
-	cutin ("kafra_02",2);
+	cutin("kafra_02",2);
 	mes "[Funcionária Kafra]";
 	if (merchantq == 3) {
 		if (merchantq_3 == 2485741 || merchantq_3 == 2328137) {
@@ -368,7 +367,7 @@ prontera,248,42,0	script	Funcionária Kafra#merchantq	4_F_KAFRA2,{
 				if (select("Sim, está aqui sua encomenda","Não sei do que está falando") == 2) {
 					mes "[Funcionária Kafra]";
 					mes "Estranho achei que era você.";
-					close2; cutin ("",255); end;
+					close2; cutin("",255); end;
 				}
 				mes "[Funcionária Kafra]";
 				mes "Muito obrigada.";
@@ -377,34 +376,34 @@ prontera,248,42,0	script	Funcionária Kafra#merchantq	4_F_KAFRA2,{
 				if (countitem(Merchant_Box_1)) {
 					merchantq = 4;
 					merchantq_3 = 1;
-					getitem (Merchant_Voucher_1,1);
+					getitem(Merchant_Voucher_1,1);
 					delitem(Merchant_Box_1,1);
 				} else if (countitem(Merchant_Box_2)) {
 					merchantq = 4;
 					merchantq_3 = 2;
-					getitem (Merchant_Voucher_2,2);
+					getitem(Merchant_Voucher_2,2);
 					delitem(Merchant_Box_2,1);
 				}
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else {
 				mes "Acho que você não tem a encomenda que pedi a Guilda dos Mercadores.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		} else {
 			mes "Acho que você não tem a encomenda que pedi a Guilda dos Mercadores.";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 	} else if (merchantq == 4) {
 		mes "Muito obrigada.";
 		mes "Agora leve esse recibo para a Guilda dos Mercadores.";
 		mes "Ele prova que você fez a entrega.";
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 	} else {
 		mes "Olá, estou esperando um encomenda.";
 		mes "Se deseja usar os serviços da Corporação Kafra.";
 		mes "Por favor procure outra funcionária.";
 		mes "E desculpe pelo incoveniente.";
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 	}
 }
 
@@ -429,12 +428,12 @@ geffen_in,155,122,4	script	Estudioso#merchantq	1_M_01,{
 				if (countitem(Merchant_Box_1)) {
 					merchantq = 4;
 					merchantq_3 = 3;
-					getitem (Merchant_Voucher_3,1);
+					getitem(Merchant_Voucher_3,1);
 					delitem(Merchant_Box_1,1);
 				} else if (countitem(Merchant_Box_2)) {
 					merchantq = 4;
 					merchantq_3 = 4;
-					getitem (Merchant_Voucher_4,2);
+					getitem(Merchant_Voucher_4,2);
 					delitem(Merchant_Box_2,1);
 				}
 				close;

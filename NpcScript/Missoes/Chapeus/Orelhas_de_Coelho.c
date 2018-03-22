@@ -19,13 +19,13 @@ alberta,26,229,0	script	Funcionária#bunny	4_M_01,{
 		mes "Olá você aí!!";
 		mes "Você gostaria de participar do Evento especial da ^529DFFOrelhas de Coelho^000000 da Corporação Kafra?";
 		next;
-		switch(select("Claro, está aqui os itens", "Informações do Evento", "Cancelar")) {
+		switch (select("Claro, está aqui os itens","Informações do Evento","Cancelar")) {
 			case 1:
 			mes "[Funcionária]";
 			mes "Ok.";
 			mes "Deixe-me verificar vendo se você trouxe todos os itens...";
 			next;
-			setarray(.@items[0], 949,100, 706,1, 722,1, 2213,1);
+			setarray(.@items[0],949,100,706,1,722,1,2213,1);
 			for (.@i = 0; .@i < 8; .@i += 2) {
 				if (countitem(.@items[.@i]) < .@items[.@i+1]) {
 					mes "[Funcionária]";
@@ -46,15 +46,15 @@ alberta,26,229,0	script	Funcionária#bunny	4_M_01,{
 					close;
 				}
 			}
-			delitem(Feather, 100);
-			delitem(Four_Leaf_Clover, 1);
-			delitem(Scarlet_Jewel, 1);
-			delitem(Cat_Hairband, 1);
+			delitem(Feather,100);
+			delitem(Four_Leaf_Clover,1);
+			delitem(Scarlet_Jewel,1);
+			delitem(Cat_Hairband,1);
 			mes "[Funcionária]";
 			mes "Ah, aqui vai!";
 			mes "A perfeita Orelhas de Coelho!";
 			mes "Bem, espero que goste.";
-			getitem(Bunny_Band, 1);
+			getitem(Bunny_Band,1);
 			BUNYBND = 0;
 			next;
 			mes "[Funcionária]";
@@ -70,7 +70,7 @@ alberta,26,229,0	script	Funcionária#bunny	4_M_01,{
 		mes "Oi você aí! Você gostaria de juntar-se ao nosso especial ^529DFFEvento da Orelhas de Coelho^000000 feito pela Corporação";
 		mes "Kafra e patrocinado pela a Corporação de Mercadores de Alberta?";
 		next;
-		switch(select("Entrar no Evento", "Informação do Evento", "Cancelar")) {
+		switch (select("Entrar no Evento","Informação do Evento","Cancelar")) {
 			case 1:
 			BUNYBND = 1;
 			mes "[Funcionária]";

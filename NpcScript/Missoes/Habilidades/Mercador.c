@@ -68,17 +68,17 @@ alberta,83,96,5	script	Necko	4W_M_02,7,7,{
 			mes "Aprenda a gritar com a minha ajuda!";
 			mes "Gostaria de aprender o Grito de Guerra?";
 			next;
-			switch (select("Sim!!!!", "Não", "O que é isso?")) {
+			switch (select("Sim!!!!","Não","O que é isso?")) {
 				case 1:
 				mes "[Necko]";
 				mes "Ahahahahaha!! Bom!!!";
 				mes "Esse é o espírito!";
 				mes "Aqui vamos nós!";
 				next;
-				delitem(Scarlet_Jewel, 7);
-				delitem(Banana_Juice, 1);
-				delitem(Mushroom_Spore, 50);
-				skill("MC_LOUD", 1, 0);
+				delitem(Scarlet_Jewel,7);
+				delitem(Banana_Juice,1);
+				delitem(Mushroom_Spore,50);
+				skill("MC_LOUD",1,0);
 				mes "[Necko]";
 				mes "Você aprendeu o Grito de Guerra!!";
 				mes "Grite o quanto quiser!!";
@@ -192,7 +192,7 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 			mes "Mas seu carrinho não parece se encaixar a sua fama.";
 			mes "Que pena.";
 			next;
-			switch (select("É por isso que eu vim", "O que acontece com o meu carrinho?")) {
+			switch (select("É por isso que eu vim","O que acontece com o meu carrinho?")) {
 				case 1:
 				if ((countitem(Wooden_Block) > 49) && (countitem(Iron) > 9) && (countitem(Animals_Skin) > 19)) {
 					mes "[Charlron]";
@@ -200,10 +200,10 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 					mes "Com as coisas que você trouxe";
 					mes "Eu posso mudar seu carrinho.";
 					next;
-					delitem(Wooden_Block, 50);
-					delitem(Iron, 10);
-					delitem(Animals_Skin, 20);
-					skill("MC_CHANGECART", 1, 0);
+					delitem(Wooden_Block,50);
+					delitem(Iron,10);
+					delitem(Animals_Skin,20);
+					skill("MC_CHANGECART",1,0);
 					mes "[Charlron]";
 					mes "Parabéns.";
 					mes "Agora é possível escolher um carrinho de acordo com seu gosto.";
@@ -316,7 +316,7 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 			mes "Mmm, você deve ser capaz de aprender";
 			mes "Cavalo de Pau!";
 			next;
-			switch (select("Ei, é por isso que eu vim", "O que é isso?")) {
+			switch (select("Ei, é por isso que eu vim","O que é isso?")) {
 				case 1:
 				if ((countitem(Grape_Juice) > 1) && (countitem(Iron) > 19) && (countitem(Sticky_Mucus) > 29) && (countitem(Wing_Of_Fly) > 19) && (countitem(Tentacle) > 4)) {
 					mes "[Gershaun]";
@@ -329,12 +329,12 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 					mes "Vou premiar aqueles que";
 					mes "estão ansiosos para balançar seus carrinhos!";
 					next;
-					delitem(Grape_Juice, 2);
-					delitem(Iron, 20);
-					delitem(Sticky_Mucus, 30);
-					delitem(Wing_Of_Fly, 20);
-					delitem(Tentacle, 5);
-					skill("MC_CARTREVOLUTION", 1, 0);
+					delitem(Grape_Juice,2);
+					delitem(Iron,20);
+					delitem(Sticky_Mucus,30);
+					delitem(Wing_Of_Fly,20);
+					delitem(Tentacle,5);
+					skill("MC_CARTREVOLUTION",1,0);
 					mes "Agora você pode usar o Cavalo de Pau.";
 					mes "Espero que você faça Mercadores famosos por usar este incrível poder destrutivo.";
 					mes "Muahahahahaha!!!";
@@ -348,7 +348,7 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 					mes "É suco de banana!";
 					mes "Muito obrigado!";
 					mes "...............Kaah!";
-					delitem(Banana_Juice, 1);
+					delitem(Banana_Juice,1);
 					mes "Muito refrescante! Obrigado! Até logo!";
 					next;
 					mes "[Gershaun]";
@@ -436,7 +436,7 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 		mes "Tentei cozinhar ramen e ainda tentei pular corda.";
 		mes "Mas nenhum deles era capaz de me satisfazer.";
 		next;
-		switch (select("Eu sei, Eu sei.", "...?")) {
+		switch (select("Eu sei, Eu sei.","...?")) {
 			case 1:
 			mes "[Gershaun]";
 			mes "Não, o que eu estou dizendo é...";
@@ -473,7 +473,7 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 			mes "[Gershaun]";
 			mes "Você gostaria de aprender esta habilidade?";
 			next;
-			switch (select("Sim!!", "Eu quero aprender...")) {
+			switch (select("Sim!!","Eu quero aprender...")) {
 				case 1:
 				mes "[Gershaun]";
 				mes "Ok!";

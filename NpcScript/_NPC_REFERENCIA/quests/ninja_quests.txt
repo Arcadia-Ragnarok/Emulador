@@ -102,7 +102,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "I'm not sure what I'll do, but I get the feeling I'll feel inspired once I see that armor.";
 		mes "How 'bout it Will you find me a ^ff0000Guard[1]^000000?";
 		next;
-		if(select("Hmm.. I don't feel like it.", "Very well.") == 1){
+		if (select("Hmm.. I don't feel like it.","Very well.") == 1){
 			mes "[Boshuu]";
 			mes "Ah What a shame..";
 			mes "You're missing out on an opportunity to get your hands on something made by a genius craftsman like myself...";
@@ -134,7 +134,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "[Boshuu]";
 		mes "How 'bout it? Want to try?";
 		next;
-		if(select("No thanks.", "Ok, sounds good.") == 1){
+		if (select("No thanks.","Ok, sounds good.") == 1){
 			mes "[Boshuu]";
 			mes "Hmm, Ok.";
 			mes "I'm so grateful that I was able to see such a rare thing from overseas.";
@@ -180,7 +180,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "But before I start, I must ask you one more time.";
 		mes "Do you want to give me the materials you've brought and receive a Slotted Arm Guard instead?";
 		next;
-		if(select("No", "Yes") == 1){
+		if (select("No","Yes") == 1){
 			mes "[Boshuu]";
 			mes "Ok";
 			mes "Well, if you make up your mind again, come and see me.";
@@ -191,7 +191,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 			mes "This should only take a second";
 			mes "Bang Clang  Bang Clang";
 			next;
-			if(countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
+			if (countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
 				mes "HACK DETECTED";
 				close;
 			}
@@ -214,7 +214,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "Oh I see you've come back.";
 		mes "Is it because you need another slotted Arm Guard?";
 		next;
-		if(select("Nope, not really.", "Yes, make me another one.") == 1){
+		if (select("Nope, not really.","Yes, make me another one.") == 1){
 			mes "[Boshuu]";
 			mes "Hmmph You sure a weird one.";
 			mes "Well, I'll see you later";
@@ -245,7 +245,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 			mes "Before I begin, let me ask one final time...";
 			mes "Will you give me the materials you've gathered, and in turn, receive a slotted Arm Guard?";
 			next;
-			if(select("No", "Yes") == 1){
+			if (select("No","Yes") == 1){
 				mes "[Boshuu]";
 				mes "Ok";
 				mes "If you ever make up your mind";
@@ -261,7 +261,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 				mes "Here, it's finally complete.";
 				mes "I present to you a Slotted Arm Guard.";
 				next;
-				if(countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
+				if (countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
 					mes "HACK DETECTED";
 					close;
 				}
@@ -312,7 +312,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "I you want to, bring me an Arm Guard, a Slotted Guard, and 10,000 Zeny, and I'll make you a Slotted Arm Guard.";
 		mes "How 'bout it? Would you like to obtain a Slotted Arm Guard?";
 		next;
-		if(select("No, I'd rather not.", "Yes!! Please make it for me!") == 1){
+		if (select("No, I'd rather not.","Yes!! Please make it for me!") == 1){
 			mes "[Boshuu]";
 			mes "Hmm, is that so?";
 			mes "What a shame...";
@@ -349,7 +349,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 			mes "Will you give me the materials you've gathered,";
 			mes "and in turn, receive a Slotted Arm Guard?";
 			next;
-			if(select("No", "Yes") == 1){
+			if (select("No","Yes") == 1){
 				mes "[Boshuu]";
 				mes "Ok";
 				mes "If you ever make up your mind";
@@ -361,7 +361,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 				mes "This should only take a second";
 				mes "Bang Clang Bang Clang ";
 				next;
-				if(countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
+				if (countitem(Guard_) < 1 || countitem(Arm_Guard) < 1 || Zeny < 10000){
 					mes "HACK DETECTED";
 					close;
 				}
@@ -382,7 +382,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 
 que_ng,28,45,3	script	Basshu	4_M_04,{
 
-	if(BaseClass != Job_Ninja){
+	if (BaseClass != Job_Ninja){
 		mes "[Basshu]";
 		mes "I am one of the brothers of the three brothers in charge of crafting shields in the east named Murata Basshu";
 		next;
@@ -394,7 +394,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "Sorry.";
 		close;
 	}
-	if(BaseLevel < 50){
+	if (BaseLevel < 50){
 		mes "[Basshu]";
 		mes "I am one of the brothers of the three brothers in charge of crafting shields in the east named Murata Basshu";
 		next;
@@ -425,7 +425,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "It'd help me greatly if I could see that shield up close.";
 		mes "Can you help me?";
 		next;
-		if(select("Hmm...I don't feel like it.", "Very well.") == 1){
+		if (select("Hmm...I don't feel like it.","Very well.") == 1){
 			mes "[Basshu]";
 			mes "Ah I guess it was an impossible request.";
 			mes "I'm sorry.";
@@ -460,7 +460,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "[Basshu]";
 		mes "How about it? Would you like that?";
 		next;
-		if(select("No, I wouldn't.", "Yes, I would.") == 1){
+		if (select("No, I wouldn't.","Yes, I would.") == 1){
 			mes "[Basshu]";
 			mes "Hmm, Very Well.";
 			mes "I'm so grateful you showed me that rare shield from overseas.";
@@ -487,7 +487,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		}
 	}
 	else if (ninbot == 2){
-		if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
+		if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
 			mes "[Basshu]";
 			mes "Hmm.. It looks like there aren't enough materials.";
 			mes "For an Improved Arm Guard, I require...";
@@ -496,7 +496,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 			mes "Come again when you have these materials.";
 			close;
 		}
-		if(Zeny < 20000){
+		if (Zeny < 20000){
 			mes "[Basshu]";
 			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 			mes "In order to create an Improved Arm Guard, I require...";
@@ -518,7 +518,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "Will you give me the materials you've gathered";
 		mes "and in trade, receive an Improved Arm Guard?";
 		next;
-		if(select("No", "Yes") == 1){
+		if (select("No","Yes") == 1){
 			mes "[Basshu]";
 			mes "Very Well.";
 			mes "If you ever make up your mind";
@@ -531,7 +531,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 			mes "Bang Clang Bang Clang ";
 			mes "Sweep Sweep Saw Saw";
 			next;
-			if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
+			if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
 				mes "HACK DETECTED";
 				close;
 			}
@@ -554,13 +554,13 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "Oh I see you've come back.";
 		mes "Are you here because you need an Improved Arm Guard?";
 		next;
-		if(select("Nope, not really.", "Yes, make me another one.") == 1){
+		if (select("Nope, not really.","Yes, make me another one.") == 1){
 			mes "[Basshu]";
 			mes "Aha I see.";
 			mes "Come back and talk to me anytime.";
 			close;
 		}else{
-			if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
+			if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
 				mes "[Basshu]";
 				mes "Hmm.. It looks like there aren't enough materials.";
 				mes "In order to make an Improved Arm Guard, I require...";
@@ -569,7 +569,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 				mes "Come again when you have these materials.";
 				close;
 			}
-			if(Zeny < 20000){
+			if (Zeny < 20000){
 				mes "[Basshu]";
 				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 				mes "In order to make an Improved Arm Guard, I require...";
@@ -589,7 +589,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 			mes "[Basshu]";
 			mes "Will you give me the materials you've gathered to receive an Improved Arm Guard?";
 			next;
-			if(select("No", "Yes") == 1){
+			if (select("No","Yes") == 1){
 				mes "[Basshu]";
 				mes "Very Well.";
 				mes "If you make up your mind";
@@ -606,7 +606,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 				mes "Here it is -- it's complete.";
 				mes "I've made you an Improved Arm Guard";
 				next;
-				if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
+				if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
 					mes "HACK DETECTED";
 					close;
 				}
@@ -661,14 +661,14 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "If you want, I will make you an Improved Arm Guard if you bring me 1 Arm Guard, 1 Mirror Shield, And 20,000 Zeny.";
 		mes "Would you like to try using one?";
 		next;
-		if(select("No, I don't wanna!", "Yeah!! Hurry and make it for me!") == 1){
+		if (select("No, I don't wanna!","Yeah!! Hurry and make it for me!") == 1){
 			mes "[Basshu]";
 			mes "Hmm, is that so.";
 			mes "What a shame.";
 			mes "Come and find me if you change your mind.";
 			close;
 		}else{
-			if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
+			if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1){
 				mes "[Basshu]";
 				mes "Hmm.. It looks like there aren't enough materials.";
 				mes "In order to create an Improved Arm Guard, I require...";
@@ -677,7 +677,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 				mes "Come again when you have these materials.";
 				close;
 			}
-			if(Zeny < 20000){
+			if (Zeny < 20000){
 				mes "[Basshu]";
 				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 				mes "In order to make an Improved Arm Guard, I require...";
@@ -699,7 +699,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 			mes "Will you give me the materials you've gathered";
 			mes "to receive an Improved Arm Guard?";
 			next;
-			if(select("No", "Yes") == 1){
+			if (select("No","Yes") == 1){
 				mes "[Basshu]";
 				mes "Very Well.";
 				mes "If you ever make up your mind";
@@ -712,7 +712,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 				mes "Bang Clang Bang Clang ";
 				mes "Sweep Sweep Saw Saw";
 				next;
-				if(countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
+				if (countitem(Mirror_Shield) < 1 || countitem(Arm_Guard) < 1 || Zeny < 20000){
 					mes "HACK DETECTED";
 					close;
 				}
@@ -732,7 +732,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 }
 
 que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
-	if(BaseClass != Job_Ninja){
+	if (BaseClass != Job_Ninja){
 		mes "[Toshu]";
 		mes "How are you";
 		mes "My young friend";
@@ -763,14 +763,14 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 	mes "By the way, I'm sorry to say this, but there's a chance I might break your materials and fail slotting the Improved Arm Guard, so you might want to think about it.";
 	mes "How 'bout it? Do we have a deal?";
 	next;
-	if(select("No. I don't want to do this.", "Yes! Let's do this!") == 1){
+	if (select("No. I don't want to do this.","Yes! Let's do this!") == 1){
 		mes "[Toshu]";
 		mes "Ok.";
 		mes "Of course, the shields are important to you.";
 		mes "If you decide to go foward with this afterwards, come and find me.";
 		close;
 	}else{
-		if(countitem(Buckler_) < 1 || countitem(Improved_Arm_Guard) < 1){
+		if (countitem(Buckler_) < 1 || countitem(Improved_Arm_Guard) < 1){
 			mes "[Toshu]";
 			mes "It doesn't look like you brought me enough materials.";
 			mes "The required materials are 1 Slotted Buckler";
@@ -780,7 +780,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 			mes "Don't forget that.";
 			close;
 		}
-		if(Zeny < 40000){
+		if (Zeny < 40000){
 			mes "[Toshu]";
 			mes "It looks like you brought the right amount of materials.";
 			mes "However.. you didn't bring enough Zeny.";
@@ -801,7 +801,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 		mes "[Toshu]";
 		mes "Do you want me to produce your gear, even if there's a chance I may fail?";
 		next;
-		if(select("I think I better back off. Sob..", "Yes! Let's try anyway!") == 1){
+		if (select("I think I better back off. Sob..","Yes! Let's try anyway!") == 1){
 			mes "[Toshu]";
 			mes "Ok.";
 			mes "Well, come back later when you've got the guts to try.";
@@ -814,7 +814,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 			mes "Clink Clank!Clink Clank!!";
 			mes "Sweep Sweep Saw Saw";
 			next;
-			if(countitem(Buckler_) < 1 || countitem(Improved_Arm_Guard) < 1 || Zeny < 40000){
+			if (countitem(Buckler_) < 1 || countitem(Improved_Arm_Guard) < 1 || Zeny < 40000){
 				mes "HACK DETECTED";
 				close;
 			}
@@ -879,7 +879,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 	mes "You look like a Ninja.";
 	mes "If you're interested, take a look at my goods while you decide what you want.";
 	next;
-	switch(select("Gokurin", "Jitte", "Ashura[3]", "Murasame", "Hakujin", "Cancel")){
+	switch (select("Gokurin","Jitte","Ashura[3]","Murasame","Hakujin","Cancel")){
 		case 1:
 			mes "[Kaibara]";
 			mes "Hmm I see you've picked the Gokurin.";
@@ -891,13 +891,13 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "and 200,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.", "Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1){
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
 			}else{
-				if(countitem(Dragon_Scale) < 400 || countitem(Oridecon) < 5 || countitem(Dragons_Skin) < 30){
+				if (countitem(Dragon_Scale) < 400 || countitem(Oridecon) < 5 || countitem(Dragons_Skin) < 30){
 					mes "[Kaibara]";
 					mes "It looks like there are not enough ingredients for me to make you a Gokurin.";
 					next;
@@ -909,7 +909,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Make sure you have those items when you return to me.";
 					close;
 				}
-				if(Zeny < 200000){
+				if (Zeny < 200000){
 					mes "[Kaibara]";
 					mes "Hmm, it looks like you have enough materials, but you're short on Zeny.";
 					next;
@@ -943,13 +943,13 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "and 20,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.", "Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1){
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
 			}else{
-				if(countitem(Steel) < 30 || countitem(Old_Hilt) < 1){
+				if (countitem(Steel) < 30 || countitem(Old_Hilt) < 1){
 					mes "[Kaibara]";
 					mes "It looks like you need more materials before I can make you a Jitte.";
 					next;
@@ -961,7 +961,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 20000){
+				if (Zeny < 20000){
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -992,13 +992,13 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "And 32,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.", "Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1){
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
 			}else{
-				if(countitem(Steel) < 25 || countitem(Old_Magic_Circle) < 5){
+				if (countitem(Steel) < 25 || countitem(Old_Magic_Circle) < 5){
 					mes "[Kaibara]";
 					mes "It looks like you don't have all the materials I need to create an Ashura[3] for you.";
 					next;
@@ -1009,7 +1009,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 32000){
+				if (Zeny < 32000){
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1040,13 +1040,13 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "And 48,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.", "Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1){
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
 			}else{
-				if(countitem(Steel) < 30 || countitem(Skyblue_Jewel) < 10){
+				if (countitem(Steel) < 30 || countitem(Skyblue_Jewel) < 10){
 					mes "[Kaibara]";
 					mes "It looks like your short on materials for me to create you a Murasame.";
 					next;
@@ -1058,7 +1058,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 48000){
+				if (Zeny < 48000){
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1090,13 +1090,13 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "and 120,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.", "Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1){
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
 			}else{
-				if(countitem(Skel_Bone) < 500 || countitem(Holy_Scroll_1_3) < 10 || countitem(Scarlet_Jewel) < 5){
+				if (countitem(Skel_Bone) < 500 || countitem(Holy_Scroll_1_3) < 10 || countitem(Scarlet_Jewel) < 5){
 					mes "[Kaibara]";
 					mes "It looks like you're short on raw materials for me to be able to make you a Hakujin.";
 					next;
@@ -1108,7 +1108,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 120000){
+				if (Zeny < 120000){
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1144,7 +1144,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 
 	mes "[Tetsu]";
-	if(BaseClass != Job_Ninja){
+	if (BaseClass != Job_Ninja){
 		mes "I'm The Craftman of Fuuma Ninjas called Tetsu.";
 		next;
 		mes "[Tetsu]";
@@ -1193,7 +1193,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "Remember these needed materials, and come back after you're positive you have them all.";
 			close;
 		}
-		if(Zeny < 90000){
+		if (Zeny < 90000){
 			mes "[Tetsu]";
 			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 			next;
@@ -1228,7 +1228,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			break;
 		}
 
-		if(countitem(Steel)<30 || countitem(Sword_Accessory)<100 || countitem(Oridecon)<2){
+		if (countitem(Steel)<30 || countitem(Sword_Accessory)<100 || countitem(Oridecon)<2){
 			mes "[Tetsu]";
 			mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Daisharin.";
 			next;
@@ -1241,7 +1241,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "Remember these needed materials, and come back after you're positive you have them all.";
 			close;
 		}
-		if(Zeny < 40000){
+		if (Zeny < 40000){
 			mes "[Tetsu]";
 			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 			next;
@@ -1281,7 +1281,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			break;
 		}
 
-		if(countitem(Crystal_Jewel___)<20 || countitem(Huuma_Giant_Wheel)<1 || countitem(Oridecon)<3){
+		if (countitem(Crystal_Jewel___)<20 || countitem(Huuma_Giant_Wheel)<1 || countitem(Oridecon)<3){
 			mes "[Tetsu]";
 			mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Daisharin[4].";
 			next;
@@ -1294,7 +1294,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "Remember these needed materials, and come back after you're positive you have them all.";
 			close;
 		}
-		if(Zeny < 40000){
+		if (Zeny < 40000){
 			mes "[Tetsu]";
 			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 			next;
@@ -1330,7 +1330,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			break;
 		}
 
-		if(countitem(Steel)<50 || countitem(Live_Coal)<100 || countitem(Burning_Heart)<100 || countitem(Flame_Stone)<50){
+		if (countitem(Steel)<50 || countitem(Live_Coal)<100 || countitem(Burning_Heart)<100 || countitem(Flame_Stone)<50){
 			mes "[Tetsu]";
 			mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Rekka.";
 			next;
@@ -1342,7 +1342,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "Remember these needed materials, and come back after you're positive you have them all.";
 			close;
 		}
-		if(Zeny < 78000){
+		if (Zeny < 78000){
 			mes "[Tetsu]";
 			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 			next;

@@ -19,14 +19,14 @@ payon_in01,56,12,7	script	Jovem Artesão#pay	4_M_ORIENT02,{
 	mes "[Jovem]";
 	mes "...O que é isso?";
 	next;
-	switch(select("Você pode me fazer um item especial?","Ei")) {
+	switch (select("Você pode me fazer um item especial?","Ei")) {
 		case 1:
 		mes "[Jovem]";
 		mes "Huh? Então você já sabe no que sou especializado?";
 		mes "Não vejo necessidade de negar.";
 		mes "Me diga o que você quer.";
 		next;
-		switch(select("Elmo Angelical","Chapéu de Deviruchi","Eu volto depois")) {
+		switch (select("Elmo Angelical","Chapéu de Deviruchi","Eu volto depois")) {
 			case 1:
 			mes "[Jovem]";
 			mes "1 Elmo [1].";
@@ -46,7 +46,7 @@ payon_in01,56,12,7	script	Jovem Artesão#pay	4_M_ORIENT02,{
 			mes "Você reuniu os itens?";
 			mes "Em seguida, entregue-os então.";
 			next;
-			switch(select("Entregar os itens","Não entregar os itens.")) {
+			switch (select("Entregar os itens","Não entregar os itens.")) {
 				case 1:
 				if (!checkweight(Helm_Of_Angel,1)) {
 					mes "^3355FFEspere um segundo!";
@@ -93,7 +93,7 @@ payon_in01,56,12,7	script	Jovem Artesão#pay	4_M_ORIENT02,{
 			mes "Você reuniu os itens?";
 			mes "Em seguida, entregue-os então.";
 			next;
-			switch(select("Entregar os itens.:Não entregar os itens.")) {
+			switch (select("Entregar os itens.:Não entregar os itens.")) {
 				case 1:
 				if (!checkweight(Deviruchi_Cap,1)) {
 					mes "^3355FFEspere um segundo!";

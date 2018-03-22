@@ -163,8 +163,8 @@ prt_in,85,99,3	script	Knight#kabuto	4_M_JOB_KNIGHT2,{
 			mes "hunting alone! But Knights";
 			mes "these days have grown soft...";
 			next;
-			if (select("Give him Candy Canes and Witherless Roses", "Cancel") == 1) {
-				mes "["+ strcharinfo(PC_NAME) +"]";
+			if (select("Give him Candy Canes and Witherless Roses","Cancel") == 1) {
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "There are still Knights";
 				mes "out there who believe in";
 				mes "honorably risking our lives";

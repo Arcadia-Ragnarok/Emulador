@@ -25,7 +25,7 @@ valkyrie,53,47,3	script	Professor#Valkyrie	2_M_SAGE_OLD,{
 			mes "Rune-Midgard não tem Professores suficientes para ajudar o povo nessa nova era de prosperidade.";
 			mes "O mundo precisa de você...";
 			next;
-			jobchange (Job_Professor);
+			jobchange(Job_Professor);
 			ADVJOB = 0;
 			mes "[Professor]";
 			mes "Parabéns!";

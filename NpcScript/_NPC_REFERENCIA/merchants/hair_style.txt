@@ -43,7 +43,7 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 	mes "Welcome to Veronica's hair salon.";
 	mes "How can I help you?";
 	next;
-	switch(select("See available hair styles.", "Change hair style.", "End conversation.")) {
+	switch (select("See available hair styles.","Change hair style.","End conversation.")) {
 	case 1:
 		mes "[Veronica]";
 		mes "We have a total of 19 styles, available from no.1 to no.19.";
@@ -52,14 +52,14 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 		mes "please enter 0.";
 		next;
 		input .@style;
-		if(.@style > 19) {
+		if (.@style > 19) {
 			mes "[Veronica]";
 			mes "Oops, I'm sorry, but that";
 			mes "style is not available.";
 			mes "Remember to enter a number";
 			mes "from 1 to 19.";
 			next;
-		} else if(.@style == 0) {
+		} else if (.@style == 0) {
 			mes "[Veronica]";
 			mes "So, how do you like the style?";
 			mes "Feel free to ask me about any";
@@ -71,7 +71,7 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 		else {
 			callsub L_cutin,.@style;
 			mes "[Veronica]";
-			switch(.@style) {
+			switch (.@style) {
 			case 1:
 				if (Sex == SEX_MALE) {
 					mes "Oh, that's 'Play Dead' style!";
@@ -377,13 +377,13 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 			}
 		}
 	case 2:
-		if(BaseLevel < 60) {
+		if (BaseLevel < 60) {
 			mes "[Veronica]";
 			mes "Oh, dear, you're looking fabulous with";
 			mes "your current hairstyle. Why don't you";
 			mes "try a new hair accessory rather than changing your look?";
 			close;
-		} else if((countitem(Counteragent) < 3) || (countitem(Mixture) < 3) || (countitem(Danggie) <100) || (countitem(Short_Daenggie) <100) || (countitem(Long_Hair) <100) || (countitem(Golden_Hair) <100) || (countitem(Glossy_Hair) <100) || (Zeny < 99800)) {
+		} else if ((countitem(Counteragent) < 3) || (countitem(Mixture) < 3) || (countitem(Danggie) <100) || (countitem(Short_Daenggie) <100) || (countitem(Long_Hair) <100) || (countitem(Golden_Hair) <100) || (countitem(Glossy_Hair) <100) || (Zeny < 99800)) {
 			mes "[Veronica]";
 			mes "If you wish to change your";
 			mes "hairstyle, you should meet some";
@@ -414,16 +414,16 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 		mes "make you look your very best.";
 		next;
 		input .@style;
-		if(.@style > 19) {
+		if (.@style > 19) {
 			mes "[Veronica]";
 			mes "I am sorry, you chose an unavailable style.";
 			mes "Make sure you enter the correct number.";
 			close;
-		} else if(.@style == 0) {
+		} else if (.@style == 0) {
 			mes "[Veronica]";
 			mes "You have canceled your request.";
 			close;
-		} else if(getlook(1) == .@style) {
+		} else if (getlook(1) == .@style) {
 			mes "[Veronica]";
 			mes "I am sorry, but you are already";
 			mes "wearing the style you have";
@@ -433,12 +433,12 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 		}
 			callsub L_cutin,.@style;
 			mes "[Veronica]";
-			mes "You have chosen style no. (" + .@style + ").";
+			mes "You have chosen style no. ("+.@style+").";
 			mes "I shall proceed with your request.";
 			mes "Would you mind?";
 			next;
-			if(select("No, I don't mind.", "Yes, let me choose another one.") == 1) {
-				if(getlook(6) == 0) {
+			if (select("No, I don't mind.","Yes, let me choose another one.") == 1) {
+				if (getlook(6) == 0) {
 					mes "[Veronica]";
 					mes "Oh, my, you haven't dyed your hair";
 					mes "at all. You would look even more";
@@ -446,7 +446,7 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 					mes "Oh well, I will do it for free.";
 					mes "So what kind of color would you like?";
 					next;
-					switch(select("Red.", "Yellow.", "Purple.", "Orange.", "Green.", "Blue.", "White.", "Dark Brown.", "Cancel.")) {
+					switch (select("Red.","Yellow.","Purple.","Orange.","Green.","Blue.","White.","Dark Brown.","Cancel.")) {
 					case 1:
 						.@pallete = 8;
 						break;
@@ -507,7 +507,7 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 				mes "[Veronica]";
 				mes "Alright, it's done";
 				mes "I hope you like";
-				mes "this style no.(" + .@style + ").";
+				mes "this style no.("+.@style+").";
 				mes "Feel free to come back anytime";
 				mes "when you want a new hairstyle. Hohohohohoho";
 				setlook 1,.@style;
@@ -530,12 +530,12 @@ alberta_in,55,142,7	script	Hair Dresser	4_F_02,{
 
 L_cutin:
 	if (Sex == SEX_MALE) {
-		if(getarg(0) < 10)
+		if (getarg(0) < 10)
 			cutin "hair_m_0"+getarg(0),4;
 		else
 			cutin "hair_m_"+getarg(0),4;
 	} else {
-		if(getarg(0) < 10)
+		if (getarg(0) < 10)
 			cutin "hair_f_0"+getarg(0),4;
 		else
 			cutin "hair_f_"+getarg(0),4;
@@ -558,7 +558,7 @@ alberta,33,141,7	script	Roving Hair Dresser	4_M_BARBER,{
 	mes "waiting to be transformed into";
 	mes "works of magnificent art!";
 	next;
-	switch(select("What are you?", "Do my hair, please!", ".....")) {
+	switch (select("What are you?","Do my hair, please!",".....")) {
 	case 1:
 		mes "[Rui Vishop]";
 		mes "Do you not know that I, Rui";
@@ -624,12 +624,12 @@ alberta,33,141,7	script	Roving Hair Dresser	4_M_BARBER,{
 		mes "hairstyle that horrible!";
 		close;
 	case 2:
-		if(BaseLevel < 60) {
+		if (BaseLevel < 60) {
 			mes "[Rui Vishop]";
 			mes "Hmm, I must say, your current";
 			mes "style fits you best. Trust me, I know what I am saying.";
 			close;
-		} else if(Zeny < 199800) {
+		} else if (Zeny < 199800) {
 			mes "[Rui Vishop]";
 			mes "Ah, I see that that you can";
 			mes "recognize genius when it is";
@@ -658,7 +658,7 @@ alberta,33,141,7	script	Roving Hair Dresser	4_M_BARBER,{
 		mes "stupid hair dresser to";
 		mes "do her clumsy work on you...";
 		next;
-		if(select("No, please do my hair.", "Umm, I changed my mind.") ==1 ) {
+		if (select("No, please do my hair.","Umm, I changed my mind.") ==1 ) {
 			mes "[Rui Vishop]";
 			mes "Okay!";
 			mes "Now, let us begin!";
@@ -713,7 +713,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 	mes "shy, tell me exactly how you";
 	mes "want me to make you glamorous";
 	next;
-	switch(select("Check all hairstyles", "Change hairstyle", "Cancel")) {
+	switch (select("Check all hairstyles","Change hairstyle","Cancel")) {
 	case 1:
 		mes "[Prince Shammi]";
 		mes "Oh, would you like to";
@@ -723,10 +723,10 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 		mes "[Prince Shammi]";
 		mes "Please, oh please, choose from the following styles and I will show you a preview.";
 		next;
-		switch(select("Old Hairstyles", "New Hairstyles")) {
+		switch (select("Old Hairstyles","New Hairstyles")) {
 		case 1:
 			if (Sex == SEX_MALE) {
-				switch(select("Petite Style", "Executioner Style", "Prince Style", "Deviace Style", "Cancel")) {
+				switch (select("Petite Style","Executioner Style","Prince Style","Deviace Style","Cancel")) {
 				case 1:
 					cutin "hair_m_20",4;
 					mes "[Prince Shammi]";
@@ -777,7 +777,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 				}
 			}
 			else {
-				switch(select("Spring Rabbit Style", "Harpy Style", "Medusa Style", "Isis Style", "Cancel")) {
+				switch (select("Spring Rabbit Style","Harpy Style","Medusa Style","Isis Style","Cancel")) {
 				case 1:
 					cutin "hair_f_20",4;
 					mes "[Prince Shammi]";
@@ -831,7 +831,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 			break;
 		case 2:
 			if (Sex == SEX_MALE) {
-				switch(select("Emergency Heal Perm", "Aura Blade Cut", "Power Swing", "Renovatio Cut", "Cancel")) {
+				switch (select("Emergency Heal Perm","Aura Blade Cut","Power Swing","Renovatio Cut","Cancel")) {
 				case 1:
 					cutin "hair_m_24",4;
 					mes "[Prince Shammi]";
@@ -870,7 +870,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 				}
 			}
 			else {
-				switch(select("Assumptio Perm", "Soul Changer Cut", "X Tornado Cut", "Oratio Cut", "Cancel")) {
+				switch (select("Assumptio Perm","Soul Changer Cut","X Tornado Cut","Oratio Cut","Cancel")) {
 				case 1:
 					cutin "hair_f_24",4;
 					mes "[Prince Shammi]";
@@ -1015,7 +1015,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 			mes "hairstyle that you wanted?";
 			mes "This is No. "+.@input+", by the way.";
 			next;
-			switch(select("Yes.", "No.")) {
+			switch (select("Yes.","No.")) {
 			case 1:
 				if (getlook(LOOK_HAIR_COLOR) == 0) {
 					mes "[Prince Shammi]";
@@ -1026,7 +1026,7 @@ lhz_in02,100,143,3	script	Hair Dresser#li	2_M_DYEINGER,{
 					mes "a part of my service, so";
 					mes "please choose a color";
 					next;
-					switch(select("Red", "Yellow", "Purple", "Orange", "Green", "Blue", "White", "Dark Brown")) {
+					switch (select("Red","Yellow","Purple","Orange","Green","Blue","White","Dark Brown")) {
 					case 1:
 						.@headpalette = 8;
 						break;
@@ -1130,7 +1130,7 @@ lhz_in02,91,155,5	script	Assistant Beautician#li	4_F_LGTGIRL,{
 	mes "H-h-h-h-h-hello! Can";
 	mes "I help you with anything?";
 	next;
-	switch(select("What do you do?", "Please change my hairstyle.", "Who is Prince Shammi?")) {
+	switch (select("What do you do?","Please change my hairstyle.","Who is Prince Shammi?")) {
 	case 1:
 		mes "[Assistant Beautician]";
 		mes "Oh! Me...? I'm";
@@ -1191,7 +1191,7 @@ lhz_in02,91,155,5	script	Assistant Beautician#li	4_F_LGTGIRL,{
 			mes "up for the material expenses.";
 			mes "Is that okay with you?";
 			next;
-			switch(select("Of course", "On second thought...")) {
+			switch (select("Of course","On second thought...")) {
 			case 1:
 				mes "[Assistant Beautician]";
 				mes "Great! Now, please";
@@ -1234,7 +1234,7 @@ lhz_in02,91,155,5	script	Assistant Beautician#li	4_F_LGTGIRL,{
 							cutin "hair_f_"+.@input+".BMP",4;
 					}
 					next;
-					switch(select("Yes, let's try it", "Cancel.")) {
+					switch (select("Yes, let's try it","Cancel.")) {
 					case 1:
 						break;
 					case 2:

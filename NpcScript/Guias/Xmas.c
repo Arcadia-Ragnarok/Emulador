@@ -18,7 +18,7 @@ xmas,140,137,3	script	Guia#xmaguide	4_F_KID3,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Lutie^000000, a Cidade Natalina.";
 	while (1) {
 		next;
-		switch(select("[Loja de Presentes]","[Igreja]","[Loja de Equipamentos]","[Loja de Utilidades]","[Casa do Papai Noel]","[Fábrica de Brinquedos]","Remover marcadores","Cancelar")) {
+		switch (select("[Loja de Presentes]","[Igreja]","[Loja de Equipamentos]","[Loja de Utilidades]","[Casa do Papai Noel]","[Fábrica de Brinquedos]","Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Lutie]";
 			mes "Posição da^0000FF Loja de Presentes^000000 marcada em seu mini mapa.";

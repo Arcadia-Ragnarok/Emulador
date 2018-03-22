@@ -70,7 +70,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 	mes "Welcome to the Airship. If you have any questions or need any assistnace, please don't hesisitate to let me or one of the other crewman know.";
 	next;
 	if (kain_ticket == 0) {
-		switch(select("About the Airship...", "Leave a Comment")) {
+		switch (select("About the Airship...","Leave a Comment")) {
 		case 1:
 			kain_ticket = 1;
 			mes "[Kain Himere]";
@@ -128,7 +128,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 			}
 		}
 	} else if (kain_ticket == 1) {
-		switch(select("About the Airship...", "Make a remark")) {
+		switch (select("About the Airship...","Make a remark")) {
 		case 1:
 			kain_ticket = 2;
 			mes "[Kain Himere]";
@@ -192,7 +192,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 		mes "E-excuse me...";
 		mes "^666666*Sniff*^000000";
 		next;
-		switch(select("What the hell...?", "What's wrong?")) {
+		switch (select("What the hell...?","What's wrong?")) {
 		case 1:
 			mes "[Kain Himere]";
 			mes "Oh, no there's no";
@@ -275,7 +275,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 			mes "[Kain Himere]";
 			mes "By the way, where are you heading to?";
 			next;
-			switch(select("Einbroch", "Juno")) {
+			switch (select("Einbroch","Juno")) {
 			case 1:
 				kain_ticket = 4;
 				mes "["+strcharinfo(PC_NAME)+"]";
@@ -305,7 +305,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 		mes "Oh, how are you?";
 		mes "Right, there's a favor I have to ask of you. Where are you heading?";
 		next;
-		switch(select("Einbroch", "Juno")) {
+		switch (select("Einbroch","Juno")) {
 		case 1:
 			kain_ticket = 4;
 			mes "["+strcharinfo(PC_NAME)+"]";
@@ -345,7 +345,7 @@ airplane,47,61,7	script	Crewman	4_M_ZONDAOYAJI,{
 		mes "Oh...";
 		mes "What should I do now? Oh well, sorry for putting you through so much trouble.";
 		next;
-		switch(select("Do you know 'Miner's Song?'", "Do you remember 'Tarsha?'")) {
+		switch (select("Do you know 'Miner's Song?'","Do you remember 'Tarsha?'")) {
 		case 1:
 			mes "[Kain Himere]";
 			mes "'Miner's Song...'";
@@ -487,7 +487,7 @@ OnTouch:
 	mes "can stop us, lads!";
 	if (kain_ticket == 6) {
 		next;
-		switch(select("Hello!", "What are you singing?")) {
+		switch (select("Hello!","What are you singing?")) {
 		case 1:
 			mes "[Elle Cherno]";
 			mes "Let's get to work";
@@ -684,7 +684,7 @@ ein_in01,125,99,3	script	Tarsha Cherno	4_F_EINWOMAN,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Yes, speaking of which, allow me to... Check something.";
 		next;
-		switch(select("Check her neck.", "Check her hands.", "Check her legs.", "Check her forehead.")) {
+		switch (select("Check her neck.","Check her hands.","Check her legs.","Check her forehead.")) {
 		case 1:
 			mes "^3355FFUh oh...";
 			mes "Nothing's there!^000000";
@@ -820,7 +820,7 @@ function	script	F_Cherno	{
 	mes "Oh, I didn't know we had";
 	mes "a guest? Hello, how are you?";
 	next;
-	switch(select("Nothing.", "Your daughter asked me to visit you.")) {
+	switch (select("Nothing.","Your daughter asked me to visit you.")) {
 	case 1:
 		mes "[Theo Cherno]";
 		mes "As you see, my wife and I are pretty";
@@ -907,7 +907,7 @@ ein_in01,121,99,3	script	Mirror#ein	HIDDEN_NPC,{
 		mes "see is yourself.";
 		next;
 		if (Sex == SEX_MALE) {
-			switch(rand(1,5)) {
+			switch (rand(1,5)) {
 			case 1:
 				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Man...";
@@ -950,7 +950,7 @@ ein_in01,121,99,3	script	Mirror#ein	HIDDEN_NPC,{
 				break;
 			}
 		} else {
-			switch(rand(1,5)) {
+			switch (rand(1,5)) {
 			case 1:
 				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Oh. Wow.";
@@ -1157,10 +1157,10 @@ ein_in01,117,80,5	script	Unidentified Machine#as	HIDDEN_NPC,{
 			getitemname(getbrokenid(6)),getitemname(getbrokenid(7)),getitemname(getbrokenid(8)),
 			getitemname(getbrokenid(9)),getitemname(getbrokenid(10)));
 			mes "[Expert Repairman]";
-			mes "You're gonna repair " + getitemname(getbrokenid(.@choice)) + ".";
+			mes "You're gonna repair "+getitemname(getbrokenid(.@choice))+".";
 			mes "Continue?";
 			next;
-			switch(select("Yes", "No")) {
+			switch (select("Yes","No")) {
 			case 1:
 				repair(.@choice);
 				next;
@@ -1199,7 +1199,7 @@ OnTimer34000:
 	mapannounce "airplane_01","Captain: We are being approached by a group of unidentified creatures.",bc_map,0x00ff00;
 	end;
 OnTimer38000:
-	mapannounce "airplane_01", "Captain: All passengers on deck, please find shelter inside the ship!",bc_map,0x00ff00;
+	mapannounce "airplane_01","Captain: All passengers on deck, please find shelter inside the ship!",bc_map,0x00ff00;
 	hideonnpc "Airship Staff#airplane01";
 	end;
 OnTimer48000:
@@ -1211,28 +1211,28 @@ OnTimer48000:
 	monster "airplane_01",234,56,"Beholder",1633,1,"Airship#airplane02::OnMyMobDead";
 	monster "airplane_01",227,49,"Beholder",1633,1,"Airship#airplane02::OnMyMobDead";
 	monster "airplane_01",233,41,"Beholder",1633,1,"Airship#airplane02::OnMyMobDead";
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1: monster "airplane_01",251,47,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 2: monster "airplane_01",251,47,"Rotar Zairo",1392,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 3: monster "airplane_01",251,47,"Farmiliar",1005,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 4: monster "airplane_01",251,47,"Picky",1049,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 5: monster "airplane_01",251,47,"Steel Chonchon",1042,1,"Airship#airplane02::OnMyMobDead"; break;
 	}
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1: monster "airplane_01",245,53,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 2: monster "airplane_01",245,53,"Rotar Zairo",1392,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 3: monster "airplane_01",245,53,"Farmiliar",1005,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 4: monster "airplane_01",245,53,"Picky",1049,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 5: monster "airplane_01",245,53,"Steel Chonchon",1042,1,"Airship#airplane02::OnMyMobDead"; break;
 	}
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1: monster "airplane_01",234,46,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 2: monster "airplane_01",234,46,"Rotar Zairo",1392,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 3: monster "airplane_01",234,46,"Farmiliar",1005,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 4: monster "airplane_01",234,46,"Picky",1049,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 5: monster "airplane_01",234,46,"Steel Chonchon",1042,1,"Airship#airplane02::OnMyMobDead"; break;
 	}
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1: monster "airplane_01",233,58,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 2: monster "airplane_01",233,58,"Rotar Zairo",1392,1,"Airship#airplane02::OnMyMobDead"; break;
 	case 3: monster "airplane_01",233,58,"Farmiliar",1005,1,"Airship#airplane02::OnMyMobDead"; break;
@@ -1240,7 +1240,7 @@ OnTimer48000:
 	case 5: monster "airplane_01",233,58,"Steel Chonchon",1042,1,"Airship#airplane02::OnMyMobDead"; break;
 	}
 	// it's possible this is an error, but in aegis it stops resetting the random var.
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1:
 		monster "airplane_01",243,60,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead";
 		monster "airplane_01",228,54,"Drainliar",1111,1,"Airship#airplane02::OnMyMobDead";
@@ -1279,10 +1279,10 @@ OnTimer48010:
 	monster "airplane_01",237,62,"Beholder",1633,1,"Airship#airplane02::OnCaptainMobDead";
 	end;
 OnTimer53000:
-	mapannounce "airplane_01", "Attendant: Captain Tarlock, we're in trouble! The monsters are heading to the propellers!",bc_map,0x00FF00;
+	mapannounce "airplane_01","Attendant: Captain Tarlock, we're in trouble! The monsters are heading to the propellers!",bc_map,0x00FF00;
 	end;
 OnTimer58000:
-	mapannounce "airplane_01", "Captain Tarlock: What?! I've got to stop them!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: What?! I've got to stop them!",bc_map,0x70DBDB;
 	end;
 OnTimer63000:
 	hideonnpc "Airship Captain#01";
@@ -1290,10 +1290,10 @@ OnTimer63000:
 	end;
 OnTimer68000:
 	emotion e_ag,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: You ugly, godforsaken creatures... Get off my ship!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: You ugly, godforsaken creatures... Get off my ship!",bc_map,0x70DBDB;
 	end;
 OnTimer73000:
-	mapannounce "airplane_01", "*Kzzz...Drrrr...Boom! CRASH!*",bc_map,0x00FF00;
+	mapannounce "airplane_01","*Kzzz...Drrrr...Boom! CRASH!*",bc_map,0x00FF00;
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom6#airplane"));
 	end;
 OnTimer73500:
@@ -1325,7 +1325,7 @@ OnTimer77500:
 	end;
 OnTimer78000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom6#airplane"));
-	mapannounce "airplane_01", "Engineer: Oh no! We've got a problem with the Number One Rear Engine!",bc_map,0x00FF00;
+	mapannounce "airplane_01","Engineer: Oh no! We've got a problem with the Number One Rear Engine!",bc_map,0x00FF00;
 	end;
 OnTimer79000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom7#airplane"));
@@ -1340,7 +1340,7 @@ OnTimer82000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom10#airplane"));
 	end;
 OnTimer83000:
-	mapannounce "airplane_01", "Pilot: Hurry! Get the women, old people and children somewhere safe first! Hurry!",bc_map,0x00FF00;
+	mapannounce "airplane_01","Pilot: Hurry! Get the women, old people and children somewhere safe first! Hurry!",bc_map,0x00FF00;
 	end;
 OnTimer84000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom6#airplane"));
@@ -1356,18 +1356,18 @@ OnTimer87000:
 	end;
 OnTimer88000:
 	emotion e_ag,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: You dirty monsters are dealing with this ship's captain...",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: You dirty monsters are dealing with this ship's captain...",bc_map,0x70DBDB;
 	end;
 OnTimer93000:
 	emotion e_ag,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: I'll protect this ship and my crew with my life!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: I'll protect this ship and my crew with my life!",bc_map,0x70DBDB;
 	end;
 OnTimer98000:
 	emotion e_pif,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: Here goes! Special Exodus Joker XIII Doom Rifle!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: Here goes! Special Exodus Joker XIII Doom Rifle!",bc_map,0x70DBDB;
 	end;
 OnTimer103000:
-	mapannounce "airplane_01", "*Bang! Bang Bang! Bang Bang! Bang Bang Bang!*",bc_map,0x00FF00;
+	mapannounce "airplane_01","*Bang! Bang Bang! Bang Bang! Bang Bang Bang!*",bc_map,0x00FF00;
 	specialeffect(EF_HIT5, AREA, getnpcid(0, "Airship Captain#02"));
 	end;
 OnTimer103500:
@@ -1415,7 +1415,7 @@ OnTimer113000:
 	mapannounce "airplane_01","Captain Tarlock: Filthy animals! Stop ruining my ship!",bc_map,0x70DBDB;
 	end;
 OnTimer118000:
-	mapannounce "airplane_01", "*Bang! Bang Bang! Bang Bang! Bang Bang Bang!*",bc_map,0x00FF00;
+	mapannounce "airplane_01","*Bang! Bang Bang! Bang Bang! Bang Bang Bang!*",bc_map,0x00FF00;
 	specialeffect(EF_HIT5, AREA, getnpcid(0, "Airship Captain#02"));
 	end;
 OnTimer118500:
@@ -1456,7 +1456,7 @@ OnTimer122500:
 	end;
 OnTimer123000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom8#airplane"));
-	mapannounce "airplane_01", "*Boom! Boom Boom! Boom Boom! Boom!*",bc_map,0x00FF00;
+	mapannounce "airplane_01","*Boom! Boom Boom! Boom Boom! Boom!*",bc_map,0x00FF00;
 	end;
 OnTimer124000:
 	specialeffect(EF_SUI_EXPLOSION, AREA, getnpcid(0, "boom9#airplane"));
@@ -1472,18 +1472,18 @@ OnTimer127000:
 	end;
 OnTimer128000:
 	emotion e_an,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: There's... Too many to handle!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: There's... Too many to handle!",bc_map,0x70DBDB;
 	end;
 OnTimer133000:
-	mapannounce "airplane_01", "Pilot: Captain, sir, the situation is getting critical!",bc_map,0x00FF00;
+	mapannounce "airplane_01","Pilot: Captain, sir, the situation is getting critical!",bc_map,0x00FF00;
 	end;
 OnTimer138000:
 	emotion e_swt,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: We'll need all the help we can get!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: We'll need all the help we can get!",bc_map,0x70DBDB;
 	end;
 OnTimer143000:
 	emotion e_sry,0,"Airship Captain#02";
-	mapannounce "airplane_01", "Captain Tarlock: All hands and any passenger who can fight! We've got to drive away these monsters!",bc_map,0x70DBDB;
+	mapannounce "airplane_01","Captain Tarlock: All hands and any passenger who can fight! We've got to drive away these monsters!",bc_map,0x70DBDB;
 	end;
 OnTimer148000:
 	hideonnpc "Airship Captain#02";
@@ -1648,7 +1648,7 @@ airplane_01,238,154,3	script	Airship Captain#01	4_M_REINDEER,{
 				mes "before? Are you just curious";
 				mes "or did you really want to know?";
 				next;
-				switch (select("No, not really...", "Yes, I really want to know!")) {
+				switch (select("No, not really...","Yes, I really want to know!")) {
 				case 1:
 					mes "[Tarlock]";
 					mes "Hahahaha";
@@ -1676,7 +1676,7 @@ airplane_01,238,154,3	script	Airship Captain#01	4_M_REINDEER,{
 					mes "you that classified info if you";
 					mes "do a little favor for me first.";
 					next;
-					switch (select("Let me think about it.", "Sure.")) {
+					switch (select("Let me think about it.","Sure.")) {
 					case 1:
 						mes "[Tarlock]";
 						mes "Alright. But don't";
@@ -1952,7 +1952,7 @@ airplane,236,163,5	script	Airship Captain#03	4_M_REINDEER,{
 		mes "merely curious, or did you";
 		mes "have some special reason?";
 		next;
-		switch(select("Just curious...", "Well, there's someone I need to help...")) {
+		switch (select("Just curious...","Well, there's someone I need to help...")) {
 		case 1:
 			mes "[Ferlock]";
 			mes "Just curious...?";
@@ -2173,7 +2173,7 @@ airplane,236,163,5	script	Airship Captain#03	4_M_REINDEER,{
 	} else {
 		.@question2$ = "Cancel.";
 	}
-	switch(select("How does this Airship fly?", .@question2$, .@question3$)) {
+	switch (select("How does this Airship fly?", .@question2$, .@question3$)) {
 	case 1:
 		mes "[Ferlock]";
 		mes "I'm sorry, but I can't";
@@ -2333,7 +2333,7 @@ airplane,236,63,4	script	Hallen	4_M_KID1,{
 		mes "Howdy, howdy";
 		mes "Welcome to the Airship.";
 		next;
-		switch(select("I'm not a passenger.", "Hey kid, what are you doing?")) {
+		switch (select("I'm not a passenger.","Hey kid, what are you doing?")) {
 		case 1:
 			emotion e_what,0;
 			mes "[Hallen]";
@@ -2408,7 +2408,7 @@ airplane,236,63,4	script	Hallen	4_M_KID1,{
 		mes "me a favor since I can't";
 		mes "really leave this joint?";
 		next;
-		switch(select("Sorry, but I'm busy...", "What is it?")) {
+		switch (select("Sorry, but I'm busy...","What is it?")) {
 		case 1:
 			mes "[Hallen]";
 			mes "Eh, alright. I guess";
@@ -2487,7 +2487,7 @@ airplane,236,63,4	script	Hallen	4_M_KID1,{
 		mes "help each other in";
 		mes "times of crisis?";
 		next;
-		switch(select("Not at all. Every man for himself!", "Yes, I do.")) {
+		switch (select("Not at all. Every man for himself!","Yes, I do.")) {
 		case 1:
 			mes "[Hallen]";
 			mes "Wh-what...?";
@@ -2832,7 +2832,7 @@ airplane,33,69,4	script	Kaci	1_F_MERCHANT_01,{
 		mes "letter really made my day";
 		next;
 		while (true) {
-			switch (select("Ask about Hallen", "Ask about Mawong", "Ask about the Airship")) {
+			switch (select("Ask about Hallen","Ask about Mawong","Ask about the Airship")) {
 			case 1:
 				.@mesa = 1;
 				mes "[Kaci]";

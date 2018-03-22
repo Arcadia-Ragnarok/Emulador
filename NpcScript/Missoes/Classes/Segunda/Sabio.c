@@ -25,7 +25,7 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 			} else {
 				mes "Como posso ajudá-l"+(Sex == SEX_MALE ? "o":"a")+"?";
 				next;
-				switch(select("Sobre a mudança de classe?","Eu quero me matricular","Nada")) {
+				switch (select("Sobre a mudança de classe?","Eu quero me matricular","Nada")) {
 					case 1:
 					mes "[Metheus Sylphe]";
 					mes "Então...";
@@ -76,7 +76,7 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 					mes "[Metheus Sylphe]";
 					mes "Então, você deseja se inscrever?";
 					next;
-					switch(select("Sim, desejo","A taxa é muito cara","Voltarei mais tarde.")) {
+					switch (select("Sim, desejo","A taxa é muito cara","Voltarei mais tarde.")) {
 						case 1:
 						mes "[Metheus Sylphe]";
 						mes "Muito bem. Vamos completar o seu formulário de candidatura.";
@@ -96,10 +96,10 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 							mes "Sim, tudo está pronto.";
 							mes "Em seguida, você terá um teste de entrada.";
 							sageq = 4;
-							if (questprogress(2043)) { changequest (2043,2041); }
-							else if (questprogress(2044)) { changequest (2044,2041); }
-							else if (questprogress(2045)) { changequest (2045,2041); }
-							else { setquest (2041); }
+							if (questprogress(2043)) { changequest(2043,2041); }
+							else if (questprogress(2044)) { changequest(2044,2041); }
+							else if (questprogress(2045)) { changequest(2045,2041); }
+							else { setquest(2041); }
 							next;
 							mes "[Metheus Sylphe]";
 							mes "Por favor visite o Professor Claytos.";
@@ -117,10 +117,10 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 									mes "Muito obrigado, seu pedido foi aceito.";
 									mes "Em seguida, você terá um teste de entrada.";
 									sageq = 4;
-									if (questprogress(2043)) { changequest (2043,2041); }
-									else if (questprogress(2044)) { changequest (2044,2041); }
-									else if (questprogress(2045)) { changequest (2045,2041); }
-									else { setquest (2041); }
+									if (questprogress(2043)) { changequest(2043,2041); }
+									else if (questprogress(2044)) { changequest(2044,2041); }
+									else if (questprogress(2045)) { changequest(2045,2041); }
+									else { setquest(2041); }
 									next;
 									mes "[Metheus Sylphe]";
 									mes "Por favor, visite o Professor Claytos.";
@@ -139,12 +139,12 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 									mes "Muito obrigado, seu pedido foi aceito.";
 									mes "Em seguida, você terá um teste de entrada.";
 									sageq = 4;
-									delitem (Old_Magic_Book,1);
-									delitem (Penetration,1);
-									if (questprogress(2043)) { changequest (2043,2041); }
-									else if (questprogress(2044)) { changequest (2044,2041); }
-									else if (questprogress(2045)) { changequest (2045,2041); }
-									else { setquest (2041); }
+									delitem(Old_Magic_Book,1);
+									delitem(Penetration,1);
+									if (questprogress(2043)) { changequest(2043,2041); }
+									else if (questprogress(2044)) { changequest(2044,2041); }
+									else if (questprogress(2045)) { changequest(2045,2041); }
+									else { setquest(2041); }
 									next;
 									mes "[Metheus Sylphe]";
 									mes "Por favor, visite o Professor Claytos.";
@@ -180,10 +180,10 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 							mes "Sim, tudo está pronto.";
 							mes "Em seguida, você vai fazer o teste de entrada.";
 							sageq = 4;
-							if (questprogress(2043)) { changequest (2043,2041); }
-							else if (questprogress(2044)) { changequest (2044,2041); }
-							else if (questprogress(2045)) { changequest (2045,2041); }
-							else { setquest (2041); }
+							if (questprogress(2043)) { changequest(2043,2041); }
+							else if (questprogress(2044)) { changequest(2044,2041); }
+							else if (questprogress(2045)) { changequest(2045,2041); }
+							else { setquest(2041); }
 							next;
 							mes "[Metheus Sylphe]";
 							mes "Por favor visite o professor Claytos.";
@@ -218,24 +218,24 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 								mes "Você vai pagar 30.000 zenys.";
 								mes "E trazer alguns itens como compensação para o desconto de taxa de matrícula.";
 								next;
-								switch(rand(3)) {
+								switch (rand(3)) {
 									case 1:
-									setarray (.@item[0], 916,914,1002);
-									setarray (.@count[0], 50, 50,  25);
+									setarray(.@item[0], 916,914,1002);
+									setarray(.@count[0], 50, 50,  25);
 									sageq = 1;
-									setquest (2043);
+									setquest(2043);
 									break;
 									case 2:
-									setarray (.@item[0], 705,949,1024);
-									setarray (.@count[0], 50, 50,  25);
+									setarray(.@item[0], 705,949,1024);
+									setarray(.@count[0], 50, 50,  25);
 									sageq = 2;
-									setquest (2044);
+									setquest(2044);
 									break;
 									default:
-									setarray (.@item[0], 916,914,705,949);
-									setarray (.@count[0], 50, 50, 50, 50);
+									setarray(.@item[0], 916,914,705,949);
+									setarray(.@count[0], 50, 50, 50, 50);
 									sageq = 3;
-									setquest (2045);
+									setquest(2045);
 									break;
 								}
 								mes "[Metheus Sylphe]";
@@ -270,8 +270,8 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 			}
 		} else if (sageq >= 1 && sageq <= 3) {
 			if (countitem(Old_Magic_Book) && countitem(Penetration)) {
-				delitem (Old_Magic_Book,1);
-				delitem (Penetration,1);
+				delitem(Old_Magic_Book,1);
+				delitem(Penetration,1);
 				mes "[Metheus Sylphe]";
 				mes "Hunn....";
 				mes "Vejo que você trouxe o Grimório Antigo e o Colar da Sabedoria.";
@@ -281,24 +281,24 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 				mes "Por favor visite o professor Claytos.";
 				mes "Ele está na sala à esquerda.";
 				sageq = 4;
-				if (questprogress(2043)) { changequest (2043,2041); }
-				else if (questprogress(2044)) { changequest (2044,2041); }
-				else if (questprogress(2045)) { changequest (2045,2041); }
-				else { setquest (2041); }
+				if (questprogress(2043)) { changequest(2043,2041); }
+				else if (questprogress(2044)) { changequest(2044,2041); }
+				else if (questprogress(2045)) { changequest(2045,2041); }
+				else { setquest(2041); }
 				close;
 			} else {
 				switch (sageq) {
 					case 1:
-					setarray (.@item[0], 916,914,1002);
-					setarray (.@count[0], 50, 50,  25);
+					setarray(.@item[0], 916,914,1002);
+					setarray(.@count[0], 50, 50,  25);
 					break;
 					case 2:
-					setarray (.@item[0], 705,949,1024);
-					setarray (.@count[0], 50, 50,  25);
+					setarray(.@item[0], 705,949,1024);
+					setarray(.@count[0], 50, 50,  25);
 					break;
 					case 3:
-					setarray (.@item[0], 916,914,705,949);
-					setarray (.@count[0], 50, 50, 50, 50);
+					setarray(.@item[0], 916,914,705,949);
+					setarray(.@count[0], 50, 50, 50, 50);
 					break;
 				}
 				if (.@i == .@arraysize && Zeny >= 10000) {
@@ -306,12 +306,12 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 					mes "Muito bem, isso é tudo.";
 					mes "Agora sua incrição está formalizada.";
 					for (.@i = 0; .@i < .@arraysize; .@i++) {
-						delitem (.@item[.@i],.@count[.@i]);
+						delitem(.@item[.@i],.@count[.@i]);
 					}
 					sageq = 4;
-					if (questprogress(2043)) { changequest (2043,2041); }
-					else if (questprogress(2044)) { changequest (2044,2041); }
-					else if (questprogress(2045)) { changequest (2045,2041); }
+					if (questprogress(2043)) { changequest(2043,2041); }
+					else if (questprogress(2044)) { changequest(2044,2041); }
+					else if (questprogress(2045)) { changequest(2045,2041); }
 					next;
 					mes "[Metheus Sylphe]";
 					mes "Por favor visite o professor Claytos.";
@@ -424,7 +424,7 @@ yuno_in03,105,177,5	script	Prof. de Teste Escrito#sageq	4_M_SAGE_A,{
 			mes "Vamos começar imediatamente";
 			mes "Ah, e se você não responder imediatamente, o teste será anulado.";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "1. Escolha um item que o Comerciante de Presentes em Prontera não vende.";
 				next;
@@ -749,7 +749,7 @@ yuno_in03,105,177,5	script	Prof. de Teste Escrito#sageq	4_M_SAGE_A,{
 			next;
 			if (.@sgq >= 80) {
 				sageq = 6;
-				changequest (2041,2046);
+				changequest(2041,2046);
 				mes "[Claytos Verdo]";
 				mes "Excelente! Você deve ter estudado muito para este teste!";
 				next;
@@ -841,7 +841,7 @@ yuno_in03,169,180,3	script	Prof. de Exame Prático#sageq	4_M_SAGE_C,{
 				mes "Bom, vamos começar de imediato.";
 				mes "Faça o seu melhor e volte com segurança!";
 				close2;
-				warp ("job_sage",50,154);
+				warp("job_sage",50,154);
 				end;
 			} else {
 				mes "[Hermes Tris]";
@@ -864,7 +864,7 @@ yuno_in03,169,180,3	script	Prof. de Exame Prático#sageq	4_M_SAGE_C,{
 				mes "Bom, vamos começar de imediato.";
 				mes "Faça o seu melhor e volte com segurança!";
 				close2;
-				warp ("job_sage",50,154);
+				warp("job_sage",50,154);
 				end;
 			} else {
 				mes "[Hermes Tris]";
@@ -886,10 +886,10 @@ yuno_in03,169,180,3	script	Prof. de Exame Prático#sageq	4_M_SAGE_C,{
 			mes "[Hermes Tris]";
 			mes "Hmm, hmm... Vamos ver....";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				sageq = 9;
-				changequest (2046,2047);
+				changequest(2046,2047);
 				mes "[Hermes Tris]";
 				mes "Agora,você vai estudar Yggdrasil.";
 				mes "Yggdrasil é a árvore que foi rumores de ser a fonte de vida para este mundo.";
@@ -905,7 +905,7 @@ yuno_in03,169,180,3	script	Prof. de Exame Prático#sageq	4_M_SAGE_C,{
 				close;
 				case 2:
 				sageq = 11;
-				changequest (2046,2048);
+				changequest(2046,2048);
 				mes "[Hermes Tris]";
 				mes "Agora, você vai estudar monstros.";
 				mes "O objetivo deste estudo é o de aprender...";
@@ -921,7 +921,7 @@ yuno_in03,169,180,3	script	Prof. de Exame Prático#sageq	4_M_SAGE_C,{
 				close;
 				default:
 				sageq = 13;
-				changequest (2046,2049);
+				changequest(2046,2049);
 				mes "[Hermes Tris]";
 				mes "Agora, você vai estudar habilidades mágicas que têm determinadas propriedades.";
 				mes "O objetivo deste estudo é compreender melhor habilidades básicas de magia.";
@@ -1017,13 +1017,13 @@ job_sage,50,165,4	script	Ajudante de Teste#sageq	8_F_GIRL,{
 	close;
 
 	OnInit:
-	waitingroom ("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
+	waitingroom("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	warpwaitingpc (strnpcinfo(NPC_MAP),116,97);
-	donpcevent ("Sague_Test_Battle#sageq::OnSummon1");
+	warpwaitingpc(strnpcinfo(NPC_MAP),116,97);
+	donpcevent("Sague_Test_Battle#sageq::OnSummon1");
 	disablewaitingroomevent;
 	end;
 
@@ -1040,61 +1040,61 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 
 	OnSummon1:
 	.SgMobs = 16;
-	monster (strnpcinfo(NPC_MAP),111,102,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),120,102,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),111,93,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),120,93,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),107,98,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),124,98,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),115,106,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),115,90,"Grade F",1183,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),103,110,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),128,110,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),103,85,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),128,85,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),107,106,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),124,106,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),107,89,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
-	monster (strnpcinfo(NPC_MAP),124,89,"Grade D",1184,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),111,102,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),120,102,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),111,93,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),120,93,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),107,98,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),124,98,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),115,106,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),115,90,"Nota F",CHONCHON_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),103,110,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),128,110,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),103,85,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),128,85,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),107,106,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),124,106,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),107,89,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
+	monster(strnpcinfo(NPC_MAP),124,89,"Nota D",FABRE_,1,strnpcinfo(NPC_NAME)+"::OnMobDead1");
 	initnpctimer;
 	end;
 
 	OnSummon2:
 	.SgMobs = 24;
-	monster (strnpcinfo(NPC_MAP),111,102,"Valor Numérico",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,102,"Física",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,102,"História",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Geografia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Astronomia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Meteorologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Arquitetura",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Controle",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Instrumentologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Estatísticas;",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Métodos Gráficos",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,102,"Língua",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Sitologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Dietética",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),111,93,"Arquitetura Paisagista",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,93,"Antropologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,93,"Biologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),120,93,"Ética",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),107,98,"Economia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),107,98,"Política",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),107,98,"Fotografia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),124,98,"Dendrologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),124,98,"Higiene",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
-	monster (strnpcinfo(NPC_MAP),124,98,"Sociologia",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,102,"Valor Numérico",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,102,"Física",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,102,"História",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Geografia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Astronomia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Meteorologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Arquitetura",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Controle",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Instrumentologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Estatísticas;",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Métodos Gráficos",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,102,"Língua",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Sitologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Dietética",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),111,93,"Arquitetura Paisagista",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,93,"Antropologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,93,"Biologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),120,93,"Ética",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),107,98,"Economia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),107,98,"Política",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),107,98,"Fotografia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),124,98,"Dendrologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),124,98,"Higiene",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
+	monster(strnpcinfo(NPC_MAP),124,98,"Sociologia",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead2");
 	initnpctimer;
 	end;
 
 	OnSummon3:
 	.MyMobs = 1;
-	monster (strnpcinfo(NPC_MAP),116,97,"Estágio Acadêmico",1179,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),107,106,"Ausente 3 vezes",1185,1);
-	monster (strnpcinfo(NPC_MAP),124,106,"Atrasado 5 vezes",1185,1);
-	monster (strnpcinfo(NPC_MAP),107,89,"Trapaceou 2 vezes",1185,1);
-	monster (strnpcinfo(NPC_MAP),124,89,"Trapaceou 4 vezes",1185,1);
+	monster(strnpcinfo(NPC_MAP),116,97,"Estágio Acadêmico",WHISPER,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),107,106,"Ausente 3 vezes",WHISPER_,1);
+	monster(strnpcinfo(NPC_MAP),124,106,"Atrasado 5 vezes",WHISPER_,1);
+	monster(strnpcinfo(NPC_MAP),107,89,"Trapaceou 2 vezes",WHISPER_,1);
+	monster(strnpcinfo(NPC_MAP),124,89,"Trapaceou 4 vezes",WHISPER_,1);
 	initnpctimer;
 	end;
 
@@ -1102,8 +1102,8 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	--.SgMobs;
 	if (.SgMobs < 1) {
 		stopnpctimer;
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do primeiro estágio.",bc_map);
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnSummon2");
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do primeiro estágio.",bc_map);
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnSummon2");
 	}
 	end;
 
@@ -1111,8 +1111,8 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	--.SgMobs;
 	if (.SgMobs < 1) {
 		stopnpctimer;
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do segundo estágio.",bc_map);
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnSummon3");
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do segundo estágio.",bc_map);
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnSummon3");
 	}
 	end;
 
@@ -1120,69 +1120,69 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	--.MyMobs;
 	if (.MyMobs < 1) {
 		stopnpctimer;
-		killmonsterall ("job_sage");
-		mapannounce (strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
+		killmonsterall("job_sage");
+		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
 		sageq = 8;
-		donpcevent ("Sague_Test_Warp#sageq::OnEnable");
+		donpcevent("Sague_Test_Warp#sageq::OnEnable");
 	}
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"O exame prático começou.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O exame prático começou.",bc_map);
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"1º teste - tempo limite 3 minutos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1º teste - tempo limite 3 minutos.",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Por favor, derrote todos os monstros no tempo limite.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Por favor, derrote todos os monstros no tempo limite.",bc_map);
 	end;
 
 	OnTimer33000:
-	mapannounce (strnpcinfo(NPC_MAP),"Faltam 2 minutos e 30 segundos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltam 2 minutos e 30 segundos.",bc_map);
 	end;
 
 	OnTimer63000:
-	mapannounce (strnpcinfo(NPC_MAP),"Faltam 2 minutos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltam 2 minutos.",bc_map);
 	end;
 
 	OnTimer93000:
-	mapannounce (strnpcinfo(NPC_MAP),"Faltam 1 minuto e 30 segundos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltam 1 minuto e 30 segundos.",bc_map);
 	end;
 
 	OnTimer123000:
-	mapannounce (strnpcinfo(NPC_MAP),"Falta 1 minuto.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Falta 1 minuto.",bc_map);
 	end;
 
 	OnTimer153000:
-	mapannounce (strnpcinfo(NPC_MAP),"Faltam 30 segundos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltam 30 segundos.",bc_map);
 	end;
 
 	OnTimer173000:
-	mapannounce (strnpcinfo(NPC_MAP),"Faltam 10 segundos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltam 10 segundos.",bc_map);
 	end;
 
 	OnTimer183000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
-	donpcevent ("SgTest#1sageq::OnReset");
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
+	donpcevent("SgTest#1sageq::OnReset");
 	end;
 
 	OnTimer184000:
-	areawarp (strnpcinfo(NPC_MAP),100,82, 131,113,"yuno",324,258);
+	areawarp(strnpcinfo(NPC_MAP),100,82, 131,113,"yuno",324,258);
 	end;
 
 	OnTimer185000:
-	mapannounce (strnpcinfo(NPC_MAP),"Próximo candidato, entre.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Próximo candidato, entre.",bc_map);
 	end;
 
 	OnTimer186000:
-	donpcevent ("Ajudante de Teste#sageq::OnEnable");
+	donpcevent("Ajudante de Teste#sageq::OnEnable");
 	stopnpctimer;
 	end;
 
 	OnReset:
-	killmonsterall ("job_sage");
+	killmonsterall("job_sage");
 	end;
 }
 
@@ -1197,23 +1197,23 @@ job_sage,2,1,0	script	Sague_Test_Warp#sageq	HIDDEN_NPC,{
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"Por favor volte e termine o resto da quest de sua mudança de classe.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Por favor volte e termine o resto da quest de sua mudança de classe.",bc_map);
 	end;
 
 	OnTimer4000:
-	mapannounce (strnpcinfo(NPC_MAP),"Esse é o fim do exame prático. Próximo candidato, por favor esteja pronto.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Esse é o fim do exame prático. Próximo candidato, por favor esteja pronto.",bc_map);
 	end;
 
 	OnTimer5000:
-	areawarp (strnpcinfo(NPC_MAP),100,82, 131,113,"yuno_in03",163,180);
+	areawarp(strnpcinfo(NPC_MAP),100,82, 131,113,"yuno_in03",163,180);
 	end;
 
 	OnTimer7000:
-	mapannounce (strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
 	end;
 
 	OnTimer9000:
-	donpcevent ("Ajudante de Teste#sageq::OnEnable");
+	donpcevent("Ajudante de Teste#sageq::OnEnable");
 	stopnpctimer;
 	end;
 }
@@ -1224,7 +1224,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 		if (sageq == 9) {
 			if (!sageq2) {
 				mes "[Professor de História]";
-				mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+", "+strcharinfo(PC_NAME)+".";
+				mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+","+strcharinfo(PC_NAME)+".";
 				mes "Estou feliz em conhecê-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				mes "Meu nome é Saphien Layless, eu fui designado para ensinar sobre a Yggdrasil.";
 				next;
@@ -1236,7 +1236,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 				mes "Sementes ou frutos da árvore seria bom.";
 				mes "Eu sei que é difícil de encontrar, mas tente.";
 				sageq2 = 1;
-				changequest (2047,2050);
+				changequest(2047,2050);
 				close;
 			} else {
 				if (countitem(Yggdrasilberry)) {
@@ -1341,7 +1341,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 				next;
 				sageq2 = 0;
 				sageq = 10;
-				changequest (2050,2051);
+				changequest(2050,2051);
 				mes "[Saphien Layless]";
 				mes "Vou ajudá-lo a escrever a sua tese, quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+" com todos esses itens.";
 				mes "Estou ansioso para a próxima aula com você.";
@@ -1365,11 +1365,11 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 				mes "Mas, por favor, traga todos os itens com você.";
 				close;
 			} else {
-				delitem (Feather_Of_Birds,1);
-				delitem (Animals_Skin,1);
-				delitem (Wooden_Block,1);
-				delitem (Chinese_Ink,1);
-				delitem (Empty_Bottle,1);
+				delitem(Feather_Of_Birds,1);
+				delitem(Animals_Skin,1);
+				delitem(Wooden_Block,1);
+				delitem(Chinese_Ink,1);
+				delitem(Empty_Bottle,1);
 				mes "[Saphien Layless]";
 				mes "Agora, você pode escrever sua tese.";
 				mes "Eu vou ajudar com a sua escrita.";
@@ -1383,7 +1383,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Existe um oceano ao redor do continente.";
 				mes "O oceano é envolto por";
-				switch(select("Um galho gigante","Uma cobra gigante","Uma tartaruga gigante","Um dragão gigante")) {
+				switch (select("Um galho gigante","Uma cobra gigante","Uma tartaruga gigante","Um dragão gigante")) {
 					case 1:
 					.@sgpoint += 1;
 					mes "Um galho gigante.";
@@ -1401,7 +1401,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 					break;
 				}
 				mes "O continente é composto por três locais, tais como,";
-				switch(select("Mt. Mjolnir","Uranos","Utgard","Lutie")) {
+				switch (select("Mt. Mjolnir","Uranos","Utgard","Lutie")) {
 					case 1:
 					.@sgpoint += 1;
 					mes "Mt. Mjolnir,";
@@ -1418,7 +1418,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 					mes "Lutie,";
 					break;
 				}
-				switch(select("Midgard onde vivem humanos","Rune-Midgarts onde vivem humanos","Tritonia, onde vivem sereias","Morroc, a cidade deserta")) {
+				switch (select("Midgard onde vivem humanos","Rune-Midgarts onde vivem humanos","Tritonia, onde vivem sereias","Morroc, a cidade deserta")) {
 					case 1:
 					mes "Midgard, onde vivem humanos,";
 					break;
@@ -1435,7 +1435,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 					mes "Morroc, a cidade deserta,";
 					break;
 				}
-				switch(select("Abguard, onde vivem deuses","Asgard, onde vivem deuses","Schwarzwald, onde cidadãos vivem","Prontera, a capital")) {
+				switch (select("Abguard, onde vivem deuses","Asgard, onde vivem deuses","Schwarzwald, onde cidadãos vivem","Prontera, a capital")) {
 					case 1:
 					.@sgpoint += 1;
 					mes "Abguard, onde vivem os deuses.";
@@ -1476,8 +1476,8 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 					mes "Oh, você já terminou?";
 					mes "Bem feito.";
 					sageq = 15;
-					changequest (2051,2052);
-					getitem (Book,1);
+					changequest(2051,2052);
+					getitem(Book,1);
 					next;
 					mes "[Saphien Layless]";
 					mes "Eu suponho que você esteja pront"+(Sex == SEX_MALE ? "o":"a")+" para apresentar seu trabalho para o reitor.";
@@ -1563,21 +1563,21 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 			next;
 			mes "[Lucius Celsus]";
 			mes "Primeiramente, traga para mim os seguintes itens:";
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
-				setarray (.@items[0],962,1052,1023);
+				setarray(.@items[0],962,1052,1023);
 				sageq2 = 1;
-				changequest (2048,2053);
+				changequest(2048,2053);
 				break;
 				case 2:
-				setarray (.@items[0],960,966,950);
+				setarray(.@items[0],960,966,950);
 				sageq2 = 2;
-				changequest (2048,2054);
+				changequest(2048,2054);
 				break;
 				case 3:
-				setarray (.@items[0],1050,960,963);
+				setarray(.@items[0],1050,960,963);
 				sageq2 = 3;
-				changequest (2048,2055);
+				changequest(2048,2055);
 				break;
 			}
 			mes "5 ^3355ff"+getitemname(.@items[0])+"^000000.";
@@ -1588,10 +1588,10 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 			mes "Quando tiver todos os itens, volte então podemos começar a sua aula.";
 			close;
 		} else if (sageq2 >= 1 && sageq2 <=3) {
-			switch(sageq2) {
-				case 1: setarray (.@items[0],962, 1052,1023); break;
-				case 2: setarray (.@items[0],960, 966, 950);  break;
-				case 3: setarray (.@items[0],1050,960, 963);  break;
+			switch (sageq2) {
+				case 1: setarray(.@items[0],962, 1052,1023); break;
+				case 2: setarray(.@items[0],960, 966, 950);  break;
+				case 3: setarray(.@items[0],1050,960, 963);  break;
 			}
 			if (countitem(.@items[0]) < 5 && countitem(.@items[1]) < 5 && countitem(.@items[2]) < 5) {
 				mes "[Lucius Celsus]";
@@ -1615,7 +1615,7 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				mes "Os monstros que dropam esses itens têm algo em comum.";
 				mes "Você pode me dizer o que essa semelhança é?";
 				next;
-				switch(select("Propriedade de água","São peixes","São agressivos","São monstros.")) {
+				switch (select("Propriedade de água","São peixes","São agressivos","São monstros.")) {
 					case 1:
 					mes "[Lucius Celsus]";
 					mes "Sim, eles possuem a propriedade de água e ao mesmo tempo, eles são peixes.";
@@ -1651,7 +1651,7 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				mes "Mas a maioria deles tem.";
 				mes "Então, que tipo de mágica seria melhor atacar em monstros com classe de peixes?";
 				next;
-				switch(select("Relâmpago","Lanças de Fogo","Tempestade de Raios","Rajada Congelante")) {
+				switch (select("Relâmpago","Lanças de Fogo","Tempestade de Raios","Rajada Congelante")) {
 					case 1:
 					mes "[Lucius Celsus]";
 					mes "Hmm, Relâmpago, que possui a propriedade vento.";
@@ -1684,34 +1684,34 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				mes "[Lucius Celsus]";
 				mes "Agora para seu aprendizado, estudaremos monstros do tipo inseto.";
 				next;
-				switch(rand(4)) {
+				switch (rand(4)) {
 					case 1:
-					setarray (.@items[0],1025,935,928);
+					setarray(.@items[0],1025,935,928);
 					sageq2 = 4;
-					if (questprogress(2053)) { changequest (2053,2056); }
-					else if (questprogress(2054)) { changequest (2054,2056); }
-					else if (questprogress(2055)) { changequest (2055,2056); }
+					if (questprogress(2053)) { changequest(2053,2056); }
+					else if (questprogress(2054)) { changequest(2054,2056); }
+					else if (questprogress(2055)) { changequest(2055,2056); }
 					break;
 					case 2:
-					setarray (.@items[0],947,946,1057);
+					setarray(.@items[0],947,946,1057);
 					sageq2 = 5;
-					if (questprogress(2053)) { changequest (2053,2057); }
-					else if (questprogress(2054)) { changequest (2054,2057); }
-					else if (questprogress(2055)) { changequest (2055,2057); }
+					if (questprogress(2053)) { changequest(2053,2057); }
+					else if (questprogress(2054)) { changequest(2054,2057); }
+					else if (questprogress(2055)) { changequest(2055,2057); }
 					break;
 					case 3:
-					setarray (.@items[0],1031,955,1013);
+					setarray(.@items[0],1031,955,1013);
 					sageq2 = 6;
-					if (questprogress(2053)) { changequest (2053,2058); }
-					else if (questprogress(2054)) { changequest (2054,2058); }
-					else if (questprogress(2055)) { changequest (2055,2058); }
+					if (questprogress(2053)) { changequest(2053,2058); }
+					else if (questprogress(2054)) { changequest(2054,2058); }
+					else if (questprogress(2055)) { changequest(2055,2058); }
 					break;
 					default:
-					setarray (.@items[0],1025,1031,943);
+					setarray(.@items[0],1025,1031,943);
 					sageq2 = 7;
-					if (questprogress(2053)) { changequest (2053,2059); }
-					else if (questprogress(2054)) { changequest (2054,2059); }
-					else if (questprogress(2055)) { changequest (2055,2059); }
+					if (questprogress(2053)) { changequest(2053,2059); }
+					else if (questprogress(2054)) { changequest(2054,2059); }
+					else if (questprogress(2055)) { changequest(2055,2059); }
 					break;
 				}
 				mes "[Lucius Celsus]";
@@ -1726,11 +1726,11 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				close;
 			}
 		} else if (sageq2 >= 4  && sageq2 <= 7) {
-			switch(sageq2) {
-				case 4: setarray (.@items[0],1025,935,928); break;
-				case 5: setarray (.@items[0],947,946,1057); break;
-				case 6: setarray (.@items[0],1031,955,1013); break;
-				case 7: setarray (.@items[0],1025,1031,943); break;
+			switch (sageq2) {
+				case 4: setarray(.@items[0],1025,935,928); break;
+				case 5: setarray(.@items[0],947,946,1057); break;
+				case 6: setarray(.@items[0],1031,955,1013); break;
+				case 7: setarray(.@items[0],1025,1031,943); break;
 			}
 			if (countitem(.@items[0]) < 5 && countitem(.@items[1]) < 5 && countitem(.@items[2]) < 5) {
 				mes "[Lucius Celsus]";
@@ -1783,10 +1783,10 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				next;
 				sageq2 = 0;
 				sageq = 12;
-				if (questprogress(2056)) { changequest (2056,2051); }
-				else if (questprogress(2057)) { changequest (2057,2051); }
-				else if (questprogress(2058)) { changequest (2058,2051); }
-				else if (questprogress(2059)) { changequest (2059,2051); }
+				if (questprogress(2056)) { changequest(2056,2051); }
+				else if (questprogress(2057)) { changequest(2057,2051); }
+				else if (questprogress(2058)) { changequest(2058,2051); }
+				else if (questprogress(2059)) { changequest(2059,2051); }
 				next;
 				mes "[Lucius Celsus]";
 				mes "Vou ajudá-lo a escrever a tese quando você trazer todos esses itens.";
@@ -1813,11 +1813,11 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				mes "Divirta-se.";
 				close;
 			} else {
-				delitem (Feather_Of_Birds,1);
-				delitem (Animals_Skin,1);
-				delitem (Wooden_Block,1);
-				delitem (Chinese_Ink,1);
-				delitem (Empty_Bottle,1);
+				delitem(Feather_Of_Birds,1);
+				delitem(Animals_Skin,1);
+				delitem(Wooden_Block,1);
+				delitem(Chinese_Ink,1);
+				delitem(Empty_Bottle,1);
 				mes "Ainda bem que trouxe todos os itens.";
 				mes "Bem, eu não espero que você escreva uma tese absurdamente boa apesar de tudo...";
 				next;
@@ -1852,12 +1852,12 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 				mes ".................................";
 				next;
 				sageq = 15;
-				changequest (2051,2052);
+				changequest(2051,2052);
 				mes "[Lucius Celsus]";
 				mes "Você trouxe tudo?";
 				mes "Ok, então acabou.";
 				mes "Você não será capaz de escrever uma outra tese de novo, lide com isso com cuidado.";
-				getitem (Book,1);
+				getitem(Book,1);
 				next;
 				mes "[Lucius Celsus]";
 				mes "Mostre esta obra-prima para o reitor.";
@@ -1917,7 +1917,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 				mes "Não é muito difícil, né?";
 				next;
 				sageq2 = 1;
-				changequest (2049,2060);
+				changequest(2049,2060);
 				mes "[Aebecee George]";
 				mes "Por que não pede a um amigo Gatuno?";
 				mes "Iniciaremos o teste assim que me entregar as pedras.";
@@ -1943,10 +1943,10 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					mes "[Aebecee George]";
 					mes "Abra...ca...da...bra!!";
 					next;
-					delitem (Stone,30);
-					getitem (Crystal_Blue,1);
-					getitem (Yellow_Live,1);
-					getitem (Wind_Of_Verdure,1);
+					delitem(Stone,30);
+					getitem(Crystal_Blue,1);
+					getitem(Yellow_Live,1);
+					getitem(Wind_Of_Verdure,1);
 					mes "[Aebecee George]";
 					mes "Darei a você esses minérios elementais...";
 					mes "Mas... eles não são de graça.";
@@ -1954,7 +1954,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					mes "Não pegue tão depressa.";
 					mes "Escute...";
 					sageq2 = 2;
-					changequest (2060,2061);
+					changequest(2060,2061);
 					next;
 					mes "[Aebecee George]";
 					mes "Por favor, faça flechas usando esses itens e traga para mim, bonitas por favor.";
@@ -2006,15 +2006,15 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					mes "[Aebecee George]";
 					mes "O tempo passa tão rápido!";
 					next;
-					delitem (Crystal_Arrow,50);
-					delitem (Stone_Arrow,50);
-					delitem (Arrow_Of_Wind,50);
+					delitem(Crystal_Arrow,50);
+					delitem(Stone_Arrow,50);
+					delitem(Arrow_Of_Wind,50);
 					mes "[Aebecee George]";
 					mes "Quando vier para a próxima aula, traga ^3355ff1 Água Benta^000000.";
 					mes "Eu espero que você tenha pelo menos um amigo Sarcedote ele pode lhe dar uma.";
 					mes "Se não tiver, não machuca fazer um amigo novo.";
 					sageq2 = 3;
-					changequest (2061,2062);
+					changequest(2061,2062);
 					close;
 				}
 			} else if (sageq2 == 3) {
@@ -2060,7 +2060,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					mes "Acha que aprendeu muito?";
 					mes "Pode me agradecer!";
 					next;
-					delitem Holy_Water,1;
+					delitem(Holy_Water,1);
 					mes "[Aebecee George]";
 					mes "Bem, é isso.";
 					mes "Podes escrever sua tese com o que eu ensinei!";
@@ -2069,7 +2069,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					mes "Oh, Estou em chamas!";
 					sageq2 = 0;
 					sageq = 14;
-					changequest (2062,2051);
+					changequest(2062,2051);
 					next;
 					mes "[Aebecee George]";
 					mes "Okay, por favor recolha esses itens para que possas escrever a tese.";
@@ -2102,11 +2102,11 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 				mes "Volte depreeesa!";
 				close;
 			} else {
-				delitem (Feather_Of_Birds,1);
-				delitem (Animals_Skin,1);
-				delitem (Wooden_Block,1);
-				delitem (Chinese_Ink,1);
-				delitem (Empty_Bottle,1);
+				delitem(Feather_Of_Birds,1);
+				delitem(Animals_Skin,1);
+				delitem(Wooden_Block,1);
+				delitem(Chinese_Ink,1);
+				delitem(Empty_Bottle,1);
 				mes "Okay. é agora ou nunca.";
 				mes "Ensinei tudo que eu sei.";
 				mes "Apenas faça sua tese com o que você parendeu comigo.";
@@ -2119,7 +2119,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 				next;
 				mes "["+strcharinfo(PC_NAME)+"]";
 				mes ".....Magias são dividas em 4 elementos que são:";
-				switch(select("Água, Terra, Fogo e Ar","Terra, Água, Fogo e Ar","Água, Vento, Terra e Fogo.")) {
+				switch (select("Água, Terra, Fogo e Ar","Terra, Água, Fogo e Ar","Água, Vento, Terra e Fogo.")) {
 					case 1:
 					mes "Água, Terra, Fogo e Ar.";
 					break;
@@ -2131,7 +2131,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 					break;
 				}
 				mes "Cada propriedade tem uma propriedade oposta,";
-				switch(select("Vento é forte contra água","Água é forte contra fogo","Fogo é forte contra terra.")) {
+				switch (select("Vento é forte contra água","Água é forte contra fogo","Fogo é forte contra terra.")) {
 					case 1:
 					mes "Magia de vento é forte com magia de água.";
 					break;
@@ -2150,13 +2150,13 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 				mes ".................................";
 				next;
 				sageq = 15;
-				changequest (2051,2052);
+				changequest(2051,2052);
 				mes "[Aebecee George]";
 				mes "Tee hee, então... terminou com suas teses?";
 				mes "O que acha do seu trabalho?";
 				mes "Acho que foi bem.";
 				mes "Não esqueça, essa é a primeira e última vez que você escreverá uma tese, certo?";
-				getitem (Book,1);
+				getitem(Book,1);
 				next;
 				mes "[Aebecee George]";
 				mes "Certo, agora você pode mostrar ao reitor sua tese que acabou de escrever.";
@@ -2189,7 +2189,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 
 // ------------------------------------------------------------------
 yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
-	cutin ("job_sage_kayron",2);
+	cutin("job_sage_kayron",2);
 	mes "[Kayron Grik]";
 	if (BaseJob == Job_Mage) {
 		if (!sageq) {
@@ -2197,7 +2197,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 			mes "Eu posso ver que você está intrigado com as maravilhas da magia.";
 			mes "Então, que tipo de negócio leva-o para mim?";
 			next;
-			switch(select("Gostaria de ser Sábio","Saber sobre os testes","Nada")) {
+			switch (select("Gostaria de ser Sábio","Saber sobre os testes","Nada")) {
 				case 1:
 				mes "[Kayron Grik]";
 				mes "Hm? Deseja se tornar "+(Sex == SEX_MALE ? "um Sábio":"uma Sábia")+"?";
@@ -2213,7 +2213,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 				mes "[Kayron Grik]";
 				mes "Você pode querer introduzir um pedido de inscrição para a Academia Mágica Schweicherbil.";
 				mes "Eu acredito que eles podem explicar em detalhe o que você precisa para se tornar um Sábio.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 				case 2:
 				mes "[Kayron Grik]";
 				mes "Os testes...";
@@ -2236,7 +2236,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 				mes "[Kayron Grik]";
 				mes "Por favor, visite a Academia Mágica Schweicherbil.";
 				mes "Um jovem chamado Sábio Metheus Sylphe vai aceitar o seu pedido.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 				case 3:
 				mes "[Kayron Grik]";
 				mes "Veja como você tem tempo livre de sobra.";
@@ -2248,13 +2248,13 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 				mes "Apenas por ler todos os livros em torno de você...";
 				mes "No entanto, para um sábio, como eu.";
 				mes "O conhecimento encontrado nos livros é mais importante.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		} else if (sageq == 15) {
 			if (SkillPoint) {
 				mes "Você ainda possui Pontos de Habilidade.";
 				mes "Antes de decidir se tornar um Sábio, use seus pontos de habilidade.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else {
 				if (!countitem(Book)) {
 					mes "Hmm? O que aconteceu?";
@@ -2284,9 +2284,9 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 					mes "Embora seja praticamente escrito, é bem feito para um iniciante.";
 					mes "Ah, sim... você parece ser proficiente em estudar.";
 					next;
-					jobchange (Job_Sage);
-					completequest (2052);
-					callfunc ("ClearJobQuest2nd",16);
+					jobchange(Job_Sage);
+					completequest(2052);
+					callfunc("ClearJobQuest2nd",16);
 					mes "[Kayron Grik]";
 					mes "Parabéns!";
 					mes "Você se tornou "+(Sex == SEX_MALE ? "um Sábio":"uma Sábia")+".";
@@ -2302,7 +2302,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 					mes "Pois então...";
 					mes "Que Deus possa encher o seu caminho de conhecimento.";
 					mes "Estude com diligência!";
-					close2; cutin ("",255); end;
+					close2; cutin("",255); end;
 				}
 			}
 		} else {
@@ -2312,7 +2312,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 			mes "[Kayron Grik]";
 			mes "Estude diligentemente, e volte quando terminar a sua dissertação.";
 			mes "Até lá... Adeus!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 	} else {
 		if (BaseJob == Job_Sage) {
@@ -2321,7 +2321,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 			mes "Por favor, mantenha isto em mente:";
 			mes "É preciso estudar e gravar tudo o que você descobriu.";
 			mes "Para que todos no reino possam se beneficiar.";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else {
 			mes "Embora tenhamos vindo a estudar este mundo por um longo tempo.";
 			mes "Sei que estudar, por si só irá atender todas as necessidades do povo.";
@@ -2330,8 +2330,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sageq	2_M_SAGE_OLD,{
 			mes "[Kayron Grik]";
 			mes "No entanto, se acontecer de você encontrar um sábio no caminho, espero que você ajude-o.";
 			mes "E se você fizer isso, ele deve recontribuir em espécie ...";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 	}
 }
-

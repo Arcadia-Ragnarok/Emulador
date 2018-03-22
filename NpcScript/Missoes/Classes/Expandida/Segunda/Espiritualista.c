@@ -51,13 +51,13 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 				mes "Você está com sorte, tenho algo interessante para você!";
 				mes "Você pode me ver como uma criança.";
 				mes "Mas eu tenho mais de 300 anos de idade!";
-				emotion (e_pif);
+				emotion(e_pif);
 				next;
 				mes "[Garoto]";
 				mes "Agora ouça...";
 				mes "Eu sei que você é um discípulo de Taekwon.";
 				mes "É uma arte respeitável, mas eu gostaria de lhe fazer uma proposta.";
-				emotion (e_heh);
+				emotion(e_heh);
 				next;
 				mes "[Garoto]";
 				mes "Eu estive olhando para você, e posso dizer que você tem um grande poder espiritual.";
@@ -98,7 +98,7 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 					close;
 				}
 				slinkerq = 1;
-				setquest (6005);
+				setquest(6005);
 				mes "[Garoto]";
 				mes "Então você está decidido a tornar-se Espiritualista?";
 				mes "Muito bom!";
@@ -128,11 +128,11 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 			next;
 			if (select("Sim, eu trouxe","Não, ainda não...") == 1) {
 				if (countitem(Crystal_Jewel__) > 0 && countitem(Immortal_Heart) > 0 && countitem(Witherless_Rose) > 0) {
-					delitem (Crystal_Jewel__,1);
-					delitem (Immortal_Heart,1);
-					delitem (Witherless_Rose,1);
+					delitem(Crystal_Jewel__,1);
+					delitem(Immortal_Heart,1);
+					delitem(Witherless_Rose,1);
 					slinkerq = 2;
-					changequest (6005,6006);
+					changequest(6005,6006);
 					mes "[Garoto]";
 					mes "Ótimo, eu vejo que você me trouxe tudo.";
 					mes "Mas antes de começar, deixe que eu me apresente.";
@@ -152,7 +152,7 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 				mes "Hm...?";
 				mes "Ei, você esqueceu de alguma coisa.";
 				mes "Agora vá e me traga tudo que eu havia te pedido, ok?";
-				emotion (e_pif);
+				emotion(e_pif);
 				next;
 				mes "[Garoto]";
 				mes "Eu sei que você sabe o que precisa trazer, mas eu vou repetir novamente:";
@@ -178,14 +178,14 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 				mes "Quando eu estiver pront"+(Sex == SEX_MALE ? "o":"a")+", irei lhe atender.";
 				close;
 			}
-			donpcevent ("Timer#slinkerq::OnEnable");
+			donpcevent("Timer#slinkerq::OnEnable");
 			.SoulLinkerTest = 1;
 			mes "[Maia]";
 			mes "Ótimo, eu terminei os preparativos.";
 			mes "Agora está pronta a cerimônia de mudança para você tornar-se um Espiritualista.";
 			mes "Agora feche seus olhos...";
 			close2;
-			warp ("job_soul",30,30);
+			warp("job_soul",30,30);
 			end;
 		} else if (slinkerq > 2) {
 			mes "[Maia]";
@@ -204,13 +204,13 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 				mes "Quando eu estiver pront"+(Sex == SEX_MALE ? "o":"a")+", irei lhe atender.";
 				close;
 			}
-			donpcevent ("Timer#slinkerq::OnEnable");
+			donpcevent("Timer#slinkerq::OnEnable");
 			.SoulLinkerTest = 1;
 			mes "[Maia]";
 			mes "Tudo bem, feche seus olhos e relaxe.";
 			mes "Você será levad"+(Sex == SEX_MALE ? "o":"a")+" para as profundezas de sua mente.";
 			close2;
-			warp ("job_soul",30,30);
+			warp("job_soul",30,30);
 			end;
 		}
 	}
@@ -231,7 +231,7 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 			mes "Você não está qualificad"+(Sex == SEX_MALE ? "o":"a")+" para esta cerimônia.";
 			mes "Vou levá-l"+(Sex == SEX_MALE ? "o":"a")+" de volta para Morroc...";
 			close2;
-			warp ("morocc",157,47);
+			warp("morocc",157,47);
 			end;
 		}
 		if (slinkerq == 2) {
@@ -245,7 +245,7 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 			mes "Mas se você continuar treinando, será capaz de invocar mais Espíritos como um Espiritualista.";
 			next;
 			slinkerq = 3;
-			changequest (6006,6007);
+			changequest(6006,6007);
 			mes "[Maia]";
 			mes "Nós só podemos ficar aqui na sua mente por 3 minutos.";
 			mes "Eu sugiro que você fale com os Espíritos enquanto tem a oportunidade.";
@@ -274,7 +274,7 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 			next;
 			mes "[Maia]";
 			mes "Esta rosa eterna vai morrer ao invés de você...";
-			specialeffect (EF_MAPPILLAR2, AREA, getnpcid(0, "Maia#slinkerq"));
+			specialeffect(EF_MAPPILLAR2, AREA, getnpcid(0, "Maia#slinkerq"));
 			next;
 			mes "[Maia]";
 			mes "Esta rosa eterna vai morrer ao invés de você...";
@@ -295,9 +295,9 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 				mes "Por favor, use todos os pontos de habilidades restantes e tente novamente!^000000";
 				close;
 			}
-			jobchange (Job_Soul_Linker);
-			completequest (6008);
-			callfunc ("ClearJobQuest2nd",4049);
+			jobchange(Job_Soul_Linker);
+			completequest(6008);
+			callfunc("ClearJobQuest2nd",4049);
 			mes "[Maia]";
 			mes "Desejo a você boa sorte em sua nova vida.";
 			mes "Permaneça sempre ao lado de seus aliados.";
@@ -305,8 +305,8 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 			mes "Adeus por agora, amig"+(Sex == SEX_MALE ? "o":"a")+".";
 			close2;
 			setvariable (getvariableofnpc(.SoulLinkerTest,"Garoto#slinkerq"),0);
-			donpcevent ("Timer#slinkerq::OnDisable");
-			warp ("morocc",157,47);
+			donpcevent("Timer#slinkerq::OnDisable");
+			warp("morocc",157,47);
 			end;
 		}
 		setvariable (getvariableofnpc(.SoulLinkerTest,"Garoto#slinkerq"),0);
@@ -315,7 +315,7 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 		mes "Parece que o seu tempo de ficar aqui acabou.";
 		mes "Vamos voltar para Morroc...";
 		close2;
-		warp ("morocc",157,47);
+		warp("morocc",157,47);
 		end;
 	}
 	setvariable (getvariableofnpc(.SoulLinkerTest,"Garoto#slinkerq"),0);
@@ -330,7 +330,7 @@ job_soul,30,31,0	script	Maia#slinkerq	FAKE_NPC,3,3,{
 		mes "Deixe-me te levar de volta para Morroc...";
 	}
 	close2;
-	warp ("morocc",157,47);
+	warp("morocc",157,47);
 	end;
 }
 job_soul,35,30,6	duplicate(Maia#slinkerq)	Maia#2slinkerq	4_M_KID2
@@ -356,7 +356,7 @@ job_soul,30,35,6	script	Espírito Monge#slinkerq	4_M_GRANDMONK,{
 		mes "Emprestar meu poder para os outros é a única chance que tenho de tornar isso possível.";
 		next;
 		slinkerq = 4;
-		if (!questprogress(6008)) { changequest (6007,6008); }
+		if (!questprogress(6008)) { changequest(6007,6008); }
 		mes "[Espírito Monge]";
 		mes "Eu imploro...";
 		mes "Eu preciso de sua ajuda para mostrar a todos meu verdadeiro potencial para os Monges de hoje.";
@@ -390,7 +390,7 @@ job_soul,30,25,7	script	Espírito Sábio#slinkerq	4_M_SAGE_A,{
 		mes "Mas para isso, preciso de sua ajuda.";
 		mes "Eu imploro deixe-me ser seu espirito aliado.";
 		slinkerq = 4;
-		if (!questprogress(6008)) { changequest (6007,6008); }
+		if (!questprogress(6008)) { changequest(6007,6008); }
 		next;
 		mes "[Espírito Sábio]";
 		mes "Eu acredito que você é o único que pode trazer descanso à minha alma perturbada...";
@@ -420,7 +420,7 @@ job_soul,25,30,5	script	Espírito Alquimista#slinkerq	4_F_ALCHE,{
 		mes "Na verdade, eu ainda melhorei minhas habilidades desde que morri.";
 		mes "Mas eu não posso ir para o outro mundo, não antes de re-passar minhas tecnicas...";
 		slinkerq = 4;
-		if (!questprogress(6008)) { changequest (6007,6008); }
+		if (!questprogress(6008)) { changequest(6007,6008); }
 		next;
 		mes "[Espírito Alquimista]";
 		mes "Eu sou impotente como um espirito.";
@@ -456,7 +456,7 @@ job_soul,1,5,0	script	Timer#slinkerq	HIDDEN_NPC,{
 	end;
 
 	OnTimer182000:
-	mapwarp (strnpcinfo(NPC_MAP),"morocc",157,47);
+	mapwarp(strnpcinfo(NPC_MAP),"morocc",157,47);
 	end;
 
 	OnTimer183000:

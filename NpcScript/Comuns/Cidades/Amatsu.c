@@ -90,7 +90,7 @@ amatsu,185,115,3	script	Bêbado#ama	4_M_JPNOJI2,{
 	mes "Voltar pra casa...";
 	mes "*hic*";
 	next;
-	if (select("Pára de encher a cara!", "Opa! Pede um copo pra mim!") == 1) {
+	if (select("Pára de encher a cara!","Opa! Pede um copo pra mim!") == 1) {
 		mes "[Bêbado]";
 		mes "Quê?!";
 		mes "Você já viu o tamanho da mão da minha esposa?";
@@ -251,7 +251,7 @@ amatsu,283,203,1	script	Bonubonu#ama2	HIDDEN_NPC,{
 	mes "Sempre que estou triste ou angustiado, eu costumo me sentar sob aquela árvore.";
 	mes "E toda a tristeza e angustia se vão...";
 	next;
-	emotion (e_swt2);
+	emotion(e_swt2);
 	mes "[Bonubonu]";
 	mes "Aquela e uma árvore milagrosa que faz as pessoas esquecerem toda a tristeza.";
 	next;
@@ -280,7 +280,7 @@ amatsu,274,178,7	script	Veterinario#ama	4_M_JOB_WIZARD,{
 	mes "O segredo é...";
 	mes "Existem pessoas enterradas sob as raízes daquela árvore...";
 	next;
-	if (select("Mas isso não e triste? Pobres pessoas...", "Nah, isso e loucura...") == 1) {
+	if (select("Mas isso não e triste? Pobres pessoas...","Nah, isso e loucura...") == 1) {
 		mes "[Sakura Seiichi]";
 		mes "Hehehe... Poderia ser...";
 		mes "Por sinal, você gostaria de fazer uma aposta...?";
@@ -313,12 +313,12 @@ amatsu,274,178,7	script	Veterinario#ama	4_M_JOB_WIZARD,{
 
 // ------------------------------------------------------------------
 amatsu,262,197,1	script	Árvore Lendária#ama	HIDDEN_NPC,{
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "^3355FFHavia uma cerejeira na colina.";
 	mes "Ela não se parece com as outras arvores.";
 	mes "Essa árvore parece ter muitas histórias para contar.^000000";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "^3355FFHaverão pessoas morando aqui?";
 	mes "Eu dou uma olhada ao redor e vejo alguem lá embaixo.";
 	mes "Vou perguntar sobre esta arvore.^000000";

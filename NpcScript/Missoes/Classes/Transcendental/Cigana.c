@@ -25,7 +25,7 @@ valkyrie,53,56,3	script	Cigana#Valkyrie	4W_F_01,{
 			mes "A terra de Rune-Midgard está precisando de mulheres talentosas.";
 			mes "Para mudar sutilmente o balanço nas batalhas entre o bem e o mal.";
 			next;
-			jobchange (Job_Gypsy);
+			jobchange(Job_Gypsy);
 			ADVJOB = 0;
 			mes "[Cigana]";
 			mes "Parabéns!";

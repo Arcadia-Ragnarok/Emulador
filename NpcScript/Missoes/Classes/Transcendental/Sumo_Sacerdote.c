@@ -25,7 +25,7 @@ valkyrie,44,42,5	script	Sumo-Sacerdote#Valkyrie	1_M_PASTOR,{
 			mes "Nosso mundo está precisando de pessoas com talento e convicção.";
 			mes "Por favor continue com seu bom trabalho assim como um grande herói da santidade...";
 			next;
-			jobchange (Job_High_Priest);
+			jobchange(Job_High_Priest);
 			ADVJOB = 0;
 			mes "[Sumo-Sacerdote]";
 			mes "Parabéns.";

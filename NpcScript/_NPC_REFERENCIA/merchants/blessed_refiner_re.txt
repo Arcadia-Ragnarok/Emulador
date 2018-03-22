@@ -57,7 +57,7 @@
 	.@part = select(.@menu$);
 	if (!getequipisequiped(.@part)) {
 		mes "[Blacksmith Dister]";
-		switch(.@part) {
+		switch (.@part) {
 		case 1:
 			mes "I'm a blacksmith, not a hairstylist.";
 			break;
@@ -99,7 +99,7 @@
 		close;
 	}
 	.@equip_lv = getequipweaponlv(.@part);
-	switch(.@equip_lv) {
+	switch (.@equip_lv) {
 	default:
 	case 0:
 		.@price = 20000;
@@ -132,7 +132,7 @@
 	mes "This "+.@type$+" has been refined to "+.@equip_refine+". To refine it, I need "+.@ore$+" and a "+(.@price/1000)+",000 zeny refining fee.";
 	mes "Do you want to proceed?";
 	next;
-	if(select("Yes", "No") == 2) {
+	if (select("Yes","No") == 2) {
 		mes "[Blacksmith Dister]";
 		mes "I am busy, don't joke with me!";
 		close;
@@ -144,7 +144,7 @@
 		mes "[Blacksmith Dister]";
 		mes "Of course, the refining fee will not be returned! Do you want to continue?";
 		next;
-		if(select("Yes", "No") == 2) {
+		if (select("Yes","No") == 2) {
 			mes "[Blacksmith Dister]";
 			mes "Good. I'd be sad if it failed, too.";
 			close;
@@ -174,7 +174,7 @@
 	specialeffect EF_CURSEATTACK;
 	specialeffect(EF_SUI_EXPLOSION, AREA, playerattached());
 	next;
-	emotion (!rand(5))?e_ag:e_omg;
+	emotion(!rand(5))?e_ag:e_omg;
 	mes "[Blacksmith Dister]";
 	mes "Oh my goodness!!!!";
 	next;

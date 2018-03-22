@@ -15,7 +15,7 @@
 
 // ------------------------------------------------------------------
 yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
-	if (!checkweight(Tavern_Wine, 1)) {
+	if (!checkweight(Tavern_Wine,1)) {
 		mes "[Vandt]";
 		mes "Só um segundo!";
 		mes "Você está carregando muitos itens no momento.";
@@ -27,14 +27,14 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 		mes "Olá, bem vind"+(Sex == SEX_MALE ? "o":"a")+" ao meu bar.";
 		mes "Então, o que gostaria de tomar?";
 		next;
-		switch(select("Cerveja, por favor", "Um coquetel, por favor", "Soju, por favor", "Nada")) {
+		switch (select("Cerveja, por favor","Um coquetel, por favor","Soju, por favor","Nada")) {
 			case 1:
 			mes "[Vandt]";
 			mes "Certo, deixe-me pegar um copo de cerveja para você";
 			mes "Aqui está, esta é a cerveja espacial Schwaltz.";
 			next;
 			mes "^3355FF*Gulp gulp gulp*^000000";
-			percentheal(5, -5);
+			percentheal(5,-5);
 			next;
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Ahhh, isso é realmente bom!";
@@ -60,7 +60,7 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 		mes "Olá, bem vind"+(Sex == SEX_MALE ? "o":"a")+" ao meu bar.";
 		mes "Então, o que gostaria de tomar?";
 		next;
-		switch(select("Cerveja, por favor", "Um coquetel, por favor", "Soju, por favor", "Você parece preocupado?", "Cancelar")) {
+		switch (select("Cerveja, por favor","Um coquetel, por favor","Soju, por favor","Você parece preocupado?","Cancelar")) {
 			case 1:
 			mes "[Vandt]";
 			mes "Certo, deixe-me pegar um copo de cerveja para você";
@@ -93,7 +93,7 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 			mes "Eu tenho um pedido urgente que preciso enviar para a Academia de Kiel Hyre.";
 			mes "Mas não consigo encontrar alguém disponível para esse tipo de trabalho temporário.";
 			next;
-			switch(select("Sinto por saber disso", "Quer que eu te ajude?")) {
+			switch (select("Sinto por saber disso","Quer que eu te ajude?")) {
 				case 1:
 				mes "[Vandt]";
 				mes "Bem, com certeza irei pensar em alguma coisa.";
@@ -105,14 +105,14 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 				mes "Mas antes, acho que é justo lhe dizer que esse serviço pode não ser tão simples quanto você pensa.";
 				mes "Espero que você complete a entrega não importa o que aconteça.";
 				next;
-				switch(select("Claro, eu farei", "Espere, deixe-me pensar...")) {
+				switch (select("Claro, eu farei","Espere, deixe-me pensar...")) {
 					case 1:
 					mes "[Vandt]";
 					mes "Estou contente de ouvir isso.";
 					mes "Bem, então, por favor leve essa garrafa de Vinho Para Culinária para Senhora.";
 					mes "^ff0000Lecollane^000000 na academia de Kiel Hyre.";
 					mes "Lhe pagarei assim que você termine o serviço, okay?";
-					getitem(Tavern_Wine, 1);
+					getitem(Tavern_Wine,1);
 					KielHyreQuest = 2;
 					close;
 					case 2:
@@ -156,7 +156,7 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 			mes "Aqui está!";
 			mes "Muitíssimo obrigado";
 			mes "por me ajudar";
-			getitem(Tavern_Wine, 1);
+			getitem(Tavern_Wine,1);
 			Zeny += 1000;
 			close;
 		} else {
@@ -200,7 +200,7 @@ yuno,217,114,6	script	Garotinha#kh	4W_KID,{
 			mes "Se você quiser alguma, venha e compre algumas torradaaaaasss!";
 			mes "Hi hi Você quer comprar algumas torradas deliciosas?";
 			next;
-			switch(select("Estou aqui por Elly", "Não, obrigado")) {
+			switch (select("Estou aqui por Elly","Não, obrigado")) {
 				case 1:
 				mes "[Cezu]"; 
 				mes "Oh, Entendo.";
@@ -239,8 +239,8 @@ yuno,217,114,6	script	Garotinha#kh	4W_KID,{
 			mes "Hey, você voltou com os ingredientes!";
 			mes "Muitíssimo obrigada eu realmente precisava deles!";
 			mes "Agora por favor leve essa farinha e esses ovos para Elly, e envie lembranças. Até mais";
-			delitem(Delivery_Box, 1);
-			getitem(Delivery_Box, 1);
+			delitem(Delivery_Box,1);
+			getitem(Delivery_Box,1);
 			KHToastGirlEnd = 3;
 			close;
 		}
@@ -256,7 +256,7 @@ yuno,217,114,6	script	Garotinha#kh	4W_KID,{
 
 // ------------------------------------------------------------------
 lighthalzen,366,299,4	script	Dono do Moinho#kh	1_ETC_01,{
-	if (!checkweight(Delivery_Box, 1)) {
+	if (!checkweight(Delivery_Box,1)) {
 		mes "[Mills]";
 		mes "Hey, você está carregando muitas coisas com você agora.";
 		mes "Ponha sua tralha no Armazen da Kafra se estiver esperando que eu lhe dê alguma coisa.";
@@ -274,7 +274,7 @@ lighthalzen,366,299,4	script	Dono do Moinho#kh	1_ETC_01,{
 		mes "Você simplesmente me pegou em boa hora.";
 		mes "Mas se você precisa de algo, é melhor cuspir rápido, antes que as coisas fiquem agitadas de novo.";
 		next;
-		switch(select("Estou aqui por Cezu", "......")) {
+		switch (select("Estou aqui por Cezu","......")) {
 			case 1:
 			mes "[Mills]";
 			mes "Oh, Cezu da barraca de torradas?";
@@ -286,7 +286,7 @@ lighthalzen,366,299,4	script	Dono do Moinho#kh	1_ETC_01,{
 			mes "A garota é uma dos meus clientes regulares então você não tem de me pagar ou fazer nenhuma missão extra prá mim.";
 			mes "Eu sei como outras pessoas tratam vocês aventureiros.";
 			mes "Bem até mais.";
-			getitem(Delivery_Box, 1);
+			getitem(Delivery_Box,1);
 			KHToastGirlEnd = 2;
 			close;
 			case 2:
@@ -321,7 +321,7 @@ yuno_fild08,158,194,6	script	Segurança#kh1::KHAGuard	4_M_EIN_SOLDIER,{
 		mes "Portanto você não está autorizado a entrar na ^FF0000Academia Kiel Hyre^000000.";
 		mes "Por favor vá embora se você não tiver horário marcado com a Staff.";
 		next;
-		switch(select("Estou aqui para uma entrega", "......")) {
+		switch (select("Estou aqui para uma entrega","......")) {
 			case 1:
 			mes "[Segurança]";
 			mes "Você está aqui para entregar algo?";
@@ -370,7 +370,7 @@ yuno_fild08,158,194,6	script	Segurança#kh1::KHAGuard	4_M_EIN_SOLDIER,{
 			mes "Sra. Lecollane está esperando você.";
 			mes "Acho que você pode entrar.";
 			close2;
-			warp("kh_school", 71, 155);
+			warp("kh_school",71,155);
 			end;
 			case 2:
 			mes "[Segurança]";
@@ -382,7 +382,7 @@ yuno_fild08,158,194,6	script	Segurança#kh1::KHAGuard	4_M_EIN_SOLDIER,{
 		mes "Oh, você tinha outros negócios dentro da academia?";
 		mes "Eu lembro de você de antes, então não deve haver nenhum problema em deixar você voltar lá dentro...";
 		close2;
-		warp("kh_school", 71, 155);
+		warp("kh_school",71,155);
 		end;
 	}
 }
@@ -396,7 +396,7 @@ kh_school,176,60,4	script	Senhorita#kh	4W_F_01,{
 		mes "Pessoas de fora não são permitidas a vir aqui, por favor saia.";
 		close;
 	} else if (KielHyreQuest == 2) {
-		if (!checkweight(Tavern_Wine, 1)) {
+		if (!checkweight(Tavern_Wine,1)) {
 			mes "[Srs. Lecollane]";
 			mes "Hey, você está carregando muitas coisas com você agora.";
 			mes "Ponha sua tralha no Armazen da Kafra se estiver esperando que eu lhe dê alguma coisa.";
@@ -408,7 +408,7 @@ kh_school,176,60,4	script	Senhorita#kh	4W_F_01,{
 		mes "você veio para trazer meu vinho?";
 		mes "O segurança chamou e mencionou que você estava vindo.";
 		next;
-		switch(select("Sim, é isso mesmo!", "Er, d-desculpe!")) {
+		switch (select("Sim, é isso mesmo!","Er, d-desculpe!")) {
 			case 1:
 			mes "[Sra. Lecollane]";
 			mes "Bem, você veio um pouquinho mais tarde do que eu imaginava, mas acho que não adianta nada.";
@@ -436,7 +436,7 @@ kh_school,176,60,4	script	Senhorita#kh	4W_F_01,{
 			mes "*Ahem* Com licença.";
 			mes "Você poderia deixar o vinho ali?";
 			mes "Você pode ir agora, e por favor não fique vagando desnecessáriamente pela academia.";
-			delitem(Tavern_Wine, 1);
+			delitem(Tavern_Wine,1);
 			KielHyreQuest = 4;
 			close;
 			case 2:
@@ -457,37 +457,37 @@ kh_school,176,60,4	script	Senhorita#kh	4W_F_01,{
 
 // ------------------------------------------------------------------
 kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
-	if (!checkweight(Spawn, 200)) {
+	if (!checkweight(Spawn,200)) {
 		mes "[Elly]";
 		mes "^3355FF- Espere!!";
 		mes "Você está carregando muitos itens e etá incapaz de aceitar mais nenhum.";
 		mes "Por favor abra algum espaço no seu inventario antes de retornar^000000.";
 		close;
 	} else if (KielHyreQuest < 4) {
-		cutin("kh_elly03", 2);
+		cutin("kh_elly03",2);
 		mes "[Elly]";
 		mes "W-wah! Oh...!";
 		mes "*Phew*";
 		mes "Essa foi por pouco, eu quase os derrubei novamente!";
 		mes "Por quê eu tenho tanta dificuldade em manusear ingredientes?";
 	} else if (KielHyreQuest == 4) {
-		cutin("kh_elly03", 2);
+		cutin("kh_elly03",2);
 		mes "[Elly]";
 		mes "Oh não, o que eu devo fazer?";
 		mes "*Suspiro*";
 		mes "O-o quê eu vou fazer?";
 		mes "*sniff*";
 		next;
-		switch(select("O que aconteceu?", "......")) {
+		switch (select("O que aconteceu?","......")) {
 			case 1:
 			mes "[Elly]";
 			mes "Eu...Eu tenho de terminar de assar essa leva de biscoitos até o fim do dia.";
 			mes "Mas então eu derrubei todos os ingredientes no chão.";
 			mes "Eu não sei como eu posso assar aqueles biscoitos agora...";
 			next;
-			switch(select("O que posso fazer para ajudar-lhe?", "Oh, Sinto muito")) {
+			switch (select("O que posso fazer para ajudar-lhe?","Oh, Sinto muito")) {
 				case 1:
-				cutin("kh_elly02", 2);
+				cutin("kh_elly02",2);
 				mes "[Elly]";
 				mes "O que foi...?";
 				mes "Você realmente me ajudará?";
@@ -505,9 +505,9 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 				mes "Escuta, eu acredito que você provavelmente tem seus próprios planos.";
 				mes "Mas não acha que você pode me ajudar com esse enorme problema que eu tenho?";
 				next;
-				switch(select("Aceito", "Recuso")) {
+				switch (select("Aceito","Recuso")) {
 					case 1:
-					cutin("kh_elly02", 2);
+					cutin("kh_elly02",2);
 					mes "Que maravilhoso!";
 					mes "Obrigada!";
 					mes "Obrigada mesmo!";
@@ -518,27 +518,27 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Vou cair fora daqui.";
 					next;
-					cutin("kh_elly04", 2);
+					cutin("kh_elly04",2);
 					mes "E-Espere...!";
 					mes "Volte, você n-não...!";
 					mes "Eu realmente preciso de uma ajuda!";
 					emotion(e_sob);
 					close2;
-					cutin("", 255);
+					cutin("",255);
 					end;
 				}
 			}
-			cutin("kh_elly01", 2);
+			cutin("kh_elly01",2);
 			mes "[Elly]";
 			mes "Bem, acho que a única maneira de eu assar esses biscoitos é conseguir alguns ingredientes novos.";
 			mes "Desculpe eu ser um peso, mas se você não se oferecesse para me ajudar, então eu não teria a quem pedir!";
 			next;
-			cutin("kh_elly04", 2);
+			cutin("kh_elly04",2);
 			mes "[Elly]";
 			mes "Você não entende o quão importante é de eu assar esses biscoitos...";
 			mes "Se eu não terminar essa tarefa, então a Sra. Crank vai me reprovar por todo o semestre!";
 			next;
-			cutin("kh_elly01", 2);
+			cutin("kh_elly01",2);
 			mes "[Elly]";
 			mes "Okay, eu preciso me acalmar.";
 			mes "Acho que posso fazer isso com sua ajuda.";
@@ -583,26 +583,26 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			mes "Vejamos...";
 			mes "Você pode pegar o vinho no bar em Juno, Cacaos caçando Yoyos, e vocÊ pode pegar farinha e ovos da garota que tem uma barraca de torradas em Juno.";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		} else {
-			cutin("kh_elly02", 2);
+			cutin("kh_elly02",2);
 			mes "[Elly]";
 			mes "Finalmente eu tenho tudo que eu preciso!";
 			mes "Isso é ótimo!";
 			mes "Oh, você poderia por favor aguardar um instante enquanto eu asso esses biscoitos?";
 			mes "Não deve demorar muito, então aguenta mais um pouco.";
-			delitem(Milk, 7);
-			delitem(Cheese, 2);
-			delitem(Cacao, 5);
-			delitem(Tavern_Wine, 1);
-			delitem(Delivery_Box, 1);
+			delitem(Milk,7);
+			delitem(Cheese,2);
+			delitem(Cacao,5);
+			delitem(Tavern_Wine,1);
+			delitem(Delivery_Box,1);
 			KielHyreQuest = 8;
 			KHPubMasterEnd = 0;
 			KHToastGirlEnd = 0;
 			emotion(e_ho);
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		}
 	} else if (KielHyreQuest == 8) {
@@ -620,22 +620,22 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "É ^3355FF"+strcharinfo(PC_NAME)+"^000000.";
 		next;
-		cutin("kh_elly02", 2);
+		cutin("kh_elly02",2);
 		mes "[Elly]";
 		mes strcharinfo(PC_NAME)+"?";
 		mes "...que nome! É maravilhoso!";
-		getitem(Well_Baked_Cookie, 5);
+		getitem(Well_Baked_Cookie,5);
 		KielHyreQuest = 10;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 10) {
-		cutin("kh_elly01", 2);
+		cutin("kh_elly01",2);
 		mes "[Elly]";
 		mes "Desculpe, mas eu tenho outro favor para lhe pedir se você não se importar em me ajudar novamente.";
 		mes "Não se preocupe, você não precisa se apressar tanto como fez da outra vez.";
 		next;
-		switch(select("O que você precisa?", "Desculpe, mas estou muito ocupado...")) {
+		switch (select("O que você precisa?","Desculpe, mas estou muito ocupado...")) {
 			case 1:
 			mes "[Elly]";
 			mes "Sabe como você me ajudou a assar esses biscoitos?";
@@ -647,11 +647,11 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			mes "Mas os biscoitos já estarão estragados na hora que eu puder sair do campus.";
 			mes "Você entregaria esses biscoitos pro meu avô prá mim?";
 			next;
-			switch(select("Claro", "Agora não")) {
+			switch (select("Claro","Agora não")) {
 				case 1:
-				cutin("kh_elly02", 2);
+				cutin("kh_elly02",2);
 				mes "[Elly]";
-				mes "Oh, "+strcharinfo(PC_NAME)+"!";
+				mes "Oh,"+strcharinfo(PC_NAME)+"!";
 				mes "Muitíssimo obrigada, eu sabia que você entenderia!";
 				mes "Voce poderia por favor levar esses biscoitos para ele na ^FF0000Cabana de Kiel Hyre^000000?";
 				next;
@@ -662,25 +662,25 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 				mes "Certo então, até mais";
 				KielHyreQuest = 12;
 				close2;
-				cutin("", 255);
+				cutin("",255);
 				end;
 				case 2:
-				cutin("kh_elly03", 2);
+				cutin("kh_elly03",2);
 				mes "[Elly]";
 				mes "Oh, um...";
 				mes "okay, Desculpe se lhe aborreci...";
 				close2;
-				cutin("", 255);
+				cutin("",255);
 				end;
 			}
 			break;
 			case 2:
-			cutin("kh_elly03", 2);
+			cutin("kh_elly03",2);
 			mes "[Elly]";
 			mes "Oh, um...";
 			mes "Desculpe se lhe aborreci...";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		}
 	} else if (KielHyreQuest == 12) {
@@ -689,32 +689,32 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "É bem ao norte dessa academia.";
 		mes "Por favor entregue meus biscoitos para meu avô, e diga a ele que tenho muitas saudades.";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 14) {
-		cutin("kh_elly03", 2);
+		cutin("kh_elly03",2);
 		mes "[Elly]";
 		mes "Hm? avô não está em casa?";
 		mes "Que estranho, ele não mencionou nada sobre nenhuma viagem de negócios.";
 		mes "Achei que estaria em casa o dia todo...";
 		next;
-		cutin("kh_elly04", 2);
+		cutin("kh_elly04",2);
 		mes "[Elly]";
 		mes "você voltaria na cabana dele mais uma vez?";
 		mes "Aqui, você pode usar essa chave da cabana.";
 		mes "Assim, você pode simplesmente entrar e falar com ele.";
-		getitem(Villa_Spare_Key, 1);
+		getitem(Villa_Spare_Key,1);
 		KielHyreQuest = 16;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if ((KielHyreQuest > 14) && (KielHyreQuest < 20)) {
-		cutin("kh_elly01", 2);
+		cutin("kh_elly01",2);
 		mes "[Elly]";
 		mes "Isso é tão estranho...";
 		mes "Achei que meu avô disse que ficaria em casa o dia todo...";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 20) {
 		mes "[Elly]";
@@ -730,25 +730,25 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "Não confie em ninguém na Academia, Elly.";
 		mes "Deixei algo para você no Escritório.";
 		next;
-		cutin("kh_elly03", 2);
+		cutin("kh_elly03",2);
 		mes "[Elly]";
 		mes "O quê?";
 		mes "Oh não, fazem dez dias desde que ele escreveu essa carta!";
 		mes "Ah, então isso quer dizer que ele está em perigo?!";
 		mes "Oh não, o que devo fazer?";
-		delitem(Kyll_Hire_Letter, 1);
+		delitem(Kyll_Hire_Letter,1);
 		KielHyreQuest = 22;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 22) {
-		cutin("kh_elly03", 2);
+		cutin("kh_elly03",2);
 		mes "[Elly]";
 		mes "......";
 		mes ".........";
 		mes "............";
 		next;
-		switch(select("Sobre seu Avô", "Me fale sobre Kiehl", "O que há com essa academia?")) {
+		switch (select("Sobre seu Avô","Me fale sobre Kiehl","O que há com essa academia?")) {
 			case 1:
 			mes "[Elly]";
 			mes "Oh! Meu avó é fundador de Kiel Hyre, e o Diretor Executivo da fundação Kiel Hyre.";
@@ -759,7 +759,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			mes "Vovô, onde você está?";
 			mes "Estou ficando preocupada!";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 			case 2:
 			mes "[Elly]";
@@ -777,7 +777,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			mes "Não tenho nem idéia porque meu avô e Kiehl não saem juntos.";
 			mes "Ambos são realmente bons no que eles fazem.";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 			case 3:
 			mes "[Elly]";
@@ -796,23 +796,23 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			mes "Algo realmente estranho tem acontecido.";
 			mes "Todas minhas colegas de classe têm medo de sair sozinhas por aí.";
 			next;
-			cutin("kh_elly02", 2);
+			cutin("kh_elly02",2);
 			mes "[Elly]";
 			mes "Mas eu ficarei bem!";
-			mes "Você estará lá para me resgatar do perigo certo, "+strcharinfo(PC_NAME)+"?";
+			mes "Você estará lá para me resgatar do perigo certo,"+strcharinfo(PC_NAME)+"?";
 			next;
-			switch(select("Quem é Senhorita Allysia?", "Incidentes estranhos?")) {
+			switch (select("Quem é Senhorita Allysia?","Incidentes estranhos?")) {
 				case 1:
 				mes "[Elly]";
 				mes "Oh, Senhorita Allysia é a secretária do vovô.";
 				mes "Ela é tão linda e meu avô realmente confia tudo à ela!";
 				close2;
-				cutin("", 255);
+				cutin("",255);
 				end;
 				case 2:
-				cutin("kh_elly04", 2);
+				cutin("kh_elly04",2);
 				mes "[Elly]";
-				mes "Bem, "+strcharinfo(PC_NAME)+"...";
+				mes "Bem,"+strcharinfo(PC_NAME)+"...";
 				mes "Eu não deveria dizer à ninguém fora da escola, mas posso confiar em você!";
 				mes "Estamos assombrados por um fantasma!";
 				next;
@@ -826,19 +826,19 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 				mes "Ela não podia fazer nada!";
 				mes "O que aconteceria se o fantasma decidisse me amaldiçoar?!";
 				next;
-				cutin("kh_elly02", 2);
+				cutin("kh_elly02",2);
 				mes "[Elly]";
 				mes "Sabe o quê...?";
 				mes "Se eu for amaldiçoada por aquele fantasma, simplesmente grite ''^FF0000ACORDE, ELLY!^000000''";
 				mes "Que vai me acordar com certeza!";
 				KielHyreQuest = 24;
 				close2;
-				cutin("", 255);
+				cutin("",255);
 				end;
 			}
 		}
 	} else if (KielHyreQuest >= 24 && KielHyreQuest <= 26) {
-		cutin("kh_elly04", 2);
+		cutin("kh_elly04",2);
 		mes "[Elly]";
 		mes "Arg, Estou numa má situação!";
 		mes "Tenho de terminar meu";
@@ -847,7 +847,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "a Sra. Lecollane agora.";
 		next;
 		mes "[Elly]";
-		mes "Diga, "+strcharinfo(PC_NAME)+",";
+		mes "Diga,"+strcharinfo(PC_NAME)+",";
 		mes "se estiver tudo be, você poderia";
 		mes "descobrir o que meu";
 		mes "avô deixou para mim no";
@@ -874,13 +874,13 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "professora está vindo!";
 		KielHyreQuest = 26;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else {
 		mes "[Elly]";
 		mes "Rápido, rápido, a professora está vindo!";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	}
 }
@@ -898,16 +898,16 @@ yuno_fild08,69,185,0	script	Janela#kh	HIDDEN_NPC,{
 		mes "Ainda que ela tenha lhe pedido para encontrar uma escada e entrar pela janela dela, você provavelmente não vai achar nenhuma.";
 		mes "Você pode ser capaz de subir por aquele cano de água^000000.";
 		next;
-		switch(select("Subir pelo cano de água", "Encontrar outra maneira")) {
+		switch (select("Subir pelo cano de água","Encontrar outra maneira")) {
 			case 1:
-			if (rand(1, 3) == 2) {
+			if (rand(1,3) == 2) {
 				mes "^3355FFVocê subiu pelo cano de água e se esgueirou no quarto de Elly com sucesso^000000.";
 				close2;
-				warp("kh_school", 185, 185);
+				warp("kh_school",185,185);
 				end;
 			} else {
 				mes "^3355FFVocê tentou subir no cano de água, mas acabou falhando e batendo sua cabeça^000000.";
-				percentheal(-10, 0);
+				percentheal(-10,0);
 				close;
 			}
 			case 2:
@@ -923,7 +923,7 @@ yuno_fild08,69,185,0	script	Janela#kh	HIDDEN_NPC,{
 
 // ------------------------------------------------------------------
 kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
-	if (!checkweight(Spawn, 200)) {
+	if (!checkweight(Spawn,200)) {
 		mes "^3355FF- Espere!!";
 		mes "Você está carregando muitos itens e etá incapaz de aceitar mais nenhum.";
 		mes "Por favor abra algum espaço no seu inventario antes de retornar^000000.";
@@ -934,8 +934,8 @@ kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
 		mes "Quem é você, como chegou aqui?";
 		mes "Por favor saia";
 		close2;
-		percentheal(-99, 0);
-		warp("yuno_fild08", 100, 100);
+		percentheal(-99,0);
+		warp("yuno_fild08",100,100);
 		end;
 	} else if (KielHyreQuest < 32) {
 		mes "[Elly]";
@@ -952,7 +952,7 @@ kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
 		mes "^3355FFElly parece ter sido amaldiçoada e está completamente imóvel e sem vida.";
 		mes "Você tem de tentar algo, mas o quê^000000?";
 		next;
-		switch(select("Acordá-la sacodindo-a", "Acordá-la gritando", "Ignorar")) {
+		switch (select("Acordá-la sacodindo-a","Acordá-la gritando","Ignorar")) {
 			case 1:
 			mes "^3355FFVocê pega Elly pelos ombros.";
 			mes "E tenta fazer com que ela responda com uma sacodida violenta de todo o corpo dela^000000.";
@@ -971,8 +971,8 @@ kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
 				next;
 				mes "^3355FFAssim que você disse aquelas palavras, uma ^000000Pequena Chave Dourada e um ^000000Broche^3355FF caíram das mãos de Elly.";
 				mes "Parece que ela acordou mas somente por um instante^000000.";
-				getitem(Golden_Key, 1);
-				getitem(Kiel_Button, 1);
+				getitem(Golden_Key,1);
+				getitem(Kiel_Button,1);
 				KielHyreQuest = 34;
 				close;
 			} else {
@@ -1017,8 +1017,8 @@ kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
 			mes " ";
 			mes "Desculpe por isso,";
 			mes "Vovô";
-			getitem(Blue_Key_Card, 1);
-			delitem(Iron_Box, 1);
+			getitem(Blue_Key_Card,1);
+			delitem(Iron_Box,1);
 			KielHyreQuest = 36;
 			close;
 		}
@@ -1054,7 +1054,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 		mes "^3355FFEssa deve ser a Cesta de Biscoitos de Elly.";
 		mes "Parece que há um bilhete dobrado dentro no meio dos biscoitos^000000.";
 		next;
-		switch(select("Ler o Bilhete", "Ignorar")) {
+		switch (select("Ler o Bilhete","Ignorar")) {
 			case 1:
 			mes strcharinfo(PC_NAME)+", socorro!";
 			mes "Tem esse cara vestido de preto que está andando por aí, e jogando essa magia estranha!";
@@ -1102,7 +1102,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 		mes "É hora de voltar.";
 		mes "Não posso ficar aqui por muito mais tempo.";
 		close2;
-		warp("yuno_fild08", 69, 183);
+		warp("yuno_fild08",69,183);
 		end;
 	} else {
 		mes "^3355FFTodos os cookies desta cesta estão obsoletos!";
@@ -1114,7 +1114,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 
 // ------------------------------------------------------------------
 kh_school,188,185,0	script	Janela#kh2	HIDDEN_NPC,{
-	warp("yuno_fild08", 69, 183);
+	warp("yuno_fild08",69,183);
 	end;
 }
 
@@ -1168,9 +1168,9 @@ yuno_fild08,71,170,0	script	Sepultura#kh	HIDDEN_NPC,{
 	} else if ((KielHyreQuest >= 38) && (KielHyreQuest < 106)) {
 		mes "^3355FFA porta para a fábrica está escancarada^000000.";
 		next;
-		switch(select("Entrar", "Cancelar")) {
+		switch (select("Entrar","Cancelar")) {
 			case 1:
-			warp("kh_dun01", 3, 230);
+			warp("kh_dun01",3,230);
 			end;
 			case 2:
 			mes "......";
@@ -1185,13 +1185,13 @@ yuno_fild08,71,170,0	script	Sepultura#kh	HIDDEN_NPC,{
 		} else {
 			mes "^3355FFConforme você se aproxima da sepultura, ela começa a emitir flashes de luz^000000.";
 			next;
-			switch(select("Usar o ^0000FFCartão de Acesso Exuberante^000000", "Ignorar")) {
+			switch (select("Usar o ^0000FFCartão de Acesso Exuberante^000000","Ignorar")) {
 				case 1:
 				mes "^3355FFVocê usa o Cartão de Acesso Exuberante para abrir a passagem^000000.";
 				next;
-				switch(select("Entrar", "cancelar")) {
+				switch (select("Entrar","cancelar")) {
 					case 1:
-					warp("kh_dun01", 3, 230);
+					warp("kh_dun01",3,230);
 					end;
 					case 2:
 					mes "......";
@@ -1219,13 +1219,13 @@ yuno_fild02,93,210,4	script	Guarda da Cabana#kh	4_M_03,{
 		mes "[Guarda da Cabana]";
 		mes "Isso é uma propriedade particular, então por favor não entre nessa área a não ser que seja autorizado.";
 		next;
-		switch(select("Tenho horário marcado com Kiel Hyre", "Certo")) {
+		switch (select("Tenho horário marcado com Kiel Hyre","Certo")) {
 			case 1:
 			mes "[Guarda da Cabana]";
 			mes "Você tem um horário marcado com o Senhor Kiel Hyre?";
 			mes "Um, tem certeza?";
 			next;
-			switch(select("Sim", "Não")) {
+			switch (select("Sim","Não")) {
 				case 1:
 				mes "[Guarda da Cabana]";
 				mes "Deve haver algum tipo de engano.";
@@ -1256,7 +1256,7 @@ yuno_fild02,75,218,0	script	Porta#kh	HIDDEN_NPC,{
 		mes "^3355FFEssa porta está trancada^000000.";
 		mes "Se alguém por dentro não abrir para você então você precisará da chave certa para destrancá-la^000000.";
 		next;
-		switch(select("Destrancar", "Cancelar")) {
+		switch (select("Destrancar","Cancelar")) {
 			case 1:
 			mes "^3355FFVocê destrancou a porta com a chave que Elly lhe deu.";
 			mes "Assim que você a abre, um bilhete dobrado cai do topo da porta.";
@@ -1268,7 +1268,7 @@ yuno_fild02,75,218,0	script	Porta#kh	HIDDEN_NPC,{
 			mes "4 Esquerda";
 			close2;
 			KielHyreQuest = 18;
-			warp("kh_vila",188, 18);
+			warp("kh_vila",188,18);
 			end;
 			case 2:
 			mes "......";
@@ -1279,9 +1279,9 @@ yuno_fild02,75,218,0	script	Porta#kh	HIDDEN_NPC,{
 	} else {
 		mes "^3355FFA porta está aberta^000000.";
 		next;
-		switch(select("Entrar", "Cancelar")) {
+		switch (select("Entrar","Cancelar")) {
 			case 1:
-			warp("kh_vila", 188, 18);
+			warp("kh_vila",188,18);
 			end;
 			case 2:
 			close;
@@ -1299,7 +1299,7 @@ yuno_fild02,109,218,0	script	Porta#kh2	HIDDEN_NPC,{
 		mes "^3355FFEssa porta está trancada^000000.";
 		mes "Se alguém por dentro não abrir para você então você precisará da chave certa para destrancá-la^000000.";
 		next;
-		switch(select("Abrir", "Cancelar")) {
+		switch (select("Abrir","Cancelar")) {
 			case 1:
 			mes "^3355FFVocê não tem a chave que pode destrancar esta porta^000000.";
 			close;
@@ -1321,9 +1321,9 @@ kh_vila,191,14,0	script	Parede#kh	HIDDEN_WARP_NPC,1,1,{
 	} else if (KielHyreQuest >= 28) {
 		mes "^3355FFA parede está agora aberta, revelando um caminho secreto^000000.";
 		next;
-		switch(select("Entrar", "Cancelar")) {
+		switch (select("Entrar","Cancelar")) {
 			case 1:
-			warp("kh_vila", 17, 177);
+			warp("kh_vila",17,177);
 			end;
 			case 2:
 			close;
@@ -1337,11 +1337,11 @@ kh_vila,184,20,0	script	Livro#kh1::BookKHQ1	HIDDEN_NPC,{
 		mes "^3355FFEssa estante está estufada com tantos ivros largos e de capa dura^000000.";
 		close;
 	} else if (KielHyreQuest == 26) {
-		if (rand(1, 10) == 8) {
+		if (rand(1,10) == 8) {
 			mes "^3355FFSem pensar, você apanha um livro da estante.";
 			mes "Assim que você o puxa, a parede desliza abrindo-se revelando um caminho secreto^000000.";
 			KielHyreQuest = 28;
-			specialeffect(EF_READYPORTAL2, AREA, getnpcid(0, "Parede#kh"));
+			specialeffect(EF_READYPORTAL2,AREA,getnpcid(0,"Parede#kh"));
 			close;
 		}
 	}
@@ -1354,7 +1354,7 @@ kh_vila,175,19,0	duplicate(BookKHQ1)	Livro#kh4	HIDDEN_NPC
 kh_vila,179,11,0	script	Carta#kh	FAKE_NPC,1,1,{
 	OnTouch:
 	if (KielHyreQuest == 18) {
-		if (!checkweight(Kyll_Hire_Letter, 1)) {
+		if (!checkweight(Kyll_Hire_Letter,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos itens e está incapaz de aceitar mais algum.";
 			mes "Por favor libere algum espaço no seu inventário antes de retornar^000000.";
@@ -1362,7 +1362,7 @@ kh_vila,179,11,0	script	Carta#kh	FAKE_NPC,1,1,{
 		} else {
 			mes "^3355FFvocê encontrou uma carta no chão.";
 			mes "Naturalmente você a pegou, apesar do fato de que ela não está endereçada à você^000000.";
-			getitem(Kyll_Hire_Letter, 1);
+			getitem(Kyll_Hire_Letter,1);
 			KielHyreQuest = 20;
 			close;
 		}
@@ -1380,7 +1380,7 @@ kh_vila,16,175,0	script	Caixa#kh	HIDDEN_NPC,{
 	mes " ";
 	mes "Preço: 1,100 zeny (barato!)";
 	next;
-	switch(select("Comprar!", "Cancelar")) {
+	switch (select("Comprar!","Cancelar")) {
 		case 1:
 		if (Zeny < 1100) {
 			mes "^3355FF1,100 zeny parecer ser meio caro para ração de bichinho.";
@@ -1392,7 +1392,7 @@ kh_vila,16,175,0	script	Caixa#kh	HIDDEN_NPC,{
 			mes "Não tem nada de especial nisso por fim!";
 			mes "É só uma Fração normal!^000000";
 			Zeny -= 1100;
-			getitem(Pet_Food, 1);
+			getitem(Pet_Food,1);
 			close;
 		}
 		case 2:
@@ -1406,7 +1406,7 @@ kh_vila,30,184,0	script	Caixa de Maçã#kh	HIDDEN_NPC,{
 	mes "^3355FFVocê encontra uma caixa com algumas maçãs^000000";
 	mes "^3355FFripe, delicious apples^000000.";
 	next;
-	switch(select("Pegar a Caixa", "Cancelar")) {
+	switch (select("Pegar a Caixa","Cancelar")) {
 		case 1:
 		mes "^3355FFNão...!";
 		mes "Espere!";
@@ -1429,7 +1429,7 @@ kh_vila,44,126,0	script	Mapa#khp	HIDDEN_NPC,{
 		mes "Assim como um outro pais ao oeste, cujo nome não é familiar para você, está colado na parede^000000.";
 		next;
 		mes "^3355FFAssim que você examina o mapa mundial mais de perto, você descobre que algo foi escondido debaixo dele^000000.";
-		switch(select("Ignorar", "Examinar")) {
+		switch (select("Ignorar","Examinar")) {
 			case 1:
 			mes "^3355FFO que quer que possa estar^000000";
 			mes "^3355FFescondido debaixo desse^000000";
@@ -1470,7 +1470,7 @@ kh_vila,44,126,0	script	Mapa#khp	HIDDEN_NPC,{
 		mes "^3355FFAqui é onde você encontrou o papel no qual o poema estava escrito.";
 		mes "Talvez seja uma boa idéia refrescar sua memória e ler aquele poema novamente^000000.";
 		next;
-		switch(select("Ler", "Cancelar")) {
+		switch (select("Ler","Cancelar")) {
 			case 1:
 			mes "^808080Ela morrerá em um lugar tão frio quanto os pólos.";
 			mes "Quando o poço está seco e o chão está rachado, o caminho para o coração dela.";
@@ -1505,7 +1505,7 @@ kh_vila,33,184,0	script	Pote#kh	HIDDEN_NPC,{
 		mes "Que você poderia usar para soltar a cola no mapa...";
 		mes "Você é um gênio!^000000";
 		next;
-		switch(select("Tentar", "Aquilo? Aquilo não funciona!")) {
+		switch (select("Tentar","Aquilo? Aquilo não funciona!")) {
 			case 1:
 			mes "^3355FFVocê pegou o pote fervente, mas queimou levemente suas mãos acidentalmente^000000.";
 			KHCottagePoem1 = 2;
@@ -1524,7 +1524,7 @@ kh_vila,33,184,0	script	Pote#kh	HIDDEN_NPC,{
 // ------------------------------------------------------------------
 kh_vila,14,55,0	script	Cabaça#khp	HIDDEN_NPC,{
 	if ((!countitem(Old_Copper_Key) < 1) && (countitem(Green_Key_Card) < 1) && (countitem(Iron_Box) < 1) && (KielHyreQuest < 38)) {
-		if (!checkweight(Old_Copper_Key, 1)) {
+		if (!checkweight(Old_Copper_Key,1)) {
 			mes "^3355FFAquilo é uma bela cabaça.";
 			mes "Você pode até achar algo nela...";
 			mes "Mas antes é melhor se livrar de todo seu peso extra.";
@@ -1535,7 +1535,7 @@ kh_vila,14,55,0	script	Cabaça#khp	HIDDEN_NPC,{
 		mes "Em palavras menos enfeitadas, uma abóbora.'";
 		mes "O que você vai fazer^000000?";
 		next;
-		switch(select("Quebrar a cabaça", "Olhar dentro da cabaça", "Ignorar")) {
+		switch (select("Quebrar a cabaça","Olhar dentro da cabaça","Ignorar")) {
 			case 1:
 			mes "^3355FFVocê não pode quebrar abra aquela cabaça...";
 			mes "Você é um herói, não um vândalo.";
@@ -1544,7 +1544,7 @@ kh_vila,14,55,0	script	Cabaça#khp	HIDDEN_NPC,{
 			case 2:
 			mes "^3355FFVocê gentilmente coloca sua mão dentro cabaça, e gentilmente tateia com seus dedos.";
 			mes "Até que você recuperar uma Velha Chave de Bronze^000000.";
-			getitem(Old_Copper_Key, 1);
+			getitem(Old_Copper_Key,1);
 			close;
 			case 3:
 			mes "^3355FFProvavelmente não há nada dentro mesmo^000000.";
@@ -1565,11 +1565,11 @@ kh_vila,39,41,0	script	Piscina#kh	HIDDEN_NPC,{
 	} else if ((KHCottagePoem1 == 3) && (KielHyreQuest < 30)) {
 		mes "^3355FFVocê encontrou uma piscina pomposa cheia com água fresca junto com uma evidente estátua de leão com duas alavancas^000000.";
 		next;
-		switch(select("Puxar as alavancas", "Cancelar")) {
+		switch (select("Puxar as alavancas","Cancelar")) {
 			case 1:
 			mes "^3355FFQual alavanca você gostaria de puxar primeiro^000000?";
 			next;
-			switch(select("Alavanca da Direita", "Alavanca da Esquerda")) {
+			switch (select("Alavanca da Direita","Alavanca da Esquerda")) {
 				case 1:
 				mes "^3355FFVocê puxou a alavanca da direita, fazendo com que a água jorrasse da boca do leão^000000.";
 				close;
@@ -1577,14 +1577,14 @@ kh_vila,39,41,0	script	Piscina#kh	HIDDEN_NPC,{
 				mes "^3355FFAssim que você puxa alavanca da esquerda, a água da piscina é drenada.";
 				mes "Com a piscina vazia, você pode ver uma escada de musgo verde cobrindo o fundo da piscina^000000.";
 				next;
-				switch(select("Ignorar", "Investigar")) {
+				switch (select("Ignorar","Investigar")) {
 					case 1:
 					mes "^3355FFVocê decide que é um pouco mais que um buraco sem água alguma para enchê-la^000000.";
 					close;
 					case 2:
 					mes "^3355FFAssim que você olha através do musgo molhado no fundo da piscina, você esbarra em um pequeno botão peculiar^000000.";
 					next;
-					switch(select("Pressionar o Botão", "Não Pressionar o Botão")) {
+					switch (select("Pressionar o Botão","Não Pressionar o Botão")) {
 						case 1:
 						mes "^3355FFVocê pressionou o botão o que parece acionar um som estranho vindo das escadas no corredor^000000.";
 						KHCottagePoem1 = 4;
@@ -1615,21 +1615,21 @@ kh_vila,181,178,4	script	Cão Bravo#kh	4_DOG01,7,3,{
 	mes "^3355FFUm cachorro aparentemente extremamente bravo está olhando para você.";
 	mes "Será que você consegue passar por essa criatura sem se machucar^000000?";
 	next;
-	switch(select("Seguir em Frente", "Fugir")) {
+	switch (select("Seguir em Frente","Fugir")) {
 		case 1:
 		if (countitem(Pet_Food)) {
 			mes "^3355FFEspere!";
 			mes "Talvez você possa usar comida para acalmar a besta selvagem!";
 			mes "Por quê você não o alimenta com um pouco da sua ração de bichinho e vê o que acontece^000000?";
 			next;
-			switch(select("Dar ração de bichinho", "Não vai funcionar!")) {
+			switch (select("Dar ração de bichinho","Não vai funcionar!")) {
 				case 1:
 				mes "^3355FFVocê cuidadosamente arremessa a ração de bichinho para o cachorro.";
 				mes "Sua cauda balança violentamente enquanto ele devora a comida.";
 				mes "Melhor passar por esse cachoro agora enquanto você tem chance^000000!";
-				delitem(Pet_Food, 1);
+				delitem(Pet_Food,1);
 				close2;
-				warp("kh_vila", 173, 182);
+				warp("kh_vila",173,182);
 				end;
 				case 2:
 				break;
@@ -1646,19 +1646,19 @@ kh_vila,181,178,4	script	Cão Bravo#kh	4_DOG01,7,3,{
 		next;
 		mes "^3355FFO cachorro lhe persegue escada abaixo, quão ingênuo você é^000000!";
 		close2;
-		warp("kh_vila", 126, 70);
+		warp("kh_vila",126,70);
 		end;
 		case 2:
 		mes "^3355FFVamos sair daqui^000000!";
 		close2;
-		warp("kh_vila", 126, 70);
+		warp("kh_vila",126,70);
 		end;
 	}
 }
 
 // ------------------------------------------------------------------
 kh_vila,115,186,0	script	Gaveta#kh	HIDDEN_NPC,{
-	if (!checkweight(Yellow_Key_Card, 1)) {
+	if (!checkweight(Yellow_Key_Card,1)) {
 		mes "^3355FFHá algo dentro dessa gaveta, mas você não pode pegar já que está carregando muitos ítens com você.";
 		mes "Talvez você deva visitar o seu confiável armazem da Kafra antes^000000.";
 		close;
@@ -1668,11 +1668,11 @@ kh_vila,115,186,0	script	Gaveta#kh	HIDDEN_NPC,{
 		mes "Ou pode estar vazia.";
 		mes "Quem sabe^000000?";
 		next;
-		switch(select("Abrir a gaveta", "Ignorar")) {
+		switch (select("Abrir a gaveta","Ignorar")) {
 			case 1:
 			mes "^3355FFVocê obteve o Cartão de Acesso Amarelo de dentro da gaveta.";
 			mes "Abrir aquela gaveta tornou-se útil^000000.";
-			getitem(Yellow_Key_Card, 1);
+			getitem(Yellow_Key_Card,1);
 			close;
 			case 2:
 			mes "^3355FFEsquece de abrir aquela gaveta.";
@@ -1695,13 +1695,13 @@ kh_vila,107,126,0	script	Caixa#kh2	HIDDEN_NPC,{
 		mes "^3355FFUma caixa sólida está jogada no chão onde se encontra uma pequena caixa trancada que foi colocada dentro.";
 		mes "Talvez você possa usar sua Velha Chave de Bronze para destrancá-la^000000.";
 		next;
-		switch(select("Usar a Velha Chave de Bronze", "Não, nunca vai funcionar.")) {
+		switch (select("Usar a Velha Chave de Bronze","Não, nunca vai funcionar.")) {
 			case 1:
 			mes "^3355FFSeu palpite valeu a pena!";
 			mes "A velha chave de bronze realmente destrancou aquela caixa!";
 			mes "Você abre a caixa interior e obtem o Cartão de Acesso Verde que estava trancado dentro^000000.";
-			getitem(Green_Key_Card, 1);
-			delitem(Old_Copper_Key, 1);
+			getitem(Green_Key_Card,1);
+			delitem(Old_Copper_Key,1);
 			close;
 			case 2:
 			mes "^3355FFO quê? Usando uma chave não destrancar uma fechadura?";
@@ -1720,28 +1720,28 @@ kh_vila,181,138,0	script	Estante#kh	HIDDEN_NPC,{
 		mes "^3355FFUm dos livros nessa estante estufada está intitulado com o bilhete, para Elly.";
 		mes "Deve ter sido deixado prá trás pelo avô dela^000000.";
 		next;
-		switch(select("Examinar o Livro", "Ignorar")) {
+		switch (select("Examinar o Livro","Ignorar")) {
 			case 1:
 			mes "^3355FFVocê espia pelas páginas do livro e não encontra nada particularmente interessante.";
 			mes "No entanto, você percebe uma superfície de aço atrás da estante quando você devolve o livro^000000.";
 			next;
-			switch(select("Examinar a superfície de Aço", "Ignorar")) {
+			switch (select("Examinar a superfície de Aço","Ignorar")) {
 				case 1:
 				mes "^3355FFVocê remove mais dos livros da estante.";
 				mes "Revelando que a superfície de aço é parte de um cofre escondido atrás da estante.";
 				mes "Há duas fechaduras no cofre de aço^000000.";
 				next;
-				switch(select("Tentar todas suas chaves", "Cancelar")) {
+				switch (select("Tentar todas suas chaves","Cancelar")) {
 					case 1:
 					mes "^3355FFQual chave você irá inserir na primeira fechadura^000000?";
 					next;
 					if (countitem(Old_Copper_Key) >= 1) {
-						select("Velha Chave de Bronze", "Chave da Cabana");
+						select("Velha Chave de Bronze","Chave da Cabana");
 						mes "^3355FFQual chave você irá inserir na segunda fechadura^000000?";
 						next;
-						select("Velha Chave de Bronze", "Chave da Cabana");
+						select("Velha Chave de Bronze","Chave da Cabana");
 					} else if (countitem(Green_Key_Card)) {
-						switch(select("Cartão de Acesso Verde", "Chave da Cabana")) {
+						switch (select("Cartão de Acesso Verde","Chave da Cabana")) {
 							case 1:
 							.@KHFirstKeyhole = 1;
 							break;
@@ -1751,7 +1751,7 @@ kh_vila,181,138,0	script	Estante#kh	HIDDEN_NPC,{
 						}
 						mes "^3355FFQual chave você irá inserir na segunda fechadura^000000?";;
 						next;
-						switch(select("Cartão de Acesso Verde", "Chave da Cabana")) {
+						switch (select("Cartão de Acesso Verde","Chave da Cabana")) {
 							case 1:
 							.@KHSecondKeyhole = 1;
 							break;
@@ -1762,9 +1762,9 @@ kh_vila,181,138,0	script	Estante#kh	HIDDEN_NPC,{
 						if (.@KHFirstKeyhole == 2) && (.@KHSecondKeyhole == 1) {
 							mes "^3355FFO cofre abre com um estalido e você vê uma Caixa Cinza dentro^000000.";
 							mes "^3355FFVocê leva a Caixa Cinza com você, esperando que se torne útil mais tarde^000000.";
-							delitem(Villa_Spare_Key, 1);
-							delitem(Green_Key_Card, 1);
-							getitem(Iron_Box, 1);
+							delitem(Villa_Spare_Key,1);
+							delitem(Green_Key_Card,1);
+							getitem(Iron_Box,1);
 							close;
 						}
 					}
@@ -1823,13 +1823,13 @@ kh_vila,123,170,0	script	Baú de Poções#kh	HIDDEN_NPC,{
 		mes "^3355FFÉ um palpite doido, mas talvez, só talvez...";
 		mes "Você possa usar algo de dentro dessa cabine médica que possa revelar alguma tinta invisível escrita nesse documento^000000!";
 		next;
-		switch(select("O quê? Isso é loucura!", "Claro! Vamos tentar!")) {
+		switch (select("O quê? Isso é loucura!","Claro! Vamos tentar!")) {
 			case 1:
 			mes "^3355FFDesculpe.";
 			mes "Pensei que fosse uma boa idéia^000000.";
 			close;
 			case 2:
-			switch(select("Tentar Líquido Vermelho", "Tentar Líquido Azul", "Tentar Líquido Amarelo", "Tentar Líquido Verde", "Cancelar")) {
+			switch (select("Tentar Líquido Vermelho","Tentar Líquido Azul","Tentar Líquido Amarelo","Tentar Líquido Verde","Cancelar")) {
 				case 1:
 				.@KHPotionColor$ = "Vermelho";
 				break;
@@ -1874,7 +1874,7 @@ kh_vila,123,170,0	script	Baú de Poções#kh	HIDDEN_NPC,{
 		mes "^3355FFAqui é onde você derramou algum líquido azul para ler um poema escrito com tinta invisível num pedaço de papel em branco com o selo da Fundação Kiel Hyre.";
 		mes "Você gostaria de lê-lo^000000?";
 		next;
-		switch(select("Sem Tempo!", "Ler")) {
+		switch (select("Sem Tempo!","Ler")) {
 			case 1:
 			mes "^3355FFSeu tempo está acabando!";
 			mes "Por enquanto seria melhor você procurar cada canto da cabana^000000.";
@@ -1905,7 +1905,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 		mes "^3355FFHá quatro bem elaboradas espadas posicionadas próximas à quatro assustadoras esculturas de serpentes.";
 		mes "Espere, talvez estejam relacionadas ao poema que você leu antes^000000!";
 		next;
-		switch(select("Nada haver!", "Claro!")) {
+		switch (select("Nada haver!","Claro!")) {
 			case 1:
 			mes "^3355FFImpossível.";
 			mes "Deve ser algum tipo de coincidência^000000.";
@@ -1915,7 +1915,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 			mes "Há um buraco no topo da cabeça de cada escultura de serpente.";
 			mes "Esses buracos parecem bastante grandes para inserir cada uma das espadas ornamentais próximas^000000.";
 			next;
-			switch(select("Ignorar", "Inserir Espadas Ornamentais")) {
+			switch (select("Ignorar","Inserir Espadas Ornamentais")) {
 				case 1:
 				mes "^3355FFImpossível.";
 				mes "Deve ser algum tipo de coincidência^000000.";
@@ -1930,7 +1930,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 					mes "^3355FFVocê provavelmente deveria tentar inserir cada espada na serpente correta^000000.";
 					mes "Primeiro por favor selecione a serpente que você irá inserir a primeira espada^000000.";
 					next;
-					switch(select("Primeira Serpente", "Segunda Serpente", "Terceira Serpente", "Quarta Serpente")) {
+					switch (select("Primeira Serpente","Segunda Serpente","Terceira Serpente","Quarta Serpente")) {
 						default:
 						break;
 						case 2:
@@ -1940,7 +1940,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 					next;
 					mes "^3355FFAgora, por favor escolha a serpente que você irá inserir a segunda espada^000000.";
 					next;
-					switch(select("Primeira Serpente", "Segunda Serpente", "Terceira Serpente", "Quarta Serpente")) {
+					switch (select("Primeira Serpente","Segunda Serpente","Terceira Serpente","Quarta Serpente")) {
 						default:
 						break;
 						case 4:
@@ -1950,7 +1950,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 					next;
 					mes "^3355FFAgora, por favor selecione a serpente que você irá inserir a terceira espada^000000.";
 					next;
-					switch(select("Primeira Serpente", "Segunda Serpente", "Terceira Serpente", "Quarta Serpente")) {
+					switch (select("Primeira Serpente","Segunda Serpente","Terceira Serpente","Quarta Serpente")) {
 						case 1:
 						++.@KHSwords;
 						break;
@@ -1960,7 +1960,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 					next;
 					mes "^3355FFFinalmente, por favor selecione a serpente na qual você irá inserir a quarta espada^000000.";
 					next;
-					switch(select("Primeira Serpente", "Segunda Serpente", "Terceira Serpente", "Quarta Serpente")) {
+					switch (select("Primeira Serpente","Segunda Serpente","Terceira Serpente","Quarta Serpente")) {
 						default:
 						break;
 						case 3:
@@ -1972,7 +1972,7 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 						KHCottagePoem1 = 5;
 						KHCottagePoem2 = 3;
 						close2;
-						warp("kh_vila", 178, 72);
+						warp("kh_vila",178,72);
 						end;
 					} else {
 						mes "^3355FFNada aconteceu.";
@@ -1986,9 +1986,9 @@ kh_vila,136,68,0	script	Punho da Espada#kh	HIDDEN_NPC,{
 	} else if ((KHCottagePoem1 == 5) && (KHCottagePoem2 == 3) || (KielHyreQuest >= 30)) {
 		mes "^3355FFAqui tem um caminho oculto que leva à um laboratório secreto^000000.";
 		next;
-		switch(select("Entrar", "Cancelar")) {
+		switch (select("Entrar","Cancelar")) {
 			case 1:
-			warp("kh_vila", 178, 72);
+			warp("kh_vila",178,72);
 			end;
 			case 2:
 			close;
@@ -2005,7 +2005,7 @@ kh_vila,185,68,0	script	Tubo de Testes#kh	HIDDEN_NPC,{
 		mes "^3355FFUma estranha, sábia senhora está presa nesse tubo de testes.";
 		mes "Há um pequeno botão vermelho bem embaixo no tubo de testes^000000.";
 		next;
-		switch(select("Pressionar o Botão", "Investigar Mais")) {
+		switch (select("Pressionar o Botão","Investigar Mais")) {
 			case 1:
 			mes "[???]";
 			mes "O-Olá...?";
@@ -2070,7 +2070,7 @@ kh_dun01,235,48,0	script	Porta Pesada#kh	HIDDEN_NPC,{
 	if (KielHyreQuest < 38) {
 		mes "^3355FFHá uma larga e pesada porta à sua frente^000000";
 		next;
-		switch(select("Abrir a Porta", "Cancelar")) {
+		switch (select("Abrir a Porta","Cancelar")) {
 			case 1:
 			input(.@KHInput$);
 			mes "^3355FFVocê tenta empurrar a porta para abrir com toda sua força, mas falha em fazê-la se mexer^000000.";
@@ -2082,13 +2082,13 @@ kh_dun01,235,48,0	script	Porta Pesada#kh	HIDDEN_NPC,{
 	} else if ((KielHyreQuest >= 38) && (KielHyreQuest < 46)) {
 		mes "^3355FFHá uma larga e pesada porta à sua frente^000000.";
 		next;
-		switch(select("Abrir a Porta", "Cancelar")) {
+		switch (select("Abrir a Porta","Cancelar")) {
 			case 1:
 			input(.@KHInput$);
 			if (.@KHInput$ == "Cartão de Acesso Azul") {
 				mes "^3355FFVocê abri com sucesso a porta^000000.";
 				close2;
-				warp("kh_school", 119, 144);
+				warp("kh_school",119,144);
 				end;
 			} else {
 				mes "^3355FFVocê tenta empurrar a porta para abrir com toda sua força, mas falha em fazê-la se mexer^000000.";
@@ -2109,7 +2109,7 @@ kh_dun01,76,233,0	script	Porta Pesada#kh2	HIDDEN_NPC,{
 	if ((KielHyreQuest >= 38) && (KielHyreQuest < 46)) {
 		mes "^3355FFTHá uma larga e pesada porta à sua frente^000000";
 		next;
-		switch(select("Abrir a Porta", "Cancelar")) {
+		switch (select("Abrir a Porta","Cancelar")) {
 			case 1:
 			mes "^3355FFVocê tenta empurrar a porta para abrir com toda sua força, mas falha em fazê-la se mexer^000000.";
 			close;
@@ -2135,7 +2135,7 @@ kh_dun01,235,114,0	duplicate(Porta Pesada#kh2)	Porta Pesada#kh11	HIDDEN_NPC
 // ------------------------------------------------------------------
 kh_school,119,149,4	script	Bela Dama#kh	4_F_KHELLISIA,{
 	if (KielHyreQuest < 40) {
-		cutin("kh_ellisia", 2);
+		cutin("kh_ellisia",2);
 		mes "[Allysia]";
 		mes "Hm? Não acho que eu lhe conheça.";
 		mes "Kiel Hyre só tem amigos de Elly autorizados, e confiáveis que podem estar ajudando ela.";
@@ -2151,7 +2151,7 @@ kh_school,119,149,4	script	Bela Dama#kh	4_F_KHELLISIA,{
 		mes "Só posso lhe deixar entrar se você puder se identificar como amigo de Elly.";
 		mes "Há alguma coisa que você possa me apresentar como prova?";
 		next;
-		switch(select("Cartão de Acesso Amarelo", "Cartão de Acesso Azul", "Chave Dourada", "Broche Luxuoso", "...?")) {
+		switch (select("Cartão de Acesso Amarelo","Cartão de Acesso Azul","Chave Dourada","Broche Luxuoso","...?")) {
 			default:
 			break;
 			case 3:
@@ -2159,8 +2159,8 @@ kh_school,119,149,4	script	Bela Dama#kh	4_F_KHELLISIA,{
 			mes "Sim, estou convencida que você a tem ajudado.";
 			mes "Estive esperando por você, então deixe-me levá-lo ao meu quarto.";
 			close2;
-			cutin("", 255);
-			warp("kh_school", 120, 180);
+			cutin("",255);
+			warp("kh_school",120,180);
 			end;
 			case 4:
 			mes "[Allysia]";
@@ -2168,11 +2168,11 @@ kh_school,119,149,4	script	Bela Dama#kh	4_F_KHELLISIA,{
 			mes "Ele lhe enviou aqui para me pegar?!";
 			mes "Eu não estou me arriscando!";
 			close2;
-			cutin("", 255);
-			monster(strnpcinfo(NPC_MAP), 117, 144, "Constant", G_CONSTANT, 1);
-			monster(strnpcinfo(NPC_MAP), 117, 144, "Constant", G_CONSTANT, 1);
-			monster(strnpcinfo(NPC_MAP), 117, 144, "Constant", G_CONSTANT, 1);
-			monster(strnpcinfo(NPC_MAP), 117, 144, "Constant", G_CONSTANT, 1);
+			cutin("",255);
+			monster(strnpcinfo(NPC_MAP),117,144,"Constant",G_CONSTANT,1);
+			monster(strnpcinfo(NPC_MAP),117,144,"Constant",G_CONSTANT,1);
+			monster(strnpcinfo(NPC_MAP),117,144,"Constant",G_CONSTANT,1);
+			monster(strnpcinfo(NPC_MAP),117,144,"Constant",G_CONSTANT,1);
 			end;
 			case 5:
 			mes "[Allysia]";
@@ -2180,20 +2180,20 @@ kh_school,119,149,4	script	Bela Dama#kh	4_F_KHELLISIA,{
 			mes "........";
 			mes "...........";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		}
 		mes "[Allysia]";
 		mes "Hm? Isso não prova que Elly realmente confia em você...";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest >= 40) {
 		mes "[Allysia]";
 		mes "Por favor me siga.";
 		close2;
-		cutin("", 255);
-		warp("kh_school", 120, 180);
+		cutin("",255);
+		warp("kh_school",120,180);
 		end;
 	}
 }
@@ -2206,17 +2206,17 @@ kh_school,120,149,4	duplicate(Bela Dama#kh3)	Bela Dama#kh5	4_F_KHELLISIA
 
 // ------------------------------------------------------------------
 kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
-	cutin("kh_ellisia", 2);
+	cutin("kh_ellisia",2);
 	if (KielHyreQuest < 38) {
 		mes "[??????]";
 		mes "Este local é particular.";
 		mes "Saia imediatamente!";
 		close2;
-		cutin("", 255);
-		warp("yuno_fild08", 73, 172);
+		cutin("",255);
+		warp("yuno_fild08",73,172);
 		end;
 	} else if (KielHyreQuest <= 38) {
-		if (!checkweight(Red_Key_Card, 1)) {
+		if (!checkweight(Red_Key_Card,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos itens e não será capaz de aceitar mais.";
 			mes "Por favor arrume algum espaço no seu inventário antes de retornar^000000.";
@@ -2230,7 +2230,7 @@ kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
 			mes "[Allysia]";
 			mes "É imperativo que você procure por Kiel Hyre e o resgate o mais rápido que você possa!";
 			next;
-			switch(select("O que é essa fábrica?", "O que aconteceu a^FF0000Kiel Hyre^000000?")) {
+			switch (select("O que é essa fábrica?","O que aconteceu a^FF0000Kiel Hyre^000000?")) {
 				case 1:
 				mes "[Allysia]";
 				mes "Essa fábrica é parte dos negócios secretos da Fundação Kiel Hyre, onde robôs humanóides são fabricados.";
@@ -2254,13 +2254,13 @@ kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
 				mes "[Allysia]";
 				mes "Pegue esse esse cartão que vai lhe permitir entrar em áreas secretas dentro dessa fábrica.";
 				mes "Se você encontrar Kiel Hyre, por favor me avise imediatamente.";
-				getitem(Red_Key_Card, 1);
+				getitem(Red_Key_Card,1);
 				KielHyreQuest = 40;
 				break;
 			}
 		}
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 40) {
 		mes "[Allysia]";
@@ -2268,8 +2268,8 @@ kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
 		mes "Mas seu filho Kiehl pode fazer algo desesperado contra ele logo.";
 		mes "Por favor, localize Kiel Hyre antes que isso aconteça!";
 		close2;
-		cutin("", 255);
-		warp("kh_dun01", 22, 216);
+		cutin("",255);
+		warp("kh_dun01",22,216);
 		end;
 	} else if (KielHyreQuest == 42) {
 		mes "[Allysia]";
@@ -2288,10 +2288,10 @@ kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
 		next;
 		mes "[Allysia]";
 		mes "Certo, Recebi as ordens de Kiel Hyre, e devo cumpri-las...";
-		delitem(Steel_Piece, 1);
+		delitem(Steel_Piece,1);
 		KielHyreQuest = 44;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 44) {
 		mes "[Allysia]";
@@ -2302,24 +2302,24 @@ kh_school,122,186,4	script	Bela Dama#kh6	4_F_KHELLISIA,{
 		mes "Primeiramente, preciso pegar seus cartões por razões de segurança.";
 		mes "Segundamente, me encontre na mansão de Kiel Hyre em Lighthalzen.";
 		mes "Mostre a Chave Dourada para ser admitido nas áreas.";
-		delitem(Yellow_Key_Card, 1);
-		delitem(Blue_Key_Card, 1);
-		delitem(Red_Key_Card, 1);
+		delitem(Yellow_Key_Card,1);
+		delitem(Blue_Key_Card,1);
+		delitem(Red_Key_Card,1);
 		KielHyreQuest = 46;
 		next;
 		mes "[Allysia]";
 		mes "Eu entendo que isso é repentino, e não estou lhe dando uma explicação direta.";
 		mes "Mas algo horrível vai acontecer se eu não me apressar o mais rápido possível.";
 		close2;
-		warp("yuno_fild08", 73, 172);
-		cutin("", 255);
+		warp("yuno_fild08",73,172);
+		cutin("",255);
 		end;
 	} else {
 		mes "[Allysia]";
 		mes "Eu entendo que isso é repentino, e não estou lhe dando uma explicação direta.";
 		mes "Mas algo horrível vai acontecer se eu não me apressar o mais rápido possível.";
 		close2;
-		warp("yuno_fild08", 73, 172);
+		warp("yuno_fild08",73,172);
 		end;
 	}
 }
@@ -2338,7 +2338,7 @@ kh_dun01,166,223,0	script	Dispositivo de Acesso#kh	HIDDEN_NPC,{
 		if (.@KHInput$ == "Cartão de Acesso Vermelho") {
 			mes "^3355FFA porta abre assim que você insere o Cartão de Acesso Vermelho.^000000.";
 			close2;
-			warp("kh_dun01", 170, 227);
+			warp("kh_dun01",170,227);
 			end;
 		} else {
 			mes "^3355FFNada aconteceu^000000.";
@@ -2352,7 +2352,7 @@ kh_dun01,162,206,0	duplicate(Dispositivo de Acesso#kh)	Dispositivo de Acesso#kh2
 kh_dun01,224,233,0	script	Pota da Fábica#kh	FAKE_NPC,5,5,{
 	OnTouch:
 	if (KielHyreQuest == 40) {
-		if (!checkweight(Steel_Piece, 1)) {
+		if (!checkweight(Steel_Piece,1)) {
 			mes "^3355FF- Wait!!";
 			mes "Você está carregando muitos ítens e não será capaz de aceitar mais.";
 			mes "Por favor abra algum espaço no seu inventario antes de retornar^000000.";
@@ -2389,7 +2389,7 @@ kh_dun01,224,233,0	script	Pota da Fábica#kh	FAKE_NPC,5,5,{
 		mes "Se você está realmente nos ajudando, então ela terá algumas instruções para você também.";
 		next;
 		mes "^3355FFKiel Hyre passa um estranho fragmento de metal pela fresta entre a porta e o chão^000000.";
-		getitem(Steel_Piece, 1);
+		getitem(Steel_Piece,1);
 		KielHyreQuest = 42;
 		close;
 	} else {
@@ -2414,9 +2414,9 @@ kh_dun01,44,203,0	script	Dispositivo de Acesso#kh3	HIDDEN_NPC,{
 			mes "^3355FFAssim que você insere o Cartão de Acesso Exuberante no slot de cartão.";
 			mes "A porta se escancara revelando um longo lance de escadas para baixo^000000.";
 			next;
-			switch(select("Descer as Escadas", "Cancelar")) {
+			switch (select("Descer as Escadas","Cancelar")) {
 				case 1:
-				warp("kh_dun02", 41, 198);
+				warp("kh_dun02",41,198);
 				end;
 				case 2:
 				mes "^3355FFParece que essa porta se fechou automaticamente depois de um tempo limite pré programado que passou^000000.";
@@ -2436,27 +2436,27 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		mes "[Mordomo]";
 		mes "Isso é uma residência privada, por favor saia.";
 		close2;
-		warp("lighthalzen",188, 201);
+		warp("lighthalzen",188,201);
 		end;
 	} else if ((KielHyreQuest >= 46) && (KielHyreQuest < 50)) {
 		mes "[Mordomo]";
 		mes "Saudações.";
 		mes "Você foi convidado pelo mestre dessa mansão?";
 		next;
-		switch(select("Mostrar a Chave Dourada", "????")) {
+		switch (select("Mostrar a Chave Dourada","????")) {
 			case 1:
 			mes "[Mordomo]";
 			mes "Ah, Mestre "+strcharinfo(PC_NAME)+".";
 			mes "Estava aguardando a sua chegada.";
 			mes "Por favor, por aqui.";
 			close2;
-			warp("kh_mansion", 21, 14);
+			warp("kh_mansion",21,14);
 			end;
 			case 2:
 			mes "[Mordomo]";
 			mes "Se você não foi convidado pelo mestre dessa mansão, então eu temo que tenha de insistir em sua partida imediata!";
 			close2;
-			warp("lighthalzen", 188, 201);
+			warp("lighthalzen",188,201);
 			end;
 		}
 	} else if ((KielHyreQuest >= 50) && (KielHyreQuest < 64) || (KielHyreQuest >= 70)) {
@@ -2465,13 +2465,13 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		mes "É um prazer em receber sua compania novamente.";
 		mes "Você gostaria de ver meu mestre?";
 		next;
-		switch(select("Sim", "Não")) {
+		switch (select("Sim","Não")) {
 			case 1:
 			mes "[Mordomo]";
 			mes "Muito bem.";
 			mes "Por aqui";
 			close2;
-			warp("kh_mansion",21, 14);
+			warp("kh_mansion",21,14);
 			end;
 			case 2:
 			mes "[Mordomo]";
@@ -2485,13 +2485,13 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		mes "É um prazer em receber sua compania novamente.";
 		mes "Você gostaria de ver meu mestre, ou...?";
 		next;
-		switch(select("^FF0000Kiel Hyre^000000", "^3355FFMitchell^000000")) {
+		switch (select("^FF0000Kiel Hyre^000000","^3355FFMitchell^000000")) {
 			case 1:
 			mes "[Mordomo]";
 			mes "Muito bem.";
 			mes "Por aqui";
 			close2;
-			warp("kh_mansion",21, 14);
+			warp("kh_mansion",21,14);
 			end;
 			case 2:
 			mes "[Mordomo]";
@@ -2504,7 +2504,7 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 			mes "Acredito que seja seguro o bastante em deixar você vê-lo agora...";
 			mes "Por favor, rápido por aqui.";
 			close2;
-			warp("kh_mansion", 20, 87);
+			warp("kh_mansion",20,87);
 			end;
 		}
 	}
@@ -2512,28 +2512,28 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 
 // ------------------------------------------------------------------
 kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
-	if (!checkweight(Spawn, 200)) {
+	if (!checkweight(Spawn,200)) {
 		mes "^3355FFSó um segundo...";
 		mes "Você está carregando muitos itens com você agora, então você vai precisar liberar mais espaço no seu inventario antes^000000.";
 		close;
 	} else if (KielHyreQuest < 46) {
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
 		mes ".........";
 		mes ".........";
 		mes "............";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest == 46) {
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
 		mes "Ah, você deve ser "+strcharinfo(PC_NAME)+".";
 		mes "Gostaria de lhe agradecer por salvar minha vida.";
 		mes "Você deve ter muitas perguntas a me fazer, então eu farei o melhor para lhe dar respostas.";
 		next;
-		while(true) {
-			switch(select("Robôs?", "^3355FFKiehl^000000?", "Broche de ^FF0000Elly^000000?")) {
+		while (true) {
+			switch (select("Robôs?","^3355FFKiehl^000000?","Broche de ^FF0000Elly^000000?")) {
 				case 1:
 				mes "[Kiel Hyre]";
 				mes "Andei pesquisando robótica por trinta e dois anos agora.";
@@ -2585,8 +2585,8 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 				mes "[Kiel Hyre]";
 				mes "Se você não tiver mais perguntas para mim, então você por favor me deixe descansar?";
 				mes "Ainda não estou me sentido bem do tempo que fiquei trancado na fábrica.";
-				delitem(Golden_Key, 1);
-				delitem(Kiel_Button, 1);
+				delitem(Golden_Key,1);
+				delitem(Kiel_Button,1);
 				KielHyreQuest = 48;
 				break;
 			}
@@ -2595,15 +2595,15 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "Ah, Quase esqueci.";
 		mes "Por favor, peque isso como uma pequena recompensa por ter salvo minha vida.";
-		getitem(Set_Of_Taiming_Item, 1);
-		getexp(700000, 0);
+		getitem(Set_Of_Taiming_Item,1);
+		getexp(700000,0);
 		KielHyreQuest = 50;
 	} else if ((KielHyreQuest >= 50) && (KielHyreQuest < 64)) {
 		mes "[Kiel Hyre]";
 		mes "Se você não tiver mais perguntas para mim, então você por favor me deixe descansar?";
 		mes "Ainda não estou me sentido bem do tempo que fique trancado na fábrica.";
 	} else if (KielHyreQuest == 64) {
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
 		mes "Hm? Há algo ";
 		mes "que você";
@@ -2613,9 +2613,9 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Eu não tenho evidências concretas suficientes ainda, mas eu devo ter algumas perguntas em breve.";
 	} else if (KielHyreQuest == 68) {
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
-		mes "Ah, "+strcharinfo(PC_NAME)+".";
+		mes "Ah,"+strcharinfo(PC_NAME)+".";
 		mes "É você.";
 		mes "Então como posso lhe ajudar hoje?";
 		next;
@@ -2624,13 +2624,13 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Sabe, eu estava olhando nessa casa deserta em Yuno.";
 		mes "Descobri um velho porta retratos de uma mulher que se parece muito com Allysia.";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "Oh...";
 		mes "Isso é tudo?";
 		mes "Pensei que você tinha uma pergunta sobre robótica.";
 		next;
-		cutin("kh_Kyel03", 2);
+		cutin("kh_Kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "De qualquer forma, é uma estranha coincidência.";
 		mes "Bem, suporto que não é tão estranho encontrar pessoas parecidas com outras...";
@@ -2641,22 +2641,22 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Ela ela trabalhava na rua Orsimier em Yuno.";
 		mes "Isso lhe diz algo?";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "......";
 		mes ".........";
 		mes "............";
 		next;
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Então pensei que essa Allysia deve ter sido a mulher que você amou";
 		mes "Que você baseou a aparência dos seus robôs nela.";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "............";
 		next;
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Acho que foi isso que aconteceu.";
 		mes "Quando você era um jovem, pobre você se apaixonou por Allysia.";
@@ -2670,7 +2670,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Sentindo-se traída, seu coração partido, Allysia pulou em um rio.";
 		mes "Então você decidiu se vingar de Rosimier, então acabou por se juntar com a Corporação Rekenber!";
 		next;
-		cutin("kh_Kyel03", 2);
+		cutin("kh_Kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "Hahahahahahaha!";
 		mes "Oh, Que imaginação";
@@ -2684,7 +2684,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Ainda assim, de onde você teve a idéia de que eu pudesse estar apaixonado por ela?";
 		next;
 		select("Revelar o retrato de Kiel da Cabana");
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "O-O quê...";
 		mes "Como...";
@@ -2698,7 +2698,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Você pagou uma quantia absurda de dinheiro para comprar o anel de Allysia.";
 		mes "Como você pode me dizer que você não a amava?";
 		next;
-		cutin("kh_Kyel03", 2);
+		cutin("kh_Kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "*Droga...*";
 		mes "Você me pegou, você me pegou.";
@@ -2717,7 +2717,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Eu não derramei lágrimas quando o Rosimier caiu, mas eu não fui o responsável.";
 		mes "Além do mais eu não tinha os recursos ou a capacidade de causar...";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Infelizmente acho que as evidências mostram o contrário.";
 		next;
@@ -2726,7 +2726,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Dê uma boa olhada nesse retrato que encontrei na antiga casa de Rosimier.";
 		mes "Percebe algo... Incriminador?";
 		next;
-		cutin("kh_Kyel03", 2);
+		cutin("kh_Kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "Com excessão daquele James Rosimier, você quer dizer?";
 		mes "Não! Não vejo nada errado com essa imagem ao todo.";
@@ -2735,7 +2735,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Dê uma boa olhada no relógio de bolso no retrato.";
 		mes "Aquele é o relógio de bolso que você usa hoje, não é?";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "...!!!";
 		next;
@@ -2743,7 +2743,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Você pode não ter causado a queda de Rosimier por si só.";
 		mes "Mas com a ajuda da Corporação Rekenber eu diria que era inteiramente possível!";
 		next;
-		cutin("kh_Kyel03", 2); 
+		cutin("kh_Kyel03",2); 
 		mes "[Kiel Hyre]";
 		mes "Eu não me arrependo do que fiz, eles mataram minha Allysia!";
 		mes "Se James não a tivese traído, se ele não a tivesse feito cometer suicídio...";
@@ -2798,13 +2798,13 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Estou presumindo que o lugar que vocês se encontraram primeiro foi próximo ao rio.";
 		mes "Chega de suas mentiras, me conte o que realmente aconteceu!";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "............";
 		mes ".........";
 		mes "......";
 		next;
-		cutin("kh_Kyel03", 2);
+		cutin("kh_Kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "Hah... Ha ha ha...";
 		mes "Sim... Está certo...";
@@ -2812,7 +2812,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Eu lembro muito bem...";
 		mes ".....................";
 		next;
-		cutin("kh_kyel02", 2);
+		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
 		mes "Aquela noite, quando ela veio ao rio, para me encontrar como eu havia pedido.";
 		mes "Eu implorei a ela para fugir comigo, ao invés de esperar por aquele James.";
@@ -2840,22 +2840,22 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "O rio a engoliu...";
 		mes "Me senti vazio.";
 		mes "Ela se foi. ";
-		delitem(Family_Portrait, 1);
-		delitem(Elysia_Portrait, 1);
-		delitem(Kyll_Hire_Letter2, 1);
-		delitem(Piece_Memo_Of_James, 1);
-		delitem(Man_Portrait, 1);
+		delitem(Family_Portrait,1);
+		delitem(Elysia_Portrait,1);
+		delitem(Kyll_Hire_Letter2,1);
+		delitem(Piece_Memo_Of_James,1);
+		delitem(Man_Portrait,1);
 		KielHyreQuest = 70;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if (KielHyreQuest <= 70) {
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
 		mes "Você já sabe que ela foi encontrada morta no dia seguinte.";
 		mes "Mas o que realmente partiu meu coração foi que ela segurou aquele anel tão firmemente em sua mão, mesmo na morte...";
 		next;
-		cutin("kh_kyel03", 2);
+		cutin("kh_kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "A família dele tinha tudo enquanto eu não tinha nada.";
 		mes "Ele teve a audácia de tirar";
@@ -2883,7 +2883,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Minha morte?";
 		mes "Tudo...?";
 		next;
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Na verdade, eu só quero perguntar sobre a natureza da sua relação profissional com a Corporação Rekenber e sobre Kiehl.";
 		next;
@@ -2954,9 +2954,9 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "Acho que o crescimento de Kiehl é tão mais poderoso que o que armas normais podem não funcionar nele mais.";
 		mes "Use esse dispositivo que fará com que seu suprimento de energia flutue.";
-		getitem(Toy_Motor, 1);
+		getitem(Toy_Motor,1);
 		next;
-		cutin("kh_kyel03", 2);
+		cutin("kh_kyel03",2);
 		mes "[Kiel Hyre]";
 		mes "Se você conseguir ligar isso no corpo de Kiehl, então ele não poderá usar o corpo dele com poder total.";
 		mes "Enquanto ele estiver enfraquecido, abra o seu peito e tire o anel do seu coração.";
@@ -2968,7 +2968,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "Você está pronto para confrontar Kiehl agora?";
 		next;
-		switch(select("Sim", "Não")) {
+		switch (select("Sim","Não")) {
 			case 1:
 			mes "[Kiel Hyre]";
 			mes "Há... uma passagem secreta que está aberta agora.";
@@ -2977,7 +2977,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 			close2;
 			enablenpc("KiehlRoomWarp#kh");
 			donpcevent("KiehlRoomWarp#kh::OnEnable");
-			cutin("", 255);
+			cutin("",255);
 			end;
 			break;
 			case 2:
@@ -2987,7 +2987,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 			break;
 		}
 	} else if ((KielHyreQuest >= 74) && (KielHyreQuest <= 106)) {
-		cutin("kh_kyel01", 2);
+		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
 		mes "Você retornou...!";
 		mes "Então você conseguiu recuperar o Anel de Allysia do coração de Kiehl?";
@@ -3000,7 +3000,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 			enablenpc("KiehlRoomWarp#kh");
 			donpcevent("KiehlRoomWarp#kh::OnEnable");
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		}
 		mes "[Kiel Hyre]";
@@ -3016,16 +3016,16 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "Aqui, por favor pegue esse cartão que deixará você entrar e investigar os níveis mais profundos da fábrica.";
 		mes "Eu investigarei o quarto de Kiehl.";
-		getitem(Fancy_Key_Card, 1);
+		getitem(Fancy_Key_Card,1);
 		KielHyreQuest = 108;
 		next;
 		mes "[Kiel Hyre]";
 		mes "Kiehl é minha responsabilidade...";
 		mes "Não importa qual o custo eu tenho de pará-lo!";
-		mes "Oh, e aqui, por favor pegue isso com toda minha gratidão por sua ajuda, "+(Sex == SEX_FEMALE ? "Sr":"Sra")+". "+strcharinfo(PC_NAME)+".";
-		getitem(Old_Card_Album, 1);
-		delitem(Elysia_Ring, 1);
-		getexp(1000000, 0);
+		mes "Oh, e aqui, por favor pegue isso com toda minha gratidão por sua ajuda,"+(Sex == SEX_FEMALE ? "Sr":"Sra")+". "+strcharinfo(PC_NAME)+".";
+		getitem(Old_Card_Album,1);
+		delitem(Elysia_Ring,1);
+		getexp(1000000,0);
 	} else if (KielHyreQuest >= 108) {
 		mes "[Kiel Hyre]";
 		mes "......";
@@ -3033,7 +3033,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "............";
 	}
 	close2;
-	cutin("", 255);
+	cutin("",255);
 	end;
 }
 
@@ -3046,7 +3046,7 @@ kh_mansion,18,30,4	script	Allysia#kh	4_F_KHELLISIA,{
 		mes "Vá embora";
 		close;
 	}
-	cutin("kh_ellisia", 2);
+	cutin("kh_ellisia",2);
 	if (KielHyreQuest < 70) {
 		mes "[Allysia]";
 		mes "você deve estar surpreso";
@@ -3055,7 +3055,7 @@ kh_mansion,18,30,4	script	Allysia#kh	4_F_KHELLISIA,{
 		mes "fosse mais fácil de entender";
 		mes "se eu explicasse sobre robôs?";
 		next;
-		switch(select("Sim", "Não")) {
+		switch (select("Sim","Não")) {
 			case 1:
 			mes "[Allysia]";
 			mes "Os robôs que você tem";
@@ -3073,7 +3073,7 @@ kh_mansion,18,30,4	script	Allysia#kh	4_F_KHELLISIA,{
 			mes "gerações de robôs, a primeira,";
 			mes "segunda e terceira gerações.";
 			next;
-			switch(select("Primeira Geração", "Segunda Geração", "Terceira Geração")) {
+			switch (select("Primeira Geração","Segunda Geração","Terceira Geração")) {
 				case 1:
 				mes "[Allysia]";
 				mes "Eu sou um bom exemplo da";
@@ -3197,7 +3197,7 @@ kh_mansion,18,30,4	script	Allysia#kh	4_F_KHELLISIA,{
 		mes "............";
 	}
 	close2;
-	cutin("", 255);
+	cutin("",255);
 	end;
 }
 
@@ -3207,8 +3207,8 @@ lighthalzen,188,200,0	script	Abduction_trigger	FAKE_NPC,3,1,{
 	if (KielHyreQuest == 50) {
 		mes "^3355FFConforme você sai da mansão, algo bate sobre sua cabeça e você instantaneamente perde a consciência^000000.";
 		close2;
-		percentheal(-99, 0);
-		warp("kh_mansion", 30, 75);
+		percentheal(-99,0);
+		warp("kh_mansion",30,75);
 	}
 	end;
 }
@@ -3233,7 +3233,7 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 		mes "Agora me diga a verdade.";
 		mes "Como você conheceu Kiel Hyre?";
 		next;
-		switch(select("Eu vou contar tudo!", "Não sei de nada!")) {
+		switch (select("Eu vou contar tudo!","Não sei de nada!")) {
 			case 2:
 			mes "[??????]";
 			mes "Não...sabe...de nada?";
@@ -3302,7 +3302,7 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 			mes "Mas o fato que Rekenber está envolvida deve lhe dizer que essas não são boas pessoas.";
 			mes "Conte-me o que você sabe sobre eles!";
 			next;
-			switch(select("Certo", "......")) {
+			switch (select("Certo","......")) {
 				case 2:
 				mes "[??????]";
 				mes "Se você não cooperar, então não posso garantir sua segurança, aventureiro";
@@ -3346,13 +3346,13 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 		mes "Está pronto?";
 		mes "Vou deixá-lo embarcar no avião federal, para que você chegue a Yuno, e termine sua missão rapidamente.";
 		next;
-		switch(select("Sim", "Não")) {
+		switch (select("Sim","Não")) {
 			case 1:
 			mes "[Mitchell]";
 			mes "Boa sorte.";
 			mes "Uma vez completada sua missão, assegure-se de reportar-se ao gerente de Kiel Hyre para que ele lhe traga a mim.";
 			close2;
-			warp("yuno", 54, 209);
+			warp("yuno",54,209);
 			end;
 			case 2:
 			mes "[Mitchell]";
@@ -3376,13 +3376,13 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 		mes "Quero que você descubra quem Kiel é realmente, e qual sua relação com Rekenber.";
 		KielHyreQuest = 68;
 		next;
-		warp("kh_mansion", 83, 50);
+		warp("kh_mansion",83,50);
 		end;
 	} else {
 		mes "[Mitchell]";
 		mes "Esta area é restrita, melhor você sair agora.";
 		close2;
-		warp("kh_mansion", 83, 50);
+		warp("kh_mansion",83,50);
 		end;
 	}
 }
@@ -3390,7 +3390,7 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 // ------------------------------------------------------------------
 kh_mansion,29,27,0	script	KiehlRoomWarp#kh	WARPNPC,2,2,{
 	OnTouch:
-	warp("kh_kiehl01", 10, 31);
+	warp("kh_kiehl01",10,31);
 	end;
 
 	OnEnable:
@@ -3423,7 +3423,7 @@ yuno,257,140,4	script	Vovó Estranha#kh	4_F_EINOLD,{
 		mes "Acalma nenenzinho...";
 		mes "Vá dormiiiirrrr";
 		next;
-		switch(select("O que está fazendo?", "Um, eu não vejo um bebê...")) {
+		switch (select("O que está fazendo?","Um, eu não vejo um bebê...")) {
 			case 1:
 			mes "[Vovó]";
 			mes "Oh? meu bebê não para de chorar e não parece dormir.";
@@ -3454,10 +3454,10 @@ yuno,257,140,4	script	Vovó Estranha#kh	4_F_EINOLD,{
 		}
 		next;
 		select("Allysia? ela não está...");
-		cutin("kh_ellisia_port", 1);
+		cutin("kh_ellisia_port",1);
 		mes "^3355FFvocê mostra o retrato de Allysia para a velha senhora^000000.";
 		next;
-		cutin("", 255);
+		cutin("",255);
 		mes "[Vovó]";
 		mes "Oh, você conhece Allysia?";
 		mes "Ela está desaparecida!";
@@ -3481,7 +3481,7 @@ yuno,250,132,0	script	Velha Senhora#kh	4_F_05,{
 		mes "Esse velhos ossos doem todos...";
 		close;
 	} else if (KielHyreQuest == 56) {
-		if (!checkweight(Rosimier_Key, 1)) {
+		if (!checkweight(Rosimier_Key,1)) {
 			mes "^3355FF- Espere!!";
 			mes "você está carregando muitos ítens e não será capaz de aceitar mais.";
 			mes "Por favor disponibilize algum espaço no seu inventario antes de retornar^000000.";
@@ -3492,7 +3492,7 @@ yuno,250,132,0	script	Velha Senhora#kh	4_F_05,{
 		mes "Me lembra como fiquei velha!";
 		mes "Resfria meus ossos, isso sim!";
 		next;
-		switch(select("......", "Você conhece aquela Vovó?")) {
+		switch (select("......","Você conhece aquela Vovó?")) {
 			case 1:
 			mes "[Velha Senhora]";
 			mes "Maldição!";
@@ -3539,7 +3539,7 @@ yuno,250,132,0	script	Velha Senhora#kh	4_F_05,{
 			mes "Entretanto, você tem de assegurar-se de trazê-la de volta para mim.";
 			mes "Antes que o pessoal da prefeitura me pergunte por ela.";
 			mes "Muito bem então, espero que você ache o que está procurando.";
-			getitem(Rosimier_Key, 1);
+			getitem(Rosimier_Key,1);
 			KielHyreQuest = 58;
 			close;
 		}
@@ -3570,7 +3570,7 @@ yuno,250,132,0	script	Velha Senhora#kh	4_F_05,{
 		next;
 		mes "[Velha Senhora]";
 		mes "Ele é quem encontrou o corpo de Allysia no rio, em tão ele pode ter uma melhor idéia do que aconteceu.";
-		delitem(Rosimier_Key, 1);
+		delitem(Rosimier_Key,1);
 		KielHyreQuest = 60;
 		close;
 	} else {
@@ -3589,7 +3589,7 @@ yuno,273,141,0	script	#RosimmirEnter	WARPNPC,2,2,{
 		mes "No entanto, a porta parece que ainda seria operacional se você tivesse a chave certa.";
 		close;
 	} else {
-		warp("kh_rossi", 20, 92);
+		warp("kh_rossi",20,92);
 	}
 	end;
 }
@@ -3600,15 +3600,15 @@ kh_rossi,23,23,0	script	Mesa#khr2	HIDDEN_NPC,{
 		mes "^3355FFNão há nada de importante para você aqui^000000.";
 		close;
 	} else if (KielHyreQuest < 60) {
-		if (!checkweight(Family_Portrait, 1)) {
+		if (!checkweight(Family_Portrait,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos ítens e não será capaz de aceitar mais.";
 			mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
 			close;
 		} else if (!countitem(Family_Portrait)) {
-			cutin("kh_family_port", 1);
+			cutin("kh_family_port",1);
 			mes "^3355FFvocê examina a mesa, e encontra um porta retratos dentro da gaveta aberta^000000.";
-			getitem(Family_Portrait, 1);
+			getitem(Family_Portrait,1);
 		} else {
 			mes "^3355FFA gaveta aberta dessa mesa está vazia agora^000000.";
 		}
@@ -3624,7 +3624,7 @@ kh_rossi,92,40,0	script	Estante#kh2	HIDDEN_NPC,{
 		mes "^3355FFNão há nada de importante para você aqui^000000.";
 		close;
 	} else if (KielHyreQuest < 60) {
-		if (!checkweight(Elysia_Portrait, 1)) {
+		if (!checkweight(Elysia_Portrait,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos ítens e não será capaz de aceitar mais.";
 			mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
@@ -3633,20 +3633,20 @@ kh_rossi,92,40,0	script	Estante#kh2	HIDDEN_NPC,{
 			mes "^3355FFHá caixas trancadas nessas prateleiras.";
 			mes "Talvez se você usar essa chave mestra da mansão, você pode conseguir abrí-las^000000.";
 			next;
-			switch(select("Usar Chave", "Cancelar")) {
+			switch (select("Usar Chave","Cancelar")) {
 				case 1:
 				mes "^3355FFQual caixa você quer tentar abrir^000000?";
 				next;
-				switch(select("Primeira caixa", "Segunda Caixa")) {
+				switch (select("Primeira caixa","Segunda Caixa")) {
 					case 1:
 					mes "^3355FFvocê usa a chave Mestra para destrancar a caixa.";
 					mes "E obtem um retrato de uma mulher que se parece com a assistente de Kiel Hyre, Allysia^000000.";
 					next;
-					cutin("kh_ellisia_port", 2);
+					cutin("kh_ellisia_port",2);
 					mes "^3355FFA mensagem, ''Para meu amor, Allysia. De James.'' está escrita nas costas^000000.";
-					getitem(Elysia_Portrait, 1);
+					getitem(Elysia_Portrait,1);
 					close2;
-					cutin("", 255);
+					cutin("",255);
 					end;
 					case 2:
 					mes "^3355FFEssa caixa está vazia^000000.";
@@ -3674,12 +3674,12 @@ kh_rossi,144,286,0	script	Mesa#khr3	HIDDEN_NPC,{
 	} else if (KielHyreQuest < 60) {
 		mes "^3355FFA mesa tem^000000 três gavetas^000000";
 		next;
-		switch(select("Primeira Gaveta", "Segunda Gaveta", "Terceira Gaveta", "Cancelar")) {
+		switch (select("Primeira Gaveta","Segunda Gaveta","Terceira Gaveta","Cancelar")) {
 			case 1:
 			mes "^3355FFA primeira gaveta está trancada^000000.";
 			close;
 			case 2:
-			if (!checkweight(Kyll_Hire_Letter2, 1)) {
+			if (!checkweight(Kyll_Hire_Letter2,1)) {
 				mes "^3355FF- Espere!!";
 				mes "Você está carregando muitos itens e não será capaz de aceitar mais.";
 				mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
@@ -3687,7 +3687,7 @@ kh_rossi,144,286,0	script	Mesa#khr3	HIDDEN_NPC,{
 			} else if (!countitem(Kyll_Hire_Letter2)) {
 				mes "^3355FFHá uma carta dentro dessa segunda gaveta.";
 				mes "Foi enviada por uma pessoa com as iniciais, K.H., e endereçada à Allysia^000000.";
-				getitem(Kyll_Hire_Letter2, 1);
+				getitem(Kyll_Hire_Letter2,1);
 				close;
 			} else {
 				mes "^3355FFEssa gaveta está vazia^000000.";
@@ -3716,7 +3716,7 @@ kh_rossi,148,288,0	script	Estante#kh3	HIDDEN_NPC,{
 		mes "^3355FFVocê encontra uma estante empoeirada cheia de livros^000000.";
 		close;
 	} else if (KielHyreQuest < 60) {
-		if (!checkweight(Piece_Memo_Of_James, 1)) {
+		if (!checkweight(Piece_Memo_Of_James,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos itens e não será capaz de aceitar mais.";
 			mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
@@ -3724,7 +3724,7 @@ kh_rossi,148,288,0	script	Estante#kh3	HIDDEN_NPC,{
 		} else if (!countitem(Piece_Memo_Of_James)) {
 			mes "^3355FFVocYe encontra uma estante empoeirada cheia de vários livros.";
 			mes "Você encontra um bilhete dobrado entre os livros enquanto os examina^000000.";
-			getitem(Piece_Memo_Of_James, 1);
+			getitem(Piece_Memo_Of_James,1);
 			close;
 		} else {
 			mes "^3355FFvocê encontrou uma estante empoeirada cheia de vários livros^000000.";
@@ -3794,7 +3794,7 @@ yuno_fild12,232,222,0	script	Velho Pescador#kh	4_M_SEAMAN,{
 			mes "[Pescador]";
 			mes "Se você for bem curioso, você pode até dar uma checada também.";
 			mes "Vejamos, ele viveu em uma cabana próximo ao acampamento noroeste da guarda florestal.";
-			delitem(Fish_Slice, 10);
+			delitem(Fish_Slice,10);
 			KielHyreQuest = 62;
 			close;
 		} else {
@@ -3815,7 +3815,7 @@ yuno_fild09,158,217,0	script	Placa de Madeira#kh	HIDDEN_NPC,{
 		mes "^3355FFÉ uma inútil placa de madeira nos arbustos^000000.";
 		close;
 	} else if (KielHyreQuest == 62) {
-		if (!checkweight(Man_Portrait, 1)) {
+		if (!checkweight(Man_Portrait,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos itens e não será capaz de aceitar mais.";
 			mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
@@ -3823,13 +3823,13 @@ yuno_fild09,158,217,0	script	Placa de Madeira#kh	HIDDEN_NPC,{
 		} else {
 			mes "^000oFFVocê encontrou uma grande placa de madeira encravada com as iniciais, 'K.H.'^000000";
 			next;
-			cutin("kh_kyel_port", 2);
+			cutin("kh_kyel_port",2);
 			mes "^3355FFVocê encontrou o retrato de um jovem, que se parece com uma versão mais nova de Kiel Hyre.";
 			mes "Em um porta retratos quebrado debaixo da placa de madeira^000000.";
-			getitem(Man_Portrait, 1);
+			getitem(Man_Portrait,1);
 			KielHyreQuest = 64;
 			next;
-			cutin("", 255);
+			cutin("",255);
 			mes "^3355FFVocê tem informação suficiente agora, então você deveria se reportar à Mitchell^000000.";
 			close;
 		}
@@ -3851,16 +3851,16 @@ kh_kiehl01,17,39,0	script	Receiver#kh	HIDDEN_NPC,{
 			KielHyreQuest = 76;
 		}
 		close2;
-		monster(strnpcinfo(NPC_MAP), 16, 32, "Alicel", G_ALICEL, 1, strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster(strnpcinfo(NPC_MAP), 18, 31, "Aliot",  G_ALIOT,  1, strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),16,32,"Alicel",G_ALICEL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,31,"Aliot",G_ALIOT,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 		end;
 	} else {
 		end;
 	}
 
 	OnMyMobDead:
-	if (!mobcount(strnpcinfo(NPC_MAP), strnpcinfo(NPC_NAME)+"::OnMyMobDead")) {
-		makeitem(Black_Key_Card, 1, "this", 19, 36);
+	if (!mobcount(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead")) {
+		makeitem(Black_Key_Card,1,"this",19,36);
 	}
 	end;
 }
@@ -3873,7 +3873,7 @@ kh_kiehl01,13,40,0	script	Vaso de Flores#kh1	HIDDEN_NPC,{
 	} else if (KielHyreQuest >= 74) {
 		mes "^3355FFVocê encontrou um vaso de flores^000000.";
 		next;
-		switch(select("Pegar o Vaso", "Quebrar o Vaso", "Virar o vaso de ponta cabeça")) {
+		switch (select("Pegar o Vaso","Quebrar o Vaso","Virar o vaso de ponta cabeça")) {
 			case 1:
 			mes "^3355FFO vaso está vazio^000000.";
 			close;
@@ -3908,7 +3908,7 @@ kh_kiehl01,19,25,0	script	Caixa#kh3	HIDDEN_NPC,{
 		mes "^3355FFNada aconteceu^000000.";
 		close;
 	} else if (KielHyreQuest >= 74) {
-		if (!checkweight(Toy_Key, 1)) {
+		if (!checkweight(Toy_Key,1)) {
 			mes "^3355FF- Espere!!";
 			mes "Você está carregando muitos itens e não será capaz de aceitar mais.";
 			mes "Por favor disponibiliza algum espaço no seu inventario antes de retornar^000000.";
@@ -3922,7 +3922,7 @@ kh_kiehl01,19,25,0	script	Caixa#kh3	HIDDEN_NPC,{
 			input(.@KHInput$);
 			if (.@KHInput$ == "Abra a Porta") {
 				mes "^3355FFAssim que você entra a senha, a porta próxima emite um barulho agradável e o baú se abre para revelar uma pequena chave^000000.";
-				getitem(Toy_Key, 1);
+				getitem(Toy_Key,1);
 				close;
 			} else {
 				mes "^3355FFNada aconteceu^000000.";
@@ -3948,7 +3948,7 @@ kh_kiehl01,44,33,0	script	Porta Grande#kh	HIDDEN_NPC,{
 		if (.@KHInput$ == "Cartão de Acesso Preto") {
 			if (countitem(Black_Key_Card) >= 1) {
 				mes "^3355FFVocê insere o Cartão de Acesso Preto no slot, e bem sucedidamente destranca e abre a porta^000000.";
-				delitem(Black_Key_Card, 1);
+				delitem(Black_Key_Card,1);
 				enablenpc("Big_Door_1_Warp");
 				donpcevent("Big_Door_1_Warp::OnEnable");
 				.KHDoor1Opened = 1;
@@ -3977,12 +3977,12 @@ kh_kiehl01,43,33,0	script	Big_Door_1_Warp	WARPNPC,1,1,{
 	OnTimer30000:
 	stopnpctimer;
 	specialeffect(EF_SUMMONSLAVE);
-	setvariable(getvariableofnpc(.KHDoor1Opened, "Porta Grande#kh"), 0);
+	setvariable(getvariableofnpc(.KHDoor1Opened,"Porta Grande#kh"),0);
 	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnTouch:
-	warp("kh_kiehl01", 55, 33);
+	warp("kh_kiehl01",55,33);
 	end;
 }
 
@@ -3995,7 +3995,7 @@ kh_kiehl01,174,40,0	script	Porta Grande#kh2	HIDDEN_NPC,{
 		if (.@KHInput$ == "Chave de Brinquedo") {
 			if (countitem(Toy_Key) >= 1) {
 				mes "^3355FFVocê insere a chave na fechadura, e a porta se destranca assim que você gira a chave^000000.";
-				delitem(Toy_Key, 1);
+				delitem(Toy_Key,1);
 				enablenpc("Big_Door_2_Warp");
 				donpcevent("Big_Door_2_Warp::OnEnable");
 				.KHDoor2Opened = 1;
@@ -4024,12 +4024,12 @@ kh_kiehl01,174,39,0	script	Big_Door_2_Warp	WARPNPC,1,1,{
 	OnTimer30000:
 	stopnpctimer;
 	specialeffect(EF_SUMMONSLAVE);
-	setvariable(getvariableofnpc(.KHDoor2Opened, "Porta Grande#kh2"), 0);
+	setvariable(getvariableofnpc(.KHDoor2Opened,"Porta Grande#kh2"),0);
 	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnTouch:
-	warp("kh_kiehl01", 173, 52);
+	warp("kh_kiehl01",173,52);
 	end;
 }
 
@@ -4042,7 +4042,7 @@ kh_kiehl01,77,108,0	script	Porta Grande#kh3	HIDDEN_NPC,{
 		if (.@KHInput$ == "Cartão de Acesso Preto") {
 			if (countitem(Black_Key_Card) >= 1) {
 				mes "^3355FFvocê insere o Cartão de Acesso Preto no slot, e bem sucedidamente destranca e abre a porta^000000.";
-				delitem(Black_Key_Card, 1);
+				delitem(Black_Key_Card,1);
 				enablenpc("Big_Door_3_Warp");
 				donpcevent("Big_Door_3_Warp::OnEnable");
 				.KHDoor3Opened = 1;
@@ -4071,12 +4071,12 @@ kh_kiehl01,78,108,0	script	Big_Door_3_Warp	WARPNPC,1,1,{
 	OnTimer30000:
 	stopnpctimer;
 	specialeffect(EF_SUMMONSLAVE);
-	setvariable(getvariableofnpc(.KHDoor3Opened, "Porta Grande#kh3"), 0);
+	setvariable(getvariableofnpc(.KHDoor3Opened,"Porta Grande#kh3"),0);
 	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnTouch:
-	warp("kh_kiehl01", 68, 108);
+	warp("kh_kiehl01",68,108);
 	end;
 }
 
@@ -4089,7 +4089,7 @@ kh_kiehl01,42,177,0	script	Porta Grande#kh4	HIDDEN_NPC,{
 		if (.@KHInput$ == "Cartão de Acesso Preto") {
 			if (countitem(Black_Key_Card) >= 2) {
 				mes "^3355FFVocê inseriu o Cartão de Acesso Preto no slot, e bem sucedidamente destrancou e abriu a porta^000000.";
-				delitem(Black_Key_Card, 2);
+				delitem(Black_Key_Card,2);
 				enablenpc("Big_Door_4_Warp");
 				donpcevent("Big_Door_4_Warp::OnEnable");
 				.KHDoor4Opened = 1;
@@ -4118,32 +4118,32 @@ kh_kiehl01,41,177,0	script	Big_Door_4_Warp	WARPNPC,1,1,{
 	OnTimer30000:
 	stopnpctimer;
 	specialeffect(EF_SUMMONSLAVE);
-	setvariable(getvariableofnpc(.KHDoor4Opened, "Porta Grande#kh4"), 0);
+	setvariable(getvariableofnpc(.KHDoor4Opened,"Porta Grande#kh4"),0);
 	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnTouch:
-	warp("kh_kiehl01", 49, 177);
+	warp("kh_kiehl01",49,177);
 	end;
 }
 
 // ------------------------------------------------------------------
 kh_kiehl01,15,179,0	script	Robots#kh	HIDDEN_NPC,{
-	if (!mobcount(strnpcinfo(NPC_MAP), strnpcinfo(NPC_NAME) + "::OnMyMobDead")) {
+	if (!mobcount(strnpcinfo(NPC_MAP), strnpcinfo(NPC_NAME)+"::OnMyMobDead")) {
 		mes "^3355FFAssim que você toca o tubo de testes, um monte de robôs repentinamente aparecem^000000..";
 		close2;
-		monster(strnpcinfo(NPC_MAP), 18, 181, "Aliot",  G_ALIOT,  1, strnpcinfo(NPC_NAME) + "::OnMyMobDead");
-		monster(strnpcinfo(NPC_MAP), 18, 180, "Alicel", G_ALICEL, 1, strnpcinfo(NPC_NAME) + "::OnMyMobDead");
-		monster(strnpcinfo(NPC_MAP), 18, 179, "Aliot",  G_ALIOT,  1, strnpcinfo(NPC_NAME) + "::OnMyMobDead");
-		monster(strnpcinfo(NPC_MAP), 18, 178, "Alicel", G_ALICEL, 1, strnpcinfo(NPC_NAME) + "::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,181,"Aliot",G_ALIOT,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,180,"Alicel",G_ALICEL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,179,"Aliot",G_ALIOT,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,178,"Alicel",G_ALICEL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 		end;
 	} else {
 		end;
 	}
 
 	OnMyMobDead:
-	if (!mobcount(strnpcinfo(NPC_MAP), strnpcinfo(NPC_NAME) + "::OnMyMobDead")) {
-		makeitem(Black_Key_Card, 1, "this", 18, 180);
+	if (!mobcount(strnpcinfo(NPC_MAP), strnpcinfo(NPC_NAME)+"::OnMyMobDead")) {
+		makeitem(Black_Key_Card,1,"this",18,180);
 	}
 	end;
 }
@@ -4155,15 +4155,15 @@ kh_kiehl01,166,187,0	script	Porta Grande#kh5	HIDDEN_NPC,{
 			mes "^3355FFEssa porta larga está só encostada.";
 			mes "Se você ouvir atentamente, poderá ouvir a porta ranger bem baixinho^000000.";
 			next;
-			select("Empurrar a Porta", "Chutar a Porta", "Balançar a Porta", "Puxar a Porta", "Levantar a Porta");
+			select("Empurrar a Porta","Chutar a Porta","Balançar a Porta","Puxar a Porta","Levantar a Porta");
 			mes "^3355FFUm grupo de monstros aparecem repentinamente assim que você aplicou pressão na porta.";
 			mes "Isso deve ser algum tipo de dispositivo de segurança^000000.";
 			close2;
 			++@KHDoorPushAttempt;
-			monster(strnpcinfo(NPC_MAP), 163, 183, "Alicel", G_ALICEL, 1);
-			monster(strnpcinfo(NPC_MAP), 163, 179, "Aliot",  G_ALIOT,  1);
-			monster(strnpcinfo(NPC_MAP), 169, 183, "Alicel", G_ALICEL, 1);
-			monster(strnpcinfo(NPC_MAP), 169, 179, "Aliot",  G_ALIOT,  1);
+			monster(strnpcinfo(NPC_MAP),163,183,"Alicel",G_ALICEL,1);
+			monster(strnpcinfo(NPC_MAP),163,179,"Aliot",G_ALIOT,1);
+			monster(strnpcinfo(NPC_MAP),169,183,"Alicel",G_ALICEL,1);
+			monster(strnpcinfo(NPC_MAP),169,179,"Aliot",G_ALIOT,1);
 			if (@KHDoorPushAttempt >= 3) {
 				KielHyreQuest = 86;
 			}
@@ -4175,7 +4175,7 @@ kh_kiehl01,166,187,0	script	Porta Grande#kh5	HIDDEN_NPC,{
 			mes "^3355FFSe você segurasse algo na fresta entre a porta e o batente.";
 			mes "E conseguisse alavancar, então você pode ser capaz de abrí-la^000000.";
 			next;
-			switch(select("Aço","Ferro Enferrujado", "Pedaço de Ferro Sólido", "Pedaço de Ferro", "Parafuso", "Cancelar")) {
+			switch (select("Aço","Ferro Enferrujado","Pedaço de Ferro Sólido","Pedaço de Ferro","Parafuso","Cancelar")) {
 				case 1:
 				.@KHPryingItem$ = "Aço";
 				break;
@@ -4187,13 +4187,13 @@ kh_kiehl01,166,187,0	script	Porta Grande#kh5	HIDDEN_NPC,{
 					if (KielHyreQuest < 92) {
 						mes "^3355FFvocê insere uma ponta de um pedaço de ferro sólido na fresta da porta num resistente esforço de fazer com que a porta abra.";
 						mes "A fresta aumenta um pouco mais, no entanto você quebra um de seus Pedaços de Ferro Sólido^000000.";
-						delitem(Sturdy_Iron_Piece, 1);
+						delitem(Sturdy_Iron_Piece,1);
 						KielHyreQuest += 2;
 						close;
 					} else if (KielHyreQuest == 92) {
 						mes "^3355FFCom um empurrão forte, você coloca um Pedaço de Ferro Sólido no batente da porta, fazendo com que a porta se abra.";
 						mes "Incapaz de resistir à extrema força, esse Pedaço de Ferro Sólido fica em farelos^000000.";
-						delitem(Sturdy_Iron_Piece, 1);
+						delitem(Sturdy_Iron_Piece,1);
 						KielHyreQuest = 94;
 						close;
 					}
@@ -4217,7 +4217,7 @@ kh_kiehl01,166,187,0	script	Porta Grande#kh5	HIDDEN_NPC,{
 			if (.KHDoor5Opened == 0) {
 				mes "^3355FFA porta larga está totalmente aberta, e você pode entrar agora^000000.";
 				next;
-				switch(select("Sim", "Não")) {
+				switch (select("Sim","Não")) {
 					case 1:
 					close2;
 					enablenpc("Big_Door_5_Warp");
@@ -4257,7 +4257,7 @@ kh_kiehl01,166,186,0	script	Big_Door_5_Warp	WARPNPC,1,1,{
 	OnTimer30000:
 	stopnpctimer;
 	specialeffect(EF_SUMMONSLAVE);
-	setvariable(getvariableofnpc(.KHDoor5Opened, "Porta Grande#kh5"), 0);
+	setvariable(getvariableofnpc(.KHDoor5Opened,"Porta Grande#kh5"),0);
 	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
@@ -4266,8 +4266,8 @@ kh_kiehl01,166,186,0	script	Big_Door_5_Warp	WARPNPC,1,1,{
 	end;
 
 	OnTouch:
-	if (KielHyreQuest >= 46) { warp("kh_kiehl02", 50, 7); }
-	else { warp("kh_kiehl01", 166, 183); }
+	if (KielHyreQuest >= 46) { warp("kh_kiehl02",50,7); }
+	else { warp("kh_kiehl01",166,183); }
 	end;
 }
 
@@ -4280,12 +4280,12 @@ kh_kiehl02,49,10,0	script	Kiehl_Room_Trap	FAKE_NPC,5,3,{
 		.KHTrapSprung = 1;
 		$@KHQuestBusy = 1;
 		initnpctimer;
-		monster(strnpcinfo(NPC_MAP), 47, 13, "Aliot",    G_ALIOT,    1);
-		monster(strnpcinfo(NPC_MAP), 45, 13, "Alicel",   G_ALICEL,   1);
-		monster(strnpcinfo(NPC_MAP), 49, 13, "Constant", G_CONSTANT, 1);
-		monster(strnpcinfo(NPC_MAP), 51, 13, "Aliot",    G_ALIOT,    1);
-		monster(strnpcinfo(NPC_MAP), 53, 13, "Alicel",   G_ALICEL,   1);
-		monster(strnpcinfo(NPC_MAP), 49, 13, "Constant", G_CONSTANT, 1);
+		monster(strnpcinfo(NPC_MAP),47,13,"Aliot",G_ALIOT,1);
+		monster(strnpcinfo(NPC_MAP),45,13,"Alicel",G_ALICEL,1);
+		monster(strnpcinfo(NPC_MAP),49,13,"Constant",G_CONSTANT,1);
+		monster(strnpcinfo(NPC_MAP),51,13,"Aliot",G_ALIOT,1);
+		monster(strnpcinfo(NPC_MAP),53,13,"Alicel",G_ALICEL,1);
+		monster(strnpcinfo(NPC_MAP),49,13,"Constant",G_CONSTANT,1);
 	}
 	end;
 
@@ -4310,20 +4310,20 @@ kh_kiehl02,49,10,0	script	Kiehl_Room_Trap	FAKE_NPC,5,3,{
 
 // ------------------------------------------------------------------
 kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
-	if (!checkweight(Spawn, 200)) {
+	if (!checkweight(Spawn,200)) {
 		mes "^3355FF- Espere!!";
 		mes "Você está carregando muitos ítens e não será capaz de aceitar mais.";
 		mes "Por favor libere algum espaço no seu inventario antes de retornar^000000.";
 		close;
 	}
-	cutin("kh_kiel01", 2);
+	cutin("kh_kiel01",2);
 	if ((KielHyreQuest < 94) || (KielHyreQuest >= 106)) {
 		mes "[Kiehl]";
 		mes "......";
 		mes ".........";
 		mes "............";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else if ((KielHyreQuest == 94) && (getvariableofnpc(.KHKilled,"KiehlRoom") < 5)) {
 		mes "[Kiehl]";
@@ -4334,19 +4334,19 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Você pode entender porque não posso deixá-lo o ter.";
 		mes "Então se você realmente quer o Pergaminho de Memória Condensada, mostre-me do que é capaz!";
 		close2;
-		cutin("", 255);
-		setvariable(getvariableofnpc(.KHKilled, "KiehlRoom"), 0);
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Aliot",    G_ALIOT,    1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Alicel",   G_ALICEL,   1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Constant", G_CONSTANT, 1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Aliot",    G_ALIOT,    1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Alicel",   G_ALICEL,   1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Constant", G_CONSTANT, 1, "KiehlRoom::OnKiehlMobDead");
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Aliot",    G_ALIOT,    1, "KiehlRoom::OnKiehlMobDead");
+		cutin("",255);
+		setvariable(getvariableofnpc(.KHKilled,"KiehlRoom"),0);
+		monster(strnpcinfo(NPC_MAP),50,52,"Aliot",G_ALIOT,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Alicel",G_ALICEL,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Constant",G_CONSTANT,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Aliot",G_ALIOT,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Alicel",G_ALICEL,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Constant",G_CONSTANT,1,"KiehlRoom::OnKiehlMobDead");
+		monster(strnpcinfo(NPC_MAP),50,52,"Aliot",G_ALIOT,1,"KiehlRoom::OnKiehlMobDead");
 		hideonnpc(strnpcinfo(NPC_NAME));
 		end;
 	} else if ((KielHyreQuest == 94) && (getvariableofnpc(.KHKilled,"KiehlRoom") >= 5)) {
-		cutin("kh_kiel03", 2);
+		cutin("kh_kiel03",2);
 		mes "[Kiehl]";
 		mes "Hmpf! Você é muito bom.";
 		mes "Papai deve ter gasto muito dinheiro para lhe contratar.";
@@ -4356,7 +4356,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Kiel Hyre me enviou para lhe pedir para parar de tornar toda a Terceira Geração de Robôs em máquinas mortíferas!";
 		mes "Como pode fazer algo assim a outros robôs como você?";
 		next;
-		cutin("kh_kiel01", 2);
+		cutin("kh_kiel01",2);
 		mes "[Kiehl]";
 		mes "Por que não?";
 		mes "Foi dito que o homem foi criado à imagem de Deus.";
@@ -4379,7 +4379,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Rekenber é o resumo do mal humano!";
 		mes "Como você pode ajudá-los assim?";
 		next;
-		cutin("kh_kiel02", 2);
+		cutin("kh_kiel02",2);
 		mes "[Kiehl]";
 		mes "Tive um grande relacionamento com Rekenber.";
 		mes "Estou totalmente ciente de suas capacidades.";
@@ -4390,7 +4390,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Eu e meus quatro outros irmãos e irmãs.";
 		mes "Papai construiu aquele quarto para que todos os cinco pudessem viver juntos.";
 		next;
-		cutin("kh_kiel03", 2);
+		cutin("kh_kiel03",2);
 		mes "[Kiehl]";
 		mes "Eu sou o único que sobreviveu.";
 		mes "Eu retornei para papai e até consegui um nome.";
@@ -4401,7 +4401,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Você me deixou... Apenas saia.";
 		mes "Acho que vou deixá-lo viver.";
 		next;
-		cutin("", 255);
+		cutin("",255);
 		mes "[Mitchell]";
 		mes "Parado!";
 		mes "Kiehl Hyre, você está preso por criar e negociar armas ilegais!";
@@ -4413,8 +4413,8 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		hideoffnpc("Agente#KHAgent4");
 		next;
 	} else if ((KielHyreQuest == 100) && (getvariableofnpc(.KHKilledBoss,"KiehlRoom") < 1)) {
-		setvariable(getvariableofnpc(.KHKilledBoss, "KiehlRoom"), 0);
-		cutin("kh_kiel01", 2);
+		setvariable(getvariableofnpc(.KHKilledBoss,"KiehlRoom"),0);
+		cutin("kh_kiel01",2);
 		mes "[Kiehl]";
 		mes "Ah, agentes da República Schwaltzvalt.";
 		mes "Eu nunca tive tantos convidados antes.";
@@ -4428,22 +4428,22 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		next;
 		mes "[Mitchell]";
 		mes "Nããooooo!";
-		specialeffect(PF_FOGWALL, AREA, getnpcid(0, "Mitchell#KiehlRoom"));
-		specialeffect(PF_FOGWALL, AREA, getnpcid(0, "Agente#KHAgent1"));
-		specialeffect(PF_FOGWALL, AREA, getnpcid(0, "Agente#KHAgent2"));
-		specialeffect(PF_FOGWALL, AREA, getnpcid(0, "Agente#KHAgent3"));
-		specialeffect(PF_FOGWALL, AREA, getnpcid(0, "Agente#KHAgent4"));
+		specialeffect(PF_FOGWALL,AREA,getnpcid(0,"Mitchell#KiehlRoom"));
+		specialeffect(PF_FOGWALL,AREA,getnpcid(0,"Agente#KHAgent1"));
+		specialeffect(PF_FOGWALL,AREA,getnpcid(0,"Agente#KHAgent2"));
+		specialeffect(PF_FOGWALL,AREA,getnpcid(0,"Agente#KHAgent3"));
+		specialeffect(PF_FOGWALL,AREA,getnpcid(0,"Agente#KHAgent4"));
 		next;
-		cutin("kh_kiel03", 2);
+		cutin("kh_kiel03",2);
 		mes "[Kiehl]";
 		mes "E agora, você e eu podemos ter um duelo adequado, humano estou interessado em ver o quanto você é realmente forte";
 		close2;
-		cutin("", 255);
-		monster(strnpcinfo(NPC_MAP), 50, 52, "Kiehl", KIEL, 1, "KiehlRoom::OnKiehlDead");
+		cutin("",255);
+		monster(strnpcinfo(NPC_MAP),50,52,"Kiehl",KIEL,1,"KiehlRoom::OnKiehlDead");
 		hideonnpc(strnpcinfo(NPC_NAME));
 		end;
-	} else if ((KielHyreQuest == 100) && (getvariableofnpc(.KHKilledBoss, "KiehlRoom") == 1)) {
-		cutin("kh_kiel02", 2);
+	} else if ((KielHyreQuest == 100) && (getvariableofnpc(.KHKilledBoss,"KiehlRoom") == 1)) {
+		cutin("kh_kiel02",2);
 		mes "[Kiehl]";
 		mes "M-Maldição...!";
 		mes "Bem jogado, aventureiro";
@@ -4458,7 +4458,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Eu lhe levarei para o inferno comigo...";
 		mes "Bem se robôs puderem ir para lá";
 		next;
-		mapannounce(strnpcinfo(NPC_MAP),"*Jeeeezzzgggg Geezzz Grrrr Clank*", bc_map, "0xFF0000");
+		mapannounce(strnpcinfo(NPC_MAP),"*Jeeeezzzgggg Geezzz Grrrr Clank*",bc_map,"0xFF0000");
 		mes "[Mitchell]";
 		mes "Não...!";
 		mes "Estamos trancados no quarto!";
@@ -4468,10 +4468,10 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Vamos queimar tudo abaixo";
 		next;
 		mes "[Mitchell]";
-		mes "Rápido, "+strcharinfo(PC_NAME)+", use o dispositivo de força de Kiel Hyre, aquele que era para bagunçar com a fonte de força de Kiehl!";
+		mes "Rápido,"+strcharinfo(PC_NAME)+", use o dispositivo de força de Kiel Hyre, aquele que era para bagunçar com a fonte de força de Kiehl!";
 		mes "Rápido, use-o agora!";
 		next;
-		mapannounce(strnpcinfo(NPC_MAP),"*Gzzzz Gzzzz*", bc_map, "0xFF0000");
+		mapannounce(strnpcinfo(NPC_MAP),"*Gzzzz Gzzzz*",bc_map,"0xFF0000");
 		mes "[Kiehl]";
 		mes "O-O quê? Não p-posso me mover!";
 		mes "Esse dia está simplesmente cheio de surpresas. Oh, bem.";
@@ -4502,14 +4502,14 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		next;
 		hideoffnpc("Kiehl#kh2");
 		next;
-		cutin("kh_kiel01", 0);
+		cutin("kh_kiel01",0);
 		mes "[Kiehl]";
 		mes "Hahahahaha!";
 		mes "Eu sou um robô!";
 		mes "Posso fazer corpos extras trocar de cérebros com eles";
 		mes "É extremamente conveniente, se quer saber.";
 		next;
-		cutin("kh_kiel03", 2);
+		cutin("kh_kiel03",2);
 		mes "[Kiehl]";
 		mes "De qualquer forma, não quero aparecer mas acho que posso revelar para você meu trunfo final.";
 		mes "Primeiro de tudo, eu sei tudo sobre você. Sra. Mitchell Layla";
@@ -4549,7 +4549,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Bem, Kaiser, ela se deu muito mal, mas ao menos você está sendo um cavalheiro sobre isso.";
 		mes "Bem eu gostaria que todos nós ficássemos bem informados, mas...";
 		next;
-		cutin("kh_kiel01", 2);
+		cutin("kh_kiel01",2);
 		mes "[Kiehl]";
 		mes "Melhor fazermos nossas despedidas aqui.";
 		mes "Esse";
@@ -4575,7 +4575,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		hideonnpc("Agente#KHAgent3");
 		hideonnpc("Agente#KHAgent4");
 		next;
-		cutin("kh_kiel02", 2);
+		cutin("kh_kiel02",2);
 		mes "[Kiehl]";
 		mes "Ótimo, acabamos com aquele negócio feio.";
 		mes "Agora, onde eu estava. Ah sim.";
@@ -4588,13 +4588,13 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Considere meu presente final para ele.";
 		mes "Estou surpreso que ele deixou esse anel dentro de mim.";
 		next;
-		cutin("kh_kiel04", 2);
+		cutin("kh_kiel04",2);
 		mes "[Kiehl]";
 		mes "Eu imagino que deve ser precioso para ele.";
 		mes "Mas fico imaginado porque ele o colocou dentro de mim?";
 		mes "Bem, de qualquer forma, tenho uma mensagem que gostaria que você entregasse a ele por mim.";
 		next;
-		cutin("kh_kiel01", 2);
+		cutin("kh_kiel01",2);
 		mes "[Kiehl]";
 		mes "Primeiro... Acho que devemos nos livrar dessa coisa velha.";
 		mes "Foi um bom corpo, e me serviu bem por 23 anos.";
@@ -4622,27 +4622,27 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Eu não sei se vamos nos encontrar novamente, mas quem sabe?";
 		mes "De qualquer forma, abrirei a saída para você.";
 		mes "Até mais ver";
-		delitem(Toy_Motor, 1);
+		delitem(Toy_Motor,1);
 		KielHyreQuest = 104;
 		hideonnpc("Kiehl#kh2");
 		enablenpc("Kiehl_Room_Exit");
 		donpcevent("Kiehl_Room_Exit::OnEnable");
 		initnpctimer;
-		cutin("", 255);
+		cutin("",255);
 		close;
 	} else if (KielHyreQuest == 104) {
-		cutin("kh_kiel02", 2);
+		cutin("kh_kiel02",2);
 		mes "^3355FFvocê recuperou o anel do coração do velho corpo robótico de Kiehl^000000.";
-		getitem(Elysia_Ring, 1);
+		getitem(Elysia_Ring,1);
 		KielHyreQuest = 106;
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	} else{
-		cutin("kh_kiel02", 2);
+		cutin("kh_kiel02",2);
 		mes "^3355FFO antigo corpo robótico de Kiehl fica sozinho, sem vida e silencioso^000000.";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	}
 
@@ -4654,47 +4654,47 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 	end;
 
 	OnTimer179000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 1 segundo para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 1 segundo para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer178000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 2 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 2 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer177000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 3 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 3 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer176000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 4 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 4 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer175000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 5 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 5 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer170000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 10 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 10 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer160000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 20 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 20 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer150000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 30 segundos para a detonação", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 30 segundos para a detonação",bc_npc,0xFF0000);
 	end;
 
 	OnTimer120000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 1 minuto para a detonação.", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 1 minuto para a detonação.",bc_npc,0xFF0000);
 	end;
 
 	OnTimer60000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 2 minutos para a detonação.", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 2 minutos para a detonação.",bc_npc,0xFF0000);
 	end;
 
 	OnTimer1000:
-	mapannounce(strnpcinfo(NPC_MAP), "Faltando 3 minutos para a detonação.", bc_npc, 0xFF0000);
+	mapannounce(strnpcinfo(NPC_MAP),"Faltando 3 minutos para a detonação.",bc_npc,0xFF0000);
 	end;
 }
 
@@ -4717,7 +4717,7 @@ kh_kiehl02,1,1,0	script	KiehlRoom	FAKE_NPC,{
 	OnReset:
 	donpcevent("Kiehl_Room_Trap::OnGlobalTimerOff");
 	if (getmapusers("kh_kiehl02")) {
-		mapwarp(strnpcinfo(NPC_MAP), "lighthalzen", 192, 200);
+		mapwarp(strnpcinfo(NPC_MAP),"lighthalzen",192,200);
 	}
 	killmonsterall("kh_kiehl02");
 	disablenpc("Kiehl_Room_Exit");
@@ -4730,7 +4730,7 @@ kh_kiehl02,1,1,0	script	KiehlRoom	FAKE_NPC,{
 	hideoffnpc("Kiehl#kh");
 	.KHKilledBoss = 0;
 	.KHKilled = 0;
-	setvariable(getvariableofnpc(.KHTrapSprung, "Kiehl_Room_Trap"), 0);
+	setvariable(getvariableofnpc(.KHTrapSprung,"Kiehl_Room_Trap"),0);
 	$@KHQuestBusy = 0;
 	end;
 }
@@ -4760,9 +4760,9 @@ kh_kiehl02,48,53,6	script	Kiehl#kh2	4_M_KHKIEL,{
 kh_kiehl02,50,59,0	script	Kiehl_Room_Exit	WARPNPC,1,1,{
 	OnTouch:
 	if (!getmapusers(strnpcinfo(NPC_MAP))) {
-		donpcevent "KiehlRoom::OnReset";
+		donpcevent("KiehlRoom::OnReset");
 	}
-	warp("lighthalzen", 193, 202);
+	warp("lighthalzen",193,202);
 	end;
 
 	OnEnable:
@@ -4773,92 +4773,3 @@ kh_kiehl02,50,59,0	script	Kiehl_Room_Exit	WARPNPC,1,1,{
 	hideonnpc(strnpcinfo(NPC_NAME));
 	end;
 }
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-

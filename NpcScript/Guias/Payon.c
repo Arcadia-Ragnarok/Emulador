@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 payon,160,67,3	script	Guia#payguide	4_M_PAY_SOLDIER,{
-	cutin ("pay_soldier",2);
+	cutin("pay_soldier",2);
 	mes "[Guia de Payon]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Payon^000000, a Cidade nas montanhas.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Vila dos Arqueiros]","[Loja de Utilidades]","[Equipamentos]","[Estalagem & Taverna]","[Palácio Central]","[Palácio da Corte]","[Cozinha Real]","Menu Anterior")) {
+				switch (select("[Vila dos Arqueiros]","[Loja de Utilidades]","[Equipamentos]","[Estalagem & Taverna]","[Palácio Central]","[Palácio da Corte]","[Cozinha Real]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Payon]";
 					mes "Posição da^0000FF Vila dos Arqueiros^000000 marcada em seu mini mapa.";
@@ -75,7 +75,7 @@ payon,160,67,3	script	Guia#payguide	4_M_PAY_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Reparador & Ferreiro]","[Funcionária Kafra]","[Especialista em Armadilha]","[Jade]","[Feirante]","Menu Anterior")) {
+				switch (select("[Oficial Eden]","[Reparador & Ferreiro]","[Funcionária Kafra]","[Especialista em Armadilha]","[Jade]","[Feirante]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Payon]";
 					mes "Posição do^0000FF Oficial Eden^000000 marcado em seu mini mapa.";
@@ -142,7 +142,7 @@ payon,160,67,3	script	Guia#payguide	4_M_PAY_SOLDIER,{
 			mes "[Guia de Payon]";
 			mes "Aproveite sua estadia.";
 			close;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

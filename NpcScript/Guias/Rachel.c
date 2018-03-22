@@ -18,11 +18,11 @@ rachel,138,146,5	script	Rachel Guide#rachel	4_M_RASWORD,{
 	mes "Bem-vind"+(Sex == SEX_MALE ?"o":"a")+" a ^8B4513Rachel^000000, Capital de Arunafeltz";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores do mini-mapa","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores do mini-mapa","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Estalagem]","[Loja de Armas]","[Loja de Utilidades]","[Aeroporto]","[Cheshrumnir]","[Casa de Zed]","Menu Anterior")) {
+				switch (select("[Estalagem]","[Loja de Armas]","[Loja de Utilidades]","[Aeroporto]","[Cheshrumnir]","[Casa de Zed]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Rachel]";
 					mes "Posição da^0000FF Estalagem^000000 marcada em seu mini mapa.";
@@ -68,7 +68,7 @@ rachel,138,146,5	script	Rachel Guide#rachel	4_M_RASWORD,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Representante Eventos Inc.]","[Oficial Eden]","Menu Anterior")) {
+				switch (select("[Representante Eventos Inc.]","[Oficial Eden]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Rachel]";
 					mes "Posição da^0000FF Representante Eventos Inc.^000000 marcada em seu mini mapa.";

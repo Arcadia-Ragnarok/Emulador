@@ -38,7 +38,7 @@ alde_dun03,191,31,0	warp	aldedunWarp_10	2,2,c_tower3,217,159
 alde_dun03,276,48,0	warp	aldedunWarp_11	2,2,c_tower1,235,223
 
 alde_dun03,130,125,4	script	aldedunWarp_12	WARPNPC,1,1,{
-	switch(rand(3)) {
+	switch (rand(3)) {
 		case 0: warp("c_tower2", 228, 267); end;
 		case 1: warp("alde_dun03", 130, 130); end;
 		case 2: warp("c_tower3", 252, 29); end;
@@ -46,7 +46,7 @@ alde_dun03,130,125,4	script	aldedunWarp_12	WARPNPC,1,1,{
 }
 
 alde_dun03,171,127,4	script	aldedunWarp_13	WARPNPC,1,1,{
-	switch(rand(3)) {
+	switch (rand(3)) {
 		case 0: warp("c_tower2", 13, 282); end;
 		case 1: warp("alde_dun03", 175, 131); end;
 		case 2: warp("c_tower3", 235, 7); end;
@@ -62,7 +62,7 @@ alde_dun04,208,58,0	warp	aldedunWarp_18	2,2,alde_dun04,268,74
 alde_dun04,272,74,0	warp	aldedunWarp_19	2,2,alde_dun04,204,62
 
 alde_dun04,80,34,4	script	aldedunWarp_20	WARPNPC,1,1,{
-	switch(rand(4)) {
+	switch (rand(4)) {
 		case 0: warp("c_tower2", 13, 282); end;
 		case 1: warp("alde_dun03", 175, 131); end;
 		case 2: warp("c_tower3", 235, 7); end;

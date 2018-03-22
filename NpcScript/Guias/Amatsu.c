@@ -18,7 +18,7 @@ amatsu,202,91,3	script	Guia#amaguide	4_F_JPN,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Amatsu^000000, a Cidade no Oriente.";
 	while (1) {
 		next;
-		switch(select("[Funcionária Kafra]","[Bar]","[Loja de Armas]","[Loja de Utilidades]","[Palácio]","[Cozinheiro]","[Guilda dos Ninjas]","[Capitão]","Remover marcadores","Cancelar")) {
+		switch (select("[Funcionária Kafra]","[Bar]","[Loja de Armas]","[Loja de Utilidades]","[Palácio]","[Cozinheiro]","[Guilda dos Ninjas]","[Capitão]","Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Amastu]";
 			mes "Posição da^0000FF Funcionária Kafra^000000 marcada em seu mini mapa.";

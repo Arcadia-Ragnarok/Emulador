@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 prontera,154,187,4	script	Guia#prtguide	8W_SOLDIER,{
-	cutin ("prt_soldier",2);
+	cutin("prt_soldier",2);
 	mes "[Guia de Prontera]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Prontera^000000, capital de Rune-Midgard.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Loja de Utilidades]","[Equipamentos]","[Forja]","[Catedral]","[Cavalaria]","[Estalagem]","[Taverna]","[Livraria]","[Castelo]","[Agência]","[Prefeitura]","Menu Anterior")) {
+				switch (select("[Loja de Utilidades]","[Equipamentos]","[Forja]","[Catedral]","[Cavalaria]","[Estalagem]","[Taverna]","[Livraria]","[Castelo]","[Agência]","[Prefeitura]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Prontera]";
 					mes "Posição da^0000FF Loja de Utilidades^000000 marcada em seu mini mapa.";
@@ -101,7 +101,7 @@ prontera,154,187,4	script	Guia#prtguide	8W_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Aluguel de Montaria]","[Peco Peco Remover]","[Funcionária Kafra]","Menu Anterior")) {
+				switch (select("[Oficial Eden]","[Aluguel de Montaria]","[Peco Peco Remover]","[Funcionária Kafra]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Prontera]";
 					mes "Posição do^0000FF Oficial Eden^000000 marcado em seu mini mapa.";
@@ -161,7 +161,7 @@ prontera,154,187,4	script	Guia#prtguide	8W_SOLDIER,{
 			mes "[Guia de Prontera]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("prt_soldier",255);
+			cutin("prt_soldier",255);
 			end;
 		}
 	}

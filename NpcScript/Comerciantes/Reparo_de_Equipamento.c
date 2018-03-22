@@ -19,11 +19,11 @@
 	mes "Você precisa que eu repare algum item?";
 	mes "Você pode contar comigo para reparar itens!";
 	next;
-	switch(select("Sim, faça os reparos.", "Nenhum no momento.")) {
+	switch (select("Sim, faça os reparos.","Nenhum no momento.")) {
 		case 1:
 		.@checkitem = 1;
 		while (true) {
-			if (getbrokenid(.@checkitem) == 0) {
+			if (!getbrokenid(.@checkitem)) {
 				break;
 			}
 			++.@checkitem;
@@ -43,16 +43,16 @@
 		mes "[Reparador]";
 		mes "Hmm...";
 		mes "Deixe-me ver...";
-		mes "De todos os seus itens, " + .@checkitem + " estão danificados.";
+		mes "De todos os seus itens, "+.@checkitem+" estão danificados.";
 		mes "Gostaria de repará-los?";
 		next;
 		.@totalcost = 5000 * .@checkitem;
 		mes "[Reparador]";
 		mes "Cada reparo custa 5.000 Zenys.";
-		mes "Então para reparar todos os seus itens você irá pagar " + .@totalcost + " Zeny!";
+		mes "Então para reparar todos os seus itens você irá pagar "+.@totalcost+" Zeny!";
 		mes "Você quer mesmo reparar os seus itens?";
 		next;
-		switch(select("Sim por favor.", "Não obrigado.")) {
+		switch (select("Sim por favor.","Não obrigado.")) {
 			case 1:
 			if (Zeny < .@totalcost) {
 				mes "[Reparador]";

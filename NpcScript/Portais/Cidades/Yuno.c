@@ -101,101 +101,101 @@ yuno_in05,50,88,0	warp	yunowarp_75	1,1,yuno_in02,85,14
 
 // yuno_in05 (Portais aleatórios trasclasse quest -------------------
 yuno_in05,153,141,0	script	yunowarp_76	WARPNPC,1,1,{
-	switch(rand(2)) {
-		case 0: warp ("yuno_in05",192,102); end;
-		case 1: warp ("yuno_in05",145,82); end;
+	switch (rand(2)) {
+		case 0: warp("yuno_in05",192,102); end;
+		case 1: warp("yuno_in05",145,82); end;
 	}
 }
 
 yuno_in05,196,102,0	script	yunowarp_77	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",169,102); end;
-		case 1: warp ("yuno_in05",128,82); end;
-		case 2: warp ("yuno_in05",156,141); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",169,102); end;
+		case 1: warp("yuno_in05",128,82); end;
+		case 2: warp("yuno_in05",156,141); end;
 	}
 }
 
 yuno_in05,181,116,0	script	yunowarp_78	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,94); end;
-		case 1: warp ("yuno_in05",176,13); end;
-		case 2: warp ("yuno_in05",136,75); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,94); end;
+		case 1: warp("yuno_in05",176,13); end;
+		case 2: warp("yuno_in05",136,75); end;
 	}
 }
 
 yuno_in05,165,102,0	script	yunowarp_79	WARPNPC,1,1,{
-	switch(rand(2)) {
-		case 0: warp ("yuno_in05",192,102); end;
-		case 1: warp ("yuno_in05",145,82); end;
+	switch (rand(2)) {
+		case 0: warp("yuno_in05",192,102); end;
+		case 1: warp("yuno_in05",145,82); end;
 	}
 }
 
 yuno_in05,181,91,0	script	yunowarp_80	WARPNPC,1,1,{
-	switch(rand(2)) {
-		case 0: warp ("yuno_in05",181,112); end;
-		case 1: warp ("yuno_in05",176,48); end;
+	switch (rand(2)) {
+		case 0: warp("yuno_in05",181,112); end;
+		case 1: warp("yuno_in05",176,48); end;
 	}
 }
 
 yuno_in05,148,82,0	script	yunowarp_81	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",169,102); end;
-		case 1: warp ("yuno_in05",128,82); end;
-		case 2: warp ("yuno_in05",156,141); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",169,102); end;
+		case 1: warp("yuno_in05",128,82); end;
+		case 2: warp("yuno_in05",156,141); end;
 	}
 }
 
 yuno_in05,125,82,0	script	yunowarp_82	WARPNPC,1,1,{
-	switch(rand(2)) {
-		case 0: warp ("yuno_in05",192,102); end;
-		case 1: warp ("yuno_in05",145,82); end;
+	switch (rand(2)) {
+		case 0: warp("yuno_in05",192,102); end;
+		case 1: warp("yuno_in05",145,82); end;
 	}
 }
 
 yuno_in05,136,71,0	script	yunowarp_83	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,112); end;
-		case 1: warp ("yuno_in05",16,185); end;
-		case 2: warp ("yuno_in05",176,48); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,112); end;
+		case 1: warp("yuno_in05",16,185); end;
+		case 2: warp("yuno_in05",176,48); end;
 	}
 }
 
 yuno_in05,16,188,0	script	yunowarp_84	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,94); end;
-		case 1: warp ("yuno_in05",176,13); end;
-		case 2: warp ("yuno_in05",136,75); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,94); end;
+		case 1: warp("yuno_in05",176,13); end;
+		case 2: warp("yuno_in05",136,75); end;
 	}
 }
 
 yuno_in05,176,9,0	script	yunowarp_85	WARPNPC,1,1,{
-	switch(rand(2)) {
-		case 0: warp ("yuno_in05",181,112); end;
-		case 1: warp ("yuno_in05",176,48); end;
+	switch (rand(2)) {
+		case 0: warp("yuno_in05",181,112); end;
+		case 1: warp("yuno_in05",176,48); end;
 	}
 }
 
 yuno_in05,176,52,0	script	yunowarp_86	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,94); end;
-		case 1: warp ("yuno_in05",176,13); end;
-		case 2: warp ("yuno_in05",136,75); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,94); end;
+		case 1: warp("yuno_in05",176,13); end;
+		case 2: warp("yuno_in05",136,75); end;
 	}
 }
 
 yuno_in05,40,178,0	script	yunowarp_87	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,94); end;
-		case 1: warp ("yuno_in05",176,13); end;
-		case 2: warp ("yuno_in05",136,75); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,94); end;
+		case 1: warp("yuno_in05",176,13); end;
+		case 2: warp("yuno_in05",136,75); end;
 	}
 }
 
 yuno_in05,47,186,0	script	yunowarp_88	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("yuno_in05",181,94); end;
-		case 1: warp ("yuno_in05",176,13); end;
-		case 2: warp ("yuno_in05",136,75); end;
+	switch (rand(3)) {
+		case 0: warp("yuno_in05",181,94); end;
+		case 1: warp("yuno_in05",176,13); end;
+		case 2: warp("yuno_in05",136,75); end;
 	}
 }
 

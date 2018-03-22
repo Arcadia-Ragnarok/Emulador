@@ -33,7 +33,7 @@ payon_in01,5,134,5	script	Inventor Jaax#Quiver	4_M_ORIENT02,{
 	mes "Você gostaria de tentar usar um dos meu Aljaves Mágicos?";
 	mes "Não tenho dúvidas que alguém como você pode apreciar minha geniosidade!";
 	next;
-	switch(select("Aljave de Flechas", "Aljave de Flechas de Ferro", "Aljave de Flechas de Aço", "Aljave de Flechas de Oridecon", "Aljave de Flechas de Fogo", "Aljave de Flechas de Prata", "Aljave de Flechas de Vento", "Aljave de Flechas de Pedra", "Aljave de Flechas de Cristal", "Aljave de Flechas Sombrias", "Aljave de Flechas Incorpóreas", "Aljave de Flechas Enferrujadas", "Nenhuma")) {
+	switch (select("Aljave de Flechas","Aljave de Flechas de Ferro","Aljave de Flechas de Aço","Aljave de Flechas de Oridecon","Aljave de Flechas de Fogo","Aljave de Flechas de Prata","Aljave de Flechas de Vento","Aljave de Flechas de Pedra","Aljave de Flechas de Cristal","Aljave de Flechas Sombrias","Aljave de Flechas Incorpóreas","Aljave de Flechas Enferrujadas","Nenhuma")) {
 		case 1:  .@arrowItem = 1750; .@quiverItem = 12004; break;
 		case 2:  .@arrowItem = 1770; .@quiverItem = 12005; break;
 		case 3:  .@arrowItem = 1753; .@quiverItem = 12006; break;
@@ -57,9 +57,9 @@ payon_in01,5,134,5	script	Inventor Jaax#Quiver	4_M_ORIENT02,{
 		mes "[Inventor Jaax]";
 		mes "Excelente!";
 		mes "As flechas estão com você?";
-		mes "Irei lhe providenciar um Aljave que pode carregar 500 de suas " + getitemname(.@arrowItem) + " por apenas^FF3131 500 Zeny^000000.";
+		mes "Irei lhe providenciar um Aljave que pode carregar 500 de suas "+getitemname(.@arrowItem)+" por apenas^FF3131 500 Zeny^000000.";
 		next;
-		switch(select("Trocar quantas Aljaves possíveis", "1 Aljave", "Cancelar")) {
+		switch (select("Trocar quantas Aljaves possíveis","1 Aljave","Cancelar")) {
 			case 1:
 			.@arrows = countitem(.@arrowItem);
 			.@quiver = .@arrows / 500;
@@ -67,20 +67,20 @@ payon_in01,5,134,5	script	Inventor Jaax#Quiver	4_M_ORIENT02,{
 			.@arrow_zeny01 = .@quiver * 500;
 			mes "[Inventor Jaax]";
 			mes "Número de Flechas: ^3131FF"+.@arrows+"^000000.";
-			mes "Número máximo que pode ser comprado de Aljaves: ^3131FF" + .@quiver + "^000000.";
-			mes "Zeny requerido: ^3131FF" + .@arrow_zeny01 + " Zeny^000000.";
+			mes "Número máximo que pode ser comprado de Aljaves: ^3131FF"+.@quiver+"^000000.";
+			mes "Zeny requerido: ^3131FF"+.@arrow_zeny01+" Zeny^000000.";
 			next;
 			mes "[Inventor Jaax]";
 			mes "Você gostaria de comprar quantos Aljaves possíveis para as Flechas que você está carregando?";
 			next;
-			if (select("Sim", "Não") == 1) {
+			if (select("Sim","Não") == 1) {
 				if (.@arrow_zeny01 < Zeny) {
 					mes "[Inventor Jaax]";
 					mes "Aqui estão!";
 					mes "Apenas relembrando, ^FF0000você não poderá utilizar os Aljaves caso seu peso seja maior que 90% do peso máximo^000000.";
 					Zeny -= .@arrow_zeny01;
-					delitem(.@arrowItem, .@arrows_used);
-					getitem(.@quiverItem, .@quiver);
+					delitem(.@arrowItem,.@arrows_used);
+					getitem(.@quiverItem,.@quiver);
 					next;
 					mes "[Inventor Jaax]";
 					mes "Então...";
@@ -103,8 +103,8 @@ payon_in01,5,134,5	script	Inventor Jaax#Quiver	4_M_ORIENT02,{
 				mes "Aqui está!";
 				mes "Apenas relembrando, ^FF0000você não poderá utilizar os Aljaves caso seu peso seja maior que 90% do peso máximo^000000.";
 				Zeny -= 500;
-				delitem(.@arrowItem, 500);
-				getitem(.@quiverItem, 1);
+				delitem(.@arrowItem,500);
+				getitem(.@quiverItem,1);
 				next;
 				mes "[Inventor Jaax]";
 				mes "Então...";

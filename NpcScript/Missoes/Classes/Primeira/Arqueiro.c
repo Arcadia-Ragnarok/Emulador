@@ -36,7 +36,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				mes "Bem, então eu não preciso dizer mais nada.";
 				mes "Eu sei que você pode se tornar um grande Arqueiro...";
 				next;
-				jobchange (Job_Archer_High);
+				jobchange(Job_Archer_High);
 				mes "[Guia dos Arqueiros]";
 				mes "Embora não haja uma recompensa especial para você desta vez, espero que compreenda.";
 				mes "Tome muito cuidado.";
@@ -53,19 +53,18 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 		}
 	} else if (BaseJob != Job_Novice) {
 		if (BaseJob == Job_Archer) {
-			mes "Agora que és " + (Sex == SEX_MALE ? "um arqueiro":"uma arqueira") + " aprenda ao máximo o uso do Arco e Flecha.";
+			mes "Agora que és "+(Sex == SEX_MALE ? "um arqueiro":"uma arqueira")+" aprenda ao máximo o uso do Arco e Flecha.";
 			close;
 		} else {
-			mes "Bem vind" + (Sex == SEX_MALE ? "o":"a") + "á guilda dos Arqueiros.";
+			mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+"á guilda dos Arqueiros.";
 			mes "Este é o local onde Aprendizes podem ser tonar arqueiros.";
 			next;
 			mes "[Guia dos Arqueiros]";
 			mes "Fique o tempo que desejar, mas por favor não incomode os novatos que querem ser arqueiros.";
 			close;
 		}
-	}
-	else if (!archerquest) {
-		mes "Bem vind" + (Sex == SEX_MALE ? "o":"a") + " ^777777Aprendiz^000000 á guilda dos Arqueiros.";
+	} else if (!archerquest) {
+		mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" ^777777Aprendiz^000000 á guilda dos Arqueiros.";
 		mes "Este é o local onde você pode se tonar um arqueiro, se desejar...";
 		next;
 		if (getskilllv("NV_BASIC") < 9) {
@@ -75,9 +74,9 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			close;
 		} else {
 			mes "[Guia dos Arqueiros]";
-			mes "Estaria entereçad" + (Sex == SEX_MALE ? "o":"a") + "?";
+			mes "Estaria entereçad"+(Sex == SEX_MALE ? "o":"a")+"?";
 			next;
-			switch(select("Claro que sim","O que tenho de fazer","Não mesmo")) {
+			switch (select("Claro que sim","O que tenho de fazer","Não mesmo")) {
 				case 1:
 				mes "[Guia dos Arqueiros]";
 				mes "Então um cadidato...";
@@ -86,7 +85,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				if (select("Assinar","Desistir") == 1) {
 					mes "[Guia dos Arqueiros]";
 					mes "Deixe-me ver.... Seu nome é.....";
-					mes "^0066ff" + strcharinfo(PC_NAME) + "^000000.";
+					mes "^0066ff"+strcharinfo(PC_NAME)+"^000000.";
 					mes "Muito bem seu teste começa agora.";
 					next;
 					mes "[Guia dos Arqueiros]";
@@ -125,7 +124,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				next;
 				mes "[Guia dos Arqueiros]";
 				mes "Se mudar de ideia volte a procurar nossa guilda.";
-				mes "Vejo em seus olhos que seria " + (Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira") + ".";
+				mes "Vejo em seus olhos que seria "+(Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira")+".";
 				close;
 				case 2:
 				mes "[Guia dos Arqueiros]";
@@ -150,7 +149,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				case 3:
 				mes "[Guia dos Arqueiros]";
 				mes "Se mudar de ideia volte a procurar nossa guilda.";
-				mes "Vejo em seus olhos que seria " + (Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira") + ".";
+				mes "Vejo em seus olhos que seria "+(Sex == SEX_MALE ? "um ótimo arqueiro":"uma ótima arqueira")+".";
 				close;
 			}
 		}
@@ -196,7 +195,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			close;
 		} else if (.@wooden_quant >= 25) {
 			mes "Belo trabalho.";
-			mes "Você marcou "+.@wooden_quant+ "!";
+			mes "Você marcou "+.@wooden_quant+"!";
 			mes "Isso lhe qualifica em ser um arqueiro.";
 			next;
 			mes "[Guia dos Arqueiros]";
@@ -205,28 +204,28 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			next;
 			mes "[Guia dos Arqueiros]";
 			mes "Porque não haverá volta, uma vez arqueiro não poderá mudar para nenhuma outra classe inicial.";
-			mes "Mas ainda poderá se tornar Caçador, ou " +(Sex == SEX_MALE ? " Bardo":"Odalisca");
+			mes "Mas ainda poderá se tornar Caçador, ou "+(Sex == SEX_MALE ? " Bardo":"Odalisca");
 			next;
-			if (countitem(Wooden_Block)) { delitem(Wooden_Block, countitem(Wooden_Block)); }
-			if (countitem(Tree_Of_Archer_1)) { delitem(Tree_Of_Archer_1, countitem(Tree_Of_Archer_1)); }
-			if (countitem(Tree_Of_Archer_2)) { delitem(Tree_Of_Archer_2, countitem(Tree_Of_Archer_2)); }
-			if (countitem(Tree_Of_Archer_3)) { delitem(Tree_Of_Archer_3, countitem(Tree_Of_Archer_3)); }
+			if (countitem(Wooden_Block)) { delitem(Wooden_Block,countitem(Wooden_Block)); }
+			if (countitem(Tree_Of_Archer_1)) { delitem(Tree_Of_Archer_1,countitem(Tree_Of_Archer_1)); }
+			if (countitem(Tree_Of_Archer_2)) { delitem(Tree_Of_Archer_2,countitem(Tree_Of_Archer_2)); }
+			if (countitem(Tree_Of_Archer_3)) { delitem(Tree_Of_Archer_3,countitem(Tree_Of_Archer_3)); }
 			mes "[Guia dos Arqueiros]";
 			mes "Porém se desistir agora, terá que fazer novamente o teste de arqueiro.";
 			mes "Então lhe pergunto.";
 			mes "É realmente isso que deseja?";
 			next;
 			if (select("Sim","Não") == 1) {
-				getitem (N_Composite_Bow,1);
-				getitem (Arrow,.@wooden_quant);
+				getitem(N_Composite_Bow,1);
+				getitem(Arrow,.@wooden_quant);
 				if (.@wooden_quant >= 40) {
-					getitem (Arrow_Container,1);
-					getitem (Silver_Arrow_Container,1);
-					getitem (Fire_Arrow_Container,1);
+					getitem(Arrow_Container,1);
+					getitem(Silver_Arrow_Container,1);
+					getitem(Fire_Arrow_Container,1);
 				}
-				jobchange (Job_Archer);
-				completequest (1004);
-				callfunc ("ClearJobQuest");
+				jobchange(Job_Archer);
+				completequest(1004);
+				callfunc("ClearJobQuest");
 				mes "[Guia dos Arqueiros]";
 				mes "Parabéns!";
 				mes "De agora em diante você é "+(Sex == SEX_MALE ? "um Arqueiro":"uma Arqueira");
@@ -238,7 +237,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 			}
 			mes "[Guia dos Arqueiros]";
 			mes "Não lhe culpo, grandes decisões devem ser bem pensadas.";
-			callfunc ("ClearJobQuest");
+			callfunc("ClearJobQuest");
 			close;
 		}
 	}

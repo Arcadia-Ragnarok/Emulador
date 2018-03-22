@@ -38,21 +38,21 @@ glast_01,195,273,4	script	Hugin's Follower#n_gh	2_F_MAGICMASTER,{
 	mes("[Hugin's Follower]");
 	mes("What about this Glast Heim is born with powerful dark force?");
 	next;
-	if (select("I don't care", "That is interesting, please tell me more") != 1) {
+	if (select("I don't care","That is interesting, please tell me more") != 1) {
 		mes("[Hugin's Follower]");
 		mes("As learning ability from Hugin, I just find out the path to Old Glast Heim of more powerful dark force.");
 		next;
 		mes("[Hugin's Follower]");
 		mes("How is it? Do you want to explore there?");
 		next;
-		if (select("No, I want to stop it", "I really want to do that!") != 1) {
+		if (select("No, I want to stop it","I really want to do that!") != 1) {
 			mes("[Hugin's Follower]");
 			mes("Sure that is not free I have to get something little bit. Hoho...");
 			next;
 			mes("[Hugin's Follower]");
 			mes("I can send you just two place. How is it? Do you want to try?");
 			next;
-			.@menu = select("Cancel", "Monastery Cemetery (Lv100130) - 5000z", "Corridor of 2nd floor (Over Lv140) - 10000z");
+			.@menu = select("Cancel","Monastery Cemetery (Lv100130) - 5000z","Corridor of 2nd floor (Over Lv140) - 10000z");
 			switch (.@menu) {
 			case 1:
 				mes("[Hugin's Follower]");
@@ -92,7 +92,7 @@ gl_chyard_,148,149,4	script	Hugin's Follower#n_gh1	2_F_MAGICMASTER,{
 	mes("You want to break?");
 	mes("Ok, let's get out of here.?");
 	next;
-	if (select("Ah, wrong click... I mean I was not talk to you", "Please let me out from here") == 1) {
+	if (select("Ah, wrong click... I mean I was not talk to you","Please let me out from here") == 1) {
 		mes("[Hugin's Follower]");
 		mes("Alright just tell me whenever you want to leave.");
 		close;

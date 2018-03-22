@@ -51,7 +51,7 @@ prt_monk,59,247,1	script	Monge Guardião#monkq	2_M_PHARMACIST,{
 					mes "Vá ver o nosso sensei Moohae e fale com ele.";
 					mes "Ele irá ajudá-lo a começar seu treinamento.";
 					monkq = 1;
-					setquest (3016);
+					setquest(3016);
 					close;
 				}
 			}
@@ -142,40 +142,40 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				mes "[Sensei Moohae]";
 				mes "Comecemos com uma tarefa simples.";
 				next;
-				switch(rand(7)) {
+				switch (rand(7)) {
 					case 1:
-					setarray (.@mk_itm[0],938,5, 1055,10, 511,20);
-					changequest (3016,3017);
+					setarray(.@mk_itm[0],938,5, 1055,10, 511,20);
+					changequest(3016,3017);
 					monkq = 2;
 					break;
 					case 2:
-					setarray (.@mk_itm[0],942,20, 1002,5, 510,3);
-					changequest (3016,3018);
+					setarray(.@mk_itm[0],942,20, 1002,5, 510,3);
+					changequest(3016,3018);
 					monkq = 3;
 					break;
 					case 3:
-					setarray (.@mk_itm[0],905,30, 909,5, 955,10);
-					changequest (3016,3019);
+					setarray(.@mk_itm[0],905,30, 909,5, 955,10);
+					changequest(3016,3019);
 					monkq = 4;
 					break;
 					case 4:
-					setarray (.@mk_itm[0],943,5, 935,20, 912,5);
-					changequest (3016,3020);
+					setarray(.@mk_itm[0],943,5, 935,20, 912,5);
+					changequest(3016,3020);
 					monkq = 5;
 					break;
 					case 5:
-					setarray (.@mk_itm[0],7053,5, 509,10, 508,10);
-					changequest (3016,3021);
+					setarray(.@mk_itm[0],7053,5, 509,10, 508,10);
+					changequest(3016,3021);
 					monkq = 6;
 					break;
 					case 6:
-					setarray (.@mk_itm[0],913,10, 948,4, 7033,20);
-					changequest (3016,3022);
+					setarray(.@mk_itm[0],913,10, 948,4, 7033,20);
+					changequest(3016,3022);
 					monkq = 7;
 					break;
 					default:
-					setarray (.@mk_itm[0],1027,5, 1025,20, 1042,10);
-					changequest (3016,3023);
+					setarray(.@mk_itm[0],1027,5, 1025,20, 1042,10);
+					changequest(3016,3023);
 					monkq = 8;
 					break;
 				}
@@ -188,14 +188,14 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				close;
 			}
 		} else if (monkq > 1 && monkq < 9) {
-			switch(monkq) {
-				case 2: setarray (.@mk_itm[0],938,5,  1055,10, 511,20);  break;
-				case 3: setarray (.@mk_itm[0],942,20, 1002,5,  510,3);   break;
-				case 4: setarray (.@mk_itm[0],905,30, 909,5,   955,10);  break;
-				case 5: setarray (.@mk_itm[0],943,5,  935,20,  912,5);   break;
-				case 6: setarray (.@mk_itm[0],7053,5, 509,10,  508,10);  break;
-				case 7: setarray (.@mk_itm[0],913,10, 948,4,   7033,20); break;
-				case 8: setarray (.@mk_itm[0],1027,5, 1025,20, 1042,10); break;
+			switch (monkq) {
+				case 2: setarray(.@mk_itm[0],938,5,  1055,10, 511,20);  break;
+				case 3: setarray(.@mk_itm[0],942,20, 1002,5,  510,3);   break;
+				case 4: setarray(.@mk_itm[0],905,30, 909,5,   955,10);  break;
+				case 5: setarray(.@mk_itm[0],943,5,  935,20,  912,5);   break;
+				case 6: setarray(.@mk_itm[0],7053,5, 509,10,  508,10);  break;
+				case 7: setarray(.@mk_itm[0],913,10, 948,4,   7033,20); break;
+				case 8: setarray(.@mk_itm[0],1027,5, 1025,20, 1042,10); break;
 			}
 			if (countitem(.@mk_itm[0]) < .@mk_itm[1] && countitem(.@mk_itm[2]) < .@mk_itm[3] && countitem(.@mk_itm[4]) < .@mk_itm[5]) {
 				mes "[Sensei Moohae]";
@@ -211,10 +211,10 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				mes "Muito bem, você encontrou todos os itens.";
 				mes "Direi isso para os anciões.";
 				monkq = 9;
-				changequest (3017,3024);
-				delitem (.@mk_itm[0],.@mk_itm[1]);
-				delitem (.@mk_itm[2],.@mk_itm[3]);
-				delitem (.@mk_itm[4],.@mk_itm[5]);
+				changequest(3017,3024);
+				delitem(.@mk_itm[0],.@mk_itm[1]);
+				delitem(.@mk_itm[2],.@mk_itm[3]);
+				delitem(.@mk_itm[4],.@mk_itm[5]);
 				next;
 				mes "[Sensei Moohae]";
 				mes "Vamos ver qual será a próxima etapa...";
@@ -381,9 +381,9 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				mes "....E veja a vida através dos olhos de um monge.";
 				next;
 				.@jl = JobLevel;
-				jobchange (Job_Monk);
-				completequest (3032);
-				callfunc ("ClearJobQuest2nd",15);
+				jobchange(Job_Monk);
+				completequest(3032);
+				callfunc("ClearJobQuest2nd",15);
 				mes "[Sensei Moohae]";
 				mes "Você se tornou Monge.";
 				next;
@@ -405,8 +405,8 @@ monk_in,99,58,1	script	Sensei Moohae#monkq	1_M_PASTOR,{
 				mes "Agora...";
 				mes "Você deve ir aonde vento lhe levar.";
 				mes "Ah, e eu tenho um presente para você antes de sair.";
-				if (.@jlevel == 50) { getitem (Knuckle_Duster_,1); }
-				else { getitem (Waghnakh,1); }
+				if (.@jlevel == 50) { getitem(Knuckle_Duster_,1); }
+				else { getitem(Waghnakh,1); }
 				close;
 			} 
 		} else {
@@ -476,7 +476,7 @@ prt_monk,251,255,1	script	Touha#monkq	1_F_PRIEST,{
 				mes "[Touha]";
 				mes "Acalme sua mente.";
 				mes "Relaxe seu corpo...";
-				changequest (3024,3025);
+				changequest(3024,3025);
 			} else {
 				mes "[Touha]";
 				mes "Agora, preste atenção...";
@@ -598,7 +598,7 @@ prt_monk,251,255,1	script	Touha#monkq	1_F_PRIEST,{
 			mes "[Touha]";
 			mes "...o próximo passo será feito por ^cc0000Boohae^000000.";
 			monkq = 11;
-			changequest (3025,3026);
+			changequest(3025,3026);
 			close;
 		}
 		else if (monkq == 11) {
@@ -687,7 +687,7 @@ prt_monk,57,179,1	script	Boohae#monkq	4_M_MINISTER,{
 				mes "[Boohae]";
 				mes "O que você fez junto com Touha?";
 				next;
-				switch(select("Humm... bem...ah..","Um juramento","Ele me diagnosticou")) {
+				switch (select("Humm... bem...ah..","Um juramento","Ele me diagnosticou")) {
 					case 1:
 					mes "[Boohae]";
 					mes "Você nem consegue responder a uma pergunta simples.";
@@ -720,7 +720,7 @@ prt_monk,57,179,1	script	Boohae#monkq	4_M_MINISTER,{
 					mes "[Boohae]";
 					mes "Você e outros cadidatos a monge poderão está lá para o mesmo teste.";
 					monkq = 12;
-					changequest (3026,3027);
+					changequest(3026,3027);
 					close;
 				} else {
 					mes "[Boohae]";
@@ -736,7 +736,7 @@ prt_monk,57,179,1	script	Boohae#monkq	4_M_MINISTER,{
 					mes "Tudo que você tem a fazer é correr ao redor do prédio.";
 					mes "Quantas vezes for necessário.";
 					monkq = 13;
-					changequest (3026,3028);
+					changequest(3026,3028);
 					close;
 				}
 			}
@@ -796,7 +796,7 @@ monk_test,329,61,3	script	Bashu#monkq	4_M_MONK,{
 		mes "[Bashu]";
 		mes "Certo deixe-me enviar-l"+(Sex == SEX_MALE ? "o":"a")+" para o local.";
 		close2;
-		warp ("job_monk",226,175);
+		warp("job_monk",226,175);
 		end;
 	} else if (monkq == 13) {
 		mes "[Bashu]";
@@ -805,7 +805,7 @@ monk_test,329,61,3	script	Bashu#monkq	4_M_MONK,{
 		mes "[Bashu]";
 		mes "Certo deixe-me enviar-l"+(Sex == SEX_MALE ? "o":"a")+" para o local.";
 		close2;
-		warp ("monk_test",386,387);
+		warp("monk_test",386,387);
 		end;
 	} else if (monkq == 16) {
 		mes "[Bashu]";
@@ -859,11 +859,11 @@ job_monk,226,180,1	script	Hyunmoo#monkq	4_M_ORIENT02,{
 				mes "Vá visitar Tomoon para iniciar o seu próximo teste.";
 				mes "Tomoon está nas profundezas dentro de um edifício perto desta abadia, vá visitá-lo.";
 				monkq = 14;
-				changequest (3027,3029);
-				delitem (Mushroom_Of_Thief_1,countitem(Mushroom_Of_Thief_1));
-				delitem (Mushroom_Of_Thief_2,countitem(Mushroom_Of_Thief_2));
+				changequest(3027,3029);
+				delitem(Mushroom_Of_Thief_1,countitem(Mushroom_Of_Thief_1));
+				delitem(Mushroom_Of_Thief_2,countitem(Mushroom_Of_Thief_2));
 				close2;
-				warp ("prt_monk",194,168);
+				warp("prt_monk",194,168);
 				end;
 			}
 		} else if (monkq == 13) {
@@ -902,7 +902,7 @@ monk_test,386,388,4	script	Supervisor#monkq	4_M_MINISTER,{
 	mes "Bem-Vind"+(Sex == SEX_MALE ? "o":"a")+"!";
 	mes "Este lugar testa a tolerância de candidatos a monge!";
 	next;
-	switch(select("Explicação","Desistir","Continuar")) {
+	switch (select("Explicação","Desistir","Continuar")) {
 		case 1:
 		mes "[Supervisor]";
 		mes "Basta correr...";
@@ -918,7 +918,7 @@ monk_test,386,388,4	script	Supervisor#monkq	4_M_MINISTER,{
 		close;
 		case 2:
 		close2;
-		warp ("prt_monk",194,168);
+		warp("prt_monk",194,168);
 		end;
 		case 3:
 		mes "[Supervisor]";
@@ -931,8 +931,8 @@ monk_test,386,388,4	script	Supervisor#monkq	4_M_MINISTER,{
 // ------------------------------------------------------------------
 monk_test,82,384,0	script	MonkTrap#monkq	FAKE_NPC,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_NAME),strcharinfo(PC_NAME)+", Você caiu em uma armadilha, voltará para o início.",bc_map);
-	warp (strnpcinfo(NPC_MAP),386,387);
+	mapannounce(strnpcinfo(NPC_NAME),strcharinfo(PC_NAME)+", Você caiu em uma armadilha, voltará para o início.",bc_map);
+	warp(strnpcinfo(NPC_MAP),386,387);
 	end;
 }
 
@@ -973,8 +973,8 @@ monk_test,387,348,0	script	Supervisor#2monkq	4_M_MINISTER,{
 	mes "Tomoon está nas profundezas dentro de um edifício perto desta abadia.";
 	close2;
 	monkq = 14;
-	changequest (3028,3029);
-	warp ("prt_monk",194,168);
+	changequest(3028,3029);
+	warp("prt_monk",194,168);
 	end;
 }
 
@@ -998,8 +998,8 @@ monk_test,319,139,1	script	Tomoon#monkq	1_M_HOF,{
 			mes "Boa sorte.";
 			close2;
 			monkq = 15;
-			changequest (3029,3031);
-			warp (strnpcinfo(NPC_MAP),88,70);
+			changequest(3029,3031);
+			warp(strnpcinfo(NPC_MAP),88,70);
 			end;
 		} else if (monkq == 15) {
 			mes "[Tomoon]";
@@ -1008,7 +1008,7 @@ monk_test,319,139,1	script	Tomoon#monkq	1_M_HOF,{
 			mes "Anime-se!";
 			mes "O fracasso nada mais é do que um processo para o sucesso!";
 			close2;
-			warp (strnpcinfo(NPC_MAP),88,70);
+			warp(strnpcinfo(NPC_MAP),88,70);
 			end;
 		} else if (monkq == 16) {
 			mes "[Tomoon]";
@@ -1052,10 +1052,10 @@ monk_test,82,85,1	script	Procurador#1monkq	4_F_SISTER,{
 	mes "Deve ir para o portal localizado no lado oposto do salão.";
 	mes "Boa sorte.";
 	close2;
-	switch(atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
-		case 1: warp (strnpcinfo(NPC_MAP),125,277); end;
-		case 2: warp (strnpcinfo(NPC_MAP),125,177); end;
-		case 3: warp (strnpcinfo(NPC_MAP),230,277); end;
+	switch (atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
+		case 1: warp(strnpcinfo(NPC_MAP),125,277); end;
+		case 2: warp(strnpcinfo(NPC_MAP),125,177); end;
+		case 3: warp(strnpcinfo(NPC_MAP),230,277); end;
 	}
 }
 monk_test,88,91,1	duplicate(Procurador#1monkq)	Procurador#2monkq	1_M_HOF
@@ -1069,10 +1069,9 @@ monk_test,166,278,0	script	exitwall#monkq	WARPNPC,1,1,{
 	mes "Volte ao Ancião Moohae.";
 	close2;
 	monkq = 16;
-	changequest (3031,3032);
-	warp ("prt_monk",196,168);
+	changequest(3031,3032);
+	warp("prt_monk",196,168);
 	end;
 }
 monk_test,166,178,1	duplicate(exitwall#monkq)	exitwall#2monkq	WARPNPC
 monk_test,270,278,1	duplicate(exitwall#monkq)	exitwall#3monkq	WARPNPC
-

@@ -22,7 +22,7 @@ aldebaran,223,222,4	script	Sr. Noel	4_M_SANTA,{
 	mes "Feliz Natal!!";
 	mes "Desejo toda a felicidade natalina para você!";
 	next;
-	switch(select("Sobre Lutie","Ir para Lutie","Cancelar")) {
+	switch (select("Sobre Lutie","Ir para Lutie","Cancelar")) {
 		case 1:
 		mes "[Senhor Noel]";
 		mes "^3355FFLutie^000000, a maravilhosa Cidade do Natal!";
@@ -52,7 +52,7 @@ aldebaran,223,222,4	script	Sr. Noel	4_M_SANTA,{
 		mes "Tenha uma boa viagem!";
 		mes "Feliiiiiiiz Nataaaal!";
 		close2;
-		warp ("xmas_fild01",78,68);
+		warp("xmas_fild01",78,68);
 		end;
 		case 3:
 		mes "[Senhor Noel]";
@@ -74,7 +74,7 @@ xmas_fild01,84,48,5	script	Sr. Noel#xmas	4_M_SANTA,{
 	mes "Ho Ho Ho";
 	mes "Apreciou o clima natalino desee lugar?";
 	mes "Mas se quiser voltar para aldebaran é só falar.";
-	if (select("Voltar para Aldebaran", "Cancelar") == 1) {
+	if (select("Voltar para Aldebaran","Cancelar") == 1) {
 		close2;
 		warp("aldebaran",140,234);
 		end;

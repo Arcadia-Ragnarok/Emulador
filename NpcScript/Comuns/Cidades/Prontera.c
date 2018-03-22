@@ -19,7 +19,7 @@
 
 prontera,160,330,4	script	Guarda#pront::prtguard	8W_SOLDIER,{
 	mes "[Guarda de Prontera]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") +" a prontera.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a")+" a prontera.";
 	close;
 }
 prontera,223,99,1	duplicate(prtguard)	Guarda#2pront	8W_SOLDIER
@@ -86,7 +86,7 @@ prontera,149,202,2	script	YuNa#pront	8_F_GIRL,{
 //-------------------------------------------------------------------
 prt_in,175,50,0	script	Bibliotecária#pront	1_F_LIBRARYGIRL,{
 	mes "[Bibliotecária Ellen]";
-	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") +"!";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o" : "a")+"!";
 	mes "Os dados nesta biblioteca estão separados pelos nomes dos monstros.";
 	mes "Você pode ler livros e escritas de seu interesse aqui.";
 	mes "Aqui também existem livros sobre as classes dos Ferreiros e Mercadores.";
@@ -101,7 +101,7 @@ prt_in,175,50,0	script	Bibliotecária#pront	1_F_LIBRARYGIRL,{
 //-------------------------------------------------------------------
 prt_in,180,20,2	script	Garçom#pront	1_M_PUBMASTER,{
 	mes "[Garçom]";
-	mes "Olá, seja bem-vind" + (Sex == SEX_MALE ? "o" : "a") +"!";
+	mes "Olá, seja bem-vind"+(Sex == SEX_MALE ? "o" : "a")+"!";
 	mes "Hehehe!";
 	mes "A freguesia anda aumentando por aqui!";
 	mes "Este já foi um negócio bem difícil, sabe?";
@@ -123,8 +123,8 @@ prt_in,180,20,2	script	Garçom#pront	1_M_PUBMASTER,{
 	mes "Eu não posso manter o meu negócio ocupado sem meu menu especial 'Carapaças de formiga ao molho' e 'Perna de Gafanhoto frita'...*Suspiro*";
 	next;
 	.@drink = 1;
-	while(.@drink) {
-		switch(select("'Carapaça de formiga ao molho'?", "'Perna de Gafanhoto frita'?", "Eu... acho que vou indo.")) {
+	while (.@drink) {
+		switch (select("'Carapaça de formiga ao molho'?","'Perna de Gafanhoto frita'?","Eu... acho que vou indo.")) {
 			case 1:
 			mes "[Garçom]";
 			mes "É uma deleciosa iguaria e um clássico local!";

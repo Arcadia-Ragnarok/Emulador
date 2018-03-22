@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 aldebaran,139,63,4	script	Guia#aldguide	8W_SOLDIER,{
-	cutin ("prt_soldier",2);
+	cutin("prt_soldier",2);
 	mes "[Guia de Alberta]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513AlDeBaran^000000, a cidade da Fronteira.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Central Kafra]","[Guilda dos Alquimistas]","[Torre do Relógio]","[Estalagem & Utilidades]","[Reparo e Compra de Equip.]","[Taverna]","Menu Anterior")) {
+				switch (select("[Central Kafra]","[Guilda dos Alquimistas]","[Torre do Relógio]","[Estalagem & Utilidades]","[Reparo e Compra de Equip.]","[Taverna]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Aldebaran]";
 					mes "Posição da^0000FF Central Kafra^000000 marcada em seu mini mapa.";
@@ -69,7 +69,7 @@ aldebaran,139,63,4	script	Guia#aldguide	8W_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Funcionária Kafra]","[Papai Noel]","[Cozinheiro]","Menu Anterior")) {
+				switch (select("[Oficial Eden]","[Funcionária Kafra]","[Papai Noel]","[Cozinheiro]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Aldebaran]";
 					mes "Posição da^0000FF Oficial Eden^000000 marcada em seu mini mapa.";
@@ -119,7 +119,7 @@ aldebaran,139,63,4	script	Guia#aldguide	8W_SOLDIER,{
 			mes "[Guia de Aldebaran]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

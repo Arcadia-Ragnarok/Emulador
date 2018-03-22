@@ -21,7 +21,7 @@ einbech,172,113,4	script	Nemuk#ein	4_M_EINMAN,{
 	mes "Você parece ser um forasteiro, então deixe-me perguntar algo.";
 	mes "O que você acha de Einbech?";
 	next;
-	switch(select("É legal", "Parece dificil de viver aqui.")) {
+	switch (select("É legal","Parece dificil de viver aqui.")) {
 		case 1:
 		mes "[Nemuk]";
 		mes "Huh...?";
@@ -259,7 +259,7 @@ einbech,46,107,6	script	Shena#ein	4_F_EINOLD,{
 	mes "Bem, estou certa que as próximas gerações farão algo à isso.";
 	mes "Mas estou surpreso que pessoas experientes não conhecem muito.";
 	next;
-	switch(select("Do que está falando?", "Ignorar")) {
+	switch (select("Do que está falando?","Ignorar")) {
 		case 1:
 		mes "[Shena]";
 		mes "Oh? bem, bem...";
@@ -287,8 +287,8 @@ einbech,46,107,6	script	Shena#ein	4_F_EINOLD,{
 			mes "Então querido, qual monstro você está interessado em ouvir sobre?";
 			next;
 		}
-		while(true) {
-			switch(select("Metalling", "Mineral", "Mineiros", "Fornalha Velha", "Terminar Conversa")) {
+		while (true) {
+			switch (select("Metalling","Mineral","Mineiros","Fornalha Velha","Terminar Conversa")) {
 				case 1:
 				mes "[Shena]";
 				mes "Bom, os Metalings foram criados durante nos tempos em que os deuses mandavam sobre este mundo.";
@@ -347,7 +347,7 @@ einbech,46,107,6	script	Shena#ein	4_F_EINOLD,{
 				mes "[Shena]";
 				mes "É somente uma maligna, Fornalha Velha comedora de homens.";
 				next;
-				switch(select("...Isso seria?", "H-horripilante!")) {
+				switch (select("...Isso seria?","H-horripilante!")) {
 					case 1:
 					mes "[Shena]";
 					mes "Agora, você sabe a importância de reciclar e preservar nossos recursos naturais, certo?";
@@ -403,14 +403,14 @@ einbech,148,242,5	script	Jung#ein	4_M_EINMAN,{
 	mes "Diga, se você está pensando em entrar na caverna.";
 	mes "Eu posso contar a você tudo que eu sei sobre os monstros daquele lugar de forma que você ficara melhor preparado.";
 	next;
-	switch(select("Claro, porque não?", "Não, mesmo")) {
+	switch (select("Claro, porque não?","Não, mesmo")) {
 		case 1:
 		mes "[Jung]";
 		mes "Deixe-me ver.";
 		mes "Ah, os monstros que são únicos da Mina são Nuvem Tóxicas, Nuvem Venenosa, Porcellio e Obsidiana.";
 		mes "Qual destes você deseja saber mais?";
 		next;
-		switch(select("Nuvem Tóxica e Nuvem Venenosa", "Porcellio", "Obsidiana")) {
+		switch (select("Nuvem Tóxica e Nuvem Venenosa","Porcellio","Obsidiana")) {
 			case 1:
 			mes "[Jung]";
 			mes "Você sabe, ninguem parece saber de onde as Nuvem Tóxicas e Nuvem Venenosa vieram se formar.";
@@ -488,13 +488,13 @@ einbech,148,246,5	script	Franz#ein	4_M_REPAIR,{
 	mes "Você esta planejando explorar a Mina ou os campos aos arredores daqui?";
 	mes "Vamos conversar um pouco e talvez você aprenderá algo.";
 	next;
-	switch(select("Certo, tudo bem", "Não, obrigado")) {
+	switch (select("Certo, tudo bem","Não, obrigado")) {
 		case 1:
 		mes "[Franz]";
 		mes "Ooh, você que ouvir sobre a criatura da Mina ou o que aconteceu na cidade recentemente?";
 		mes "O que você gostaria de saber mais?";
 		next;
-		switch(select("Criatura da Mina", "Incidente da Cidade")) {
+		switch (select("Criatura da Mina","Incidente da Cidade")) {
 			case 1:
 			mes "[Franz]";
 			mes "A criatura que eu estou falando é Ungoliant, que também é chamado por aqui de Mestre das Cavernas.";
@@ -608,7 +608,7 @@ ein_in01,277,95,7	script	Ryan#ein	4_M_EINMAN,{
 	mes "Por quê você não tirar essas roupas pesadas, incômodas?";
 	mes "Eu vou comprar tudo que você desejar, estou aqui! Venha.";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "N-no...!";
 	mes "I-I-I-I...";
 	mes "^666666Este é o sujeito mais sombrio que eu já vi!^000000";
@@ -626,7 +626,7 @@ ein_in01,277,95,7	script	Ryan#ein	4_M_EINMAN,{
 	mes "Ou eu estava?";
 	mes "Bwahahahaha!";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Es-este sujeito deve estar bêbado, com a mente drogada.";
 	close;
 }

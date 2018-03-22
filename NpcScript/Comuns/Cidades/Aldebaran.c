@@ -52,7 +52,7 @@ aldebaran,64,104,4	script	Sr. Quattro#alde	1_M_JOBTESTER,{
 	mes "[Quatro]";
 	mes "Você ouviu falar que aquele Ferreiro famoso se mudou de Geffen para cá?";
 	next;
-	if (select("Ferreiro Famoso?", "Encerrar Conversa") == 1) {
+	if (select("Ferreiro Famoso?","Encerrar Conversa") == 1) {
 		mes "[Quatro]";
 		mes "Pelo o que eu ouvi, ele é um daqueles Ferreiros que consegue refinar armas e armaduras.";
 		mes "Quando uma arma é refinada o seu ataque é aumentado.";
@@ -94,7 +94,7 @@ aldebaran,81,61,4	script	Catadora de Conchas#ald	4W_F_01,{
 	mes "Eu gosto de colecionar conchas do mar.";
 	mes "É muito relaxante e divertido.";
 	next;
-	if (select("Catar Conchas?", "Finalizar Conversa") == 1) {
+	if (select("Catar Conchas?","Finalizar Conversa") == 1) {
 		mes "[Catadora]";
 		mes "Quando você ver bolhas saindo da areia, ou de poças de lama, tente cavar um pouco.";
 		mes "Você provavelmente vai encontrar conchas enterradas!";
@@ -124,7 +124,7 @@ aldebaran,46,129,4	script	Panama#alde	4W_M_01,{
 	mes "Al De Baran é conhecida mundialmente como a Cidade dos Canais.";
 	mes "Os canais realmente dão um toque sofisticado e romântico a nossa cidade.";
 	next;
-	switch(select("Sobre os Canais", "Finalizar Conversa")) {
+	switch (select("Sobre os Canais","Finalizar Conversa")) {
 		case 1:
 		mes "[Panama]";
 		mes "Bem, um canal é um lugar criado para a água passar normalmente usado para embarcações, ou irrigações.";
@@ -147,7 +147,7 @@ aldebaran,67,154,4	script	Montanhista#alde	4W_M_02,{
 	mes "Mt. Mjolnir e Floresta de Payon.";
 	mes "Ambos são lugares difíceis de atravessar.";
 	next;
-	switch(select("Mt.Mjolnir?", "Floresta Payon...?", "Finalizar Conversa")) {
+	switch (select("Mt.Mjolnir?","Floresta Payon...?","Finalizar Conversa")) {
 		case 1:
 		mes "[Montanhista]";
 		mes "Para chegar aqui vindo de Prontera ou Geffen, você tem que atravessar as Montanhas Mjolnir.";
@@ -185,7 +185,7 @@ aldebaran,90,170,4	script	Edu#alde	1_M_01,{
 	mes "[Edu]";
 	mes "Algumas armas ou amaduras têm slots onde você pode inserir cartas obtidas de monstros.";
 	next;
-	switch(select("Sobre o número de slots","Relação entre cartas e slots","Finalizar a Conversa")) {
+	switch (select("Sobre o número de slots","Relação entre cartas e slots","Finalizar a Conversa")) {
 		case 1:
 		mes "[Edu]";
 		mes "Itens soltos por monstros possuem mais slots que armas ou armaduras comuns vendidas em Lojas de NPCs.";
@@ -220,7 +220,7 @@ aldebaran,117,181,4	script	Joy#alde	1_M_02,{
 	mes "[Joy]";
 	mes "Armas de nível 1, que sãos as mais fracas, precisa de um metal chamado ^3355FFFracon^000000 para serem refinadas.";
 	next;
-	switch(select("Sobre Fracon", "Conselho sobre Fracon", "Finalizar Conversa")) {
+	switch (select("Sobre Fracon","Conselho sobre Fracon","Finalizar Conversa")) {
 		case 1:
 		mes "[Joy]";
 		mes "Fracon é um metal muito comum, e pode ser encontrado por todo o continente de Rune-Midgard.";
@@ -254,7 +254,7 @@ aldebaran,121,231,4	script	Alquimista#alde	1_M_03,{
 	mes "[Alquimista]";
 	mes "Alquimistas, uma das 2ª classes, são capazes de criar itens de diversos materiais utilizando o conhecimento da antiga era de Al De Baran.";
 	next;
-	switch(select("Sobre Alquimia em Payon", "Definição de Alquimia", ". . . . .", "Finalizar Conversa")) {
+	switch (select("Sobre Alquimia em Payon","Definição de Alquimia",". . . . .","Finalizar Conversa")) {
 		case 1:
 		mes "[Alquimista]";
 		mes "A Maioria das pessoas não sabe que existia uma forma oriental de alquimia desenvolvida em Payon.";
@@ -321,7 +321,7 @@ aldebaran,86,228,4	script	Criança#alde	1_M_SIZ,{
 	mes "[Criança]";
 	mes "Um tempo atrás quando eu sai para uma caminhada em direção ao Mt. Mjolnir com meu Bebê Selvagem chamado NukNuk, nós fomos atacados, felizmente não fomos feridos.";
 	next;
-	switch(select("Atacados?", "Sobre Mt.Mjolnir", "Finalizar Conversa")) {
+	switch (select("Atacados?","Sobre Mt.Mjolnir","Finalizar Conversa")) {
 		case 1:
 		mes "[Criança]";
 		mes "Eu estava andando por um caminho estreiro e de repente, uma planta grande e feia começou a nos atacar!";
@@ -359,7 +359,7 @@ aldebaran,159,242,4	script	Estudioso#alde	2_M_SWORDMASTER,{
 	mes "Até para um forte Espadachim, os insetos no Mt. Mjolnir podem ser considerados ameaças.";
 	mes "Você deve conhecer seu inimigo antes de começar uma batalha!";
 	next;
-	if (select("Sobre Insetos", "Finalizar Conversa") == 1) {
+	if (select("Sobre Insetos","Finalizar Conversa") == 1) {
 		mes "[Estudioso]";
 		mes "Abelhas, Borboletas e Mariposas parecem criaturas simples.";
 		mes "Mas isso não significa que você pode subestimá-las.";
@@ -398,7 +398,7 @@ aldebaran,60,70,4	script	Senhorita#alde	1_F_04,{
 	mes "Se isso não fosse ruim o suficiente, eu ainda deixei minhas Lupas em Prontera.";
 	mes "Agora eu preciso achar alguém para me ajudar com essas armas que tenho que identificar!";
 	next;
-	if (select("Identificar?", "Isso é bom.") == 1) {
+	if (select("Identificar?","Isso é bom.") == 1) {
 		mes "[Senhorita]";
 		mes "Equipamentos que são soltos por monstros não podem ser equipados imediatamente.";
 		next;
@@ -426,7 +426,7 @@ aldebaran,93,80,4	script	Jovem#alde	1_M_02,{
 	mes "Al De Baran é um lugar maravilhoso com seus canais românticos e sua arquitetura clássica.";
 	mes "Eu amo passear pela cidade com minha linda namorada.";
 	next;
-	if (select("Você tem uma Namorada?", "Finalizar Conversa.") == 1) {
+	if (select("Você tem uma Namorada?","Finalizar Conversa.") == 1) {
 		mes "[Jovem]";
 		mes "Ei...";
 		mes "É tão difícil de acreditar?!";
@@ -463,7 +463,7 @@ aldebaran,180,46,4	script	Joo Jahk#alde	4_M_ORIENT01,{
 	mes "Bem, já é tarde para perguntar, eu já bebi um pouco.";
 	mes "Ainda sim, Eu estou um pouco preocupado...";
 	next;
-	if (select("Continar", "Finalizar Conversa") == 1) {
+	if (select("Continar","Finalizar Conversa") == 1) {
 		mes "[Joo Jahk]";
 		mes "Em uma das minhas viagens por Rune-Midgard.";
 		mes "Ouvi de um Mago muito poderoso que ataques físicos ou magias de propriedade neutra não funcionam contra monstros da propriedade Fantasma.";
@@ -482,14 +482,14 @@ aldebaran,180,46,4	script	Joo Jahk#alde	4_M_ORIENT01,{
 // ------------------------------------------------------------------
 aldebaran,212,122,4	script	Cidadão#alde	4W_M_01,{
 	mes "[Gavin]";
-	mes "Bem-vind"+ (Sex == SEX_MALE ? "o" : "a")+"!";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o" : "a")+"!";
 	mes "A Cidade de Al De Baran dá as boas vindas a você!";
 	next;
 	mes "[Gavin]";
 	mes "Bem, pode ser exagero.";
 	mes "Afinal, sou apenas eu que estou dando as boas vindas a você.";
 	next;
-	if (select("Agora, me fale sobre monstros", "Finalizar Conversa.") == 1) {
+	if (select("Agora, me fale sobre monstros","Finalizar Conversa.") == 1) {
 		mes "[Gavin]";
 		mes "Monstros...?";
 		mes "Não estamos saindo do tema um pouco?";
@@ -525,7 +525,7 @@ aldebaran,146,124,4	script	Menina#alde	4W_F_01,{
 	mes "Mas matar não é ilegal?";
 	mes "E eles ainda chamam aquilo de instutuição de ensino?";
 	next;
-	if (select("Continuar conversa", "Finalizar Conversa") == 1) {
+	if (select("Continuar conversa","Finalizar Conversa") == 1) {
 		mes "[Nastasia]";
 		mes "Apesar de Assassinos se beneficiarem por serem muito rápidos e ter muita AGI.";
 		mes "Eles ainda devem ter muita DES.";
@@ -549,7 +549,7 @@ aldebaran,143,136,4	script	Sineiro#alde	4_M_ORIENT02,{
 	mes "[Sineiro]";
 	mes "Eu fui ordenado pelo Comitê do 'Céu na Terra' a guardar esse entrada da Torre do Relógio.";
 	next;
-	if (select("Sobre Torre do Relógio", "Sair") == 1) {
+	if (select("Sobre Torre do Relógio","Sair") == 1) {
 		mes "[Sineiro]";
 		mes "Cada andar dessa torre é conectado ao outro por um dispositivo que chamamos de 'Engrenagem de Portais.'";
 		next;
@@ -583,7 +583,7 @@ aldeba_in,232,241,4	script	RS125#alde	1_M_02,{
 	mes "Eu posso ter um coração mecânico e posso incomodar você com barulhos vindos dele.";
 	mes "Isso nunca vai me impedir de correr pelo Futuro de Al De Baran.";
 	next;
-	if (select("Ouvir a História", "Finalizar Conversa") == 1) {
+	if (select("Ouvir a História","Finalizar Conversa") == 1) {
 		mes "[RS125]";
 		mes "Já faz 3 anos.";
 		mes "Meu irmão 996 costumava ser um atleta de metros rasos no time de Al De Baran.";
@@ -627,7 +627,7 @@ aldeba_in,223,121,4	script	Homem Ameaçador#alde	1_M_SMITH,{
 	mes "Hahahaha...";
 	mes "Eu apenas estava brincando.";
 	next;
-	if (select("Continuar", "Terminar Conversa") == 1) {
+	if (select("Continuar","Terminar Conversa") == 1) {
 		mes "[Homem Ameaçador]";
 		mes "Você já deve saber disso, mas nós temos um sistema chamado 'O Sistema de Assistentes'.";
 		mes "Sim, Eu sou um Soldado Assistente.";
@@ -682,14 +682,14 @@ aldeba_in,152,47,4	script	Homem Inquieto#alde	4W_M_01,{
 	mes "Aaaaarrrggghhh...ESTOU COM PROBLEMAS!";
 	mes "Minha pequena galinha me deixou!";
 	next;
-	if (select("Como você chama ela?", ". . . . .") == 1) {
+	if (select("Como você chama ela?",". . . . .") == 1) {
 		mes "[Homem Inquieto]";
 		mes "Eu costumava chamar de 'Incrível Picky'...";
 		mes "O que eu faço!";
 		mes "Como isso aconteceu comigo!";
 		mes "Por favor, me ajude a encontrar miha pequena picky!";
 		next;
-		if (select("O quê? Que nome ridículo!", ". . . . .") == 1) {
+		if (select("O quê? Que nome ridículo!",". . . . .") == 1) {
 			mes "[Homem Inquieto]";
 			mes "Não seja ridículo!";
 			mes "\"Incrível Picky\" é o melhor e mais exclusivo nome nesse mundo, e minha galinha merece ele!";
@@ -729,7 +729,7 @@ aldeba_in,156,179,4	script	Gerente do Bar#alde	1_M_PUBMASTER,{
 		mes "Está na hora das perguntas!";
 		mes "Qual sua Kafra favorita?";
 		next;
-		if (select("Impressionante!", "Eu não sou pevertido") == 1) {
+		if (select("Impressionante!","Eu não sou pevertido") == 1) {
 			mes "[Gerente do Bar]";
 			mes "Muito bem, aqui vamos nós!";
 			mes "Escolha a sua Fafra favorita!";
@@ -759,7 +759,7 @@ aldeba_in,156,179,4	script	Gerente do Bar#alde	1_M_PUBMASTER,{
 			mes "Ela parece jovem e imatura, mas é a melhor da equipe!";
 			mes "Candidata número seis ^AAAA00Deborah^000000!!";
 			next;
-			switch(select("Denise", "Tatiana", "Marianne", "Bianca", "Sofia", "Deborah")) {
+			switch (select("Denise","Tatiana","Marianne","Bianca","Sofia","Deborah")) {
 				case 1:
 				mes "[Gerente do Bar]";
 				mes "Oh!";
@@ -819,14 +819,14 @@ aldeba_in,156,179,4	script	Gerente do Bar#alde	1_M_PUBMASTER,{
 aldeba_in,83,245,4	script	Tatiana#alde	4_F_KAFRA2,{
 	cutin("kafra_02", 2);
 	mes "[Kafra Tatiana]";
-	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " a Corporação Kafra.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" a Corporação Kafra.";
 	mes "As Funcionárias Kafras estarão sempre aqui para servir você.";
 	next;
 	mes "[Kafra Tatiana]";
 	mes "Nós apreciamos o seu contínuo uso do Serviço Kafra.";
 	mes "Por favor se sinta livre para perguntar se tiver alguma dúvida.";
 	next;
-	switch(select("Como o Armazém Kafra funciona?", "Como você teletransporta as pessoas?")) {
+	switch (select("Como o Armazém Kafra funciona?","Como você teletransporta as pessoas?")) {
 		case 1:
 		mes "[Kafra Tatiana]";
 		mes "Bom, Aventureiros como você pode colocar itens no Armazém Kafra, assim você não vai precisar ficar levando todas as suas coisas.";
@@ -870,7 +870,7 @@ aldeba_in,83,245,4	script	Tatiana#alde	4_F_KAFRA2,{
 	mes "[Kafra Tatiana]";
 	mes "Em todo caso, espero que você goste da visita à Sede da Corporação Kafra.";
 	close2;
-	cutin("", 255);
+	cutin("",255);
 	end;
 }
 
@@ -878,7 +878,7 @@ aldeba_in,83,245,4	script	Tatiana#alde	4_F_KAFRA2,{
 aldeba_in,24,245,4	script	Marianne#alde	4_F_KAFRA3,{
 	cutin("kafra_03", 2);
 	mes "[Kafra Marianne]";
-	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + "!";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+"!";
 	mes "O Serviço Kafra está sempre ao seu lado.";
 	next;
 	mes "[Kafra Marianne]";
@@ -887,13 +887,13 @@ aldeba_in,24,245,4	script	Marianne#alde	4_F_KAFRA3,{
 	mes "[Kafra Marianne]";
 	mes "O Serviço Kafra tem uma reputação com os clientes que foi formada por mais de cinco mil e oitocentos anos...";
 	next;
-	switch(select("O quê?! Não acredito!", "Ahh Cale a boca!", "Seus Serviços são ótimos!")) {
+	switch (select("O quê?! Não acredito!","Ahh Cale a boca!","Seus Serviços são ótimos!")) {
 		case 1:
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "O quê?!";
 		mes "Não acredito nisso!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "CINCO MIL E OITOCENTOS ANOS?! VOCÊ ESTÁ LOUCA?!";
 		next;
 		mes "[Kafra Marianne]";
@@ -939,7 +939,7 @@ aldeba_in,24,245,4	script	Marianne#alde	4_F_KAFRA3,{
 		close;
 	}
 	close2;
-	cutin("", 255);
+	cutin("",255);
 	end;
 }
 
@@ -957,13 +957,13 @@ aldeba_in,142,238,4	script	Bianca#alde	4_F_KAFRA4,{
 	mes "[Kafra Bianca]";
 	mes "Estou aqui para responder qualquer uma das suas dúvidas em relação a Política da Corporação Kafra, assim como registrar qualquer opinião.";
 	next;
-	switch(select("Política Kafra", "Eu amo a Kafra!")) {
+	switch (select("Política Kafra","Eu amo a Kafra!")) {
 		case 1:
 		mes "[Kafra Bianca]";
 		mes "Então, você gostaria de mais detalhes sobre nossa política e a elegibilidade dos nossos serviços?";
 		mes "O que você gostaria de saber mais sobre?";
 		next;
-		switch(select("Armazém Kafra", "Aluguel de Carrinho", "Na verdade, nem importa")) {
+		switch (select("Armazém Kafra","Aluguel de Carrinho","Na verdade, nem importa")) {
 			case 1:
 			mes "[Kafra Bianca]";
 			mes "Como você já sabe, nossos clientes devem ter pelo menos nível 6 em Habilidades Básicas para poder usar o Armazém Kafra.";
@@ -987,7 +987,7 @@ aldeba_in,142,238,4	script	Bianca#alde	4_F_KAFRA4,{
 			mes "É um pequeno erro, na verdade, nós aqui da Corporação Kafra valorizamos a vida humana.";
 			mes "Então decidimos que nível 6 em Habilidades Básicas é um requerimento para prevenir esse tipo de problema.";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 			case 2:
 			mes "[Kafra Bianca]";
@@ -1007,14 +1007,14 @@ aldeba_in,142,238,4	script	Bianca#alde	4_F_KAFRA4,{
 			mes "[Kafra Bianca]";
 			mes "Se uma Funcionária Kafra alugar um carro para um Super Aprendiz, ela provavelmente vai arrumar problemas com Leilah...";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 			case 3:
 			mes "[Kafra Bianca]";
 			mes "Oh, Ok!";
 			mes "Se tiver qualquer pergunta, por favor me diga!";
 			close2;
-			cutin("", 255);
+			cutin("",255);
 			end;
 		}
 		case 2:
@@ -1023,7 +1023,7 @@ aldeba_in,142,238,4	script	Bianca#alde	4_F_KAFRA4,{
 		mes "É sempre bom saber que somos apreciadas por nossos clientes!";
 		mes "Todas nós trabalhamos duro para assegurar que o nosso serviço esteja ao seus padrões de excelência.";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	}
 }
@@ -1039,17 +1039,17 @@ aldeba_in,91,244,4	script	Deborah#alde	4_F_KAFRA6,{
 	mes "Eu posso ainda precisar aprender mais sobre como servir nossos clientes.";
 	mes "Mas eu estou sempre me esforçando!";
 	next;
-	if (select("Cadê sua mãe, criança?", "Finalizar Conversa.") == 1) {
+	if (select("Cadê sua mãe, criança?","Finalizar Conversa.") == 1) {
 		mes "[Kafra Deborah]";
 		mes "Waaaaaaah!";
 		mes "Eu não sou uma criança!";
 		close2;
-		cutin("", 255);
+		cutin("",255);
 		end;
 	}
 	mes "[Kafra Deborah]";
 	mes "Aqui na Corporação Kafra, nós estamos sempre fazendo o melhor para oferecer o excelente serviço que você espera de nós.";
 	close2;
-	cutin("", 255);
+	cutin("",255);
 	end;
 }

@@ -23,7 +23,7 @@ prt_in,49,172,3	script	Marianne#juice	1_M_INNKEEPER,{
 		mes "Suspiro!!";
 		mes "Tal pai, tal filho...";
 		next;
-		if (select("Conversar", "Cancelar") == 1) {
+		if (select("Conversar","Cancelar") == 1) {
 			mes "[Dona Marianne]";
 			mes "*Suspiro*... Esse é Morrison...";
 			mes "Meu primeiro e único filho.";
@@ -59,7 +59,7 @@ prt_in,47,173,3	script	Morrison#juice	4W_M_01,{
 		mes "Eu não posso suportar o sabor das frutas!";
 		next;
 		if (countitem(Meat) > 0) {
-			switch(select("Conversar", "Mostrar a Carne", "Cancelar")) {
+			switch (select("Conversar","Mostrar a Carne","Cancelar")) {
 				case 1:
 				mes "[Pequeno Morrison]";
 				mes "Uma ou duas vezes é o suficiente!";
@@ -80,8 +80,8 @@ prt_in,47,173,3	script	Morrison#juice	4W_M_01,{
 				mes "Desculpe-me...";
 				mes "Pode me dar uma?";
 				next;
-				if (select("Dar carne", "Não dar carne") == 1) {
-					delitem(Meat, 1);
+				if (select("Dar carne","Não dar carne") == 1) {
+					delitem(Meat,1);
 					juice = 1;
 					mes "[Pequeno Morrison]";
 					mes "Uau!!! Carne!!";
@@ -112,8 +112,8 @@ prt_in,47,173,3	script	Morrison#juice	4W_M_01,{
 		mes "Desculpe-me...";
 		mes "Pode me dar uma?";
 		next;
-		if (select("Dar carne", "Não dar carne") == 1) {
-			delitem(Meat, 1);
+		if (select("Dar carne","Não dar carne") == 1) {
+			delitem(Meat,1);
 			juice ++;
 			mes "[Pequeno Morrison]";
 			mes "Uau!!! Carne!!";
@@ -143,15 +143,15 @@ prt_in,47,173,3	script	Morrison#juice	4W_M_01,{
 		mes "[Pequeno Morrison]";
 		mes "É uma coisinha que eu estava guardando para comer mais tarde.";
 		mes "Mas já que você me deu Carne, eu acho que posso te dar os doces.";
-		getitem(Candy, 3);
-		getitem(Candy_Striper, 1);
+		getitem(Candy,3);
+		getitem(Candy_Striper,1);
 		juice = 11;
 		close;
 	} else {
 		mes "[Pequeno Morrison]";
 		mes "Aaah!! Eu não quero comer mais frutas!";
 		next;
-		if (select("Conversar", "Cancelar") == 1) {
+		if (select("Conversar","Cancelar") == 1) {
 			mes "[Pequeno Morrison]";
 			mes "Eu me recuso a comer mais frutas!";
 			mes "Você tem que descascá-las e não há muito suco para cobrir o gosto nojento delas...";
@@ -170,7 +170,7 @@ prt_in,47,173,3	script	Morrison#juice	4W_M_01,{
 
 // ------------------------------------------------------------------
 payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
-	if (!checkweight(Grape_Juice, 1)) {
+	if (!checkweight(Grape_Juice,1)) {
 		mes "[Mercador Marx Hansen]";
 		mes "Espere um momento!";
 		mes "Atualmente você está carregando muitos itens com você.";
@@ -182,12 +182,12 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 		mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+".";
 		mes "Você veio para fazer algum suco de frutas não foi?";
 		next;
-		switch(select("Fazer Suco", "Criação de sucos?", "Cancelar")) {
+		switch (select("Fazer Suco","Criação de sucos?","Cancelar")) {
 			case 1:
 			mes "[Mercador Marx Hansen]";
 			mes "Que tipo de suco de frutas você gostaria de fazer?";
 			next;
-			switch(select("Suco de Maçã", "Suco de Banana", "Suco de Cenoura", "Suco de Uva", "Cancelar")) {
+			switch (select("Suco de Maçã","Suco de Banana","Suco de Cenoura","Suco de Uva","Cancelar")) {
 				case 1: .@fruit = 512; .@juice = 531; break;
 				case 2: .@fruit = 513; .@juice = 532; break;
 				case 3: .@fruit = 515; .@juice = 534; break;
@@ -215,7 +215,7 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 			mes "[Mercador Marx Hansen]";
 			mes "Qual a quantidade que você deseja?";
 			next;
-			switch(select("Quantos eu puder", "Escolherer uma quantidade", "Cancelar")) {
+			switch (select("Quantos eu puder","Escolherer uma quantidade","Cancelar")) {
 				case 1:
 				.@make = countitem(.@fruit);
 				if (countitem(Empty_Bottle) < .@make) {
@@ -229,9 +229,9 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 				mes "[Mercador Marx Hansen]";
 				mes "Escolha um número menor que 100.";
 				mes "Se você deseja cancelar, digite '0'.";
-				mes "Você pode fazer até " + countitem(.@fruit) + " garrafas de suco.";
+				mes "Você pode fazer até "+countitem(.@fruit)+" garrafas de suco.";
 				next;
-				while(true) {
+				while (true) {
 					input(.@input);
 					if (.@input == 0) {
 						mes "[Mercador Marx Hansen]";
@@ -263,10 +263,10 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 				mes "Você deve coletar o que é necessário.";
 				close;
 			}
-			delitem(.@fruit, .@make);
-			delitem(Empty_Bottle, .@make);
+			delitem(.@fruit,.@make);
+			delitem(Empty_Bottle,.@make);
 			Zeny -= .@total_zeny;
-			getitem(.@juice, .@make);
+			getitem(.@juice,.@make);
 			mes "[Mercador Marx Hansen]";
 			mes "Aqui está!";
 			mes "O suco fresco e delicioso que prometi.";
@@ -292,16 +292,16 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 			next;
 			mes "# Sucos de Fruta Informações #";
 			mes "^CC4E5C- Suco de Maçã -^000000";
-			mes "Maçã x 1, Garrafa Vazia x 1, 3 zenys.";
+			mes "Maçã x 1, Garrafa Vazia x 1,3 zenys.";
 			mes "";
 			mes "^E3CF57- Suco de Banana -^000000";
-			mes "Banana x 1, Garrafa Vazia x 1, 3 zenys.";
+			mes "Banana x 1, Garrafa Vazia x 1,3 zenys.";
 			mes "";
 			mes "^ED9121- Suco de Cenoura -^000000";
-			mes "Cenoura x 1, Garrafa Vazia x 1, 3 zenys.";
+			mes "Cenoura x 1, Garrafa Vazia x 1,3 zenys.";
 			mes "";
 			mes "^CC00FF- Suco de Uva -^000000";
-			mes "Uva x 1, Garrafa Vazia x 1, 3 zenys.";
+			mes "Uva x 1, Garrafa Vazia x 1,3 zenys.";
 			close;
 			case 3:
 			mes "[Mercador Marx Hansen]";
@@ -314,7 +314,7 @@ payon_in03,188,146,5	script	Marx Hansen#juice	4_M_04,{
 		mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+".";
 		mes "Como posso ajudá-l"+(Sex == SEX_MALE ? "o":"a")+"?";
 		next;
-		if (select("Conversar", "Cancelar") == 1) {
+		if (select("Conversar","Cancelar") == 1) {
 			mes "[Mercador Marx Hansen]";
 			mes "Antes de os seres humanos serem capazes de desenvolver todas essas sociedades.";
 			mes "Eles coletavam frutas das árvores para sobreviverem.";

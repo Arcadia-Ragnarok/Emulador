@@ -18,7 +18,7 @@ umbala,128,94,3	script	Guia#umbguide	4_F_GON,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Alberta^000000, o Vilarejo da Tribo Wotan..";
 	while (1) {
 		next;
-		switch(select("[Funcionária Kafra]","[Cabana do Chefe]","[Cabana do Xamã]","[Loja de Armas]","[Loja de Utilidades]","[Ponte do Suícidio]","[Tronco da Yggdrasil]","Remover marcadores do mini-mapa","Cancelar")) {
+		switch (select("[Funcionária Kafra]","[Cabana do Chefe]","[Cabana do Xamã]","[Loja de Armas]","[Loja de Utilidades]","[Ponte do Suícidio]","[Tronco da Yggdrasil]","Remover marcadores do mini-mapa","Cancelar")) {
 			case 1:
 			mes "[Guia de Alberta]";
 			mes "Posição da^0000FF Funcionária Kafra^000000 marcada em seu mini mapa.";

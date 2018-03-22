@@ -25,7 +25,7 @@ valkyrie,53,54,3	script	Menestrel#Valkyrie	2_M_BARD_ORIENT,{
 			mes "O mundo aborrecido dos mortais está necessitando de uma canção mais alegre.";
 			mes "Você vai trazer isto para eles e virar a maré na batalha contra o mal?";
 			next;
-			jobchange (Job_Clown);
+			jobchange(Job_Clown);
 			ADVJOB = 0;
 			mes "[Menestrel]";
 			mes "Parabéns!";

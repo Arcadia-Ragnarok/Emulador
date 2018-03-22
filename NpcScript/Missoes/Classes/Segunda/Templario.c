@@ -13,7 +13,7 @@
 \*-----------------------------------------------------------------*/
 
 prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
-	if(BaseJob == Job_Swordman) {
+	if (BaseJob == Job_Swordman) {
 		if (!crusaderq) {
 			mes "[Templário]";
 			mes "Nós somos Templários, guerreiros estamos nos preparando para a Guerra Santa.";
@@ -30,7 +30,7 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 				}
 				close;
 			} else {
-				if(JobLevel < 40) {
+				if (JobLevel < 40) {
 					mes "[Templário]";
 					mes "Espere...";
 					mes "Você precisa estar no Nivel de Classe 40 ou mais para se juntar a nós.";
@@ -91,10 +91,10 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 							mes "Fale com Moorenak Miyol ele está treinando na caverna subterrânea do Castelo de Prontera.";
 							mes "Vá, até ele.";
 							next;
-							delitem (Patriotism_Marks,1);
-							delitem (Sacred_Marks,1);
+							delitem(Patriotism_Marks,1);
+							delitem(Sacred_Marks,1);
 							crusaderq = 4;
-							setquest (3009);
+							setquest(3009);
 							mes "[Michael Halig]";
 							mes "Moorenak e outros como ele querem testar o limite de suas capacidades.";
 							mes "E ajudar você a encontrar seu caminho.";
@@ -110,21 +110,21 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 							mes "Agora...";
 							mes "O meu teste para você.";
 							mes "Traga-me os seguintes itens e mostre-me sua determinação.";
-							switch(rand(3)) {
+							switch (rand(3)) {
 								case 1:
-								setarray (.@cruItm[0],957,959,1099,901);
+								setarray(.@cruItm[0],957,959,1099,901);
 								crusaderq = 1;
-								setquest (3006);
+								setquest(3006);
 								break;
 								case 2:
-								setarray (.@cruItm[0],932,1043,1098,1094);
+								setarray(.@cruItm[0],932,1043,1098,1094);
 								crusaderq = 2;
-								setquest (3007);
+								setquest(3007);
 								break;
 								default:
-								setarray (.@cruItm[0],958,930,1041,1062);
+								setarray(.@cruItm[0],958,930,1041,1062);
 								crusaderq = 3;
-								setquest (3008);
+								setquest(3008);
 								break;
 							}
 							next;
@@ -142,10 +142,10 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 				}
 			}
 		} else if (crusaderq >= 1 && crusaderq <= 3) {
-			switch(crusaderq) {
-				case 1: setarray (.@cruItm[0],957,959,1099,901); break;
-				case 2: setarray (.@cruItm[0],932,1043,1098,1094); break;
-				default: setarray (.@cruItm[0],958,930,1041,1062); break;
+			switch (crusaderq) {
+				case 1: setarray(.@cruItm[0],957,959,1099,901); break;
+				case 2: setarray(.@cruItm[0],932,1043,1098,1094); break;
+				default: setarray(.@cruItm[0],958,930,1041,1062); break;
 			}
 			if (countitem(.@cruItm[0]) < 10 && countitem(.@cruItm[1]) < 10 && countitem(.@cruItm[2]) < 10 && countitem(.@cruItm[3]) < 10) {
 				mes "[Michael Halig]";
@@ -171,13 +171,13 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 				mes "[Michael Halig]";
 				mes "Fale com Moorenak Miyol ele está treinando no calabouço subterrâneo do Castelo de Prontera.";
 				mes "Agora vá até ele.";
-				delitem (.@cruItm[0],10);
-				delitem (.@cruItm[1],10);
-				delitem (.@cruItm[2],10);
-				delitem (.@cruItm[3],10);
-				if (questprogress(3006)) { changequest (3006,3009); }
-				else if (questprogress(3007)) { changequest (3007,3009); }
-				else if (questprogress(3008)) { changequest (3008,3009); }
+				delitem(.@cruItm[0],10);
+				delitem(.@cruItm[1],10);
+				delitem(.@cruItm[2],10);
+				delitem(.@cruItm[3],10);
+				if (questprogress(3006)) { changequest(3006,3009); }
+				else if (questprogress(3007)) { changequest(3007,3009); }
+				else if (questprogress(3008)) { changequest(3008,3009); }
 				crusaderq = 4;
 				next;
 				mes "[Michael Halig]";
@@ -219,7 +219,7 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 			mes "Quando você tiver terminado, você poderá se juntar ao grupo dos melhores Templários.";
 			close;
 		} else if (crusaderq == 12) {
-			if(SkillPoint) {
+			if (SkillPoint) {
 				mes "[Michael Halig]";
 				mes "Você ainda não terminou de aprender tudo como Espadachim.";
 				mes "Use todos os pontos de habilidade restantes.";
@@ -232,9 +232,9 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 				mes "[Michael Halig]";
 				mes "Juntos, vamos vencer a Guerra Santa e derrotar o mal e a tirania!";
 				next;
-				jobchange (Job_Crusader);
-				completequest (3015);
-				callfunc ("ClearJobQuest2nd",14);
+				jobchange(Job_Crusader);
+				completequest(3015);
+				callfunc("ClearJobQuest2nd",14);
 				mes "[Michael Halig]";
 				mes "Quando a Guerra Sagrada começar, nós estaremos do mesmo lado para derrotar o mal.";
 				next;
@@ -252,7 +252,7 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 			}
 		}
 	} else {
-		if(BaseJob == Job_Crusader) {
+		if (BaseJob == Job_Crusader) {
 			mes "[Templário]";
 			mes "Vá e treine para se preparar para a Guerra Santa que está chegando.";
 			mes "A vitória estara nas mãos dos que estiverem melhor preparados para recebe-la.";
@@ -321,7 +321,7 @@ prt_castle,165,27,3	script	Templário#2crusaderq	4_M_JOB_KNIGHT1,{
 					mes "Em nenhuma condição você poderá matar os monstros.";
 					mes "Faça com calma, você terá dois minutos para pecorrer um curto trajeto.";
 					crusaderq = 5;
-					changequest (3009,3010);
+					changequest(3009,3010);
 					next;
 					mes "[Murnak Mijoul]";
 					mes "Então...";
@@ -329,7 +329,7 @@ prt_castle,165,27,3	script	Templário#2crusaderq	4_M_JOB_KNIGHT1,{
 					close2;
 					$cruendurecetest = 1;
 					donpcevent("Endurance#crusaderq::OnStartTimer");
-					warp ("job_cru",98,40);
+					warp("job_cru",98,40);
 					end;
 				} else {
 					mes "[Murnak Mijoul]";
@@ -380,7 +380,7 @@ prt_castle,165,27,3	script	Templário#2crusaderq	4_M_JOB_KNIGHT1,{
 				close2;
 				$cruendurecetest = 1;
 				donpcevent("Endurance#crusaderq::OnStartTimer");
-				warp ("job_cru",98,40);
+				warp("job_cru",98,40);
 				end;
 			} else {
 				mes "[Murnak Mijoul]";
@@ -423,45 +423,45 @@ job_cru,1,1,1	script	Endurance#crusaderq	HIDDEN_NPC,{
 	end;
 
 	OnSummon:
-	monster (strnpcinfo(NPC_MAP),94,45,"Mandragora",1020,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),101,45,"Mandragora",1020,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),94,55,"Mandragora",1020,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),101,55,"Mandragora",1020,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),94,45,"Mandragora",MANDRAGORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),101,45,"Mandragora",MANDRAGORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),94,55,"Mandragora",MANDRAGORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),101,55,"Mandragora",MANDRAGORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon2:
-	monster (strnpcinfo(NPC_MAP),98,50,"Flora",1118,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),92,60,"Flora",1118,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),104,60,"Flora",1118,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),98,70,"Flora",1118,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),98,50,"Flora",FLORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),92,60,"Flora",FLORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),104,60,"Flora",FLORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),98,70,"Flora",FLORA,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon3:
-	monster (strnpcinfo(NPC_MAP),92,50,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),104,50,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),92,70,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),104,70,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),98,80,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),92,90,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),104,90,"Guardião da Floresta",1277,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),92,50,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),104,50,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),92,70,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),104,70,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),98,80,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),92,90,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),104,90,"Guardião da Floresta",GREATEST_GENERAL,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnMobDead:
 	$cruendurecetest = 0;
-	warp ("prt_fild05",353,251);
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	warp("prt_fild05",353,251);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnDisable:
 	stopnpctimer;
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
-	mapannounce ("prt_castle","Próximo candidato ao teste de resistência dos Templários. Por favor entre.",bc_map);
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
+	mapannounce("prt_castle","Próximo candidato ao teste de resistência dos Templários. Por favor entre.",bc_map);
 	$cruendurecetest = 0;
 	end;
 
 	OnTimer120000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-	areawarp (strnpcinfo(NPC_MAP),90,34, 105,105,"prt_fild05",353,251);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+	areawarp(strnpcinfo(NPC_MAP),90,34, 105,105,"prt_fild05",353,251);
 	end;
 }
 
@@ -470,13 +470,13 @@ job_cru,98,49,0	script	EnduranceMob#1crusaderq	FAKE_NPC,9,1,{
 	end;
 
 	OnTouch:
-	switch(atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
+	switch (atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
 		case 1:
-		if (!crusaderq2) { crusaderq2 = 1; donpcevent ("Endurance#crusaderq::OnSummon"); } end;
+		if (!crusaderq2) { crusaderq2 = 1; donpcevent("Endurance#crusaderq::OnSummon"); } end;
 		case 2:
-		if (crusaderq2 == 1) { crusaderq2 = 2; donpcevent ("Endurance#crusaderq::OnSummon2"); } end;
+		if (crusaderq2 == 1) { crusaderq2 = 2; donpcevent("Endurance#crusaderq::OnSummon2"); } end;
 		case 3:
-		if (crusaderq2 == 2) { crusaderq2 = 3; donpcevent ("Endurance#crusaderq::OnSummon3"); } end;
+		if (crusaderq2 == 2) { crusaderq2 = 3; donpcevent("Endurance#crusaderq::OnSummon3"); } end;
 	}
 	end;
 }
@@ -487,11 +487,11 @@ job_cru,98,84,0	duplicate(EnduranceMob#1crusaderq)	EnduranceMob#3crusaderq	FAKE_
 // ------------------------------------------------------------------
 job_cru,98,105,4	script	warp#crusaderq	WARPNPC,3,3,{
 	OnTouch:
-	donpcevent ("Endurance#crusaderq::OnDisable");
+	donpcevent("Endurance#crusaderq::OnDisable");
 	crusaderq2 = 0;
 	crusaderq = 6;
-	changequest (3010,3011);
-	warp ("prt_castle",158,26);
+	changequest(3010,3011);
+	warp("prt_castle",158,26);
 	end;
 }
 
@@ -555,7 +555,7 @@ prt_church,95,127,3	script	Templária#3crusaderq	4_F_CRU,{
 				mes "Vamos tentar novamente...?";
 				next;
 			}
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Gabriel Valentine]";
 				mes "1. Qual o nivel da \"Proteção Divina\" é necessário para aprender \"Flagelo do Mal\"?";
@@ -748,7 +748,7 @@ prt_church,95,127,3	script	Templária#3crusaderq	4_F_CRU,{
 			}
 			if (.@cruquizz < 8) {
 				crusaderq = 7;
-				if (questprogress(3011)) { changequest (3011,3012); }
+				if (questprogress(3011)) { changequest(3011,3012); }
 				mes "[Gabriel Valentine]";
 				mes "Hmmm... Que pena.";
 				mes "Vá estudar mais e tente faça este teste novamente.";
@@ -777,8 +777,8 @@ prt_church,95,127,3	script	Templária#3crusaderq	4_F_CRU,{
 			mes "Agora vá para o Castelo de Prontera e fale com Bliant Piyord.";
 			mes "Eu vou informa-lo para preparar seu proximo teste.";
 			crusaderq = 8;
-			if (questprogress(3011)) { changequest (3011,3013); }
-			else if (questprogress(3012)) { changequest (3012,3013); }
+			if (questprogress(3011)) { changequest(3011,3013); }
+			else if (questprogress(3012)) { changequest(3012,3013); }
 			close;
 		} else if (crusaderq == 8 || crusaderq == 9) {
 			mes "[Gabriel Valentine]";
@@ -826,16 +826,16 @@ prt_castle,35,151,5	script	Templário#4crusaderq	4_M_CRU,{
 			mes "Traga-me 1 ^3355FFAgua Benta^000000.";
 			mes "Será usada para purificar seu interior para receber o teste.";
 			crusaderq = 9;
-			changequest (3013,3014);
+			changequest(3013,3014);
 			close;
 		} else if (crusaderq == 9) {
-			if(!countitem(Holy_Water)) {
+			if (!countitem(Holy_Water)) {
 				mes "[Bliant Piyord]";
 				mes "Para o teste de batalha, por favor prepare uma ^3355FFAgua Sagrada^000000.";
 				mes "Estarei esperando por você.";
 				close;
 			} else {
-				delitem (Holy_Water,1);
+				delitem(Holy_Water,1);
 				crusaderq = 10;
 				mes "[Bliant Piyord]";
 				mes "Bem, Vou iniciar o teste.";
@@ -852,7 +852,7 @@ prt_castle,35,151,5	script	Templário#4crusaderq	4_M_CRU,{
 				mes "É simples basta que ande pelo local e derrote os monstros que aparecerem.";
 				mes "Boa sorte.";
 				close2;
-				warp ("job_cru",24,169);
+				warp("job_cru",24,169);
 				end;
 			}
 		} else if (crusaderq == 10 || crusaderq == 11) {
@@ -865,7 +865,7 @@ prt_castle,35,151,5	script	Templário#4crusaderq	4_M_CRU,{
 				mes "[Bliant Piyord]";
 				mes "Boa sorte.";
 				close2;
-				warp ("job_cru",24,169);
+				warp("job_cru",24,169);
 				end;
 			} else {
 				mes "[Bliant Piyord]";
@@ -883,7 +883,7 @@ prt_castle,35,151,5	script	Templário#4crusaderq	4_M_CRU,{
 			mes "por se juntar a nós na Guerra Santa.";
 			close;
 		}
-	} else if(BaseJob == Job_Crusader) {
+	} else if (BaseJob == Job_Crusader) {
 		mes "Como vai";
 		mes "seu treinamento?";
 		next;
@@ -921,13 +921,13 @@ job_cru,23,185,5	script	Piyord#crusaderq	4_M_CRU,{
 	close;
 
 	OnInit:
-	waitingroom ("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
+	waitingroom("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	donpcevent ("BattleMob#crusaderq::OnEnable");
-	warpwaitingpc (strnpcinfo(NPC_MAP),168,21);
+	donpcevent("BattleMob#crusaderq::OnEnable");
+	warpwaitingpc(strnpcinfo(NPC_MAP),168,21);
 	disablewaitingroomevent;
 	end;
 
@@ -948,38 +948,38 @@ job_cru,2,1,0	script	BattleMob#crusaderq	FAKE_NPC,{
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
-	donpcevent ("Piyord#crusaderq::OnStart");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
+	donpcevent("Piyord#crusaderq::OnStart");
 	stopnpctimer;
 	end;
 
 	OnSummon1:
-	monster (strnpcinfo(NPC_MAP),166,60,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,60,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),168,60,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),169,60,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,60,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,80,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,81,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,82,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,83,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,84,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),166,60,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,60,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),168,60,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),169,60,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,60,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,80,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,81,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,82,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,83,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,84,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon2:
-	monster (strnpcinfo(NPC_MAP),166,80,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,80,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),168,80,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),166,110,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,110,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),168,110,"Esqueleto Soldado",1028,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),166,80,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,80,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),168,80,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),166,110,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,110,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),168,110,"Esqueleto Soldado",SOLDIER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon3:
-	monster (strnpcinfo(NPC_MAP),166,110,"Esqueleto Arqueiro",1016,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,110,"Esqueleto Arqueiro",1016,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),166,115,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),167,115,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),166,110,"Esqueleto Arqueiro",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,110,"Esqueleto Arqueiro",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),166,115,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),167,115,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnMobDead:
@@ -995,8 +995,8 @@ job_cru,2,1,0	script	BattleMob#crusaderq	FAKE_NPC,{
 	end;
 
 	OnTimer240000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-	areawarp (strnpcinfo(NPC_MAP),160,14, 175,178,"job_cru",24,169);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+	areawarp(strnpcinfo(NPC_MAP),160,14, 175,178,"job_cru",24,169);
 	end;
 }
 
@@ -1005,19 +1005,18 @@ job_cru,167,50,0	script	BattleMob#1crusaderq	FAKE_NPC,9,1,{
 	end;
 
 	OnTouch:
-	switch(atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
+	switch (atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0))) {
 		case 1:
-		if (!crusaderq2) { crusaderq2 = 1; donpcevent ("BattleMob#crusaderq::OnSummon1"); } end;
+		if (!crusaderq2) { crusaderq2 = 1; donpcevent("BattleMob#crusaderq::OnSummon1"); } end;
 		case 2:
-		if (crusaderq2 == 1) { crusaderq2 = 2; donpcevent ("BattleMob#crusaderq::OnSummon2"); } end;
+		if (crusaderq2 == 1) { crusaderq2 = 2; donpcevent("BattleMob#crusaderq::OnSummon2"); } end;
 		case 3:
-		if (crusaderq2 == 2) { crusaderq2 = 3; donpcevent ("BattleMob#crusaderq::OnSummon3"); } end;
+		if (crusaderq2 == 2) { crusaderq2 = 3; donpcevent("BattleMob#crusaderq::OnSummon3"); } end;
 	}
 	end;
 }
 job_cru,167,74,0	duplicate(BattleMob#1crusaderq)	BattleMob#2crusaderq	FAKE_NPC,9,1
 job_cru,167,100,0	duplicate(BattleMob#1crusaderq)	BattleMob#3crusaderq	FAKE_NPC,9,1
-
 
 // ------------------------------------------------------------------
 job_cru,168,180,0	script	warp2#crusaderq	WARPNPC,3,3,{
@@ -1025,10 +1024,9 @@ job_cru,168,180,0	script	warp2#crusaderq	WARPNPC,3,3,{
 	if (crusaderq == 11) {
 		crusaderq2 = 0;
 		crusaderq = 12;
-		changequest (3014,3015);
-		warp ("prt_castle",35,147);
-		donpcevent ("BattleMob#crusaderq::OnDisable");
+		changequest(3014,3015);
+		warp("prt_castle",35,147);
+		donpcevent("BattleMob#crusaderq::OnDisable");
 	}
 	end;
 }
-

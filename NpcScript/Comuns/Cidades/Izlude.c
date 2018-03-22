@@ -42,7 +42,7 @@ izlude,55,74,2	script	Paula#izl	4_F_01,{
 
 // ------------------------------------------------------------------
 izlude,135,78,2	script	Charfri#izl	4_F_02,{
-	switch(rand(2)) {
+	switch (rand(2)) {
 		case 1:
 		mes "[Charfri]";
 		mes "Muitas pessoas acham que Izlude é apenas uma cidade satélite de Prontera, e não é tão importante...";
@@ -79,7 +79,7 @@ izlude,135,78,2	script	Charfri#izl	4_F_02,{
 
 // ------------------------------------------------------------------
 izlude,119,121,2	script	Cuskoal#izl	4_F_TELEPORTER,{
-	switch(rand(2)) {
+	switch (rand(2)) {
 		case 1:
 		mes "[Cuskoal]";
 		mes "Esta arena é O lugar para jovens habilidosos de todo reino de Rune-Midgart se enfrentarem e testar suas habilidades.";
@@ -107,7 +107,7 @@ izlude,119,121,2	script	Cuskoal#izl	4_F_TELEPORTER,{
 
 // ------------------------------------------------------------------
 izlude,150,118,2	script	Dega#izl	4_M_02,{
-	switch(rand(3)) {
+	switch (rand(3)) {
 		case 1:
 		mes "[Dega]";
 		mes "Monte Mjornir, fica ao norte de Prontera, é de difícil acesso, com uma subida íngrime.";
@@ -155,8 +155,8 @@ izlude,150,118,2	script	Dega#izl	4_M_02,{
 		mes "[Dega]";
 		mes "Se você tiver sorte, pode até deparar-se com um Angelring, o Poring com asas de anjo.";
 		next;
-		while(true) {
-			switch(select("Ghostring?", "Angelring?", "Finalizar Conversa")) {
+		while (true) {
+			switch (select("Ghostring?","Angelring?","Finalizar Conversa")) {
 				case 1:
 				mes "[Dega]";
 				mes "Ghostring é um Poring cizento que flutua pelo ar como um fantasma.";
@@ -257,7 +257,7 @@ izlude,56,126,2	script	Dan#izl	4_M_03,{
 	mes "Uma habilidade de dano crítico, ^FF2400Golpe Fulminante^000000.";
 	mes "Ou uma de dano em área, ^EE0000Impacto Explosivo^000000?";
 	next;
-	if (select("Golpe Fulminante", "Impacto Explosivo") == 1)  {
+	if (select("Golpe Fulminante","Impacto Explosivo") == 1)  {
 		mes "[Red]";
 		mes "Hahahaha!!!";
 		mes "Sabia que você pensa como eu!!";
@@ -305,7 +305,7 @@ izlude_in,125,164,2	script	Aaron#izl	1_M_YOUNGKNIGHT,{
 	mes "Você está entediado por toda esta conversa?";
 	mes "Ou você quer que eu continue?";
 	next;
-	if (select("Conte-me mais", "Finalizar conversa") == 1) {
+	if (select("Conte-me mais","Finalizar conversa") == 1) {
 		mes "[Aaron]";
 		mes "Hmm...";
 		mes "Nesse caso, eu vou falar um pouco sobre os outros atributos.";

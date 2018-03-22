@@ -169,15 +169,15 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 			if (BaseLevel < .@min_level[.@choice]) {
 				mes "[Reno]";
 				mes "I am sorry but the request for the "+.@type$[.@choice]
-					+ " collection is only available for those level "
-					+ .@min_level[.@choice] + " and higher. You do not seem to"
+					+" collection is only available for those level "
+					+ .@min_level[.@choice]+" and higher. You do not seem to"
 					" be capable of carrying out this request.";
 				close;
 			}
 			if (callsub(S_CheckQuestStatus, .@quests[.@choice*3], .@quests[.@choice*3+1], .@quests[.@choice*3+2])) {
 				mes "[Reno]";
 				mes "You seem to be under the other request of "+.@type$[.@choice]
-					+ " collection. If the quest seems to be too hard... how"
+					+" collection. If the quest seems to be too hard... how"
 					" about you ^FF0000give up on the request^000000?";
 				close;
 			}
@@ -190,9 +190,9 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 			}
 			mes "[Reno]";
 			mes "You selected to hunt a monster from the "+.@type$[.@choice]
-				+ " collection. After hunting these monsters you will receive "
+				+" collection. After hunting these monsters you will receive "
 				+ ((.@features_iRO)?"10 ":"")+"^0000FF"+.@crystal$[.@choice]
-				+ " Energy Crystals^000000 when you return to me.";
+				+" Energy Crystals^000000 when you return to me.";
 			next;
 			mes "[Reno]";
 			mes "Please select the monster that you think you can easily hunt from the list.";
@@ -253,7 +253,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 					" all your history will be lost. Do you really"
 					" want to give up?";
 				next;
-				if (select("Yes", "No") != 1) {
+				if (select("Yes","No") != 1) {
 					.@erase_quest = 2;
 					continue;
 				}
@@ -331,7 +331,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 		mes "It takes 3 hours for your body to accumulate 2 to 4 "+.@crystal$[.@choice]
 			+" Energy Crystals. Do you want to start?";
 		next;
-		if (select("Cancel", "Start") == 1) {
+		if (select("Cancel","Start") == 1) {
 			mes "[Reno]";
 			mes "I recommend that you try to accumulate Energy Crystal when you have time.";
 			close;
@@ -356,7 +356,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 		mes "[Reno]";
 		mes "Do you want to compress the Energy Crystals?";
 		next;
-		switch(select("What does compressing do?"
+		switch (select("What does compressing do?"
 				":Compress Rough to Purified Crystal"
 				":Compress Purified to High Crystal")) {
 		case 1:
@@ -393,7 +393,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 		mes sprintf("%d %ss will be compressed to %d %ss.",.@crystal_count,getitemname(.@crystal),.@crystal_get,getitemname(.@crystal_));
 		mes "Do you want to compress?";
 		next;
-		if (select("Compress", "Stop") == 2) {
+		if (select("Compress","Stop") == 2) {
 			mes "[Reno]";
 			mes "Okay, please contact if you need me in the future.";
 			close;
@@ -416,7 +416,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 				" compress into "+.@crystal_get+" Energy Crystals. Do you"
 				" want to continue?";
 			next;
-			if (select("Compress", "Stop") == 2)
+			if (select("Compress","Stop") == 2)
 				break;
 		}
 		mes "[Reno]";
@@ -548,7 +548,7 @@ moc_para01,41,169,3	script	Reno#2012hat	1_M_WIZARD,{
 		mes "[Reno]";
 		mes "Are you familiar with the ^FF0000precautions^000000?";
 		next;
-		if (select("I am.", "No.") == 2) {
+		if (select("I am.","No.") == 2) {
 			mes "[Reno]";
 			mes "Okay. Next time, then.";
 			close;
@@ -724,12 +724,12 @@ S_CheckHunting:
 	for (.@i = .@first; .@i <= .@last; ++.@i) {
 		if (questprogress(.@i, HUNTING) == 2) {
 			mes "[Reno]";
-			mes "Finished "+ getarg(3) +" collection hunting quest.";
+			mes "Finished "+getarg(3)+" collection hunting quest.";
 			next;
 			setquest .@basequest;
 			erasequest .@i;
 			getitem getarg(4), getarg(5);
-			mes "You receive "+ getarg(5) +" "+ getitemname(getarg(4)) +" as the "+ getarg(3) +" collection reward.";
+			mes "You receive "+getarg(5)+" "+getitemname(getarg(4))+" as the "+getarg(3)+" collection reward.";
 			close;
 		}
 	}

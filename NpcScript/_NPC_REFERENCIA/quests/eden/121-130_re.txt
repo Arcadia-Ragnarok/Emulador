@@ -50,7 +50,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 	else if (para_120lv01 == 1) {
 		mes "You got a request from that little girl? The small, talktive and half-naked one over there?";
 		next;
-		select("Say yes.", "Avoid answering.");
+		select("Say yes.","Avoid answering.");
 		mes "[Melody-Jack]";
 		mes "No. I do not care It will be fine if you stepped into this room not because you are lost. I need anyone except that kind of fool.";
 		next;
@@ -78,11 +78,11 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 	else if (para_120lv01 > 1) {
 		mes "......";
 		next;
-		if (select( "Show me the requests!", "Make small-talk." ) == 2) {
+		if (select( "Show me the requests!","Make small-talk." ) == 2) {
 			mes "[Melody-Jack]";
 			mes "What? Are you interested in me?";
 			next;
-			switch( select( "I am interested.", "About requests", "About a deal", "What is a promise?" ) ) {
+			switch ( select( "I am interested.","About requests","About a deal","What is a promise?" ) ) {
 			case 1:
 				mes "[Melody-Jack]";
 				mes "Well go away. I have no interest in you.";
@@ -116,12 +116,12 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 		else if (BaseLevel < 131) {
 			mes "I do not like it but a deal is a deal. Please come back after clearing monsters in the places where Aigu asked to search.";
 			next;
-			switch( select( "Thanatos Tower related ", "Rachel Shrine related ", "Nameless Island related ", "Abyss Lake related " ) ) {
+			switch ( select( "Thanatos Tower related ","Rachel Shrine related ","Nameless Island related ","Abyss Lake related " ) ) {
 			case 1:
 				mes "[Melody-Jack]";
 				mes "Thanatos tower is the most annoying place. Do not worry about your compensation. I keep my word.";
 				next;
-				switch( select( "Baroness of Retribution", "Lady Solace", "Mistress of Shelter", "Dame of Sentinel" ) ) {
+				switch ( select( "Baroness of Retribution","Lady Solace","Mistress of Shelter","Dame of Sentinel" ) ) {
 				case 1:
 					mes "[Melody-Jack]";
 					if (questprogress(13120,PLAYTIME) == 1)
@@ -147,7 +147,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Please clear monsters to help Aigu. Amateurs will make things messy.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "There must be a lot of them. Do not forget to keep this a secret. ";
 							callsub S_Quest,13120,13119;
@@ -179,7 +179,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "However that is another obstacle. A deal is prior to personal interest anytime. So clear Lady Solace.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "We are just keeping our end of the deal. Clear those creatures now.";
 							callsub S_Quest,13122,13121;
@@ -211,7 +211,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "I don't care if it is a real angel or just a creature. Clear Mistress of Shelter.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "Dying flowers fall down by rain and wind. That is what you have to do.";
 							emotion e_no1;
@@ -244,7 +244,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "I wish they are cleared as well for her to request this adventure easily.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "A request for a request... Whatever.";
 							callsub S_Quest,13126,13125;
@@ -257,7 +257,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 				mes "[Melody-Jack]";
 				mes "Aigu's adventure leads to Rachel Shrine. Okay... It is not strange if ^FF0000that human^000000 Aigu looking for is found anywhere.";
 				next;
-				switch( select( "Vanberk and Isilla", "Hodremlin", "Agav and Echio" ) ) {
+				switch ( select( "Vanberk and Isilla","Hodremlin","Agav and Echio" ) ) {
 				case 1:
 					mes "[Melody-Jack]";
 					if (questprogress(13128,PLAYTIME) == 1)
@@ -283,7 +283,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "They think they can find a clue there but it is not a safe place. You should clear Vanberk and Isilla in advance.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "Clear all as quickly as you can.";
 							emotion e_flash;
@@ -316,7 +316,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Get rid of ^FF0000Hodremlin^000000 without any hesitation. Because they are very dangerous.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "They need faster hands than a head. I do not worry but you should be careful.";
 							callsub S_Quest,13130,13129;
@@ -348,7 +348,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "That was not that bad. But someone needs to help? Lets clear ^FF0000Agav^000000 and ^FF0000Echio^000000 inside of Rachel Shrine.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "I cannot leave so farewell.";
 							callsub S_Quest,13132,13131;
@@ -361,7 +361,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 				mes "[Melody-Jack]";
 				mes "Nameless Island is not known to usual adventurers. Aigu is also interested in there.";
 				next;
-				switch( select( "Ragged Zombie Hunting", "Zombie Slaughter Hunting", "Banshee Hunting" ) ) {
+				switch ( select( "Ragged Zombie Hunting","Zombie Slaughter Hunting","Banshee Hunting" ) ) {
 				case 1:
 					mes "[Melody-Jack]";
 					if (questprogress(13134,PLAYTIME) == 1)
@@ -384,7 +384,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Wish to clear ^FF0000Ragged Zombie^000000. It is easy because they show up everywhere.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "Take a ^FF0000bath^000000 and you won't smell anymore.";
 							callsub S_Quest,13134,13133;
@@ -413,7 +413,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Please clear ^FF0000Zombie Slaughter^000000. Be careful to avoid their blades.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "You've got many things to take care of so I will hold my words. Clear them.";
 							callsub S_Quest,13136,13135;
@@ -442,7 +442,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Both Banshee and Aigu are annoying. I would not do this request but you will be different. Right?";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "See? Someone needs this request. Clear ^FF0000Banshees^000000 at Nameless Island.";
 							callsub S_Quest,13138,13137;
@@ -455,7 +455,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 				mes "[Melody-Jack]";
 				mes "Abyss Lake has requests from a little girl. Very dilligent.";
 				next;
-				if (select( "Ferus and Bewler are cleared.", "Gold and Blue Acidus are cleared." ) == 1) {
+				if (select( "Ferus and Bewler are cleared.","Gold and Blue Acidus are cleared." ) == 1) {
 					mes "[Melody-Jack]";
 					if (questprogress(13140,PLAYTIME) == 1)
 						mes "Green dragons and Red dragons remind me of watermelons.";
@@ -477,7 +477,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Which one is more dangerous between Ferus and Bewler? I do not know. Clear both of them.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "Neither green nor red are disturbing. But regardless, come back after clearing all.";
 							callsub S_Quest,13140,13139;
@@ -506,7 +506,7 @@ moc_para01,44,81,3	script	Melody-Jack#1	4_M_MELODY,8,8,{
 						mes "[Melody-Jack]";
 						mes "Subdue them as best as you can. Do not mind their colors because they are all to be cleared.";
 						next;
-						if (select( "Take the request.", "Stop." ) == 1) {
+						if (select( "Take the request.","Stop." ) == 1) {
 							mes "[Melody-Jack]";
 							mes "Subdue the Gold and Blue Acidus monsters at the last level of Abyss Lake.";
 							callsub S_Quest,13142,13141;
@@ -551,18 +551,18 @@ S_Erasequest:
 	.@total = getargcount();
 	for ( .@i = 0; .@i < .@total; .@i += 2 ) {
 		.@quest_id = getarg(.@i);
-		switch( questprogress(.@quest_id,HUNTING) ) {
+		switch ( questprogress(.@quest_id,HUNTING) ) {
 		case 0:
 			if (questprogress(.@quest_id+1))
-				erasequest (.@quest_id+1);
+				erasequest(.@quest_id+1);
 			continue;
 		case 1:
 			mes "[Melody-Jack]";
-			mes getarg(.@i+1) +" is cleared. No need to have more requests.";
+			mes getarg(.@i+1)+" is cleared. No need to have more requests.";
 			break;
 		case 2:
 			mes "[Melody-Jack]";
-			mes getarg(.@i+1) +" is cleared. A deal is a deal. I need to get paid.";
+			mes getarg(.@i+1)+" is cleared. A deal is a deal. I need to get paid.";
 			getexp 900000,200000;
 			break;
 		}
@@ -590,7 +590,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 		cutin "igu01",2;
 		mes "Hi? A fine day like today. Can I ask for a favor? I heard that adventurers in Eden Group are nice.";
 		next;
-		if (select( "I'm not the nice kind.", "Sure, I'll help." ) == 1) {
+		if (select( "I'm not the nice kind.","Sure, I'll help." ) == 1) {
 			cutin "igu05",2;
 			mes "[Aigu]";
 			mes "yek.. I hate.";
@@ -612,7 +612,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 		cutin "igu01",2;
 		mes "It is nice to come back to Midgard! Very exciting as the first day.";
 		next;
-		if (select( "What is your request?", "Talk about something else." ) == 2) {
+		if (select( "What is your request?","Talk about something else." ) == 2) {
 			cutin "igu01",2;
 			mes "[Aigu]";
 			mes "Dandelion band travels all around the world and conveys healing music to people";
@@ -630,7 +630,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 			mes "[Aigu]";
 			mes "I made a shelter for someone I am looking for and lost adventurers. I want to know which adventurer has been there.";
 			next;
-			switch( select( "Thanatos Tower search", "Rachel Sanctuary search", "Nameless Island search", "Abyss Lake search" ) ) {
+			switch ( select( "Thanatos Tower search","Rachel Sanctuary search","Nameless Island search","Abyss Lake search" ) ) {
 				mes "[Aigu]";
 			case 1:
 				if (questprogress(13115,PLAYTIME) == 1)
@@ -645,7 +645,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 				else {
 					mes "Adventurers are easily lost because of dangerous monsters and the height of thanatos tower. But it isn't impossible for some adventurers so please check for me.";
 					next;
-					if (select( "Begin to search.", "Cancel." ) == 1) {
+					if (select( "Begin to search.","Cancel." ) == 1) {
 						mes "[Aigu]";
 						mes "Thanatos tower is north of the Schwartzvalt Republic! It is not far from Juno or Hugel.";
 						callsub S_Quest,13115,13107;// Thanatos Tower Search
@@ -668,7 +668,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 					mes "[Aigu]";
 					mes "Please take a look if there are any traces of lost adventurers at the southeast part of the 2nd floor in the middle zone.";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
+					if (select( "Begin the search.","Stop." ) == 1) {
 						cutin "igu05",2;
 						mes "[Aigu]";
 						mes "I wish you safety in your search.";
@@ -691,7 +691,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 					cutin "igu03",2;
 					mes "Yes, Maybe they're not able to come because they've been captured by the dead! Nameless Island will be fine! Please search Nameless Island.";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
+					if (select( "Begin the search.","Stop." ) == 1) {
 						cutin "igu01",2;
 						mes "[Aigu]";
 						mes "I wil ask you to search the 1st underground of the monastery on Nameless Island. I cannot make you take that risk unless you volunteer.";
@@ -717,7 +717,7 @@ moc_para01,17,77,5	script	Aigu#1	4_F_IU,{
 					mes "[Aigu]";
 					mes "Yes! The end of a good adventure needs a dragon! I've heard there is a monster on the ground of a lake.";
 					next;
-					if (select( "Begin the search.", "Stop." ) == 1) {
+					if (select( "Begin the search.","Stop." ) == 1) {
 						mes "[Aigu]";
 						mes "Abyss Lake is the fastest way to get to Hugel. Please visit 3rd floor of underground cave.!";
 						callsub S_Quest,13118,13110;// Abyss Lake Search
@@ -759,7 +759,7 @@ S_Erasequest:
 		if (questprogress(getarg(.@i))) {
 			next;
 			mes "[Aigu]";
-			mes "Oh, you've been working on "+ getarg(.@i+1) +" Adventure task. Let me clear your record, so you can work on better tasks.";
+			mes "Oh, you've been working on "+getarg(.@i+1)+" Adventure task. Let me clear your record, so you can work on better tasks.";
 			erasequest getarg(.@i);
 		}
 	}
@@ -770,7 +770,7 @@ S_Erasequest2:
 		if (questprogress(getarg(.@i))) {
 			next;
 			mes "[Aigu]";
-			mes "Oh, you've already finished "+ getarg(.@i+1) +" Adventure. Thank you for helping me out with this task!.";
+			mes "Oh, you've already finished "+getarg(.@i+1)+" Adventure. Thank you for helping me out with this task!.";
 			erasequest getarg(.@i);
 			getexp getarg(.@i+2),getarg(.@i+3);
 		}
@@ -799,7 +799,7 @@ tha_t06,126,128,3	script	Suspicious Monster#1	4_DEVIRUCHI,{
 	mes "[Disguised Adventurer]";
 	mes "I am just working at this dangerous place for 5000 zeny... Are you the adventurer who got a request from Eden Group?";
 	next;
-	switch( select( "Yes","No" ) ) {
+	switch ( select( "Yes","No" ) ) {
 	case 1:
 		mes "[Disguised Adventurer]";
 		if (BaseLevel < 121 || BaseLevel > 130) {
@@ -808,7 +808,7 @@ tha_t06,126,128,3	script	Suspicious Monster#1	4_DEVIRUCHI,{
 		}
 		mes "The adventurers proceeding the request for Aigu are warped to the upper level on behalf of Aigu.";
 		next;
-		if (select( "Go up.", "Do not go up." ) == 1) {
+		if (select( "Go up.","Do not go up." ) == 1) {
 			mes "[Disguised Adventurer]";
 			if (questprogress(13107) != 1)
 				mes "It seems that you're currently not doing the Thanatos Tower adventure request. I'm sorry but I'm doing this for Aigu and not you.";

@@ -116,13 +116,13 @@ dicastes01,246,210,3	script	Venknick Livre#dic	4_MAN_BENKUNI,{
 // ------------------------------------------------------------------
 dicastes01,235,245,4	script	Piom Exitado#dic	4_MAN_PIOM4,{
 	if (isequipped(Ring_Of_Wise_King)) {
-		emotion (e_ho);
+		emotion(e_ho);
 		mes "[Piom Exitado]";
 		mes "Você já viu Ahat?";
 		mes "Sua popularidade aqui em El Discastes é fenomenal!";
 		close;
 	} else {
-		emotion (e_ho);
+		emotion(e_ho);
 		mes "[Piom Exitado]";
 		mes "¡ú¡þ¡ó ¢³ ¡ü¢²¡ñ ¢±";
 		mes "¢³¡ó¡ñ ¡õ ¡ð¡ô¡þ ¡÷ ¡ú¡ò¡õ ¡ø ¢² ¡ø";
@@ -170,7 +170,7 @@ dicastes01,191,202,4	script	Galten Reclamando#dic	4_MAN_GALTUN,{
 		mes "[Galten Reclamando]";
 		mes "Você já conversou com ele?";
 		next;
-		if(select("Não", "Sim") == 1) {
+		if (select("Não","Sim") == 1) {
 			mes "[Galten Reclamando]";
 			mes "Então você não sabe sobre a lenda por trás da estátua?";
 			mes "Então, eu não sei o que falar com você.";
@@ -180,7 +180,7 @@ dicastes01,191,202,4	script	Galten Reclamando#dic	4_MAN_GALTUN,{
 		mes "[Galten Reclamando]";
 		mes "Você também caiu na daquele louco.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Sim";
 		emotion(e_sob);
 		next;
@@ -204,7 +204,7 @@ dicastes01,202,197,4	script	Venknick Maluco#dic	4_MAN_BENKUNI,{
 		mes "Por 5000 Zeny.";
 		mes "Eu vou lhe contar sobre a lenda por trás da estátua.";
 		next;
-		if(select("Dar 5000 Zeny", "Não dar 5000 Zeny") == 2) {
+		if (select("Dar 5000 Zeny","Não dar 5000 Zeny") == 2) {
 			mes "[Venknick Maluco]";
 			mes "Não volte com arrependimentos.";
 			close; 
@@ -219,18 +219,18 @@ dicastes01,202,197,4	script	Venknick Maluco#dic	4_MAN_BENKUNI,{
 			mes "Obrigado.";
 			emotion(e_gg, 0, "Galten Reclamando#dic");
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Qual é a triste lenda?";
 			next;
 			emotion(e_dots);
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Eu perguntei do que se trata esta lenda!";
 			next;
 			mes "[Venknick Maluco]";
 			mes "Eu não acredito em lendas.";
 			next;
 			emotion(e_dots);
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Me enganou?";
 			sc_start(SC_BLIND, 20000, 0);
 			next;
@@ -348,7 +348,7 @@ dic_in01,91,113,5	script	Mineiro Desconfiado#dic	4_MAN_PIOM6,{
 		mes "[Mineiro Desconfiado]";
 		mes "Já ouviu os rumores sobre Ahat?";
 		next;
-		if(select("Não!", "Você primeiro") == 1) {
+		if (select("Não!","Você primeiro") == 1) {
 			mes "[Mineiro Desconfiado]";
 			mes "Não se preocupe.";
 			close; 
@@ -359,7 +359,7 @@ dic_in01,91,113,5	script	Mineiro Desconfiado#dic	4_MAN_PIOM6,{
 		mes "Você primeiro.";
 		mes "Você ouviu os rumores, certo?";
 		next;
-		if(select("Algo duvidoso?", "Se você não vai falar, eu também não!") == 1) {
+		if (select("Algo duvidoso?","Se você não vai falar, eu também não!") == 1) {
 			mes "[Mineiro Desconfiado]";
 			mes "Eu sou somente um Piom muito curioso.";
 			close; 
@@ -416,7 +416,7 @@ dic_in01,341,113,3	script	Mineiro Cansado#dic2	4_MAN_PIOM5,{
 		mes "[Mineiro Cansado]";
 		mes "¡þ";
 		next;
-		emotion (e_swt);
+		emotion(e_swt);
 		mes "[Mineiro Cansado]";
 		mes "¡ø¡ú¡ø ¢± ¡ö¡ò";
 	}

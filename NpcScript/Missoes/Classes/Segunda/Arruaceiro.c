@@ -39,7 +39,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "Mas qual é seu nome?";
 				next;
 				mes "[Markie]";
-				mes "..."+strcharinfo(PC_NAME) + "?";
+				mes "..."+strcharinfo(PC_NAME)+"?";
 				mes "Heh heh! Bom nome.";
 				next;
 				mes "[Markie]";
@@ -64,7 +64,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 			mes "Tudo bem...";
 			mes "Vamos começar!";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Markie]";
 				mes "1. Qual habilidade é necessária para se aprender, ^880000Túnel de Fuga^000000?";
@@ -181,7 +181,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "[Markie]";
 				mes "9. Escolha uma planta que dá Ervas Azuis.";
 				next;
-				switch(select("Planta Verde","Planta Amarela","Planta Azul","Planta Branca")) {
+				switch (select("Planta Verde","Planta Amarela","Planta Azul","Planta Branca")) {
 					default: break;
 					case 3: .@rgqz += 10; break;
 					case 4: .@rgqz += 10; break;
@@ -244,7 +244,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "[Markie]";
 				mes "9. Se um aprendiz quiser se tornar um Gatuno, que cogumelo terá que colher?";
 				next;
-				switch(select("Cogumelo Borrachento","Cogumelo Vermelho","Cogumelo Venenoso","Cogumelo Laranja")) {
+				switch (select("Cogumelo Borrachento","Cogumelo Vermelho","Cogumelo Venenoso","Cogumelo Laranja")) {
 					default: break;
 					case 1:
 					case 3:
@@ -264,7 +264,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				next;
 				if (.@rgqz > 80) {
 					rogueq = 2;
-					setquest (2017);
+					setquest(2017);
 					mes "Bom. Você passou.";
 					mes "Nós não teremos que";
 					mes "fazer isso denovo.";
@@ -338,9 +338,9 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "Parabéns!";
 			}
 			.@jlevel = JobLevel;
-			jobchange (Job_Rogue);
-			completequest (2026);
-			callfunc ("ClearJobQuest2nd",17);
+			jobchange(Job_Rogue);
+			completequest(2026);
+			callfunc("ClearJobQuest2nd",17);
 			next;
 			mes "[Markie]";
 			mes "Agora...";
@@ -352,8 +352,8 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 			mes "Então, trate os outros do jeito que você quer ser tratado, beleza?";
 			mes "Agente se esbarra por aí.";
 			close2;
-			if (.@jlevel == 50) { getitem (Gladius_,1); }
-			else { getitem (Gladius,1); }
+			if (.@jlevel == 50) { getitem(Gladius_,1); }
+			else { getitem(Gladius,1); }
 			end;
 		}
 	} else if (BaseJob == Job_Rogue) {
@@ -408,22 +408,22 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 		next;
 		.@item_need = rand(1,15);
 		if (.@item_need > 0 && .@item_need < 6) {
-			setarray (.@item[0],510,932,957,958);
-			setarray (.@count[0], 6, 10, 10, 10);
+			setarray(.@item[0],510,932,957,958);
+			setarray(.@count[0], 6, 10, 10, 10);
 			.@rgvar = 3;
 		}
 		else if (.@item_need > 5 && .@item_need < 11) {
-			setarray (.@item[0], 511,910,926,964);
-			setarray (.@count[0], 10, 10, 10, 10);
+			setarray(.@item[0], 511,910,926,964);
+			setarray(.@count[0], 10, 10, 10, 10);
 			.@rgvar = 4;
 		}
 		else if (.@item_need > 10 && .@item_need < 15) {
-			setarray (.@item[0],508,948,935,940);
-			setarray (.@count[0],10, 10, 10, 10);
+			setarray(.@item[0],508,948,935,940);
+			setarray(.@count[0],10, 10, 10, 10);
 			.@rgvar = 5;
 		} else {
-			setarray (.@item[0],915,713,1002,953,507,919,715,913,909,705,716,917,908,945);
-			setarray (.@count[0], 4,  4,   4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4);
+			setarray(.@item[0],915,713,1002,953,507,919,715,913,909,705,716,917,908,945);
+			setarray(.@count[0], 4,  4,   4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4);
 			.@rgvar = 6;
 		}
 		mes "[Smithrato]";
@@ -437,42 +437,42 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 		for (.@i = 0; .@i < getarraysize(.@item); .@i++) {
 			mes "^FF0000"+.@count[.@i]+" "+getitemname(.@item[.@i])+"^000000.";
 		}
-		switch(.@rgvar) {
-			case 3: rogueq = 3; changequest (2017,2018); break;
-			case 4: rogueq = 4; changequest (2017,2019); break;
-			case 5: rogueq = 5; changequest (2017,2020); break;
-			case 6: rogueq = 6; changequest (2017,2021); break;
+		switch (.@rgvar) {
+			case 3: rogueq = 3; changequest(2017,2018); break;
+			case 4: rogueq = 4; changequest(2017,2019); break;
+			case 5: rogueq = 5; changequest(2017,2020); break;
+			case 6: rogueq = 6; changequest(2017,2021); break;
 		}
 		next;
 		mes "[Smithrato]";
 		mes "Nem pense em voltar sem trazer tudo senão eu irei te matar aqui mesmo.";
 		close;
 	} else if (rogueq > 2 && rogueq < 7) {
-		switch(rogueq) {
+		switch (rogueq) {
 			case 3:
-			setarray (.@item[0],510,932,957,958);
-			setarray (.@count[0], 6, 10, 10, 10);
+			setarray(.@item[0],510,932,957,958);
+			setarray(.@count[0], 6, 10, 10, 10);
 			break;
 			case 4:
-			setarray (.@item[0], 511,910,926,964);
-			setarray (.@count[0], 10, 10, 10, 10);
+			setarray(.@item[0], 511,910,926,964);
+			setarray(.@count[0], 10, 10, 10, 10);
 			break;
 			case 5:
-			setarray (.@item[0],508,948,935,940);
-			setarray (.@count[0],10, 10, 10, 10);
+			setarray(.@item[0],508,948,935,940);
+			setarray(.@count[0],10, 10, 10, 10);
 			break;
 			case 6:
-			setarray (.@item[0],915,713,1002,953,507,919,715,913,909,705,716,917,908,945);
-			setarray (.@count[0], 4,  4,   4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4);
+			setarray(.@item[0],915,713,1002,953,507,919,715,913,909,705,716,917,908,945);
+			setarray(.@count[0], 4,  4,   4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4);
 			break;
 		}
 		.@arraysize = getarraysize(.@item);
 		for (.@i = 0; .@i < .@arraysize; .@i++) {
-			if(countitem (.@item[.@i]) < .@count[.@i]) {
+			if (countitem (.@item[.@i]) < .@count[.@i]) {
 				break;
 			}
 		}
-		if(.@i == .@arraysize && Zeny >= 10000) {
+		if (.@i == .@arraysize && Zeny >= 10000) {
 			mes "[Smithrato]";
 			mes "Wow, você trouxe cara coisa que eu lhe pedi para trazer.";
 			mes "Bom trabalho...";
@@ -481,7 +481,7 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 			mes "^CCCCCC- Dedo Médio -^000000'";
 			mes "*Grins*";
 			for (.@i = 0; .@i < .@arraysize; .@i++) {
-				delitem (.@item[.@i],.@count[.@i]);
+				delitem(.@item[.@i],.@count[.@i]);
 			}
 			next;
 			mes "[Smithrato]";
@@ -491,7 +491,7 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 			mes "Muito bem...";
 			mes "Agora que estou mais calmo, irei lhe informar o seu próximo destino.";
 			next;
-			switch(rand(4)) {
+			switch (rand(4)) {
 				case 1:
 				mes "[Smithrato]";
 				mes "Vá e procure por Hermanthorn Junior.";
@@ -502,9 +502,9 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 				mes "Ponha em mente em ^0000FFnão mencionar nada sobre itens de forja^000000.";
 				mes "Isso é muito importante.";
 				rogueq = 8;
-				if (questprogress(2018)) { changequest (2018,2025); }
-				else if (questprogress(2019)) { changequest (2019,2025); }
-				else if (questprogress(2020)) { changequest (2020,2025); }
+				if (questprogress(2018)) { changequest(2018,2025); }
+				else if (questprogress(2019)) { changequest(2019,2025); }
+				else if (questprogress(2020)) { changequest(2020,2025); }
 				close;
 				case 2:
 				mes "[Smithrato]";
@@ -522,9 +522,9 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 				mes "[Smithrato]";
 				mes "A senha é ^0000FFAragham não roubou o material de forja^000000.";
 				rogueq = 9;
-				if (questprogress(2018)) { changequest (2018,2022); }
-				else if (questprogress(2019)) { changequest (2019,2022); }
-				else if (questprogress(2020)) { changequest (2020,2022); }
+				if (questprogress(2018)) { changequest(2018,2022); }
+				else if (questprogress(2019)) { changequest(2019,2022); }
+				else if (questprogress(2020)) { changequest(2020,2022); }
 				close;
 				case 3:
 				mes "[Smithrato]";
@@ -535,9 +535,9 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 				mes "Ah, você terá que lembrar da senha para conhece-lo.";
 				mes "A senha é ^0000FFAntonio não gosta de quebrar o material de forja^000000.";
 				rogueq = 10;
-				if (questprogress(2018)) { changequest (2018,2023); }
-				else if (questprogress(2019)) { changequest (2019,2023); }
-				else if (questprogress(2020)) { changequest (2020,2023); }
+				if (questprogress(2018)) { changequest(2018,2023); }
+				else if (questprogress(2019)) { changequest(2019,2023); }
+				else if (questprogress(2020)) { changequest(2020,2023); }
 				close;
 				default:
 				mes "[Smithrato]";
@@ -547,9 +547,9 @@ in_rogue,376,23,1	script	Smithrato#rogueq	1_M_LIBRARYMASTER,{
 				mes "Ah, você terá que lembrar da senha para conhece-lo.";
 				mes "A senha é ^0000FFMeu pai não roubou o material de forja^000000.";
 				rogueq = 11;
-				if (questprogress(2018)) { changequest (2018,2024); }
-				else if (questprogress(2019)) { changequest (2019,2024); }
-				else  if (questprogress(2029)) { changequest (2020,2024); }
+				if (questprogress(2018)) { changequest(2018,2024); }
+				else if (questprogress(2019)) { changequest(2019,2024); }
+				else  if (questprogress(2029)) { changequest(2020,2024); }
 				close;
 			}
 		} else {
@@ -636,7 +636,7 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 	mes "Quem ousa";
 	mes "entrar em meu território?";
 	next;
-	switch(select("Meu pai","Aragham","Aragon","Legolas")) {
+	switch (select("Meu pai","Aragham","Aragon","Legolas")) {
 		case 1:
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Meu pai";
@@ -655,7 +655,7 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 		mes "Legolas";
 		break;
 	}
-	switch(select("não faz","não gosta","não","sempre")) {
+	switch (select("não faz","não gosta","não","sempre")) {
 		case 1: mes "não faz"; break;
 		case 2: mes "não gosta"; break;
 		case 3:
@@ -664,7 +664,7 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 		break;
 		case 4: mes "sempre"; break;
 	}
-	switch(select("recebe","roubou","se escondeu","examinou","de quebrar")) {
+	switch (select("recebe","roubou","se escondeu","examinou","de quebrar")) {
 		case 1: mes "recebe"; break;
 		case 2:
 		mes "roubou";
@@ -674,7 +674,7 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 		case 4: mes "examinou"; break;
 		case 5: mes "de quebrar"; break;
 	}
-	switch(select("o material de forja","itens roubados","material refinado","equipamentos")) {
+	switch (select("o material de forja","itens roubados","material refinado","equipamentos")) {
 		case 1:
 		mes "o material de forja.";
 		.@rogue_t += 10;
@@ -688,7 +688,7 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 		mes "^3355FF*Creeeeak*";
 		mes "A porta abre lentamente.^000000";
 		close2;
-		warp ("in_rogue",246,25);
+		warp("in_rogue",246,25);
 		end;
 	} else {
 		mes "[???]";
@@ -706,7 +706,7 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 	mes "Quem ousa";
 	mes "entrar em meu território?";
 	next;
-	switch(select("Meu pai","Aragham","Aragon","Legolas")) {
+	switch (select("Meu pai","Aragham","Aragon","Legolas")) {
 		case 1:
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Meu pai";
@@ -725,7 +725,7 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 		mes "Legolas";
 		break;
 	}
-	switch(select("não:nem:nunca:jamais")) {
+	switch (select("não:nem:nunca:jamais")) {
 		case 1: mes "não faz"; break;
 		case 2: mes "não gosta"; break;
 		case 3:
@@ -734,7 +734,7 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 		break;
 		case 4: mes "sempre"; break;
 	}
-	switch(select("recebe","de quebrar","se escondeu","examinou","rubou")) {
+	switch (select("recebe","de quebrar","se escondeu","examinou","rubou")) {
 		case 1: mes "recebe"; break;
 		case 2: mes "de quebrar"; break;
 		case 3: mes "se escondeu"; break;
@@ -744,7 +744,7 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 		.@rogue_t += 10;
 		break;
 	}
-	switch(select("o material de forja.:itens roubados.:material refinado:equipamentos.")) {
+	switch (select("o material de forja.:itens roubados.:material refinado:equipamentos.")) {
 		case 1:
 		mes "o material de forja.";
 		.@rogue_t += 10;
@@ -758,7 +758,7 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 		mes "^3355FF*Creeeeak*";
 		mes "A porta abre lentamente.^000000";
 		close2;
-		warp ("in_rogue",169,34);
+		warp("in_rogue",169,34);
 		end;
 	} else {
 		mes "[???]";
@@ -776,7 +776,7 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 	mes "Quem ousa";
 	mes "entrar em meu território?";
 	next;
-	switch(select("Anntonio","Aragham","Antonio","Hollgrehenn")) {
+	switch (select("Anntonio","Aragham","Antonio","Hollgrehenn")) {
 		case 1:
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Anntonio";
@@ -795,7 +795,7 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 		mes "Hollgrehenn";
 		break;
 	}
-	switch(select("gosta","não gosta","prefere","não prefere")) {
+	switch (select("gosta","não gosta","prefere","não prefere")) {
 		case 1: mes "gosta"; break;
 		case 2:
 		mes "não gosta";
@@ -804,7 +804,7 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 		case 3: mes "prefere"; break;
 		case 4: mes "não prefere"; break;
 	}
-	switch(select("de danificar","de quebrar","de consertar","de forjar")) {
+	switch (select("de danificar","de quebrar","de consertar","de forjar")) {
 		case 1: mes "de danificar"; break;
 		case 2:
 		mes "de quebrar";
@@ -813,7 +813,7 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 		case 3: mes "de consertar"; break;
 		case 4: mes "de forjar"; break;
 	}
-	switch(select("o item de forja","os itens refinados","o material de forja","os itens aprimorados","os itens reforçados","os itens forjados.")) {
+	switch (select("o item de forja","os itens refinados","o material de forja","os itens aprimorados","os itens reforçados","os itens forjados.")) {
 		case 1: mes "o item de forja."; break;
 		case 2: mes "os itens refinados."; break;
 		case 3:
@@ -829,7 +829,7 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 		mes "^3355FF*Creeeeak*";
 		mes "A porta abre lentamente.^000000";
 		close2;
-		warp ("in_rogue",164,106);
+		warp("in_rogue",164,106);
 		end;
 	} else {
 		mes "[???]";
@@ -875,7 +875,7 @@ in_rogue,272,135,1	script	Hermanthorn Jr#rg	4_M_03,{
 		mes "Apenas tente voltar para a Guilda dos Arruaceiros são e salvo.";
 		mes "É tudo o que precisa fazer!";
 		rogueq = 12;
-		changequest (2025,2026);
+		changequest(2025,2026);
 		close;
 	} else if (rogueq == 12) {
 		mes "[Hermanthorn Jr.]";
@@ -900,7 +900,7 @@ in_rogue,270,130,0	script	he_to_rogue#rogueq	WARPNPC,1,1,{
 	mes "^3355FFA porta está trancada.";
 	mes "Você deve inserir a combinação de quatro números para abri-lá.^000000";
 	next;
-	input (.@input);
+	input(.@input);
 	if (.@input < 1 || .@input > 10000) {
 		mes "^3355FFPor favor digite a combinação de quatro números.^000000";
 		close;
@@ -908,7 +908,7 @@ in_rogue,270,130,0	script	he_to_rogue#rogueq	WARPNPC,1,1,{
 		if (rogueq == 12) {
 			mes "^3355FFA porta está aberta.^000000";
 			close2;
-			warp (strnpcinfo(NPC_MAP),10,21);
+			warp(strnpcinfo(NPC_MAP),10,21);
 			rogueq = 12;
 			end;
 		}
@@ -929,17 +929,17 @@ in_rogue,270,130,0	script	he_to_rogue#rogueq	WARPNPC,1,1,{
 in_rogue,200,389,0	script	gen_ro#1rogueq	FAKE_NPC,3,3,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),200,389,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),201,389,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("gen_ro#2rogueq::OnDisable");
-		donpcevent ("gen_ro#3rogueq::OnDisable");
-		donpcevent ("gen_ro#4rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),200,389,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),201,389,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("gen_ro#2rogueq::OnDisable");
+		donpcevent("gen_ro#3rogueq::OnDisable");
+		donpcevent("gen_ro#4rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -950,14 +950,14 @@ in_rogue,200,389,0	script	gen_ro#1rogueq	FAKE_NPC,3,3,{
 in_rogue,100,389,0	script	gen_ro#2rogueq	FAKE_NPC,3,3,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),100,389,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("gen_ro#1rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),100,389,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("gen_ro#1rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -968,15 +968,15 @@ in_rogue,100,389,0	script	gen_ro#2rogueq	FAKE_NPC,3,3,{
 in_rogue,150,389,0	script	gen_ro#3rogueq	FAKE_NPC,3,3,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),145,389,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),143,389,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("gen_ro#2rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),145,389,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),143,389,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("gen_ro#2rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -987,14 +987,14 @@ in_rogue,150,389,0	script	gen_ro#3rogueq	FAKE_NPC,3,3,{
 in_rogue,250,389,0	script	gen_ro#4rogueq	FAKE_NPC,3,3,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),200,389,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("gen_ro#3rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),200,389,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("gen_ro#3rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1004,9 +1004,9 @@ in_rogue,250,389,0	script	gen_ro#4rogueq	FAKE_NPC,3,3,{
 // ------------------------------------------------------------------
 in_rogue,9,389,0	script	oneway_to_gu#rogueq	WARPNPC,1,1,{
 	OnTouch:
-	donpcevent ("gen_ro#4rogueq::OnDisable");
+	donpcevent("gen_ro#4rogueq::OnDisable");
 	rogueq = 17;
-	warp (strnpcinfo(NPC_MAP),367,10);
+	warp(strnpcinfo(NPC_MAP),367,10);
 	end;
 }
 
@@ -1044,9 +1044,9 @@ in_rogue,244,39,1	script	Aragham Junior#rogueq	4W_M_03,{
 			mes "Tudo bem...";
 			mes "Boa sorte, então.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			rogueq = 13;
-			changequest (2022,2026);
+			changequest(2022,2026);
 			end;
 		} else {
 			mes "[Aragham Jr.]";
@@ -1066,7 +1066,7 @@ in_rogue,244,39,1	script	Aragham Junior#rogueq	4W_M_03,{
 			mes "[Aragham Jr.]";
 			mes "Boa sorte.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			end;
 		} else {
 			mes "[Aragham Jr.]";
@@ -1130,9 +1130,9 @@ in_rogue,160,34,1	script	Hollgrehenn junior#rogueq	4_M_03,{
 			mes "[Hollgrehenn Jr.]";
 			mes "Boa sorte.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			rogueq = 15;
-			changequest (2024,2026);
+			changequest(2024,2026);
 			end;
 		} else {
 			mes "[Hollgrehenn Jr.]";
@@ -1151,7 +1151,7 @@ in_rogue,160,34,1	script	Hollgrehenn junior#rogueq	4_M_03,{
 			mes "[Hollgrehenn Jr.]";
 			mes "Boa sorte.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			end;
 		} else {
 			mes "[Hollgrehenn Jr.]";
@@ -1207,9 +1207,9 @@ in_rogue,177,109,1	script	Antonio junior#rg	4_M_ORIENT01,{
 			mes "Espero que você não falhe neste teste.";
 			mes "Você só poderá se tornar um Arruaceiro se passar...";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			rogueq = 14;
-			changequest (2023,2026);
+			changequest(2023,2026);
 			end;
 		} else {
 			mes "[Antonio Jr.]";
@@ -1228,7 +1228,7 @@ in_rogue,177,109,1	script	Antonio junior#rg	4_M_ORIENT01,{
 			mes "Lembre-se, estou lhe fazendo um favor aqui...";
 			mes "Agora, não volte até que você seja um Arruaceiro.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),15,105);
+			warp(strnpcinfo(NPC_MAP),15,105);
 			end;
 		}
 		mes "[Antonio Jr.]";
@@ -1258,7 +1258,7 @@ in_rogue,177,109,1	script	Antonio junior#rg	4_M_ORIENT01,{
 in_rogue,370,320,0	script	quest_out#rogueq	WARPNPC,1,1,{
 	OnTouch:
 	rogueq = 16;
-	warp (strnpcinfo(NPC_MAP),378,113);
+	warp(strnpcinfo(NPC_MAP),378,113);
 	end;
 }
 
@@ -1266,18 +1266,18 @@ in_rogue,370,320,0	script	quest_out#rogueq	WARPNPC,1,1,{
 in_rogue,15,184,0	script	mob_rogue#1rogueq	FAKE_NPC,8,1,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),14,187,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),15,188,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),16,189,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),17,187,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),18,188,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),19,189,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),14,187,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),15,188,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),16,189,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),17,187,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),18,188,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),19,189,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1288,15 +1288,15 @@ in_rogue,15,184,0	script	mob_rogue#1rogueq	FAKE_NPC,8,1,{
 in_rogue,15,273,0	script	mob_rogue#2rogueq	FAKE_NPC,8,1,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),15,276,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),13,276,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),11,276,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),15,276,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),13,276,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),11,276,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1307,19 +1307,19 @@ in_rogue,15,273,0	script	mob_rogue#2rogueq	FAKE_NPC,8,1,{
 in_rogue,15,333,0	script	mob_rogue#3rogueq	FAKE_NPC,8,1,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),15,336,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),15,336,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),15,336,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),15,336,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("mob_rogue#4rogueq::OnDisable");
-		donpcevent ("mob_rogue#7rogueq::OnDisable");
-		donpcevent ("mob_rogue#8rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),15,336,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),15,336,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),15,336,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),15,336,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("mob_rogue#4rogueq::OnDisable");
+		donpcevent("mob_rogue#7rogueq::OnDisable");
+		donpcevent("mob_rogue#8rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1330,16 +1330,16 @@ in_rogue,15,333,0	script	mob_rogue#3rogueq	FAKE_NPC,8,1,{
 in_rogue,39,341,0	script	mob_rogue#4rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),39,341,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),40,341,"Carniçal",1036,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),41,341,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),42,341,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),39,341,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),40,341,"Carniçal",GHOUL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),41,341,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),42,341,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1350,16 +1350,16 @@ in_rogue,39,341,0	script	mob_rogue#4rogueq	FAKE_NPC,1,8,{
 in_rogue,102,334,0	script	mob_rogue#5rogueq	FAKE_NPC,1,4,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),92,334,"Khalitzburg",1132,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("mob_rogue#1rogueq::OnDisable");
-		donpcevent ("mob_rogue#2rogueq::OnDisable");
-		donpcevent ("mob_rogue#3rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),92,334,"Khalitzburg",KHALITZBURG,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("mob_rogue#1rogueq::OnDisable");
+		donpcevent("mob_rogue#2rogueq::OnDisable");
+		donpcevent("mob_rogue#3rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1370,16 +1370,16 @@ in_rogue,102,334,0	script	mob_rogue#5rogueq	FAKE_NPC,1,4,{
 in_rogue,58,309,0	script	mob_rogue#6rogueq	FAKE_NPC,4,1,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),57,301,"Khalitzburg",1132,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("mob_rogue#1rogueq::OnDisable");
-		donpcevent ("mob_rogue#2rogueq::OnDisable");
-		donpcevent ("mob_rogue#3rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),57,301,"Khalitzburg",KHALITZBURG,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("mob_rogue#1rogueq::OnDisable");
+		donpcevent("mob_rogue#2rogueq::OnDisable");
+		donpcevent("mob_rogue#3rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1390,14 +1390,14 @@ in_rogue,58,309,0	script	mob_rogue#6rogueq	FAKE_NPC,4,1,{
 in_rogue,101,264,0	script	mob_rogue#7rogueq	FAKE_NPC,5,5,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),101,264,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),102,264,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),101,264,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),102,264,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1408,13 +1408,13 @@ in_rogue,101,264,0	script	mob_rogue#7rogueq	FAKE_NPC,5,5,{
 in_rogue,140,312,0	script	mob_rogue#8rogueq	FAKE_NPC,5,5,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),140,312,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),140,312,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1425,18 +1425,18 @@ in_rogue,140,312,0	script	mob_rogue#8rogueq	FAKE_NPC,5,5,{
 in_rogue,139,246,0	script	mob_rogue#9rogueq	FAKE_NPC,4,4,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),139,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),149,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),140,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),141,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),150,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),151,246,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),139,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),149,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),140,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),141,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),150,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),151,246,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1447,31 +1447,31 @@ in_rogue,139,246,0	script	mob_rogue#9rogueq	FAKE_NPC,4,4,{
 in_rogue,197,249,0	script	mob_rogue#10rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),176,212,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),176,213,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),177,211,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),177,212,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),177,213,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),177,214,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),178,211,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),178,212,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),178,213,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),179,211,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),179,212,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),179,213,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),179,214,"Zumbi",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),176,211,"Carniçal",1036,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),177,214,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),178,214,"Esqueleto Arqueiro",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("mob_rogue#4rogueq::OnDisable");
-		donpcevent ("mob_rogue#5rogueq::OnDisable");
-		donpcevent ("mob_rogue#6rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),176,212,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),176,213,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),177,211,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),177,212,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),177,213,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),177,214,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),178,211,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),178,212,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),178,213,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),179,211,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),179,212,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),179,213,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),179,214,"Zumbi",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),176,211,"Carniçal",GHOUL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),177,214,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),178,214,"Esqueleto Arqueiro",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("mob_rogue#4rogueq::OnDisable");
+		donpcevent("mob_rogue#5rogueq::OnDisable");
+		donpcevent("mob_rogue#6rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1482,27 +1482,27 @@ in_rogue,197,249,0	script	mob_rogue#10rogueq	FAKE_NPC,1,8,{
 in_rogue,96,205,0	script	mob_rogue#11rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		donpcevent ("mob_rogue#7rogueq::OnDisable");
-		donpcevent ("mob_rogue#8rogueq::OnDisable");
-		donpcevent ("mob_rogue#9rogueq::OnDisable");
-		donpcevent ("mob_rogue#10rogueq::OnDisable");
+		donpcevent("mob_rogue#7rogueq::OnDisable");
+		donpcevent("mob_rogue#8rogueq::OnDisable");
+		donpcevent("mob_rogue#9rogueq::OnDisable");
+		donpcevent("mob_rogue#10rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 }
 
 // ------------------------------------------------------------------
 in_rogue,86,187,0	script	mob_rogue#12rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),90,187,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),90,183,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),90,190,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),90,187,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),90,183,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),90,190,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1513,16 +1513,16 @@ in_rogue,86,187,0	script	mob_rogue#12rogueq	FAKE_NPC,1,8,{
 in_rogue,223,187,0	script	mob_rogue#13rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),236,186,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),238,186,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),234,186,"Cavaleiro do Abismo",1219,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		donpcevent ("mob_rogue#12rogueq::OnDisable");
+		monster(strnpcinfo(NPC_MAP),236,186,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),238,186,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),234,186,"Cavaleiro do Abismo",KNIGHT_OF_ABYSS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		donpcevent("mob_rogue#12rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1533,9 +1533,9 @@ in_rogue,223,187,0	script	mob_rogue#13rogueq	FAKE_NPC,1,8,{
 in_rogue,233,207,0	script	mob_rogue#14rogueq	FAKE_NPC,8,3,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		donpcevent ("mob_rogue#13rogueq::OnDisable");
+		donpcevent("mob_rogue#13rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 }
 
@@ -1543,18 +1543,18 @@ in_rogue,233,207,0	script	mob_rogue#14rogueq	FAKE_NPC,8,3,{
 in_rogue,244,319,0	script	mob_rogue#15rogueq	FAKE_NPC,1,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		monster (strnpcinfo(NPC_MAP),240,319,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),259,319,"Esqueleto Arqueiro",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),259,320,"Carniçal",1036,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),240,319,"Múmia",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),259,319,"Esqueleto Arqueiro",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-		monster (strnpcinfo(NPC_MAP),259,320,"Carniçal",1036,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),240,319,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),259,319,"Esqueleto Arqueiro",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),259,320,"Carniçal",GHOUL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),240,319,"Múmia",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),259,319,"Esqueleto Arqueiro",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+		monster(strnpcinfo(NPC_MAP),259,320,"Carniçal",GHOUL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -1565,9 +1565,8 @@ in_rogue,244,319,0	script	mob_rogue#15rogueq	FAKE_NPC,1,8,{
 in_rogue,334,319,0	script	mob_rogue#16rogueq	FAKE_NPC,8,8,{
 	OnTouch:
 	if (BaseJob == Job_Thief) {
-		donpcevent ("mob_rogue#15rogueq::OnDisable");
+		donpcevent("mob_rogue#15rogueq::OnDisable");
 	}
-	else { warp ("mag_dun02",181,176); }
+	else { warp("mag_dun02",181,176); }
 	end;
 }
-

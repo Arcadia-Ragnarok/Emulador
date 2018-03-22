@@ -59,7 +59,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 	else {
 		mes "I am collecting stories to make a song on behalf of Aigu.";
 		next;
-		if (select( "Request to collect stories", "Conversation" ) == 1) {
+		if (select( "Request to collect stories","Conversation" ) == 1) {
 			mes "[Ragi]";
 			if (BaseLevel < 131) {
 				cutin "ragi02",0;
@@ -68,12 +68,12 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 			else if (BaseLevel < 141) {
 				mes "This song and story is about monsters. ^FF0000Tell me the story about how you felt while you were fighting with them.^000000";
 				next;
-				switch( select( "The story of the lost", "Story of devil", "Story from far away distance" ) ) {
+				switch ( select( "The story of the lost","Story of devil","Story from far away distance" ) ) {
 				case 1:
 					mes "[Ragi]";
 					mes "Lighthalzen has many stories that I'm sure are sad and lost. Their stories should not be forgotten so please tell me what you can.";
 					next;
-					switch( select( "Egnigem Cenia (Swordman Monster)",
+					switch ( select( "Egnigem Cenia (Swordman Monster)",
 									"Armeyer Dinze (Merchant Monster)",
 									"Wickebine Tres (Thief Monster)",
 									"Kavach Icarus (Archer Monster)",
@@ -103,7 +103,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "I can not lose her story. I really wish you to stop by.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "It will be more dangerous than you think. But story must be conveyed for everyone.";
 								callsub S_Quest,13144,13143;
@@ -137,7 +137,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "What made her disappear? Or for what? Please listen to her story.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "It will be more dangerous than you think. But the story must be conveyed.";
 								callsub S_Quest,13146,13145;
@@ -171,7 +171,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "She was the one who only cared for money. How far has her journey continued? Please listen to her story in Lighthalzen.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "It will be more dangerous than you think. But the story must be conveyed.";
 								emotion e_no1;
@@ -206,7 +206,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "I heard his shadow and his arrow are wandering somewhere. Please go to Lighthalzen and tell me his story.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Please be careful of his arrows. You may have laid down on the cold floor before this story is finished.";
 								callsub S_Quest,13150,13149;
@@ -240,7 +240,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "But I guess... His journey also might have stopped somewhere in Lighthalzen. Please listen to his story.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Please be careful not get lost like these ^FF0000poor souls^000000.";
 								callsub S_Quest,13152,13151;
@@ -274,7 +274,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "But... These talented wizards could not return? Who made them? Find a clue in Lighthalzen.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "I like this story but be careful if you do not want to end up a story yourself.";
 								callsub S_Quest,13154,13153;
@@ -286,7 +286,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 					mes "[Ragi]";
 					mes "Do you know the story about Satan Morroc? I want to sing a song of their story even when time passes by.";
 					next;
-					switch( select( "Angel Incarnation", "Black Nightmare Incarnation", "Ghost Incarnation" ) ) {
+					switch ( select( "Angel Incarnation","Black Nightmare Incarnation","Ghost Incarnation" ) ) {
 						mes "[Ragi]";
 					case 1:
 						if (questprogress(13156,PLAYTIME) == 1) {
@@ -314,7 +314,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "[Ragi]";
 							mes "Please help me to make a story by searching the flying Incarnations of Morocc.";
 							next;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Be sure to get at least 30 Angel looking Incarnations of Morocc.";
 								emotion e_wah;
@@ -344,7 +344,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "[Ragi]";
 							mes "But I think there also will be a story in it. That is why those creature are made. Please look for something black and tar-like.";
 							next;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Find and get rid of 30 Dark Incarnation of Morocc.";
 								callsub S_Quest,13158,13157;
@@ -371,7 +371,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "[Ragi]";
 							mes "But I am curious because it looks like a ghost and attacks does not work.";
 							next;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Please make a story after hunting at least 30 Ghost Incarnation of Morocc!";
 								callsub S_Quest,13160,13159;
@@ -383,7 +383,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 					mes "[Ragi]";
 					mes "I never been to Ash Vacuum but I heard there are many interesting creatures there in the Scaraba Hall.";
 					next;
-					switch( select( "Uni-Horn Scaraba Story", "Horn Scaraba Story", "Antler Scaraba Story", "Rake Horn Scaraba Story" ) ) {
+					switch ( select( "Uni-Horn Scaraba Story","Horn Scaraba Story","Antler Scaraba Story","Rake Horn Scaraba Story" ) ) {
 					case 1:
 						mes "[Ragi]";
 						if (questprogress(13162,PLAYTIME) == 1)
@@ -406,7 +406,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "I want to make a song about the ^FF0000Uni-Horn Scaraba^000000!? Children will really like it.";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "You can find them near somewhere in the east at Scaraba Hall.";
 								callsub S_Quest,13162,13161;
@@ -437,7 +437,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "I do no know why. I just heard from people. I need to make a song so please take a look at their world!";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "You can find them near somewhere in the east at Scaraba Hall.";
 								callsub S_Quest,13164,13163;
@@ -468,7 +468,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "Aren't you curious why it has that horn? I think it has an interesting story that people would like. Shall I ask you adventurer?";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Can you please find a story about Antler Scaraba? Experience yourself is the best I guess!";
 								callsub S_Quest,13166,13165;
@@ -499,7 +499,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 							mes "A song begins with Uni-horn Scaraba then sing along with Rake Horn Scaraba. Will you help me?";
 							next;
 							cutin "ragi01",0;
-							if (select( "Take the request", "Quit." ) == 1) {
+							if (select( "Take the request","Quit." ) == 1) {
 								mes "[Ragi]";
 								mes "Please find a story about Rake Horn Scaraba from Scaraba Hall. Battle or experienced stories are fine.";
 								callsub S_Quest,13168,13167;
@@ -534,7 +534,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 			mes "[Ragi]";
 			mes "Well, I am kind of busy doing an errand for Sir Aigu. Do you have any questions?";
 			next;
-			switch( select( "Where did you get your hair-do?", "Please sing a song for me.", "Do you have a girl friend?", "About Aigu" ) ) {
+			switch ( select( "Where did you get your hair-do?","Please sing a song for me.","Do you have a girl friend?","About Aigu" ) ) {
 				mes "[Ragi]";
 			case 1:
 				mes "There is a fine hair artist in Alberta. He butchered my hair with a some cooking scissors. Looks illegal.";
@@ -581,16 +581,16 @@ S_Erasequest:
 	.@total = getargcount();
 	for ( .@i = 0; .@i < .@total; .@i += 3 ) {
 		.@quest_id = getarg(.@i);
-		switch( questprogress(.@quest_id,HUNTING) ) {
+		switch ( questprogress(.@quest_id,HUNTING) ) {
 		case 0:
 			if (questprogress(.@quest_id+1))
-				erasequest (.@quest_id+1);
+				erasequest(.@quest_id+1);
 			continue;
 		case 1:
 			mes "[Ragi]";
-			switch( getarg(.@i+1) ) {
+			switch ( getarg(.@i+1) ) {
 			case 1:
-				mes "Okay, I'll ask Someone else to finish portion of "+ getarg(.@i+2) +".";
+				mes "Okay, I'll ask Someone else to finish portion of "+getarg(.@i+2)+".";
 				break;
 			case 2:
 				mes "I'll ask someone else to take care of the rest of the Satan Morroc Incarnations, then!";
@@ -601,9 +601,9 @@ S_Erasequest:
 			break;
 		case 2:
 			mes "[Ragi]";
-			switch( getarg(.@i+1) ) {
+			switch ( getarg(.@i+1) ) {
 			case 1:
-				mes "So you've heard the story of "+ getarg(.@i+2) +", then? Thanks so much. I'll definitely write a good song.";
+				mes "So you've heard the story of "+getarg(.@i+2)+", then? Thanks so much. I'll definitely write a good song.";
 				getexp 1100000,300000;
 				break;
 			case 2:

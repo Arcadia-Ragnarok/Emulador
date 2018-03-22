@@ -23,7 +23,7 @@ mal_dun01,151,235,5	script	Estrela-do-Mar	4_ASTER,{
 	mes "Por enquanto a caverna está apenas trancada.";
 	mes "Mas algum dia ela será fechada para sempre, hehe!";
 	next;
-	while(1) {
+	while (1) {
 		switch (select("Perguntar o que está acontecendo.:Pedir a abertura do Portão.:Ir para um outro lugar.")) {
 		case 1:
 			mes "[Estrela-do-Mar]";
@@ -124,7 +124,7 @@ mal_dun01,153,237,5	script	Entrada Estranha	CLEAR_NPC,{
 				mes "Um grande problema está te aguardando ao entrar.";
 				close;
 			}
-			mapannounce "mal_dun01", "O membro "+strcharinfo(PC_NAME)+" do grupo "+getpartyname(getcharid(CHAR_ID_PARTY))+" inicio sua caçada ao Polvo!",bc_map,"0x00ff99";
+			mapannounce "mal_dun01","O membro "+strcharinfo(PC_NAME)+" do grupo "+getpartyname(getcharid(CHAR_ID_PARTY))+" inicio sua caçada ao Polvo!",bc_map,"0x00ff99";
 			if (!questprogress(4197)) setquest 4197;
 			warp "1@cash", 199, 99;
 			end;
@@ -191,10 +191,10 @@ OnEnable:
 	donpcevent instance_npcname("oct_foot3")+"::OnEnable";
 	donpcevent instance_npcname("oct_foot4")+"::OnEnable";
 	.@map$ = instance_mapname("1@cash");
-	monster (.@map$,20,114,"Tentáculo de Polvo#1",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
-	monster (.@map$,88,190,"Tentáculo de Polvo#2",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
-	monster (.@map$,307,215,"Tentáculo de Polvo#3",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
-	monster (.@map$,372,131,"Tentáculo de Polvo#4",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
+	monster(.@map$,20,114,"Tentáculo de Polvo#1",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
+	monster(.@map$,88,190,"Tentáculo de Polvo#2",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
+	monster(.@map$,307,215,"Tentáculo de Polvo#3",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
+	monster(.@map$,372,131,"Tentáculo de Polvo#4",2193,1,instance_npcname("pol_t_4")+"::OnMyMobDead");
 	end;
 OnDisable:
 	disablenpc instance_npcname("oct_foot_4");
@@ -629,7 +629,7 @@ OnEnable:
 OnCall:
 	.@map$ = instance_mapname("1@cash");
 	if (mobcount(.@map$,instance_npcname("oct_boss_foot")+"::OnMyMobDead") < 100) {
-		switch(rand(2)) {
+		switch (rand(2)) {
 		case 0:
 			mapannounce .@map$,"Polvo Gigante : Você sabe quantas pernas tem o polvo? Não importa, eu tenho pernas infinitas!!",bc_map,"0xFFFF00";
 			areamonster .@map$,192,181,206,195,"Tentáculo de Polvo",2193,1,instance_npcname("oct_boss_foot")+"::OnMyMobDead";

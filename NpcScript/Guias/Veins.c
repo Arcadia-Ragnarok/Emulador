@@ -18,7 +18,7 @@ veins,210,345,5	script	Guia#veiguide	4_M_RASWORD,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Veins^000000, o Vilarejo do Defiladeiro..";
 	next;
 	while (1) {
-		switch(select("[Templo]","[Estalagem]","[Bar]","[Loja de Armas]","[Loja de Utilidades]","[Aeroporto]","[Instituto de Pesquisa Geológica]","[Representante Eventos Inc.]","Remover marcadores do mini-mapa","Cancelar")) {
+		switch (select("[Templo]","[Estalagem]","[Bar]","[Loja de Armas]","[Loja de Utilidades]","[Aeroporto]","[Instituto de Pesquisa Geológica]","[Representante Eventos Inc.]","Remover marcadores do mini-mapa","Cancelar")) {
 			case 1:
 			mes "[Guia de Alberta]";
 			mes "Posição do^0000FF Templo^000000 marcado em seu mini mapa.";

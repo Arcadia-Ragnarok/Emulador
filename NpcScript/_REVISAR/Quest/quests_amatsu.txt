@@ -26,7 +26,7 @@ amatsu,223,236,3	script	Editora#ama	4_M_JPN,{
 		mes "Dokebis, assim como na história!";
 		mes "Você receberá recompensas.";
 		next;
-		switch(select("O que são as crônicas de Momotaro?","Quero tentar!","Estou ocupado agora...")) {
+		switch (select("O que são as crônicas de Momotaro?","Quero tentar!","Estou ocupado agora...")) {
 			case 1:
 			mes "[Editora]";
 			mes "Hã!? Como você não conhece Momotaro?";
@@ -546,7 +546,7 @@ ama_test,50,100,3	script	Treinador#ama	4_M_JPN2,15,15,{
 	mes "Momotaro da história!";
 	mes "Hohohoho...";
 	next;
-	switch(select("Bem, bem. não é nada","Foi chato")) {
+	switch (select("Bem, bem. não é nada","Foi chato")) {
 		case 1:
 		mes "[Treinador]";
 		mes "...Hahaha..";

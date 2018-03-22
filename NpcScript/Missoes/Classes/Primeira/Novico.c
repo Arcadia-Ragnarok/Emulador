@@ -26,7 +26,7 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				mes "[Bispo]";
 				mes "Ah, eu sinto seu vigor e experiência.";
 				mes "Você deve ter aprendido muitas coisas antes de entrar em Valhalla.";
-				jobchange (Job_Acolyte_High);
+				jobchange(Job_Acolyte_High);
 				close;
 			}
 		} else {
@@ -79,23 +79,23 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				next;
 				mes "[Bispo]";
 				mes "Deverá fazer uma peregrinação em busca da iluminação...";
-				switch(rand(3)) {
+				switch (rand(3)) {
 					case 1:
 					mes "Você deve visitar o ^000077Irmão Simão^000000.";
 					mes "Ele se isolou com o animais perto da ^000077Abadia ao Nordeste de Prontera^000000.";
 					acolyteq = 1;
-					setquest (1001);
+					setquest(1001);
 					break;
 					case 2:
 					mes "Você deve visitar a ^000077Irmâ Matilda^000000.";
 					mes "Ela se isolou no deserto, no mapa ao ^000077Norte de Morroc^000000.";
 					acolyteq = 2;
-					setquest (1002);
+					setquest(1002);
 					break;
 					default:
 					mes "Você deve visitar o ^000077Irmão Bartolomeu^000000.";
 					mes "Ele pode ser encontrado em uma ponte á ^000077Noroeste de Prontera^000000.";
-					setquest (1003);
+					setquest(1003);
 					acolyteq = 3;
 					break;
 				}
@@ -106,7 +106,7 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				close;
 			}
 		} else if (acolyteq < 4) {
-			switch(acolyteq) {
+			switch (acolyteq) {
 				case 1:
 				mes "[Bispo]";
 				mes "Vá visitar o ^000077Irmão Simão^000000.";
@@ -124,9 +124,9 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				close;
 			}
 		} else if (acolyteq == 4) {
-			if (questprogress(1001)) { completequest (1001); }
-			else if (questprogress(1002)) { completequest (1002); }
-			else if (questprogress(1003)) { completequest (1003); }
+			if (questprogress(1001)) { completequest(1001); }
+			else if (questprogress(1002)) { completequest(1002); }
+			else if (questprogress(1003)) { completequest(1003); }
 			mes "[Bispo]";
 			mes "Você retornou em segurança e completou sua peregrinação.";
 			mes "Isso enche meu coração de alegria.";
@@ -156,9 +156,9 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 				mes "Neste momento o recebo nos caminhos do Senhor e o torno "+(Sex == SEX_MALE ? "um Noviço":"uma Noviça")+".";
 				mes "Do mesmo modo que você não hesitou em sua penitência.";
 				mes "Espero que você nunca hesite frente ás tentações do pecado.";
-				getitem (N_Mace,1);
-				jobchange (Job_Acolyte);
-				callfunc ("ClearJobQuest");
+				getitem(N_Mace,1);
+				jobchange(Job_Acolyte);
+				callfunc("ClearJobQuest");
 				next;
 				mes "[Bispo]";
 				mes "Agora vá, e leve a esperança ao mundo.";
@@ -177,7 +177,7 @@ prt_fild03,365,255,2	script	Irmão Simão#nov	4_M_ORIENT02,{
 		mes "[Simão]";
 		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
 		next;
-		switch(acolyteq) {
+		switch (acolyteq) {
 			case 1:
 			mes "[Simão]";
 			mes "Eu acredito que você foi mandado pelo Bispo.";
@@ -249,7 +249,7 @@ moc_fild07,41,355,4	script	Irmã Matilda#acolyteq	4_F_SISTER,{
 		mes "[Matilda]";
 		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
 		next;
-		switch(acolyteq) {
+		switch (acolyteq) {
 			case 1:
 			mes "[Matilda]";
 			mes "Sua peregrinação visitar o ^000077Irmão Simão^000000.";
@@ -325,7 +325,7 @@ prt_fild00,208,218,6	script	Irmão Bartolomeu#acolyteq	4W_M_02,{
 		mes "[Bartolomeu]";
 		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
 		next;
-		switch(acolyteq) {
+		switch (acolyteq) {
 			case 1:
 			mes "[Bartolomeu]";
 			mes "Sua peregrinação visitar o ^000077Irmão Simão^000000.";

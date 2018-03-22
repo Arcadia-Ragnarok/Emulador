@@ -155,7 +155,7 @@ lou_in01,25,23,5	script	Garota Amigável#lo	4_F_CHNDRESS3,{
 	mes "Nós providenciamos um transporte seguro e rápido por um preço barato.";
 	mes "Você gostaria de usar este serviço?";
 	next;
-	switch(select("Informações", "Sim", "Cancelar")) {
+	switch (select("Informações","Sim","Cancelar")) {
 		case 1:
 		mes "[Hong Miao]";
 		mes "Depois de muitas sugestões e propostas sendo mandadas para o escritório de Turismo de Louyang.";
@@ -192,7 +192,7 @@ louyang,84,254,0	script	Saída#lou	HIDDEN_NPC,{
 	mes "^3355FFHá alguns aparatos para descer.";
 	mes "Você gostaria de usá-los?^000000";
 	next;
-	if (select("Sim", "Não") == 1) {
+	if (select("Sim","Não") == 1) {
 		close2;
 		warp("lou_in01", 10, 18);
 		end;

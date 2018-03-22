@@ -15,15 +15,15 @@
 alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 	if (BaseJob == Job_Alchemist) {
 		mes "[Gever Al Sharp]";
-		mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " guila dos alquimistas";
+		mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" guila dos alquimistas";
 		mes "Em que posso ajudar?";
 		next;
-		switch(select("Comprar Materiais", "Comprar Manuais", "Cancelar")) {
+		switch (select("Comprar Materiais","Comprar Manuais","Cancelar")) {
 			case 1:
 			mes "[Gever Al Sharp]";
 			mes "Qual material gostaria de comprar?";
 			next;
-			switch(select(getitemname(Medicine_Bowl) + " 250 Zenys", getitemname(Life_Force_Pot) + " 5.000 Zenys", getitemname(Yggdrasilberry_Dew) + " 20.000 Zenys", getitemname(Seed_Of_Life) + " 60.000 Zenys", "Cancelar")) {
+			switch (select(getitemname(Medicine_Bowl)+" 250 Zenys", getitemname(Life_Force_Pot)+" 5.000 Zenys", getitemname(Yggdrasilberry_Dew)+" 20.000 Zenys", getitemname(Seed_Of_Life)+" 60.000 Zenys","Cancelar")) {
 				case 1: .@item = 7134; .@price = 250; break;
 				case 2: .@item = 7143; .@price = 5000; break;
 				case 3: .@item = 7141; .@price = 20000; break;
@@ -50,7 +50,7 @@ alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 				mes "O preço pelos Manuais de Criação são 100.000 zenys cada.";
 				mes "Qual gostaria de comprar?";
 				next;
-				switch (select("Manual de Criação de Poções", "Manual de Criação de Álcool", "Manual de Criação de Fogo Grego", "Manual de Criação de Frasco de Ácido", "Manual de Criação de Plantas", "Manual de Criação de Esferas-Marinhas", "Manual de Criação de Revestimentos", "Manual de Criação de Poções Compacta", "Cancelar Negociação.")) {
+				switch (select("Manual de Criação de Poções","Manual de Criação de Álcool","Manual de Criação de Fogo Grego","Manual de Criação de Frasco de Ácido","Manual de Criação de Plantas","Manual de Criação de Esferas-Marinhas","Manual de Criação de Revestimentos","Manual de Criação de Poções Compacta","Cancelar Negociação.")) {
 					case 1:
 					mes "[Gever Al Sharp]";
 					mes "Está aqui seu Manual de Criação de Poções Comuns.";
@@ -112,7 +112,7 @@ alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 			close;
 		}
 		mes "[Gever Al Sharp]";
-		mes "Digite a quantidade de " + getitemname(.@item) + " que deseja.";
+		mes "Digite a quantidade de "+getitemname(.@item)+" que deseja.";
 		mes "Se quiser cancelar digite '0'.";
 		mes "E só posso vender até 1000 itens por vez.";
 		next;
@@ -128,7 +128,7 @@ alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 		} else {
 			.@total_weight = .@input * 10;
 			mes "[Gever Al Sharp]";
-			mes "Então você quer comprar " + .@input + " "+getitemname(.@item) + "?";
+			mes "Então você quer comprar "+.@input+" "+getitemname(.@item)+"?";
 			if ((MaxWeight - Weight) < .@total_weight) {
 				mes " Mas infelismente pareceque você carrega muito peso, e não vai poder levar tudo.";
 				mes "Se diminua o peso em itens que carrega, depois venha negociar comigo.";
@@ -136,7 +136,7 @@ alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 			}
 			next;
 			.@total_price = .@input * .@price;
-			if (select("Comprar", "Cancelar") == 1) {
+			if (select("Comprar","Cancelar") == 1) {
 				if (Zeny < .@total_price) {
 					mes "[Gever Al Sharp]";
 					mes "Você não possui zeny o suficiente.";
@@ -147,7 +147,7 @@ alde_alche,24,188,3	script	Comerciante da Guilda#aSharp	2_M_ALCHE,{
 					mes "Foi um prazer fazer negócios com você.";
 					mes "Volte sempre.";
 					Zeny -= .@total_price;
-					getitem (.@item,.@input);
+					getitem(.@item,.@input);
 					close;
 				}
 			}

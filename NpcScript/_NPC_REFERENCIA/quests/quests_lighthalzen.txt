@@ -418,7 +418,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "It's like I'm";
 			mes "doing this for free...";
 			next;
-			if (select("Okay.", "No! It's impossible!") == 1) {
+			if (select("Okay.","No! It's impossible!") == 1) {
 				mes "[Fishbone]";
 				mes "Alright, then";
 				mes "bring me back a";
@@ -445,7 +445,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "Did you bring";
 			mes "the stuff?";
 			next;
-			switch(select("I'm still working on it.", "Here you go!", "Um... Stuff?")) {
+			switch (select("I'm still working on it.","Here you go!","Um... Stuff?")) {
 			case 1:
 				mes "[Fishbone]";
 				mes "Still working on it?";
@@ -518,7 +518,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 				mes "can find the Lab entrance.";
 			}
 			next;
-			switch(select("Not yet.", "Yes.")) {
+			switch (select("Not yet.","Yes.")) {
 			case 1:
 				mes "[Fishbone]";
 				mes "Eh...?";
@@ -533,7 +533,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "here we go!";
 			close2;
 			lhz_sincube = 7;
-			switch(rand(1,3)) {
+			switch (rand(1,3)) {
 			case 1: warp "lhz_cube",67,193; break;
 			case 2: warp "lhz_cube",66,136; break;
 			case 3: warp "lhz_cube",66,74; break;
@@ -555,7 +555,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "you want me to send";
 			mes "you there again?";
 			next;
-			if (select("No.", "Yes.") == 1) {
+			if (select("No.","Yes.") == 1) {
 				mes "[Fishbone]";
 				mes "Geez, you must have";
 				mes "really had a hard time";
@@ -573,7 +573,7 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "here we go...!";
 			close2;
 			lhz_sincube = 7;
-			switch(rand(1,3)) {
+			switch (rand(1,3)) {
 			case 1: warp "lhz_cube",67,193; break;
 			case 2: warp "lhz_cube",66,136; break;
 			case 3: warp "lhz_cube",66,74; break;
@@ -618,13 +618,13 @@ lighthalzen,341,224,3	script	Fishbone	4_M_LGTGUARD,{
 			mes "send you back there. So";
 			mes "what do you say?";
 			next;
-			if (select("Sure", "No thanks") == 1) {
+			if (select("Sure","No thanks") == 1) {
 				mes "[Fishbone]";
 				mes "Okay then, here";
 				mes "we go! Good luck";
 				mes "to you, buddy.";
 				close2;
-				switch(rand(1,3)) {
+				switch (rand(1,3)) {
 				case 1: warp "lhz_cube",67,193; break;
 				case 2: warp "lhz_cube",66,136; break;
 				case 3: warp "lhz_cube",66,74; break;
@@ -681,7 +681,7 @@ lhz_cube,237,198,0	script	Bundle of Files#cube	HIDDEN_NPC,{
 			mes "sorts of information,";
 			mes "but they're all mixed up.^000000";
 			next;
-			if (select("Rummage through the files.", "Cancel") == 1) {
+			if (select("Rummage through the files.","Cancel") == 1) {
 				mes "^3355FFWhile you are";
 				mes "rummaging through";
 				mes "the files, a Red Key";
@@ -714,7 +714,7 @@ lhz_cube,234,202,0	script	Picture#cube	HIDDEN_NPC,{
 		mes "your attention for some";
 		mes "inexplicably strange reason.^000000";
 		next;
-		if (select("Look behind picture.", "Cancel") == 1) {
+		if (select("Look behind picture.","Cancel") == 1) {
 			mes "^3355FFYou push and pull";
 			mes "with all your strength,";
 			mes "but the picture won't";
@@ -730,7 +730,7 @@ lhz_cube,234,202,0	script	Picture#cube	HIDDEN_NPC,{
 		mes "your attention for some";
 		mes "inexplicably strange reason.^000000";
 		next;
-		if (select("Look behind picture.", "Cancel") == 1) {
+		if (select("Look behind picture.","Cancel") == 1) {
 			mes "^3355FFYou push and pull";
 			mes "with all your strength,";
 			mes "but this picture is too";
@@ -794,7 +794,7 @@ lhz_cube,234,202,0	script	Picture#cube	HIDDEN_NPC,{
 	mes "^3355FFThere is a picture";
 	mes "hanging on the wall.^000000";
 	next;
-	if (select("Look beneath picture.", "Cancel") == 1) {
+	if (select("Look beneath picture.","Cancel") == 1) {
 		mes "^3355FFThere are some";
 		mes "numbers behind the";
 		mes "picture, but now there is";
@@ -858,7 +858,7 @@ lhz_cube,248,179,0	script	Chest#cube	HIDDEN_NPC,{
 		mes "there is a utility Axe";
 		mes "laid on top of it.^000000";
 		next;
-		if (select("Take the utility Axe.", "Cancel") == 1) {
+		if (select("Take the utility Axe.","Cancel") == 1) {
 			mes "^3355FFWithout shame or";
 			mes "an ounce of guilt, you";
 			mes "pick up the utility ^000000Axe^3355FF";
@@ -929,7 +929,7 @@ lhz_cube,237,183,0	script	Barrel#cube	HIDDEN_NPC,{
 			close;
 		}
 		else if (lhz_secret01 >= 3 && lhz_secret01 <= 5) {
-			switch(lhz_secret01) {
+			switch (lhz_secret01) {
 			case 3: setarray .@numbers[0],4,3,2,9,1,6,8,2,7; break;
 			case 4: setarray .@numbers[0],3,6,4,1,2,8,7,1,5; break;
 			case 5: setarray .@numbers[0],4,9,3,7,6,2,8,6,6; break;
@@ -1041,7 +1041,7 @@ lhz_cube,244,201,0	script	Status Light#cube	HIDDEN_NPC,{
 		mes "is now off and the";
 		mes "bulb has cooled down.";
 		next;
-		if (select("Smash the light bulb.", "Cancel") == 1) {
+		if (select("Smash the light bulb.","Cancel") == 1) {
 			mes "^3355FFYou smash the";
 			mes "Status Light's bulb";
 			mes "and discover another key.";
@@ -1061,7 +1061,7 @@ lhz_cube,234,200,0	script	Desk#cube	HIDDEN_NPC,{
 		mes "a completely";
 		mes "cluttered desk.^000000";
 		next;
-		switch(select("On the desk", "Under the desk", "Desk drawer")) {
+		switch (select("On the desk","Under the desk","Desk drawer")) {
 		case 1:
 			mes "^3355FFVarious documents,";
 			mes "books and lab equipment";
@@ -1104,7 +1104,7 @@ lhz_cube,234,200,0	script	Desk#cube	HIDDEN_NPC,{
 		mes "who has someone else";
 		mes "do his desk tidying for him.^000000";
 		next;
-		switch(select("On the desk", "Under the desk", "Desk drawer")) {
+		switch (select("On the desk","Under the desk","Desk drawer")) {
 		case 1:
 			mes "^3355FFAlas, no matter how much";
 			mes "you rummage through it,";
@@ -1159,7 +1159,7 @@ lhz_cube,234,200,0	script	Desk#cube	HIDDEN_NPC,{
 	mes "objects, but such is its";
 	mes "destiny as office equipment.^000000";
 	next;
-	switch(select("On the desk", "Under the desk", "Desk drawer")) {
+	switch (select("On the desk","Under the desk","Desk drawer")) {
 	case 1:
 		mes "^3355FFAlas, no matter how much";
 		mes "you rummage through it,";
@@ -1198,7 +1198,7 @@ lhz_cube,247,198,0	script	Bed#cube	HIDDEN_NPC,{
 		mes "in which the sheets";
 		mes "are slovenly arranged.^000000";
 		next;
-		if (select("On the bed", "Under the bed") == 1) {
+		if (select("On the bed","Under the bed") == 1) {
 			mes "^3355FFNo one's in the bed";
 			mes "and if you climbed in,";
 			mes "you'd just be alone. For";
@@ -1221,7 +1221,7 @@ lhz_cube,247,198,0	script	Bed#cube	HIDDEN_NPC,{
 		mes "in which the sheets";
 		mes "are slovenly arranged.^000000";
 		next;
-		if (select("On the bed", "Under the bed") == 1) {
+		if (select("On the bed","Under the bed") == 1) {
 			mes "^3355FFNo one's in the bed";
 			mes "and if you climbed in,";
 			mes "you'd just be alone. For";
@@ -1250,7 +1250,7 @@ lhz_cube,247,198,0	script	Bed#cube	HIDDEN_NPC,{
 		mes "in which the sheets";
 		mes "are slovenly arranged.^000000";
 		next;
-		if (select("On the bed", "Under the bed") == 1) {
+		if (select("On the bed","Under the bed") == 1) {
 			mes "^3355FFNo one's in the bed";
 			mes "and if you climbed in,";
 			mes "you'd just be alone. For";
@@ -1288,7 +1288,7 @@ lhz_cube,247,198,0	script	Bed#cube	HIDDEN_NPC,{
 		mes "bed that may be more";
 		mes "than meets the eye.^000000";
 		next;
-		if (select("On the bed", "Under the bed") == 1) {
+		if (select("On the bed","Under the bed") == 1) {
 			mes "^3355FFNo one's in the bed";
 			mes "and if you climbed in,";
 			mes "you'd just be alone. For";
@@ -1326,7 +1326,7 @@ lhz_cube,247,198,0	script	Bed#cube	HIDDEN_NPC,{
 	mes "in which the sheets";
 	mes "are slovenly arranged.^000000";
 	next;
-	if (select("On the bed", "Under the bed") == 1) {
+	if (select("On the bed","Under the bed") == 1) {
 		mes "^3355FFNo one's in the bed";
 		mes "and if you climbed in,";
 		mes "you'd just be alone. For";
@@ -1348,7 +1348,7 @@ lhz_cube,229,184,0	script	Goblet#cube	HIDDEN_NPC,{
 			mes "It looks like you";
 			mes "missed the party.^000000";
 			next;
-			if (select("Examine the goblet.", "Cancel") == 1) {
+			if (select("Examine the goblet.","Cancel") == 1) {
 				mes "^3355FFInside the goblet,";
 				mes "you find a ^000000Rusty Key^3355FF";
 				mes "which you decide to keep.";
@@ -1424,7 +1424,7 @@ lhz_cube,249,191,0	script	Cabinet#cube	HIDDEN_NPC,{
 		mes "many drawers. Perhaps";
 		mes "something useful is inside?";
 		next;
-		if (select("Open", "Cancel") == 1) {
+		if (select("Open","Cancel") == 1) {
 			input .@input$;
 			mes "^3355FFUnfortunately, the";
 			mes "cabinet has been locked.";
@@ -1534,7 +1534,7 @@ lhz_cube,224,197,0	script	Experiment Tube#cube	HIDDEN_NPC,{
 					mes "ground splits open, revealing";
 					mes "an underground staircase.^000000";
 					next;
-					if (select("Go downstairs", "Cancel") == 1) {
+					if (select("Go downstairs","Cancel") == 1) {
 						mes "^3355FFYou walk down";
 						mes "the long flight";
 						mes "of winding stairs...^000000";
@@ -1574,7 +1574,7 @@ lhz_cube,248,193,0	script	Box#cube1	HIDDEN_NPC,{
 		mes "three distinctively";
 		mes "shaped holes.^000000";
 		next;
-		select("Oval Hole", "Cubic Hole", "Polygon Hole");
+		select("Oval Hole","Cubic Hole","Polygon Hole");
 		input .@input$;
 		mes "^3355FFNothing happened.^000000";
 		close;
@@ -1584,7 +1584,7 @@ lhz_cube,248,193,0	script	Box#cube1	HIDDEN_NPC,{
 		mes "three distinctively";
 		mes "shaped holes.^000000";
 		next;
-		switch(select("Oval Hole", "Cube Hole", "Polygon Hole")) {
+		switch (select("Oval Hole","Cube Hole","Polygon Hole")) {
 		case 1:
 			if (lhz_secret01 == 9) {
 				next;
@@ -1674,7 +1674,7 @@ lhz_cube,248,193,0	script	Box#cube1	HIDDEN_NPC,{
 		mes "are now filled with the";
 		mes "objects you've inserted.^000000";
 		next;
-		if (select("Open the box.", "Cancel") == 1) {
+		if (select("Open the box.","Cancel") == 1) {
 			mes "^3355FFYou open the box";
 			mes "and find that there's";
 			mes "a small card labeled";
@@ -1701,7 +1701,7 @@ lhz_cube,250,184,0	script	Door#cube	HIDDEN_NPC,{
 	mes "^3355FFYou've come upon a";
 	mes "door that leads outside.^000000";
 	next;
-	if (select("Exit", "Cancel") == 1) {
+	if (select("Exit","Cancel") == 1) {
 		warp "lighthalzen",310,302;
 		end;
 	}
@@ -1726,7 +1726,7 @@ lighthalzen,240,216,4	script	Suspicious Guy#lhz_01	4_M_LGTPOOR,2,2,{
 	end;
 
 OnTouch:
-	switch(rand(1,3)) {
+	switch (rand(1,3)) {
 	case 1:
 		mes "^3355FF*SHHHHHHUK!*^000000";
 		specialeffect EF_STEAL;
@@ -1734,7 +1734,7 @@ OnTouch:
 			Zeny -= 100;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I sense something...";
 		mes "No. It might just";
@@ -1750,7 +1750,7 @@ OnTouch:
 			Zeny -= 200;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I could have sworn";
 		mes "that these pockets full";
@@ -1767,7 +1767,7 @@ OnTouch:
 			Zeny -= 10;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "What the?!";
 		mes "That guy, did he just...?";
@@ -1799,7 +1799,7 @@ OnInit:
 	end;
 
 OnTouch:
-	switch(rand(1,3)) {
+	switch (rand(1,3)) {
 	case 1:
 		mes "^3355FF*SHHHHHHUK!*^000000";
 		specialeffect EF_STEAL;
@@ -1807,7 +1807,7 @@ OnTouch:
 			Zeny -= 100;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I sense something...";
 		mes "No. It might just";
@@ -1823,7 +1823,7 @@ OnTouch:
 			Zeny -= 200;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I could have sworn";
 		mes "that these pockets full";
@@ -1840,7 +1840,7 @@ OnTouch:
 			Zeny -= 10;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "What the?!";
 		mes "That guy, did he just...?";
@@ -1871,7 +1871,7 @@ OnInit:
 	end;
 
 OnTouch:
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 	case 1:
 	case 2:
 		mes "^3355FF*SHHHHHHUK!*^000000";
@@ -1880,7 +1880,7 @@ OnTouch:
 			Zeny -= 100;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I sense something...";
 		mes "No. It might just";
@@ -1897,7 +1897,7 @@ OnTouch:
 			Zeny -= 200;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "I could have sworn";
 		mes "that these pockets full";
@@ -1914,7 +1914,7 @@ OnTouch:
 			Zeny -= 10;
 		}
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "What the?!";
 		mes "That guy, did he just...?";
@@ -1926,7 +1926,7 @@ OnTouch:
 		mes "Gotta scram!";
 		mes "Eat my dust, good gu--!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh no, you don't!";
 		mes "I'm turning you in,";
 		mes "you pickpocket!";
@@ -1938,7 +1938,7 @@ OnTouch:
 		mes "let me go! Crap!";
 		emotion e_sob;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Alright, fine,";
 		mes "but you better quit";
 		mes "this life of crime!";
@@ -1959,7 +1959,7 @@ OnTouch:
 		mes "cost 15,000 zeny. So";
 		mes "what do you say?";
 		next;
-		switch(select("Give me 1.", "Give me 2.", "Give me 3.", "No, I'm fine.")) {
+		switch (select("Give me 1.","Give me 2.","Give me 3.","No, I'm fine.")) {
 		case 1: .@number = 1; .@price = 15000*1; break;
 		case 2: .@number = 2; .@price = 15000*2; break;
 		case 3: .@number = 3; .@price = 15000*3; break;
@@ -2155,7 +2155,7 @@ lhz_in02,201,210,5	script	Digotz	4_M_LGTMAN,{
 		mes "Na verdade, sabe de uma coisa?";
 		mes "Eu acho que ficaria maluco!";
 		next;
-		if (select("Mostre o Diário de Benkaistein", "Não mostre o Diário de Benkaistein") == 1) {
+		if (select("Mostre o Diário de Benkaistein","Não mostre o Diário de Benkaistein") == 1) {
 			mes "[Digotz]";
 			mes "Porque eu estou tão irritado?";
 			mes "^3355FF*Suspiro*^3355FF Você tem algo para";
@@ -2301,7 +2301,7 @@ lhz_in02,201,210,5	script	Digotz	4_M_LGTMAN,{
 		mes "para Maku? Pensando nisso agora,";
 		mes "eu fui meio...";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Eu entreguei a mensagem";
 		mes "palavra por palavra, e Maku";
 		mes "ficou tão bravo, xingou muito";
@@ -2376,7 +2376,7 @@ lhz_in02,201,210,5	script	Digotz	4_M_LGTMAN,{
 		mes "já visitou o bairro pobre?";
 		next;
 		select("Sim, já...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Sim, já...";
 		mes "E lá conheci um tal";
 		mes "de Maku.";
@@ -2676,7 +2676,7 @@ lighthalzen,337,232,3	script	Maku	4_M_LGTPOOR,{
 		mes "Bem, se ele se desculpar primeiro,";
 		mes "acho que é melhor eu perdoá-lo.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Bom...";
 		mes "Porque Digotz disse";
 		mes "que ele está vindo para";
@@ -2810,7 +2810,7 @@ lighthalzen,337,232,3	script	Maku	4_M_LGTPOOR,{
 		mes "aquele idiota esnobe do Digotz.";
 		next;
 		select("Falando nele...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Falando nele...";
 		mes "Eu conversei de novo com Digotz.";
 		mes "Ele me disse para dar um";
@@ -3265,7 +3265,7 @@ yuno_in04,96,106,5	script	Passionate Student	4_M_SAGE_A,{
 		mes "Maku e Digotz falaram.^000000 ";
 		next;
 		select("Com licença...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Com licença...";
 		mes "Benkaistein?";
 		next;
@@ -3278,7 +3278,7 @@ yuno_in04,96,106,5	script	Passionate Student	4_M_SAGE_A,{
 		mes "Hmm, isso deve ajudar...";
 		next;
 		select("Ei...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Ei...";
 		mes "Você ai.";
 		mes "Benkaistein!";
@@ -3292,7 +3292,7 @@ yuno_in04,96,106,5	script	Passionate Student	4_M_SAGE_A,{
 		mes "ficaria muito mais sólida...";
 		next;
 		select("HEY YOU...!");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "HEI VOCÊ...!";
 		mes "BENKAISTEIN...!";
 		next;
@@ -4323,7 +4323,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 			mes "of the burden that";
 			mes "you are carrying.";
 			next;
-			switch(select("Um, burden...?", "Crazy old woman!")) {
+			switch (select("Um, burden...?","Crazy old woman!")) {
 			case 1:
 				mes "[Elder]";
 				mes "Ah yes, they may not";
@@ -4376,7 +4376,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 				mes "clothes. Tell me, have you";
 				mes "wronged anyone recently?!";
 				next;
-				select("I don't... think so.", "I can't remember every bad thing I've done!");
+				select("I don't... think so.","I can't remember every bad thing I've done!");
 				mes "[Elder]";
 				mes "Well, you better do";
 				mes "something soon, before";
@@ -4464,7 +4464,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 				mes "the remains of the spirits";
 				mes "that still cling to this plane?";
 				next;
-				switch(select("Show him the Pendant.", "Cancel")) {
+				switch (select("Show him the Pendant.","Cancel")) {
 				case 1:
 					mes "[Elder]";
 					mes "Oh my... There are some";
@@ -4577,7 +4577,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 			mes "You look innocent enough";
 			mes "to become a victim in the city.";
 			next;
-			switch(select("About Lighthalzen", "About the Slum", "????")) {
+			switch (select("About Lighthalzen","About the Slum","????")) {
 			case 1:
 				mes "[Elder]";
 				mes "Lighthalzen might seem";
@@ -4648,7 +4648,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 			mes "You look innocent enough";
 			mes "to become a victim in the city.";
 			next;
-			switch(select("About Lighthalzen", "About the Slum", "????")) {
+			switch (select("About Lighthalzen","About the Slum","????")) {
 			case 1:
 				mes "[Elder]";
 				mes "Lighthalzen might seem";
@@ -4717,7 +4717,7 @@ lighthalzen,346,263,3	script	Elder#lhz	4_F_EINOLD,{
 			mes "You look innocent enough";
 			mes "to become a victim in the city.";
 			next;
-			switch(select("About Lighthalzen", "About the Slum", "????")) {
+			switch (select("About Lighthalzen","About the Slum","????")) {
 			case 1:
 				mes "[Elder]";
 				mes "Lighthalzen might seem";
@@ -4917,7 +4917,7 @@ lhz_in03,32,162,3	script	Crippled Girl#li_tre	1_M_INNKEEPER,{
 		mes "somebody, that's all.";
 		if (lhz_curse == 19) {
 			next;
-			switch(select("Show her the Pendant.", "Okay, have a good day.")) {
+			switch (select("Show her the Pendant.","Okay, have a good day.")) {
 			case 1:
 				break;
 			case 2:
@@ -4948,7 +4948,7 @@ lhz_in03,32,162,3	script	Crippled Girl#li_tre	1_M_INNKEEPER,{
 			mes "Actually, um,";
 			mes "you know what...?";
 			next;
-			switch(select("Brutal Truth", "Break it to her gently")) {
+			switch (select("Brutal Truth","Break it to her gently")) {
 			case 1:
 				mes "...";
 				mes "......";
@@ -5048,7 +5048,7 @@ lhz_in03,32,162,3	script	Crippled Girl#li_tre	1_M_INNKEEPER,{
 					mes "^FF0000Tears fall from the";
 					mes "girl's face, then you...^000000";
 					next;
-					switch(select("Distract her", "Comfort her")) {
+					switch (select("Distract her","Comfort her")) {
 					case 1:
 						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "Oh, all of this was a play...";
@@ -5240,7 +5240,7 @@ lhz_in01,114,181,5	script	Representative#li_01	1_F_LIBRARYGIRL,{
 		mes "to the Rekenber Corporation.";
 		mes "How may I be of service today?";
 		next;
-		switch(select("Building Information", "Corporation History")) {
+		switch (select("Building Information","Corporation History")) {
 		case 1:
 			mes "[Representative]";
 			mes "Please tell me";
@@ -5248,7 +5248,7 @@ lhz_in01,114,181,5	script	Representative#li_01	1_F_LIBRARYGIRL,{
 			mes "to know more about.";
 			next;
 			while (1) {
-				switch(select("1F", "2F", "B1", "Cancel")) {
+				switch (select("1F","2F","B1","Cancel")) {
 				case 1:
 					mes "[Representative]";
 					mes "The ^3131FFRekenber Library^000000 can";
@@ -5326,7 +5326,7 @@ lhz_in01,114,181,5	script	Representative#li_01	1_F_LIBRARYGIRL,{
 		mes "to the Rekenber Corporation.";
 		mes "How may I be of service today?";
 		next;
-		switch(select("Building Information.")) {
+		switch (select("Building Information.")) {
 		case 1:
 			mes "[Representative]";
 			mes "Please tell me";
@@ -5334,7 +5334,7 @@ lhz_in01,114,181,5	script	Representative#li_01	1_F_LIBRARYGIRL,{
 			mes "to know more about.";
 			next;
 			while (1) {
-				switch(select("1F", "2F", "B1", "Cancel")) {
+				switch (select("1F","2F","B1","Cancel")) {
 				case 1:
 					mes "[Representative]";
 					mes "The ^3131FFRekenber Library^000000 can";
@@ -5399,7 +5399,7 @@ lhz_in01,27,247,5	script	Representative#li_02	1_F_LIBRARYGIRL,{
 		mes "Rekenber Corporation.";
 		mes "How may I help you?";
 		next;
-		switch(select("Corporation History", "Rekenber's Businesses")) {
+		switch (select("Corporation History","Rekenber's Businesses")) {
 		case 1:
 			mes "[Representative]";
 			mes "Rekenber was established";
@@ -5468,7 +5468,7 @@ lhz_in01,27,247,5	script	Representative#li_02	1_F_LIBRARYGIRL,{
 		mes "Rekenber Corporation.";
 		mes "How may I help you?";
 		next;
-		switch(select("Building Information.")) {
+		switch (select("Building Information.")) {
 		case 1:
 			mes "[Representative]";
 			mes "Please tell me";
@@ -5476,7 +5476,7 @@ lhz_in01,27,247,5	script	Representative#li_02	1_F_LIBRARYGIRL,{
 			mes "to know more about.";
 			next;
 			while (1) {
-				switch(select("1F", "2F", "B1", "Cancel")) {
+				switch (select("1F","2F","B1","Cancel")) {
 				case 1:
 					mes "[Representative]";
 					mes "The ^3131FFRekenber Library^000000 can";
@@ -5579,7 +5579,7 @@ lhz_in01,273,121,1	script	Mad Scientist#li	4_LGTSCIENCE,{
 		mes "dare, I'll simply...";
 		mes "Eat you. Eat you alive.";
 		next;
-		switch(select("No... N-no!", "Do you need any help?")) {
+		switch (select("No... N-no!","Do you need any help?")) {
 		case 1:
 			mes "[Wolfchev]";
 			mes "Out of my sight,";
@@ -5604,7 +5604,7 @@ lhz_in01,273,121,1	script	Mad Scientist#li	4_LGTSCIENCE,{
 		mes "you want from me?!";
 		emotion e_ag,"Mad Scientist#li";
 		next;
-		switch(select("Let me speak with you.", "Sorry for bothering you.")) {
+		switch (select("Let me speak with you.","Sorry for bothering you.")) {
 		case 1:
 			mes "[Wolfchev]";
 			mes "I don't have time to";
@@ -5644,7 +5644,7 @@ lhz_in01,273,121,1	script	Mad Scientist#li	4_LGTSCIENCE,{
 			mes "You're not as dumb";
 			mes "as I thought you'd be!";
 			next;
-			switch(select("Why do you want Glass Beads?")) {
+			switch (select("Why do you want Glass Beads?")) {
 			case 1:
 				mes "[Wolfchev]";
 				mes "..................";
@@ -5665,7 +5665,7 @@ lhz_in01,273,121,1	script	Mad Scientist#li	4_LGTSCIENCE,{
 			mes "what is it you want to know?!";
 			next;
 			while (1) {
-				switch(select("Ask about hobbies", "Ask about work")) {
+				switch (select("Ask about hobbies","Ask about work")) {
 				case 1:
 					if (Sex == SEX_MALE) {
 						mes "[Wolfchev]";
@@ -5709,7 +5709,7 @@ lhz_in01,273,121,1	script	Mad Scientist#li	4_LGTSCIENCE,{
 				}
 				if (.@exit) break;
 			}
-			switch(select("What kind of research?")) {
+			switch (select("What kind of research?")) {
 			case 1:
 				mes "[Wolfchev]";
 				mes "Well, I couldn't tell you";
@@ -5779,7 +5779,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 		mes "direct you to someone qualified";
 		mes "to give you an answer.";
 		next;
-		switch(select("About the Slums", "About Secretary Slierre")) {
+		switch (select("About the Slums","About Secretary Slierre")) {
 		case 1:
 			mes "[Sueii Slierre]";
 			mes "The slums? All I know";
@@ -5807,7 +5807,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 		mes "tell you who to contact for";
 		mes "more specific inquiries.";
 		next;
-		switch(select("About the Laboratory", "About the Corporation")) {
+		switch (select("About the Laboratory","About the Corporation")) {
 		case 1:
 			mes "[Sueii Slierre]";
 			mes "Rekenber is perhaps the";
@@ -5841,7 +5841,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 		mes "doubt that I can be of";
 		mes "any assistance to you.";
 		next;
-		switch(select("Wolfchev's Research")) {
+		switch (select("Wolfchev's Research")) {
 		case 1:
 			mes "[Sueii Slierre]";
 			mes ".............!";
@@ -5852,7 +5852,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "Wolfchev? Are you an";
 			mes "acquaintance of his or...?";
 			next;
-			switch(select("I'm a friend of his.", "Oh, we're family, you know...", "I've heard about him before, so...")) {
+			switch (select("I'm a friend of his.","Oh, we're family, you know...","I've heard about him before, so...")) {
 			case 1:
 				mes "[Sueii Slierre]";
 				mes "Well, Wolfchev is not";
@@ -5886,7 +5886,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "so please visit our Help Desk";
 			mes "if you have further inquiries.";
 			next;
-			switch(select("W-Wait!", "Alright, I understand.")) {
+			switch (select("W-Wait!","Alright, I understand.")) {
 			case 1:
 				mes "[Sueii Slierre]";
 				mes "...";
@@ -5919,7 +5919,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "Well, if you have something";
 			mes "to ask, be quick about it.";
 			next;
-			switch(select("Wolfchev's Past", "Wolfchev's Test Subjects")) {
+			switch (select("Wolfchev's Past","Wolfchev's Test Subjects")) {
 			case 1:
 				mes "[Sueii Slierre]";
 				mes "I remember hearing that he";
@@ -5946,7 +5946,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "methods depending on the";
 			mes "experiment. And of course, he should only be testing on animals.";
 			next;
-			switch(select("Wolfchev's research is great!", "His experiments are suspicious...")) {
+			switch (select("Wolfchev's research is great!","His experiments are suspicious...")) {
 			case 1:
 				mes "[Sueii Slierre]";
 				mes "Yes, yes, I'd agree if";
@@ -5965,7 +5965,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 				mes "to illustrate your claim for us";
 				mes "to be on the same page...";
 				next;
-				switch(select("Show Evidence", "Cancel")) {
+				switch (select("Show Evidence","Cancel")) {
 				case 1:
 					if (countitem(Armlet_Of_Prisoner) > 0) {
 						mes "^3355FFYou reveal the Handcuffs";
@@ -5978,7 +5978,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 						mes "...";
 						mes "......";
 						next;
-						select("What's Regenschirm up to?", "What's Wolfchev up to?");
+						select("What's Regenschirm up to?","What's Wolfchev up to?");
 						mes "[Sueii Slierre]";
 						mes "...";
 						mes "......";
@@ -5990,7 +5990,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 						mes "Wolfchev's research in";
 						mes "the Regenschirm Laboratory?";
 						next;
-						switch(select("Yes", "No")) {
+						switch (select("Yes","No")) {
 						case 1:
 							break;
 						case 2:
@@ -6001,7 +6001,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 							mes "party do you feel is most";
 							mes "at fault in this situation?";
 							next;
-							switch(select("Regenschirm", "Mr. Wolfchev")) {
+							switch (select("Regenschirm","Mr. Wolfchev")) {
 							case 1:
 								mes "[Sueii Slierre]";
 								mes "Let me assure you that";
@@ -6011,7 +6011,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 								mes "prevention of unnecessary";
 								mes "cruelty in experimentation.";
 								next;
-								switch(select("What about the creatures in Regenschirm?")) {
+								switch (select("What about the creatures in Regenschirm?")) {
 								case 1:
 									mes "[Sueii Slierre]";
 									mes "Creatures? I would";
@@ -6086,7 +6086,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "...";
 			mes "......";
 			next;
-			select("What's Regenschirm up to?", "What's Wolfchev up to?");
+			select("What's Regenschirm up to?","What's Wolfchev up to?");
 			mes "[Sueii Slierre]";
 			mes "...";
 			mes "......";
@@ -6098,7 +6098,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 			mes "Wolfchev's research in";
 			mes "the Regenschirm Laboratory?";
 			next;
-			switch(select("Yes", "No")) {
+			switch (select("Yes","No")) {
 			case 1:
 				break;
 			case 2:
@@ -6109,7 +6109,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 				mes "party do you feel is most";
 				mes "at fault in this situation?";
 				next;
-				switch(select("Regenschirm", "Mr. Wolfchev")) {
+				switch (select("Regenschirm","Mr. Wolfchev")) {
 				case 1:
 					mes "[Sueii Slierre]";
 					mes "Let me assure you that";
@@ -6119,7 +6119,7 @@ lhz_in01,286,226,3	script	Secretary Slierre#li	4_F_ZONDAGIRL,{
 					mes "prevention of unnecessary";
 					mes "cruelty in experimentation.";
 					next;
-					switch(select("What about the creatures in Regenschirm?")) {
+					switch (select("What about the creatures in Regenschirm?")) {
 					case 1:
 						mes "[Sueii Slierre]";
 						mes "Creatures? I would";
@@ -6321,7 +6321,7 @@ lhz_in01,269,114,3	script	A File#li-1	HIDDEN_NPC,{
 //== President Quest, a.k.a. Schwartzvalt Triology Quest ===
 lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 
-	if(!lhz_boss)
+	if (!lhz_boss)
 	{
 		mes "[Ghalstein]";
 		mes "Hello there";
@@ -6330,7 +6330,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "all of its splendor and";
 		mes "magnificent beauty?";
 		next;
-		switch( select( "I guess.","Yes, it is.","Well, I don't know." ) )
+		switch ( select( "I guess.","Yes, it is.","Well, I don't know." ) )
 		{
 			case 1:
 				mes "[Ghalstein]";
@@ -6359,7 +6359,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				break;
 		}
 		next;
-		if(BaseLevel < 60)
+		if (BaseLevel < 60)
 		{
 			mes "[Ghalstein]";
 			mes "Ha ha ha!";
@@ -6380,9 +6380,9 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		lhz_boss = 1;
 		close;
 	}
-	else if(lhz_boss == 1)
+	else if (lhz_boss == 1)
 	{
-		if(rand(1,5) == 4)
+		if (rand(1,5) == 4)
 		{
 			mes "[Ghalstein]";
 			mes "Hm? It's a little";
@@ -6402,7 +6402,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "nice on your face, isn't it?";
 		close;
 	}
-	else if(lhz_boss == 2)
+	else if (lhz_boss == 2)
 	{
 		mes "[Ghalstein]";
 		mes "The sun is gently";
@@ -6410,7 +6410,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "gently blowing. Oh, this";
 		mes "weather could not be better!";
 		next;
-		switch( select( "Yes, you're right.","Uh, what were you doing just now?" ) )
+		switch ( select( "Yes, you're right.","Uh, what were you doing just now?" ) )
 		{
 			case 1:
 				mes "[Ghalstein]";
@@ -6431,7 +6431,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "enjoying the sunny perfection";
 				mes "of Lighthalzen as usual...";
 				next;
-				switch( select( "But I heard you talking about something..." ) )
+				switch ( select( "But I heard you talking about something..." ) )
 				{
 					case 1:
 						break;
@@ -6452,7 +6452,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				close;
 		}
 	}
-	else if(lhz_boss == 3)
+	else if (lhz_boss == 3)
 	{
 		mes "[Ghalstein]";
 		mes "Hm? Judging from the";
@@ -6461,7 +6461,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "that I was involved in some";
 		mes "kind of clandestine meeting.";
 		next;
-		switch( select( "Yes, I'm sure of it!","Well..." ) )
+		switch ( select( "Yes, I'm sure of it!","Well..." ) )
 		{
 			case 1:
 				mes "["+strcharinfo(PC_NAME)+"]";
@@ -6483,7 +6483,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "to interrogate me in this";
 				mes "rather aggressive fashion?";
 				next;
-				switch( select( "I'm not interrogating...","Sorry about that." ) )
+				switch ( select( "I'm not interrogating...","Sorry about that." ) )
 				{
 					case 1:
 						mes "["+strcharinfo(PC_NAME)+"]";
@@ -6491,7 +6491,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 						mes "you. No, not at all.";
 						mes "It's, um, it's just...";
 						next;
-						switch( select( "Who are you dealing with?","I was just curious." ) )
+						switch ( select( "Who are you dealing with?","I was just curious." ) )
 						{
 							case 1:
 								mes "["+strcharinfo(PC_NAME)+"]";
@@ -6576,7 +6576,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				close;
 		}
 	}
-	else if(lhz_boss == 4)
+	else if (lhz_boss == 4)
 	{
 		mes "[Ghalstein]";
 		mes "I've come into a";
@@ -6598,7 +6598,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "more information regarding";
 		mes "my organization and its work, I shall require your cooperation.";
 		next;
-		switch( select( "How can I cooperate?" ) )
+		switch ( select( "How can I cooperate?" ) )
 		{
 			case 1:
 				break;
@@ -6616,7 +6616,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "But first you must decide if";
 		mes "you will commit to cooperation.";
 		next;
-		switch( select( "I still don't get it...","Sure, I'll cooperate.","No, thanks." ) )
+		switch ( select( "I still don't get it...","Sure, I'll cooperate.","No, thanks." ) )
 		{
 			case 1:
 				mes "[Ghalstein]";
@@ -6624,7 +6624,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "clearer for you. You have";
 				mes "two choices.";
 				next;
-				switch( select( "Two choices?" ) )
+				switch ( select( "Two choices?" ) )
 				{
 					case 1:
 						break;
@@ -6651,7 +6651,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "consequences. When we";
 				mes "finish, you get the antidote.";
 				next;
-				switch( select( "........." ) )
+				switch ( select( "........." ) )
 				{
 					case 1:
 						break;
@@ -6667,7 +6667,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "So, what have";
 				mes "you decided to do?";
 				next;
-				switch( select( "Don't cooperate","Cooperate" ) )
+				switch ( select( "Don't cooperate","Cooperate" ) )
 				{
 					case 1:
 						break;
@@ -6678,7 +6678,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 						mes "So will you take";
 						mes "this red tonic?";
 						next;
-						switch( select( "Do not take it.","Take it." ) )
+						switch ( select( "Do not take it.","Take it." ) )
 						{
 							case 1:
 								break;
@@ -6716,7 +6716,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 				mes "So will you take";
 				mes "this red tonic?";
 				next;
-				switch( select( "Do not take it.","Take it." ) )
+				switch ( select( "Do not take it.","Take it." ) )
 				{
 					case 1:
 						break;
@@ -6785,7 +6785,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		warp "lighthalzen",217,313;
 		end;
 	}
-	else if(lhz_boss == 5)
+	else if (lhz_boss == 5)
 	{
 		mes "[Ghalstein]";
 		mes "So how are you feeling?";
@@ -6844,7 +6844,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		changequest 12015,12016;
 		close;
 	}
-	else if(lhz_boss == 6)
+	else if (lhz_boss == 6)
 	{
 		mes "[Ghalstein]";
 		mes "For now, it may be best";
@@ -6854,9 +6854,9 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "get you inside the Laboratory.";
 		close;
 	}
-	else if(lhz_boss == 7)
+	else if (lhz_boss == 7)
 	{
-		if(!MISC_QUEST&512)
+		if (!MISC_QUEST&512)
 		{
 			mes "[Ghalstein]";
 			mes "An error occurred.";
@@ -6895,7 +6895,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 			changequest 12016,12017;
 			close;
 		}
-		else if((!countitem(Pile_Of_Ymir_Heart)) && (!countitem(Lab_Staff_Record)) && (!countitem(Armlet_Of_Prisoner)))
+		else if ((!countitem(Pile_Of_Ymir_Heart)) && (!countitem(Lab_Staff_Record)) && (!countitem(Armlet_Of_Prisoner)))
 		{
 			mes "[Ghalstein]";
 			mes "When you get inside the";
@@ -6918,7 +6918,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 			close;
 		}
 	}
-	else if(lhz_boss == 8)
+	else if (lhz_boss == 8)
 	{
 		mes "[Ghalstein]";
 		mes "Please find Gushaar";
@@ -6927,7 +6927,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "details for your next mission.";
 		close;
 	}
-	else if(lhz_boss < 25)
+	else if (lhz_boss < 25)
 	{
 		mes "[Ghalstein]";
 		mes "You've made the decision";
@@ -6946,7 +6946,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "difficult to determine.";
 		close;
 	}
-	else if(lhz_boss < 43)
+	else if (lhz_boss < 43)
 	{
 		mes "[Ghalstein]";
 		mes "You're so close to";
@@ -6957,7 +6957,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 		mes "And you'll finally be free.";
 		close;
 	}
-	else if(lhz_boss == 43)
+	else if (lhz_boss == 43)
 	{
 		mes "[Ghalstein]";
 		mes "I can't believe what";
@@ -7020,7 +7020,7 @@ lighthalzen,179,170,4	script	Ordinary Man	4W_M_02,{
 lighthalzen,173,167,1	script	Switch	FAKE_NPC,2,4,{
 
 OnTouch:
-	if(lhz_boss == 1)
+	if (lhz_boss == 1)
 	{
 		mes "[??????]";
 		mes "^666666Come on.";
@@ -7035,7 +7035,7 @@ OnTouch:
 		mes "That voice is";
 		mes "awfully familiar.)";
 		next;
-		switch( select( "Ignore it.","Keep listening." ) )
+		switch ( select( "Ignore it.","Keep listening." ) )
 		{
 			case 1:
 				mes "["+strcharinfo(PC_NAME)+"]";
@@ -7103,7 +7103,7 @@ OnTouch:
 
 yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 
-	if(lhz_boss < 8)
+	if (lhz_boss < 8)
 	{
 		mes "[Gushaar]";
 		mes "Decisions, decisions.";
@@ -7121,7 +7121,7 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 		mes "worth without any cost, right?";
 		close;
 	}
-	else if(lhz_boss == 8)
+	else if (lhz_boss == 8)
 	{
 		mes "[Gushaar]";
 		mes "Alright. Choose";
@@ -7130,7 +7130,7 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 		mes "tonics for you, red and blue.";
 		mes "So which one will you drink?";
 		next;
-		switch( select( "????","Red Tonic","Blue Tonic" ) )
+		switch ( select( "????","Red Tonic","Blue Tonic" ) )
 		{
 			case 1:
 				mes "[Gushaar]";
@@ -7149,10 +7149,10 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 				mes "isn't there something";
 				mes "you want to show me first?";
 				next;
-				switch( select( "Oh, right!","What are you talking about?" ) )
+				switch ( select( "Oh, right!","What are you talking about?" ) )
 				{
 					case 1:
-						if(!countitem(Indication_Of_Member01))
+						if (!countitem(Indication_Of_Member01))
 						{
 							mes "[Gushaar]";
 							mes "Hey... Umm...";
@@ -7196,7 +7196,7 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 				close;
 		}
 	}
-	else if(lhz_boss == 9)
+	else if (lhz_boss == 9)
 	{
 		mes "[Gushaar]";
 		mes "Alright, first of all,";
@@ -7244,7 +7244,7 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 		lhz_boss = 10;
 		close;
 	}
-	else if(lhz_boss == 10)
+	else if (lhz_boss == 10)
 	{
 		mes "[Gushaar]";
 		mes "I hope you understand";
@@ -7283,13 +7283,13 @@ yuno_fild04,165,245,4	script	Dismal Guy	4_M_ORIENT02,{
 
 yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Hes O'Neil]";
 		mes "Good day, how";
 		mes "may I help you?";
 		next;
-		switch( select( "Oh. I'm fine, thanks.","I want to meet the president","W-who are you...?" ) )
+		switch ( select( "Oh. I'm fine, thanks.","I want to meet the president","W-who are you...?" ) )
 		{
 			case 1:
 				mes "[Hes O'Neil]";
@@ -7307,7 +7307,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 				mes "Do you have an appointment";
 				mes "to meet with him today?";
 				next;
-				switch( select( "Yes","No" ) )
+				switch ( select( "Yes","No" ) )
 				{
 					case 1:
 						mes "[Hes O'Neil]";
@@ -7316,7 +7316,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 						mes "name so that I can look";
 						mes "it up in today's schedule?";
 						next;
-						switch( select( ""+strcharinfo(PC_NAME)+"" ) )
+						switch ( select( ""+strcharinfo(PC_NAME)+"" ) )
 						{
 							case 1:
 								break;
@@ -7351,16 +7351,16 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 				close;
 		}
 	}
-	else if(lhz_boss < 16)
+	else if (lhz_boss < 16)
 	{
 		mes "[Hes O'Neil]";
 		mes "Good day, how";
 		mes "may I help you?";
 		next;
-		switch( select( "Show Secret Wing Card.","I'm here to see the president.","Nothing." ) )
+		switch ( select( "Show Secret Wing Card.","I'm here to see the president.","Nothing." ) )
 		{
 			case 1:
-				if(!countitem(Indication_Of_Member01))
+				if (!countitem(Indication_Of_Member01))
 				{
 					mes "^3355FFWait a second...";
 					mes "You don't seem to";
@@ -7399,7 +7399,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 				mes "Do you have an appointment";
 				mes "to meet with him today?";
 				next;
-				switch( select( "Yes","No" ) )
+				switch ( select( "Yes","No" ) )
 				{
 					case 1:
 						mes "[Hes O'Neil]";
@@ -7408,7 +7408,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 						mes "name so that I can look";
 						mes "it up in today's schedule?";
 						next;
-						switch( select( ""+strcharinfo(PC_NAME)+"" ) )
+						switch ( select( ""+strcharinfo(PC_NAME)+"" ) )
 						{
 							case 1:
 								break;
@@ -7443,9 +7443,9 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 				close;
 		}
 	}
-	else if(lhz_boss == 16)
+	else if (lhz_boss == 16)
 	{
-		if(!countitem(File01))
+		if (!countitem(File01))
 		{
 			mes "[Hes O'Neil]";
 			mes "Hm? I thought the";
@@ -7459,7 +7459,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 		mes "Hello, may I be";
 		mes "of any assistance?";
 		next;
-		switch( select( "I brought this." ) )
+		switch ( select( "I brought this." ) )
 		{
 			case 1:
 				break;
@@ -7473,7 +7473,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 		lhz_boss = 17;
 		close;
 	}
-	else if(lhz_boss < 21)
+	else if (lhz_boss < 21)
 	{
 		mes "[Hes O'Neil]";
 		mes "I'm sorry, but the";
@@ -7483,7 +7483,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 		mes "visit him another time.";
 		close;
 	}
-	else if(lhz_boss < 43)
+	else if (lhz_boss < 43)
 	{
 		mes "[Hes O'Neil]";
 		mes "Oh, the president";
@@ -7497,7 +7497,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 		warp "yuno_pre",113,53;
 		end;
 	}
-	else if(hg_tre == 56)
+	else if (hg_tre == 56)
 	{
 		mes "[Hes O'Neil]";
 		mes "The President has given the order that ";
@@ -7520,7 +7520,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 		warp "yuno_pre",113,53;
 		end;
         }
-        else if(hg_tre > 56)
+        else if (hg_tre > 56)
         {
 		mes "[Hes O'Neil]";
 		mes "The president said that you're welcome to visit him anytime.";
@@ -7541,7 +7541,7 @@ yuno_pre,69,20,4	script	Secretary#1	4_F_LGTGIRL,{
 
 yuno_pre,95,71,5	script	Guard	4_M_EIN_SOLDIER,{
 
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Guard]";
 		mes "You are in the";
@@ -7555,10 +7555,10 @@ yuno_pre,95,71,5	script	Guard	4_M_EIN_SOLDIER,{
 		warp "yuno_pre",83,22;
 		end;
 	}
-	else if(lhz_boss == 11 || lhz_boss == 12)
+	else if (lhz_boss == 11 || lhz_boss == 12)
 	{
-		if(lhz_boss == 12) @visit_pre = rand(1,10);
-		if(@visit_pre == 7)
+		if (lhz_boss == 12) @visit_pre = rand(1,10);
+		if (@visit_pre == 7)
 		{
 			mes "[?????]";
 			mes "I see.";
@@ -7612,10 +7612,10 @@ yuno_pre,95,71,5	script	Guard	4_M_EIN_SOLDIER,{
 		mes "Currently, the president";
 		mes "is seeing another guest.";
 		mes "Thank you for your patience.";
-		if(lhz_boss == 11) lhz_boss = 12;
+		if (lhz_boss == 11) lhz_boss = 12;
 		close;
 	}
-	else if(lhz_boss == 13)
+	else if (lhz_boss == 13)
 	{
 		mes "[Guard]";
 		mes "Now you may enter";
@@ -7623,15 +7623,15 @@ yuno_pre,95,71,5	script	Guard	4_M_EIN_SOLDIER,{
 		mes "president. Thank you";
 		mes "for waiting all this time.";
 		next;
-		switch( select( "Thank you.","Who was that gentleman...?" ) )
+		switch ( select( "Thank you.","Who was that gentleman...?" ) )
 		{
 			case 1:
 				if (Sex == SEX_MALE)
-					mes "A Mister " + strcharinfo(PC_NAME);
+					mes "A Mister "+strcharinfo(PC_NAME);
 				else if (getpartnerid())
-					mes "A Missis " + strcharinfo(PC_NAME);
+					mes "A Missis "+strcharinfo(PC_NAME);
 				else
-					mes "A Miss " + strcharinfo(PC_NAME);
+					mes "A Miss "+strcharinfo(PC_NAME);
 				mes "has arrived to see you now.";
 				next;
 				mes ".....";
@@ -7680,7 +7680,7 @@ OnInit:
 
 yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 
-	if(checkweight(File01,1) != 1)
+	if (checkweight(File01,1) != 1)
 	{
 		mes "- Wait a moment! -";
 		mes "- Currently you're carrying -";
@@ -7690,7 +7690,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		close;
 	}
 	cutin "lhz_karl.bmp",2;
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Karl]";
 		mes "How did you get in here?";
@@ -7700,7 +7700,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		warp "yuno_pre",83,22;
 	}
-	else if(lhz_boss == 14)
+	else if (lhz_boss == 14)
 	{
 		mes "[Karl]";
 		mes "Ah, welcome";
@@ -7719,7 +7719,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		mes "have some questions for me...";
 		next;
 		while (true) {
-			switch( select( "Secret Wing's Background","Rekenber's Purpose","Secret Wing's Goal","Details about my mission","I'm ready for my mission." ) )
+			switch ( select( "Secret Wing's Background","Rekenber's Purpose","Secret Wing's Goal","Details about my mission","I'm ready for my mission." ) )
 			{
 				case 1:
 					mes "[Karl]";
@@ -7825,7 +7825,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 					mes "must accomplish it as soon";
 					mes "as you can. Understood?";
 					next;
-					switch( select( "Wait, I have one more question!","Yes sir, Mr. President." ) )
+					switch ( select( "Wait, I have one more question!","Yes sir, Mr. President." ) )
 					{
 						case 1:
 							mes "[Karl]";
@@ -7852,7 +7852,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 			}
 		}
 	}
-	else if(lhz_boss == 15)
+	else if (lhz_boss == 15)
 	{
 		mes "[Karl]";
 		mes "Now, you must first visit";
@@ -7882,7 +7882,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss < 21)
+	else if (lhz_boss < 21)
 	{
 		mes "[Karl]";
 		mes "Hurry and complete";
@@ -7895,9 +7895,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 21)
+	else if (lhz_boss == 21)
 	{
-		if(!countitem(File02))
+		if (!countitem(File02))
 		{
 			mes "[Karl]";
 			mes "Hm? I was expecting";
@@ -7937,9 +7937,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 22)
+	else if (lhz_boss == 22)
 	{
-		if(rand(1,5) == 3)
+		if (rand(1,5) == 3)
 		{
 			mes "[Karl]";
 			mes "Hm. After completely";
@@ -7979,7 +7979,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 			mes "to discover Shinokas before";
 			mes "we can get him to talk.";
 			changequest 12022,12023;
-			if(Shinokas_Quest == 11) lhz_boss = 24;
+			if (Shinokas_Quest == 11) lhz_boss = 24;
 			else lhz_boss = 23;
 			close2;
 			cutin "",255;
@@ -8002,9 +8002,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 23)
+	else if (lhz_boss == 23)
 	{
-		if(Shinokas_Quest == 11)
+		if (Shinokas_Quest == 11)
 		{
 			mes "[Karl]";
 			mes "Ymir's Heart Pieces?";
@@ -8073,7 +8073,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 24)
+	else if (lhz_boss == 24)
 	{
 		mes "[Karl]";
 		mes "Hm? What's wrong?";
@@ -8082,7 +8082,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		mes "recognized his name back";
 		mes "when I mentioned Shinokas.";
 		next;
-		switch( select( "Oh, no. Not really.","Actually, Shinokas is..." ) )
+		switch ( select( "Oh, no. Not really.","Actually, Shinokas is..." ) )
 		{
 			case 1:
 				mes "[Karl]";
@@ -8160,9 +8160,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 				end;
 		}
 	}
-	else if(lhz_boss == 25)
+	else if (lhz_boss == 25)
 	{
-		if(rand(1,10) == 8)
+		if (rand(1,10) == 8)
 		{
 			mes "[Karl]";
 			mes "Alright, I just";
@@ -8217,7 +8217,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss < 37)
+	else if (lhz_boss < 37)
 	{
 		mes "[Karl]";
 		mes "I hope you continue";
@@ -8230,9 +8230,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 37)
+	else if (lhz_boss == 37)
 	{
-		if(!countitem(File03))
+		if (!countitem(File03))
 		{
 			mes "[Karl]";
 			mes "Did you find any";
@@ -8282,7 +8282,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 38)
+	else if (lhz_boss == 38)
 	{
 		mes "[Karl]";
 		mes "Please hurry and meet";
@@ -8295,9 +8295,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 39)
+	else if (lhz_boss == 39)
 	{
-		if(!countitem(File02))
+		if (!countitem(File02))
 		{
 			mes "[Karl]";
 			mes "You don't have the";
@@ -8316,7 +8316,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		mes "me, something of the utmost";
 		mes "urgency. But I fear the worst.";
 		next;
-		switch( select( "Give the file from Esuna." ) )
+		switch ( select( "Give the file from Esuna." ) )
 		{
 			case 1:
 				break;
@@ -8342,7 +8342,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 41)
+	else if (lhz_boss == 41)
 	{
 		mes "[Karl]";
 		mes "No...";
@@ -8374,7 +8374,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_boss == 42)
+	else if (lhz_boss == 42)
 	{
 		mes "[Guard]";
 		mes "Advisor Kurelle";
@@ -8480,7 +8480,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(lght_boss == 43)
+	else if (lght_boss == 43)
 	{
 		mes "[Karl]";
 		mes ".........";
@@ -8491,9 +8491,9 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		}
 		close;
 	}
-	else if(hg_tre == 56)
+	else if (hg_tre == 56)
 	{
-		if(!countitem(File01))
+		if (!countitem(File01))
 		{
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Ah, where did I put the record?";
@@ -8573,7 +8573,7 @@ yuno_pre,69,79,4	script	Mr. President	4_M_PRESIDENT,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 57)
+	else if (hg_tre == 57)
 	{
 		mes "[Karl]";
 		mes "I am trying to recruit capable people who can help me to bring down Rekenber Corporation.";
@@ -8614,7 +8614,7 @@ OnInit:
 yuno_pre,117,60,0	script	Eavesdrop	FAKE_NPC,10,5,{
 
 OnTouch:
-	if(lhz_boss == 16)
+	if (lhz_boss == 16)
 	{
 		mes "^3355FFWhat the...?";
 		mes "You can hear";
@@ -8649,7 +8649,7 @@ OnTouch:
 
 aldebaran,58,225,4	script	Kafra Employee#l1	4_F_KAFRA2,{
 
-	if(lhz_boss != 17)
+	if (lhz_boss != 17)
 	{
 		mes "[Kafra Employee]";
 		mes "Welcome to the";
@@ -8673,7 +8673,7 @@ aldebaran,58,225,4	script	Kafra Employee#l1	4_F_KAFRA2,{
 	mes "our customers' satisfaction.";
 	mes "How may I help you today?";
 	next;
-	switch( select( "I have a question.","I'm fine, thanks." ) )
+	switch ( select( "I have a question.","I'm fine, thanks." ) )
 	{
 		case 1:
 			mes "[Kafra Employee]";
@@ -8684,7 +8684,7 @@ aldebaran,58,225,4	script	Kafra Employee#l1	4_F_KAFRA2,{
 			mes "another employee for";
 			mes "specialized information.";
 			next;
-			switch( select( "Do you know where I can find Benith?" ) )
+			switch ( select( "Do you know where I can find Benith?" ) )
 			{
 				case 1:
 					break;
@@ -8719,7 +8719,7 @@ aldebaran,58,225,4	script	Kafra Employee#l1	4_F_KAFRA2,{
 
 aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 
-	if(checkweight(File02,1) != 1)
+	if (checkweight(File02,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -8729,7 +8729,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 17)
+	if (lhz_boss < 17)
 	{
 		mes "[Kafra Employee]";
 		mes "Welcome to";
@@ -8764,7 +8764,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		mes "requirements before voting.";
 		close;
 	}
-	else if(lhz_boss == 17)
+	else if (lhz_boss == 17)
 	{
 		mes "[Kafra Employee]";
 		mes "Welcome to";
@@ -8805,7 +8805,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		mes "of Prontera and Juno.";
 		mes "Happy voting.";
 		next;
-		switch( select( "Okay.","I can't wait!" ) )
+		switch ( select( "Okay.","I can't wait!" ) )
 		{
 			case 1:
 				mes "[Kafra Employee]";
@@ -8816,7 +8816,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 				mes "Kafra offers. My work is...";
 				mes "I'm in a different department.";
 				next;
-				switch( select( "Oh, that's okay then.","Are you Benith..?" ) )
+				switch ( select( "Oh, that's okay then.","Are you Benith..?" ) )
 				{
 					case 1:
 						mes "[Kafra Employee]";
@@ -8834,7 +8834,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 						mes "Is there anything";
 						mes "that I can do for you?";
 						next;
-						switch( select( "No, not really.","Show Membership Card." ) )
+						switch ( select( "No, not really.","Show Membership Card." ) )
 						{
 							case 1:
 								mes "[Benith]";
@@ -8843,7 +8843,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 								close;
 
 							case 2:
-								if(!countitem(Indication_Of_Member01))
+								if (!countitem(Indication_Of_Member01))
 								{
 									mes "^3355FFWait...";
 									mes "You can't show";
@@ -8904,7 +8904,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 				close;
 		}
 	}
-	else if(lhz_boss == 18)
+	else if (lhz_boss == 18)
 	{
 		mes "[Benith]";
 		mes "Please hurry and save";
@@ -8922,9 +8922,9 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		mes "Einbroch and Lighthalzen.";
 		close;
 	}
-	else if(lhz_boss == 19)
+	else if (lhz_boss == 19)
 	{
-		if(!countitem(File02))
+		if (!countitem(File02))
 		{
 			mes "[Benith]";
 			mes "Please hurry!";
@@ -8941,7 +8941,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		mes "managed to obtain. But...";
 		mes "Where's Jargeah? Is he...?";
 		next;
-		switch( select( "He's in a better place." ) )
+		switch ( select( "He's in a better place." ) )
 		{
 			case 1:
 				break;
@@ -8967,7 +8967,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 		lhz_boss = 20;
 		close;
 	}
-	else if(lhz_boss == 20)
+	else if (lhz_boss == 20)
 	{
 		mes "[Benith]";
 		mes "Alright. Please take";
@@ -9002,7 +9002,7 @@ aldeba_in,155,240,5	script	Kafra Employee#l2	4_F_AGENTKAFRA,{
 
 lhz_fild02,228,214,0	script	Wounded Man	4_M_DIEMAN,{
 
-	if(checkweight(File02,1) != 1)
+	if (checkweight(File02,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -9012,7 +9012,7 @@ lhz_fild02,228,214,0	script	Wounded Man	4_M_DIEMAN,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 18)
+	if (lhz_boss < 18)
 	{
 		mes "[?????]";
 		mes "^333333*Cough cough*^000000";
@@ -9037,7 +9037,7 @@ lhz_fild02,228,214,0	script	Wounded Man	4_M_DIEMAN,{
 		mes "j-just get the hell away!";
 		close;
 	}
-	else if(lhz_boss == 18)
+	else if (lhz_boss == 18)
 	{
 		mes "[?????]";
 		mes "^333333*Cough cough*^000000";
@@ -9046,7 +9046,7 @@ lhz_fild02,228,214,0	script	Wounded Man	4_M_DIEMAN,{
 		mes "They better send";
 		mes "someone soon...";
 		next;
-		switch( select( "Jargeah?","Ignore him." ) )
+		switch ( select( "Jargeah?","Ignore him." ) )
 		{
 			case 1:
 				mes "[Jargeah]";
@@ -9057,7 +9057,7 @@ lhz_fild02,228,214,0	script	Wounded Man	4_M_DIEMAN,{
 				mes "are you working for...?";
 				next;
 				input @jargeah$;
-				if((@jargeah$ == "Kafra Corporation") || (@jargeah$ == "Secret Wing"))
+				if ((@jargeah$ == "Kafra Corporation") || (@jargeah$ == "Secret Wing"))
 				{
 					mes "[Jargeah]";
 					mes "Th-thank goodness!";
@@ -9104,7 +9104,7 @@ OnInit:
 lhz_fild02,224,220,0	script	Wounded Man Switch	FAKE_NPC,3,3,{
 
 OnTouch:
-	if(lhz_boss == 18)
+	if (lhz_boss == 18)
 	{
 		mes "[?????]";
 		mes "^333333*Cough cough*^000000";
@@ -9118,7 +9118,7 @@ OnTouch:
 lhz_fild01,76,214,0	script	Esuna Trigger	FAKE_NPC,5,5,{
 
 OnTouch:
-	if((lhz_boss == 26) || (lhz_boss == 36) || (lhz_boss == 38) || (lhz_boss == 40))
+	if ((lhz_boss == 26) || (lhz_boss == 36) || (lhz_boss == 38) || (lhz_boss == 40))
 	{
 		mes "[????]";
 		mes "Here,";
@@ -9132,9 +9132,9 @@ OnTouch:
 
 lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 
-	if(lhz_boss == 26)
+	if (lhz_boss == 26)
 	{
-		if(checkweight(File02,1) != 1)
+		if (checkweight(File02,1) != 1)
 		{
 			mes "^3355FFWait a second!";
 			mes "Right now, you're carrying";
@@ -9187,7 +9187,7 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		disablenpc "Mysterious Woman";
 		end;
 	}
-	else if(lhz_boss == 27)
+	else if (lhz_boss == 27)
 	{
 		mes "[Esuna]";
 		mes "Use the pass that you";
@@ -9197,13 +9197,13 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		mes "that he's undercover...";
 		close;
 	}
-	else if(lhz_boss < 36)
+	else if (lhz_boss < 36)
 	{
 		mes "[Esuna]";
 		mes ".........";
 		close;
 	}
-	else if(lhz_boss == 36)
+	else if (lhz_boss == 36)
 	{
 		mes "[Esuna]";
 		mes "Good work.";
@@ -9225,14 +9225,14 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		disablenpc "Mysterious Woman";
 		end;
 	}
-	else if(lhz_boss < 38)
+	else if (lhz_boss < 38)
 	{
 		mes "[Esuna]";
 		mes "........";
 		mes ".....";
 		close;
 	}
-	else if(lhz_boss == 38)
+	else if (lhz_boss == 38)
 	{
 		mes "[Esuna]";
 		mes "You're back. Listen,";
@@ -9253,7 +9253,7 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		disablenpc "Mysterious Woman";
 		end;
 	}
-	else if(lhz_boss == 39)
+	else if (lhz_boss == 39)
 	{
 		mes "[Esuna]";
 		mes "What are you waiting";
@@ -9264,7 +9264,7 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		mes "but he deserves to know...";
 		close;
 	}
-	else if(lhz_boss == 40)
+	else if (lhz_boss == 40)
 	{
 		mes "[Esuna]";
 		mes "Good, you're back.";
@@ -9274,7 +9274,7 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		mes "immediately! We've been";
 		mes "severely compromised...";
 		next;
-		switch( select( "What happened?" ) )
+		switch ( select( "What happened?" ) )
 		{
 			case 1:
 				break;
@@ -9287,7 +9287,7 @@ lhz_fild01,66,219,4	script	Mysterious Woman	4_F_AGENTKAFRA,{
 		mes "The president's closest";
 		mes "aide totally sold us out...";
 		next;
-		switch( select( "Who could have done such....?" ) )
+		switch ( select( "Who could have done such....?" ) )
 		{
 			case 1:
 				break;
@@ -9348,7 +9348,7 @@ OnInit:
 
 lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 
-	if(lhz_boss < 28)
+	if (lhz_boss < 28)
 	{
 		mes "[Researcher]";
 		mes "You know what's weird?";
@@ -9357,7 +9357,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 		mes "bombs? There's so many";
 		mes "others you could use, like";
 		mes "pink or yellow or or green...";
-		if(lhz_boss == 27)
+		if (lhz_boss == 27)
 		{
 			next;
 			mes "[Researcher]";
@@ -9368,7 +9368,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 			mes "cut a wire! So which one are";
 			mes "you gonna cut? Red or blue?";
 			next;
-			switch( select( "Red","Blue" ) )
+			switch ( select( "Red","Blue" ) )
 			{
 				case 1:
 					mes "[Researcher]";
@@ -9377,7 +9377,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 					mes "Heh, yeah, just like";
 					mes "in the movies. I like";
 					mes "the way you think";
-					if(!countitem(Indication_Of_Member01)) close;
+					if (!countitem(Indication_Of_Member01)) close;
 					next;
 					mes "^3355FFYou surrepticiously";
 					mes "check the researcher's";
@@ -9388,7 +9388,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 					mes "Is there anything";
 					mes "I can help you with?";
 					next;
-					switch( select( "No","Yes" ) )
+					switch ( select( "No","Yes" ) )
 					{
 						case 1:
 							mes "[Lestin]";
@@ -9408,7 +9408,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 							mes "so I don't know how";
 							mes "much help I could be...";
 							next;
-							switch( select( "Show Secret Wing Card." ) )
+							switch ( select( "Show Secret Wing Card." ) )
 							{
 								case 1:
 									break;
@@ -9450,7 +9450,7 @@ lhz_in01,93,45,4	script	Researcher#1	4_LGTSCIENCE,{
 
 lhz_in01,285,169,3	script	Researcher#2	4_LGTSCIENCE,{
 
-	if(checkweight(Indication_Of_Member02,1) != 1)
+	if (checkweight(Indication_Of_Member02,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -9460,7 +9460,7 @@ lhz_in01,285,169,3	script	Researcher#2	4_LGTSCIENCE,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 27)
+	if (lhz_boss < 27)
 	{
 		mes "[Researcher]";
 		mes "This is a restricted";
@@ -9468,7 +9468,7 @@ lhz_in01,285,169,3	script	Researcher#2	4_LGTSCIENCE,{
 		mes "immediately.";
 		close;
 	}
-	else if(lhz_boss == 27)
+	else if (lhz_boss == 27)
 	{
 		mes "[Lestin]";
 		mes "This place should be";
@@ -9503,7 +9503,7 @@ lhz_in01,285,169,3	script	Researcher#2	4_LGTSCIENCE,{
 		mes "is risky, but not impossible.";
 		close;
 	}
-	else if(lhz_boss < 35)
+	else if (lhz_boss < 35)
 	{
 		mes "[Lestin]";
 		mes "Remember, you gotta";
@@ -9536,9 +9536,9 @@ lhz_in01,285,169,3	script	Researcher#2	4_LGTSCIENCE,{
 		mes "and don't get caught!";
 		close;
 	}
-	else if(lhz_boss == 35)
+	else if (lhz_boss == 35)
 	{
-		if((!countitem(Indication_Of_Member02)) || (!countitem(File03)))
+		if ((!countitem(Indication_Of_Member02)) || (!countitem(File03)))
 		{
 			mes "[Lestin]";
 			mes "My pass will get you inside,";
@@ -9606,10 +9606,10 @@ lhz_in01,187,31,0	script	#Sneak	HIDDEN_NPC,4,3,{
 	end;
 
 OnTouch:
-	if((lhz_boss > 27) && (lhz_boss < 35))
+	if ((lhz_boss > 27) && (lhz_boss < 35))
 	{
 		@sneaktime = gettimetick(0) % 100;
-		if((@sneaktime > 10 && @sneaktime < 59) || (@sneaktime < -10 && @sneaktime > -59))
+		if ((@sneaktime > 10 && @sneaktime < 59) || (@sneaktime < -10 && @sneaktime > -59))
 		{
 			mes "^3355FFAs you approach";
 			mes "the corner, you can";
@@ -9644,7 +9644,7 @@ OnTouch:
 			mes "they grow fainter and";
 			mes "fainter into the distance.^000000";
 			next;
-			switch( select( "Sneak in now.","Wait for another chance." ) )
+			switch ( select( "Sneak in now.","Wait for another chance." ) )
 			{
 				case 1:
 					mes "^3355FFThis is the perfect";
@@ -9654,10 +9654,10 @@ OnTouch:
 					mes "find a device where you";
 					mes "can insert Lestin's card pass.^000000";
 					next;
-					switch( select( "Insert Card","Retreat" ) )
+					switch ( select( "Insert Card","Retreat" ) )
 					{
 						case 1:
-							if(!countitem(Indication_Of_Member02))
+							if (!countitem(Indication_Of_Member02))
 							{
 								mes "^3355FFYou forgot to bring";
 								mes "the card pass that";
@@ -9675,7 +9675,7 @@ OnTouch:
 							next;
 							while (true) {
 								input @sneakpass;
-								if(@sneakpass == 738495)
+								if (@sneakpass == 738495)
 								{
 									mes "^3355FF*Beep*";
 									mes "You hear a pleasant";
@@ -9684,7 +9684,7 @@ OnTouch:
 									mes "the correct password. The door";
 									mes "automatically slides open.";
 									next;
-									switch( select( "Enter","Retreat" ) )
+									switch ( select( "Enter","Retreat" ) )
 									{
 										case 1:
 											mes "[Security System]";
@@ -9716,7 +9716,7 @@ OnTouch:
 								mes "should try to input it again.^000000";
 								++@sneakerror;
 								next;
-								if(@sneakerror > 2)
+								if (@sneakerror > 2)
 								{
 										mes "[Security System]";
 										mes "*Gzzzzz*";
@@ -9785,7 +9785,7 @@ OnTimer190000:
 
 lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 
-	if((lhz_boss > 28) && (lhz_boss < 35))
+	if ((lhz_boss > 28) && (lhz_boss < 35))
 	{
 		mes "^3355FFThis machine can be";
 		mes "used to locate specific";
@@ -9796,7 +9796,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 		mes "specific file locations.";
 		next;
 		while (true) {
-			switch( select( "Search Engine.","Cancel." ) )
+			switch ( select( "Search Engine.","Cancel." ) )
 			{
 				case 1:
 					mes "^663300- Search Engine Initiated -";
@@ -9808,7 +9808,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 					mes "capital letters.^000000";
 					next;
 					input @sneaksearch$;
-					if((@sneaksearch$ == "kafra") || (@sneaksearch$ == "cool event"))
+					if ((@sneaksearch$ == "kafra") || (@sneaksearch$ == "cool event"))
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9818,7 +9818,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						lhz_boss = 30;
 						close;
 					}
-					else if(@sneaksearch$ == "shinokas")
+					else if (@sneaksearch$ == "shinokas")
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9827,7 +9827,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						lhz_boss = 31;
 						close;
 					}
-					else if((@sneaksearch$ == "stein") || (@sneaksearch$ == "STEIN") || (@sneaksearch$ == "S.T.E.I.N"))
+					else if ((@sneaksearch$ == "stein") || (@sneaksearch$ == "STEIN") || (@sneaksearch$ == "S.T.E.I.N"))
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9837,7 +9837,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						mes "through this system.^000000";
 						close;
 					}
-					else if(@sneaksearch$ == "ymir")
+					else if (@sneaksearch$ == "ymir")
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9847,7 +9847,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						mes "through this system.^000000";
 						close;
 					}
-					else if((@sneaksearch$ == "president") || (@sneaksearch$ == "karl") || (@sneaksearch$ == "weierstrass"))
+					else if ((@sneaksearch$ == "president") || (@sneaksearch$ == "karl") || (@sneaksearch$ == "weierstrass"))
 					{
 						mes "^663300[Search Result]";
 						mes "2nd Class documents on";
@@ -9859,7 +9859,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						lhz_boss = 32;
 						close;
 					}
-					else if(@sneaksearch$ == "einbroch")
+					else if (@sneaksearch$ == "einbroch")
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9868,7 +9868,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						lhz_boss = 33;
 						close;
 					}
-					else if(@sneaksearch$ == "lighthalzen")
+					else if (@sneaksearch$ == "lighthalzen")
 					{
 						mes "^663300[Search Result]" ;
 						mes "Documents regarding";
@@ -9877,7 +9877,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 						lhz_boss = 34;
 						close;
 					}
-					else if(@sneaksearch$ == "rekenber")
+					else if (@sneaksearch$ == "rekenber")
 					{
 						mes "^663300[Search Result]";
 						mes "Documents regarding";
@@ -9916,7 +9916,7 @@ lhz_in01,182,35,0	script	File Search Engine	HIDDEN_NPC,{
 
 lhz_in01,177,31,0	script	Door#sneak	HIDDEN_NPC,{
 
-	if(lhz_boss < 29)
+	if (lhz_boss < 29)
 	{
 		mes "[Guard]";
 		mes "This is a";
@@ -9927,7 +9927,7 @@ lhz_in01,177,31,0	script	Door#sneak	HIDDEN_NPC,{
 		mes "Thank you for cooperating.";
 		close;
 	}
-	else if(lhz_boss < 36)
+	else if (lhz_boss < 36)
 	{
 		mes "^3355FFThe door is shut, but";
 		mes "there is a device that";
@@ -9935,7 +9935,7 @@ lhz_in01,177,31,0	script	Door#sneak	HIDDEN_NPC,{
 		mes "entry keypad that was on";
 		mes "the other side of this door.^000000";
 		next;
-		switch( select( "Manipulate device.","Investigate further." ) )
+		switch ( select( "Manipulate device.","Investigate further." ) )
 		{
 			case 1:
 				mes "^3355FFOnce you touch the";
@@ -9954,7 +9954,7 @@ lhz_in01,177,31,0	script	Door#sneak	HIDDEN_NPC,{
 
 lhz_in01,184,40,0	script	Area 1-5	HIDDEN_NPC,{
 
-	if(checkweight(File03,1) != 1)
+	if (checkweight(File03,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -9964,7 +9964,7 @@ lhz_in01,184,40,0	script	Area 1-5	HIDDEN_NPC,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if((lhz_boss > 28) && (lhz_boss < 31))
+	if ((lhz_boss > 28) && (lhz_boss < 31))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -9973,7 +9973,7 @@ lhz_in01,184,40,0	script	Area 1-5	HIDDEN_NPC,{
 		mes "just three minutes...^000000";
 		close;
 	}
-	else if(lhz_boss == 31)
+	else if (lhz_boss == 31)
 	{
 		mes "^3355FFWait, one of these files";
 		mes "looks pretty incriminating.";
@@ -10003,7 +10003,7 @@ lhz_in01,184,40,0	script	Area 1-5	HIDDEN_NPC,{
 
 lhz_in01,184,52,0	script	Area 1-7	HIDDEN_NPC,{
 
-	if((lhz_boss > 28) && (lhz_boss < 32))
+	if ((lhz_boss > 28) && (lhz_boss < 32))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -10012,7 +10012,7 @@ lhz_in01,184,52,0	script	Area 1-7	HIDDEN_NPC,{
 		mes "just three minutes...^000000";
 		close;
 	}
-	else if(lhz_boss == 32)
+	else if (lhz_boss == 32)
 	{
 		mes "^3355FFThis looks like a file";
 		mes "containing information";
@@ -10065,7 +10065,7 @@ lhz_in01,184,52,0	script	Area 1-7	HIDDEN_NPC,{
 
 lhz_in01,184,46,0	script	Area 3-2	HIDDEN_NPC,{
 
-	if((lhz_boss > 28) && (lhz_boss < 30))
+	if ((lhz_boss > 28) && (lhz_boss < 30))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -10074,7 +10074,7 @@ lhz_in01,184,46,0	script	Area 3-2	HIDDEN_NPC,{
 		mes "just three minutes...^000000";
 		close;
 	}
-	else if(lhz_boss == 30)
+	else if (lhz_boss == 30)
 	{
 		mes "^3355FFYou've found a file";
 		mes "containing information";
@@ -10130,7 +10130,7 @@ lhz_in01,184,46,0	script	Area 3-2	HIDDEN_NPC,{
 
 lhz_in01,184,48,0	script	Area 3-3	HIDDEN_NPC,{
 
-	if((lhz_boss > 28) && (lhz_boss < 34))
+	if ((lhz_boss > 28) && (lhz_boss < 34))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -10139,7 +10139,7 @@ lhz_in01,184,48,0	script	Area 3-3	HIDDEN_NPC,{
 		mes "just three minutes...^000000";
 		close;
 	}
-	else if(lhz_boss == 34)
+	else if (lhz_boss == 34)
 	{
 		mes "[Classified Info]";
 		mes "^8C1717...After negotiating with";
@@ -10178,7 +10178,7 @@ lhz_in01,184,48,0	script	Area 3-3	HIDDEN_NPC,{
 
 lhz_in01,177,56,0	script	Area 6-1	HIDDEN_NPC,{
 
-	if((lhz_boss > 28) && (lhz_boss < 33))
+	if ((lhz_boss > 28) && (lhz_boss < 33))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -10187,7 +10187,7 @@ lhz_in01,177,56,0	script	Area 6-1	HIDDEN_NPC,{
 		mes "just three minutes...^000000";
 		close;
 	}
-	else if(lhz_boss == 33)
+	else if (lhz_boss == 33)
 	{
 		mes "[Classified Info]";
 		mes "^8C1717........";
@@ -10225,7 +10225,7 @@ lhz_in01,177,56,0	script	Area 6-1	HIDDEN_NPC,{
 
 lhz_dun02,282,278,0	script	Broken Machine	HIDDEN_NPC,{
 
-	if(checkweight(Pile_Of_Ymir_Heart,1) != 1)
+	if (checkweight(Pile_Of_Ymir_Heart,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -10235,7 +10235,7 @@ lhz_dun02,282,278,0	script	Broken Machine	HIDDEN_NPC,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 6)
+	if (lhz_boss < 6)
 	{
 		mes "^3355FFThere are several";
 		mes "broken machines lying";
@@ -10243,7 +10243,7 @@ lhz_dun02,282,278,0	script	Broken Machine	HIDDEN_NPC,{
 		mes "seem completely useless.^000000";
 		close;
 	}
-	else if(lhz_boss == 6)
+	else if (lhz_boss == 6)
 	{
 		mes "^3355FFThere are several";
 		mes "broken machines lying";
@@ -10253,7 +10253,7 @@ lhz_dun02,282,278,0	script	Broken Machine	HIDDEN_NPC,{
 		mes "glimmer of a dim light";
 		mes "amongst the scrap metal.^000000";
 		next;
-		switch( select( "Investigate it.","Ignore it." ) )
+		switch ( select( "Investigate it.","Ignore it." ) )
 		{
 			case 1:
 				mes "^3355FFAfter digging through";
@@ -10262,7 +10262,7 @@ lhz_dun02,282,278,0	script	Broken Machine	HIDDEN_NPC,{
 				mes "is about as large as your fist";
 				mes "and shimmers with a faint glow.^000000";
 				next;
-				switch( select( "This might be important.","This doesn't seem useful." ) )
+				switch ( select( "This might be important.","This doesn't seem useful." ) )
 				{
 					case 1:
 						mes "^3355FFThis weird rock";
@@ -10308,7 +10308,7 @@ sec_in02,17,170,4	script	boss::lght_boss_admin	1_M_SIGNMONK,{
 	mes "[Patch]";
 	mes "Tell me what you want.";
 	next;
-	switch(select("Current Variables", "How Many", "Shinokas - Quest Complete")) {
+	switch (select("Current Variables","How Many","Shinokas - Quest Complete")) {
 	case 1:
 		break;
 	case 2:
@@ -10339,7 +10339,7 @@ lhz_in02,19,274,2	script	Maintenance Guy	4_M_REPAIR,{
 //== Rekenber Job Quest ====================================
 lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 
-	if(lhz_rekenber > 21)
+	if (lhz_rekenber > 21)
 	{
 		cutin "lhz_kaz10",2;
 		mes "[Kazien]";
@@ -10359,7 +10359,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 21)
+	else if (lhz_rekenber == 21)
 	{
 		cutin "lhz_kaz03",2;
 		mes "[Kazien]";
@@ -10369,7 +10369,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "into those thugs again?";
 		mes "Why don't you take a rest?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Kazien...";
 		mes "While I was fighting";
 		mes "those thugs, one of the";
@@ -10385,7 +10385,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "............";
 		cutin "lhz_kaz08",2;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wh-why are you supplying";
 		mes "those things? If we let those";
 		mes "packages get imported by";
@@ -10399,7 +10399,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "I don't want to";
 		mes "hear anymore.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Hold it, I deserve an";
 		mes "answer! How can you turn";
 		mes "a blind eye and provide just";
@@ -10407,7 +10407,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "and guardians^000000? It's like you're";
 		mes "promoting war and violence!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "And what about your little";
 		mes "brother Lyozien? He has";
 		mes "no idea what he's doing!";
@@ -10424,7 +10424,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "You don't know what it's like";
 		mes "to live in Lighthalzen's slums!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes ".................";
 		next;
 		cutin "lhz_kaz04",2;
@@ -10461,7 +10461,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "of this job, even if I'm dirtying my hands, making money";
 		mes "off of other people's deaths.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "But that still isn't right.";
 		mes "You're selling weapons so";
 		mes "that people can kill each other! Even if it's for the sake of";
@@ -10505,7 +10505,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber > 16)
+	else if (lhz_rekenber > 16)
 	{
 		cutin "lhz_kaz02",2;
 		mes "[Kazien]";
@@ -10517,7 +10517,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 16)
+	else if (lhz_rekenber == 16)
 	{
 		cutin "lhz_kaz03",2;
 		mes "[Kazien]";
@@ -10542,7 +10542,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "that. Lyozien's waiting for";
 		mes "you, so get to it, okay?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "W-wait! During the last";
 		mes "delivery, I was attacked";
 		mes "by a group of thugs that";
@@ -10558,7 +10558,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "more for this job since";
 		mes "you're risking your life?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I understand that the";
 		mes "customer's confidentiality";
 		mes "is important, but I'd feel a";
@@ -10588,7 +10588,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber > 11)
+	else if (lhz_rekenber > 11)
 	{
 		cutin "lhz_kaz08",2;
 		mes "[Kazien]";
@@ -10600,7 +10600,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 11)
+	else if (lhz_rekenber == 11)
 	{
 		cutin "lhz_kaz05",2;
 		mes "[Kazien]";
@@ -10611,7 +10611,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "you like working with Lyozien?";
 		mes "He's one of my best men.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, aren't you and";
 		mes "Lyozien supposed";
 		mes "to be brothers?";
@@ -10633,7 +10633,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "Luckily, I got another";
 		mes "delivery for you to work on...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Actually, Kazien...";
 		mes "I was curious. What";
 		mes "exactly are we delivering?";
@@ -10682,7 +10682,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber > 7)
+	else if (lhz_rekenber > 7)
 	{
 		cutin "lhz_kaz08",2;
 		mes "[Kazien]";
@@ -10696,7 +10696,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 7)
+	else if (lhz_rekenber == 7)
 	{
 		cutin "lhz_kaz05",2;
 		mes "[Kazien]";
@@ -10734,9 +10734,9 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 6)
+	else if (lhz_rekenber == 6)
 	{
-		if(rand(1,15) == 7)
+		if (rand(1,15) == 7)
 		{
 			cutin "lhz_kaz04",2;
 			mes "[Kazien]";
@@ -10783,7 +10783,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 5)
+	else if (lhz_rekenber == 5)
 	{
 		cutin "lhz_kaz04",2;
 		mes "[Kazien]";
@@ -10791,7 +10791,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "contact Garins? Or did";
 		mes "you encounter any problems?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I came back to";
 		mes "let you know that I haven't";
 		mes "been able to find a way inside";
@@ -10807,7 +10807,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "told him that you had";
 		mes "to talk to Garins, right?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "But...";
 		mes "I thought you said";
 		mes "I'm not supposed to";
@@ -10822,7 +10822,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "Great! I'm happy to say,";
 		mes "buddy, you passed the test!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "H-huh? But I never";
 		mes "even got to see Garins...";
 		mes "I didn't finish the task";
@@ -10837,7 +10837,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "trustworthiness, is all.";
 		mes "Now do you understand?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I... I guess.";
 		mes "Still, you just tricked";
 		mes "me! How am I supposed";
@@ -10854,7 +10854,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 4)
+	else if (lhz_rekenber == 4)
 	{
 		cutin "lhz_kaz04",2;
 		mes "[Kazien]";
@@ -10862,7 +10862,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "contact Garins? Or did";
 		mes "you encounter any problems?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I wasn't able to";
 		mes "find him. In fact, I don't";
 		mes "think that Garins even works";
@@ -10875,7 +10875,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "Well, how'd you";
 		mes "find that out?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I happened to ask the";
 		mes "Laboratory Guard, but";
 		mes "he wouldn't even let me in.";
@@ -10889,7 +10889,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "I'm sorry, pal, but";
 		mes "you failed the test.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "H-huh? What?";
 		mes "What do you mean?";
 		next;
@@ -10912,7 +10912,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 3)
+	else if (lhz_rekenber == 3)
 	{
 		cutin "lhz_kaz01",2;
 		mes "[Kazien]";
@@ -10931,7 +10931,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 2)
+	else if (lhz_rekenber == 2)
 	{
 		cutin "lhz_kaz04",2;
 		mes "[Kazien]";
@@ -10977,7 +10977,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 1)
+	else if (lhz_rekenber == 1)
 	{
 		cutin "lhz_kaz01",2;
 		mes "[Kazien]";
@@ -10993,7 +10993,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "back? It's just that you're";
 		mes "blocking my view is all.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, did you just say";
 		mes "that you need help?";
 		mes "I'd like to help solve";
@@ -11010,7 +11010,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "you're a straight shooter.";
 		mes "I like that. Let's see now...";
 		next;
-		if(BaseLevel < 70)
+		if (BaseLevel < 70)
 		{
 			mes "[Kazien]";
 			mes "Awww, I'm sorry, pal.";
@@ -11031,7 +11031,7 @@ lhz_in01,174,258,3	script	Young Man#reken	4_M_LGTGUARD,{
 		mes "keep confidential information";
 		mes "without telling anyone, right?";
 		next;
-		switch( select( "Yes, of course.","Nope, I love giving away secrets." ) )
+		switch ( select( "Yes, of course.","Nope, I love giving away secrets." ) )
 		{
 			case 1:
 				lhz_rekenber = 2;
@@ -11096,7 +11096,7 @@ lighthalzen,141,162,3	script	Old Man#reken	4_M_03,{
 	mes "particularly special skills are";
 	mes "required for some positions.";
 	next;
-	if(!lhz_rekenber) {
+	if (!lhz_rekenber) {
 		lhz_rekenber = 1;
 		setquest 12007;
 	}
@@ -11111,7 +11111,7 @@ lighthalzen,141,162,3	script	Old Man#reken	4_M_03,{
 
 einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 
-	if(lhz_rekenber == 3)
+	if (lhz_rekenber == 3)
 	{
 		mes "[Laboratory Guard]";
 		mes "Hold it! This is";
@@ -11120,7 +11120,7 @@ einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 		mes "have some special business,";
 		mes "you'll have to leave right now.";
 		next;
-		switch( select( "Actually, I do have business here.","Whoa, I'm leaving!" ) )
+		switch ( select( "Actually, I do have business here.","Whoa, I'm leaving!" ) )
 		{
 			case 1:
 				mes "[Laboratory Guard]";
@@ -11130,10 +11130,10 @@ einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 				mes "you wish to contact inside";
 				mes "of this laboratory facility.";
 				next;
-				switch( select( "I need to see Mr. Garins...","I'll... come back later." ) )
+				switch ( select( "I need to see Mr. Garins...","I'll... come back later." ) )
 				{
 					case 1:
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "I need to see Mr. Garins";
 						mes "and confirm that he received";
 						mes "a package that was sent to him.";
@@ -11158,7 +11158,7 @@ einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 						close;
 
 					case 2:
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "I'll... come back later.";
 						mes "(^333333I better speak to Kazien";
 						mes "and let him know I'm having";
@@ -11170,7 +11170,7 @@ einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 						close;
 				}
 			case 2:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Whoa, I'm leaving!";
 				mes "(^333333I better speak to Kazien";
 				mes "and let him know I'm having";
@@ -11193,7 +11193,7 @@ einbroch,55,52,3	script	Laboratory Guarda#reken	4_M_EIN_SOLDIER,{
 
 airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 
-	if(lhz_rekenber > 21)
+	if (lhz_rekenber > 21)
 	{
 		cutin "lhz_ryo11",2;
 		mes "[Lyozien]";
@@ -11207,7 +11207,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 21)
+	else if (lhz_rekenber == 21)
 	{
 		cutin "lhz_ryo03",2;
 		mes "[Lyozien]";
@@ -11227,7 +11227,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 20)
+	else if (lhz_rekenber == 20)
 	{
 		cutin "lhz_ryo09",2;
 		mes "[Lyozien]";
@@ -11240,7 +11240,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 19)
+	else if (lhz_rekenber == 19)
 	{
 		cutin "lhz_ryo06",2;
 		mes "[Lyozien]";
@@ -11250,7 +11250,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		mes "dispatched them. Great job!";
 		next;
 		cutin "lhz_ryo01",2;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Thanks, but...";
 		mes "Now I'm really worried";
 		mes "about what could be in";
@@ -11280,7 +11280,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 18)
+	else if (lhz_rekenber == 18)
 	{
 		cutin "lhz_ryo06",2;
 		mes "[Lyozien]";
@@ -11305,7 +11305,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		donpcevent "Man#Lyozien::OnStop";
 		end;
 	}
-	else if(lhz_rekenber == 17)
+	else if (lhz_rekenber == 17)
 	{
 		cutin "lhz_ryo14",2;
 		mes "[Lyozien]";
@@ -11343,7 +11343,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 16)
+	else if (lhz_rekenber == 16)
 	{
 		cutin "lhz_ryo12",2;
 		mes "[Lyozien]";
@@ -11357,7 +11357,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 15)
+	else if (lhz_rekenber == 15)
 	{
 		cutin "lhz_ryo05",2;
 		mes "[Lyozien]";
@@ -11382,7 +11382,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 14)
+	else if (lhz_rekenber == 14)
 	{
 		cutin "lhz_ryo13",2;
 		mes "[Lyozien]";
@@ -11396,7 +11396,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 13)
+	else if (lhz_rekenber == 13)
 	{
 		cutin "lhz_ryo13",2;
 		mes "[Lyozien]";
@@ -11428,7 +11428,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 12)
+	else if (lhz_rekenber == 12)
 	{
 		cutin "lhz_ryo11",2;
 		mes "[Lyozien]";
@@ -11463,7 +11463,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		donpcevent "#bully1::OnEnter";
 		end;
 	}
-	if(lhz_rekenber == 11)
+	if (lhz_rekenber == 11)
 	{
 		cutin "lhz_ryo12",2;
 		mes "[Lyozien]";
@@ -11477,7 +11477,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 10)
+	else if (lhz_rekenber == 10)
 	{
 		cutin "lhz_ryo14",2;
 		mes "[Lyozien]";
@@ -11488,7 +11488,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		mes "ready for another job, just";
 		mes "ask to my brother Kazien, okay?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Lyozien, do you know";
 		mes "what kinds of things";
 		mes "we're delivering?";
@@ -11524,7 +11524,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 9)
+	else if (lhz_rekenber == 9)
 	{
 		cutin "lhz_ryo05",2;
 		mes "[Lyozien]";
@@ -11538,7 +11538,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		cutin "",255;
 		end;
 	}
-	else if(lhz_rekenber == 8)
+	else if (lhz_rekenber == 8)
 	{
 		cutin "lhz_ryo02",2;
 		mes "[Lyozien]";
@@ -11549,7 +11549,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		mes "these are all pretty fragile.";
 		mes "Thanks, I appreciate it.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Excuse me, but";
 		mes "are you Lyozien?";
 		next;
@@ -11563,7 +11563,7 @@ airplane_01,96,48,3	script	Man#Lyozien	4_M_LGTGUARD,{
 		mes "all of these packages here.";
 		next;
 		cutin "lhz_ryo14",2;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, Kazien is";
 		mes "your brother? That's";
 		mes "weird, you figure he";
@@ -11631,7 +11631,7 @@ OnStop:
 
 -	script	::Scamp	FAKE_NPC,{
 
-	if(lhz_rekenber > 21)
+	if (lhz_rekenber > 21)
 	{
 		mes "[Ahman]";
 		mes "Oh, hello. I've heard";
@@ -11642,7 +11642,7 @@ OnStop:
 		mes "been destroyed by those thugs.";
 		close;
 	}
-	else if(lhz_rekenber == 21)
+	else if (lhz_rekenber == 21)
 	{
 		mes "[Ahman]";
 		mes "Shouldn't you be";
@@ -11651,7 +11651,7 @@ OnStop:
 		mes "you the Airship, isn't he?";
 		close;
 	}
-	else if(lhz_rekenber == 20)
+	else if (lhz_rekenber == 20)
 	{
 		mes "[Ahman]";
 		mes "Oh, have my packages";
@@ -11681,7 +11681,7 @@ OnStop:
 		mes "few deliveries in queue, but shouldn't you be in Lighthalzen?";
 		close;
 	}
-	else if(lhz_rekenber == 15)
+	else if (lhz_rekenber == 15)
 	{
 		mes "[Ahman]";
 		mes "Shouldn't you be on";
@@ -11690,7 +11690,7 @@ OnStop:
 		mes "before the Airship takes off.";
 		close;
 	}
-	else if(lhz_rekenber == 14)
+	else if (lhz_rekenber == 14)
 	{
 		mes "[Ahman]";
 		mes "Ah, it's you again.";
@@ -11698,7 +11698,7 @@ OnStop:
 		mes "my packages have arrived";
 		mes "safely. Is that right?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Yes, that's right.";
 		mes "Actually, this time we ";
 		mes "were attacked by a group";
@@ -11733,7 +11733,7 @@ OnStop:
 		mes "deliveries in queue, you know.";
 		close;
 	}
-	else if(lhz_rekenber == 10)
+	else if (lhz_rekenber == 10)
 	{
 		mes "[Ahman]";
 		mes "Thank you for letting me";
@@ -11744,7 +11744,7 @@ OnStop:
 		mes "sometime, adventurer.";
 		close;
 	}
-	else if(lhz_rekenber == 9)
+	else if (lhz_rekenber == 9)
 	{
 		mes "[Man]";
 		mes "Hmm, can you really";
@@ -11753,7 +11753,7 @@ OnStop:
 		mes "you agree? Still, I kind of";
 		mes "enjoy sitting around here.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Excuse me, but do";
 		mes "you know where I can";
 		mes "find a man named Ahman?";
@@ -11765,7 +11765,7 @@ OnStop:
 		mes "tell me that my packages";
 		mes "have arrived. Am I correct?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Y-yes. That's right.";
 		mes "Your packages have";
 		mes "arrived and they're";
@@ -11779,7 +11779,7 @@ OnStop:
 		mes "I don't believe I've seen you";
 		mes "around before. Have they finally started hiring part timers?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Yes, that's right.";
 		mes "Actually, I'm working for";
 		mes "them part time. I heard";
@@ -11832,7 +11832,7 @@ OnReset:
 
 OnMyMobDead:
 	--.bullymobs;
-	if(.bullymobs < 1)
+	if (.bullymobs < 1)
 	{
 		mes "[Bully]";
 		mes "Damn it! N-next time...";
@@ -11876,7 +11876,7 @@ OnReset:
 
 OnMyMobDead:
 	--.bullymobs;
-	if(.bullymobs < 1)
+	if (.bullymobs < 1)
 	{
 		mes "^3355FFHey-- there's a slit";
 		mes "in the wrapping on one";
@@ -11911,14 +11911,14 @@ OnEnter:
 	end;
 
 OnTouch:
-	if(lhz_rekenber == 19)
+	if (lhz_rekenber == 19)
 	{
 		mes "^3355FFYou peek through the";
 		mes "slit in the wrapping";
 		mes "that is covering one";
 		mes "of the packages.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh... my God!";
 		mes "These are... These are";
 		mes "weapons of mass destruction.";
@@ -11941,7 +11941,7 @@ OnTimer120000:
 lhz_in01,187,247,3	script	#flashback1	HIDDEN_WARP_NPC,2,2,{
 
 OnTouch:
-	if(lhz_rekenber == 22)
+	if (lhz_rekenber == 22)
 	{
 		cutin "lhz_kaz11",2;
 		mes "[Kazien]";
@@ -11953,7 +11953,7 @@ OnTouch:
 		next;
 		lhz_rekenber = 23;
 		cutin "",255;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes ".............Damn it.";
 		close;
 	}
@@ -11963,7 +11963,7 @@ OnTouch:
 lhz_in01,75,248,3	script	#flashback2	HIDDEN_WARP_NPC,2,2,{
 
 OnTouch:
-	if(lhz_rekenber == 22)
+	if (lhz_rekenber == 22)
 	{
 		cutin "lhz_kaz11",2;
 		mes "[Kazien]";
@@ -11989,7 +11989,7 @@ OnTouch:
 		next;
 		lhz_rekenber = 23;
 		cutin "",255;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		mes "Damn it!";
@@ -12021,7 +12021,7 @@ airplane_01,10,10,3	script	#LyozienSwitch	HIDDEN_NPC,{
 		mes "turn the Lyozien";
 		mes "NPC ON or OFF?";
 		next;
-		switch(select("On", "OFF")) {
+		switch (select("On","OFF")) {
 		case 1:
 			.@str$ = "activated";
 			donpcevent "Man#Lyozien::OnEnable";

@@ -59,7 +59,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "O que está rolando?";
 		mes "Você está aqui porque precisa de uma arma?";
 		next;
-		switch (select("Eu preciso de uma Garrison", "Não mesmo", "Cancelar")) {
+		switch (select("Eu preciso de uma Garrison","Não mesmo","Cancelar")) {
 			case 1:
 			mes "[Garrison]";
 			mes "Oh. Bem vind"+(Sex == SEX_MALE ? "o":"a")+".";
@@ -94,7 +94,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 			mes "Só pra você saber, se eu por o slot na sua Garrison, qualquer refinamento ou carta slotada irá desaparecer.";
 			mes "Decida cuidadosamente";
 			next;
-			switch (select("Eu não gosto de como isso soa", "Ok, vamos tentar")) {
+			switch (select("Eu não gosto de como isso soa","Ok, vamos tentar")) {
 				case 1:
 				mes "[Garrison]";
 				mes "Hmm, eu entendo, acho que vou procurar outra pessoa";
@@ -161,11 +161,11 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Você recebeu a boa encomenda de Garrison";
 		mes "Vamos entregar-las para a pessoa chamada Ravery,que mora na favela de Lighthalzen";
-		delitem(Steel, 10);
-		delitem(Emveretarcon, 10);
-		delitem(Screw, 10);
-		delitem(Elunium, 1);
-		delitem(Coal, 30);
+		delitem(Steel,10);
+		delitem(Emveretarcon,10);
+		delitem(Screw,10);
+		delitem(Elunium,1);
+		delitem(Coal,30);
 		gun_gs = 2;
 		close;
 		case 2:
@@ -215,8 +215,8 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "*tonk* *tonk* *thump* *whump*";
 		mes "Aqui está sua Garrison modificada.";
 		mes "Faça bom uso";
-		delitem(The_Garrison, 1);
-		getitem(The_Garrison_, 1);
+		delitem(The_Garrison,1);
+		getitem(The_Garrison_,1);
 		gun_gs = 5;
 		close;
 		case 4:
@@ -229,8 +229,8 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "Ah,aqui está";
 		mes "Aqui está sua Garrison modificada.";
 		mes "Faça bom uso";
-		delitem(The_Garrison, 1);
-		getitem(The_Garrison_, 1);
+		delitem(The_Garrison,1);
+		getitem(The_Garrison_,1);
 		gun_gs = 5;
 		close;
 		case 5:
@@ -240,7 +240,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "Você voltou porque precisa de uma arma?";
 		mes "De que você precisa?";
 		next;
-		switch (select("Garrison", "Garrison[2]", "Cancelar")) {
+		switch (select("Garrison","Garrison[2]","Cancelar")) {
 			case 1:
 			callsub(SubGarrison);
 			case 2:
@@ -264,7 +264,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 	mes "e há uma taxa de 30,000 Zenys";
 	mes "Bem, você quer uma?";
 	next;
-	switch (select("Talvez mais tarde", "Sim, faça pra mim", "Cancelar")) {
+	switch (select("Talvez mais tarde","Sim, faça pra mim","Cancelar")) {
 		case 1:
 		mes "[Garrison]";
 		mes "Hmmm trabalhei pesado por nada";
@@ -289,7 +289,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 			mes "Você precisa de mais Zeny";
 			mes "Mais Zeny";
 			close;
-		} else if (!checkweight(The_Garrison, 1)) {
+		} else if (!checkweight(The_Garrison,1)) {
 			mes "[Garrison]";
 			mes "Não há espaço no seu inventário para minha criação";
 			mes "Abra uma vaga";
@@ -300,14 +300,14 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "[Garrison]";
 		mes "Hmm, parece que há a quantia exata de materiais e Zeny.";
 		mes "Aqui está sua Garrison";
-		mes "Se você precisar de outra, venha me ver ";
-		delitem(Oridecon, 1);
-		delitem(Elunium, 3);
-		delitem(Steel, 50);
-		delitem(Coal, 50);
-		delitem(Screw, 20);
+		mes "Se você precisar de outra, venha me ver.";
+		delitem(Oridecon,1);
+		delitem(Elunium,3);
+		delitem(Steel,50);
+		delitem(Coal,50);
+		delitem(Screw,20);
 		Zeny -= 30000;
-		getitem(The_Garrison, 1);
+		getitem(The_Garrison,1);
 		close;
 		case 3:
 		mes "[Garrison]";
@@ -326,7 +326,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 	mes "1 "+getitemname(The_Garrison)+".";
 	mes "Bem, você quer uma?";
 	next;
-	switch (select("Talvez mais tarde","Sim, faça pra mim", "Cancelar")) {
+	switch (select("Talvez mais tarde","Sim, faça pra mim","Cancelar")) {
 		case 1:
 		mes "[Garrison]";
 		mes "Você me fez trabalhar a toa";
@@ -355,13 +355,13 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "Hmm,parece que tem a quantidade certa de materiais e Zeny.";
 		mes "Aqui está uma Garrison modificada e com slot.";
 		mes "Se você precisar de outra, venha me ver.";
-		delitem(Steel, 10);
-		delitem(Emveretarcon, 10);
-		delitem(Screw, 10);
-		delitem(Elunium, 1);
-		delitem(Coal, 30);
-		delitem(The_Garrison, 1);
-		getitem(The_Garrison_, 1);
+		delitem(Steel,10);
+		delitem(Emveretarcon,10);
+		delitem(Screw,10);
+		delitem(Elunium,1);
+		delitem(Coal,30);
+		delitem(The_Garrison,1);
+		getitem(The_Garrison_,1);
 		close;
 		case 3:
 		mes "[Garrison]";
@@ -382,8 +382,8 @@ lighthalzen,322,247,6	script	Ravey#gungs	4_M_04,{
 		mes "Huuut!!";
 		mes "Morra!!!";
 		gun_gs = 3;
-		percentheal(100, 0);
-		percentheal(-90, 0);
+		percentheal(100,0);
+		percentheal(-90,0);
 		next;
 		mes "^bb0000O homem chamado Ravery ataca repentinamente, como se ele estivesse esperando a palavra Justiceiro^000000";
 		mes "Você quase morreu";
@@ -494,7 +494,7 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "Eu preciso de 100 Placas de ferro usadas, 10 Oridecons, 50 Parafusos enferrujados velhos, 100 Corações incandescentes, e 200,000Zeny";
 		mes "Gostaria de produzir uma agora?";
 		next;
-		switch (select("Vou pensar nisso", "Sim, por favor")) {
+		switch (select("Vou pensar nisso","Sim, por favor")) {
 			case 1:
 			mes "[Ingrid]";
 			mes "AH eu entendo.";
@@ -525,7 +525,7 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "Olá,você voltou";
 		mes "Você está aqui porque precisa de uma Inferno?";
 		next;
-		switch (select("Não, eu voltei só porque...", "Sim, me faça uma Inferno")) {
+		switch (select("Não, eu voltei só porque...","Sim, me faça uma Inferno")) {
 			case 1:
 			mes "[Ingrid]";
 			mes "Ah eu entendo";
@@ -550,7 +550,7 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "Você deve me trazer o número EXATO de materiais";
 		mes "Por favor não se esqueça";
 		close;
-	}else if (!checkweight(Inferno, 1)) {
+	}else if (!checkweight(Inferno,1)) {
 		mes "[Ingrid]";
 		mes "Parece que você tem muitos itens para minha criaçâo,entao eu não posso lhe dar isso.";
 		mes "Por que você nao volta e me ver de novo quando tiver pronto para receber isto?";
@@ -561,11 +561,11 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "Aqui está a Inferno que eu criei para você.";
 		mes "Faça bom uso.";
 		Zeny -= 200000;
-		delitem(Old_Steel_Plate, 100);
-		delitem(Oridecon, 10);
-		delitem(Screw, 50);
-		delitem(Burning_Heart, 100);
-		getitem(Inferno, 1);
+		delitem(Old_Steel_Plate,100);
+		delitem(Oridecon,10);
+		delitem(Screw,50);
+		delitem(Burning_Heart,100);
+		getitem(Inferno,1);
 		if (gun_inf == 1) {
 			gun_inf = 2;
 		}
@@ -680,7 +680,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "[Vanessa]";
 		mes "Primeiro para fazer um Destruidora precisarei de alguns materiais.";
 		next;
-		switch (select("Talvez da próxima vez", "Certo")) {
+		switch (select("Talvez da próxima vez","Certo")) {
 			case 1:
 			mes "[Vanessa]";
 			mes "Mm Isto é tão, será uma oportunidade para você.";
@@ -706,7 +706,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Tem um novo item no inventário.";
 		mes "Vá em frente e escolha.";
 		next;
-		switch (select("Destruídora", "Destruídora[1]", "Cancelar")) {
+		switch (select("Destruídora","Destruídora[1]","Cancelar")) {
 			case 1:
 			mes "[Vanessa]";
 			mes "Yeah, isto está bom.";
@@ -717,7 +717,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 			mes "5 "+getitemname(Oridecon)+" e";
 			mes "100,000 Zenys para cria-la.";
 			next;
-			switch (select("Talvez mais tarde", "Certo")) {
+			switch (select("Talvez mais tarde","Certo")) {
 				case 1:
 				mes "[Vanessa]";
 				mes "O QUE? Qual é?";
@@ -738,7 +738,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 			mes "Dedos Afiados[2]";
 			mes "5 Oridecons também.";
 			next;
-			switch (select("Talvez da próxima vez", "OK! Farei!")) {
+			switch (select("Talvez da próxima vez","OK! Farei!")) {
 				case 1:
 				mes "[Vanessa]";
 				mes "O que qual é";
@@ -767,7 +767,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "5 "+getitemname(Oridecon)+"e";
 		mes "e uma taxa de 100,000 Zenys.";
 		close;
-	} else if (!checkweight(Destroyer, 1)) {
+	} else if (!checkweight(Destroyer,1)) {
 		mes "[Vanessa]";
 		mes "Parece que você não está possibilitado de carregar minha criação com você mesmo se eu tiver feito isso.";
 		mes "Vá e limpe seu iventório um pouco.";
@@ -780,10 +780,10 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Aqui está a Destruidora que eu criei a tempo para você.";
 		mes "Faça bom uso.";
 		Zeny -= 100000;
-		delitem(Old_Steel_Plate, 50);
-		delitem(Oridecon, 5);
-		delitem(Screw, 70);
-		getitem(Destroyer, 1);
+		delitem(Old_Steel_Plate,50);
+		delitem(Oridecon,5);
+		delitem(Screw,70);
+		getitem(Destroyer,1);
 		if (gunst == 1) { gunst = 2; }
 		next;
 		mes "[Vanessa]";
@@ -800,7 +800,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "1 Dedos Afiados[2]";
 		mes "e 5 Oridecons.";
 		close;
-	} else if (!checkweight(Destroyer_, 1)) {
+	} else if (!checkweight(Destroyer_,1)) {
 		mes "[Vanessa]";
 		mes "Não há espaço em seu iventário.";
 		mes "Mesmo eu tendo feito uma.";
@@ -812,9 +812,9 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Okay Muito bem.";
 		mes "Aqui está a Destruidora Slotada que eu fiz a tempo para você.";
 		mes "Faça bom uso.";
-		delitem(Finger_, 1);
-		delitem(Oridecon, 5);
-		getitem(Destroyer_, 1);
+		delitem(Finger_,1);
+		delitem(Oridecon,5);
+		getitem(Destroyer_,1);
 		next;
 		mes "[Vanessa]";
 		mes "Se você precisar de outra venha depois.";
@@ -830,8 +830,8 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 	if (gun_na == 1) {
 		if (countitem(Nail_Of_Orc) > 999 && countitem(Skel_Bone) > 999) {
-			delitem(Nail_Of_Orc, 1000);
-			delitem(Skel_Bone, 1000);
+			delitem(Nail_Of_Orc,1000);
+			delitem(Skel_Bone,1000);
 			gun_na = 2;
 			mes "[N. A]";
 			mes "Ahh,está tudo aqui!";
@@ -851,7 +851,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			mes "Se você acha que é muito difícil,";
 			mes "você pode escolher desistir";
 			next;
-			if (select("Eu não estou desistindo!", "Eu desisto..") == 1) {
+			if (select("Eu não estou desistindo!","Eu desisto..") == 1) {
 				mes "[N. A]";
 				mes "Tudo bem, confio em você";
 				mes "Boa sorte";
@@ -872,7 +872,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		mes "Você pode usar uma vez que tenha me pago 100.000 zeny.";
 		mes "Você quer pagar agora?";
 		next;
-		if (select("Não", "Sim") == 1) {
+		if (select("Não","Sim") == 1) {
 			mes "[N. A]";
 			mes "Tudo bem.";
 			mes "Irei esperar o seu retorno";
@@ -884,7 +884,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 				mes "Venha me ver com o dinheiro certo?";
 				close;
 			}
-			if (!checkweight(Butcher, 1)) {
+			if (!checkweight(Butcher,1)) {
 				mes "[N. A]";
 				mes "Você está com excesso de peso.";
 				mes "Mesmo se eu lhe der a arma, você não pode carrega-la.";
@@ -893,7 +893,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			}
 			Zeny -= 100000;
 			gun_na = 0;
-			getitem(Butcher, 1);
+			getitem(Butcher,1);
 			mes "[N. A]";
 			mes "1,2,3,4,5";
 			mes "6... 99997, 99998, 99999...";
@@ -913,11 +913,11 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		}
 	} else if (gun_na == 10) {
 		if (countitem(Steel) > 69 && countitem(Elunium) > 4 && countitem(Oridecon) > 2 && countitem(Coal) > 69 && countitem(Screw) > 49 && Zeny > 50000) {
-			delitem(Steel, 70);
-			delitem(Elunium, 5);
-			delitem(Oridecon, 3);
-			delitem(Coal, 70);
-			delitem(Screw, 50);
+			delitem(Steel,70);
+			delitem(Elunium,5);
+			delitem(Oridecon,3);
+			delitem(Coal,70);
+			delitem(Screw,50);
 			Zeny -= 50000;
 			gun_na = 11;
 			mes "[N. A]";
@@ -942,7 +942,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			mes "[N. A]";
 			mes "Se você não quer mais isso você pode cancelar o pedido";
 			next;
-			if (select("Não cancele", "Cancele isso") == 1) {
+			if (select("Não cancele","Cancele isso") == 1) {
 				mes "[N. A]";
 				mes "Bem,venha me ver com os materiais.";
 				mes "Estarei esperando.";
@@ -956,7 +956,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			}
 		}
 	} else if (gun_na == 11) {
-		if (!checkweight(Drifter, 1)) {
+		if (!checkweight(Drifter,1)) {
 			mes "[N. A]";
 			mes "Você está com excesso de peso.";
 			mes "Mesmo se eu fizer a arma, você não poderá carrega-la.";
@@ -964,7 +964,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			close;
 		}
 		gun_na = 0;
-		getitem(Drifter, 1);
+		getitem(Drifter,1);
 		mes "[N. A]";
 		mes "Ahh, aqui está completa para você o Andarilho.";
 		next;
@@ -1031,7 +1031,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		mes "[N. A]";
 		mes "Você trouxe as eferas?";
 		next;
-		switch (select("Não", "Aqui as 30 "+getitemname(Poison_Sphere), "Aqui as 30 "+getitemname(Flare_Sphere), "Aqui as 30 "+getitemname(Lighting_Sphere), "Aqui as 30 Esferas Cegantes", "Aqui as 30 "+getitemname(Freezing_Sphere))) {
+		switch (select("Não","Aqui as 30 "+getitemname(Poison_Sphere), "Aqui as 30 "+getitemname(Flare_Sphere), "Aqui as 30 "+getitemname(Lighting_Sphere), "Aqui as 30 Esferas Cegantes","Aqui as 30 "+getitemname(Freezing_Sphere))) {
 			case 1:
 			mes "[N. A]";
 			mes "Só me traga qualquer tipo";
@@ -1039,31 +1039,31 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 			close;
 			case 2:
 			if (countitem(Poison_Sphere) >= 30) {
-				delitem(13205, 30);
+				delitem(13205,30);
 				gun_na = 103;
 			}
 			break;
 			case 3:
 			if (countitem(Flare_Sphere) >= 30) {
-				delitem(13203, 30);
+				delitem(13203,30);
 				gun_na = 103;
 			}
 			break;
 			case 4:
 			if (countitem(Lighting_Sphere) >= 30) {
-				delitem(13204, 30);
+				delitem(13204,30);
 				gun_na = 103;
 			}
 			break;
 			case 5:
 			if (countitem(Blind_Sphere) >= 30) {
-				delitem(13206, 30);
+				delitem(13206,30);
 				gun_na = 103;
 			}
 			break;
 			case 6:
 			if (countitem(Freezing_Sphere) >= 30) {
-				delitem(13207, 30);
+				delitem(13207,30);
 				gun_na = 103;
 			}
 			break;
@@ -1119,7 +1119,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		mes "Por favor não me pertube.";
 		close;
 	}
-	switch (select(((BaseLevel > 67) ? "Perguntar sobre 'Retalhadora'" : ""), "Perguntar sobre 'Andarilho'", "Cancelar")) {
+	switch (select(((BaseLevel > 67) ? "Perguntar sobre 'Retalhadora'" : ""), "Perguntar sobre 'Andarilho'","Cancelar")) {
 		case 1:
 		mes "[N. A]";
 		mes "Ah, você ouviu as notícias após o recente fim do desenvolvimento é?";
@@ -1138,7 +1138,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		mes "[N. A]";
 		mes "Acha que consegue dar conta disso?";
 		next;
-		if (select("Não tenho certeza...", "Claro que eu posso!!") == 1) {
+		if (select("Não tenho certeza...","Claro que eu posso!!") == 1) {
 			mes "[N. A]";
 			mes "A ^ff0000Retalhadora^000000 é uma arma que você não poderá controlar sem foça.";
 			mes "Eu irei te ver de novo quando você tiver confiança suficiente para segurar este monstro.";
@@ -1182,7 +1182,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 		mes "[N. A]";
 		mes "Você quer tentar usar a ^ff0000Andarilho^000000?";
 		next;
-		if (select("Um, não", "Sim!") == 1) {
+		if (select("Um, não","Sim!") == 1) {
 			mes "[N. A]";
 			mes "Se você não quer tentar volte aqui, outra hora.";
 			close;
@@ -1219,7 +1219,7 @@ que_ng,149,178,4	script	Diretor do Laboratório#gunna	4_F_ALCHE,{
 // ------------------------------------------------------------------
 lighthalzen,205,284,6	script	Harrison#gunna	4_M_03,{
 	if (gun_na == 100) {
-		if (!checkweight(Crimson_Bolt, 1)) {
+		if (!checkweight(Crimson_Bolt,1)) {
 			mes "[F. Harrison]";
 			mes "Você está sobrecarregado.";
 			mes "Mesmo que eu lhe de a arma, você não poderá carrega-la.";
@@ -1306,19 +1306,18 @@ lighthalzen,205,284,6	script	Harrison#gunna	4_M_03,{
 		close;
 	} else if (gun_na == 103) {
 		if (countitem(Steel) >= 10 && countitem(Elunium) >= 2 && countitem(Oridecon) >= 1 && countitem(Coal) >= 20 && countitem(Crimson_Bolt)) {
-			delitem(Steel, 10);
-			delitem(Elunium, 2);
-			delitem(Oridecon, 1);
-			delitem(Coal, 20);
-			delitem(Crimson_Bolt, 1);
+			delitem(Steel,10);
+			delitem(Elunium,2);
+			delitem(Oridecon,1);
+			delitem(Coal,20);
+			delitem(Crimson_Bolt,1);
 			gun_na = 104;
 			mes "[F. Harrison]";
 			mes "Aha! Você conseguiu todos os materiais para mim!";
 			mes "Eu irei começar com os";
 			mes "reparos logo, por favor espere.....";
 			close;
-		}
-		else{
+		} else{
 			mes "[F. Harrison]";
 			mes "Os materiais que eu preciso são";
 			mes "10 Aços,";
@@ -1370,7 +1369,7 @@ lighthalzen,205,284,6	script	Harrison#gunna	4_M_03,{
 			mes "Estou entediado de mais aqui!";
 			mes "Por favorrrrrrrrrr?";
 			next;
-			if (select("Agora não", "Agora...") == 1) {
+			if (select("Agora não","Agora...") == 1) {
 				mes "[F. Harrison]";
 				mes "Hah! Você acha que é o único com uma arma legal?";
 				mes "Bem eu tenho a minha linda Crimson Bolt!";
@@ -1388,7 +1387,7 @@ lighthalzen,205,284,6	script	Harrison#gunna	4_M_03,{
 			mes "Não se preocupe, eu sei como cuidar de uma arma, eu não vou quebrar ela!";
 			mes "Isto isto!";
 			mes "Vamos lá";
-			delitem(Butcher, 1);
+			delitem(Butcher,1);
 			gun_na = 100;
 			close;
 		}

@@ -27,7 +27,7 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 				mes "Você deve ter sido enviad"+(Sex == SEX_MALE ? "o":"a")+" pela Guilda dos Mercadores.";
 				mes "Para me entregar algo.";
 				next;
-				if (select("Sim, está aqui sua encomenda", "Não sei do que está falando") == 2) {
+				if (select("Sim, está aqui sua encomenda","Não sei do que está falando") == 2) {
 					mes "[Java Dullihan]";
 					mes "Estranho achei que era você.";
 					close;
@@ -39,13 +39,13 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 				if (countitem(Merchant_Box_1)) {
 					merchantq = 4;
 					merchantq_3 = 5;
-					getitem(Merchant_Voucher_5, 1);
-					delitem(Merchant_Box_1, 1);
+					getitem(Merchant_Voucher_5,1);
+					delitem(Merchant_Box_1,1);
 				} else if (countitem(Merchant_Box_2)) {
 					merchantq = 4;
 					merchantq_3 = 6;
-					getitem(Merchant_Voucher_6, 2);
-					delitem(Merchant_Box_2, 1);
+					getitem(Merchant_Voucher_6,2);
+					delitem(Merchant_Box_2,1);
 				}
 				close;
 			} else {
@@ -64,7 +64,7 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 		mes "Que lindo dia...";
 		mes "Dias como estes são perfeitos para fazer Tinturas!";
 		next;
-		switch(select("Conversar", "Fazer Tinturas", "Cancelar")) {
+		switch (select("Conversar","Fazer Tinturas","Cancelar")) {
 			case 1:
 			mes "[Java Dullihan]";
 			mes "Eu não tenho muito a dizer.";
@@ -72,7 +72,7 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 			mes "Estou certo que tenho algumas histórias para contar.";
 			mes "Gostaria de ouvir alguma?";
 			next;
-			if (select("Por favor me conte", "Quem sabe depois") == 1) {
+			if (select("Por favor me conte","Quem sabe depois") == 1) {
 				mes "[Java Dullihan]";
 				mes "Meu pai tem feito tinturas desde que eu era criança...";
 				mes "Eu posso ainda lembrar dele fazendo tinturas o dia inteiro.";
@@ -132,15 +132,15 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 			mes "[Java Dullihan]";
 			mes "Então que cor você quer?";
 			next;
-			switch(select("Tintura Vermelha", "Tintura Amarela", "Tintura Azul", "Tintura Verde", "Tintura Laranja", "Tintura Violeta", "Tintura Branca", "Tintura Preta", "Cancelar")) {
-				case 1: callsub(S_MakeDye, 1, 1); break;
-				case 2: callsub(S_MakeDye, 2, 1); break;
-				case 3: callsub(S_MakeDye, 3, 2); break;
-				case 4: callsub(S_MakeDye, 4, 3); break;
-				case 5: callsub(S_MakeDye, 5, 4); break;
-				case 6: callsub(S_MakeDye, 6, 4); break;
-				case 7: callsub(S_MakeDye, 7, 4); break;
-				case 8: callsub(S_MakeDye, 8, 4); break;
+			switch (select("Tintura Vermelha","Tintura Amarela","Tintura Azul","Tintura Verde","Tintura Laranja","Tintura Violeta","Tintura Branca","Tintura Preta","Cancelar")) {
+				case 1: callsub(S_MakeDye,1,1); break;
+				case 2: callsub(S_MakeDye,2,1); break;
+				case 3: callsub(S_MakeDye,3,2); break;
+				case 4: callsub(S_MakeDye,4,3); break;
+				case 5: callsub(S_MakeDye,5,4); break;
+				case 6: callsub(S_MakeDye,6,4); break;
+				case 7: callsub(S_MakeDye,7,4); break;
+				case 8: callsub(S_MakeDye,8,4); break;
 				case 9:
 				mes "[Java Dullihan]";
 				mes "Aaaahhhh!!";
@@ -158,14 +158,14 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 	}
 
 	S_MakeDye:
-	switch(getarg(0)) {
+	switch (getarg(0)) {
 		case 1:
 		mes "[Java Dullihan]";
 		mes "Hmm...";
 		mes "Para fazer uma Tintura Vermelha, eu preciso de ^0000ff30 Ervas Vermelhas, 1 Antígeno e 1 Garrafa Vazia^000000.";
 		mes "O custo de minha mão-de-obra será de 3000 Zeny.";
-		setarray(.@item[0],  507, 973, 713);
-		setarray(.@count[0], 30,  1,   1);
+		setarray(.@item[0], 507,973,713);
+		setarray(.@count[0],30, 1,  1);
 		.@cost = 3000;
 		.@dyestuff = 975;
 		break;
@@ -174,8 +174,8 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 		mes "Hmm...";
 		mes "Para fazer uma Tintura Amarela, eu preciso de ^0000ff30 Ervas Amarelas, 1 Antígeno, e 1 Garrafa Vazia^000000.";
 		mes "O custo de minha mão de obra será de 3000 Zeny.";
-		setarray(.@item[0],  508, 973, 713);
-		setarray(.@count[0], 30,  1,   1);
+		setarray(.@item[0], 508,973,713);
+		setarray(.@count[0],30, 1,  1);
 		.@cost = 3000;
 		.@dyestuff = 976;
 		break;
@@ -184,8 +184,8 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 		mes "Hmm...";
 		mes "Para fazer uma Tintura Azul, eu preciso de ^0000ff20 Ervas Azuis, 1 Antígeno, e 1 Garrafa Vazia^000000.";
 		mes "Trabalhar com ervas azuis é mais difícil, então o custo de minha mão-de-obra será de 3500 Zeny.";
-		setarray(.@item[0],  510, 973, 713);
-		setarray(.@count[0], 20,  1,   1);
+		setarray(.@item[0], 510,973,713);
+		setarray(.@count[0],20, 1,  1);
 		.@cost = 3500;
 		.@dyestuff = 978;
 		break;
@@ -243,14 +243,14 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 	}
 	next;
 	mes "[Java Dullihan]";
-	switch(getarg(1)) {
+	switch (getarg(1)) {
 		case 1: mes " Ah! Eu acho que você tem tudo pronto. Gostaria de iniciar o processo?"; break;
 		case 2: mes " Ok! Eu acho que você tem tudo pronto. Gostaria de iniciar o processo?"; break;
 		case 3: mes " Ok! Eu acho que você tem tudo pronto. Podemos começar o processo?"; break;
 		case 4: mes " Ok! Eu acho que você tem tudo pronto. Gostaria de iniciar o processo?"; break;
 	}
 	next;
-	if (select("Fazer Tinturas", "Cancelar") == 1) {
+	if (select("Fazer Tinturas","Cancelar") == 1) {
 		.@size = getarraysize(.@item);
 		for (.@i = 0; .@i < .@size; ++.@i) {
 			if (countitem(.@item[.@i]) < .@count[.@i]) { break; }
@@ -263,10 +263,10 @@ morocc_in,146,99,3	script	Dullihan#dyestuff	1_M_MERCHANT,{
 			close;
 		}
 		for (.@i = 0; .@i < .@size; ++.@i) {
-			delitem(.@item[.@i], .@count[.@i]);
+			delitem(.@item[.@i],.@count[.@i]);
 		}
 		Zeny -= .@cost;
-		getitem(.@dyestuff, 1);
+		getitem(.@dyestuff,1);
 		mes "[Java Dullihan]";
 		mes "Hmm...";
 		mes "Me saí melhor do que esperava.";

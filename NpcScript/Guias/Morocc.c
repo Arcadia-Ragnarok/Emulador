@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 morocc,153,286,6	script	Guia#mocguide	4_M_MOC_SOLDIER,{
-	cutin ("moc_soldier",2);
+	cutin("moc_soldier",2);
 	mes "[Guia de Morroc]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Alberta^000000, a cidade no deserto.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Guilda dos Gaturnos]","[Esfinge]","[Oasis]","[Forja]","[Loja de Equipamentos]","[Estalagem]","[Taverna]","Menu Anterior")) {
+				switch (select("[Guilda dos Gaturnos]","[Esfinge]","[Oasis]","[Forja]","[Loja de Equipamentos]","[Estalagem]","[Taverna]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Alberta]";
 					mes "Direção para a^0000FF Guilda dos Gaturnos^000000 marcada em seu mini mapa.";
@@ -75,7 +75,7 @@ morocc,153,286,6	script	Guia#mocguide	4_M_MOC_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Funcionária Kafra]","[Loja de Ervas Tóxicas]","[Tintureiro]","Menu Anterior")) {
+				switch (select("[Funcionária Kafra]","[Loja de Ervas Tóxicas]","[Tintureiro]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Alberta]";
 					mes "Posição das^0000FF Funcionárias Kafras^000000 marcadas em seu mini mapa.";
@@ -121,7 +121,7 @@ morocc,153,286,6	script	Guia#mocguide	4_M_MOC_SOLDIER,{
 			mes "[Morroc Guide]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

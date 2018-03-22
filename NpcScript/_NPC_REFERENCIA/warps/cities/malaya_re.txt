@@ -116,7 +116,7 @@ function	script	F_Malaya_Warp	{
 	next;
 	.@i$ = getarg(select("Back outside",getarg(1)+" Jeepney",getarg(2)+" Jeepney") - 1);
 	close2;
-	switch(getarg(3)) {
+	switch (getarg(3)) {
 	case 1: // 12 passenger
 		if (.@i$ == "Center")
 			warp "malaya",241,238;

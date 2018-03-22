@@ -24,7 +24,7 @@ valkyrie,53,58,3	script	Desordeiro#Valkyrie	4_F_ROGUE,{
 			mes "[Desordeiro]";
 			mes "Esse mundo precisa de mais heróis que estão dispostos a andar na linha entre a ordem e a anarquia.";
 			next;
-			jobchange (Job_Stalker);
+			jobchange(Job_Stalker);
 			ADVJOB = 0;
 			mes "[Desordeiro]";
 			mes "Parabéns!";

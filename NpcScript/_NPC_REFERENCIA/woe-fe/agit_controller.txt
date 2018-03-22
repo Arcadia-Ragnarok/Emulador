@@ -53,7 +53,7 @@ OnClock1800:	//end time for Sat(6)
 
 OnAgitInit:
 	// starting time checks
-	if((gettime(GETTIME_WEEKDAY) == TUESDAY  && gettime(GETTIME_HOUR) >= 21 && gettime(GETTIME_HOUR) < 23) ||
+	if ((gettime(GETTIME_WEEKDAY) == TUESDAY  && gettime(GETTIME_HOUR) >= 21 && gettime(GETTIME_HOUR) < 23) ||
 	   (gettime(GETTIME_WEEKDAY) == THURSDAY && gettime(GETTIME_HOUR) >= 21 && gettime(GETTIME_HOUR) < 23) ||
 	   (gettime(GETTIME_WEEKDAY) == SATURDAY && gettime(GETTIME_HOUR) >= 16 && gettime(GETTIME_HOUR) < 18)) {
 		if (!agitcheck()) {
@@ -82,9 +82,9 @@ S_DisplayOwners:
 	setarray .@maps$[15],"prtg_cas01","prtg_cas02","prtg_cas03","prtg_cas04","prtg_cas05";
 	for (.@i = 0; .@i <= 19; ++.@i) {
 		if (getcastledata(.@maps$[.@i],1))
-			announce "The [" + getcastlename(.@maps$[.@i]) + "] castle has been conquered by the [" + getguildname(getcastledata(.@maps$[.@i],1)) + "] guild.",bc_all|bc_woe;
+			announce "The ["+getcastlename(.@maps$[.@i])+"] castle has been conquered by the ["+getguildname(getcastledata(.@maps$[.@i],1))+"] guild.",bc_all|bc_woe;
 		else
-			announce "The [" + getcastlename(.@maps$[.@i]) + "] castle is currently unoccupied.",bc_all|bc_woe;
+			announce "The ["+getcastlename(.@maps$[.@i])+"] castle is currently unoccupied.",bc_all|bc_woe;
 	}
 	end;
 }

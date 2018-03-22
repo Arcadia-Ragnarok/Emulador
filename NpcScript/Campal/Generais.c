@@ -28,7 +28,7 @@ bat_room,160,159,3	script	General Guillaume#bg	4_M_KY_KIYOM,{
 	} else {
 		cutin("bat_kiyom2", 2);
 		mes "[General Guillaume]";
-		mes "Aventureir" + (Sex == SEX_MALE ? "o" : "a") + " de sangue quente, não precisamos de sua habilidade para ganhar esta batalha.";
+		mes "Aventureir"+(Sex == SEX_MALE ? "o":"a")+" de sangue quente, não precisamos de sua habilidade para ganhar esta batalha.";
 		next;
 		cutin("bat_kiyom1", 2);
 		mes "[General Guillaume]";
@@ -44,21 +44,21 @@ bat_room,160,159,3	script	General Guillaume#bg	4_M_KY_KIYOM,{
 		mes "Esta batalha determinará o futuro deste país.";
 		mes "Eu jurei por minha honra que serei o único que protegerá Maroll de ameaças vindas de fora.";
 		next;
-		switch(select("Sim, eu quero me juntar a você", "Cancelar")) {
+		switch (select("Sim, eu quero me juntar a você","Cancelar")) {
 			case 1:
 			mes "[General Guillaume]";
-			mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " ao meu exêrcito.";
+			mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao meu exêrcito.";
 			mes "Seus olhos me dizem que você é um soldado em que eu posso confiar.";
 			next;
 			mes "[General Guillaume]";
 			mes "Suba as escadas e se aliste para a batalha com seus camaradas.";
 			mes "Tenho certeza que eles o receberão de coração aberto!";
 			Bat_Team = 1;
-			close2; cutin("", 255); end;
+			close2; cutin("",255); end;
 			case 2:
 			mes "[General Guillaume]";
 			mes "É uma pena seus taletos seriam realmente úteis!";
-			close2; cutin("", 255); end;
+			close2; cutin("",255); end;
 		}
 	}
 }
@@ -96,7 +96,7 @@ bat_room,160,140,3	script	Príncipe Croix#bg	4_M_CRU_CRUA,{
 	} else {
 		cutin("bat_crua1", 2);
 		mes "[Príncipe Croix]";
-		mes "Aventureir" + (Sex == SEX_MALE ? "o" : "a") + ", por que não nos empresta seu poder para a vitória?";
+		mes "Aventureir"+(Sex == SEX_MALE ? "o":"a")+", por que não nos empresta seu poder para a vitória?";
 		next;
 		cutin("bat_crua2", 2);
 		mes "[Príncipe Croix]";
@@ -107,18 +107,18 @@ bat_room,160,140,3	script	Príncipe Croix#bg	4_M_CRU_CRUA,{
 		mes "Mas isto não quer dizer que ele vai vencer.";
 		mes "Eu quero vencer esta batalha para garantir um futuro melhor para o meu povo.";
 		next;
-		switch(select("Sim, quero me juntar a você", "Cancelar")) {
+		switch (select("Sim, quero me juntar a você","Cancelar")) {
 			case 1:
 			mes "[Príncipe Croix]";
 			mes "Muito obrigado.";
-			mes "Eu sinto que poderei vencer com a ajuda de aventureir" + (Sex == SEX_MALE ? "o" : "a") + "s como você.";
+			mes "Eu sinto que poderei vencer com a ajuda de aventureir"+(Sex == SEX_MALE ? "o":"a")+"s como você.";
 			mes "Agora, por favor suba as escadas e se junte a seus camaradas que estão treinando suas habilidades para lutar com o inimigo!";
 			Bat_Team = 2;
-			close2; cutin("", 255); end;
+			close2; cutin("",255); end;
 			case 2:
 			mes "[Príncipe Croix]";
 			mes "Mesmo assim fico-lhe grato por mostrar interesse.";
-			close2; cutin("", 255); end;
+			close2; cutin("",255); end;
 		}
 	}
 }

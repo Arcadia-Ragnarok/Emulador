@@ -143,16 +143,16 @@ job3_sha01,71,19,0	warp	shadowc1	1,1,tha_t01,149,224
 // - [ Transclasse ] -
 // ------------------------------------------------------------------
 valkyrie,44,33,0	script	valkwarp_01	WARPNPC,1,1,{
-	switch(rand(9)) {
-		case 0: warp ("yuno",328,101); end;
-		case 1: warp ("prontera",116,72); end;
-		case 2: warp ("morocc",156,46); end;
-		case 3: warp ("payon",69,100); end;
-		case 4: warp ("geffen",120,39); end;
-		case 5: warp ("alberta",117,56); end;
-		case 6: warp ("izlude",94,103); end;
-		case 7: warp ("aldebaran",91,105); end;
-		case 8: warp ("comodo",209,143); end;
+	switch (rand(9)) {
+		case 0: warp("yuno",328,101); end;
+		case 1: warp("prontera",116,72); end;
+		case 2: warp("morocc",156,46); end;
+		case 3: warp("payon",69,100); end;
+		case 4: warp("geffen",120,39); end;
+		case 5: warp("alberta",117,56); end;
+		case 6: warp("izlude",94,103); end;
+		case 7: warp("aldebaran",91,105); end;
+		case 8: warp("comodo",209,143); end;
 	}
 }
 

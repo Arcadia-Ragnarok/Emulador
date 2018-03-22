@@ -22,7 +22,7 @@ lighthalzen,182,102,3	script	Lucius#lhz	4_M_LGTGRAND,{
 		mes "Olá jovem.";
 		mes "Gostaria de fazer uma doação para ajudar os famintos?";
 		next;
-		if (select("Claro", "Não, obrigado.") == 1) {
+		if (select("Claro","Não, obrigado.") == 1) {
 			mes "[Lucius]";
 			mes "Você pode doar de 1 a 30 000 zenys.";
 			mes "Que serão usados para auxiliar os pobres e alimentar crianças famintas.";
@@ -41,7 +41,7 @@ lighthalzen,182,102,3	script	Lucius#lhz	4_M_LGTGRAND,{
 				close;
 			}
 			mes "[Lucius]";
-			mes "Muito obrigado por sua doação de " + .@input + " zenys.";
+			mes "Muito obrigado por sua doação de "+.@input+" zenys.";
 			mes "Garanto que seu dinheiro será usado apenas para o benefício de quem necessita dele.";
 			next;
 			if (Zeny < .@input) {
@@ -53,7 +53,7 @@ lighthalzen,182,102,3	script	Lucius#lhz	4_M_LGTGRAND,{
 			Zeny -= .@input;
 			$donatedzeny += .@input;
 			mes "[Lucius]";
-			mes "Até agora, eu recebi um total de " + $donatedzeny + " zennys em doações.";
+			mes "Até agora, eu recebi um total de "+$donatedzeny+" zennys em doações.";
 			mes "Estou muito feliz de ver que ainda existem pessoas boas e generosas no mundo.";
 			if ($donatedzeny > 260000) {
 				next;
@@ -139,7 +139,7 @@ lighthalzen,261,112,3	script	Ruth#lhz	4_F_LGTGIRL,{
 	mes "Sinto que estou derretendo de felicidade!";
 	mes "Ah, eu te amo tanto, Oyoung.";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Epa...";
 	mes "Esse casal está indo para a Nuvem 9, não está?";
 	close;
@@ -156,7 +156,7 @@ lighthalzen,259,108,7	script	Oyoung#lhz	4_M_LGTMAN,{
 	mes "E pelo que vejo seus lábios têm deficiência dessa vitamina!";
 	mes "Vou tomar conta disso!";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Minha nossa!";
 	mes "Não sei o que é mais assustador...";
 	mes "Ele ter usado aquela cantada ou o fato de ela ter funcionado...";
@@ -279,10 +279,10 @@ lighthalzen,78,120,3	script	Maivi#lhz	4_F_LGTGIRL,{
 lighthalzen,230,182,4	script	Klaubis#lhz	4_M_LGTGRAND,{
 	mes "[Klaubis]";
 	mes "Com licença, mas você é um turista?";
-	mes "Seja bem-vind"+ (Sex == SEX_MALE ? "o" : "a") +" a Lighthalzen!";
+	mes "Seja bem-vind"+(Sex == SEX_MALE ? "o" : "a")+" a Lighthalzen!";
 	mes "Essa cidade tem tudo que precisamos, mas as vezes pode ser muito quieta, parada demais.";
 	next;
-	switch(select("Faz tempo que você mora aqui?", "Concordo.", "Sabe sobre o serial killer?")) {
+	switch (select("Faz tempo que você mora aqui?","Concordo.","Sabe sobre o serial killer?")) {
 		case 1:
 		mes "[Klaubis]";
 		mes "Sim, minha família mora nessa cidade faz tempo, começando com o meu bisavô.";
@@ -466,7 +466,7 @@ lighthalzen,123,212,4	script	Merpi#lhz	8_F_GIRL,{
 	mes "O que acha da nossa cidade?";
 	mes "Se tiver alguma pergunta, venha falar comigo.";
 	next;
-	switch(select("Não tenho nada para perguntar...", "Alguma novidade ou rumor?", "Eu também gosto de lavar roupas.")) {
+	switch (select("Não tenho nada para perguntar...","Alguma novidade ou rumor?","Eu também gosto de lavar roupas.")) {
 		case 1:
 		mes "[Merpi]";
 		mes "Sério?";
@@ -489,7 +489,7 @@ lighthalzen,123,212,4	script	Merpi#lhz	8_F_GIRL,{
 
 // ------------------------------------------------------------------
 lighthalzen,296,239,3	script	Berru#lhz	4_M_KID1,{
-	switch(rand(1,3)) {
+	switch (rand(1,3)) {
 		case 1:
 		mes "[Berru]";
 		mes "Papai...! Aaaaaah.!";
@@ -554,7 +554,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 	mes "Minhas crianças estão famintas...";
 	mes "Pode me dar algum dinheiro?";
 	next;
-	if (select("Dar dinheiro para ele", "Ignorar") == 1) {
+	if (select("Dar dinheiro para ele","Ignorar") == 1) {
 		if (Zeny < 50) {
 			mes "[Beggar]";
 			mes "Agradeço sua bondade, mas parece que você também precisa de alguns zenys.";
@@ -562,7 +562,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			emotion(e_heh);
 			close;
 		}
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Aqui, pegue.";
 		Zeny -= 50;
 		next;
@@ -572,7 +572,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 		mes "Mas posso te contar uma história e transmitir um pouco da sabedoria que adquiri com o passar dos anos.";
 		emotion(e_thx);
 		next;
-		switch(rand(1, 3)) {
+		switch (rand(1, 3)) {
 			case 1:
 			mes "[Beggar]";
 			mes "Todos já estiveram em uma situação em que você sente que precisa fazer uma escolha.";
@@ -588,11 +588,11 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "Como estrelas, que estão no céu de dia, mas invisíveis.";
 			mes "Devemos ter esperança, mesmo se não tivermos motivo aparente.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
@@ -627,16 +627,16 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "A capacidade de ocorrerem milagres sempre estará lá e saiba que você pode ser um milagre para alguém.";
 			mes "Isso não é lindo?";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			mes "............";
 			mes "............";
@@ -678,11 +678,11 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "Brigar por raiva passageira ou frustração fará de você um idiota.";
 			mes "Saiba a diferença.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
@@ -700,7 +700,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			close;
 		}
 	}
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "............";
 	close;
 }
@@ -904,7 +904,7 @@ lighthalzen,192,63,4	script	Sergei#lhz	4_F_03,{
 	mes "Sabe, tem uma história interessante sobre aquele martelo que está pendurado ali.";
 	mes "Você gostaria de escutá-la?";
 	next;
-	if (select("Claro", "Não, obrigado.") == 1) {
+	if (select("Claro","Não, obrigado.") == 1) {
 		mes "[Sergei]";
 		mes "O dono anterior da Loja de Armas era um assassino em série.";
 		mes "Toda noite, ele pegava aquele martelo e assassinava cruelmente moças bonitas como eu.";
@@ -957,7 +957,7 @@ lighthalzen,40,107,4	script	Vergil#lhz	4_M_LGTMAN,{
 	mes "O tempo está tão bom hoje, como sempre.";
 	mes "Queria sair do trabalho e ir fazer exercícios físicos.";
 	next;
-	switch(select("Onde você quer ir?", "Mas você não devia ir trabalhar?", "Ouviu falar sobre o serial killer?")) {
+	switch (select("Onde você quer ir?","Mas você não devia ir trabalhar?","Ouviu falar sobre o serial killer?")) {
 		case 1:
 		mes "[Vergil]";
 		mes "Bem, esses caras de terno preto, sem mencionar os rufiões que de vez em quando conseguem entra na cidade.";
@@ -1064,13 +1064,13 @@ lhz_in01,124,28,3	script	Ellette#lhz	1_F_01,{
 	mes "[Ellette]";
 	mes "...";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Com licença.";
 	next;
 	mes "[Ellette]";
 	mes ".........";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Olá?";
 	next;
 	mes "[Ellette]";
@@ -1099,7 +1099,7 @@ lhz_in01,125,40,3	script	Dowbow Ryuei#lhz	4_M_THAIONGBAK,{
 	mes "Sonho ou Realidade?";
 	mes "Escolha uma.";
 	next;
-	if (select("Sonho", "Realidade") == 1) {
+	if (select("Sonho","Realidade") == 1) {
 		mes "[Dowbow Ryuei]";
 		mes "É mesmo? Eu também!";
 		mes "É, nós temos a mesma visão de mundo.";
@@ -1147,7 +1147,7 @@ lhz_in01,116,39,7	script	Kejulle Rekenber#lhz	4_M_CHNMAN,{
 
 // ------------------------------------------------------------------
 lhz_in01,110,40,3	script	Jorjerro#lhz	4_M_ORIENT02,{
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "^3355FFEsse homem está imóvel, e para todos os propósitos, parece adormecido.^000000";
 	close;
 }
@@ -1269,7 +1269,7 @@ lhz_in01,157,47,1	script	Mareth#lhz	4_M_NFLOSTMAN,{
 
 // ------------------------------------------------------------------
 lhz_in01,144,53,3	script	Jorje#lhz	4W_M_02,{
-	switch(rand(1,3)) {
+	switch (rand(1,3)) {
 		case 1:
 		mes "[Jorje]";
 		mes "Aaarre, eu não tenho tempo para conversar!";
@@ -1323,7 +1323,7 @@ lhz_in01,138,47,0	script	#mimir_camera	FAKE_NPC,2,2,{
 	OnTouch:
 	mes "^3355FF*Click*^000000";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "O quê...?";
 	mes "Esse som. Alguém...";
 	mes "Alguém tirou uma foto minha?";
@@ -1584,10 +1584,10 @@ lhz_in02,267,25,4	script	Diana#lhz	4_F_ROGUE,{
 // ------------------------------------------------------------------
 lhz_in02,36,274,4	script	Escritório de eventos#lhz	4_F_ZONDAGIRL,{
 	mes "[Saera]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " ao escritório temporário do Grupo de Eventos Incríveis.";
-	mes "Posso ajudá-l" + (Sex == SEX_MALE ? "o" : "a") + "?";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" ao escritório temporário do Grupo de Eventos Incríveis.";
+	mes "Posso ajudá-l"+(Sex == SEX_MALE ? "o":"a")+"?";
 	next;
-	if (select("Escritório temporário?", "Não, obrigado.") == 1) {
+	if (select("Escritório temporário?","Não, obrigado.") == 1) {
 		mes "[Saera]";
 		mes "Nosso prédio original está em construção, portanto estamos baseando nossas operações aqui até ele ficar pronto.";
 		close;

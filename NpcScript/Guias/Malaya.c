@@ -16,9 +16,9 @@
 malaya,71,72,4	script	Guia#malyguide	4_F_BARYO_WOMAN,{
 	mes "[Guia de Malaya]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Malaya^000000, o Vilareijo da Respiração..";
-	while(1) {
+	while (1) {
 		next;
-		switch(select("[Funcionária Kafras]","[Estalagem & Taverna]","[Loja de Equipamentos]","[Loja de Utilidades]","[Hospital]","[Parque]","[Porto]","Remover marcadores","Cancelar")) {
+		switch (select("[Funcionária Kafras]","[Estalagem & Taverna]","[Loja de Equipamentos]","[Loja de Utilidades]","[Hospital]","[Parque]","[Porto]","Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Mora]";
 			mes "Posição das^0000FF Funcionárias Kafras^000000 marcadas em seu mini mapa.";

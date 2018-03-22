@@ -134,7 +134,7 @@ airplane,221,158,2	script	Piloto#air	4_M_EIN_SOLDIER,{
 		mes "Sempre beba com responsabilidade!";
 		mes "Ainda sim, não lembro a última vez que entrei de férias.";
 		mes "Sim, uma bebida, uma TV e tudo ficará ótimo.";
-		emotion (e_sob);
+		emotion(e_sob);
 		close;
 		case 2:
 		mes "[Piloto]";
@@ -157,7 +157,7 @@ airplane,221,158,2	script	Piloto#air	4_M_EIN_SOLDIER,{
 		mes "Você sabe, toda essa coisa de pilotar no ar, é algo bastante recente, você sabe não é?";
 		mes "Sim, temos um Aeroplano voando a uma incrível velocidade.";
 		next;
-		emotion (e_omg);
+		emotion(e_omg);
 		mes "[Piloto]";
 		mes "Ainda assim, há sempre algo sério, realmente acontecendo.";
 		mes "Quer dizer, estávamos treinando enquanto o Aeroplano estava sendo inventado.";
@@ -258,7 +258,7 @@ airplane_01,221,158,2	script	Piloto#air_01	4_M_EIN_SOLDIER,{
 		mes "E o capitão é uma rena.";
 		mes "Eu podia tirar a minha cueca.";
 		next;
-		emotion (e_omg);
+		emotion(e_omg);
 		mes "[Piloto]";
 		mes "Oh...! Olá!";
 		mes "E-e-está aproveitando o vôo?!";
@@ -285,7 +285,7 @@ airplane_01,83,61,2	script	Dianne#01airplane_01	1_F_MARIA,2,2,{
 	close;
 
 	OnTouch:
-	emotion (e_sob);
+	emotion(e_sob);
 	end;
 }
 

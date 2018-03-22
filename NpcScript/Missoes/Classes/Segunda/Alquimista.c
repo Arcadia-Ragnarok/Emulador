@@ -46,7 +46,7 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 		mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Guilda Alquimísta.";
 		mes "Como posso ajudá-lo?";
 		next;
-		switch(select("Gostaria de saber sobre Alquimistas","Quero ser um Alquimista","Nada")) {
+		switch (select("Gostaria de saber sobre Alquimistas","Quero ser um Alquimista","Nada")) {
 			case 1:
 			mes "[Parmy Gianino]";
 			mes "Os alquimistas estudam e criam novas substâncias e itens a partir de materiais existentes.";
@@ -131,20 +131,20 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 				mes "[Parmy Gianino]";
 				mes "Vamos ver... "+strcharinfo(PC_NAME);
 				mes "Precisa trazer ...";
-				switch(rand(1,3)) {
+				switch (rand(1,3)) {
 					case 1:
 					alchemistq = 1;
-					setquest (2028);
+					setquest(2028);
 					mes "^551A8B7 Poção da Fúria Selvagem^000000.";
 					break;
 					case 2:
 					alchemistq = 2;
-					setquest (2029);
+					setquest(2029);
 					mes "^551A8B100 Mini-Fornalha^000000.";
 					break;
 					case 3:
 					alchemistq = 3;
-					setquest (2030);
+					setquest(2030);
 					mes "^551A8B7,500 Flecha de Fogo^000000.";
 				}
 				next;
@@ -168,15 +168,15 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 			mes "Bem, você trouxe um Grimório Antigo e um Martelo de Ferreiro!";
 			mes "Usaremos esses itens da melhor forma.";
 			next;
-			delitem (Old_Magic_Book,1);
-			delitem (Hammer_Of_Blacksmith,1);
+			delitem(Old_Magic_Book,1);
+			delitem(Hammer_Of_Blacksmith,1);
 			mes "[Parmy Gianino]";
 			mes "Certo, agora você precisa aprender O básico para ser um Alquimista.";
 			mes "Aprender os procedimentos para misturar produtos químicos e medicamentos.";
 			alchemistq = 4;
-			if (questprogress(2028)) { changequest (2028,2031); }
-			else if (questprogress(2029)) { changequest (2029,2031); }
-			else if (questprogress(2030)) { changequest (2030,2031); }
+			if (questprogress(2028)) { changequest(2028,2031); }
+			else if (questprogress(2029)) { changequest(2029,2031); }
+			else if (questprogress(2030)) { changequest(2030,2031); }
 			next;
 			mes "[Parmy Gianino]";
 			mes "Mas antes de tudo isso, você precisa falar com Raspuchin.";
@@ -187,23 +187,23 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 			mes "Uma vez que ele é responsável por uma parte no processo de seleção Alquimista.";
 			close;
 		}
-		switch(alchemistq) {
-			case 1: setarray (.@items[0],657,7); break;
-			case 2: setarray (.@items[0],612,100); break;
-			case 3: setarray (.@items[0],1752,7500); break;
+		switch (alchemistq) {
+			case 1: setarray(.@items[0],657,7); break;
+			case 2: setarray(.@items[0],612,100); break;
+			case 3: setarray(.@items[0],1752,7500); break;
 		}
 		if (countitem(.@items[0]) >= .@items[1]) {
 			mes "Parece que está tudo aqui.";
 			mes "A Guilda usará esses itens para bem.";
 			next;
-			delitem (.@items[0],.@items[1]);
+			delitem(.@items[0],.@items[1]);
 			mes "[Parmy Gianino]"; 
 			mes "Certo, agora você precisa aprender O básico para ser um Alquimista.";
 			mes "Aprender os procedimentos para misturar produtos químicos e medicamentos.";
 			alchemistq = 4;
-			if (questprogress(2028)) { changequest (2028,2031); }
-			else if (questprogress(2029)) { changequest (2029,2031); }
-			else if (questprogress(2030)) { changequest (2030,2031); }
+			if (questprogress(2028)) { changequest(2028,2031); }
+			else if (questprogress(2029)) { changequest(2029,2031); }
+			else if (questprogress(2030)) { changequest(2030,2031); }
 			next;
 			mes "[Parmy Gianino]";
 			mes "Mas você ainda é obrigado a falar com Raspuchin.";
@@ -341,7 +341,7 @@ alde_alche,175,107,3	script	Alquimista Fastidioso#alchemistq	4_M_ALCHE_B,{
 				mes "Ele vai te ensinar como fazer as experiências.";
 				mes "Basta dizer-lhe que eu te enviei.";
 				alchemistq = 6;
-				changequest (2031,2032);
+				changequest(2031,2032);
 				close;
 			} else {
 				mes "[Raspuchin Gregory]";
@@ -372,7 +372,7 @@ alde_alche,175,107,3	script	Alquimista Fastidioso#alchemistq	4_M_ALCHE_B,{
 			mes "Então, responda tudo corretamente.";
 		}
 		next;
-		switch(rand(1,3)) {
+		switch (rand(1,3)) {
 			case 1:
 			mes "[Raspuchin Gregory]";
 			mes "12 + 23 + 34 + 45 = ?";
@@ -650,7 +650,7 @@ alde_alche,175,107,3	script	Alquimista Fastidioso#alchemistq	4_M_ALCHE_B,{
 		mes "Ele vai te ensinar como fazer as experiências.";
 		mes "Basta dizer-lhe que eu te enviei.";
 		alchemistq = 6;
-		changequest (2031,2032);
+		changequest(2031,2032);
 		close;
 	} else if (alchemistq == 6) {
 		mes "O que você está fazendo?";
@@ -713,8 +713,8 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 		mes "......";
 		mes "Quem é esse...?";
 		next;
-		monster ("alde_alche",13,15,"Lobo",1013,1);
-		killmonsterall ("alde_alche");
+		monster("alde_alche",13,15,"Lobo",WOLF,1);
+		killmonsterall("alde_alche");
 		mes "[Darwin]";
 		mes "Um lobo?";
 		mes "Ou um ser humano?";
@@ -736,7 +736,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 		mes "O que te traz";
 		mes "Para este tipo de lugar?";
 		next;
-		switch(select("Quero aprender experimentos","Diga-me mais sobre flores","Nada")) {
+		switch (select("Quero aprender experimentos","Diga-me mais sobre flores","Nada")) {
 			case 1:
 			mes "[Darwin]";
 			mes "Você deseja aprender Alquimia?";
@@ -756,7 +756,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 			mes "^551A8B1 Erva Amarela^000000 e";
 			mes "^551A8B1 Erva Branca^000000.";
 			alchemistq = 7;
-			changequest (2032,2033);
+			changequest(2032,2033);
 			next;
 			mes "[Darwin]";
 			mes "Uma vez que você tenha tudo preparado, volte.";
@@ -814,7 +814,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 		mes "Você é quem deseja aprender Alquimia.";
 		mes "Trouxe tudo que pedi?";
 		next;
-		if (countitem(Illusion_Flower) > 0) {
+		if (countitem(Illusion_Flower)) {
 			mes "[Darwin]";
 			mes "Espere.";
 			mes "Esta é a Flor das Ilusões.";
@@ -888,13 +888,13 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 			mes "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.";
 			mes "Morbi massa, fermentum vitae...";
 			next;
-			delitem (Illusion_Flower,1);
+			delitem(Illusion_Flower,1);
 			mes "[Darwin]";
 			mes "^666666*Suspiro...*^000000";
 			mes "Você é agora um Alquimista!!";
 			mes "Jogue fora agora essas vestes de mercador e essa vida mercantil!!";
 			alchemistq = 40;
-			changequest (2033,2034);
+			changequest(2033,2034);
 			close;
 		} else if (countitem(Medicine_Bowl) > 2 && countitem(Empty_Bottle) > 2 && countitem(Red_Herb) > 0 && countitem(Yellow_Herb) > 0 && countitem(White_Herb) > 0) {
 			mes "[Darwin]";
@@ -911,11 +911,11 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 			next;
 			mes "[Darwin]";
 			mes "Se você acha que tem o suficiente, derrame a mistura em uma garrafa vazia.";
-			delitem (Medicine_Bowl,3);
-			delitem (Empty_Bottle,3);
-			delitem (Red_Herb,1);
-			delitem (Yellow_Herb,1);
-			delitem (White_Herb,1);
+			delitem(Medicine_Bowl,3);
+			delitem(Empty_Bottle,3);
+			delitem(Red_Herb,1);
+			delitem(Yellow_Herb,1);
+			delitem(White_Herb,1);
 			next;
 			mes "[Darwin]";
 			mes "Ai está,";
@@ -923,7 +923,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 			mes "Agora, faça algum remédio usando o procedimento simples eu expliquei para você.";
 			.@w_point = 0;
 			next;
-			switch(select("Preparar a Vasílisa","Colocar a Vasílisa na cabeça","Chutar a Vasílisa")) {
+			switch (select("Preparar a Vasílisa","Colocar a Vasílisa na cabeça","Chutar a Vasílisa")) {
 				case 1:
 				break;
 				case 2:
@@ -939,7 +939,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				next;
 				break;
 			}
-			switch(select("Põr areia na Vasília","Põr ervas na Vasílha","Põr uma harpa Vasílisa")) {
+			switch (select("Põr areia na Vasília","Põr ervas na Vasílha","Põr uma harpa Vasílisa")) {
 				case 1:
 				++.@w_point;
 				mes "[Darwin]";
@@ -957,7 +957,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				next;
 				break;
 			}
-			switch(select("Esmagar as ervas","Esmagar a Vasílha","Esmagar o pé de Darwin.")) {
+			switch (select("Esmagar as ervas","Esmagar a Vasílha","Esmagar o pé de Darwin.")) {
 				case 1:
 				break;
 				case 2:
@@ -974,7 +974,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				next;
 				break;
 			}
-			switch(select("Pulverizar a água","Beber a água","Despejar a água")) {
+			switch (select("Pulverizar a água","Beber a água","Despejar a água")) {
 				case 1:
 				++.@w_point;
 				mes "[Darwin]";
@@ -991,7 +991,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				case 3:
 				break;
 			}
-			switch(select("Continuar esmagando as ervas","Comer as ervas","Dançar e cantar")) {
+			switch (select("Continuar esmagando as ervas","Comer as ervas","Dançar e cantar")) {
 				case 1:
 				break;
 				case 2:
@@ -1009,7 +1009,7 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				next;
 				break;
 			}
-			switch(select("Fritar tudo com macarrão","Despejar em uma Garrafa Vazia","Segurar a Vasílha e beber")) {
+			switch (select("Fritar tudo com macarrão","Despejar em uma Garrafa Vazia","Segurar a Vasílha e beber")) {
 				case 1:
 				++.@w_point;
 				mes "[Darwin]";
@@ -1036,15 +1036,15 @@ alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
 				mes "Terá que obter mais ingredientes para tentar novamente até que você acertar.";
 				close;
 			}
-			getitem (Red_Potion,1);
-			getitem (Yellow_Potion,1);
-			getitem (White_Potion,1);
+			getitem(Red_Potion,1);
+			getitem(Yellow_Potion,1);
+			getitem(White_Potion,1);
 			mes "[Darwin]";
 			mes "Bom trabalho.";
 			mes "Ele saiu muito bem considerando que é a sua primeira vez.";
 			mes "Vá em frente e guarde o conhecimento que você acabou de adquirir.";
 			alchemistq = 8;
-			changequest (2033,2035);
+			changequest(2033,2035);
 			next;
 			mes "[Darwin]";
 			mes "Agora, vá para a próxima sala e fale com Van Helmont para continuar sua formação.";
@@ -1208,7 +1208,7 @@ alde_alche,79,19,5	script	Especialista#alchemistq	4_M_ALCHE_A,{
 			next;
 			mes "[Van Helmont]";
 			alchemistq = 9;
-			changequest (2035,2036);
+			changequest(2035,2036);
 			mes "Bem, então vejo você mais tarde.";
 			mes "É melhor você ir logo que puder.";
 			close;
@@ -1271,7 +1271,7 @@ alde_alche,79,19,5	script	Especialista#alchemistq	4_M_ALCHE_A,{
 		mes "[Van Helmont]";
 		mes "Deixe-me fazer algumas perguntas para verificar o que você aprendeu.";
 		next;
-		if(molgenstain == 3) {
+		if (molgenstain == 3) {
 			mes "[Van Helmont]";
 			mes "Qual item não é necessário para fazer um Antígeno?";
 			next;
@@ -1304,7 +1304,7 @@ alde_alche,79,19,5	script	Especialista#alchemistq	4_M_ALCHE_A,{
 			mes "Ele vai continuar seu treinamento.";
 			next;
 			alchemistq = 20;
-			changequest (2036,2037);
+			changequest(2036,2037);
 			mes "[Van Helmont]";
 			mes "O que você ainda está fazendo aqui?";
 			mes "Vá!";
@@ -1392,7 +1392,7 @@ alde_alche,145,19,1	script	Pesquisador#alchemistq	1_M_LIBRARYMASTER,{
 		mes "[Nicholas Flamel]";
 		mes "Você passa se você escolher a palavra que é ^551A8BCorreta^000000 nesse quebra-cabeça.";
 		next;
-		switch(rand(1,3)) {
+		switch (rand(1,3)) {
 			case 1:
 			mes "[Nicholas Flamel]";
 			mes "t m y a n y e o b n e g p r i";
@@ -1527,15 +1527,15 @@ alde_alche,145,19,1	script	Pesquisador#alchemistq	1_M_LIBRARYMASTER,{
 		mes "Eles vão precisar de todos esses itens para continuar seus experimentos.";
 		next;
 		alchemistq = 23;
-		changequest (2037,2038);
+		changequest(2037,2038);
 		mes "[Nicholas Flamel]";
 		mes "[Nicholas Flamel]";
 		mes "1 Mistura, 5 Madeira Queimada, 5 Areia Fina, 3 Minério de Oridecon e 3 Minério de Elunium.";
-		getitem (Mixture,1);
-		getitem (Burn_Tree,5);
-		getitem (Fine_Sand,5);
-		getitem (Oridecon_Stone,3);
-		getitem (Elunium_Stone,3);
+		getitem(Mixture,1);
+		getitem(Burn_Tree,5);
+		getitem(Fine_Sand,5);
+		getitem(Oridecon_Stone,3);
+		getitem(Elunium_Stone,3);
 		next;
 		mes "[Nicholas Flamel]";
 		mes "Bem.";
@@ -1547,7 +1547,7 @@ alde_alche,145,19,1	script	Pesquisador#alchemistq	1_M_LIBRARYMASTER,{
 		close;
 	} else if (alchemistq == 24) {
 		alchemistq = 40;
-		changequest (2038,2039);
+		changequest(2038,2039);
 		mes "[Nicholas Flamel]";
 		mes "Ah, você está de volta!";
 		mes "Acabei de receber uma mensagem de Bain e Bajin.";
@@ -1583,7 +1583,7 @@ alde_alche,145,19,1	script	Pesquisador#alchemistq	1_M_LIBRARYMASTER,{
 
 // ------------------------------------------------------------------
 alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
-	cutin "job_alche_vincent",2;
+	cutin("job_alche_vincent",2);
 	mes "[Vincent Carsciallo]";
 	if (BaseJob != Job_Merchant) {
 		if (BaseJob == Job_Alchemist) {
@@ -1606,7 +1606,7 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 			mes "Receio que não possamos oferecer-lhe aqui se não for membro da nossa Guilda.";
 		}
 		close2;
-		cutin "",255;
+		cutin("",255);
 		end;
 	}
 	if (alchemistq == 0) {
@@ -1625,7 +1625,7 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 		mes "Depois de estar viajando como um comerciante por um longo tempo, você deve ter desenvolvido alguma curiosidade científica.";
 		mes "Se você gostaria de aprender Alquimia, por que você não tenta se tornar um Alquimista?";
 		close2;
-		cutin "",255;
+		cutin("",255);
 		end;
 	} else if (alchemistq == 40) {
 		if (JobLevel < 40) {
@@ -1634,7 +1634,7 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 			mes "Você não parece estar qualificado ainda.";
 			mes "Lembre-se, você deve alcançar pelo menos o nível 40 de Classe para se tornar um Alquimista.";
 			close2;
-			cutin "",255;
+			cutin("",255);
 			end;
 		}
 		if (SkillPoint) {
@@ -1644,51 +1644,51 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 			mes "[Vincent Carsciallo]";
 			mes "Fale comigo novamente depois de ter gasto todos os seus pontos de habilidade extras.";
 			close2;
-			cutin "",255;
+			cutin("",255);
 			end;
 		}
-		if (questprogress(2039)) { changequest (2039,2040); }
-		if (questprogress(2034)) { changequest (2034,2040); }
+		if (questprogress(2039)) { changequest(2039,2040); }
+		if (questprogress(2034)) { changequest(2034,2040); }
 		mes "Ah, bem isso é tudo.";
 		mes "Posso ver que você aprendeu todos os conceitos básicos da Alquimia.";
 		next;
-		jobchange (Job_Alchemist);
-		completequest (2040);
-		callfunc ("ClearJobQuest2nd",18);
+		jobchange(Job_Alchemist);
+		completequest(2040);
+		callfunc("ClearJobQuest2nd",18);
 		mes "[Vincent Carsciallo]";
 		mes "Parabéns, você é agora um membro da nossa ilustre Guilda.";
 		mes "Eu espero que você aprenda muito...";
 		next;
 		if (.@jlevel == 50) {
-			getitem (Slim_Potion_Create_Book,1);
-			getitem (Alcol_Create_Book,1);
-			getitem (FireBottle_Create_Book,1);
-			getitem (Acid_Create_Book,1);
-			getitem (Plant_Create_Book,1);
-			getitem (Mine_Create_Book,1);
-			getitem (Normal_Potion_Book,1);
+			getitem(Slim_Potion_Create_Book,1);
+			getitem(Alcol_Create_Book,1);
+			getitem(FireBottle_Create_Book,1);
+			getitem(Acid_Create_Book,1);
+			getitem(Plant_Create_Book,1);
+			getitem(Mine_Create_Book,1);
+			getitem(Normal_Potion_Book,1);
 			mes "[Vincent Carsciallo]";
 			mes "Deixe-me dar-lhe algo especial.";
 			mes "Você pode usar isso para começar sua vida de pesquisa.";
 		} else {
-			switch(rand(1,6)) {
+			switch (rand(1,6)) {
 				case 1:
-				getitem (Alcol_Create_Book,1);
+				getitem(Alcol_Create_Book,1);
 				break;
 				case 2:
-				getitem (FireBottle_Create_Book,1);
+				getitem(FireBottle_Create_Book,1);
 				break;
 				case 3:
-				getitem (Acid_Create_Book,1);
+				getitem(Acid_Create_Book,1);
 				break;
 				case 4:
-				getitem (Plant_Create_Book,1);
+				getitem(Plant_Create_Book,1);
 				break;
 				case 5:
-				getitem (Mine_Create_Book,1);
+				getitem(Mine_Create_Book,1);
 				break;
 				case 6:
-				getitem (Normal_Potion_Book,1);
+				getitem(Normal_Potion_Book,1);
 			}
 			mes "[Vincent Carsciallo]";
 			mes "E...";
@@ -1699,7 +1699,7 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 		mes "Vejo você mais tarde, então...";
 		mes "Lembre-se de viver com orgulho de ser Alquimista!";
 		close2;
-		cutin "",255;
+		cutin("",255);
 		end;
 	} else {
 		mes "Ah...";
@@ -1709,7 +1709,7 @@ alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
 		mes "Por favor, ouça os outros Alquimistas e siga as instruções cuidadosamente.";
 		mes "Você aprenderá muito com eles.";
 		close2;
-		cutin "",255;
+		cutin("",255);
 		end;
 	}
 }

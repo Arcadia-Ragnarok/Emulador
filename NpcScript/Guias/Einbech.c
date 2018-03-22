@@ -14,12 +14,12 @@
 \*-----------------------------------------------------------------*/
 
 einbech,67,37,4	script	Guia#embeguide	4_M_EIN_SOLDIER,{
-	cutin ("ein_soldier",2);
+	cutin("ein_soldier",2);
 	mes "[Guia de Einbech]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Einbech^000000.";
 	next;
 	while (1) {
-		switch(select("[Taverna]","[Loja de Utilidades]","[Estação de Trem]",
+		switch (select("[Taverna]","[Loja de Utilidades]","[Estação de Trem]",
 			"[Mina]",
 			"[Funcionária Kafra]","Remover marcadores","Cancelar")) {
 			case 1:
@@ -66,7 +66,7 @@ einbech,67,37,4	script	Guia#embeguide	4_M_EIN_SOLDIER,{
 			mes "[Guia de Einbech]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

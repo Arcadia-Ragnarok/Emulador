@@ -29,7 +29,7 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 			mes "[Caçadora Dejiko]";
 			mes "Você veio aqui para se tornar Caçador?";
 			next;
-			switch(select("É para isso que eu estou aqui","Quais são os requisitos?","Só estou de passagem")) {
+			switch (select("É para isso que eu estou aqui","Quais são os requisitos?","Só estou de passagem")) {
 				case 1:
 				mes "[Caçadora Dejiko]";
 				mes "Hehe...";
@@ -55,7 +55,7 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 				mes "Pronto, já lhe registrei na lista de candidatos, quando estiver pront"+(Sex == SEX_MALE ? "o" : "a")+" para começar venha falar comigo novamente.";
 				mes "Até logo, então.";
 				hunterq = 1;
-				setquest (4000);
+				setquest(4000);
 				close;
 				case 2:
 				mes "[Caçadora Dejiko]";
@@ -209,7 +209,7 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 					close;
 				} else {
 					hunterq = 2;
-					changequest (4000,4001);
+					changequest(4000,4001);
 					mes "[Caçadora Dejiko]";
 					mes "Bom trabalho!";
 					mes "Suas respostas mostram que você tem a visão certa da vida.";
@@ -261,9 +261,9 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 				mes "Pois bem, agora irei mudar sua classe para Caçador.";
 				next;
 				.@chararcherlv = JobLevel;
-				jobchange (Job_Hunter);
-				completequest (4013);
-				callfunc ("ClearJobQuest2nd",11);
+				jobchange(Job_Hunter);
+				completequest(4013);
+				callfunc("ClearJobQuest2nd",11);
 				mes "[Caçadora Dejiko]";
 				mes "Torne-se uma pessoa nobre e seja um digno representante da nossa guilda de Caçadores.";
 				mes "Mostre seu amor pela natureza como Caçador.";
@@ -271,9 +271,9 @@ hu_in01,386,373,4	script	Caçadora#hunterq	4_F_JOB_HUNTER,{
 				mes "[Caçadora Dejiko]";
 				mes "E também, aqui está um pequeno presente por todo o esforço que você teve.";
 				if (.@chararcherlv == 50) {
-					getitem (Hunter_Bow,1);
+					getitem(Hunter_Bow,1);
 				} else {
-					getitem (CrossBow,1);
+					getitem(CrossBow,1);
 				}
 				close;
 			}
@@ -332,13 +332,13 @@ hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 		mes "Vejamos, estamos escasso destes itens...";
 		next;
 		switch (rand(7)) {
-			case 1: setarray  (.@htitm[0], 7030,5, 1019,5, 509, 3);  hunterq2 = 1; changequest (4001,4002); break;
-			case 2: setarray  (.@htitm[0], 925, 3, 932, 5, 511, 3);  hunterq2 = 2; changequest (4001,4003); break;
-			case 3: setarray  (.@htitm[0], 937, 3, 919, 3, 507, 5);  hunterq2 = 3; changequest (4001,4004); break;
-			case 4: setarray  (.@htitm[0], 1021,3, 7032,3, 914, 10); hunterq2 = 4; changequest (4001,4005); break;
-			case 5: setarray  (.@htitm[0], 935, 9, 955, 9, 508, 9);  hunterq2 = 5; changequest (4001,4006); break;
-			case 6: setarray  (.@htitm[0], 913, 3, 938, 1, 948, 1);  hunterq2 = 6; changequest (4001,4007); break;
-			default: setarray (.@htitm[0], 1027,2, 942, 1, 1026,1);  hunterq2 = 7; changequest (4001,4008); break;
+			case 1: setarray  (.@htitm[0], 7030,5, 1019,5, 509, 3);  hunterq2 = 1; changequest(4001,4002); break;
+			case 2: setarray  (.@htitm[0], 925, 3, 932, 5, 511, 3);  hunterq2 = 2; changequest(4001,4003); break;
+			case 3: setarray  (.@htitm[0], 937, 3, 919, 3, 507, 5);  hunterq2 = 3; changequest(4001,4004); break;
+			case 4: setarray  (.@htitm[0], 1021,3, 7032,3, 914, 10); hunterq2 = 4; changequest(4001,4005); break;
+			case 5: setarray  (.@htitm[0], 935, 9, 955, 9, 508, 9);  hunterq2 = 5; changequest(4001,4006); break;
+			case 6: setarray  (.@htitm[0], 913, 3, 938, 1, 948, 1);  hunterq2 = 6; changequest(4001,4007); break;
+			default: setarray(.@htitm[0], 1027,2, 942, 1, 1026,1);  hunterq2 = 7; changequest(4001,4008); break;
 		}
 		hunterq = 3;
 		mes "[Caçador de Demônio]";
@@ -357,7 +357,7 @@ hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 			case 4: setarray  (.@htitm[0], 1021,3, 7032,3, 914, 10); break;
 			case 5: setarray  (.@htitm[0], 935, 9, 955, 9, 508, 9);  break;
 			case 6: setarray  (.@htitm[0], 913, 3, 938, 1, 948, 1);  break;
-			default: setarray (.@htitm[0], 1027,2, 942, 1, 1026,1);  break;
+			default: setarray(.@htitm[0], 1027,2, 942, 1, 1026,1);  break;
 		}
 		if (countitem(.@htitm[0]) < .@htitm[1] && countitem(.@htitm[2]) < .@htitm[3] && countitem(.@htitm[4]) < .@htitm[5]) {
 			mes "[Caçador de Demônio]";
@@ -373,18 +373,18 @@ hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 		} else {
 			mes "[Caçador de Demônio]";
 			mes "Você trouxe todos os materiais necessários...";
-			if (questprogress(4002))      { changequest (4002,4009); hunterq3 = 1; }
-			else if (questprogress(4003)) { changequest (4003,4009); hunterq3 = 1; }
-			else if (questprogress(4004)) { changequest (4004,4009); hunterq3 = 1; }
-			else if (questprogress(4005)) { changequest (4005,4009); hunterq3 = 1; }
-			else if (questprogress(4006)) { changequest (4006,4010); hunterq3 = 2; }
-			else if (questprogress(4007)) { changequest (4007,4010); hunterq3 = 2; }
-			else if (questprogress(4008)) { changequest (4008,4010); hunterq3 = 2; }
+			if (questprogress(4002))      { changequest(4002,4009); hunterq3 = 1; }
+			else if (questprogress(4003)) { changequest(4003,4009); hunterq3 = 1; }
+			else if (questprogress(4004)) { changequest(4004,4009); hunterq3 = 1; }
+			else if (questprogress(4005)) { changequest(4005,4009); hunterq3 = 1; }
+			else if (questprogress(4006)) { changequest(4006,4010); hunterq3 = 2; }
+			else if (questprogress(4007)) { changequest(4007,4010); hunterq3 = 2; }
+			else if (questprogress(4008)) { changequest(4008,4010); hunterq3 = 2; }
 			hunterq = 4;
 			hunterq2 = 0;
-			delitem (.@htitm[0],.@htitm[1]);
-			delitem (.@htitm[2],.@htitm[3]);
-			delitem (.@htitm[4],.@htitm[5]);
+			delitem(.@htitm[0],.@htitm[1]);
+			delitem(.@htitm[2],.@htitm[3]);
+			delitem(.@htitm[4],.@htitm[5]);
 			next;
 			mes "[Caçador de Demônio]";
 			mes "Nosso líder viajou até o Palácio de Payon.";
@@ -443,7 +443,7 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 				close;
 			}
 		} else {
-			cutin ("job_huntermaster",2);
+			cutin("job_huntermaster",2);
 			mes "[Líder dos Caçadores]";
 			mes "Você deve estar aqui para o teste de Caçador.";
 			mes "Posso dar informações sobre o processo do teste.";
@@ -466,13 +466,13 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 				mes "[Líder dos Caçadores]";
 				mes "Isso é para testar sua capacidade de mover-se rapidamente e localizar alvos em diversas situações.";
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			} else {
-				if (questprogress(4009)) { changequest (4009,4011);}
-				else if (questprogress(4010)) { changequest (4010,4011);}
+				if (questprogress(4009)) { changequest(4009,4011);}
+				else if (questprogress(4010)) { changequest(4010,4011);}
 				hunterq = 5;
-				getitem (Silver_Arrow,200);
+				getitem(Silver_Arrow,200);
 				mes "[Líder dos Caçadores]";
 				mes "Certo lhe enviarei para o local do teste.";
 				mes "Boa sorte.";
@@ -480,14 +480,14 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 				mes "[Líder dos Caçadores]";
 				mes "Tome isso pode ser útil para o teste.";
 				close2;
-				warp ("job_hunte",176,22);
-				savepoint ("job_hunte",176,22);
-				cutin ("",255);
+				warp("job_hunte",176,22);
+				savepoint("job_hunte",176,22);
+				cutin("",255);
 				end;
 			}
 		}
 	} else if (hunterq == 5) {
-		cutin ("job_huntermaster",2);
+		cutin("job_huntermaster",2);
 		mes "[Líder dos Caçadores]";
 		mes "O que houve, parece que facassou no teste?";
 		next;
@@ -497,15 +497,15 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 			mes "E lembre-se que deve caçar os \"^3355FFMostro Alvo^000000\" para completar o teste.";
 			mes "Só então siga para o centro o mapa onde estará o interruptor de fuga.";
 			close2;
-			warp ("job_hunte",176,22);
-			savepoint ("job_hunte",176,22);
-			cutin ("",255);
+			warp("job_hunte",176,22);
+			savepoint("job_hunte",176,22);
+			cutin("",255);
 			end;
 		} else {
 			mes "[Líder dos Caçadores]";
 			mes "Tudo bem volte quando estiver preparad"+(Sex == SEX_MALE ? "o" : "a")+".";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (hunterq >= 6) {
@@ -515,7 +515,7 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 			mes "Por acaso está perdido?";
 			close;
 		} else {
-			cutin ("job_huntermaster",2);
+			cutin("job_huntermaster",2);
 			mes "[Líder dos Caçadores]";
 			if (hunterq == 6) {
 				mes "Enfim você retornou!";
@@ -537,23 +537,23 @@ payon_in03,131,7,3	script	Caçador#1_hunterq	1_M_ORIENT01,{
 				mes "[Líder dos Caçadores]";
 				mes "Pegue esse colar e leve-o até a guilda dos caçadores.";
 				mes "Ele será aprova que você concluíu o teste.";
-				getitem (Penetration,1);
+				getitem(Penetration,1);
 				hunterq = 7;
-				changequest (4012,4013);
+				changequest(4012,4013);
 				next;
 				mes "[Líder dos Caçadores]";
 				mes "Agora siga até a guilda para se tornar Caçador.";
 				close2;
-				cutin ("",255);
-				warp ("hugel",208,223);
+				cutin("",255);
+				warp("hugel",208,223);
 				end;
 			} else {
 				mes "[Líder dos Caçadores]";
 				mes "O que?!";
 				mes "Não deveria ter ido até a guilda dos caçadores?";
 				close2;
-				cutin ("",255);
-				warp ("hugel",208,223);
+				cutin("",255);
+				warp("hugel",208,223);
 				end;
 			}
 		}
@@ -567,8 +567,8 @@ job_hunte,178,32,1	script	Guia#hunterq	1_M_PAY_ELDER,{
 		mes "[Guia]";
 		mes "Você não deveria está aqui.";
 		close2;
-		savepoint ("payon",104,99);
-		warp ("payon",104,99);
+		savepoint("payon",104,99);
+		warp("payon",104,99);
 		end;
 	} else {
 		mes "[Guia]";
@@ -590,14 +590,14 @@ job_hunte,178,32,1	script	Guia#hunterq	1_M_PAY_ELDER,{
 			mes "Então você deve refazer o teste.";
 			close;
 			case 2:
-			percentheal (100,100);
+			percentheal(100,100);
 			close;
 			case 3:
 			mes "[Guia]";
 			mes "Apenas vou lhe enviar para payon.";
 			mes "Se quiser retornar até aqui, procure pelo Líder da Guilda.";
 			close2;
-			warp ("payon",104,99);
+			warp("payon",104,99);
 			end;
 		}
 	}
@@ -608,13 +608,13 @@ job_hunte,178,38,1	script	Sala de Espera#hunterq	1_F_01,{
 	end;
 
 	OnInit:
-	waitingroom ("Sala de Espera", 10,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
+	waitingroom("Sala de Espera", 10,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	warpwaitingpc (strnpcinfo(NPC_MAP),90,67);
-	donpcevent ("hunterengine#hunterq::OnEnable");
+	warpwaitingpc(strnpcinfo(NPC_MAP),90,67);
+	donpcevent("hunterengine#hunterq::OnEnable");
 	disablewaitingroomevent;
 	end;
 
@@ -626,72 +626,72 @@ job_hunte,178,38,1	script	Sala de Espera#hunterq	1_F_01,{
 // ------------------------------------------------------------------
 job_hunte,1,1,1	script	hunterengine#hunterq	1_F_01,{
 	OnInit:
-	disablenpc (strnpcinfo(NPC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnEnable:
-	donpcevent ("Interruptor#hunterq::OnDisable");
-	enablenpc (strnpcinfo(NPC_NAME));
+	donpcevent("Interruptor#hunterq::OnDisable");
+	enablenpc(strnpcinfo(NPC_NAME));
 	.hntMob = 6;
 	initnpctimer;
 
 	// Montros alvos
-	monster (strnpcinfo(NPC_MAP),67,80,"Monstro Alvo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),114,78,"Monstro Alvo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),89,127,"Monstro Alvo",1002,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),53,73,"Monstro Alvo",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),125,70,"Monstro Alvo",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),90,92,"Monstro Alvo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),67,80,"Monstro Alvo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),114,78,"Monstro Alvo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),89,127,"Monstro Alvo",PORING,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),53,73,"Monstro Alvo",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),125,70,"Monstro Alvo",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),90,92,"Monstro Alvo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	// Demais Monstros
-	monster (strnpcinfo(NPC_MAP),85,100,"Monstro Albo",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),72,102,"Monstro Albo",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),108,103,"Monstro Albo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),88,127,"Monstro Albo",1002,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),125,69,"Monstro Albo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),77,112,"Monstro Alboe",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,106,"Monstro Alboe",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,73,"Monstro Alboe",1002,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),125,70,"Monstro Alboe",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),90,91,"Monstro Alboe",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),67,80,"Me mate!",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),77,112,"Me mate!",1016,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,106,"Me mate!",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,73,"Me mate!",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),125,70,"Me mate!",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),90,91,"Me Ataque",1041,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),85,100,"Me Ataque",1002,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),72,102,"Me Ataque",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),108,103,"Me Ataque",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),77,112,"Me Ataque",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),112,139,"Binnie",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),112,139,"Darrel",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),112,139,"Rex",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),112,139,"Anselmo",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),90,91,"Anolian",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,73,"Monstro Exemplo",1002,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),53,106,"Eu Não",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),77,112,"Ajude Me",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),72,102,"Não me Ataque",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
-	monster (strnpcinfo(NPC_MAP),108,103,"Me Mate Rápido",1015,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,100,"Monstro Albo",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),72,102,"Monstro Albo",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),108,103,"Monstro Albo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),88,127,"Monstro Albo",PORING,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),125,69,"Monstro Albo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),77,112,"Monstro Alboe",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,106,"Monstro Alboe",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,73,"Monstro Alboe",PORING,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),125,70,"Monstro Alboe",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),90,91,"Monstro Alboe",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),67,80,"Me mate!",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),77,112,"Me mate!",ARCHER_SKELETON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,106,"Me mate!",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,73,"Me mate!",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),125,70,"Me mate!",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),90,91,"Me Ataque",MUMMY,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),85,100,"Me Ataque",PORING,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),72,102,"Me Ataque",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),108,103,"Me Ataque",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),77,112,"Me Ataque",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),112,139,"Binnie",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),112,139,"Darrel",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),112,139,"Rex",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),112,139,"Anselmo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),90,91,"Anolian",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,73,"Monstro Exemplo",PORING,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),53,106,"Eu Não",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),77,112,"Ajude Me",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),72,102,"Não me Ataque",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
+	monster(strnpcinfo(NPC_MAP),108,103,"Me Mate Rápido",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead2");
 	end;
 
 	OnMyMobDead:
 	--.hntMob;
 	if (.hntMob < 3) {
-		mapannounce (strnpcinfo(NPC_MAP),"Ok, bom trabalho ... Agora, encontre o interruptor no centro do mapa! Tenha cuidado com as armadilhas!",bc_map);
-		donpcevent ("Interruptor#hunterq::OnEnable");
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnClearMob");
+		mapannounce(strnpcinfo(NPC_MAP),"Ok, bom trabalho ... Agora, encontre o interruptor no centro do mapa! Tenha cuidado com as armadilhas!",bc_map);
+		donpcevent("Interruptor#hunterq::OnEnable");
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnClearMob");
 	} else {
-		mapannounce (strnpcinfo(NPC_MAP),"Muito bem continue...",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"Muito bem continue...",bc_map);
 	}
 	end;
 
 	OnMyMobDead2:
-	mapannounce (strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
-	warp ("job_hunte",176,22);
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	mapannounce(strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
+	warp("job_hunte",176,22);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	//donpcevent "hunterengine#hunterq::OnReset";
-	donpcevent ("Sala de Espera#hunterq::OnStart");
+	donpcevent("Sala de Espera#hunterq::OnStart");
 	end;
 
 	OnClearMob:
@@ -705,78 +705,78 @@ job_hunte,1,1,1	script	hunterengine#hunterq	1_F_01,{
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"O teste deve começar agora.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O teste deve começar agora.",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Como mencionado antes, você só deve caçar os monstros marcados com 'Monstro Alvo'.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Como mencionado antes, você só deve caçar os monstros marcados com 'Monstro Alvo'.",bc_map);
 	end;
 
 	OnTimer5000:
-	mapannounce (strnpcinfo(NPC_MAP),"***** Tenha cuidado com as armadilhas enquanto caça. *****",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"***** Tenha cuidado com as armadilhas enquanto caça. *****",bc_map);
 	end;
 
 	OnTimer7000:
-	mapannounce (strnpcinfo(NPC_MAP),"Depois de caçar 4 'Monstro Alvo' o interruptor no centro começará a operar.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Depois de caçar 4 'Monstro Alvo' o interruptor no centro começará a operar.",bc_map);
 	end;
 
 	OnTimer9000:
-	mapannounce (strnpcinfo(NPC_MAP),"Quando você ativar a opção de fuga, sairá da área de teste através do portal de teleporte na direção das 12 horas do relógio.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Quando você ativar a opção de fuga, sairá da área de teste através do portal de teleporte na direção das 12 horas do relógio.",bc_map);
 	end;
 
 	OnTimer11000:
-	mapannounce (strnpcinfo(NPC_MAP),"Tudo deve ser concluído no prazo de 3 minutos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Tudo deve ser concluído no prazo de 3 minutos.",bc_map);
 	end;
 
 	OnTimer13000:
-	mapannounce (strnpcinfo(NPC_MAP),"Você terá 3 minutos a partir de agora. Você será notificado após cada minuto passa.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Você terá 3 minutos a partir de agora. Você será notificado após cada minuto passa.",bc_map);
 	end;
 
 	OnTimer14000:
-	mapannounce (strnpcinfo(NPC_MAP)," ****** 3 minutos restantes. ****** ",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," ****** 3 minutos restantes. ****** ",bc_map);
 	end;
 
 	OnTimer74000:
-	mapannounce (strnpcinfo(NPC_MAP)," ****** 2 minutos restantes. ****** ",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," ****** 2 minutos restantes. ****** ",bc_map);
 	end;
 
 	OnTimer134000:
-	mapannounce (strnpcinfo(NPC_MAP)," ****** 1 minutos restantes. ****** ",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," ****** 1 minutos restantes. ****** ",bc_map);
 	end;
 
 	OnTimer164000:
-	mapannounce (strnpcinfo(NPC_MAP)," ****** 30 segundos restantes. ****** ",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," ****** 30 segundos restantes. ****** ",bc_map);
 	end;
 
 	OnTimer187000:
-	mapannounce (strnpcinfo(NPC_MAP)," O teste termina em 5 segundos...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," O teste termina em 5 segundos...",bc_map);
 	end;
 
 	OnTimer188000:
-	mapannounce (strnpcinfo(NPC_MAP)," O teste termina em 4 segundos...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," O teste termina em 4 segundos...",bc_map);
 	end;
 
 	OnTimer189000:
-	mapannounce (strnpcinfo(NPC_MAP)," Fim do teste em 3 segundos...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," Fim do teste em 3 segundos...",bc_map);
 	end;
 
 	OnTimer191000:
-	mapannounce (strnpcinfo(NPC_MAP)," Fim do teste em 2 segundos...",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," Fim do teste em 2 segundos...",bc_map);
 	end;
 
 	OnTimer192000:
-	mapannounce (strnpcinfo(NPC_MAP)," Fim do teste em 1 segundo.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," Fim do teste em 1 segundo.",bc_map);
 	end;
 
 	OnTimer193000:
-	mapannounce (strnpcinfo(NPC_MAP)," Tempo esgotado. Por favor, tente novamente.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP)," Tempo esgotado. Por favor, tente novamente.",bc_map);
 	end;
 
 	OnTimer194000:
-	areawarp ("job_hunte",50,64,129,143,"job_hunte",176,22);
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-	donpcevent ("Interruptor#hunterq::OnDisable");
-	donpcevent ("Sala de Espera#hunterq::OnStart");
+	areawarp("job_hunte",50,64, 129,143,"job_hunte",176,22);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent("Interruptor#hunterq::OnDisable");
+	donpcevent("Sala de Espera#hunterq::OnStart");
 	end;
 
 }
@@ -788,51 +788,51 @@ job_hunte,93,101,1	script	Interruptor#hunterq	1_SHADOW_NPC,1,1,{
 	next;
 	if (select("Escapar","Cancelar") == 1) {
 		close2;
-		mapannounce (strnpcinfo(NPC_MAP),"Ativação do portal de escape!!",bc_map);
-		disablenpc (strnpcinfo(NPC_NAME));
-		enablenpc ("exithnt#hunterqtest");
+		mapannounce(strnpcinfo(NPC_MAP),"Ativação do portal de escape!!",bc_map);
+		disablenpc(strnpcinfo(NPC_NAME));
+		enablenpc("exithnt#hunterqtest");
 		end;
 	} else {
 		close2;
-		mapannounce (strnpcinfo(NPC_MAP),"A operação foi cancelada!!",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"A operação foi cancelada!!",bc_map);
 		end;
 	}
 
 	OnDisable:
-	disablenpc ("exithnt#hunterqtest");
-	disablenpc (strnpcinfo(NPC_NAME));
+	disablenpc("exithnt#hunterqtest");
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnEnable:
-	enablenpc (strnpcinfo(NPC_NAME));
+	enablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
 // ------------------------------------------------------------------
 job_hunte,89,139,0	script	exithnt#hunterqtest	WARPNPC,2,2,{
 	OnInit:
-	disablenpc ("exithnt#hunterqtest");
+	disablenpc("exithnt#hunterqtest");
 	end;
 
 	OnTouch:
-	donpcevent ("hunterengine#hunterq::OnDisable");
-	donpcevent ("Sala de Espera#hunterq::OnStart");
+	donpcevent("hunterengine#hunterq::OnDisable");
+	donpcevent("Sala de Espera#hunterq::OnStart");
 	hunterq = 6;
-	changequest (4011,4012);
-	savepoint ("payon",104,99);
+	changequest(4011,4012);
+	savepoint("payon",104,99);
 	switch (hunterq3) {
-		case 1: warp ("payon_in03",128,7); end;
-		case 2: warp ("payon_in02",21,27); end;
+		case 1: warp("payon_in03",128,7); end;
+		case 2: warp("payon_in02",21,27); end;
 	}
 }
 
 // ------------------------------------------------------------------
 job_hunte,52,140,0	script	HntTrap_1_1::HntTrap	FAKE_NPC,0,1,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
-	warp ("job_hunte",176,22);
-	donpcevent ("hunterengine#hunterq::OnDisable");
-	donpcevent ("Sala de Espera#hunterq::OnStart");
+	mapannounce(strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
+	warp("job_hunte",176,22);
+	donpcevent("hunterengine#hunterq::OnDisable");
+	donpcevent("Sala de Espera#hunterq::OnStart");
 	end;
 }
 
@@ -1065,10 +1065,10 @@ job_hunte,65,92,0	duplicate(HntTrap)	HntTrap_57_3	FAKE_NPC,0,0
 // ------------------------------------------------------------------
 job_hunte,65,93,0	script	HntTrap_57_4::HntTrap2	FAKE_NPC,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
-	warp ("job_hunte",176,22);
-	donpcevent ("hunterengine#hunterq::OnDisable");
-	donpcevent ("Sala de Espera#hunterq::OnStart");
+	mapannounce(strnpcinfo(NPC_MAP),"!! Você cometeu um erro... Tente novamente.",bc_map);
+	warp("job_hunte",176,22);
+	donpcevent("hunterengine#hunterq::OnDisable");
+	donpcevent("Sala de Espera#hunterq::OnStart");
 	end;
 }
 

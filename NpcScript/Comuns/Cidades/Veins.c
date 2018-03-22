@@ -179,7 +179,7 @@ veins,191,134,3	script	Velho#vei2	4_M_DST_GRAND,{
 	next;
 	mes "[Velho]";
 	mes "Bendita seja Freya, que nos protege, e nos abençoa com água e comida.";
-	mes "Você não acha isso maravilhoso, jovem aventureir" + (Sex == SEX_MALE ? "o" : "a") +"?";
+	mes "Você não acha isso maravilhoso, jovem aventureir"+(Sex == SEX_MALE ? "o" : "a")+"?";
 	close;
 }
 

@@ -15,12 +15,12 @@
 comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 	if (BaseJob == Job_Archer && Sex == SEX_MALE) {
 		if (!bardq) {
-			cutin ("job_bard_aiolo01",2);
+			cutin("job_bard_aiolo01",2);
 			mes "[Lalo]";
 			mes "Oi! Encantador Arqueiro.";
 			mes "Como um andarilho como eu pode te ajudar?";
 			next;
-			switch(select("Você tem uma voz agradável","Você pode cantar um pouco?","Em nada")) {
+			switch (select("Você tem uma voz agradável","Você pode cantar um pouco?","Em nada")) {
 				case 1:
 				mes "[Lalo]";
 				mes "Hahaha! É claro!";
@@ -29,7 +29,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "[Lalo]";
 				mes "Mas, para os Bardos a voz é sua vida.";
 				mes "Porém, em alguns momentos é necessário se ter cuidado com sua voz.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 				case 2:
 				mes "[Lalo]";
 				mes "Uma canção... vejamos.";
@@ -70,18 +70,18 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 					mes "Bem, é tudo... hmmhmm.";
 					if (JobLevel > 39) {
 						bardq = 1;
-						setquest (3000);
+						setquest(3000);
 					}
-					close2; cutin ("",255); end;
+					close2; cutin("",255); end;
 				} else {
 					mes "[Lalo]";
 					mes "Hmm... Eu perdi meus sentidos, terei que me esforçar mais.";
 					mes "De qualquer forma...";
 					mes "Obrigado pela atenção.";
-					close2; cutin ("",255); end;
+					close2; cutin("",255); end;
 				}
 				case 3:
-				cutin ("job_bard_aiolo02",2);
+				cutin("job_bard_aiolo02",2);
 				mes "[Lalo]";
 				mes "Nossa, não pedir uma música quando se encontra um Bardo é falta de educação.";
 				mes "Bem... Não posso ajudá-lo enquanto você parecer que está com pressa.";
@@ -89,10 +89,10 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "[Lalo]";
 				mes "A caça é algo bom... Mas você não pode esquecer de relaxar de vez em quando.";
 				mes "A juventude é curta e não volta..";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		} else if (bardq == 1) {
-			cutin ("job_bard_aiolo01",2);
+			cutin("job_bard_aiolo01",2);
 			mes "[Lalo]";
 			mes "Olá novamente arqueiro";
 			mes "Quer ouvir outra canção?";
@@ -110,8 +110,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "O tipo de flor não importa, mas tente trazer uma que eu goste.";
 				mes "E não compre qualquer flor barata, certo?";
 				bardq = 2;
-				changequest (3000,3001);
-				close2; cutin ("",255); end;
+				changequest(3000,3001);
+				close2; cutin("",255); end;
 			} else {
 				mes "[Lalo]";
 				mes "Hmm... Eu não tenho certeza do que você será, mas aproveite a vida.";
@@ -119,10 +119,10 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				next;
 				mes "[Lalo]";
 				mes "Bem então, tenha um bom dia.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		} else if (bardq == 2) {
-			cutin ("job_bard_aiolo01",2);
+			cutin("job_bard_aiolo01",2);
 			mes "[Lalo]";
 			mes "Bem-Vindo!";
 			mes "Amigo arqueiro.";
@@ -130,7 +130,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			mes "Deixe-me ver...";
 			next;
 			if (countitem(Singing_Flower)) {
-				delitem (Singing_Flower,1);
+				delitem(Singing_Flower,1);
 				mes "[Lalo]";
 				mes "Ooh! Isto é uma Flor Cantante!";
 				mes "Ela me traz muitas lembranças...";
@@ -139,8 +139,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Meu amigo Tchaikovsky gosta muito delas.";
 				mes "Me pergunto o que ele está fazendo agora...";
 				next;
-			} else if(countitem(Hinalle)) {
-				delitem (Hinalle,1);
+			} else if (countitem(Hinalle)) {
+				delitem(Hinalle,1);
 				mes "[Lalo]";
 				mes "Aah... uma linda Hinalle...";
 				mes "Ela não tem cheiro, mas é uma linda flor.";
@@ -149,8 +149,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "As folhas me dão força quando eu costumo cair.";
 				mes "Eu realmente gosto dessa flor, obrigado.";
 				next;
-			} else if(countitem(Aloe)) {
-				delitem (Aloe,1);
+			} else if (countitem(Aloe)) {
+				delitem(Aloe,1);
 				mes "[Lalo]";
 				mes "Aloe... É uma flor rara.";
 				mes "Como você a conseguiu?";
@@ -160,8 +160,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "As folhas são boas e a Aloe Vera é deliciosa...";
 				mes "e ela é definitivamente a mais bela das flores.";
 				next;
-			} else if(countitem(Ment)) {
-				delitem (Ment,1);
+			} else if (countitem(Ment)) {
+				delitem(Ment,1);
 				mes "[Lalo]";
 				mes "Menta... Você pode esquecer todos os seus problemas com uma dessas.";
 				mes "É ótimo ver uma depois de tanto tempo!";
@@ -171,8 +171,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Mas pode ser apenas um boato..";
 				mes "Obrigado!";
 				next;
-			} else if(countitem(Izidor)) {
-				delitem (Izidor,1);
+			} else if (countitem(Izidor)) {
+				delitem(Izidor,1);
 				mes "Nossa, é uma Izidor?";
 				mes "É uma perigosa e bela flor...";
 				next;
@@ -180,8 +180,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Possui os profundos encantos de uma pessoa.. ";
 				mes "Obrigado, eu gosto muito dessa flor.";
 				next;
-			} else if(countitem(Witherless_Rose)) {
-				delitem (Witherless_Rose,1);
+			} else if (countitem(Witherless_Rose)) {
+				delitem(Witherless_Rose,1);
 				mes "[Lalo]";
 				mes "Uma Rosa Eterna.";
 				mes "A flor forte, que não murcha.";
@@ -190,8 +190,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "[Lalo]";
 				mes "Eu me pergunto se é permitido que um andarilho como eu tenha uma dessas.";
 				next;
-			} else if(countitem(Frozen_Rose)) {
-				delitem (Frozen_Rose,1);
+			} else if (countitem(Frozen_Rose)) {
+				delitem(Frozen_Rose,1);
 				mes "[Lalo]";
 				mes "Rosa de Gelo...";
 				mes "Você não pode chamar isso de flor, porém ainda sim é linda...";
@@ -200,8 +200,8 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Ela não possui mais seu aroma.";
 				mes "Estou muito contente, pois é uma flor diferente.";
 				next;
-			} else if(countitem(Illusion_Flower)) {
-				delitem (Illusion_Flower,1);
+			} else if (countitem(Illusion_Flower)) {
+				delitem(Illusion_Flower,1);
 				mes "[Lalo]";
 				mes "Ah, isso não é uma Flor das Ilusões!?";
 				mes "Uau, como você conseguiu essa flor rara!!";
@@ -213,7 +213,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Estou muito feliz.";
 				next;
 			} else {
-				cutin ("job_bard_aiolo02",2);
+				cutin("job_bard_aiolo02",2);
 				mes "[Lalo]";
 				mes "Hmm? O quê...";
 				mes "Você não trouxe nada.";
@@ -222,7 +222,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "[Lalo]";
 				mes "Bem... se você quer aprender sozinho, então que assim seja.";
 				mes "Qualquer pessoa pode simplesmente sair e cantar.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 			mes "[Lalo]";
 			mes "Como eu prometi, irei ajudá-lo a se tornar um Bardo.";
@@ -237,14 +237,14 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			mes "Vá até lá e faça amizade com ele.";
 			next;
 			bardq = 3;
-			changequest (3001,3002);
+			changequest(3001,3002);
 			next;
 			mes "[Lalo]";
 			mes "Se você se tornar amigo do ^008800Boneco de Neve^000000, você irá receber algo.";
 			mes "E também fale com as pessoas da cidade enquanto estiver lá...";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq < 13) {
-			cutin ("job_bard_aiolo01",2);
+			cutin("job_bard_aiolo01",2);
 			mes "[Lalo]";
 			mes "É, você ainda não se tornou amigo do boneco de neve em Lutie?";
 			mes "Falar comigo não te ajudará.";
@@ -252,7 +252,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			mes "[Lalo]";
 			mes "Se você se tornar amigo do ^008800Boneco de Neve^000000, você irá receber algo.";
 			mes "E também fale com as pessoas da cidade enquanto estiver lá...";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 13) {
 			cutin "job_bard_aiolo01",2;
 			mes "[Lalo]";
@@ -265,10 +265,10 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			mes "Aham *limpa a garganta*";
 			mes "1, 2, 3, 4";
 			if (questprogress(3002)) {
-				changequest (3002,3003);
+				changequest(3002,3003);
 			}
 			next;
-			switch(rand(4)) {
+			switch (rand(4)) {
 				case 1:
 				.@bardMusic1$ = "Havia um homem";
 				.@bardMusic2$ = "Que dizia ser imortal";
@@ -329,42 +329,42 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				next;
 			}
 			mes "["+strcharinfo(PC_NAME)+"]";
-			input (.@playerMusic1$);
+			input(.@playerMusic1$);
 			if (.@playerMusic1$ != .@bardMusic1$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic1$+"^000000";
 			} else {
 				mes "^3377ff"+.@playerMusic1$+"^000000";
 			}
-			input (.@playerMusic2$);
+			input(.@playerMusic2$);
 			if (.@playerMusic2$ != .@bardMusic2$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic2$+"^000000";
 			} else {
 				mes "^3377ff"+.@playerMusic2$+"^000000";
 			}
-			input (.@playerMusic3$);
+			input(.@playerMusic3$);
 			if (.@playerMusic3$ != .@bardMusic3$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic3$+"^000000";
 			} else {
 				mes "^3377ff"+.@playerMusic3$+"^000000";
 			}
-			input (.@playerMusic4$);
+			input(.@playerMusic4$);
 			if (.@playerMusic4$ != .@bardMusic4$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic4$+"^000000";
 			} else {
 				mes "^3377ff"+.@playerMusic4$+"^000000";
 			}
-			input (.@playerMusic5$);
+			input(.@playerMusic5$);
 			if (.@playerMusic5$ != .@bardMusic5$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic5$+"^000000";
 			} else {
 				mes "^3377ff"+.@playerMusic5$+"^000000";
 			}
-			input (.@playerMusic6$);
+			input(.@playerMusic6$);
 			if (.@playerMusic6$ != .@bardMusic6$) {
 				.@musicError = 1;
 				mes "^ff0000"+.@playerMusic6$+"^000000";
@@ -373,14 +373,14 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			}
 			next;
 			if (.@musicError) {
-				cutin ("job_bard_aiolo02",2);
+				cutin("job_bard_aiolo02",2);
 				mes "[Lalo]";
 				mes "Você errou na letra.";
 				mes "É feio errar a letras das canções";
 				mes "Mais atenção na próxima vez";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else {
-				cutin ("job_bard_aiolo01",2);
+				cutin("job_bard_aiolo01",2);
 				mes "[Lalo]";
 				mes "..........";
 				next;
@@ -400,22 +400,22 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Vou te dar um presente, uma vez que trazê-los.";
 				mes "Tenha uma boa viagem.";
 				bardq = 14;
-				changequest (3003,3004);
-				close2; cutin ("",255); end;
+				changequest(3003,3004);
+				close2; cutin("",255); end;
 			}
 		} else if (bardq == 14) {
-			cutin ("job_bard_aiolo02",2);
+			cutin("job_bard_aiolo02",2);
 			mes "[Lalo]";
 			if ((countitem(Wooden_Block) < 60) && (countitem(Tree_Of_Archer_1) < 60) && (countitem(Tree_Of_Archer_2) < 60) && (countitem(Tree_Of_Archer_3) < 60)) {
 				mes "Mmm? Parece que você não preparou todos os troncos ainda?";
 				mes "Traga 60 troncos de qualquer tipo.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else {
 				if (SkillPoint) {
 					mes "Bom trabalho.";
 					mes "Mas você ainda tem pontos de habilidades sobrando.";
 					mes "Gaste todos pontos, e depois retorne";
-					close2; cutin ("",255); end;
+					close2; cutin("",255); end;
 				} else {
 					mes "Bom trabalho.";
 					mes "Farei seu souvenir de mudança de classe com isso.";
@@ -436,17 +436,17 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 					next;
 					mes "[Lalo]";
 					mes "Te vejo na próxima vez!";
-					jobchange (Job_Bard);
-					completequest (3004);
-					callfunc ("ClearJobQuest2nd",19);
-					getitem (.@item,1);
-					close2; cutin ("",255); end;
+					jobchange(Job_Bard);
+					completequest(3004);
+					callfunc("ClearJobQuest2nd",19);
+					getitem(.@item,1);
+					close2; cutin("",255); end;
 				}
 			}
 		}
 	} else {
 		if (BaseJob == Job_Bard) {
-			cutin ("job_bard_aiolo01",2);
+			cutin("job_bard_aiolo01",2);
 			mes "[Lalo]";
 			mes "Você não irá se esquecer de espalhar as notícias pelas cidades?";
 			mes "E não se esqueça de também aprender novas canções...";
@@ -454,7 +454,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 			mes "[Lalo]";
 			mes "Nunca se esqueça de ter uma atitude positiva e de continuar alegre.";
 			mes "Nossas músicas são feitas para alegrar as pessoas.";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else {
 			mes "[Lalo]";
 			mes "Lalala, lalala.";
@@ -529,7 +529,7 @@ xmas_in,167,173,4	script	Duffle#snownow	4_F_05,{
 
 // ------------------------------------------------------------------
 xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
-	cutin ("rutie_snownow03.bmp",2);
+	cutin("rutie_snownow03.bmp",2);
 	mes "[Boneco de Neve]";
 	mes "Eu...";
 	mes "Me sinto tão sozinho!";
@@ -539,10 +539,10 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 	mes "No mesmo lugar...";
 	mes "Dia após dia após dia após dia após dia após dia após dia após dia após dia após dia...";
 	next;
-	switch(select("^3355FFBoneco de Neve?^000000","Fábrica de Brinquedos?","Acabar a conversa")) {
+	switch (select("^3355FFBoneco de Neve?^000000","Fábrica de Brinquedos?","Acabar a conversa")) {
 		case 1:
 		if (bardq < 4) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Eu nasci no Norte, num lugar em que nevava o tempo todo.";
 			mes "Era muito mais frio do que aqui em Lutie, pode acreditar.";
@@ -555,7 +555,7 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "Pensei que pudesse passar o resto da vida daquele jeito.";
 			mes "Mas... não foi assim.";
 			next;
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Um dia, uma mulher feia e idosa chegou na cidade.";
 			mes "Chamavam-na de 'Merlophechum', e ela vinha de uma cidade estranha em que estava sempre calor.";
@@ -564,7 +564,7 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "Na terceira noite após sua chegada, ela colocou fogo na cidade com uma magia assustadora.";
 			mes "Todos correram em meio ao medo e ao caos. E eu desmaiei.";
 			next;
-			cutin ("rutie_snownow02.bmp",2);
+			cutin("rutie_snownow02.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Não sei quanto tempo se passou, mas quando acordei, estava aqui.";
 			mes "Bem, posso dizer que Lutie é como se fosse o céu.";
@@ -572,7 +572,7 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "Ninguém nunca se preocupa, e estou sempre ouvindo canções natalinas e coisas assim.";
 			next;
-			cutin ("rutie_snownow03.bmp",2);
+			cutin("rutie_snownow03.bmp",2);
 			mes "[Boneco de Neve]";;
 			mes "Mas ainda assim...";
 			mes "As vezes nem a alegria do Natal consegue curar a escura solidão que existe dentro de mim.";
@@ -580,9 +580,9 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "Então, quer ser meu amigo?";
 			mes "Se você for, serei seu amigo também.!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 4) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Oh...?";
 			mes "Você conheceu Duffle?";
@@ -613,17 +613,17 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "^3355FFBoneco de Neve se perde em pensamentos,^000000";
 			mes "^3355FFcom os olhos fixos no cartão de Poze.^000000";
 			bardq = 5;
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 5) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "...";
 			next;
 			mes "^3355FFBoneco de Neve se perde em pensamentos^000000";
 			mes "^3355FFcom os olhos fixos no cartão de Poze.^000000";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 6) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Ah que legal!";
 			mes "Você conheceu Poze!";
@@ -647,15 +647,15 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "Mas eu sei que ela faz isso porque gosta muito dele!";
 			mes "Hee hee hee!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 7) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Oh...?";
 			mes "Você conheceu o";
 			mes "^3355FFCantata, o Tio Cabeludo^000000?";
 			next;
-			cutin ("rutie_snownow02.bmp",2);
+			cutin("rutie_snownow02.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Bem, ele fala muito alto, não toma banho e cheira que nem comida podre.";
 			mes "Mas ele é muito legal e bondoso.";
@@ -664,9 +664,9 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "E ele adora beber coisas estranhas.";
 			mes "É um milagre que não passe mal. Hee hee.! Ah, eu amo aquele cara!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 8) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Oh...?";
 			mes "Você conheceu a ^3355FFTia Mima^000000?";
@@ -682,17 +682,17 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "Ela me traz suco de uva com flocos de neve.";
 			mes "Bem, por favor entregue para ela, amigo.!";
 			bardq = 9;
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 9) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "'^3355FFUm item para colher vegetais^000000...'";
 			mes "Uau. A Tia Mima adora vegetais, então ela gostaria disso!";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (bardq == 10) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Hashokii, o palhaço sem-graça?";
 			mes "Ele não parece muito engraçado mesmo.";
@@ -700,9 +700,9 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			next;
 			mes "[Boneco de Neve]";
 			mes "Ele faz de tudo para que aqueles órfãos dêem risada e esqueçam os problemas...";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 11) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Ah...";
 			mes "Então você conheceu o Charu Charu?";
@@ -712,9 +712,9 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "Aliás, tenho certeza!";
 			mes "Hee hee hee.!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else if (bardq == 12) {
-			cutin ("rutie_snownow01.bmp",2);
+			cutin("rutie_snownow01.bmp",2);
 			mes "[Boneco de Neve]";
 			mes "Muito obrigado por me ouvir por tanto tempo.";
 			mes "Gostei muito que você tentou me entender, mesmo sendo um estranho.";
@@ -730,60 +730,60 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "[Boneco de Neve]";
 			mes "^3355FFVocê sorteia um presente de dentro da bolsa mágica de Boneco de Neve^000000.";
 			next;
-			switch(rand(8)) {
+			switch (rand(8)) {
 				case 1:
-				getitem (Candy,5);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Candy,5);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Wow.!";
 				mes "^3355FF5 Balas^000000!";
 				mes "Parabéns!";
 				break;
 				case 2:
-				getitem (Candy,10);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Candy,10);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Ooh.!";
 				mes "^3355FF10 Balas^000000!";
 				break;
 				case 3:
-				getitem (Candy_Striper,5);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Candy_Striper,5);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Hoooraaaay.!";
 				mes "^3355FF5 Bengalas Doce^000000!";
 				break;
 				case 4:
-				getitem (Candy_Striper,10);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Candy_Striper,10);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Wow, Isso é perfeito!";
 				mes "^3355FF10 Bengalas Doce^000000!";
 				break;
 				case 5:
-				getitem (Piece_Of_Cake,1);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Piece_Of_Cake,1);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Wow, Isso é perfeito!";
 				mes "^3355FF1 Pedaços de Bolo^000000!";
 				break;
 				case 6:
-				getitem (Piece_Of_Cake,2);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Piece_Of_Cake,2);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Wow, Isso é perfeito!";
 				mes "^3355FF2 Pedaços de Bolo^000000!";
 				break;
 				case 7:
-				getitem (Well_Baked_Cookie,5);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Well_Baked_Cookie,5);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "Oh woooooow.!";
 				mes "^3355FF5 Biscoitos^000000!";
 				break;
 				default:
-				getitem (Well_Baked_Cookie,10);
-				cutin ("rutie_snownow02.bmp",2);
+				getitem(Well_Baked_Cookie,10);
+				cutin("rutie_snownow02.bmp",2);
 				mes "[Boneco de Neve]";
 				mes "*Gasp!* Ooh.";
 				mes "^3355FF10 Biscoitos^000000!";
@@ -795,10 +795,10 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 			mes "Venha logo!";
 			mes "E Feliz Natal!";
 			bardq = 13;
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 		case 2:
-		cutin ("rutie_snownow01.bmp",2);
+		cutin("rutie_snownow01.bmp",2);
 		mes "[Boneco de Neve]";
 		mes "Em volta dessa cidade maravilhosa, abençoada pelo Natal, tem uma fábrica horrível, amaldiçoada pelo Natal.";
 		next;
@@ -806,21 +806,21 @@ xmas,134,112,4	script	Boneco de Neve#snownow	4_M_SNOWMAN,{
 		mes "Ouvi dizer que é bem decorada e parece uma fábrica de brinquedos, onde tudo é bonitinho.";
 		mes "Tem soldadinhos de brinquedos e caixas de presente por todos os lados.";
 		next;
-		cutin ("rutie_snownow02.bmp",2);
+		cutin("rutie_snownow02.bmp",2);
 		mes "[Boneco de Neve]";
 		mes "Isso não é muuito legal?!";
 		mes "*Suspiro*";
 		mes "Mesmo sabendo que é uma dungeon, gostaria de ir lá dar uma olhada.";
 		mes "Se eu fosse um menino de verdade, ou se ao menos tivesse pernas...";
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 		case 3:
-		cutin ("rutie_snownow03.bmp",2);
+		cutin("rutie_snownow03.bmp",2);
 		mes "[Boneco de Neve]";
 		mes "Até mais, amigo.!";
 		mes "Obrigado por me ouvir.";
 		mes "Espero te ver novamente!";
 		mes "Você sempre estará no meu coração!";
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 	}
 }
 
@@ -879,8 +879,8 @@ xmas,176,236,4	script	Hairy#bardq	4_M_05,{
 			mes "Oh? Vo-você trouxe os ingredientes? Óóóótimo.";
 			mes "Faz tanto tempo que não provo disso... Dê-dê para mim!";
 			next;
-			delitem (Chinese_Ink,1);
-			delitem (Sticky_Mucus,1);
+			delitem(Chinese_Ink,1);
+			delitem(Sticky_Mucus,1);
 			bardq = 7;
 			mes "^3355FFVocê rapidamente dá a ele o Tinta de Polvo e o Muco Pegajoso,";
 			mes "E olha com um pouco de nojo enquanto ele saboreia o drinque.^000000";
@@ -1143,7 +1143,7 @@ xmas,146,136,4	script	Hashokii#bardq	4_M_PIERROT,{
 		mes "La La La.!";
 		mes "Dum di Dum di Dum!";
 		next;
-		switch(select("E aí cara, beleza?","Sobre Boneco de Neve","Cancelar")) {
+		switch (select("E aí cara, beleza?","Sobre Boneco de Neve","Cancelar")) {
 			case 1:
 			mes "[Hashokii]";
 			mes "La La La.!";

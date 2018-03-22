@@ -30,7 +30,7 @@ alberta,136,79,1	script	Tempestra#alb	1_F_LIBRARYGIRL,{
 	mes "[Tempestra]";
 	mes "Eu estooou com sede! Bem, uma Poção Amarela refrigerada seria perfeito";
 	next;
-	switch(select("Deixe-me dá-lo uma Poção Amarela","O que, você espera que eu lhe dê uma?!")) {
+	switch (select("Deixe-me dá-lo uma Poção Amarela","O que, você espera que eu lhe dê uma?!")) {
 		case 1:
 		if (countitem(Yellow_Potion) > 0) {
 			mes "[Tempestra]";
@@ -45,7 +45,7 @@ alberta,136,79,1	script	Tempestra#alb	1_F_LIBRARYGIRL,{
 			mes "Está tão gelada!!";
 			mes "Obrigada";
 			next;
-			switch(select("Está muito quente, não é?","Você deve usar o seu chapéu...")) {
+			switch (select("Está muito quente, não é?","Você deve usar o seu chapéu...")) {
 				case 1:
 				mes "[Tempestra]";
 				mes "Sim está realmente quente....";
@@ -59,7 +59,7 @@ alberta,136,79,1	script	Tempestra#alb	1_F_LIBRARYGIRL,{
 				mes "[Tempestra]";
 				mes "Eu trouxe estes chapéus para que eu possa vendê-los e usar o dinheiro para gastar em minhas férias aqui, mas agora parece que eu tenho que utilizar um deles";
 				next;
-				switch(select("Chapéu de Verão!!?","Chapéu de Mestre Arcano?!?","Cartola??!??")) {
+				switch (select("Chapéu de Verão!!?","Chapéu de Mestre Arcano?!?","Cartola??!??")) {
 					case 1:
 					mes "[Tempestra]";
 					mes "Hã? Você não sabia?";

@@ -26,7 +26,7 @@ lhz_dun02,224,6,0	warp	lhz_cuberoom	1,1,lhz_cube,231,90
 lhz_dun02,149,149,4	script	lhzdunwarp_8	WARPNPC,2,2,{
 	OnTouch:
 	if ((!Upper && BaseLevel < 95) || (Upper && BaseLevel < 90)) { end; }
-	else { warp ("lhz_dun03",140,133); end; }
+	else { warp("lhz_dun03",140,133); end; }
 }
 
 // ------------------------------------------------------------------

@@ -62,7 +62,7 @@ comodo,171,137,1	script	Haith#com::cmdla	4_F_03,{
 	emotion(e_gg);
 	emotion(e_gg, 0, "La Ed#um");
 	next;
-	if (select("Ouvir Mais", "Sair") == 1) {
+	if (select("Ouvir Mais","Sair") == 1) {
 		mes "[Haith]";
 		mes "Hahahaha!";
 		mes "Você é o cara!";
@@ -349,7 +349,7 @@ cmd_in02,174,126,4	script	Loyar#com	4_M_01,{
 	mes "Realmente dá vontade de pssar o tempo aqui!!";
 	mes "Vamos lá jogar!";
 	next;
-	switch(rand(1,3)) {
+	switch (rand(1,3)) {
 		case 1:
 		mes "[Loyar]";
 		mes "O quê?";

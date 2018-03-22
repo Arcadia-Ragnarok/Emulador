@@ -72,7 +72,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "Faça o que peço, e irei ensiná-l"+(Sex == SEX_MALE ? "o" : "a")+" algumas de minhas habilidades.";
 			mes "Se você realmente quiser se tornar Ninja.";
 			next;
-			if(select("Com certeza!","Não, obrigado") == 2) {
+			if (select("Com certeza!","Não, obrigado") == 2) {
 				mes "[Cougar]";
 				mes "Hm? Bem, tudo bem.";
 				mes "Entretanto, não entendo porque não podemos nos ajudar neste pequeno dilema...";
@@ -92,7 +92,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "Sim, Wildcat Joe sempre teve uma queda por se esconder em lugares altos.";
 			mes "De qualquer maneira, depois de entregar-lhe a carta, volte e me diga sua resposta.";
 			ninjaq = 1;
-			setquest (6015);
+			setquest(6015);
 			close;
 		} else if (ninjaq == 1) {
 			mes "[Cougar]";
@@ -137,7 +137,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "Eu deveria ter pensado nisso antes!";
 			mes "Bem, é tarde demais agora. Apenas apresse-se!";
 			ninjaq = 4;
-			changequest (6017,6018);
+			changequest(6017,6018);
 			close;
 		} else if (ninjaq == 4) {
 			if (countitem(Cyfar) < 5 || countitem(Phracon) < 1) {
@@ -186,12 +186,12 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "[Cougar]";
 			mes "A partir de hoje, você é um membro do esplêndido Grupo Ninja Touga.";
 			mes "Seja tão ágil como o vento, e tão silencioso como a o cair das sombras.";
-			delitem (Cyfar,5);
-			delitem (Phracon,1);
-			getitem (Asura,1);
-			completequest (6018);
-			jobchange (Job_Ninja);
-			callfunc ("ClearJobQuest");
+			delitem(Cyfar,5);
+			delitem(Phracon,1);
+			getitem(Asura,1);
+			completequest(6018);
+			jobchange(Job_Ninja);
+			callfunc("ClearJobQuest");
 			close;
 		} else {
 			mes "[Cougar]";
@@ -254,7 +254,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Ótimo, estou feliz por ouvir isso.";
 		mes "Por favor, ajude-me a encontrar ^3355FF5 Cyfars^000000 e ^3355FF1 Fracon^000000.";
 		ninjaq = 2;
-		changequest (6015,6016);
+		changequest(6015,6016);
 		close;
 	} else if (ninjaq == 2) {
 		if (countitem(Cyfar) < 5 || countitem(Phracon) < 1) {
@@ -320,12 +320,12 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Aqui está.";
 		mes "Por favor, leve esta carta para Cougar.";
 		mes "Demoraria um pouco para voltar para Amatsu, então deixe-me mandá-lo diretamente para lá...";
-		delitem (Phracon,1);
-		delitem (Cyfar,5);
+		delitem(Phracon,1);
+		delitem(Cyfar,5);
 		ninjaq = 3;
-		changequest (6016,6017);
+		changequest(6016,6017);
 		close2;
-		warp ("amatsu",113,127);
+		warp("amatsu",113,127);
 		end;
 	} else if (ninjaq == 3) {
 		mes "[Red Leopard Joe]";
@@ -342,7 +342,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Okay, então.";
 		mes "Adeus por enquanto.";
 		close2;
-		warp ("amatsu",113,127);
+		warp("amatsu",113,127);
 		end;
 	} else if (ninjaq == 4) {
 		mes "[Red Leopard Joe]";

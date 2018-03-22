@@ -20,7 +20,7 @@ moc_fild12,35,303,4	script	Serutero#mocf	1_M_ORIENT01,{
 	mes "Devo perguntar a você...";
 	mes "É realmente seu desejo ir a Santoleman a Cidade-Fortaleza?";
 	next;
-	switch(select("Ir à Cidade-Fortaleza Santoleman!","O que é a Cidade-Fortaleza Santoleman?","Sair")) {
+	switch (select("Ir à Cidade-Fortaleza Santoleman!","O que é a Cidade-Fortaleza Santoleman?","Sair")) {
 		case 1:
 		mes "[Serutero]";
 		mes "Então você está indo para a Cidade-Fortaleza Santoleman?!";
@@ -28,7 +28,7 @@ moc_fild12,35,303,4	script	Serutero#mocf	1_M_ORIENT01,{
 		mes "E tudo de bom para você!";
 		mes ". . . . .";
 		close2;
-		warp ("cmd_fild08",331,319);
+		warp("cmd_fild08",331,319);
 		end;
 		case 2:
 		mes "[Serutero]";

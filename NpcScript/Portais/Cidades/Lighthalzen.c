@@ -42,7 +42,7 @@ lighthalzen,313,301,0	script	#lighthalzenwarp_25	HIDDEN_NPC,{
 	mes "Naturalmente, o fedor que emana de dentro do tubo é um pouco desgradável.^000000";
 	if (MISC_QUEST&512) {
 		next;
-		if (select("Entrar","Cancelar") == 1) { warp ("lhz_cube",231,17); close2; end; }
+		if (select("Entrar","Cancelar") == 1) { warp("lhz_cube",231,17); close2; end; }
 	}
 	close;
 }

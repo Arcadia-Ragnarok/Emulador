@@ -21,7 +21,7 @@ jawaii,188,218,7	script	Senhorita da Taberna#jaw	1_F_PUBGIRL,{
 	mes "Oh, querida pessoa!";
 	mes "Você não está indo para taberna, certo?";
 	next;
-	if (select("Não, eu não estou", "Oh sim") == 1) {
+	if (select("Não, eu não estou","Oh sim") == 1) {
 		mes "[Senhorita]";
 		mes "Ufa!";
 		mes "Graças a deus!";
@@ -69,7 +69,7 @@ jawaii,220,235,3	script	Moradora de Jawaii#jaw	4_F_07,{
 // ------------------------------------------------------------------
 jawaii,240,146,5	script	Moradora de Jawaii#jaw2	4_F_07,{
 	mes "[Waii Waii]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Jawaii!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Jawaii!";
 	next;
 	mes "[Waii Waii]";
 	mes "Aqui, você pode aproveitar sua lua de mel sem se preocupar com interrupções.";
@@ -137,7 +137,7 @@ jawaii,141,200,3	script	Atendente#jaw	4_M_NFMAN,{
 	mes "E-eu também vou le-levar sua bagagem, ma-mas me pague primeiro.";
 	mes "Ou meu pa-patrão vai ficar insatisfeito comigo...";
 	next;
-	if (select("Pagar", "Cancelar") == 1) {
+	if (select("Pagar","Cancelar") == 1) {
 		if (Zeny > 999) {
 			mes "[Alowa]";
 			mes "Mu-muito o-obrigada!";
@@ -165,7 +165,7 @@ jawaii,141,200,3	script	Atendente#jaw	4_M_NFMAN,{
 // ------------------------------------------------------------------
 jawaii,108,199,5	script	Funcionária#jaw	1_F_MERCHANT_02,{
 	mes "[Oran Pinheiro]";
-	mes "Bem vind"+ (Sex == SEX_MALE ? "o" : "a") +" ao aposento antigo.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a")+" ao aposento antigo.";
 	next;
 	mes "[Oran Pinheiro]";
 	mes "Esse aposento proporcionará aos amantes uma atmosfera de elegância com pelúcia.";
@@ -215,14 +215,14 @@ jawaii,107,189,5	script	Funcionária#jaw2	4_F_04,{
 	mes "[Sharkie Rania]";
 	mes "Então, você vai querer ir?";
 	next;
-	if (select("Pagar", "Cancelar") == 1) {
+	if (select("Pagar","Cancelar") == 1) {
 		if (Zeny > 999) {
 			mes "[Sharkie Rania]";
 			mes "Ehh, certo.";
 			mes "Vamos indo.";
 			close2;
 			Zeny -= 1000;
-			warp ("jawaii_in", 86, 117);
+			warp("jawaii_in", 86, 117);
 			end;
 		}
 		mes "[Sharkie Rania]";
@@ -250,7 +250,7 @@ jawaii,112,173,7	script	Funcionária#jaw3	4_F_04,{
 	mes "Eu posso guiar você até o Quarto Villa nesse momento, se você quiser.";
 	mes "Será que você gostaria de ficar?";
 	next;
-	if (select("Pagar", "Cancelar") == 1) {
+	if (select("Pagar","Cancelar") == 1) {
 		if (Zeny > 999) {
 			mes "[Larks Rania]";
 			mes "Muito obrigado.";
@@ -276,7 +276,7 @@ jawaii,112,173,7	script	Funcionária#jaw3	4_F_04,{
 // ------------------------------------------------------------------
 jawaii_in,25,94,0	script	Atendente#jaw2	4_F_07,{
 	mes "[Atendente Tryteh]";
-	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes " Estou tão feliz com o casamento de vocês.";
 		mes "Espero que vivam felizes para sempre.";
@@ -296,7 +296,7 @@ jawaii_in,25,94,0	script	Atendente#jaw2	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,25,96,0	script	Atendente#jaw3	4_F_07,{
 	mes "[Atendente Fey]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Atendente Fey]";
@@ -345,7 +345,7 @@ jawaii_in,25,98,0	script	Atendente#jaw4	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,25,100,0	script	Atendente#jaw5	4_F_07,{
 	mes "[Atendente Itere]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Atendente Itere]";
@@ -367,7 +367,7 @@ jawaii_in,25,100,0	script	Atendente#jaw5	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,94,4	script	Atendente#jaw6	4_F_07,{
 	mes "[Atendente Tonia]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Atendente Tonia]";
@@ -392,7 +392,7 @@ jawaii_in,30,94,4	script	Atendente#jaw6	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,96,4	script	Atendente#jaw7	4_F_07,{
 	mes "[Atendente Kay]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		next;
 		mes "[Atendente Kay]";
@@ -409,7 +409,7 @@ jawaii_in,30,96,4	script	Atendente#jaw7	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,98,4	script	Atendente#jaw8	4_F_07,{
 	mes "[Atendente Amy]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes " Oh! Vocês são perfeitos juntos!";
 		mes "Parecem, hum, uma arma e uma bala!";
@@ -434,7 +434,7 @@ jawaii_in,30,98,4	script	Atendente#jaw8	4_F_07,{
 // ------------------------------------------------------------------
 jawaii_in,30,100,4	script	Atendente#jaw9	4_F_07,{
 	mes "[Atendente Yasmine]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Taberna de Jawaii.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Taberna de Jawaii.";
 	if (getpartnerid()) {
 		mes " Assim como a lua e as estrelas, vocês são perfeitos juntos.";
 		mes "Estou muito feliz por vocês!";

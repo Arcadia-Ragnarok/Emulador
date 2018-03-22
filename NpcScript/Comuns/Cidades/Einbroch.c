@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------
 einbroch,94,267,3	script	Funcionário#ein01	4_F_02,{
 	mes "[Equipe do Aeroporto]";
-	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " ao Aeroporto de Einbroch.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" ao Aeroporto de Einbroch.";
 	mes "Utilize essa porta para embarcar no digirível que te leva para Juno, Lighthalzen e Hugel na República de Schwarzwald.";
 	next;
 	mes "[Equipe do Aeroporto]";
@@ -84,15 +84,15 @@ einbroch,40,116,1	script	Eng. do Aeroporto#ein	4_M_EINMAN,{
 	mes "Eu terminei os reparos dela e agora ela esta dormindo!";
 	mes "A-afaste-se dela!";
 	next;
-	switch(select("Quem é Burielle?", "Desculpe")) {
+	switch (select("Quem é Burielle?","Desculpe")) {
 		case 1:
 		mes "[Engenheiro do Aeroporto]";
 		mes "Burielle é o modelo de Aeronave mais bonito construido nos últimos dez anos!";
 		mes "Ela pode estar no chão agora, mas com as minhas mãos curadores, ela conquistará os céus denovo!";
 		next;
-		switch(select("Ah!", "Uh huh...")) {
+		switch (select("Ah!","Uh huh...")) {
 			case 1:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Entendo, então você esta trabalhando na restauração desta magnifica espécime de Aeronave.";
 			next;
 			mes "[Engenheiro do Aeroporto]";
@@ -101,12 +101,12 @@ einbroch,40,116,1	script	Eng. do Aeroporto#ein	4_M_EINMAN,{
 			mes "Eu coloquei muito amor concerto de Burielle...";
 			close;
 			case 2:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Uh huh...";
 			mes "Certo.";
 			mes "Por um segundo atrás, pensei que você estava falando de uma pessoa, mas agora percebi que não, você sabe, como um louco.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Oh, você disse, \"modelo mais bonito\"?";
 			mes "Todas as Aeronaves pra mim parecem iguais, essa aqui não é especial contudo.";
 			mes "Você esta ficando maluco, pobre coitado.";

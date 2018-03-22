@@ -14,7 +14,7 @@
 \*-----------------------------------------------------------------*/
 
 monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
-	cutin ("ins_cata_pri_n",2);
+	cutin("ins_cata_pri_n",2);
 	mes "[Frei Patrick]";
 	mes "A paz do mundo jamais pode durar para sempre...";
 	mes "As mãos do Mal estão chegando ao mundo novamente...";
@@ -26,9 +26,9 @@ monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
 		.@doll = 1;
 		.@selection = select("Que lugar é este?","Eu quero entrar","Bafomé Amaldiçoado?","Cancelar");
 	} else {
-		.@selection = select("Que lugar é este?","Eu quero entrar", "Cancelar");
+		.@selection = select("Que lugar é este?","Eu quero entrar","Cancelar");
 	}
-	switch(.@selection) {
+	switch (.@selection) {
 		case 1:
 		mes "[Frei Patrick]";
 		mes "Huh... Você não sabe?";
@@ -42,9 +42,9 @@ monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
 		mes "[Frei Patrick]";
 		mes "É o lugar onde o grande Demônio que demoliu esse mundo uma vez se encontra dormindo.";
 		next;
-		switch(select("Me conte mais","Terminar conversa")) {
+		switch (select("Me conte mais","Terminar conversa")) {
 			case 1:
-			cutin ("ins_cata_pri_n",2);
+			cutin("ins_cata_pri_n",2);
 			mes "[Frei Patrick]";
 			mes "Bafomé... é o nome do Demônio...";
 			mes "Eu acho que você já tenha escutado o nome dele.";
@@ -78,7 +78,7 @@ monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
 			mes "Treine mais e use suas habilidades para proteger o mundo da eminente presença do mal...";
 			break;
 			case 2:
-			cutin ("ins_cata_pri_n",2);
+			cutin("ins_cata_pri_n",2);
 			mes "[Frei Patrick]";
 			mes "Todos que lutam pelo bem, devem saber, que o mal ameaça conquistar esse mundo...";
 			next;
@@ -106,12 +106,12 @@ monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
 						mes "Por-favor aguarde.";
 					} else {
 						for (.@i = 1; .@i <= 2; .@i++) {
-							if(instance_attachmap(.@i + "@cata", .@instance) == "") {
+							if (instance_attachmap(.@i+"@cata", .@instance) == "") {
 								instance_destroy(.@instance);
 								close;
 							}
 						}
-						instance_set_timeout (7200,300,.@instance);
+						instance_set_timeout(7200,300,.@instance);
 						instance_init(.@instance);
 						mes "Ok... Irei ajustar o selo do santuário para você e seu grupo possam entrar..";
 						next;
@@ -221,7 +221,7 @@ monk_test,306,151,3	script	Túmulo de Bafomé#edq	HIDDEN_NPC,{
 	mes "Esse túmulo tem uma imagem de um grande demônio com enormes chifres.";
 	mes "Ela desperta um sentimento ameaçador.";
 	next;
-	if(select("Tocar","Voltar") == 2) {close;}
+	if (select("Tocar","Voltar") == 2) {close;}
 	.@ins_bapho_check = questprogress(3040,PLAYTIME);
 	if (!.@ins_bapho_check) {
 		if (has_instance("1@cata") == "") {
@@ -229,7 +229,7 @@ monk_test,306,151,3	script	Túmulo de Bafomé#edq	HIDDEN_NPC,{
 			mes "Mais nada acontece.";
 			close;
 		} else {
-			mapannounce ("monk_test","[" + strcharinfo(PC_NAME) + "] membro do grupo [" + getpartyname(.@party_id) + "] entrou no Santuário Selado.",bc_map,"0x00ff99");
+			mapannounce("monk_test","["+strcharinfo(PC_NAME)+"] membro do grupo ["+getpartyname(.@party_id)+"] entrou no Santuário Selado.",bc_map,"0x00ff99");
 			setquest(3040);
 			warp("1@cata",100,224);
 			end;
@@ -324,7 +324,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			close;
 		}
 	} else if (!.@new_maje && countitem(Bapho_Doll) > 0) {
-		switch(select("Boneco Amaldiçoado?","Terminar Conversa")) {
+		switch (select("Boneco Amaldiçoado?","Terminar Conversa")) {
 			case 1:
 			mes "[Rust Blackhand]";
 			mes "Como?... Hmmm...";
@@ -348,7 +348,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			mes "O Boneco de Bafomé Amaldiçoado é a peça mais importante...";
 			mes "Poderei fazer isso se você quiser. Deseja que eu o faça?";
 			next;
-			switch(select("Quero sim", "Não preciso disso!")) {
+			switch (select("Quero sim","Não preciso disso!")) {
 				case 1:
 				mes "[Rust Blackhand]";
 				mes "kkk... Sim, homens sabem o que fazem quando a oportunidade chega.";
@@ -398,7 +398,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "Como você pode ver, eu só faço equipamentos para os irmãos do monastério.";
 		close;
 	} else if (.@new_maje == 2 && countitem(Bapho_Doll)) {
-		switch(select("Boneco Amaldiçoado?","Terminar conversa")) {
+		switch (select("Boneco Amaldiçoado?","Terminar conversa")) {
 			case 1:
 			mes "[Rust Blackhand]";
 			mes "Que?... Você denovo?";
@@ -421,7 +421,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			mes "Irei lhe falar os ingredientes novamente.";
 			mes "Então, você deseja fazer?";
 			next;
-			switch(select("Quero sim","Não preciso disso!")) {
+			switch (select("Quero sim","Não preciso disso!")) {
 				case 1:
 				mes "[Rust Blackhand]";
 				mes "kkk... Sim, homens sabem o que fazem quando a oportunidade chega.";
@@ -539,8 +539,8 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "[Túmulo do Herói]";
 		mes "Estava esperando que algum aventureiro forte como você voltasse...";
 		next;
-		while(true) {
-			switch(select("Quem é você?", "Esperando por mim?", "Cancelar")) {
+		while (true) {
+			switch (select("Quem é você?","Esperando por mim?","Cancelar")) {
 				case 1:
 				mes "[Túmulo do Herói]";
 				mes "Eu sou um dos aventureiros que tentaram parar o Bafomé.";
@@ -602,13 +602,13 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "Encontraram meu pingente?";
 		next;
 		if (countitem(Soul_Pendant) > 0) {
-			specialeffect EF_MAPPILLAR;
+			specialeffect(EF_MAPPILLAR);
 			mes "[Túmulo do Herói]";
 			mes "Sim... É esse... Meu Pingente...";
 			next;
 			delitem(Soul_Pendant,1);
-			enablenpc instance_npcname("Alma do Herói#1F");
-			disablenpc instance_npcname("Túmulo#ss");
+			enablenpc(instance_npcname("Alma do Herói#1F"));
+			disablenpc(instance_npcname("Túmulo#ss"));
 			mes "[Túmulo do Herói]";
 			mes "Agora posso substancializar minha alma.";
 			mes "Esperarei no altar de fogo no centro do mapa.";
@@ -669,9 +669,9 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "[Alma do Herói]";
 		mes "Segundo, todos os membros que entrarem no subterrâneo devem levar um símbolo que é chamado Símbolo do Apóstolo.";
 		next;
-		while(true) {
+		while (true) {
 			cutin("ins_cata_champ_n",2);
-			switch(select("Essências de Fogo?", "Símbolo do Apóstolo?", "O que fazer?", "Estou pronto!")) {
+			switch (select("Essências de Fogo?","Símbolo do Apóstolo?","O que fazer?","Estou pronto!")) {
 				case 1:
 				++.@ins_baphomet_1f_1;
 				mes "[Alma do Herói]";
@@ -803,13 +803,13 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		cutin("",255);
 		end;
 	} else if ((`ins_baphomet == 3) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
-		cutin ("ins_cata_champ_n",2);
+		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "Você pegou as 10 ^0000FFEssências de Fogo^000000";
 		mes "E o ^0000FFSímbolo do Apóstolo^000000?";
 		next;
 		if ((countitem(Essence_Of_Fire) > 9) && (countitem(Token_Of_Apostle) > 0)) {
-			delitem (Essence_Of_Fire,countitem(Essence_Of_Fire));
+			delitem(Essence_Of_Fire,countitem(Essence_Of_Fire));
 			`ins_baphomet = 4;
 			mes "[Alma do Herói]";
 			mes "Ok. Você fez seu trabalho.";
@@ -824,10 +824,10 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			mes "dos Apóstolos de Bafomé.";
 		}
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (`ins_baphomet == 3) {
-		cutin ("ins_cata_champ_n",2);
+		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "Você tem o ^0000FFSímbolo do Apóstolo^000000?";
 		next;
@@ -842,7 +842,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			mes "Eu preciso do ^0000FFSímbolo do Apóstolo^000000 dos Apóstolos de Bafomé.";
 		}
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if ((`ins_baphomet == 4) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
 		cutin "ins_cata_champ_n",2;
@@ -864,11 +864,11 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		next;
 		mes "[Alma do Herói]";
 		mes "Vão à frente, guerreiros.";
-		cutin ("",255);
-		mapannounce (instance_mapname("1@cata"), "Alma do Herói : Agora já podem ir ao Altar Principal. Ele está localizado no Sudeste do mapa", bc_map, "0xFFFF00");
+		cutin("",255);
+		mapannounce(instance_mapname("1@cata"), "Alma do Herói : Agora já podem ir ao Altar Principal. Ele está localizado no Sudeste do mapa", bc_map, "0xFFFF00");
 		close;
 	} else if (`ins_baphomet == 4) {
-		cutin ("ins_cata_champ_n",2);
+		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "Está pronto?";
 		mes "Abri a ponte nesse momento.";
@@ -876,26 +876,26 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		next;
 		mes "[Alma do Herói]";
 		mes "Irei abrir a ponte quando o Líder do grupo estiver pronto.";
-		cutin ("",255);
+		cutin("",255);
 		close;
 	} else if (`ins_baphomet == 5) {
-		cutin ("ins_cata_champ_n",2);
+		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "O que está fazendo?";
 		mes "A entrada para o Altar está aberta, vá e lute!";
 		mes "A entrada se encontra no sudeste do mapa.";
-		cutin ("",255);
+		cutin("",255);
 		close;
 	} else {
-		cutin ("ins_cata_champ_n",2);
+		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "Não tenho nada a falar com você...";
-		cutin ("",255);
+		cutin("",255);
 		close;
 	}
 
 	OnInstanceInit:
-	disablenpc (instance_npcname("Alma do Herói#1F"));
+	disablenpc(instance_npcname("Alma do Herói#1F"));
 	end;
 }
 
@@ -903,7 +903,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 // - Túmulos
 -	script	Gravestone#ss1	FAKE_NPC,{
 	if (`ins_baphomet == 1) {
-		getitem (Soul_Pendant,1);
+		getitem(Soul_Pendant,1);
 		`ins_baphomet = 2;
 		mes "Um pequeno objeto está brilhando abaixo do antigo túmulo.";
 		next;
@@ -959,9 +959,9 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			mes "Porém tive coragem e estiquei o braço para segurá-la.";
 			next;
 			specialeffect(EF_HOLYHIT, AREA, playerattached());
-			getitem (Essence_Of_Fire,1);
+			getitem(Essence_Of_Fire,1);
 			mes "O símbolo do herdeiro brilha. Nisso um pequeno cristal cai da tocha.";
-			disablenpc (instance_npcname(strnpcinfo(NPC_NAME)));
+			disablenpc(instance_npcname(strnpcinfo(NPC_NAME)));
 			close;
 		} else if ((`ins_baphomet == 3) && (countitem(Essence_Of_Fire) > 10)) {
 			mes "Você já tem 10 Essências de Fogo. Você não precisa mais pegar nenhuma.";
@@ -976,12 +976,12 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "[Voz Misteriosa]";
 		mes "Você não é o Herdeiro da Fé. Não coloque essas Essências nessas mãos imundas.";
 		specialeffect(EF_FIRESPLASHHIT, AREA, playerattached());
-		percentheal (-50,0);
+		percentheal(-50,0);
 		close;
 	}
 
 	OnInstanceInit:
-	disablenpc (instance_npcname(strnpcinfo(NPC_NAME)));
+	disablenpc(instance_npcname(strnpcinfo(NPC_NAME)));
 	end;
 }
 1@cata,267,210,0	duplicate(BobbingTorch#SS)	Bobbing Tocha#1	CLEAR_NPC
@@ -1002,9 +1002,9 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 1@cata,281,12,0	script	ins_bapho_to_2f	WARPNPC,1,1,{
 	OnTouch:
 	if (countitem(Token_Of_Apostle) > 0) {
-		delitem (Token_Of_Apostle,countitem(Token_Of_Apostle));
+		delitem(Token_Of_Apostle,countitem(Token_Of_Apostle));
 		`ins_baphomet = 5;
-		warp (instance_mapname("2@cata"),80,144);
+		warp(instance_mapname("2@cata"),80,144);
 		end;
 	} else {
 		mes "[Alma do Herói]";
@@ -1014,44 +1014,44 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 	}
 
 	OnInstanceInit:
-	disablenpc (instance_npcname("ins_bapho_to_2f"));
+	disablenpc(instance_npcname("ins_bapho_to_2f"));
 	end;
 }
 
 // ------------------------------------------------------------------
 1@cata,1,1,0	script	ins_baphomet_1f_timer	FAKE_NPC,{
 	OnInstanceInit:
-	disablenpc (instance_npcname("ins_baphomet_1f_timer"));
+	disablenpc(instance_npcname("ins_baphomet_1f_timer"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("ins_baphomet_1f_timer"));
+	enablenpc(instance_npcname("ins_baphomet_1f_timer"));
 	initnpctimer;
 	end;
 
 	OnDisable:
-	disablenpc (instance_npcname("ins_baphomet_1f_timer"));
+	disablenpc(instance_npcname("ins_baphomet_1f_timer"));
 	stopnpctimer;
 	end;
 
 	OnTimer1800000:
-	mapannounce (instance_mapname("1@cata"), "Alma do Herói : Não temos tempo suficiente. Apressem-se!",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("1@cata"), "Alma do Herói : Não temos tempo suficiente. Apressem-se!",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer2400000:
-	mapannounce (instance_mapname("1@cata"), "Alma do Herói : Meu corpo está desaparecendo... Apressem-se!",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("1@cata"), "Alma do Herói : Meu corpo está desaparecendo... Apressem-se!",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer3000000:
-	mapannounce (instance_mapname("1@cata"), "Alma do Herói : Tudo acabou... Não tem como prosseguirmos...",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("1@cata"), "Alma do Herói : Tudo acabou... Não tem como prosseguirmos...",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer3050000:
-	mapannounce (instance_mapname("1@cata"), "Alma do Herói : We failed... However... We still have a chance. I hope you will train yourselves until the time comes.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("1@cata"), "Alma do Herói : We failed... However... We still have a chance. I hope you will train yourselves until the time comes.",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer3100000:
-	mapannounce (instance_mapname("1@cata"), "Falhamos... Entretanto... Ainda temos chances. Espero que treinem mais até a hora chegar.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("1@cata"), "Falhamos... Entretanto... Ainda temos chances. Espero que treinem mais até a hora chegar.",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer3500000:
@@ -1065,38 +1065,38 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 // ------------------------------------------------------------------
 2@cata,80,144,0	script	ins_2f_enter	FAKE_NPC,3,3,{
 	OnTouch:
-	donpcevent (instance_npcname("ins_2f_enter_broad")+"::OnEnable");
-	disablenpc (instance_npcname("ins_2f_enter"));
+	donpcevent(instance_npcname("ins_2f_enter_broad")+"::OnEnable");
+	disablenpc(instance_npcname("ins_2f_enter"));
 	end;
 }
 
 2@cata,1,1,0	script	ins_2f_enter_broad	FAKE_NPC,{
 	OnInstanceInit:
 	OnDisable:
-	disablenpc (instance_npcname("ins_2f_enter_broad"));
+	disablenpc(instance_npcname("ins_2f_enter_broad"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("ins_2f_enter_broad"));
+	enablenpc(instance_npcname("ins_2f_enter_broad"));
 	initnpctimer;
 	end;
 
 	OnTimer10000:
-	mapannounce (instance_mapname("2@cata"), "Bafomé : Humanos... interferindo novamente...",bc_map,"0xdb7093");
+	mapannounce(instance_mapname("2@cata"), "Bafomé : Humanos... interferindo novamente...",bc_map,"0xdb7093");
 	end;
 
 	OnTimer13000:
-	mapannounce (instance_mapname("2@cata"), "Apóstolo de Bafomé : Humanos! Humanos invadiram nosso santuário!",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Apóstolo de Bafomé : Humanos! Humanos invadiram nosso santuário!",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer16000:
-	mapannounce (instance_mapname("2@cata"), "Apóstolo de Bafomé : Matem-nos! Não deixem parar a ressurreição de nosso mestre!",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Apóstolo de Bafomé : Matem-nos! Não deixem parar a ressurreição de nosso mestre!",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer18000:
-	mapannounce (instance_mapname("2@cata"), "Apóstolo de Bafomé : Apressem-se em liberar os selos dos altares! O retorno de nosso mestre está sobre nós.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Apóstolo de Bafomé : Apressem-se em liberar os selos dos altares! O retorno de nosso mestre está sobre nós.",bc_map,"0xFFFF00");
 	stopnpctimer;
-	disablenpc (instance_npcname("ins_2f_enter_broad"));
+	disablenpc(instance_npcname("ins_2f_enter_broad"));
 	end;
 }
 
@@ -1104,24 +1104,24 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 2@cata,50,67,0	script	slave_left	FAKE_NPC,5,5,{
 	OnTouch:
 	.@map$ = instance_mapname("2@cata");
-	mapannounce (.@map$, "Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
-	monster (.@map$,55,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,51,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,58,67,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,53,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,54,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,55,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,56,67,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,58,66,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,56,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,60,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,59,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,54,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,55,66,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,56,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,50,65,"Apóstolo de Bafomé",BANSHEE,1);
-	monster (.@map$,61,65,"Apóstolo de Bafomé",MINI_DEMON,1);
-	disablenpc (instance_npcname("slave_left"));
+	mapannounce(.@map$, "Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
+	monster(.@map$,55,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,51,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,58,67,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,53,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,54,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,55,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,56,67,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,58,66,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,56,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,60,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,59,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,54,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,55,66,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,56,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,50,65,"Apóstolo de Bafomé",BANSHEE,1);
+	monster(.@map$,61,65,"Apóstolo de Bafomé",MINI_DEMON,1);
+	disablenpc(instance_npcname("slave_left"));
 	end;
 }
 
@@ -1129,23 +1129,23 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 2@cata,109,67,0	script	slave_right	FAKE_NPC,5,5,{
 	OnTouch:
 	.@map$ = instance_mapname("2@cata");
-	mapannounce (.@map$, "Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
-	monster (.@map$,105,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,104,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,107,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,106,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,102,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,103,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,103,67,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,109,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,108,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,101,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,106,66,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,102,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,104,66,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,103,66,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,109,65,"Apóstolo de Bafomé",BANSHEE,1);
-	monster (.@map$,108,65,"Apóstolo de Bafomé",MINI_DEMON,1);
+	mapannounce(.@map$, "Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
+	monster(.@map$,105,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,104,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,107,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,106,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,102,67,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,103,67,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,103,67,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,109,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,108,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,101,66,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,106,66,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,102,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,104,66,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,103,66,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,109,65,"Apóstolo de Bafomé",BANSHEE,1);
+	monster(.@map$,108,65,"Apóstolo de Bafomé",MINI_DEMON,1);
 	disablenpc instance_npcname("slave_right");
 	end;
 }
@@ -1154,24 +1154,24 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 2@cata,79,39,0	script	slave_down	FAKE_NPC,5,5,{
 	OnTouch:
 	.@map$ = instance_mapname("2@cata");
-	mapannounce (.@map$, "Apóstolo de Bafomé : Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
-	monster (.@map$,78,41,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,79,42,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,78,46,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,81,41,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,81,42,"Apóstolo de Bafomé",FLAME_SKULL,1);
-	monster (.@map$,79,43,"Apóstolo de Bafomé",WRAITH_DEAD,1);
-	monster (.@map$,77,40,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,79,41,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,79,42,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,79,43,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,79,48,"Apóstolo de Bafomé",EVIL_DRUID,1);
-	monster (.@map$,78,49,"Apóstolo de Bafomé",KHALITZBURG,1);
-	monster (.@map$,78,41,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,74,42,"Apóstolo de Bafomé",MINI_DEMON,1);
-	monster (.@map$,72,48,"Apóstolo de Bafomé",BANSHEE,1);
-	monster (.@map$,72,38,"Apóstolo de Bafomé",MINI_DEMON,1);
-	disablenpc (instance_npcname("slave_down"));
+	mapannounce(.@map$, "Apóstolo de Bafomé : Apóstolo de Bafomé : Matem os Humanos! Não os deixem enterromper a volta de nosso Mestre!",bc_map,"0xFFFF00");
+	monster(.@map$,78,41,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,79,42,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,78,46,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,81,41,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,81,42,"Apóstolo de Bafomé",FLAME_SKULL,1);
+	monster(.@map$,79,43,"Apóstolo de Bafomé",WRAITH_DEAD,1);
+	monster(.@map$,77,40,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,79,41,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,79,42,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,79,43,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,79,48,"Apóstolo de Bafomé",EVIL_DRUID,1);
+	monster(.@map$,78,49,"Apóstolo de Bafomé",KHALITZBURG,1);
+	monster(.@map$,78,41,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,74,42,"Apóstolo de Bafomé",MINI_DEMON,1);
+	monster(.@map$,72,48,"Apóstolo de Bafomé",BANSHEE,1);
+	monster(.@map$,72,38,"Apóstolo de Bafomé",MINI_DEMON,1);
+	disablenpc(instance_npcname("slave_down"));
 	end;
 }
 
@@ -1180,25 +1180,25 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 	.@seal_check = questprogress(3041,PLAYTIME);
 	if (.@seal_check == 1) {
 		specialeffect(EF_SILENCEATTACK, AREA, playerattached());
-		percentheal (-50,0);
-		sc_start (Eff_Stone,30000,0);
+		percentheal(-50,0);
+		sc_start(Eff_Stone,30000,0);
 		mes "Você utlizou suas forças no selo anterior.";
 		mes "Parece que você ainda não recuperou toda sua força.";
 		close;
 	}
-	if (.@seal_check == 2) {erasequest (3041);}
-	specialeffect (EF_LEXDIVINA);
-	disablenpc (instance_npcname(strnpcinfo(NPC_NAME)));
+	if (.@seal_check == 2) {erasequest(3041);}
+	specialeffect(EF_LEXDIVINA);
+	disablenpc(instance_npcname(strnpcinfo(NPC_NAME)));
 	.@map$ = instance_mapname("2@cata");
-	if (strnpcinfo(NPC_NAME_HIDDEN) == "0") {areamobuseskill (.@map$,79,81,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
-	else if (strnpcinfo(NPC_NAME_HIDDEN) == "2") {areamobuseskill (.@map$,123,109,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
-	else if (strnpcinfo(NPC_NAME_HIDDEN) == "4") {areamobuseskill (.@map$,123,22,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
-	else if (strnpcinfo(NPC_NAME_HIDDEN) == "8") {areamobuseskill (.@map$,35,21,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
-	else if (strnpcinfo(NPC_NAME_HIDDEN) == "10") {areamobuseskill (.@map$,35,109,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
-	percentheal (-50,0);
-	sc_start (Eff_Stone,20000,0);
+	if (strnpcinfo(NPC_NAME_HIDDEN) == "0") {areamobuseskill(.@map$,79,81,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
+	else if (strnpcinfo(NPC_NAME_HIDDEN) == "2") {areamobuseskill(.@map$,123,109,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
+	else if (strnpcinfo(NPC_NAME_HIDDEN) == "4") {areamobuseskill(.@map$,123,22,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
+	else if (strnpcinfo(NPC_NAME_HIDDEN) == "8") {areamobuseskill(.@map$,35,21,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
+	else if (strnpcinfo(NPC_NAME_HIDDEN) == "10") {areamobuseskill(.@map$,35,109,10,1929,"NPC_INVINCIBLEOFF",1,0,0,e_hlp,0);}
+	percentheal(-50,0);
+	sc_start(Eff_Stone,20000,0);
 	setquest(3041);
-	mapannounce (.@map$, "O selo é ativado colocando o poder mágico sobre o altar.", bc_map, "0x87ceeb");
+	mapannounce(.@map$, "O selo é ativado colocando o poder mágico sobre o altar.", bc_map, "0x87ceeb");
 	mes "Eu posso sentir o poder voltando ao altar colocando seu poder mágico.";
 	next;
 	mes "Você não pode colocar o selo novamente durante 3 minutos pois perdeu seu SP com isso.";
@@ -1224,13 +1224,13 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		next;
 		mes "O Altar Principal treme furiosamente.";
 		next;
-		specialeffect (EF_METEORSTORM);
-		specialeffect (EF_METEORSTORM);
+		specialeffect(EF_METEORSTORM);
+		specialeffect(EF_METEORSTORM);
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Olhem! Algo... Algo está vindo.";
 		`ins_baphomet = 6;
-		donpcevent (instance_npcname("ins_2f_hero_broad")+"::OnEnable");
-		disablenpc (instance_npcname("Altar Principal#ss"));
+		donpcevent(instance_npcname("ins_2f_hero_broad")+"::OnEnable");
+		disablenpc(instance_npcname("Altar Principal#ss"));
 		close;
 	} else {
 		mes "Um poder malígno, terrível demais para descrever, passa pelo altar irradiando uma cor violeta.";
@@ -1243,8 +1243,8 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 
 // ------------------------------------------------------------------
 2@cata,80,63,4	script	Alma do Herói#2F	4_M_CHAMPSOUL,{
-	cutin ("ins_cata_champ_s",2);
-	if (questprogress(3041)) {erasequest (3041);}
+	cutin("ins_cata_champ_s",2);
+	if (questprogress(3041)) {erasequest(3041);}
 	mes "[Alma do Herói]";
 	mes "Bom trablaho, meus descendentes...";
 	mes "Vocês realizaram meu desejo que muitos não cumprem faz tempo.";
@@ -1257,22 +1257,22 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 	mes "A luta pela paz neste mundo nunca vai acabar.";
 	mes "Mas ... o meu papel aqui finalmente chega ao fim, porque há bravos heróis como você.";
 	next;
-	switch(select("Leve-me ao monastério", "Terminar conversa")) {
+	switch (select("Leve-me ao monastério","Terminar conversa")) {
 		case 1:
 		mes "[Alma do Herói]";
 		mes "Ok. Tirarei seu grupo daqui com segurança.";
 		next;
 		mes "[Alma do Herói]";
 		mes "Quando sair, diga um oi ao Patrick.";
-		cutin ("",255);
+		cutin("",255);
 		`ins_baphomet = 0;
-		warp ("monk_test",310,150);
+		warp("monk_test",310,150);
 		close;
 		case 2:
 		mes "[Alma do Herói]";
 		mes "Ainda tem algo para fazer aqui?";
 		mes "Quando estiver pronto para sair, fale comigo...";
-		cutin ("",255);
+		cutin("",255);
 		close;
 	}
 
@@ -1284,40 +1284,40 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 // ------------------------------------------------------------------
 2@cata,1,2,0	script	ins_2f_hero_broad	FAKE_NPC,{
 	OnEnable:
-	enablenpc (instance_npcname("ins_2f_hero_broad"));
+	enablenpc(instance_npcname("ins_2f_hero_broad"));
 	initnpctimer;
 	end;
 
 	OnDisable:
-	disablenpc (instance_npcname("ins_2f_hero_broad"));
+	disablenpc(instance_npcname("ins_2f_hero_broad"));
 	end;
 
 	OnTimer3000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Meu deus! O selo do Altar Principal está enfraquecendo!",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Meu deus! O selo do Altar Principal está enfraquecendo!",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer6000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Companheiros... Escutem com atenção o que irei dizer.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Companheiros... Escutem com atenção o que irei dizer.",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer9000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Os altares, que controlam o poder altar principal, estão localizados nos cantos Nordeste, Sudeste, Sudoeste e Noroeste deste quarto.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Os altares, que controlam o poder altar principal, estão localizados nos cantos Nordeste, Sudeste, Sudoeste e Noroeste deste quarto.",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer12000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Encontre estes altares e ative os seus selos antes que Bafomé reviva.",bc_map,"0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Encontre estes altares e ative os seus selos antes que Bafomé reviva.",bc_map,"0xFFFF00");
 	end;
 
 	OnTimer15000:
-	mapannounce (instance_mapname("2@cata"), "Bafomé : Tarde demais, fracos... Agora, vocês irão sentir o desespero da morte!",bc_map,"0xdb7093");
+	mapannounce(instance_mapname("2@cata"), "Bafomé : Tarde demais, fracos... Agora, vocês irão sentir o desespero da morte!",bc_map,"0xdb7093");
 	end;
 
 	OnTimer17000:
-	mapannounce (instance_mapname("2@cata"), "Bafomé : Ninguém pode me prejudicar aqui. Você será o meu primeiro sacrifício.",bc_map,"0xdb7093");
-	donpcevent (instance_npcname("control_baphomet")+"::OnEnable");
-	donpcevent (instance_npcname("ins_2f_hero_broad2")+"::OnEnable");
+	mapannounce(instance_mapname("2@cata"), "Bafomé : Ninguém pode me prejudicar aqui. Você será o meu primeiro sacrifício.",bc_map,"0xdb7093");
+	donpcevent(instance_npcname("control_baphomet")+"::OnEnable");
+	donpcevent(instance_npcname("ins_2f_hero_broad2")+"::OnEnable");
 	stopnpctimer;
-	disablenpc (instance_npcname("ins_2f_hero_broad"));
+	disablenpc(instance_npcname("ins_2f_hero_broad"));
 	end;
 }
 
@@ -1325,34 +1325,34 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 2@cata,3,3,0	script	control_baphomet	FAKE_NPC,{
 	OnInstanceInit:
 	OnDisable:
-	disablenpc (instance_npcname("control_baphomet"));
+	disablenpc(instance_npcname("control_baphomet"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("control_baphomet"));
-	donpcevent (instance_npcname("2f_callmon_pattern_c")+"::OnEnable");
-	monster (instance_mapname("2@cata"),79,64,"Bafomé",BAPHOMET_I,1,instance_npcname("control_baphomet")+"::OnMyMobDead");
+	enablenpc(instance_npcname("control_baphomet"));
+	donpcevent(instance_npcname("2f_callmon_pattern_c")+"::OnEnable");
+	monster(instance_mapname("2@cata"),79,64,"Bafomé",BAPHOMET_I,1,instance_npcname("control_baphomet")+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
 	.@map$ = instance_mapname("2@cata");
 	if (mobcount(.@map$,instance_npcname("control_baphomet")+"::OnMyMobDead") < 1) {
 		`ins_baphomet = 7;
-		erasequest (3041);
-		mapannounce (.@map$, "Bafomé : Não! Nãoooo!Levarei isso como insulto, seus insetos!... Não!!...",bc_map,"0xdb7093");
-		enablenpc (instance_npcname("Alma do Herói#2F"));
-		disablenpc (instance_npcname("slave_down"));
-		disablenpc (instance_npcname("slave_left"));
-		disablenpc (instance_npcname("slave_right"));
-		donpcevent (instance_npcname("ins_2f_hero_broad")+"::OnDisable");
-		donpcevent (instance_npcname("ins_2f_hero_broad2")+"::OnDisable");
-		donpcevent (instance_npcname("ins_2f_hero_pattern_c")+"::OnDisable");
-		donpcevent (instance_npcname("2f_callmon_pattern_c")+"::OnDisable");
-		donpcevent (instance_npcname("2f_callmon_pattern")+"::OnDisable");
-		donpcevent (instance_npcname("ins_2f_hero_pattern")+"::OnDisable");
-		donpcevent (instance_npcname("ins_2f_enter_broad")+"::OnDisable");
-		donpcevent (instance_npcname("control_baphomet")+"::OnDisable");
-		disablenpc (instance_npcname("control_baphomet"));
+		erasequest(3041);
+		mapannounce(.@map$, "Bafomé : Não! Nãoooo!Levarei isso como insulto, seus insetos!... Não!!...",bc_map,"0xdb7093");
+		enablenpc(instance_npcname("Alma do Herói#2F"));
+		disablenpc(instance_npcname("slave_down"));
+		disablenpc(instance_npcname("slave_left"));
+		disablenpc(instance_npcname("slave_right"));
+		donpcevent(instance_npcname("ins_2f_hero_broad")+"::OnDisable");
+		donpcevent(instance_npcname("ins_2f_hero_broad2")+"::OnDisable");
+		donpcevent(instance_npcname("ins_2f_hero_pattern_c")+"::OnDisable");
+		donpcevent(instance_npcname("2f_callmon_pattern_c")+"::OnDisable");
+		donpcevent(instance_npcname("2f_callmon_pattern")+"::OnDisable");
+		donpcevent(instance_npcname("ins_2f_hero_pattern")+"::OnDisable");
+		donpcevent(instance_npcname("ins_2f_enter_broad")+"::OnDisable");
+		donpcevent(instance_npcname("control_baphomet")+"::OnDisable");
+		disablenpc(instance_npcname("control_baphomet"));
 	}
 	end;
 }
@@ -1361,112 +1361,112 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 2@cata,2,2,0	script	ins_2f_hero_broad2	FAKE_NPC,{
 	OnInstanceInit:
 	OnDisable:
-	disablenpc ( instance_npcname( "ins_2f_hero_broad2"));
+	disablenpc( instance_npcname( "ins_2f_hero_broad2"));
 	end;
 
 	OnEnable:
-	enablenpc ( instance_npcname( "ins_2f_hero_broad2"));
+	enablenpc( instance_npcname( "ins_2f_hero_broad2"));
 	initnpctimer;
 	end;
 
 	OnTimer8000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Não se preocupem, o Bafomé ainda pode ser derrotado.", bc_map, "0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Não se preocupem, o Bafomé ainda pode ser derrotado.", bc_map, "0xFFFF00");
 	end;
 
 	OnTimer11000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Vá para os alteres e ativem os selos.", bc_map, "0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Vá para os alteres e ativem os selos.", bc_map, "0xFFFF00");
 	end;
 
 	OnTimer13000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Quando os selos se recuperarem, Bafomé ficará vulnerável.", bc_map, "0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Quando os selos se recuperarem, Bafomé ficará vulnerável.", bc_map, "0xFFFF00");
 	end;
 
 	OnTimer16000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Você deve atrair Bafomé aos altares não selados. Caso contrário, seu esforço será inútil.", bc_map, "0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Você deve atrair Bafomé aos altares não selados. Caso contrário, seu esforço será inútil.", bc_map, "0xFFFF00");
 	end;
 
 	OnTimer19000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Temos apenas 1 hora de parar Bafomé. Se o tempo passar, o poder dos selos será inútil.", bc_map, "0xFFFF00");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Temos apenas 1 hora de parar Bafomé. Se o tempo passar, o poder dos selos será inútil.", bc_map, "0xFFFF00");
 	end;
 
 	OnTimer22000:
-	mapannounce (instance_mapname("2@cata"), "Bafomé : É inútil. Faça mais selos. Eu vou esmagá-los. Nenhum de vocês vai sobreviver.", bc_map, "0xdb7093");
+	mapannounce(instance_mapname("2@cata"), "Bafomé : É inútil. Faça mais selos. Eu vou esmagá-los. Nenhum de vocês vai sobreviver.", bc_map, "0xdb7093");
 	end;
 
 	OnTimer26000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : O poder mágico do selo central está se esgotando. Vá para o selo central e coloque o poder mágico.", bc_map, "0xFFFF00");
-	enablenpc (instance_npcname("Selo Mágico#0"));
-	disablenpc (instance_npcname("Selo Mágico#2"));
-	disablenpc (instance_npcname("Selo Mágico#4"));
-	disablenpc (instance_npcname("Selo Mágico#8"));
-	disablenpc (instance_npcname("Selo Mágico#10"));
-	donpcevent (instance_npcname("ins_2f_hero_pattern_c")+"::OnEnable");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : O poder mágico do selo central está se esgotando. Vá para o selo central e coloque o poder mágico.", bc_map, "0xFFFF00");
+	enablenpc(instance_npcname("Selo Mágico#0"));
+	disablenpc(instance_npcname("Selo Mágico#2"));
+	disablenpc(instance_npcname("Selo Mágico#4"));
+	disablenpc(instance_npcname("Selo Mágico#8"));
+	disablenpc(instance_npcname("Selo Mágico#10"));
+	donpcevent(instance_npcname("ins_2f_hero_pattern_c")+"::OnEnable");
 	stopnpctimer;
-	disablenpc (instance_npcname("ins_2f_hero_broad2"));
+	disablenpc(instance_npcname("ins_2f_hero_broad2"));
 	end;
 }
 
 // ------------------------------------------------------------------
 2@cata,4,1,0	script	2f_callmon_pattern_c	FAKE_NPC,{
 	OnInstanceInit:
-	disablenpc (instance_npcname("2f_callmon_pattern_c"));
+	disablenpc(instance_npcname("2f_callmon_pattern_c"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("2f_callmon_pattern_c"));
+	enablenpc(instance_npcname("2f_callmon_pattern_c"));
 	initnpctimer;
-	donpcevent (instance_npcname("2f_callmon_pattern_c")+"::OnGo");
+	donpcevent(instance_npcname("2f_callmon_pattern_c")+"::OnGo");
 	end;
 
 	OnDisable:
 	stopnpctimer;
-	disablenpc (instance_npcname("2f_callmon_pattern_c"));
+	disablenpc(instance_npcname("2f_callmon_pattern_c"));
 	end;
 
 	OnGo:
-	donpcevent (instance_npcname("2f_callmon_pattern")+"::OnEnable");
+	donpcevent(instance_npcname("2f_callmon_pattern")+"::OnEnable");
 	end;
 
 	OnTimer3600000:
-	donpcevent (instance_npcname("2f_callmon_pattern_c")+"::OnDisable");
+	donpcevent(instance_npcname("2f_callmon_pattern_c")+"::OnDisable");
 	end;
 }
 
 // ------------------------------------------------------------------
 2@cata,4,2,0	script	2f_callmon_pattern	FAKE_NPC,{
 	OnInstanceInit:
-	disablenpc (instance_npcname("2f_callmon_pattern"));
+	disablenpc(instance_npcname("2f_callmon_pattern"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("2f_callmon_pattern"));
+	enablenpc(instance_npcname("2f_callmon_pattern"));
 	stopnpctimer;
 	initnpctimer;
 	end;
 
 	OnDisable:
-	disablenpc (instance_npcname("2f_callmon_pattern"));
+	disablenpc(instance_npcname("2f_callmon_pattern"));
 	stopnpctimer;
 	end;
 
 	OnTimer300000:
-	enablenpc (instance_npcname("slave_down"));
-	enablenpc (instance_npcname("slave_left"));
-	enablenpc (instance_npcname("slave_right"));
-	donpcevent (instance_npcname("2f_callmon_pattern_c")+"::OnGo");
+	enablenpc(instance_npcname("slave_down"));
+	enablenpc(instance_npcname("slave_left"));
+	enablenpc(instance_npcname("slave_right"));
+	donpcevent(instance_npcname("2f_callmon_pattern_c")+"::OnGo");
 	end;
 }
 
 // ------------------------------------------------------------------
 2@cata,3,1,0	script	ins_2f_hero_pattern_c	FAKE_NPC,{
 	OnInstanceInit:
-	disablenpc (instance_npcname("ins_2f_hero_pattern_c"));
+	disablenpc(instance_npcname("ins_2f_hero_pattern_c"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("ins_2f_hero_pattern_c"));
+	enablenpc(instance_npcname("ins_2f_hero_pattern_c"));
 	initnpctimer;
-	donpcevent (instance_npcname("ins_2f_hero_pattern_c")+"::OnGo");
+	donpcevent(instance_npcname("ins_2f_hero_pattern_c")+"::OnGo");
 	end;
 
 	OnGo:
@@ -1475,85 +1475,85 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 
 	OnDisable:
 	stopnpctimer;
-	disablenpc (instance_npcname("Selo Mágico#0"));
-	disablenpc (instance_npcname("Selo Mágico#2"));
-	disablenpc (instance_npcname("Selo Mágico#4"));
-	disablenpc (instance_npcname("Selo Mágico#8"));
-	disablenpc (instance_npcname("Selo Mágico#10"));
-	donpcevent (instance_npcname("ins_2f_hero_pattern")+"::OnDisable");
-	disablenpc (instance_npcname("ins_2f_hero_pattern_c"));
+	disablenpc(instance_npcname("Selo Mágico#0"));
+	disablenpc(instance_npcname("Selo Mágico#2"));
+	disablenpc(instance_npcname("Selo Mágico#4"));
+	disablenpc(instance_npcname("Selo Mágico#8"));
+	disablenpc(instance_npcname("Selo Mágico#10"));
+	donpcevent(instance_npcname("ins_2f_hero_pattern")+"::OnDisable");
+	disablenpc(instance_npcname("ins_2f_hero_pattern_c"));
 	end;
 
 	OnTimer3600000:
-	mapannounce (instance_mapname("2@cata"), "Bafomé : krrrr... Agora você não pode me parar por causa de um selo. Basta esperar pela sua morte!", bc_map, "0xdb7093");
+	mapannounce(instance_mapname("2@cata"), "Bafomé : krrrr... Agora você não pode me parar por causa de um selo. Basta esperar pela sua morte!", bc_map, "0xdb7093");
 	end;
 
 	OnTimer3605000:
-	mapannounce (instance_mapname("2@cata"), "Alma do Herói : Você não pode mais parar o Bafomé com os selos. Tudo agora depende de Deus...", bc_map, "0xFFFF00");
-	donpcevent (instance_npcname("ins_2f_hero_pattern_c")+"::OnDisable");
+	mapannounce(instance_mapname("2@cata"), "Alma do Herói : Você não pode mais parar o Bafomé com os selos. Tudo agora depende de Deus...", bc_map, "0xFFFF00");
+	donpcevent(instance_npcname("ins_2f_hero_pattern_c")+"::OnDisable");
 	end;
 }
 
 // ------------------------------------------------------------------
 2@cata,3,2,0	script	ins_2f_hero_pattern	FAKE_NPC,{
 	OnInstanceInit:
-	disablenpc (instance_npcname("ins_2f_hero_pattern"));
+	disablenpc(instance_npcname("ins_2f_hero_pattern"));
 	end;
 
 	OnEnable:
-	enablenpc (instance_npcname("ins_2f_hero_pattern"));
+	enablenpc(instance_npcname("ins_2f_hero_pattern"));
 	initnpctimer;
 	end;
 
 	OnDisable:
-	disablenpc (instance_npcname("ins_2f_hero_pattern"));
+	disablenpc(instance_npcname("ins_2f_hero_pattern"));
 	stopnpctimer;
 	end;
 
 	OnTimer70000:
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 		case 1:
-		mapannounce (instance_mapname("2@cata"), "Alma do Herói : Meu Deus! O poder controlado pelo altar principal está enfraquecendo!", bc_map, "0xFFFF00");
-		enablenpc (instance_npcname("Selo Mágico#0"));
-		disablenpc (instance_npcname("Selo Mágico#2"));
-		disablenpc (instance_npcname("Selo Mágico#4"));
-		disablenpc (instance_npcname("Selo Mágico#8"));
-		disablenpc (instance_npcname("Selo Mágico#10"));
+		mapannounce(instance_mapname("2@cata"), "Alma do Herói : Meu Deus! O poder controlado pelo altar principal está enfraquecendo!", bc_map, "0xFFFF00");
+		enablenpc(instance_npcname("Selo Mágico#0"));
+		disablenpc(instance_npcname("Selo Mágico#2"));
+		disablenpc(instance_npcname("Selo Mágico#4"));
+		disablenpc(instance_npcname("Selo Mágico#8"));
+		disablenpc(instance_npcname("Selo Mágico#10"));
 		break;
 		case 2:
-		mapannounce (instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 2 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
-		disablenpc (instance_npcname("Selo Mágico#0"));
-		enablenpc (instance_npcname("Selo Mágico#2"));
-		disablenpc (instance_npcname("Selo Mágico#4"));
-		disablenpc (instance_npcname("Selo Mágico#8"));
-		disablenpc (instance_npcname("Selo Mágico#10"));
+		mapannounce(instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 2 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
+		disablenpc(instance_npcname("Selo Mágico#0"));
+		enablenpc(instance_npcname("Selo Mágico#2"));
+		disablenpc(instance_npcname("Selo Mágico#4"));
+		disablenpc(instance_npcname("Selo Mágico#8"));
+		disablenpc(instance_npcname("Selo Mágico#10"));
 		break;
 		case 3:
-		mapannounce (instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 4 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
-		disablenpc (instance_npcname("Selo Mágico#0"));
-		disablenpc (instance_npcname("Selo Mágico#2"));
-		enablenpc (instance_npcname("Selo Mágico#4"));
-		disablenpc (instance_npcname("Selo Mágico#8"));
-		disablenpc (instance_npcname("Selo Mágico#10"));
+		mapannounce(instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 4 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
+		disablenpc(instance_npcname("Selo Mágico#0"));
+		disablenpc(instance_npcname("Selo Mágico#2"));
+		enablenpc(instance_npcname("Selo Mágico#4"));
+		disablenpc(instance_npcname("Selo Mágico#8"));
+		disablenpc(instance_npcname("Selo Mágico#10"));
 		break;
 		case 4:
-		mapannounce (instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 8 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
-		disablenpc (instance_npcname("Selo Mágico#0"));
-		disablenpc (instance_npcname("Selo Mágico#2"));
-		disablenpc (instance_npcname("Selo Mágico#4"));
-		enablenpc (instance_npcname("Selo Mágico#8"));
-		disablenpc (instance_npcname("Selo Mágico#10"));
+		mapannounce(instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 8 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
+		disablenpc(instance_npcname("Selo Mágico#0"));
+		disablenpc(instance_npcname("Selo Mágico#2"));
+		disablenpc(instance_npcname("Selo Mágico#4"));
+		enablenpc(instance_npcname("Selo Mágico#8"));
+		disablenpc(instance_npcname("Selo Mágico#10"));
 		break;
 		case 5:
-		mapannounce (instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 10 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
-		disablenpc (instance_npcname("Selo Mágico#0"));
-		disablenpc (instance_npcname("Selo Mágico#2"));
-		disablenpc (instance_npcname("Selo Mágico#4"));
-		disablenpc (instance_npcname("Selo Mágico#8"));
-		enablenpc (instance_npcname("Selo Mágico#10"));
+		mapannounce(instance_mapname("2@cata"), "Alma do Herói : O poder do altar das 10 horas está enfraquecendo. Vá para o altar e reative-o.", bc_map, "0xFFFF00");
+		disablenpc(instance_npcname("Selo Mágico#0"));
+		disablenpc(instance_npcname("Selo Mágico#2"));
+		disablenpc(instance_npcname("Selo Mágico#4"));
+		disablenpc(instance_npcname("Selo Mágico#8"));
+		enablenpc(instance_npcname("Selo Mágico#10"));
 	}
 	stopnpctimer;
-	donpcevent (instance_npcname("ins_2f_hero_pattern_c")+"::OnGo");
+	donpcevent(instance_npcname("ins_2f_hero_pattern_c")+"::OnGo");
 	end;
 }
 
@@ -1561,36 +1561,36 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 1@cata,1,1,0	script	ins_1f_spawn_mobs	FAKE_NPC,{
 	OnInstanceInit:
 	.@map$ = instance_mapname("1@cata");
-	monster (.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
-	monster (.@map$,0,0,"Aparição",WRAITH_DEAD,10);
-	monster (.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
-	monster (.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
-	monster (.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
-	monster (.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
-	monster (.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
-	monster (.@map$,0,0,"Aparição",WRAITH_DEAD,10);
-	monster (.@map$,0,0,"Aparição",WRAITH_DEAD,10);
-	monster (.@map$,0,0,"Khalitzburg",KHALITZBURG,10);
-	monster (.@map$,0,0,"Khalitzburg",KHALITZBURG,10);
-	monster (.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
-	monster (.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
-	monster (.@map$,0,0,"Mímico Antigo",ANCIENT_MIMIC,10);
-	monster (.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
-	monster (.@map$,0,0,"Mímico Antigo",ANCIENT_MIMIC,10);
-	monster (.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
-	monster (.@map$,0,0,"Aparição",WRAITH_DEAD,10);
-	monster (.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
-	monster (.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
-	monster (.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
-	monster (.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
-	monster (.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
-	monster (.@map$,0,0,"Lude",LUDE,10);
-	monster (.@map$,0,0,"Lude",LUDE,10);
-	monster (.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
-	monster (.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
-	monster (.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
-	monster (.@map$,0,0,"Banshee",BANSHEE,10);
-	monster (.@map$,0,0,"Ilusão das Treva",DARK_ILLUSION,1);
-	disablenpc (instance_npcname("ins_1f_spawn_mobs"));
+	monster(.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
+	monster(.@map$,0,0,"Aparição",WRAITH_DEAD,10);
+	monster(.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
+	monster(.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
+	monster(.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
+	monster(.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
+	monster(.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
+	monster(.@map$,0,0,"Aparição",WRAITH_DEAD,10);
+	monster(.@map$,0,0,"Aparição",WRAITH_DEAD,10);
+	monster(.@map$,0,0,"Khalitzburg",KHALITZBURG,10);
+	monster(.@map$,0,0,"Khalitzburg",KHALITZBURG,10);
+	monster(.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
+	monster(.@map$,0,0,"Crânio Flamejante",FLAME_SKULL,10);
+	monster(.@map$,0,0,"Mímico Antigo",ANCIENT_MIMIC,10);
+	monster(.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
+	monster(.@map$,0,0,"Mímico Antigo",ANCIENT_MIMIC,10);
+	monster(.@map$,0,0,"Zumbi Mestre",ZOMBIE_MASTER,10);
+	monster(.@map$,0,0,"Aparição",WRAITH_DEAD,10);
+	monster(.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
+	monster(.@map$,0,0,"Esqueleto General",SKELETON_GENERAL,10);
+	monster(.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
+	monster(.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
+	monster(.@map$,0,0,"Xamã do Vento",WIND_GHOST,10);
+	monster(.@map$,0,0,"Lude",LUDE,10);
+	monster(.@map$,0,0,"Lude",LUDE,10);
+	monster(.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
+	monster(.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
+	monster(.@map$,0,0,"Druida Malígno",EVIL_DRUID,10);
+	monster(.@map$,0,0,"Banshee",BANSHEE,10);
+	monster(.@map$,0,0,"Ilusão das Treva",DARK_ILLUSION,1);
+	disablenpc(instance_npcname("ins_1f_spawn_mobs"));
 	end;
 }

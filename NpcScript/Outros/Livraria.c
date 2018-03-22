@@ -1,15 +1,15 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Npc Script                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Script: Spell Master                                            |
-| - Nota: Livraria de Prontera                                      |
+| - Copyright: Spell Master                                         |
+| - Info: Livraria de Prontera                                      |
 \*-----------------------------------------------------------------*/
 
 prt_in,168,56,4	script	Enciclopédia#prt	HIDDEN_NPC,{
@@ -17,12 +17,12 @@ prt_in,168,56,4	script	Enciclopédia#prt	HIDDEN_NPC,{
 	mes "Esta é uma Enciclopédia de Monstros contendo informações sobre monstros de propriedade de Água, Vento e Fantasma.";
 	next;
 	.@loop1 = 1;
-	while(.@loop1) {
+	while (.@loop1) {
 		.@loop2 = 1;
-		switch(select("Monstros de Água","Monstros de Vento","Monstros Fantasma","Cancelar")) {
+		switch (select("Monstros de Água","Monstros de Vento","Monstros Fantasma","Cancelar")) {
 			case 1:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 1: Monstros de Água Pequenos]^000000";
 					mes "1. Plâncton";
@@ -140,8 +140,8 @@ prt_in,168,56,4	script	Enciclopédia#prt	HIDDEN_NPC,{
 				}
 			}
 			case 2:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstro médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstro médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 4: Monstro de Vento Pequeno]^000000";
 					mes "1. Chonchon";
@@ -209,8 +209,8 @@ prt_in,168,56,4	script	Enciclopédia#prt	HIDDEN_NPC,{
 				}
 			}
 			case 3:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 7: Monstros Fantasma Pequenos]^000000";
 					mes "1. Sussurro";
@@ -260,12 +260,12 @@ prt_in,159,56,4	script	Enciclopédia#2pr	HIDDEN_NPC,{
 	mes "Esta é uma Enciclopédia de Monstros contendo informações sobre monstros de Terra, Fogo e Neutro.";
 	next;
 	.@loop1 = 1;
-	while(.@loop1) {
+	while (.@loop1) {
 		.@loop2 = 1;
-		switch(select("Monstros de Terra","Monstros de Fogo","Monstros Neutro","Cancelar")) {
+		switch (select("Monstros de Terra","Monstros de Fogo","Monstros Neutro","Cancelar")) {
 			case 1:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 10: Monstros da Terra Pequenos]^000000";
 					mes "1. Fabre";
@@ -404,8 +404,8 @@ prt_in,159,56,4	script	Enciclopédia#2pr	HIDDEN_NPC,{
 				}
 			}
 			case 2:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 13: Small Fire Monsters]^000000";
 					mes "^FF0000[Vol. 13: Monstros de Fogo Pequeno]^000000";
@@ -488,8 +488,8 @@ prt_in,159,56,4	script	Enciclopédia#2pr	HIDDEN_NPC,{
 				}
 			}
 			case 3:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 16: Monstro Neutros Pequenos]^000000";
 					mes "1. Lunatico";
@@ -549,12 +549,12 @@ prt_in,161,50,4	script	Enciclopédia#3pr	HIDDEN_NPC,{
 	mes "Esta é uma Enciclopédia de Monstros contendo informações sobre Sombra, Veneno e Mortos-vivos.";
 	next;
 	.@loop1 = 1;
-	while(.@loop1) {
+	while (.@loop1) {
 		.@loop2 = 1;
-		switch(select("Monstros Sombrios","Monstros de veneno","Monstros mortos-vivos","Cancelar")) {
+		switch (select("Monstros Sombrios","Monstros de veneno","Monstros mortos-vivos","Cancelar")) {
 			case 1:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 19: Monstros Sombrios Pequenos]^000000";
 					mes "1. Ovo de Besouro-Ladrão";
@@ -630,8 +630,8 @@ prt_in,161,50,4	script	Enciclopédia#3pr	HIDDEN_NPC,{
 				}
 			}
 			case 2:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 22: Monstro Pequeno Venenoso]^000000";
 					mes "^0099FF...^000000";
@@ -686,8 +686,8 @@ prt_in,161,50,4	script	Enciclopédia#3pr	HIDDEN_NPC,{
 				}
 			}
 			case 3:
-			while(.@loop2) {
-				switch(select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
+			while (.@loop2) {
+				switch (select("Monstros pequenos","Monstros médios","Monstros grandes","Cancelar")) {
 					case 1:
 					mes "^FF0000[Vol. 25: Monstro Mortos-Vivo Pequeno]^000000";
 					mes "^0099FF...^000000";
@@ -780,10 +780,10 @@ prt_in,172,96,4	script	Enciclopédia#4pr	HIDDEN_NPC,{
 	mes "Esta é uma enciclopédia que descreve que vivem em Cavernas.";
 	next;
 	.@loop1 = 1;
-	switch(select("Formigueiro Infernal","Torre de Geffen","Esfinge","Cancelar")) {
+	switch (select("Formigueiro Infernal","Torre de Geffen","Esfinge","Cancelar")) {
 		case 1:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Formigueiro Infernal]^000000";
 				mes "1. Ovo de André";
@@ -853,8 +853,8 @@ prt_in,172,96,4	script	Enciclopédia#4pr	HIDDEN_NPC,{
 			}
 		}
 		case 2:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","3º Andar","4º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","3º Andar","4º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Torre de Geffen]^000000";
 				mes "1. Familiar";
@@ -967,8 +967,8 @@ prt_in,172,96,4	script	Enciclopédia#4pr	HIDDEN_NPC,{
 			}
 		}
 		case 3:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","3º Andar","4º Andar","5º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","3º Andar","4º Andar","5º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Esfinge]^000000";
 				mes "1. Familiar";
@@ -1064,10 +1064,10 @@ prt_in,164,96,4	script	Enciclopédia#5pr	HIDDEN_NPC,{
 	mes "Esta é uma enciclopédia que descreve Monstros que vivem em Cavernas.";
 	next;
 	.@loop1 = 1;
-	switch(select("Calabouço dos Orcs","Ilha de Byalan","Esgotos de Prontera")){
+	switch (select("Calabouço dos Orcs","Ilha de Byalan","Esgotos de Prontera")){
 		case 1:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Calabouço dos Orcs]^000000";
 				mes "1. Chonchon";
@@ -1115,8 +1115,8 @@ prt_in,164,96,4	script	Enciclopédia#5pr	HIDDEN_NPC,{
 			}
 		}
 		case 2:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","3º Andar","4º Andar","5º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","3º Andar","4º Andar","5º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Ilha de Byalan]^000000";
 				mes "1. Plâncton";
@@ -1272,8 +1272,8 @@ prt_in,164,96,4	script	Enciclopédia#5pr	HIDDEN_NPC,{
 			}
 		}
 		case 3:
-		while(.@loop1) {
-			switch(select("1º Andar","2º Andar","3º Andar","4º Andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Andar","2º Andar","3º Andar","4º Andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Esgotos de Prontera]^000000";
 				mes "1. Ovo do Besouro-Ladrão";
@@ -1410,10 +1410,10 @@ prt_in,172,102,4	script	Enciclopédia#6pr	HIDDEN_NPC,{
 	mes "Esta enciclopédia descreve monstros vivendo em calabouços e outros mapas especiais.";
 	next;
 	.@loop1 = 1;
-	switch(select("Mina de Carvão","Caverna de Payon","Pirâmide","Cancelar")) {
+	switch (select("Mina de Carvão","Caverna de Payon","Pirâmide","Cancelar")) {
 		case 1:
-		while(.@loop1) {
-			switch(select("1º andar","2º andar","3º andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º andar","2º andar","3º andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Mina de Carvão]^000000";
 				mes "1. Familiar";
@@ -1469,8 +1469,8 @@ prt_in,172,102,4	script	Enciclopédia#6pr	HIDDEN_NPC,{
 			}
 		}
 		case 2:
-		while(.@loop1) {
-			switch(select("1º andar","2º andar","3º andar","4º andar","5º andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º andar","2º andar","3º andar","4º andar","5º andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Caverna de Payon]^000000";
 				mes "1. Familiar";
@@ -1583,8 +1583,8 @@ prt_in,172,102,4	script	Enciclopédia#6pr	HIDDEN_NPC,{
 			}
 		}
 		case 3:
-		while(.@loop1) {
-			switch(select("1º andar","2º andar","3º andar","4º andar","5º andar","6º andar","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º andar","2º andar","3º andar","4º andar","5º andar","6º andar","Cancelar")) {
 				case 1:
 				mes "^FF0000[Pyramid 1F Monsters]^000000";
 				mes "1. Familiar";
@@ -1729,10 +1729,10 @@ prt_in,164,102,4	script	Enciclopédia#7pr	HIDDEN_NPC,{
 	mes "Esta é uma enciclopédia que descreve Monstros que vivem em cavernas.";
 	next;
 	.@loop1 = 1;
-	switch(select("Navio Fantasma","Labirinto da Floresta")) {
+	switch (select("Navio Fantasma","Labirinto da Floresta")) {
 		case 1:
-		while(.@loop1) {
-			switch(select("1º Nível","2º Nível","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Nível","2º Nível","Cancelar")) {
 				case 1:
 				mes "^FF0000[Navio Fantasma]^000000";
 				mes "1. Plâncton";
@@ -1810,8 +1810,8 @@ prt_in,164,102,4	script	Enciclopédia#7pr	HIDDEN_NPC,{
 			}
 		}
 		case 2:
-		while(.@loop1) {
-			switch(select("1º Nível","2º Nível","Cancelar")) {
+		while (.@loop1) {
+			switch (select("1º Nível","2º Nível","Cancelar")) {
 				case 1:
 				mes "^FF0000[Labirinto da Floresta]^000000";
 				mes "1. Poring";

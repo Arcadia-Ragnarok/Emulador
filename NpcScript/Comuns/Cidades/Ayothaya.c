@@ -111,7 +111,7 @@ ayothaya,241,264,5	script	Jovem#ayo3	4_M_THAIONGBAK,{
 	mes "Ei... você parece forte.";
 	mes "Quer lutar comigo?";
 	next;
-	if (select("Claro!", "Não") == 1) {
+	if (select("Claro!","Não") == 1) {
 		mes "[Eik]";
 		mes "Ei, ei, ei, estava brincando.";
 		mes "Não sou tão rude a ponto de começar uma briga com estranhos sem nenhum motivo.";

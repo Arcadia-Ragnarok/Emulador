@@ -23,7 +23,7 @@ payon_in01,99,72,4	script	Vovó#pay	8_F_GRANDMOTHER,{
 		mes "Eu preciso de quatro delas.";
 		mes "Por favor, eu estou te implorando.";
 		next;
-		switch(select("Certo","Nem pensar!")) {
+		switch (select("Certo","Nem pensar!")) {
 			case 1:
 			if (!checkweight(Pretend_Murdered,1)) {
 				mes "^3355FFEspere um segundo!";

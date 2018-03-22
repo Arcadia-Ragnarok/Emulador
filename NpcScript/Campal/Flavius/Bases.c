@@ -16,7 +16,7 @@
 // - [Terapeutas]
 //-------------------------------------------------------------------
 bat_b01,1,4,0	script	FlaviusTherapist	CLEAR_NPC,{
-	specialeffect(EF_HEAL, AREA, playerattached());
+	specialeffect(EF_HEAL,AREA,playerattached());
 	mes "[Terapeuta]";
 	mes "Por enquanto apenas descanse, suas dores serão curadas em breve.";
 	close;
@@ -36,11 +36,11 @@ bat_b01,1,4,0	script	FlaviusTherapist	CLEAR_NPC,{
 	OnTimer20000:
 	specialeffect(EF_SANCTUARY);
 	// Azul
-	areapercentheal(strnpcinfo(NPC_MAP), 2, 282, 17, 297, 100, 100);
-	areawarp(strnpcinfo(NPC_MAP), 2, 282, 17, 297, "bat_b01", 87, 75);
+	areapercentheal(strnpcinfo(NPC_MAP),2,282,17,297,100,100);
+	areawarp(strnpcinfo(NPC_MAP),2,282,17,297,"bat_b01",87,75);
 	// Vermelho
-	areapercentheal(strnpcinfo(NPC_MAP),382, 2, 397, 17, 100, 100);
-	areawarp(strnpcinfo(NPC_MAP), 382, 2, 397, 17, "bat_b01", 311, 224);
+	areapercentheal(strnpcinfo(NPC_MAP),382,2,397,17,100,100);
+	areawarp(strnpcinfo(NPC_MAP),382,2,397,17,"bat_b01",311,224);
 	initnpctimer;
 	end;
 }
@@ -61,20 +61,20 @@ bat_b01,10,294,3	script	Axl Rose#F_blueTean	4_M_KY_HEAD,{
 	if ($@FlaviusScoreBlue > $@FlaviusScoreRed) {
 		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
 		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
-		getitem(BF_Badge2, 3);
+		getitem(BF_Badge2,3);
 	} else if ($@FlaviusScoreBlue < $@FlaviusScoreRed) {
 		mes "Infelismente o exêrcito de Croix venceu.";
 		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
 		mes "[Axl Rose]";
 		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
-		getitem(BF_Badge2, 1);
+		getitem(BF_Badge2,1);
 	} else if ($@FlaviusScoreBlue == $@FlaviusScoreRed) {
 		mes "Nossa essa batalha foi intença!";
 		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
-		getitem(BF_Badge2, 2);
+		getitem(BF_Badge2,2);
 	}
-	warp("bat_room", 155, 150);
+	warp("bat_room",155,150);
 	bg_leave;
 	end;
 
@@ -89,20 +89,20 @@ bat_b01,389,14,3	script	Swandery#F_redTean	4_M_CRU_HEAD,{
 	if ($@FlaviusScoreRed > $@FlaviusScoreBlue) {
 		mes "Com sua ajuda nosso exêrcito de Guillaume saímos vitóriosos na batalha!";
 		mes "Muito obrigado pelo seu esforço e está aqui sua recompensa!";
-		getitem(BF_Badge2, 3);
+		getitem(BF_Badge2,3);
 	} else if ($@FlaviusScoreRed < $@FlaviusScoreBlue) {
 		mes "Infelismente o exêrcito de Guillaume venceu.";
 		mes "Mas essa guerra está longe de terminar e essa só foi mais uma batalha!";
 		next;
 		mes "[Swandery]";
 		mes "Mesmo assim somos gratos pela sua ajuda e está aqui sua recompensa.";
-		getitem(BF_Badge2, 1);
+		getitem(BF_Badge2,1);
 	} else if ($@FlaviusScoreBlue == $@FlaviusScoreRed) {
 		mes "Nossa essa batalha foi intença!";
 		mes "Graças a sua ajuda terminamos empatados, por isso está aqui sua recompensa.";
-		getitem(BF_Badge2, 2);
+		getitem(BF_Badge2,2);
 	}
-	warp("bat_room", 155, 150);
+	warp("bat_room",155,150);
 	bg_leave;
 	end;
 

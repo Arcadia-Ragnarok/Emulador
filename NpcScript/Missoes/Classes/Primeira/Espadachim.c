@@ -36,7 +36,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 				mes "Excelente!";
 				mes "Permita-me transformar você em Espadachim imediatamente!";
 				next;
-				jobchange (Job_Swordman_High);
+				jobchange(Job_Swordman_High);
 				mes "[Líder dos Espadachins]";
 				mes "Hmm...";
 				mes "Você me parece um Espadachim experiente.";
@@ -60,7 +60,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Lembre-se sempre que os espadachins, não são somentes lutadores com a espada.";
 			close;
 		} else {
-			mes "Bem vind" +(Sex == SEX_MALE ? "o":"a")+ "a guilda dos Espadachins.";
+			mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+"a guilda dos Espadachins.";
 			close;
 		}
 	} else {
@@ -77,7 +77,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 				mes "[Líder dos Espadachins]";
 				mes "Para isso primeiro você deve se inscrever preenchendo esse formulário aqui.";
 				next;
-				switch(select("Preencher o formulário","Perguntar sobre o Teste","Não fazer nada")) {
+				switch (select("Preencher o formulário","Perguntar sobre o Teste","Não fazer nada")) {
 					case 1:
 					mes "[Líder dos Espadachins]";
 					mes "Então deixe me ver.";
@@ -87,7 +87,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 					mes "[Líder dos Espadachins]";
 					mes "Leve esse cartão até ele, isso vai provar que você fez sua inscrição.";
 					swordq = 1;
-					setquest (1014);
+					setquest(1014);
 					close;
 					case 2:
 					mes "[Líder dos Espadachins]";
@@ -132,7 +132,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			close;
 		} else if (swordq == 2) {
 			mes "Muito bom, mostrou muita coragem e resitencia em seu teste.";
-			mes "Com isso você se torna qualificad" +(Sex == SEX_MALE ? "o":"a")+ "para ser Espadachim.";
+			mes "Com isso você se torna qualificad"+(Sex == SEX_MALE ? "o":"a")+"para ser Espadachim.";
 			next;
 			mes "[Líder dos Espadachins]";
 			mes "Mas antes de sua mudança, pense bem.";
@@ -147,10 +147,10 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 			mes "Tem certesa que é isso mesmo que deseja?";
 			next;
 			if (select("Sim quero ser Espadachim","Melhor eu pensar mais") == 1) {
-				getitem (N_Falchion,1);
-				completequest (1014);
-				jobchange (Job_Swordman);
-				callfunc ("ClearJobQuest");
+				getitem(N_Falchion,1);
+				completequest(1014);
+				jobchange(Job_Swordman);
+				callfunc("ClearJobQuest");
 				mes "[Líder dos Espadachins]";
 				mes "Pois bem, de agora em diante você é Espadachim!";
 				close;
@@ -166,7 +166,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 	mes "[Espadachim]";
 	if (BaseJob != Job_Novice) {
-		mes "Bem vind" +(Sex == SEX_MALE ? "o":"a")+ "a guilda dos Espadachins.";
+		mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+"a guilda dos Espadachins.";
 		close;
 	} else if (!swordq) {
 		mes "Se você deseja ser espadachim.";
@@ -181,8 +181,8 @@ izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 		mes "Certo!";
 		mes "Vou te mandar para a sala de espera.";
 		close2;
-		savepoint ("izlude_in",65,165);
-		warp ("izlude_in",39,170);
+		savepoint("izlude_in",65,165);
+		warp("izlude_in",39,170);
 		end;
 	} else if (swordq == 2) {
 		mes "Agora que completou seu teste.";
@@ -194,15 +194,15 @@ izlude_in,62,170,6	script	Espadachim#swordq	4_M_03,{
 izlude_in,30,176,4	script	Equipe de Testes#swordq	4_F_03,{
 	if (BaseJob == Job_Novice && swordq == 1) {
 		mes "[Equipe de Testes]";
-		mes "Pront" +(Sex == SEX_MALE ? "o":"a")+ "para seu teste?";
+		mes "Pront"+(Sex == SEX_MALE ? "o":"a")+"para seu teste?";
 		mes "Boa sorte!";
 		mes "Você conseguirá, pode parecer difícil, mas não é";
 		close2;
-		warp ("job_sword1",10,245);
+		warp("job_sword1",10,245);
 		end;
 	} else {
-		savepoint ("izlude",52,133);
-		warp ("izlude",52,133);
+		savepoint("izlude",52,133);
+		warp("izlude",52,133);
 	}
 }
 
@@ -217,16 +217,16 @@ job_sword1,7,245,0	script	#WarpSwordQexit	WARPNPC,1,3,{
 	mes "^ff0000Desisitir do Teste?^000000";
 	if (select("Não","Sim") == 2) {
 		callfunc("ClearJobVar");
-		erasequest (1014);
-		warp ("izlude_in",65,165);
+		erasequest(1014);
+		warp("izlude_in",65,165);
 	}
 	end;
 }
 
 job_sword1,192,244,0	script	#WarpSwordQ1st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_MAP), "[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo primeiro percuso do teste.",bc_map,"0xffce00");
-	warp ("job_sword1",215,244);
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo primeiro percuso do teste.",bc_map,"0xffce00");
+	warp("job_sword1",215,244);
 	end;
 }
 
@@ -248,16 +248,16 @@ job_sword1,8,206,0	script	#WarpSwordQexit2	WARPNPC,1,3,{
 	mes "^ff0000Desisitir do Teste?^000000";
 	if (select("Não","Sim") == 2) {
 		callfunc("ClearJobVar");
-		erasequest (1014);
-		warp ("izlude_in",65,165);
+		erasequest(1014);
+		warp("izlude_in",65,165);
 	}
 	end;
 }
 
 job_sword1,193,207,0	script	#WarpSwordQ2st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_MAP), "[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo segundo percuso do teste.",bc_map,"0xffce00");
-	warp ("job_sword1",10,169);
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo segundo percuso do teste.",bc_map,"0xffce00");
+	warp("job_sword1",10,169);
 	end;
 }
 
@@ -278,28 +278,28 @@ job_sword1,8,169,0	script	#WarpSwordQexit3	WARPNPC,1,3,{
 	mes "^ff0000Desisitir do Teste?^000000";
 	if (select("Não","Sim") == 2) {
 		callfunc("ClearJobVar");
-		erasequest (1014);
-		warp ("izlude_in",65,165);
+		erasequest(1014);
+		warp("izlude_in",65,165);
 	}
 	end;
 }
 
 job_sword1,193,168,0	script	#WarpSwordQ3st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce (strnpcinfo(NPC_MAP), "[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo último percuso do teste.",bc_map,"0xffce00");
-	warp ("job_sword1",215,167);
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo último percuso do teste.",bc_map,"0xffce00");
+	warp("job_sword1",215,167);
 	end;
 }
 
 job_sword1,223,167,2	script	Mae#swordq	4_F_03,{
-	completequest (1014);
+	completequest(1014);
 	swordq = 2;
 	mes "[Mae]";
 	mes "Parabéns por ter passado no teste!";
 	mes "Já enviei o resultado para o departamento de Guilda dos Espadachins.";
 	mes "Vá e fale com o líder da Guilda.";
 	close2;
-	warp ("izlude_in",66,173);
+	warp("izlude_in",66,173);
 	end;
 }
 
@@ -311,12 +311,12 @@ job_sword1,223,167,2	script	Mae#swordq	4_F_03,{
 // 1º Parte
 job_sword1,16,251,0	script	#trapSword1st::SwordQTrap	FAKE_NPC,0,1,{
 	OnTouch:
-	switch(rand(1,5)) {
-		case 1: warp ("job_sword1",65,56); end;
-		case 2: warp ("job_sword1",29,26); end;
-		case 3: warp ("job_sword1",43,16); end;
-		case 4: warp ("job_sword1",23,112); end;
-		case 5: warp ("job_sword1",58,83); end;
+	switch (rand(1,5)) {
+		case 1: warp("job_sword1",65,56); end;
+		case 2: warp("job_sword1",29,26); end;
+		case 3: warp("job_sword1",43,16); end;
+		case 4: warp("job_sword1",23,112); end;
+		case 5: warp("job_sword1",58,83); end;
 	}
 }
 
@@ -372,12 +372,12 @@ job_sword1,181,239,0	duplicate(SwordQTrap)	trapSword1st-47	FAKE_NPC,1,0
 // 2º Parte
 job_sword1,56,212,0	script	#trapSword2st::SwordQTrap2	FAKE_NPC,40,0,{
 	OnTouch:
-	switch(rand(1,5)) {
-		case 1: warp ("job_sword1",162,120); end;
-		case 2: warp ("job_sword1",94,120); end;
-		case 3: warp ("job_sword1",94,85); end;
-		case 4: warp ("job_sword1",162,85); end;
-		case 5: warp ("job_sword1",130,47); end;
+	switch (rand(1,5)) {
+		case 1: warp("job_sword1",162,120); end;
+		case 2: warp("job_sword1",94,120); end;
+		case 3: warp("job_sword1",94,85); end;
+		case 4: warp("job_sword1",162,85); end;
+		case 5: warp("job_sword1",130,47); end;
 	}
 }
 
@@ -416,12 +416,12 @@ job_sword1,181,201,0	duplicate(SwordQTrap2)	trapSword2st-29	FAKE_NPC,2,0
 // 3º Parte
 job_sword1,17,174,0	script	#trapSword3st::SwordQTrap3	FAKE_NPC,2,0,{
 	OnTouch:
-	switch(rand(1,5)) {
-		case 1: warp ("job_sword1",195,15); end;
-		case 2: warp ("job_sword1",195,38); end;
-		case 3: warp ("job_sword1",231,30); end;
-		case 4: warp ("job_sword1",198,65); end;
-		case 5: warp ("job_sword1",196,116); end;
+	switch (rand(1,5)) {
+		case 1: warp("job_sword1",195,15); end;
+		case 2: warp("job_sword1",195,38); end;
+		case 3: warp("job_sword1",231,30); end;
+		case 4: warp("job_sword1",198,65); end;
+		case 5: warp("job_sword1",196,116); end;
 	}
 }
 

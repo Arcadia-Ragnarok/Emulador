@@ -27,7 +27,7 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 			mes "Por que você não para de lutar para fazer zeny como um Mercador e se junta à classe de elite Ferreiro?";
 			mes "Se você estiver interessado, preencha este formulário com seu nome e seu Nível de Classe.";
 			next;
-			switch(select("Preencher o Formulário","Quais são os requerimentos?","Hm, eu preciso pensar sobre isto")) {
+			switch (select("Preencher o Formulário","Quais são os requerimentos?","Hm, eu preciso pensar sobre isto")) {
 				case 1:
 				if (JobLevel < 40) {
 					mes "[Altiregen]";
@@ -50,7 +50,7 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 					mes "Um de nossos Ferreiros em Einbech, ^8e6b23Geschupenschte^000000 nós enviou um comunicado que ele precisa de uma ajuda. Seu primeiro teste de caráter será ajudá-lo.";
 					next;
 					blacksmithq = 1;
-					setquest (2000);
+					setquest(2000);
 					mes "[Altiregen]";
 					mes "Vá até ele e boa Sorte.";
 					close;
@@ -98,7 +98,7 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 				mes "Nós não podemos embassar nossa guilda desta maneira!";
 				mes "De qualquer jeito, você deve falar com o membro da guilda dentro da construção agora.";
 				mes "Procure por ^3355ffMitehmaeeuh^000000";
-				changequest (2013,2014);
+				changequest(2013,2014);
 				blacksmithq = 7;
 				close;
 			}
@@ -131,9 +131,9 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 				mes "[Altiregen]";
 				mes "Ótimo "+strcharinfo(PC_NAME)+" você completou todos os testes de nossa guilda";
 				mes "Sem dúvida você merece ser chamado de Ferreiro.";
-				jobchange (Job_Blacksmith);
-				completequest (2015);
-				callfunc ("ClearJobQuest2nd",10);
+				jobchange(Job_Blacksmith);
+				completequest(2015);
+				callfunc("ClearJobQuest2nd",10);
 				close;
 			}
 		}
@@ -194,7 +194,7 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				mes "Se preparar previne desastres no futuro.";
 				close;
 			}
-			switch(rand(2)) {
+			switch (rand(2)) {
 				case 1:
 				mes "[Geschupenschte]";
 				mes "1. Qual das cidades não vende o item correspondente?";
@@ -217,7 +217,7 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				mes "[Geschupenschte]";
 				mes "4. Onde você pode achar uma loja que vende Gemas Azuis?";
 				next;
-				if (select("Alberta", "Morroc", "Geffen", "Prontera") == 3) {
+				if (select("Alberta","Morroc","Geffen","Prontera") == 3) {
 					.@smithPoint += 1;
 				}
 				mes "[Geschupenschte]";
@@ -322,7 +322,7 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				mes "Só me dê um pequeno tempo para que eu possa arrumar as coisas.";
 				mes "Quando você voltar, eu estarei pronto!";
 				blacksmithq = 2;
-				changequest (2000,2002);
+				changequest(2000,2002);
 				close;
 			}
 		} else if (blacksmithq == 2) {
@@ -339,50 +339,50 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 			mes "[Geschupenschte]";
 			mes "Bem, para fazer isto você vai precisar me trazer...";
 			next;
-			switch(rand(5)) {
+			switch (rand(5)) {
 				case 1:
 				blacksmithq_2 = 1;
-				setarray (.@item[0],999, 2, 930,1, 717,2, 1610,1);
-				changequest (2002,2003);
+				setarray(.@item[0],999,2, 930,1, 717,2, 1610,1);
+				changequest(2002,2003);
 				break;
 				case 2:
 				blacksmithq_2 = 2;
-				setarray (.@item[0],1001,2, 932,1, 912,1, 1219,1);
-				changequest (2002,2004);
+				setarray(.@item[0],1001,2, 932,1, 912,1, 1219,1);
+				changequest(2002,2004);
 				break;
 				case 3:
 				blacksmithq_2 = 3;
-				setarray (.@item[0],1003,2, 935,2, 990,2, 1119,1);
-				changequest (2002,2005);
+				setarray(.@item[0],1003,2, 935,2, 990,2, 1119,1);
+				changequest(2002,2005);
 				break;
 				case 4:
 				blacksmithq_2 = 4;
-				setarray (.@item[0],1002,8, 2212,1, 717,2, 1713,1);
-				changequest (2002,2006);
+				setarray(.@item[0],1002,8, 2212,1, 717,2, 1713,1);
+				changequest(2002,2006);
 				break;
 				default:
 				blacksmithq_2 = 5;
-				setarray (.@item[0],998,8, 511,20, 919,2, 1122,1);
-				changequest (2002,2007);
+				setarray(.@item[0],998,8, 511,20, 919,2, 1122,1);
+				changequest(2002,2007);
 				break;
 			}
 			mes "[Geschupenschte]";
-			mes "^8e6b23"+.@item[1]+" "+getitemname (.@item[0])+"^000000,";
-			mes "^8e6b23"+.@item[3]+" "+getitemname (.@item[2])+"^000000,";
-			mes "^8e6b23"+.@item[5]+" "+getitemname (.@item[4])+"^000000,";
-			mes "^8e6b23"+.@item[7]+" "+getitemname (.@item[6])+"^000000.";
+			mes "^8e6b23"+.@item[1]+" "+getitemname(.@item[0])+"^000000,";
+			mes "^8e6b23"+.@item[3]+" "+getitemname(.@item[2])+"^000000,";
+			mes "^8e6b23"+.@item[5]+" "+getitemname(.@item[4])+"^000000,";
+			mes "^8e6b23"+.@item[7]+" "+getitemname(.@item[6])+"^000000.";
 			next;
 			mes "[Geschupenschte]";
 			mes "Traga esses itens e depois conersamos.";
 			blacksmithq = 3;
 			close;
 		} else if (blacksmithq == 3) {
-			switch(blacksmithq_2) {
-				case 1: setarray (.@item[0],999, 2, 930,1, 717,2, 1610,1); break;
-				case 2: setarray (.@item[0],1001,2, 932,1, 912,1, 1219,1); break;
-				case 3: setarray (.@item[0],1003,2, 935,2, 990,2, 1119,1); break;
-				case 4: setarray (.@item[0],1002,8, 2212,1, 717,2, 1713,1); break;
-				case 5: setarray (.@item[0],998,8, 511,20, 919,2, 1122,1); break;
+			switch (blacksmithq_2) {
+				case 1: setarray(.@item[0],999, 2, 930,1,  717,2, 1610,1); break;
+				case 2: setarray(.@item[0],1001,2, 932,1,  912,1, 1219,1); break;
+				case 3: setarray(.@item[0],1003,2, 935,2,  990,2, 1119,1); break;
+				case 4: setarray(.@item[0],1002,8, 2212,1, 717,2, 1713,1); break;
+				case 5: setarray(.@item[0],998,8,  511,20, 919,2, 1122,1); break;
 			}
 			if (countitem(.@item[0]) < .@item[1] && countitem(.@item[2]) < .@item[3] && countitem(.@item[4]) < .@item[5] && countitem(.@item[6]) < .@item[7]) {
 				mes "[Geschupenschte]";
@@ -390,10 +390,10 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				mes "Lembre-se que preciso de:";
 				next;
 				mes "[Geschupenschte]";
-				mes "^8e6b23"+.@item[1]+" "+getitemname (.@item[0])+"^000000,";
-				mes "^8e6b23"+.@item[3]+" "+getitemname (.@item[2])+"^000000,";
-				mes "^8e6b23"+.@item[5]+" "+getitemname (.@item[4])+"^000000,";
-				mes "^8e6b23"+.@item[7]+" "+getitemname (.@item[6])+"^000000.";
+				mes "^8e6b23"+.@item[1]+" "+getitemname(.@item[0])+"^000000,";
+				mes "^8e6b23"+.@item[3]+" "+getitemname(.@item[2])+"^000000,";
+				mes "^8e6b23"+.@item[5]+" "+getitemname(.@item[4])+"^000000,";
+				mes "^8e6b23"+.@item[7]+" "+getitemname(.@item[6])+"^000000.";
 				next;
 				mes "[Geschupenschte]";
 				mes "Agora, tenha certeza de ter tudo, quando você voltar.";
@@ -406,10 +406,10 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				next;
 				mes "[Geschupenschte]";
 				mes "Agora me der todos esse itens para que eu possa mostrar a capacidade de um ferreiro.";
-				delitem (.@item[0],.@item[1]);
-				delitem (.@item[2],.@item[3]);
-				delitem (.@item[4],.@item[5]);
-				delitem (.@item[6],.@item[7]);
+				delitem(.@item[0],.@item[1]);
+				delitem(.@item[2],.@item[3]);
+				delitem(.@item[4],.@item[5]);
+				delitem(.@item[6],.@item[7]);
 				next;
 				mes "[Geschupenschte]";
 				mes "^3355ff*Clang...!*^000000";
@@ -424,8 +424,8 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 					mes "[Geschupenschte]";
 					mes "E não perca esse cajado!";
 					mes "Basta entregá-lo e trazer o recibo para mim.";
-					getitem (Arc_Wand,1);
-					changequest (2003,2008);
+					getitem(Arc_Wand,1);
+					changequest(2003,2008);
 					blacksmithq = 4;
 					close;
 				} else if (blacksmithq_2 == 2) {
@@ -435,8 +435,8 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 					mes "[Geschupenschte]";
 					mes "E não perca essa adaga!";
 					mes "Basta entregá-la e trazer o recibo para mim.";
-					getitem (Gladius,1);
-					changequest (2004,2009);
+					getitem(Gladius,1);
+					changequest(2004,2009);
 					blacksmithq = 4;
 					close;
 				} else if (blacksmithq_2 == 3) {
@@ -446,8 +446,8 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 					mes "[Geschupenschte]";
 					mes "E não perca essa espada!";
 					mes "Basta entregá-la e trazer o recibo para mim.";
-					getitem (Tsurugi,1);
-					changequest (2005,2010);
+					getitem(Tsurugi,1);
+					changequest(2005,2010);
 					blacksmithq = 4;
 					close;
 				} else if (blacksmithq_2 == 4) {
@@ -457,8 +457,8 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 					mes "[Geschupenschte]";
 					mes "E não perca esse arco!";
 					mes "Basta entregá-lo e trazer o recibo para mim.";
-					getitem (Arbalest,1);
-					changequest (2006,2011);
+					getitem(Arbalest,1);
+					changequest(2006,2011);
 					blacksmithq = 4;
 					close;
 				} else if (blacksmithq_2 == 5) {
@@ -468,8 +468,8 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 					mes "[Geschupenschte]";
 					mes "E não perca essa espada!";
 					mes "Basta entregá-la e trazer o recibo para mim.";
-					getitem (Ring_Pommel_Saber,1);
-					changequest (2007,2012);
+					getitem(Ring_Pommel_Saber,1);
+					changequest(2007,2012);
 					blacksmithq = 4;
 					close;
 				}
@@ -511,12 +511,12 @@ ein_in01,201,27,3	script	Geschupenschte#blacksmithq	1_M_SMITH,{
 				next;
 				mes "[Geschupenschte]";
 				mes "Eu tenho esperanças de que você será "+(Sex == SEX_MALE ? "um grande Ferreiro" : "uma grande Ferreira")+"!";
-				if (questprogress (2008)) { changequest (2008,2013); }
-				else if (questprogress (2009)) { changequest (2009,2013); }
-				else if (questprogress (2010)) { changequest (2010,2013); }
-				else if (questprogress (2011)) { changequest (2011,2013); }
-				else if (questprogress (2012)) { changequest (2012,2013); }
-				delitem (Merchant_Voucher_1,1);
+				if (questprogress (2008)) { changequest(2008,2013); }
+				else if (questprogress (2009)) { changequest(2009,2013); }
+				else if (questprogress (2010)) { changequest(2010,2013); }
+				else if (questprogress (2011)) { changequest(2011,2013); }
+				else if (questprogress (2012)) { changequest(2012,2013); }
+				delitem(Merchant_Voucher_1,1);
 				blacksmithq = 6;
 				close;
 			}
@@ -564,8 +564,8 @@ geffen,46,164,1	script	Bysliter#blacksmithq	1_F_04,{
 			mes "[Bysliter]";
 			mes "E já ia me esquecendo...";
 			mes "Leve esse recibo.";
-			delitem (Arc_Wand,1);
-			getitem (Merchant_Voucher_1,1);
+			delitem(Arc_Wand,1);
+			getitem(Merchant_Voucher_1,1);
 			blacksmithq_2 = 0;
 			blacksmithq = 5;
 			close;
@@ -600,7 +600,7 @@ morocc,27,112,4	script	Whichebain#blacksmithq	4_F_JOB_ASSASSIN,{
 		mes "Quanto tempo demora para chegar minha encomenda?";
 		mes "Normalmente, a Guilda de Ferreiros de Geffen é bastante rápida...";
 		next;
-		emotion (e_lv);
+		emotion(e_lv);
 		mes "[Whichebain]";
 		mes "Ooohh...";
 		mes "Isto é muito agoniante...";
@@ -619,12 +619,12 @@ morocc,27,112,4	script	Whichebain#blacksmithq	4_F_JOB_ASSASSIN,{
 			mes "Mas, este é um item totalmente artesanal.";
 			mes "Diga a ele que estou satisfeito com a qualidade do trabalho.";
 			next;
-			emotion (e_lv);
+			emotion(e_lv);
 			mes "[Whichebain]";
 			mes "Aqui está o recibo.";
 			mes "Eu acho que você fez um bom trabalho.";
-			delitem (Gladius,1);
-			getitem (Merchant_Voucher_1,1);
+			delitem(Gladius,1);
+			getitem(Merchant_Voucher_1,1);
 			blacksmithq_2 = 0;
 			blacksmithq = 5;
 			close;
@@ -675,8 +675,8 @@ lighthalzen,209,80,4	script	Krongast#blacksmithq	4_M_JOB_KNIGHT2,{
 			mes "[Krongast]";
 			mes "Certo.";
 			mes "Deixa eu te dar seu recibo.";
-			delitem (Tsurugi,1);
-			getitem (Merchant_Voucher_1,1);
+			delitem(Tsurugi,1);
+			getitem(Merchant_Voucher_1,1);
 			blacksmithq_2 = 0;
 			blacksmithq = 5;
 			close;
@@ -727,8 +727,8 @@ payon,214,79,4	script	Talpiz#blacksmithq	1_M_ORIENT01,{
 			mes "Aqui!";
 			mes "Pegue por favor, seu recibo.";
 			mes "Eu realmente apreciei seu trabalho duro.";
-			delitem (Arbalest,1);
-			getitem (Merchant_Voucher_1,1);
+			delitem(Arbalest,1);
+			getitem(Merchant_Voucher_1,1);
 			blacksmithq_2 = 0;
 			blacksmithq = 5;
 			close;
@@ -767,8 +767,8 @@ hugel,168,183,1	script	Bismarc#BLS	2_M_THIEFMASTER,{
 			mes "Aqui!";
 			mes "Pegue por favor, seu recibo.";
 			mes "Muito obrigado pela sua gentileza.";
-			delitem (Ring_Pommel_Saber,1);
-			getitem (Merchant_Voucher_1,1);
+			delitem(Ring_Pommel_Saber,1);
+			getitem(Merchant_Voucher_1,1);
 			blacksmithq_2 = 0;
 			blacksmithq = 5;
 			close;
@@ -809,7 +809,7 @@ ein_in01,24,41,5	script	Mitehmaeeuh#blacksmithq	4_F_JOB_BLACKSMITH,{
 			mes "[Mitehmaeeuh]";
 			mes "Por favor, ouça e responda cuidadosamente...";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Mitehmaeeuh]";
 				mes "1. Qual habilidade é pré requisito para aprender a habilidade ^8e6b23Desconto^000000?";
@@ -879,7 +879,7 @@ ein_in01,24,41,5	script	Mitehmaeeuh#blacksmithq	4_F_JOB_BLACKSMITH,{
 				mes "[Mitehmaeeuh]";
 				mes "1. O que você geralmente faz quando você encontra alguém por acaso na rua?";
 				next;
-				switch(select("Pergunto o que precisam","Tenho uma conversa rápida","Ignoro","Dou alguns itens")) {
+				switch (select("Pergunto o que precisam","Tenho uma conversa rápida","Ignoro","Dou alguns itens")) {
 					case 1:
 					case 2:
 					.@bs_q += 1;
@@ -934,8 +934,8 @@ ein_in01,24,41,5	script	Mitehmaeeuh#blacksmithq	4_F_JOB_BLACKSMITH,{
 				mes "A vida de um Ferreiro não é fácil.";
 				mes "Como prova de que você passou no teste, eu lhe dou este Martelo do Ferreiro.";
 				blacksmithq = 8;
-				getitem (Hammer_Of_Blacksmith,1);
-				changequest (2014,2015);
+				getitem(Hammer_Of_Blacksmith,1);
+				changequest(2014,2015);
 				next;
 				mes "[Mitehmaeeuh]";
 				mes "Agora retorne até o Sr. Altiregen";
@@ -947,7 +947,7 @@ ein_in01,24,41,5	script	Mitehmaeeuh#blacksmithq	4_F_JOB_BLACKSMITH,{
 		mes "Por favor, prepare-se e volte quando estiver pront"+(Sex == SEX_MALE ? "o" : "a")+"...";
 		close;
 	} else if (blacksmithq == 8) {
-		emotion (e_hmm);
+		emotion(e_hmm);
 		mes "[Mitehmaeeuh]";
 		mes "Ah, você acabou de fazer o teste de Ferreiro!";
 		next;
@@ -958,7 +958,7 @@ ein_in01,24,41,5	script	Mitehmaeeuh#blacksmithq	4_F_JOB_BLACKSMITH,{
 		mes "Não se esqueça de levar o Martelo do Ferreiro com você!";
 		close;
 	} else {
-		emotion (e_hmm);
+		emotion(e_hmm);
 		mes "[Mitehmaeeuh]";
 		mes "Tive que lidar com o calor, enquanto estive em Morroc";
 		mes "e agora eu tenho que lidar com a fumaça em Einbroch!";

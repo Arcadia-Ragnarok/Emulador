@@ -176,7 +176,7 @@ moc_ruins,155,107,4	script	Akira#mocr	1_M_01,{
 	mes "Mas eu não posso sair...";
 	mes "Se você ouvir qualquer coisa sobre, por favor mantenha-me informado.";
 	next;
-	switch(select("Sobre o 'Formigueiro Infernal'","Sobre as Formigas","Terminar Conversa")) {
+	switch (select("Sobre o 'Formigueiro Infernal'","Sobre as Formigas","Terminar Conversa")) {
 		case 1:
 		mes "[Akira]";
 		mes "Esta caverna realmente é um inferno perigoso, grudento e tudo mais...";
@@ -232,7 +232,7 @@ moc_ruins,173,141,4	script	Dimitri#mocr	1_M_03,{
 	mes "Você deve pensar duas vezes antes de se sentar na areia no meio do deserto.";
 	mes "Do contrário isso vai fazer com que o seu traseiro seja tostado.";
 	next;
-	switch(select("Sobre as areias do deserto","Sobre o remédio para Fadiga","Terminar Conversa")) {
+	switch (select("Sobre as areias do deserto","Sobre o remédio para Fadiga","Terminar Conversa")) {
 		case 1:
 		mes "[Dimitri]";
 		mes "......O que quero dizer é que...";
@@ -283,7 +283,7 @@ moc_ruins,173,70,4	script	Phlanette#mocr	1_M_02,{
 	mes "Eu tenho um palpite que este clima quente e seco em Morroc.";
 	mes "É por causa que Satan esteve preso nas profundezas do subterrâneo por muito tempo.";
 	next;
-	switch(select("Fale-me sobre o deserto.","Sair da conversa")) {
+	switch (select("Fale-me sobre o deserto.","Sair da conversa")) {
 		case 1:
 		mes "[Phlanette]";
 		mes "Hum.. Eu vou lhe dizer brevemente sobre o deserto, se você quer saber.";

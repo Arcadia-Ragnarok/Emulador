@@ -25,7 +25,7 @@ valkyrie,53,39,3	script	Paladin#Valkyrie	4_M_CRU_OLD,{
 			mes "A Guerra Santa será antes do que esperavamos.";
 			mes "Mais do que nunca, precisamos de homens e mulheres fortes para lutar pelo bem e correto.";
 			next;
-			jobchange (Job_Paladin);
+			jobchange(Job_Paladin);
 			ADVJOB = 0;
 			mes "[Paladino]";
 			mes "Parabéns.";

@@ -222,7 +222,7 @@ ra_in01,308,59,1	script	Waiter#pc	4_M_RACHMAN2,{
 			mes "not mistaken, you're";
 			mes "here for something else?";
 			next;
-			if (select("I'd like to order.", "Yes, I've come for another reason.") == 1) {
+			if (select("I'd like to order.","Yes, I've come for another reason.") == 1) {
 				mes "[Waiter]";
 				mes "Sure, no problem.";
 				mes "Did you come alone?";
@@ -232,7 +232,7 @@ ra_in01,308,59,1	script	Waiter#pc	4_M_RACHMAN2,{
 				mes "Right this way.";
 				close2;
 				aru_monas = 7;
-				switch(rand(1,4)) {
+				switch (rand(1,4)) {
 					case 1: warp "ra_in01",303,43; end;
 					case 2: warp "ra_in01",304,43; end;
 					case 3: warp "ra_in01",304,39; end;
@@ -489,7 +489,7 @@ ve_in,78,314,5	script	Magistrate#Aru	4_M_DST_GRAND,{
 		mes "to come in here. Why do";
 		mes "you keep coming back?";
 		next;
-		if (select("I'm sorry.", "I want to know about the smugglers.") == 1) {
+		if (select("I'm sorry.","I want to know about the smugglers.") == 1) {
 			mes "[Al Hamad]";
 			mes "It's fine. Just leave,";
 			mes "and don't come back";
@@ -753,7 +753,7 @@ ve_in,238,120,4	script	Drunkard#Aru1	4_F_DESERT,{
 	mes "Hohohoho";
 	mes "Oh Hohohoho";
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "She's kind of strange...";
 	close;
 }
@@ -824,7 +824,7 @@ ve_fild07,125,128,0	script	Boat#Aru	HIDDEN_NPC,{
 		mes "a chance you might have to";
 		mes "sail this boat on your own if I'm not here. So, you ready to go?";
 		next;
-		switch(select("Yes, I'm ready.", "Give me more time.")) {
+		switch (select("Yes, I'm ready.","Give me more time.")) {
 		case 1:
 			mes "[Larjes]";
 			mes "Alright, let's go.";
@@ -849,7 +849,7 @@ ve_fild07,125,128,0	script	Boat#Aru	HIDDEN_NPC,{
 		mes "can take you to the";
 		mes "monastery.^000000";
 		next;
-		switch(select("Go to Monastery", "Cancel")) {
+		switch (select("Go to Monastery","Cancel")) {
 		case 1:
 			mes "^3355FFYou set sail for";
 			mes "the monastery...^000000";
@@ -867,7 +867,7 @@ ve_fild07,125,128,0	script	Boat#Aru	HIDDEN_NPC,{
 		mes "can take you to the";
 		mes "monastery.^000000";
 		next;
-		switch(select("Go to Monastery", "Cancel")) {
+		switch (select("Go to Monastery","Cancel")) {
 		case 1:
 			mes "^3355FFYou set sail for";
 			mes "the monastery...^000000";
@@ -892,7 +892,7 @@ ve_fild07,128,130,1	script	Secret Agent#Aru	4W_M_01,{
 		mes "there, I might not be here";
 		mes "when you come back.";
 		next;
-		switch(select("Yes, I'm ready.", "Give me more time.")) {
+		switch (select("Yes, I'm ready.","Give me more time.")) {
 		case 1:
 			mes "[Larjes]";
 			mes "Alright, let's go.";
@@ -979,7 +979,7 @@ nameless_i,127,207,0	script	Dead Crow#Aru	HIDDEN_NPC,{
 		mes "crow^3355FF makes you feel";
 		mes "uneasy for some reason.^000000";
 		next;
-		if (select("Ignore", "Investigate") == 1) {
+		if (select("Ignore","Investigate") == 1) {
 			mes "^3355FFYou decide not to touch";
 			mes "the animal's carcass.^000000";
 			close;
@@ -1058,7 +1058,7 @@ OnTouch:
 		mes "these strange creatures";
 		mes "were savagely attacking you!";
 		next;
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You saved me?";
 		mes "Thank you. Do you";
 		mes "happen to know what";
@@ -1077,7 +1077,7 @@ OnTouch:
 		mes "[Larjes]";
 		mes "?!?!?!!!!!";
 		next;
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "!!!!?!?!!!!!!";
 		mes "Isn't... Isn't that...?";
 		next;
@@ -1087,7 +1087,7 @@ OnTouch:
 		mes "you, but... I wonder why";
 		mes "he's not attacking us.";
 		next;
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I guess you'll have to go";
 		mes "right up to him and ask.";
 		aru_monas = 19;
@@ -1161,9 +1161,9 @@ nameless_n,169,254,0	script	Night#Aru2	FAKE_NPC,3,3,{
 	end;
 
 OnTouch:
-	if(aru_monas == 20) {
+	if (aru_monas == 20) {
 		hideoffnpc "Larjes#Monastery2";
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "What the hell...!?";
 		next;
 		mes "[Larjes]";
@@ -1210,7 +1210,7 @@ nameless_i,259,218,3	script	Larjes#Aru	4W_M_01,{
 		mes "but did you want to leave";
 		mes "this place for a while?";
 		next;
-		if(select("Yes", "No")==1) {
+		if (select("Yes","No")==1) {
 			mes "[Larjes]";
 			mes "Alight, let's go.";
 			close2;
@@ -1228,7 +1228,7 @@ nameless_i,259,218,3	script	Larjes#Aru	4W_M_01,{
 		mes "Did you still want to";
 		mes "investigate the island?";
 		next;
-		if (select("No", "Yes") == 1) {
+		if (select("No","Yes") == 1) {
 			mes "[Larjes]";
 			mes "Alright, let's go.";
 			close2;
@@ -1254,7 +1254,7 @@ nameless_n,259,218,3	script	Larjes#Boat1	4W_M_01,{
 			mes "but did you want to leave";
 			mes "this place for a while?";
 			next;
-			switch(select("Yes", "No")) {
+			switch (select("Yes","No")) {
 			case 1:
 				mes "[Larjes]";
 				mes "Alright, let's go.";
@@ -1299,7 +1299,7 @@ nameless_n,259,218,3	script	Larjes#Boat1	4W_M_01,{
 	mes "Did you still want to";
 	mes "investigate the island?";
 	next;
-	switch(select("No", "Yes")) {
+	switch (select("No","Yes")) {
 	case 1:
 		mes "[Larjes]";
 		mes "Alright, let's go.";
@@ -1335,7 +1335,7 @@ abbey02,224,70,0	script	Books#Mona1	HIDDEN_NPC,{
 		mes "with blood amongst all";
 		mes "these old, moldy books.^000000";
 		next;
-		if(select("Examine Book", "Ignore")==1) {
+		if (select("Examine Book","Ignore")==1) {
 			aru_monas = 22;
 			changequest 17014,17015;
 			getitem Research_Note,1; // Reasearch_Note
@@ -1376,7 +1376,7 @@ abbey03,232,233,4	script	Man#King	4_M_TRISTAN,{
 		mes "seems that he really is";
 		mes "still barely alive.^000000";
 		next;
-		if (select("Touch Him", "Ignore Him") == 1) {
+		if (select("Touch Him","Ignore Him") == 1) {
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "This man...";
 			mes "He's so familiar";
@@ -1464,10 +1464,10 @@ nameless_n,145,162,0	script	AideAmi#Aru	HIDDEN_WARP_NPC,2,2,{
 	end;
 OnTouch:
 	if (aru_monas == 26) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "There is a low wall here against the other wall, if I climb it I could reach the resting place of Tristan III...";
 		next;
-		switch(select("Stay here", "Climb the wall")) {
+		switch (select("Stay here","Climb the wall")) {
 		case 1:
 			warp "nameless_n",158,169;
 			end;
@@ -1487,7 +1487,7 @@ sec_in02,15,15,4	script	boss::boss_aru_monas	1_M_SIGNMONK,{
 	mes "[Patch]";
 	mes "Input.";
 	next;
-	switch(select("Now", "How much?", "P- How much?", "Others")) {
+	switch (select("Now","How much?","P- How much?","Others")) {
 	case 1:
 		mes " ";
 		mes ""+aru_monas;
@@ -1531,7 +1531,7 @@ ra_temple,165,57,5	script	Niren#ss	4_F_MADAME,{
 	mes "I can spare a moment or two.";
 	mes "What would you like to ask?";
 	next;
-	switch(select("Ask About Veins Smugglers", "Ask About Zhed")) {
+	switch (select("Ask About Veins Smugglers","Ask About Zhed")) {
 	case 1:
 		if (aru_monas == 12) {
 			mes "[Niren]";
@@ -1563,7 +1563,7 @@ ra_temple,165,57,5	script	Niren#ss	4_F_MADAME,{
 			mes "But first, I'd like to";
 			mes "ask you for a favor.";
 			next;
-			select("Accept", "Do Not Refuse");
+			select("Accept","Do Not Refuse");
 			mes "[Niren]";
 			mes "When we realized the";
 			mes "kind of hostage the";
@@ -2321,7 +2321,7 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	4_M_MASKMAN,5,5,{
 			mes "*Pant Pant*";
 			mes "*Sweat*";
 			next;
-			switch(select("Give Fruit Wine", "Quietly Watch Him")) {
+			switch (select("Give Fruit Wine","Quietly Watch Him")) {
 			case 1:
 				mes "[Foreign Merchant]";
 				mes "Oh, thank you! This";
@@ -2347,9 +2347,9 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	4_M_MASKMAN,5,5,{
 				mes "There must be some";
 				mes "way I can repay you.";
 				mes "Ah, here we go. Take it.";
-				mes "Isn't your name, "+ strcharinfo(PC_NAME) +"?";
+				mes "Isn't your name, "+strcharinfo(PC_NAME)+"?";
 				next;
-				mes "["+ strcharinfo(PC_NAME) +"]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "What th--?";
 				mes "How did you know?";
 				next;
@@ -2358,7 +2358,7 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	4_M_MASKMAN,5,5,{
 				mes "You open the note, and";
 				mes "read its message.^000000";
 				next;
-				mes "^666666"+ strcharinfo(PC_NAME) +".";
+				mes "^666666"+strcharinfo(PC_NAME)+".";
 				mes " ";
 				mes "The time for us to act";
 				mes "has come once again.";
@@ -2368,7 +2368,7 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	4_M_MASKMAN,5,5,{
 				mes " - Bekento^000000";
 				next;
 				emotion e_omg,1;
-				mes "["+ strcharinfo(PC_NAME) +"]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "So... This means...";
 				mes "You're not really a";
 				mes "merchant, are you?";
@@ -2378,13 +2378,13 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	4_M_MASKMAN,5,5,{
 				mes "looks at you with a";
 				mes "mischievous grin.^000000";
 				next;
-				mes "["+ strcharinfo(PC_NAME) +"]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "So you asked me to get";
 				mes "you a drink as an excuse";
 				mes "just to talk to you?!";
 				emotion e_sob,1;
 				next;
-				mes "["+ strcharinfo(PC_NAME) +"]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Oh well, thanks for";
 				mes "bringing me the note.";
 				mes "But I'm not buying you";
@@ -2482,7 +2482,7 @@ OnTouch:
 
 moc_ruins,101,133,7	script	Foreign Merchant#aru2	4_M_MIDDLE,{
 	if ((aru_em > 1) && (aru_em < 7)) {
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Excuse me, but I heard";
 		mes "that I could buy some";
 		mes "good drinks around here.";
@@ -2497,7 +2497,7 @@ moc_ruins,101,133,7	script	Foreign Merchant#aru2	4_M_MIDDLE,{
 		mes "I brew at home, and share";
 		mes "with my friends after dinner.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I ran into this";
 		mes "merchant that really wants";
 		mes "to have a taste of that wine.";
@@ -2508,7 +2508,7 @@ moc_ruins,101,133,7	script	Foreign Merchant#aru2	4_M_MIDDLE,{
 		mes "Oh, I'm sorry, but I'm";
 		mes "all sold out for today.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh, no...";
 		emotion e_otl,1;
 		next;
@@ -2527,7 +2527,7 @@ moc_ruins,101,133,7	script	Foreign Merchant#aru2	4_M_MIDDLE,{
 		mes "I'm flattered that your friend";
 		mes "is so interested in my wine.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Really? Thank you!";
 		mes "I'm sure that he's really";
 		mes "appreciate your generosity.";
@@ -2584,7 +2584,7 @@ ra_temin,103,151,7	script	Female Follower#em	4_F_MASK,{
 		mes "comfort. Take a deep breath:";
 		mes "smell that relaxing aroma?";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh, you're right, that";
 		mes "is a nice smell! So, is";
 		mes "Priestess Niren away";
@@ -2596,7 +2596,7 @@ ra_temin,103,151,7	script	Female Follower#em	4_F_MASK,{
 		mes "that wish to meet her,";
 		mes "even early in the morning.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Do you know where";
 		mes "I could find her?";
 		next;
@@ -2608,7 +2608,7 @@ ra_temin,103,151,7	script	Female Follower#em	4_F_MASK,{
 		mes "Garden. That garden is very";
 		mes "large, and quite beautiful.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "The High Priestess";
 		mes "must be very busy.";
 		next;
@@ -2688,10 +2688,10 @@ ra_fild03,139,355,5	script	Ishmael#em	4_F_CHILD,{
 		mes "need from me, do you?";
 		emotion e_swt2;
 		next;
-		switch(select("Give Her Niren's File", "Leave Her Alone")) {
+		switch (select("Give Her Niren's File","Leave Her Alone")) {
 		case 1:
 			if (countitem(File02) > 0) {
-				mes "["+ strcharinfo(PC_NAME) +"]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "You know High Priestess";
 				mes "Niren, right? This is from her.";
 				next;
@@ -2756,7 +2756,7 @@ ra_fild03,139,355,5	script	Ishmael#em	4_F_CHILD,{
 	}
 	else if (aru_em == 18) {
 		if (countitem(Red_Jewel) > 0) {
-			mes "["+ strcharinfo(PC_NAME) +"]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Would you be able to forge";
 			mes "a copy of High Priestess";
 			mes "Niren's file if you had";
@@ -2782,7 +2782,7 @@ ra_fild03,139,355,5	script	Ishmael#em	4_F_CHILD,{
 			mes "I'll be able to forge";
 			mes "your copy right away.";
 			next;
-			switch(select("Don't Give It to Her", "Give It to Her")) {
+			switch (select("Don't Give It to Her","Give It to Her")) {
 			case 1:
 				mes "[Ishmael]";
 				mes "Huh? I thought you";
@@ -3024,7 +3024,7 @@ OnTouch:
 		mes "Isn't this the adventurer?";
 		next;
 		mes "[Pope]";
-		mes ""+ strcharinfo(PC_NAME) +"...";
+		mes ""+strcharinfo(PC_NAME)+"...";
 		mes "I'm very glad to see you";
 		mes "again. Not only did you";
 		mes "share news of the outside";
@@ -3111,7 +3111,7 @@ OnTouch:
 		next;
 		cutin "ra_bishop",2;
 		mes "[Pope]";
-		mes ""+ strcharinfo(PC_NAME) +"...";
+		mes ""+strcharinfo(PC_NAME)+"...";
 		mes "I appreciate all your work";
 		mes "on behalf of Arunafeltz.";
 		mes "My influence may still be";
@@ -3220,7 +3220,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "scare me like that!";
 		mes "What is it that you want?";
 		next;
-		switch(select("You look troubled.", "Nothing. Take care!")) {
+		switch (select("You look troubled.","Nothing. Take care!")) {
 		case 1:
 			if (BaseLevel < 61) {
 				mes "[Muff]";
@@ -3264,7 +3264,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 				mes "the collateral I gave him";
 				mes "is really valuable to me.";
 				next;
-				switch(select("Do you know where you lost it?", "I'm sorry to hear that. Bye!")) {
+				switch (select("Do you know where you lost it?","I'm sorry to hear that. Bye!")) {
 				case 1:
 					mes "[Muff]";
 					mes "If I knew where I lost";
@@ -3307,7 +3307,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 			mes "my treasure from that";
 			mes "bastard, no matter what!";
 			next;
-			switch(select("I don't understand.", "I'm sorry, I was just kidding...")) {
+			switch (select("I don't understand.","I'm sorry, I was just kidding...")) {
 			case 1:
 				mes "[Muff]";
 				mes "You think you can";
@@ -3365,7 +3365,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "the collateral I gave him";
 		mes "is really valuable to me.";
 		next;
-		switch(select("Do you know where you lost it?", "What was the collateral?", "Bye!")) {
+		switch (select("Do you know where you lost it?","What was the collateral?","Bye!")) {
 		case 1:
 			mes "[Muff]";
 			mes "If I knew where I lost";
@@ -3427,7 +3427,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		close;
 	}
 	if (diamond_edq == 4) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Is this wet, tattered";
 		mes "piece of paper the bond";
 		mes "of debt that you need?";
@@ -3440,7 +3440,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "on it! I need... I need";
 		mes "to fix this somehow!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Do you have any ideas?";
 		mes "I mean, if we dried the";
 		mes "paper, the letters would";
@@ -3462,7 +3462,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "It's magic, right? Will you";
 		mes "ask Dorian to help me out?";
 		next;
-		switch(select("Accept His Request", "Decline His Request")) {
+		switch (select("Accept His Request","Decline His Request")) {
 		case 1:
 			mes "[Muff]";
 			mes "Thank you so much!";
@@ -3494,7 +3494,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "too nice to just leave";
 		mes "me hanging like that.";
 		next;
-		switch(select("Accept His Request", "Decline His Request")) {
+		switch (select("Accept His Request","Decline His Request")) {
 		case 1:
 			mes "[Muff]";
 			mes "Thank you so much!";
@@ -3595,7 +3595,7 @@ alberta,127,143,3	script	Belder	4_M_03,{
 		mes "the customers by th--Oh!";
 		mes "Welcome to Belder Loans!";
 		next;
-		switch(select("I'll promote your loans!", "Uh...")) {
+		switch (select("I'll promote your loans!","Uh...")) {
 		case 1:
 			if (Sex == SEX_MALE) {
 				mes "[Belder]";
@@ -3633,7 +3633,7 @@ alberta,127,143,3	script	Belder	4_M_03,{
 		mes "Loans get you the money";
 		mes "you need at low interest rates!";
 		next;
-		switch(select("Ask About Muff")) {
+		switch (select("Ask About Muff")) {
 		case 1:
 			mes "[Belder]";
 			mes "Muff? Oh! Is that";
@@ -3660,7 +3660,7 @@ alberta,127,143,3	script	Belder	4_M_03,{
 		mes "Now that I think of it, I did";
 		mes "loan a Muff money once.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		next;
 		mes "[Belder]";
@@ -3701,20 +3701,20 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		mes "dug a hole in the ground,";
 		mes "and then covered it again.^000000";
 		next;
-		switch(select("Dig Up the Spot", "Cancel")) {
+		switch (select("Dig Up the Spot","Cancel")) {
 		case 1:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "There must be something";
 			mes "in the ground. I better";
 			mes "dig it up and check...";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Ergh...! Ugh!";
 			mes "This would be a lot";
 			mes "easier with a shovel!";
 			mes "Only a little more to go...";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Hm? I hit something?";
 			mes "Let's--Yucky! It's so";
 			mes "wet and--Ugh! Nasty";
@@ -3725,7 +3725,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 			diamond_edq = 2;
 			close;
 		case 2:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Something isn't quite";
 			mes "kosher about all this.";
 			mes "Nope, this time, I'm";
@@ -3734,7 +3734,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		}
 	}
 	else if (diamond_edq == 2) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Here we are... It's...";
 		mes "A soggy wallet? This";
 		mes "must be the one Muff";
@@ -3742,7 +3742,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		mes "of debt is inside... Mm...";
 		mes "Ugh, it's really soaked...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I've done all";
 		mes "I can for now. I should";
 		mes "bring this back to Muff.";
@@ -3751,13 +3751,13 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		close;
 	}
 	if (diamond_edq > 3) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This is the same spot";
 		mes "I dug up from before.";
 		mes "It's useless to me now!";
 		close;
 	}
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Huh. There's a weird";
 	mes "bump in the ground. Well,";
 	mes "I can't just go looking at";
@@ -3795,7 +3795,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		mes "infused with art's essence";
 		mes "So... How may I assist you?";
 		next;
-		switch(select("I want to use your Magic Dryer.", "I want to be your student.", "No, thanks.")) {
+		switch (select("I want to use your Magic Dryer.","I want to be your student.","No, thanks.")) {
 		case 1:
 			mes "[Dorian]";
 			mes "Magic Dryer? No, no, no.";
@@ -3805,7 +3805,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 			mes "like that. What, pray tell,";
 			mes "do you need to dry?";
 			next;
-			switch(select("This Bond of Debt", "My Hair", "I'm just curious.")) {
+			switch (select("This Bond of Debt","My Hair","I'm just curious.")) {
 			case 1:
 				mes "[Dorian]";
 				mes "Mm? My masterpiece is far";
@@ -3855,7 +3855,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 				mes "Blah-blah--that's just";
 				mes "about it in a nutshell.";
 				next;
-				switch(select("Zzz...", "Oh, please!")) {
+				switch (select("Zzz...","Oh, please!")) {
 				case 1:
 					mes "[Dorian]";
 					mes "You... You fell asleep?";
@@ -3982,7 +3982,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 				mes "Blah-blah--that's just";
 				mes "about it in a nutshell.";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "......";
 				next;
 				mes "[Dorian]";
@@ -4149,7 +4149,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	CLEAR_NPC,{
 		mes "I can't blame you since";
 		mes "they're a bit complicated.";
 		next;
-		switch(select("Instructions", "Cancel")) {
+		switch (select("Instructions","Cancel")) {
 		case 1:
 			mes "[Dorian]";
 			mes "First, insert a new rough";
@@ -4288,9 +4288,9 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 		mes "Mystic Dryer de Elegance.";
 		mes "What do you want to do?^000000";
 		next;
-		while(1) {
+		while (1) {
 			.@switch_sound = rand(1,4);
-			switch(select("Check the Machine", "Replace the Engine", "Tighten the Screw", "Press a Switch")) {
+			switch (select("Check the Machine","Replace the Engine","Tighten the Screw","Press a Switch")) {
 			case 1:
 				if (.@hit_status == 0) {
 					mes "^3355FFThere's no power";
@@ -4396,7 +4396,7 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 						mes "Which switch do";
 						mes "you want to press?^000000";
 						next;
-						switch(select("Red Switch", "Blue Switch", "Yellow Switch", "Green Switch")) {
+						switch (select("Red Switch","Blue Switch","Yellow Switch","Green Switch")) {
 						default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -4448,7 +4448,7 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 						mes "Which switch will";
 						mes "you try now?^000000";
 						next;
-						switch(select("Red Switch", "Blue Switch", "Yellow Switch", "Green Switch")) {
+						switch (select("Red Switch","Blue Switch","Yellow Switch","Green Switch")) {
 						default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -4499,7 +4499,7 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 						mes "are a bit more stable now.";
 						mes "Which switch will you try?^000000";
 						next;
-						switch(select("Red Switch", "Blue Switch", "Yellow Switch", "Green Switch")) {
+						switch (select("Red Switch","Blue Switch","Yellow Switch","Green Switch")) {
 						default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -4551,7 +4551,7 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 						mes "fairly strongly now. Which";
 						mes "switch will you try?^000000";
 						next;
-						switch(select("Red Switch", "Blue Switch", "Yellow Switch", "Green Switch")) {
+						switch (select("Red Switch","Blue Switch","Yellow Switch","Green Switch")) {
 						default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -4623,7 +4623,7 @@ izlude_in,113,66,0	script	Strange Machine	HIDDEN_NPC,{
 		mes "when the heater stops,";
 		mes "the slot reopens.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "So this is the original";
 		mes "bond of debt that Muff";
 		mes "lost? It looks... Perfect!";
@@ -4670,13 +4670,13 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 	}
 	if ((diamond_edq == 14) && (BaseLevel > 65)) {
 		mes "[Ibrahim]";
-		mes "" + strcharinfo(PC_NAME) + ", right?";
+		mes ""+strcharinfo(PC_NAME)+", right?";
 		mes "Don't be too suprised.";
 		mes "I've heard of you here";
 		mes "and there. Heh heh!";
 		next;
-		while(1) {
-			switch(select("How can I help you?", "What'd you hear?", "Bye!")) {
+		while (1) {
+			switch (select("How can I help you?","What'd you hear?","Bye!")) {
 			case 1:
 				mes "[Ibrahim]";
 				mes "I wanted to ask you about";
@@ -4686,7 +4686,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "Anyway, I was able to obtain";
 				mes "the Diamond of Destruction!";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "(^666666Hmm... He might";
 				mes "be talking about that";
 				mes "jewel Muff gave to Belder";
@@ -4707,7 +4707,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "it back, but I can understand";
 				mes "if you can't. You up for it?";
 				next;
-				switch(select("Sure, I'll help you.", "No, sorry.")) {
+				switch (select("Sure, I'll help you.","No, sorry.")) {
 				case 1:
 					mes "[Ibrahim]";
 					mes "Great! I knew it was";
@@ -4976,7 +4976,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "Cursed Jewels. You wouldn't";
 				mes "mind if I look at it, do you?";
 				next;
-				switch(select("No!", "Sure, why not?")) {
+				switch (select("No!","Sure, why not?")) {
 				case 1:
 					mes "[Ibrahim]";
 					mes "No? Well, I'm sure you";
@@ -5012,7 +5012,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "you planning to do with";
 				mes "the Unlucky Emerald?";
 				next;
-				switch(select("I'm going to sell it.", "I'm going to study it.")) {
+				switch (select("I'm going to sell it.","I'm going to study it.")) {
 				case 1:
 					mes "[Ibrahim]";
 					mes "Oh, you weren't going";
@@ -5164,7 +5164,7 @@ OnTouch:
 if ((diamond_edq == 14) && (BaseLevel > 65)) {
 	mes "[Ibrahim]";
 	mes "Psst, adventurer!";
-	mes "You're " + strcharinfo(PC_NAME) + ", right?";
+	mes "You're "+strcharinfo(PC_NAME)+", right?";
 		mes "There's something";
 		mes "I'd like to discuss";
 		mes "with you in private!";
@@ -5183,7 +5183,7 @@ alberta,102,80,3	script	Jhonnita	4_M_04,{
 		mes "a jewel? We only carry";
 		mes "the best. Hahahaha!";
 		next;
-		switch(select("What's the most popular jewel?", "Do you know Diamond of Destruction?")) {
+		switch (select("What's the most popular jewel?","Do you know Diamond of Destruction?")) {
 		case 1:
 			mes "[Jhonnita]";
 			mes "Ah, take a look at this";
@@ -5237,7 +5237,7 @@ alberta,102,80,3	script	Jhonnita	4_M_04,{
 			mes "come to spend your life";
 			mes "savings on my jewels?";
 			next;
-			switch(select("Show me some jewels...", "I have a rare emerald to sell...")) {
+			switch (select("Show me some jewels...","I have a rare emerald to sell...")) {
 			case 1:
 				mes "[Jhonnita]";
 				mes "It couldn't hurt to";
@@ -5283,7 +5283,7 @@ alberta,102,80,3	script	Jhonnita	4_M_04,{
 					mes "this off your hands. Er,";
 					mes "would you be on your way?";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Huh? But why?";
 					next;
 					mes "[Jhonnita]";
@@ -5343,7 +5343,7 @@ payon,69,65,5	script	Kimeunbang	4_M_ORIENT02,{
 		mes "Go to another jewelry shop,";
 		mes "I don't feel like opening up.";
 		next;
-		switch(select("What's wrong?", "Diamond of Destruction?")) {
+		switch (select("What's wrong?","Diamond of Destruction?")) {
 		case 1:
 			mes "[Kimeunbang]";
 			mes "I'm just disappointed.";
@@ -5400,7 +5400,7 @@ payon,69,65,5	script	Kimeunbang	4_M_ORIENT02,{
 			mes "Oh, hello. Looks like";
 			mes "I'm back in business";
 			next;
-			switch(select("I have a jewel to sell.", "How are you?")) {
+			switch (select("I have a jewel to sell.","How are you?")) {
 			case 1:
 				mes "[Kimeunbang]";
 				mes "Really? Alright, just";
@@ -5484,7 +5484,7 @@ geffen,128,153,3	script	Leblo	4_M_ALCHE_D,{
 		mes "have to do something for";
 		mes "me first. We have a deal?";
 		next;
-		switch(select("Deal.", "No, thanks.")) {
+		switch (select("Deal.","No, thanks.")) {
 		case 1:
 			mes "[Leblo]";
 			mes "I've been suffering back";
@@ -5542,7 +5542,7 @@ geffen,128,153,3	script	Leblo	4_M_ALCHE_D,{
 		mes "to properly apologize to";
 		mes "her the next time I see her.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "...............................";
 		mes "...............................";
 		mes "...............................";
@@ -5616,7 +5616,7 @@ geffen,128,153,3	script	Leblo	4_M_ALCHE_D,{
 			mes "have any business";
 			mes "with me today?";
 			next;
-			switch(select("I have a jewel to sell.", "No, not really.")) {
+			switch (select("I have a jewel to sell.","No, not really.")) {
 			case 1:
 				mes "[Leblo]";
 				mes "Oh, yeah? Well then,";
@@ -5690,14 +5690,14 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		close;
 	}
 	if (diamond_edq == 18) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Hello? I'm here to";
 		mes "see Doctor Wola.";
 		next;
 		mes "[Wola]";
 		mes "Oh... Ah... Um...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Excuse me, but do you";
 		mes "know where I can find her?";
 		next;
@@ -5706,7 +5706,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "Oh no! Wah!";
 		mes "See what you did?!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I... I don't know";
 		mes "what you're talking";
 		mes "about. I'm just wanted";
@@ -5719,7 +5719,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "I was brewing! The pot";
 		mes "is all broken now...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh? Oh, I'm...";
 		mes "I'm really sorry.";
 		next;
@@ -5729,7 +5729,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "my fault, really.";
 		mes "Waaah! My pot!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I'm sorry, I don't know";
 		mes "what's going on exactly.";
 		mes "Was that pot expensive?";
@@ -5742,7 +5742,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "for any cuts! If they're";
 		mes "hurt, I can't help anyone!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That's, uh, that";
 		mes "sounds pretty serious.";
 		mes "So how are your hands?";
@@ -5756,7 +5756,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "medicine pot. You're partly";
 		mes "responsible, you know.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Okay. Just tell";
 		mes "me what I should do.";
 		mes "Hold on, I came here to";
@@ -5779,7 +5779,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "^0000FF10 Soft Blades of Grass^000000.";
 		mes "There's no time to waste!";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You... You got it.";
 		changequest 3111,3112;
 		diamond_edq = 19;
@@ -5839,7 +5839,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 			changequest 3112,3113;
 			diamond_edq = 20;
 			next;
-			switch(select("Will you go out with me?", "Leblo's back medicine?")) {
+			switch (select("Will you go out with me?","Leblo's back medicine?")) {
 			case 1:
 				if (Sex == SEX_MALE) {
 					mes "[Wola]";
@@ -5877,7 +5877,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 				mes "have it delivered to him";
 				mes "shortly. In a while, maybe?";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Um, you're not mad or";
 				mes "anything? I gathered that";
 				mes "you didn't like him much...";
@@ -5890,7 +5890,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 				mes "patients suffer longer and";
 				mes "more painful treatment...";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "(^666666She hates him!";
 				mes "But I guess Leblo's life";
 				mes "should be okay in her hands.^000000)";
@@ -5916,7 +5916,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 			mes "^0000FF10 Soft Blades of Grass^000000.";
 			mes "There's no time to waste!";
 			next;
-			mes "["+ strcharinfo(PC_NAME) +"]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "You... You got it.";
 			close;
 		}
@@ -5928,7 +5928,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 		mes "earlier. Something about";
 		mes "needing medicine from me?";
 		next;
-		switch(select("Will you go out with me?", "Leblo's back medicine?")) {
+		switch (select("Will you go out with me?","Leblo's back medicine?")) {
 		case 1:
 			if (Sex == SEX_MALE) {
 				mes "^666666*Blush*^000000 But it's too";
@@ -5965,7 +5965,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 			mes "have it delivered to him";
 			mes "shortly. In a while, maybe?";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Um, you're not mad or";
 			mes "anything? I gathered that";
 			mes "you didn't like him much...";
@@ -5978,7 +5978,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,2,2,{
 			mes "patients suffer longer and";
 			mes "more painful treatment...";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "(^666666She hates him!";
 			mes "But I guess Leblo's life";
 			mes "should be okay in her hands.^000000)";
@@ -6098,7 +6098,7 @@ in_rogue,366,46,3	script	Rogue Investigator	4_M_ROGUE,{
 		mes "much, is it? We Rogues are";
 		mes "pretty bad... But not that bad.";
 		next;
-		switch(select("Sounds good!", "Never mind, I'll find it myself...")) {
+		switch (select("Sounds good!","Never mind, I'll find it myself...")) {
 		case 1:
 			if (Zeny > 9999) {
 				Zeny -= 10000;
@@ -6176,7 +6176,7 @@ in_rogue,366,46,3	script	Rogue Investigator	4_M_ROGUE,{
 		mes "we're together on this,";
 		mes "I'll just ask for 10,000 zeny.";
 		next;
-		switch(select("Sounds good!", "Forget it...")) {
+		switch (select("Sounds good!","Forget it...")) {
 		case 1:
 			if (Zeny > 9999) {
 				Zeny -= 10000;
@@ -6265,7 +6265,7 @@ cmd_in02,69,188,1	script	Small Safe	CLEAR_NPC,{
 		mes "safe hidden under the";
 		mes "shadows of these boxes.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Looks like the Z Gang";
 		mes "forgot to take this with";
 		mes "them in their rush to escape.";
@@ -6276,13 +6276,13 @@ cmd_in02,69,188,1	script	Small Safe	CLEAR_NPC,{
 		close;
 	}
 	if (diamond_edq == 24) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Hey, the safe opened!";
 		mes "Those switches must have";
 		mes "done the trick. Now...";
 		mes "Let's look inside.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Awesome! It's a huge";
 		mes "red diamond! Is this";
 		mes "Ibrahim's Diamond";
@@ -6292,7 +6292,7 @@ cmd_in02,69,188,1	script	Small Safe	CLEAR_NPC,{
 		mes "[Investigator]";
 		mes "Zzz... Zzz...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Lucky for me, this";
 		mes "guy is asleep. I better";
 		mes "sneak out of here, and";
@@ -6303,14 +6303,14 @@ cmd_in02,69,188,1	script	Small Safe	CLEAR_NPC,{
 		close;
 	}
 	if ((diamond_edq < 22) && (diamond_edq > 24)) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "There was something here";
 		mes "fixed to the ground, but now";
 		mes "it looks like something yanked";
 		mes "it out forcefully. How weird.";
 		close;
 	}
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "What is this?";
 	mes "Oh well, I don't";
 	mes "think it's important.";
@@ -6323,7 +6323,7 @@ cmd_in02,69,196,0	script	Odd Switch#Switch1	CLEAR_NPC,{
 		mes "switch on the ground";
 		mes "near the whiskey barrels.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Was this here before?";
 		mes "What happens if I press";
 		mes "this teeny little switch?";
@@ -6331,7 +6331,7 @@ cmd_in02,69,196,0	script	Odd Switch#Switch1	CLEAR_NPC,{
 		hideoffnpc "Odd Switch#Switch2";
 		mes "^3355FF*Click Click*^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That sound...!";
 		mes "Something happened,";
 		mes "but what could it be?";
@@ -6351,7 +6351,7 @@ cmd_in02,80,189,0	script	Odd Switch#Switch2	CLEAR_NPC,{
 		mes "switch on the ground";
 		mes "under the boxes' shadows.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Was this here before?";
 		mes "What happens if I press";
 		mes "this teeny little switch?";
@@ -6360,7 +6360,7 @@ cmd_in02,80,189,0	script	Odd Switch#Switch2	CLEAR_NPC,{
 		next;
 		changequest 3116,3117;
 		diamond_edq = 24;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That sound...!";
 		mes "Something happened,";
 		mes "but what could it be?";
@@ -6517,7 +6517,7 @@ prontera,148,326,3	script	Chief Officer#edq	4_M_JOB_KNIGHT2,{
 		mes "Hello, Rune-Midgartian.";
 		mes "What brings you here?";
 		next;
-		switch(select("National Wanted Notice", "Z Gang", "What crimes did Z Gang commit?")) {
+		switch (select("National Wanted Notice","Z Gang","What crimes did Z Gang commit?")) {
 		case 1:
 			mes "[Chief Officer]";
 			mes "Ah, were you interested";
@@ -6551,7 +6551,7 @@ prontera,148,326,3	script	Chief Officer#edq	4_M_JOB_KNIGHT2,{
 			mes "but I can divulge what";
 			mes "little I've heard.";
 			next;
-			switch(select("Louis", "Martha", "Catfoii", "Book of Forbidden Mystery?")) {
+			switch (select("Louis","Martha","Catfoii","Book of Forbidden Mystery?")) {
 			case 1:
 				mes "[Chief Officer]";
 				mes "Louis Von Silokens was";
@@ -6702,7 +6702,7 @@ prt_in,168,18,1	script	Valdes	1_M_YOUNGKNIGHT,2,2,{
 		mes "Um, commiserate";
 		mes "about failing life too?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Are you Valdes?";
 		mes "I came to ask you";
 		mes "for your help...";
@@ -6712,7 +6712,7 @@ prt_in,168,18,1	script	Valdes	1_M_YOUNGKNIGHT,2,2,{
 		mes "I'm-I'm no good";
 		mes "to anybody anymore!";
 		next;
-		switch(select("Ask About Z Gang", "The chief officer is worried about you.", "Bye!")) {
+		switch (select("Ask About Z Gang","The chief officer is worried about you.","Bye!")) {
 		case 1:
 			mes "[Valdes]";
 			mes "That Z Gang...";
@@ -6774,7 +6774,7 @@ prt_in,168,18,1	script	Valdes	1_M_YOUNGKNIGHT,2,2,{
 			mes "Just one tashte";
 			mes "^666666*Gulp Gulp Gulp*^000000";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "You just...";
 			mes "That was three bottles!";
 			next;
@@ -6784,7 +6784,7 @@ prt_in,168,18,1	script	Valdes	1_M_YOUNGKNIGHT,2,2,{
 			mes "now I feel better";
 			mes "able to speak now";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "(^666666Whaaaat?^000000)";
 			next;
 			mes "[Valdes]";
@@ -6876,7 +6876,7 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 		mes "[Marybell]";
 		mes "Hey. What do you want?";
 		next;
-		switch(select("Password")) {
+		switch (select("Password")) {
 		case 1:
 			mes "[Marybell]";
 			mes "Can't hear you.";
@@ -6893,7 +6893,7 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 				mes "then I'll do what I can to";
 				mes "help. What do you need?";
 				next;
-				switch(select("Ask About Z Gang", "Valdes says, ''Hi.''")) {
+				switch (select("Ask About Z Gang","Valdes says, ''Hi.''")) {
 				case 1:
 					mes "[Marybell]";
 					mes "The Z Gang again?";
@@ -7013,8 +7013,8 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 		mes "Z Gang, so I gotta make good.";
 		mes "What did you want to ask me?";
 		next;
-		while(1) {
-			switch(select("Z Gang's Goal", "Z Gang's Recent Movements", "Z Gang's Stronghold", "Thanks for the tip!")) {
+		while (1) {
+			switch (select("Z Gang's Goal","Z Gang's Recent Movements","Z Gang's Stronghold","Thanks for the tip!")) {
 			case 1:
 				mes "[Marybell]";
 				mes "Actually, I don't know";
@@ -7151,7 +7151,7 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 		mes "in Payon, one of the best";
 		mes "decoders in this kingdom.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Gooho Ahn?";
 		mes "Why does it feel like";
 		mes "I should know that";
@@ -7280,7 +7280,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 		mes "me? You're not here for what";
 		mes "I think you are... Are you?";
 		next;
-		switch(select("Are you the White Meteor?", "I'm here to challenge you.")) {
+		switch (select("Are you the White Meteor?","I'm here to challenge you.")) {
 		case 1:
 			mes "[Moonho Ahn]";
 			mes "It's been so long since";
@@ -7372,7 +7372,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 		mes "Are you ready to";
 		mes "play Coin Shake?";
 		next;
-		switch(select("Yes, let's play!", "How does this game work again?")) {
+		switch (select("Yes, let's play!","How does this game work again?")) {
 		case 1:
 			if (Zeny > 500) {
 				Zeny -= 500;
@@ -7384,7 +7384,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 				mes "Guess! Is it";
 				mes "Odd or Even?";
 				next;
-				while(1) {
+				while (1) {
 					.@number = rand(1,2);
 					input .@input$;
 					if (((.@input$ == "Odd") && (.@number == 1)) || ((.@input$ == "Even") && (.@number == 2))) {
@@ -7448,12 +7448,12 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 				mes "declaring my guess,";
 				mes "and you'll shake the coins.";
 				next;
-				while(1) {
-					mes "["+ strcharinfo(PC_NAME) +"]";
+				while (1) {
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "(^666666What should I guess?^000000)";
 					next;
 					.@amuro = rand(1,2);
-					if (select("Odd", "Even") == 1) {
+					if (select("Odd","Even") == 1) {
 						if (.@amuro == 1) {
 							++.@number_false_2;
 							mes "[Moonho Ahn]";
@@ -7546,7 +7546,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 					mes "onto someone more worthy...";
 					mes "You are the new White Meteor!";
 					next;
-					mes "[" + strcharinfo(PC_NAME) +"]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Really? Uh, can I get";
 					mes "that in writing please?";
 					mes "It'd mean so much to me!";
@@ -7560,7 +7560,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 					next;
 					mes "^3355FF*Scribble Scribble*^000000";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "What does this";
 					mes "scribble on my";
 					mes "wrist mean?";
@@ -7572,7 +7572,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 					mes "me will recognize it";
 					mes "and its authenticity.";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Thank you so much";
 					mes "for the fun game!";
 					mes "I better get going now,";
@@ -7623,7 +7623,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 					mes "Guess! Is it";
 					mes "Odd or Even?^000000";
 					next;
-					while(1) {
+					while (1) {
 						.@number = rand(1,2);
 						input .@input$;
 						if (((.@input$ == "Odd") && (.@number == 1)) || ((.@input$ == "Even") && (.@number == 2))) {
@@ -7683,7 +7683,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 						mes "onto someone more worthy...";
 						mes "You are the new White Meteor!";
 						next;
-						mes "[" + strcharinfo(PC_NAME) +"]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "Really? Uh, can I get";
 						mes "that in writing please?";
 						mes "It'd mean so much to me!";
@@ -7697,7 +7697,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 						next;
 						mes "^3355FF*Scribble Scribble*^000000";
 						next;
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "What does this";
 						mes "scribble on my";
 						mes "wrist mean?";
@@ -7709,7 +7709,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 						mes "me will recognize it";
 						mes "and its authenticity.";
 						next;
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "Thank you so much";
 						mes "for the fun game!";
 						mes "I better get going now,";
@@ -7830,7 +7830,7 @@ payon,192,176,3	script	Gooho Ahn	4_M_KHKYEL,{
 		mes "something you wanted?";
 		emotion e_what,1;
 		next;
-		switch(select("Rogue Guild's Decoding Request")) {
+		switch (select("Rogue Guild's Decoding Request")) {
 		case 1:
 			mes "[Gooho Ahn]";
 			mes "Ah, Marybell sent you?";
@@ -7941,7 +7941,7 @@ payon,192,176,3	script	Gooho Ahn	4_M_KHKYEL,{
 			mes "for one of the greatest";
 			mes "disasters of all time.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "...............................";
 			mes "So what's the letter say?";
 			next;
@@ -7955,7 +7955,7 @@ payon,192,176,3	script	Gooho Ahn	4_M_KHKYEL,{
 			mes "^0000ffAynoen hwo sspotp uys^000000";
 			mes "^0000ffwlil eb kckide on htier ssa!^000000";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "What...?";
 			next;
 			mes "[Gooho Ahn] ";
@@ -8039,7 +8039,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "Grrrr... DIE NOW!";
 		specialeffect EF_STEAL;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wh-who are you?";
 		next;
 		mes "[????]";
@@ -8051,7 +8051,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		$@zdan = 0;
 		stopnpctimer;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh? That man must";
 		mes "have dropped this";
 		mes "note in his haste";
@@ -8060,13 +8060,13 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		next;
 		mes "";
 		mes "";
-		mes "^666666Kill " + strcharinfo(PC_NAME) + ", meow.";
+		mes "^666666Kill "+strcharinfo(PC_NAME)+", meow.";
 		mes "That arrogant do-gooder";
 		mes "is looking into us too much.";
 		mes "Fail to kill him, and death";
 		mes "will be too good for you, meow.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That must have been";
 		mes "an informer for the Z Gang.";
 		mes "He can't have gotten too far:";
@@ -8081,7 +8081,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "...............................";
 		mes "............................... ";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Something's not quite";
 		mes "right. I should come back";
 		mes "and investigate this area";
@@ -8090,7 +8090,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		close;
 	}
 	if ((zdan_edq == 10) && ($@zdan > 0)) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Nuts! I was supposed";
 		mes "to try to do this secretly!";
 		mes "I better try to investigate";
@@ -8104,7 +8104,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "[????]";
 		mes "Eeek...!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Haha! Got you!";
 		mes "You're an informer for";
 		mes "the Z Gang, aren't you?";
@@ -8115,7 +8115,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "talking about!";
 		mes "I'm innocent!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Then you're telling";
 		mes "me this note didn't";
 		mes "just fall out of your";
@@ -8126,7 +8126,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "Th-that's...";
 		mes "I'm not--That...!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You better confess, or";
 		mes "I'll drag you over to the";
 		mes "Prontera Knightage or the";
@@ -8141,7 +8141,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "got kids to feed!";
 		mes "I... I can't go to jail!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Alright.";
 		mes "Let's start by you";
 		mes "telling me where";
@@ -8154,7 +8154,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "food chain, I just follow";
 		mes "their written instructions.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You know what?";
 		mes "Never mind. I'm won't";
 		mes "take you to be jailed by";
@@ -8169,7 +8169,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "enter the place without the";
 		mes "secret password.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Nice. Now, you better";
 		mes "stop running with the";
 		mes "Z Gang. Otherwise, I'm";
@@ -8180,7 +8180,7 @@ moc_ruins,90,67,3	script	Suspicious Man#1	4W_M_03,2,2,{
 		mes "Anything you want!";
 		mes "J-just let me liiive!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I should head back to";
 		mes "Marybell, and see if she's";
 		mes "learned any new information.";
@@ -8236,7 +8236,7 @@ OnTouch:
 		mes "Grrrr... DIE NOW!";
 		specialeffect EF_STEAL;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wh-who are you?";
 		next;
 		mes "[????]";
@@ -8248,7 +8248,7 @@ OnTouch:
 		$@zdan = 0;
 		stopnpctimer;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "] ";
+		mes "["+strcharinfo(PC_NAME)+"] ";
 		mes "Huh? That man must";
 		mes "have dropped this";
 		mes "note in his haste";
@@ -8257,13 +8257,13 @@ OnTouch:
 		next;
 		mes "";
 		mes "";
-		mes "^666666Kill " + strcharinfo(PC_NAME) + ", meow.";
+		mes "^666666Kill "+strcharinfo(PC_NAME)+", meow.";
 		mes "That arrogant do-gooder";
 		mes "is looking into us too much.";
 		mes "Fail to kill him, and death";
 		mes "will be too good for you, meow.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That must have been";
 		mes "an informer for the Z Gang.";
 		mes "He can't have gotten too far:";
@@ -8286,7 +8286,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "Grrrr... DIE NOW!";
 		specialeffect EF_STEAL;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wh-who are you?";
 		next;
 		mes "[????]";
@@ -8298,7 +8298,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		$@zdan = 0;
 		stopnpctimer;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "] ";
+		mes "["+strcharinfo(PC_NAME)+"] ";
 		mes "Huh? That man must";
 		mes "have dropped this";
 		mes "note in his haste";
@@ -8307,13 +8307,13 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		next;
 		mes "";
 		mes "";
-		mes "^666666Kill " + strcharinfo(PC_NAME) + ", meow.";
+		mes "^666666Kill "+strcharinfo(PC_NAME)+", meow.";
 		mes "That arrogant do-gooder";
 		mes "is looking into us too much.";
 		mes "Fail to kill him, and death";
 		mes "will be too good for you, meow.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That must have been";
 		mes "an informer for the Z Gang.";
 		mes "He can't have gotten too far:";
@@ -8328,7 +8328,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "[????]";
 		mes "Eeek...!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Haha! Got you!";
 		mes "You're an informer for";
 		mes "the Z Gang, aren't you?";
@@ -8339,7 +8339,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "talking about!";
 		mes "I'm innocent!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Then you're telling";
 		mes "me this note didn't";
 		mes "just fall out of your";
@@ -8350,7 +8350,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "Th-that's...";
 		mes "I'm not--That...!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You better confess, or";
 		mes "I'll drag you over to the";
 		mes "Prontera Knightage or the";
@@ -8365,7 +8365,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "got kids to feed!";
 		mes "I... I can't go to jail!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Alright.";
 		mes "Let's start by you";
 		mes "telling me where";
@@ -8378,7 +8378,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "food chain, I just follow";
 		mes "their written instructions.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You know what?";
 		mes "Never mind. I'm won't";
 		mes "take you to be jailed by";
@@ -8393,7 +8393,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "enter the place without the";
 		mes "secret password.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Nice. Now, you better";
 		mes "stop running with the";
 		mes "Z Gang. Otherwise, I'm";
@@ -8404,7 +8404,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "Anything you want!";
 		mes "J-just let me liiive!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I should head back to";
 		mes "Marybell, and see if she's";
 		mes "learned any new information.";
@@ -8418,7 +8418,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		mes "[Suspicious Man]";
 		mes "... ...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Something's not quite";
 		mes "right. I should come back";
 		mes "and investigate this area";
@@ -8427,7 +8427,7 @@ moc_ruins,78,167,3	script	Suspicious Man#2	4W_M_03,2,2,{
 		close;
 	}
 	if ((zdan_edq == 10) && ($@zdan > 0)) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Nuts! I was supposed";
 		mes "to try to do this secretly!";
 		mes "I better try to investigate";
@@ -8485,7 +8485,7 @@ OnTouch:
 		mes "Grrrr... DIE NOW!";
 		specialeffect EF_STEAL;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wh-who are you?";
 		next;
 		mes "[????]";
@@ -8497,7 +8497,7 @@ OnTouch:
 		$@zdan = 0;
 		stopnpctimer;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "] ";
+		mes "["+strcharinfo(PC_NAME)+"] ";
 		mes "Huh? That man must";
 		mes "have dropped this";
 		mes "note in his haste";
@@ -8506,13 +8506,13 @@ OnTouch:
 		next;
 		mes "";
 		mes "";
-		mes "^666666Kill " + strcharinfo(PC_NAME) + ", meow.";
+		mes "^666666Kill "+strcharinfo(PC_NAME)+", meow.";
 		mes "That arrogant do-gooder";
 		mes "is looking into us too much.";
 		mes "Fail to kill him, and death";
 		mes "will be too good for you, meow.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That must have been";
 		mes "an informer for the Z Gang.";
 		mes "He can't have gotten too far:";
@@ -8531,7 +8531,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		mes "Etner sspawrod.^000000";
 		next;
 		emotion e_omg,1;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This slab is speaking";
 		mes "to me! I... I think. Now";
 		mes "where have I heard";
@@ -8542,7 +8542,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		mes "Etner sspawrod.^000000";
 		next;
 		emotion e_ic,1;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh, right! This is that";
 		mes "trashy language, Aegye,";
 		mes "that Gooho Ahn told me";
@@ -8554,7 +8554,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		mes "^FF0000*Creak Creak*";
 		mes "Etner sspawrod.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I guess";
 		mes "I should talk to it. Um...";
 		next;
@@ -8564,7 +8564,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 			mes "^FF0000*Creak Creak*";
 			mes "Etner n2d sspawrod.^000000";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Whoa! It's saying";
 			mes "something different now!";
 			mes "I must be doing alright.";
@@ -8576,7 +8576,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 				mes "^FF0000*Creak Creak*";
 				mes "Etner r3d sspawrod.^000000";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Heh! I'm on the right";
 				mes "track. Now what do I say?";
 				next;
@@ -8586,14 +8586,14 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 					mes "*Creak Creak*";
 					mes "*Creak Creak*";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Um... Now what...?";
 					next;
 					if ($@door2 == 0) {
 						$@door2 = 1;
 						mes "Waaaah! Waaah!";
 						next;
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "What th--?! What's";
 						mes "happening?! I'm being";
 						mes "sucked away somewhere!";
@@ -8604,7 +8604,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 						end;
 					}
 					else {
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "Hm? Did I do something";
 						mes "wrong? It just stopped";
 						mes "working all of a sudden.";
@@ -8615,7 +8615,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 						next;
 						mes "^666666*Pzzzzz*^000000";
 						next;
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "I think...";
 						mes "I think I should";
 						mes "try this again.";
@@ -8626,7 +8626,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 					mes "[Odd Slab]";
 					mes "^666666*Pzzzzz*^000000";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Huh? This talking slab";
 					mes "thing isn't working now.";
 					mes "Hello? What happened to you?";
@@ -8639,7 +8639,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 				mes "[Odd Slab]";
 				mes "^666666*Pzzzzz*^000000";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Huh? This talking slab";
 				mes "thing isn't working now.";
 				mes "Hello? What happened to you?";
@@ -8652,7 +8652,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 			mes "[Odd Slab]";
 			mes "^666666*Pzzzzz*^000000";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Huh? This talking slab";
 			mes "thing isn't working now.";
 			mes "Hello? What happened to you?";
@@ -8665,7 +8665,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		mes "[Odd Slab]";
 		mes "*Creak Creak*";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This slab looks pretty";
 		mes "strange. Is it making";
 		mes "noises? Hmm... Maybe this";
@@ -8675,7 +8675,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		close;
 	}
 	if (zdan_edq > 17) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This used to be";
 		mes "where the Z Gang";
 		mes "would hide out.";
@@ -8683,7 +8683,7 @@ moc_fild17,209,235,0	script	Odd Slab	HIDDEN_NPC,4,4,{
 		close;
 
 	}
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "This is a peculiar";
 	mes "looking slab. It sounds";
 	mes "like... What are those";
@@ -8702,7 +8702,7 @@ OnTouch:
 	if (zdan_edq == 15) {
 		mes "^FF0000*Creak Creak*^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Did I just...";
 		mes "Hear something";
 		mes "around here?";
@@ -8727,7 +8727,7 @@ OnTouch:
 		hideoffnpc "Catfoii";
 	}
 	else {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Where am I...?";
 		mes "Something has gone";
 		mes "terribly wrong, hasn't";
@@ -8756,7 +8756,7 @@ OnTouch:
 		hideoffnpc "Catfoii";
 	}
 	else {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Where am I...?";
 		mes "Something has gone";
 		mes "terribly wrong, hasn't";
@@ -8867,7 +8867,7 @@ OnReset:
 
 OnMyMobDead:
 	if (mobcount("z_agit","#ZGuard::OnMyMobDead") < 1) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You cowardly Z Gang!";
 		mes "Come out and surrender!";
 		mes "I've defeated your monster";
@@ -8943,7 +8943,7 @@ z_agit,97,101,3	script	Louis	4_M_RACHMAN1,{
 		mes "Argh! I should never";
 		mes "have trusted that fool!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "So... Z Gang...";
 		mes "And cat. It's time";
 		mes "to turn you in.";
@@ -8955,7 +8955,7 @@ z_agit,97,101,3	script	Louis	4_M_RACHMAN1,{
 		mes "Come forth, my demon";
 		mes "spawn minions of doom!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I don't think";
 		mes "they're coming.";
 		next;
@@ -8965,7 +8965,7 @@ z_agit,97,101,3	script	Louis	4_M_RACHMAN1,{
 		mes "we were so close to";
 		mes "conquering the world!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Now if you'll just";
 		mes "hand over the Book";
 		mes "of Forbidden Mystery...";
@@ -8979,7 +8979,7 @@ z_agit,97,101,3	script	Louis	4_M_RACHMAN1,{
 		mes "Louis. It looks like";
 		mes "the Z Gang is finished.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Anyway, the Rogue Guild";
 		mes "is on its way to come get";
 		mes "you guys. You won't be able";
@@ -9016,7 +9016,7 @@ z_agit,97,101,3	script	Louis	4_M_RACHMAN1,{
 		close;
 	}
 	else {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Where am I...?";
 		mes "Something has gone";
 		mes "terribly wrong, hasn't";
@@ -9066,7 +9066,7 @@ z_agit,99,101,3	script	Martha	4W_F_01,{
 		mes "Argh! I should never";
 		mes "have trusted that fool!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "So... Z Gang...";
 		mes "And cat. It's time";
 		mes "to turn you in.";
@@ -9078,7 +9078,7 @@ z_agit,99,101,3	script	Martha	4W_F_01,{
 		mes "Come forth, my demon";
 		mes "spawn minions of doom!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I don't think";
 		mes "they're coming.";
 		next;
@@ -9088,7 +9088,7 @@ z_agit,99,101,3	script	Martha	4W_F_01,{
 		mes "we were so close to";
 		mes "conquering the world!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Now if you'll just";
 		mes "hand over the Book";
 		mes "of Forbidden Mystery...";
@@ -9102,7 +9102,7 @@ z_agit,99,101,3	script	Martha	4W_F_01,{
 		mes "Louis. It looks like";
 		mes "the Z Gang is finished.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Anyway, the Rogue Guild";
 		mes "is on its way to come get";
 		mes "you guys. You won't be able";
@@ -9140,7 +9140,7 @@ z_agit,99,101,3	script	Martha	4W_F_01,{
 		close;
 	}
 	else {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Where am I...?";
 		mes "Something has gone";
 		mes "terribly wrong, hasn't";
@@ -9186,7 +9186,7 @@ z_agit,95,101,3	script	Catfoii	4_CAT,{
 		mes "Argh! I should never";
 		mes "have trusted that fool!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "So... Z Gang...";
 		mes "And cat. It's time";
 		mes "to turn you in.";
@@ -9198,7 +9198,7 @@ z_agit,95,101,3	script	Catfoii	4_CAT,{
 		mes "Come forth, my demon";
 		mes "spawn minions of doom!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I don't think";
 		mes "they're coming.";
 		next;
@@ -9208,7 +9208,7 @@ z_agit,95,101,3	script	Catfoii	4_CAT,{
 		mes "we were so close to";
 		mes "conquering the world!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Now if you'll just";
 		mes "hand over the Book";
 		mes "of Forbidden Mystery...";
@@ -9222,7 +9222,7 @@ z_agit,95,101,3	script	Catfoii	4_CAT,{
 		mes "Louis. It looks like";
 		mes "the Z Gang is finished.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Anyway, the Rogue Guild";
 		mes "is on its way to come get";
 		mes "you guys. You won't be able";
@@ -9260,7 +9260,7 @@ z_agit,95,101,3	script	Catfoii	4_CAT,{
 		close;
 	}
 	else {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Where am I...?";
 		mes "Something has gone";
 		mes "terribly wrong, hasn't";
@@ -9287,9 +9287,9 @@ morocc,143,63,3	script	Ragged Man#nd	4_M_MIDDLE,{
 		mes "life if you would just do me";
 		mes "this favor. Please...";
 		next;
-		switch(select("How may I help you?", "Ignore Him")) {
+		switch (select("How may I help you?","Ignore Him")) {
 		case 1:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Okay, what can I do to help?";
 			next;
 			mes "[Ragged Man]";
@@ -9300,7 +9300,7 @@ morocc,143,63,3	script	Ragged Man#nd	4_M_MIDDLE,{
 			mes "be a beggar, but I'm actually a";
 			mes "treasure hunter from Prontera.";
 			next;
-			switch(select("Umm... So?")) {
+			switch (select("Umm... So?")) {
 			case 1:
 				mes "[Ragged Man]";
 				mes "I was so sure I could find";
@@ -9323,7 +9323,7 @@ morocc,143,63,3	script	Ragged Man#nd	4_M_MIDDLE,{
 				mes "money, so that I can finally";
 				mes "go back home to Prontera?";
 				next;
-				switch(select("Why don't you just walk?", "I can give you some money.")) {
+				switch (select("Why don't you just walk?","I can give you some money.")) {
 				case 1:
 					mes "[Ragged Man]";
 					mes "What? You don't think that";
@@ -9425,7 +9425,7 @@ morocc,143,63,3	script	Ragged Man#nd	4_M_MIDDLE,{
 		mes "to go back home, and I'll";
 		mes "tell you everything I know.";
 		next;
-		switch(select("Give Money", "Don't Give Money")) {
+		switch (select("Give Money","Don't Give Money")) {
 		case 1:
 			mes "[Ragged Man]";
 			mes "Ah, good choice!";
@@ -9532,7 +9532,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 		mes "What do you want?";
 		mes "Just leave me alone.";
 		next;
-		switch(select("Tell me about the treasure.")) {
+		switch (select("Tell me about the treasure.")) {
 		case 1:
 			emotion e_gasp;
 			mes "[Man]";
@@ -9541,7 +9541,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 			mes "been wondering when you'd";
 			mes "show up. Prepare to die!";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Umm... Excuse me?";
 			mes "I've just heard that you";
 			mes "confirmed the location of";
@@ -9556,7 +9556,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 			mes "the treasure? Not just";
 			mes "everyone knows about it.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Well, I was talking to";
 			mes "this other treasure hunter";
 			mes "who's... Well, he's kind";
@@ -9578,7 +9578,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 			mes "money, and you want to know";
 			mes "more, right? Let's cut a deal.";
 			next;
-			switch(select("No, thanks.", "What'd you have in mind?")) {
+			switch (select("No, thanks.","What'd you have in mind?")) {
 			case 1:
 				mes "[Man]";
 				mes "No? Well...";
@@ -9636,7 +9636,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 		mes "You're reconsidering that";
 		mes "deal I had in mind, aren't you?";
 		next;
-		switch(select("No, not really.", "I guess so.")) {
+		switch (select("No, not really.","I guess so.")) {
 		case 1:
 			mes "[Man]";
 			mes "You sure? No one would";
@@ -9758,7 +9758,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 		mes "looking for the treasure?";
 		next;
 		select("I already found it, but...");
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I already found it, but...";
 		mes "It won't budge at all!";
 		mes "I think it's protected by";
@@ -9788,7 +9788,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 		mes "my clients gave to me.";
 		next;
 		while (1) {
-			switch(select("Who was going to help you?", "Your clients gave you something?")) {
+			switch (select("Who was going to help you?","Your clients gave you something?")) {
 			case 1:
 				mes "[Man]";
 				mes "Oh, yeah. The guys that";
@@ -9851,7 +9851,7 @@ morocc,102,298,3	script	Man#zgang	4W_M_02,{
 			}
 
 		}
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, how could you not";
 		mes "know how to use this?";
 		mes "Didn't you get a chance";
@@ -9928,7 +9928,7 @@ comodo,339,224,3	script	Man in Hiding#nd	4_M_SITDOWN,{
 			mes "Whoa, don't get so close!";
 			next;
 			select("Why are you hiding here?");
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Why are you hiding here?";
 			mes "Didn't the Z Gang hire you";
 			mes "to dig up some treasure?";
@@ -9941,7 +9941,7 @@ comodo,339,224,3	script	Man in Hiding#nd	4_M_SITDOWN,{
 			mes "truth. Did you actually";
 			mes "meet the Z Gang?";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "I not only met the Z Gang,";
 			mes "I also captured them. I've";
 			mes "come looking for you to";
@@ -9999,7 +9999,7 @@ comodo,339,224,3	script	Man in Hiding#nd	4_M_SITDOWN,{
 			mes "Whoa, don't get so close!";
 			next;
 			select("Ask About Treasure");
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "I've come looking";
 			mes "for information";
 			mes "about the treasure.";
@@ -10012,7 +10012,7 @@ comodo,339,224,3	script	Man in Hiding#nd	4_M_SITDOWN,{
 			mes "I'm not going down";
 			mes "without a fight!";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "What? No, it's not like";
 			mes "that. I met this treasure";
 			mes "hunter in Morroc that said";
@@ -10132,7 +10132,7 @@ moc_fild18,108,116,0	script	#treasure	CLEAR_NPC,{
 		mes "here, buried just";
 		mes "beneath the ground.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Unngh! I-it won't...!";
 		next;
 		mes "^3355FFNo matter how hard";
@@ -10194,7 +10194,7 @@ moc_fild18,108,116,0	script	#treasure	CLEAR_NPC,{
 				getitem Two_Hand_Sword,1;
 				sc_start SC_CURSE,10000,0,10000;
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "N-no! What's going on?";
 				mes "This Emerald... It must";
 				mes "be cursed by evil magic!";
@@ -10265,7 +10265,7 @@ comodo,139,184,3	script	Scholar#zgang	2_M_SAGE_B,{
 		mes "I help you today?";
 		next;
 		select("Ask About Cursed Jewel");
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I came to ask you";
 		mes "about a Cursed Jewel.";
 		next;
@@ -10565,7 +10565,7 @@ alberta_in,70,109,5	script	Shaman	4_M_UMOLDMAN,{
 		mes "Hhhkkk... Arrrgh...!";
 		emotion e_omg;
 		next;
-		mes "[" + strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes ".....?";
 		next;
 		mes "[Shaman]";
@@ -10687,7 +10687,7 @@ alberta_in,70,109,5	script	Shaman	4_M_UMOLDMAN,{
 		mes "the Unlucky Emerald?";
 		next;
 		select("The archaeologist said...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "The archaeologist said...";
 		mes "Well, he said that there";
 		mes "is no curse on the jewel.";
@@ -10837,7 +10837,7 @@ yuno_in04,38,48,3	script	Archeologist	1_M_JOBTESTER,{
 			mes "I'm guessing you needed";
 			mes "my help with something?";
 			next;
-			switch(select("Ask About the Jewel's Curse", "Show Off Jewel")) {
+			switch (select("Ask About the Jewel's Curse","Show Off Jewel")) {
 			case 1:
 				emotion e_heh;
 				mes "[Archeologist]";
@@ -11025,7 +11025,7 @@ prontera,140,304,5	script	Old Soldier	4_M_HUOLDARMY,{
 		mes "some reason, but I'll";
 		mes "admit that it's kind of nice.";
 		next;
-		switch(select("Ask About Past Battles", "Ask About Fallen Warrior")) {
+		switch (select("Ask About Past Battles","Ask About Fallen Warrior")) {
 		case 1:
 			mes "[Retired Soldier]";
 			mes "Don't get me started.";
@@ -11100,7 +11100,7 @@ prontera,140,304,5	script	Old Soldier	4_M_HUOLDARMY,{
 		mes "I'm afraid I already told";
 		mes "you everything I know.";
 		next;
-		switch(select("Sorry...", "I met the warrior's spirit.")) {
+		switch (select("Sorry...","I met the warrior's spirit.")) {
 		case 1:
 			mes "[Retired Soldier]";
 			mes "It's fine.";
@@ -11128,7 +11128,7 @@ prontera,140,304,5	script	Old Soldier	4_M_HUOLDARMY,{
 			mes "this all up to a really good";
 			mes "learning experience.";
 			next;
-			switch(select("I feel so sorry for him.", "Do you believe the jewel is really cursed?")) {
+			switch (select("I feel so sorry for him.","Do you believe the jewel is really cursed?")) {
 			case 1:
 				mes "[Retired Soldier]";
 				mes "Well...";
@@ -11413,8 +11413,8 @@ gef_fild08,182,185,0	script	The Wanderer	8_DOPPEL,{
 		mes "the past anymore.";
 		jewel_nd = 27;
 		next;
-		while(1) {
-			if (select("You killed your comrades!", "Do you remember your last moment?") == 1) {
+		while (1) {
+			if (select("You killed your comrades!","Do you remember your last moment?") == 1) {
 				mes "[The Wanderer]";
 				mes "Did I...? Ha. Haha!";
 				mes "adventurer, but that sounds";
@@ -11472,7 +11472,7 @@ gef_fild08,182,185,0	script	The Wanderer	8_DOPPEL,{
 		mes "stabbing, and... And slashing.";
 		next;
 		select("You slashed everything...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You slashed everything...";
 		mes "Even the comrades you";
 		mes "were supposed to protect.";
@@ -11495,8 +11495,8 @@ gef_fild08,182,185,0	script	The Wanderer	8_DOPPEL,{
 		mes "possibly have to";
 		mes "say to me this time?";
 		next;
-		while(1) {
-			if (select("You killed your comrades!", "Do you remember your last moment?") == 1) {
+		while (1) {
+			if (select("You killed your comrades!","Do you remember your last moment?") == 1) {
 				mes "[The Wanderer]";
 				mes "Did I...? Ha. Haha!";
 				mes "adventurer, but that sounds";
@@ -11554,7 +11554,7 @@ gef_fild08,182,185,0	script	The Wanderer	8_DOPPEL,{
 		mes "stabbing, and... And slashing.";
 		next;
 		select("You slashed everything...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You slashed everything...";
 		mes "Even the comrades you";
 		mes "were supposed to protect.";
@@ -11591,7 +11591,7 @@ gef_fild08,182,185,0	script	The Wanderer	8_DOPPEL,{
 		mes "stabbing, and... And slashing.";
 		next;
 		select("You slashed everything...");
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You slashed everything...";
 		mes "Even the comrades you";
 		mes "were supposed to protect.";
@@ -11645,7 +11645,7 @@ gef_fild08,182,182,0	script	#CallGhost	FAKE_NPC,2,2,{
 OnTouch:
 	if (jewel_nd == 21) {
 		if (countitem(Unlucky_Emerald) > 0) {
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "This must be the place";
 			mes "that shaman was talking";
 			mes "about. Let's see now...";
@@ -11653,7 +11653,7 @@ OnTouch:
 			close;
 		}
 		else {
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "This must be the place";
 			mes "that shaman was talking";
 			mes "about. Let's see now...";
@@ -11676,7 +11676,7 @@ prontera,163,204,3	script	Man from Morroc	4W_M_03,{
 		mes "fountain. It's much cooler";
 		mes "here than back in Morroc.";
 		next;
-		switch(select("Nice day today, huh?", "How's Morroc lately?")) {
+		switch (select("Nice day today, huh?","How's Morroc lately?")) {
 		case 1:
 			mes "[Morroc Traveler]";
 			mes "Oh, yes. It's a wonderful";
@@ -11792,7 +11792,7 @@ in_rogue,355,28,5	script	Rogue Agent	2_M_THIEFMASTER,{
 		mes "going on around the kingdom.";
 		mes "How'd you know about that?";
 		next;
-		switch(select("I was just...", "Can I help?")) {
+		switch (select("I was just...","Can I help?")) {
 		case 1:
 			mes "[Guildsman]";
 			mes "Just what...?";
@@ -12147,7 +12147,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	4_M_ROGUE,{
 		mes "I hope you brought";
 		mes "the stuff...";
 		next;
-		switch(select("Give Items", "I forgot what you need.")) {
+		switch (select("Give Items","I forgot what you need.")) {
 		case 1:
 			if ((countitem(Pumpkin_Head) > 0) && (countitem(Horseshoe) > 0) && (countitem(Petite_DiablOfs_Horn) > 0) && (countitem(Golden_Hair) > 0) && (countitem(Transparent_Cloth) > 0)) {
 				delitem Pumpkin_Head,1;
@@ -12306,7 +12306,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	4_M_ROGUE,{
 			mes "locked up inside. You";
 			mes "bring the stuff?";
 			next;
-			switch(select("Give Items", "I forgot what you need.")) {
+			switch (select("Give Items","I forgot what you need.")) {
 			case 1:
 				if ((countitem(Pumpkin_Head) > 1) && (countitem(Horseshoe) > 2) && (countitem(Petite_DiablOfs_Horn) > 1) && (countitem(Golden_Hair) > 2) && (countitem(Transparent_Cloth) > 0)) {
 					delitem Pumpkin_Head,2;
@@ -12367,7 +12367,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	4_M_ROGUE,{
 			mes "Tower are safely locked";
 			mes "up in there. You do that yet?";
 			next;
-			switch(select("Give Items", "I forgot what you need.")) {
+			switch (select("Give Items","I forgot what you need.")) {
 			case 1:
 				if ((countitem(Pumpkin_Head) > 1) && (countitem(Horseshoe) > 2) && (countitem(Petite_DiablOfs_Horn) > 1) && (countitem(Golden_Hair) > 2) && (countitem(Transparent_Cloth) > 0)) {
 					delitem Pumpkin_Head,2;
@@ -12451,7 +12451,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	4_M_ROGUE,{
 		mes "[Agent]";
 		mes "What? You want somethin'?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "?????????????????";
 		next;
 		mes "[Agent]";
@@ -12521,11 +12521,11 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	4_M_ROGUE,{
 		mes "this note to me?";
 		rumour_nd = 7;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Let's see,";
 		mes "the note says...";
 		next;
-		switch(select("Cooperate with this adventurer.", "......")) {
+		switch (select("Cooperate with this adventurer.","......")) {
 		case 1:
 			mes "[Agent]";
 			mes "So... We're partners?";
@@ -12558,11 +12558,11 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	4_M_ROGUE,{
 		mes "not run away! Now...";
 		mes "What's it say?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Let's see,";
 		mes "the note says...";
 		next;
-		switch(select("Cooperate with this adventurer.", "......")) {
+		switch (select("Cooperate with this adventurer.","......")) {
 		case 1:
 			mes "[Agent]";
 			mes "So... We're partners?";
@@ -12750,7 +12750,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	4_M_ROGUE,{
 			mes "Yeah. Karvodailnirol.";
 			mes "What about it?";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "You need Detrimindexta";
 			mes "to make a Counteragent,";
 			mes "not Karvodailnirol.";
@@ -12975,7 +12975,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	1_M_SIGNROGUE,{
 		mes "acknowledge my instructions.";
 		mes "You got that! Loud and clear!";
 		next;
-		switch(select("Yes, Sir!", "...")) {
+		switch (select("Yes, Sir!","...")) {
 		case 1:
 			emotion e_dots;
 			mes "[Agent]";
@@ -13036,7 +13036,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	1_M_SIGNROGUE,{
 		mes "the masks like";
 		mes "a good little soldier?";
 		next;
-		switch(select("Uh huh.", "Yes, Sir!")) {
+		switch (select("Uh huh.","Yes, Sir!")) {
 		case 1:
 			mes "[Agent]";
 			mes "Hey, remember our";
@@ -13099,7 +13099,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	1_M_SIGNROGUE,{
 				mes "Rogue world if you would.";
 				emotion e_sob;
 				next;
-				switch(select("Yes, sir!", "I won't tell anyone.")) {
+				switch (select("Yes, sir!","I won't tell anyone.")) {
 				case 1:
 					mes "[Agent]";
 					mes "Whoa! Whoa!";

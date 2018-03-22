@@ -53,7 +53,7 @@ ecl_hub01,132,12,3	script	Chief of Staff#tl01::EclInstance	4_F_FAIRY,{
 		mes "This place is set up with lighting for Orb.";
 		mes "If you favor Mayor, you should be cautious here.";
 		next;
-		switch (select("Enter it.", "Forget it.")) {
+		switch (select("Enter it.","Forget it.")) {
 			case 1:
 				.@instance = instance_create(.@md_name$,.@party_id);
 				if (.@instance < 0) {
@@ -91,7 +91,7 @@ ecl_hub01,130,15,0	script	It is closed shut.	CLEAR_NPC,{
 		mes "This door connects to the plaza's ceiling.";
 		mes "It's also a place where the lighting is set up to make Orb seem more beautiful.";
 		next;
-		switch (select("Enter it.", "Forget it.")) {
+		switch (select("Enter it.","Forget it.")) {
 			case 1:
 				.@party_id = getcharid(CHAR_ID_PARTY);
 
@@ -114,7 +114,7 @@ ecl_hub01,130,15,0	script	It is closed shut.	CLEAR_NPC,{
 						close;
 					}
 					close2;
-					mapannounce "ecl_hub01",getpartyname(.@party_id) + " Party leader " + strcharinfo(PC_NAME) + " is entering " + .@md_name$,bc_map,"0x00ff99";
+					mapannounce "ecl_hub01",getpartyname(.@party_id)+" Party leader "+strcharinfo(PC_NAME)+" is entering "+.@md_name$,bc_map,"0x00ff99";
 					warp "1@ecl",60,50;
 					end;
 				}
@@ -137,7 +137,7 @@ ecl_hub01,130,15,0	script	It is closed shut.	CLEAR_NPC,{
 	mes "Oh, what's going on here?";
 	mes "They destroyed additional troops that Mayor sent?";
 	next;
-	select("What...?", "I fought monsters off!");
+	select("What...?","I fought monsters off!");
 	mes "[Shenime]";
 	mes "It doesn't matter.";
 	mes "Your job ends here.";
@@ -145,7 +145,7 @@ ecl_hub01,130,15,0	script	It is closed shut.	CLEAR_NPC,{
 	mes "Farewell, then!";
 	specialeffect EF_BEGINSPELL3;
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "No...way!!!";
 	specialeffect(EF_LORD, AREA, playerattached());
 	percentheal -99,0;
@@ -228,7 +228,7 @@ OnTouch:
     next;
     mes "We couldn't communicate with them either, and one of them seemed furious after looking around and finding out that its fellows are defeated.";
     next;
-    mes "[" + strcharinfo(PC_NAME) + "]";
+    mes "["+strcharinfo(PC_NAME)+"]";
     mes "They look as if they are incarnation of Morroc.";
     mes "Is the King of Domons after the Orb?";
     mes "Or is it just a coincidence?";
@@ -310,7 +310,7 @@ OnInstanceInit:
 	mes "There was a subtle and magical echo to it.";
 	mes "Immidiately after that, you were thrown here.";
 	next;
-	if (select("It's all because of you!", "Shenime said...") == 1) {
+	if (select("It's all because of you!","Shenime said...") == 1) {
 		mes "[Avant]";
 		mes "I don't understand a word you're saying.";
 		mes "Can't you organize your story? Don't you know 'five W's and one H' rule?";
@@ -368,7 +368,7 @@ OnInstanceInit:
 	next;
 	cutin "minuel01",4;
 	mes "[Minuel]";
-	mes "" + strcharinfo(PC_NAME) + "Sir,";
+	mes ""+strcharinfo(PC_NAME)+"Sir,";
 	mes "Although you're detained on suspicion of being responsible for the recent incident in the lighting room,";
 	mes "there are some witnesses to prove your innocence.";
 	next;
@@ -416,7 +416,7 @@ OnInstanceInit:
 	cutin "",255;
 	mes "[Loki]";
 	mes "It's because of this.";
-	mes "" + strcharinfo(PC_NAME) + "It was inside the body of -";
+	mes ""+strcharinfo(PC_NAME)+"It was inside the body of -";
 	mes "This is how powerful Shenime is.";
 	next;
 	mes "On Loki's palm, there rested a small, thin, and dried piece of thorn.";
@@ -433,7 +433,7 @@ OnInstanceInit:
 	mes "His power enbales him to control another person directly or mentally influence that person indirectly through a part of his body.";
 	next;
 	select("Now that I think about it...");
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Right before coming here, Shenime reached his hand out to me and I felt a spark when I held his hand.";
 	mes "I thought it was just my imagination and ignored it...maybe that's when he...";
 	next;
@@ -456,7 +456,7 @@ OnInstanceInit:
 	next;
 	mes "[Nydhog]";
 	mes "I swear by the name of the guardian of Yggdrasil, too.";
-	mes "" + strcharinfo(PC_NAME) + "- will by no means do such a thing.";
+	mes ""+strcharinfo(PC_NAME)+"- will by no means do such a thing.";
 	next;
 	cutin "hisie02",0;
 	mes "[Hisie]";
@@ -479,7 +479,7 @@ OnInstanceInit:
 	cutin "",255;
 	mes "[Loki]";
 	mes "Someone has to take the responsibility here then.";
-	mes "In all probablility," + strcharinfo(PC_NAME) + "it will be you.";
+	mes "In all probablility,"+strcharinfo(PC_NAME)+"it will be you.";
 	next;
 	cutin "hisie02",0;
 	mes "[Hisie]";
@@ -504,7 +504,7 @@ OnInstanceInit:
 	mes "[Hisie]";
 	mes "Thank you for your help.";
 	mes "We will take off now.";
-	mes "Let's go." + strcharinfo(PC_NAME) + ".";
+	mes "Let's go."+strcharinfo(PC_NAME)+".";
 	ep14_2_mylord = 30;
 	changequest 7450,7451;
 	erasequest 7450;

@@ -18,7 +18,7 @@ izlude,129,118,4	script	Dona Risadinha#iz::MrSmile	4_F_03,{
 	mes "Olá Olá ";
 	mes "Eu sou a Dona Risadinha, como posso te ajudar?";
 	next;
-	switch(select("O que é uma ^3355FFMáscara Feliz^000000?", "Fazer uma ^3355FFMáscara Feliz^000000", "Cancelar")) {
+	switch (select("O que é uma ^3355FFMáscara Feliz^000000?","Fazer uma ^3355FFMáscara Feliz^000000","Cancelar")) {
 		case 1:
 		mes "[Dona Risadinha]";
 		mes "A Máscara Feliz é um item que instantaneamente te deixa sorrindo!";
@@ -44,10 +44,10 @@ izlude,129,118,4	script	Dona Risadinha#iz::MrSmile	4_F_03,{
 			mes "Parabéns!";
 			mes "Por favor aceite esta Máscara Feliz.";
 			next;
-			delitem(Jellopy, 10);
-			delitem(Fluff, 10);
-			delitem(Clover, 10);
-			getitem(Mr_Smile, 1);
+			delitem(Jellopy,10);
+			delitem(Fluff,10);
+			delitem(Clover,10);
+			getitem(Mr_Smile,1);
 			mes "[Dona Risadinha]";
 			mes "Vossa majestade, Tristam III prometeu dar seu melhor para tornar Ragnarok um jogo melhor e mais agradável.";
 			next;

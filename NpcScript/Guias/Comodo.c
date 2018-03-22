@@ -18,11 +18,11 @@ comodo,322,178,4	script	Guia#comguide	8_F_GIRL,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Comodo^000000^000000, a Cidade do Farol.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Taverna]","[Cassino]","[Loja de Utilidades]","[Acampamento]","[Vendedor de Souvenir]","[Mao, a Caverna do Leste]","[Karu, a Caverna do Oeste]","[Ruanda, a Caverna do Norte]","[Clube de Dança]","Menu Anterior")) {
+				switch (select("[Taverna]","[Cassino]","[Loja de Utilidades]","[Acampamento]","[Vendedor de Souvenir]","[Mao, a Caverna do Leste]","[Karu, a Caverna do Oeste]","[Ruanda, a Caverna do Norte]","[Clube de Dança]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Comodo]";
 					mes "Posição da^0000FF Taverna^000000 marcada em seu mini mapa.";
@@ -92,7 +92,7 @@ comodo,322,178,4	script	Guia#comguide	8_F_GIRL,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Casa do Chefe]","[Bor Robin]","[Funcionária Kafra]","[Bardo Andarilho]","Menu Anterior")) {
+				switch (select("[Casa do Chefe]","[Bor Robin]","[Funcionária Kafra]","[Bardo Andarilho]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Comodo]";
 					mes "Posição da^0000FF Casa do Chefe^000000 marcada em seu mini mapa.";

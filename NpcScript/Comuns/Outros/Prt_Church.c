@@ -27,8 +27,8 @@ prt_church,103,76,0	script	Garnet#pront	1_F_02,{
 	mes "Meu conhecimento está à sua disposição. Sobre qual habilidade você quer saber mais?";
 	next;
 	.@SkillChat = 1;
-	while(.@SkillChat) {
-		switch(select("Sobre 'Curar'","Sobre 'Medicar'","Sobre 'Aumentar Agilidade'","Sobre 'Angelus'","Sobre 'Benção'","Sobre 'Portal'","Não me interesso muito por sacerdotes...")) {
+	while (.@SkillChat) {
+		switch (select("Sobre 'Curar'","Sobre 'Medicar'","Sobre 'Aumentar Agilidade'","Sobre 'Angelus'","Sobre 'Benção'","Sobre 'Portal'","Não me interesso muito por sacerdotes...")) {
 			case 1:
 			mes "[Garnet]";
 			mes "'Curar' é uma habilidade que restaura o HP do alvo.";
@@ -135,8 +135,8 @@ prt_church,103,71,0	script	Henson#pront	2_M_PHARMACIST,{
 	mes "Quer saber mais sobre alguma delas?";
 	next;
 	.@SkillChat = 1;
-	while(.@SkillChat) {
-		switch(select("Sobre 'Proteção Divina'","Sobre 'Flagelo do Mal'","Sobre 'Diminuir Agilidade'","Sobre 'Signum Crusis'","Sobre 'Escudo Sagrado'","Sobre 'Revelação'","Sobre 'Teleporte'","Na verdade, não.")) {
+	while (.@SkillChat) {
+		switch (select("Sobre 'Proteção Divina'","Sobre 'Flagelo do Mal'","Sobre 'Diminuir Agilidade'","Sobre 'Signum Crusis'","Sobre 'Escudo Sagrado'","Sobre 'Revelação'","Sobre 'Teleporte'","Na verdade, não.")) {
 			case 1:
 			mes "[Henson]";
 			mes "Para aumentar sua resistência aos ataques Malditos e de Dêmonios você precisa desta habilidade.";

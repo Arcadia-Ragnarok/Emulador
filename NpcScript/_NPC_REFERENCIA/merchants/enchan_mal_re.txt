@@ -47,7 +47,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 	mes "[Mayomayo]";
 	mes "Wow welcome. It is new Mayomayo refinement store I enchant some luxury weapons including level 4 weapons.";
 	next;
-	switch(select("Any store policy changes?", "Enchant High Ranked Weapon", "Initialize Enchant (Need Silvervine Fruit)")) {
+	switch (select("Any store policy changes?","Enchant High Ranked Weapon","Initialize Enchant (Need Silvervine Fruit)")) {
 	case 1:
 		mes "[Mayomayo]";
 		mes "When I enchant weapons, the slotted cards or refined level are dissipated sometimes. I hated it. However, one day I found how to do it without any extinction.";
@@ -55,7 +55,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		mes "[Mayomayo]";
 		mes "Have you ever seen a building of person of reinforcement capacity association?";
 		next;
-		if(select("I've seen it before.", "I haven't seen it before.") == 2) {
+		if (select("I've seen it before.","I haven't seen it before.") == 2) {
 			mes "[Mayomayo]";
 			mes "That builiding is located to the southeast of where I am. Why don't you go on a field trip there?";
 			close;
@@ -87,9 +87,9 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 	.@equip_type = getiteminfo(@mal_equip_id,11);
 
 	//callsub L_Socket,<cost multiplier>,<4-x enchants possible>;
-	switch(.@equip_type) { // Check weapon type first to speed up the checks.
+	switch (.@equip_type) { // Check weapon type first to speed up the checks.
 	case 1: // Daggers
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1224: callsub L_Socket,1,2; //Sword_Breaker
 			case 1225: callsub L_Socket,1,2; //Mail_Breaker
 			case 1227: callsub L_Socket,1,2; //Weeder_Knife
@@ -115,7 +115,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 16: // Katars
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1271: callsub L_Socket,1,2; //Blood_Tears
 			case 1263: callsub L_Socket,1,2; //Unholy_Touch
 			case 1270: callsub L_Socket,1,2; //Drill_Katar
@@ -129,13 +129,13 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 6: // 1-H Axes
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1305: callsub L_Socket,1,2; //Cleaver
 			case 1311: callsub L_Socket,1,2; //Vecer_Axe
 		}
 		break;
 	case 7: // 2-H Axes
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1364: callsub L_Socket,1,2; //Great_Axe
 			case 1365: callsub L_Socket,1,2; //Sabbath
 			case 1385: callsub L_Socket,1,2; //Bradium_Stonehammer
@@ -152,7 +152,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 2: // 1-H Swords
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1131: callsub L_Socket,1,2; //Ice_Falchon
 			case 1133: callsub L_Socket,1,2; //Fire_Brand
 			case 1134: callsub L_Socket,1,2; //Scissores_Sword
@@ -171,7 +171,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 3: // 2-H Swords
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1164: callsub L_Socket,1,2; //Muramasa
 			case 1166: callsub L_Socket,1,2; //Dragon_Slayer
 			case 1167: callsub L_Socket,1,2; //Schweizersabel
@@ -195,7 +195,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 4: // 1-H Spears
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1420: callsub L_Socket,1,2; //Long_Horn
 			case 1413: callsub L_Socket,1,2; //Gungnir
 			case 1414: callsub L_Socket,1,2; //Gelerdria
@@ -208,7 +208,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 5: // 2-H Spears
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1466: callsub L_Socket,1,2; //Crescent_Scythe
 			case 1467: callsub L_Socket,1,2; //Bill_Guisarme
 			case 1468: callsub L_Socket,1,2; //Zephyrus
@@ -225,7 +225,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 10: // Staves
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1616: callsub L_Socket,1,2; //Staff_Of_Wing
 			case 1629: callsub L_Socket,1,2; //Walking_Stick
 			case 1631: callsub L_Socket,1,2; //Holy_Stick
@@ -237,7 +237,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 23: // New 2-H Staves
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 2004: callsub L_Socket,1,2; //Kronos
 			case 2005: callsub L_Socket,1,2; //Dea_Staff
 			case 2001: callsub L_Socket,2,2; //Divine_Cross
@@ -245,7 +245,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 8: // Maces
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1524: callsub L_Socket,1,2; //Golden_Mace
 			case 1525: callsub L_Socket,1,2; //Long_Mace
 			case 1527: callsub L_Socket,1,2; //Quadrille
@@ -262,7 +262,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 15: // Books
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1557: callsub L_Socket,1,2; //Book_Of_The_Apocalypse
 			case 1558: callsub L_Socket,1,2; //Girls_Diary
 			case 1559: callsub L_Socket,1,2; //Legacy_Of_Dragon
@@ -272,7 +272,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 12: // Knuckles
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1813: callsub L_Socket,1,2; //Kaiser_Knuckle
 			case 1814: callsub L_Socket,1,2; //Berserk
 			case 1815: callsub L_Socket,1,2; //Claw_Of_Garm
@@ -281,7 +281,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 11: // Bows
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1719: callsub L_Socket,1,2; //Bow_Of_Roguemaster
 			case 1722: callsub L_Socket,1,2; //Balistar
 			case 1724: callsub L_Socket,1,2; //Dragon_Wing
@@ -296,7 +296,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 13: // Musical Instruments
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1913: callsub L_Socket,1,2; //Electronic_Guitar
 			case 1918: callsub L_Socket,1,2; //Oriental_Lute
 			case 1920: callsub L_Socket,1,2; //Berserk_Guitar
@@ -306,7 +306,7 @@ malangdo,213,167,4	script	Mayomayo#mal	4_CAT_3COLOR,{
 		}
 		break;
 	case 14: // Whips
-		switch(@mal_equip_id) {
+		switch (@mal_equip_id) {
 			case 1962: callsub L_Socket,1,2; //Lariat
 			case 1963: callsub L_Socket,1,2; //Rapture_Rose
 			case 1964: callsub L_Socket,1,2; //Chemeti
@@ -367,7 +367,7 @@ L_Socket:
 			mes "You don't have enough coins. Do you want to check again?";
 			close;
 		}
-		switch(.@coin_select) {
+		switch (.@coin_select) {
 		case 0: //Egrade_Coin
 			.@enchant_type = 10;
 			break;
@@ -385,7 +385,7 @@ L_Socket:
 			mes "[Mayomayo]";
 			mes "When you use the "+getitemname(.@coin[.@coin_select])+", you can choose the enchant type.";
 			next;
-			switch(select("Stop", "Short Range Type", "Long Range Type", "Caster Type")) {
+			switch (select("Stop","Short Range Type","Long Range Type","Caster Type")) {
 			case 1:
 				mes "[Mayomayo]";
 				mes "Ok. If you change your mind, let me know.";
@@ -416,12 +416,12 @@ L_Socket:
 		mes "[Mayomayo]";
 		mes "I'm trying for the "+.@str$+" enchant. ^ff0000It will not touch previous refinement and cards. Also, the equipment will not be destroyed.^000000 Can I continue?";
 		next;
-		if(select("I'll come back later.", "Please, continue.") == 1) {
+		if (select("I'll come back later.","Please, continue.") == 1) {
 			mes "[Mayomayo]";
 			mes "Ok. If you change your mind, come back again.";
 			close;
 		}
-		switch(.@enchant_type) {
+		switch (.@enchant_type) {
 		case 10: //Egrade_Coin
 			.@i = rand(1,531);
 			     if (.@i < 101) .@enchant = 4787; //Mdef4
@@ -622,7 +622,7 @@ L_Socket:
 		mes "[Mayomayo]";
 		mes "I will only initialize the enchant effect without touching previous refined level and cards.";
 		next;
-		if(select("Stop", "Continue") == 1) {
+		if (select("Stop","Continue") == 1) {
 			mes "[Mayomayo]";
 			mes "If you change your mind, come back anytime.";
 			close;

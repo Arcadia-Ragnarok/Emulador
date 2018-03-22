@@ -1,22 +1,23 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Npc Script                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Versão: Spell Master                                            |
-| - Nota: Museu de Monstros em Juno                                 |
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Museu de Monstros em Juno                                 |
 \*-----------------------------------------------------------------*/
 
 yuno_in03,32,15,3	script	Guia do Museu#yuno	1_F_02,{
 	mes "[Cenia]";
 	mes "Bem-vindo ao Museu de Monstros.";
 	next;
-	switch(select("Museu de Monstros?","Dicas")) {
+	switch (select("Museu de Monstros?","Dicas")) {
 		case 1:
 		mes "[Cenia]";
 		mes "Neste museu, você pode ver cada criatura que habita Rune-Midgard, até mesmo criaturas que você nunca viu.";

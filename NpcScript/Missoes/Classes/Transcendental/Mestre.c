@@ -26,7 +26,7 @@ valkyrie,53,42,3	script	Mestre#Valkyrie	1_M_HOF,{
 			mes "Tempo de grandes heróis para estar a frente contra as forças do mal.";
 			mes "Que pragueiam o mundo de Rune-Midgard!";
 			next;
-			jobchange (Job_Champion);
+			jobchange(Job_Champion);
 			ADVJOB = 0;
 			mes "[Mestre]";
 			mes "Parabéns!";

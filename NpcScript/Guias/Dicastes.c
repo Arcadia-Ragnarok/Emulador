@@ -17,7 +17,7 @@ dicastes01,181,191,5	script	Guia#dicguide	4_M_SHADOWCHASER,2,2,{
 	mes "[Guia de Dicastes]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Dicastes^000000.";
 	next;
-	switch(select("Diel","Área Residencial","Sala de Treino","Fábrica","Bar","Agência Pata de Gato")) {
+	switch (select("Diel","Área Residencial","Sala de Treino","Fábrica","Bar","Agência Pata de Gato")) {
 		case 1:
 		mes "[Guia de Dicastes]";
 		mes "Posição do^0000FF Diel^000000 marcado em seu mini mapa.";

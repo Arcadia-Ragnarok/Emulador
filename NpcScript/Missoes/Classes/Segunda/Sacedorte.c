@@ -76,7 +76,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 						mes "[Bispo Paul]";
 						mes "Se está dispost"+(Sex == SEX_MAME ? "o":"a")+" a cumprir essas tarefas venha falar comigo novamente.";
 						priestq = 1;
-						setquest (8009);
+						setquest(8009);
 						close;
 					} else {
 						mes "[Bispo Paul]";
@@ -89,7 +89,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 						mes "[Bispo Paul]";
 						mes "Quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+" venha coneversar comigo novamente.";
 						mes "Que lhe enviarei para o campo de treinamento.";
-						setquest (8011);
+						setquest(8011);
 						priestq = 6;
 						close;
 					}
@@ -120,7 +120,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 			mes "[Bispo Paul]";
 			mes "Que Deus te abençoe...";
 			priestq = 2;
-			changequest (8009,8010);
+			changequest(8009,8010);
 			close;
 		}
 		// priestq (2) => "Irmão Simão#acolyteq" prt_fild03,365,255
@@ -177,7 +177,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 			mes "É hora de começar seu treinamento espiritual.";
 			mes "Quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+" venha coneversar comigo novamente.";
 			mes "Que lhe enviarei para o campo de treinamento.";
-			changequest (8010,8011);
+			changequest(8010,8011);
 			priestq = 6;
 			close;
 		} else if (priestq == 6) {
@@ -195,7 +195,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 					mes "Irei mandá-lo para o campo de treinamento.";
 					mes "Quando chegar lá, por favor fale com o irmão Pedro, que está encarregado do treinamento.";
 					close2;
-					warp ("job_prist",24,180);
+					warp("job_prist",24,180);
 					end;
 				} else {
 					mes "[Bispo Paul]";
@@ -237,21 +237,21 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 				mes "Faça desse servo um instrumento de seu trabalho...";
 				next;
 				.@acolyteLv = JobLevel;
-				jobchange (Job_Priest);
-				completequest (8015);
-				callfunc ("ClearJobQuest2nd",8);
+				jobchange(Job_Priest);
+				completequest(8015);
+				callfunc("ClearJobQuest2nd",8);
 				mes "[Bispo Paul]";
 				mes "Agora sendo Sacerdote.";
 				mes "Eu te parabenizo, e que você ajude outras pessoas pelo resto de sua vida.";
 				next;
 				mes "[Bispo Paul]";
 				if (.@acolyteLv != 50) {
-					getitem (Book,1);
+					getitem(Book,1);
 					mes "Este livro é seu.";
 					mes "Espero que ele te ajude a espalhar a mensagem de Deus na Terra.";
 				}
 				else {
-					getitem (Bible,1);
+					getitem(Bible,1);
 					mes "Em comemoração a sua mudança de classe, te darei uma bíblia.";
 					mes "Isto irá iluminá-lo pelo caminho da graça.";
 				}
@@ -276,7 +276,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 			mes "Você está dentro do Santuário.";
 			mes "O que o trouxe até aqui?";
 			next;
-			switch(select("Informações sobre os Sacerdotes","Nada")) {
+			switch (select("Informações sobre os Sacerdotes","Nada")) {
 				case 1:
 				mes "[Bispo Paul]";
 				mes "Nosso dever e obrigação como Sacerdote é nos devotar.";
@@ -333,7 +333,7 @@ prt_church,27,24,1	script	Irmã Cecilia#priestq	1_F_PRIEST,{
 			mes "[Irmã Cecilia]";
 			mes "Posso perguntar o que te faz vir aqui?";
 			next;
-			switch(select("Eu quero me tornar um Sacerdote","Nada")) {
+			switch (select("Eu quero me tornar um Sacerdote","Nada")) {
 				case 1:
 				mes "[Irmã Cecilia]";
 				mes "Você se dedica a Deus.";
@@ -448,7 +448,7 @@ prt_church,27,24,1	script	Irmã Cecilia#priestq	1_F_PRIEST,{
 			close;
 		} else if (priestq == 7) {
 			if (questprogress(8013)) {
-				changequest (8013,8014);
+				changequest(8013,8014);
 			}
 			mes "[Irmã Cecilia]";
 			mes "Agora poderemos começar seu formal Juramento de Sacerdócio.";
@@ -502,7 +502,7 @@ prt_church,27,24,1	script	Irmã Cecilia#priestq	1_F_PRIEST,{
 				close;
 			} else {
 				priestq = 8;
-				changequest (8014,8015);
+				changequest(8014,8015);
 				mes "[Irmã Cecilia]";
 				mes "Agora, você completou seu juramento de Sacerdócio.";
 				mes "E todos os exames para se tornar um Sacerdote.";
@@ -538,7 +538,7 @@ job_prist,24,187,4	script	Peter S. Alberto#priestq	4_M_MINISTER,{
 		mes "Você não deveria está nesse lugar.";
 		mes "Retire-se agora mesmo.";
 		close2;
-		warp ("prontera",230,311);
+		warp("prontera",230,311);
 		end;
 	} else if (priestq == 6) {
 		if (!priestq2) {
@@ -558,7 +558,7 @@ job_prist,24,187,4	script	Peter S. Alberto#priestq	4_M_MINISTER,{
 			mes "Você voltou, como posso ajudar?";
 			next;
 		}
-		switch(select("Informações do teste","Começar o teste","Voltar à Prontera")) {
+		switch (select("Informações do teste","Começar o teste","Voltar à Prontera")) {
 			case 1:
 			mes "[Irmão Peter]";
 			mes "No treinamento espiritual, você irá derrotar criaturas malignas.";
@@ -584,7 +584,7 @@ job_prist,24,187,4	script	Peter S. Alberto#priestq	4_M_MINISTER,{
 			}
 			case 2: break;
 			case 3:
-			close2; warp ("prontera",230,311); end;
+			close2; warp("prontera",230,311); end;
 		}
 		if ($PriestJoinTest) {
 			mes "No momento outra pessoa já está fazendo o teste de aprovação.";
@@ -594,11 +594,11 @@ job_prist,24,187,4	script	Peter S. Alberto#priestq	4_M_MINISTER,{
 			mes "[Irmão Peter]";
 			mes "Lhe desejo boa sorte, que Deus lhe proteja.";
 			close2;
-			donpcevent ("prstmob#priestq::OnEnable");
+			donpcevent("prstmob#priestq::OnEnable");
 			priestq2 = 1;
-			if (questprogress(8011)) { changequest (8011,8012); }
+			if (questprogress(8011)) { changequest(8011,8012); }
 			if (!$PriestJoinTest) {
-				warp ("job_prist",24,44);
+				warp("job_prist",24,44);
 			}
 		}
 	}
@@ -609,17 +609,17 @@ job_prist,1,1,0	script	prstmob#priestq	HIDDEN_NPC,{
 	end;
 
 	OnInit:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnEnable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
 	.PrstMobs = 13;
 	initnpctimer;
 	end;
 
 	OnDisable:
-	areawarp (strnpcinfo(NPC_MAP),8,34,39,109,"prontera",230,311);
+	areawarp(strnpcinfo(NPC_MAP),8,34, 39,109,"prontera",230,311);
 	stopnpctimer;
 	end;
 
@@ -638,38 +638,38 @@ job_prist,1,1,0	script	prstmob#priestq	HIDDEN_NPC,{
 	end;
 
 	OnSummon1:
-	monster (strnpcinfo(NPC_MAP),24,52,"Furto",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),18,52,"Desejo de Virtude",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),30,52,"Ciúme",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),24,52,"Furto",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),18,52,"Desejo de Virtude",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),30,52,"Ciúme",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon2:
-	monster (strnpcinfo(NPC_MAP),21,62,"Fúria",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),27,62,"Inveja",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),21,62,"Fúria",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),27,62,"Inveja",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon3:
-	monster (strnpcinfo(NPC_MAP),24,72,"Arrogância",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),18,72,"Luxúria",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),30,72,"Preguiça",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),24,72,"Arrogância",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),18,72,"Luxúria",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),30,72,"Preguiça",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon4:
-	monster (strnpcinfo(NPC_MAP),21,82,"Gula",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),27,82,"Ganância",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),21,82,"Gula",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),27,82,"Ganância",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnSummon5:
-	monster (strnpcinfo(NPC_MAP),24,92,"Desespero",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),18,92,"Desconfiança",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),30,92,"Medo",1015,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),24,92,"Desespero",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),18,92,"Desconfiança",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),30,92,"Medo",ZOMBIE,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	end;
 
 	OnTimer300000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
 	$PriestJoinTest = 0;
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 }
 
@@ -677,24 +677,24 @@ job_prist,1,1,0	script	prstmob#priestq	HIDDEN_NPC,{
 job_prist,24,44,0	script	prstmob2#priestq	FAKE_NPC,17,1,{
 	OnTouch:
 	if (priestq2 == 1) {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área de testes. 5 minutos serão dados para derrotar as criaturas do mal.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área de testes. 5 minutos serão dados para derrotar as criaturas do mal.",bc_map);
 		mes "[Irmão Peter]";
 		mes "Derrote todos os zumbis e passe pelo portal no final do corredor.";
 		mes "Certifique-se de eliminar todos.";
-		donpcevent ("prstmob#priestq::OnSummon1");
+		donpcevent("prstmob#priestq::OnSummon1");
 		priestq2 = 2;
 		close2;
 	} else if (priestq2 == 2) {
-		donpcevent ("prstmob#priestq::OnSummon2");
+		donpcevent("prstmob#priestq::OnSummon2");
 		priestq2 = 3;
 	} else if (priestq2 == 3) {
-		donpcevent ("prstmob#priestq::OnSummon3");
+		donpcevent("prstmob#priestq::OnSummon3");
 		priestq2 = 4;
 	} else if (priestq2 == 4) {
-		donpcevent ("prstmob#priestq::OnSummon4");
+		donpcevent("prstmob#priestq::OnSummon4");
 		priestq2 = 5;
 	} else if (priestq2 == 5) {
-		donpcevent ("prstmob#priestq::OnSummon5");
+		donpcevent("prstmob#priestq::OnSummon5");
 		priestq2 = 6;
 	}
 	end;
@@ -708,10 +708,10 @@ job_prist,24,82,0	duplicate(prstmob2#priestq)	prstmob6#priestq	FAKE_NPC,17,1
 job_prist,24,109,0	script	prstestwarp#priestq	WARPNPC,3,3,{
 	OnTouch:
 	if (priestq2 == 6) {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 2 de testes. 5 minutos serão dados para completar a tarefa.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 2 de testes. 5 minutos serão dados para completar a tarefa.",bc_map);
 		warp(strnpcinfo(NPC_MAP),168,17);
-		donpcevent ("prstmob#priestq::OnStop");
-		donpcevent ("prsttime#priestq::OnEnable");
+		donpcevent("prstmob#priestq::OnStop");
+		donpcevent("prsttime#priestq::OnEnable");
 	}
 	end;
 }
@@ -733,15 +733,15 @@ job_prist,2,1,0	script	prsttime#priestq	HIDDEN_NPC,{
 	end;
 
 	OnDisable:
-	mapannounce (strnpcinfo(NPC_MAP),"O candidato fracassou no teste! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O candidato fracassou no teste! Próximo cadidato entre na área de testes.",bc_map);
 	$PriestJoinTest = 0;
 	stopnpctimer;
 	end;
 
 	OnTimer300000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
 	$PriestJoinTest = 0;
-	areawarp (strnpcinfo(NPC_MAP),160,14,178,175,"prontera",230,311);
+	areawarp(strnpcinfo(NPC_MAP),160,14, 178,175,"prontera",230,311);
 	stopnpctimer;
 	end;
 }
@@ -783,11 +783,11 @@ job_prist,168,45,4	script	Deviruchi#priestq	4_DEVIRUCHI,8,1,{
 			mes "BUAHAHAHAHAHAH!";
 			mes "GOSTOU DA PIADA!?";
 			close2;
-			donpcevent ("prsttime#priestq::OnDisable");
-			warp ("prontera",230,311);
+			donpcevent("prsttime#priestq::OnDisable");
+			warp("prontera",230,311);
 			end;
 		} else {
-			cutin ("",255);
+			cutin("",255);
 			priestq2 = 7;
 			mes "[Deviruchi]";
 			mes "Você irá lamentar pela sua decisão depois!";
@@ -824,8 +824,8 @@ job_prist,168,80,4	script	Doppelganger#priestq	8_DOPPEL,8,1,{
 			mes "Agora vamos!!";
 			mes "Nunca passe para a luz novamente!";
 			close2;
-			donpcevent ("prsttime#priestq::OnDisable");
-			warp ("prontera",230,311);
+			donpcevent("prsttime#priestq::OnDisable");
+			warp("prontera",230,311);
 			end;
 		} else {
 			priestq2 = 8;
@@ -864,8 +864,8 @@ job_prist,168,115,4	script	Senhor das Trevas#priestq	4_DARKLORD,8,1,{
 			mes "[Senhor das Trevas]";
 			mes "^330033Não volte nunca mais!^000000";
 			close2;
-			donpcevent ("prsttime#priestq::OnDisable");
-			warp ("prontera",230,311);
+			donpcevent("prsttime#priestq::OnDisable");
+			warp("prontera",230,311);
 			end;
 		} else {
 			priestq2 = 9;
@@ -922,8 +922,8 @@ job_prist,168,150,4	script	Bafomé#priestq	4_BAPHOMET,8,1,{
 			mes "Siga-me.";
 			mes "Nós faremos o contrato no meu santuário da escuridão.";
 			close2;
-			donpcevent ("prsttime#priestq::OnDisable");
-			warp ("prontera",230,311);
+			donpcevent("prsttime#priestq::OnDisable");
+			warp("prontera",230,311);
 			end;
 		} else {
 			priestq2 = 10;
@@ -946,11 +946,11 @@ job_prist,168,150,4	script	Bafomé#priestq	4_BAPHOMET,8,1,{
 job_prist,168,180,0	script	prstestwarp2#priestq	WARPNPC,3,3,{
 	OnTouch:
 	if (priestq2 == 10) {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 3 de testes. 2 minutos serão dados para completar a tarefa.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 3 de testes. 2 minutos serão dados para completar a tarefa.",bc_map);
 		warp(strnpcinfo(NPC_MAP),98,40);
-		donpcevent ("prsttime#priestq::OnStop");
-		donpcevent ("prsttime2#priestq::OnEnable");
-		donpcevent ("prstmummy#priestq::OnEnable");
+		donpcevent("prsttime#priestq::OnStop");
+		donpcevent("prsttime2#priestq::OnEnable");
+		donpcevent("prstmummy#priestq::OnEnable");
 	}
 	end;
 }
@@ -972,10 +972,10 @@ job_prist,2,1,0	script	prsttime2#priestq	HIDDEN_NPC,{
 	end;
 
 	OnTimer120000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou! Próximo cadidato entre na área de testes.",bc_map);
 	$PriestJoinTest = 0;
-	donpcevent ("prstmummy#priestq::OnDisable");
-	areawarp (strnpcinfo(NPC_MAP),90,34,105,105,"prontera",230,311);
+	donpcevent("prstmummy#priestq::OnDisable");
+	areawarp(strnpcinfo(NPC_MAP),90,34, 105,105,"prontera",230,311);
 	end;
 
 }
@@ -985,68 +985,68 @@ job_prist,1,1,0	script	prstmummy#priestq	HIDDEN_NPC,{
 	end;
 
 	OnInit:
-	disablenpc ("prstmummy1#priestq");
-	disablenpc ("prstmummy2#priestq");
-	disablenpc ("prstmummy3#priestq");
+	disablenpc("prstmummy1#priestq");
+	disablenpc("prstmummy2#priestq");
+	disablenpc("prstmummy3#priestq");
 	end;
 
 	OnEnable:
-	enablenpc ("prstmummy#priestq");
-	enablenpc ("prstmummy2#priestq");
-	enablenpc ("prstmummy3#priestq");
+	enablenpc("prstmummy#priestq");
+	enablenpc("prstmummy2#priestq");
+	enablenpc("prstmummy3#priestq");
 	end;
 
 	OnDisable:
-	disablenpc ("prstmummy#priestq");
-	disablenpc ("prstmummy2#priestq");
-	disablenpc ("prstmummy3#priestq");
-	killmonsterall (strnpcinfo(NPC_MAP));
+	disablenpc("prstmummy#priestq");
+	disablenpc("prstmummy2#priestq");
+	disablenpc("prstmummy3#priestq");
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 }
 
 // ------------------------------------------------------------------
 job_prist,90,55,0	script	prstmummy1#priestq	FAKE_NPC,15,1,{
 	OnTouch:
-	monster (strnpcinfo(NPC_MAP),90,55,"Múmia",1041,1);
-	monster (strnpcinfo(NPC_MAP),105,55,"Múmia",1041,1);
-	disablenpc (strnpcinfo(NPC_NAME));
+	monster(strnpcinfo(NPC_MAP),90,55,"Múmia",MUMMY,1);
+	monster(strnpcinfo(NPC_MAP),105,55,"Múmia",MUMMY,1);
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
 job_prist,90,55,0	script	prstmummy2#priestq	FAKE_NPC,15,1,{
 	OnTouch:
-	monster (strnpcinfo(NPC_MAP),90,70,"Múmia",1041,1);
-	monster (strnpcinfo(NPC_MAP),105,70,"Múmia",1041,1);
-	disablenpc (strnpcinfo(NPC_NAME));
+	monster(strnpcinfo(NPC_MAP),90,70,"Múmia",MUMMY,1);
+	monster(strnpcinfo(NPC_MAP),105,70,"Múmia",MUMMY,1);
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
 job_prist,90,55,0	script	prstmummy3#priestq	FAKE_NPC,15,1,{
 	OnTouch:
-	monster (strnpcinfo(NPC_MAP),90,85,"Múmia",1041,1);
-	monster (strnpcinfo(NPC_MAP),105,85,"Múmia",1041,1);
-	disablenpc (strnpcinfo(NPC_NAME));
+	monster(strnpcinfo(NPC_MAP),90,85,"Múmia",MUMMY,1);
+	monster(strnpcinfo(NPC_MAP),105,85,"Múmia",MUMMY,1);
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
 // ------------------------------------------------------------------
 job_prist,98,105,4	script	prstestwarp3#priestq	WARPNPC,3,3,{
 	OnTouch:
-	donpcevent ("prstmummy#priestq::OnDisable");
-	donpcevent ("prsttime2#priestq::OnStop");
+	donpcevent("prstmummy#priestq::OnDisable");
+	donpcevent("prsttime2#priestq::OnStop");
 	priestq = 7;
 	priestq2 = 0;
-	changequest (8012,8013);
-	warp ("prt_church",16,37);
+	changequest(8012,8013);
+	warp("prt_church",16,37);
 	$PriestJoinTest = 0;
-	mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+"Acaba de concluir seu teste espiritual! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+"Acaba de concluir seu teste espiritual! Próximo cadidato entre na área de testes.",bc_map);
 	end;
 }
 
 // ------------------------------------------------------------------
 job_prist,4,1,0	script	PriestJoinTest#priestq	HIDDEN_NPC,{
 	OnInit:
-	mapwarp (strnpcinfo(NPC_MAP),"prontera",230,311);
+	mapwarp(strnpcinfo(NPC_MAP),"prontera",230,311);
 	if ($PriestJoinTest) { $PriestJoinTest = 0; }
 	end;
 }

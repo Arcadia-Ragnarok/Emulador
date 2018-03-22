@@ -19,11 +19,11 @@ alberta,23,238,4	script	Guia#albguide	8W_SOLDIER,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Alberta^000000, a Cidade Portuária.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","[Portos]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","[Portos]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Loja de Utilidades]","[Forja]","[Equipamentos]","[Estalagem]","[Salão de Beleza]","[Guilda dos Mercadores]","Menu Anterior")) {
+				switch (select("[Loja de Utilidades]","[Forja]","[Equipamentos]","[Estalagem]","[Salão de Beleza]","[Guilda dos Mercadores]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Alberta]";
 					mes "Posição da^0000FF Loja de Utilidades^000000 marcada em seu mini mapa.";
@@ -69,7 +69,7 @@ alberta,23,238,4	script	Guia#albguide	8W_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Funcionária Kafra]","[Feirante]","Menu Anterior")) {
+				switch (select("[Oficial Eden]","[Funcionária Kafra]","[Feirante]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Alberta]";
 					mes "Posição do^0000FF Oficial Eden^000000 marcado em seu mini mapa.";
@@ -98,7 +98,7 @@ alberta,23,238,4	script	Guia#albguide	8W_SOLDIER,{
 			case 3:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Porto - Doca do Norte]","[Porto - Doca Central]","[Porto - Doca do Sul]","Menu Anterior")) {
+				switch (select("[Porto - Doca do Norte]","[Porto - Doca Central]","[Porto - Doca do Sul]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Alberta]";
 					mes "Posição da^0000FF Doca Norte ^000000 marcada em seu mini mapa.";
@@ -155,7 +155,7 @@ alberta,23,238,4	script	Guia#albguide	8W_SOLDIER,{
 			mes "[Guia de Alberta]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

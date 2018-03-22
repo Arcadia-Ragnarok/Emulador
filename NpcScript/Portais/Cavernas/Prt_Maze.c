@@ -141,37 +141,37 @@ prt_maze03,194,15,0	warp	prtmazewarp_122	1,1,prt_maze03,8,58
 
 // Portais Aleatórios -----------------------------------------------
 prt_maze03,58,194,0	script	#prtmazewarp_123	WARPNPC,1,1,{
-	switch(rand(4)) {
-		case 0: warp ("prt_maze03",98,151); end;
-		case 1: warp ("prt_maze03",137,128); end;
-		case 2: warp ("prt_maze03",14,71); end;
-		case 3: warp ("prt_maze03",54,8); end;
+	switch (rand(4)) {
+		case 0: warp("prt_maze03",98,151); end;
+		case 1: warp("prt_maze03",137,128); end;
+		case 2: warp("prt_maze03",14,71); end;
+		case 3: warp("prt_maze03",54,8); end;
 	}
 }
 
 prt_maze03,74,74,0	script	#prtmazewarp_124	WARPNPC,1,1,{
-	switch(rand(4)) {
-		case 0: warp ("prt_maze03",98,151); end;
-		case 1: warp ("prt_maze03",137,128); end;
-		case 2: warp ("prt_maze03",14,71); end;
-		case 3: warp ("prt_maze03",54,8); end;
+	switch (rand(4)) {
+		case 0: warp("prt_maze03",98,151); end;
+		case 1: warp("prt_maze03",137,128); end;
+		case 2: warp("prt_maze03",14,71); end;
+		case 3: warp("prt_maze03",54,8); end;
 	}
 }
 
 prt_maze03,139,45,0	script	#prtmazewarp_125	WARPNPC,1,1,{
-	switch(rand(4)) {
-		case 0: warp ("prt_maze03",98,151); end;
-		case 1: warp ("prt_maze03",137,128); end;
-		case 2: warp ("prt_maze03",14,71); end;
-		case 3: warp ("prt_maze03",54,8); end;
+	switch (rand(4)) {
+		case 0: warp("prt_maze03",98,151); end;
+		case 1: warp("prt_maze03",137,128); end;
+		case 2: warp("prt_maze03",14,71); end;
+		case 3: warp("prt_maze03",54,8); end;
 	}
 }
 
 prt_maze03,154,22,0	script	#prtmazewarp_126	WARPNPC,1,1,{
-	switch(rand(4)) {
-		case 0: warp ("prt_maze03",98,151); end;
-		case 1: warp ("prt_maze03",137,128); end;
-		case 2: warp ("prt_maze03",14,71); end;
-		case 3: warp ("prt_maze03",54,8); end;
+	switch (rand(4)) {
+		case 0: warp("prt_maze03",98,151); end;
+		case 1: warp("prt_maze03",137,128); end;
+		case 2: warp("prt_maze03",14,71); end;
+		case 3: warp("prt_maze03",54,8); end;
 	}
 }

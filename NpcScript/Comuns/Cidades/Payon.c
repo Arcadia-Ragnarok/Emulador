@@ -46,7 +46,7 @@ payon,246,154,0	script	Senhorita#pay	4_F_01,{
 payon,134,211,4	script	Homem Jovem#pay	1_M_ORIENT01,{
 	mes "[Homem Jovem]";
 	mes "Pelo seu rosto eu posso ver que você não é daqui.";
-	mes "Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + " a Payon.";
+	mes "Bem-vind"+(Sex == SEX_MALE ? "o":"a")+" a Payon.";
 	next;
 	mes "[Homem Jovem]";
 	mes "Você deve ser um lutador bem experiente.";
@@ -140,7 +140,7 @@ payon,249,156,1	script	Mulher#pay	1_F_01,{
 	mes "Se você estiver interessado, vá para o Norte, passe pela floresta, e siga em direção ao noroeste.";
 	mes "Você saberá que você chegou quando você estiver num lugar com o o mau cheiro de monstros.";
 	next;
-	switch(select("Parece perigoso!", "Melhor eu me preparar ...!", "É um belo vestido o seu")) {
+	switch (select("Parece perigoso!","Melhor eu me preparar ...!","É um belo vestido o seu")) {
 		case 1:
 		mes "[Mulher]";
 		mes "Oh venha, não seja coverde.";
@@ -194,7 +194,7 @@ payon,246,158,5	script	Mulher#pay2	1_F_01,0,0,{
 		mes "Tenho certeza que você anda ocupada batendo nos meninos com um pedaço de pau.";
 	}
 	next;
-	if (select("Cartomante..?", "Bem, eu vejo você mais tarde") == 1) {
+	if (select("Cartomante..?","Bem, eu vejo você mais tarde") == 1) {
 		mes "[Mãe de Jim]";
 		mes "Oh sim...";
 		mes "Existe uma cartomante extraordinária no Palácio Central de Payon.";
@@ -236,7 +236,7 @@ payon,210,110,1	script	Bêbado#pay	2_M_PHARMACIST,{
 		mes "Será que você poderia comprar para mim uma bebida?";
 	}
 	next;
-	switch(select("Certo, mas só uma bebida", "Não, obrigado amigo", "Nem pensar!!")) {
+	switch (select("Certo, mas só uma bebida","Não, obrigado amigo","Nem pensar!!")) {
 		case 1:
 		if (Zeny > 100) { 
 			Zeny -= 100;
@@ -319,7 +319,7 @@ payon_in01,180,7,2	script	Garçonete#pay	4_F_01,{
 	mes "Então...";
 	mes "Como posso te ajudar?";
 	next;
-	switch(select("Você ja ouviu falar de zumbis?", "Bancário...?", "Preciso de uma bebida.")) {
+	switch (select("Você ja ouviu falar de zumbis?","Bancário...?","Preciso de uma bebida.")) {
 		case 1:
 		mes "[Garçonete]";
 		mes "É claro que quero ouvir sobre zumbis!";

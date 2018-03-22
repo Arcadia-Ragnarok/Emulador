@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------
 geffen,59,143,0	script	Meera#gef	4_F_02,{
 	mes "[Meera]";
-	mes "Bem vind" + (Sex == SEX_MALE ? "o" : "a") + " a Geffen, a Cidade da Magia!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" a Geffen, a Cidade da Magia!";
 	next;
 	mes "[Meera]";
 	mes "Você gosta de mel?";
@@ -139,7 +139,7 @@ geffen,111,48,0	script	Stacey#gef	4W_F_01,{
 	} else {
 		mes "[Stacey]";
 		mes "Olá!";
-		mes "Oh, você não é " + (Sex == SEX_MALE ? "um aventureiro" : "uma aventureira") + "?";
+		mes "Oh, você não é "+(Sex == SEX_MALE ? "um aventureiro" : "uma aventureira")+"?";
 		next;
 		mes "[Stacey]";
 		mes "Você já viu alguns Orcs da tribo de Demi-Human?";
@@ -222,7 +222,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 	mes "Bem...";
 	mes "O que posso fazer por você?";
 	next;
-	if (select("Posso beber algo?", "Você tem novidades para me contar?") == 1) {
+	if (select("Posso beber algo?","Você tem novidades para me contar?") == 1) {
 		mes "[Elenore]";
 		mes "Bem...";
 		mes "Se você quiser algo alcoólico, o Rei Tristam III proibiu a venda.";
@@ -237,7 +237,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 		mes "Ouvi dizer que é o paraíso!";
 		close;
 	}
-	switch(rand(1, 4)) {
+	switch (rand(1, 4)) {
 		case 1:
 		mes "[Elenore]";
 		mes "Novidades...?";
@@ -278,7 +278,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 		mes "Ouvi dizer que tem uma pessoa em Rune-Midgard...";
 		next;
 		mes "[Elenore]";
-		mes "Você ouviu falar de " + strcharinfo(PC_NAME) + "?";
+		mes "Você ouviu falar de "+strcharinfo(PC_NAME)+"?";
 		if (Sex == SEX_MALE) {
 			mes " Ele é supostamente o herói mais lindo da região!";
 		} else {
@@ -286,7 +286,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 		}
 		close;
 		case 4:
-		switch(rand(1, 2)) {
+		switch (rand(1, 2)) {
 			case 1:
 			mes "[Elenore]";
 			mes "Novidades?";
@@ -318,7 +318,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 			mes "Pare de olhar pra minha filha desse jeito.";
 			mes "Antes que eu arranque seus olhos e os coma com macarrão!^000000";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			if (Sex == SEX_MALE) {
 				mes " Huh...?";
 				mes "D-de novo?";
@@ -328,7 +328,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 				mes "Oh, papai deve ter me possuído de novo.";
 				mes "Acontece comigo e minha irmã o tempo todo.";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Sério?";
 				mes "Huh.";
 				mes "É uma chatice.";
@@ -380,7 +380,7 @@ geffen_in,79,76,2	script	Mercador Daven#gef	2_M_PHARMACIST,{
 	mes "[Mercador Daven]";
 	mes "Mas agora tem Magos e Bruxos e uma economia próspera nessa cidade!";
 	next;
-	switch(select("Magos...?", "Economia?")) {
+	switch (select("Magos...?","Economia?")) {
 		case 1:
 		mes "[Mercador Daven]";
 		mes "Magos e Bruxos estão sempre carregando livros e estudando magia.";
@@ -423,7 +423,7 @@ geffen_in,114,73,5	script	Hadenheim#gef	4_M_SEAMAN,{
 	mes "Essa Geffen é estranha.";
 	mes "Mas valeu a pena viajar da República de Schubaltzwald até aqui.";
 	next;
-	if (select("República de Schubaltzwald?", "Então, por que você está viajando?") == 1) {
+	if (select("República de Schubaltzwald?","Então, por que você está viajando?") == 1) {
 		mes "[Hans Hadenheim]";
 		mes "Você...";
 		mes "Não conhece a República de Schubaltzwald?";
@@ -469,10 +469,10 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 	mes "Posso prever o futuro!";
 	mes "Então, sobre o que você quer saber?";
 	next;
-	switch(select("Vida!", "Amor!", "Dinheiro!", "Notas!", "Futuro!", "Moda!")) {
+	switch (select("Vida!","Amor!","Dinheiro!","Notas!","Futuro!","Moda!")) {
 		case 1:
 		mes "[Vidente]";
-		switch(rand(1,5)) {
+		switch (rand(1,5)) {
 			case 1:
 			mes " Vida...?";
 			mes "Nossa, é uma categoria ampla.";
@@ -566,7 +566,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 		close;
 		case 2:
 		mes "[Vidente]"; 
-		switch(rand(1,4)) {
+		switch (rand(1,4)) {
 			case 1:
 			mes "Quer saber seu futuro no amor?";
 			mes "Oh ho Então você gosta de alguém!";
@@ -614,7 +614,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 				mes " Um... O menino com quem você está saindo agora é ideal para você!";
 			}
 			next;
-			switch(select("Como você sabe?", "Você está errado!", "Estou solteiro!")) {
+			switch (select("Como você sabe?","Você está errado!","Estou solteiro!")) {
 				case 1:
 				mes "[Vidente]";
 				mes "Bem...";
@@ -681,7 +681,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 		close;
 		case 3:
 		mes "[Vidente]"; 
-		switch(rand(1,3)) {
+		switch (rand(1,3)) {
 			case 1:
 			mes " Dinheiro?";
 			mes "Bem, aposto que você tem mais sorte com isso do que eu.";
@@ -739,7 +739,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 		close;
 		case 4:
 		mes "[Vidente]";
-		switch(rand(1,4)) {
+		switch (rand(1,4)) {
 			case 1:
 			mes " Suas notas? Você ainda está na escola?";
 			mes "Estou impressionado!";
@@ -820,7 +820,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 		mes "Vou consultar os espíritos, e veremos o que eles têm a dizer, ok?";
 		next;
 		mes "[Vidente]";
-		switch(rand(1,4)) {
+		switch (rand(1,4)) {
 			case 1:
 			mes " Hmm...";
 			mes "No futuro, Sexo, Violência e Rock and Roll serão abolidos.";
@@ -892,7 +892,7 @@ geffen_in,39,127,2	script	Vidente#gef	4_M_BIBI,{
 		mes "Lá vamos nós...";
 		next;
 		mes "[Vidente]"; 
-		switch(rand(1,5)) {
+		switch (rand(1,5)) {
 			case 1:
 			mes "[Vidente]";
 			mes ".........";
@@ -962,7 +962,7 @@ geffen_in,109,72,2	script	Perito em Monstros#gef	4_F_01,{
 	mes "[Estheres]";
 	mes "Olá, sou o especialista em Monstros daqui de Geffen. Você gostaria de saber alguma coisa?";
 	next;
-	switch(select("Area de Monstros", "Notícias Recentes", "Era dos Monstros", "Teoria do Jellopy")) {
+	switch (select("Area de Monstros","Notícias Recentes","Era dos Monstros","Teoria do Jellopy")) {
 		case 1:
 		mes "[Estheres]";
 		mes "Bem, como você talvez saiba, já que Mages e Wizards treinam em Geffen.";

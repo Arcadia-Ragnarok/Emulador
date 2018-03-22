@@ -56,7 +56,7 @@ lhz_dun03,0,0,0	script	mvp_lhz_dun03	FAKE_NPC,{
 		stopnpctimer;
 		sleep rand(0,30)*60000;
 	OnInit:
-	switch(rand(1,6)) {
+	switch (rand(1,6)) {
 		case 1: .@x = 140; .@y = 232; break;
 		case 2: .@x = 75;  .@y = 138; break;
 		case 3: .@x = 140; .@y = 87;  break;
@@ -65,8 +65,8 @@ lhz_dun03,0,0,0	script	mvp_lhz_dun03	FAKE_NPC,{
 		case 6: .@x = 175; .@y = 137; break;
 	}
 	.@mob = rand(1646,1651);
-	monster ("lhz_dun03",.@x,.@y,strmobinfo(MOB_JNP_NAME,.@mob),.@mob,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMyMVPDead");
-	switch(rand(1,6)) {
+	monster("lhz_dun03",.@x,.@y,strmobinfo(MOB_JNP_NAME,.@mob),.@mob,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMyMVPDead");
+	switch (rand(1,6)) {
 		case 1: .@x2 = 183; .@y2 = 97;  break;
 		case 2: .@x2 = 97;  .@y2 = 96;  break;
 		case 3: .@x2 = 47;  .@y2 = 139; break;
@@ -75,11 +75,11 @@ lhz_dun03,0,0,0	script	mvp_lhz_dun03	FAKE_NPC,{
 		case 6: .@x2 = 139; .@y2 = 259; break;
 	}
 	.@mob2 = rand(1640,1645);
-	monster ("lhz_dun03",.@x2,.@y2,strmobinfo(MOB_JNP_NAME,.@mob2),.@mob2,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
+	monster("lhz_dun03",.@x2,.@y2,strmobinfo(MOB_JNP_NAME,.@mob2),.@mob2,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
 	end;
 
 	OnMyMVPDead:
-	killmonster ("lhz_dun03",strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
+	killmonster("lhz_dun03",strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
 	initnpctimer;
 	OnMy99Dead:
 	end;
@@ -107,7 +107,7 @@ lhz_dun04,0,0,0	script	mvp_lhz_dun04	FAKE_NPC,{
 		stopnpctimer;
 		sleep rand(0,30)*60000;
 	OnInit:
-	switch(rand(1,7)) {
+	switch (rand(1,7)) {
 		case 1: .@x = 77;  .@y = 251; break;
 		case 2: .@x = 147; .@y = 224; break;
 		case 3: .@x = 219; .@y = 219; break;
@@ -117,8 +117,8 @@ lhz_dun04,0,0,0	script	mvp_lhz_dun04	FAKE_NPC,{
 		case 7: .@x = 149; .@y = 151; break;
 	}
 	.@mob = rand(2235,2241);
-	monster ("lhz_dun04",.@x,.@y,strmobinfo(MOB_JNP_NAME,.@mob),.@mob,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMyMVPDead");
-	switch(rand(1,7)) {
+	monster("lhz_dun04",.@x,.@y,strmobinfo(MOB_JNP_NAME,.@mob),.@mob,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMyMVPDead");
+	switch (rand(1,7)) {
 		case 1: .@x2 = 77;  .@y2 = 251; break;
 		case 2: .@x2 = 147; .@y2 = 224; break;
 		case 3: .@x2 = 219; .@y2 = 219; break;
@@ -128,11 +128,11 @@ lhz_dun04,0,0,0	script	mvp_lhz_dun04	FAKE_NPC,{
 		case 7: .@x2 = 149; .@y2 = 151; break;
 	}
 	.@mob2 = rand(2228,2234);
-	monster ("lhz_dun04",.@x2,.@y2,strmobinfo(MOB_JNP_NAME,.@mob2),.@mob2,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
+	monster("lhz_dun04",.@x2,.@y2,strmobinfo(MOB_JNP_NAME,.@mob2),.@mob2,1,strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
 	end;
 
 	OnMyMVPDead:
-	killmonster ("lhz_dun04",strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
+	killmonster("lhz_dun04",strnpcinfo(NPC_NAME_UNIQUE)+"::OnMy99Dead");
 	initnpctimer;
 	OnMy99Dead:
 	end;

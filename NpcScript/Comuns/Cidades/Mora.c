@@ -26,7 +26,7 @@ mora,160,123,3	script	Nemnem#mor	4_M_RAFLE_OLD,{
 	mes "Minha dor está cada vez pior, já que a fenda apareceu em Bifrost.";
 	mes "Você é responsável por isso, jovem?";
 	next;
-	switch(select("Claro que sou!", "Essa é uma acusação injusta!")) {
+	switch (select("Claro que sou!","Essa é uma acusação injusta!")) {
 		case 1:
 		mes "[Nemnem]";
 		mes "Bravo!";
@@ -233,7 +233,7 @@ mora,175,161,6	script	Kuorita#mor	4_F_RAFLE_PK,{
 mora,113,185,4	script	Estudioso#mor	4_M_RAFLE_GR,{
 	mes "^777777Você vê um Rafflesia perdida na leitura^000000.";
 	next;
-	switch(select("Veja o que ele está lendo", "Deixe-lo Sozinho")) {
+	switch (select("Veja o que ele está lendo","Deixe-lo Sozinho")) {
 		case 1:
 		mes "^777777Curioso sobre o que ele está lendo, você se aproxima silenciosamente dele por trás.";
 		mes "O Rafflesia está lendo em voz baixa^000000.";
@@ -305,7 +305,7 @@ mora,99,65,6	script	Rafflesia Banana#mor	4_M_RAFLE_GR,{
 	mes "[Rafflesia Banana]";
 	mes "Você quer uma banana?";
 	next;
-	switch(select("Sim, eu quero", "Não, obrigado")) {
+	switch (select("Sim, eu quero","Não, obrigado")) {
 		case 1:
 		mes "[Rafflesia Banana]";
 		mes "Pegue se você puder.";
@@ -377,11 +377,11 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 	next;
 	mes "Eles parecem estar te chamando.";
 	next;
-	if(select("Veja o que é o assunto", "Não tenho nada a ver com isso") == 2) {
+	if (select("Veja o que é o assunto","Não tenho nada a ver com isso") == 2) {
 		mes "Você foi no seu caminho deixando os viajantes atrás de você.";
 		close;
 	}
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "O que está acontecendo aqui?";
 	emotion(e_what, 1);
 	next;
@@ -398,7 +398,7 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 	mes "Ei, o que você acha que a resposta é a questão?";
 	emotion(e_ag, 0, "Viajante Chateado#mo");
 	next;
-	switch(select("Roseten", "Rose", "Como eu saberia isso?")) {
+	switch (select("Roseten","Rose","Como eu saberia isso?")) {
 		case 1:
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "A resposta à pergunta é Roseten.";

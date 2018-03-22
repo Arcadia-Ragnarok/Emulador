@@ -8,7 +8,7 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 	mes "how would you like to play a";
 	mes "Number Match game with me?";
 	next;
-	switch(select("Number Match Game?", "Practice Number Match", "Play Number Match", "Record Holder", "Cancel")) {
+	switch (select("Number Match Game?","Practice Number Match","Play Number Match","Record Holder","Cancel")) {
 		case 1:
 		mes "[Nia]";
 		mes "Ah, well, the objective of";
@@ -86,10 +86,10 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 		.@score_min = .@score_record / 60;
 		.@score_sec = .@score_record % 60;
 		mes "[Nia]";
-		mes "^ff0000" + .@name_record$ + "^000000 is the";
+		mes "^ff0000"+.@name_record$+"^000000 is the";
 		mes "record holder for the Number";
 		mes "Match game with a time of";
-		mes "^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
+		mes "^ff0000"+.@score_min+" minutes, "+.@score_sec+" seconds^000000.";
 		close;
 		case 5:
 		mes "[Nia]";
@@ -103,7 +103,7 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 	next;
 
 	// Generate 3 digits of a number.
-	while(1) {
+	while (1) {
 		.@yagu100 = rand(1,9);
 		.@yagu10 = rand(1,9);
 		.@yagu1 = rand(1,9);
@@ -119,10 +119,10 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 	// UNIX time is really a better way to do this.
 	.@start_time = gettimetick(2);
 
-	while(1) {
+	while (1) {
 
 		// Guess a number that meets all conditions.
-		while(1) {
+		while (1) {
 			if (input(.@input,100,999) != 0) {
 				mes "[Nia]";
 				mes "You've canceled the";
@@ -203,13 +203,13 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 					mes "[Nia]";
 					mes "Great! You guessed";
 					mes "my number, which was";
-					mes "^ff0000" + .@yagu + "^000000. You finished in";
-					mes "^ff0000" + .@total_min + " minutes, " + .@total_sec + " seconds^000000,";
+					mes "^ff0000"+.@yagu+"^000000. You finished in";
+					mes "^ff0000"+.@total_min+" minutes, "+.@total_sec+" seconds^000000,";
 					mes "breaking the previous record";
-					mes "of ^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
+					mes "of ^ff0000"+.@score_min+" minutes, "+.@score_sec+" seconds^000000.";
 					next;
 					mes "[Nia]";
-					mes "^ff0000" + .@name_record$ + "^000000";
+					mes "^ff0000"+.@name_record$+"^000000";
 					mes "set that old record,";
 					mes "but now you are the";
 					mes "new person to beat in the";
@@ -220,15 +220,15 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 				mes "[Nia]";
 				mes "Nice work, you guessed";
 				mes "my number! The answer, of";
-				mes "course, was ^ff0000" + .@yagu + "^000000. You managed";
+				mes "course, was ^ff0000"+.@yagu+"^000000. You managed";
 				mes "to guess this number correctly";
-				mes "in ^ff0000" + .@total_min + " minutes, " + .@total_sec + " seconds^000000.";
+				mes "in ^ff0000"+.@total_min+" minutes, "+.@total_sec+" seconds^000000.";
 				next;
 				mes "[Nia]";
-				mes "^ff0000" + .@name_record$ + "^000000 is";
+				mes "^ff0000"+.@name_record$+"^000000 is";
 				mes "the current Number Match";
 				mes "record holder with a time";
-				mes "of ^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
+				mes "of ^ff0000"+.@score_min+" minutes, "+.@score_sec+" seconds^000000.";
 				mes "Good luck, and hopefully you";
 				mes "can break this record someday";
 				close;
@@ -236,8 +236,8 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 		} else {
 			if (.@practice) {
 				mes "[Nia]";
-				mes "Your guess has ^ff0000" + .@ball + "^000000 of the";
-				mes "correct numbers. ^ff0000" + .@strike + "^000000 of the";
+				mes "Your guess has ^ff0000"+.@ball+"^000000 of the";
+				mes "correct numbers. ^ff0000"+.@strike+"^000000 of the";
 				mes "digits in your guess have";
 				mes "the correct number in the";
 				mes "correct digit placement.";
@@ -245,17 +245,17 @@ geffen,122,77,4	script	Nia#yagu	8_F_GIRL,{
 				next;
 			} else {
 				mes "[Nia]";
-				mes "Your last guess had ^ff0000" + .@ball + "^000000";
+				mes "Your last guess had ^ff0000"+.@ball+"^000000";
 				mes "of the correct numbers,";
-				mes "and ^ff0000" + .@strike + "^000000 digits in your guess";
+				mes "and ^ff0000"+.@strike+"^000000 digits in your guess";
 				mes "had the correct number in";
 				mes "the correct digit placement.";
-				switch(.@retry) {
+				switch (.@retry) {
 					case 1: mes "You have four guesses left."; break;
 					case 2: mes "You have three guesses left."; break;
 					case 3: mes "You have two guesses left."; break;
 					case 4: mes "You only have one guess left..."; break;
-					case 5: mes "The answer was ^ff0000" + .@yagu + "^000000."; close;
+					case 5: mes "The answer was ^ff0000"+.@yagu+"^000000."; close;
 				}
 				next;
 			}

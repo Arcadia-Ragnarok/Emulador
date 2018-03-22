@@ -27,7 +27,7 @@ pay_dun02,16,63,0	warp	paydunwarp_6	2,7,pay_dun01,283,28
 pay_dun03,155,161,0	warp	paydunwarp_7	2,1,pay_dun02,137,126
 
 pay_dun03,127,62,4	script	paydunwarp_8	WARPNPC,2,2,{
-	switch(rand(4)) {
+	switch (rand(4)) {
 		case 0: warp("pay_dun04", 201, 204); end;
 		case 1: warp("pay_dun04", 189, 43); end;
 		case 2: warp("pay_dun04", 43, 40); end;

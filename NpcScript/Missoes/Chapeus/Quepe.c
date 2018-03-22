@@ -62,7 +62,7 @@ alberta_in,28,145,4	script	Grampa#BoysCap	2_M_PHARMACIST,{
 			close;
 		}
 	} else {
-		switch(select("Conversar","Cancelar")) {
+		switch (select("Conversar","Cancelar")) {
 			case 1:
 			mes "[Grampa]";
 			mes "Escute bem...";

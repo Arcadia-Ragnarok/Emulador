@@ -1,19 +1,19 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |                   | |_                         |
+|             /    |   [ Emulador ]    | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
-|          /  __   | | |  |__| (_| | (_| | | (_| |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
 |         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
-|        /__/   |__|  [ Ragnarok Emulator ]                         |
+|        /__/   |__|  Ragnarok - Npc Script                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Desenvolvido por por: Spell Master 07/04/2017                   |
-| - Nota: Loteria que troca pontos de reserva por itens             |
+| - Copyright: Spell Master (07/04/2017)                            |
+| - Info: Loteria que troca pontos de reserva por itens             |
 \*-----------------------------------------------------------------*/
 
 aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
-	cutin ("kafra_01",2);
+	cutin("kafra_01",2);
 	mes "[Kafra Denise]";
 	mes "Estamos oferecendo uma promoção especial para nossos clientes.";
 	mes "Você pode ganhar prêmios usando seus ^ff5533Pontos de Reserva Especial^000000.";
@@ -27,7 +27,7 @@ aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
 			mes "Não deixe de participar dessa promoção.";
 			mes "Caso não saiba, seu saldo é: "+RESRVPTS+" pontos.";
 		}
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 	}
 	mes "[Kafra Denise]";
 	mes "Você gostaria de usar seus pontos?";
@@ -49,16 +49,15 @@ aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
 			mes "[Kafra Denise]";
 			mes "Tudo bem.";
 			mes "Ganhe mais Pontos de Reserva Especial usando os Serviços da Corporação Kafra encontrado por toda Rune-Midgard.";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 		if (RESRVPTS < .@points) {
 			mes "[Kafra Denise]";
 			mes "Unn...?";
 			mes "Temos um problema, seus pontos de reserva não são o suficientes para essa aposta.";
 			mes "Você pode almentar seus pontos de reserva utilizado-se dos Serviços da Corporação Kafra.";
-			close2; cutin ("",255); end;
-		}
-		else if (checkweight(Yggdrasilberry,100) == 0) {
+			close2; cutin("",255); end;
+		} else if (!checkweight(Yggdrasilberry,100)) {
 			mes "[Kafra Denise]";
 			mes "Unn...?";
 			mes "Temos um problema, parece que você carrega muito peso no momento.";
@@ -71,9 +70,8 @@ aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
 			mes "Pense pelo lado positivo.";
 			mes "Assim você acumulará muito mais pontos de reserva!";
 			mes "Nessa mesma sala há uma funcionária encarregada para lhe atender.";
-			close2; cutin ("",255); end;
-		}
-		else {
+			close2; cutin("",255); end;
+		} else {
 			mes "[Kafra Denise]";
 			mes "Então uma aposta de "+.@points+" pontos.";
 			mes "Vou girar uma roteta e veremos qual prêmio você ganhará.";
@@ -87,7 +85,7 @@ aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
 				mes "[Kafra Denise]";
 				mes "Tudo bem.";
 				mes "Ganhe mais Pontos de Reserva Especial usando os Serviços da Corporação Kafra encontrado por toda Rune-Midgard.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 			mes "Girando a Roleta";
 			mes "Boa Sorte!!!";
@@ -118,50 +116,50 @@ aldeba_in,84,166,4	script	Denise#alde	4_F_KAFRA1,{
 				mes "[Kafra Denise]";
 				mes "NOSSA!! Que incível você ganhou o primeiro prêmio!";
 				mes "Meus Parabéns!!!!";
-				if (.@select == 1) { getitem (Wooden_Mail,1); }
-				if (.@select == 2) { getitem (Wooden_Mail,1); getitem (Mantle,1); }
-				if (.@select == 3) { getitem (Wooden_Mail,1); getitem (Mantle,1); getitem (Berserk_Potion,10); getitem (Yggdrasilberry,3); getitem (Seed_Of_Yggdrasil,10); }
-				close2; cutin ("",255); end;
+				if (.@select == 1) { getitem(Wooden_Mail,1); }
+				if (.@select == 2) { getitem(Wooden_Mail,1); getitem(Mantle,1); }
+				if (.@select == 3) { getitem(Wooden_Mail,1); getitem(Mantle,1); getitem(Berserk_Potion,10); getitem(Yggdrasilberry,3); getitem(Seed_Of_Yggdrasil,10); }
+				close2; cutin("",255); end;
 				case 8:
 				case 7:
 				mes "[Kafra Denise]";
 				mes "NOSSA!! Que incível você ganhou o segundo prêmio!";
 				mes "Meus Parabéns!!!!";
-				if (.@select == 1) { getitem (Shoes,1); }
-				if (.@select == 2) { getitem (Shoes,1); getitem (Cap,1); }
-				if (.@select == 3) { getitem (Shoes,1); getitem (Cap,1); getitem (Sunglasses,1); getitem (Royal_Jelly,3); getitem (Seed_Of_Yggdrasil,1); getitem (Yggdrasilberry,3); getitem (Royal_Jelly,10); }
-				close2; cutin ("",255); end;
+				if (.@select == 1) { getitem(Shoes,1); }
+				if (.@select == 2) { getitem(Shoes,1); getitem(Cap,1); }
+				if (.@select == 3) { getitem(Shoes,1); getitem(Cap,1); getitem(Sunglasses,1); getitem(Royal_Jelly,3); getitem(Seed_Of_Yggdrasil,1); getitem(Yggdrasilberry,3); getitem(Royal_Jelly,10); }
+				close2; cutin("",255); end;
 				case 6:
 				case 5:
 				mes "[Kafra Denise]";
 				mes "Que maravilha! Você ganhou o terceiro prêmio!";
 				mes "Meus Parabéns!!!!";
-				if (.@select == 1) { getitem (Wing_Of_Butterfly,4); }
-				if (.@select == 2) { getitem (Wing_Of_Butterfly,4); getitem (Blue_Potion,3); getitem (White_Potion,15); }
-				if (.@select == 3) { getitem (Wing_Of_Butterfly,4); getitem (Blue_Potion,3); getitem (White_Potion,30); getitem (Glasses,1); }
-				close2; cutin ("",255); end;
+				if (.@select == 1) { getitem(Wing_Of_Butterfly,4); }
+				if (.@select == 2) { getitem(Wing_Of_Butterfly,4); getitem(Blue_Potion,3); getitem(White_Potion,15); }
+				if (.@select == 3) { getitem(Wing_Of_Butterfly,4); getitem(Blue_Potion,3); getitem(White_Potion,30); getitem(Glasses,1); }
+				close2; cutin("",255); end;
 				case 4:
 				case 3:
 				mes "[Kafra Denise]";
 				mes "Que maravilha! Você ganhou o quarto prêmio!";
 				mes "Meus Parabéns!!!!";
-				if (.@select == 1) { getitem (Sweet_Potato,100); getitem (Red_Potion,150); }
-				if (.@select == 2) { getitem (Sweet_Potato,100); getitem (Red_Potion,150); getitem (Orange_Potion,150); }
-				if (.@select == 3) { getitem (Sweet_Potato,100); getitem (Red_Potion,150); getitem (Orange_Potion,150); getitem (Blue_Potion,15); }
-				close2; cutin ("",255); end;
+				if (.@select == 1) { getitem(Sweet_Potato,100); getitem(Red_Potion,150); }
+				if (.@select == 2) { getitem(Sweet_Potato,100); getitem(Red_Potion,150); getitem(Orange_Potion,150); }
+				if (.@select == 3) { getitem(Sweet_Potato,100); getitem(Red_Potion,150); getitem(Orange_Potion,150); getitem(Blue_Potion,15); }
+				close2; cutin("",255); end;
 				default:
 				mes "[Kafra Denise]";
 				mes "Muito bem! Você ganhou o quinto prêmio!";
 				mes "Meus Parabéns!!!!";
-				if (.@select == 1) { getitem (Sweet_Potato,50); };
-				if (.@select == 2) { getitem (Red_Potion,100); };
-				if (.@select == 3) { getitem (Sweet_Potato,150); getitem (Red_Potion,300); };
-				close2; cutin ("",255); end;
+				if (.@select == 1) { getitem(Sweet_Potato,50); };
+				if (.@select == 2) { getitem(Red_Potion,100); };
+				if (.@select == 3) { getitem(Sweet_Potato,150); getitem(Red_Potion,300); };
+				close2; cutin("",255); end;
 			}
 		}
 	}
 	mes "[Kafra Denise]";
 	mes "Tudo bem.aaa";
 	mes "Ganhe mais Pontos de Reserva Especial usando os Serviços da Corporação Kafra encontrado por toda Rune-Midgard.";
-	close2; cutin ("",255); end;
+	close2; cutin("",255); end;
 }

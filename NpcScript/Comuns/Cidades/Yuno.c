@@ -185,7 +185,7 @@ yuno_in01,173,96,0	script	Canções de Luke#yun	HIDDEN_NPC,{
 	mes "Deixo as letras das minhas canções essenciais para a posteridade.";
 	mes "Sumário";
 	next;
-	switch(select("Canção do Casamento", "A vida, moinho de água", "Nós")) {
+	switch (select("Canção do Casamento","A vida, moinho de água","Nós")) {
 		case 1:
 		mes "[Canção do Casamento]";
 		mes "Santuário de Prontera é onde está todo mundo.";

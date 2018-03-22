@@ -14,15 +14,15 @@
 \*-----------------------------------------------------------------*/
 
 izlude,129,175,4	script	Guia#izlguide	8W_SOLDIER,{
-	cutin ("prt_soldier",2);
+	cutin("prt_soldier",2);
 	mes "[Guia de Izlude]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Izlude^000000, cidade satélite de Prontera.";
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Marina]","[Aeroplano]","[Loja de Equipamento]","[Guilda dos Espadachins]","[Forja]","Menu Anterior")) {
+				switch (select("[Marina]","[Aeroplano]","[Loja de Equipamento]","[Guilda dos Espadachins]","[Forja]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Izlude]";
 					mes "Posição da^0000FF Marina^000000 marcada em seu mini mapa.";
@@ -62,7 +62,7 @@ izlude,129,175,4	script	Guia#izlguide	8W_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Funcionária Kafra]","[Auxiliar de Lua de Mel]","[Aluguel de Acistentes]","[Pet Groomer]","Menu Anterior")) {
+				switch (select("[Oficial Eden]","[Funcionária Kafra]","[Auxiliar de Lua de Mel]","[Aluguel de Acistentes]","[Pet Groomer]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Izlude]";
 					mes "Posição do^0000FF Oficial Eden^000000 marcado em seu mini mapa.";
@@ -111,7 +111,7 @@ izlude,129,175,4	script	Guia#izlguide	8W_SOLDIER,{
 			mes "[Guia de Izlude]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

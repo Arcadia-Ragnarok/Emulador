@@ -18,7 +18,7 @@ ayothaya,203,169,4	script	Guia#ayoguide	4_F_THAIGIRL,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Ayothaya^000000.";
 	while (1) {
 		next;
-		switch(select("[Loja de Armas]","[Loja de Utilidades]","[Taverna]","[Santuário]","[Local de Pesca]",
+		switch (select("[Loja de Armas]","[Loja de Utilidades]","[Taverna]","[Santuário]","[Local de Pesca]",
 			"Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Ayothaya]";

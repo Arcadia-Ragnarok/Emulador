@@ -37,8 +37,8 @@
 	mes "It is a Goods Storage Cabinet.";
 	mes "A message is written on a piece of paper.";
 	next;
-	mes "+ Cabinet is exclusively +";
-	mes "+ for the Eden group +";
+	mes "+Cabinet is exclusively+";
+	mes "+for the Eden group+";
 	mes "If you want to use this";
 	mes "cabinet please check";
 	mes "the following:";
@@ -55,7 +55,7 @@
 		mes "Cost : 500 Zeny ";
 		mes "Would you like to use it?";
 		next;
-		switch(select("Use the Cabinet.", "Cancel.")) {
+		switch (select("Use the Cabinet.","Cancel.")) {
 			case 1:
 				if (Zeny > 499) {
 					if (getskilllv("NV_BASIC") < 6) {

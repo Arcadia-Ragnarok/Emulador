@@ -20,7 +20,7 @@
 	mes "Olá eu sou o motorista do Jeepney para ^1561EA"+.@JeepneyID+"^000000 passageiros.";
 	mes "Em que posso ajudar?";
 	next;
-	switch(select("Embarcar","Sobre os Jeepney","Localização dos Jeepney")) {
+	switch (select("Embarcar","Sobre os Jeepney","Localização dos Jeepney")) {
 		case 1:
 		mes "[Motorista do Jeepney]";
 		if (getmapusers(.@JeepneyMap$) >= .@JeepneyID) {
@@ -29,7 +29,7 @@
 			close;
 		} else {
 			mes "Faça um boa viagem";
-			close2; warp (.@JeepneyMap$,29,24); end;
+			close2; warp(.@JeepneyMap$,29,24); end;
 		}
 		case 2:
 		mes "[Motorista do Jeepney]";
@@ -86,21 +86,21 @@
 		next;
 		switch (select("12 passageiros.","30 passageiros.","60 passageiros.")) {
 			case 1:
-			viewpoint 1,237,240,1,0x1561EA;
-			viewpoint 1,67,44,2,0x1561EA;
-			viewpoint 1,282,129,3,0x1561EA;
+			viewpoint(1,237,240,1,0x1561EA);
+			viewpoint(1,67,44,2,0x1561EA);
+			viewpoint(1,282,129,3,0x1561EA);
 			.@Jeepney = 12;
 			break;
 			case 2:
-			viewpoint 1,134,250,4,0xF7E009;
-			viewpoint 1,341,153,5,0xF7E009;
-			viewpoint 1,293,290,6,0xF7E009;
+			viewpoint(1,134,250,4,0xF7E009);
+			viewpoint(1,341,153,5,0xF7E009);
+			viewpoint(1,293,290,6,0xF7E009);
 			.@Jeepney = 30;
 			break;
 			case 3:
-			viewpoint 1,242,221,7,0xBB0000;
-			viewpoint 1,62,245,8,0xBB0000;
-			viewpoint 1,257,58,9,0xBB0000;
+			viewpoint(1,242,221,7,0xBB0000);
+			viewpoint(1,62,245,8,0xBB0000);
+			viewpoint(1,257,58,9,0xBB0000);
 			.@Jeepney = 60;
 			break;
 		}

@@ -93,32 +93,32 @@
 				next;
 				mes "^3355FF*Shakakakakkakakakakkakakakakka!*^000000";
 				next;
-				switch(rand(10)) {
+				switch (rand(10)) {
 					case 1:
 					case 2:
 					case 3:
 					case 4:
 					case 5:
-					setarray (.@item[0],1002,5);
+					setarray(.@item[0],1002,5);
 					break;
 					case 6:
 					case 7:
 					case 8:
-					setarray (.@item[0],723,1);
+					setarray(.@item[0],723,1);
 					break;
 					default: // 0 ou 9
-					setarray (.@item[0],969,1);
+					setarray(.@item[0],969,1);
 					break;
 				}
 				Zeny -= 2000;
-				delitem (Mixture,1);
-				delitem (Portable_Furnace,5);
-				delitem (Coal,5);
-				delitem (Burn_Tree,5);
-				delitem (Fine_Sand,5);
-				delitem (Elunium_Stone,3);
-				delitem (Oridecon_Stone,3);
-				getitem (.@item[0],.@item[1]);
+				delitem(Mixture,1);
+				delitem(Portable_Furnace,5);
+				delitem(Coal,5);
+				delitem(Burn_Tree,5);
+				delitem(Fine_Sand,5);
+				delitem(Elunium_Stone,3);
+				delitem(Oridecon_Stone,3);
+				getitem(.@item[0],.@item[1]);
 				broders_q = 0;
 				if (alchemistq == 23) { alchemistq = 24; }
 				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
@@ -144,7 +144,5 @@
 		}
 	}
 }
-
 yuno_in01,103,157,3	duplicate(broders_q)	Bain#broders_q	4W_M_02
 yuno_in01,100,153,7	duplicate(broders_q)	1_M_01#broders_q	4W_M_02
-

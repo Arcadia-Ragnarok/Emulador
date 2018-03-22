@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 einbroch,72,202,4	script	Guia#embguide	4_M_EIN_SOLDIER,{
-	cutin ("ein_soldier",2);
+	cutin("ein_soldier",2);
 	mes "[Guia de Einbroch]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Einbroch^000000, a Cidade do Metal.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Aeroporto]","[Fábrica]","[Plaza]","[Hotel]","[Estação de Trem]","[Loja de Armas]","[Laboratório]","[Monumento]","[Guilda dos Ferreiros]","[Guilda dos Justiceiros]","Menu Anterior")) {
+				switch (select("[Aeroporto]","[Fábrica]","[Plaza]","[Hotel]","[Estação de Trem]","[Loja de Armas]","[Laboratório]","[Monumento]","[Guilda dos Ferreiros]","[Guilda dos Justiceiros]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Einbroch]";
 					mes "Posição do^0000FF Aeroporto^000000 marcado em seu mini mapa.";
@@ -92,7 +92,7 @@ einbroch,72,202,4	script	Guia#embguide	4_M_EIN_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Armeiro]","[Funcionária Kafra]","[Oficial Eden]","Menu Anterior")) {
+				switch (select("[Armeiro]","[Funcionária Kafra]","[Oficial Eden]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Einbroch]";
 					mes "Posição do^0000FF Armeiro^000000 marcado em seu mini mapa.";
@@ -141,7 +141,7 @@ einbroch,72,202,4	script	Guia#embguide	4_M_EIN_SOLDIER,{
 			mes "[Guia de Einbroch]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

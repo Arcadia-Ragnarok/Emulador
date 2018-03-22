@@ -24,7 +24,7 @@ einbroch,232,272,3	script	Estação de Trem#EinTrain	4_M_EIN_SOLDIER,{
 	mes "A taxa para embarcar no trem que vai de Einbroch para Einbech é de 200 zeny.";
 	mes "Gostaria de comprar um ticket!?";
 	next;
-	switch(select("Sim.","Não.","Sobre o meio ambiente...")) {
+	switch (select("Sim","Não","Sobre o meio ambiente...")) {
 		case 1:
 		if (Zeny > 199) {
 			mes "[Funcionário]";
@@ -33,10 +33,9 @@ einbroch,232,272,3	script	Estação de Trem#EinTrain	4_M_EIN_SOLDIER,{
 			mes "Todos a bordo!";
 			close2;
 			Zeny -= 200;
-			warp ("einbech",43,215);
+			warp("einbech",43,215);
 			end;
-		}
-		else {
+		} else {
 			mes "[Funcionário]";
 			mes "Sinto muito, mas você não tem dinheiro suficiente para pagar a taxa do trem.";
 			close;
@@ -57,7 +56,6 @@ einbroch,232,272,3	script	Estação de Trem#EinTrain	4_M_EIN_SOLDIER,{
 		close;
 	}
 }
-
 einbroch,252,301,3	duplicate(Estação de Trem#EinTrain)	Estação de Trem#EinTrain2	4_M_EIN_SOLDIER
 
 // ------------------------------------------------------------------
@@ -69,7 +67,7 @@ einbech,39,215,5	script	Equipe da Estação#EinTrain3	4_M_EIN_SOLDIER,{
 	mes "O preço para pegar o trem para Einbroch é 200 zeny.";
 	mes "Você gostaria de embarcar?";
 	next;
-	switch(select("Sim.","Não.")) {
+	switch (select("Sim","Não")) {
 		case 1:
 		if (Zeny > 199) {
 			mes "[Equipe]";
@@ -77,10 +75,9 @@ einbech,39,215,5	script	Equipe da Estação#EinTrain3	4_M_EIN_SOLDIER,{
 			mes "Todos a bordo!";
 			close2;
 			Zeny -= 200;
-			warp ("einbroch",226,276);
+			warp("einbroch",226,276);
 			end;
-		}
-		else {
+		} else {
 			mes "[Equipe]";
 			mes "Me desculpe, mas você não tem zeny suficiente para pagar a passagem do trem.";
 			close;

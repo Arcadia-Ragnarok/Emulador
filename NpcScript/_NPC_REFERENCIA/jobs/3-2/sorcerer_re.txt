@@ -62,7 +62,7 @@ gef_tower,102,34,5	script	Merito	2_M_SAGE_B,{
 		mes "[Merito]";
 		mes "What made you want to be a sorcerer?";
 		next;
-		if(select("The spirit of fire led me here.", "The spirit of water led me here.", "The spirit of earth led me here", "The spirit of meat led me here.") == 4) {
+		if (select("The spirit of fire led me here.","The spirit of water led me here.","The spirit of earth led me here","The spirit of meat led me here.") == 4) {
 			mes "[Merito]";
 			mes "That kind of spirit doesn't exist!";
 			close;
@@ -74,13 +74,13 @@ gef_tower,102,34,5	script	Merito	2_M_SAGE_B,{
 		mes "[Merito]";
 		mes "Hmm... Then first, can you write down your name on this list?";
 		next;
-		if(select("Write name.", "I won't.") == 2) {
+		if (select("Write name.","I won't.") == 2) {
 			mes "[Merito]";
 			mes "Well, okay. See you again when you get a chance.";
 			close;
 		}
 		mes "[Merito]";
-		mes "So, you are [" + strcharinfo(PC_NAME) + "].";
+		mes "So, you are ["+strcharinfo(PC_NAME)+"].";
 		next;
 		mes "[Merito]";
 		mes "Give me a second to register your name.";
@@ -91,9 +91,9 @@ gef_tower,102,34,5	script	Merito	2_M_SAGE_B,{
 		mes "Good, then I'll give you a short explanation about the Sorcerer.";
 		next;
 		mes "[Merito]";
-		mes "[" + strcharinfo(PC_NAME) + "], can you handle magic skillfully?";
+		mes "["+strcharinfo(PC_NAME)+"], can you handle magic skillfully?";
 		next;
-		if(select("Yes, I can.", "No, I'm not really good at it.") == 2) {
+		if (select("Yes, I can.","No, I'm not really good at it.") == 2) {
 			mes "[Merito]";
 			mes "What!? You don't know how to use magic?";
 			mes "What are you doing here then? Get out of here. Right now!";
@@ -103,7 +103,7 @@ gef_tower,102,34,5	script	Merito	2_M_SAGE_B,{
 		mes "Okay, that should be obvious.";
 		mes "Of course, Sorcerers use magic, too. But, do you know the main difference Sorcerers have from other magical jobs?";
 		next;
-		switch(select("They know how to sing.", "They're all old fogies.", "They can deal with the spirits.")) {
+		switch (select("They know how to sing.","They're all old fogies.","They can deal with the spirits.")) {
 		case 1:
 			mes "[Merito]";
 			mes "Well maybe some but that's not the main difference.";
@@ -127,7 +127,7 @@ gef_tower,102,34,5	script	Merito	2_M_SAGE_B,{
 		mes "[Merito]";
 		mes "Well, it's all up to you. What are you going to do?";
 		next;
-		switch(select("I will take the test.", "I'll do it later.")) {
+		switch (select("I will take the test.","I'll do it later.")) {
 		case 1:
 			mes "[Merito]";
 			mes "Okay. ";
@@ -188,9 +188,9 @@ gef_tower,113,161,5	script	Karacas	4_M_SAGE_A,{
 		mes "The list... has already arrived.";
 		next;
 		mes "[Karacas]";
-		mes "So, you are [" + strcharinfo(PC_NAME) + "]... right?";
+		mes "So, you are ["+strcharinfo(PC_NAME)+"]... right?";
 		next;
-		if(select("Yes, I am.", "No, I'm not!") == 2) {
+		if (select("Yes, I am.","No, I'm not!") == 2) {
 			mes "[Karacas]";
 			mes "Oh, there must be some mistake in the list, I think. Will you come again later?";
 			close;
@@ -307,7 +307,7 @@ gef_tower,113,161,5	script	Karacas	4_M_SAGE_A,{
 			mes "[Karacas]";
 			mes "Have any questions?";
 			next;
-			if(select("No.", "Please explain it again.") == 2) {
+			if (select("No.","Please explain it again.") == 2) {
 				mes "[Karacas]";
 				mes "Haha, then can I have a cup of water for a minute? Please come and find me again later.";
 				next;
@@ -355,14 +355,14 @@ gef_tower,113,161,5	script	Karacas	4_M_SAGE_A,{
 		mes "Originally my teacher needs to check the Sorcerer job change but after he went out to find the spirit of fish, I can't see him. So I'll check it myself.";
 		next;
 		mes "[Karacas]";
-		mes "Dear [" + strcharinfo(PC_NAME) + "],";
+		mes "Dear ["+strcharinfo(PC_NAME)+"],";
 		mes "you went around the rough wilds to open the door as a Sorcerer and passed all the requirements that our Academy has given.";
 		next;
 		mes "[Karacas]";
 		mes "Of course it is just a beginning, we don't know which spirit you're going to commune with or what kind of hardships await you.";
 		next;
 		mes "[Karacas]";
-		mes "But with the ability you've shown until now, you will be capable to do anything from now on. Dear [" + strcharinfo(PC_NAME) + "]";
+		mes "But with the ability you've shown until now, you will be capable to do anything from now on. Dear ["+strcharinfo(PC_NAME)+"]";
 		next;
 		mes "[Kalakas]";
 		if (BaseLevel < 99 || JobLevel < 50 || SkillPoint) {
@@ -380,7 +380,7 @@ gef_tower,113,161,5	script	Karacas	4_M_SAGE_A,{
 		mes "Moreover, I formally acknowledge that you've completed all the job transfer tests of the Sorcerer Academy.";
 		next;
 		mes "[Karacas]";
-		mes "Congratulations, [" + strcharinfo(PC_NAME) + "]";
+		mes "Congratulations, ["+strcharinfo(PC_NAME)+"]";
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		getitem Wind_Whisper,1;
 		getitem Green_Apple_Ring,1;

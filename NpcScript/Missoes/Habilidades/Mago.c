@@ -20,7 +20,7 @@ geffen_in,151,119,4	script	Grande Mago	1_M_WIZARD,{
 	mes "Eu estou vendo que você é um mago.";
 	mes "Conheça a si mesmo para descobrir as suas habilidades secretas!";
 	next;
-	switch (select("Habilidades secretas", "Habilidade ^3355FFProteção Arcana^000000", "Terminar a conversa")) {
+	switch (select("Habilidades secretas","Habilidade ^3355FFProteção Arcana^000000","Terminar a conversa")) {
 		case 1:
 		mes "[BLIZZARDRISS]";
 		mes "Por muitos anos eu eu andei estudando a antiga magia de Geffen.";
@@ -95,11 +95,11 @@ geffen_in,151,119,4	script	Grande Mago	1_M_WIZARD,{
 			mes "............";
 			mes "PROTEÇÃO ARCANA!!!";
 			next;
-			delitem(Glass_Bead, 3);
-			delitem(Crystal_Jewel, 1);
-			delitem(Shell, 5);
-			delitem(Solid_Shell, 1);
-			skill("MG_ENERGYCOAT", 1, 0);
+			delitem(Glass_Bead,3);
+			delitem(Crystal_Jewel,1);
+			delitem(Shell,5);
+			delitem(Solid_Shell,1);
+			skill("MG_ENERGYCOAT",1,0);
 			mes "[BLIZZARDRISS]";
 			mes ".....";
 			mes "Pronto...";

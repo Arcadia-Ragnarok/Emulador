@@ -25,7 +25,7 @@ geffen_in,144,166,4	script	Ferreiro#gefq	1_M_SMITH,{
 	mes "Então eu tenho inventado algo para os jovens ferreiros próximos.";
 	mes "Na esperança de que eles também irão dominar a minha arte...";
 	next;
-	switch(select("O que é isso?","...")) {
+	switch (select("O que é isso?","...")) {
 		case 1:
 		mes "[Ferreiro]";
 		mes "Nós Ferreiros, devemos sempre manipular o aço sob calor extremo, ar quente e metais fundidos.";
@@ -49,7 +49,7 @@ geffen_in,144,166,4	script	Ferreiro#gefq	1_M_SMITH,{
 		mes "^4422FFapenas 2.000 zenys^000000.";
 		mes "Eu vou fazer isso para você imediatamente!";
 		next;
-		switch(select("Hm... Nada mau. Certo","Como é que funciona mesmo?")) {
+		switch (select("Hm... Nada mau. Certo","Como é que funciona mesmo?")) {
 			case 1:
 			if ((countitem(Steel) > 49) && (Zeny > 1999)){
 				mes "[Ferreiro]";

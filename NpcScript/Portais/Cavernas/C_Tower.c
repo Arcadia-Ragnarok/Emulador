@@ -23,18 +23,18 @@ c_tower2,24,24,0	warp	ctorwerwarp_6	1,1,alde_dun03,277,178
 
 
 c_tower2,13,288,4	script	ctorwerwarp_7	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("c_tower2",13,282); end;
-		case 1: warp ("alde_dun03",175,131); end;
-		case 2: warp ("c_tower3",235,7); end;
+	switch (rand(3)) {
+		case 0: warp("c_tower2",13,282); end;
+		case 1: warp("alde_dun03",175,131); end;
+		case 2: warp("c_tower3",235,7); end;
 	}
 }
 
 c_tower2,223,267,4	script	ctorwerwarp_8	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("c_tower2",288,267); end;
-		case 1: warp ("alde_dun03",130,130); end;
-		case 2: warp ("c_tower3",252,29); end;
+	switch (rand(3)) {
+		case 0: warp("c_tower2",288,267); end;
+		case 1: warp("alde_dun03",130,130); end;
+		case 2: warp("c_tower3",252,29); end;
 	}
 }
 
@@ -46,24 +46,24 @@ c_tower3,42,41,0	warp	ctorwerwarp_12	1,1,alde_dun02,127,169
 c_tower3,146,8,0	warp	ctorwerwarp_13	1,1,c_tower1,235,223
 
 c_tower3,163,252,4	script	ctorwerwarp_14	WARPNPC,1,1,{
-	if (rand(2)) { warp ("c_tower3",168,252); }
-	else { warp ("alde_dun02",262,41); }
+	if (rand(2)) { warp("c_tower3",168,252); }
+	else { warp("alde_dun02",262,41); }
 	end;
 }
 
 c_tower3,240,7,4	script	ctorwerwarp_15	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("c_tower2",13,282); end;
-		case 1: warp ("alde_dun03",175,131); end;
-		case 2: warp ("c_tower3",235,7); end;
+	switch (rand(3)) {
+		case 0: warp("c_tower2",13,282); end;
+		case 1: warp("alde_dun03",175,131); end;
+		case 2: warp("c_tower3",235,7); end;
 	}
 }
 
 c_tower3,252,24,4	script	ctorwerwarp_16	WARPNPC,1,1,{
-	switch(rand(3)) {
-		case 0: warp ("c_tower2",228,267); end;
-		case 1: warp ("alde_dun03",130,130); end;
-		case 2: warp ("c_tower3",252,29); end;
+	switch (rand(3)) {
+		case 0: warp("c_tower2",228,267); end;
+		case 1: warp("alde_dun03",130,130); end;
+		case 2: warp("c_tower3",252,29); end;
 	}
 }
 
@@ -80,46 +80,46 @@ c_tower4,198,59,0	warp	ctorwerwarp_25	1,1,c_tower4,152,98
 c_tower4,204,57,0	warp	ctorwerwarp_26	1,1,c_tower4,65,77
 
 c_tower4,75,156,4	script	ctorwerwarp_27	WARPNPC,0,0,{
-	switch(rand(4)) {
-		case 0: warp ("c_tower3",168,252); end;
-		case 1: warp ("alde_dun02",262,41); end;
-		case 2: warp ("c_tower4",73,154); end;
-		case 3: warp ("c_tower4",140,149); end;
+	switch (rand(4)) {
+		case 0: warp("c_tower3",168,252); end;
+		case 1: warp("alde_dun02",262,41); end;
+		case 2: warp("c_tower4",73,154); end;
+		case 3: warp("c_tower4",140,149); end;
 	}
 }
 
 c_tower4,68,79,4	script	ctorwerwarp_28	WARPNPC,0,0,{
-	switch(rand(4)) {
-		case 0: warp ("c_tower2",13,282); end;
-		case 1: warp ("alde_dun03",175,131); end;
-		case 2: warp ("c_tower3",235,7); end;
-		case 3: warp ("c_tower4",65,77); end;
+	switch (rand(4)) {
+		case 0: warp("c_tower2",13,282); end;
+		case 1: warp("alde_dun03",175,131); end;
+		case 2: warp("c_tower3",235,7); end;
+		case 3: warp("c_tower4",65,77); end;
 	}
 }
 
 c_tower4,142,151,4	script	ctorwerwarp_29	WARPNPC,0,0,{
-	switch(rand(4)) {
-		case 0: warp ("c_tower3",168,252); end;
-		case 1: warp ("alde_dun02",262,41); end;
-		case 2: warp ("c_tower4",73,154); end;
-		case 3: warp ("c_tower4",140,149); end;
+	switch (rand(4)) {
+		case 0: warp("c_tower3",168,252); end;
+		case 1: warp("alde_dun02",262,41); end;
+		case 2: warp("c_tower4",73,154); end;
+		case 3: warp("c_tower4",140,149); end;
 	}
 }
 
 c_tower4,151,96,4	script	ctorwerwarp_30	WARPNPC,0,0,{
-	switch(rand(4)) {
-		case 0: warp ("c_tower2",228,267); end;
-		case 1: warp ("alde_dun03",130,130); end;
-		case 2: warp ("c_tower3",252,29); end;
-		case 3: warp ("c_tower4",152,95); end;
+	switch (rand(4)) {
+		case 0: warp("c_tower2",228,267); end;
+		case 1: warp("alde_dun03",130,130); end;
+		case 2: warp("c_tower3",252,29); end;
+		case 3: warp("c_tower4",152,95); end;
 	}
 }
 
 c_tower4,189,40,4	script	ctorwerwarp_31	WARPNPC,2,2,{
-	switch(rand(4)) {
-		case 0: warp ("c_tower2",228,267); end;
-		case 1: warp ("alde_dun03",130,130); end;
-		case 2: warp ("c_tower3",252,29); end;
-		case 3: warp ("c_tower4",152,95); end;
+	switch (rand(4)) {
+		case 0: warp("c_tower2",228,267); end;
+		case 1: warp("alde_dun03",130,130); end;
+		case 2: warp("c_tower3",252,29); end;
+		case 3: warp("c_tower4",152,95); end;
 	}
 }

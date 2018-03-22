@@ -20,6 +20,6 @@ kh_dun01,3,234,0	warp	khdunwarp_4	1,1,yuno_fild08,74,174
 // ------------------------------------------------------------------
 kh_dun02,43,195,0	script	khdunwarp_5	WARPNPC,1,1,{
 	OnTouch:
-	if (rand(1,2) == 1) { warp ("kh_dun01",41,206); }
-	else { warp ("kh_dun01",32,199); }
+	if (rand(1,2) == 1) { warp("kh_dun01",41,206); }
+	else { warp("kh_dun01",32,199); }
 }

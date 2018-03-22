@@ -37,7 +37,7 @@
 //=========================================================================
 
 yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
-	if(countitem(Milk) > 49 && countitem(Old_Frying_Pan) > 49 && countitem(Cheese) > 49 && countitem(Piece_Of_Cake) > 49)
+	if (countitem(Milk) > 49 && countitem(Old_Frying_Pan) > 49 && countitem(Cheese) > 49 && countitem(Piece_Of_Cake) > 49)
 	{
 		mes "[Kasis]";
 		mes "Milk, Cheese,";
@@ -47,7 +47,7 @@ yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
 		mes "I need to make lunch for";
 		mes "my friends in the Factory!";
 		next;
-		switch( select( "Well, I did promise to help you.", "What are you talking about?" ) )
+		switch ( select( "Well, I did promise to help you.","What are you talking about?" ) )
 		{
 			case 1:
 				mes "[Kasis]";
@@ -106,7 +106,7 @@ yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
 				mes "Old Frying Pans and Pieces";
 				mes "of Cake that you are carrying.^000000";
 				next;
-				switch( select( "You can have these if you want.", "Um, why are you staring?" ) )
+				switch ( select( "You can have these if you want.","Um, why are you staring?" ) )
 				{
 					case 1:
 						mes "[Kasis]";
@@ -164,7 +164,7 @@ yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
 	mes "don't have any more bread";
 	mes "in stock. ^333333*Siiiiiiiiigh...*^000000";
 	next;
-	switch( select( "Is something wrong?", "End Conversation." ) )
+	switch ( select( "Is something wrong?","End Conversation." ) )
 	{
 		case 1:
 			mes "[Kasis]";
@@ -191,7 +191,7 @@ yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
 			mes "since their financial situation";
 			mes "seems pretty bad right now.";
 			next;
-			switch( select( "Do you want me to help you?", "I'm so sorry to hear that." ) )
+			switch ( select( "Do you want me to help you?","I'm so sorry to hear that." ) )
 			{
 				case 1:
 					mes "[Kasis]";
@@ -247,7 +247,7 @@ yuno,222,116,3	script	Kasis#LhzHat	4_M_REPAIR,{
 
 lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 	disable_items;
-	if(DTHATQ == 0)
+	if (DTHATQ == 0)
 	{
 		mes "[Strange Guy]";
 		mes "Wait! Don't say";
@@ -256,7 +256,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 		mes "Rune-Midgarts Kingdom!";
 		mes "So... I'm right, aren't I?";
 		next;
-		switch( select( "Who are you?", "How did you know?", "Ignore him." ) )
+		switch ( select( "Who are you?","How did you know?","Ignore him." ) )
 		{
 			case 1:
 				mes "[Morris]";
@@ -266,7 +266,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 				mes "detective of great acclaim";
 				mes "and world wide fame.";
 				next;
-				switch( select( "I've never heard of you.", "You're kidding me.", "I'm outta here." ) )
+				switch ( select( "I've never heard of you.","You're kidding me.","I'm outta here." ) )
 				{
 					case 1:
 						mes "[Morris]";
@@ -277,7 +277,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 						mes "Surely you recognize one";
 						mes "of my esteemed titles.";
 						next;
-						switch( select( "Nope, I don't know you.", "You're Morris Poe?!" ) )
+						switch ( select( "Nope, I don't know you.","You're Morris Poe?!" ) )
 						{
 							case 1:
 								mes "[Morris]";
@@ -307,7 +307,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 						mes "analytical eyes and";
 						mes "tell me I'm joking.";
 						next;
-						switch( select( "Whoa, those ARE keen eyes.", "Okay. You're joking." ) )
+						switch ( select( "Whoa, those ARE keen eyes.","Okay. You're joking." ) )
 						{
 							case 1:
 								mes "[Morris]";
@@ -318,7 +318,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 								mes "detective and crime";
 								mes "fighter, Morris Poe!";
 								next;
-								switch( select( "I've never heard of you.", "Golly, Morris Poe?!" ) )
+								switch ( select( "I've never heard of you.","Golly, Morris Poe?!" ) )
 								{
 									case 1:
 										mes "[Morris]";
@@ -350,7 +350,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 								mes "And receiving fake phone";
 								mes "numbers from really cute girls.";
 								next;
-								switch( select( "Yeah, you're no Don Juan.", "I'm... I'm sorry." ) )
+								switch ( select( "Yeah, you're no Don Juan.","I'm... I'm sorry." ) )
 								{
 									case 1:
 										mes "[Morris]";
@@ -369,7 +369,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 										mes "What excuse could possibly";
 										mes "exonerate your behavior?!";
 										next;
-										switch( select( "I... I was intimidated...", "It's how I treat all losers." ) )
+										switch ( select( "I... I was intimidated...","It's how I treat all losers." ) )
 										{
 											case 1:
 												mes "[Morris]";
@@ -482,7 +482,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 			DTHATQ = 1;
 			close;
 	}
-	else if(DTHATQ == 1)
+	else if (DTHATQ == 1)
 	{
 		mes "[Morris]";
 		mes "So, did you want to";
@@ -505,7 +505,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 		mes "1 Bucket Hat, we can begin.";
 		mes "Young Detective's Club... Salute! ";
 		next;
-		switch( select( "Salute.", "Whatever..." ) )
+		switch ( select( "Salute.","Whatever..." ) )
 		{
 			case 1:
 				mes "[Morris]";
@@ -516,7 +516,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 				mes "look through your Inventory...";
 				next;
 				@lhzhatfailed = 0;
-				if(countitem(Spectacles) < 10)
+				if (countitem(Spectacles) < 10)
 				{
 					mes "[Morris]";
 					mes "Wait. You don't have";
@@ -527,7 +527,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(countitem(Sword_Accessory) < 1887 && @lhzhatfailed == 0)
+				if (countitem(Sword_Accessory) < 1887 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -535,7 +535,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(countitem(Fedora_) < 1 && @lhzhatfailed == 0)
+				if (countitem(Fedora_) < 1 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -546,7 +546,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(Zeny < 1887 && @lhzhatfailed == 0)
+				if (Zeny < 1887 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -558,7 +558,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(@lhzhatfailed == 1)
+				if (@lhzhatfailed == 1)
 				{
 					mes "[Morris]";
 					mes "^333333*Sigh*^000000 You need";
@@ -596,7 +596,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 				DTHATQ = 2;
 				getitem 5108,1;
 				next;
-				switch( select( "Wait, promotion?", "Hooray!" ) )
+				switch ( select( "Wait, promotion?","Hooray!" ) )
 				{
 					case 1:
 						mes "[Morris]";
@@ -632,7 +632,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 				close;
 		}
 	}
-	else if(DTHATQ == 2)
+	else if (DTHATQ == 2)
 	{
 		mes "[Morris]";
 		mes "Have you come to me";
@@ -656,7 +656,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 		mes "you need in order to earn";
 		mes "a Renown Detective's Cap?";
 		next;
-		switch( select( "I'm not sure", "Sure!" ) )
+		switch ( select( "I'm not sure","Sure!" ) )
 		{
 			case 1:
 				mes "[Morris]";
@@ -683,7 +683,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 				mes "brought everything...";
 				next;
 				@lhzhatfailed = 0;
-				if(countitem(Spectacles) < 10)
+				if (countitem(Spectacles) < 10)
 				{
 					mes "[Morris]";
 					mes "Hmm, you don't have";
@@ -694,7 +694,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(countitem(Sword_Accessory) < 1887 && @lhzhatfailed == 0)
+				if (countitem(Sword_Accessory) < 1887 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -702,7 +702,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(countitem(Fedora_) < 1 && @lhzhatfailed == 0)
+				if (countitem(Fedora_) < 1 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -713,7 +713,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(Zeny < 1887 && @lhzhatfailed == 0)
+				if (Zeny < 1887 && @lhzhatfailed == 0)
 				{
 					mes "[Morris]";
 					mes "Magnifiers. Check.";
@@ -725,7 +725,7 @@ lighthalzen,143,68,0	script	Strange Guy#LhzHat	1_M_01,{
 					@lhzhatfailed = 1;
 					next;
 				}
-				if(@lhzhatfailed == 1)
+				if (@lhzhatfailed == 1)
 				{
 					mes "[Morris]";
 					mes "Remember...";
@@ -775,7 +775,7 @@ lighthalzen,360,313,3	script	Kid#LhzHat	4_M_KID1,{
 	mes "Um, would you do";
 	mes "me a favor, please?";
 	next;
-	if(countitem(Royal_Jelly) && countitem(Milk_Bottle) && countitem(Nose_Ring) && countitem(Pacifier))
+	if (countitem(Royal_Jelly) && countitem(Milk_Bottle) && countitem(Nose_Ring) && countitem(Pacifier))
 	{
 		mes "[Kid]";
 		mes "Oh! You brought me";
@@ -809,7 +809,7 @@ lighthalzen,360,313,3	script	Kid#LhzHat	4_M_KID1,{
 		getitem 5110,1;
 		close;
 	}
-	switch( select( "What do you need?", "Sorry, kid..." ) )
+	switch ( select( "What do you need?","Sorry, kid..." ) )
 	{
 		case 1:
 			mes "[Kid]";
@@ -826,10 +826,10 @@ lighthalzen,360,313,3	script	Kid#LhzHat	4_M_KID1,{
 			mes "asking is, would you be";
 			mes "able to spare some food?";
 			next;
-			switch( select( "Help him.", "Refuse to help." ) )
+			switch ( select( "Help him.","Refuse to help." ) )
 			{
 				case 1:
-					if(!countitem(Royal_Jelly))
+					if (!countitem(Royal_Jelly))
 					{
 						mes "[Kid]";
 						mes "If you would, do you think";
@@ -892,7 +892,7 @@ lighthalzen,360,313,3	script	Kid#LhzHat	4_M_KID1,{
 }
 
 einbech,70,222,5	script	Metelle#LhzHat	4_F_02,{
-	if(countitem(Black_Dyestuffs) && countitem(Tiger_Skin_Panties) > 998 && countitem(Frozen_Rose) && Zeny > 49999)
+	if (countitem(Black_Dyestuffs) && countitem(Tiger_Skin_Panties) > 998 && countitem(Frozen_Rose) && Zeny > 49999)
 	{
 		mes "[Metelle]";
 		mes "Oh, hello, what's this?";
@@ -909,7 +909,7 @@ einbech,70,222,5	script	Metelle#LhzHat	4_F_02,{
 		mes "I'd never be able to gather";
 		mes "those things on my own...";
 		next;
-		switch( select( "Let her have the items.", "Don't give her the items." ) )
+		switch ( select( "Let her have the items.","Don't give her the items." ) )
 		{
 			case 1:
 				mes "[Metelle]";
@@ -1010,10 +1010,10 @@ lhz_in02,91,38,5	script	Margaret Mary#LhzHat	4_F_01,{
 	mes "need jewels or fancy dresses";
 	mes "to look noble and beautiful. It's the perfect gift for a lady.";
 	next;
-	switch( select( "Make a Mystic Rose.", "End Conversation." ) )
+	switch ( select( "Make a Mystic Rose.","End Conversation." ) )
 	{
 		case 1:
-			if(countitem(Crystal_Jewel_) > 9 && countitem(Witherless_Rose) > 2 && countitem(White_Dyestuffs) && Zeny > 49999)
+			if (countitem(Crystal_Jewel_) > 9 && countitem(Witherless_Rose) > 2 && countitem(White_Dyestuffs) && Zeny > 49999)
 			{
 				mes "[Margaret Mary]";
 				mes "Ah, I see that you've brought";
@@ -1022,7 +1022,7 @@ lhz_in02,91,38,5	script	Margaret Mary#LhzHat	4_F_01,{
 				mes "Roses and adorn these flowers";
 				mes "with eternal elegance. May I use these items to make a Mystic Rose?";
 				next;
-				switch( select( "Yes", "No" ) )
+				switch ( select( "Yes","No" ) )
 				{
 					case 1:
 						mes "[Margaret Mary]";
@@ -1106,14 +1106,14 @@ lhz_in02,91,38,5	script	Margaret Mary#LhzHat	4_F_01,{
 
 lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 	disable_items;
-	if(LHZBTQ == 0)
+	if (LHZBTQ == 0)
 	{
 		mes "[Relaxed-Looking Lady]";
 		mes "Hmmm...?";
 		mes "What? Did you";
 		mes "need something?";
 		next;
-		switch( select( "N-Nothing.", "Um, you look so relaxed." ) )
+		switch ( select( "N-Nothing.","Um, you look so relaxed." ) )
 		{
 			case 1:
 				mes "[Relaxed-Looking Lady]";
@@ -1136,8 +1136,8 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 				mes "That is, if you don't";
 				mes "mind me asking you.";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
-				mes "My name is " + strcharinfo(PC_NAME) + "";
+				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "My name is "+strcharinfo(PC_NAME)+"";
 				mes "and I'm an adventurer";
 				next;
 				mes "[Achiha]";
@@ -1156,7 +1156,7 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 				mes "an adventurer like you would";
 				mes "want to have a hat I made?";
 				next;
-				switch( select( "Er, I dunno.", "Sure." ) )
+				switch ( select( "Er, I dunno.","Sure." ) )
 				{
 					case 1:
 						mes "[Achiha]";
@@ -1211,14 +1211,14 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 				}
 		}
 	}
-	else if(LHZBTQ == 1)
+	else if (LHZBTQ == 1)
 	{
 		mes "[Achiha]";
 		mes "Oh, hello.";
 		mes "Isn't it such a nice,";
 		mes "quiet, pleasant day?";
 		next;
-		switch( select( "Indeed.", "Would you please make a hat for me?" ) )
+		switch ( select( "Indeed.","Would you please make a hat for me?" ) )
 		{
 			case 1:
 				mes "[Achiha]";
@@ -1255,7 +1255,7 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 				close;
 		}
 	}
-	else if(LHZBTQ == 2)
+	else if (LHZBTQ == 2)
 	{
 		mes "[Achiha]";
 		mes "Oh, good, you're here.";
@@ -1263,10 +1263,10 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 		mes "Did you bring everything that";
 		mes "you need to make a ^0000FFRed Bonnet^000000?";
 		next;
-		switch( select( "Yes.", "I forgot what I need." ) )
+		switch ( select( "Yes.","I forgot what I need." ) )
 		{
 			case 1:
-				if(countitem(Green_Lace) < 1 || countitem(Silk_Ribbon) < 1 || countitem(Scarlet_Dyestuffs) < 1 || countitem(Picnic_Hat) < 1 || Zeny < 50000)
+				if (countitem(Green_Lace) < 1 || countitem(Silk_Ribbon) < 1 || countitem(Scarlet_Dyestuffs) < 1 || countitem(Picnic_Hat) < 1 || Zeny < 50000)
 				{
 					mes "[Achiha]";
 					mes "Uh oh.";
@@ -1327,7 +1327,7 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 				close;
 		}
 	}
-	else if(LHZBTQ == 3)
+	else if (LHZBTQ == 3)
 	{
 		mes "[Achiha]";
 		mes "Oh, I remember you.";
@@ -1336,10 +1336,10 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 		mes "so much. Did you want me";
 		mes "to make another one for you?";
 		next;
-		switch( select( "Yes.", "I forgot what I need." ) )
+		switch ( select( "Yes.","I forgot what I need." ) )
 		{
 			case 1:
-				if(countitem(Green_Lace) < 1 || countitem(Silk_Ribbon) < 1 || countitem(Scarlet_Dyestuffs) < 1 || countitem(Picnic_Hat) < 1 || Zeny < 50000)
+				if (countitem(Green_Lace) < 1 || countitem(Silk_Ribbon) < 1 || countitem(Scarlet_Dyestuffs) < 1 || countitem(Picnic_Hat) < 1 || Zeny < 50000)
 				{
 					mes "[Achiha]";
 					mes "Uh oh.";
@@ -1402,7 +1402,7 @@ lighthalzen,182,89,0	script	Relaxed-Looking Lady	4_F_02,{
 }
 
 gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
-	if(ZLMASKQ == 0)
+	if (ZLMASKQ == 0)
 	{
 		mes "[Zealotus]";
 		mes "Kneel, worm!";
@@ -1417,7 +1417,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 		mes "my feet, and perhaps you";
 		mes "might be spared. Hohohohoho!";
 		next;
-		switch( select(  "Oh, your highness!", "Whatever." ) )
+		switch ( select(  "Oh, your highness!","Whatever." ) )
 		{
 			case 1:
 				mes "[Zealotus]";
@@ -1427,7 +1427,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 				mes "woman revels in her power to";
 				mes "have her man do her bidding!";
 				next;
-				switch( select( "Yes, it's so true!", "Boooo!" ) )
+				switch ( select( "Yes, it's so true!","Boooo!" ) )
 				{
 					case 1:
 						mes "[Zealotus]";
@@ -1473,7 +1473,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 				close;
 		}
 	}
-	else if(ZLMASKQ > 0 && ZLMASKQ < 6)
+	else if (ZLMASKQ > 0 && ZLMASKQ < 6)
 	{
 		mes "[Zealotus]";
 		mes "Hm. If my beloved is";
@@ -1484,7 +1484,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 		mes "place. Ohohohohoho!";
 		close;
 	}
-	else if(ZLMASKQ == 6)
+	else if (ZLMASKQ == 6)
 	{
 		mes "[Zealotus]";
 		mes "Ooh, you're back.";
@@ -1511,9 +1511,9 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 		ZLMASKQ = 7;
 		close;
 	}
-	else if(ZLMASKQ == 7)
+	else if (ZLMASKQ == 7)
 	{
-		if(countitem(Cat_Eyed_Stone) && countitem(Prohibition_Red_Candle) && countitem(Old_Magic_Circle) > 29)
+		if (countitem(Cat_Eyed_Stone) && countitem(Prohibition_Red_Candle) && countitem(Old_Magic_Circle) > 29)
 		{
 			mes "[Zealotus]";
 			mes "I see that you have";
@@ -1534,7 +1534,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 			mes "that we may complete the";
 			mes "final step of this contract...";
 			next;
-			switch( select( "Don't complete the contract.", "Complete the contract." ) )
+			switch ( select( "Don't complete the contract.","Complete the contract." ) )
 			{
 				case 1:
 					mes "[Zealotus]";
@@ -1553,11 +1553,11 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 					mes "Forbidden Red Candle.";
 					next;
 					mes "[Zealotus]";
-					mes "" + strcharinfo(PC_NAME) + " will";
+					mes ""+strcharinfo(PC_NAME)+" will";
 					mes "forever have a share";
 					mes "in my power. Those that";
 					mes "bow to me must also bow";
-					mes "to " + strcharinfo(PC_NAME) + ". It shall be done.";
+					mes "to "+strcharinfo(PC_NAME)+". It shall be done.";
 					specialeffect EF_DEVIL;
 					specialeffect EF_POISONHIT;
 					next;
@@ -1585,7 +1585,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 		mes "of my power as I've promised.";
 		close;
 	}
-	else if(ZLMASKQ == 8)
+	else if (ZLMASKQ == 8)
 	{
 		mes "[Zealotus]";
 		mes "Ah, I greet you in";
@@ -1609,7 +1609,7 @@ gl_prison1,137,138,5	script	Zealotus#LhzHat	ZHERLTHSH,{
 }
 
 gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
-	if(ZLMASKQ == 0)
+	if (ZLMASKQ == 0)
 	{
 		mes "[Phendark]";
 		mes "Huh? Oh no!";
@@ -1618,7 +1618,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		mes "don't come near me!";
 		close;
 	}
-	else if(ZLMASKQ == 1)
+	else if (ZLMASKQ == 1)
 	{
 		mes "[Phendark]";
 		mes "Huh? Oh no!";
@@ -1643,7 +1643,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		mes "Zealotus, heeeeeelp me!";
 		emotion e_sob;
 
-		if(!(
+		if (!(
 			countitem(Rope) || countitem(Rope_) || countitem(Line) ||
 			countitem(Line_) || countitem(Wire) || countitem(Wire_) ||
 			countitem(Rante) || countitem(Rante_) || countitem(Tail) ||
@@ -1656,7 +1656,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			close; // no whip equipped or in inventory
 
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "You're pathetic!";
 		mes "Aren't you supposed";
 		mes "to be a monster? You know";
@@ -1671,7 +1671,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		mes "^3355FFYou nonchalantly^000000";
 		mes "^3355FFbrandish your Whip.^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That's right.";
 		next;
 		mes "^3355FF*Snap!*";
@@ -1694,9 +1694,9 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		ZLMASKQ = 2;
 		close;
 	}
-	else if(ZLMASKQ == 2 || ZLMASKQ == 3)
+	else if (ZLMASKQ == 2 || ZLMASKQ == 3)
 	{
-		if(countitem(Dark_Crystal_Fragment) > 368 && ZLMASKQ == 3)
+		if (countitem(Dark_Crystal_Fragment) > 368 && ZLMASKQ == 3)
 		{
 			mes "[Phendark]";
 			mes "Y-you again!";
@@ -1706,7 +1706,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			mes "hurt me! Oh, oh p-please...!";
 			emotion e_swt2;
 			next;
-			switch( select( "Feed him Dark Crystal Fragment.", "Threaten him." ) )
+			switch ( select( "Feed him Dark Crystal Fragment.","Threaten him." ) )
 			{
 				case 1:
 					mes "[Phendark]";
@@ -1751,7 +1751,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 					delitem 7315,369;
 					close;
 				case 2:
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "So what happens";
 					mes "if I don't decide not";
 					mes "to hurt you? Whatcha";
@@ -1774,7 +1774,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		emotion e_sob;
 		close;
 	}
-	else if(ZLMASKQ == 4)
+	else if (ZLMASKQ == 4)
 	{
 		mes "[Phendark]";
 		mes "My chest was on fire,";
@@ -1785,7 +1785,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		mes "those crystals?";
 		close;
 	}
-	else if(ZLMASKQ == 5)
+	else if (ZLMASKQ == 5)
 	{
 		mes "[Phendark]";
 		mes "You again? Oh no,";
@@ -1793,8 +1793,8 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 		mes "me or make me eat those";
 		mes "weird crystals again, are you?";
 		next;
-		mes "^3131FF[" + strcharinfo(PC_NAME) + "]^000000";
-		switch( select( "Rybio", "Injustice", "Zealotus" ) )
+		mes "^3131FF["+strcharinfo(PC_NAME)+"]^000000";
+		switch ( select( "Rybio","Injustice","Zealotus" ) )
 		{
 			case 1:
 				mes "Rybio";
@@ -1807,7 +1807,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 				++.@phen_point;
 				break;
 		}
-		switch( select( "hates", "likes" ) )
+		switch ( select( "hates","likes" ) )
 		{
 			case 1:
 				mes "hates";
@@ -1818,7 +1818,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 				++.@phen_point;
 				break;
 		}
-		switch( select( "Rybio.", "Injustice.", "Phendark.", "Zealotus." ) )
+		switch ( select( "Rybio.","Injustice.","Phendark.","Zealotus." ) )
 		{
 			case 1:
 				mes "Rybio.";
@@ -1834,7 +1834,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 				mes "Zealotus.";
 				next;
 		}
-		if(.@phen_point == 1)
+		if (.@phen_point == 1)
 		{
 			mes "[Phendark]";
 			mes "I don't think";
@@ -1844,7 +1844,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			mes "Still, what a surprise!";
 			close;
 		}
-		else if(.@phen_point == 2)
+		else if (.@phen_point == 2)
 		{
 			mes "[Phendark]";
 			mes "Hey...!";
@@ -1852,7 +1852,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			mes "that's something";
 			mes "I want to hear about!";
 		}
-		else if(.@phen_point == 3)
+		else if (.@phen_point == 3)
 		{
 			mes "[Phendark]";
 			mes "I can't believe";
@@ -1864,7 +1864,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			emotion e_sob;
 			close;
 		}
-		else if(.@phen_point == 4)
+		else if (.@phen_point == 4)
 		{
 			mes "[Phendark]";
 			mes "...";
@@ -1883,10 +1883,10 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 			close;
 		}
 
-		switch( select( "Insult him.", "Apologize." ) )
+		switch ( select( "Insult him.","Apologize." ) )
 		{
 			case 1:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "First of all,";
 				mes "what exactly sets";
 				mes "you apart from all the";
@@ -1898,20 +1898,20 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 				mes "...";
 				mes "......";
 				next;
-				switch( select( "Break his pride.", "Tell him you were joking." ) )
+				switch ( select( "Break his pride.","Tell him you were joking." ) )
 				{
 					case 1:
-						mes "^3131FF[" + strcharinfo(PC_NAME) + "]^000000";
+						mes "^3131FF["+strcharinfo(PC_NAME)+"]^000000";
 						mes "I mean, there are guys";
 						mes "like Bloody Murderer out";
 						mes "there who are more evil";
 						mes "than you, and best of all,";
 						mes "not afraid of humans!";
 						next;
-						switch( select( "Go for the low blow.", "Try to salvage his confidence." ) )
+						switch ( select( "Go for the low blow.","Try to salvage his confidence." ) )
 						{
 							case 1:
-								mes "[" + strcharinfo(PC_NAME) + "]";
+								mes "["+strcharinfo(PC_NAME)+"]";
 								mes "You know, me and Zealotus";
 								mes "were actually talking about";
 								mes "you recently. She told me that";
@@ -1919,7 +1919,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 								mes "feel sick! I mean, what kind";
 								mes "of monster is afraid of humans?";
 								next;
-								mes "[" + strcharinfo(PC_NAME) + "]";
+								mes "["+strcharinfo(PC_NAME)+"]";
 								mes "Now you've reached the";
 								mes "point where even Injustice";
 								mes "is manlier than you now,";
@@ -1956,7 +1956,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 								emotion e_an;
 								close;
 							case 2:
-								mes "^3131FF[" + strcharinfo(PC_NAME) + "]^000000";
+								mes "^3131FF["+strcharinfo(PC_NAME)+"]^000000";
 								mes "But know that I think";
 								mes "about it, maybe you look";
 								mes "much tougher than that";
@@ -1969,12 +1969,12 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 								mes "...";
 								mes "......";
 								next;
-								mes "[" + strcharinfo(PC_NAME) + "]";
+								mes "["+strcharinfo(PC_NAME)+"]";
 								mes "...Yeeeeeah.";
 								close;
 						}
 					case 2:
-						mes "[" + strcharinfo(PC_NAME) + "]";
+						mes "["+strcharinfo(PC_NAME)+"]";
 						mes "But now that I think";
 						mes "about it, you actually";
 						mes "are much better than all";
@@ -1989,7 +1989,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 						close;
 				}
 			case 2:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "I...";
 				mes "I was just kidding!";
 				mes "How could she hate";
@@ -2004,7 +2004,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 				close;
 		}
 	}
-	else if(ZLMASKQ > 5)
+	else if (ZLMASKQ > 5)
 	{
 		mes "[Phendark]";
 		mes "Zealotus! How dare";
@@ -2018,7 +2018,7 @@ gl_prison1,97,104,1	script	Phendark#LhzHat	PHENDARK,{
 }
 
 gl_prison1,100,48,5	script	Rybio#LhzHat	RYBIO,{
-	if(ZLMASKQ == 2)
+	if (ZLMASKQ == 2)
 	{
 		mes "[Rybio]";
 		mes "You know, I usually just";
@@ -2028,7 +2028,7 @@ gl_prison1,100,48,5	script	Rybio#LhzHat	RYBIO,{
 		mes "I'm gonna give you just one";
 		mes "chance to run for your life.";
 		next;
-		switch( select( "Talk about Phendark.", "Run for your life." ) )
+		switch ( select( "Talk about Phendark.","Run for your life." ) )
 		{
 			case 1:
 				mes "[Rybio]";
@@ -2077,7 +2077,7 @@ gl_prison1,100,48,5	script	Rybio#LhzHat	RYBIO,{
 				close;
 		}
 	}
-	else if(ZLMASKQ == 3)
+	else if (ZLMASKQ == 3)
 	{
 		mes "[Rybio]";
 		mes "I don't get why someone";
@@ -2095,7 +2095,7 @@ gl_prison1,100,48,5	script	Rybio#LhzHat	RYBIO,{
 		mes "that sleeping within, you know?";
 		close;
 	}
-	else if(ZLMASKQ == 4)
+	else if (ZLMASKQ == 4)
 	{
 		mes "[Rybio]";
 		mes "Feeding him all of those";
@@ -2115,7 +2115,7 @@ gl_prison1,100,48,5	script	Rybio#LhzHat	RYBIO,{
 		ZLMASKQ = 5;
 		close;
 	}
-	else if(ZLMASKQ == 5)
+	else if (ZLMASKQ == 5)
 	{
 		mes "[Rybio]";
 		mes "Phendark sure looks";
@@ -2160,7 +2160,7 @@ airport,148,41,3	script	Freight Manager#toast	4_M_EIN_SOLDIER,{
 		mes "need help finding your";
 		mes "way around this city?";
 		next;
-		switch(select("Sure, I'm heading to Juno.","I need help finding my way around!","Cancel.")) {
+		switch (select("Sure, I'm heading to Juno.","I need help finding my way around!","Cancel.")) {
 			case 1:
 				mes "[Kirishu]";
 				mes "Well, if you're going to";
@@ -2205,7 +2205,7 @@ airport,148,41,3	script	Freight Manager#toast	4_M_EIN_SOLDIER,{
 				mes "other questions to ask";
 				mes "me while you're here?";
 				next;
-				switch(select("Can I take a picture with you?","About Einbroch","No, thanks.")) {
+				switch (select("Can I take a picture with you?","About Einbroch","No, thanks.")) {
 					case 1:
 						mes "[Kirishu]";
 						mes "Pardon me?";

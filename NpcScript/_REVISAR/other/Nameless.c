@@ -143,7 +143,7 @@ ra_in01,308,59,1	script	Garçom#pc	4_M_RACHMAN2,{
 				mes "Por aqui.";
 				close2;
 				aru_monas = 7;
-				switch(rand(1,4)) {
+				switch (rand(1,4)) {
 					case 1: warp("ra_in01",303,43); end;
 					case 2: warp("ra_in01",304,43); end;
 					case 3: warp("ra_in01",304,39); end;
@@ -528,7 +528,7 @@ ve_fild07,125,128,0	script	Barco#Aru	HIDDEN_NPC,{
 		mes "Mas se falhar, talvez tenha que navegar com este barco sem mim.";
 		mes "Então, está pronto para ir?";
 		next;
-		switch(select("Sim, estou pronto","Dê-me mais um tempo.")) {
+		switch (select("Sim, estou pronto","Dê-me mais um tempo.")) {
 			case 1:
 			mes "[Larjes]";
 			mes "Certo, vamos lá, é melhor se segurar:";
@@ -548,7 +548,7 @@ ve_fild07,125,128,0	script	Barco#Aru	HIDDEN_NPC,{
 	} else if (aru_monas < 20) {
 		mes "^3355FFEste é o barco que pode levar você ao monastério.^000000";
 		next;
-		switch(select("Ir para o Monastério","Cancelar")) {
+		switch (select("Ir para o Monastério","Cancelar")) {
 			case 1:
 			mes "^3355FFVocê zarpa em direção ao monastério...^000000";
 			close2;
@@ -561,7 +561,7 @@ ve_fild07,125,128,0	script	Barco#Aru	HIDDEN_NPC,{
 	} else {
 		mes "^3355FFEste é o barco que pode levar você ao monastério.^000000";
 		next;
-		switch(select("Ir para o Monastério","Cancelar")) {
+		switch (select("Ir para o Monastério","Cancelar")) {
 			case 1:
 			mes "^3355FFVocê zarpa em direção ao monastério...^000000";
 			close2;
@@ -582,7 +582,7 @@ ve_fild07,128,130,1	script	Agente Secreto#Aru	4W_M_01,{
 		mes "Vou ajudar você a navegar até o monastério.";
 		mes "Mas se falhar enquanto estiver lá, posso não estar aqui quando você voltar...";
 		next;
-		switch(select("Sim, estou pronto","Dê-me mais um tempo.")) {
+		switch (select("Sim, estou pronto","Dê-me mais um tempo.")) {
 			case 1:
 			mes "[Larjes]";
 			mes "Certo, vamos lá.";
@@ -807,9 +807,9 @@ nameless_n,169,254,0	script	Night#Aru2	FAKE_NPC,3,3,{
 	end;
 
 	OnTouch:
-	if(aru_monas == 20) {
+	if (aru_monas == 20) {
 		hideoffnpc("Larjes#Monastery2");
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Mas que diabos...?!";
 		next;
 		mes "[Larjes]";
@@ -848,7 +848,7 @@ nameless_i,259,218,3	script	Larjes#Aru	4W_M_01,{
 		mes "Sei que ainda há coisas nesta ilha que você quer investigar.";
 		mes "Mas quer deixar este lugar por algum tempo?";
 		next;
-		if(select("Sim","Não") == 1) {
+		if (select("Sim","Não") == 1) {
 			mes "[Larjes]";
 			mes "Certo, vamos lá.";
 			close2;
@@ -886,7 +886,7 @@ nameless_n,259,218,3	script	Larjes#Boat1	4W_M_01,{
 			mes "Sei que ainda há coisas nesta ilha que você quer investigar.";
 			mes "Mas quer deixar este lugar por algum tempo?";
 			next;
-			switch(select("Sim", "Não")) {
+			switch (select("Sim","Não")) {
 				case 1:
 				mes "[Larjes]";
 				mes "Certo, vamos lá.";
@@ -925,7 +925,7 @@ nameless_n,259,218,3	script	Larjes#Boat1	4W_M_01,{
 	mes "[Larjes]";
 	mes "Você ainda quer investigar a ilha?";
 	next;
-	switch(select("Não","Sim")) {
+	switch (select("Não","Sim")) {
 		case 1:
 		mes "[Larjes]";
 		mes "Certo, vamos lá.";
@@ -953,7 +953,7 @@ abbey02,224,70,0	script	Livros#Mona1	HIDDEN_NPC,{
 	} else if (aru_monas == 21) {
 		mes "^3355FFHá um livro manchado com sangue entre tudos estes livros velhos, mofados.^000000";
 		next;
-		if(select("Examinar o Livro","Ignorar")==1) {
+		if (select("Examinar o Livro","Ignorar")==1) {
 			aru_monas = 22;
 			changequest(17014,17015);
 			getitem(Research_Note,1);
@@ -1062,7 +1062,7 @@ nameless_n,145,162,0	script	AideAmi#Aru	HIDDEN_WARP_NPC,2,2,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Há uma parede baixa aqui contra a outra parede, se eu escalo isto, eu poderia chegar ao lugar de descanso do Tristan III...";
 		next;
-		switch(select("Fique aqui","Escale a parede")) {
+		switch (select("Fique aqui","Escale a parede")) {
 			case 1:
 			warp("nameless_n",158,169);
 			end;
@@ -1091,7 +1091,7 @@ ra_temple,165,57,5	script	Niren#ss	4_F_MADAME,{
 	mes "Estou muito cansada agora, mas posso conceder um minutinho.";
 	mes "O que gostaria de saber?";
 	next;
-	switch(select("Falaar sobre Contrabandistas","Perguntar sobre Zhed")) {
+	switch (select("Falaar sobre Contrabandistas","Perguntar sobre Zhed")) {
 		case 1:
 		if (aru_monas == 12) {
 			mes "[Niren]";
@@ -1656,7 +1656,7 @@ moc_ruins,77,167,4	script	Comerciante estrangeiro#aru1	4_M_MASKMAN,5,5,{
 			mes "*Ofegante*";
 			mes "*Suando*";
 			next;
-			switch(select("Dar Vinho de Frutas","Assistir em Silêncio")) {
+			switch (select("Dar Vinho de Frutas","Assistir em Silêncio")) {
 				case 1:
 				mes "[Comerciante estrangeiro]";
 				mes "Ah, obrigado!";
@@ -1934,7 +1934,7 @@ ra_fild03,139,355,5	script	Ishmael#em	4_F_CHILD,{
 		mes "Espere, você você veio me pedir alguma coisa, certo?";
 		emotion(e_swt2);
 		next;
-		switch(select("Entregar o Arquivo","Deixá-la em Paz")) {
+		switch (select("Entregar o Arquivo","Deixá-la em Paz")) {
 			case 1:
 			if (countitem(File02) > 0) {
 				mes "["+strcharinfo(PC_NAME)+"]";
@@ -2011,7 +2011,7 @@ ra_fild03,139,355,5	script	Ishmael#em	4_F_CHILD,{
 			mes "[Ishmael]";
 			mes "Se você jogar a sardônix para cá, vou poder forjar a sua cópia agora mesmo.";
 			next;
-			switch(select("Não Dar para Ela","Dar para Ela")) {
+			switch (select("Não Dar para Ela","Dar para Ela")) {
 				case 1:
 				mes "[Ishmael]";
 				mes "Hã? Pensei que você precisasse da minha ajuda.";
@@ -2347,7 +2347,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "Nossa, não precisava me assustar assim!";
 		mes "O que é que você quer?";
 		next;
-		switch(select("Você parece preocupado","Nada. Cuide-se!")) {
+		switch (select("Você parece preocupado","Nada. Cuide-se!")) {
 			case 1:
 			if (BaseLevel < 61) {
 				mes "[Muff]";
@@ -2376,7 +2376,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 				mes "Pode me ajudar a encontrar meu recibo de empréstimo?";
 				mes "Sabe, a garantia que deixei com ele é muito valiosa para mim.";
 				next;
-				switch(select("Você sabe onde perdeu?", "É uma pena ouvir isso!")) {
+				switch (select("Você sabe onde perdeu?","É uma pena ouvir isso!")) {
 					case 1:
 					mes "[Muff]";
 					mes "Se eu soubesse onde, então já teria encontrado não é mesmo?";
@@ -2409,7 +2409,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 			mes "Você trabalha pro Belder!";
 			mes "Vou recuperar meu tesouro desse maldito, não importa o que aconteça!";
 			next;
-			switch(select("Não estou entendendo","Só estava brincando...")) {
+			switch (select("Não estou entendendo","Só estava brincando...")) {
 				case 1:
 				mes "[Muff]";
 				mes "Acha que pode me enganar?!";
@@ -2449,7 +2449,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "Pode me ajudar a encontrar meu recibo de empréstimo?";
 		mes "Sabe, a garantia que deixei com ele é muito valiosa para mim.";
 		next;
-		switch(select("Você sabe onde perdeu?","Qual era a garantia?","Tchau!")) {
+		switch (select("Você sabe onde perdeu?","Qual era a garantia?","Tchau!")) {
 			case 1:
 			mes "[Muff]";
 			mes "Se eu soubesse onde, então já teria encontrado não é mesmo?";
@@ -2491,7 +2491,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "Por favor, encontre o recibo o mais rápido que puder.";
 		close;
 	} else if (diamond_edq == 4) {
-		mes "[" +strcharinfo(PC_NAME)+ "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Este pedaço de papel molhado e esfarrapado é o recibo que você quer?";
 		next;
 		mes "[Muff]";
@@ -2516,7 +2516,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "Quero dizer... é mágico, não é?";
 		mes "Você pode pedir a Dorian para me ajudar?";
 		next;
-		switch(select("Aceitar Pedido:Recusar Pedido")) {
+		switch (select("Aceitar Pedido:Recusar Pedido")) {
 			case 1:
 			mes "[Muff]";
 			mes "Muito obrigado!";
@@ -2538,7 +2538,7 @@ comodo,224,187,3	script	Muff	4_M_04,{
 		mes "Ótimo, eu sabia que você voltaria para me ajudar com meu recibo!";
 		mes "Você parecia ser legal demais para me deixar na mão.";
 		next;
-		switch(select("Aceitar Pedido","Recusar Pedido")) {
+		switch (select("Aceitar Pedido","Recusar Pedido")) {
 			case 1:
 			mes "[Muff]";
 			mes "Muito obrigado!";
@@ -2619,7 +2619,7 @@ cmd_fild01,55,160,0	script	Monte de Terra	CLEAR_NPC,{
 	if (diamond_edq == 1) {
 		mes "^3355FFParece que alguém cavou um buraco no chão e o cobriu de novo.^000000";
 		next;
-		switch(select("Cavar o Buraco","Cancelar")) {
+		switch (select("Cavar o Buraco","Cancelar")) {
 			case 1:
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Deve ter alguma coisa escondida no chão.";
@@ -2700,9 +2700,9 @@ izlude_in,113,66,0	script	Máquina Estranha	HIDDEN_NPC,{
 		mes "^3355FFEste deve ser o Aquecedor Mystique de Elegance.";
 		mes "O que quer fazer?^000000";
 		next;
-		while(true) {
+		while (true) {
 			.@switch_sound = rand(1,4);
-			switch(select("Verificar a Máquina:Trocar o Motor:Apertar o Parafuso:Apertar um Botão")) {
+			switch (select("Verificar a Máquina:Trocar o Motor:Apertar o Parafuso:Apertar um Botão")) {
 				case 1:
 				if (.@hit_status == 0) {
 					mes "^3355FFEsta enorme máquina não está ativada.^000000";
@@ -2773,7 +2773,7 @@ izlude_in,113,66,0	script	Máquina Estranha	HIDDEN_NPC,{
 						mes "^3355FFA máquina está vibrando levemente.";
 						mes "Qual botão você quer apertar?^000000";
 						next;
-						switch(select("Botão Vermelho","Botão Azul","Botão Amarelo","Botão Verde")) {
+						switch (select("Botão Vermelho","Botão Azul","Botão Amarelo","Botão Verde")) {
 							default:
 							mes "^3355FF*chiado*^000000";
 							mes "^3355FF*chiado*^000000";
@@ -2812,7 +2812,7 @@ izlude_in,113,66,0	script	Máquina Estranha	HIDDEN_NPC,{
 						mes "^3355FFA máquina está vibrando um pouquinho mais forte.";
 						mes "Qual botão você vai apertar agora?^000000";
 						next;
-						switch(select("Botão Vermelho","Botão Azul","Botão Amarelo","Botão Verde")) {
+						switch (select("Botão Vermelho","Botão Azul","Botão Amarelo","Botão Verde")) {
 							default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -2851,7 +2851,7 @@ izlude_in,113,66,0	script	Máquina Estranha	HIDDEN_NPC,{
 						mes "As vibrações da máquina estão um pouco mais estáveis agora.";
 						mes "Qual botão você vai apertar?^000000";
 						next;
-						switch(select("Red Switch:Blue Switch:Yellow Switch:Green Switch")) {
+						switch (select("Red Switch:Blue Switch:Yellow Switch:Green Switch")) {
 							default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -2891,7 +2891,7 @@ izlude_in,113,66,0	script	Máquina Estranha	HIDDEN_NPC,{
 						mes "A máquina está vibrando bem forte agora.";
 						mes "Qual botão você vai apertar?^000000";
 						next;
-						switch(select("Botão Vermelho:Botão Azul:Botão Amarelo:Botão Verde")) {
+						switch (select("Botão Vermelho:Botão Azul:Botão Amarelo:Botão Verde")) {
 							default:
 							mes "^3355FF*Whiz Whiz*^000000";
 							mes "^3355FF*Whiz Whiz*^000000";
@@ -2970,7 +2970,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 		mes "Não fique tão surpreso.";
 		mes "Já ouvi falar de você por aí. Hehe!";
 		next;
-		switch(select("Em que posso ajudar?","O que você ouviu?:Tchau!")) {
+		switch (select("Em que posso ajudar?","O que você ouviu?:Tchau!")) {
 			case 1:
 			mes "[Ibrahim]";
 			mes "Quero perguntar sobre as Quatro Jóias Malditas.";
@@ -2989,7 +2989,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 			mes "Seria melhor se você o recuperasse, mas vou entender se não conseguir.";
 			mes "Então, você topa?";
 			next;
-			switch(select("Claro, eu ajudo você","Não, desculpe.")) {
+			switch (select("Claro, eu ajudo você","Não, desculpe.")) {
 				case 1:
 				mes "[Ibrahim]";
 				mes "Ótimo! Sabia que era uma boa idéia falar com você.";
@@ -3165,7 +3165,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "Tenho certeza de que ela é uma das Jóias Malditas.";
 				mes "Poderia me deixar dar uma olhada?";
 				next;
-				switch(select("Não!","Claro, por que não?")) {
+				switch (select("Não!","Claro, por que não?")) {
 					case 1:
 					mes "[Ibrahim]";
 					mes "Não? Bem, você deve ter suas razões.";
@@ -3191,7 +3191,7 @@ moc_ruins,152,147,5	script	Ibrahim	4_M_JOB_HUNTER,3,3,{
 				mes "[Ibrahim]";
 				mes "Me diga o que você está pensando em fazer com a Esmeralda do Azar?";
 				next;
-				switch(select("Vou vendê-la","Vou estudá-la")) {
+				switch (select("Vou vendê-la","Vou estudá-la")) {
 					case 1:
 					mes "[Ibrahim]";
 					mes "Oh, não vai ficar com ela?";
@@ -3302,7 +3302,7 @@ alberta,102,80,3	script	Jhonnita	4_M_04,{
 		mes "Só trabalhamos com as melhores.";
 		mes "Hahahaha!";
 		next;
-		switch(select("Qual é a jóia mais popular?","Você conhece o Diamante da Destruição?")) {
+		switch (select("Qual é a jóia mais popular?","Você conhece o Diamante da Destruição?")) {
 			case 1:
 			mes "[Jhonnita]";
 			mes "Ah, dê uma olhada neste brilhante rubi.";
@@ -3340,7 +3340,7 @@ alberta,102,80,3	script	Jhonnita	4_M_04,{
 			mes "[Jhonnita]";
 			mes "Então, veio vender alguma Garleta, ou veio gastar as economias de toda uma vida nas minhas jóias?";
 			next;
-			switch(select("Mostre-me algumas jóias...","Tenho uma esmeralda rara para vender...")) {
+			switch (select("Mostre-me algumas jóias...","Tenho uma esmeralda rara para vender...")) {
 				case 1:
 				mes "[Jhonnita]";
 				mes "Não me faria mal mostrar minha mercadoria, mas...";
@@ -3425,7 +3425,7 @@ payon,69,65,5	script	Kimeunbang	4_M_ORIENT02,{
 		mes "Era um sonho tão bom...";
 		mes "Vá para outra joalheria, não estou a fim de abrir.";
 		next;
-		switch(select("O que foi?","Diamante da Destruição?")) {
+		switch (select("O que foi?","Diamante da Destruição?")) {
 			case 1:
 			if (!checkweight(Scarlet_Jewel,1)) {
 				mes "[Kimeunbang]";
@@ -3471,7 +3471,7 @@ payon,69,65,5	script	Kimeunbang	4_M_ORIENT02,{
 			mes "[Kimeunbang]";
 			mes "Oh, olá. Parece que voltei ao trabalho...";
 			next;
-			switch(select("Tenho uma jóia para vender.:Como vai?")) {
+			switch (select("Tenho uma jóia para vender.:Como vai?")) {
 				case 1:
 				mes "[Kimeunbang]";
 				mes "É mesmo?";
@@ -3533,7 +3533,7 @@ geffen,128,153,3	script	Leblo	4_M_ALCHE_D,{
 		mes "Bem, se você quiser saber mais, terá que fazer uma coisa para mim antes.";
 		mes "Você aceita?";
 		next;
-		switch(select("Aceito","Não, obrigado.")) {
+		switch (select("Aceito","Não, obrigado.")) {
 			case 1:
 			mes "[Leblo]";
 			mes "Tenho sofrido de dores nas costas, e nenhum remédio está resolvendo.";
@@ -3624,7 +3624,7 @@ geffen,128,153,3	script	Leblo	4_M_ALCHE_D,{
 			mes "[Leblo]";
 			mes "Ah, olá. Você tem algo a tratar comigo hoje?";
 			next;
-			switch(select("Tenho uma jóia para vender","Não, na verdade não")) {
+			switch (select("Tenho uma jóia para vender","Não, na verdade não")) {
 				case 1:
 				mes "[Leblo]";
 				mes "Ah, é mesmo?";
@@ -3754,7 +3754,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,{
 		mes "^0000FF10 unidades de Grama^000000.";
 		mes "Não temos tempo a perder!";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Está... Está bem.";
 		changequest(3111,3112);
 		diamond_edq = 19;
@@ -3806,7 +3806,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,{
 			changequest(3112,3113);
 			diamond_edq = 20;
 			next;
-			switch(select("Quer dar uma volta comigo?:Remédio para o Leblo?")) {
+			switch (select("Quer dar uma volta comigo?:Remédio para o Leblo?")) {
 				case 1:
 				if (Sex == SEX_MALE) {
 					mes "[Wola]";
@@ -3874,7 +3874,7 @@ payon_in03,167,149,3	script	Wola	1_F_ORIENT_01,{
 		mes "Desculpe, esqueci o que você me disse antes.";
 		mes "Era algo sobre um remédio, ou o quê?";
 		next;
-		switch(select("Quer dar uma volta comigo?:Remédio para o Leblo.")) {
+		switch (select("Quer dar uma volta comigo?:Remédio para o Leblo.")) {
 			case 1:
 			if (Sex == SEX_MALE) {
 				mes "^666666*Ruborizada*^000000";
@@ -3994,7 +3994,7 @@ in_rogue,366,46,3	script	Investigador#rogue1	4_M_ROGUE,{
 		mes "Nós Arruaceiros somos maus...";
 		mes "Mas nem tanto.";
 		next;
-		switch(select("Fechado!","Procuro por conta própria...")) {
+		switch (select("Fechado!","Procuro por conta própria...")) {
 			case 1:
 			if (Zeny > 9999) {
 				Zeny -= 10000;
@@ -4047,7 +4047,7 @@ in_rogue,366,46,3	script	Investigador#rogue1	4_M_ROGUE,{
 		mes "Ahn, não posso simplesmente dar essa informação se você não é membro da nossa guilda.";
 		mes "Mas já que estamos juntos nisso, só vou pedir 10.000 zenys.";
 		next;
-		switch(select("Órtimo!","Esqueça...")) {
+		switch (select("Órtimo!","Esqueça...")) {
 			case 1:
 			if (Zeny > 9999) {
 				Zeny -= 10000;
@@ -4262,7 +4262,7 @@ prontera,148,326,3	script	Oficial principal#edq	4_M_JOB_KNIGHT2,{
 		mes "Olá, cidadão de Rune-Midgard.";
 		mes "O que traz você aqui?";
 		next;
-		switch(select("Cartaz de Procurados","Gangue Z","Quais crimes a Gangue Z cometeu?")) {
+		switch (select("Cartaz de Procurados","Gangue Z","Quais crimes a Gangue Z cometeu?")) {
 			case 1:
 			mes "[Chefe da Polícia]";
 			mes "Oh, está interessado em caçar a Gangue Z?";
@@ -4282,7 +4282,7 @@ prontera,148,326,3	script	Oficial principal#edq	4_M_JOB_KNIGHT2,{
 			mes "Você quer saber mais sobre os membros da Gangue Z?";
 			mes "Não sei muita coisa sobre eles, mas posso divulgar esse pouco que sei.";
 			next;
-			switch(select("Louis","Martha","Catfoii","Livro dos Mistérios Proibidos?")) {
+			switch (select("Louis","Martha","Catfoii","Livro dos Mistérios Proibidos?")) {
 				case 1:
 				mes "[Chefe da Polícia]";
 				mes "Louis Von Silokens é o terceiro filho da nobre família Silokens, que se arruinou há muitos anos.";
@@ -4381,7 +4381,7 @@ prt_in,168,18,1	script	Valdes	1_M_YOUNGKNIGHT,2,2,{
 		mes "Por quê?";
 		mes "Eu não sirvo pra mais nada!";
 		next;
-		switch(select("Perguntar sobre a Gangue Z","Alguém está o preocupado","Adeus!")) {
+		switch (select("Perguntar sobre a Gangue Z","Alguém está o preocupado","Adeus!")) {
 			case 1:
 			mes "[Valdes]";
 			mes "Essa Gangue Z...";
@@ -4534,7 +4534,7 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 			mes "Certo, se você é amigo dele, então vou fazer o que puder para ajudar.";
 			mes "O que você quer?";
 			next;
-			switch(select("Perguntar sobre a Gangue Z","Valdes mandou lembranças")) {
+			switch (select("Perguntar sobre a Gangue Z","Valdes mandou lembranças")) {
 				case 1:
 				mes "[Marybell]";
 				mes "A Gangue Z de novo?";
@@ -4619,8 +4619,8 @@ in_rogue,359,116,3	script	Marybell	4_F_ROGUE,{
 		mes "Bem, prometi contar a você o que sei sobre a Gangue Z, e vou cumprir.";
 		mes "O que quer me perguntar?";
 		next;
-		while(true) {
-			switch(select("Objetivo da Gangue Z","Movimentos Recentes da Gangue Z","Fortaleza da Gangue Z","Obrigado pela dica!")) {
+		while (true) {
+			switch (select("Objetivo da Gangue Z","Movimentos Recentes da Gangue Z","Fortaleza da Gangue Z","Obrigado pela dica!")) {
 				case 1:
 				mes "[Marybell]";
 				mes "Na verdade, não sei o que planejam fazer, mas obviamente não deve ser nada muito bom.";
@@ -4796,7 +4796,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 		mes "Hahaha, o que traz um jovem como você até mim?";
 		mes "Você não veio fazer o que estou pensando... ou veio?";
 		next;
-		switch(select("Você é o Meteoro Branco?","Vim desafiar você.")) {
+		switch (select("Você é o Meteoro Branco?","Vim desafiar você.")) {
 			case 1:
 			mes "[Moonho Ahn]";
 			mes "Já faz tanto tempo que não ouço esse nome...";
@@ -4855,7 +4855,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 		mes "[Moonho Ahn]";
 		mes "Você está pronto para jogar Moedas na Mão?";
 		next;
-		switch(select("Sim, vamos jogar!","Como esse jogo funciona?")) {
+		switch (select("Sim, vamos jogar!","Como esse jogo funciona?")) {
 			case 1:
 			if (Zeny > 500) {
 				Zeny -= 500;
@@ -4867,7 +4867,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 				mes "Adivinhe!";
 				mes "É Par ou Ímpar?";
 				next;
-				while(true) {
+				while (true) {
 					.@number = rand(1,2);
 					input(.@input$);
 					if (((.@input$ == "Ímpar") && (.@number == 1)) || ((.@input$ == "Par") && (.@number == 2))) {
@@ -4923,8 +4923,8 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 				mes "É hora da segunda rodada.";
 				mes "Desta vez, eu vou tentar adivinhar, e você sacode as moedas.";
 				next;
-				while(true) {
-					mes "["+ strcharinfo(PC_NAME) +"]";
+				while (true) {
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "(^666666O que devo colocar?^000000)";
 					next;
 					.@amuro = rand(1,2);
@@ -5066,7 +5066,7 @@ payon,244,62,3	script	Moonho Ahn	4_M_HUGRANFA,{
 					mes "Adivinhe!";
 					mes "É Par ou Ímpar?^000000";
 					next;
-					while(true) {
+					while (true) {
 						.@number = rand(1,2);
 						input .@input$;
 						if (((.@input$ == "Ímpar") && (.@number == 1)) || ((.@input$ == "Par") && (.@number == 2))) {
@@ -6416,7 +6416,7 @@ morocc,143,63,3	script	Homem Atormentado#nd	4_M_MIDDLE,{
 		mes "Você salvaria a vida deste pobre homem se pudesse fazer esse favor.";
 		mes "Por favor...";
 		next;
-		switch(select("Em que posso ajudar?","Ignorá-lo")) {
+		switch (select("Em que posso ajudar?","Ignorá-lo")) {
 			case 1:
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Certo, como eu posso ajudar você?";
@@ -6426,7 +6426,7 @@ morocc,143,63,3	script	Homem Atormentado#nd	4_M_MIDDLE,{
 			mes "É tão bom poder falar com alguém depois de ser ignorado todo esse tempo!";
 			mes "Posso parecer ser um mendigo, mas na verdade sou um caçador de tesouros de Prontera.";
 			next;
-			switch(select("Humm... E então?")) {
+			switch (select("Humm... E então?")) {
 				case 1:
 				mes "[Homem Atormentado]";
 				mes "Tinha tanta certeza que encontraria o tesouro em Morroc quando comecei...";
@@ -6441,7 +6441,7 @@ morocc,143,63,3	script	Homem Atormentado#nd	4_M_MIDDLE,{
 				mes "[Homem Atormentado]";
 				mes "Você não pode me dar algum dinheiro, para que finalmente eu possa voltar para Prontera?";
 				next;
-				switch(select("Por que você não vai andando?:Posso te dar algum dinheiro.")) {
+				switch (select("Por que você não vai andando?:Posso te dar algum dinheiro.")) {
 					case 1:
 					mes "[Homem Atormentado]";
 					mes "Quê? Você não acha que se eu pudesse andar até Prontera, já não teria feito isso?!";
@@ -6512,7 +6512,7 @@ morocc,143,63,3	script	Homem Atormentado#nd	4_M_MIDDLE,{
 		mes "Você quer mesmo esse tesouro agora, não quer?";
 		mes "Só me dê 1.200 zenys para que eu possa voltar para casa, e contarei tudo o que sei.";
 		next;
-		switch(select("Dar Dinheiro","Não Dar Dinheiro")) {
+		switch (select("Dar Dinheiro","Não Dar Dinheiro")) {
 			case 1:
 			mes "[Homem Atormentado]";
 			mes "Ah, boa escolha!";
@@ -6779,7 +6779,7 @@ morocc,102,298,3	script	Homem#zgang	4W_M_02,{
 		mes "Quero dizer, não sei nada de magia, não entendo como eu deveria usar uma coisa que meus clientes deram.";
 		next;
 		while (true) {
-			switch(select("Quem ia ajudar você?","Seus clientes deram o quê?")) {
+			switch (select("Quem ia ajudar você?","Seus clientes deram o quê?")) {
 				case 1:
 				mes "[Homem]";
 				mes "Ah, sim. Os caras que me contrataram disseram que se eu esperasse no local.";
@@ -7311,7 +7311,7 @@ alberta_in,70,109,5	script	Xamã	4_M_UMOLDMAN,{
 		mes "Hhhkkk... Arrrgh...!";
 		emotion(e_omg);
 		next;
-		mes "[" +strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes ".....?";
 		next;
 		mes "[Xamã]";
@@ -7625,7 +7625,7 @@ prontera,140,304,5	script	Velho Soldado	4_M_HUOLDARMY,{
 		mes "[Soldado Aposentado]";
 		mes "É estranho que tantas pessoas queiram falar comigo por algum motivo, mas admito que isso é bom.";
 		next;
-		switch(select("Perguntar sobre batalhas passadas","Perguntar sobre guerreiro caído")) {
+		switch (select("Perguntar sobre batalhas passadas","Perguntar sobre guerreiro caído")) {
 			case 1:
 			mes "[Soldado Aposentado]";
 			mes "Ah, não me deixe empolgado.";
@@ -7677,7 +7677,7 @@ prontera,140,304,5	script	Velho Soldado	4_M_HUOLDARMY,{
 		mes "Queria me perguntar mais sobre o guerreiro?";
 		mes "Temo que já tenha dito a você tudo o que sei.";
 		next;
-		switch(select("Desculpe...","Encontrei o espírito do guerreiro.")) {
+		switch (select("Desculpe...","Encontrei o espírito do guerreiro.")) {
 			case 1:
 			mes "[Soldado Aposentado]";
 			mes "Tudo bem.";
@@ -7697,7 +7697,7 @@ prontera,140,304,5	script	Velho Soldado	4_M_HUOLDARMY,{
 			mes "Bem, acho que não importa mais.";
 			mes "Lembre-se bem de tudo isso, e aproveite para aprender.";
 			next;
-			switch(select("Sinto tanta pena dele","Acredita que seja mesmo amaldiçoada?")) {
+			switch (select("Sinto tanta pena dele","Acredita que seja mesmo amaldiçoada?")) {
 				case 1:
 				mes "[Soldado Aposentado]";
 				mes "Bem...";
@@ -7895,7 +7895,7 @@ gef_fild08,182,185,0	script	Andarilho	8_DOPPEL,{
 		mes "Cuide-se, jovem aventureiro, e não mexa mais com as feridas do passado.";
 		jewel_nd = 27;
 		next;
-		while(true) {
+		while (true) {
 			if (select("Você matou seus companheiros!","Você se lembra dos últimos momentos?") == 1) {
 				mes "[Andarilho]";
 				mes "Eu...? Ha. Hahaha!";
@@ -7968,8 +7968,8 @@ gef_fild08,182,185,0	script	Andarilho	8_DOPPEL,{
 		mes "O que é?";
 		mes "O que é que você pode ter para me dizer desta vez?";
 		next;
-		while(true) {
-			if (select("Você matou seus companheiros!", "Você lembra dos últimos momentos?") == 1) {
+		while (true) {
+			if (select("Você matou seus companheiros!","Você lembra dos últimos momentos?") == 1) {
 				mes "[Andarilho]";
 				mes "Eu...? Ha. Hahaha!";
 				mes "Desculpe, aventureiro, mas isso está me parecendo piada mesmo.";
@@ -8133,7 +8133,7 @@ prontera,163,204,3	script	Viajante de Morroc	4W_M_03,{
 		mes "Ah, é tão bom e refrescante ficar perto desta fonte.";
 		mes "É bem mais fresco aqui do que lá em Morroc.";
 		next;
-		switch (select("Belo dia hoje, não?", "Como anda Morroc?")) {
+		switch (select("Belo dia hoje, não?","Como anda Morroc?")) {
 			case 1:
 			mes "[Viajante de Morroc]";
 			mes "Ah, sim. É um belíssimo dia!";
@@ -8208,7 +8208,7 @@ in_rogue,355,28,5	script	Agente Arruaceiro	2_M_THIEFMASTER,{
 		mes "É, estamos investigando os crimes estranhos que andam acontecendo no reino.";
 		mes "Como é que você sabe disso?";
 		next;
-		switch(select("Eu só estava...", "Posso ajudar?")) {
+		switch (select("Eu só estava...","Posso ajudar?")) {
 			case 1:
 			mes "[Membro da Guilda]";
 			mes "Só o quê...?";
@@ -8464,7 +8464,7 @@ geffen,91,36,5	script	Agente da Guilda#nd1	4_M_ROGUE,{
 		mes "Ei, terminou de caçar os monstros na Torre de Geffen?";
 		mes "Espero que tenha trazido as coisas...";
 		next;
-		switch(select("Entregar os itens","Esqueci o que você precisava.")) {
+		switch (select("Entregar os itens","Esqueci o que você precisava.")) {
 			case 1:
 			if ((countitem(Pumpkin_Head) > 0) && (countitem(Horseshoe) > 0) && (countitem(Petite_DiablOfs_Horn) > 0) && (countitem(Golden_Hair) > 0) && (countitem(Transparent_Cloth) > 0)) {
 				delitem(Pumpkin_Head,1);
@@ -8578,7 +8578,7 @@ geffen,91,36,5	script	Agente da Guilda#nd1	4_M_ROGUE,{
 			mes "Mas ainda quero assegurar ao povo de Geffen que os monstros na Torre de Geffen estão bem trancados lá.";
 			mes "Você trouxe o que pedi?";
 			next;
-			switch(select("Entregar os itens","Esqueci o que você precisava.")) {
+			switch (select("Entregar os itens","Esqueci o que você precisava.")) {
 				case 1:
 				if ((countitem(Pumpkin_Head) > 1) && (countitem(Horseshoe) > 2) && (countitem(Petite_DiablOfs_Horn) > 1) && (countitem(Golden_Hair) > 2) && (countitem(Transparent_Cloth) > 0)) {
 					delitem(Pumpkin_Head,2);
@@ -8621,7 +8621,7 @@ geffen,91,36,5	script	Agente da Guilda#nd1	4_M_ROGUE,{
 			mes "Pedi para você trazer itens que provem que os monstros na Torre de Geffen estão bem trancados lá.";
 			mes "Já fez isso?";
 			next;
-			switch(select("Entregar os itens","Esqueci o que você precisava.")) {
+			switch (select("Entregar os itens","Esqueci o que você precisava.")) {
 				case 1:
 				if ((countitem(Pumpkin_Head) > 1) && (countitem(Horseshoe) > 2) && (countitem(Petite_DiablOfs_Horn) > 1) && (countitem(Golden_Hair) > 2) && (countitem(Transparent_Cloth) > 0)) {
 					delitem(Pumpkin_Head,2);
@@ -8739,7 +8739,7 @@ payon,209,44,5	script	Agente da Guilda#nd2	4_M_ROGUE,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Vamos ver o bilhete diz...";
 		next;
-		switch(select("Coopere com o aventureiro.:......")) {
+		switch (select("Coopere com o aventureiro.:......")) {
 			case 1:
 			mes "[Agente]";
 			mes "Então... Somos parceiros?";
@@ -8770,7 +8770,7 @@ payon,209,44,5	script	Agente da Guilda#nd2	4_M_ROGUE,{
 		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Vamos ver, o bilhete diz...";
 		next;
-		switch(select("Coopere com o aventureiro.:......")) {
+		switch (select("Coopere com o aventureiro.:......")) {
 			case 1:
 			mes "[Agente]";
 			mes "Então... Somos parceiros?";
@@ -9072,7 +9072,7 @@ comodo,233,199,5	script	Agente da Guilda#nd3	1_M_SIGNROGUE,{
 		mes "Entendeu?";
 		mes "Alto e claro!";
 		next;
-		switch(select("Sim, senhor!:...")) {
+		switch (select("Sim, senhor!:...")) {
 			case 1:
 			emotion e_dots;
 			mes "[Agente]";
@@ -9119,7 +9119,7 @@ comodo,233,199,5	script	Agente da Guilda#nd3	1_M_SIGNROGUE,{
 		mes "Então...";
 		mes "Trouxe as máscaras como um bom soldado?";
 		next;
-		switch(select("Hum-hum.:Sim, senhor!")) {
+		switch (select("Hum-hum.:Sim, senhor!")) {
 			case 1:
 			mes "[Agente]";
 			mes "Ei, esqueceu nossa regrinha?";
@@ -9164,7 +9164,7 @@ comodo,233,199,5	script	Agente da Guilda#nd3	1_M_SIGNROGUE,{
 				mes "Sei lá, uma experiência do mundo dos Arruaceiros, se puder.";
 				emotion(e_sob);
 				next;
-				switch(select("Sim, senhor!:Não conto pra ninguém.")) {
+				switch (select("Sim, senhor!:Não conto pra ninguém.")) {
 					case 1:
 					mes "[Agente]";
 					mes "Ei! Ei!";

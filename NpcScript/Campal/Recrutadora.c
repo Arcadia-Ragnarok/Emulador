@@ -17,7 +17,7 @@
 //-------------------------------------------------------------------
 -	script	BattlegroundRecruit	FAKE_NPC,{
 	mes "[Emissária de Maroll]";
-	mes "Olá aventureir" + (Sex == SEX_MALE ? "o":"a") + ".";
+	mes "Olá aventureir"+(Sex == SEX_MALE ? "o":"a")+".";
 	mes "Eu venho de um reino distante, onde dois herdeiros do trono lutam para decidir quem vai govenar.";
 	next;
 	if (BaseLevel < 80) {
@@ -41,7 +41,7 @@
 		mes "Ambos estão precisando de guerreiros experientes como você.";
 		mes "Deseja colocar suas forças a prova em uma guerra pelo reino de Maroll?";
 		next;
-		if (select("Sim", "Não") == 1) {
+		if (select("Sim","Não") == 1) {
 			mes "[Emissária de Maroll]";
 			mes "Boa sorte em sua jornarda.";
 			if (strnpcinfo(NPC_MAP)      == "prontera")    { batreturn = 1; }
@@ -52,7 +52,7 @@
 			else if (strnpcinfo(NPC_MAP) == "rachel")      { batreturn = 6; }
 			else if (strnpcinfo(NPC_MAP) == "moc_ruins")   { batreturn = 7; }
 			close2;
-			warp("bat_room", 155, 150);
+			warp("bat_room",155,150);
 			end;
 		}
 		mes "[Emissária de Maroll]";
@@ -77,16 +77,16 @@ bat_room,148,150,5	script	Emissária de Maroll#bgreturn	4_F_JOB_KNIGHT,{
 	mes "[Emissária de Maroll]";
 	mes "Deseja sair da sala de preparação do campo de batalha?";
 	next;
-	if (select("Sim desejo voltar", "Quero ficar mais tempo") == 1) {
+	if (select("Sim desejo voltar","Quero ficar mais tempo") == 1) {
 		close2;
-		if (batreturn == 1)      { warp("prontera", 116, 72); }
-		else if (batreturn == 2) { warp("aldebaran", 168, 112); }
-		else if (batreturn == 3) { warp("geffen", 120, 39); }
-		else if (batreturn == 4) { warp("payon", 161, 58); }
-		else if (batreturn == 5) { warp("lighthalzen", 159, 93); }
-		else if (batreturn == 6) { warp("rachel", 115, 124); }
-		else if (batreturn == 7) { warp("moc_ruins", 152, 148); }
-		else { warp("prontera", 273, 354); }
+		if (batreturn == 1)      { warp("prontera",116,72); }
+		else if (batreturn == 2) { warp("aldebaran",168,112); }
+		else if (batreturn == 3) { warp("geffen",120,39); }
+		else if (batreturn == 4) { warp("payon",161,58); }
+		else if (batreturn == 5) { warp("lighthalzen",159,93); }
+		else if (batreturn == 6) { warp("rachel",115,124); }
+		else if (batreturn == 7) { warp("moc_ruins",152,148); }
+		else { warp("prontera",273,354); }
 		batreturn = 0;
 		end;
 	}

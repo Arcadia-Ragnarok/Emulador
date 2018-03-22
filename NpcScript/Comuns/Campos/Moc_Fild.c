@@ -20,7 +20,7 @@ moc_fild16,199,212,4	script	Hashisid#moc	1_M_JOBTESTER,{
 	mes "Assim como esconder suas intenções.";
 	mes "Para isso, nós nunca olhamos nossos alvos nos olhos.";
 	next;
-	switch(select("Noção de Mercenário", "Sair da conversa")) {
+	switch (select("Noção de Mercenário","Sair da conversa")) {
 		case 1:
 		mes "[Hashisid]";
 		mes "Bem, então..";
@@ -59,7 +59,7 @@ moc_fild16,211,254,4	script	La Conte#mocf	2_M_THIEFMASTER,{
 	mes "Há dois principais estilos de batalha disponíveis para Mercenários.";
 	mes "Eles podem brandir duas adagas, ou lutar com um conunto de Katares!";
 	next;
-	switch(select("Especialidade do Katar", "Especialidade da Adaga-Dupla", "Sair da conversa")) {
+	switch (select("Especialidade do Katar","Especialidade da Adaga-Dupla","Sair da conversa")) {
 		case 1:
 		mes "[La Conte]";
 		mes "Um conjunto de Katares é usado em ambas as mãos.";
@@ -114,11 +114,11 @@ moc_fild16,211,254,4	script	La Conte#mocf	2_M_THIEFMASTER,{
 // ------------------------------------------------------------------
 moc_fild16,195,281,4	script	Mercenário Guardião#SinGuard	4_M_MOC_SOLDIER,{
 	mes "[Mercenário Guardião]";
-	if(BaseJob == Job_Assassin) {
-		mes " Bem Vind" + (Sex == SEX_MALE ? "o" : "a") + ".";
+	if (BaseJob == Job_Assassin) {
+		mes " Bem Vind"+(Sex == SEX_MALE ? "o":"a")+".";
 		close;
 	} else {
-		switch(rand(4)) {
+		switch (rand(4)) {
 			case 1: mes " ........"; close;
 			case 2: mes " Hmmm.........."; close;
 			case 3: mes " Hmmm...você não deveria estar aqui....."; close;

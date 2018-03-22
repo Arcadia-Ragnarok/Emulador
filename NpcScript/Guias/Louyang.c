@@ -18,7 +18,7 @@ louyang,224,104,4	script	Guia#louguide	4_F_CHNWOMAN,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Louyang^000000.";
 	while (1) {
 		next;
-		switch(select("[Castelo do Dragão]","[Consultório Médico]","[Prefeitura]","[Loja de Armas]","[Loja de Utilidades]","[Taverna]","[Observatorio]","[Retorno a Alberta]","Remover marcadores","Cancelar")) {
+		switch (select("[Castelo do Dragão]","[Consultório Médico]","[Prefeitura]","[Loja de Armas]","[Loja de Utilidades]","[Taverna]","[Observatorio]","[Retorno a Alberta]","Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Louyang]";
 			mes "Posição do^0000FF Castelo do Dragão^000000 marcado em seu mini mapa.";

@@ -77,7 +77,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "ask you for your help with";
 		mes "a problem on his behalf.";
 		next;
-		switch(select("I'm too busy.", "Sure, why not?")) {
+		switch (select("I'm too busy.","Sure, why not?")) {
 		case 1:
 			mes "[Vincent]";
 			mes "I understand.";
@@ -1293,7 +1293,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "He was a wealthy kid...";
 		mes "Didn't really deserve it.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1305,7 +1305,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "my side. But the boy's blood";
 		mes "wouldn't wash off my hands...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1318,7 +1318,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "I had to leave Lighthalzen.";
 		rach_vice = 21;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1330,7 +1330,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "truth. When she heard it from";
 		mes "my own lips, she went mad...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1342,7 +1342,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "Spring. She's gone from my";
 		mes "life. Just like that. Forever.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1354,7 +1354,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "indirectly killing the woman";
 		mes "I love. Why God?! Why?!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1365,7 +1365,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "Doesn't that make me and";
 		mes "you feel so much better?!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
@@ -1391,7 +1391,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "Why do you keep hounding";
 		mes "me with these questions?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Did... Did something";
 		mes "happen when Bruspetti";
 		mes "confronted you at Freya's";
@@ -1403,7 +1403,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "I... I don't have";
 		mes "to tell you anything!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "How can you say that?!";
 		mes "I just read in Bruspetti's";
 		mes "diary that she learned";
@@ -1420,7 +1420,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "I used to live, you d-don't--!";
 		rach_vice = 21;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh...?";
 		mes "Mr. Katinshuell?";
 		close;
@@ -1432,7 +1432,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "Why do you keep hounding";
 		mes "me with these questions?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Did... Did something";
 		mes "happen when Bruspetti";
 		mes "confronted you at Freya's";
@@ -1446,14 +1446,14 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		rach_vice = 20;
 		changequest 8120,8121;
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "(^333333He's still resisting";
 		mes "me... How can I get";
 		mes "him to reveal the truth?^000000)";
 		close;
 	}
 	else if (rach_vice == 18) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Let's see...";
 		mes "Oh this entry looks";
 		mes "interesting. It's all";
@@ -1504,7 +1504,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "time I write in this diary...";
 		mes "Well, here's hoping.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, that was";
 		mes "the very last page...";
 		mes "What happened when";
@@ -1525,7 +1525,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "Get away from me, and take";
 		mes "Bruspetti's diary with you!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "What?! No way, not after";
 		mes "that little outburst about";
 		mes "killing or not killing Bruspetti!";
@@ -1544,20 +1544,20 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "wrong! Go ahead,";
 		mes "ask me anything!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Alright then, why";
 		mes "don't you explain this?";
 		next;
-		switch(select("Mr. Shendar's House", "Lighthalzen", "Freya's Spring", "Bruspetti")) {
+		switch (select("Mr. Shendar's House","Lighthalzen","Freya's Spring","Bruspetti")) {
 		case 1:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Mr. Shendar, Bruspetti's";
 			mes "father, says that someone";
 			mes "has been sneaking into his";
 			mes "house for some reason.";
 			mes "Now, why would you do that?";
 			next;
-			mes "["+ strcharinfo(PC_NAME) +"]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "You recognized";
 			mes "Bruspetti's diary";
 			mes "pretty quickly...";
@@ -1571,7 +1571,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 			mes "you're talking about!";
 			close;
 		case 2:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "You know, I found out";
 			mes "that Bruspetti was planning";
 			mes "on going to Lighthalzen.";
@@ -1583,7 +1583,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 			mes "No...!";
 			mes "She couldn't have...!";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Alright. It's no use";
 			mes "pretending that you don't";
 			mes "know her. You were her";
@@ -1598,9 +1598,9 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 			mes "me alone! Get away";
 			mes "from me right now!";
 			next;
-			switch(select("Mr. Shendar's House", "Freya's Spring", "Recent Break-up")) {
+			switch (select("Mr. Shendar's House","Freya's Spring","Recent Break-up")) {
 			case 1:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "So while she was away";
 				mes "in Lighthalzen, you snuck";
 				mes "in Mr. Shendar's house and--";
@@ -1612,14 +1612,14 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 				mes "she went all the way over to";
 				mes "Lighthalzen! Ha ha! Ha ha!";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "...............................";
 				mes "(^333333Nuts! I think that";
 				mes "backfired, so I'm going";
 				mes "to have to try this again.)^000000";
 				close;
 			case 2:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "So while she was away";
 				mes "in Lighthalzen, you went";
 				mes "to Freya's Spring, all";
@@ -1630,14 +1630,14 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 				mes ".........";
 				mes "Um? ...Yes.";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "...............................";
 				mes "(^333333Nuts! I think that";
 				mes "backfired, so I'm going";
 				mes "to have to try this again.)^000000";
 				close;
 			case 3:
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Wait a second! Your break-up";
 				mes "and Bruspetti's sudden need";
 				mes "to investigate something in";
@@ -1649,11 +1649,11 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 				mes ".........";
 				mes "No! It's not true!";
 				next;
-				mes "[" + strcharinfo(PC_NAME) + "]";
+				mes "["+strcharinfo(PC_NAME)+"]";
 				next;
-				switch(select("Mr. Shendar's house", "Freya's Spring")) {
+				switch (select("Mr. Shendar's house","Freya's Spring")) {
 				case 1:
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "So while she was away";
 					mes "in Lighthalzen, you snuck";
 					mes "in Mr. Shendar's house and--";
@@ -1665,14 +1665,14 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 					mes "she went all the way over to";
 					mes "Lighthalzen! Ha ha! Ha ha!";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "...............................";
 					mes "(^333333Nuts! I think that";
 					mes "backfired, so I'm going";
 					mes "to have to try this again.)^000000";
 					close;
 				case 2:
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Hmm... Why are you";
 					mes "always hanging out at";
 					mes "Freya's Spring alone?";
@@ -1684,7 +1684,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 					mes "What is your evidence to convict me with the crime?";
 					mes "I don't wish to hear you any longer.";
 					next;
-					mes "[" + strcharinfo(PC_NAME) + "]";
+					mes "["+strcharinfo(PC_NAME)+"]";
 					mes "Even after you killed Bruspetti,";
 					mes "you became worried about another possibility.";
 					mes "So you were plotting to get rid of the possibility, too.";
@@ -1700,7 +1700,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 				}
 			}
 		case 3:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Freya's Spring.";
 			mes "Why are you always";
 			mes "hanging around there";
@@ -1711,13 +1711,13 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 			mes "It's because I really";
 			mes "miss my ex-girlfriend.";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Oh. Right.";
 			mes "That's a pretty";
 			mes "good reason.";
 			close;
 		case 4:
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "If Bruspetti is not";
 			mes "your girlfriend, then...";
 			mes "Who is?! Answer that!";
@@ -1730,7 +1730,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 			mes "about Bruspetti, that's all.";
 			mes "Now will you leave me alone?";
 			next;
-			mes "[" + strcharinfo(PC_NAME) + "]";
+			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "(^333333Nuts! He wasn't supposed";
 			mes "to cave in like that! I need";
 			mes "to question him again until";
@@ -1747,7 +1747,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "anyone. I'm still coping with";
 		mes "breaking up with my girlfriend.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Katinshuell... I get the";
 		mes "feeling that you're hiding";
 		mes "something. By any chance,";
@@ -1761,7 +1761,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "a girl like her is too good";
 		mes "for some guy like me?!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I don't have any real";
 		mes "reason to suspect you of";
 		mes "anything, but my gut feeling";
@@ -1774,7 +1774,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		mes "That's Bruspetti's diary!";
 		mes "I-I've been looking for-- um...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Hey! How would you";
 		mes "know about that?!";
 		mes "Tell me the truth!";
@@ -1835,7 +1835,7 @@ ra_in01,235,194,5	script	Katinshuell	4_M_RACHMAN1,{
 		}
 		else {
 			mes "[Katinshuell]";
-			mes "..." + .@input$ + "?";
+			mes "..."+.@input$+"?";
 			mes "What? I don't understand you...";
 			close;
 		}
@@ -1970,7 +1970,7 @@ ra_in01,250,19,3	script	Mr. Shendar	4_M_MIDDLE,{
 		mes "good idea of who was";
 		mes "sneaking around my house?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Well, I suspect this guy";
 		mes "named Katinshuell because";
 		mes "he might have been Bruspetti's";
@@ -1994,14 +1994,14 @@ ra_in01,250,19,3	script	Mr. Shendar	4_M_MIDDLE,{
 		mes "sneaking into my house";
 		mes "to prey on my daughter?!";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wha--?";
 		mes "No, I'm just a--";
 		next;
 		percentheal -50,0;
 		mes "^3355FF*BAM!*^000000";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Ow! What did";
 		mes "you do that for?";
 		next;
@@ -2021,7 +2021,7 @@ ra_in01,250,19,3	script	Mr. Shendar	4_M_MIDDLE,{
 		mes "house. I don't know who he,";
 		mes "but I'm sure it's not you...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, wait...";
 		mes "So someone has been";
 		mes "sneaking around here?";
@@ -2029,7 +2029,7 @@ ra_in01,250,19,3	script	Mr. Shendar	4_M_MIDDLE,{
 		mes "guy, the one that might";
 		mes "be Bruspetti's boyfriend...";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Right, his name was";
 		mes "Katinshuell. That guy's";
 		mes "been acting really funny.";
@@ -2483,14 +2483,14 @@ rachel,266,35,3	script	Grandma#rachel	4_F_RACHOLD,{
 lhz_in02,213,207,0	script	#ratrace1	HIDDEN_NPC,4,4,{
 OnTouch:
 	if (rach_vice == 5) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This...";
 		mes "This smell...";
 		mes "It smells so nice!";
 		mes "Like rose petals riding";
 		mes "on a gentle breeze...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Wait, could this be";
 		mes "the scent that Bruspetti's";
 		mes "father mentioned earlier?";
@@ -2504,7 +2504,7 @@ OnTouch:
 rachel,265,47,0	script	#raevent1	HIDDEN_NPC,2,2,{
 OnTouch:
 	if (rach_vice == 23) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Just looking at this";
 		mes "spring makes me think";
 		mes "of Bruspetti. What really";
@@ -2512,7 +2512,7 @@ OnTouch:
 		mes "the feeling that she";
 		mes "caved in to despair.";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "The water's not that";
 		mes "cold, or very deep...";
 		mes "And Katinshuell mentioned";
@@ -2520,7 +2520,7 @@ OnTouch:
 		mes "But she was still looking";
 		mes "at him. It's haunting...";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "I suppose she was torn...";
 		mes "She loved him, but couldn't";
 		mes "bear to live with his secret.";
@@ -2528,7 +2528,7 @@ OnTouch:
 		mes "tragic. Katinshuell isn't";
 		mes "really a bad person...";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "He was forced to";
 		mes "commit a heinous crime,";
 		mes "and kept making mistakes,";
@@ -2547,7 +2547,7 @@ OnTouch:
 			else if (BaseLevel > 75) getexp 850000,0;
 			else getexp 450000,0;
 		}
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Somehow, I wish that";
 		mes "Katinshuell had the";
 		mes "strength to face his";
@@ -2556,7 +2556,7 @@ OnTouch:
 		close;
 	}
 	else if (rach_vice == 22) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "This must be where";
 		mes "Bruspetti drowned...";
 		next;
@@ -2568,7 +2568,7 @@ OnTouch:
 		mes "What if you fall into the";
 		mes "spring? It's dangerous.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh... Er, thank you.";
 		mes "Yes, I wouldn't want";
 		mes "to get myself drowned.";
@@ -2582,12 +2582,12 @@ OnTouch:
 		mes "Even if you can't swim, you";
 		mes "can climb out, you know.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "...What?";
 		close;
 	}
 	else if (rach_vice == 8) {
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "That old woman told";
 		mes "be to be careful not to";
 		mes "slip and fall into the water";
@@ -2602,7 +2602,7 @@ OnTouch:
 		mes "too close to the water.";
 		mes "What if you slip and fall?";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Huh?";
 		next;
 		mes "[Grandma]";
@@ -2611,7 +2611,7 @@ OnTouch:
 		mes "ground that you're standing";
 		mes "on is very slippery, you know.";
 		next;
-		mes "[" + strcharinfo(PC_NAME) + "]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Ah, I see.";
 		rach_vice = 8;
 		changequest 8111,8112;
@@ -2680,7 +2680,7 @@ rachel,157,183,3	script	Sincere Follower Urstia	4_F_MASK1,{
 		mes "touching even the hearts of";
 		mes "foreigners, leading them here!";
 		next;
-		if (select("Freya? I'd like to know more.", "That's crazy talk!") == 1) {
+		if (select("Freya? I'd like to know more.","That's crazy talk!") == 1) {
 			emotion e_ok;
 			mes "[Urstialla]";
 			mes "The day is coming when";
@@ -2783,7 +2783,7 @@ rachel,157,183,3	script	Sincere Follower Urstia	4_F_MASK1,{
 			mes "him to clean this necklace on";
 			mes "my behalf? Please, for my son...";
 			next;
-			if (select("But that's none of my business!", "Alright, I'll do it.") == 1) {
+			if (select("But that's none of my business!","Alright, I'll do it.") == 1) {
 				mes "[Urstialla]";
 				mes "I... I see.";
 				mes "I thought that Freya";
@@ -3340,7 +3340,7 @@ rachel,265,98,3	script	Hamion#aru	4_M_RACHMAN2,{
 		mes "If you have more than one,";
 		mes "I might take the wrong Hammer.";
 		next;
-		if (select("Let me check.", "Don't worry, I checked.") == 1) {
+		if (select("Let me check.","Don't worry, I checked.") == 1) {
 			mes "[Hamion]";
 			mes "Alright, it's always";
 			mes "better to be safe than";
@@ -3432,7 +3432,7 @@ rachel,113,96,5	script	Mohadian	4_M_MIDDLE,10,10,{
 		mes "benefit. We'd kill three birds";
 		mes "with one stone! What do you say?";
 		next;
-		if (select("No, thanks.", "Sure.") == 1) {
+		if (select("No, thanks.","Sure.") == 1) {
 			mes "[Mohadian]";
 			mes "Aww, how disappointing.";
 			mes "I was really sure that this";
@@ -3479,10 +3479,10 @@ rachel,113,96,5	script	Mohadian	4_M_MIDDLE,10,10,{
 		.@hearts = countitem(Ice_Heart);
 		.@totalprice = 375*.@hearts;
 		mes "[Mohadian]";
-		mes .@hearts +" Glacial Hearts";
+		mes .@hearts+" Glacial Hearts";
 		mes "at 375 zeny each...";
 		mes "Looks like I owe you";
-		mes .@totalprice +" zeny. Here you are!";
+		mes .@totalprice+" zeny. Here you are!";
 		mes "It's always a pleasure";
 		mes "doing business with you";
 		delitem Ice_Heart,.@hearts; //Glacial Hearts
@@ -3787,7 +3787,7 @@ OnTouch:
 			mes "^3355FFThe temple's";
 			mes "entrance is locked.^000000";
 			next;
-			select("Kick Door.", "Smash Door with Weapon.");
+			select("Kick Door.","Smash Door with Weapon.");
 			emotion e_omg,0,"Nemma#ra_temple";
 			mes "[Priestess Nemma]";
 			mes "Please don't do that!";
@@ -3808,7 +3808,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 			mes "May I ask what brings";
 			mes "you to the temple today?";
 			next;
-			if (select("Just sight-seeing.", "I came to pray.") == 1) {
+			if (select("Just sight-seeing.","I came to pray.") == 1) {
 				cutin "ra_nemma01",2;
 				mes "[Priestess Nemma]";
 				mes "I guess most foreigners";
@@ -3861,7 +3861,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 			mes "Would you be interested";
 			mes "in making a donation?";
 			next;
-			if (select("No, thanks.", "Sure.") == 1) {
+			if (select("No, thanks.","Sure.") == 1) {
 				cutin "ra_nemma01",2;
 				mes "[Priestess Nemma]";
 				mes "I understand. Well,";
@@ -3879,7 +3879,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 			mes "of 50,000 zeny, and we can only";
 			mes "accept up to 150,000 zeny at once. It's a bit complicated, I know...";
 			next;
-			switch(select("50,000z - 1 Lottery Ticket", "100,000z - 2 Lottery Ticket", "150,000z - 3 Lottery Ticket", "Cancel")) {
+			switch (select("50,000z - 1 Lottery Ticket","100,000z - 2 Lottery Ticket","150,000z - 3 Lottery Ticket","Cancel")) {
 			case 1:
 				callsub S_Donate,1,"50,000";
 				break;
@@ -3904,13 +3904,13 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 		else {
 			cutin "ra_nemma03",2;
 			mes "[Priestess Nemma]";
-			mes "Oh, you're " + strcharinfo(PC_NAME) + "!";
+			mes "Oh, you're "+strcharinfo(PC_NAME)+"!";
 			mes "Welcome back! I remember";
 			mes "that you donated just a little";
 			mes "while ago. So what brings you";
 			mes "to the temple today, hmm?";
 			next;
-			switch(select("I've come to donate again.", "Just sight-seeing.", "I came to attend the service.", "I just wanted to see you again.")) {
+			switch (select("I've come to donate again.","Just sight-seeing.","I came to attend the service.","I just wanted to see you again.")) {
 			case 1:
 				mes "[Priestess Nemma]";
 				mes "You've come to make another";
@@ -3920,7 +3920,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 				mes "accept donations in increments of";
 				mes "50,000 zeny up to 150,000 zeny.";
 				next;
-				switch(select("50,000z - 1 Lottery Ticket", "100,000z - 2 Lottery Ticket", "150,000z - 3 Lottery Ticket", "Cancel")) {
+				switch (select("50,000z - 1 Lottery Ticket","100,000z - 2 Lottery Ticket","150,000z - 3 Lottery Ticket","Cancel")) {
 				case 1:
 					callsub S_Donate,1,"50,000";
 					break;
@@ -4097,7 +4097,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 			mes "Hey, did you bring me";
 			mes "^FF000020 Firecrackers^000000? Mmm?";
 			next;
-			if(select("Yes.", "No, not yet.") == 1) {
+			if (select("Yes.","No, not yet.") == 1) {
 				cutin "ra_nemma01",2;
 				mes "[Priestess Nemma]";
 				mes "Let's see...";
@@ -4162,14 +4162,14 @@ L_End:
 S_Donate:
 	cutin "ra_nemma01",2;
 	mes "[Priestess Nemma]";
-	mes "So, " + strcharinfo(PC_NAME) + "...";
+	mes "So, "+strcharinfo(PC_NAME)+"...";
 	mes "I just want to make sure:";
 	mes "You want to donate "+getarg(1);
 	mes "zeny, and receive "+getarg(0)+" Lottery";
-	if(getarg(0) == 1) mes "Ticket. Is that correct?";
+	if (getarg(0) == 1) mes "Ticket. Is that correct?";
 	else mes "Tickets. Is that correct?";
 	next;
-	if (select("No", "Yes") == 1) {
+	if (select("No","Yes") == 1) {
 		mes "[Priestess Nemma]";
 		mes "Oh, I see. Well, if you";
 		mes "don't have enough zeny with";
@@ -4282,7 +4282,7 @@ rachel,243,37,3	script	Kid#Candy Addict	4_M_CHILD1,{
 		mes "you like candy?";
 		if (ra_tem_q == 1) {
 			next;
-			switch(select("Not at all.", "Yeah.", "Sure, I love the stuff", "Not much.")) {
+			switch (select("Not at all.","Yeah.","Sure, I love the stuff","Not much.")) {
 			case 1:
 				mes "[Kid]";
 				mes "Hmpf! Okay.";
@@ -4341,7 +4341,7 @@ rachel,243,37,3	script	Kid#Candy Addict	4_M_CHILD1,{
 					mes "tell you something";
 					mes "really cool, yeah?";
 					next;
-					if (select("Sure.", "No.") == 1) {
+					if (select("Sure.","No.") == 1) {
 						mes "[Kid]";
 						mes "Yay";
 						next;
@@ -4434,7 +4434,7 @@ rachel,243,37,3	script	Kid#Candy Addict	4_M_CHILD1,{
 				mes "cool secret, so promise";
 				mes "that you won't be mad anymore.";
 				next;
-				switch(select("No, thanks.", "What's that?")) {
+				switch (select("No, thanks.","What's that?")) {
 				case 1:
 					mes "[Kid]";
 					mes "Please";
@@ -4501,7 +4501,7 @@ OnTouch:
 		mes "open window that";
 		mes "you can easily enter.^000000";
 		next;
-		if(select("Stay", "Enter Through Window") == 2) {
+		if (select("Stay","Enter Through Window") == 2) {
 			mes "^3355FFYou pull the window,";
 			mes "and it smoothly opens.";
 			mes "This is probably what";
@@ -4523,7 +4523,7 @@ OnTouch:
 		mes "enter the temple";
 		mes "through this window?^000000";
 		next;
-		if(select("Enter", "Cancel") == 1) {
+		if (select("Enter","Cancel") == 1) {
 			close2;
 			warp "que_rachel",62,82;
 			end;
@@ -4539,7 +4539,7 @@ OnTouch:
 que_rachel,63,82,0	script	Window#ra_temple	HIDDEN_NPC,{
 	mes "^3355FFThis window is open.^000000";
 	next;
-	if(select("Stay", "Exit Through Window") == 2) {
+	if (select("Stay","Exit Through Window") == 2) {
 		close2;
 		warp "ra_temple",73,208;
 		end;
@@ -4607,7 +4607,7 @@ OnTouch:
 		mes "ground that's darker than";
 		mes "the rest of the floor...^000000";
 		next;
-		if (select("Investigate", "Ignore") == 1) {
+		if (select("Investigate","Ignore") == 1) {
 			mes "^3355FFIt's too dark to";
 			mes "really see the spot^000000";
 			next;
@@ -4634,7 +4634,7 @@ OnTouch:
 		mes "no matter how many";
 		mes "times you look at it.^000000.";
 		next;
-		if (select("Investigate Again", "Ignore") == 1) {
+		if (select("Investigate Again","Ignore") == 1) {
 			mes "^3355FFThe blood on the ground";
 			mes "hasn't dried up yet, but";
 			mes "it's probably cold by now.^000000";
@@ -4707,7 +4707,7 @@ que_rachel,160,37,0	duplicate(nemma01)	nemma05	FAKE_NPC,5,5
 que_rachel,169,18,0	script	Quest Temple Exit#ra_tem	WARPNPC,2,2,{
 	mes "^3355FFThe gate is closed.^000000";
 	next;
-	switch(select("Push Gate", "Examine Gate", "Kick Gate", "Smash Gate with Weapon")) {
+	switch (select("Push Gate","Examine Gate","Kick Gate","Smash Gate with Weapon")) {
 	case 1:
 		mes "^3355FFYou push the gate";
 		mes "with all of your might...";
@@ -4879,7 +4879,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 		mes "I explain the task, you must";
 		mes "accept my request.";
 		next;
-		if (select("Let me think about it.", "Yes, sure.") == 1) {
+		if (select("Let me think about it.","Yes, sure.") == 1) {
 			mes "[High Priest Zhed]";
 			mes "I understand, but if you";
 			mes "change your mind, please";
@@ -5292,7 +5292,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 				mes "can see. What can I do";
 				mes "for you today, "+strcharinfo(PC_NAME)+"?";
 				next;
-				switch(select("I just wanted to say hi.", "Ask About Veins Incident")) {
+				switch (select("I just wanted to say hi.","Ask About Veins Incident")) {
 				case 1:
 					mes "[High Priest Zhed]";
 					mes "As you well know, I'm only";
@@ -5593,7 +5593,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 				mes "[High Priest Zhed]";
 				mes "Hmm...";
 				next;
-				switch(select("How to Sneak into the Camp ", "The Moderates", "The Hard-Liners")) {
+				switch (select("How to Sneak into the Camp ","The Moderates","The Hard-Liners")) {
 				case 1:
 					mes "[High Priest Zhed]";
 					mes "I still don't have any";
@@ -5739,7 +5739,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "Don't you think it's worth";
 					mes "checking out for now?";
 					next;
-					if (select("Yes", "No") == 2) {
+					if (select("Yes","No") == 2) {
 						mes "[High Priest Zhed]";
 						mes "Well, you never know";
 						mes "until you ask. Besides,";
@@ -5953,7 +5953,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "her full support. Will";
 					mes "you help me to do this?";
 					next;
-					if (select("Yes", "No") == 2) {
+					if (select("Yes","No") == 2) {
 						mes "Well... Asking for the";
 						mes "pope's support is the only";
 						mes "solution I've been able to";
@@ -6005,7 +6005,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "exaggerate and... lie when";
 					mes "we feel it's necessary?";
 					next;
-					switch(select("Truth", "Lies")) {
+					switch (select("Truth","Lies")) {
 					case 1:
 						mes "[High Priest Zhed]";
 						mes "That's what I think too.";
@@ -6135,7 +6135,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "you to give to Niren.";
 					aru_em = 12;
 				}
-				else if(aru_em == 12) {
+				else if (aru_em == 12) {
 					cutin "ra_gman",2;
 					mes "[High Priest Zhed]";
 					mes "Please bring this letter";
@@ -6148,7 +6148,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "Niren from High Priest Zhed.^000000";
 					aru_em = 13;
 				}
-				else if((aru_em == 13) || (aru_em == 14)) {
+				else if ((aru_em == 13) || (aru_em == 14)) {
 					mes "[High Priest Zhed]";
 					mes "Please deliver my";
 					mes "letter to Niren as";
@@ -6165,7 +6165,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "give her any help that she";
 					mes "may need from now on?";
 				}
-				else if(aru_em == 20) {
+				else if (aru_em == 20) {
 					cutin "ra_gman",2;
 					mes "[High Priest Zhed]";
 					mes "Ah, I've been";
@@ -6197,7 +6197,7 @@ ra_temin,277,159,3	script	High Priest Zhed#rachel	4_M_RACHOLD1,{
 					mes "pope, shall we?";
 					aru_em = 21;
 				}
-				else if(aru_em == 21) {
+				else if (aru_em == 21) {
 					mes "[High Priest Zhed]";
 					mes "I'm a little nervous";
 					mes "about talking so brazenly";
@@ -6318,7 +6318,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "Have you come to";
 		mes "redeem Lottery Tickets?";
 		next;
-		if (select("Yes", "No") == 2) {
+		if (select("Yes","No") == 2) {
 			if (ra_tem_q == 12) {
 				cutin "ra_fano01",2;
 				mes "[Priestess Panno]";
@@ -6337,7 +6337,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "your days with joy.";
 		mes "Laughter. And prosperity.";
 		next;
-		switch(select("Redeem Lottery Tickets", "Temple Information", "Hey, what's happening?")) {
+		switch (select("Redeem Lottery Tickets","Temple Information","Hey, what's happening?")) {
 		case 1:
 			cutin "ra_fano03",2;
 			mes "[Priestess Panno]";
@@ -6348,7 +6348,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 			mes "know, in case you were saving";
 			mes "them for some weird reason.";
 			next;
-			if (select("Yes", "No") == 2) {
+			if (select("Yes","No") == 2) {
 				cutin "ra_fano03",2;
 				mes "[Priestess Panno]";
 				mes "You can redeem your";
@@ -6412,7 +6412,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "Good day.";
 		next;
 
-		switch(select("Redeem Lottery Tickets", "Temple Information", "Hey, did you open the gate?")) {
+		switch (select("Redeem Lottery Tickets","Temple Information","Hey, did you open the gate?")) {
 
 		case 1:
 			cutin "ra_fano01",2;
@@ -6432,7 +6432,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 			mes "know, in case you were saving";
 			mes "them for some weird reason.";
 			next;
-			if (select("Yes", "No") == 2) {
+			if (select("Yes","No") == 2) {
 				mes "[Priestess Panno]";
 				mes "You can redeem your";
 				mes "Lottery Tickets at any";
@@ -6673,7 +6673,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "come here just to worship.";
 		callsub L_End;
 	}
-	if(checkweight(Yggdrasilberry,1) == 0){
+	if (checkweight(Yggdrasilberry,1) == 0){
 		cutin "ra_fano02",2;
 		mes "[Priestess Panno]";
 		mes "You're carrying too much";
@@ -6892,7 +6892,7 @@ ra_temsky,99,99,5	script	Pope#rachel	4_F_ARUNA_POP,{
 		next;
 		input @input$;
 		mes "[Pope]";
-		mes @input$ +"...?";
+		mes @input$+"...?";
 		mes "I think I might have heard";
 		mes "about that place before.";
 		mes "Wow... What did you do";
@@ -6900,7 +6900,7 @@ ra_temsky,99,99,5	script	Pope#rachel	4_F_ARUNA_POP,{
 		next;
 		input @input$;
 		mes "[Pope]";
-		mes @input$ +"...?";
+		mes @input$+"...?";
 		mes "Wow, that sounds quite";
 		mes "extraordinary. Ooh, ooh!";
 		mes "Tell me, how have you come";
@@ -7000,7 +7000,7 @@ ra_temsky,99,99,5	script	Pope#rachel	4_F_ARUNA_POP,{
 			mes "if I can learn anything";
 			mes "useful from the pope...^000000)";
 			next;
-			switch(select("Aren't you lonely?", "Do you ever take a break?")) {
+			switch (select("Aren't you lonely?","Do you ever take a break?")) {
 			case 1:
 				mes "[Pope]";
 				mes "Well, there are always";
@@ -7265,7 +7265,7 @@ OnTouch:
 		mes "shining object laid";
 		mes "on the floor.^000000";
 		next;
-		if (select("Ignore", "Pick It Up") == 1) {
+		if (select("Ignore","Pick It Up") == 1) {
 			mes "^3355FFYou decided to ignore";
 			mes "the small shining object,";
 			mes "no matter how important it";
@@ -7293,7 +7293,7 @@ OnTouch:
 		mes "Ground. However, the";
 		mes "door in your way is locked.^000000.";
 		next;
-		if (select("Quit", "Use Small Key") == 2) {
+		if (select("Quit","Use Small Key") == 2) {
 			mes "^3355FFYou insert the Small";
 			mes "Key that you found in";
 			mes "High Priest Zhed's room,";

@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 geffen,203,116,4	script	Guia#gefguide	4_M_GEF_SOLDIER,{
-	cutin ("gef_soldier",2);
+	cutin("gef_soldier",2);
 	mes "[Guia de Geffen]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Geffen^000000, cidade da Magia.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Guilda dos Magos]","[Torre de Geffen]","[Fonte]","[Loja de Utilidades]","[Compra & Reparo de Equip.]","[Estalagem]","[Taverna]","[Forja]","Menu Anterior")) {
+				switch (select("[Guilda dos Magos]","[Torre de Geffen]","[Fonte]","[Loja de Utilidades]","[Compra & Reparo de Equip.]","[Estalagem]","[Taverna]","[Forja]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Geffen]";
 					mes "Posição da^0000FF Guilda dos Magos^000000 marcada em seu mini mapa.";
@@ -81,7 +81,7 @@ geffen,203,116,4	script	Guia#gefguide	4_M_GEF_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Oficial Eden]","[Funcionária Kafra]","[Cozinheiro]",
+				switch (select("[Oficial Eden]","[Funcionária Kafra]","[Cozinheiro]",
 					"[Guia Arcano]",
 					"Menu Anterior")) {
 					case 1:
@@ -139,7 +139,7 @@ geffen,203,116,4	script	Guia#gefguide	4_M_GEF_SOLDIER,{
 			mes "[Guia de Geffen]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}

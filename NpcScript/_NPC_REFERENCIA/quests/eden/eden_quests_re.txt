@@ -50,7 +50,7 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 		mes "What's up?";
 		mes "If you have any normal missions use the bulletin board.";
 		next;
-		switch (select("What is your responsibility?", "Don't you have equipment?", "Ignore.")) {
+		switch (select("What is your responsibility?","Don't you have equipment?","Ignore.")) {
 			mes "[Boya]";
 		case 1:
 			mes "I give training missions to members.";
@@ -73,7 +73,7 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 			mes "[Boya]";
 			mes "If you want to join, don't hesitate.";
 			next;
-			switch (select("Participate in the training.", "Ignore.")) {
+			switch (select("Participate in the training.","Ignore.")) {
 				mes "[Boya]";
 			case 1:
 				callsub S_Quest1;
@@ -108,7 +108,7 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 			mes "I look a little bit funny, actually I am really busy I was called shining Rune Knight.";
 			mes "Make a decision, hurry.";
 			next;
-			switch (select("Participate in the training.", "Refuse!!")) {
+			switch (select("Participate in the training.","Refuse!!")) {
 				mes "[Boya]";
 			case 1:
 				callsub S_Quest1;
@@ -200,7 +200,7 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 			mes "Able to take upper class, now.";
 			mes "What about it, do you want?";
 			next;
-			switch (select("No, way.", "Absolutely, I will.")) {
+			switch (select("No, way.","Absolutely, I will.")) {
 				mes "[Boya]";
 			case 1:
 				mes "Really?";
@@ -273,7 +273,7 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 		mes "Hey long time no see.";
 		mes "So what's up?";
 		next;
-		switch (select("I want to join training.", "Nothing.")) {
+		switch (select("I want to join training.","Nothing.")) {
 			mes "[Boya]";
 		case 1:
 			mes "Hmm... really?";
@@ -632,7 +632,7 @@ moc_fild11,180,253,5	script	Talking Dog#para03	4_RUS_DWOLF,{
 		mes "A member of the Eden Group.";
 		mes "Have you come to give me a meal? I don't like drinks.";
 		next;
-		switch (select("Boya is really perfect.", "Boya is really great.", "Boya is really soft.")) {
+		switch (select("Boya is really perfect.","Boya is really great.","Boya is really soft.")) {
 		case 1:
 			mes "[Talking Dog]";
 			mes "Uhh...";
@@ -872,7 +872,7 @@ prt_sewb1,131,262,3	script	Timid Cat#para04	4_M_BABYCAT,{
 		mes "Re... really...!";
 		mes "Dear Boya's help is like a giant and...";
 		next;
-		switch (select("Beautiful Saury", "Fresh Mackerel", "Beautiful Tuna")) {
+		switch (select("Beautiful Saury","Fresh Mackerel","Beautiful Tuna")) {
 		case 1:
 			mes "[Timid Cat]";
 			mes "Big and beautiful Saury...";
@@ -1211,7 +1211,7 @@ anthell01,29,264,5	script	Eden Member Cloud#para06	4_M_HUMAN_02,{
 		mes "Hello?";
 		mes "Why did you come here, looking for danger?";
 		next;
-		switch (select("Conquer Ant Hell", "Just wanted to meet you", "Where am I?")) {
+		switch (select("Conquer Ant Hell","Just wanted to meet you","Where am I?")) {
 		case 1:
 			mes "[Cloud]";
 			mes "Uh. Conquer Ant Hell? Did you say that?";
@@ -1791,7 +1791,7 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 	mes "[Michael]";
 	mes "Why did you come here?";
 	next;
-	switch (select("To get supplies", "Where is here?", "Upgrade equipment")) {
+	switch (select("To get supplies","Where is here?","Upgrade equipment")) {
 		mes "[Michael]";
 	case 1:
 		if (para_suv01 == 11) {
@@ -1799,7 +1799,7 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 			mes "we can supply you with a Eden Group Hat, Uniform, Manteau and Boots.";
 			mes "^4d4dffCheck your inventory first.^000000";
 			next;
-			if (select("Let me check my inventory", "I have enough room.") == 1) {
+			if (select("Let me check my inventory","I have enough room.") == 1) {
 				mes "[Michael]";
 				mes "Make sure you have enough room for the supplies.";
 				close;
@@ -1849,7 +1849,7 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 			mes "[Michael]";
 			mes "^4d4dffPlease check your inventory to get those items.^000000";
 			next;
-			if (select("I will make more space.", "I have got enough space.") == 1) {
+			if (select("I will make more space.","I have got enough space.") == 1) {
 				mes "[Michael]";
 				mes "Make enough space.";
 				close;
@@ -1920,7 +1920,7 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 			mes "[Michael]";
 			mes "^4d4dffPlease check you inventory to get those supplies.^000000";
 			next;
-			if (select("I'll come back.", "I have enough room.") == 1) {
+			if (select("I'll come back.","I have enough room.") == 1) {
 				mes "[Michael]";
 				mes "Make sure you have enough room.";
 				close;
@@ -2010,7 +2010,7 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 				disable_items;
 				mes "What status bonus do you want to upgrade?";
 				next;
-				switch (select("Upgrade STR", "Upgrade AGI", "Upgrade VIT", "Upgrade INT", "Upgrade DEX", "Upgrade LUK", "Nevermind.")) {
+				switch (select("Upgrade STR","Upgrade AGI","Upgrade VIT","Upgrade INT","Upgrade DEX","Upgrade LUK","Nevermind.")) {
 				case 1: callsub S_Upgrade,"STR",Strength2;
 				case 2: callsub S_Upgrade,"AGI",Agility2;
 				case 3: callsub S_Upgrade,"VIT",Vitality2;
@@ -2051,10 +2051,10 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 S_Upgrade:
 	mes "[Michael]";
 	mes "I see.";
-	mes "I will ^4d4dffUpgrade "+ getarg(0) +"^000000.";
+	mes "I will ^4d4dffUpgrade "+getarg(0)+"^000000.";
 	mes "Are you sure?";
 	next;
-	switch (select("Yes I am.", "No wait.")) {
+	switch (select("Yes I am.","No wait.")) {
 	case 1:
 		mes "[Michael]";
 		mes "I will start to upgrade.";
@@ -2083,13 +2083,13 @@ S_Select:
 	next;
 	mes "[Michael]";
 	for ( .@i = 1; .@i < .@total_arg; .@i += 5 ) {
-		.@menu$ =  .@menu$ + getarg(.@i+1) + ":";
-		mes getarg(.@i+1)+": "+ getarg(.@i+2) +". "+ getarg(.@i+3) +".";
+		.@menu$ =  .@menu$ + getarg(.@i+1)+":";
+		mes getarg(.@i+1)+": "+getarg(.@i+2)+". "+getarg(.@i+3)+".";
 	}
 	if (.@total_arg < 7)
-		mes "It is Lv. 2 and the required level is "+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "It is Lv. 2 and the required level is "+(para_suv01 == 22 ? "26" : "40")+".";
 	else
-		mes "Both of them are Lv. 2 weapons and the required level is "+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "Both of them are Lv. 2 weapons and the required level is "+(para_suv01 == 22 ? "26" : "40")+".";
 	next;
 	mes "[Michael]";
 	mes "They also can't be traded with other players or be refined.";
@@ -2097,14 +2097,14 @@ S_Select:
 	if (.@total_arg < 7) {
 		.@i = 1;
 		mes "[Michael]";
-		mes "You'll receive the "+ getarg(.@i+1) +".";
+		mes "You'll receive the "+getarg(.@i+1)+".";
 		next;
 		mes "[Michael]";
 	}
 	else {
 		.@i = (select(.@menu$) -1) *5 +1;
 		mes "[Michael]";
-		mes "You've chosen the "+ getarg(.@i+1) +".";
+		mes "You've chosen the "+getarg(.@i+1)+".";
 	}
 	if (para_suv01 == 22) {
 		mes "Additionally you'll receive the Eden Group Boots II and Uniform II.";
@@ -2140,7 +2140,7 @@ S_Select:
 			para_suv02 = 2;
 		else
 			para_suv02 = 3;
-		mes "A "+ getarg(.@i+2) +", Uniform and Boots all 3 supplies.";
+		mes "A "+getarg(.@i+2)+", Uniform and Boots all 3 supplies.";
 		mes "Please check it again.";
 		next;
 		mes "[Michael]";
@@ -2155,18 +2155,18 @@ moc_para01,179,44,3	script	Chef	4_M_CHNCOOK,{
 	mes "What's up?";
 	mes "Do you want a Meal? Or do you have other business?";
 	next;
-	switch (select("Order a meal.", "Talk.")) {
+	switch (select("Order a meal.","Talk.")) {
 	case 1:
 		mes "[Chef]";
 		mes "Choose one of the three course meals A, B or C.";
 		mes "Do you want a explanation?";
 		next;
-		switch (select("I want a explanation.", "Order course meal A", "Order course meal B", "Order course meal C", "End Conversation.")) {
+		switch (select("I want a explanation.","Order course meal A","Order course meal B","Order course meal C","End Conversation.")) {
 		case 1:
 			mes "[Chef]";
 			mes "Uh? what do you want to know?";
 			next;
-			switch (select("About course meal A.", "About course meal B.", "About course meal C.", "End Conversation.")) {
+			switch (select("About course meal A.","About course meal B.","About course meal C.","End Conversation.")) {
 			case 1:
 				mes "[Chef]";
 				mes "Course meal A is for nomal people.";
@@ -2396,7 +2396,7 @@ moc_para01,179,44,3	script	Chef	4_M_CHNCOOK,{
 			mes "To.. me.. the hat... um.";
 			mes "It goes well with Laime but with Luke... I don't know..";
 			next;
-			switch (select("What about the hat?", "Luke?")) {
+			switch (select("What about the hat?","Luke?")) {
 			case 1:
 				mes "[Chef]";
 				mes "Nothing. It's so cute.";
@@ -2469,7 +2469,7 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 		mes "Do you need help?";
 		mes "This is a general request in order to receive the next board's request.";
 		next;
-		if (select( "What are you doing here?", "It's nothing." ) == 2) {
+		if (select( "What are you doing here?","It's nothing." ) == 2) {
 			mes "[Instructor Ur]";
 			mes "I guess I have no business with you then.";
 			close;
@@ -2485,7 +2485,7 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 		mes "I am the senior instructor here at Eden Group.";
 		mes "What do you say are you up for the challenge?";
 		next;
-		if (select( "Not today I'm not.", "Okay, I'll try." ) == 1) {
+		if (select( "Not today I'm not.","Okay, I'll try." ) == 1) {
 			mes "[Instructor Ur]";
 			mes "Really?";
 			mes "That's so sad.";
@@ -2585,7 +2585,7 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 			mes "Hey, buddy";
 			mes "What's going on?";
 			next;
-			switch( select( "I want to start training.", "I'm just visiting." ) ) {
+			switch ( select( "I want to start training.","I'm just visiting." ) ) {
 				mes "[Instructor Ur]";
 			case 1:
 				mes "Hmm... You have a good form!";
@@ -2654,10 +2654,10 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 	}
 	else if (para_2nd01 == 11) {
 		if (BaseLevel > 79) {
-			mes "Ah, ever so improving "+ strcharinfo(PC_NAME) +"?";
+			mes "Ah, ever so improving "+strcharinfo(PC_NAME)+"?";
 			mes "To what do I owe this pleasure?";
 			next;
-			switch( select( "I came for more training.", "I'm just visiting." ) ) {
+			switch ( select( "I came for more training.","I'm just visiting." ) ) {
 				mes "[Instructor Ur]";
 			case 1:
 				mes "Hmm... You have a good form!";
@@ -2705,7 +2705,7 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 			mes "It's nice to see you still strong!";
 			mes "What brings you today?";
 			next;
-			if (select( "I want to continue training.", "I'm just visiting." ) == 2) {
+			if (select( "I want to continue training.","I'm just visiting." ) == 2) {
 				mes "[Instructor Ur]";
 				mes "Really? At your level, I think you can easily complete the top class missions..";
 				mes "I'll be here if you change your mind.";
@@ -2790,7 +2790,7 @@ S_Para2:
 	}
 	return;
 S_Direction:
-	mes "So, have you been in ^4d4dff"+ getarg(0) +"^000000 yet?";
+	mes "So, have you been in ^4d4dff"+getarg(0)+"^000000 yet?";
 	mes "Didn't I tell you to go there?";
 	mes "Go there first and then come back to me. Okay?";
 	return;
@@ -3477,7 +3477,7 @@ mid_camp,212,229,3	script	Dispatched Instructor#06	4_F_HUWOMAN,{
 		mes "You're here in paradise.";
 		mes "Instructor Ur sent you?";
 		next;
-		if (select( "Yes.", "No." ) == 2) {
+		if (select( "Yes.","No." ) == 2) {
 			mes "[Margaret]";
 			mes "Oh, my mistake.";
 			close;
@@ -3573,7 +3573,7 @@ man_fild01,43,234,3	script	Dispatched Instructor#07	4_DST_SOLDIER,{
 		mes "Mine and Margaret are always trying to mess with me because of my win-!";
 		mes "Gosh...";
 		next;
-		select( "What happened?", "What do you win?" );
+		select( "What happened?","What do you win?" );
 		mes "[Meeru]";
 		mes "It all started with them bickering.";
 		mes "Margaret was asked to scout for both of us. It's like what you're doing now.";
@@ -3644,7 +3644,7 @@ spl_fild02,377,149,3	script	Dispatched Instructor#08	4_M_DST_MASTER,{
 		mes "...";
 		mes "Who are you?";
 		next;
-		if (select( "Margaret sent me.", "Yeah I'm here..." ) == 1) {
+		if (select( "Margaret sent me.","Yeah I'm here..." ) == 1) {
 			mes "[Mine]";
 			mes "Eh? Who!";
 			mes "I see. Is it that time already?";
@@ -3728,7 +3728,7 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 	}
 	mes "What's going on?";
 	next;
-	switch( select( "Strengthen Equipment", "Personal Request", "Give me new equipment." ) ) {
+	switch ( select( "Strengthen Equipment","Personal Request","Give me new equipment." ) ) {
 		mes "[Thorn]";
 	case 1:
 		if (para_2nd01 < 6) {
@@ -3750,7 +3750,7 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			mes "[Thorn]";
 			mes "So what equipment do you want to enhance?";
 			next;
-			switch( select( "Eden Group Manteau II", "Eden Group Armor IV", "Eden Group Boots IV" ) ) {
+			switch ( select( "Eden Group Manteau II","Eden Group Armor IV","Eden Group Boots IV" ) ) {
 				case 1: callsub S_Enchant,Para_Team_Manteau2,"Manteau";
 				case 2: callsub S_Enchant,Para_Team_Armor,"Armor";
 				case 3: callsub S_Enchant,Para_Team_Boots4,"Boots";
@@ -3791,13 +3791,13 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			}
 			mes "It shouldn't be hard to get these can you bring them right away?";
 			next;
-			switch( select( "Sure thing.", "I don't want to." ) ) {
+			switch ( select( "Sure thing.","I don't want to." ) ) {
 				mes "[Thorn]";
 			case 1:
 				mes "I appreciate it.";
 				mes "So take your time and I'll be waiting.";
 				para_2nd04 = 1 + .@add;
-				setquest (7238 + .@add);	// Errands for Thorn (easy/hard)
+				setquest(7238 + .@add);	// Errands for Thorn (easy/hard)
 				close;
 			case 2:
 				mes "Eh...?";
@@ -3834,7 +3834,7 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 				if (.@countitem[1])
 					delitem .@item[1],.@amount[1];
 				para_2nd04 = 3;
-				erasequest (7238 + .@add);
+				erasequest(7238 + .@add);
 				setquest 7240;
 			}
 			else {
@@ -3877,7 +3877,7 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			mes "[Thorn]";
 			mes "So now, ^4d4dffmake sure that you have enough free inventory space.^000000";
 			next;
-			if (select( "Let me organize my inventory.", "I have free space." ) == 1) {
+			if (select( "Let me organize my inventory.","I have free space." ) == 1) {
 				mes "[Thorn]";
 				mes "You do that.";
 				mes "Free up your inventory so that you can get the weapons, boots, and all the other equipment.";
@@ -3985,8 +3985,8 @@ L_Select:
 	mes getarg(0);
 	mes "Choose from the following.";
 	for ( .@i = 1; .@i < getargcount(); .@i += 3 ) {
-		.@menu$ =  .@menu$ + getarg(.@i+1) + ":";
-		mes getarg(.@i+1)+" : "+ getarg(.@i+2);
+		.@menu$ =  .@menu$ + getarg(.@i+1)+":";
+		mes getarg(.@i+1)+" : "+getarg(.@i+2);
 	}
 	next;
 	.@i = (select(.@menu$) -1) *3 +1;
@@ -4011,12 +4011,12 @@ S_Enchant:
 			Vitality2;
 		.@1st = .@bonus[ rand(1,12) ];
 		.@2nd = .@bonus[ rand(1,12) ];
-		mes "Eden Group "+ getarg(1) +"?";
+		mes "Eden Group "+getarg(1)+"?";
 		mes "I understand.";
 		mes "Remember the stats that are enhanced will be random.";
 		mes "You sure you want me to enhance this?";
 		next;
-		switch( select( "I changed my mind.", "Yes, enhance it." ) ) {
+		switch ( select( "I changed my mind.","Yes, enhance it." ) ) {
 			mes "[Thorn]";
 		case 1:
 			mes "You sure you don't want to enhance it?";
@@ -4038,7 +4038,7 @@ S_Enchant:
 			close;
 		}
 	}
-	mes "Hmm... Don't you have the "+ getarg(1) +"?";
+	mes "Hmm... Don't you have the "+getarg(1)+"?";
 	mes "I don't think you have it with you.";
 	close;
 }
@@ -4062,13 +4062,13 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 		P_Huuma_Shuriken1;
 	.@wplist_size = getarraysize(.@wplist);
 	for ( .@i = 0; .@i < .@wplist_size; ++.@i ) {
-		.@menu$ += getitemname(.@wplist[.@i]) + ":";
+		.@menu$ += getitemname(.@wplist[.@i])+":";
 	}
 	mes "[BK]";
 	mes "What's happening?";
 	mes "No way?!";
 	next;
-	if (select( "Enhancing weapons.", "What?" ) == 2) {
+	if (select( "Enhancing weapons.","What?" ) == 2) {
 		mes "[BK]";
 		mes "Yeah?";
 		mes "Are you asking me what I know?";
@@ -4160,7 +4160,7 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 			mes "Basically I will add a random monster card with the property type that you choose.";
 			mes "Good luck!";
 			next;
-			switch( select( "Brute Type", "Plant Type", "Insect Type", "Fish Type", "Dragon Type", "Increased Heal" ) ) {
+			switch ( select( "Brute Type","Plant Type","Insect Type","Fish Type","Dragon Type","Increased Heal" ) ) {
 			case 1:
 				setarray .@arg[0],Goblin_Card,Bradium_Goram_Card,111;
 				.@type$ = "Brute";
@@ -4190,7 +4190,7 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 					if (.@arg[0] == Heal_Amount2)
 						mes "Good. Your weapon will now increase Heal effectiveness.";
 					else
-						mes "Good. Your weapon will increase attacks to "+ .@type$ +" type monsters.";
+						mes "Good. Your weapon will increase attacks to "+.@type$+" type monsters.";
 					next;
 					specialeffect EF_REPAIRWEAPON;
 					progressbar "ffff00",3;
@@ -4299,7 +4299,7 @@ sec_in02,25,33,4	script	Assistant#para_suvquest	4_M_BABYCAT,{
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
 		mes "Please select the variable you want to modify.";
 		next;
-		.@var =  select("para_suv01", "para_suv02");
+		.@var =  select("para_suv01","para_suv02");
 		mes "Enter the modified value";
 		next;
 		input .@input,0,9999;

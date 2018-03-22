@@ -37,7 +37,7 @@ izlude_in,118,175,4	script	Cavaleiro Thomas	4W_M_02,{
 		mes "O que você acha?";
 		mes "Você gostaria de aprender-la?";
 		next;
-		switch (select("Claro que sim!", "Não, obrigado")) {
+		switch (select("Claro que sim!","Não, obrigado")) {
 			case 1:
 			mes "[Thomas]";
 			mes "Muito bem.";
@@ -77,7 +77,7 @@ izlude_in,118,175,4	script	Cavaleiro Thomas	4W_M_02,{
 		mes "Você voltou...";
 		mes "Pronto para aprender \"Recuperar HP em Movimento\"?";
 		next;
-		switch (select("Sim", "Ainda não")) {
+		switch (select("Sim","Ainda não")) {
 			case 1:
 			if ((JobLevel > 34 || (BaseJob == Job_Knight || BaseJob == Job_Crusader)) && (countitem(Empty_Bottle) > 199) && (countitem(Wing_Of_Moth) > 0)) {
 				mes "[Thomas]";
@@ -88,9 +88,9 @@ izlude_in,118,175,4	script	Cavaleiro Thomas	4W_M_02,{
 				mes "Agora vou ensinar você...";
 				mes "...Recuperar HP em Movimento";
 				next;
-				delitem(Empty_Bottle, 200);
-				delitem(Wing_Of_Moth, 1);
-				skill("SM_MOVINGRECOVERY", 1, 0);
+				delitem(Empty_Bottle,200);
+				delitem(Wing_Of_Moth,1);
+				skill("SM_MOVINGRECOVERY",1,0);
 				sm_movingrecovery_x = 2;
 				mes "[Thomas]";
 				mes "Ai está!";
@@ -152,17 +152,17 @@ prt_in,75,88,5	script	Leon Von Frich	4_M_03,{
 			mes "Ooh! Você está mais do que pronto para aprender o Ataque Fatal!";
 			mes "Então, que tal? Você gostaria de aprender?";
 			next;
-			switch (select("Sim!", "Eu não quero","O que é isso?")) {
+			switch (select("Sim!","Eu não quero","O que é isso?")) {
 				case 1:
 				mes "[Leon]";
 				mes "Ok, vamos começar!";
 				next;
-				delitem(Fire_Arrow, 10);
-				delitem(Silver_Arrow, 10);
-				delitem(Banana_Juice, 1);
-				delitem(Tentacle, 30);
-				delitem(Royal_Jelly, 5);
-				skill("SM_FATALBLOW", 1, 0);
+				delitem(Fire_Arrow,10);
+				delitem(Silver_Arrow,10);
+				delitem(Banana_Juice,1);
+				delitem(Tentacle,30);
+				delitem(Royal_Jelly,5);
+				skill("SM_FATALBLOW",1,0);
 				mes "[Leon]";
 				mes "Success!";
 				mes "Vá usar sua nova habilidade para todo seu potencial.";
@@ -200,7 +200,7 @@ prt_in,75,88,5	script	Leon Von Frich	4_M_03,{
 		mes "[Leon]";
 		mes "Gostaria de dar um presente a um incrível espadachim como você?";
 		next;
-		switch (select("Que presente?", "Está bem")) {
+		switch (select("Que presente?","Está bem")) {
 			case 1:
 			mes "[Leon]";
 			mes "Haha nada de especial, mas uma habilidade para atacar o ponto vital!";
@@ -224,7 +224,7 @@ prt_in,75,88,5	script	Leon Von Frich	4_M_03,{
 		mes "Desenvolvi essa maravilhosa nova habilidade!";
 		mes "Você gostaria de aprender essa habilidade?";
 		next;
-		if (select("Claro!", "Não mesmo")) {
+		if (select("Claro!","Não mesmo")) {
 			mes "[Leon]";
 			mes "Está bem. Vou contar-lhe os requisitos.";
 			mes "Primeiro você precisa ter o nível 5 Bash.";
@@ -282,15 +282,15 @@ prt_in,94,57,3	script	Juan	4_M_03,4,4,{
 			mes "Ooh. Jovem espadachim!";
 			mes "Você está pronto para aprender a habilidade mais nova, \"Instinto de Sobrevivência\"?!";
 			next;
-			if (select("Gostaria de aprender agora", "O que é isso?") == 1) {
+			if (select("Gostaria de aprender agora","O que é isso?") == 1) {
 				mes "[Juan]";
 				mes "Então está bem...";
 				next;
-				delitem(Powder_Of_Butterfly, 35);
-				delitem(Horrendous_Mouth, 10);
-				delitem(Decayed_Nail, 10);
-				delitem(Honey, 10);
-				skill("SM_AUTOBERSERK", 1, 0);
+				delitem(Powder_Of_Butterfly,35);
+				delitem(Horrendous_Mouth,10);
+				delitem(Decayed_Nail,10);
+				delitem(Honey,10);
+				skill("SM_AUTOBERSERK",1,0);
 				mes "[Juan]";
 				mes "Você acabou de se tornar um espadachim que pode usar Instinto de Sobrevivência.";
 				mes "Você pode ir e alcançar grandes coisas!";
@@ -345,7 +345,7 @@ prt_in,94,57,3	script	Juan	4_M_03,4,4,{
 			mes "Então não superestima seus poderes.";
 			mes "Claro que você sempre pode usar a habilidade que desenvolvemos para superar esses limites.";
 			next;
-			if (select("Do que você está falando?", "Você não fala coisa com coisa!") == 1) {
+			if (select("Do que você está falando?","Você não fala coisa com coisa!") == 1) {
 				mes "[Juan]";
 				mes "Estou falando da habilidade chamada Instinto de Sobrevivência.";
 				mes "É considerada a flor de um campo de batalha.";

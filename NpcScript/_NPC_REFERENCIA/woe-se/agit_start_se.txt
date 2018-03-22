@@ -45,7 +45,7 @@ OnClock2300:	//end time for Sat(6)
 
 OnAgitInit2:
 	// starting time checks
-	if((gettime(GETTIME_WEEKDAY) == 2 && gettime(GETTIME_HOUR) >= 18 && gettime(GETTIME_HOUR) < 21) ||
+	if ((gettime(GETTIME_WEEKDAY) == 2 && gettime(GETTIME_HOUR) >= 18 && gettime(GETTIME_HOUR) < 21) ||
 	   (gettime(GETTIME_WEEKDAY) == 4 && gettime(GETTIME_HOUR) >= 18 && gettime(GETTIME_HOUR) < 21) ||
 	   (gettime(GETTIME_WEEKDAY) == 6 && gettime(GETTIME_HOUR) >= 22 && gettime(GETTIME_HOUR) < 23)) {
 		if (!agitcheck2()) {

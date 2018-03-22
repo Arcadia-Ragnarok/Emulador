@@ -19,18 +19,18 @@
 	mes "[Gerente do Clã]";
 	mes "Olá "+strcharinfo(PC_NAME)+".";
 	mes "Sou responsavel pela contratação de acistentes de nosso clã.";
-	mes "Estaria enterçad" + (Sex == SEX_MALE ? "o" : "a") + " em algum?";
+	mes "Estaria enterçad"+(Sex == SEX_MALE ? "o":"a")+" em algum?";
 	if (strnpcinfo(NPC_MAP) == "prontera")  { .@mercenaryType$ = "SPEAR_MERC_GUILD"; .@mercenaryName$ = "Lanceiro"; }
 	if (strnpcinfo(NPC_MAP) == "izlude")    { .@mercenaryType$ = "SWORD_MERC_GUILD"; .@mercenaryName$ = "Espadachim"; }
 	if (strnpcinfo(NPC_MAP) == "pay_arche") { .@mercenaryType$ = "ARCH_MERC_GUILD";  .@mercenaryName$ = "Arqueiro"; }
 	next;
-	switch(select("Contratar Acistente", "Informações", "Cancelar")) {
+	switch (select("Contratar Acistente","Informações","Cancelar")) {
 		case 1:
 		mes "[Gerente do Clã]";
-		mes "Então você quer contratar um ^0000bb" + .@mercenaryName$ + "^000000 de nosso clã?";
+		mes "Então você quer contratar um ^0000bb"+.@mercenaryName$+"^000000 de nosso clã?";
 		mes "Então me diga qual Nível que desejado.";
 		next;
-		switch(select("Nível 1 (LV-20)", "Nível 2 (LV-30)", "Nível 3 (LV-40)", "Nível 4 (LV-50)", "Nível 5 (LV-60)", "Nível 6 (LV-70)", "Nível 7 (LV-80)", "Nível 8 (LV-90)", "Nível 9 (LV-95)", "Nível 10 (LV-99)", "Nenhum, mudei de ideia")) {
+		switch (select("Nível 1 (LV-20)","Nível 2 (LV-30)","Nível 3 (LV-40)","Nível 4 (LV-50)","Nível 5 (LV-60)","Nível 6 (LV-70)","Nível 7 (LV-80)","Nível 8 (LV-90)","Nível 9 (LV-95)","Nível 10 (LV-99)","Nenhum, mudei de ideia")) {
 			case 1:  .@level = 1;  .@minLevel = 15; .@loyalty = 0;   break;
 			case 2:  .@level = 2;  .@minLevel = 25; .@loyalty = 0;   break;
 			case 3:  .@level = 3;  .@minLevel = 35; .@loyalty = 0;   break;
@@ -90,27 +90,27 @@
 	.@zenyrequire = .@level * 1000;
 	.@mercLevel = .@minLevel + 5;
 	.@mercLoyalty = mercenary_get_faith(getd(.@mercenaryType$));
-	if (.@mercenaryType$ == "SPEAR_MERC_GUILD") { setarray(.@arrItem[1], 12173, 12174, 12175, 12176, 12177, 12178, 12179, 12180, 12181, 12182); }
-	if (.@mercenaryType$ == "SWORD_MERC_GUILD") { setarray(.@arrItem[1], 12163, 12164, 12165, 12166, 12167, 12168, 12169, 12170, 12171, 12172); }
-	if (.@mercenaryType$ == "ARCH_MERC_GUILD") {  setarray(.@arrItem[1], 12153, 12154, 12155, 12156, 12157, 12158, 12159, 12160, 12161, 12162); }
+	if (.@mercenaryType$ == "SPEAR_MERC_GUILD") { setarray(.@arrItem[1],12173,12174,12175,12176,12177,12178,12179,12180,12181,12182); }
+	if (.@mercenaryType$ == "SWORD_MERC_GUILD") { setarray(.@arrItem[1],12163,12164,12165,12166,12167,12168,12169,12170,12171,12172); }
+	if (.@mercenaryType$ == "ARCH_MERC_GUILD") {  setarray(.@arrItem[1],12153,12154,12155,12156,12157,12158,12159,12160,12161,12162); }
 	mes "[Gerente do Clã]";
-	mes "Para contratar um acistente de Nível " + .@level + ".";
-	mes "Cujo seu level é " + .@mercLevel + " você vai precisar de:";
-	mes "Está no mínimo com o level de base em ^0000BB" + .@minLevel + "^000000 ou maior.";
-	mes "Possuir ^0000BB" + .@zenyrequire + "^000000 Zenys.";
+	mes "Para contratar um acistente de Nível "+.@level+".";
+	mes "Cujo seu level é "+.@mercLevel+" você vai precisar de:";
+	mes "Está no mínimo com o level de base em ^0000BB"+.@minLevel+"^000000 ou maior.";
+	mes "Possuir ^0000BB"+.@zenyrequire+"^000000 Zenys.";
 	if (.@loyalty >= 50) {
-		mes " Ter pelo menos ^0000BB" + .@loyalty + "^000000 pontos de fidelidade com nosso clã.";
+		mes " Ter pelo menos ^0000BB"+.@loyalty+"^000000 pontos de fidelidade com nosso clã.";
 	}
 	next;
 	mes "[Gerente do Clã]";
 	mes "Deseja assinar o contrato agora?";
 	next;
-	if (select("Claro", "Não obrigado") == 1) {
+	if (select("Claro","Não obrigado") == 1) {
 		mes "[Gerente do Clã]";
 		if (Zeny < .@zenyrequire) {
 			mes " Sinto muito mas você não possui a quantidade de Zenys necessária para contratação desse acistente.";
 			close;
-		} else if(.@mercLoyalty < .@loyalty ) {
+		} else if (.@mercLoyalty < .@loyalty ) {
 			mes " Sua Lealdade para com nosso clã não é o suficiente para contratar esse acistente.";
 			mes "Você pode contratar um de Nível menor se preferir.";
 			close;
@@ -122,7 +122,7 @@
 		} else {
 			mes " Está aqui seu pergaminho de invocação.";
 			Zeny -= .@zenyrequire;
-			getitem (.@arrItem[.@level],1);
+			getitem(.@arrItem[.@level],1);
 			if (.@level == 10) {
 				mercenary_set_faith(getd(.@mercenaryType$), - 400);
 				mes "Pelo contrato com o acistente de Nível 10.";
@@ -130,7 +130,7 @@
 			}
 			next;
 			mes "[Gerente do Clã]";
-			mes "Lembre-se que depois de usado o acistente irá acompanha-l" + (Sex == SEX_MALE ? "o" : "a") + " para qualquer lugar.";
+			mes "Lembre-se que depois de usado o acistente irá acompanha-l"+(Sex == SEX_MALE ? "o":"a")+" para qualquer lugar.";
 			mes "Irá enfrentar qualquer perigo por você.";
 			mes "Mas seu contrato expira em ^BB000030 minutos^000000, depois desse tempo ele irá embora.";
 			mes "Use seus serviços com sabedoria.";

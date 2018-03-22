@@ -20,7 +20,7 @@ alberta_in,133,55,3	script	Louitz#molgenstain	4_M_02,{
 		mes "Como vai?";
 		next;
 		if (countitem(Detrimindexta) || countitem(Karvodailnirol)) {
-			switch(select("Conversar","Falar sobre as soluções","Cancelar")) {
+			switch (select("Conversar","Falar sobre as soluções","Cancelar")) {
 				case 1:
 				mes "[Mercador Louitz]";
 				mes "Eu estive em Geffen há algum tempo tentando encontrar ferramentas mágicas.";
@@ -112,7 +112,7 @@ geffen,181,114,3	script	Aure Dupon#molgenstain	4_KID01,{
 		mes "O tempo flui gentilmente e subtamente, mas nenhuma força neste mundo pode pará-lo.";
 		mes "A humanidade não é sequer um grão no grande esquema.";
 		next;
-		switch(select("Conversar","Falar sobre Molgenstein","Cancelar")) {
+		switch (select("Conversar","Falar sobre Molgenstein","Cancelar")) {
 			case 1:
 			mes "[Aure Dupon]";
 			mes "Ter metas e foco é bom.";
@@ -203,14 +203,14 @@ geffen_in,141,140,3	script	Molgenstein#molgenstain	2_M_MOLGENSTEIN,{
 		mes "Hehehehe....";
 		mes "Heeheeheeheehee....";
 		next;
-		switch(select("Pedir para fazer uma solução","Cancelar")) {
+		switch (select("Pedir para fazer uma solução","Cancelar")) {
 			case 1:
 			mes "[Molgenstein]";
 			mes "Então...";
 			mes "Você quer que eu faça algo totalmente novo, hein? Hehhehheh!";
 			mes "Eu amo seu senso de aventura científica!";
 			next;
-			switch(select("Reagente","Mistura")) {
+			switch (select("Reagente","Mistura")) {
 				case 1:
 				mes "[Molgenstein]";
 				mes "Ooh...!";
@@ -237,10 +237,10 @@ geffen_in,141,140,3	script	Molgenstein#molgenstain	2_M_MOLGENSTEIN,{
 						close;
 					} else {
 						Zeny -= 3000;
-						delitem (Alchol,1);
-						delitem (Detrimindexta,1);
-						delitem (Empty_Bottle,1);
-						getitem (Counteragent,1);
+						delitem(Alchol,1);
+						delitem(Detrimindexta,1);
+						delitem(Empty_Bottle,1);
+						getitem(Counteragent,1);
 						mes "[Molgenstein]";
 						mes "Hee hee hee...";
 						mes "Haaaaah......";
@@ -279,10 +279,10 @@ geffen_in,141,140,3	script	Molgenstein#molgenstain	2_M_MOLGENSTEIN,{
 						close;
 					} else {
 						Zeny -= 4000;
-						delitem (Alchol,1);
-						delitem (Karvodailnirol,1);
-						delitem (Empty_Bottle,1);
-						getitem (Mixture,1);
+						delitem(Alchol,1);
+						delitem(Karvodailnirol,1);
+						delitem(Empty_Bottle,1);
+						getitem(Mixture,1);
 						mes "[Molgenstein]";
 						mes "Hee hee hee...";
 						mes "Haaaaah......";

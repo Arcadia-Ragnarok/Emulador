@@ -39,7 +39,7 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 					mes "Não vou questionar a sua qualificação.";
 					mes "Você quer ter suas habilidades mágicas de volta imediatamente, não é?";
 					next;
-					jobchange (Job_Mage_High);
+					jobchange(Job_Mage_High);
 					mes "[Líder da Guilda]";
 					mes "Uau, por alguma razão você está bem melhor do que antes.";
 					mes "De qualquer forma, acredito que você irá fazer um trabalho melhor dessa vez.";
@@ -96,32 +96,32 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				mes "Certo. Seu nome é... "+strcharinfo(PC_NAME)+".";
 				next;
 				mes "[Líder da Guilda]";
-				switch(rand(3)) {
+				switch (rand(3)) {
 					case 1:
 					mes "Para seu teste eu preciso que você faça uma poção mágica.";
 					mes "A ^3355FFSolução de Nº.1^000000";
-					setquest (1005);
+					setquest(1005);
 					mageq = 1;
 					break;
 					case 2:
 					mes "Para seu teste eu preciso que você faça uma poção mágica.";
 					mes "A ^3355FFSolução de Nº.2^000000";
-					setquest (1006);
+					setquest(1006);
 					mageq = 2;
 					break;
 					case 3:
 					mes "Para seu teste eu preciso que você faça uma poção mágica.";
 					mes "A ^3355FFSolução de Nº.3^000000";
-					setquest (1007);
+					setquest(1007);
 					mageq = 3;
 					break;
 					default:
 					mes "Para seu teste eu preciso que você faça uma poção mágica.";
 					mes "A ^3355FFSolução de Nº.4^000000";
-					setquest (1008);
+					setquest(1008);
 					mageq = 4;
 				}
-				getitem (Empty_Cylinder,1);
+				getitem(Empty_Cylinder,1);
 				next;
 				mes "[Líder da Guilda]";
 				mes "Quando ela estiver pronta traga ela para mim.";
@@ -160,7 +160,7 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				if (countitem(Mage_Test_2)) { delitem(Mage_Test_2,countitem(Mage_Test_2)); }
 				if (countitem(Mage_Test_3)) { delitem(Mage_Test_3,countitem(Mage_Test_3)); }
 				if (countitem(Mage_Test_4)) { delitem(Mage_Test_4,countitem(Mage_Test_4)); }
-				getitem (Empty_Cylinder,1);
+				getitem(Empty_Cylinder,1);
 				close;
 			} else {
 				mageq = 6;
@@ -168,10 +168,10 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				if (countitem(Mage_Test_2)) { delitem(Mage_Test_2,countitem(Mage_Test_2)); }
 				if (countitem(Mage_Test_3)) { delitem(Mage_Test_3,countitem(Mage_Test_3)); }
 				if (countitem(Mage_Test_4)) { delitem(Mage_Test_4,countitem(Mage_Test_4)); }
-				if (questprogress(1005)) { completequest (1005); }
-				if (questprogress(1006)) { completequest (1006); }
-				if (questprogress(1007)) { completequest (1007); }
-				if (questprogress(1008)) { completequest (1008); }
+				if (questprogress(1005)) { completequest(1005); }
+				if (questprogress(1006)) { completequest(1006); }
+				if (questprogress(1007)) { completequest(1007); }
+				if (questprogress(1008)) { completequest(1008); }
 				mes "[Líder da Guilda]";
 				mes "Muito bem, vi seu esforço na pesquisa para produzir a Solução.";
 				mes "Esse é o espírito de um mago.";
@@ -197,9 +197,9 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				mes "Tudo bem, se ainda quiser se tornar "+(Sex == SEX_MALE ? "um Mago":"uma Maga")+" é só vir falar comigo.";
 				close;
 			}
-			jobchange (Job_Mage);
-			callfunc ("ClearJobQuest");
-			getitem (N_Rod,1);
+			jobchange(Job_Mage);
+			callfunc("ClearJobQuest");
+			getitem(N_Rod,1);
 			mes "[Líder da Guilda]";
 			mes "Agora você é "+(Sex == SEX_MALE ? "um Mago":"uma Maga")+", estude mais e mais o uso da magia.";
 			mes "Aprendar a controlar não só os elementos como também a força natural.";
@@ -214,7 +214,7 @@ geffen_in,177,112,4	script	Estante de Livros#mageq	HIDDEN_NPC,{
 	mes "Este guia é propriedade da Guilda dos Magos de Geffen.";
 	mes "Contém listas de ingredientes para produção de Soluções Mágicas.";
 	next;
-	switch(select("Solução Nº 1","Solução Nº 2","Solução Nº 3","Solução Nº 4","Cancelar")) {
+	switch (select("Solução Nº 1","Solução Nº 2","Solução Nº 3","Solução Nº 4","Cancelar")) {
 		case 1:
 		mes "[^3355FF Solução Nº 1 ^000000]";
 		mes "Lista de ingredientes:";
@@ -306,7 +306,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 		mes "[Máquina de Mistura]";
 		mes "Escolha o solvente para a solução.";
 		next;
-		switch(select(getitemname(Payon_Potion),getitemname(Morocc_Potion),"Nenhum Solvente")) {
+		switch (select(getitemname(Payon_Potion),getitemname(Morocc_Potion),"Nenhum Solvente")) {
 			case 1:
 			if (!countitem(Payon_Potion)) {
 				mes "[Máquina de Mistura]";
@@ -344,7 +344,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 				mes "[Máquina de Mistura]";
 				mes "Escolha se deseja começar a misturar, ou para voltar a inserir o número de itens a serem misturados.";
 				next;
-				switch(select("Comece a misturar","Re-Adicionar itens","Voltar")) {
+				switch (select("Comece a misturar","Re-Adicionar itens","Voltar")) {
 					case 1:
 					mes "[Máquina de Mistura]";
 					mes "Coloque os itens no Receptáculo de Mistura.";
@@ -390,11 +390,11 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 							mes "Processo cancelado.";
 							close;
 						}
-						if (.@mixitem1_1 != 0) delitem (Jellopy,.@mixitem1_1);
-						if (.@mixitem1_2 != 0) delitem (Fluff,.@mixitem1_2);
-						if (.@mixitem1_3 != 0) delitem (Milk,.@mixitem1_3);
-						if (.@mixitem2 == 1) delitem (Payon_Potion,1);
-						if (.@mixitem2 == 2) delitem (Morocc_Potion,1);
+						if (.@mixitem1_1 != 0) delitem(Jellopy,.@mixitem1_1);
+						if (.@mixitem1_2 != 0) delitem(Fluff,.@mixitem1_2);
+						if (.@mixitem1_3 != 0) delitem(Milk,.@mixitem1_3);
+						if (.@mixitem2 == 1) delitem(Payon_Potion,1);
+						if (.@mixitem2 == 2) delitem(Morocc_Potion,1);
 						mes "Itens estão prontos.";
 						mes "Feche a tampa.";
 						.@progress = 3;
@@ -429,10 +429,10 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 			}
 			mes "[Máquina de Mistura]";
 			mes "Inserir itens necessários.";
-			while(true) {
-				switch(select(getitemname(Jellopy),getitemname(Fluff),getitemname(Milk),"Começar a Misturar")) {
+			while (true) {
+				switch (select(getitemname(Jellopy),getitemname(Fluff),getitemname(Milk),"Começar a Misturar")) {
 					case 1:
-					while(true) {
+					while (true) {
 						input .@input;
 						if (.@input > 9) {
 							next;
@@ -440,8 +440,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 							mes "Erro: limite do item excedido.";
 							mes "Insira valores de 10 e tente novamente.";
 							next;
-						}
-						else {
+						} else {
 							if (countitem(Jellopy) > 0) {
 								.@mixitem1_1 += .@input;
 							}
@@ -451,7 +450,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 					}
 					break;
 					case 2:
-					while(true) {
+					while (true) {
 						input .@input;
 						if (.@input > 9) {
 							next;
@@ -459,8 +458,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 							mes "Erro: limite do item excedido.";
 							mes "Insira valores de 10 e tente novamente.";
 							next;
-						}
-						else {
+						} else {
 							if (countitem(Fluff) > 0) {
 								.@mixitem1_2 += .@input;
 							}
@@ -470,7 +468,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 					}
 					break;
 					case 3:
-					while(true) {
+					while (true) {
 						input .@input;
 						if (.@input > 9) {
 							next;
@@ -478,8 +476,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 							mes "Erro: limite do item excedido.";
 							mes "Insira valores de 10 e tente novamente.";
 							next;
-						}
-						else {
+						} else {
 							if (countitem(Milk) > 0) {
 								.@mixitem1_3 += .@input;
 							}
@@ -501,7 +498,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 		mes "[Máquina de Mistura]";
 		mes "Digite o número de série do pó mágico.";
 		next;
-		while(true) {
+		while (true) {
 			input .@input;
 			if (.@input < 1000 || .@input > 9999) {
 				mes "[Máquina de Mistura]";
@@ -509,14 +506,12 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 					mes "Você quer ignorar este menu?";
 					next;
 					if (select("Sim","Não") == 1) { break; }
-				}
-				else {
+				} else {
 					mes "Número de série incorreto.";
 					mes "Tente novamente.";
 					next;
 				}
-			}
-			else {
+			} else {
 				mes "[Máquina de Mistura]";
 				mes "O número de série é: "+.@input+", está correto?";
 				next;
@@ -533,7 +528,7 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 		mes "[Máquina de Mistura]";
 		mes "Coloque o Catalisador.";
 		next;
-		switch(select(getitemname(Yellow_Gemstone),getitemname(Red_Gemstone),getitemname(Blue_Gemstone),getitemname(Crystal_Jewel),"Ignorar")) {
+		switch (select(getitemname(Yellow_Gemstone),getitemname(Red_Gemstone),getitemname(Blue_Gemstone),getitemname(Crystal_Jewel),"Ignorar")) {
 			case 1: .@mixitem3 = 1; break;
 			case 2: .@mixitem3 = 2; break;
 			case 3: .@mixitem3 = 3; break;
@@ -566,22 +561,22 @@ geffen_in,164,112,4	script	Máquina de Mistura#mageq	HIDDEN_NPC,{
 		if (.@mixitem1_1 == 2 && .@mixitem1_2 == 3 && .@mixitem1_3 == 1 && .@mixitem2 == 1 && .@mixitem3 == 1 && .@magic_powder == 1) {
 			mes "[Máquina de Mistura]";
 			mes "Processo de produção da Solução Mágica Nº 1 completado.";
-			getitem (Mage_Test_1,1);
+			getitem(Mage_Test_1,1);
 			next;
 		} else if (.@mixitem1_1 == 3 && .@mixitem1_2 == 1 && .@mixitem1_3 == 1 && .@mixitem2 == 0 && .@mixitem3 == 2 && .@magic_powder == 2) {
 			mes "[Máquina de Mistura]";
 			mes "Processo de produção da Solução Mágica Nº 2 completado.";
-			getitem (Mage_Test_2,1);
+			getitem(Mage_Test_2,1);
 			next;
 		} else if (.@mixitem1_1 == 6 && .@mixitem1_2 == 1 && .@mixitem1_3 == 0 && .@mixitem2 == 1 && .@mixitem3 == 3 && .@magic_powder == 3) {
 			mes "[Máquina de Mistura]";
 			mes "Processo de produção da Solução Mágica Nº 3 completado.";
-			getitem (Mage_Test_3,1);
+			getitem(Mage_Test_3,1);
 			next;
 		} else if (.@mixitem1_1 == 2 && .@mixitem1_2 == 3 && .@mixitem1_3 == 0 && .@mixitem2 == 2 && .@mixitem3 == 4 && .@magic_powder == 4) {
 			mes "[Máquina de Mistura]";
 			mes "Processo de produção da Solução Mágica Nº 4 completado.";
-			getitem (Mage_Test_4,1);
+			getitem(Mage_Test_4,1);
 			next;
 		} else {
 			mes "[Máquina de Mistura]";
@@ -599,25 +594,23 @@ pay_arche,122,100,0	script	Dollshoi#mageq	4_M_ORIENT01,{
 	mes "Você quer uma solução?";
 	mes "Hum, me dê 50 zenys e um "+getitemname(Empty_Cylinder)+".";
 	next;
-	if (select("Negócio Fechado.:Não, esquece.") == 2) { close; }
+	if (select("Negócio Fechado","Não, esquece.") == 2) { close; }
 	if (Zeny < 50) {
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 		mes "Ei! Você não possui 50 zenys.";
 		close;
-	}
-	else if (!countitem(Empty_Cylinder)) {
+	} else if (!countitem(Empty_Cylinder)) {
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 		mes "Você não pode carregar as soluções!";
 		mes "Me traga um "+getitemname(Empty_Cylinder)+" para eu colocar a Solução dentro.";
 		close;
 	} else {
-		delitem (Empty_Cylinder,1);
+		delitem(Empty_Cylinder,1);
 		Zeny -= 50;
-		if (strnpcinfo(NPC_NAME) == "Dollshoi#mageq") { getitem (Payon_Potion,1); }
-		else if (strnpcinfo(NPC_NAME) == "Ponka-Hontas#mageq") { getitem (Morocc_Potion,1); }
+		if (strnpcinfo(NPC_NAME) == "Dollshoi#mageq") { getitem(Payon_Potion,1); }
+		else if (strnpcinfo(NPC_NAME) == "Ponka-Hontas#mageq") { getitem(Morocc_Potion,1); }
 		close;
 	}
 }
 
 moc_ruins,91,150,0	duplicate(Dollshoi#mageq)	Ponka-Hontas#mageq	4_F_04
-

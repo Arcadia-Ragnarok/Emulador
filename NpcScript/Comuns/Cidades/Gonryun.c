@@ -66,7 +66,7 @@ gonryun,181,161,3	script	MoonJin Chung#gon	4_F_TWMIDWOMAN,{
 // ------------------------------------------------------------------
 gonryun,113,135,6	script	Guardião#gon	8_M_TWSOLDIER,{
 	mes "[Guardião]";
-	mes "Bem vind"+ (Sex == SEX_MALE ? "o" : "a") +"! Sou um humilde servidor de SaYumMoon, o governador dessa cidade.";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a")+"! Sou um humilde servidor de SaYumMoon, o governador dessa cidade.";
 	next;
 	mes "[Guardião]";
 	mes "Acredito que não vá acontecer mas, se você agir de maneira suspeita, serei obrigado a te prender.";
@@ -112,7 +112,7 @@ gonryun,166,196,3	script	Soldado#gon	8_M_TWSOLDIER,{
 // ------------------------------------------------------------------
 gonryun,169,71,3	script	LeeHee Min#gon	4_F_TWGIRL,{
 	mes "[LeeHee Min]";
-	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a") + "!";
+	mes "Bem vind"+(Sex == SEX_MALE ? "o" : "a")+"!";
 	mes "Você gostou da paisagem no seu caminho para cá?";
 	mes "O que achou daquelas pequenas construções no caminho?";
 	next;
@@ -133,7 +133,7 @@ gonryun,153,64,7	script	Anunciante de Kunlun#gon	4_M_TWMIDMAN,{
 	mes "Quando desejar terminar sua visita a Kunlun.";
 	mes "Eu irei leva-lo para o porto.";
 	next;
-	if (select("Retornar ao porto", "Cancelar") == 1) {
+	if (select("Retornar ao porto","Cancelar") == 1) {
 		mes "[Jangchungryong]";
 		mes "Eu espero que você tenha se divertido conosco.";
 		mes "Vamos indo então?";

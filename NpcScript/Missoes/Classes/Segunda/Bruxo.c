@@ -97,16 +97,16 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 							mes "Os itens que você deve coletar são...";
 							next;
 							mes "[Catherine]";
-							switch(rand(2)) {
+							switch (rand(2)) {
 								case 1:
 								mes "10 exemplares de ^3355FFGema Vermelha^000000.";
 								mes "10 exemplares de ^3355FFGema Azul^000000.";
 								mes "10 exemplares de ^3355FFGema Amarela^000000.";
 								wizardq = 1;
-								setquest (9013);
+								setquest(9013);
 								default:
 								wizardq = 2;
-								setquest (9014);
+								setquest(9014);
 								mes "5 exemplares de ^3355FFCristal Azul^000000.";
 								mes "5 exemplares de ^3355FFVida Verdejante^000000.";
 								mes "5 exemplares de ^3355FFSangue Escarlate^000000.";
@@ -136,7 +136,7 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 							mes "Tenha cuidado.";
 							mes "Nós perdemos muitos Magos devido a dificuldade dos exames.";
 							wizardq = 3;
-							setquest (9015);
+							setquest(9015);
 							close;
 						}
 					}
@@ -162,11 +162,11 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				mes "Não esqueça dessa vez, e traga todos os itens, ok?...";
 				close;
 			} else {
-				delitem (Red_Gemstone,10);
-				delitem (Blue_Gemstone,10);
-				delitem (Yellow_Gemstone,10);
+				delitem(Red_Gemstone,10);
+				delitem(Blue_Gemstone,10);
+				delitem(Yellow_Gemstone,10);
 				wizardq = 3;
-				changequest (9013,9015);
+				changequest(9013,9015);
 				mes "[Catherine]";
 				mes "Perfeito!";
 				mes "Você pegou todos os itens!";
@@ -203,12 +203,12 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				mes "Não esqueça dessa vez e pegue os certos, certo?...";
 				close;
 			} else {
-				delitem (Crystal_Blue,5);
-				delitem (Yellow_Live,5);
-				delitem (Boody_Red,5);
-				delitem (Wind_Of_Verdure,5);
+				delitem(Crystal_Blue,5);
+				delitem(Yellow_Live,5);
+				delitem(Boody_Red,5);
+				delitem(Wind_Of_Verdure,5);
 				wizardq = 3;
-				changequest (9014,9015);
+				changequest(9014,9015);
 				mes "[Catherine]";
 				mes "Perfeito!";
 				mes "Você pegou todos os itens!";
@@ -286,10 +286,10 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 				mes "Bom, não precisamos esperar, parabenizo você.";
 				mes "Eu considero você "+(Sex == SEX_MALE ? "um Bruxo":"uma Bruxa")+".";
 				next;
-				jobchange (Job_Wizard);
-				completequest (9018);
-				callfunc ("ClearJobQuest2nd",9);
-				getitem (Blue_Potion,6);
+				jobchange(Job_Wizard);
+				completequest(9018);
+				callfunc("ClearJobQuest2nd",9);
+				getitem(Blue_Potion,6);
 				next;
 				mes "[Catherine]";
 				mes "Viva uma vida maravilhosa como Bruxo, se torne o mais forte de todos!";
@@ -383,7 +383,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 					mes "[Raulel]";
 					mes "Eu vou fazer 10 perguntas então me responda corretamente.";
 					mes "Se responder alguma errada, você não passa e eu não vou te dizer qual é!";
-					if (questprogress(9015)) { changequest (9015,9016); }
+					if (questprogress(9015)) { changequest(9015,9016); }
 				}
 			} else {
 				mes "[Raulel]";
@@ -401,7 +401,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 			mes "[Raulel]";
 			mes "*TOSSE* então vamos às perguntas!";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Raulel]";
 				mes "1. Qual destes não é necessário para aprender barreira de fogo?";
@@ -606,12 +606,12 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 				mes "Você vai precisar.";
 				wizardq = 4;
 				if (wizardq2) { wizardq2 = 0; }
-				changequest (9016,9017);
+				changequest(9016,9017);
 				close;
 			} else if (.@wizq == 10) {
 				wizardq = 4;
 				if (wizardq2) { wizardq2 = 0; }
-				changequest (9016,9017);
+				changequest(9016,9017);
 				mes "Muito bem, você passou o segundo teste.";
 				mes "Não foi feito em uma tentativa como a minha foi, mas eu vou deixar você passar...";
 				next;
@@ -679,17 +679,17 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 					mes "Volte e viva uma vida tranquila.";
 					mes "Magia superior é uma força que não pode ser manipulada por pessoas fracas.";
 					close2;
-					warp ("geffen",120,110);
+					warp("geffen",120,110);
 					end;
 				}
 			}
 			wizardq = 5;
-			savepoint ("geffen",120,107);
+			savepoint("geffen",120,107);
 			mes "[Raulel]";
 			mes "Então, como você deseja.";
 			mes "Eu vou mandar você pra lá agora.";
 			close2;
-			warp ("job_wiz",57,154);
+			warp("job_wiz",57,154);
 			end;
 		} else if (wizardq == 5) {
 			mes "[Raulel]";
@@ -707,7 +707,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 				mes "O que me diz heim?";
 				next;
 				if (select ("Claro está aqui o pergaminho","Não, quero continuar") == 1) {
-					delitem (Worn_Out_Scroll,1);
+					delitem(Worn_Out_Scroll,1);
 					mes "[Raulel]";
 					mes "Então você optou por essa ecolha, pois bem...";
 					mes "Eu acho que posso continuar minha pesquisa com isso...";
@@ -730,7 +730,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 			mes "[Raulel]";
 			mes "Bem, Eu vou te mandar para o local de teste agora.";
 			close2;
-			warp ("job_wiz",57,154);
+			warp("job_wiz",57,154);
 			end;
 		} else if (wizardq == 6) {
 			mes "[Raulel]";
@@ -742,7 +742,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 				mes "Boa sorte então.";
 				mes "Vou te mandar para o local de teste agora.";
 				close2;
-				warp ("job_wiz",57,154);
+				warp("job_wiz",57,154);
 				end;
 			} else {
 				mes "[Raulel]";
@@ -800,7 +800,7 @@ gef_tower,102,24,2	script	Bruxo Sombrio#wizardq	4_M_JOB_WIZARD,{
 					mes "Vou dizer a Catherine que você passou no teste final.";
 					mes "Então agora vá, já perdir muito tempo com seus consecutivos fracassos.";
 					wizardq = 7;
-					changequest (9017,9018);
+					changequest(9017,9018);
 					close;
 				}
 			}
@@ -858,14 +858,14 @@ job_wiz,50,165,4	script	Assistente da Arena#wizardq	8_F_GIRL,{
 	close;
 
 	OnInit:
-	waitingroom ("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
+	waitingroom("Sala de Espera",20,strnpcinfo(NPC_NAME)+"::OnStartArena",1);
 	enablewaitingroomevent;
 	end;
 
 	OnStartArena:
-	killmonsterall (strnpcinfo(NPC_MAP));
-	warpwaitingpc (strnpcinfo(NPC_MAP),114,169);
-	donpcevent ("Room_of_Water#wizardq::OnEnable");
+	killmonsterall(strnpcinfo(NPC_MAP));
+	warpwaitingpc(strnpcinfo(NPC_MAP),114,169);
+	donpcevent("Room_of_Water#wizardq::OnEnable");
 	disablewaitingroomevent;
 	end;
 
@@ -882,82 +882,82 @@ job_wiz,1,1,1	script	Room_of_Water#wizardq	1_F_01,{
 
 	OnEnable:
 	.MyMobs = 7;
-	monster (strnpcinfo(NPC_MAP),109,174,"Fen",1158,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),118,174,"Molusco",1074,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),109,165,"Vadon",1066,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),118,165,"Cornutus",1067,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),101,157,"Marina",1141,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),126,157,"Marin",1242,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),98,170,"Magnolia",1138,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),109,174,"Fen",PHEN,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),118,174,"Molusco",SHELLFISH,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),109,165,"Vadon",VADON,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),118,165,"Cornutus",CORNUTUS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),101,157,"Marina",MARINA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),126,157,"Marin",MARINE_SPHERE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),98,170,"Magnolia",MAGNOLIA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonsterall (strnpcinfo(NPC_MAP));
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 
 	OnMyMobDead:
 	--.MyMobs;
 	if (.MyMobs < 1) {
-		percentheal (100,100);
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" eliminou todos os Monstros.",bc_map);
-		warp (strnpcinfo(NPC_MAP),116,97);
-		donpcevent ("Room_of_Earth#wizardq::OnEnable");
+		percentheal(100,100);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" eliminou todos os Monstros.",bc_map);
+		warp(strnpcinfo(NPC_MAP),116,97);
+		donpcevent("Room_of_Earth#wizardq::OnEnable");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"Sala da Água; O teste agora vai continuar.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Sala da Água; O teste agora vai continuar.",bc_map);
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos. Nós vamos iniciar o teste agora.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos. Nós vamos iniciar o teste agora.",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Por favor elimine todos os montros dentro do tempo estabelecido.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Por favor elimine todos os montros dentro do tempo estabelecido.",bc_map);
 	end;
 
 	OnTimer33000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer63000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
 	end;
 
 	OnTimer93000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer123000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
 	end;
 
 	OnTimer153000:
-	mapannounce (strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer173000:
-	mapannounce (strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
 	end;
 
 	OnTimer183000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
-	areawarp (strnpcinfo(NPC_MAP),98,154, 129,185,"gef_tower",110,30);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
+	areawarp(strnpcinfo(NPC_MAP),98,154, 129,185,"gef_tower",110,30);
 	end;
 
 	OnTimer184000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer185000:
-	mapannounce (strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
 	end;
 
 	OnTimer186000:
-	donpcevent ("Assistente da Arena#wizardq::OnStart");
+	donpcevent("Assistente da Arena#wizardq::OnStart");
 	end;
 }
 
@@ -969,82 +969,82 @@ job_wiz,1,3,1	script	Room_of_Earth#wizardq	1_F_01,{
 
 	OnEnable:
 	.MyMobs = 7;
-	monster (strnpcinfo(NPC_MAP),111,102,"Yoyo",1057,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),120,102,"Deniro",1105,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),111,102,"Caramelo",1103,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),120,93,"Giearth",1121,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),107,98,"Pé-Grande",1060,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),124,98,"Guerreiro Orc",1023,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),104,86,"Vitata",1176,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),111,102,"Yoyo",YOYO,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),120,102,"Deniro",DENIRO,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),111,102,"Caramelo",CARAMEL,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),120,93,"Giearth",GIEARTH,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),107,98,"Pé-Grande",BIGFOOT,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),124,98,"Guerreiro Orc",ORK_WARRIOR,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),104,86,"Vitata",VITATA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonsterall (strnpcinfo(NPC_MAP));
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 
 	OnMyMobDead:
 	--.MyMobs;
 	if (.MyMobs < 1) {
-		mapannounce (strnpcinfo(NPC_MAP),strcharinfo(PC_NAME) + " eliminou todos os monstros.",bc_map);
-		percentheal (100,100);
-		warp (strnpcinfo(NPC_MAP),46,99);
-		donpcevent ("Room_of_Fire#wizardq::OnEnable");
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" eliminou todos os monstros.",bc_map);
+		percentheal(100,100);
+		warp(strnpcinfo(NPC_MAP),46,99);
+		donpcevent("Room_of_Fire#wizardq::OnEnable");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"Sala da Terra; O teste agora vai continuar.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Sala da Terra; O teste agora vai continuar.",bc_map);
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos.",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Elimie todos os monstros dentro do tempo dado.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Elimie todos os monstros dentro do tempo dado.",bc_map);
 	end;
 
 	OnTimer33000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer63000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
 	end;
 
 	OnTimer93000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer123000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
 	end;
 
 	OnTimer153000:
-	mapannounce (strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer173000:
-	mapannounce (strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
 	end;
 
 	OnTimer183000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
-	areawarp (strnpcinfo(NPC_MAP),100,82, 131,113,"gef_tower",110,30);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo acabou.",bc_map);
+	areawarp(strnpcinfo(NPC_MAP),100,82, 131,113,"gef_tower",110,30);
 	end;
 
 	OnTimer184000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer185000:
-	mapannounce (strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
 	end;
 
 	OnTimer186000:
-	donpcevent ("Assistente da Arena#wizardq::OnStart");
+	donpcevent("Assistente da Arena#wizardq::OnStart");
 	end;
 }
 
@@ -1056,83 +1056,83 @@ job_wiz,1,5,1	script	Room_of_Fire#wizardq	1_F_01,{
 
 	OnEnable:
 	.MyMobs = 6;
-	monster (strnpcinfo(NPC_MAP),33,110,"Goblin",1123,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),40,103,"Escorpião",1001,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),51,103,"Frilldora",1119,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),40,92,"PecoPeco",1019,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),51,92,"Salgueiro Ancião",1033,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),37,89,"Metaller",1058,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),33,110,"Goblin",GOBLIN_2,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),40,103,"Escorpião",SCORPION,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),51,103,"Frilldora",FRILLDORA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),40,92,"PecoPeco",PECOPECO,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),51,92,"Salgueiro Ancião",ELDER_WILOW,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),37,89,"Metaller",METALLER,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonsterall (strnpcinfo(NPC_MAP));
+	killmonsterall(strnpcinfo(NPC_MAP));
 	end;
 
 	OnMyMobDead:
 	--.MyMobs;
 	if (.MyMobs < 1) {
 		wizardq = 7;
-		changequest (9017,9018);
-		mapannounce (strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
+		changequest(9017,9018);
+		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
 		sleep(500);
-		areawarp (strnpcinfo(NPC_MAP),30,82, 61,113,"gef_tower",110,30);
-		donpcevent ("Assistente da Arena#wizardq::OnStart");
+		areawarp(strnpcinfo(NPC_MAP),30,82, 61,113,"gef_tower",110,30);
+		donpcevent("Assistente da Arena#wizardq::OnStart");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer1000:
-	mapannounce (strnpcinfo(NPC_MAP),"Sala de Fogo. O teste agora vai continuar.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Sala de Fogo. O teste agora vai continuar.",bc_map);
 	end;
 
 	OnTimer2000:
-	mapannounce (strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos. Nós vamos começar o teste agora.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"O tempo limite é de 3 minutos. Nós vamos começar o teste agora.",bc_map);
 	end;
 
 	OnTimer3000:
-	mapannounce (strnpcinfo(NPC_MAP),"Elimine todos os montros no tempo dado.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Elimine todos os montros no tempo dado.",bc_map);
 	end;
 
 	OnTimer33000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer63000:
-	mapannounce (strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"2 minutos restantes.",bc_map);
 	end;
 
 	OnTimer93000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto e 30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer123000:
-	mapannounce (strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"1 minuto restante.",bc_map);
 	end;
 
 	OnTimer153000:
-	mapannounce (strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"30 segundos restantes.",bc_map);
 	end;
 
 	OnTimer173000:
-	mapannounce (strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"10 segundos restantes.",bc_map);
 	end;
 
 	OnTimer183000:
-	mapannounce (strnpcinfo(NPC_MAP),"O Tempo acabou.",bc_map);
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	mapannounce(strnpcinfo(NPC_MAP),"O Tempo acabou.",bc_map);
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer184000:
-	areawarp (strnpcinfo(NPC_MAP),30,82, 61,113,"gef_tower",110,30);
+	areawarp(strnpcinfo(NPC_MAP),30,82, 61,113,"gef_tower",110,30);
 	end;
 
 	OnTimer185000:
-	mapannounce (strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),"Próximo candidato, entre por favor.",bc_map);
 	end;
 
 	OnTimer186000:
-	donpcevent ("Assistente da Arena#wizardq::OnStart");
+	donpcevent("Assistente da Arena#wizardq::OnStart");
 	end;
 }
 
@@ -1140,7 +1140,7 @@ job_wiz,1,5,1	script	Room_of_Fire#wizardq	1_F_01,{
 gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 	if (BaseJob == Job_Mage) {
 		if (!wizardq) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Cachorro]";
 			mes "Ah...";
 			mes "Eu sei o que você quer dizer.";
@@ -1170,7 +1170,7 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 				mes "Meu nome é \"Maria Splodofska\".";
 				mes "Apenas me chame Maria.";
 				next;
-				cutin ("job_wizard_maria03",2);
+				cutin("job_wizard_maria03",2);
 				mes "[Maria]";
 				mes "*Late*";
 				mes "Bem, eu me tornei um cachorro porque...";
@@ -1179,10 +1179,10 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 				mes "Teoricamente, em algums meses a química vai acabar e eu vou voltar ao normal.";
 				mes "Quando exatamente, não tenho idéia.";
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 				case 2:
-				cutin ("job_wizard_maria02",2);
+				cutin("job_wizard_maria02",2);
 				mes "[Cachorro]";
 				mes "*Late* *Late* *Late*";
 				mes "Não diga o óbvio!";
@@ -1194,7 +1194,7 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 				mes "O pessoal me chama Maria.";
 				mes "Eu ajudo pessoas como você que desejam se tornar um Bruxo.";
 				next;
-				cutin ("job_wizard_maria03",2);
+				cutin("job_wizard_maria03",2);
 				mes "[Cachorro]";
 				mes "O motivo de eu ter me tornado um cachorro...";
 				mes "Meu namorado estava fazendo experimentos para a Graduação em Magia dele.";
@@ -1202,11 +1202,11 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 				mes "Teoricamente, em alguns meses, a química vai acabar e eu vou voltar ao normal.";
 				mes "Quando exatamente, não tenho idéia.";
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			}
 		} else if (wizardq == 1) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Você se inscreveu, e agora está procurando pelos itens certo?";
 			next;
@@ -1240,10 +1240,10 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 			mes "De qualquer jeito, faça seu melhor.";
 			mes "Essa é a base de ser um Bruxo.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq == 2) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Você parece perdido...";
 			mes "Você se inscreveu, e agora você está procurando pelos itens certo?";
@@ -1279,29 +1279,29 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 			mes "De qualquer jeito, faça seu melhor.";
 			mes "Essa é a base de ser um Bruxo.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Não fique relaxado apenas depois do primeiro teste.";
 			mes "Faça seu melhor, porque você ainda tem dois testes para passar.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq == 3) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "ZzzzZzzzZzzz...";
 			next;
-			cutin ("job_wizard_maria02",2);
+			cutin("job_wizard_maria02",2);
 			mes "[Maria]";
 			mes "*wimper*...Blizadris...seu idiota...Zzz...";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq == 4) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Oh, você está indo bem não é?";
 			next;
@@ -1309,10 +1309,10 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 			mes "Bem, Faça seu melhor até o final.";
 			mes "Laurel está esperando.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq == 5 || wizardq == 6) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Você desistiu?";
 			mes "Como você pode se tornar um bruxo com o coração fraco?";
@@ -1329,10 +1329,10 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 			mes "*Grrr* De qualquer maneira, Continue o teste.";
 			mes "Não tenha uma mente fraca, *au* e volte! *Late* *Late* agora mesmo! *BARK*";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (wizardq == 7) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Como eu pensava, sabia que você era capaz de fazer isso, eu podia cheirar isso em você!";
 			mes "Agora eu posso te chamar de Bruxo.";
@@ -1341,19 +1341,19 @@ gef_tower,107,36,4	script	Cachorro#wizardq	4_DOG01,{
 			mes "Parabéns.";
 			mes "Sempre dê seu melhor em tudo, não importa o quê.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else {
 		if (BaseJob == Job_Wizard) {
-			cutin ("job_wizard_maria01",2);
+			cutin("job_wizard_maria01",2);
 			mes "[Maria]";
 			mes "Ao invés de ficar andando por aqui, não seria melhor testar o quão forte você ficou?";
 			next;
 			mes "[Maria]";
 			mes "Não esqueça que Bruxos crescem e melhoram seus poderes todos os dias.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else {
 			mes "[Maria]";

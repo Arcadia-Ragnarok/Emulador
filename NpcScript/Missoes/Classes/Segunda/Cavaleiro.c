@@ -85,7 +85,7 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 						mes "Vá falar com esses cavaleiros e comece os testes.";
 						mes "Depois de ter completado todos os testes, volte e fale comigo.";
 						knightq = 1;
-						setquest (9000);
+						setquest(9000);
 						close;
 					} else {
 						mes "[Capitão Herman]";
@@ -270,10 +270,10 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 				mes "Mas tem todas as qualidades necessárias para se tornar Cavaleiro.";
 				next;
 				.@level = JobLevel;
-				jobchange (Job_Knight);
-				completequest (9012);
-				callfunc ("ClearJobQuest2nd",7);
-				getitem (Awakening_Potion,7);
+				jobchange(Job_Knight);
+				completequest(9012);
+				callfunc("ClearJobQuest2nd",7);
+				getitem(Awakening_Potion,7);
 				mes "[Capitão Herman]";
 				mes "Declaro você membro da Cavalaria de Prontera.";
 				mes "Proteja os fracos e viva com honra.";
@@ -283,7 +283,7 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 					mes "Ei...";
 					mes "Nós preparamos um pequeno presente para parabenizá-lo por sua mudança de classe.";
 					mes "Por favor use-o quando você estiver em batalha enquanto você estiver honradamente protegendo os outros.";
-					getitem (Claymore,1);
+					getitem(Claymore,1);
 					next;
 				}
 				mes "[Capitão Herman]";
@@ -342,25 +342,25 @@ prt_in,75,107,4	script	Senhor Andrew#knightq	1_M_YOUNGKNIGHT,{
 				mes "Vá e reuna os seguintes itens...";
 				switch (rand(2)) {
 					case 0:
-					setarray (.@kntitm[0], 1040,5, 7006,5, 931,5, 1057,5, 903,5, 1028,5);
+					setarray(.@kntitm[0], 1040,5, 7006,5, 931,5, 1057,5, 903,5, 1028,5);
 					knightq2 = 1;
-					changequest (9000,9001);
+					changequest(9000,9001);
 					break;
 					case 1:
-					setarray (.@kntitm[0], 1042,5, 950,5, 1032,5, 966,5, 7031,5, 946,5);
+					setarray(.@kntitm[0], 1042,5, 950,5, 1032,5, 966,5, 7031,5, 946,5);
 					knightq2 = 2;
-					changequest (9000,9002);
+					changequest(9000,9002);
 					break;
 				}
 				knightq = 2;
 				next;
 				mes "[Senhor Andrew]";
-				mes "^236b8e"+.@kntitm[1]+" "+getitemname (.@kntitm[0])+"^000000.";
-				mes "^236b8e"+.@kntitm[3]+" "+getitemname (.@kntitm[2])+"^000000.";
-				mes "^236b8e"+.@kntitm[5]+" "+getitemname (.@kntitm[4])+"^000000.";
-				mes "^236b8e"+.@kntitm[7]+" "+getitemname (.@kntitm[6])+"^000000.";
-				mes "^236b8e"+.@kntitm[9]+" "+getitemname (.@kntitm[8])+"^000000.";
-				mes "^236b8e"+.@kntitm[11]+" "+getitemname (.@kntitm[10])+"^000000.";
+				mes "^236b8e"+.@kntitm[1]+" "+getitemname(.@kntitm[0])+"^000000.";
+				mes "^236b8e"+.@kntitm[3]+" "+getitemname(.@kntitm[2])+"^000000.";
+				mes "^236b8e"+.@kntitm[5]+" "+getitemname(.@kntitm[4])+"^000000.";
+				mes "^236b8e"+.@kntitm[7]+" "+getitemname(.@kntitm[6])+"^000000.";
+				mes "^236b8e"+.@kntitm[9]+" "+getitemname(.@kntitm[8])+"^000000.";
+				mes "^236b8e"+.@kntitm[11]+" "+getitemname(.@kntitm[10])+"^000000.";
 				next;
 				mes "[Senhor Andrew]";
 				mes "Estarei esperando aqui você trazer os os itens listados.";
@@ -381,7 +381,7 @@ prt_in,75,107,4	script	Senhor Andrew#knightq	1_M_YOUNGKNIGHT,{
 				mes "Ele lhe dará o seu próximo teste.";
 				mes "Ótimo trabalho dominando as habilidades de Espadachim.";
 				knightq = 3;
-				changequest (9000,9003);
+				changequest(9000,9003);
 				close;
 			}
 		} else {
@@ -392,25 +392,25 @@ prt_in,75,107,4	script	Senhor Andrew#knightq	1_M_YOUNGKNIGHT,{
 		}
 	} else if (knightq == 2) {
 		if (knightq2 == 1) {
-			setarray (.@kntitm[0],1040,5,7006,5,931,5,1057,5,903,5,1028,5);
+			setarray(.@kntitm[0],1040,5,7006,5,931,5,1057,5,903,5,1028,5);
 		} else {
-			setarray (.@kntitm[0],1042,5,950,5,1032,5,966,5,7031,5,946,5);
+			setarray(.@kntitm[0],1042,5,950,5,1032,5,966,5,7031,5,946,5);
 		}
 		mes "[Senhor Andrew]";
 		mes "Você reúniu todos os itens?";
 		mes "Vamos checar...";
 		next;
 		if (countitem(.@kntitm[0]) >= .@kntitm[1] && countitem(.@kntitm[2]) >= .@kntitm[3] && countitem(.@kntitm[4]) >= .@kntitm[5] && countitem(.@kntitm[6]) >= .@kntitm[7] && countitem(.@kntitm[8]) >= .@kntitm[9] && countitem(.@kntitm[10]) >= .@kntitm[11]) {
-			if (questprogress(9001)) { changequest (9001,9003); }
-			if (questprogress(9002)) { changequest (9002,9003); }
+			if (questprogress(9001)) { changequest(9001,9003); }
+			if (questprogress(9002)) { changequest(9002,9003); }
 			knightq = 3;
 			knightq2 = 0;
-			delitem (.@kntitm[0],.@kntitm[1]);
-			delitem (.@kntitm[2],.@kntitm[3]);
-			delitem (.@kntitm[4],.@kntitm[5]);
-			delitem (.@kntitm[6],.@kntitm[7]);
-			delitem (.@kntitm[8],.@kntitm[9]);
-			delitem (.@kntitm[10],.@kntitm[11]);
+			delitem(.@kntitm[0],.@kntitm[1]);
+			delitem(.@kntitm[2],.@kntitm[3]);
+			delitem(.@kntitm[4],.@kntitm[5]);
+			delitem(.@kntitm[6],.@kntitm[7]);
+			delitem(.@kntitm[8],.@kntitm[9]);
+			delitem(.@kntitm[10],.@kntitm[11]);
 			mes "[Senhor Andrew]";
 			mes "Perfeito!";
 			mes "Nós apreciamos o seu esforço em reunir esses itens.";
@@ -645,7 +645,7 @@ prt_in,71,91,0	script	Senhor Siracuse#knightq	1_M_YOUNGKNIGHT,{
 				}
 				if (knightq2) { knightq2 = 0; }
 				knightq = 4;
-				changequest (9003,9004);
+				changequest(9003,9004);
 				mes "[Senhor Siracuse]";
 				mes "Para o seu próximo teste, vá ver o Senhor Windsor.";
 				mes "Ele é muito calmo e de poucas palavras.";
@@ -689,7 +689,7 @@ prt_in,79,94,4	script	Senhor Windsor#knightq	4_M_JOB_KNIGHT1,{
 			close;
 		} else {
 			if (knightq != 5) { knightq = 5; }
-			if (questprogress(9004)) { changequest (9004,9005); }
+			if (questprogress(9004)) { changequest(9004,9005); }
 			mes "[Senhor Windsor]";
 			mes "Ah, sim, o teste de admisão...";
 			next;
@@ -699,7 +699,7 @@ prt_in,79,94,4	script	Senhor Windsor#knightq	4_M_JOB_KNIGHT1,{
 			mes "[Senhor Windsor]";
 			mes "Siga-me...";
 			close2;
-			warp ("job_knt",89,101);
+			warp("job_knt",89,101);
 			end;
 		}
 	} else if (knightq == 6 || knightq == 7) {
@@ -768,7 +768,7 @@ job_knt,89,106,4	script	Senhor Windsor#2knightq	4_M_JOB_KNIGHT1,{
 		close;
 		case 3:
 		close2;
-		warp ("prt_in",80,100);
+		warp("prt_in",80,100);
 		end;
 	}
 
@@ -778,13 +778,13 @@ job_knt,89,106,4	script	Senhor Windsor#2knightq	4_M_JOB_KNIGHT1,{
 	end;
 
 	OnStartArena:
-	killmonster (strnpcinfo(NPC_MAP), "kntTest#knightq::OnMyMobDead");
-	killmonster (strnpcinfo(NPC_MAP), "kntTest#2knightq::OnMyMobDead");
-	killmonster (strnpcinfo(NPC_MAP), "kntTest#3knightq::OnMyMobDead");
-	warpwaitingpc (strnpcinfo(NPC_MAP),43,146);
+	killmonster(strnpcinfo(NPC_MAP), "kntTest#knightq::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP), "kntTest#2knightq::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP), "kntTest#3knightq::OnMyMobDead");
+	warpwaitingpc(strnpcinfo(NPC_MAP),43,146);
 	attachrid($@warpwaitingpc[0]);
-	if (questprogress(9005)) { changequest (9005,9006); }
-	donpcevent ("kntTest#knightq::OnEnable");
+	if (questprogress(9005)) { changequest(9005,9006); }
+	donpcevent("kntTest#knightq::OnEnable");
 	disablewaitingroomevent;
 	end;
 
@@ -800,19 +800,19 @@ job_knt,1,1,0	script	kntTest#knightq	HIDDEN_NPC,{
 
 	OnEnable:
 	.KntMob = 8;
-	monster (strnpcinfo(NPC_MAP),43,137,"Piere",1160,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),43,137,"Andre",1095,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),43,137,"Deniro",1105,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),43,155,"Piere",1160,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),43,155,"Andre",1095,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),43,155,"Deniro",1105,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),35,146,"Argos",1100,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),52,146,"Argos",1100,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,137,"Piere",PIERE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,155,"Piere",PIERE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,137,"Andre",ANDRE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,155,"Andre",ANDRE,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,137,"Deniro",DENIRO,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),43,155,"Deniro",DENIRO,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),35,146,"Argos",ARGOS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),52,146,"Argos",ARGOS,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -824,24 +824,24 @@ job_knt,1,1,0	script	kntTest#knightq	HIDDEN_NPC,{
 		mes "[Senhor Windsor]";
 		mes "...Agora para o próximo nível.";
 		close2;
-		warp (strnpcinfo(NPC_MAP),43,52);
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-		donpcevent ("kntTest#2knightq::OnEnable");
+		warp(strnpcinfo(NPC_MAP),43,52);
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+		donpcevent("kntTest#2knightq::OnEnable");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer180000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer181000:
-	areawarp (strnpcinfo(NPC_MAP), 24, 126, 63, 165, "prt_in",80,100);
+	areawarp(strnpcinfo(NPC_MAP), 24, 126, 63, 165, "prt_in",80,100);
 	end;
 
 	OnTimer182000:
 	stopnpctimer;
-	donpcevent ("Senhor Windsor#2knightq::OnStart");
+	donpcevent("Senhor Windsor#2knightq::OnStart");
 	end;
 
 }
@@ -852,17 +852,17 @@ job_knt,2,1,0	script	kntTest#2knightq	HIDDEN_NPC,{
 
 	OnEnable:
 	.KntMob2 = 6;
-	monster (strnpcinfo(NPC_MAP),53,52,"Frilldora",1119,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),34,52,"Frilldora",1119,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),58,52,"Drainliar",1111,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),58,52,"Drainliar",1111,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),29,52,"Drainliar",1111,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),29,52,"Drainliar",1111,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),53,52,"Frilldora",FRILLDORA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),34,52,"Frilldora",FRILLDORA,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),58,52,"Drainliar",DRAINLIAR,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),58,52,"Drainliar",DRAINLIAR,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),29,52,"Drainliar",DRAINLIAR,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),29,52,"Drainliar",DRAINLIAR,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -874,24 +874,24 @@ job_knt,2,1,0	script	kntTest#2knightq	HIDDEN_NPC,{
 		mes "[Senhor Windsor]";
 		mes "...Para o último estágio.";
 		close2;
-		warp (strnpcinfo(NPC_MAP),143,152);
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-		donpcevent ("kntTest#3knightq::OnEnable");
+		warp(strnpcinfo(NPC_MAP),143,152);
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+		donpcevent("kntTest#3knightq::OnEnable");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer180000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer181000:
-	areawarp (strnpcinfo(NPC_MAP), 24, 32, 63, 71, "prt_in",80,100);
+	areawarp(strnpcinfo(NPC_MAP),24,32, 63,71,"prt_in",80,100);
 	end;
 
 	OnTimer182000:
 	stopnpctimer;
-	donpcevent ("Senhor Windsor#2knightq::OnStart");
+	donpcevent("Senhor Windsor#2knightq::OnStart");
 	end;
 }
 
@@ -901,16 +901,16 @@ job_knt,3,1,0	script	kntTest#3knightq	HIDDEN_NPC,{
 
 	OnEnable:
 	.KntMob3 = 5;
-	monster (strnpcinfo(NPC_MAP),136,152,"Goblin",1122,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),150,152,"Goblin",1123,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),143,145,"Goblin",1124,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),143,167,"Goblin",1125,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
-	monster (strnpcinfo(NPC_MAP),139,167,"Goblin",1126,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),136,152,"Goblin",GOBLIN_1,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),150,152,"Goblin",GOBLIN_2,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),143,145,"Goblin",GOBLIN_3,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),143,167,"Goblin",GOBLIN_4,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	monster(strnpcinfo(NPC_MAP),139,167,"Goblin",GOBLIN_5,1,strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMyMobDead");
 	end;
 
 	OnMyMobDead:
@@ -926,25 +926,25 @@ job_knt,3,1,0	script	kntTest#3knightq	HIDDEN_NPC,{
 		mes "...Vá falar com a Senhorita Amy agora.";
 		close2;
 		knightq = 6;
-		changequest (9006,9007);
-		warp ("prt_in",80,100);
-		donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
-		donpcevent ("Senhor Windsor#2knightq::OnStart");
+		changequest(9006,9007);
+		warp("prt_in",80,100);
+		donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
+		donpcevent("Senhor Windsor#2knightq::OnStart");
 		stopnpctimer;
 	}
 	end;
 
 	OnTimer180000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer181000:
-	areawarp (strnpcinfo(NPC_MAP), 124, 132, 163, 171, "prt_in",80,100);
+	areawarp(strnpcinfo(NPC_MAP),124,132, 163,171,"prt_in",80,100);
 	end;
 
 	OnTimer182000:
 	stopnpctimer;
-	donpcevent ("Senhor Windsor#2knightq::OnStart");
+	donpcevent("Senhor Windsor#2knightq::OnStart");
 	end;
 }
 
@@ -1004,7 +1004,7 @@ prt_in,69,107,6	script	Senhorita Amy#knightq	4_F_JOB_KNIGHT,{
 				mes "[Senhorita Amy]";
 				mes "Quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+" venha falar comigo novamente.";
 				knightq = 7;
-				changequest (9007,9008);
+				changequest(9007,9008);
 				close;
 			}
 		} else if (knightq == 7) {
@@ -1131,7 +1131,7 @@ prt_in,69,107,6	script	Senhorita Amy#knightq	4_F_JOB_KNIGHT,{
 				close;
 			} else {
 				knightq = 8;
-				changequest (9008,9009);
+				changequest(9008,9009);
 				mes "Bom trabalho, esse tipo de mentalidade é necessária para um Cavaleiro!";
 				mes "Para o seu próximo teste, visite o Senhor Edmond.";
 				next;
@@ -1220,9 +1220,9 @@ prt_in,70,99,6	script	Senhor Edmond#knightq	4_M_JOB_KNIGHT2,{
 				} else {
 					close2;
 					knightq = 9;
-					donpcevent ("Patience#knightq::OnEnable");
-					changequest (9009,9010);
-					warp ("job_knt",143,57);
+					donpcevent("Patience#knightq::OnEnable");
+					changequest(9009,9010);
+					warp("job_knt",143,57);
 					end;
 				}
 			}
@@ -1241,8 +1241,8 @@ prt_in,70,99,6	script	Senhor Edmond#knightq	4_M_JOB_KNIGHT2,{
 			mes "O teste irá começar.";
 			mes "Me mostre sua paciencia...";
 			close2;
-			donpcevent ("Patience#knightq::OnEnable");
-			warp ("job_knt",143,57);
+			donpcevent("Patience#knightq::OnEnable");
+			warp("job_knt",143,57);
 			end;
 		} else if (knightq == 10) {
 			mes "[Senhor Edmond]";
@@ -1250,7 +1250,7 @@ prt_in,70,99,6	script	Senhor Edmond#knightq	4_M_JOB_KNIGHT2,{
 			mes "Agora é hora de você fazer o teste final.";
 			mes "Vá, e fale com o Senhor Gray...";
 			knightq = 11;
-			changequest (9010,9011);
+			changequest(9010,9011);
 			close;
 		} else if (knightq == 11) {
 			mes "[Senhor Edmond]";
@@ -1271,43 +1271,43 @@ prt_in,70,99,6	script	Senhor Edmond#knightq	4_M_JOB_KNIGHT2,{
 job_knt,4,1,0	script	Patience#knightq	HIDDEN_NPC,{
 	OnInit:
 	if ($kntpatience) { $kntpatience = 0; }
-	disablenpc ("Senhor Edmond#2knightq");
+	disablenpc("Senhor Edmond#2knightq");
 	stopnpctimer;
 	end;
 
 	OnEnable:
-	monster (strnpcinfo(NPC_MAP),141,57,"Poring",1002,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),145,57,"Poring",1002,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),143,55,"Poring",1002,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),143,59,"Poring",1002,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),141,55,"Lunatico",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),141,59,"Lunatico",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),145,55,"Lunatico",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),145,59,"Lunatico",1063,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),165,54,"Cogumelo",1182,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),165,57,"Cogumelo",1182,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),122,54,"Cogumelo",1182,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
-	monster (strnpcinfo(NPC_MAP),122,57,"Cogumelo",1182,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),141,57,"Poring",PORING,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),145,57,"Poring",PORING,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),143,55,"Poring",PORING,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),143,59,"Poring",PORING,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),141,55,"Lunatico",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),141,59,"Lunatico",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),145,55,"Lunatico",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),145,59,"Lunatico",LUNATIC,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),165,54,"Cogumelo",THIEF_MUSHROOM,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),165,57,"Cogumelo",THIEF_MUSHROOM,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),122,54,"Cogumelo",THIEF_MUSHROOM,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
+	monster(strnpcinfo(NPC_MAP),122,57,"Cogumelo",THIEF_MUSHROOM,1,strnpcinfo(NPC_NAME)+"::OnMobDead");
 	initnpctimer;
 	end;
 
 	OnDisable:
 	$kntpatience = 0;
 	stopnpctimer;
-	killmonster (strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
-	areawarp (strnpcinfo(NPC_MAP),124,36,163,75,"prt_in",80,100);
+	killmonster(strnpcinfo(NPC_MAP),strnpcinfo(NPC_NAME)+"::OnMobDead");
+	areawarp(strnpcinfo(NPC_MAP),124,36, 163,75,"prt_in",80,100);
 	end;
 
 	OnMobDead:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 
 	OnTimer60000:
-	enablenpc ("Senhor Edmond#2knightq");
+	enablenpc("Senhor Edmond#2knightq");
 	end;
 
 	OnTimer120000:
-	donpcevent (strnpcinfo(NPC_NAME)+"::OnDisable");
+	donpcevent(strnpcinfo(NPC_NAME)+"::OnDisable");
 	end;
 }
 
@@ -1318,8 +1318,8 @@ job_knt,143,63,4	script	Senhor Edmond#2knightq	4_M_JOB_KNIGHT2,{
 	mes "Você mostrou a harmonia do espírito de um cavaleiro.";
 	close2;
 	knightq = 10;
-	warp ("prt_in",80,100);
-	donpcevent ("Patience#knightq::OnDisable");
+	warp("prt_in",80,100);
+	donpcevent("Patience#knightq::OnDisable");
 	end;
 }
 
@@ -1370,7 +1370,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 				mes "Primeiro...";
 				mes "Por que você decidiu se tornar Cavaleiro?";
 				next;
-				switch(select("Para me tornar mais forte","Para ajudar meus amigos","Porque eu estou insatisfeito comigo")) {
+				switch (select("Para me tornar mais forte","Para ajudar meus amigos","Porque eu estou insatisfeito comigo")) {
 					case 1:
 					mes "[Senhor Gray]";
 					mes "Para se tornar mais forte, você diz?";
@@ -1383,7 +1383,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					mes "Ou você tem uma razão diferente?";
 					mes "O que você acha que é tão bom quanto ganhar força como um Cavaleiro?";
 					next;
-					switch(select("Ganhar riqueza e fama","Poder me proteger","Poder proteger os outros.")) {
+					switch (select("Ganhar riqueza e fama","Poder me proteger","Poder proteger os outros.")) {
 						case 1:
 						.@kntQ3 += 1;
 						mes "[Senhor Gray]";
@@ -1422,7 +1422,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					mes "[Senhor Gray]";
 					mes "Assim, como você que pode ajudar seus amigos?";
 					next;
-					switch(select("Eles precisam de mim","Ganhando dinheiro","Eu posso protege-los")) {
+					switch (select("Eles precisam de mim","Ganhando dinheiro","Eu posso protege-los")) {
 						case 1:
 						mes "[Senhor Gray]";
 						mes "Qualquer pessoa, em qualquer lugar no mundo, tem um lugar onde eles são necessários.";
@@ -1465,7 +1465,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					mes "Assim...";
 					mes "Que parte de si mesmo não te satisfaz atualmente?";
 					next;
-					switch(select("Habilidades","Objetivo","Aparência.")) {
+					switch (select("Habilidades","Objetivo","Aparência.")) {
 						case 1:
 						.@kntQ3 += 1;
 						mes "[Senhor Gray]";
@@ -1511,13 +1511,13 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 				mes "[Senhor Gray]";
 				mes "Se você se tornar um Cavaleiro, o que você vai fazer primeiro?";
 				next;
-				switch(select("Eu irei direto para batalha","Existem pessoas esperando por mim","Vou aprender mais")) {
+				switch (select("Eu irei direto para batalha","Existem pessoas esperando por mim","Vou aprender mais")) {
 					case 1:
 					mes "[Senhor Gray]";
 					mes "Batalha...?";
 					mes "E, em seguida?";
 					next;
-					switch(select("Ganhar level rápido","Testarei minhas habilidades","Viajarei")) {
+					switch (select("Ganhar level rápido","Testarei minhas habilidades","Viajarei")) {
 						case 1:
 						.@kntQ3 += 1;
 						mes "[Senhor Gray]";
@@ -1545,7 +1545,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					mes "[Senhor Gray]";
 					mes "Quem é que está esperando por você?";
 					next;
-					switch(select("Meus Amigos","Os membros do meu Clã","Meu amor")) {
+					switch (select("Meus Amigos","Os membros do meu Clã","Meu amor")) {
 						case 1:
 						mes "[Senhor Gray]";
 						mes "Eu entendo, eles querem compartilhar a alegria de suas conquistas.";
@@ -1578,7 +1578,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					mes "Boa atitude...";
 					mes "O que você planeja na aprendizagem?";
 					next;
-					switch(select("Lugares confortáveis","Os caminhos diferentes","Ganhar mais dinheiro")) {
+					switch (select("Lugares confortáveis","Os caminhos diferentes","Ganhar mais dinheiro")) {
 						case 1:
 						.@kntQ3 += 5;
 						mes "[Senhor Gray]";
@@ -1618,7 +1618,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					close;
 				} else if (.@kntQ3 < 5 && .@kntQ3 > 0) {
 					knightq = 12;
-					changequest (9011,9012);
+					changequest(9011,9012);
 					mes "[Senhor Gray]";
 					mes "E gostei de falar com você.";
 					mes "Me fez lembrar quando também era jovem.";
@@ -1631,7 +1631,7 @@ prt_in,87,92,4	script	Senhor Gray#knightq	2_M_SWORDMASTER,{
 					close;
 				} else {
 					knightq = 12;
-					changequest (9011,9012);
+					changequest(9011,9012);
 					mes "[Senhor Gray]";
 					mes "E gostei de falar com você.";
 					mes "Me fez lembrar quando também era jovem.";

@@ -303,7 +303,7 @@ ama_in01,162,17,1	script	Mestre do Sushi#ama	4_M_JPNOJI2,{
 	mes "Como sempre, a minha loja valoriza o frescor dos Peixes Crus.";
 	mes "O que te traz aqui...?";
 	next;
-	switch(select("Gostaria de comprar um Sushi","Gostaria de comprar Peixes Fatiados","Você precisa de ajuda?","Continue com o bom trabalho.")) {
+	switch (select("Gostaria de comprar um Sushi","Gostaria de comprar Peixes Fatiados","Você precisa de ajuda?","Continue com o bom trabalho.")) {
 		case 1:
 		mes "[Magumagu]";
 		mes "Certo...! Quantos?";
@@ -350,7 +350,7 @@ ama_in01,162,17,1	script	Mestre do Sushi#ama	4_M_JPNOJI2,{
 		mes "Um conjunto de Peixe Fatiado custa 350. Se você quiser apenas 1 Peixe Fatiado, custará 37z.";
 		mes "Se você quiser mais, fale-me.";
 		next;
-		switch(select("350z um conjunto!","37z um pedaço!","Vou tentar mais tarde")) {
+		switch (select("350z um conjunto!","37z um pedaço!","Vou tentar mais tarde")) {
 			case 1:
 			if (Zeny < 350) {
 				mes "[Magumagu]";

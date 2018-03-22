@@ -38,7 +38,7 @@ mid_camp,207,290,6	script	Expedition Guide#01	4_M_EIN_SOLDIER,{
 	mes("[Expedition Guide]");
 	mes("Are you going to enter the ^0000FFDimensional Gap^000000? Please use this Transport Device you see here.");
 	next();
-	if (select("What is the Dimensional Gap?", "End Conversation.") == 2) {
+	if (select("What is the Dimensional Gap?","End Conversation.") == 2) {
 		mes("[Expedition Guide]");
 		mes("Take care.");
 		close();
@@ -124,7 +124,7 @@ dali,112,95,4	script	Logistics Manager	4_M_MERCAT2,{
 	mes("[Logistics Manager]");
 	mes("Welcome. I am in charge of logistics to take care of your items in this weird place. Do you need to access your storage?");
 	next();
-	if (select("Open Storage 200 Zeny.", "No Thanks.") == 2) {
+	if (select("Open Storage 200 Zeny.","No Thanks.") == 2) {
 		mes("[Logistics Manager]");
 		mes("Let me know if you change your mind.");
 		close();

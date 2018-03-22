@@ -14,13 +14,13 @@
 \*-----------------------------------------------------------------*/
 
 payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
-	if(Class == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		mes "[Fênix]";
 		mes "Como vai seu treinamento?";
 		mes "Enquanto suas técnicas se tornam mais refinadas e espetaculares.";
 		mes "Nunca se esqueça que você pode sempre contar com o básico.";
 		close;
-	} else if(Class > Job_Novice) || (Class == Job_Novice && taekwonq == 0) {
+	} else if (Class > Job_Novice) || (Class == Job_Novice && taekwonq == 0) {
 		mes "[Fênix]";
 		mes "Esta terra.";
 		mes "Nosso único e belo mundo tem sido manchado pelo mal.";
@@ -52,8 +52,8 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "Eu gostaria que considerasse se tornar um praticante da minha arte.";
 		mes "Não será fácil, mas o levará a um grande poder.";
 		next;
-		if(select("Ok, eu me juntarei a você","Não, obrigado.") == 1) {
-			if(getskilllv("NV_BASIC") < 9) {
+		if (select("Ok, eu me juntarei a você","Não, obrigado.") == 1) {
+			if (getskilllv("NV_BASIC") < 9) {
 				mes "[Fênix]";
 				mes "Que pena!";
 				mes "Você não está preparado para começar a treinar sob minha orientação no seu atual Nível de Classe.";
@@ -65,13 +65,13 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 			mes "Eu te aceito como meu aluno.";
 			mes "Para começar o treinamento, seu físico deve ser primeiro condicionado a fim de realizar as habilidades que você aprenderá.";
 			next;
-			if(BaseLevel > 19) {
+			if (BaseLevel > 19) {
 				mes "[Fênix]";
 				mes "Hm. Vejo que você tem uma formação física suficiente como Aprendiz.";
 				mes "Muito bem. Então vamos nos preparar para seu treinamento espiritual.";
 				mes "Respire fundo, fale comigo quando estiver pronto.";
 				taekwonq = 2;
-				setquest (6001);
+				setquest(6001);
 				close;
 			}
 			mes "[Fênix]";
@@ -81,7 +81,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 			next;
 			taekwonq_2 = BaseLevel;
 			taekwonq = 1;
-			setquest (6000);
+			setquest(6000);
 			mes "[Fênix]";
 			mes "Eu entendo que essa não é uma tarefa fácil para Aprendizes.";
 			mes "Mas você deve se preparar para as dificuldades desta classe.";
@@ -95,11 +95,11 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "Espero que você trabalhe rumo à iluminação no seu próprio caminho, aventureiro.";
 		close;
 	}
-	switch(taekwonq) {
+	switch (taekwonq) {
 		case 1:
-		if(BaseLevel > taekwonq_2) {
+		if (BaseLevel > taekwonq_2) {
 			taekwonq = 2;
-			changequest (6000,6001);
+			changequest(6000,6001);
 			mes "[Fênix]";
 			mes "Bom. Sinto que você está mais em sintonia com sua força interior.";
 			mes "Este é o resultado natural de subir de nível.";
@@ -124,7 +124,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "[Fênix]";
 		mes "Quando você encontra uma grande dificuldade, como você geralmente reage?";
 		next;
-		switch(select("Eu a encaro de cabeça erguida","Eu a evito de alguma maneira","Analizo o problema.")) {
+		switch (select("Eu a encaro de cabeça erguida","Eu a evito de alguma maneira","Analizo o problema.")) {
 			case 1:
 			mes "[Fênix]";
 			mes "Sim, essa é a resposta que eu queria.";
@@ -172,7 +172,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "Da mesma maneira, está pessoa não entenderá seu modo de vida.";
 		mes "Quando seus pois pontos de vida colidem, causando um conflito intenso, como você reagiria?";
 		next;
-		switch( select("Insisto que estou certo","Ignoro os pontos de vista","Aceito as diferenças")) {
+		switch ( select("Insisto que estou certo","Ignoro os pontos de vista","Aceito as diferenças")) {
 			case 1:
 			mes "[Fênix]";
 			mes "É importante ter sua própria opinião.";
@@ -223,7 +223,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "Por favor, reflita sobre o que discutimos por algum tempo.";
 		mes "Quando estiver com a mente calma, venha falar comigo.";
 		taekwonq = 3;
-		changequest (6001,6002);
+		changequest(6001,6002);
 		close;
 		case 3:
 		mes "[Fênix]";
@@ -235,7 +235,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 		mes "^FF0000Você está pront"+(Sex == SEX_MALE ? "o":"a")+" para se dedicar a arte especial que eu te ensinarei.";
 		mes "E defender a dignidade de sua filosofia?";
 		next;
-		if( select("Claro que sim","Não") == 1) {
+		if ( select("Claro que sim","Não") == 1) {
 			mes "[Fênix]";
 			mes "Muito bem.";
 			mes "Você não é mais somente um aluno.";
@@ -251,10 +251,10 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 			mes "Wue são as mais adequadas para você.";
 			mes "Nunca evite seu treinamento, e nem traga vergonha para o Taekwon Do.";
 			next;
-			completequest (6002);
-			getitem (Guard,1);
-			jobchange (Job_Taekwon);
-			callfunc ("ClearJobQuest");
+			completequest(6002);
+			getitem(Guard,1);
+			jobchange(Job_Taekwon);
+			callfunc("ClearJobQuest");
 			mes "[Fênix]";
 			mes "Você ainda é jovem, então suponho que queira uma classe.";
 			mes "Hmm. Neste caso, você é agora um"+(Sex == SEX_MALE ? " ^FF0000Garoto Taekwon^000000" : "a ^FF0000Garota Taekwon^000000.")+".";

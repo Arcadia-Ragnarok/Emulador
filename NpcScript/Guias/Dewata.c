@@ -18,7 +18,7 @@ dewata,202,106,4	script	Guia#dewguide	4_M_DEWOLDWOMAN,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Dewata^000000.";
 	while (1) {
 		next;
-		switch(select("[Funcionária Kafra]","[Loja de Armas]","[Loja de Armaduras]","[Loja de Utilidades]","[Porteiro de Krakatau]","[Retorno à Alberta]","Remover marcadores","Cancelar")) {
+		switch (select("[Funcionária Kafra]","[Loja de Armas]","[Loja de Armaduras]","[Loja de Utilidades]","[Porteiro de Krakatau]","[Retorno à Alberta]","Remover marcadores","Cancelar")) {
 			case 1:
 			mes "[Guia de Dewata]";
 			mes "Posição da^0000FF Funcionária Kafra^000000 marcada em seu mini mapa.";

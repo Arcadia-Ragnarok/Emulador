@@ -20,14 +20,14 @@ bif_fild02,292,351,0	warp	biffildwarp_2	1,1,ecl_fild01,205,76
 -	script	biffildwarp_3	FAKE_NPC,2,2,{
 	mes "Você ver um pequeno buraco um jardim de luminoso.";
 	next;
-	if(select("Investigar","Que buraco é esse?") == 1) {
+	if (select("Investigar","Que buraco é esse?") == 1) {
 		mes "Quando você bate na porta-como a coisa apenas para o divertimento.";
 		mes "A porta estala ao abrir e você sente alguma força misteriosa que puxa-o para dentro.";
 		close2;
-		switch(atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),12))) {
-			case 4: warp ("mora",179,74); end;
-			case 5: warp ("mora",22,157); end;
-			case 6: warp ("mora",58,27); end;
+		switch (atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),12))) {
+			case 4: warp("mora",179,74); end;
+			case 5: warp("mora",22,157); end;
+			case 6: warp("mora",58,27); end;
 		}
 	}
 }

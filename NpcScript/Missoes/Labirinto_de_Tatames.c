@@ -451,7 +451,7 @@ ama_in02,170,62,4	script	Soldado#ea_ama	8_M_JPNSOLDIER,{
 	mes "Sou Jiro, o administrador deste Palácio.";
 	mes "O que posso fazer por você?";
 	next;
-	switch(select("Emita um Passe Imperial","Eu quero viver em Amatsu:Nada")) {
+	switch (select("Emita um Passe Imperial","Eu quero viver em Amatsu:Nada")) {
 		case 1:
 		if (event_amatsu == 6) {
 			if (countitem(Lords_Passable_Ticket) > 0) {

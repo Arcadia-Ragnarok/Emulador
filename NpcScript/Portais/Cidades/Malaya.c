@@ -19,35 +19,35 @@ malaya,178,211,0	script	malayawarp_3	WARPNPC,1,1,{
 	end;
 	OnTouch:
 	if (malaya_hi < 10) { mes "A porta está fechada"; close; }
-	else { warp ("ma_in01",24,80); end; }
+	else { warp("ma_in01",24,80); end; }
 }
 
 malaya,112,212,0	script	malayawarp_4	WARPNPC,1,1,{
 	end;
 	OnTouch:
 	if (malaya_hi < 20) { mes "A porta está fechada"; close; }
-	else { warp ("ma_in01",83,16); end; }
+	else { warp("ma_in01",83,16); end; }
 }
 
 malaya,299,167,0	script	malayawarp_5	WARPNPC,1,1,{
 	end;
 	OnTouch:
 	if (malaya_hi < 20) { mes "A porta está fechada"; close; }
-	else { warp ("ma_in01",12,24); end; }
+	else { warp("ma_in01",12,24); end; }
 }
 
 malaya,261,240,0	script	malayawarp_6	WARPNPC,1,1,{
 	end;
 	OnTouch:
 	if (malaya_hi < 20) { mes "A porta está fechada"; close; }
-	else { warp ("ma_in01",126,20); end; }
+	else { warp("ma_in01",126,20); end; }
 }
 
 malaya,300,211,0	script	malayawarp_7	WARPNPC,1,1,{
 	end;
 	OnTouch:
 	if (malaya_hi < 10) { mes "A porta está fechada"; close; }
-	else { warp ("ma_in01",36,152); end; }
+	else { warp("ma_in01",36,152); end; }
 }
 
 

@@ -18,11 +18,11 @@ yuno,59,212,4	script	Guia#yunguide	8_F_GIRL,{
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Juno^000000, a Cidade cede do Conhecimento.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Loja de Utilidades]","[Forja]","[Aeroporto]","[Prédio do Governo]","[Rua das Livrarias]","[Estalagem & Bar]","[Castelo dos Sábios]","[Academia dos Monstros]","[Livraria]","[Loja de Equipamentos]","[Juphero Plaza]","[Museu de Monstros]","[Academia de Magia]","Menu Anterior")) {
+				switch (select("[Loja de Utilidades]","[Forja]","[Aeroporto]","[Prédio do Governo]","[Rua das Livrarias]","[Estalagem & Bar]","[Castelo dos Sábios]","[Academia dos Monstros]","[Livraria]","[Loja de Equipamentos]","[Juphero Plaza]","[Museu de Monstros]","[Academia de Magia]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Juno]";
 					mes "Posição da^0000FF Loja de Utilidades^000000 marcada em seu mini mapa.";
@@ -110,7 +110,7 @@ yuno,59,212,4	script	Guia#yunguide	8_F_GIRL,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Funcionária Kafras]","[Oficial Eden]","Menu Anterior")) {
+				switch (select("[Funcionária Kafras]","[Oficial Eden]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Juno]";
 					mes "Posição das^0000FF Funcionárias Kafras^000000 marcadas em seu mini mapa.";

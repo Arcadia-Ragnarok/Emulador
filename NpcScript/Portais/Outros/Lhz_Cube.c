@@ -56,10 +56,10 @@ lhz_cube,115,18,0	warp	lhzcube17	2,2,lhz_cube,248,184
 lhz_cube,66,129,0	script	lhzcubewarp	WARPNPC,2,2,{
 	end;
 	OnTouch:
-	switch(rand(3)) {
-		case 1: warp (strnpcinfo(NPC_MAP),66,136); end;
-		case 2: warp (strnpcinfo(NPC_MAP),66,74); end;
-		default: warp (strnpcinfo(NPC_MAP),67,193); end;
+	switch (rand(3)) {
+		case 1: warp(strnpcinfo(NPC_MAP),66,136); end;
+		case 2: warp(strnpcinfo(NPC_MAP),66,74); end;
+		default: warp(strnpcinfo(NPC_MAP),67,193); end;
 	}
 }
 lhz_cube,59,136,0	duplicate(lhzcubewarp)	lhzcubewarp2	WARPNPC

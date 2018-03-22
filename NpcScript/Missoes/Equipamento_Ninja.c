@@ -90,7 +90,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "O Que acha?";
 		mes "Você poderia me trazer uma ^ff0000Vembrassa[1]^000000?";
 		next;
-		if (select("Eu não me sinto inspirado", "Muito Bem!.") == 1) {
+		if (select("Eu não me sinto inspirado","Muito Bem!.") == 1) {
 			mes "[Boshuu]";
 			mes "Ahh... Que pena...";
 			mes "Você está jogando fora uma oportunidade de ter em suas mãos algo feito por um artesão genial como eu...";
@@ -122,7 +122,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 		mes "O Que acha?";
 		mes "Quer Tentar?";
 		next;
-		if (select("Não, valeu", "Ok, parece uma boa idéia.") == 1) {
+		if (select("Não, valeu","Ok, parece uma boa idéia.") == 1) {
 			mes "[Boshuu]";
 			mes "Hmm, Ok.";
 			mes "Muito obrigado por trazer este objeto tão interessante para min.";
@@ -155,7 +155,7 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 			mes "Mas antes de começar, quero te perguntar mais uma vez.";
 			mes "Você quer me dar os materiais que você trouxe para que eu faça uma Proteção de Braço[1]?";
 			next;
-			if (select("Não", "Sim") == 1) {
+			if (select("Não","Sim") == 1) {
 				mes "[Boshuu]";
 				mes "Ok";
 				mes "Bem, se você mudar de idéia, volte e fale comigo.";
@@ -175,11 +175,11 @@ que_ng,28,50,3	script	Boshuu	4_M_SEAMAN,{
 					mes "Finalmente completo!";
 					mes "Eu le apresento a Proteção de Braço[1].";
 					mes "Me procure sempre que precisar de mais.";
-					delitem(Guard_, 1);
-					delitem(Arm_Guard, 1);
+					delitem(Guard_,1);
+					delitem(Arm_Guard,1);
 					Zeny -= 10000;
 					ninbo = 0;
-					getitem(Arm_Guard_, 1);
+					getitem(Arm_Guard_,1);
 					close;
 				}
 			}
@@ -244,7 +244,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "Seria de grande ajuda se eu pudesse ver um destes escudos de perto.";
 		mes "Você poderia me ajudar?";
 		next;
-		if (select("Acho que outro dia", "Claro!") == 1) {
+		if (select("Acho que outro dia","Claro!") == 1) {
 			mes "[Basshu]";
 			mes "Ah! Eu acho que deva ser um pedido impossível.";
 			mes "Me desculpe.";
@@ -277,7 +277,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 		mes "[Basshu]";
 		mes "O Que acha? Gostaria de fazer esta troca?";
 		next;
-		if (select("Não, não gostaria", "Sim, é claro!") == 1) {
+		if (select("Não, não gostaria","Sim, é claro!") == 1) {
 			mes "[Basshu]";
 			mes "Hmm, tudo bem...";
 			mes "Estou muito agradecido que tenha me mostrado esse escudo tão interessante do ocidente.";
@@ -323,7 +323,7 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 			mes "[Basshu]";
 			mes "Você vai me dar todos os materiais que conseguiu e em troca, receber uma Proteção de Braço Avançada?";
 			next;
-			if (select("Não", "Sim") == 1) {
+			if (select("Não","Sim") == 1) {
 				mes "[Basshu]";
 				mes "Bem...";
 				mes "Caso mude de idéia";
@@ -344,11 +344,11 @@ que_ng,28,45,3	script	Basshu	4_M_04,{
 				mes "Aqui está!";
 				mes "Tome aqui sua Proteção de Braço Avançada.";
 				mes "Sempre que quiser que eu crie mais itens, volte e peça a min.";
-				delitem(Mirror_Shield, 1);
-				delitem(Arm_Guard, 1);
+				delitem(Mirror_Shield,1);
+				delitem(Arm_Guard,1);
 				Zeny -= 20000;
 				ninbot = 0;
-				getitem(Improved_Arm_Guard, 1);
+				getitem(Improved_Arm_Guard,1);
 				close;
 			}
 		}
@@ -403,7 +403,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 		mes "O Que acha?";
 		mes "Temos um acordo?";
 		next;
-		if (select("Não quero fazer isto", "Sim! Vamos tentar!") == 1) {
+		if (select("Não quero fazer isto","Sim! Vamos tentar!") == 1) {
 			mes "[Toshu]";
 			mes "Ok.";
 			mes "Claro, os escudos são importantes para você.";
@@ -429,7 +429,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 				mes "[Toshu]";
 				mes "Você quer que eu tente produzir seu equipamento, mesmo com uma chance de que a produçaõ falhe?";
 				next;
-				if (select("Acho melhor desistir", "Claro! Vamos tentar!") == 1) {
+				if (select("Acho melhor desistir","Claro! Vamos tentar!") == 1) {
 					mes "[Toshu]";
 					mes "Ok.";
 					mes "Bem, volte quando achar que deva tentar.";
@@ -446,12 +446,12 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 						mes "^FF0000HACK DETECTADO^000000";
 						close;
 					}
-					delitem(Buckler_, 1);
-					delitem(Improved_Arm_Guard, 1);
+					delitem(Buckler_,1);
+					delitem(Improved_Arm_Guard,1);
 					Zeny -= 40000;
 					switch (rand(5)) {
 						case 1:
-						getitem(Str_Dish03, 1);
+						getitem(Str_Dish03,1);
 						mes "[Toshu]";
 						mes "Aaah!!!";
 						mes "Ah.. Isto...";
@@ -461,7 +461,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 						mes "Engula isto e bola pra frente!";
 						close;
 						case 2:
-						getitem(Str_Dish03, 1);
+						getitem(Str_Dish03,1);
 						mes "[Toshu]";
 						mes "Aaah!!!";
 						mes "Ah.. Isto...";
@@ -471,7 +471,7 @@ que_ng,27,18,3	script	Toshu	4_M_SEAMAN,{
 						mes "Engula isto e bola pra frente!";
 						close;
 						default:
-						getitem(Improved_Arm_Guard_, 1);
+						getitem(Improved_Arm_Guard_,1);
 						mes "[Toshu]";
 						mes "Hmm... Parece que tudo correu bem!";
 						mes "Aqui esta seu equipamento com slot Proteção de Braço Avançada.";
@@ -505,7 +505,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 		mes "Você parece ser um ninja.";
 		mes "Se estiver interessado, de uma olhada em meus produtos enquanto decide o que quer.";
 		next;
-		switch(select("Gokurin", "Jitte", "Ashura[3]", "Murasame", "Hakujin", "Cancelar")) {
+		switch (select("Gokurin","Jitte","Ashura[3]","Murasame","Hakujin","Cancelar")) {
 			case 1:
 			mes "[Kaibara]";
 			mes "Hmm. parece que vocês escolheu a Gokurin.";
@@ -513,7 +513,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			next;
 			mes "[Kaibara]";
 			mes "O material necessário para esta espada é 400 Escamas de Dragão,";
-			mes "5 Oridecons, 30 Pele de Dragão.";
+			mes "5 Oridecons,30 Pele de Dragão.";
 			mes "e 200,000 Zeny.";
 			mes "Quer que eu crie este item para você?";
 			next;
@@ -534,11 +534,11 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Esteja certo de que tem todos os itens quando voltar a falar comigo.";
 					close;
 				} else {
-					delitem(Dragon_Scale, 400);
-					delitem(Oridecon, 5);
-					delitem(Dragons_Skin, 30);
+					delitem(Dragon_Scale,400);
+					delitem(Oridecon,5);
+					delitem(Dragons_Skin,30);
 					Zeny -= 200000;
-					getitem(Khukri, 1);
+					getitem(Khukri,1);
 					mes "[Kaibara]";
 					mes "Hmm, muito bem.";
 					mes "Você trouxe todos os materiais e taxas.";
@@ -555,7 +555,7 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "Os materiais requiridos são 30 Aços, uma Bainha Velha e 20,000 Zeny.";
 			mes "Quer que eu faça este item para você?";
 			next;
-			if (select("Não, obrigado", "Sim! Eu Quero um!") == 1) {
+			if (select("Não, obrigado","Sim! Eu Quero um!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. Eu entendo.";
 				mes "Estes materiais são difíceis de se conseguir...";
@@ -572,10 +572,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Lembre-se dos materiais necessários, e volte depois que estiver certo de que tem todos.";
 					close;
 				} else {
-					delitem(Steel, 30);
-					delitem(Old_Hilt, 1);
+					delitem(Steel,30);
+					delitem(Old_Hilt,1);
 					Zeny -= 20000;
-					getitem(Jitte, 1);
+					getitem(Jitte,1);
 					mes "[Kaibara]";
 					mes "Hmm, muito bem.";
 					mes "Eu chequei os materiais e as taxas.";
@@ -586,10 +586,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			case 3:
 			mes "[Kaibara]";
 			mes "Hmm. Você escolheu a ^ff0000Ashura[3]^000000.";
-			mes "Para que eu lhe faça uma Ashura[3], eu preciso de 25 Aços, 5 Pergaminho Antigo e 32,000 Zeny.";
+			mes "Para que eu lhe faça uma Ashura[3], eu preciso de 25 Aços,5 Pergaminho Antigo e 32,000 Zeny.";
 			mes "Quer que eu crie o item para você?";
 			next;
-			if (select("Não, obrigado..", "Sim! Eu quero uma!") == 1) {
+			if (select("Não, obrigado..","Sim! Eu quero uma!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. Eu entendo.";
 				mes "Estes materiais são dificeis de se conseguir...";
@@ -605,10 +605,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Steel, 25);
-					delitem(Old_Magic_Circle, 5);
+					delitem(Steel,25);
+					delitem(Old_Magic_Circle,5);
 					Zeny -= 32000;
-					getitem(Asura_, 1);
+					getitem(Asura_,1);
 					mes "[Kaibara]";
 					mes "Hmm, muito bem.";
 					mes "Eu chequei todos os materiais e taxas.";
@@ -619,10 +619,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			case 4:
 			mes "[Kaibara]";
 			mes "Hmm. você escolheu a ^ff0000Murasame^000000.";
-			mes "Para criar a Murasame, eu preciso de 30 Aços, 10 Aquamarinas e 48,000 Zeny.";
+			mes "Para criar a Murasame, eu preciso de 30 Aços,10 Aquamarinas e 48,000 Zeny.";
 			mes "Quer que eu crie este item para você?";
 			next;
-			if (select("Não, obrigado", "Sim! Eu quero uma!") == 1) {
+			if (select("Não, obrigado","Sim! Eu quero uma!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. Eu entendo. Estes materiais são dificeis de se conseguir...";
 				mes "Se um dia conseguir coletar todos os materiais, volte e fale comigo..";
@@ -638,10 +638,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Steel, 30);
-					delitem(Skyblue_Jewel, 10);
+					delitem(Steel,30);
+					delitem(Skyblue_Jewel,10);
 					Zeny -= 48000;
-					getitem(Murasame, 1);
+					getitem(Murasame,1);
 					mes "[Kaibara]";
 					mes "Hmm, muito bem.";
 					mes "Eu chequei todos os materiais e taxas.";
@@ -653,10 +653,10 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 			mes "[Kaibara]";
 			mes "Hmm. Você escolheu a ^ff0000Hakujin^000000.";
 			mes "Para que eu crie uma Hakujin, eu necessito de...";
-			mes "500 Ossos, 5 Pérolas 10 Level 3 Pergaminhos da Cura e 120,000 Zeny.";
+			mes "500 Ossos,5 Pérolas 10 Level 3 Pergaminhos da Cura e 120,000 Zeny.";
 			mes "Você quer que eu crie este item para você?";
 			next;
-			if (select("Não, obrigado", "Sim! Eu quero um!") == 1) {
+			if (select("Não, obrigado","Sim! Eu quero um!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. Eu entendo. Estes materiais são dificeis de se conseguir...";
 				mes "Se um dia conseguir coletar todos os materiais, volte e fale comigo..";
@@ -668,15 +668,15 @@ que_ng,72,34,3	script	Craftsman Kaibara	4_M_EINOLD,{
 					next;
 					mes "[Kaibara]";
 					mes "Para fazer uma Hakujin, eu preciso de...";
-					mes "500 Ossos, 5 Pérolas 10 Level 3 Pergaminhos da Cura e 120,000 Zeny.";
+					mes "500 Ossos,5 Pérolas 10 Level 3 Pergaminhos da Cura e 120,000 Zeny.";
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Skel_Bone, 500);
-					delitem(Holy_Scroll_1_3, 10);
-					delitem(Scarlet_Jewel, 5);
+					delitem(Skel_Bone,500);
+					delitem(Holy_Scroll_1_3,10);
+					delitem(Scarlet_Jewel,5);
 					Zeny -= 120000;
-					getitem(Hakujin, 1);
+					getitem(Hakujin,1);
 					mes "[Kaibara]";
 					mes "Hmm, muito bem.";
 					mes "Eu chequei todo o material e o zeni que você trouxe.";
@@ -724,7 +724,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 		mes "Não há ninguém que chegue perto de minhas habilidades.";
 		mes "Bem, olhe à sua volta, olhe.";
 		next;
-		switch (select("Shuriken Alado Huuma", "Shuriken Roda-Gigante Huuma", "Shuriken Roda-Gigante Huuma[4]", "Shuriken de Fogo Huuma", "Cancelar")) {
+		switch (select("Shuriken Alado Huuma","Shuriken Roda-Gigante Huuma","Shuriken Roda-Gigante Huuma[4]","Shuriken de Fogo Huuma","Cancelar")) {
 			case 1:
 			mes "[Tetsu]";
 			mes "Hmm. Você escolheu o ^ff0000Shuriken Alado Huuma^000000.";
@@ -734,7 +734,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "5 Oridecons, e 90,000 Zeny.";
 			mes "Você quer que eu crie este item para você?";
 			next;
-			if (select("Bem é um pouco caro", "Sim! faça-o pra mim!") == 1) {
+			if (select("Bem é um pouco caro","Sim! faça-o pra mim!") == 1) {
 				mes "[Tetsu]";
 				mes "Hmm. O custo para criar estes equipamentos é um pouco caro não?";
 				mes "Certo.";
@@ -754,11 +754,11 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Steel, 50);
-					delitem(Harpys_Feather, 20);
-					delitem(Oridecon, 5);
+					delitem(Steel,50);
+					delitem(Harpys_Feather,20);
+					delitem(Oridecon,5);
 					Zeny -= 90000;
-					getitem(Huuma_Bird_Wing, 1);
+					getitem(Huuma_Bird_Wing,1);
 					mes "[Tetsu]";
 					mes "Hmm, muito bem.";
 					mes "Você trouxe os materiais corretos e zeny suficiente.";
@@ -775,7 +775,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "e 40,000 Zeny.";
 			mes "Você quer que eu crie este item para você?";
 			next;
-			if (select("Bem, é bem caro...", "Sim! Faça um para mim!") == 1) {
+			if (select("Bem, é bem caro...","Sim! Faça um para mim!") == 1) {
 				mes "[Tetsu]";
 				mes "Hmm. O custo para criar estes equipamentos é um pouco caro não?";
 				mes "Certo.";
@@ -795,11 +795,11 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Steel, 30);
-					delitem(Sword_Accessory, 100);
-					delitem(Oridecon, 2);
+					delitem(Steel,30);
+					delitem(Sword_Accessory,100);
+					delitem(Oridecon,2);
 					Zeny -= 40000;
-					getitem(Huuma_Giant_Wheel, 1);
+					getitem(Huuma_Giant_Wheel,1);
 					mes "[Tetsu]";
 					mes "Hmm, muito bem.";
 					mes "Você trouxe todos os materiais e a quantidade certa de zenys.";
@@ -840,11 +840,11 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 				mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 				close;
 			} else {
-				delitem(Crystal_Jewel___, 20);
-				delitem(Oridecon, 3);
+				delitem(Crystal_Jewel___,20);
+				delitem(Oridecon,3);
 				Zeny -= 40000;
-				delitem(Huuma_Giant_Wheel, 1);
-				getitem(Huuma_Giant_Wheel_, 1);
+				delitem(Huuma_Giant_Wheel,1);
+				getitem(Huuma_Giant_Wheel_,1);
 				mes "[Tetsu]";
 				mes "Hmm, muito bem.";
 				mes "Você trouxe todos os materiais e a quantidade certa de zenys.";
@@ -861,7 +861,7 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 			mes "50 Pedra de Fogo e 78,000 Zeny.";
 			mes "Quer que eu faça este item para você?";
 			next;
-			if (select("É um pouco caro", "Sim! faça-o para mim!") == 1) {
+			if (select("É um pouco caro","Sim! faça-o para mim!") == 1) {
 				mes "[Tetsu]";
 				mes "Hmm. O custo para criar estes equipamentos é um pouco caro não?";
 				mes "Certo.";
@@ -882,12 +882,12 @@ que_ng,22,62,3	script	Tetsu	4_M_SEAMAN,{
 					mes "Lembre-se destes materiais, e volte quando tiver todos eles.";
 					close;
 				} else {
-					delitem(Steel, 50);
-					delitem(Live_Coal, 100);
-					delitem(Burning_Heart, 100);
-					delitem(Flame_Stone, 50);
+					delitem(Steel,50);
+					delitem(Live_Coal,100);
+					delitem(Burning_Heart,100);
+					delitem(Flame_Stone,50);
 					Zeny -= 78000;
-					getitem(Huuma_Blaze, 1);
+					getitem(Huuma_Blaze,1);
 					mes "[Tetsu]";
 					mes "Hmm, muito bem.";
 					mes "Você trouxe todos os materiais e a quantidade certa de zenys.";

@@ -19,7 +19,7 @@ prt_church,173,23,4	script	Noviço Klift	1_F_PRIEST,{
 	mes "Será que a tarefa de cuidar das ovelhas perdidas é muito fardo para você?";
 	mes "Estou aqui para ajudá-lo.";
 	next;
-	switch(select("^3355FF\"Sobre habilidades ocultas de Noviço\"^000000", "Treinar ^3355FF\"Luz Divina\"^000000", "Terminar conversa")) {
+	switch (select("^3355FF\"Sobre habilidades ocultas de Noviço\"^000000","Treinar ^3355FF\"Luz Divina\"^000000","Terminar conversa")) {
 		case 1:
 		mes "[Noviço Klift]";
 		mes "Nossos membros do clero normalmente vencem com suas habilidades naturais.";
@@ -57,10 +57,10 @@ prt_church,173,23,4	script	Noviço Klift	1_F_PRIEST,{
 			mes "Sua experiência é suficiente para usar esta habilidade.";
 			mes "Use-a sabiamente...";
 			next;
-			delitem(White_Jewel, 1);
-			delitem(Crystal_Blue, 1);
-			delitem(Rosary, 1);
-			skill("AL_HOLYLIGHT", 1, 0);
+			delitem(White_Jewel,1);
+			delitem(Crystal_Blue,1);
+			delitem(Rosary,1);
+			skill("AL_HOLYLIGHT",1,0);
 			mes "[Noviço Klift]";
 			mes "Você agora possui a \"Luz Divina\".";
 			mes "Use esta habilidade somente para bons propósitos...";

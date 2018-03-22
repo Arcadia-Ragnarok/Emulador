@@ -57,7 +57,7 @@ geffen_in,30,71,4	script	Eric#gef	4_M_01,{
 	mes "E terminar o trabalho que ele começou.";
 	mes "Se você me pedir para continuar, eu não me importaria.";
 	close;
-	switch(select("Pergunte sobre os itens","Fabricar os Fones", "Sair")) {
+	switch (select("Pergunte sobre os itens","Fabricar os Fones","Sair")) {
 		case 1:
 		mes "[Eric]";
 		mes "^3355FF40 Aços^000000,";

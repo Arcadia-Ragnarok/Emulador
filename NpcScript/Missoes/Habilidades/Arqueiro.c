@@ -46,12 +46,12 @@ moc_ruins,118,99,5	script	Roberto	4_M_ORIENT01,{
 				mes "Muito obrigado.";
 				mes "Então, como eu prometi, irei lhe ensinar a habilidade.";
 				next;
-				delitem(Resin, 20);
-				delitem(Mushroom_Spore, 7);
-				delitem(Pointed_Scale, 41);
-				delitem(Wooden_Block, 13);
-				delitem(Red_Potion, 1);
-				skill("AC_MAKINGARROW", 1, 0);
+				delitem(Resin,20);
+				delitem(Mushroom_Spore,7);
+				delitem(Pointed_Scale,41);
+				delitem(Wooden_Block,13);
+				delitem(Red_Potion,1);
+				skill("AC_MAKINGARROW",1,0);
 				mes "Não é preciso mais se preocupar com flechas.";
 				mes "Oh, você viu alguém chamado Jason em Payon?";
 				mes "Cuidado.";
@@ -158,7 +158,7 @@ payon,103,63,3	script	Jason	4_M_ORIENT01,3,3,{
 			mes "Mmm... nível muito alto.";
 			mes "Alguém como você com certeza deve estar preparado para usar Disparo Violento.";
 			next;
-			switch (select("O que é isso?", "Me ensine")) {
+			switch (select("O que é isso?","Me ensine")) {
 				case 1:
 				mes "[Jason]";
 				mes "...você está brincando né?";
@@ -202,12 +202,12 @@ payon,103,63,3	script	Jason	4_M_ORIENT01,3,3,{
 					mes "Ok! Perfeito!";
 					mes "Eu lhe ensinarei a habilidade Disparo Violento!";
 					next;
-					delitem(Azure_Jewel, 2);
-					delitem(Yoyo_Tail, 3);
-					delitem(Tentacle, 10);
-					delitem(Bill_Of_Birds, 10);
-					delitem(Banana_Juice, 36);
-					skill("AC_CHARGEARROW", 1, 0);
+					delitem(Azure_Jewel,2);
+					delitem(Yoyo_Tail,3);
+					delitem(Tentacle,10);
+					delitem(Bill_Of_Birds,10);
+					delitem(Banana_Juice,36);
+					skill("AC_CHARGEARROW",1,0);
 					mes "[Jason]";
 					mes "Oh, está funcionando melhor do que eu esperava.";
 					mes "Não será necessário modificar o arco!";

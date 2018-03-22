@@ -14,14 +14,14 @@
 \*-----------------------------------------------------------------*/
 
 -	script	MilkVendor	FAKE_NPC,{
-	mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 	mes "Ei, ei...";
 	mes "Se você me trouxer 1 Garrafa Vazia e 15 Zenys, poderei trocá-los por 1 Leite.";
 	mes "Isso parece ser bom para você?";
 	next;
-	if (select("Trocar minhas Garrafas Vazias.", "Cancelar") == 1) {
-		if (countitem(Empty_Bottle) <= 0) {
-			mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+	if (select("Trocar minhas Garrafas Vazias.","Cancelar") == 1) {
+		if (!countitem(Empty_Bottle)) {
+			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 			mes "Ei...";
 			mes "Você não tem nenhuma Garrafa Vazia.";
 			mes "Eu realmente não posso te dar o leite de outra forma, você sabe...";
@@ -31,20 +31,20 @@
 		.@total_weight = .@bottles * 50;
 		.@total_cost = .@bottles * 15;
 		if (Zeny < .@total_cost) {
-			mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 			mes "Oh, whoa!";
 			mes "Você não tem os zenys necessários para esse número de Garrafas Vazias.";
-			mes "Você precisa me trazer um total de " + .@total_cost + " zenys.";
+			mes "Você precisa me trazer um total de "+.@total_cost+" zenys.";
 			close;
 		} else if (MaxWeight - Weight < .@total_weight) {
-			mes "[" + strnpcinfo(NPC_NAME_VISIBLE) + "]";
+			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 			mes "Hmm...";
 			mes "Acho que você deveria abrir mais espaço em seu inventário antes que eu lhe dê todo esse leite...";
 			close;
 		} else {
 			Zeny -= .@total_cost;
-			delitem(Empty_Bottle, .@bottles);
-			getitem(Milk, .@bottles);
+			delitem(Empty_Bottle,.@bottles);
+			getitem(Milk,.@bottles);
 			close;
 		}
 	}

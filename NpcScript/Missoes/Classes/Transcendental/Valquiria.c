@@ -84,7 +84,7 @@ yuno_in02,93,207,1	script	Livro de Ymir#valkyrieq	HIDDEN_NPC,{
 			mes "[O Livro de Ymir]";
 			mes "Existe um caminho que leva ao esquecido Salão da Honra, o lugar mais próximo dos céus.";
 			close2;
-			warp ("valkyrie",48,8);
+			warp("valkyrie",48,8);
 			end;
 		}
 	} else if (BaseLevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
@@ -126,8 +126,8 @@ yuno_in02,93,207,1	script	Livro de Ymir#valkyrieq	HIDDEN_NPC,{
 			mes "Portanto, estou deixando este registro na esperança de que alguém no futuro possa confirmar que Valquíria e Valhalla existiram realmente.";
 			next;
 			valkyrieq = 2;
-			if(!questprogress(1000)) {
-				setquest (1000);
+			if (!questprogress(1000)) {
+				setquest(1000);
 			}
 			mes "[O Livro de Ymir]";
 			mes "Deixe os heróis viverem a nova vida para que possam proteger o mundo do perigo...";
@@ -145,7 +145,7 @@ yuno_in02,93,207,1	script	Livro de Ymir#valkyrieq	HIDDEN_NPC,{
 yuno_in05,49,43,1	script	Coração de Ymir#valkyrieq	HIDDEN_NPC,{
 	if (BaseLevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
 		if (valkyrieq == 2) {
-			warp ("valkyrie",48,8);
+			warp("valkyrie",48,8);
 		}
 	}
 	end;
@@ -178,7 +178,7 @@ valkyrie,48,86,4	script	Valkyrie#valkyrieq	4_F_VALKYRIE,{
 			mes "Você não pode levar nada com você para a próxima vida.";
 			mes "Seus itens, zenys, animais de estimação e carrinhos, todos têm devem ser deixados para trás.";
 			close2;
-			warp ("yuno_in02",93,205);
+			warp("yuno_in02",93,205);
 			end;
 		} else if (SkillPoint) {
 			mes "[Valquíria]";
@@ -220,18 +220,18 @@ valkyrie,48,86,4	script	Valkyrie#valkyrieq	4_F_VALKYRIE,{
 			ADVJOB = Class+Job_Novice_High;
 			if (ADVJOB == Job_Lord_Knight2) { ADVJOB = Job_Lord_Knight; }
 			if (ADVJOB == Job_Paladin2) { ADVJOB = Job_Paladin; }
-			jobchange (Job_Novice_High);
+			jobchange(Job_Novice_High);
 			resetlvl(1);
-			skill (NV_FIRSTAID,1,0);
-			skill (NV_TRICKDEAD,1,0);
-			completequest (1000);
+			skill(NV_FIRSTAID,1,0);
+			skill(NV_TRICKDEAD,1,0);
+			completequest(1000);
 			next;
 			mes "[Valquíria]";
 			mes "Parabéns!";
 			mes "Você agora renasceu e está em uma novíssima vida.";
 			mes "Por favor, tome estes pequenos presentes para se preparar para sua nova aventura.";
-			getitem (Knife_,1);
-			getitem (Cotton_Shirt_,1);
+			getitem(Knife_,1);
+			getitem(Cotton_Shirt_,1);
 			next;
 			mes "[Valquíria]";
 			mes "Desejo que a libertação da deusa Urd revele-se e te conceda uma bênção.";
@@ -244,25 +244,25 @@ valkyrie,48,86,4	script	Valkyrie#valkyrieq	4_F_VALKYRIE,{
 			switch (ADVJOB) {
 				case 4008:
 				case 4015:
-				warp ("izlude",94,103); break;
+				warp("izlude",94,103); break;
 				case 4009:
 				case 4016:
-				warp ("prontera",273,354); break;
+				warp("prontera",273,354); break;
 				case 4010:
 				case 4017:
-				warp ("geffen",120,60); break;
+				warp("geffen",120,60); break;
 				case 4011:
 				case 4019:
-				warp ("alberta",116,57); break;
+				warp("alberta",116,57); break;
 				case 4012:
 				case 4020:
 				case 4021:
-				warp ("payon",69,100); break;
+				warp("payon",69,100); break;
 				case 4013:
 				case 4018:
-				warp ("morocc",154,50); break;
+				warp("morocc",154,50); break;
 				default:
-				warp ("yuno_in02",93,205); break;
+				warp("yuno_in02",93,205); break;
 			}
 			end;
 		}
@@ -274,7 +274,7 @@ valkyrie,48,86,4	script	Valkyrie#valkyrieq	4_F_VALKYRIE,{
 		mes "Infelizmente, você ainda não foi convidado para estar aqui.";
 		mes "Peço-lhe que deixe imediatamente este local.";
 		close2;
-		warp ("yuno_in02",93,205);
+		warp("yuno_in02",93,205);
 		end;
 	}
 }

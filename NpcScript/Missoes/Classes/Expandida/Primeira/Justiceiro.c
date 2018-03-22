@@ -52,7 +52,7 @@ que_ng,152,167,3	script	Mestre Miller#gunslingerq	4_M_HUOLDARMY,{
 			mes "Leve esta carta para o Sr. Sábio Chifre de Touro, em Payon.";
 			mes "Ele é um xamã que irá julgar se você é ou não qualificado para se tornar um Justiceiro.";
 			gunslingerq = 1;
-			setquest (6020);
+			setquest(6020);
 			close;
 		} else if (gunslingerq == 1) {
 			mes "[Mestre Miller]";
@@ -104,12 +104,12 @@ que_ng,152,167,3	script	Mestre Miller#gunslingerq	4_M_HUOLDARMY,{
 			mes "Você pode ter a chance de conhecê-la um dia desses.";
 			mes "Agora temos que controlar a venda de armas e projéteis para mantê-los longe de pessoas más ou irresponsáveis.";
 			switch (rand(2)) {
-				case 0: getitem (Six_Shooter,1); close;
-				case 1: getitem (Branch,1); close;
+				case 0: getitem(Six_Shooter,1); close;
+				case 1: getitem(Branch,1); close;
 			}
-			completequest (6024);
-			jobchange (Job_Gunslinger);
-			callfunc ("ClearJobQuest");
+			completequest(6024);
+			jobchange(Job_Gunslinger);
+			callfunc("ClearJobQuest");
 			next;
 			mes "[Mestre Miller]";
 			mes "De qualquer forma, para mim é sempre um prazer conversar com outro Justiceiro, então mantenha contato.";
@@ -165,7 +165,7 @@ payon,184,65,3	script	Sábio Chifre de Touro#gunslingerq	4_M_LGTGRAND,{
 		mes "Depois que eu terminar o amuleto, você deve levá-lo ao Raposa Negra.";
 		mes "E ele irá o ajudar a alcançar seu objetivo de se tornar Justiceiro.";
 		gunslingerq = 2;
-		changequest (6020,6021);
+		changequest(6020,6021);
 		close;
 	} else if (gunslingerq == 2) {
 		if (countitem(Zargon) < 3 || countitem(Fluff) < 3 || countitem(Wooden_Block) < 1 || countitem(Shell) < 10 || countitem(Green_Herb) < 3 || countitem(Colorful_Shell) < 3) {
@@ -186,14 +186,14 @@ payon,184,65,3	script	Sábio Chifre de Touro#gunslingerq	4_M_LGTGRAND,{
 			mes "E ele irá o ajudar a alcançar seu objetivo de se tornar um Justiceiro.";
 			close;
 		}
-		delitem (Zargon,3);
-		delitem (Fluff,3);
-		delitem (Wooden_Block,1);
-		delitem (Shell,10);
-		delitem (Green_Herb,3);
-		delitem (Colorful_Shell,3);
+		delitem(Zargon,3);
+		delitem(Fluff,3);
+		delitem(Wooden_Block,1);
+		delitem(Shell,10);
+		delitem(Green_Herb,3);
+		delitem(Colorful_Shell,3);
 		gunslingerq = 3;
-		changequest (6021,6022);
+		changequest(6021,6022);
 		mes "[Sábio Chifre de Touro]";
 		mes "Ah, você voltou com tudo que eu preciso.";
 		mes "Por favor, me dê algum tempo para fazer o amuleto.";
@@ -226,7 +226,7 @@ payon,184,65,3	script	Sábio Chifre de Touro#gunslingerq	4_M_LGTGRAND,{
 		mes "Estou com sede, e eu gostaria de um copo de leite gelado.";
 		mes "Você poderia me trazer algum?";
 		gunslingerq = 4;
-		changequest (6022,6023);
+		changequest(6022,6023);
 		close;
 	} else if (gunslingerq == 4) {
 		if (countitem(Milk) < 1) {
@@ -235,9 +235,9 @@ payon,184,65,3	script	Sábio Chifre de Touro#gunslingerq	4_M_LGTGRAND,{
 			mes "Você faria um favor a este velho Justiceiro de me trazer um copo de ^3131FFleite^000000 gelado, por favor?";
 			close;
 		}
-		delitem (Milk,1);
+		delitem(Milk,1);
 		gunslingerq = 5;
-		changequest (6023,6024);
+		changequest(6023,6024);
 		mes "[Sábio Chifre de Touro]";
 		mes "Oh, obrigado por sua generosidade!";
 		mes "Eu vejo que você me trouxe um pouco de leite.";

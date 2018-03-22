@@ -24,7 +24,7 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 		mes "Às vezes você pode se perguntar por que dar valor as coisas materiais.";
 		mes "Você pode considerar esse conhecimento inútil, mas não é deixe-me explicar.";
 		next;
-		switch (select("Chutar Areia:Recuar", "Procurar Pedras", "Arremessar Pedra", "Voltarei mais tarde")) {
+		switch (select("Chutar Areia:Recuar","Procurar Pedras","Arremessar Pedra","Voltarei mais tarde")) {
 			case 1:
 			switch (skill_thief_1) {
 				case 0:
@@ -49,7 +49,7 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 					mes "Vou estar me preparando para o seu retorno.";
 					mes "Encontre o RuRumuni na parte oeste de Payon.";
 					mes "Eu ouvi dizer que ele está morando por lá.";
-					delitem(Fine_Grit, 5);
+					delitem(Fine_Grit,5);
 					skill_thief_1 = 1;
 					close;
 				}
@@ -119,8 +119,8 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 				mes "Excelente!";
 				mes "Eu acho que não tem nada mais que eu possa lhe ensinar.";
 				mes "Espero que esta habilidade ajude-o no futuro.";
-				delitem(Leather_Bag_Of_Infinity, 1);
-				skill("TF_SPRINKLESAND", 1, 0);
+				delitem(Leather_Bag_Of_Infinity,1);
+				skill("TF_SPRINKLESAND",1,0);
 				close;
 			}
 			case 2:
@@ -139,8 +139,8 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 				next;
 				mes "[Alcouskou]";
 				mes "Ótimo! A este nível, tenho certeza que você pode aprimorar suas próprias habilidades.";
-				delitem(Grasshoppers_Leg, 20);
-				skill("TF_BACKSLIDING", 1, 0);
+				delitem(Grasshoppers_Leg,20);
+				skill("TF_BACKSLIDING",1,0);
 				close;
 			}
 			mes "[Alcouskou]";
@@ -206,10 +206,10 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 				mes "Você pode melhora-la começando a praticar em seu próprio dia-a-dia.";
 				mes "Espero que ela ajude você no futuro.";
 				mes "....Espero ver você em breve";
-				delitem(Zargon, 1);
-				delitem(Bears_Foot, 1);
-				delitem(Spawn, 5);
-				skill("TF_PICKSTONE", 1, 0);
+				delitem(Zargon,1);
+				delitem(Bears_Foot,1);
+				delitem(Spawn,5);
+				skill("TF_PICKSTONE",1,0);
 				close;
 			}
 			mes "[Alcouskou]";
@@ -269,9 +269,9 @@ moc_prydb1,154,128,4	script	Alcouskou	2_M_THIEFMASTER,{
 				mes "Ok, isso é tudo.";
 				mes "A forma com que vai usar essa habilidade no futuro é com você.";
 				mes "Desejo-lhe sorte!";
-				delitem(Garlet, 2);
-				delitem(Scell, 2);
-				skill("TF_THROWSTONE", 1, 0);
+				delitem(Garlet,2);
+				delitem(Scell,2);
+				skill("TF_THROWSTONE",1,0);
 				close;
 			}
 			mes "[Alcouskou]";
@@ -363,11 +363,11 @@ payon,91,77,3	script	Bag Seller	4W_M_03,{
 			mes "Aproveite esta Bolsa de Couro.";
 			mes "Leve-a para a guilda dos Gatunos.";
 			mes "Se você levá-la até Alcouskou, ele vai ensinar-lhe a habilidade que você deseja aprender.";
-			delitem(Cactus_Needle, 1);
-			delitem(Earthworm_Peeling, 1);
-			delitem(Spiderweb, 1);
+			delitem(Cactus_Needle,1);
+			delitem(Earthworm_Peeling,1);
+			delitem(Spiderweb,1);
 			skill_thief_1 = 2;
-			getitem(Leather_Bag_Of_Infinity, 1);
+			getitem(Leather_Bag_Of_Infinity,1);
 			close;
 		}
 		mes "[RuRumuni]";

@@ -44,7 +44,7 @@ c_tower1,232,222,5	script	Belljamin Button#ct	4_M_RUSMAN2,{
 	mes("[Belljamin Button]");
 	mes("I'm begging you not to ask more about it. It might put your life in danger.");
 	next;
-	.@menu = select("Don't ask", "Go to 2nd floor of warped tower", "Go to 3rd floor of warped tower");
+	.@menu = select("Don't ask","Go to 2nd floor of warped tower","Go to 3rd floor of warped tower");
 	switch (.@menu) {
 	case 1:
 		break;
@@ -65,7 +65,7 @@ c_tower1,232,222,5	script	Belljamin Button#ct	4_M_RUSMAN2,{
 		mes("[Belljamin Button]");
 		mes("I need ^0000FF10,000z^000000 to let you in. It's a pretty dangerous place to be.");
 		next;
-		switch (select("Quit", "Pay 10,000z", "Why do you need money?")) {
+		switch (select("Quit","Pay 10,000z","Why do you need money?")) {
 		case 1:
 			break;
 		case 2:
@@ -101,7 +101,7 @@ c_tower2_,274,26,3	script	Belljamin Button#nct1	4_M_RUSCHILD,{
 	mes("[Belljamin Button]");
 	mes("You saw me in the different place, different look.");
 	next;
-	switch (select("Who are you?", "Get me out of here!")) {
+	switch (select("Who are you?","Get me out of here!")) {
 	case 1:
 		mes("[Belljamin Button]");
 		mes("Can you to explain me about what you've seen, what you've done?");
@@ -112,7 +112,7 @@ c_tower2_,274,26,3	script	Belljamin Button#nct1	4_M_RUSCHILD,{
 		mes("[Belljamin Button]");
 		mes("It's time to go back. Please cherish your time more.");
 		next;
-		switch (select("Stay a little bit more", "Please take me back")) {
+		switch (select("Stay a little bit more","Please take me back")) {
 		case 1:
 			mes("[Belljamin Button]");
 			mes("You must really like this place. Well, do whatever you want.");

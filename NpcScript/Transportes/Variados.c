@@ -20,12 +20,12 @@ gonryun,153,64,7	script	Anunciante de Kunlun#gonpasse	4_M_TWMIDMAN,{
 	mes "Quando desejar terminar sua visita a Kunlun.";
 	mes "Eu irei leva-l"+(Sex == SEX_MALE ? "o":"a")+" para o porto.";
 	next;
-	if (select("Retornar ao porto.","Cancelar.") == 1) {
+	if (select("Retornar ao porto","Cancelar") == 1) {
 		mes "[Jangchungryong]";
 		mes "Eu espero que você tenha se divertido conosco.";
 		mes "Vamos indo então?";
 		close2;
-		warp("gon_fild01", 258, 82);
+		warp("gon_fild01",258,82);
 		end;
 	}
 	mes "[Jangchungryong]";
@@ -53,7 +53,7 @@ comodo,193,151,4	script	Bor Robin#com	4_M_04,{
 		mes "[Bor Robin]";
 		mes "Yaay!!";
 		close2;
-		warp ("job_duncer", 70, 49);
+		warp("job_duncer",70,49);
 		end;
 	}
 	mes "[Bor Robin]";

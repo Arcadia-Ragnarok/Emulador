@@ -25,7 +25,7 @@ valkyrie,44,50,5	script	Mestre-Ferreiro#Valkyrie	4_M_JOB_BLACKSMITH,{
 			mes "Chegou a hora!";
 			mes "Nosso mundo precisa de coragem, e de esforçados aventureiros como você...";
 			next;
-			jobchange (Job_Whitesmith);
+			jobchange(Job_Whitesmith);
 			ADVJOB = 0;
 			mes "[Mestre-Ferreiro]";
 			mes "Parabéns!";

@@ -76,7 +76,7 @@ payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 							mes "Supostamente no lugar mais próximo do céu.";
 							mes "Enquanto isso, vou escrever um carta de recomendação que estou te enviando para ele.";
 							sgladiatorq = 1;
-							setquest (7007);
+							setquest(7007);
 							close;
 						}
 						mes "[Moohyun]";
@@ -123,7 +123,7 @@ payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 			mes "Então, como foi no teste?";
 			mes "Algum tipo de problema?";
 			next;
-			if (select("Não, estou bem.", "Sobre o enigma de Beeryu...") == 1) {
+			if (select("Não, estou bem.","Sobre o enigma de Beeryu...") == 1) {
 				mes "[Moohyun]";
 				mes "Ser independente";
 				mes "e resolver problemas por conta própria sempre é a melhor saída.";
@@ -264,7 +264,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 				mes "^4d4dff1 Gelo Místico^000000.";
 				mes "^4d4dff1 Coração Flamejante^000000.";
 				sgladiatorq = 2;
-				changequest (7007,7008);
+				changequest(7007,7008);
 				close;
 			}
 			mes "[Moogang]";
@@ -307,12 +307,12 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 				mes "Com a realização de a natureza do universo vem o respeito por todas as coisas.";
 				mes "Agora, quando você estiver pront"+(Sex == SEX_MALE ? "o":"a")+" para o próximo.";
 				mes "Guiarei então seu caminho.";
-				delitem (Rough_Wind,1);
-				delitem (Great_Nature,1);
-				delitem (Mistic_Frozen,1);
-				delitem (Flame_Heart,1);
+				delitem(Rough_Wind,1);
+				delitem(Great_Nature,1);
+				delitem(Mistic_Frozen,1);
+				delitem(Flame_Heart,1);
 				sgladiatorq = 3;
-				changequest (7008,7009);
+				changequest(7008,7009);
 				close;
 			}
 			mes "[Moogang]";
@@ -341,7 +341,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "No altar, fale para Daru, que servirá como seu guia.";
 			mes "Depois de concluir o teste, venha falar comigo novamente.";
 			close2;
-			warp ("job_star",34,12);
+			warp("job_star",34,12);
 			end;
 		} else if (sgladiatorq > 3 && sgladiatorq < 7) {
 			mes "[Moogang]";
@@ -350,7 +350,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "Ah, algo deve ter acontecido.";
 			mes "Vou enviar você de volta ao altar para que Daru possa testá-l"+(Sex == SEX_MALE ? "o":"a")+".";
 			close2;
-			warp ("job_star",34,12);
+			warp("job_star",34,12);
 			end;
 		} else if (sgladiatorq == 7) {
 			mes "[Moogang]";
@@ -374,7 +374,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "Deixe-me enviá-l"+(Sex == SEX_MALE ? "o":"a")+" para a sala da lua.";
 			mes "Onde Beeryu está esperando...";
 			close2;
-			warp ("job_star",100,13);
+			warp("job_star",100,13);
 			end;
 		} else if (sgladiatorq == 9 || sgladiatorq == 11) {
 			mes "[Moogang]";
@@ -385,7 +385,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 				mes "Não perca o coração...";
 				mes "Espero que você possa alcançar seu objetivo tornando-se Mestre-Taekwon.";
 				close2;
-				warp ("job_star",166,29);
+				warp("job_star",166,29);
 				end;
 			}
 			mes "[Moogang]";
@@ -402,7 +402,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 				mes "Não perca o coração...";
 				mes "Espero que você possa alcançar seu objetivo tornando-se Mestre-Taekwon.";
 				close2;
-				warp ("job_star",166,29);
+				warp("job_star",166,29);
 				end;
 			}
 			mes "[Moogang]";
@@ -443,9 +443,9 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "[Moogang]";
 			mes "Não posso pedir qualquer coisa a mais.";
 			mes "Você já é "+(Sex == SEX_MALE ? "um Guerreiro":"uma Guerreira")+" do Sol, da Lua e das estrelas.";
-			jobchange (Job_Star_Gladiator);
-			completequest (7011);
-			callfunc ("ClearJobQuest2nd",4047);
+			jobchange(Job_Star_Gladiator);
+			completequest(7011);
+			callfunc("ClearJobQuest2nd",4047);
 			next;
 			mes "[Moogang]";
 			mes "A partir de agora, faça suas decisões com muito cuidado.";
@@ -494,7 +494,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 		mes "[Moogang]";
 		mes "A proposíto gostaria de ir a alguma sala?";
 		next;
-		switch(select("Não","Para a Sala do Sol!","Para a Sala da Lua!","Para a Sala das estrelas!")) {
+		switch (select("Não","Para a Sala do Sol!","Para a Sala da Lua!","Para a Sala das estrelas!")) {
 			case 1:
 			mes "[Moogang]";
 			mes "Tudo bem.";
@@ -508,21 +508,21 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "Ah, você deve perder o calor glorioso do sol, eh?";
 			mes "Deixe-me ter enviar para lá imediatamente...";
 			close2;
-			warp ("job_star",34,12);
+			warp("job_star",34,12);
 			end;
 			case 3:
 			mes "[Moogang]";
 			mes "Hm? Você precisa da luz calmante da Lua?";
 			mes "Então, espero que você encontre a paz em sua influência calmante...";
 			close2;
-			warp ("job_star",100,13);
+			warp("job_star",100,13);
 			end;
 			case 4:
 			mes "[Moogang]";
 			mes "Ah, inúmeras razões para o motivo pelo qual você gostaria de ver o brilho das estrelas.";
 			mes "Bem, deixe-me enviar você para a Sala das Estrelas imediatamente.";
 			close2;
-			warp ("job_star",166,29);
+			warp("job_star",166,29);
 			end;
 		}
 	}
@@ -550,7 +550,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Diga-me.";
 			mes "O que é isso que você vê?";
 			next;
-			switch(select("O Sol","A Lua","As Estrelas","Não faço idéia")) {
+			switch (select("O Sol","A Lua","As Estrelas","Não faço idéia")) {
 				case 1:
 				mes "[Daru]";
 				mes "Sim! É o sol!";
@@ -580,7 +580,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Agora, não há nada que possa viver sem o sol.";
 			mes "Você sabe do que mais precisamos do sol?";
 			next;
-			switch(select("Calor","Conforto","Luz","Nada")) {
+			switch (select("Calor","Conforto","Luz","Nada")) {
 				case 1:
 				mes "[Daru]";
 				mes "Sem o calor do sol, nosso mundo não só é frio, mas seria completamente sem vida.";
@@ -637,7 +637,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 				mes "Agora, deixe-me levá-l"+(Sex == SEX_MALE ? "o":"a")+" para a sala da lua.";
 				sgladiatorq = 4;
 				close2;
-				warp (strnpcinfo(NPC_MAP),100,13);
+				warp(strnpcinfo(NPC_MAP),100,13);
 				end;
 			} else if (.@sun_point == 25) {
 				mes "[Daru]";
@@ -650,7 +650,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 				mes "Agora, venha até a sala da lua ...";
 				sgladiatorq = 4;
 				close2;
-				warp (strnpcinfo(NPC_MAP),100,13);
+				warp(strnpcinfo(NPC_MAP),100,13);
 				end;
 			}
 			mes "[Daru]";
@@ -669,7 +669,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Não é mais necessário que permaneçamos aqui.";
 			mes "Vamos para a Sala da Lua juntos.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),100,13);
+			warp(strnpcinfo(NPC_MAP),100,13);
 			end;
 		} else if (sgladiatorq == 5) {
 			switch (rand(10)) {
@@ -680,7 +680,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 				mes "Agora, vamos para a Sala da Lua.";
 				sgladiatorq = 4;
 				close2;
-				warp (strnpcinfo(NPC_MAP),100,13);
+				warp(strnpcinfo(NPC_MAP),100,13);
 				end;
 				default:
 				mes "[Daru]";
@@ -696,7 +696,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Não há mais nada para se fazer na Sala do Sol.";
 			mes "Vamos para a Sala das Estrelas agora...";
 			close2;
-			warp (strnpcinfo(NPC_MAP),166,29);
+			warp(strnpcinfo(NPC_MAP),166,29);
 			end;
 		} else if (sgladiatorq == 7) {
 			mes "[Daru]";
@@ -704,14 +704,14 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Bem, você precisará voltar para a cidade para descobrir a resposta.";
 			mes "Então deixe-me enviar você agora.";
 			close2;
-			warp ("payon",164,58);
+			warp("payon",164,58);
 			end;
 		} else if (sgladiatorq == 8) {
 			mes "[Daru]";
 			mes "Hm? Beeryu está esperando você na sala da lua.";
 			mes "Deixe-me enviar-lhe para lá agora...";
 			close2;
-			warp (strnpcinfo(NPC_MAP),100,13);
+			warp(strnpcinfo(NPC_MAP),100,13);
 			end;
 		} else if (sgladiatorq > 8 && sgladiatorq < 12) {
 			mes "[Daru]";
@@ -719,7 +719,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 			mes "Mas agora é a hora de você ir para Sala das Estrelas.";
 			mes "Vou enviar você para lá...";
 			close2;
-			warp (strnpcinfo(NPC_MAP),166,29);
+			warp(strnpcinfo(NPC_MAP),166,29);
 			end;
 		}
 		mes "[Daru]";
@@ -727,7 +727,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 		mes "Mas você tem uma tarefa muito importante para completar agora.";
 		mes "Deixe-me enviar você para a cidade.";
 		close2;
-		warp ("payon",164,58);
+		warp("payon",164,58);
 		end;
 	}
 	mes "[Daru]";
@@ -739,7 +739,7 @@ job_star,29,33,0	script	Daru#sgladiatorq	1_M_ORIENT01,{
 		mes "[Daru]";
 		mes "Deixe-me ter guiar de volta para Payon, então.";
 		close2;
-		warp ("payon",164,58);
+		warp("payon",164,58);
 		end;
 	}
 	mes "[Daru]";
@@ -760,7 +760,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Que Lua precisamos mais?";
 			mes "Pense nos diferentes tons da lua, e como isso muda em certas noites.";
 			next;
-			switch(select("Lua Vermelha","Lua Azul","Lua Dourada","...?")) {
+			switch (select("Lua Vermelha","Lua Azul","Lua Dourada","...?")) {
 				case 1:
 				mes "[Beeryu]";
 				mes "A Lua Vermelha ...?";
@@ -792,7 +792,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Agora, se as sombras da Lua lhe emprestaram seu poder.";
 			mes "Para que fim você usaria o poder do cosmos lunar?";
 			next;
-			switch(select("Justiça","Prática","Preservação","Vingança")) {
+			switch (select("Justiça","Prática","Preservação","Vingança")) {
 				case 1:
 				mes "[Beeryu]";
 				mes "Sim.";
@@ -866,7 +866,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 				mes "Venha, me siga...";
 				sgladiatorq = 6;
 				close2;
-				warp (strnpcinfo(NPC_MAP),166,29);
+				warp(strnpcinfo(NPC_MAP),166,29);
 				end;
 			}
 			mes "Para ser tão paciente e gentil quanto o suave brilho da lua";
@@ -887,14 +887,14 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Fale com Moogang para que ele possa ter enviar para mim.";
 			sgladiatorq = 7;
 			close2;
-			warp ("payon",164,58);
+			warp("payon",164,58);
 			end;
 		} else if (sgladiatorq == 5) {
 			mes "[Beeryu]";
 			mes "Você deve primeiro testar a Sala do Sol antes de ser testado aqui na Sala da Lua.";
 			mes "Deixe-me enviar você para onde deve ir...";
 			close2;
-			warp (strnpcinfo(NPC_MAP),34,12);
+			warp(strnpcinfo(NPC_MAP),34,12);
 			end;
 		} else if (sgladiatorq == 6) {
 			mes "[Beeryu]";
@@ -903,7 +903,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Mas você deve seguir em frente se quiser se tornar um Mestre de Taekwon.";
 			mes "Venha, enviarei você para a Sala das Estrelas.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),166,29);
+			warp(strnpcinfo(NPC_MAP),166,29);
 			end;
 		} else if (sgladiatorq == 7) {
 			mes "[Beeryu]";
@@ -915,7 +915,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Pense no que poderia ser.";
 			mes "Agora, eu enviarei de volta à cidade...";
 			close2;
-			warp ("payon",164,58);
+			warp("payon",164,58);
 			end;
 		} else if (sgladiatorq == 8) {
 			mes "[Beeryu]";
@@ -934,14 +934,14 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 			mes "Então eu vou mandar você para Cheehee agora.";
 			sgladiatorq = 6;
 			close2;
-			warp (strnpcinfo(NPC_MAP),166,29);
+			warp(strnpcinfo(NPC_MAP),166,29);
 			end;
 		} else if (sgladiatorq > 8 && sgladiatorq < 12) {
 			mes "[Beeryu]";
 			mes "Você deveria estar recebendo a tutela de Cheehee na Sala das Estrelas agora.";
 			mes "Venha, deixe-me te guiar até lá.";
 			close2;
-			warp (strnpcinfo(NPC_MAP),166,29);
+			warp(strnpcinfo(NPC_MAP),166,29);
 			end;
 		}
 		mes "[Beeryu]";
@@ -949,7 +949,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 		mes "Você tem algo muito mais importante para fazer.";
 		mes "Então deixe-me enviar de volta à cidade...";
 		close2;
-		warp ("payon",164,58);
+		warp("payon",164,58);
 		end;
 	}
 	mes "[Beeryu]";
@@ -960,7 +960,7 @@ job_star,95,33,0	script	Beeryu#sgladiatorq	1_M_MOC_LORD,{
 		mes "[Beeryu]";
 		mes "Passar bem!";
 		close2;
-		warp ("payon",164,58);
+		warp("payon",164,58);
 		end;
 	}
 	mes "[Beeryu]";
@@ -984,7 +984,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 				mes "Apenas me traga os itens desta terra que vêm das estrelas.";
 				mes "Traga-me um pedaço de estrela e a areia de uma estrela...";
 				sgladiatorq = 10;
-				changequest (7009,7010);
+				changequest(7009,7010);
 				close;
 			}
 			mes "[Cheehee]";
@@ -1002,8 +1002,8 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 				mes "[Cheehee]";
 				mes "As estrelas estão ligadas às idéias de desejos, sonhos, esperanças, magia e romance.";
 				mes "Ocasionalmente, as estrelas podem ser tristes, mas é uma tristeza muito doce...";
-				delitem (Star_Crumb,1);
-				delitem (Sparkling_Dust,1);
+				delitem(Star_Crumb,1);
+				delitem(Sparkling_Dust,1);
 				sgladiatorq = 11;
 				close;
 			}
@@ -1013,7 +1013,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 			mes "Se você não as trouxe com você, então você não as encontrará aqui.";
 			mes "Você terá que sair para encontrá-las lá antes de trazê-los para mim. ";
 			close2;
-			warp ("payon",164,58);
+			warp("payon",164,58);
 			end;
 		} else if (sgladiatorq == 11) {
 			mes "[Cheehee]";
@@ -1053,7 +1053,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 				mes "Quando quiser, fale novamente com Moogang.";
 				mes "Avisarei a ele saber que você completou nossos testes.";
 				sgladiatorq = 12;
-				changequest (7010,7011);
+				changequest(7010,7011);
 				close;
 			}
 			mes "[Cheehee]";
@@ -1075,7 +1075,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 			mes "Quando quiser, fale novamente com Moogang.";
 			mes "Avisarei a ele saber que você completou nossos testes.";
 			sgladiatorq = 12;
-			if (questprogress(7010)) { changequest (7010,7011); }
+			if (questprogress(7010)) { changequest(7010,7011); }
 			close;
 		} else if (sgladiatorq == 12) {
 			mes "[Cheehee]";
@@ -1085,7 +1085,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 				mes "[Cheehee]";
 				mes "Então, vou guiar você para Payon, a cidade mais próxima.";
 				close2;
-				warp ("payon",164,58);
+				warp("payon",164,58);
 				end;
 			}
 			mes "[Cheehee]";
@@ -1100,7 +1100,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 			mes "[Cheehee]";
 			mes "então. Guiarei você até Payon.";
 			close2;
-			warp ("payon",164,58);
+			warp("payon",164,58);
 			end;
 		}
 		mes "[Cheehee]";
@@ -1115,7 +1115,7 @@ job_star,161,33,0	script	Cheehee#sgladiatorq	1_F_ORIENT_03,{
 		mes "[Cheehee]";
 		mes "então. Guiarei você até Payon.";
 		close2;
-		warp ("payon",164,58);
+		warp("payon",164,58);
 		end;
 	}
 	mes "[Cheehee]";

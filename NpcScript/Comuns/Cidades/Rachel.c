@@ -87,7 +87,7 @@ rachel,127,117,4	script	Criança#rac2	4_F_CHILD,{
 	mes "Como humanos, é nossa responsabilidade fazer tudo que estiver a nosso alcance para conceber nossa própria felicidade.";
 	mes "Nós acreditamos que se é a vontade de Freya, então será realizada.";
 	next;
-	emotion (e_what);
+	emotion(e_what);
 	mes "[Criança]";
 	mes "Eu sei que pode parecer um pouco confuso para um forasteiro.";
 	mes "A ideia de ser confiante em nossa Deusa em vez de ser em nós mesmos.";
@@ -204,7 +204,7 @@ rachel,197,137,3	script	Bardo#rac	1_M_BARD,{
 	mes ".........";
 	mes ".........";
 	mes ".........";
-	emotion (e_sob);
+	emotion(e_sob);
 	close;
 }
 

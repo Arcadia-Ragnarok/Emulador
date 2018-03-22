@@ -82,7 +82,7 @@ payon_in02,25,71,4	script	Jovem#pay	4_M_04,{
 		mes "Eu não aguento mais!";
 		mes "Seu besouro fedido, desgraçado!";
 		next;
-		switch(select("Continuar","Cancelar")) {
+		switch (select("Continuar","Cancelar")) {
 			case 1:
 			mes "[Jovem]";
 			mes "Oh cara...";

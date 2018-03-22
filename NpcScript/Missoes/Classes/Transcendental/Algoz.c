@@ -30,7 +30,7 @@ valkyrie,44,58,5	script	Algoz#Valkyrie	4_F_JOB_ASSASSIN,{
 			mes "Eu peço que você continue vivendo nas sombras.";
 			mes "Mas como um bom assassino e com ainda mais aparência.";
 			next;
-			jobchange (Job_Assassin_Cross);
+			jobchange(Job_Assassin_Cross);
 			ADVJOB = 0;
 			mes "[Algoz]";
 			mes "Parabéns.";

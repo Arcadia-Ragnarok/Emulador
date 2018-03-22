@@ -59,9 +59,9 @@ prt_in,39,114,4	script	Sham Rumi#clan	4_F_SHAM,{
 	mes("Hi, there! I'm Sham, master of ^3131FF[Crossbow Clan]^000000");
 	mes("What can I do for you?");
 	next();
-	switch (select("Introducing Clan", "Join.", "Leave.")) {
+	switch (select("Introducing Clan","Join.","Leave.")) {
 	case 1:
-		switch (select("Clans are", "About the Crossbow Clan", "Cancel.")) {
+		switch (select("Clans are","About the Crossbow Clan","Cancel.")) {
 		case 1:
 			mes("[Sham Rumi]");
 			mes("The Clan established by the Rune-Midgarts Kingdom to...");
@@ -119,13 +119,13 @@ prt_in,39,114,4	script	Sham Rumi#clan	4_F_SHAM,{
 		mes("As our new member, you'll receive the following stat bonuses: ^FF0000<DEX+1, AGI+1, MHP+30, MSP+10>^000000.");
 		mes("Do you agree?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Sham Rumi]");
 		mes("Join and leave the clans anytime, but if you don't show up at clan for ^FF0000more than 2 weeks^000000, you'll be ^FF0000expelled^000000.");
 		mes("Do you promise you'll maintain good standing?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Sham Rumi]");
 		mes("Good, write your name here.");
@@ -159,7 +159,7 @@ prt_in,39,114,4	script	Sham Rumi#clan	4_F_SHAM,{
 		mes("Why, did you find a better clan?");
 		mes("I'm disappointed, but it's your call. Let me process your withdrawal.");
 		next();
-		if (select("Continue.", "Cancel.") == 2)
+		if (select("Continue.","Cancel.") == 2)
 			close();
 		mes("[Sham Rumi]");
 		if (!getcharid(CHAR_ID_CLAN)) {
@@ -191,9 +191,9 @@ prt_in,37,114,4	script	Berman Aire	4_M_BIRMAN,{
 	mes("Nice to meet you. I'm Berman Aire, master of ^3131FF[Goldenmace Clan]^000000.");
 	mes("I'm also the older brother of Debon Aire here. Debon looks tough, but he's a sweetheart.");
 	next();
-	switch (select("Introducing Clan", "Join.", "Leave.")) {
+	switch (select("Introducing Clan","Join.","Leave.")) {
 	case 1:
-		switch (select("Clans are", "About the Crossbow Clan", "Cancel.")) {
+		switch (select("Clans are","About the Crossbow Clan","Cancel.")) {
 		case 1:
 			mes("[Berman Aire]");
 			mes("The ^3131FFClans^000000 are established by the Kingdom to help adventurers connect and share information.");
@@ -248,13 +248,13 @@ prt_in,37,114,4	script	Berman Aire	4_M_BIRMAN,{
 		mes("As our new member, you'll receive the following stat bonuses: ^FF0000<INT+1, LUK+1, MHP+30, MSP+10>^000000.");
 		mes("Do you agree?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Berman Aire]");
 		mes("Join and leave the clans anytime, but if you don't show up at clan for ^FF0000more than 2 weeks^000000, you'll be ^FF0000expelled^000000.");
 		mes("Do you agree to maintain good standing in Clan?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Berman Aire]");
 		mes("Now, please write your name here.");
@@ -290,7 +290,7 @@ prt_in,37,114,4	script	Berman Aire	4_M_BIRMAN,{
 		mes("I hope you enjoyed your time in ^3131FFGolden Mace Clan^000000.");
 		mes("Now, should I process your withdrawal?");
 		next();
-		if (select("Continue.", "Cancel.") == 2)
+		if (select("Continue.","Cancel.") == 2)
 			close();
 		mes("[Berman Aire]");
 		if (!getcharid(CHAR_ID_CLAN)) {
@@ -321,7 +321,7 @@ prt_in,35,114,4	script	Debon Aire	4_M_DEBON,{
 	mes("[Debon Aire]");
 	mes("I'm Debon, master of ^3131FF[Arc Wand Clan]^000000.");
 	next();
-	switch (select("Introducing Clan", "Join.", "Leave.")) {
+	switch (select("Introducing Clan","Join.","Leave.")) {
 	case 1:
 		switch (select("Clans are::About the Crossbow Clan:Cancel.")) {
 		case 1:
@@ -388,13 +388,13 @@ prt_in,35,114,4	script	Debon Aire	4_M_DEBON,{
 		mes("New members are given these stat bonuses: ^FF0000<INT+1, DEX+1, MHP+30, MSP+10>^000000.");
 		mes("You with me so far?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Debon Aire]");
 		mes("Join and leave the clans anytime, but if you don't show up at clan for ^FF0000more than 2 weeks^000000, you'll be ^FF0000expelled^000000.");
 		mes("Do you agree?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Debon Aire]");
 		mes("Sign your name here.");
@@ -461,9 +461,9 @@ prt_in,33,114,4	script	Laperm Oranpere	4_F_LAPERM,{
 	mes("[Laperm Oranpere]");
 	mes("Hi! I'm Laperm, master of ^3131FF[Sword Clan]^000000, one the Rune-Midgarts Kingdom.");
 	next();
-	switch (select("Introducing Clan", "Join.", "Leave.")) {
+	switch (select("Introducing Clan","Join.","Leave.")) {
 	case 1:
-		switch (select("Clans are", "About the Crossbow Clan", "Cancel.")) {
+		switch (select("Clans are","About the Crossbow Clan","Cancel.")) {
 		case 1:
 			mes("[Laperm Oranpere]");
 			mes("The ^3131FFClans^000000 are a type of guild ran by the Kingdom.");
@@ -514,14 +514,14 @@ prt_in,33,114,4	script	Laperm Oranpere	4_F_LAPERM,{
 		mes("New members are given these stat bonuses: ^FF0000<STR+1, VIT+1, MHP+30, MSP+10>^000000.");
 		mes("You with me so far?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Laperm Oranpere]");
 		mes("Join and leave the clans anytime, but if you don't show up at clan for ^FF0000longer than 2 weeks^000000, you'll be ^FF0000expelled^000000.");
 		mes("Clan masters exsit for reason, like I.");
 		mes("Understood?");
 		next();
-		if (select("Yes.", "No.") == 2)
+		if (select("Yes.","No.") == 2)
 			callsub(L_Nope);
 		mes("[Laperm Oranpere]");
 		mes("Great, sign name here on the register.");
@@ -554,7 +554,7 @@ prt_in,33,114,4	script	Laperm Oranpere	4_F_LAPERM,{
 		mes("No problem. I hope you'll find more suitable clan.");
 		mes("Ready for withdrawal?");
 		next();
-		if (select("Continue.", "Cancel.") == 2)
+		if (select("Continue.","Cancel.") == 2)
 			close();
 		mes("[Laperm Oranpere]");
 		if (!getcharid(CHAR_ID_CLAN)) {

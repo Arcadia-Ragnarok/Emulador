@@ -39,9 +39,9 @@ umbala,70,106,3	script	Criança Utan#umb	4_F_UMGIRL,{
 		mes "Você pode doar algum dinheiro para a reconstrução da casa dos meus pais?";
 		mes "Vocês de Rune-Midgard são todos mais ricos do que os Utans!";
 		mes "Eu imploro!";
-		emotion (e_heh);
+		emotion(e_heh);
 		next;
-		if (select("Acenar com a cabeça", "Negar com a cabeça") == 1) {
+		if (select("Acenar com a cabeça","Negar com a cabeça") == 1) {
 			mes "[Haatan]";
 			mes "Whoaaaa!!";
 			mes "Muito obrigado, yay!";
@@ -60,7 +60,7 @@ umbala,70,106,3	script	Criança Utan#umb	4_F_UMGIRL,{
 		mes "[Criança Utan]";
 		mes "Umbah?";
 		mes "Umbala umbabah umbah?";
-		emotion (e_sob);
+		emotion(e_sob);
 		close;
 	}
 }
@@ -75,7 +75,7 @@ umbala,59,243,5	script	Criança Utan#umb2	4_M_UMKID,{
 		mes "....me dê uma carne.";
 		emotion(e_rock);
 		next;
-		if (select("Dar-lhe carne", "Recusar") == 1) {
+		if (select("Dar-lhe carne","Recusar") == 1) {
 			if (countitem(Meat) > 0) {
 				mes "[Kotan]";
 				mes "Whoa, você realmente está me dando carne?";
@@ -116,7 +116,7 @@ umbala,194,104,4	script	Criança Utan#umb3	4_M_UMKID,{
 		mes "Huh? Você é de Rune-Midgard, não é?";
 		mes "Você já foi em um bungee jump?";
 		next;
-		if (select("Sim", "Não") == 1) {
+		if (select("Sim","Não") == 1) {
 			mes "[Boorkatan]";
 			mes "Wow, que surpresa!";
 			mes "Eu nunca falei com alguém de fora que que já tivesse feito isso.";

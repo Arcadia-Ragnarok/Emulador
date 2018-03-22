@@ -78,7 +78,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 		mes "everything that";
 		mes "I've asked you?";
 		next;
-		switch(select("Yes.", "No, not yet.")) {
+		switch (select("Yes.","No, not yet.")) {
 		case 1:
 			if ((countitem(Emveretarcon) > 9) && (countitem(Coal) > 2) && (countitem(Zargon) > 9) && (countitem(Large_Jellopy) > 39)) {
 				mes "[Cavitar]";
@@ -221,7 +221,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 				mes "I'm sorry, but I need";
 				mes "to be alone right now...";
 				next;
-				switch(select("I can help you.", "Okay...", "An accident?")) {
+				switch (select("I can help you.","Okay...","An accident?")) {
 				case 1:
 					mes "[Cavitar]";
 					mes "Are you serious?!";
@@ -243,7 +243,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 					mes "her medical expenses and";
 					mes "food for just one day.";
 					next;
-					switch(select("Help Him.", "Quit.")) {
+					switch (select("Help Him.","Quit.")) {
 					case 1:
 						if (checkweight(Spawn,10) == 0) {
 							mes "[Cavitar]";
@@ -278,7 +278,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 									mes "If you would, please take this.";
 									Zeny -= 1000;
 									ein_gear1 = 2;
-									switch(rand(1,7)) {
+									switch (rand(1,7)) {
 									case 1:
 										getitem Phlogopite,1; // Phlogopite
 										break;
@@ -331,7 +331,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 									mes "3 Coal and";
 									mes "10 Zargon?";
 									next;
-									switch(select("Sure!", "No, thanks.")) {
+									switch (select("Sure!","No, thanks.")) {
 									case 1:
 										Zeny -= 1000;
 										ein_gear1 = 1;
@@ -384,7 +384,7 @@ einbech,97,167,5	script	Cavitar	4_M_EINOLD,{
 								mes "3 Coal and";
 								mes "10 Zargon?";
 								next;
-								switch(select("Sure!", "No, thanks.")) {
+								switch (select("Sure!","No, thanks.")) {
 								case 1:
 									Zeny -= 1000;
 									++$ein_amano;
@@ -892,7 +892,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "...you ^EEA9B8naughty girl^000000.";
 			}
 			next;
-			.@choice = select("Give him all.", "Cancel.");
+			.@choice = select("Give him all.","Cancel.");
 			if (.@choice == 1) {
 				mes "[Uwe]";
 				mes "Just kidding";
@@ -944,7 +944,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "time since we've talked,";
 				mes "you cutie adventurer";
 				next;
-				switch (select("So... You're a chef.", "Yes, I tried my best.")) {
+				switch (select("So... You're a chef.","Yes, I tried my best.")) {
 				case 1:
 					mesf("[%s]", strcharinfo(PC_NAME));
 					mes "So...";
@@ -996,7 +996,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "Did you already forget";
 				mes "the 6 Large Jellopy?";
 				next;
-				switch (select("There you go.", "I want to quit.", "Can I do it later?")) {
+				switch (select("There you go.","I want to quit.","Can I do it later?")) {
 				case 1:
 					F_LargeJellopyForCoal();
 				case 2:
@@ -1026,7 +1026,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 					mes "[Uwe]";
 					mes "Oooh, you came back later than I thought, so I don't need really need them anymore. Then again, just holding onto them doesn't sound right either...";
 					next;
-					switch (select("Here you go", "I want to quit.")) {
+					switch (select("Here you go","I want to quit.")) {
 					case 1:
 						F_LargeJellopyForCoal();
 					case 2:
@@ -1059,7 +1059,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 			mes "Cooking is such a joy!";
 			mes "The scents, the flavors, the sensation of sheer ^EEA9B8satiation^000000...";
 			next;
-			switch (select("Um, isn't this a forge?", "Ignore him.")) {
+			switch (select("Um, isn't this a forge?","Ignore him.")) {
 			case 1:
 				mes "[Uwe]";
 				mes "Is this a forge?";
@@ -1086,7 +1086,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 					mes "you ^EEA9B8naughty, naughty girl^000000?";
 				}
 				next;
-				switch (select("Heart.", "Ingredients.", "Skills.", "Tools.")) {
+				switch (select("Heart.","Ingredients.","Skills.","Tools.")) {
 				case 1:
 					mes "[Uwe]";
 					mes "...";
@@ -1235,7 +1235,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 			mes "So tell me, what brings";
 			mesf("you here, %s?", strcharinfo(PC_NAME));
 			next;
-			switch (select("Ask about Cooking.", "Ask about Einbroch.", "Cancel.")) {
+			switch (select("Ask about Cooking.","Ask about Einbroch.","Cancel.")) {
 			case 1:
 				if (ein_cook % 2 == 0)
 					close; //Yes, there's really nothing defined for this in the Aegis Script
@@ -1245,7 +1245,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "want to ask me...?";
 				next;
 				if (ein_cook == 1) {
-					switch (select("Ingredients", "Skills", "Tools", "Cancel")) {
+					switch (select("Ingredients","Skills","Tools","Cancel")) {
 					case 1:
 						F_Ingredients();
 					case 2:
@@ -1256,7 +1256,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 						F_Cancel();
 					}
 				} else if (ein_cook == 3) {
-					switch (select("Heart", "Skills", "Tools", "Cancel.")) {
+					switch (select("Heart","Skills","Tools","Cancel.")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1267,7 +1267,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 						F_Cancel();
 					}
 				} else if (ein_cook == 5) {
-					switch (select("Heart", "Ingredients", "Tools", "Cancel")) {
+					switch (select("Heart","Ingredients","Tools","Cancel")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1278,7 +1278,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 						F_Cancel();
 					}
 				} else if (ein_cook == 7) {
-					switch (select("Heart", "Ingredients", "Skills", "Cancel.")) {
+					switch (select("Heart","Ingredients","Skills","Cancel.")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1326,7 +1326,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 						F_Cancel();
 					}
 				} else if (ein_cook == 9) {
-					switch (select("Heart", "Ingredients", "Skills", "Tools", "Cancel.")) {
+					switch (select("Heart","Ingredients","Skills","Tools","Cancel.")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1350,14 +1350,14 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 			mes "So how's the weapon";
 			mes "forging coming along?";
 			next;
-			switch (select("Talk about Cooking", "Talk about Einbroch", "Talk about Cooking Utensils", "Cancel")) {
+			switch (select("Talk about Cooking","Talk about Einbroch","Talk about Cooking Utensils","Cancel")) {
 			case 1:
 				mes "[Uwe]";
 				mes "Ooh, cooking!";
 				mes "So what did you";
 				mes "want to ask me...?";
 				next;
-				switch (select("Heart", "Ingredients", "Skills", "Tools", "Cancel.")) {
+				switch (select("Heart","Ingredients","Skills","Tools","Cancel.")) {
 				case 1:
 					F_Heart();
 				case 2:
@@ -1396,7 +1396,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "30 ^0000FFJubilee^000000 and 4 ^0000FFLarge Jellopy^000000.";
 				mes "Then, I'll trade you 1 Coal for all of those. How does it sound?";
 				next;
-				switch (select("Sure.", "No, thanks.")) {
+				switch (select("Sure.","No, thanks.")) {
 				case 1:
 					if (countitem(Jubilee) > 29 && countitem(Large_Jellopy) > 3) {
 						delitem Jubilee, 30;
@@ -1497,7 +1497,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "[Uwe]";
 				mes "Ah...!";
 				mes "I have it!";
-				mes "" + strcharinfo(PC_NAME) + "!";
+				mes ""+strcharinfo(PC_NAME)+"!";
 				mes "Yes, now I remember you.";
 				mes "Decided to transcend, eh?";
 				next;
@@ -1510,7 +1510,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				}
 				next;
 			}
-			switch (select("Ask about Einbroch.", "Ask about Cooking.", "Cancel.")) {
+			switch (select("Ask about Einbroch.","Ask about Cooking.","Cancel.")) {
 			case 1:
 				F_AboutEinbroch();
 			case 2:
@@ -1519,7 +1519,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "So what did you";
 				mes "want to ask me...?";
 				next;
-				switch (select("Heart", "Ingredients", "Skills", "Tools", "Cancel.")) {
+				switch (select("Heart","Ingredients","Skills","Tools","Cancel.")) {
 				case 1:
 					F_Heart();
 				case 2:
@@ -1542,7 +1542,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "cutie adventurer.";
 				mes "How can I help you?";
 				next;
-				switch (select("Talk about Einbroch.", "Ask him to forge a Weapon.", "Talk about Cooking.", "Cancel.")) {
+				switch (select("Talk about Einbroch.","Ask him to forge a Weapon.","Talk about Cooking.","Cancel.")) {
 				case 1:
 					F_AboutEinbroch();
 				case 2:
@@ -1553,7 +1553,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 					mes "So what did you";
 					mes "want to ask me...?";
 					next;
-					switch (select("Heart", "Ingredients", "Skills", "Tools", "Cancel.")) {
+					switch (select("Heart","Ingredients","Skills","Tools","Cancel.")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1588,7 +1588,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "Did you already forget";
 				mes "the 6 Large Jellopy?";
 				next;
-				switch (select("Talk about Einbroch.", "Ask him to forge a Weapon.", "Give him the Materials.", "Cancel.")) {
+				switch (select("Talk about Einbroch.","Ask him to forge a Weapon.","Give him the Materials.","Cancel.")) {
 				case 1:
 					F_AboutEinbroch();
 				case 2:
@@ -1623,7 +1623,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 					mes "honey. Now what would you like";
 					mes "to hear more about? Hmm...?";
 					next;
-					switch (select("Heart", "Materials", "Skills", "Tools", "Cancel.")) {
+					switch (select("Heart","Materials","Skills","Tools","Cancel.")) {
 					case 1:
 						F_Heart();
 					case 2:
@@ -1654,7 +1654,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 				mes "Hello, cutie";
 				mes "How can I help you?";
 				next;
-				switch (select("Talk about Einbroch.", "Ask him to forge a Weapon.", "Master, I want to learn cooking.", "Cancel.")) {
+				switch (select("Talk about Einbroch.","Ask him to forge a Weapon.","Master, I want to learn cooking.","Cancel.")) {
 				case 1:
 					F_AboutEinbroch();
 				case 2:
@@ -1674,7 +1674,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 			mes "Cooking is such a joy!";
 			mes "The scents, the flavors, the sensation of sheer ^EEA9B8satiation^000000...";
 			next;
-			switch (select("Um, isn't this a forge?", "Ignore him.")) {
+			switch (select("Um, isn't this a forge?","Ignore him.")) {
 			case 1:
 				mes "[Uwe]";
 				ein_cook = 1000;
@@ -1700,7 +1700,7 @@ einbroch,215,180,6	script	Uwe Kleine#ein	4_M_03,{
 					mes "womanly woman?";
 				}
 				next;
-				switch (select("Talk about Einbroch.", "Ask him to forge a Weapon.", "Master, I want to learn cooking.", "Cancel.")) {
+				switch (select("Talk about Einbroch.","Ask him to forge a Weapon.","Master, I want to learn cooking.","Cancel.")) {
 				case 1:
 					F_AboutEinbroch();
 				case 2:
@@ -2021,7 +2021,7 @@ ein_in01,67,242,3	script	Zelmeto	4_M_REPAIR,{
 		mes "a point in you coming to";
 		mes "visit this place anymore.";
 		next;
-		switch(select("Give him materials.", "Huh.")) {
+		switch (select("Give him materials.","Huh.")) {
 		case 1:
 			mes "[Zelmeto]";
 			mes "...Hm?";
@@ -2517,7 +2517,7 @@ ein_in01,67,242,3	script	Zelmeto	4_M_REPAIR,{
 	mes "Ah, I'm sorry, I've spoken too";
 	mes "freely about my own problems...";
 	next;
-	switch(select("You're understaffed?", "No, it's okay.")) {
+	switch (select("You're understaffed?","No, it's okay.")) {
 	case 1:
 		mes "[Zelmeto]";
 		mes "Yes, we are!";
@@ -2534,7 +2534,7 @@ ein_in01,67,242,3	script	Zelmeto	4_M_REPAIR,{
 		mes "and managing the workforce,";
 		mes "I don't have enough time...";
 		next;
-		switch(select("I can help you.", "Keep up the good job.")) {
+		switch (select("I can help you.","Keep up the good job.")) {
 		case 1:
 			mes "[Zelmeto]";
 			mes "You can help me?";
@@ -2706,10 +2706,10 @@ sec_in02,127,86,3	script	Factory Quest Test	4_M_REPAIR,{
 		mes "The current value";
 		mes "of the global variable";
 		mes "for the Factory Quest";
-		mes "is... ^3355FF" + z + "^000000.";
+		mes "is... ^3355FF"+z+"^000000.";
 		mes "You wanna change?";
 		next;
-		switch(select("0", "10", "Invade")) {
+		switch (select("0","10","Invade")) {
 		case 1:
 			mes "[Test1]";
 			mes "Okay...!";
@@ -2773,7 +2773,7 @@ einbech,165,105,7	script	Buender Hikeman#ein	4_M_EINOLD,{
 		mes "You've taken everything";
 		mes "away from me!!";
 		next;
-		switch(select("'What are you talking about?'", "Ignore Him.")) {
+		switch (select("'What are you talking about?'","Ignore Him.")) {
 		case 1:
 			mes "[Buender Hikeman]";
 			mes "How dare you...";
@@ -2862,7 +2862,7 @@ einbech,165,105,7	script	Buender Hikeman#ein	4_M_EINOLD,{
 		mes "you dug up, you know";
 		mes "what we found...?!";
 		next;
-		switch(select("Ungoliant?", "A mysterious ore, right?", "Nothing...?")) {
+		switch (select("Ungoliant?","A mysterious ore, right?","Nothing...?")) {
 		case 1:
 			mes "[Buender Hikeman]";
 			mes "Don't you remember";
@@ -2920,7 +2920,7 @@ einbech,165,105,7	script	Buender Hikeman#ein	4_M_EINOLD,{
 		mes "I'm sick of";
 		mes "your lies!";
 		next;
-		switch(select("I'm not who you think!", "How did you survive the accident?")) {
+		switch (select("I'm not who you think!","How did you survive the accident?")) {
 		case 1:
 			mes "[Buender Hikeman]";
 			mes "Ha...!";
@@ -2974,7 +2974,7 @@ einbech,165,105,7	script	Buender Hikeman#ein	4_M_EINOLD,{
 		mes "me? What more can";
 		mes "you possibly take away?!";
 		next;
-		switch(select("I'm not who you think I am!", "I'd like to apologize.")) {
+		switch (select("I'm not who you think I am!","I'd like to apologize.")) {
 		case 1:
 			mes "[Buender Hikeman]";
 			mes "Quit lying!";
@@ -3112,7 +3112,7 @@ einbech,165,105,7	script	Buender Hikeman#ein	4_M_EINOLD,{
 		mes "Um...";
 		mes "Actually...";
 		next;
-		switch(select("Tell Hikeman about Shinokas's death.", "Don't notify Hikeman.")) {
+		switch (select("Tell Hikeman about Shinokas's death.","Don't notify Hikeman.")) {
 		case 1:
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Shinokas died";
@@ -3290,9 +3290,9 @@ ein_in01,231,163,7	script	Sick Old Man#ein	4_M_DIEMAN,{
 		mes "^333333*Ahem!*^000000";
 		mes "Excuse me...";
 		next;
-		while(1) {
+		while (1) {
 			if (.@einbech > 6) {
-				if (select("Have you ever heard of ^3131FFHikeman^000000 before?", "Weren't you living in ^3131FFEinbech^000000?") == 1) {
+				if (select("Have you ever heard of ^3131FFHikeman^000000 before?","Weren't you living in ^3131FFEinbech^000000?") == 1) {
 					break;
 				}
 				mes "[Sick Old Man]";
@@ -3307,7 +3307,7 @@ ein_in01,231,163,7	script	Sick Old Man#ein	4_M_DIEMAN,{
 				next;
 			}
 			else {
-				switch(select("Remember the mine tunnel collapse?", "Didn't you used to be a miner?", "Have you lived in Einbroch all your life?")) {
+				switch (select("Remember the mine tunnel collapse?","Didn't you used to be a miner?","Have you lived in Einbroch all your life?")) {
 				case 1:
 					mes "[Sick Old Man]";
 					mes "Noooo!";
@@ -3566,7 +3566,7 @@ ein_in01,231,163,7	script	Sick Old Man#ein	4_M_DIEMAN,{
 			mes "do you think that";
 			mes "ore might be?";
 			next;
-			switch(select("Airport", "Factory", "Train Station", "Airship Repairshop", "Laboratory")) {
+			switch (select("Airport","Factory","Train Station","Airship Repairshop","Laboratory")) {
 			case 1:
 				mes "[Shinokas]";
 				mes "No...";
@@ -3822,7 +3822,7 @@ ein_in01,254,35,1	script	Scientist#ein	4_M_ALCHE_B,{
 	mes "^333333*Grumble grumble*^000000";
 	if (Shinokas_Quest == 7) {
 		next;
-		switch(select("What's wrong?", "Catch you later.")) {
+		switch (select("What's wrong?","Catch you later.")) {
 		case 1:
 			mes "[Scientist]";
 			mes "What's wrong...?!";
@@ -4015,7 +4015,7 @@ airplane,31,77,5	script	Drunken Man#ein	4_M_YURI,{
 		mes "Hahaha! Th-thank you";
 		mes "^333333*Hic-hic-hiccup!*^000000";
 		next;
-		switch(select("So what was that about Ymir's Heart?", "Hehe, you're welcome.")) {
+		switch (select("So what was that about Ymir's Heart?","Hehe, you're welcome.")) {
 		case 1:
 			mes "[Drunken Man]";
 			mes "What...?";
@@ -4198,7 +4198,7 @@ OnTouch:
 		mes "Please identify yourself";
 		mes "through the system.";
 		next;
-		switch(select("Identify.", "Information", "Cancel")) {
+		switch (select("Identify.","Information","Cancel")) {
 		case 1:
 			mes "[Security System]";
 			mes "Enter the following";
@@ -4208,7 +4208,7 @@ OnTouch:
 			next;
 			.@startseconds = gettime(GETTIME_HOUR)*60*60+gettime(GETTIME_MINUTE)*60+gettime(GETTIME_SECOND);
 			mes "[Security System]";
-			switch(rand(1,7)) {
+			switch (rand(1,7)) {
 			case 1:
 				.@word1$ = "burrdingdingdilidingdingphoohudaambandoorabambarambambamburanbamding";
 				.@word2$ = "burapaphurarlandreamduranbatuhiwooikabamturubamdingding";
@@ -4281,14 +4281,14 @@ OnTouch:
 			if ((.@input1$ == .@word1$) && (.@input2$ == .@word2$)) {
 				if (.@time > 60) {
 					mes "Time over.";
-					mes "It took ^ff0000" + .@time + " seconds^000000";
+					mes "It took ^ff0000"+.@time+" seconds^000000";
 					mes "for you to enter the";
 					mes "password. Initiating";
 					mes "lockout. Access denied.";
 					close;
 				}
 				else {
-					mes "It took ^ff0000" + .@time + " seconds^000000";
+					mes "It took ^ff0000"+.@time+" seconds^000000";
 					mes "for you to enter the";
 					mes "password. Initiating";
 					mes "override. Access granted.";
@@ -4441,7 +4441,7 @@ ein_in01,31,138,3	script	Calla#ein	4_F_01,{
 		mes "*Crack Crack Crrrrrrack*";
 		mes "*Rub Crrraaaaaaaaaack*^000000";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Ooooooooh...";
 		mes "I feel sooo";
 		mes "sore and yet";
@@ -4473,7 +4473,7 @@ ein_in01,31,138,3	script	Calla#ein	4_F_01,{
 		mes "[Calla]";
 		mes "Once again,";
 		mes "thank you so";
-		mes "much, "+ strcharinfo(PC_NAME) +".";
+		mes "much, "+strcharinfo(PC_NAME)+".";
 		mes "I'll always pray for";
 		mes "your safety on your";
 		mes "your adventures";
@@ -4505,7 +4505,7 @@ ein_in01,31,138,3	script	Calla#ein	4_F_01,{
 		input .@input$;
 		if (.@input$ == strcharinfo(PC_NAME)) {
 			mes "[Calla]";
-			mes "Ah, " + strcharinfo(PC_NAME) + "!";
+			mes "Ah, "+strcharinfo(PC_NAME)+"!";
 			mes "Such a lovely name";
 			mes "I promise that I won't ever";
 			mes "forget it. Oh, and if you pass by Einbech, would you thank Klitzer for the flower for me please?";
@@ -4655,14 +4655,14 @@ ein_in01,200,101,5	script	Klitzer#ein	4_M_EINMAN2,{
 		mes "anything like that before!";
 		next;
 		mes "[Klitzer]";
-		mes "Wait, " + strcharinfo(PC_NAME) + ".";
+		mes "Wait, "+strcharinfo(PC_NAME)+".";
 		mes "What's that you've got";
 		mes "there? I've seen something";
 		mes "like that before. It's called";
 		mes "a Tuxedo, right? Something";
 		mes "like that would be perfect!";
 		next;
-		switch(select("Give it to him.", "Ignore Him.")) {
+		switch (select("Give it to him.","Ignore Him.")) {
 		case 1:
 			mes "[Klitzer]";
 			mes "I can have this?";
@@ -4686,7 +4686,7 @@ ein_in01,200,101,5	script	Klitzer#ein	4_M_EINMAN2,{
 			delitem Tuxedo,1;
 			EIN_LOVERQ = 16;
 			changequest 8087,8088;
-			switch(rand(1,7)) {
+			switch (rand(1,7)) {
 			case 1:
 				getitem Olivine,1;
 				break;
@@ -4710,7 +4710,7 @@ ein_in01,200,101,5	script	Klitzer#ein	4_M_EINMAN2,{
 			}
 			next;
 			mes "[Klitzer]";
-			mes "" + strcharinfo(PC_NAME) + ",";
+			mes ""+strcharinfo(PC_NAME)+",";
 			mes "you've really opened";
 			mes "my eyes. From now on,";
 			mes "I'll do my best to earn the";
@@ -4825,7 +4825,7 @@ ein_in01,200,101,5	script	Klitzer#ein	4_M_EINMAN2,{
 		input .@input$;
 		if (.@input$ == strcharinfo(PC_NAME)) {
 			mes "[Klitzer]";
-			mes "" + strcharinfo(PC_NAME) + "...";
+			mes ""+strcharinfo(PC_NAME)+"...";
 			mes "That's very nice. Thank you,";
 			mes "I'm really grateful for your help. Although I can't see Calla in";
 			mes "person, I can at least send";
@@ -4918,7 +4918,7 @@ ein_in01,200,101,5	script	Klitzer#ein	4_M_EINMAN2,{
 		mes "*Press Press Press*";
 		mes "*C-c-c-c-c-c-crack!*";
 		next;
-		mes "["+ strcharinfo(PC_NAME) +"]";
+		mes "["+strcharinfo(PC_NAME)+"]";
 		mes "Oh--";
 		mes "Hell yeah!";
 		mes "That's the stuff!";
@@ -5195,7 +5195,7 @@ ein_in01,31,151,3	script	Satra#ein	4_F_EINWOMAN,{
 		else {
 			mes "[Satra]";
 			mes "I beg your pardon?";
-			mes .@input$ + "? Oh my...";
+			mes .@input$+"? Oh my...";
 			mes "I believe I may have";
 			mes "misheard you. Ho ho ho ho";
 			close;

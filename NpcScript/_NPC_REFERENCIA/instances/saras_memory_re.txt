@@ -97,7 +97,7 @@ dali,130,107,5	script	Leon the Adventurer#Sara	4_M_DST_GRAND,{ // instance CD ch
 		next;
 		if (!sarainstance)
 			close;
-		switch (select("Okay", "Give up")) {
+		switch (select("Okay","Give up")) {
 		case 1:
 			mes("[Leon the Adventurer]");
 			mes("I am glad to hear that! Maybe	someday you can be as brave as old Leon the Lion!");
@@ -180,7 +180,7 @@ dali,138,118,0	script	Dimensional Device#dimen	PORTAL,{
 			.@menu1$ = "Boot up the dimensional device";
 		else
 			.@menu1$ = "";
-		switch (select(.@menu1$, "Use the dimensional device", "Cancel")) {
+		switch (select(.@menu1$, "Use the dimensional device","Cancel")) {
 		case 1:
 			if (getcharid(CHAR_ID_CHAR) != getpartyleader(.@party_id, 2))
 				end;
@@ -995,8 +995,8 @@ OnMyMobDead:
 		viewpoint 1, 155, 180, 1, C_GREEN;
 		mapannounce(instance_mapname("1@sara"), _("<SYSTEM> Sara ran away yet again! You think she went in the 12 O'clock direction!"), bc_map, C_YELLOW);
 		for (.@i=4; .@i<=23; .@i++) {
-			donpcevent instance_npcname("Sara Irene#sarains" + .@i)+"::OnEnable";
-			donpcevent instance_npcname("Sara Irene#sarains" + .@i)+"::OnDisable";
+			donpcevent instance_npcname("Sara Irene#sarains"+.@i)+"::OnEnable";
+			donpcevent instance_npcname("Sara Irene#sarains"+.@i)+"::OnDisable";
 		}
 		donpcevent instance_npcname("#controlsara3")+"::OnDisable";
 		donpcevent instance_npcname("#sarawarp5")+"::OnEnable";

@@ -35,7 +35,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 					mes "Então estou te promovendo para Gatuno neste minuto.";
 					mes "É melhor eu dar o que você quer...";
 					next;
-					jobchange (Job_Thief_High);
+					jobchange(Job_Thief_High);
 					mes "[Gatuna Ajudante]";
 					mes "Desde que você se tornar Gatuno, viver como um Gatuno.";
 					mes "Agora, vá por isso!";
@@ -81,7 +81,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 			} else {
 				mes "Não sabe que esse lugar é a Guilda dos Gaturnos?";
 				next;
-				switch(select("Estou aqui para ser Gaturno","Só estou de passagem","Fale-me sobre o teste")) {
+				switch (select("Estou aqui para ser Gaturno","Só estou de passagem","Fale-me sobre o teste")) {
 					case 1:
 					mes "[Gatuna Ajudante]";
 					mes "O que faz pensar que pode ser "+(Sex == SEX_MALE ? "um Gaturno":"uma Gaturna")+"?";
@@ -97,7 +97,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 						mes "Vá para fora da Pirâmide e procure pelo^0066ff Senhor Irrelevante ^000000.";
 						mes "Ele lhe guiará até a plantação de cogumelos.";
 						thiefq = 1;
-						setquest (1013);
+						setquest(1013);
 						close;
 					}
 					mes "[Gatuna Ajudante]";
@@ -120,8 +120,8 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 					mes "Cada tipo de cogumelo vale uma pontuação:";
 					next;
 					mes "[Gatuna Ajudante]";
-					mes getitemname(Mushroom_Of_Thief_1) + " vale 3 pontos cada.";
-					mes getitemname(Mushroom_Of_Thief_2) + " vale 1 ponto cada.";
+					mes getitemname(Mushroom_Of_Thief_1)+" vale 3 pontos cada.";
+					mes getitemname(Mushroom_Of_Thief_2)+" vale 1 ponto cada.";
 					mes "O objetivo final é marcar 25 pontos, na soma de todos pontos.";
 					next;
 					mes "[Gatuna Ajudante]";
@@ -171,8 +171,8 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 					mes "Cada tipo de cogumelo vale uma pontuação:";
 					next;
 					mes "[Gatuna Ajudante]";
-					mes getitemname(Mushroom_Of_Thief_1) + " vale 3 pontos cada.";
-					mes getitemname(Mushroom_Of_Thief_2) + " vale 1 ponto cada.";
+					mes getitemname(Mushroom_Of_Thief_1)+" vale 3 pontos cada.";
+					mes getitemname(Mushroom_Of_Thief_2)+" vale 1 ponto cada.";
 					mes "O objetivo final é marcar 25 pontos, na soma de todos pontos.";
 					next;
 					mes "[Gatuna Ajudante]";
@@ -190,7 +190,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			mes "[Senhor Irrelevante]";
 			mes "Ei!!";
 			mes "Eu me lembro de você";
-			mes "Você é "+(Sex == SEX_MALE ? "aquele":"aquela")+ "Aprendiz que veio até aqui para ser tornar Gaturno";
+			mes "Você é "+(Sex == SEX_MALE ? "aquele":"aquela")+"Aprendiz que veio até aqui para ser tornar Gaturno";
 			next;
 			mes "[Senhor Irrelevante]";
 			mes "Vejo que conseguiu alcançar seu objetivo.";
@@ -230,12 +230,12 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			if (select("Sim, agora mesmo","Não, preciso fazer algo primeiro") == 1) {
 				close2;
 				thiefq = 2;
-				switch(rand(5)) {
-					case 1: warp ("job_thief1",228,106); end;
-					case 2: warp ("job_thief1",38,50); end;
-					case 3: warp ("job_thief1",66,331); end;
-					case 4: warp ("job_thief1",196,331); end;
-					default: warp ("job_thief1",309,234); end;
+				switch (rand(5)) {
+					case 1: warp("job_thief1",228,106); end;
+					case 2: warp("job_thief1",38,50); end;
+					case 3: warp("job_thief1",66,331); end;
+					case 4: warp("job_thief1",196,331); end;
+					default: warp("job_thief1",309,234); end;
 				}
 			}
 			mes "[Senhor Irrelevante]";
@@ -248,12 +248,12 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			next;
 			if (select("Sim, agora mesmo","Agora não") == 1) {
 				close2;
-				switch(rand(5)) {
-					case 1: warp ("job_thief1",228,106); end;
-					case 2: warp ("job_thief1",38,50); end;
-					case 3: warp ("job_thief1",66,331); end;
-					case 4: warp ("job_thief1",196,331); end;
-					default: warp ("job_thief1",309,234); end;
+				switch (rand(5)) {
+					case 1: warp("job_thief1",228,106); end;
+					case 2: warp("job_thief1",38,50); end;
+					case 3: warp("job_thief1",66,331); end;
+					case 4: warp("job_thief1",196,331); end;
+					default: warp("job_thief1",309,234); end;
 				}
 			}
 			close;
@@ -294,7 +294,7 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 			close;
 		}
 		close2;
-		warp ("moc_ruins",145,125);
+		warp("moc_ruins",145,125);
 		end;
 	} else if (thiefq == 2) {
 		mes "[Brad]";
@@ -325,7 +325,7 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 				close;
 			} else if (.@MushroomTh3 >= 25) {
 				mes "Ótimo!";
-				mes "Você fez ^ff0000"+ .@MushroomTh3 +"^000000 Pontos.";
+				mes "Você fez ^ff0000"+.@MushroomTh3+"^000000 Pontos.";
 				mes "Com isso você passa no teste.";
 				if (countitem(Mushroom_Of_Thief_1)) { delitem(Mushroom_Of_Thief_1, countitem(Mushroom_Of_Thief_1)); }
 				if (countitem(Mushroom_Of_Thief_2)) { delitem(Mushroom_Of_Thief_2, countitem(Mushroom_Of_Thief_2)); }
@@ -342,10 +342,10 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 				if (select("Quero ser Gaturno agora mesmo","Vou pensar mais no assunto") == 1) {
 					mes "[Brad]";
 					mes "Então de agora em diante você é membro da guilda dos gaturnos.";
-					getitem (N_Main_Gauche,1);
-					jobchange (Job_Thief);
-					completequest (1013);
-					callfunc ("ClearJobQuest");
+					getitem(N_Main_Gauche,1);
+					jobchange(Job_Thief);
+					completequest(1013);
+					callfunc("ClearJobQuest");
 					close;
 				}
 				mes "[Brad]";
@@ -362,10 +362,10 @@ moc_prydb1,42,133,2	script	Camarada#thiefq	2_M_THIEFMASTER,{
 		if (select("Sim","Não") == 1) {
 			mes "[Brad]";
 			mes "Então de agora em diante você é membro da guilda dos gaturnos.";
-			getitem (N_Main_Gauche,1);
-			jobchange (Job_Thief);
-			completequest (1013);
-			callfunc ("ClearJobQuest");
+			getitem(N_Main_Gauche,1);
+			jobchange(Job_Thief);
+			completequest(1013);
+			callfunc("ClearJobQuest");
 			close;
 		}
 		mes "[Brad]";

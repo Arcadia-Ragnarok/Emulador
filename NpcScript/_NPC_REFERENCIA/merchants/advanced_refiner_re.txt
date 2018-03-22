@@ -54,7 +54,7 @@ malangdo,221,174,6	script	Holink#mal_cash	4_CAT_ADV1,{
 	.@part = select(.@menu$);
 	if (!getequipisequiped(.@part)) {
 		mes "[Holink]";
-		switch(.@part) {
+		switch (.@part) {
 		case 1:
 			mes "My teacher Aragam said meow";
 			mes "There's no cure for stupidity...";
@@ -96,7 +96,7 @@ malangdo,221,174,6	script	Holink#mal_cash	4_CAT_ADV1,{
 		close;
 	}
 	mes "[Holink]";
-	switch(getequipweaponlv(.@part)) {
+	switch (getequipweaponlv(.@part)) {
 	default:
 	case 0: // Armor
 		.@price = 15000;
@@ -134,7 +134,7 @@ malangdo,221,174,6	script	Holink#mal_cash	4_CAT_ADV1,{
 	mes "You need ^ff9999"+getitemname(.@material)+"^000000 and ^ff9999"+.@price+"^000000 Zeny for this refine, meow";
 	mes "Want to continue, meow?";
 	next;
-	if(select("Yes!!", "No!!") == 2) {
+	if (select("Yes!!","No!!") == 2) {
 		mes "[Holink]";
 		mes "Kyack!!";
 		mes "You don't belive in refine master Holink, meow?";
@@ -160,7 +160,7 @@ malangdo,221,174,6	script	Holink#mal_cash	4_CAT_ADV1,{
 		mes "^ff0000cards and enchantments will vanish for sure^000000.";
 		mes "You still want to try, meow?";
 		next;
-		if(select("Yes, I do!!", "Forget about it!!") == 2) {
+		if (select("Yes, I do!!","Forget about it!!") == 2) {
 			mes "[Holink]";
 			mes "Meow! Wise choice, meow.";
 			mes "But!!";
@@ -194,7 +194,7 @@ malangdo,221,174,6	script	Holink#mal_cash	4_CAT_ADV1,{
 	mes "[Holink]";
 	mes "Meo Meow Kyaaak!!";
 	next;
-	switch(rand(1,5)) {
+	switch (rand(1,5)) {
 		case 1: emotion e_sob; break;
 		case 2: emotion e_swt2; break;
 		case 3: emotion e_wah; break;

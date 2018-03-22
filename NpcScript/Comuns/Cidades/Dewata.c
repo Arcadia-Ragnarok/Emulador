@@ -57,7 +57,7 @@ dewata,221,237,5	script	Apreciador de Frutas#dew	4_M_DEWMAN,{
 	mes "Muito bem!";
 	mes "O que deseja saber?";
 	next;
-	switch(select("Sobre a casca..", "Sobre a polpa...", "Sobre o núcleo...", "Nada, obrigado.")) {
+	switch (select("Sobre a casca..","Sobre a polpa...","Sobre o núcleo...","Nada, obrigado.")) {
 		case 1:
 		mes "[Apreciador de Frutas]";
 		mes "Então, quer saber mais sobre a polpa?";
@@ -312,7 +312,7 @@ dewata,75,122,6	script	Monge#dewt5	4_M_BUDDHIST,{
 	mes "[Monge]";
 	mes "Você é uma pessoa estranha aqui. O que traz você a este lugar calmo?";
 	next;
-	switch(select("Estou visitando", "Não há motivos especiais")) {
+	switch (select("Estou visitando","Não há motivos especiais")) {
 		case 1:
 		mes "[Monge]";
 		mes "Oh, você é turista.";
@@ -332,7 +332,7 @@ dewata,69,101,6	script	Monge#dewt6	4_M_BUDDHIST,{
 	mes "Nós temos uma pagoda para a adoração dos Buddhas.";
 	mes "Cada templo tem uma dessas torres, entretanto, não são muitas as pessoas que vêm aqui, exceto os Monges.";
 	next;
-	switch(select("Entendo...", "Explicar sobre os Buddhas", "Ah, certo.")) {
+	switch (select("Entendo...","Explicar sobre os Buddhas","Ah, certo.")) {
 		case 1:
 		mes "[Monge]";
 		mes "Você deve sentir a compaixão do nosso Buddha!";
@@ -477,7 +477,7 @@ dewata,234,263,0	script	Casal Apaixonado#dew2	4_F_JOB_HUNTER,{
 // ------------------------------------------------------------------
 dewata,269,208,4	script	Garotinho#dew	4_M_DEWBOY,{
 	mes "[Garotinho]";
-	mes "Ei " + (Sex == SEX_MALE ? "mano" : "mana") + ", olhe aquele cara!";
+	mes "Ei "+(Sex == SEX_MALE ? "mano" : "mana")+", olhe aquele cara!";
 	next;
 	mes "[Garotinho]";
 	mes "Ele está ali deitado há uma semana sem fazer nada...";
@@ -573,7 +573,7 @@ dewata,278,100,4	script	Criança Desaparecida#dew	4_F_KID2,{
 	mes "WaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaa.";
 	emotion(e_sob);
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Hey, Garotinha...";
 	next;
 	mes "[Ukki]";
@@ -585,7 +585,7 @@ dewata,278,100,4	script	Criança Desaparecida#dew	4_F_KID2,{
 	mes "Onde estão vocês.....!. Waa.";
 	emotion(e_sob);
 	next;
-	mes "[" + strcharinfo(PC_NAME) + "]";
+	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "... ... ...";
 	emotion(e_dots);
 	close;
@@ -686,7 +686,7 @@ dewata,139,114,6	script	Esposa de Semangat#dew	4_M_DEWOLDWOMAN,{
 	mes "Para onde aquele velho se meteu?";
 	mes "Você o viu por aí?";
 	next;
-	switch(select("Acho que o ví por aí..", "Não, não o vi..")) {
+	switch (select("Acho que o ví por aí..","Não, não o vi..")) {
 		case 1:
 		mes "[Esposa de Semangat]";
 		mes "Ele fugiu quando eu estava procurando comigo.";
@@ -804,7 +804,7 @@ dewata,89,191,6	script	Pequeno Santuário#dew1	CLEAR_NPC,{
 	mes "Há um pequeno santuário aqui.";
 	mes "Há muitas pessoas fazendo pedidos.";
 	next;
-	switch(select("Fazer uma doação", "Fazer um pedido", "Ir embora")) {
+	switch (select("Fazer uma doação","Fazer um pedido","Ir embora")) {
 		case 1:
 		mes "A caixa de doação diz:";
 		mes "^FF00001,000 . 100,000 Zeny^000000";
@@ -852,7 +852,7 @@ dewata,89,191,6	script	Pequeno Santuário#dew1	CLEAR_NPC,{
 				break;
 			}
 		}
-		mes "Você faz um pedido de ^0000FF" + .@wish$ + "^000000 para o pequeno santuário.";
+		mes "Você faz um pedido de ^0000FF"+.@wish$+"^000000 para o pequeno santuário.";
 		next;
 		callsub(L_Wish);
 		Zeny -= .@input;
@@ -877,7 +877,7 @@ dewata,89,191,6	script	Pequeno Santuário#dew1	CLEAR_NPC,{
 		mes "Qual é o seu pedido?";
 		next;
 		input(.@wish$);
-		mes "Você pediu por ^0000FF" + .@wish$ + "^000000 no pequeno santuário.";
+		mes "Você pediu por ^0000FF"+.@wish$+"^000000 no pequeno santuário.";
 		next;
 		callsub(L_Wish);
 		mes "O sentimento é que o pedido pode se tornar verdadeiro.";
@@ -911,7 +911,7 @@ dewata,114,243,6	script	Jovem Preguiçoso#dew	4_M_DEWMAN,1,1,{
 		mes "Poderia me dar isso?";
 		mes "Acabei de acordar e minha garganta está seca!";
 		next;
-		switch(select("Entregar", "Não entregar")) {
+		switch (select("Entregar","Não entregar")) {
 			case 1:
 			mes "[Preguiçoso]";
 			mes "Sério?";
@@ -957,7 +957,7 @@ dewata,146,109,5	script	Cozinheiro#dew	4_COOK,{
 	mes "Sejam todos bem vindos à Ilha de Dewata.";
 	mes "Espero que se comporte como os nobres viajantes, não como alguns jovens problemáticos...";
 	next;
-	switch(select("Sobre a culinária de Dewata", "Cardápio do Dia?", "Estou bem")) {
+	switch (select("Sobre a culinária de Dewata","Cardápio do Dia?","Estou bem")) {
 		case 1:
 		mes "[Cozinheiro]";
 		mes "Precisa de informações sobre nossos pratos?";
@@ -996,7 +996,7 @@ dewata,146,109,5	script	Cozinheiro#dew	4_COOK,{
 		mes "Nós temos 2 items: \"Nasi Goreng\" e \"Satay\".";
 		mes "Qual deles vai querer?";
 		next;
-		switch(select("Nasi Goreng", "Satay")) {
+		switch (select("Nasi Goreng","Satay")) {
 			case 1:
 			mes "[Cozinheiro]";
 			mes "Isso é Nasi Goreng com meu molho especial juntamente com um ovo frito por cima.";
@@ -1011,7 +1011,7 @@ dewata,146,109,5	script	Cozinheiro#dew	4_COOK,{
 			break;
 		}
 		next;
-		switch(select("Provar", "Ir embora")) {
+		switch (select("Provar","Ir embora")) {
 			case 1:
 			if (Zeny < 5000) {
 				mes "[Cozinheiro]";
@@ -1020,7 +1020,7 @@ dewata,146,109,5	script	Cozinheiro#dew	4_COOK,{
 				close;
 			} else {
 				mes "[Cozinheiro]";
-				mes "Aqui está o que pediu: " + getitemname(.@food) + ", não irá se arrepender!";
+				mes "Aqui está o que pediu: "+getitemname(.@food)+", não irá se arrepender!";
 				Zeny -= 5000;
 				getitem(.@food,1);
 				close;
@@ -1072,7 +1072,7 @@ dewata,204,230,6	script	Mulher de Dieta#dew	4_M_DEWWOMAN,{
 	mes "[Mulher de Dieta]";
 	mes "Este ^006400Satay^000000 de dar água na boca é pra mim?";
 	next;
-	switch(select("Sim, quer um pedaço?", "Não, é pra mim!")) {
+	switch (select("Sim, quer um pedaço?","Não, é pra mim!")) {
 		case 1:
 		delitem(Satay, 1);
 		mes "[Mulher de Dieta]";

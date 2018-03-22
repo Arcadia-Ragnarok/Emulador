@@ -18,21 +18,21 @@
 // - [ Cavaleiro e Lorde ] -
 // ------------------------------------------------------------------
 prontera,55,350,5	script	Criador de Pecopecos#kntMount	8W_SOLDIER,{
-	if(Upper == 0) { .@price = 2500; }
-	if(Upper == 1) { .@price = 5000; }
-	if(Upper == 2) { .@price = 5000; }
+	if (Upper == 0) { .@price = 2500; }
+	if (Upper == 1) { .@price = 5000; }
+	if (Upper == 2) { .@price = 5000; }
 	mes "[Criador de Pecopecos]";
 	if (BaseJob == Job_Knight || BaseJob == Job_Knight2 || BaseJob == Job_Lord_Knight || BaseJob == Job_Lord_Knight2) {
 		mes " Bom-dia honorável Cavaleiro gostaria de alugar um Pecopeco?";
-		mes "Você precisa ter a Habilidade Montaria e apenas " + .@price + " Zeny sobrando.";
+		mes "Você precisa ter a Habilidade Montaria e apenas "+.@price+" Zeny sobrando.";
 		next;
-		switch(select("Alugar Peco Peco", "Cancelar")) {
+		switch (select("Alugar Peco Peco","Cancelar")) {
 			case 1:
 			if (Zeny < .@price) {
 				mes "[Criador de Pecopecos]";
 				mes "Sinto muito mas você não tem zenys o suficiente.";
 				close;
-			} else if (getskilllv(KN_RIDING) == 0) {
+			} else if (!getskilllv(KN_RIDING)) {
 				mes "[Criador de Pecopecos]";
 				mes "Você não pode usar meus serviços até aprender a habilidade Montaria.";
 				close;
@@ -63,23 +63,23 @@ prontera,55,350,5	script	Criador de Pecopecos#kntMount	8W_SOLDIER,{
 // - [ Templario e Paladino ] -
 // ------------------------------------------------------------------
 prontera,232,318,3	script	Criador de Pecopecos#cruMount	8W_SOLDIER,{
-	if(Upper==0) .@price = 3500;
-	if(Upper==1) .@price = 7000;
-	if(Upper==2) .@price = 7000;
+	if (Upper==0) .@price = 3500;
+	if (Upper==1) .@price = 7000;
+	if (Upper==2) .@price = 7000;
 
 	mes "[PecoPeco Breeder]";
 	if (BaseJob == Job_Crusader || BaseJob == Job_Crusader2 || BaseJob == Job_Paladin || BaseJob == Job_Paladin2) {
 		mes "Nós possuímos um Pecopeco especial preparado para você.";
-		mes "Para adquirir um Pecopeco são necessários " + .@price + " Zeny.";
+		mes "Para adquirir um Pecopeco são necessários "+.@price+" Zeny.";
 		next;
-		switch(select("Alugar a PecoPeco", "Sair")) {
+		switch (select("Alugar a PecoPeco","Sair")) {
 			case 1:
 			if (Zeny < .@price) {
 				mes "[Criador de Pecopecos]";
 				mes "Você não possui a quantidade de zenys suficientes.";
 				mes "Se você quiser um Pecopeco por favor me traga "+.@price+" zenys...";
 				close;
-			} else if (getskilllv(KN_RIDING) == 0) {
+			} else if (!getskilllv(KN_RIDING)) {
 				mes "[Criador de Pecopecos]";
 				mes "Você deve primeiro aprender a como montar um Pecopeco após isso eu poderei alugar um para você.";
 				close;
@@ -87,7 +87,7 @@ prontera,232,318,3	script	Criador de Pecopecos#cruMount	8W_SOLDIER,{
 				mes "[Criador de Pecopecos]";
 				mes "Você já está montado em uma montaria";
 				close;
-			} else if(hascashmount()) {
+			} else if (hascashmount()) {
 				mes "[Criador de Pecopecos]";
 				mes "Por favor remova sua montaria atual.";
 				close;

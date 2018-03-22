@@ -46,7 +46,7 @@
 	if (cpm_one == .@tame_gets) {
 		mes "[Cute Pet Manager]";
 		mes "You have already exchanged";
-		mes .@tame_amount + " times for a taming item.";
+		mes .@tame_amount+" times for a taming item.";
 		mes "You can't exchange anymore.";
 		next;
 		mes "[Cute Pet Manager]";
@@ -75,7 +75,7 @@
 	if (cpm_two == .@tame_gets) {
 		mes "[Cute Pet Manager]";
 		mes "You have already exchanged";
-		mes .@tame_amount + " times for a taming item.";
+		mes .@tame_amount+" times for a taming item.";
 		mes "You can't exchange anymore.";
 		next;
 		mes "[Cute Pet Manager]";
@@ -105,7 +105,7 @@
 	if (cpm_three == .@tame_gets) {
 		mes "[Cute Pet Manager]";
 		mes "You have already exchanged";
-		mes .@tame_amount + " times for a taming item.";
+		mes .@tame_amount+" times for a taming item.";
 		mes "You can't exchange anymore.";
 		next;
 		mes "[Cute Pet Manager]";
@@ -156,7 +156,7 @@ function	script	cute_pet_manager	{
 	mes "However, there is a limit";
 	mes "for exchanging taming items.";
 	mes "You can only get taming items";
-	mes getarg(6) + " times. So please make sure";
+	mes getarg(6)+" times. So please make sure";
 	mes "how many times you have exchanged.";
 	next;
 	mes "[Cute Pet Manager]";
@@ -178,23 +178,23 @@ function	script	cute_pet_manager	{
 	.@mob_id = getelementofarray(getarg(4), .@choice);
 	.@hunt_id2 = getelementofarray(getarg(7), .@choice);
 	.@hunt_amount2 = getelementofarray(getarg(8), .@choice);
-	dispbottom "Tame ID: " + .@tame_id;
-	dispbottom "Tame Amount: " + .@tame_amount;
-	dispbottom "Hunt ID: " + .@hunt_id;
-	dispbottom "Hunt Name: " + getitemname(.@hunt_id);
-	dispbottom "Hunt Amount: " + .@hunt_amount;
-	dispbottom "Mob ID: " + .@mob_id;
-	dispbottom "Hunt ID2: " + .@hunt_id2;
-	dispbottom "Hunt Amount2: " + .@hunt_amount2;
+	dispbottom "Tame ID: "+.@tame_id;
+	dispbottom "Tame Amount: "+.@tame_amount;
+	dispbottom "Hunt ID: "+.@hunt_id;
+	dispbottom "Hunt Name: "+getitemname(.@hunt_id);
+	dispbottom "Hunt Amount: "+.@hunt_amount;
+	dispbottom "Mob ID: "+.@mob_id;
+	dispbottom "Hunt ID2: "+.@hunt_id2;
+	dispbottom "Hunt Amount2: "+.@hunt_amount2;
 	if (.@hunt_id2) { .@hunt2_count = countitem(.@hunt_id2); }
 	if (countitem(.@hunt_id) >= .@hunt_amount && countitem(Dolly_Capsule) > 0 && .@hunt2_count >= .@hunt_amount2) {
 		mes "[Cute Pet Manager]";
 		mes "Ah, you have gathered all items";
 		mes "with your friends. You can now";
-		mes "exchange for an " + getitemname(.@tame_id) + ".";
+		mes "exchange for an "+getitemname(.@tame_id)+".";
 		mes "Do you want to exchange with me?";
 		next;
-		if (select("Exchange", "Don't Exchange") == 2) {
+		if (select("Exchange","Don't Exchange") == 2) {
 			mes "[Cute Pet Manager]";
 			mes "You don't? You will come back again.";
 			close;
@@ -209,14 +209,14 @@ function	script	cute_pet_manager	{
 		close;
 	} else {
 		mes "[Cute Pet Manager]";
-		mes "You have chosen " + getitemname(.@tame_id) + ".";
+		mes "You have chosen "+getitemname(.@tame_id)+".";
 		mes "You can use it for taming";
-		mes "^FF0000" + strmobinfo(1,.@mob_id) + "^000000 monsters.";
+		mes "^FF0000"+strmobinfo(1,.@mob_id)+"^000000 monsters.";
 		next;
 		mes "[Cute Pet Manager]";
-		mes "Bring ^FF0000" + .@hunt_amount + " " + getitemname(.@hunt_id) + "^000000s " + (.@hunt_id2 ? ", ^FF0000" + .@hunt_amount2 + " " + getitemname(.@hunt_id2) : "") + " ^000000 and ^FF00001 Dolly Capsule^000000";
+		mes "Bring ^FF0000"+.@hunt_amount+" "+getitemname(.@hunt_id)+"^000000s "+(.@hunt_id2 ? ", ^FF0000"+.@hunt_amount2+" "+getitemname(.@hunt_id2) : "")+" ^000000 and ^FF00001 Dolly Capsule^000000";
 		mes "then you can exchange them";
-		mes "for an " + getitemname(.@tame_id) + ".";
+		mes "for an "+getitemname(.@tame_id)+".";
 		close;
 	}
 }

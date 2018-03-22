@@ -73,7 +73,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 			mes "[Gelkah]";
 			mes "I've recently received several requests from clients that need the help of Adventurers just like yourself.";
 			next;
-			if (select( "I like requests!", "A boring quest... No thanks!" ) == 2) {
+			if (select( "I like requests!","A boring quest... No thanks!" ) == 2) {
 				mes "[Gelkah]";
 				mes "You know that harder requests yield better rewards right?";
 				next;
@@ -81,7 +81,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 			mes "[Gelkah]";
 			mes "Actually, I can't just accept just any schmo off the street. My Master hates indecisive people.";
 			next;
-			if (select( "Who's your master?", "I am not indecisive!" ) == 1) {
+			if (select( "Who's your master?","I am not indecisive!" ) == 1) {
 				cutin "gelca03",2;
 				mes "[Gelkah]";
 				mes "That person standing next to me is my master... He came back after long journey of practice.";
@@ -102,7 +102,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 			mes "We need adventurers that are willing to help. Will you help us?";
 			next;
 			cutin "gelca01",2;
-			if (select( "Ok, I'll help.", "I have no interest in helping you." ) == 2) {
+			if (select( "Ok, I'll help.","I have no interest in helping you." ) == 2) {
 				mes "[Gelkah]";
 				mes "How do you know without doing it.";
 			}
@@ -156,7 +156,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				mes "I think that's what a true master would sound like right?";
 				next;
 				mes "[Gelkah]";
-				mes strcharinfo(PC_NAME) +" will make a request list for you so go talk to my Master now and show your respects.";
+				mes strcharinfo(PC_NAME)+" will make a request list for you so go talk to my Master now and show your respects.";
 				delitem Brigan,50;// Brigan
 				completequest 13002;// Brigan collecting
 				para_100lv01 = 2;
@@ -175,17 +175,17 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 		else if (para_100lv01 > 2) {
 			mes "The request list is ready. Do you want to start?";
 			next;
-			switch( select( "Hunting Quests", "Inquire regards", "Show Courtesy Ticket" ) ) {
+			switch ( select( "Hunting Quests","Inquire regards","Show Courtesy Ticket" ) ) {
 			case 1:
 				mes "[Gelkah]";
 				mes "You don't need to take all requests at once. Choose a request area that suits your particular skills. One that enables you to perform the request and enjoy the trip at the same time.";
 				next;
-				switch( select( "Glastheim related request", "Ash Vacuum related request", "Ice Dungeon related request", "Magma Dungeon related request", "Other requests" ) ) {
+				switch ( select( "Glastheim related request","Ash Vacuum related request","Ice Dungeon related request","Magma Dungeon related request","Other requests" ) ) {
 				case 1:
 					mes "[Gelkah]";
 					mes "Here are the requests from the Glastheim area.";
 					next;
-					switch( select( "Carat Hunting", "Arclouse Hunting", "Anolian Hunting", "Sting Hunting", "Majoruros Hunting" ) ) {
+					switch ( select( "Carat Hunting","Arclouse Hunting","Anolian Hunting","Sting Hunting","Majoruros Hunting" ) ) {
 					case 1:
 						mes "[Gelkah]";
 						if (questprogress(13004,PLAYTIME) == 1)
@@ -400,7 +400,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					mes "[Gelkah]";
 					mes "There are many request near or in the Ice Dungeon in Rachel.";
 					next;
-					switch( select( "Desert Wolf Hunting", "Snowier Hunting", "Ice Titans..." ) ) {
+					switch ( select( "Desert Wolf Hunting","Snowier Hunting","Ice Titans..." ) ) {
 					case 1:
 						mes "[Gelkah]";
 						if (questprogress(13018,PLAYTIME) == 1)
@@ -556,7 +556,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					mes "[Gelkah]";
 					mes "Here is a list of other requests from all over Rune Midgard.";
 					next;
-					switch( select( "Loli Ruri Hunting - Nifflheim", "Medusa Hunting - Comodo", "Anubis Hunting - Sphinx" ) ) {
+					switch ( select( "Loli Ruri Hunting - Nifflheim","Medusa Hunting - Comodo","Anubis Hunting - Sphinx" ) ) {
 					case 1:
 						mes "[Gelkah]";
 						if (questprogress(13041,PLAYTIME) == 1)
@@ -673,7 +673,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 						mes "Adventurers sometimes bring special things or trophies from where they visited for a request. It is very good!";
 					}
 					else if (.@ran == 2)
-						mes "If there is something good "+ strcharinfo(PC_NAME) +" I will try to give you a couple things. I am not sure if there will be enough to give because of so many adventurers.";
+						mes "If there is something good "+strcharinfo(PC_NAME)+" I will try to give you a couple things. I am not sure if there will be enough to give because of so many adventurers.";
 					else
 						mes "Handling documents must be difficult. It's so much easier to just be out in the field.";
 				}
@@ -689,7 +689,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					}
 					else {
 						cutin "gelca03",2;
-						mes "I am busy but clearing a lot of requests "+ strcharinfo(PC_NAME) +" I appreciate it. Lets see. I got some good food from an adventurer that he received during a request.";
+						mes "I am busy but clearing a lot of requests "+strcharinfo(PC_NAME)+" I appreciate it. Lets see. I got some good food from an adventurer that he received during a request.";
 						next;
 						mes "[Gelkah]";
 						mes "Oops I ate all? Okay just one left. Please drop by later!";
@@ -700,7 +700,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				else if (para_100lv02 < 80) {
 					cutin "gelca03",2;
 					if (para_100lv01 > 4)
-						mes "Cheer up! "+ strcharinfo(PC_NAME) +" I'm not sure if he thinks of you as his pupil. He is just out of control.";
+						mes "Cheer up! "+strcharinfo(PC_NAME)+" I'm not sure if he thinks of you as his pupil. He is just out of control.";
 					else {
 						mes "There are a lot of presents coming in whenever the requests are done efficiently. Here, take this as a prize.";
 						para_100lv01 = 5;
@@ -708,9 +708,9 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					}
 				}
 				else if (para_100lv02 > 100) {
-					mes "It is tough work but also fun to with master right "+ strcharinfo(PC_NAME) +"?";
+					mes "It is tough work but also fun to with master right "+strcharinfo(PC_NAME)+"?";
 					next;
-					switch( select( "I hate that hot-tempered fool.", "I want you to be the master.", "I would follow you to any battle." ) ) {
+					switch ( select( "I hate that hot-tempered fool.","I want you to be the master.","I would follow you to any battle." ) ) {
 						mes "[Gelkah]";
 					case 1:
 						mes "I understand you. I got into a fight when I first met master in Mora village.";
@@ -750,11 +750,11 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				mes "Did you bring the Courtesy Ticket?";
 				next;
 				if (countitem(Courtesy_Ticket)) {// Courtesy_Ticket
-					if (select( "The ^FF0000Courtesy Ticket^000000?", "Exchange ticket for prizes." ) == 1) {
+					if (select( "The ^FF0000Courtesy Ticket^000000?","Exchange ticket for prizes." ) == 1) {
 						mes "[Gelkah]";
 						mes "I know it sounds childish. Right? The shape is just like the card we used to play when we were kids.";
 						next;
-						if (select( "A card? What is it?", "Uh, yeah those were fun..." ) == 1) {
+						if (select( "A card? What is it?","Uh, yeah those were fun..." ) == 1) {
 							cutin "gelca02",2;
 							mes "[Gelkah]";
 							mes "I am sorry... It must be popular only in our village. Throw, heat and let it fly it.";
@@ -786,12 +786,12 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 						mes "[Gelkah]";
 						mes "How do you want to use this ticket?";
 						next;
-						if (select( "Exchange for prizes", "Listen to a story and get EXP" ) == 1) {
+						if (select( "Exchange for prizes","Listen to a story and get EXP" ) == 1) {
 							cutin "gelca03",2;
 							mes "[Gelkah]";
 							mes "You can pick a trophy in this bag. Please do not be disappointed even if you picked up something you do not want. How many do you want to exchange?";
 							next;
-							.@amount = (select( "Exchange ^FF00001^000000 Courtesy Ticket", "Exchange ^FF000010^000000 Courtesy Tickets" ) == 1) ? 1 : 10;
+							.@amount = (select( "Exchange ^FF00001^000000 Courtesy Ticket","Exchange ^FF000010^000000 Courtesy Tickets" ) == 1) ? 1 : 10;
 							mes "[Gelkah]";
 							mes "Please give me a ticket and put your hand in a bag to pick.";
 							next;
@@ -831,7 +831,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								}
 								delitem Courtesy_Ticket,.@amount;
 								getitem .@item[0], .@item[1];
-								mes "You reach into the bag and grab ^0000FF"+ .@item[1] +" "+ getitemname(.@item[0]) +"^000000.";
+								mes "You reach into the bag and grab ^0000FF"+.@item[1]+" "+getitemname(.@item[0])+"^000000.";
 								next;
 								if (.@amount == 10)
 									cutin "gelca03",2;
@@ -843,7 +843,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 							mes "[Gelkah]";
 							mes "Ok, I've got a story for you in exchange for the Courtesy Ticket.";
 							next;
-							switch( select( "Give ^FF000010^000000 Courtesy Ticket", "Give ^FF000020^000000 Courtesy Ticket", "Give ^FF000030^000000 Courtesy Ticket" ) ) {;
+							switch ( select( "Give ^FF000010^000000 Courtesy Ticket","Give ^FF000020^000000 Courtesy Ticket","Give ^FF000030^000000 Courtesy Ticket" ) ) {;
 							case 1:
 								mes "[Gelkah]";
 								if (countitem(Courtesy_Ticket) < 10)// Courtesy_Ticket
@@ -963,7 +963,7 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 	else {
 		cutin "gelca03",2;
 		if (para_100lv02 > 100)
-			mes strcharinfo(PC_NAME) +"! You did a good job! There are more requests but reserve them for the other adventurers.";
+			mes strcharinfo(PC_NAME)+"! You did a good job! There are more requests but reserve them for the other adventurers.";
 		if (para_100lv02 < 101)
 			mes "I do not think you are suitable to the request I can give. Please find other adventures.";
 		callsub S_Hunting,13003,106000,148000,"Carat";// <quest id>, <job exp if joblevel < 6>, <job exp>, <quest name>
@@ -1018,13 +1018,13 @@ S_Quest:
 	return 1;
 
 S_Hunting:
-	switch( questprogress(getarg(0),HUNTING) ) {
+	switch ( questprogress(getarg(0),HUNTING) ) {
 	case 0:
 		return;
 	case 1:
 		next;
 		mes "[Gelkah]";
-		mes "^FF0000"+ getarg(3) +" ^000000 - Quest is Under Progress.";
+		mes "^FF0000"+getarg(3)+" ^000000 - Quest is Under Progress.";
 		mes "Quest has been handed over to other adventurer.";
 		mes "Please Look for new Adventure";
 		break;
@@ -1032,7 +1032,7 @@ S_Hunting:
 		next;
 		mes "[Gelkah]";
 		mes "You completed the request";
-		mes "^FF0000"+ getarg(3) +" Hunting^000000.";
+		mes "^FF0000"+getarg(3)+" Hunting^000000.";
 		mes "I will mark you down as having completed this request.";
 		para_100lv02 += 1;
 		if (JobLevel < 6)
@@ -1098,7 +1098,7 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 			mes "[Rohtert]";
 			mes "I am looking for someone who regards friendship or loyalty like a Spoon Stub.";
 			next;
-			if (select( "A Spoon what?", "You're a bad person." ) == 1) {
+			if (select( "A Spoon what?","You're a bad person." ) == 1) {
 				cutin "rote03",2;
 				mes "[Rohtert]";
 				mes "You know? A Spoon Stub. Zombie Prisoners drop them and they seem like they're usefull but really they're kinda worthless.";
@@ -1154,7 +1154,7 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 					cutin "rote02",2;
 					mes "Tens Drillion I think we should teach it more lessons to show it who's boss!";
 					next;
-					if (select( "Lets give a good lesson for sure.", "I think once is enough." ) == 2) {
+					if (select( "Lets give a good lesson for sure.","I think once is enough." ) == 2) {
 						mes "[Rohtert]";
 						mes "It is fine there are still many adventurers that can do this.";
 					}
@@ -1184,7 +1184,7 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 				cutin "rote04",2;
 				mes "Do you mind doing a simple errand?";
 				next;
-				if (select( "No I don't mind!", "Simple errands are for simpletons." ) == 2) {
+				if (select( "No I don't mind!","Simple errands are for simpletons." ) == 2) {
 					mes "[Rohtert]";
 					mes "You are a strange adventurer...";
 				}
@@ -1247,7 +1247,7 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 					next;
 					cutin "gelca02",2;
 					mes "[^FF0000Gelkah^000000]";
-					mes "......."+ strcharinfo(PC_NAME) +" wait...";
+					mes "......."+strcharinfo(PC_NAME)+" wait...";
 					next;
 					cutin "gelca01",2;
 					mes "[^FF0000Gelkah^000000]";

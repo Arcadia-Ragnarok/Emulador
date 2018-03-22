@@ -26,7 +26,7 @@ valkyrie,44,39,5	script	Lorde#Valkyrie	1_M_KNIGHTMASTER,{
 			mes "O mundo precisa de você.";
 			mes "Por favor continue sua vída de herói com uma nova aparência.";
 			next;
-			jobchange (Job_Lord_Knight);
+			jobchange(Job_Lord_Knight);
 			ADVJOB = 0;
 			mes "[Lorde]";
 			mes "Parabéns!";

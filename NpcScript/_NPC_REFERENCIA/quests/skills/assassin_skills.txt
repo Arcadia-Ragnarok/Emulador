@@ -137,7 +137,7 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 			next;
 			select("New skills?");
 			mes "[Killtin]";
-			mes "That's right, "+ strcharinfo(PC_NAME) +".";
+			mes "That's right, "+strcharinfo(PC_NAME)+".";
 			mes "The first skill specifically";
 			mes "enhances the Sonic Blow";
 			mes "skill, and the second skill";
@@ -151,8 +151,8 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 			mes "my job to teach you as much";
 			mes "as I can about them.";
 			next;
-			while(1) {
-				switch(select("^0000FFSonic Blow Enhancement^000000", "^990099Venom Knife^000000", "Continue Conversation")) {
+			while (1) {
+				switch (select("^0000FFSonic Blow Enhancement^000000","^990099Venom Knife^000000","Continue Conversation")) {
 				case 1:
 					mes "[Killtin]";
 					mes "If you've been an Assassin";
@@ -218,8 +218,8 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 					mes "that much time, so what do";
 					mes "you say? You ready to learn?";
 					next;
-					while(1) {
-						if (select("Learn Venom Knife", "I d-don't wanna learn!") == 1) {
+					while (1) {
+						if (select("Learn Venom Knife","I d-don't wanna learn!") == 1) {
 							mes "[Killtin]";
 							mes "First, you need to equip";
 							mes "a Knife class weapon, and";
@@ -378,7 +378,7 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 			mes "[Esmille]";
 			mes "Yes, that's it...!";
 			mes "Very well executed.";
-			mes "Good work, "+ strcharinfo(PC_NAME) +".";
+			mes "Good work, "+strcharinfo(PC_NAME)+".";
 			skill "AS_SONICACCEL",1,0;
 			ASSN_SK = 7;
 			next;
@@ -475,7 +475,7 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 		mes "[Esmille]";
 		mes "Yes, that's it...!";
 		mes "Very well executed.";
-		mes "Good work, "+ strcharinfo(PC_NAME) +".";
+		mes "Good work, "+strcharinfo(PC_NAME)+".";
 		skill "AS_SONICACCEL",1,0;
 		ASSN_SK = 7;
 		next;
@@ -558,7 +558,7 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 			mes "[Esmille]";
 			mes "Yes, that's it...!";
 			mes "Very well executed.";
-			mes "Good work, "+ strcharinfo(PC_NAME) +".";
+			mes "Good work, "+strcharinfo(PC_NAME)+".";
 			skill 1003,1,0;
 			ASSN_SK = 7;
 			next;
@@ -621,8 +621,8 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 		mes "I can tell you more about it if";
 		mes "Killtin didn't fully explain.";
 		next;
-		while(1) {
-			switch(select("Please tell me more...", "I want to learn Sonic Acceleration!")) {
+		while (1) {
+			switch (select("Please tell me more...","I want to learn Sonic Acceleration!")) {
 			case 1:
 				mes "[Esmille]";
 				mes "Sonic Acceleration is";
@@ -676,7 +676,7 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 				}
 				mes "[Esmille]";
 				mes "Your task will be to bring";
-				switch(rand(1,3)) {
+				switch (rand(1,3)) {
 				case 1:
 					mes "treasure from the Sphinx.";
 					mes "Search the ^FF0000Coffins^000000 that";
@@ -767,8 +767,8 @@ OnTouch:
 		mes "of something shining inside.^000000";
 		specialeffect EF_CONE;
 		next;
-		while(1) {
-			switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+		while (1) {
+			switch (select("Put your hand inside","Inspect the coffin's opening","Lift the lid","Turn the coffin upside down","Ignore it")) {
 			case 1:
 				mes "^3355FFYou carefully put your";
 				mes "hand inside the coffin";
@@ -831,8 +831,8 @@ OnTouch:
 		mes "of something shining inside.^000000";
 		specialeffect EF_CONE;
 		next;
-		while(1) {
-			switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+		while (1) {
+			switch (select("Put your hand inside","Inspect the coffin's opening","Lift the lid","Turn the coffin upside down","Ignore it")) {
 			case 1:
 				mes "^3355FFYou carefully put your";
 				mes "hand inside the coffin";
@@ -917,7 +917,7 @@ OnTouch:
 		mes "soft enough to dig through...^000000";
 		specialeffect EF_CONE;
 		next;
-		if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
+		if (select("Dig to retrieve the shining object","Ignore it") == 1) {
 			mes "^3355FFAs your fingers dig into";
 			mes "the soft ground, it emits^000000";
 			if (rand(1,3) != 3){
@@ -952,7 +952,7 @@ OnTouch:
 		mes "soft enough to dig through...^000000";
 		specialeffect EF_CONE;
 		next;
-		if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
+		if (select("Dig to retrieve the shining object","Ignore it") == 1) {
 			mes "^3355FFAs your fingers dig into";
 			mes "the soft ground, it emits^000000";
 			if (rand(1,3) != 3) {
@@ -981,7 +981,7 @@ OnTouch:
 		mes "glimmering beneath";
 		mes "the surface of the water...^000000";
 		next;
-		if (select("Pick it up", "Ignore it") == 1) {
+		if (select("Pick it up","Ignore it") == 1) {
 			mes "^3355FFAs soon as you dip your";
 			mes "hand into the water, the";
 			mes "water's freezing chill shoots";

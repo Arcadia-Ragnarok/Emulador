@@ -16,7 +16,7 @@
 
 geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 	if (!gef_bard_q) {
-		cutin ("bard_eland03",2);
+		cutin("bard_eland03",2);
 		mes "[Bardo]";
 		mes "^483D8BQue dia é melhor para beber?";
 		mes "*La la la*";
@@ -34,13 +34,13 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Olá, olá.";
 		mes "Oh, você veio para ouvir a minha canção e esquecer suas preocupações?";
 		next;
-		if(select("Ignora-o.","Quem é você?") == 2) {
-			cutin ("bard_eland04",2);
+		if (select("Ignora-o.","Quem é você?") == 2) {
+			cutin("bard_eland04",2);
 			mes "["+strcharinfo(PC_NAME)+"]";
 			mes "Você parece ser novo por aqui...";
 			mes "Quem é você?";
 			next;
-			cutin ("bard_eland02",2);
+			cutin("bard_eland02",2);
 			mes "[Errende]";
 			mes "Hm? Ah sim.";
 			mes "Sou apenas mais um poeta errante, que vai onde o vento leva.";
@@ -54,11 +54,11 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Você não pode simplesmente ignorar-me assim!";
 			mes "Onde está o seu sentimento de alegria, o seu senso de romance?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (gef_bard_q == 1) {
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Bem-vind"+(Sex == SEX_MALE)+" de volta, "+strcharinfo(PC_NAME)+".";
 		mes "O que você gostaria que fizesse por você?";
@@ -83,17 +83,17 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "^483D8BEu fico apaixonado^000000.";
 		mes "Agradeço antecipadamente.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q == 3) {
-		cutin ("bard_eland02",2);
+		cutin("bard_eland02",2);
 		mes "[Errende]";
 		mes "Então...";
 		mes "Já viu Gunther?";
 		next;
 		mes "^3355FFVocê vira para mostrar-lhe as costas.^000000";
 		next;
-		cutin ("bard_eland03",2);
+		cutin("bard_eland03",2);
 		mes "[Errende]";
 		mes "Huh...?!";
 		mes "Não é isso?!";
@@ -132,7 +132,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "...";
 		mes "......";
 		next;
-		cutin ("bard_eland04",2);
+		cutin("bard_eland04",2);
 		mes "[Errende]";
 		mes "Isso...";
 		mes "Isso não pode ser.";
@@ -144,9 +144,9 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Gunther disse alguma coisa sobre isto?!";
 		mes "Hmmm, mas quem é que iria alterar as letras...?";
 		next;
-		input (.@input$);
+		input(.@input$);
 		if (.@input$ == "Kino Gato") {
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "[Errende]";
 			mes "Ah, é claro!";
 			mes "Com certeza você está certo!";
@@ -164,14 +164,14 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Mas em suas viagens, você acha que poderia encontrar a letra original para esta canção?";
 			mes "Posso esperar por ela...";
 			next;
-			if(select("Não, desculpe","Posso sim") == 1) {
+			if (select("Não, desculpe","Posso sim") == 1) {
 				mes "[Errende]";
 				mes "Ah, eu acho que era demais para pedir-lhe.";
 				mes "Minhas desculpas.";
 				mes "Não se preocupe, eu vou descobrir alguma outra maneira.";
 				gef_bard_q = 5;
 				close2;
-				cutin ("",255); 
+				cutin("",255); 
 				end;
 			} else {
 				mes "[Errende]";
@@ -185,7 +185,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 				mes "Obrigado pela sua preocupação.";
 				gef_bard_q = 4;
 				close2;
-				cutin ("",255); 
+				cutin("",255); 
 				end;
 			}
 		} else if (.@input$ == "Gunther") {
@@ -196,7 +196,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele é muito bobo pra isso.";
 			gef_bard_q = 6;
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (.@input$ == "Gunther Doubleharmony") {
 			mes "[Errende]";
@@ -206,7 +206,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele é muito bobo pra isso.";
 			gef_bard_q = 6;
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (.@input$ == "Errende") {
 			cutin "bard_eland04",2;
@@ -215,7 +215,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Se eu fiz, é por que eu não sei sobre o que é esta canção?";
 			gef_bard_q = 6;
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else {
 			mes "[Errende]";
@@ -229,11 +229,11 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Como poderia esquecer o 8º amor?";
 			gef_bard_q = 6;
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (gef_bard_q == 4) {
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Hmm...";
 		mes "Não sei exatamente onde o Sr. Gato está.";
@@ -255,10 +255,10 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "[Errende]";
 		mes "Mais uma vez, muito obrigado por sua ajuda.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q == 5) {
-		cutin ("bard_eland04",2);
+		cutin("bard_eland04",2);
 		mes "[Errende]";
 		mes "Oh...!";
 		mes "Estas lágrimas não vão parar!";
@@ -275,14 +275,14 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele parece estar decepcionado com a sua recusa em ajudá-lo.";
 			mes "Claro, você começa a sentir pena dele.^000000";
 			next;
-			if(select("Está bem, vou te ajudar...","Ignora-o assim mesmo") == 1) {
+			if (select("Está bem, vou te ajudar...","Ignora-o assim mesmo") == 1) {
 				mes "["+strcharinfo(PC_NAME)+"]";
 				mes "Ei. Ei, Errende.";
 				mes "Pare de cantar essa canção.";
 				mes "É embaraçoso, ok?";
 				mes "Tudo bem, eu vou encontrar a canção original para você.";
 				next;
-				cutin ("bard_eland01",2);
+				cutin("bard_eland01",2);
 				mes "[Errende]";
 				mes "*Gasp!*";
 				mes "Sério! Tem certeza? Obrigado!";
@@ -298,10 +298,10 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 				mes "Mas a que custo para a sua alma?^000000";
 			}
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else {
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "[Errende]";
 			mes "Você não tem nada que queira me perguntar, não é?";
 			mes "Se não, você gostaria de ouvir a minha música?";
@@ -311,11 +311,11 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Amigos para nada...";
 			mes "Ooooooooh não!^000000";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (gef_bard_q == 6) {
-		cutin ("bard_eland04",2);
+		cutin("bard_eland04",2);
 		mes "[Errende]";
 		mes "Quem mudou as palavras desta canção afinal?";
 		mes "É realmente difícil de entender.";
@@ -332,10 +332,10 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "O senhor não acha...";
 		mes "Que a pessoa...";
 		mes "que mudou a canção seria...";
-		input (.@input$);
+		input(.@input$);
 		next;
 		if (.@input$ == "Kino Gato") {
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "[Errende]";
 			mes "Ah! É claro!";
 			mes "Acho que você está certo!";
@@ -360,7 +360,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 				mes "Não se preocupe, eu vou descobrir alguma outra maneira.";
 				gef_bard_q = 5;
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			} else {
 				mes "[Errende]";
@@ -374,7 +374,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 				mes "Obrigado pela sua preocupação.";
 				gef_bard_q = 4;
 				close2;
-				cutin ("",255);
+				cutin("",255);
 				end;
 			}
 		} else if (.@input$ == "Gunther") {
@@ -384,7 +384,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele coloca sempre linhas em suas músicas como 'doubleharmony for you.'";
 			mes "Ele é muito bobo pra isso.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (.@input$ == "Gunther Doubleharmony") {
 			mes "[Errende]";
@@ -392,7 +392,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele coloca sempre linhas em suas músicas como 'doubleharmony for you.'";
 			mes "Ele é muito bobo pra isso.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else if (.@input$ == "Errende") {
 			cutin "bard_eland04",2;
@@ -400,7 +400,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Certamente você está brincando!";
 			mes "Se eu fiz, é por que eu não sei sobre o que é esta canção?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		} else {
 			mes "[Errende]";
@@ -413,11 +413,11 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Qual foi a linha...?";
 			mes "Como poderia esquecer o 8º amor?";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	} else if (gef_bard_q == 7) {
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Então, você conhece o Sr. Gato?";
 		mes "Ah, em Morroc?";
@@ -431,7 +431,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Deixe-me marcar você com";
 		mes "^483D8BO Selo da Amizade.^000000.";
 		next;
-		cutin ("bard_eland03",2);
+		cutin("bard_eland03",2);
 		mes "[Errende]";
 		mes "Dá-me a tua mão esquerda.";
 		mes "Agora, deixe-me lançar um feitiço...";
@@ -448,28 +448,28 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Boa sorte.";
 		gef_bard_q = 8;
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q == 8) {
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Sr. Skezti tem uma pequena livraria na rua do livro no lado direito da Mineta em Juno.";
 		mes "Se você mostrar-lhe o selo, ele vai te ajudar.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q > 8 && gef_bard_q < 10) {
-		cutin ("bard_eland02",2);
+		cutin("bard_eland02",2);
 		mes "[Errende]";
 		mes "Parece que você não encontrou ainda.";
 		mes "Bem, fique à vontade, eu posso esperar o tempo que quiser.";
 		mes "Realmente não me aborrece, pois paciência parece ser uma parte da minha profissão.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q == 10 || gef_bard_q == 11) {
 		if (gef_bard_q == 11) {
-			cutin ("bard_eland04",2);
+			cutin("bard_eland04",2);
 			mes "[Errende]";
 			mes "Hmmm?";
 			mes "É isso o selo preto ...?";
@@ -479,7 +479,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			next;
 			mes "^3355FFVocê dá à Errende a carta que recebeu de Kino Gato.^000000";
 			next;
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "[Errende]";
 			mes "Er, ele já sabe tudo?";
 			mes "Essa mancha de sangue...";
@@ -487,7 +487,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Ele devia parar de se torturar...";
 			next;
 		} else {
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "[Errende]";
 			mes "E então, como foi?";
 			mes "Pera ai, você já achou?";
@@ -506,10 +506,10 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Ah! Tenho apenas 'a coisa'.";
 		mes "Tudo bem,ajeite-se ai, e escute minha canção.";
 		next;
-		cutin ("bard_eland03",2);
+		cutin("bard_eland03",2);
 		mes "^483D8BTodo Deus nunca cresce velho por causa da bela Deusa, Idun.";
 		mes "Guardiã das maçãs da juventude Deusa da imortalidade.^000000";
-		specialeffect(EF_STEAL, AREA, playerattached());
+		specialeffect(EF_STEAL,AREA,playerattached());
 		next;
 		mes "^483D8BTodo Deus nunca cresce velho.";
 		mes "Idun, a esposa de Bragi, Idun, a filha de Odin na lei.";
@@ -522,36 +522,36 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		next;
 		mes "Loki foi negligente uma só vez, e fez com que perdesse para os deuses.";
 		mes "Ele foi obrigado a levá-la de volta.^000000";
-		specialeffect(EF_STEAL, AREA, playerattached());
+		specialeffect(EF_STEAL,AREA,playerattached());
 		next;
 		mes "^483D8BA minha deusa vive";
 		mes "No campo de Asgard, ela me dá frutos do céu.";
 		mes "Você será amada por todos os deuses...";
 		mes "Você será abençoada por cada deus...^000000";
 		next;
-		specialeffect (EF_BEGINSPELL6);
+		specialeffect(EF_BEGINSPELL6);
 		mes "^483D8BSe você compartilha a maçã da juventude comigo.";
 		mes "Mesmo sendo uma mordida com este pobre poeta.";
 		mes "Você será amada por todos os deuses...";
 		mes "Você será abençoada";
 		mes "Por cada deus...^000000";
 		next;
-		specialeffect(EF_RESURRECTION, AREA, playerattached());
+		specialeffect(EF_RESURRECTION,AREA,playerattached());
 		mes "^3355FFAo ouvir o seu canto, você se sente à vontade.";
 		mes "E os seus pensamentos tornam-se mais claros.";
 		mes "Você acredita que você veja a visão de um anjo.";
 		mes "E você ganha alguns pontos de experiência.^000000";
-		if (BaseLevel < 56) {getexp (450,0); }
-		else if ((BaseLevel > 55) && (BaseLevel < 61)) { getexp (550,0); }
-		else if ((BaseLevel > 60) && (BaseLevel < 66)) { getexp (968,0); }
-		else if ((BaseLevel > 65) && (BaseLevel < 71)) { getexp (1341,0); }
-		else if ((BaseLevel > 70) && (BaseLevel < 76)) { getexp (3575,0); }
-		else if ((BaseLevel > 75) && (BaseLevel < 81)) { getexp (6024,0); }
-		else if ((BaseLevel > 80) && (BaseLevel < 86)) { getexp (7034,0); }
-		else if ((BaseLevel > 85) && (BaseLevel < 91)) { getexp (9205,0); }
-		else { getexp (15678,0); }
+		if (BaseLevel < 56) {getexp(450,0); }
+		else if ((BaseLevel > 55) && (BaseLevel < 61)) { getexp(550,0); }
+		else if ((BaseLevel > 60) && (BaseLevel < 66)) { getexp(968,0); }
+		else if ((BaseLevel > 65) && (BaseLevel < 71)) { getexp(1341,0); }
+		else if ((BaseLevel > 70) && (BaseLevel < 76)) { getexp(3575,0); }
+		else if ((BaseLevel > 75) && (BaseLevel < 81)) { getexp(6024,0); }
+		else if ((BaseLevel > 80) && (BaseLevel < 86)) { getexp(7034,0); }
+		else if ((BaseLevel > 85) && (BaseLevel < 91)) { getexp(9205,0); }
+		else { getexp(15678,0); }
 		next;
-		cutin ("bard_eland02",2);
+		cutin("bard_eland02",2);
 		mes "[Errende]";
 		mes "Então, como você se sente agora?";
 		mes "Espero que a minha canção tenha lhe feito bem.";
@@ -568,25 +568,25 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Espero que você permaneça honesta e respeitosa para com outras pessoas.";
 		mes "E que você continue a ignorar a ganância de fortuna ou poder.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	} else if (gef_bard_q == 12) {
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Olá "+strcharinfo(PC_NAME)+" o que você gostaria que fizesse por você?";
 		mes "Gostaria de ouvir um conto ou escutar uma canção?";
 	}
 	next;
-	switch(select("Conte-me a história","Toque uma música?","Err, talvez mais tarde.")) {
+	switch (select("Conte-me a história","Toque uma música?","Err, talvez mais tarde.")) {
 		case 1:
 		mes "[Errende]";
 		mes "Você gosta de histórias, hein?";
 		mes "Vou te contar o que eu sei...";
 		mes "Só para você, é claro.";
 		next;
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
-		switch(rand(3)) {
+		switch (rand(3)) {
 			case 1:
 			mes "Hmmm....";
 			mes "Então vamos falar sobre Geffen?";
@@ -607,7 +607,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "[Errende]";
 			mes "Parece que o espírito de seu pai, tão importante para elas, às possui de vez em quando.";
 			next;
-			cutin ("bard_eland02",2);
+			cutin("bard_eland02",2);
 			mes "[Errende]";
 			mes "Acho que quando alguém age até mesmo um pouco covarde para essas meninas.";
 			mes "O pai retoma o espírito.";
@@ -617,7 +617,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Mas, é claro, não tenho certeza.";
 			next;
 			mes "[Errende]";
-			cutin ("bard_eland01",2);
+			cutin("bard_eland01",2);
 			mes "Vamos ver...";
 			mes "Esteja atento a esta realidade que mostra sombra que paira por detrás dos Comerciantes do Bar, em Geffen.";
 			next;
@@ -665,7 +665,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Também vi um garotinho vigoroso que implorava ao pai para domar um Munak para ele.";
 			mes "Eu ouvi o pai falar um pouco e parece que um dos seus amigos do Morroc está perdido em Alberta.";
 			next;
-			cutin ("bard_eland02",2);
+			cutin("bard_eland02",2);
 			mes "[Errende]";
 			mes "Em todo caso, eu ajudei o pai a fazer um recado e ele me deu uma misteriosa caixa em troca.";
 			mes "Quando eu abri a caixa, encontrei uma pena estranha.";
@@ -715,7 +715,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Por puro acaso, encontrei o diário de um aventureiro que já tinha estado lá.";
 			mes "Parece que ele é um famoso sábio agora.";
 			next;
-			cutin ("bard_eland02",2);
+			cutin("bard_eland02",2);
 			mes "[Errende]";
 			mes "Nas revistas existem detalhes sobre um derradeiro espadachim.";
 			mes "E da exploração da Ilha Tartaruga.";
@@ -730,29 +730,29 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Agora, o que você gostaria de ouvir?";
 		next;
 		if (select("Hunn.., Você quem escolhe","Toque uma canção elegre!") == 1) {
-			cutin ("bard_eland03",2);
+			cutin("bard_eland03",2);
 			mes "[Errende]";
 			mes "Então deixe-me ver....";
 			mes ".....";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
-				soundeffect ("ring_of_nibelungen.wav",0); break;
+				soundeffect("ring_of_nibelungen.wav",0); break;
 				case 2:
-				soundeffect ("dont_forget_me_not.wav",0); break;
+				soundeffect("dont_forget_me_not.wav",0); break;
 				default:
-				soundeffect ("in_to_the_abyss.wav",0); break;
+				soundeffect("in_to_the_abyss.wav",0); break;
 			}
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		} else {
-			cutin ("bard_eland03",2);
+			cutin("bard_eland03",2);
 			mes "[Errende]";
 			mes "Uma canção otimista?";
 			mes "Bom, deixe-me ver.";
 			mes "Uma canção otimista, uma canção otimista...";
 			mes "Ok, aqui vamos nós...";
 			next;
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "^483D8BValhalla reluz em ouro.";
 				mes "O Quinto, como sabemos é a velha Glast Heim!";
@@ -817,7 +817,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 					mes "Em cinco, vamos mudar nossas mentes.";
 					mes "Uma pétala cai pelo ar.^000000";
 					next;
-					cutin ("bard_eland04",2);
+					cutin("bard_eland04",2);
 					mes "^483D8BEm seis, eu fico apaixonado.";
 					mes "Em sete, você se apaixona.";
 					mes "Em oito...^000000";
@@ -842,8 +842,8 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 					mes "Então você ao menos viaja um pouco, certo?";
 					mes "É embaraçoso para mim pedir, mas eu tenho um pedido a fazer.";
 					next;
-					if(select("Claro, sem problema","Eu não vou te ajudar.") == 1) {
-						cutin ("bard_eland01",2);
+					if (select("Claro, sem problema","Eu não vou te ajudar.") == 1) {
+						cutin("bard_eland01",2);
 						mes "[Errende]";
 						mes "Muito obrigado!";
 						mes "Vamos ver, quem sabe? ";
@@ -885,24 +885,24 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 					mes "Soa estranho quando você faz isso.";
 					next;
 					mes "[Errende]";
-					mes "C-como você pode dizer tal coisa, "+strcharinfo(PC_NAME) +"?";
+					mes "C-como você pode dizer tal coisa, "+strcharinfo(PC_NAME)+"?";
 					mes "É difícil chegar a melodias originais!";
 				}
 				break;
 			}
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 		case 3:
-		cutin ("bard_eland01",2);
+		cutin("bard_eland01",2);
 		mes "[Errende]";
 		mes "Hmm?";
 		mes "Tudo bem.";
 		mes "No entanto, ao ouvir uma boa história ou alegre canção você pode realmente se sentir bem.";
 		mes "Então, vejo você mais tarde.";
 		close2;
-		cutin ("",255);
+		cutin("",255);
 		end;
 	}
 }
@@ -937,13 +937,13 @@ payon,181,172,3	script	Bardo#2gef_bard_q	1_M_BARD,{
 		mes "Agora, qual foi";
 		mes "o nome da canção que você disse?";
 		next;
-		input (.@input$);
+		input(.@input$);
 		if (.@input$ == "Eu fico apaixonado") {
 			mes "[Gunther Doubleharmony]";
 			mes "Ah... essa canção?";
 			mes "Pelo jeito que falas, quem te pediu pra achar informações sobre essa canção?";
 			next;
-			input (.@input$);
+			input(.@input$);
 			if (.@input$ == "Errende" || .@input$ == "Errende Menta") {
 				mes "[Gunther Doubleharmony]";
 				mes "Sim, é meu amigo!";
@@ -1006,9 +1006,9 @@ payon,181,172,3	script	Bardo#2gef_bard_q	1_M_BARD,{
 		mes "[Gunther Doubleharmony]";
 		mes "Então você quer ouvir uma canção ou uma história?";
 		next;
-		switch(select("Uma canção","Uma história","Talvez outra hora")) {
+		switch (select("Uma canção","Uma história","Talvez outra hora")) {
 			case 1:
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Gunther Doubleharmony]";
 				mes "Gunther canta!";
@@ -1185,7 +1185,7 @@ payon,181,172,3	script	Bardo#2gef_bard_q	1_M_BARD,{
 				close;
 			}
 			case 2:
-			switch(rand(3)) {
+			switch (rand(3)) {
 				case 1:
 				mes "[Gunther Doubleharmony]";
 				mes "Hm, você já provou o queijo de Comodo?";
@@ -1404,7 +1404,7 @@ morocc,134,111,3	script	Bardo#3gef_bard_q	2_M_BARD_ORIENT,{
 		mes "Em doze, os nossos dois corações são um.";
 		mes "12 pétalas, o nosso amor finalmente floresce.^000000";
 		next;
-		specialeffect (EF_POISONREACT2, AREA, playerattached());
+		specialeffect(EF_POISONREACT2, AREA, playerattached());
 		mes "^3355FFApós a canção, Kino sorri para você.";
 		mes "Você sente uma dor aguda em seu pulso.";
 		mes "No local onde a prata foi crescente, você verá uma pequena cruz preta.^000000";
@@ -1446,7 +1446,7 @@ morocc,134,111,3	script	Bardo#3gef_bard_q	2_M_BARD_ORIENT,{
 			mes "^3355FFUm olhar de amargura momentaneamente aparece na face de Kino Gato.";
 			mes "Ele então ajusta as cordas de seu violão e começa a tocar.";
 			mes "Cantarolando uma melodia baixa.^000000";
-			soundeffect ("humming.wav",0);
+			soundeffect("humming.wav",0);
 			close;
 		} else {
 			mes "[Kino Gato]";
@@ -1585,4 +1585,3 @@ morocc,132,111,3	script	Garota#gef_bard_q	4_F_KID2,{
 	mes "Essa canção é somente pra minha pequena princesa, Jorti.";
 	close;
 }
-

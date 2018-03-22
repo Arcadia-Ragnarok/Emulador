@@ -32,7 +32,7 @@ aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{
 			mes "Ao se juntar ao nosso clube você passará por uma pequena transformação.";
 			mes "Deixará de ser um Aprendiz para ser um Super Aprendiz!";
 			next;
-			switch(select("Não, obrigado...","Quero ser Super Aprendiz","Conte-me mais")) {
+			switch (select("Não, obrigado...","Quero ser Super Aprendiz","Conte-me mais")) {
 				case 1:
 				mes "[Tzerero]";
 				mes "Ora, você ainda não percebeu a beleza da vida humilde de um aprendiz.";
@@ -109,12 +109,12 @@ aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{
 			mes "^ff000030 Resinas^000000";
 			mes "Que tal, muito simples não é?";
 			supernovq = 1;
-			setquest (6010);
+			setquest(6010);
 			close;
 		} else if (supernovq == 1) {
 			if (countitem(Sticky_Mucus) > 29 && countitem(Resin) > 29) {
-				delitem (Sticky_Mucus,30);
-				delitem (Resin,30);
+				delitem(Sticky_Mucus,30);
+				delitem(Resin,30);
 				mes "[Tzerero]";
 				mes "Eu pressinto que o que você quer é ser alguém humilde.";
 				mes "Que vive para aprender o maior número de coisas possível.";
@@ -129,10 +129,10 @@ aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{
 				mes "*^777777Você se vira e olha mas não há nada -";
 				mes "Que coisa estranha!^000000*";
 				next;
-				if (!Upper) { jobchange (Job_SuperNovice); }
-				else if (Upper == 2) { jobchange (Job_Super_Baby); }
-				completequest (6010);
-				callfunc ("ClearJobQuest");
+				if (!Upper) { jobchange(Job_SuperNovice); }
+				else if (Upper == 2) { jobchange(Job_Super_Baby); }
+				completequest(6010);
+				callfunc("ClearJobQuest");
 				mes "[Tzerero]";
 				mes "Hahahahaha!";
 				mes "Você caiu nessa!";
@@ -146,7 +146,7 @@ aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{
 				mes "[Tzerero]";
 				mes "E aqui está um presente para você por ter se juntado ao nosso Clube.";
 				mes "É uma das lendárias armaduras criadas pelo Sr. Kimu-Shon!";
-				getitem (G_Strings,1);
+				getitem(G_Strings,1);
 				next;
 				mes "[Tzerero]";
 				mes "Viva uma vida de diversão e aprendizado, faça o nosso Clube brilhar.";
@@ -194,7 +194,7 @@ aldeba_in,223,167,3	script	Tzerero#supernovq	4_M_SEAMAN,{
 
 // ------------------------------------------------------------------
 aldebaran,54,238,5	script	Funcionária Kafra#supernovq	4_F_KAFRA1,{
-	cutin ("kafra_01",2);
+	cutin("kafra_01",2);
 	mes "[Funcionária Kafra]";
 	if (BaseJob == Job_SuperNovice) {
 		mes "Devido a insistentes pedidos...";
@@ -212,7 +212,7 @@ aldebaran,54,238,5	script	Funcionária Kafra#supernovq	4_F_KAFRA1,{
 				mes "Primeiramente você deve aprender a habilidade.";
 				mes "^ff0000Usar Carrinho^000000.";
 				mes "Para poder alugar um.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else if (checkcart() == 1) {
 				mes "[Funcionária Kafra]";
 				mes "Mas você já possui um carrinho.";
@@ -221,24 +221,24 @@ aldebaran,54,238,5	script	Funcionária Kafra#supernovq	4_F_KAFRA1,{
 				mes "[Funcionária Kafra]";
 				mes "Você não tem dinheiro suficiente.";
 				mes "O preço pelo aluguel do carrinho é de 1.900 zeny.";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			} else {
 				setcart;
 				mes "[Funcionária Kafra]";
 				mes "Muito obrigada pela preferência.";
 				mes "Mesmo não sendo oficial, foi um prazer serví-l"+(Sex == SEX_MALE ? "o":"a")+".";
-				close2; cutin ("",255); end;
+				close2; cutin("",255); end;
 			}
 		} else {
 			mes "[Funcionária Kafra]";
 			mes "Volte se mudar de idéia!";
-			close2; cutin ("",255); end;
+			close2; cutin("",255); end;
 		}
 	} else {
 		mes "Me desculpe...";
 		mes "Acho que não posso fazer nada por você.";
 		mes "Por favor, procure outra funcionária Kafra ela poderá te ajudar.";
-		close2; cutin ("",255); end;
+		close2; cutin("",255); end;
 	}
 }
 

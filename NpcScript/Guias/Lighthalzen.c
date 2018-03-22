@@ -14,16 +14,16 @@
 \*-----------------------------------------------------------------*/
 
 lighthalzen,207,310,5	script	Guia#lhzguide	4_M_EIN_SOLDIER,{
-	cutin ("ein_soldier",2);
+	cutin("ein_soldier",2);
 	mes "[Guia de Lighthalzen]";
 	mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à ^8B4513Lighthalzen^000000, Cidade-Estado da Corporação.";
 	next;
 	while (1) {
-		switch(select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
+		switch (select("[Principais Lugares]","[Lojas & Ajudantes]","Remover marcadores","Cancelar")) {
 			case 1:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Hotel]","[Banco]","[Aeroporto]","[Loja de Armas]","[Shopping]","[Central de Polícia]","[Joalheria]","[Corp. Eventos Incríveis]","[Laboratório]","[Cenrtro de Pesquisa]","Menu Anterior")) {
+				switch (select("[Hotel]","[Banco]","[Aeroporto]","[Loja de Armas]","[Shopping]","[Central de Polícia]","[Joalheria]","[Corp. Eventos Incríveis]","[Laboratório]","[Cenrtro de Pesquisa]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Lighthalzen]";
 					mes "Posição da^0000FF Hotel^000000 marcada em seu mini mapa.";
@@ -93,7 +93,7 @@ lighthalzen,207,310,5	script	Guia#lhzguide	4_M_EIN_SOLDIER,{
 			case 2:
 			.@loop = 1;
 			while (.@loop) {
-				switch(select("[Armeiro]","[Funcionária Kafras]","[Representante Eventos Inc.]","Menu Anterior")) {
+				switch (select("[Armeiro]","[Funcionária Kafras]","[Representante Eventos Inc.]","Menu Anterior")) {
 					case 1:
 					mes "[Guia de Lighthalzen]";
 					mes "Posição do^0000FF Armeiro^000000 marcado em seu mini mapa.";
@@ -142,7 +142,7 @@ lighthalzen,207,310,5	script	Guia#lhzguide	4_M_EIN_SOLDIER,{
 			mes "[Guia de Lighthalzen]";
 			mes "Aproveite sua estadia.";
 			close2;
-			cutin ("",255);
+			cutin("",255);
 			end;
 		}
 	}
