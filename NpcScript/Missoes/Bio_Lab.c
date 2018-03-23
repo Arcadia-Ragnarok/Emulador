@@ -92,7 +92,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Não importa o quanto você implore.";
 		mes "Eu não vou me arriscar a confiar em alguém que quer conhecer uma rota secreta.";
 		mes "Agora, cai fora daqui!";
-		lhz_sincube = 3
+		lhz_sincube = 3;
 		close;
 	} else if (lhz_sincube == 3) {
 		mes "["+strcharinfo(PC_NAME)+"]";
@@ -243,7 +243,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 			mes "Te envio para lá, quando quiser.";
 			close;
 		}
-	} else if (lhz_sincube =< 10) {
+	} else if (lhz_sincube <= 10) {
 		mes "[Espinha]";
 		mes "Hm, você ainda não deve ter terminado seja lá o que precisava fazer no Laboratório.";
 		mes "Quer que eu mande você para lá de novo?";
