@@ -288,7 +288,7 @@ lighthalzen,337,232,3	script	Maku#friendship	4_M_LGTPOOR,{
 		next;
 		mes "[Diário de Benkaistein]";
 		mes "^856363Hoje foi minha vez de pular e bater os braços com essas asas falsas e mal feitas.";
-		mes "Quando se pára pra pensar, não é  um jogo divertido.";
+		mes "Quando se pára pra pensar, não é um jogo divertido.";
 		mes "Cara, espero nunca mais fazer isso.^000000 ";
 		next;
 		cutin("lhz_macu03",2);

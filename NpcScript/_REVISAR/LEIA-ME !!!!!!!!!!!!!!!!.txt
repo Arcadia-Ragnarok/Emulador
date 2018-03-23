@@ -1,2 +1,0 @@
-- Scripts que podem chegar a ser adicionados ou não.
-- Ou não possuem prioridade de adesão.

@@ -84,3 +84,16 @@ lhz_cube,10,185,0	duplicate(lhzcubewarp)	lhzcubewarp20	WARPNPC
 lhz_cube,130,18,0	duplicate(lhzcubewarp)	lhzcubewarp21	WARPNPC
 lhz_cube,123,11,0	duplicate(lhzcubewarp)	lhzcubewarp22	WARPNPC
 lhz_cube,123,26,0	duplicate(lhzcubewarp)	lhzcubewarp23	WARPNPC
+
+// ------------------------------------------------------------------
+// - [ Saída ] -
+// ------------------------------------------------------------------
+lhz_cube,250,184,0	script	Porta#cube	HIDDEN_NPC,{
+	mes "^3355FFVocê chega a uma porta de saída.^000000";
+	next;
+	if (select("Sair","Cancelar") == 1) {
+		warp("lighthalzen",310,302);
+		end;
+	}
+	close;
+}
