@@ -692,11 +692,11 @@ void set_label(int l,int pos, const char* script_pos)
 
 	if(script->str_data[l].type==C_INT || script->str_data[l].type==C_PARAM || script->str_data[l].type==C_FUNC) {
 		//Prevent overwriting constants values, parameters and built-in functions [Skotlex]
-		disp_error_message("set_label: invalid label name",script_pos);
+		disp_error_message("set_label: Nome de LABEL invalida",script_pos);
 		return;
 	}
 	if(script->str_data[l].label!=-1) {
-		disp_error_message("set_label: dup label ",script_pos);
+		disp_error_message("set_label: label duplicada ",script_pos);
 		return;
 	}
 	script->str_data[l].type=(script->str_data[l].type == C_USERFUNC ? C_USERFUNC_POS : C_POS);
@@ -786,7 +786,7 @@ int add_word(const char* p) {
 	// Check for a word
 	len = script->skip_word(p) - p;
 	if( len == 0 )
-		disp_error_message("script:add_word: invalid word. A word consists of undercores and/or alphanumeric characters, and valid variable prefixes/postfixes.", p);
+		disp_error_message("script:add_word: palavra invalida. Uma palavra consiste em sublinhados e/ou caracteres alfanumericos, e variavel valida de prefixos/posfixos.", p);
 
 	// Duplicate the word
 	if( len+1 > script->word_size )
@@ -831,7 +831,7 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 		script->addl(func);
 		arg = script->buildin[script->str_data[script->buildin_callsub_ref].val];
 		if( *arg == 0 )
-			disp_error_message("parse_callfunc: callsub has no arguments, please review its definition",p);
+			disp_error_message("parse_callfunc: callsub nao tem argumentos, reveja a sua definicao",p);
 		if( *arg != '*' )
 			++arg; // count func as argument
 	} else {
@@ -839,7 +839,7 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 		const char* name = script->get_str(func);
 		if( !is_custom && strdb_get(script->userfunc_db, name) == NULL ) {
 #endif
-			disp_error_message("parse_line: expect command, missing function name or calling undeclared function",p);
+			disp_error_message("parse_line: espera de comando, faltando o nome da funcao ou funcao chamada nao foi declarada",p);
 #ifdef SCRIPT_CALLFUNC_CHECK
 		} else {;
 			script->addl(script->buildin_callfunc_ref);
@@ -872,7 +872,7 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 	} else {// <func name> <arg list>
 		if( require_paren ) {
 			if( *p != '(' )
-				disp_error_message("need '('",p);
+				disp_error_message("requer '('",p);
 			++p; // skip '('
 			script->syntax.curly[script->syntax.curly_count].flag = ARGLIST_PAREN;
 		} else if( *p == '(' ) {
@@ -896,12 +896,12 @@ const char* parse_callfunc(const char* p, int require_paren, int is_custom)
 		--script->syntax.curly_count;
 	}
 	if( arg && *arg && *arg != '?' && *arg != '*' )
-		disp_error_message2("parse_callfunc: not enough arguments, expected ','", p, script->config.warn_func_mismatch_paramnum);
+		disp_error_message2("parse_callfunc: sem argumentos suficientes, esperado ','", p, script->config.warn_func_mismatch_paramnum);
 	if( script->syntax.curly[script->syntax.curly_count].type != TYPE_ARGLIST )
-		disp_error_message("parse_callfunc: DEBUG last curly is not an argument list",p);
+		disp_error_message("parse_callfunc: DEBUG ultimo curly nao e uma lista de argumentos",p);
 	if( script->syntax.curly[script->syntax.curly_count].flag == ARGLIST_PAREN ) {
 		if( *p != ')' )
-			disp_error_message("parse_callfunc: expected ')' to close argument list",p);
+			disp_error_message("parse_callfunc: esperado ')' para fechar lista de argumentos",p);
 		++p;
 
 	}
@@ -948,7 +948,7 @@ void parse_variable_sub_push(int word, const char *p2)
 		p3 = script->skip_space(p3);
 
 		if( *p3 != ']' ) {// closing parenthesis is required for this script
-			disp_error_message("Missing closing ']' parenthesis for the variable assignment.", p3);
+			disp_error_message("Faltando fechamento de ']' parentesis para a variavel atribuida.", p3);
 		}
 
 		// push the closing function stack operator onto the stack
@@ -996,7 +996,7 @@ const char* parse_variable(const char* p)
 
 		if( !(p = script->skip_space(p)) ) {
 			// end of line or invalid characters remaining
-			disp_error_message("Missing right expression or closing bracket for variable.", p);
+			disp_error_message("Faltando expressao correta ou fechamento para a variavel.", p);
 		}
 	}
 
@@ -1065,7 +1065,7 @@ const char* parse_variable(const char* p)
 	 || script->str_data[word].type == C_USERFUNC_POS
 	) {
 		// cannot assign a variable which exists as a function or label
-		disp_error_message("Cannot modify a variable which has the same name as a function or label.", p);
+		disp_error_message("Nao e possivel modificar uma variavel que tem o mesmo nome de uma funcao ou label.", p);
 	}
 
 	parse_variable_sub_push(word, p2); // Push variable onto the stack
@@ -1834,7 +1834,7 @@ const char* parse_syntax(const char* p)
 			char label[256];
 			p=script->skip_space(p2);
 			if(*p != '(') { //Prevent if this {} non-c script->syntax. from Rayce (jA)
-				disp_error_message("need '('",p);
+				disp_error_message("requer '('",p);
 			}
 			script->syntax.curly[script->syntax.curly_count].type  = TYPE_IF;
 			script->syntax.curly[script->syntax.curly_count].count = 1;
@@ -1858,7 +1858,7 @@ const char* parse_syntax(const char* p)
 			char label[256];
 			p=script->skip_space(p2);
 			if(*p != '(') {
-				disp_error_message("need '('",p);
+				disp_error_message("requer '('",p);
 			}
 			script->syntax.curly[script->syntax.curly_count].type  = TYPE_SWITCH;
 			script->syntax.curly[script->syntax.curly_count].count = 1;
@@ -1965,7 +1965,7 @@ const char* parse_syntax_close_sub(const char* p,int* flag)
 				// else - if
 				p=script->skip_space(p2);
 				if(*p != '(') {
-					disp_error_message("need '('",p);
+					disp_error_message("requer '('",p);
 				}
 				sprintf(label, "__IF%x_%x", (unsigned int)script->syntax.curly[pos].index, (unsigned int)script->syntax.curly[pos].count);
 				script->addl(script->add_str("__jump_zero"));
@@ -2015,7 +2015,7 @@ const char* parse_syntax_close_sub(const char* p,int* flag)
 
 		p = script->skip_space(p2);
 		if(*p != '(') {
-			disp_error_message("need '('",p);
+			disp_error_message("requer '('",p);
 		}
 
 		// do-block end is a new line
@@ -2468,7 +2468,7 @@ struct script_code* parse_script(const char *src,const char *file,int line,int o
 	else
 	{// requires brackets around the script
 		if( *p != '{' ) {
-			disp_error_message("not found '{'",p);
+			disp_error_message("faltando '{'",p);
 			if (retval) *retval = EXIT_FAILURE;
 		}
 		p = script->skip_space(p+1);
@@ -2501,7 +2501,7 @@ struct script_code* parse_script(const char *src,const char *file,int line,int o
 	while( script->syntax.curly_count != 0 || *p != end )
 	{
 		if( *p == '\0' )
-			disp_error_message("unexpected end of script",p);
+			disp_error_message("fim de script inesperado",p);
 		// Special handling only label
 		tmpp=script->skip_space(script->skip_word(p));
 		if(*tmpp==':' && !(strncmp(p,"default:",8) == 0 && p + 7 == tmpp)) {
@@ -2575,7 +2575,7 @@ struct script_code* parse_script(const char *src,const char *file,int line,int o
 			break;
 		case C_NAME:
 			j = (*(int*)(&VECTOR_INDEX(script->buf, i))&0xffffff);
-			ShowMessage(" %s", ( j == 0xffffff ) ? "?? unknown ??" : script->get_str(j));
+			ShowMessage(" %s", ( j == 0xffffff ) ? "?? desconhecido ??" : script->get_str(j));
 			i += 3;
 			break;
 		case C_STR:
@@ -4614,7 +4614,6 @@ bool script_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t * setting = NULL;
-	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -5058,7 +5057,7 @@ bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
 		}
 		// placeholder = "%n" ; (ignored)
 		if (*np == 'n') {
-			ShowWarning("script_sprintf: Format %%n not supported! Skipping...\n");
+			ShowWarning("script_sprintf: Formato %%n nao suportado! Ignorado...\n");
 			script->reportsrc(st);
 			lastarg = nextarg;
 			p = np + 1;
@@ -5080,7 +5079,7 @@ bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
 		}
 
 		if (thisarg >= argc) {
-			ShowError("buildin_sprintf: Not enough arguments passed!\n");
+			ShowError("buildin_sprintf: Argumento passado nao e suficiente!\n");
 			if (buf != NULL)
 				aFree(buf);
 			return false;
@@ -5130,7 +5129,7 @@ bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
 			}
 
 			if (width_arg >= argc || thisarg >= argc) {
-				ShowError("buildin_sprintf: Not enough arguments passed!\n");
+				ShowError("buildin_sprintf: Argumento passado nao e suficiente!\n");
 				if (buf != NULL)
 					aFree(buf);
 				return false;
@@ -5193,13 +5192,13 @@ bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
 		case 'p':
 		case 'a':
 		case 'A':
-			ShowWarning("buildin_sprintf: Format %%%c not supported! Skipping...\n", *np);
+			ShowWarning("buildin_sprintf: Formato %%%c nao suportado! Ignorando...\n", *np);
 			script->reportsrc(st);
 			lastarg = nextarg;
 			p = np + 1;
 			continue;
 		default:
-			ShowError("buildin_sprintf: Invalid format string.\n");
+			ShowError("buildin_sprintf: Formato de String invalida.\n");
 			if (buf != NULL)
 				aFree(buf);
 			return false;

@@ -6876,7 +6876,6 @@ bool battle_config_read(const char *filename)
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
 	int i;
-	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);

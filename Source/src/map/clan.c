@@ -857,7 +857,8 @@ int clan_read_db_sub(struct config_setting_t *settings, const char *source, bool
 		dbi_destroy(iter);
 	}
 
-	ShowStatus("Leitura de '" CL_WHITE "%d" CL_RESET "' clans validos de '" CL_WHITE "%d" CL_RESET "' entradas em '" CL_WHITE "%s" CL_RESET "'.\n", valid, total, source);
+//	ShowStatus("Leitura de '" CL_WHITE "%d" CL_RESET "' clans validos de '" CL_WHITE "%d" CL_RESET "' entradas em '" CL_WHITE "%s" CL_RESET "'.\n", valid, total, source);
+	ShowStatus("Leitura de '" CL_WHITE "%d" CL_RESET "' entradas em '" CL_WHITE "%s" CL_RESET "'.\n", total, source);
 	return valid;
 }
 

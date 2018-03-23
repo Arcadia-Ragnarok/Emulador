@@ -3960,7 +3960,7 @@ bool map_config_read_database(const char *filename, struct config_t *config)
 }
 
 /**
- * Reads 'map_configuration/map_list'/'map_configuration/map_removed' and adds
+ * Reads 'map_configuration/map_list' and adds
  * or removes maps from map-server.
  *
  * @param filename Path to configuration file (used in error and warning messages).
@@ -3978,19 +3978,6 @@ bool map_config_read_map_list(const char *filename, struct config_t *config)
 	nullpo_retr(false, config);
 
 	deleted_maps = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_ALLOW_NULL_DATA, MAP_NAME_LENGTH);
-
-	// Remove maps
-	if ((setting = libconfig->lookup(config, "map_configuration/map_removed")) != NULL) {
-		count = libconfig->setting_length(setting);
-		for (i = 0; i < count; i++) {
-			const char *mapname;
-
-			if ((mapname = libconfig->setting_get_string_elem(setting, i)) == NULL || mapname[0] == '\0')
-				continue;
-
-			strdb_put(deleted_maps, mapname, NULL);
-		}
-	}
 
 	if ((setting = libconfig->lookup(config, "map_configuration/map_list")) == NULL) {
 		db_destroy(deleted_maps);
@@ -4039,7 +4026,6 @@ bool map_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -4074,7 +4060,7 @@ bool map_config_read(const char *filename)
 }
 
 /**
- * Reads 'npc_global_list'/'npc_removed_list' and adds or removes NPC sources
+ * Reads 'npc_global_list' and adds or removes NPC sources
  * from map-server.
  *
  * @param filename Path to configuration file (used in error and warning messages).
@@ -4098,30 +4084,11 @@ bool map_read_npclist(const char *filename)
 
 	deleted_npcs = strdb_alloc(DB_OPT_DUP_KEY|DB_OPT_ALLOW_NULL_DATA, 0);
 
-	// Remove NPCs
-	if ((setting = libconfig->lookup(&config, "npc_removed_list")) != NULL) {
-		int i, del_count = libconfig->setting_length(setting);
-		for (i = 0; i < del_count; i++) {
-			const char *scriptname;
-
-			if ((scriptname = libconfig->setting_get_string_elem(setting, i)) == NULL || scriptname[0] == '\0')
-				continue;
-
-			if (strcmp(scriptname, "all") == 0) {
-				remove_all = true;
-				npc->clearsrcfile();
-			} else {
-				strdb_put(deleted_npcs, scriptname, NULL);
-				npc->delsrcfile(scriptname);
-			}
-		}
-	}
-
 	if ((setting = libconfig->lookup(&config, "npc_global_list")) != NULL) {
 		int i, count = libconfig->setting_length(setting);
 		if (count <= 0) {
-				ShowWarning("map_read_npclist: nenhum NPC encontado %s!\n", filename);
-				retval = false;
+			ShowStatus("map_read_npclist: nenhum NPC encontado %s!\n", filename);
+			retval = false;
 		}
 		for (i = 0; i < count; i++) {
 			const char *scriptname;

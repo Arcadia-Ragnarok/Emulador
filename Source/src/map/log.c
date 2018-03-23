@@ -637,7 +637,6 @@ bool log_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	//const char *import;
 	const char *target; // Type of storage 'file'/'table'
 	int temp;
 	bool retval = true;
