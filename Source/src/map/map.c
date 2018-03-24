@@ -3735,7 +3735,7 @@ int map_readallmaps (void) {
 	else {
 		char mapcachefilepath[256];
 		snprintf(mapcachefilepath, 256, "%s/%s", map->db_path,"Map_DB/MapCache.dat");
-		ShowStatus("Carregando mapas (usando o %s do map cache)...\n", mapcachefilepath);
+		//ShowStatus("Carregando mapas (usando o %s do map cache)...\n", mapcachefilepath);
 		if( (fp = fopen(mapcachefilepath, "rb")) == NULL ) {
 			ShowFatalError("Nao foi possivel abrir o arquivo do map cache "CL_WHITE"%s"CL_RESET"\n", mapcachefilepath);
 			exit(EXIT_FAILURE); //No use launching server if maps can't be read.

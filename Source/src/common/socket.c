@@ -1407,7 +1407,6 @@ bool socket_config_read(const char *filename)
 {
 	struct config_t config;
 	struct config_setting_t *setting = NULL;
-	//const char *import;
 	int i32 = 0;
 	bool retval = true;
 

@@ -5228,7 +5228,6 @@ static int char_online_data_cleanup(int tid, int64 tick, int id, intptr_t data) 
 bool char_sql_config_read(const char *filename) {
 	struct config_t config;
 	const struct config_setting_t *setting = NULL;
-	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);
@@ -5370,7 +5369,6 @@ bool char_sql_config_read_guild(const char *filename, const struct config_t *con
  */
 bool char_config_read(const char *filename) {
 	struct config_t config;
-	//const char *import = NULL;
 	bool retval = true;
 
 	nullpo_retr(false, filename);

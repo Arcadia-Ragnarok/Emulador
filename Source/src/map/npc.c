@@ -4813,7 +4813,7 @@ void npc_process_files( int npc_min ) {
 		if (npc->parsesrcfile(file->name, false) != EXIT_SUCCESS)
 			map->retval = EXIT_FAILURE;
 	}
-	ShowInfo ("Done loading '"CL_WHITE"%d"CL_RESET"' NPCs:"CL_CLL"\n"
+	ShowInfo ("Carregando '"CL_WHITE"%d"CL_RESET"' NPCs:"CL_CLL"\n"
 		"\t-'"CL_WHITE"%d"CL_RESET"' Portais\n"
 		"\t-'"CL_WHITE"%d"CL_RESET"' Lojas\n"
 		"\t-'"CL_WHITE"%d"CL_RESET"' Scripts\n"
