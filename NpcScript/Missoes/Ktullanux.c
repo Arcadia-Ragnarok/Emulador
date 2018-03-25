@@ -18,8 +18,8 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 	if (!ice_necklace_q) {
 		mes "[Urstialla]";
 		mes "Oh, você é um aventureiro";
-		mes "de outras terras? Reze para";
-		mes "Freya!";
+		mes "de outras terras?";
+		mes "Reze para Freya!";
 		mes "Seu amor e sua graça atinge todos no mundo tocando até os corações dos forasteiros, levando-os lá!";
 		next;
 		if (select("Freya? Quero saber mais","Isso é conversa de maluco!") == 1) {

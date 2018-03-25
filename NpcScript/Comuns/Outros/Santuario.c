@@ -177,3 +177,63 @@ ra_san04,137,48,3	script	Loomin Secreto#san	HIDDEN_NPC,{
 	mes "Para guardar a prisão do garoto, e para assegurar que ninguém o faria.";
 	close;
 }
+
+// ------------------------------------------------------------------
+// - [ que_san04 ] -
+// ------------------------------------------------------------------
+que_san04,119,115,0	script	imir1#rachel	FAKE_NPC,2,2,{
+	OnTouch:
+	if (ra_tem_q == 21) {
+		mes "^3355FFEsta grande área parece ter sido construída artificialmente para um propósito específico.";
+		mes "Ela não se parece com uma áre naturalmente infestada por monstros.^000000";
+		next;
+		mes "^3355FFTalvez se você explorar este lugar, você poderá encontrar algo interessante.^000000";
+		close;
+	}
+	end;
+}
+
+// ------------------------------------------------------------------
+que_san04,119,133,0	script	imir2#rachel	FAKE_NPC,20,5,{
+	OnTouch:
+	if (ra_tem_q == 21) {
+		mes "^3355FFHá alguma coisa aqui, debaixo da água.";
+		mes "Talvez seja melhor olhar mais de perto.^000000";
+		close;
+	}
+	end;
+}
+
+// ------------------------------------------------------------------
+// - [ ra_temsky ] -
+// ------------------------------------------------------------------
+ra_temsky,95,99,6	script	Sacerdote#raT	4_M_TRAINEE,{
+	mes "[Sacerdote]";
+	mes "Que Freya esteja com você.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ra_temsky,93,97,6	script	Seguidor#raT	4_M_MASK1,{
+	mes "[Seguidor]";
+	mes "Que Freya esteja com você.";
+	close;
+}
+ra_temsky,90,95,6	duplicate(Seguidor#raT)	Seguidor#2raT	4_M_MASK1
+ra_temsky,98,59,6	duplicate(Seguidor#raT)	Seguidor#3raT	4_M_MASK1
+
+// ------------------------------------------------------------------
+ra_temsky,104,99,4	script	Sacerdotisa#raT	4_F_TRAINEE,{
+	mes "[Sacerdotisa]";
+	mes "Que Freya esteja com você.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ra_temsky,106,97,4	script	Seguidora#raT	4_F_MASK1,{
+	mes "[Seguidora]";
+	mes "Que Freya esteja com você.";
+	close;
+}
+ra_temsky,108,95,4	duplicate(Seguidora#raT)	Seguidora#2raT	4_F_MASK1
+ra_temsky,101,59,4	duplicate(Seguidora#raT)	Seguidora#3raT	4_F_MASK1

@@ -209,6 +209,43 @@ rachel,197,137,3	script	Bardo#rac	1_M_BARD,{
 }
 
 // ------------------------------------------------------------------
+rachel,142,167,5	script	Seguidor de Arunafeltz#rac	4_F_MASK1,{
+	mes "[Seguidor de Arunafeltz]";
+	mes "Que Freya abençoe você em suas jornadas...";
+	close;
+}
+
+// ------------------------------------------------------------------
+rachel,196,77,3	script	Criança#3rac	4_M_CHILD1,{
+	mes "[Criança]";
+	mes "Hey, Você viu por ai Bruspetti?";
+	mes "Ela é realmente legal e sempre compra de mim muitos e muitos biscoitos!";
+	next;
+	mes "[Criança]";
+	mes "Hmm, eu não a vi a um tempo.";
+	mes "Eu ouvi que ela viajou para algum lugar.";
+	mes "Quanto tempo você pensa q ela ira voltar, huh?";
+	close;
+}
+
+// ------------------------------------------------------------------
+rachel,151,155,3	script	Criança#4rac	4_M_CHILD1,{
+	mes "[Criança]";
+	mes "Oh! Eu quero ser um aventureiro como você quando crescer!";
+	mes "Ir a todos os tipos de lugares, visitar diferentes cidades.";
+	mes "Isso soa tão divertido!";
+	next;
+	mes "[Criança]";
+	mes "Talvez se eu achar um lugar agradável, talvez eu vá somente por estadia e, em seguida, passar por aí.";
+	mes "Tem algum lugar aqui que tem isso, e vem de Lighthalzen até aqui";
+	next;
+	mes "[Criança]";
+	mes "Isso, tão breve quando tiver a chance, eu irei abandonar essa cidade e ver o máximo desse mundo que eu poder!";
+	mes "Eu preciso crescer rápido para isso!";
+	close;
+}
+
+// ------------------------------------------------------------------
 // - [ Casas ] -
 // ------------------------------------------------------------------
 ra_in01,301,50,3	script	Homem olhando#rac	4_M_MASK,{
