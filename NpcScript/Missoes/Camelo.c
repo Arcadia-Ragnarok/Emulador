@@ -11,6 +11,7 @@
 | - Author: L0ne_W0lf                                               |
 | - Version: Spell Master                                           |
 | - Info: Quest do Camelo (Imãos de Veins)                          |
+| * Pré requisito para a quest da Base do Vulcão.                   |
 \*-----------------------------------------------------------------*/
 
 veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{

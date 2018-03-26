@@ -9,21 +9,18 @@
 |                                                                   |
 +-------------------------------------------------------------------+
 | - Copyright: Spell Master                                         |
-| - Info: Potais no Vulcão de Thor                                  |
+| - Info: Portais no Acampamento do Vulcão de Thor                  |
 \*-----------------------------------------------------------------*/
 
-thor_v01,201,37,0	warp	thorvwarp_1	1,1,thor_v02,78,203
-thor_v01,21,224,0	warp	thorvwarp_2	1,1,ve_fild03,168,235
-
-// ------------------------------------------------------------------
-thor_v02,192,60,0	warp	thorvwarp_3	1,1,thor_v03,35,262
-thor_v02,73,203,0	warp	thorvwarp_4	1,1,thor_v01,196,37
-
-thor_v02,143,78,0	script	#tcamp	WARPNPC,2,2,{
+thor_camp,141,62,0	script	#thorWarp	FAKE_NPC,3,3,{
 	OnTouch:
-	if (rachel_camel < 24) { warp("que_thor",65,55); end; }
-	else { warp("que_thor",182,55); end; }
+	if ((aru_vol > 13 && aru_vol < 17) || (aru_vol == 19)) {
+		warp("thor_camp",156,67);
+	}
+	end;
 }
+thor_camp,172,72,0	duplicate(#thorWarp)	#thorWarp2	FAKE_NPC,3,3
+thor_camp,172,38,0	duplicate(#thorWarp)	#thorWarp3	FAKE_NPC,3,3
 
-// ------------------------------------------------------------------
-thor_v03,30,262,0	warp	thorvwarp_5	1,1,thor_v02,187,58
+que_thor,69,56,0	warp	#thorWarp4	2,2,thor_v02,146,84
+que_thor,187,56,0	warp	#thorWarp5	2,2,thor_v02,146,84

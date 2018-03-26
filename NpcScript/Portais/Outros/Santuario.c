@@ -21,6 +21,24 @@ ra_temin,239,253,0	warp	rateminwarp_6	1,1,ra_temin,130,88
 ra_temin,312,253,0	warp	rateminwarp_7	1,1,ra_temin,206,88
 ra_temin,27,299,0	warp	rateminwarp_8	1,1,ra_temin,275,328
 
+ra_temin,85,131,0	script	volWarp	FAKE_NPC,5,0,{
+	OnTouch:
+	if ((aru_vol != 3) && (aru_vol != 4)) { warp("ra_temin",85,137); }
+	end;
+}
+
+ra_temin,82,131,0	script	volWarp2	FAKE_NPC,5,0,{
+	OnTouch:
+	if (aru_vol != 4) { warp("ra_temin",85,137); }
+	end;
+}
+
+ra_temin,82,127,0	script	volWarp3	FAKE_NPC,5,1,{
+	OnTouch:
+	if (aru_vol == 5) { warp("ra_temin",84,124); }
+	end;
+}
+
 // ------------------------------------------------------------------
 ra_temsky,99,118,0	warp	ratemskywarp_1	1,1,ra_temsky,99,140
 ra_temsky,112,143,0	warp	ratemskywarp_2	1,1,ra_temsky,141,139

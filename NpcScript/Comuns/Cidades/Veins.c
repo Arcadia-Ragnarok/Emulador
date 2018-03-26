@@ -128,6 +128,19 @@ veins,296,184,3	script	Cidadão#vei8	4_F_DESERT,{
 }
 
 // ------------------------------------------------------------------
+veins,159,171,3	script	Cidadão#vei9	4_M_DST_GRAND,{
+	mes "[Cidadão]";
+	mes "O pequeno escritório no 2º andar desta loja de armas é ocupado por um geólogo.";
+	mes "Pelo menos, ele diz ser um...";
+	next;
+	mes "[Cidadão]";
+	mes "O cara deve ser um vagabundo.";
+	mes "Tudo que ele faz é beber e paquerar mulheres o dia todo.";
+	mes "Eu pensei que estudiosos, gostavam de ler, estudar e descobrir coisas, você sabe.";
+	close;
+}
+
+// ------------------------------------------------------------------
 veins,138,71,5	script	Criança#vei	4_F_DST_CHILD,{
 	mes "[Criança]";
 	mes "EI! Saia daqui!";
@@ -355,5 +368,69 @@ ve_in,238,120,4	script	Bêbedo#vei	4_F_DESERT,{
 	next;
 	mes "["+strcharinfo(PC_NAME)+"]";
 	mes "Ela é meio estranha...";
+	close;
+}
+
+// ------------------------------------------------------------------
+ve_in,235,135,5	script	Garçom#vei	4_M_DST_TOUGH,{
+	mes "[Garçom do Bar]";
+	mes "Bem vindo a nossa taverna.";
+	mes "Por favor, sente-se.";
+	mes "Permita-me lhe trazer um copo de água gelada primeiro.";
+	close;
+}
+
+// ------------------------------------------------------------------
+ve_in,237,131,1	script	Cliente#vei	4_F_DESERT,{
+	mes "[Cliente]";
+	mes "Garçom, não há nenhum de seus clientes que sejam jovens homens?";
+	mes "Você sabe, eu tenho me sentido muito sozinha ultimamente...";
+	next;
+	if (Sex == SEX_FEMALE) {
+		mes "[Garçom do Bar]";
+		mes "Haha, bem,";
+		mes "Eu não tenho tanta certeza..";
+		next;
+		mes "[Garçom do Bar]";
+		mes "Sobre o que... eu?";
+		next;
+		mes "[Cliente Feminina]";
+		mes "Hmpf...";
+		next;
+		mes "[Garçom do Bar]";
+		mes "Ah, vamos lá!";
+		mes "Eu estava brincando.";
+		emotion(e_sob);
+		close;
+	}
+	mes "[Garçom do Bar]";
+	mes "Haha, bem,";
+	mes "Eu não tenho tanta certeza..";
+	mes "O que acha deste jovem aventureiro aqui?";
+	next;
+	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "Eeeuuu?";
+	emotion(e_swt2,1);
+	next;
+	mes "[Cliente]";
+	mes "Mmm...";
+	mes "Não faz meu tipo.";
+	emotion(e_dots,1);
+	close;
+}
+
+// ------------------------------------------------------------------
+ve_in,239,107,1	script	Cliente#vei2	4_M_DESERT,{
+	mes "[Cliente]";
+	mes "Como este homem velho feio tem mulheres em seus braços.";
+	mes "Enquanto eu acabo de ser chutado por minha namorada.";
+	mes "E rejeitado por todas as minhas amigas?!";
+	next;
+	mes "[Cliente]";
+	mes "Oh, álcool...";
+	mes "Agora, você é meu único amigo em todo o mundo...";
+	mes "Um brinde...";
+	mes "À bebida!";
+	specialeffect(EF_ASPERSIO);
 	close;
 }

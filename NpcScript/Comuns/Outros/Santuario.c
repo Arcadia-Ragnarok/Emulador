@@ -148,6 +148,19 @@ ra_temin,138,64,5	script	Discípulo#temin4	4_M_CHILD1,{
 }
 
 // ------------------------------------------------------------------
+ra_temin,87,118,3	script	Gaveta#temin	HIDDEN_NPC,{
+	mes "^3355FFHá alguns documentos impressos e organizados dentro destas Gavetas.^000000";
+	close;
+}
+ra_temin,83,118,3	duplicate(Gaveta#temin)	Gaveta#2temin	HIDDEN_NPC
+
+// ------------------------------------------------------------------
+ra_temin,88,117,3	script	Estátua da Deusa#temin	HIDDEN_NPC,{
+	mes "^3355FFÉ uma estátua de Freya, uma deusa adorada por sua clemência e sabedoria.^000000";
+	close;
+}
+
+// ------------------------------------------------------------------
 // - [ ra_san04 ] -
 // ------------------------------------------------------------------
 ra_san04,137,48,3	script	Loomin Secreto#san	HIDDEN_NPC,{
