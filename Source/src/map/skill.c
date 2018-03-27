@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // MAGIC_REFLECTION_TYPE, OFFICIAL_WALKPATH, RENEWAL, RENEWAL_CAST, VARCAST_REDUCTION()
+#include "config/core.h"
 #include "skill.h"
 
 #include "map/battle.h"

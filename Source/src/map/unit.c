@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // RENEWAL_CAST
+#include "config/core.h"
 #include "unit.h"
 
 #include "map/battle.h"

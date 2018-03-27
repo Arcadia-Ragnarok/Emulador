@@ -308,6 +308,76 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		specialeffect(EF_ABSORBSPIRITS,AREA,playerattached());
 		getexp(1000000,700000);
 		close;
+	} else if (aru_monas < 15) {
+		mes "[Pequeno Karyn]";
+		mes "Olá, olá!";
+		mes "Ei, você precisa de mim para ajudá-lo?";
+		mes "Não...??";
+		mes "Awww, deve haver algo que eu possa fazer...";
+		close;
+	} else if (aru_monas == 15) {
+		mes "[Pequeno Karyn]";
+		mes "Curdi acabou de voltar do hospital e está, a cada dia ficando melhor!";
+		mes "Ah, e eu estou cuidando dele, como tinha prometido.";
+		next;
+		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "Sério? Isto é ótimo.";
+		mes "Você deveria estar orgulhoso de si.";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "^666666*envergonhado*^000000 Heh heh!";
+		next;
+		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "Bem, eu estava me perguntando se você poderia me ajudar.";
+		mes "Seu pai é um pescador, certo?";
+		mes "Você perguntaria a ele se ele poderia me emprestar seu barco?";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "Bem... Na verdade...";
+		mes "O papa disse ao meu pai para não utilizar o barco dele por um tempo...";
+		mes "Não estou certo do porque...";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "Então é isso.";
+		mes "Papai não pode sair para o mar agora.";
+		mes "Mas acho não teria problema se fosse você, certo?";
+		mes "Hey, você me ajudou!";
+		mes "Então eu tenho que ajudá-lo, certo?";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "Meu pai está tão nervoso por não poder usar o barco dele que talvez seja melhor não contarmos que você deseja usá-lo.";
+		mes "Vamos manter nosso segredinho, certo?";
+		next;
+		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "C-claro!";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "De qualquer forma, seu barco é o único da praia do sul uma vez que todos os outros pescadores atracam seus barcos em outros lugares.";
+		mes "E ainda, o barco do meu pai vai enferrujar se ninguém usá-lo.";
+		next;
+		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "Ótimo! Muito obrigado pela sua ajuda, Karyn.";
+		mes "Eu me certificarei de cuidar muito bem do barco do seu pai.";
+		mes "E eu só preciso dele por um momento, de qualquer forma.";
+		next;
+		mes "[Pequeno Karyn]";
+		mes "Heh heh! Obrigado!";
+		mes "Estou feliz de poder ajudá-lo, também!";
+		aru_monas = 16;
+		changequest(17011,17012);
+		close;
+	} else if (aru_monas < 26) {
+		mes "[Pequeno Karyn]";
+		mes "Oi! Você gostaria de ir pescar no barco do meu pai?";
+		mes "Oh, e Curdie disse oi!";
+		close;
+	} else {
+		mes "[Pequeno Karyn]";
+		mes "Olá, olá!";
+		mes "Ei, você precisa de mim para ajudar em algo?";
+		mes "Não...??";
+		mes "Awww, deve haver alguma coisa que eu possa fazer...";
+		close;
 	}
 }
 

@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // ANTI_MAYAP_CHEAT DEFTYPE_MAX, DEFTYPE_MIN, DEVOTION_REFLECT_DAMAGE, RENEWAL, RENEWAL_ASPD, RENEWAL_EDP
+#include "config/core.h"
 #include "status.h"
 
 #include "map/battle.h"

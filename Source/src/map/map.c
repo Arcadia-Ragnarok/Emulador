@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT RENEWAL
+#include "config/core.h"
 #include "map.h"
 
 #include "map/atcommand.h"

@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // GP_BOUND_ITEMS, MAX_SPIRITBALL, RENEWAL, RENEWAL_ASPD, RENEWAL_CAST, RENEWAL_DROP, RENEWAL_EXP, SECURE_NPCTIMEOUT
+#include "config/core.h"
 #include "pc.h"
 
 #include "map/atcommand.h" // get_atcommand_level()

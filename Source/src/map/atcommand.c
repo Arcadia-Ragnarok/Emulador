@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // AUTOLOOTITEM_SIZE, AUTOTRADE_PERSISTENCY, MAX_SUGGESTIONS, MOB_FLEE(), MOB_HIT(), RENEWAL, RENEWAL_DROP, RENEWAL_EXP
+#include "config/core.h"
 #include "atcommand.h"
 
 #include "map/battle.h"

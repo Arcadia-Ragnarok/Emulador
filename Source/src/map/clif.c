@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // ANTI_MAYAP_CHEAT, RENEWAL, SECURE_NPCTIMEOUT
+#include "config/core.h"
 #include "clif.h"
 
 #include "map/atcommand.h"

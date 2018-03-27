@@ -485,7 +485,7 @@ que_rachel,132,70,0	script	zawa04	FAKE_NPC,10,10,{
 }
 
 // ------------------------------------------------------------------
-que_rachel,28,315,0	script	Bloody Spot	FAKE_NPC,5,5,{
+que_rachel,28,315,0	script	Mancha de Sangue	FAKE_NPC,5,5,{
 	OnTouch:
 	if (ra_tem_q == 6) {
 		mes "^3355FF Há uma mancha no chão que é mais escura que que o resto do chão.^000000";
@@ -1123,7 +1123,64 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 		getexp(900000,600000);
 		end;
 	} else if (rachel_camel == 25) {
-		if (!aru_vol) {
+		if (aru_monas == 11) {
+			cutin("ra_gman",2);
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Ah, ele foi um bocado, não é?";
+			mes "Você parece bem, eu estou bem como você pode ver.";
+			mes "O que posso fazer por você hoje, "+strcharinfo(PC_NAME)+"?";
+			next;
+			if (select("Eu só queria dizer oi","Perguntar sobre o incidente em Veins") == 1) {
+				mes "[Sumo Sacerdote Zhed]";
+				mes "Como você bem sabe, sou apenas um Sumo Sacerdote no título.";
+				mes "E perdi muito da minha influência entre muitos dos outros sacerdotes na minha opnião.";
+				next;
+				mes "[Sumo Sacerdote Zhed]";
+				mes "Ainda assim, tenho fé que a justiça e a boa vontade prevalecerá.";
+				mes "Sobre a corrupção que flagela os nossos sacerdotes.";
+				mes "Enquanto pessoas boas estão dispostos a agir.";
+				close2;
+				cutin("",255);
+				end;
+			}
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Incidente em Veins?";
+			mes "Eu não tenho ouvido falar de qualquer coisa...";
+			mes "Bem, talvez se você deseja elaborar, em seguida eu entenda um pouco mais.";
+			next;
+			mes "^3355FFVocê falou ao Sumo Sacerdote Zhed sobre o grupo de traficantes detidos em Veins.^000000";
+			next;
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Oh, eu acho que ouvi alguma coisa sobre mais cedo.";
+			mes "Vamos ver agora...";
+			mes "Ah, claro.";
+			mes "Niren mencionou algo estranho sobre eles...";
+			next;
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Os contrabandistas estavam com um funcionário de alto escalão de Rune-Midgard.";
+			mes "É por isso que Niren foi tão hesitante em tomar qualquer ação contra eles por um tempo.";
+			next;
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Eu estava muito preocupado com outros assuntos.";
+			mes "E eu acho que na maior parte na época.";
+			mes "Por que você não vai falar com Niren?";
+			mes "Eu tenho certeza que ela pode dizer a você mais sobre o que aconteceu.";
+			aru_monas = 12;
+			changequest(17007,17008);
+			next;
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Se você decidir ir visitar Niren, por favor mande meus cumprimentos.";
+			close2;
+			cutin("",255);
+			end;
+		} else if (aru_monas == 12) {
+			cutin("ra_gman",2);
+			mes "[Sumo Sacerdote Zhed]";
+			mes "Se você decidir ir visitar Niren, por favor mande meus cumprimentos.";
+			close2;
+			cutin("",255);
+			end;
+		} else if (!aru_vol) {
 			cutin("ra_gman",2);
 			mes "[Sumo Sacerdote Zhed]";
 			mes "Ah, ver você novamente faz meu coração se sentir bem.";

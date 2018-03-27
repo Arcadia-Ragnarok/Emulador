@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // AUTOLOOT_DISTANCE DEFTYPE_MAX, DEFTYPE_MIN, RENEWAL_DROP, RENEWAL_EXP
+#include "config/core.h"
 #include "mob.h"
 
 #include "map/atcommand.h"

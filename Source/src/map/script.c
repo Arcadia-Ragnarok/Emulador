@@ -15,7 +15,7 @@
 
 #define MAIN_CORE
 
-#include "config/core.h" // RENEWAL, RENEWAL_ASPD, RENEWAL_CAST, RENEWAL_DROP, RENEWAL_EDP, RENEWAL_EXP, RENEWAL_LVDMG, SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT, SECURE_NPCTIMEOUT_INTERVAL
+#include "config/core.h"
 #include "script.h"
 
 #include "map/atcommand.h"
@@ -23324,16 +23324,6 @@ bool script_add_builtin(const struct script_function *buildin, bool override)
 	return true;
 }
 
-bool script_hp_add(char *name, char *args, bool (*func)(struct script_state *st), bool isDeprecated)
-{
-	struct script_function buildin;
-	buildin.name = name;
-	buildin.arg = args;
-	buildin.func = func;
-	buildin.deprecated = isDeprecated;
-	return script->add_builtin(&buildin, true);
-}
-
 void script_run_use_script(struct map_session_data *sd, struct item_data *data, int oid) __attribute__((nonnull (1)));
 
 /**
@@ -24260,14 +24250,6 @@ void script_hardcoded_constants(void)
 	script->set_constant("ITEMINFO_MATK", ITEMINFO_MATK, false, false);
 	script->set_constant("ITEMINFO_VIEWSPRITE", ITEMINFO_VIEWSPRITE, false, false);
 
-	script->constdb_comment("Renewal");
-	script->set_constant("RENEWAL", 1, false, false);
-	script->set_constant("RENEWAL_CAST", 1, false, false);
-	script->set_constant("RENEWAL_DROP", 1, false, false);
-	script->set_constant("RENEWAL_EXP", 1, false, false);
-	script->set_constant("RENEWAL_LVDMG", 1, false, false);
-	script->set_constant("RENEWAL_EDP", 1, false, false);
-	script->set_constant("RENEWAL_ASPD", 1, false, false);
 	script->constdb_comment(NULL);
 	#include "constants.inc"
 }
@@ -24366,7 +24348,6 @@ void script_defaults(void)
 	script->warning = script_warning;
 	script->parse_subexpr = script_parse_subexpr;
 
-	script->addScript = script_hp_add;
 	script->conv_num = conv_num;
 	script->conv_str = conv_str;
 	script->rid2sd = script_rid2sd;
