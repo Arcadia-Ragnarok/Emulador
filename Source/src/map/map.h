@@ -1105,7 +1105,6 @@ struct map_interface {
 	char *ATCOMMAND_CONF_FILENAME;
 	char *SCRIPT_CONF_NAME;
 	char *MSG_CONF_NAME;
-	char *GRF_PATH_FILENAME;
 
 	char autotrade_merchants_db[32];
 	char autotrade_data_db[32];
@@ -1122,7 +1121,6 @@ struct map_interface {
 
 	uint16 port;
 	int users;
-	int enable_grf; //To enable/disable reading maps from GRF files, bypassing mapcache [blackhole89]
 	bool ip_set;
 	bool char_ip_set;
 
@@ -1307,8 +1305,6 @@ END_ZEROED_BLOCK;
 	void (*delmapid) (int id);
 	void (*zone_db_clear) (void);
 	void (*list_final) (void);
-	int (*waterheight) (char *mapname);
-	int (*readgat) (struct map_data *m);
 	int (*readallmaps) (void);
 	bool (*config_read) (const char *filename);
 	bool (*read_npclist) (const char *filename);

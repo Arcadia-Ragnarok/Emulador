@@ -56,7 +56,6 @@
 #include "common/console.h"
 #include "common/core.h"
 #include "common/ers.h"
-#include "common/grfio.h"
 #include "common/memmgr.h"
 #include "common/nullpo.h"
 #include "common/random.h"
@@ -2901,8 +2900,6 @@ void map_cellfromcache(struct map_data *m) {
 
 		size = (unsigned long)info->xs*(unsigned long)info->ys;
 
-		// TO-DO: Maybe handle the scenario, if the decoded buffer isn't the same size as expected? [Shinryo]
-		grfio->decode_zip(decode_buffer, &size, m->cellPos+sizeof(struct map_cache_map_info), info->len);
 		CREATE(m->cell, struct mapcell, size);
 
 		// Set cell properties
@@ -3634,81 +3631,6 @@ void map_flags_init(void) {
 
 #define NO_WATER 1000000
 
-/*
- * Reads from the .rsw for each map
- * Returns water height (or NO_WATER if file doesn't exist) or other error is encountered.
- * Assumed path for file is data/mapname.rsw
- * Credits to LittleWolf
- */
-int map_waterheight(char* mapname)
-{
-	char fn[256];
-	char *rsw = NULL;
-	const char *found;
-
-	nullpo_retr(NO_WATER, mapname);
-	//Look up for the rsw
-	snprintf(fn, sizeof(fn), "data\\%s.rsw", mapname);
-
-	if ((found = grfio->find_file(fn)))
-		safestrncpy(fn, found, sizeof(fn)); // replace with real name
-
-	// read & convert fn
-	rsw = grfio_read(fn);
-	if (rsw) {
-		//Load water height from file
-		int wh = (int) *(float*)(rsw+166);
-		aFree(rsw);
-		return wh;
-	}
-	ShowWarning("Falha o encontrar o nivel da agua para %s (%s)\n", mapname, fn);
-	return NO_WATER;
-}
-
-/*==================================
- * .GAT format
- *----------------------------------*/
-int map_readgat (struct map_data* m)
-{
-	char filename[256];
-	uint8* gat;
-	int water_height;
-	size_t xy, off, num_cells;
-
-	nullpo_ret(m);
-	sprintf(filename, "data\\%s.gat", m->name);
-
-	gat = grfio_read(filename);
-	if (gat == NULL)
-		return 0;
-
-	m->xs = *(int32*)(gat+6);
-	m->ys = *(int32*)(gat+10);
-	num_cells = m->xs * m->ys;
-	CREATE(m->cell, struct mapcell, num_cells);
-
-	water_height = map->waterheight(m->name);
-
-	// Set cell properties
-	off = 14;
-	for( xy = 0; xy < num_cells; ++xy )
-	{
-		// read cell data
-		float height = *(float*)( gat + off      );
-		uint32 type = *(uint32*)( gat + off + 16 );
-		off += 20;
-
-		if( type == 0 && water_height != NO_WATER && height > water_height )
-			type = 3; // Cell is 0 (walkable) but under water level, set to 3 (walkable water)
-
-		m->cell[xy] = map->gat2cell(type);
-	}
-
-	aFree(gat);
-
-	return 1;
-}
-
 /*======================================
  * Add/Remove map to the map_db
  *--------------------------------------*/
@@ -3730,47 +3652,34 @@ int map_readallmaps (void) {
 	FILE* fp=NULL;
 	int maps_removed = 0;
 
-	if( map->enable_grf )
-		ShowStatus("Carregando mapas (usando arquivos da GRF)...\n");
-	else {
-		char mapcachefilepath[256];
-		snprintf(mapcachefilepath, 256, "%s/%s", map->db_path,"Map_DB/MapCache.dat");
-		//ShowStatus("Carregando mapas (usando o %s do map cache)...\n", mapcachefilepath);
-		if( (fp = fopen(mapcachefilepath, "rb")) == NULL ) {
-			ShowFatalError("Nao foi possivel abrir o arquivo do map cache "CL_WHITE"%s"CL_RESET"\n", mapcachefilepath);
-			exit(EXIT_FAILURE); //No use launching server if maps can't be read.
-		}
-
-		// Init mapcache data.. [Shinryo]
-		map->cache_buffer = map->init_mapcache(fp);
-		if(!map->cache_buffer) {
-			ShowFatalError("Falha ao iniciar os dados do mapcache (%s)..\n", mapcachefilepath);
-			exit(EXIT_FAILURE);
-		}
+	char mapcachefilepath[256];
+	snprintf(mapcachefilepath, 256, "%s/%s", map->db_path,"Map_DB/MapCache.dat");
+	if ((fp = fopen(mapcachefilepath, "rb")) == NULL) {
+		ShowFatalError("Nao foi possivel abrir o arquivo do map cache "CL_WHITE"%s"CL_RESET"\n", mapcachefilepath);
+		exit(EXIT_FAILURE);
 	}
+
+	map->cache_buffer = map->init_mapcache(fp);
+	if (!map->cache_buffer) {
+		ShowFatalError("Falha ao iniciar os dados do mapcache (%s)..\n", mapcachefilepath);
+		exit(EXIT_FAILURE);
+	}
+
 
 	for(i = 0; i < map->count; i++) {
 		size_t size;
 
-		// show progress
-		if(map->enable_grf)
-			ShowStatus("Carregando mapas [%i/%i]: %s"CL_CLL"\r", i, map->count, map->list[i].name);
-
-		// try to load the map
-		if( !
-			(map->enable_grf?
-			map->readgat(&map->list[i])
-			:map->readfromcache(&map->list[i], map->cache_buffer))
-			) {
-				map->delmapid(i);
-				maps_removed++;
-				i--;
-				continue;
+		// Caso o mapa não seja encontrado no cache, o mesmo é removido.
+		if (!map->readfromcache(&map->list[i], map->cache_buffer)) {
+			map->delmapid(i);
+			maps_removed++;
+			i--;
+			continue;
 		}
 
 		map->list[i].index = mapindex->name2id(map->list[i].name);
 
-		if ( map->index2mapid[map_id2index(i)] != -1 ) {
+		if (map->index2mapid[map_id2index(i)] != -1) {
 			ShowWarning("%s Mapas foram carregados!"CL_CLL"\n", map->list[i].name);
 			if (map->list[i].cell && map->list[i].cell != (struct mapcell *)0xdeadbeaf) {
 				aFree(map->list[i].cell);
@@ -3802,16 +3711,13 @@ int map_readallmaps (void) {
 	// intialization and configuration-dependent adjustments of mapflags
 	map->flags_init();
 
-	if( !map->enable_grf ) {
-		fclose(fp);
-	}
-
 	// finished map loading
 	ShowInfo("Carregado com exito '"CL_WHITE"%d"CL_RESET"' mapas."CL_CLL"\n",map->count);
 	instance->start_id = map->count; // Next Map Index will be instances
 
-	if (maps_removed)
+	if (maps_removed) {
 		ShowNotice("Mapas removidos: '"CL_WHITE"%d"CL_RESET"'\n",maps_removed);
+	}
 
 	return 0;
 }
@@ -4042,7 +3948,6 @@ bool map_config_read(const char *filename)
 	libconfig->setting_lookup_mutable_string(setting, "help_txt", map->help_txt, sizeof(map->help_txt));
 	libconfig->setting_lookup_mutable_string(setting, "charhelp_txt", map->charhelp_txt, sizeof(map->charhelp_txt));
 	libconfig->setting_lookup_bool(setting, "enable_spy", &map->enable_spy);
-	libconfig->setting_lookup_bool(setting, "use_grf", &map->enable_grf);
 
 	if (!map_config_read_console(filename, &config))
 		retval = false;
@@ -5896,8 +5801,6 @@ int do_final(void) {
 	map->map_db->destroy(map->map_db, map->db_final);
 
 	mapindex->final();
-	if (map->enable_grf)
-		grfio->final();
 
 	db_destroy(map->id_db);
 	db_destroy(map->pc_db);
@@ -5919,15 +5822,13 @@ int do_final(void) {
 	if( map->bl_list )
 		aFree(map->bl_list);
 
-	if( !map->enable_grf )
-		aFree(map->cache_buffer);
+	aFree(map->cache_buffer);
 
 	aFree(map->MAP_CONF_NAME);
 	aFree(map->BATTLE_CONF_FILENAME);
 	aFree(map->ATCOMMAND_CONF_FILENAME);
 	aFree(map->SCRIPT_CONF_NAME);
 	aFree(map->MSG_CONF_NAME);
-	aFree(map->GRF_PATH_FILENAME);
 	aFree(map->INTER_CONF_NAME);
 	aFree(map->LOG_CONF_NAME);
 
@@ -6156,18 +6057,7 @@ static CMDLINEARG(msgconfig)
 	map->MSG_CONF_NAME = aStrdup(params);
 	return true;
 }
-/**
- * --grf-path handler
- *
- * Overrides the default grf configuration filename.
- * @see cmdline->exec
- */
-static CMDLINEARG(grfpath)
-{
-	aFree(map->GRF_PATH_FILENAME);
-	map->GRF_PATH_FILENAME = aStrdup(params);
-	return true;
-}
+
 /**
  * --inter-config handler
  *
@@ -6229,7 +6119,6 @@ void cmdline_args_init_local(void)
 	CMDLINEARG_DEF2(atcommand-config, atcommandconfig, "Configuracao alternativa de atcommand.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
 	CMDLINEARG_DEF2(script-config, scriptconfig, "Configuracao de script alternativa.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
 	CMDLINEARG_DEF2(msg-config, msgconfig, "Configuracao message alternativa.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
-	CMDLINEARG_DEF2(grf-path, grfpath, "Configuracao GRF path alternativa.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
 	CMDLINEARG_DEF2(inter-config, interconfig, "Configuracao inter-server alternativa.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
 	CMDLINEARG_DEF2(log-config, logconfig, "Configuracao logging alternativa.", CMDLINE_OPT_NORMAL|CMDLINE_OPT_PARAM);
 	CMDLINEARG_DEF2(script-check, scriptcheck, "Nao corra o servidor, so testes pelos que os script passaram, --load-script.", CMDLINE_OPT_SILENT);
@@ -6254,7 +6143,6 @@ int do_init(int argc, char *argv[])
 	map->ATCOMMAND_CONF_FILENAME = aStrdup("Config/System/Atcommand.cs");
 	map->SCRIPT_CONF_NAME        = aStrdup("Config/Common/Script.cs");
 	map->MSG_CONF_NAME           = aStrdup("Config/System/Messages.conf");
-	map->GRF_PATH_FILENAME       = aStrdup("Config/Depreciated/grf-files.txt");
 
 	cmdline->exec(argc, argv, CMDLINE_OPT_PREINIT);
 
@@ -6331,9 +6219,6 @@ int do_init(int argc, char *argv[])
 			}
 		}
 	}
-
-	if (map->enable_grf)
-		grfio->init(map->GRF_PATH_FILENAME);
 
 	map->readallmaps();
 
@@ -6449,7 +6334,6 @@ void map_defaults(void) {
 	map->ATCOMMAND_CONF_FILENAME = "Config/System/Atcommand.cs";
 	map->SCRIPT_CONF_NAME = "Config/Common/Script.cs";
 	map->MSG_CONF_NAME = "Config/System/Messages.conf";
-	map->GRF_PATH_FILENAME = "Config/grf-files.txt";
 
 	map->default_codepage[0] = '\0';
 	map->server_port = 3306;
@@ -6465,7 +6349,6 @@ void map_defaults(void) {
 	map->users = 0;
 	map->ip_set = 0;
 	map->char_ip_set = 0;
-	map->enable_grf = 0;
 
 	memset(&map->index2mapid, -1, sizeof(map->index2mapid));
 
@@ -6648,8 +6531,6 @@ void map_defaults(void) {
 	map->delmapid = map_delmapid;
 	map->zone_db_clear = map_zone_db_clear;
 	map->list_final = do_final_maps;
-	map->waterheight = map_waterheight;
-	map->readgat = map_readgat;
 	map->readallmaps = map_readallmaps;
 	map->config_read = map_config_read;
 	map->read_npclist = map_read_npclist;

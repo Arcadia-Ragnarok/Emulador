@@ -51,7 +51,6 @@
 #include "common/cbasetypes.h"
 #include "common/conf.h"
 #include "common/ers.h"
-#include "common/grfio.h"
 #include "common/memmgr.h"
 #include "common/mmo.h" // NEW_CARTS
 #include "common/nullpo.h"
@@ -13143,18 +13142,6 @@ bool clif_validate_emblem(const uint8 *emblem, unsigned long emblem_len) {
 	int header = 0, bitmap = 0, offbits = 0, palettesize = 0;
 
 	nullpo_retr(false, emblem);
-	if (grfio->decode_zip(buf, &buf_len, emblem, emblem_len) != 0
-	 || buf_len < BITMAPFILEHEADER_SIZE + BITMAPINFOHEADER_SIZE
-	 || RBUFW(buf,0) != 0x4d42 // BITMAPFILEHEADER.bfType (signature)
-	 || RBUFL(buf,2) != buf_len // BITMAPFILEHEADER.bfSize (file size)
-	 || RBUFL(buf,14) != BITMAPINFOHEADER_SIZE // BITMAPINFOHEADER.biSize (other headers are not supported)
-	 || RBUFL(buf,18) != BITMAP_WIDTH // BITMAPINFOHEADER.biWidth
-	 || RBUFL(buf,22) != BITMAP_HEIGHT // BITMAPINFOHEADER.biHeight (top-down bitmaps (-24) are not supported)
-	 || RBUFL(buf,30) != 0 // BITMAPINFOHEADER.biCompression == BI_RGB (compression not supported)
-	 ) {
-		// Invalid data
-		return false;
-	}
 
 	offbits = RBUFL(buf,10); // BITMAPFILEHEADER.bfOffBits (offset to bitmap bits)
 

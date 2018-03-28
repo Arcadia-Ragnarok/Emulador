@@ -24,10 +24,6 @@ map_configuration: {
 	// Note que habilitá-los diminui o desempenho de envio de pacotes.
 	enable_spy: false
 
-	// Leia dados de mapa de GATs e RSWs em arquivos GRF ou um diretório de dados
-	// como referenciado por grf-files.txt em vez de partir do mapcache?
-	use_grf: false
-
 	database: {
 		// Tempo de salvamento automático da base de dados
 		// Todos os caracteres são salvos neste tempo em segundos (exemplo:
