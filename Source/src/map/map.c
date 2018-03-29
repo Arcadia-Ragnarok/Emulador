@@ -65,6 +65,7 @@
 #include "common/strlib.h"
 #include "common/timer.h"
 #include "common/utils.h"
+#include "../3rdparty/zlib/include/zlib.h" // map_cellfromcache
 
 #include <math.h>
 #include <stdarg.h>
@@ -2899,6 +2900,9 @@ void map_cellfromcache(struct map_data *m) {
 		int i;
 
 		size = (unsigned long)info->xs*(unsigned long)info->ys;
+
+		// Descompactar os dados do cache
+		uncompress((Bytef*)decode_buffer, &size, (const Bytef*)m->cellPos+sizeof(struct map_cache_map_info), info->len);
 
 		CREATE(m->cell, struct mapcell, size);
 

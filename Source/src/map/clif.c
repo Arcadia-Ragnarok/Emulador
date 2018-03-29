@@ -60,6 +60,7 @@
 #include "common/strlib.h"
 #include "common/timer.h"
 #include "common/utils.h"
+#include "../3rdparty/zlib/include/zlib.h" // validate_emblem
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13142,6 +13143,16 @@ bool clif_validate_emblem(const uint8 *emblem, unsigned long emblem_len) {
 	int header = 0, bitmap = 0, offbits = 0, palettesize = 0;
 
 	nullpo_retr(false, emblem);
+
+	if (uncompress((Bytef*)buf, &buf_len, (const Bytef*)emblem, emblem_len) != 0
+	    || buf_len < BITMAPFILEHEADER_SIZE + BITMAPINFOHEADER_SIZE
+	    || RBUFW(buf,0) != 0x4d42 || RBUFL(buf,2) != buf_len
+	    || RBUFL(buf,14) != BITMAPINFOHEADER_SIZE
+	    || RBUFL(buf,18) != BITMAP_WIDTH
+	    || RBUFL(buf,22) != BITMAP_HEIGHT
+	    || RBUFL(buf,30) != 0) {
+		return false;
+	}
 
 	offbits = RBUFL(buf,10); // BITMAPFILEHEADER.bfOffBits (offset to bitmap bits)
 
