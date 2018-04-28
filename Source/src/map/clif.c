@@ -1512,27 +1512,33 @@ bool clif_spawn(struct block_list *bl)
 		clif->refreshlook(bl,bl->id,LOOK_BODY2,vd->body_style,AREA_WOS);
 
 	switch (bl->type) {
-		case BL_PC:
-		{
+		case BL_PC: {
 			struct map_session_data *sd = BL_UCAST(BL_PC, bl);
 			int i;
-			if (sd->spiritball > 0)
+			if (sd->spiritball > 0) {
 				clif->spiritball(&sd->bl);
-			if (sd->state.size == SZ_BIG) // tiny/big players [Valaris]
+			}
+			// tiny/big players [Valaris]
+			if (sd->state.size == SZ_BIG) {
 				clif->specialeffect(bl,423,AREA);
-			else if (sd->state.size == SZ_MEDIUM)
+			} else if (sd->state.size == SZ_MEDIUM) {
 				clif->specialeffect(bl,421,AREA);
-			if (sd->bg_id != 0 && map->list[sd->bl.m].flag.battleground)
+			}
+			if (sd->bg_id != 0 && map->list[sd->bl.m].flag.battleground) {
 				clif->sendbgemblem_area(sd);
+			}
 			for (i = 0; i < sd->sc_display_count; i++) {
 				clif->sc_continue(&sd->bl, sd->bl.id,AREA,status->dbs->IconChangeTable[sd->sc_display[i]->type],sd->sc_display[i]->val1,sd->sc_display[i]->val2,sd->sc_display[i]->val3);
 			}
-			if (sd->charm_type != CHARM_TYPE_NONE && sd->charm_count > 0)
+			if (sd->charm_type != CHARM_TYPE_NONE && sd->charm_count > 0) {
 				clif->spiritcharm(sd);
-			if (sd->status.look.robe != 0)
+			}
+			if (sd->status.look.robe != 0) {
 				clif->refreshlook(bl, bl->id, LOOK_ROBE, sd->status.look.robe, AREA);
+			}
+			clif->hat_effect(bl, NULL, AREA);
 		}
-			break;
+		break;
 		case BL_MOB:
 		{
 			struct mob_data *md = BL_UCAST(BL_MOB, bl);
@@ -4359,20 +4365,24 @@ void clif_getareachar_unit(struct map_session_data* sd,struct block_list *bl) {
 		clif->refreshlook(&sd->bl,bl->id,LOOK_BODY2,vd->body_style,SELF);
 
 	switch (bl->type) {
-		case BL_PC:
-		{
+		case BL_PC: {
 			struct map_session_data *tsd = BL_UCAST(BL_PC, bl);
 			clif->getareachar_pc(sd, tsd);
-			if (tsd->state.size == SZ_BIG) // tiny/big players [Valaris]
+			// tiny/big players [Valaris]
+			if (tsd->state.size == SZ_BIG) {
 				clif->specialeffect_single(bl,423,sd->fd);
-			else if (tsd->state.size == SZ_MEDIUM)
+			} else if (tsd->state.size == SZ_MEDIUM) {
 				clif->specialeffect_single(bl,421,sd->fd);
-			if (tsd->bg_id != 0 && map->list[tsd->bl.m].flag.battleground)
+			}
+			if (tsd->bg_id != 0 && map->list[tsd->bl.m].flag.battleground) {
 				clif->sendbgemblem_single(sd->fd,tsd);
-			if (tsd->status.look.robe != 0)
+			}
+			if (tsd->status.look.robe != 0) {
 				clif->refreshlook(&sd->bl, bl->id, LOOK_ROBE, tsd->status.look.robe, SELF);
+			}
+			clif->hat_effect(bl, &sd->bl, SELF);
 		}
-			break;
+		break;
 		case BL_MER: // Devotion Effects
 		{
 			struct mercenary_data *md = BL_UCAST(BL_MER, bl);
@@ -20083,6 +20093,59 @@ void clif_skill_scale(struct block_list *bl, int src_id, int x, int y, uint16 sk
 #endif
 }
 
+/// Send hat effects to the client (ZC_HAT_EFFECT).
+/// 0A3B <Length>.W <AID>.L <Status>.B { <HatEffectId>.W }
+void clif_hat_effect(struct block_list *bl, struct block_list *tbl, enum send_target target) {
+	#if PACKETVER >= 20150422
+	unsigned char *buf;
+	int len, i;
+	struct map_session_data *sd;
+
+	nullpo_retv(bl);
+
+	sd = BL_CAST(BL_PC, bl);
+
+	nullpo_retv(sd);
+
+	len = 9 + VECTOR_LENGTH(sd->hatEffectId) * 2;
+
+	buf = (unsigned char*)aMalloc(len);
+
+	WBUFW(buf, 0) = 0xa3b;
+	WBUFW(buf, 2) = len;
+	WBUFL(buf, 4) = bl->id;
+	WBUFB(buf, 8) = 1;
+
+	for( i = 0; i < VECTOR_LENGTH(sd->hatEffectId); i++ ){
+		WBUFW(buf, 9 + i * 2) = VECTOR_INDEX(sd->hatEffectId, i);
+	}
+
+	if (tbl != NULL) {
+		clif->send(buf, len, tbl, target);
+	} else {
+		clif->send(buf, len, bl, target);
+	}
+
+	aFree(buf);
+	#endif
+}
+
+void clif_hat_effect_single(struct block_list *bl, uint16 effectId, bool enable) {
+	#if PACKETVER >= 20150422
+	unsigned char buf[13];
+
+	nullpo_retv(bl);
+
+	WBUFW(buf,0) = 0xa3b;
+	WBUFW(buf,2) = 13;
+	WBUFL(buf,4) = bl->id;
+	WBUFB(buf,8) = enable;
+	WBUFL(buf,9) = effectId;
+
+	clif_send(buf, 13, bl, AREA);
+	#endif
+}
+
 /*==========================================
  * Main client packet processing function
  *------------------------------------------*/
@@ -21161,4 +21224,7 @@ void clif_defaults(void) {
 	clif->clan_leave = clif_clan_leave;
 	clif->clan_message = clif_clan_message;
 	clif->pClanMessage = clif_parse_ClanMessage;
+	// -- Hat Effect
+	clif->hat_effect = clif_hat_effect;
+	clif->hat_effect_single = clif_hat_effect_single;
 }

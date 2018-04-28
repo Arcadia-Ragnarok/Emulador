@@ -603,6 +603,8 @@ END_ZEROED_BLOCK;
 	const char* delunit_prevfile;
 	int delunit_prevline;
 
+	// HatEffect
+	VECTOR_DECL(int) hatEffectId;
 };
 
 #define EQP_WEAPON EQP_HAND_R
