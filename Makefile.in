@@ -10,6 +10,15 @@
 #####################################################################
 #                  Idealizado por: Spell Master                     #
 #####################################################################
+# - Este código é livre para editar, redistribuir de acordo com os  #
+# termos da GNU General Public License, publicada sobre conselho    #
+# pela Free Software Foundation.                                    #
+#                                                                   #
+# - Qualquer ato de comercialização desse software está previsto    #
+# em leis internacionais, junto com este(s) código(s) você recebeu  #
+# uma cópia de licença de uso.                                      #
+# - Caso não tenha recebido veja: http://www.gnu.org/licenses/      #
+#####################################################################
 
 # @configure_input@
 
@@ -17,12 +26,13 @@
 
 HAVE_MYSQL=@HAVE_MYSQL@
 ifeq ($(HAVE_MYSQL),yes)
-	ALL_DEPENDS=common_sql login_sql char_sql map_sql sysinfo | import
+	ALL_DEPENDS=common_sql login_sql char_sql map_sql tools sysinfo | import
 	SQL_DEPENDS=common_sql login_sql char_sql map_sql sysinfo | import
 	COMMON_SQL_DEPENDS=mt19937ar libconfig sysinfo
 	LOGIN_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
 	CHAR_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
 	MAP_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
+	TOOLS_DEPENDS=mt19937ar libconfig common_sql sysinfo
 else
 	ALL_DEPENDS=needs_mysql
 	SQL_DEPENDS=needs_mysql
@@ -30,12 +40,14 @@ else
 	LOGIN_SQL_DEPENDS=needs_mysql
 	CHAR_SQL_DEPENDS=needs_mysql
 	MAP_SQL_DEPENDS=needs_mysql
+	TOOLS_DEPENDS=needs_mysql
 endif
 
 HAVE_PERL=@HAVE_PERL@
 
 MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
-             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map Source/src/test)
+             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map \
+             Source/src/tool Source/src/test)
 
 CC = @CC@
 export CC
@@ -47,6 +59,7 @@ export CC
 	login_sql \
 	char_sql \
 	map_sql \
+	tools \
 	import \
 	test \
 	clean \
@@ -100,6 +113,10 @@ map_sql: $(MAP_SQL_DEPENDS) Source/src/map/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/src/map sql
 
+tools: $(TOOLS_DEPENDS) Source/src/tool/Makefile
+	@echo "	MAKE	$@"
+	@$(MAKE) -C Source/src/tool
+
 test: Source/src/test/Makefile
 	@echo "	MAKE	$@"
 	@$(MAKE) -C Source/src/test
@@ -118,6 +135,7 @@ clean buildclean: $(MF_TARGETS)
 	@$(MAKE) -C Source/src/login $@
 	@$(MAKE) -C Source/src/char $@
 	@$(MAKE) -C Source/src/map $@
+	@$(MAKE) -C Source/src/tool $@
 	@$(MAKE) -C Source/src/test $@
 
 distclean: clean
@@ -144,6 +162,7 @@ help: Makefile
 	@echo "'login_sql'   - builds login server"
 	@echo "'char_sql'    - builds char server"
 	@echo "'map_sql'     - builds map server"
+	@echo "'tools'       - builds all the tools in Source/src/tools"
 	@echo "'import'      - builds Config/import folder from the template Config/import-tmpl"
 	@echo "'all'         - builds all the above targets"
 	@echo "'sql'         - builds sql servers (targets 'common_sql' 'login_sql' 'char_sql'"
