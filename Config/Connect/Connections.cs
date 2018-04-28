@@ -45,8 +45,8 @@ sql_connection: {
 	// INSERT, UPDATE, SELECT e DELETE
 	db_username: "arcadiasqluser"
 
-	// Senha do usuário usado em 'db_username' SQL que tem permissão
-	//de acessar o banco de dados
+	// Senha do usuário SQL usado em 'db_username' que tem permissão
+	//total de acesso ao banco de dados
 	db_password: "arcadiasqluserpass"
 
 	// Nome do Banco de dados onde estão armazenadas as tabelas do
@@ -87,32 +87,21 @@ sql_connection: {
 // - Conexão de Comunicação
 // ---------------------------------------------------------------------
 // Essas configurações permitem que o char-serve, map-serve e 
-//login-serve consigam se comunicar entre sí. E aceitem conexões de
-//usuários.
+//login-serve consigam se comunicar entre sí.
+// E aceitem conexões de usuários.
 // ---------------------------------------------------------------------
 inter: {
-	// Login da conta principal usada para fazer comunicação entre os
-	//servidores (Jamais loge nessa conta!)
-	userid: "arcadiauser"
-	// Senha da conta usada em 'userid' para fazer comunicação entre os
-	//servidores
-	passwd: "arcadiapass"
+	userid: "arcadiauser" // Login da conta principal usada para fazer comunicação entre os servidores (Jamais loge nessa conta!)
+	passwd: "arcadiapass" // Senha da conta usada em 'userid' para fazer comunicação entre os servidores
 
-	// Ip do servidor do Char-Serve (127.0.0.1 para servidor local)
-	char_ip: "127.0.0.1"
-	// Porta de acesso ao Char-Serve
-	char_port: 6121
+	char_ip: "127.0.0.1"  // Ip do servidor do Char-Serve (127.0.0.1 para servidor local)
+	char_port: 6121       // Porta de acesso ao Char-Serve
 
-	// Ip do servidor do Map-Serve (127.0.0.1 para servidor local)
-	map_ip: "127.0.0.1"
-	// Porta de acesso ao Map-Serve
-	map_port: 5121
+	map_ip: "127.0.0.1"   // Ip do servidor do Map-Serve (127.0.0.1 para servidor local)
+	map_port: 5121        // Porta de acesso ao Map-Serve
 
-	// Ip do servidor de Login-Serve
-	//NOTA: Esse IP deve ser usado no arquivo ClientInfo.XML do client
-	login_ip: "127.0.0.1"
-	// Porta de acesso ao Login-Serve
-	login_port: 6900
+	login_ip: "127.0.0.1" // Ip do servidor de Login-Serve *NOTA: Esse IP deve ser usado no arquivo ClientInfo.XML do client
+	login_port: 6900      // Porta de acesso ao Login-Serve
 
 	// Qual é o intervalo em minutos para executar a atualização de DNS?
 	// NOTA: Isso poderá almentar consideravelmente as chances do
