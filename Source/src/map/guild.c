@@ -268,6 +268,7 @@ void guild_makemember(struct guild_member *m,struct map_session_data *sd)
 	m->online     = 1;
 	m->position   = MAX_GUILDPOSITION-1;
 	memcpy(m->name,sd->status.name,NAME_LENGTH);
+	m->last_login = (uint32)time(NULL);
 	return;
 }
 
@@ -941,28 +942,30 @@ int guild_send_memberinfoshort(struct map_session_data *sd,int online)
 	return 0;
 }
 
-int guild_recv_memberinfoshort(int guild_id, int account_id, int char_id, int online, int lv, int16 class)
-{ // cleaned up [LuzZza]
+int guild_recv_memberinfoshort(int guild_id, int account_id, int char_id, int online, int lv, int16 class, uint32 last_login) {
+	// cleaned up [LuzZza]
 	int i, alv, c, idx = INDEX_NOT_FOUND, om = 0, oldonline = -1;
 	struct guild *g = guild->search(guild_id);
 
-	if(g == NULL)
+	if (g == NULL)
 		return 0;
 
-	for(i=0,alv=0,c=0,om=0;i<g->max_member;i++){
-		struct guild_member *m=&g->member[i];
+	for (i=0, alv=0, c=0, om=0; i< g->max_member; i++){
+		struct guild_member *m = &g->member[i];
 		if(!m->account_id) continue;
-		if(m->account_id==account_id && m->char_id==char_id ){
-			oldonline=m->online;
-			m->online=online;
-			m->lv=lv;
+		if(m->account_id == account_id && m->char_id == char_id ){
+			oldonline = m->online;
+			m->online = online;
+			m->lv = lv;
 			m->class = class;
+			m->last_login = last_login;
 			idx=i;
 		}
 		alv+=m->lv;
 		c++;
-		if(m->online)
+		if(m->online) {
 			om++;
+		}
 	}
 
 	if (idx == INDEX_NOT_FOUND || c == 0) {
@@ -982,20 +985,20 @@ int guild_recv_memberinfoshort(int guild_id, int account_id, int char_id, int on
 	//Ensure validity of pointer (ie: player logs in/out, changes map-server)
 	g->member[idx].sd = guild->sd_check(guild_id, account_id, char_id);
 
-	if(oldonline!=online)
+	if (oldonline!=online) {
 		clif->guild_memberlogin_notice(g, idx, online);
+	}
 
-	if(!g->member[idx].sd)
+	if (!g->member[idx].sd) {
 		return 0;
+	}
 
 	//Send XY dot updates. [Skotlex]
 	//Moved from guild_send_memberinfoshort [LuzZza]
-	for(i=0; i < g->max_member; i++) {
-
-		if(!g->member[i].sd || i == idx ||
-			g->member[i].sd->bl.m != g->member[idx].sd->bl.m)
+	for (i=0; i < g->max_member; i++) {
+		if (!g->member[i].sd || i == idx || g->member[i].sd->bl.m != g->member[idx].sd->bl.m) {
 			continue;
-
+		}
 		clif->guild_xy_single(g->member[idx].sd->fd, g->member[i].sd);
 		clif->guild_xy_single(g->member[i].sd->fd, g->member[idx].sd);
 	}
