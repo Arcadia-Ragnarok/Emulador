@@ -6077,7 +6077,7 @@ void clif_wis_end(int fd, int flag) {
 void clif_solved_charname(int fd, int charid, const char* name)
 {
 	nullpo_retv(name);
-#if PACKETVER_MAIN_NUM >= 20180307 || PACKETVER_RE_NUM >= 20180221
+#if PACKETVER_MAIN_NUM >= 20180307 || PACKETVER_RE_NUM >= 20180221 || PACKETVER_ZERO_NUM >= 20180328
 	WFIFOHEAD(fd, packet_len(0x0af7));
 	WFIFOW(fd, 0) = 0xaf7;
 	if (*name == 0) {
@@ -9214,6 +9214,54 @@ void clif_msgtable_skill(struct map_session_data* sd, uint16 skill_id, int msg_i
 }
 
 /**
+* Displays a format string from msgstringtable.txt with a %s value (ZC_FORMATSTRING_MSG).
+*
+* @param sd     The target character.
+* @param msg_id msgstringtable message index, 0-based (@see enum clif_messages)
+* @param value  The value to fill %s.
+*/
+void clif_msgtable_str(struct map_session_data *sd, uint16 msg_id, const char *value) {
+	int message_len;
+	int len;
+	struct PACKET_ZC_FORMATSTRING_MSG *p;
+
+	nullpo_retv(sd);
+	nullpo_retv(value);
+
+	message_len = (int)strlen(value) + 1;
+	len = sizeof(*p) + message_len + 1;
+
+	p = (struct PACKET_ZC_FORMATSTRING_MSG *)aMalloc(len);
+	p->PacketType = 0x2c2;
+	p->PacketLength = len;
+	p->MessageId = msg_id;
+	safestrncpy(p->MessageString, value, message_len);
+	p->MessageString[message_len] = 0;
+
+	clif->send(p, p->PacketLength, &sd->bl, SELF);
+	aFree(p);
+}
+
+/**
+* Displays a format string from msgstringtable.txt with a color (ZC_MSG_COLOR).
+*
+* @param sd     The target character.
+* @param msg_id msgstringtable message index, 0-based (@see enum clif_messages)
+* @param color  The color to use
+*/
+void clif_msgtable_color(struct map_session_data *sd, uint16 msg_id, uint32 color) {
+	struct PACKET_ZC_MSG_COLOR p;
+
+	nullpo_retv(sd);
+
+	p.PacketType = 0x9cd;
+	p.MessageId = msg_id;
+	p.MessageColor = RGB2BGR(color);
+
+	clif->send(&p, sizeof(p), &sd->bl, SELF);
+}
+
+/**
  * Validates and processes a global/guild/party message packet.
  *
  * @param[in]  sd         The source character.
@@ -9674,6 +9722,14 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) {
 #if PACKETVER >= 20070918
 		clif->partyinvitationstate(sd);
 		clif->equpcheckbox(sd);
+#endif
+
+#if PACKETVER_MAIN_NUM >= 20171025 || PACKETVER_RE_NUM >= 20170920
+	if (sd->hd != NULL) {
+		clif->zc_config(sd, CZ_CONFIG_HOMUNCULUS_AUTOFEEDING, sd->hd->homunculus.autofeed);
+	} else {
+		clif->zc_config(sd, CZ_CONFIG_HOMUNCULUS_AUTOFEEDING, false);
+	}
 #endif
 		if( (battle_config.bg_flee_penalty != 100 || battle_config.gvg_flee_penalty != 100)
 		 && (map_flag_gvg2(sd->state.pmap) || map_flag_gvg2(sd->bl.m)
@@ -16214,6 +16270,7 @@ void clif_quest_update_objective(struct map_session_data *sd, struct quest *qd) 
 /// Notification of an hunting mission counter just after quest is added (ZC_HUNTING_QUEST_INFO).
 /// 08fe <packet len>.W  { <quest id>.L <mob id>.L <total count>.W <current count>.W }*3
 void clif_quest_notify_objective(struct map_session_data *sd, struct quest *qd) {
+#if PACKETVER >= 20150513
 	int i, len, real_len;
 	uint8 *buf = NULL;
 	struct packet_quest_hunt_info *packet = NULL;
@@ -16245,6 +16302,7 @@ void clif_quest_notify_objective(struct map_session_data *sd, struct quest *qd) 
 	packet->PacketLength = real_len;
 	clif->send(buf, real_len, &sd->bl, SELF);
 	aFree(buf);
+#endif
 }
 
 void clif_parse_questStateAck(int fd, struct map_session_data *sd) __attribute__((nonnull (2)));
@@ -20780,6 +20838,8 @@ void clif_defaults(void) {
 	clif->msgtable_skill = clif_msgtable_skill;
 	clif->msgtable = clif_msgtable;
 	clif->msgtable_num = clif_msgtable_num;
+	clif->msgtable_str = clif_msgtable_str;
+	clif->msgtable_color = clif_msgtable_color;
 	clif->message = clif_displaymessage;
 	clif->messageln = clif_displaymessage2;
 	clif->messages = clif_displaymessage_sprintf;

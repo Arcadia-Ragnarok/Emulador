@@ -5004,8 +5004,7 @@ const char *script_getfuncname(struct script_state *st) {
  *                   already initialized)
  * @retval false if an error occurs.
  */
-bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
-{
+bool script_sprintf_helper(struct script_state *st, int start, struct StringBuf *out) {
 	const char *format = NULL;
 	const char *p = NULL, *np = NULL;
 	char *buf = NULL;
@@ -5057,7 +5056,7 @@ bool script_sprintf(struct script_state *st, int start, struct StringBuf *out)
 		}
 		// placeholder = "%n" ; (ignored)
 		if (*np == 'n') {
-			ShowWarning("script_sprintf: Formato %%n nao suportado! Ignorado...\n");
+			ShowWarning("script_sprintf_helper: Formato %%n nao suportado! Ignorado...\n");
 			script->reportsrc(st);
 			lastarg = nextarg;
 			p = np + 1;
@@ -5260,7 +5259,7 @@ BUILDIN(mesf)
 
 	StrBuf->Init(&buf);
 
-	if (!script_sprintf(st, 2, &buf)) {
+	if (!script->sprintf_helper(st, 2, &buf)) {
 		StrBuf->Destroy(&buf);
 		return false;
 	}
@@ -16153,7 +16152,7 @@ BUILDIN(sprintf)
 	struct StringBuf buf;
 	StrBuf->Init(&buf);
 
-	if (!script_sprintf(st, 2, &buf)) {
+	if (!script->sprintf_helper(st, 2, &buf)) {
 		StrBuf->Destroy(&buf);
 		script_pushconststr(st, "");
 		return false;
@@ -24434,7 +24433,7 @@ void script_defaults(void)
 	script->search_str = script_search_str;
 	script->setd_sub = setd_sub;
 	script->attach_state = script_attach_state;
-	script->sprintf = script_sprintf;
+	script->sprintf_helper = script_sprintf_helper;
 
 	script->queue = script_hqueue_get;
 	script->queue_add = script_hqueue_add;
