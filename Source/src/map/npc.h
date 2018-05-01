@@ -116,6 +116,7 @@ struct npc_data {
 			struct mob_data *md;
 			time_t kill_time;
 			char killer_name[NPC_NAME_LENGTH];
+			int spawn_timer;
 		} tomb;
 	} u;
 };

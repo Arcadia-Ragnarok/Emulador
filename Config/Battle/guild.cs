@@ -21,10 +21,11 @@ guild_config: {
 	// Máximo de castelos que um clã pode conquistar (0 = ilimitado)
 	guild_max_castles: 0
 
-	// Reiniciar o Delay das Skills quando relogar?
-	// Quando "false", o tempo permanece inalterado.
-	//Caso contrário, zera-se.
-	guild_skill_relog_delay: false
+	// Como deve ser calculado o Delay nas habilidades de clã quando ao relogar?
+	// 0 - O delay é zerado
+	// 1 - Reinicia o delay para a completa duração.
+	// 2 - Mesmo deslogado o tempo para uso continua sendo contado
+	guild_skill_relog_delay: 2
 
 	// Ajuse de danos de Guerra do Emperium contra guardiões
 	castle_defense_rate: 100

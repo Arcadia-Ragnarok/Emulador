@@ -6472,7 +6472,7 @@ battle_data[] = {
 	{ "gm_config/atcommand_suggestions",          &battle_config.atcommand_suggestions_enabled,   0,   0, 1        },
 
 	{ "guild_config/guild_max_castles",       &battle_config.guild_max_castles,       0,   0, INT_MAX, },
-	{ "guild_config/guild_skill_relog_delay", &battle_config.guild_skill_relog_delay, 0,   0, 1,       },
+	{ "guild_config/guild_skill_relog_delay", &battle_config.guild_skill_relog_delay, 0,   0, 2,       },
 	{ "guild_config/guild_emperium_check",    &battle_config.guild_emperium_check,    1,   0, 1,       },
 	{ "guild_config/guild_exp_limit",         &battle_config.guild_exp_limit,         50,  0, 99,      },
 	{ "guild_config/gvg_flee_penalty",        &battle_config.gvg_flee_penalty,        20,  0, INT_MAX, },
@@ -6582,6 +6582,7 @@ battle_data[] = {
 	{ "monster_config/ksprotection",                      &battle_config.ksprotection,                 5000,  0,     INT_MAX, },
 	{ "monster_config/mob_slave_keep_target",             &battle_config.mob_slave_keep_target,        0,     0,     1,       },
 	{ "monster_config/mvp_tomb_enabled",                  &battle_config.mvp_tomb_enabled,             1,     0,     1,       },
+	{ "monster_config/mvp_tomb_spawn_delay",              &battle_config.mvp_tomb_spawn_delay,         10000, 0,     INT_MAX  },
 	{ "monster_config/mob_size_influence",                &battle_config.mob_size_influence,           0,     0,     1,       },
 	{ "monster_config/monster_chase_refresh",             &battle_config.mob_chase_refresh,            1,     0,     30,      },
 	{ "monster_config/mob_icewall_walk_block",            &battle_config.mob_icewall_walk_block,       75,    0,     255,     },

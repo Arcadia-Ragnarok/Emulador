@@ -267,7 +267,11 @@ monster_config: {
 	// Veja http://irowiki.org/wiki/MVP#Gravestone 
 	mvp_tomb_enabled: true
 
-	// Mostrar barra de hp dos monstros? (Padrão: yes)
+	// Tempo em milissegundos para o túmulo aparecer.
+	// Padrão: 1000 (1 segundo)
+	mvp_tomb_spawn_delay: 1000
+
+	// Mostrar barra de hp dos monstros?
 	// Nota: Só funciona em clientes 2012-04-04aRagexeRE em diante.
 	show_monster_hp_bar: false
 
