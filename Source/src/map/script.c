@@ -13359,10 +13359,7 @@ BUILDIN(setwall) {
 
 BUILDIN(delwall) {
 	const char *name = script_getstr(st,2);
-	if (!map->iwall_remove(name)) {
-		ShowWarning("buildin_delwall: Nao existente '%s' ou nao encontrado.\n", name);
-		return false;
-	}
+	map->iwall_remove(name);
 	return true;
 }
 
