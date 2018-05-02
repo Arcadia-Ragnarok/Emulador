@@ -242,6 +242,13 @@ int pc_addspiritball(struct map_session_data *sd,int interval,int max)
 		memmove(sd->spirit_timer+i+1, sd->spirit_timer+i, (sd->spiritball-i)*sizeof(int));
 	sd->spirit_timer[i] = tid;
 	sd->spiritball++;
+	pc->addspiritball_sub(sd);
+
+	return 0;
+}
+
+int pc_addspiritball_sub(struct map_session_data *sd) {
+	nullpo_ret(sd);
 	if ((sd->job & MAPID_THIRDMASK) == MAPID_ROYAL_GUARD)
 		clif->millenniumshield(&sd->bl,sd->spiritball);
 	else
@@ -280,16 +287,24 @@ int pc_delspiritball(struct map_session_data *sd,int count,int type)
 		sd->spirit_timer[i] = INVALID_TIMER;
 	}
 
-	if(!type) {
-		if ((sd->job & MAPID_THIRDMASK) == MAPID_ROYAL_GUARD)
-			clif->millenniumshield(&sd->bl,sd->spiritball);
-		else
-			clif->spiritball(&sd->bl);
+	if (!type) {
+		pc->delspiritball_sub(sd);
 	}
 	return 0;
 }
-int pc_check_banding(struct block_list *bl, va_list ap)
-{
+
+int pc_delspiritball_sub(struct map_session_data *sd) {
+	nullpo_ret(sd);
+	if ((sd->job & MAPID_THIRDMASK) == MAPID_ROYAL_GUARD) {
+		clif->millenniumshield(&sd->bl,sd->spiritball);
+	} else {
+		clif->spiritball(&sd->bl);
+	}
+	return 0;
+}
+
+
+int pc_check_banding(struct block_list *bl, va_list ap) {
 	int *c, *b_sd;
 	struct block_list *src;
 	const struct map_session_data *tsd;
@@ -1572,6 +1587,28 @@ int pc_calc_skillpoint(struct map_session_data* sd) {
 	return skill_point;
 }
 
+void pc_calc_skilltree_clear(struct map_session_data *sd) {
+	int i;
+	nullpo_retv(sd);
+	for (i = 0; i < MAX_SKILL_DB; i++) {
+		if (sd->status.skill[i].flag != SKILL_FLAG_PLAGIARIZED && sd->status.skill[i].flag != SKILL_FLAG_PERM_GRANTED) {
+			sd->status.skill[i].id = 0; //First clear skills.
+		}
+		/* permanent skills that must be re-checked */
+		if (sd->status.skill[i].flag == SKILL_FLAG_PERMANENT) {
+			switch (skill->dbs->db[i].nameid) {
+				case NV_TRICKDEAD:
+				if ((sd->job & MAPID_UPPERMASK) != MAPID_NOVICE) {
+					sd->status.skill[i].id = 0;
+					sd->status.skill[i].lv = 0;
+					sd->status.skill[i].flag = 0;
+				}
+				break;
+			}
+		}
+	}
+}
+
 /*==========================================
  * Calculation of skill level.
  *------------------------------------------*/
@@ -1589,23 +1626,7 @@ int pc_calc_skilltree(struct map_session_data *sd)
 		return 1;
 	}
 	classidx = pc->class2idx(class);
-
-	for (i = 0; i < MAX_SKILL_DB; i++) {
-		if( sd->status.skill[i].flag != SKILL_FLAG_PLAGIARIZED && sd->status.skill[i].flag != SKILL_FLAG_PERM_GRANTED ) //Don't touch these
-			sd->status.skill[i].id = 0; //First clear skills.
-		/* permanent skills that must be re-checked */
-		if( sd->status.skill[i].flag == SKILL_FLAG_PERMANENT ) {
-			switch( skill->dbs->db[i].nameid ) {
-				case NV_TRICKDEAD:
-					if ((sd->job & MAPID_UPPERMASK) != MAPID_NOVICE) {
-						sd->status.skill[i].id = 0;
-						sd->status.skill[i].lv = 0;
-						sd->status.skill[i].flag = 0;
-					}
-					break;
-			}
-		}
-	}
+	pc->calc_skilltree_clear(sd);
 
 	for (i = 0; i < MAX_SKILL_DB; i++) {
 		if( sd->status.skill[i].flag != SKILL_FLAG_PERMANENT && sd->status.skill[i].flag != SKILL_FLAG_PERM_GRANTED && sd->status.skill[i].flag != SKILL_FLAG_PLAGIARIZED )
@@ -1732,7 +1753,18 @@ int pc_calc_skilltree(struct map_session_data *sd)
 		}
 	} while(flag);
 
-	//
+	pc->calc_skilltree_bonus(sd, classidx);
+
+	return 0;
+}
+
+void pc_calc_skilltree_bonus(struct map_session_data *sd, int classidx) {
+	int i;
+	int id = 0;
+
+	nullpo_retv(sd);
+	Assert_retv(classidx >= 0 && classidx < CLASS_COUNT);
+
 	if (classidx > 0 && (sd->job & MAPID_UPPERMASK) == MAPID_TAEKWON
 	 && sd->status.base_level >= 90 && sd->status.skill_point == 0
 	 && pc->fame_rank(sd->status.char_id, RANKTYPE_TAEKWON) > 0) {
@@ -1757,8 +1789,6 @@ int pc_calc_skilltree(struct map_session_data *sd)
 			sd->status.skill[idx].lv = skill->tree_get_max(id, sd->status.class);
 		}
 	}
-
-	return 0;
 }
 
 //Checks if you can learn a new skill after having leveled up a skill.
@@ -6716,18 +6746,7 @@ int pc_checkbaselevelup(struct map_session_data *sd)
 	status_calc_pc(sd,SCO_FORCE);
 	status_percent_heal(&sd->bl,100,100);
 
-	if ((sd->job & MAPID_UPPERMASK) == MAPID_SUPER_NOVICE) {
-		sc_start(NULL,&sd->bl,status->skill2sc(PR_KYRIE),100,1,skill->get_time(PR_KYRIE,1));
-		sc_start(NULL,&sd->bl,status->skill2sc(PR_IMPOSITIO),100,1,skill->get_time(PR_IMPOSITIO,1));
-		sc_start(NULL,&sd->bl,status->skill2sc(PR_MAGNIFICAT),100,1,skill->get_time(PR_MAGNIFICAT,1));
-		sc_start(NULL,&sd->bl,status->skill2sc(PR_GLORIA),100,1,skill->get_time(PR_GLORIA,1));
-		sc_start(NULL,&sd->bl,status->skill2sc(PR_SUFFRAGIUM),100,1,skill->get_time(PR_SUFFRAGIUM,1));
-		if (sd->state.snovice_dead_flag)
-			sd->state.snovice_dead_flag = 0; //Reenable steelbody resurrection on dead.
-	} else if ((sd->job & MAPID_BASEMASK) == MAPID_TAEKWON) {
-		sc_start(NULL,&sd->bl,status->skill2sc(AL_INCAGI),100,10,600000);
-		sc_start(NULL,&sd->bl,status->skill2sc(AL_BLESSING),100,10,600000);
-	}
+	pc->checkbaselevelup_sc(sd);
 	clif->misceffect(&sd->bl,0);
 	npc->script_event(sd, NPCE_BASELVUP); //LORDALFA - LVLUPEVENT
 
@@ -6737,6 +6756,24 @@ int pc_checkbaselevelup(struct map_session_data *sd)
 	pc->baselevelchanged(sd);
 	return 1;
 }
+
+void pc_checkbaselevelup_sc(struct map_session_data *sd) {
+	nullpo_retv(sd);
+	if ((sd->job & MAPID_UPPERMASK) == MAPID_SUPER_NOVICE) {
+		sc_start(NULL, &sd->bl, status->skill2sc(PR_KYRIE), 100, 1, skill->get_time(PR_KYRIE, 1));
+		sc_start(NULL, &sd->bl, status->skill2sc(PR_IMPOSITIO), 100, 1, skill->get_time(PR_IMPOSITIO, 1));
+		sc_start(NULL, &sd->bl, status->skill2sc(PR_MAGNIFICAT), 100, 1, skill->get_time(PR_MAGNIFICAT, 1));
+		sc_start(NULL, &sd->bl, status->skill2sc(PR_GLORIA), 100, 1, skill->get_time(PR_GLORIA, 1));
+		sc_start(NULL, &sd->bl, status->skill2sc(PR_SUFFRAGIUM), 100, 1, skill->get_time(PR_SUFFRAGIUM, 1));
+		if (sd->state.snovice_dead_flag) {
+			sd->state.snovice_dead_flag = 0; //Reenable steelbody resurrection on dead.
+		}
+	} else if ((sd->job & MAPID_BASEMASK) == MAPID_TAEKWON) {
+		sc_start(NULL, &sd->bl, status->skill2sc(AL_INCAGI), 100, 10, 600000);
+		sc_start(NULL, &sd->bl, status->skill2sc(AL_BLESSING), 100, 10, 600000);
+	}
+}
+
 
 void pc_baselevelchanged(struct map_session_data *sd) {
 	int i;
@@ -7460,15 +7497,14 @@ int pc_resetstate(struct map_session_data* sd) {
  * /resetskill
  * @param flag: @see enum pc_resetskill_flag
  *------------------------------------------*/
-int pc_resetskill(struct map_session_data* sd, int flag)
-{
+int pc_resetskill(struct map_session_data* sd, int flag) {
 	int i, inf2, skill_point=0;
 	nullpo_ret(sd);
 
 	if (flag&PCRESETSKILL_CHSEX && (sd->job & MAPID_UPPERMASK) != MAPID_BARDDANCER)
 		return 0;
 
-	if( !(flag&PCRESETSKILL_RECOUNT) ) { //Remove stuff lost when resetting skills.
+	if (!(flag&PCRESETSKILL_RECOUNT)) { //Remove stuff lost when resetting skills.
 
 		/**
 		 * It has been confirmed on official server that when you reset skills with a ranked tweakwon your skills are not reset (because you have all of them anyway)
@@ -7476,70 +7512,69 @@ int pc_resetskill(struct map_session_data* sd, int flag)
 		if ((sd->job & MAPID_UPPERMASK) == MAPID_TAEKWON && sd->status.base_level >= 90 && pc->fame_rank(sd->status.char_id, RANKTYPE_TAEKWON))
 			return 0;
 
-		if( pc->checkskill(sd, SG_DEVIL) &&  !pc->nextjobexp(sd) ) //Remove perma blindness due to skill-reset. [Skotlex]
+		//Remove perma blindness due to skill-reset. [Skotlex]
+		if(pc->checkskill(sd, SG_DEVIL) &&  !pc->nextjobexp(sd)) {
 			clif->sc_end(&sd->bl, sd->bl.id, SELF, SI_DEVIL1);
+		}
 		i = sd->sc.option;
-		if( i&OPTION_RIDING && pc->checkskill(sd, KN_RIDING) )
+		if (i&OPTION_RIDING && pc->checkskill(sd, KN_RIDING)) {
 			i &= ~OPTION_RIDING;
-		if( i&OPTION_FALCON && pc->checkskill(sd, HT_FALCON) )
+		}
+		if (i&OPTION_FALCON && pc->checkskill(sd, HT_FALCON)) {
 			i &= ~OPTION_FALCON;
-		if( i&OPTION_DRAGON && pc->checkskill(sd, RK_DRAGONTRAINING) )
+		}
+		if (i&OPTION_DRAGON && pc->checkskill(sd, RK_DRAGONTRAINING)) {
 			i &= ~OPTION_DRAGON;
-		if( i&OPTION_WUG && pc->checkskill(sd, RA_WUGMASTERY) )
+		}
+		if (i&OPTION_WUG && pc->checkskill(sd, RA_WUGMASTERY)) {
 			i &= ~OPTION_WUG;
-		if( i&OPTION_WUGRIDER && pc->checkskill(sd, RA_WUGRIDER) )
+		}
+		if (i&OPTION_WUGRIDER && pc->checkskill(sd, RA_WUGRIDER)) {
 			i &= ~OPTION_WUGRIDER;
-		if (i&OPTION_MADOGEAR && (sd->job & MAPID_THIRDMASK) == MAPID_MECHANIC)
+		}
+		if (i&OPTION_MADOGEAR && (sd->job & MAPID_THIRDMASK) == MAPID_MECHANIC) {
 			i &= ~OPTION_MADOGEAR;
-#ifndef NEW_CARTS
-		if( i&OPTION_CART && pc->checkskill(sd, MC_PUSHCART) )
+		}
+		#ifndef NEW_CARTS
+		if(i&OPTION_CART && pc->checkskill(sd, MC_PUSHCART)) {
 			i &= ~OPTION_CART;
-#else
-		if( sd->sc.data[SC_PUSH_CART] )
+		}
+		#else
+		if(sd->sc.data[SC_PUSH_CART]) {
 			pc->setcart(sd, 0);
-#endif
-		if( i != sd->sc.option )
+		}
+		#endif
+		if(i != sd->sc.option) {
 			pc->setoption(sd, i);
-
-		if( homun_alive(sd->hd) && pc->checkskill(sd, AM_CALLHOMUN) )
+		}
+		if(homun_alive(sd->hd) && pc->checkskill(sd, AM_CALLHOMUN)) {
 			homun->vaporize(sd, HOM_ST_REST);
-
-		if ((sd->sc.data[SC_SPRITEMABLE] && pc->checkskill(sd, SU_SPRITEMABLE)))
+		}
+		if ((sd->sc.data[SC_SPRITEMABLE] && pc->checkskill(sd, SU_SPRITEMABLE))) {
 			status_change_end(&sd->bl, SC_SPRITEMABLE, INVALID_TIMER);
+		}
 	}
 
 	for (i = 1; i < MAX_SKILL_DB; i++) {
-		uint16 skill_id = 0;
 		int lv = sd->status.skill[i].lv;
 		if (lv < 1) continue;
 
 		inf2 = skill->dbs->db[i].inf2;
 
-		if( inf2&(INF2_WEDDING_SKILL|INF2_SPIRIT_SKILL) ) //Avoid reseting wedding/linker skills.
-			continue;
-
-		skill_id = skill->dbs->db[i].nameid;
-
-		// Don't reset trick dead if not a novice/baby
-		if (skill_id == NV_TRICKDEAD && (sd->job & MAPID_UPPERMASK) != MAPID_NOVICE) {
-			sd->status.skill[i].lv = 0;
-			sd->status.skill[i].flag = 0;
+		//Avoid reseting wedding/linker skills.
+		if (inf2&(INF2_WEDDING_SKILL|INF2_SPIRIT_SKILL)) {
 			continue;
 		}
-
-		// do not reset basic skill
-		if (skill_id == NV_BASIC && (sd->job & MAPID_UPPERMASK) != MAPID_NOVICE)
+		if (pc->resetskill_job(sd, i)) {
 			continue;
-		if (skill_id == SU_BASIC_SKILL && (sd->job & MAPID_BASEMASK) != MAPID_SUMMONER)
+		}
+		if (sd->status.skill[i].flag == SKILL_FLAG_PERM_GRANTED) {
 			continue;
-
-		if( sd->status.skill[i].flag == SKILL_FLAG_PERM_GRANTED )
+		}
+		if (flag&PCRESETSKILL_CHSEX && !skill_ischangesex(i)) {
 			continue;
-
-		if( flag&PCRESETSKILL_CHSEX && !skill_ischangesex(i) )
-			continue;
-
-		if( inf2&INF2_QUEST_SKILL && !battle_config.quest_skill_learn ) {
+		}
+		if (inf2&INF2_QUEST_SKILL && !battle_config.quest_skill_learn ) {
 			//Only handle quest skills in a special way when you can't learn them manually
 			if( battle_config.quest_skill_reset && !(flag&PCRESETSKILL_RECOUNT) ) { //Wipe them
 				sd->status.skill[i].lv = 0;
@@ -7547,33 +7582,41 @@ int pc_resetskill(struct map_session_data* sd, int flag)
 			}
 			continue;
 		}
-		if( sd->status.skill[i].flag == SKILL_FLAG_PERMANENT )
+		if (sd->status.skill[i].flag == SKILL_FLAG_PERMANENT) {
 			skill_point += lv;
-		else if( sd->status.skill[i].flag >= SKILL_FLAG_REPLACED_LV_0 )
+		} else if (sd->status.skill[i].flag >= SKILL_FLAG_REPLACED_LV_0) {
 			skill_point += (sd->status.skill[i].flag - SKILL_FLAG_REPLACED_LV_0);
+		}
 
-		if( !(flag&PCRESETSKILL_RECOUNT) ) {// reset
+		if (!(flag&PCRESETSKILL_RECOUNT)) {// reset
 			sd->status.skill[i].lv = 0;
 			sd->status.skill[i].flag = 0;
 		}
 	}
 
-	if( flag&PCRESETSKILL_RECOUNT || !skill_point ) return skill_point;
+	if(flag&PCRESETSKILL_RECOUNT || !skill_point) {
+		return skill_point;
+	}
 
 	sd->status.skill_point += skill_point;
 
 	if (!(flag&PCRESETSKILL_RECOUNT)) {
 		// Remove all SCs that can't be inactivated without a skill
-		if( sd->sc.data[SC_STORMKICK_READY] )
+		if (sd->sc.data[SC_STORMKICK_READY]) {
 			status_change_end(&sd->bl, SC_STORMKICK_READY, INVALID_TIMER);
-		if( sd->sc.data[SC_DOWNKICK_READY] )
+		}
+		if (sd->sc.data[SC_DOWNKICK_READY]) {
 			status_change_end(&sd->bl, SC_DOWNKICK_READY, INVALID_TIMER);
-		if( sd->sc.data[SC_TURNKICK_READY] )
+		}
+		if(sd->sc.data[SC_TURNKICK_READY]) {
 			status_change_end(&sd->bl, SC_TURNKICK_READY, INVALID_TIMER);
-		if( sd->sc.data[SC_COUNTERKICK_READY] )
+		}
+		if (sd->sc.data[SC_COUNTERKICK_READY]) {
 			status_change_end(&sd->bl, SC_COUNTERKICK_READY, INVALID_TIMER);
-		if( sd->sc.data[SC_DODGE_READY] )
+		}
+		if (sd->sc.data[SC_DODGE_READY]) {
 			status_change_end(&sd->bl, SC_DODGE_READY, INVALID_TIMER);
+		}
 	}
 
 	if (flag&PCRESETSKILL_RESYNC) {
@@ -7583,6 +7626,31 @@ int pc_resetskill(struct map_session_data* sd, int flag)
 	}
 
 	return skill_point;
+}
+
+bool pc_resetskill_job(struct map_session_data* sd, int index) {
+	uint16 skill_id;
+
+	nullpo_retr(false, sd);
+	Assert_retr(false, index >= 0 && index < MAX_SKILL_DB);
+
+	skill_id = skill->dbs->db[index].nameid;
+
+	// Don't reset trick dead if not a novice/baby
+	if (skill_id == NV_TRICKDEAD && (sd->job & MAPID_UPPERMASK) != MAPID_NOVICE) {
+		sd->status.skill[index].lv = 0;
+		sd->status.skill[index].flag = 0;
+		return true;
+	}
+
+	// do not reset basic skill
+	if (skill_id == NV_BASIC && (sd->job & MAPID_UPPERMASK) != MAPID_NOVICE) {
+		return true;
+	}
+	if (skill_id == SU_BASIC_SKILL && (sd->job & MAPID_BASEMASK) != MAPID_SUMMONER) {
+		return true;
+	}
+	return false;
 }
 
 /*==========================================
@@ -7947,8 +8015,8 @@ int pc_dead(struct map_session_data *sd,struct block_list *src) {
 	}
 
 	// changed penalty options, added death by player if pk_mode [Valaris]
-	if( battle_config.death_penalty_type
-	   && (sd->job & MAPID_UPPERMASK) != MAPID_NOVICE // only novices will receive no penalty
+	if (battle_config.death_penalty_type
+	   && pc->isDeathPenaltyJob(sd->job)
 	   && !map->list[sd->bl.m].flag.noexppenalty && !map_flag_gvg2(sd->bl.m)
 	   && !sd->sc.data[SC_BABY] && !sd->sc.data[SC_CASH_DEATHPENALTY]
 	   ) {
@@ -8094,6 +8162,11 @@ int pc_dead(struct map_session_data *sd,struct block_list *src) {
 		sd->canlog_tick = timer->gettick() - battle_config.prevent_logout;
 
 	return 1;
+}
+
+bool pc_isDeathPenaltyJob(uint16 job) {
+	// only novices will receive no penalty
+	return (job & MAPID_UPPERMASK) != MAPID_NOVICE;
 }
 
 void pc_revive(struct map_session_data *sd,unsigned int hp, unsigned int sp) {
@@ -10969,6 +11042,12 @@ int pc_split_atoui64(char* str, uint64* val, char sep, int max)
 	return i;
 }
 
+
+bool pc_read_skill_job_skip(short skill_id, int job_id) {
+	// skip trickdead for non-novices}
+	return skill_id == NV_TRICKDEAD && ((pc->jobid2mapid(job_id) & (MAPID_BASEMASK | JOBL_2)) != MAPID_NOVICE);
+}
+
 /**
  * Parses the skill tree config file.
  *
@@ -11049,8 +11128,9 @@ void pc_read_skill_tree(void)
 						ShowWarning("pc_read_skill_tree: '%s' nao pode herdar '%s', arvore de habilidade esta cheia!\n", job_name, ijob_name);
 						break;
 					}
-					if (src->id == NV_TRICKDEAD && ((pc->jobid2mapid(job_id)&(MAPID_BASEMASK | JOBL_2)) != MAPID_NOVICE))
-						continue; // skip trickdead for non-novices
+					if (pc->read_skill_job_skip(src->id, job_id)) {
+						continue;
+					}
 					dst = &pc->skill_tree[job_idx][cur];
 					dst->inherited = 1;
 					if (dst->id == 0) {
@@ -12104,6 +12184,8 @@ void pc_defaults(void) {
 	pc->checkequip = pc_checkequip;
 
 	pc->calc_skilltree = pc_calc_skilltree;
+	pc->calc_skilltree_bonus = pc_calc_skilltree_bonus;
+	pc->calc_skilltree_clear = pc_calc_skilltree_clear;
 	pc->calc_skilltree_normalize_job = pc_calc_skilltree_normalize_job;
 	pc->clean_skilltree = pc_clean_skilltree;
 
@@ -12166,6 +12248,7 @@ void pc_defaults(void) {
 	pc->maxbaselv = pc_maxbaselv;
 	pc->maxjoblv = pc_maxjoblv;
 	pc->checkbaselevelup = pc_checkbaselevelup;
+	pc->checkbaselevelup_sc = pc_checkbaselevelup_sc;
 	pc->checkjoblevelup = pc_checkjoblevelup;
 	pc->gainexp = pc_gainexp;
 	pc->nextbaseexp = pc_nextbaseexp;
@@ -12182,6 +12265,7 @@ void pc_defaults(void) {
 	pc->resetlvl = pc_resetlvl;
 	pc->resetstate = pc_resetstate;
 	pc->resetskill = pc_resetskill;
+	pc->resetskill_job = pc_resetskill_job;
 	pc->resetfeel = pc_resetfeel;
 	pc->resethate = pc_resethate;
 	pc->equipitem = pc_equipitem;
@@ -12256,7 +12340,9 @@ void pc_defaults(void) {
 	pc->delinvincibletimer = pc_delinvincibletimer;
 
 	pc->addspiritball = pc_addspiritball;
+	pc->addspiritball_sub = pc_addspiritball_sub;
 	pc->delspiritball = pc_delspiritball;
+	pc->delspiritball_sub = pc_delspiritball_sub;
 	pc->addfame = pc_addfame;
 	pc->fame_rank = pc_fame_rank;
 	pc->famelist_type = pc_famelist_type;
@@ -12310,6 +12396,7 @@ void pc_defaults(void) {
 	pc->autosave = pc_autosave;
 	pc->follow_timer = pc_follow_timer;
 	pc->read_skill_tree = pc_read_skill_tree;
+	pc->read_skill_job_skip = pc_read_skill_job_skip;
 	pc->clear_skill_tree = pc_clear_skill_tree;
 	pc->isUseitem = pc_isUseitem;
 	pc->show_steal = pc_show_steal;
@@ -12347,8 +12434,7 @@ void pc_defaults(void) {
 
 	pc->check_job_name = pc_check_job_name;
 	pc->update_idle_time = pc_update_idle_time;
-
 	pc->have_magnifier = pc_have_magnifier;
-
 	pc->check_basicskill = pc_check_basicskill;
+	pc->isDeathPenaltyJob = pc_isDeathPenaltyJob;
 }
