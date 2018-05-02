@@ -3666,21 +3666,6 @@ void char_parse_frommap_update_ip(int fd, int id) {
 	RFIFOSKIP(fd,6);
 }
 
-// --------------------------------------------------------------
-// - Ignorar os 2 primeiros bytes "0x3008" dos clientes Ragexe.
-// Mantém o socket conectado reaproveitando pacotes já enviados.
-// - NOTA: Isso é usado em outros emuladores como instrumento
-//         de monitoramento do emulador dos usuarios e forks.
-// --------------------------------------------------------------
-void char_map_request_packet(int fd) {
-	struct hSockOpt opt;
-	RFIFOSKIP(fd, 2);
-	opt.silent = 1;
-	opt.setTimeo = 1;
-	RFIFOSKIP(fd, RFIFOW(fd,2));
-	RFIFOFLUSH(fd);
-}
-
 void char_parse_frommap_scdata_update(int fd) {
 	int account_id = RFIFOL(fd, 2);
 	int char_id = RFIFOL(fd, 6);
@@ -3894,14 +3879,6 @@ int char_parse_frommap(int fd) {
 			case 0x2736: // ip address update
 				if (RFIFOREST(fd) < 6) return 0;
 				chr->parse_frommap_update_ip(fd, id);
-			break;
-
-			case 0x3008:
-				if( RFIFOREST(fd) < RFIFOW(fd,4) )
-					return 0;/* packet wasn't fully received yet (still fragmented) */
-				else {
-					chr->parse_request_packet(fd);
-			}
 			break;
 
 			/* individual sc data insertion/update  */
@@ -6210,7 +6187,6 @@ void char_defaults(void) {
 	chr->map_auth_failed = char_map_auth_failed;
 	chr->parse_frommap_auth_request = char_parse_frommap_auth_request;
 	chr->parse_frommap_update_ip = char_parse_frommap_update_ip;
-	chr->parse_request_packet = char_map_request_packet;
 	chr->parse_frommap_scdata_update = char_parse_frommap_scdata_update;
 	chr->parse_frommap_scdata_delete = char_parse_frommap_scdata_delete;
 	chr->parse_frommap = char_parse_frommap;

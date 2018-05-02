@@ -19,7 +19,6 @@
 #include "battle.h"
 
 #include "map/battleground.h"
-#include "map/chrif.h"
 #include "map/clif.h"
 #include "map/clan.h"
 #include "map/elemental.h"

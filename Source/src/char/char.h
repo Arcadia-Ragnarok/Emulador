@@ -219,7 +219,6 @@ struct char_interface {
 	void (*map_auth_failed) (int fd, int account_id, int char_id, int login_id1, char sex, uint32 ip);
 	void (*parse_frommap_auth_request) (int fd, int id);
 	void (*parse_frommap_update_ip) (int fd, int id);
-	void (*parse_request_packet) (int fd);
 	void (*parse_frommap_scdata_update) (int fd);
 	void (*parse_frommap_scdata_delete) (int fd);
 	int (*parse_frommap) (int fd);
