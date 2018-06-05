@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -14,37 +14,38 @@
 \*-----------------------------------------------------------------*/
 
 -	script	MilkVendor	FAKE_NPC,{
-	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-	mes "Ei, ei...";
-	mes "Se você me trouxer 1 Garrafa Vazia e 15 Zenys, poderei trocá-los por 1 Leite.";
-	mes "Isso parece ser bom para você?";
+	.@npc$ = strnpcinfo(NPC_NAME_VISIBLE);
+	mes("[" + .@npc$ +"]\n"
+		"Ei, ei...\n"
+		"Se você me trouxer 1 Garrafa Vazia e 15 Zenys, poderei trocá-los por 1 Leite.\n"
+		"Isso parece ser bom para você?");
 	next;
-	if (select("Trocar minhas Garrafas Vazias.","Cancelar") == 1) {
+	if (select("Trocar minhas Garrafas Vazias", "Cancelar") == 1) {
 		if (!countitem(Empty_Bottle)) {
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-			mes "Ei...";
-			mes "Você não tem nenhuma Garrafa Vazia.";
-			mes "Eu realmente não posso te dar o leite de outra forma, você sabe...";
+			mes("[" + .@npc$ +"]\n"
+				"Ei...\n"
+				"Você não tem nenhuma Garrafa Vazia.\n"
+				"Eu realmente não posso te dar o leite de outra forma, você sabe...");
 			close;
 		}
 		.@bottles = countitem(Empty_Bottle);
 		.@total_weight = .@bottles * 50;
 		.@total_cost = .@bottles * 15;
 		if (Zeny < .@total_cost) {
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-			mes "Oh, whoa!";
-			mes "Você não tem os zenys necessários para esse número de Garrafas Vazias.";
-			mes "Você precisa me trazer um total de "+.@total_cost+" zenys.";
+			mes("[" + .@npc$ +"]\n"
+				"Oh, whoa!\n"
+				"Você não tem os zenys necessários para esse número de Garrafas Vazias.\n"
+				"Você precisa me trazer um total de " + .@total_cost + " zenys.");
 			close;
 		} else if (MaxWeight - Weight < .@total_weight) {
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-			mes "Hmm...";
-			mes "Acho que você deveria abrir mais espaço em seu inventário antes que eu lhe dê todo esse leite...";
+			mes("[" + .@npc$ +"]\n"
+				"Hmm...\n"
+				"Acho que você deveria abrir mais espaço em seu inventário antes que eu lhe dê todo esse leite...");
 			close;
 		} else {
 			Zeny -= .@total_cost;
-			delitem(Empty_Bottle,.@bottles);
-			getitem(Milk,.@bottles);
+			delitem(Empty_Bottle, .@bottles);
+			getitem(Milk, .@bottles);
 			close;
 		}
 	}

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -21,40 +21,40 @@ prontera,55,350,5	script	Criador de Pecopecos#kntMount	8W_SOLDIER,{
 	if (Upper == 0) { .@price = 2500; }
 	if (Upper == 1) { .@price = 5000; }
 	if (Upper == 2) { .@price = 5000; }
-	mes "[Criador de Pecopecos]";
+	mes("[Criador de Pecopecos]");
 	if (BaseJob == Job_Knight || BaseJob == Job_Knight2 || BaseJob == Job_Lord_Knight || BaseJob == Job_Lord_Knight2) {
-		mes " Bom-dia honorável Cavaleiro gostaria de alugar um Pecopeco?";
-		mes "Você precisa ter a Habilidade Montaria e apenas "+.@price+" Zeny sobrando.";
+		mes("Bom-dia honorável Cavaleiro gostaria de alugar um Pecopeco?\n"
+			"Você precisa ter a Habilidade Montaria e apenas " + .@price + " Zeny sobrando.");
 		next;
-		switch (select("Alugar Peco Peco","Cancelar")) {
+		switch (select("Alugar Peco Peco", "Cancelar")) {
 			case 1:
 			if (Zeny < .@price) {
-				mes "[Criador de Pecopecos]";
-				mes "Sinto muito mas você não tem zenys o suficiente.";
+				mes("[Criador de Pecopecos]\n"
+					"Sinto muito mas você não tem zenys o suficiente.");
 				close;
 			} else if (!getskilllv(KN_RIDING)) {
-				mes "[Criador de Pecopecos]";
-				mes "Você não pode usar meus serviços até aprender a habilidade Montaria.";
+				mes("[Criador de Pecopecos]\n"
+					"Você não pode usar meus serviços até aprender a habilidade Montaria.");
 				close;
 			} else if (checkmount()) {
-				mes "[Criador de Pecopecos]";
-				mes "Mas você já está montado em um Pecopeco.";
+				mes("[Criador de Pecopecos]\n"
+					"Mas você já está montado em um Pecopeco.");
 				close;
 			} else if (hascashmount()) {
-				mes "[Criador de Pecopecos]";
-				mes "Por favor remova sua montaria atual.";
+				mes("[Criador de Pecopecos]\n"
+					"Por favor remova sua montaria atual.");
 				close;
 			}
 			Zeny -= .@price;
 			setmount(MOUNT_PECO);
 			close;
 			case 2:
-			mes "[Criador de Pecopecos]";
-			mes "Bem então, tenha um dia bom.";
+			mes("[Criador de Pecopecos]\n"
+				"Bem então, tenha um dia bom.");
 			close;
 		}
 	} else {
-		mes " Me desculpe mas o aluguel de pecopecos só está disponível para cavaleiros e lordes.";
+		mes("Me desculpe mas o aluguel de pecopecos só está disponível para cavaleiros e lordes.");
 		close;
 	}
 }
@@ -67,41 +67,42 @@ prontera,232,318,3	script	Criador de Pecopecos#cruMount	8W_SOLDIER,{
 	if (Upper==1) .@price = 7000;
 	if (Upper==2) .@price = 7000;
 
-	mes "[PecoPeco Breeder]";
+	mes("[PecoPeco Breeder]");
 	if (BaseJob == Job_Crusader || BaseJob == Job_Crusader2 || BaseJob == Job_Paladin || BaseJob == Job_Paladin2) {
-		mes "Nós possuímos um Pecopeco especial preparado para você.";
-		mes "Para adquirir um Pecopeco são necessários "+.@price+" Zeny.";
+		mes("Nós possuímos um Pecopeco especial preparado para você.\n"
+			"Para adquirir um Pecopeco são necessários " + .@price + " Zeny.");
 		next;
-		switch (select("Alugar a PecoPeco","Sair")) {
+		switch (select("Alugar a PecoPeco", "Sair")) {
 			case 1:
 			if (Zeny < .@price) {
-				mes "[Criador de Pecopecos]";
-				mes "Você não possui a quantidade de zenys suficientes.";
-				mes "Se você quiser um Pecopeco por favor me traga "+.@price+" zenys...";
+				mes("[Criador de Pecopecos]\n"
+					"Você não possui a quantidade de zenys suficientes.\n"
+					"Se você quiser um Pecopeco por favor me traga " + .@price + " zenys...");
 				close;
 			} else if (!getskilllv(KN_RIDING)) {
-				mes "[Criador de Pecopecos]";
-				mes "Você deve primeiro aprender a como montar um Pecopeco após isso eu poderei alugar um para você.";
+				mes("[Criador de Pecopecos]\n"
+					"Você deve primeiro aprender a como montar um Pecopeco,\n"
+					"após isso eu poderei alugar um para você.");
 				close;
 			} else if (checkmount()) {
-				mes "[Criador de Pecopecos]";
-				mes "Você já está montado em uma montaria";
+				mes("[Criador de Pecopecos]\n"
+					"Você já está montado em uma montaria.");
 				close;
 			} else if (hascashmount()) {
-				mes "[Criador de Pecopecos]";
-				mes "Por favor remova sua montaria atual.";
+				mes("[Criador de Pecopecos]\n"
+					"Por favor remova sua montaria atual.");
 				close;
 			}
 			Zeny -= .@price;
 			setmount(MOUNT_PECO);
 			close;
 			case 2:
-			mes "[PecoPeco Breeder]";
-			mes "Nos vemos por ai.";
+			mes("[PecoPeco Breeder]\n"
+				"Nos vemos por ai.");
 			close;
 		}
 	} else {
-		mes " Me desculpe mas o aluguel de montaria só está disponível para Templários e Paladinos.";
+		mes("Me desculpe mas o aluguel de montaria só está disponível para Templários e Paladinos.");
 		close;
 	}
 }

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -13,11 +13,13 @@
 \*-----------------------------------------------------------------*/
 
 -	script	Refiner	FAKE_NPC,{
-	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-	mes "Olá meu nome é "+strnpcinfo(NPC_NAME_VISIBLE)+", sou um expecialista em realizar aprimoramento em equipamentos.";
-	mes "Me diga, existe algum dos seus equipamentos de deseja aprimorar?";
+	.@npc$ = strnpcinfo(NPC_NAME_VISIBLE);
+	mes("[" + .@npc$ + "]\n"
+		"Olá meu nome é " + .@npc$ + ",\n"
+		"sou um expecialista em realizar aprimoramento em equipamentos.\n"
+		"Me diga, existe algum dos seus equipamentos de deseja aprimorar?");
 	next;
-	switch (select("Cabeça","Vestimenta","Capa","Calçado","Mão Esquerda","Mão Direita","Nada Obrigado")) {
+	switch (select("Cabeça", "Vestimenta", "Capa", "Calçado", "Mão Esquerda", "Mão Direita", "Nada Obrigado")) {
 		case 1: .@menuSelect = EQI_HEAD_TOP; break;
 		case 2: .@menuSelect = EQI_ARMOR;    break;
 		case 3: .@menuSelect = EQI_GARMENT;  break;
@@ -25,32 +27,32 @@
 		case 5: .@menuSelect = EQI_HAND_L;   break;
 		case 6: .@menuSelect = EQI_HAND_R;   break;
 		case 7:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Certo, mas sempre que precisar refinar/aprimorar seus equipamentos.";
-		mes "Pode me procurar que irei lhe atender com maior prazer.";
+		mes("[" + .@npc$ + "]\n"
+			"Certo, mas sempre que precisar refinar/aprimorar seus equipamentos.\n"
+			"Pode me procurar que irei lhe atender com maior prazer.");
 		close;
 	}
 	// Verifica se o item está equipado
 	if (!getequipisequiped(.@menuSelect)) {
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Mas você não está equipado com o equipamento para refinar.";
+		mes("[" + .@npc$ + "]\n"
+			"Mas você não está equipado com o equipamento para refinar.");
 		emotion(e_an);
 		close;
 	}
 	// Verifica se é posível refinar o item
 	// Ver database de item: Refine: true/false
 	else if (!getequipisenableref(.@menuSelect)) {
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Hunnn...?";
-		mes "Esse equipamento não pode ser aprimorado.";
+		mes("[" + .@npc$ + "]\n"
+			"Hunnn...?\n"
+			"Esse equipamento não pode ser aprimorado.");
 		emotion(e_what);
 		close;
 	}
 	// Verifica se o item já não está refinado até +10
 	else if (getequiprefinerycnt(.@menuSelect) >= 10) {
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Esse equipamento já está refinado em seu limite!";
-		mes "Sinto muito mas, não consigo mais trabalhar esse item.";
+		mes("[" + .@npc$ + "]\n"
+			"Esse equipamento já está refinado em seu limite!\n"
+			"Sinto muito mas, não consigo mais trabalhar esse item.");
 		emotion(e_gasp);
 		close;
 	} else {
@@ -68,45 +70,45 @@
 			case 3: .@requirement = 984;  .@value = 5000;  break; // Level 3
 			case 4: .@requirement = 984;  .@value = 20000; break; // Level 4
 		}
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Para realizar o aprimoramento nesse equipamento eu vou precisar de:";
-		mes "De 1 "+getitemname(.@requirement)+" que é necessário para o processo.";
-		mes "E vou combrar pela taxa de serviço "+.@value+" Zenys.";
+		mes("[" + .@npc$ + "]\n"
+			"Para realizar o aprimoramento nesse equipamento eu vou precisar de:\n"
+			"De 1 " + getitemname(.@requirement) + " que é necessário para o processo.\n"
+			"E vou combrar pela taxa de serviço " + .@value + " Zenys.");
 		next;
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Posso aprimorar o equipamento?";
+		mes("[" + .@npc$ + "]\n"
+			"Posso aprimorar o equipamento?");
 		next;
-		switch (select("Sim prossiga","Não")) {
+		switch (select("Sim prossiga", "Não")) {
 			case 1:
 			if (Zeny < .@value) {
-				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-				mes "Mas você não possui Zenys o suficiente.";
+				mes("[" + .@npc$ + "]\n"
+					"Mas você não possui Zenys o suficiente.");
 				close;
 			} else if (countitem(.@requirement) < 1) {
-				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-				mes "Vou precisar de pelo menos 1 "+getitemname(.@requirement)+" para fazer o aprimoramento.";
-				mes "Volte quando tiver o necessário.";
+				mes("[" + .@npc$ + "]\n"
+					"Vou precisar de pelo menos 1 " + getitemname(.@requirement) + " para fazer o aprimoramento.\n"
+					"Volte quando tiver o necessário.");
 				close;
 			} else if (getequipisequiped(.@menuSelect) == 0) {
-				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-				mes "Mas você removeu o item.";
+				mes("[" + .@npc$ + "]\n"
+					"Mas você removeu o item.");
 				emotion(e_dots);
 				close;
 			} else {
 				if (getequippercentrefinery(.@menuSelect) < 100) {
-					mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-					mes "^FF0000Esse item já foi refinado no máximo de segurança.";
-					mes "Se tentar aprimora-lo novamente ele pode ser destruído, e perdido para sempre!";
-					mes "Junto com cartas e quaisquer elementos adicionados a ele!^000000";
+					mes("[" + .@npc$ + "]\n"
+						"^FF0000Esse item já foi refinado no máximo de segurança.\n"
+						"Se tentar aprimora-lo novamente ele pode ser destruído, e perdido para sempre!\n"
+						"Junto com cartas e quaisquer elementos adicionados a ele!^000000");
 					next;
 				}
-				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-				mes "Tem ceteza que deseja que eu renine/aprimore esse equipamento?";
+				mes("[" + .@npc$ + "]\n"
+					"Tem ceteza que deseja que eu renine/aprimore esse equipamento?");
 				next;
-				if (select("Sim","Não") == 1) {
+				if (select("Sim", "Não") == 1) {
 					if (getequiprefinerycnt(.@menuSelect) != .@RackRefine || getequipid(.@menuSelect) != .@RackItem) {
-						mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-						mes "Mas você não estava equipado agora a pouco?";
+						mes("[" + .@npc$ + "]\n"
+							"Mas você não estava equipado agora a pouco?");
 						emotion(e_what);
 						close;
 					} else if (getequippercentrefinery(.@menuSelect) <= rand(100)) {
@@ -114,32 +116,32 @@
 						delitem(.@requirement,1);
 						failedrefitem(.@menuSelect);
 						emotion(e_omg);
-						mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-						mes "AHHHHHHHHHH!!....";
-						mes "^BB0000Seu equipamento de despedaçou enquanto eu estava refinando^000000.";
+						mes("[" + .@npc$ + "]\n"
+							"AHHHHHHHHHH!!....\n"
+							"^BB0000Seu equipamento de despedaçou enquanto eu estava refinando^000000.");
 						next;
-						mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-						mes "Mas eu te avisei que ele podia ser destruído.";
-						mes "É tudo questão de sorte.";
+						mes("[" + .@npc$ + "]\n"
+							"Mas eu te avisei que ele podia ser destruído.\n"
+							"É tudo questão de sorte.");
 						close;
 					} else {
 						Zeny -= .@value;
 						delitem(.@requirement,1);
 						successrefitem(.@menuSelect);
 						emotion(e_heh);
-						mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-						mes "^009900Que beleza!";
-						mes "Mais um aprimoramento bem suscedido!";
+						mes("[" + .@npc$ + "]\n"
+							"^009900Que beleza!\n"
+							"Mais um aprimoramento bem suscedido!");
 						close;
 					}
 				}
-				mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-				mes "Tudo bem volte quando quiser fazer algum aprimoramento.";
+				mes("[" + .@npc$ + "]\n"
+					"Tudo bem volte quando quiser fazer algum aprimoramento.");
 				close;
 			}
 			case 2:
-			mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-			mes "Tudo bem volte quando quiser fazer algum aprimoramento.";
+			mes("[" + .@npc$ + "]\n"
+				"Tudo bem volte quando quiser fazer algum aprimoramento.");
 			close;
 		}
 	}

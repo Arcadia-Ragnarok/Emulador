@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -13,90 +13,94 @@
 \*-----------------------------------------------------------------*/
 
 -	script	InnHouse	FAKE_NPC,{
-	mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-	mes "Bom dia, seja bem vind"+(Sex == SEX_MALE ? "o":"a")+" a nossa estalagem.";
-	mes "Em que posso ajudar?";
+	.@name$ = strnpcinfo(NPC_NAME_VISIBLE);
+	.@npc$ = strnpcinfo(NPC_NAME_HIDDEN);
+	.@map$ = strnpcinfo(NPC_MAP);
+
+	mes("[" + .@name$ + "]\n"
+		"Bom dia, seja bem vind" + (Sex == SEX_MALE ? "o":"a") + " a nossa estalagem.\n"
+		"Em que posso ajudar?");
 	next;
-	switch (select("Salvar Retorno","Descançar -> 5000 zeny","Cancelar")) {
+	switch (select("Salvar Retorno", "Descançar (5000 zeny)", "Cancelar")) {
 		case 1:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Seu Ponto de Retorno foi salvo.";
-		mes "Curta sua estadia na cidade.";
+		mes("[" + .@name$ + "]\n"
+			"Seu Ponto de Retorno foi salvo.\n"
+			"Curta sua estadia na cidade.");
 		// Prontera
-		if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn1") { savepoint("prt_in",238,130); }
-		if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn2") { savepoint("prt_in",64,136); }
+		if (.@npc$ == "prtInn1") { savepoint("prt_in",238,130); }
+		if (.@npc$ == "prtInn2") { savepoint("prt_in",64,136); }
 		// Aldebaran
-		if (strnpcinfo(NPC_MAP) == "aldeba_in") { savepoint("aldeba_in",92,50); }
+		if (.@map$ == "aldeba_in") { savepoint("aldeba_in",92,50); }
 		// Alberta
-		if (strnpcinfo(NPC_MAP) == "alberta_in") { savepoint("alberta_in",26,142); }
+		if (.@map$ == "alberta_in") { savepoint("alberta_in",26,142); }
 		// Einbroch
-		if (strnpcinfo(NPC_MAP) == "ein_in01") { savepoint("ein_in01",200,224); }
+		if (.@map$ == "ein_in01") { savepoint("ein_in01",200,224); }
 		// Geffen
-		if (strnpcinfo(NPC_MAP) == "geffen_in") { savepoint("geffen_in",70,59); }
+		if (.@map$ == "geffen_in") { savepoint("geffen_in",70,59); }
 		// Payon
-		if (strnpcinfo(NPC_MAP) == "payon_in01") { savepoint("payon_in01",136,61); }
+		if (.@map$ == "payon_in01") { savepoint("payon_in01",136,61); }
 		// Rachel
-		if (strnpcinfo(NPC_MAP) == "ra_in01") { savepoint("ra_in01",375,58); }
+		if (.@map$ == "ra_in01") { savepoint("ra_in01",375,58); }
 		// Hugel
-		if (strnpcinfo(NPC_MAP) == "hu_in01") { savepoint("hu_in01",263,95); }
+		if (.@map$ == "hu_in01") { savepoint("hu_in01",263,95); }
 		// Lighthalzen
-		if (strnpcinfo(NPC_MAP) == "lhz_in02") { savepoint("lhz_in02",209,275); }
+		if (.@map$ == "lhz_in02") { savepoint("lhz_in02",209,275); }
 		// Veins
-		if (strnpcinfo(NPC_MAP) == "ve_in") { savepoint("ve_in",157,209); }
+		if (.@map$ == "ve_in") { savepoint("ve_in",157,209); }
 		// Eclage
-		if (strnpcinfo(NPC_MAP) == "ecl_in02") { savepoint("ecl_in02",162,50); }
+		if (.@map$ == "ecl_in02") { savepoint("ecl_in02",162,50); }
 		// Malangdo
-		if (strnpcinfo(NPC_MAP) == "malangdo") { savepoint("malangdo",142,118); }
+		if (.@map$ == "malangdo") { savepoint("malangdo",142,118); }
 		// Malaya
-		if (strnpcinfo(NPC_MAP) == "ma_in01") { savepoint("ma_in01",43,98); }
+		if (.@map$ == "ma_in01") { savepoint("ma_in01",43,98); }
 		// Mora
-		if (strnpcinfo(NPC_MAP) == "mora") { savepoint("mora",56,143); }
+		if (.@map$ == "mora") { savepoint("mora",56,143); }
 		close;
 		case 2:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
+		mes("[" + .@name$ + "]");
 		if (Zeny < 5000) {
-			mes " Me desculpe mas a taxa para descanso é de 5.000 zenys.";
+			mes(" Me desculpe mas a taxa para descanso é de 5.000 zenys.");
 			close;
 		} else {
-			mes " Curta sua estadia.";
-			mes "E aproveite seu descanso.";
+			mes("Curta sua estadia.\n"
+				"E aproveite seu descanso.");
 			close2;
 			Zeny -= 5000;
 			percentheal(100,100);
 			// Prontera
-			if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn1") { warp("prt_in",247,104); }
-			if (strnpcinfo(NPC_NAME_HIDDEN) == "prtInn2") { warp("prt_in",60,166); }
+			if (.@npc$ == "prtInn1") { warp("prt_in",247,104); }
+			if (.@npc$ == "prtInn2") { warp("prt_in",60,166); }
 			// Aldebaran
-			if (strnpcinfo(NPC_MAP) == "aldeba_in") { warp("aldeba_in",92,112); }
+			if (.@map$ == "aldeba_in") { warp("aldeba_in",92,112); }
 			// Alberta
-			if (strnpcinfo(NPC_MAP) == "alberta_in") { warp("alberta_in",18,188); }
+			if (.@map$ == "alberta_in") { warp("alberta_in",18,188); }
 			// Einbroch
-			if (strnpcinfo(NPC_MAP) == "ein_in01") { warp("ein_in01",272,167); }
+			if (.@map$ == "ein_in01") { warp("ein_in01",272,167); }
 			// Geffen
-			if (strnpcinfo(NPC_MAP) == "geffen_in") { warp("geffen_in",31,31); }
+			if (.@map$ == "geffen_in") { warp("geffen_in",31,31); }
 			// Payon
-			if (strnpcinfo(NPC_MAP) == "payon_in01") { warp("payon_in01",132,11); }
+			if (.@map$ == "payon_in01") { warp("payon_in01",132,11); }
 			// Rachel
-			if (strnpcinfo(NPC_MAP) == "ra_in01") { warp("ra_in01",384,128); }
+			if (.@map$ == "ra_in01") { warp("ra_in01",384,128); }
 			// Hugel
-			if (strnpcinfo(NPC_MAP) == "hu_in01") { warp("hu_in01",267,5); }
+			if (.@map$ == "hu_in01") { warp("hu_in01",267,5); }
 			// Lighthalzen
-			if (strnpcinfo(NPC_MAP) == "lhz_in02") { warp("lhz_in02",219,150); }
+			if (.@map$ == "lhz_in02") { warp("lhz_in02",219,150); }
 			// Veins
-			if (strnpcinfo(NPC_MAP) == "ve_in") { warp("ve_in",184,228); }
+			if (.@map$ == "ve_in") { warp("ve_in",184,228); }
 			// Eclage
-			if (strnpcinfo(NPC_MAP) == "ecl_in02") { warp("ecl_in02",167,49); }
+			if (.@map$ == "ecl_in02") { warp("ecl_in02",167,49); }
 			// Malangdo
-			if (strnpcinfo(NPC_MAP) == "malangdo") { warp("malangdo",140,121); }
+			if (.@map$ == "malangdo") { warp("malangdo",140,121); }
 			// Malaya
-			if (strnpcinfo(NPC_MAP) == "ma_in01") { warp("ma_in01",43,98); }
+			if (.@map$ == "ma_in01") { warp("ma_in01",43,98); }
 			// Mora
-			if (strnpcinfo(NPC_MAP) == "mora") { warp("mora",32,123); }
+			if (.@map$ == "mora") { warp("mora",32,123); }
 			end;
 		}
 		case 3:
-		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Volte sempre.";
+		mes("[" + .@name$ + "]\n"
+			"Volte sempre.");
 		close;
 	}
 }

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -14,12 +14,12 @@
 \*-----------------------------------------------------------------*/
 
 -	script	repairmain	FAKE_NPC,{
-	mes "[Reparador]";
-	mes "Ei você!";
-	mes "Você precisa que eu repare algum item?";
-	mes "Você pode contar comigo para reparar itens!";
+	mes("[Reparador]\n"
+		"Ei você!\n"
+		"Você precisa que eu repare algum item?\n"
+		"Você pode contar comigo para reparar itens!");
 	next;
-	switch (select("Sim, faça os reparos.","Nenhum no momento.")) {
+	switch (select("Sim, faça os reparos", "Nenhum no momento")) {
 		case 1:
 		.@checkitem = 1;
 		while (true) {
@@ -30,35 +30,35 @@
 		}
 		--.@checkitem;
 		if (!.@checkitem) {
-			mes "[Reparador]";
-			mes "Oh, isso é incrivel!";
-			mes "Parece que você toma muito cuidado com as suas coisas.";
-			mes "Nenhum dos seus itens foi danificado!";
+			mes("[Reparador]\n"
+				"Oh, isso é incrivel!\n"
+				"Parece que você toma muito cuidado com as suas coisas.\n"
+				"Nenhum dos seus itens foi danificado!");
 			next;
-			mes "[Reparador]";
-			mes "Se todos fossem como você, eu estaria desempregado!!";
-			mes "Haha...!";
+			mes("[Reparador]\n"
+				"Se todos fossem como você, eu estaria desempregado!!\n"
+				"Haha...!");
 			close;
 		}
-		mes "[Reparador]";
-		mes "Hmm...";
-		mes "Deixe-me ver...";
-		mes "De todos os seus itens, "+.@checkitem+" estão danificados.";
-		mes "Gostaria de repará-los?";
+		mes("[Reparador]\n"
+			"Hmm...\n"
+			"Deixe-me ver...\n"
+			"De todos os seus itens, " + .@checkitem + " estão danificados.\n"
+			"Gostaria de repará-los?");
 		next;
 		.@totalcost = 5000 * .@checkitem;
-		mes "[Reparador]";
-		mes "Cada reparo custa 5.000 Zenys.";
-		mes "Então para reparar todos os seus itens você irá pagar "+.@totalcost+" Zeny!";
-		mes "Você quer mesmo reparar os seus itens?";
+		mes("[Reparador]\n"
+			"Cada reparo custa 5.000 Zenys.\n"
+			"Então para reparar todos os seus itens você irá pagar " + .@totalcost + " Zeny!\n"
+			"Você quer mesmo reparar os seus itens?");
 		next;
-		switch (select("Sim por favor.","Não obrigado.")) {
+		switch (select("Sim por favor.", "Não obrigado.")) {
 			case 1:
 			if (Zeny < .@totalcost) {
-				mes "[Reparador]";
-				mes "Ei ei...";
-				mes "Olhe a sua carteira antes de pedir para repararem um item, cara!";
-				mes "Eu não posso reparar nada porque você não possui dinheiro suficiente.";
+				mes("[Reparador]\n"
+					"Ei ei...\n"
+					"Olhe a sua carteira antes de pedir para repararem um item, cara!\n"
+					"Eu não posso reparar nada porque você não possui dinheiro suficiente.");
 				close;
 			}
 			.@checkitem2 = 1;
@@ -75,29 +75,29 @@
 					repair(.@checkitem);
 					--.@checkitem;
 				}
-				mes "[Reparador]";
-				mes "Tudo pronto.";
-				mes "Agora, tente ter um pouco mais de cuidado.";
-				mes "Você sabe, itens tem vida também.";
+				mes("[Reparador]\n"
+					"Tudo pronto.\n"
+					"Agora, tente ter um pouco mais de cuidado.\n"
+					"Você sabe, itens tem vida também.");
 				close;
 			} else {
-				mes "[Reparador]";
-				mes "Mmm?";
-				mes "Tem algo errado.";
-				mes "Espere...";
-				mes "Pegue os itens que você quer reparar e volte aqui.";
+				mes("[Reparador]\n"
+					"Mmm?\n"
+					"Tem algo errado.\n"
+					"Espere...\n"
+					"Pegue os itens que você quer reparar e volte aqui.");
 				close;
 			}
 			case 2:
-			mes "[Reparador]";
-			mes "Bem, não é da minha conta, mas não é bom levar itens quebrados embora.";
-			mes "Você deve repará-los o mais rápido possivel!";
+			mes("[Reparador]\n"
+				"Bem, não é da minha conta, mas não é bom levar itens quebrados embora.\n"
+				"Você deve repará-los o mais rápido possivel!");
 			close;
 		}
 		case 2:
-		mes "[Reparador]";
-		mes "Hohoho...";
-		mes "Você não tem nada para fazer aqui se você não tiver itens para reparar.";
+		mes("[Reparador]\n"
+			"Hohoho...\n"
+			"Você não tem nada para fazer aqui se você não tiver itens para reparar.");
 		close;
 	}
 }

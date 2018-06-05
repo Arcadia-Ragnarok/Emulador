@@ -18,6 +18,9 @@ npc_global_list: (
 	// Batalha Campal
 	@include "NpcScript/Npc_Config/Campal.conf"
 
+	// Classes
+	@include "NpcScript/Npc_Config/Classes.conf"
+
 	// Lojas / trocas em geral
 	@include "NpcScript/Npc_Config/Comerciantes.conf"
 
