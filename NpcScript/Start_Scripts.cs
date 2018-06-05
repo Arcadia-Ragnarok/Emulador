@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -12,6 +12,7 @@
 \*-----------------------------------------------------------------*/
 
 npc_global_list: (
+
 	"NpcScript/Outros/Funcoes.c",
 
 	// Batalha Campal
@@ -27,7 +28,7 @@ npc_global_list: (
 	@include "NpcScript/Npc_Config/Definicao_de_mapa.conf"
 
 	// Guerra do Império
-	@include "NpcScript/Npc_Config/Guerra_do_Imperio.conf"
+	@include "NpcScript/gde.conf"
 
 	// Guias
 	@include "NpcScript/Npc_Config/Guias.conf"
