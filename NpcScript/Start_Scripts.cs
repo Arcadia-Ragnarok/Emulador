@@ -28,7 +28,7 @@ npc_global_list: (
 	@include "NpcScript/Npc_Config/Definicao_de_mapa.conf"
 
 	// Guerra do Império
-	@include "NpcScript/gde.conf"
+	@include "NpcScript/Npc_Config/WoE.conf"
 
 	// Guias
 	@include "NpcScript/Npc_Config/Guias.conf"
