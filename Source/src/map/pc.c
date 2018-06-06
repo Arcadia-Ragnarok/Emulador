@@ -4634,23 +4634,19 @@ int pc_additem(struct map_session_data *sd,struct item *item_data,int amount,e_l
 	i = MAX_INVENTORY;
 
 	// Stackable | Non Rental
-	if( itemdb->isstackable2(data) && item_data->expire_time == 0 ) {
-		for( i = 0; i < MAX_INVENTORY; i++ ) {
-			if( sd->status.inventory[i].nameid == item_data->nameid &&
-			    sd->status.inventory[i].bound == item_data->bound &&
-			    sd->status.inventory[i].expire_time == 0 &&
-				sd->status.inventory[i].unique_id == item_data->unique_id &&
-			    memcmp(&sd->status.inventory[i].card, &item_data->card, sizeof(item_data->card)) == 0 ) {
-				if( amount > MAX_AMOUNT - sd->status.inventory[i].amount || ( data->stack.inventory && amount > data->stack.amount - sd->status.inventory[i].amount ) )
-					return 5;
-				sd->status.inventory[i].amount += amount;
-				clif->additem(sd,i,amount,0);
-				break;
-			}
-		}
+	if (itemdb->isstackable2(data) && item_data->expire_time == 0) {
+		ARR_FIND(0, MAX_INVENTORY, i, itemdb->items_identical(&sd->status.inventory[i], item_data, true));
 	}
 
-	if ( i >= MAX_INVENTORY ) {
+	if (i < MAX_INVENTORY) {
+		// Item already in inventory, stack it
+		if (amount > MAX_AMOUNT - sd->status.inventory[i].amount || ( data->stack.inventory && amount > data->stack.amount - sd->status.inventory[i].amount)) {
+			return 5; // No room
+		}
+
+		sd->status.inventory[i].amount += amount;
+		clif->additem(sd,i,amount,0);
+	} else {
 		i = pc->search_inventory(sd,0);
 		if (i == INDEX_NOT_FOUND)
 			return 4;
@@ -5233,20 +5229,19 @@ int pc_useitem(struct map_session_data *sd,int n) {
  *   0 = success
  *   1 = fail
  *------------------------------------------*/
-int pc_cart_additem(struct map_session_data *sd,struct item *item_data,int amount,e_log_pick_type log_type)
-{
+int pc_cart_additem(struct map_session_data *sd,struct item *item_data,int amount,e_log_pick_type log_type) {
 	struct item_data *data;
 	int i,w;
 
 	nullpo_retr(1, sd);
 	nullpo_retr(1, item_data);
 
-	if(item_data->nameid <= 0 || amount <= 0)
+	if (item_data->nameid <= 0 || amount <= 0) {
 		return 1;
+	}
 	data = itemdb->search(item_data->nameid);
 
-	if( data->stack.cart && amount > data->stack.amount )
-	{// item stack limitation
+	if (data->stack.cart && amount > data->stack.amount) {// item stack limitation
 		return 1;
 	}
 
@@ -5256,32 +5251,28 @@ int pc_cart_additem(struct map_session_data *sd,struct item *item_data,int amoun
 		return 1;/* TODO: there is no official response to this? */
 	}
 
-	if( (w = data->weight*amount) + sd->cart_weight > sd->cart_weight_max )
+	if ((w = data->weight*amount) + sd->cart_weight > sd->cart_weight_max) {
 		return 1;
+	}
 
 	i = MAX_CART;
-	if( itemdb->isstackable2(data) && !item_data->expire_time )
-	{
-		ARR_FIND( 0, MAX_CART, i,
-			sd->status.cart[i].nameid == item_data->nameid && sd->status.cart[i].bound == item_data->bound &&
-			sd->status.cart[i].card[0] == item_data->card[0] && sd->status.cart[i].card[1] == item_data->card[1] &&
-			sd->status.cart[i].card[2] == item_data->card[2] && sd->status.cart[i].card[3] == item_data->card[3] );
+	if (itemdb->isstackable2(data) && item_data->expire_time == 0) {
+		ARR_FIND(0, MAX_CART, i, itemdb->items_identical(&sd->status.cart[i], item_data, true));
 	};
 
-	if( i < MAX_CART && item_data->unique_id == sd->status.cart[i].unique_id)
-	{// item already in cart, stack it
-		if( amount > MAX_AMOUNT - sd->status.cart[i].amount || ( data->stack.cart && amount > data->stack.amount - sd->status.cart[i].amount ) )
+	if (i < MAX_CART) {
+		// item already in cart, stack it
+		if (amount > MAX_AMOUNT - sd->status.cart[i].amount || ( data->stack.cart && amount > data->stack.amount - sd->status.cart[i].amount)) {
 			return 2; // no room
-
+		}
 		sd->status.cart[i].amount+=amount;
 		clif->cart_additem(sd,i,amount,0);
-	}
-	else
-	{// item not stackable or not present, add it
-		ARR_FIND( 0, MAX_CART, i, sd->status.cart[i].nameid == 0 );
-		if( i == MAX_CART )
+	} else {
+		// item not stackable or not present, add it
+		ARR_FIND( 0, MAX_CART, i, sd->status.cart[i].nameid == 0);
+		if(i == MAX_CART) {
 			return 2; // no room
-
+		}
 		memcpy(&sd->status.cart[i],item_data,sizeof(sd->status.cart[0]));
 		sd->status.cart[i].amount=amount;
 		sd->cart_num++;
