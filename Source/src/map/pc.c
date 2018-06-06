@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -11501,24 +11501,18 @@ void pc_validate_levels(void) {
 	int i;
 	int j;
 	for (i = 0; i < JOB_MAX; i++) {
-		if (!pc->db_checkid(i)) continue;
-		if ( 
-			/* Casamento / Natal e Praia não recebem EXP */
-			i == JOB_WEDDING || i == JOB_XMAS || i == JOB_SUMMER
-			/* == [ Remoção não definitiva das classes 3rd T ] == */
-			|| i == JOB_RUNE_KNIGHT_T2 || i == JOB_ROYAL_GUARD_T2 || i == JOB_RANGER_T2 || i == JOB_MECHANIC_T2
-			|| (i >= JOB_GANGSI && i <= JOB_DARK_COLLECTOR) 
-			|| (i >= JOB_RUNE_KNIGHT_T && i <= JOB_GUILLOTINE_CROSS_T) 
-			|| (i >= JOB_ROYAL_GUARD_T && i <= JOB_SHADOW_CHASER_T)
-			/* == */
-		) {
-			continue;
+		if (!pc->db_checkid(i)) { continue; }
+		/* Casamento / Natal e Praia não recebem EXP */
+		if (i == JOB_WEDDING || i == JOB_XMAS || i == JOB_SUMMER) {
+			continue; //Classes that do not need exp tables.
 		}
 		j = pc->class2idx(i);
-		if (pc->max_level[j][0] == 0)
+		if (pc->max_level[j][0] == 0) {
 			ShowWarning("Classe %s (%d) nao existe na tabela de exp.\n", pc->job_name(i), i);
-		if (pc->max_level[j][1] == 0)
+		}
+		if (pc->max_level[j][1] == 0) {
 			ShowWarning("Classe %s (%d) nao existe na tabela de job exp.\n", pc->job_name(i), i);
+		}
 	}
 }
 
