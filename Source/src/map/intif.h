@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -54,11 +54,7 @@ struct intif_interface {
 	int (*parse) (int fd);
 	int (*create_pet)(int account_id, int char_id, short pet_type, short pet_lv, short pet_egg_id,
 	                  short pet_equip, short intimate, short hungry, char rename_flag, char incubate, char *pet_name);
-	int (*broadcast) (const char *mes, int len, int type);
-	int (*broadcast2) (const char *mes, int len, unsigned int fontColor, short fontType, short fontSize, short fontAlign, short fontY);
 	int (*main_message) (struct map_session_data* sd, const char* message);
-	int (*wis_message) (struct map_session_data *sd, const char *nick, const char *mes, int mes_len);
-	int (*wis_message_to_gm) (char *Wisp_name, int permission, char *mes);
 	int (*saveregistry) (struct map_session_data *sd);
 	int (*request_registry) (struct map_session_data *sd, int flag);
 	void (*request_account_storage) (const struct map_session_data *sd);
@@ -140,10 +136,6 @@ struct intif_interface {
 	/* */
 	int (*CheckForCharServer) (void);
 	/* */
-	void (*pWisMessage) (int fd);
-	void (*pWisEnd) (int fd);
-	int (*pWisToGM_sub) (struct map_session_data* sd,va_list va);
-	void (*pWisToGM) (int fd);
 	void (*pRegisters) (int fd);
 	void (*pAccountStorage) (int fd);
 	void (*pChangeNameOk) (int fd);

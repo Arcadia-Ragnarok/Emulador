@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -43,8 +43,6 @@ struct inter_interface {
 	int (*log) (char* fmt, ...);
 	int (*init_sql) (const char *file);
 	int (*mapif_init) (int fd);
-	int (*check_ttl_wisdata_sub) (union DBKey key, struct DBData *data, va_list ap);
-	int (*check_ttl_wisdata) (void);
 	int (*check_length) (int fd, int length);
 	int (*parse_frommap) (int fd);
 	void (*final) (void);

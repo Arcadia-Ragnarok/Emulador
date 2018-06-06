@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -7515,8 +7515,8 @@ BUILDIN(getnameditem) {
 	item_tmp.amount=1;
 	item_tmp.identify=1;
 	item_tmp.card[0]=CARD0_CREATE; //we don't use 255! because for example SIGNED WEAPON shouldn't get TOP10 BS Fame bonus [Lupus]
-	item_tmp.card[2]=tsd->status.char_id;
-	item_tmp.card[3]=tsd->status.char_id >> 16;
+	item_tmp.card[2] = GetWord(tsd->status.char_id, 0);
+	item_tmp.card[3] = GetWord(tsd->status.char_id, 1);
 	if(pc->additem(sd,&item_tmp,1,LOG_TYPE_SCRIPT)) {
 		script_pushint(st,0);
 		return true; //Failed to add item, we will not drop if they don't fit
@@ -7706,11 +7706,10 @@ void buildin_delitem_delete(struct map_session_data* sd, int idx, int* amount, b
 
 	delamount = ( amount[0] < inv->amount ) ? amount[0] : inv->amount;
 
-	if( delete_items )
-	{
-		if( sd->inventory_data[idx]->type == IT_PETEGG && inv->card[0] == CARD0_PET )
-		{// delete associated pet
-			intif->delete_petdata(MakeDWord(inv->card[1], inv->card[2]));
+	if (delete_items) {
+		if (sd->inventory_data[idx]->type == IT_PETEGG && inv->card[0] == CARD0_PET) {
+			// delete associated pet
+			intif->delete_petdata(itemdb_pet_id(inv));
 		}
 		pc->delitem(sd, idx, delamount, 0, DELITEM_NORMAL, LOG_TYPE_SCRIPT);
 	}
@@ -8827,9 +8826,9 @@ BUILDIN(successrefitem)
 		clif->additem(sd,i,1,0);
 		pc->equipitem(sd,i,ep);
 		clif->misceffect(&sd->bl,3);
-		if(sd->status.inventory[i].refine == 10 &&
-		   sd->status.inventory[i].card[0] == CARD0_FORGE &&
-		   sd->status.char_id == (int)MakeDWord(sd->status.inventory[i].card[2],sd->status.inventory[i].card[3])
+		if (sd->status.inventory[i].refine == 10
+		 && sd->status.inventory[i].card[0] == CARD0_FORGE
+		 && sd->status.char_id == itemdb_creator_id(&sd->status.inventory[i])
 		  ) { // Fame point system [DracoRPG]
 			switch (sd->inventory_data[i]->wlv) {
 			case 1:
@@ -10920,12 +10919,12 @@ BUILDIN(announce)
 	int         fontAlign = script_hasdata(st,7) ? script_getnum(st,7) : 0;     // default fontAlign
 	int         fontY     = script_hasdata(st,8) ? script_getnum(st,8) : 0;     // default fontY
 	size_t len = strlen(mes);
+	struct block_list *bl = NULL;
+	enum send_target target = ALL_CLIENT;
 	Assert_retr(false, len < INT_MAX);
 
-	if( flag&(BC_TARGET_MASK|BC_SOURCE_MASK) ) {
+	if (flag&(BC_TARGET_MASK|BC_SOURCE_MASK)) {
 		// Broadcast source or broadcast region defined
-		send_target target;
-		struct block_list *bl = NULL;
 		if (flag&BC_NPC) {
 			// If bc_npc flag is set, use NPC as broadcast source
 			bl = map->id2bl(st->oid);
@@ -10937,23 +10936,20 @@ BUILDIN(announce)
 		if (bl == NULL)
 			return true;
 
-		switch( flag&BC_TARGET_MASK ) {
+		switch (flag&BC_TARGET_MASK) {
 			case BC_MAP:  target = ALL_SAMEMAP; break;
 			case BC_AREA: target = AREA;        break;
 			case BC_SELF: target = SELF;        break;
 			default:      target = ALL_CLIENT;  break; // BC_ALL
 		}
-
-		if (fontColor)
-			clif->broadcast2(bl, mes, (int)len+1, (unsigned int)strtoul(fontColor, (char **)NULL, 0), fontType, fontSize, fontAlign, fontY, target);
-		else
-			clif->broadcast(bl, mes, (int)len+1, flag&BC_COLOR_MASK, target);
-	} else {
-		if (fontColor)
-			intif->broadcast2(mes, (int)len+1, (unsigned int)strtoul(fontColor, (char **)NULL, 0), fontType, fontSize, fontAlign, fontY);
-		else
-			intif->broadcast(mes, (int)len+1, flag&BC_COLOR_MASK);
 	}
+
+	if (fontColor) {
+		clif->broadcast2(bl, mes, (int)len+1, (unsigned int)strtoul(fontColor, NULL, 0), fontType, fontSize, fontAlign, fontY, target);
+	} else {
+		clif->broadcast(bl, mes, (int)len+1, flag&BC_COLOR_MASK, target);
+	}
+
 	return true;
 }
 /*==========================================
@@ -24339,7 +24335,7 @@ void script_hardcoded_constants(void)
 	script->set_constant("MST_AROUND3", MST_AROUND3, false, false);
 	script->set_constant("MST_AROUND4", MST_AROUND4, false, false);
 	script->set_constant("MST_AROUND", MST_AROUND , false, false);
-
+	
 	script->constdb_comment(NULL);
 	#include "constants.inc"
 }

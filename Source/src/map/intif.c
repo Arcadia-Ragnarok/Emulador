@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -146,65 +146,6 @@ int intif_rename(struct map_session_data *sd, int type, const char *name)
 	return 0;
 }
 
-// GM Send a message
-int intif_broadcast(const char *mes, int len, int type)
-{
-	int lp = (type&BC_COLOR_MASK) ? 4 : 0;
-
-	nullpo_ret(mes);
-	Assert_ret(len < 32000);
-	// Send to the local players
-	clif->broadcast(NULL, mes, len, type, ALL_CLIENT);
-
-	if (intif->CheckForCharServer())
-		return 0;
-
-	if (chrif->other_mapserver_count < 1)
-		return 0; //No need to send.
-
-	WFIFOHEAD(inter_fd, 16 + lp + len);
-	WFIFOW(inter_fd,0)  = 0x3000;
-	WFIFOW(inter_fd,2)  = 16 + lp + len;
-	WFIFOL(inter_fd,4)  = 0xFF000000; // 0xFF000000 color signals standard broadcast
-	WFIFOW(inter_fd,8)  = 0; // fontType not used with standard broadcast
-	WFIFOW(inter_fd,10) = 0; // fontSize not used with standard broadcast
-	WFIFOW(inter_fd,12) = 0; // fontAlign not used with standard broadcast
-	WFIFOW(inter_fd,14) = 0; // fontY not used with standard broadcast
-	if (type&BC_BLUE)
-		WFIFOL(inter_fd,16) = 0x65756c62; //If there's "blue" at the beginning of the message, game client will display it in blue instead of yellow.
-	else if (type&BC_WOE)
-		WFIFOL(inter_fd,16) = 0x73737373; //If there's "ssss", game client will recognize message as 'WoE broadcast'.
-	memcpy(WFIFOP(inter_fd,16 + lp), mes, len);
-	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
-	return 0;
-}
-
-int intif_broadcast2(const char *mes, int len, unsigned int fontColor, short fontType, short fontSize, short fontAlign, short fontY)
-{
-	nullpo_ret(mes);
-	Assert_ret(len < 32000);
-	// Send to the local players
-	clif->broadcast2(NULL, mes, len, fontColor, fontType, fontSize, fontAlign, fontY, ALL_CLIENT);
-
-	if (intif->CheckForCharServer())
-		return 0;
-
-	if (chrif->other_mapserver_count < 1)
-		return 0; //No need to send.
-
-	WFIFOHEAD(inter_fd, 16 + len);
-	WFIFOW(inter_fd,0)  = 0x3000;
-	WFIFOW(inter_fd,2)  = 16 + len;
-	WFIFOL(inter_fd,4)  = fontColor;
-	WFIFOW(inter_fd,8)  = fontType;
-	WFIFOW(inter_fd,10) = fontSize;
-	WFIFOW(inter_fd,12) = fontAlign;
-	WFIFOW(inter_fd,14) = fontY;
-	memcpy(WFIFOP(inter_fd,16), mes, len);
-	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
-	return 0;
-}
-
 /// send a message using the main chat system
 /// <sd>         the source of message
 /// <message>    the message that was sent
@@ -218,82 +159,10 @@ int intif_main_message(struct map_session_data* sd, const char* message)
 	// format the message for main broadcasting
 	snprintf( output, sizeof(output), msg_txt(386), sd->status.name, message );
 
-	// send the message using the inter-server broadcast service
-	intif->broadcast2(output, (int)strlen(output) + 1, 0xFE000000, 0, 0, 0, 0);
+	clif->broadcast2(&sd->bl, output, (int)strlen(output) + 1, 0xFE000000, 0, 0, 0, 0, ALL_CLIENT);
 
 	// log the chat message
 	logs->chat( LOG_CHAT_MAINCHAT, 0, sd->status.char_id, sd->status.account_id, mapindex_id2name(sd->mapindex), sd->bl.x, sd->bl.y, NULL, message );
-
-	return 0;
-}
-
-// The transmission of Wisp/Page to inter-server (player not found on this server)
-int intif_wis_message(struct map_session_data *sd, const char *nick, const char *mes, int mes_len)
-{
-	if (intif->CheckForCharServer())
-		return 0;
-	nullpo_ret(sd);
-	nullpo_ret(nick);
-	nullpo_ret(mes);
-
-	if (chrif->other_mapserver_count < 1) {
-		//Character not found.
-		clif->wis_end(sd->fd, 1);
-		return 0;
-	}
-
-	WFIFOHEAD(inter_fd,mes_len + 52);
-	WFIFOW(inter_fd,0) = 0x3001;
-	WFIFOW(inter_fd,2) = mes_len + 52;
-	memcpy(WFIFOP(inter_fd,4), sd->status.name, NAME_LENGTH);
-	memcpy(WFIFOP(inter_fd,4+NAME_LENGTH), nick, NAME_LENGTH);
-	memcpy(WFIFOP(inter_fd,4+2*NAME_LENGTH), mes, mes_len);
-	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
-
-	if (battle_config.etc_log)
-		ShowInfo("intif_wis_message de %s para %s (mensagem: '%s')\n", sd->status.name, nick, mes);
-
-	return 0;
-}
-
-// The reply of Wisp/page
-int intif_wis_replay(int id, int flag)
-{
-	if (intif->CheckForCharServer())
-		return 0;
-	WFIFOHEAD(inter_fd,7);
-	WFIFOW(inter_fd,0) = 0x3002;
-	WFIFOL(inter_fd,2) = id;
-	WFIFOB(inter_fd,6) = flag; // flag: 0: success to send whisper, 1: target character is not logged in?, 2: ignored by target
-	WFIFOSET(inter_fd,7);
-
-	if (battle_config.etc_log)
-		ShowInfo("intif_wis_replay: id: %d, flag:%d\n", id, flag);
-
-	return 0;
-}
-
-// The transmission of GM only Wisp/Page from server to inter-server
-int intif_wis_message_to_gm(char *wisp_name, int permission, char *mes)
-{
-	int mes_len;
-	if (intif->CheckForCharServer())
-		return 0;
-	nullpo_ret(wisp_name);
-	nullpo_ret(mes);
-	mes_len = (int)strlen(mes) + 1; // + null
-	Assert_ret(mes_len > 0 && mes_len <= INT16_MAX - 32);
-
-	WFIFOHEAD(inter_fd, mes_len + 32);
-	WFIFOW(inter_fd,0) = 0x3003;
-	WFIFOW(inter_fd,2) = mes_len + 32;
-	memcpy(WFIFOP(inter_fd,4), wisp_name, NAME_LENGTH);
-	WFIFOL(inter_fd,4+NAME_LENGTH) = permission;
-	memcpy(WFIFOP(inter_fd,8+NAME_LENGTH), mes, mes_len);
-	WFIFOSET(inter_fd, WFIFOW(inter_fd,2));
-
-	if (battle_config.etc_log)
-		ShowNotice("intif_wis_message_to_gm: de: '%s', permissao requisitada: %d, mensagem: '%s'.\n", wisp_name, permission, mes);
 
 	return 0;
 }
@@ -1152,96 +1021,7 @@ int intif_homunculus_requestdelete(int homun_id)
 //-----------------------------------------------------------------
 // Packets receive from inter server
 
-// Wisp/Page reception // rewritten by [Yor]
-void intif_parse_WisMessage(int fd) {
-	struct map_session_data* sd;
-	const char *wisp_source;
-	char name[NAME_LENGTH];
-	int id, i;
 
-	id=RFIFOL(fd,4);
-
-	safestrncpy(name, RFIFOP(fd,32), NAME_LENGTH);
-	sd = map->nick2sd(name);
-	if(sd == NULL || strcmp(sd->status.name, name) != 0) {
-		//Not found
-		intif_wis_replay(id,1);
-		return;
-	}
-	if(sd->state.ignoreAll) {
-		intif_wis_replay(id, 2);
-		return;
-	}
-	wisp_source = RFIFOP(fd,8); // speed up [Yor]
-	for(i=0; i < MAX_IGNORE_LIST &&
-		sd->ignore[i].name[0] != '\0' &&
-		strcmp(sd->ignore[i].name, wisp_source) != 0
-		; i++);
-
-	if (i < MAX_IGNORE_LIST && sd->ignore[i].name[0] != '\0') {
-		//Ignored
-		intif_wis_replay(id, 2);
-		return;
-	}
-	//Success to send whisper.
-	clif->wis_message(sd->fd, wisp_source, RFIFOP(fd,56),RFIFOW(fd,2)-57);
-	intif_wis_replay(id,0);   // success
-}
-
-// Wisp/page transmission result reception
-void intif_parse_WisEnd(int fd)
-{
-	struct map_session_data* sd;
-	const char *playername = RFIFOP(fd, 2);
-
-	if (battle_config.etc_log)
-		ShowInfo("intif_parse_wisend: player: %s, flag: %d\n", playername, RFIFOB(fd,26)); // flag: 0: success to send whisper, 1: target character is not logged in?, 2: ignored by target
-	sd = map->nick2sd(playername);
-	if (sd != NULL)
-		clif->wis_end(sd->fd, RFIFOB(fd,26));
-
-	return;
-}
-
-int intif_parse_WisToGM_sub(struct map_session_data *sd, va_list va)
-{
-	int permission = va_arg(va, int);
-	char *wisp_name;
-	char *message;
-	int len;
-
-	nullpo_ret(sd);
-	if (!pc_has_permission(sd, permission))
-		return 0;
-	wisp_name = va_arg(va, char*);
-	message = va_arg(va, char*);
-	len = va_arg(va, int);
-	clif->wis_message(sd->fd, wisp_name, message, len);
-	return 1;
-}
-
-// Received wisp message from map-server via char-server for ALL gm
-// 0x3003/0x3803 <packet_len>.w <wispname>.24B <permission>.l <message>.?B
-void intif_parse_WisToGM(int fd)
-{
-	int permission, mes_len;
-	char Wisp_name[NAME_LENGTH];
-	char mbuf[255] = { 0 };
-	char *message;
-
-	mes_len =  RFIFOW(fd,2) - 33; // Length not including the NUL terminator
-	Assert_retv(mes_len > 0 && mes_len < 32000);
-	message = (mes_len >= 255 ? aMalloc(mes_len + 1) : mbuf);
-
-	permission = RFIFOL(fd,28);
-	safestrncpy(Wisp_name, RFIFOP(fd,4), NAME_LENGTH);
-	safestrncpy(message, RFIFOP(fd,32), mes_len + 1);
-	// information is sent to all online GM
-	map->foreachpc(intif->pWisToGM_sub, permission, Wisp_name, message, mes_len);
-
-	if (message != mbuf)
-		aFree(message);
-}
 
 // Request player registre
 void intif_parse_Registers(int fd)
@@ -2708,7 +2488,7 @@ int intif_parse(int fd)
 	int packet_len, cmd;
 	cmd = RFIFOW(fd,0);
 	// Verify ID of the packet
-	if (cmd < 0x3800 || cmd >= 0x3800+(sizeof(intif->packet_len_table)/sizeof(intif->packet_len_table[0]))
+	if ((uint16)cmd < (uint16)0x3800 || (uint16)cmd >= (uint16)0x3800+(sizeof(intif->packet_len_table)/sizeof(intif->packet_len_table[0]))
 	 || intif->packet_len_table[cmd-0x3800] == 0
 	) {
 		return 0;
@@ -2724,16 +2504,7 @@ int intif_parse(int fd)
 		return 2;
 	}
 	// Processing branch
-	switch(cmd){
-		case 0x3800:
-			if (RFIFOL(fd,4) == 0xFF000000) //Normal announce.
-				clif->broadcast(NULL, RFIFOP(fd,16), packet_len-16, BC_DEFAULT, ALL_CLIENT);
-			else //Color announce.
-				clif->broadcast2(NULL, RFIFOP(fd,16), packet_len-16, RFIFOL(fd,4), RFIFOW(fd,8), RFIFOW(fd,10), RFIFOW(fd,12), RFIFOW(fd,14), ALL_CLIENT);
-			break;
-		case 0x3801: intif->pWisMessage(fd); break;
-		case 0x3802: intif->pWisEnd(fd); break;
-		case 0x3803: intif->pWisToGM(fd); break;
+	switch (cmd) {
 		case 0x3804: intif->pRegisters(fd); break;
 		case 0x3805: intif->pAccountStorage(fd); break;
 		case 0x3806: intif->pChangeNameOk(fd); break;
@@ -2834,7 +2605,7 @@ int intif_parse(int fd)
 *-------------------------------------*/
 void intif_defaults(void) {
 	const int packet_len_table [INTIF_PACKET_LEN_TABLE_SIZE] = {
-		-1,-1,27,-1, -1,-1,37,-1,  7, 0, 0, 0,  0, 0,  0, 0, //0x3800-0x380f
+		 0, 0, 0, 0, -1,-1,37,-1,  7, 0, 0, 0,  0, 0,  0, 0, //0x3800-0x380f
 		 0, 0, 0, 0,  0, 0, 0, 0, -1,11, 0, 0,  0, 0,  0, 0, //0x3810
 		39,-1,15,15, 14,19, 7,-1,  0, 0, 0, 0,  0, 0,  0, 0, //0x3820
 		10,-1,15, 0, 79,23, 7,-1,  0,-1,-1,-1, 14,67,186,-1, //0x3830
@@ -2854,11 +2625,7 @@ void intif_defaults(void) {
 	/* funcs */
 	intif->parse = intif_parse;
 	intif->create_pet = intif_create_pet;
-	intif->broadcast = intif_broadcast;
-	intif->broadcast2 = intif_broadcast2;
 	intif->main_message = intif_main_message;
-	intif->wis_message = intif_wis_message;
-	intif->wis_message_to_gm = intif_wis_message_to_gm;
 	intif->saveregistry = intif_saveregistry;
 	intif->request_registry = intif_request_registry;
 	intif->request_account_storage = intif_request_account_storage;
@@ -2941,10 +2708,6 @@ void intif_defaults(void) {
 	/* */
 	intif->itembound_req = intif_itembound_req;
 	/* parse functions */
-	intif->pWisMessage = intif_parse_WisMessage;
-	intif->pWisEnd = intif_parse_WisEnd;
-	intif->pWisToGM_sub = intif_parse_WisToGM_sub;
-	intif->pWisToGM = intif_parse_WisToGM;
 	intif->pRegisters = intif_parse_Registers;
 	intif->pChangeNameOk = intif_parse_ChangeNameOk;
 	intif->pMessageToFD = intif_parse_MessageToFD;

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -1030,13 +1030,13 @@ ACMD(alive)
 /*==========================================
  * +kamic [LuzZza]
  *------------------------------------------*/
-ACMD(kami)
-{
+ACMD(kami) {
 	unsigned int color=0;
+	Assert_retr(false, strlen(info->command) >= 4);
 
 	memset(atcmd_output, '\0', sizeof(atcmd_output));
 
-	if(*(info->command + 4) != 'c' && *(info->command + 4) != 'C') {
+	if (info->command[4] != 'c' && info->command[4] != 'C') {
 		if (!*message) {
 			clif->message(fd, msg_txt(980)); // Please enter a message (usage: @kami <message>).
 			return false;
@@ -1045,8 +1045,10 @@ ACMD(kami)
 		sscanf(message, "%199[^\n]", atcmd_output);
 		if (stristr(info->command, "l") != NULL)
 			clif->broadcast(&sd->bl, atcmd_output, (int)strlen(atcmd_output) + 1, BC_DEFAULT, ALL_SAMEMAP);
+		else if (info->command[4] == 'b' || info->command[4] == 'B')
+			clif->broadcast(&sd->bl, atcmd_output, (int)strlen(atcmd_output) + 1, BC_BLUE, ALL_CLIENT);
 		else
-			intif->broadcast(atcmd_output, (int)strlen(atcmd_output) + 1, (*(info->command + 4) == 'b' || *(info->command + 4) == 'B') ? BC_BLUE : BC_YELLOW);
+			clif->broadcast(&sd->bl, atcmd_output, (int)strlen(atcmd_output) + 1, BC_YELLOW, ALL_CLIENT);
 	} else {
 		if(!*message || (sscanf(message, "%10u %199[^\n]", &color, atcmd_output) < 2)) {
 			clif->message(fd, msg_txt(981)); // Please enter color and message (usage: @kamic <color> <message>).
@@ -1057,7 +1059,7 @@ ACMD(kami)
 			clif->message(fd, msg_txt(982)); // Invalid color.
 			return false;
 		}
-		intif->broadcast2(atcmd_output, (int)strlen(atcmd_output) + 1, color, 0x190, 12, 0, 0);
+		clif->broadcast2(&sd->bl, atcmd_output, (int)strlen(atcmd_output) + 1, color, 0x190, 12, 0, 0, ALL_CLIENT);
 	}
 	return true;
 }
@@ -4919,7 +4921,7 @@ ACMD(broadcast)
 	}
 
 	safesnprintf(atcmd_output, sizeof(atcmd_output), "%s: %s", sd->status.name, message);
-	intif->broadcast(atcmd_output, (int)strlen(atcmd_output) + 1, BC_DEFAULT);
+	clif->broadcast(&sd->bl, atcmd_output, (int)strlen(atcmd_output) + 1, BC_DEFAULT, ALL_CLIENT);
 
 	return true;
 }
@@ -5474,8 +5476,8 @@ void atcommand_getring(struct map_session_data* sd) {
 	item_tmp.nameid = item_id;
 	item_tmp.identify = 1;
 	item_tmp.card[0] = 255;
-	item_tmp.card[2] = sd->status.partner_id;
-	item_tmp.card[3] = sd->status.partner_id >> 16;
+	item_tmp.card[2] = GetWord(sd->status.partner_id, 0);
+	item_tmp.card[3] = GetWord(sd->status.partner_id, 1);
 
 	if((flag = pc->additem(sd,&item_tmp,1,LOG_TYPE_COMMAND))) {
 		clif->additem(sd,0,0,flag);
@@ -7974,7 +7976,7 @@ ACMD(request)
 	}
 
 	safesnprintf(atcmd_output, sizeof(atcmd_output), msg_txt(278), message); // (@request): %s
-	intif->wis_message_to_gm(sd->status.name, PC_PERM_RECEIVE_REQUESTS, atcmd_output);
+	clif->wis_message_to_gm(sd->status.name, PC_PERM_RECEIVE_REQUESTS, atcmd_output);
 	clif_disp_onlyself(sd, atcmd_output);
 	clif->message(sd->fd,msg_txt(279)); // @request sent.
 	return true;
@@ -8153,18 +8155,18 @@ ACMD(itemlist)
 		clif->message(fd, StrBuf->Value(&buf));
 		StrBuf->Clear(&buf);
 
-		if( it->card[0] == CARD0_PET ) {
+		if (it->card[0] == CARD0_PET) {
 			// pet egg
-			if (it->card[3])
-				StrBuf->Printf(&buf, msg_txt(1348), (unsigned int)MakeDWord(it->card[1], it->card[2])); //  -> (pet egg, pet id: %u, named)
+			if (it->card[3] != 0)
+				StrBuf->Printf(&buf, msg_txt(1348), itemdb_pet_id(it)); //  -> (pet egg, pet id: %d, named)
 			else
-				StrBuf->Printf(&buf, msg_txt(1349), (unsigned int)MakeDWord(it->card[1], it->card[2])); //  -> (pet egg, pet id: %u, unnamed)
-		} else if(it->card[0] == CARD0_FORGE) {
+				StrBuf->Printf(&buf, msg_txt(1349), itemdb_pet_id(it)); //  -> (pet egg, pet id: %d, unnamed)
+		} else if (it->card[0] == CARD0_FORGE) {
 			// forged item
-			StrBuf->Printf(&buf, msg_txt(1350), (unsigned int)MakeDWord(it->card[2], it->card[3]), it->card[1]>>8, it->card[1]&0x0f); //  -> (crafted item, creator id: %u, star crumbs %d, element %d)
-		} else if(it->card[0] == CARD0_CREATE) {
+			StrBuf->Printf(&buf, msg_txt(1350), itemdb_creator_id(it), itemdb_forged_starcrumbs(it), itemdb_forged_element(it)); //  -> (crafted item, creator id: %d, star crumbs %d, element %d)
+		} else if (it->card[0] == CARD0_CREATE) {
 			// created item
-			StrBuf->Printf(&buf, msg_txt(1351), (unsigned int)MakeDWord(it->card[2], it->card[3])); //  -> (produced item, creator id: %u)
+			StrBuf->Printf(&buf, msg_txt(1351), itemdb_creator_id(it)); //  -> (produced item, creator id: %d)
 		} else {
 			// normal item
 			int counter2 = 0;
@@ -8296,9 +8298,9 @@ ACMD(delitem) {
 	while (amount && (idx = pc->search_inventory(sd, nameid)) != INDEX_NOT_FOUND) {
 		int delamount = ( amount < sd->status.inventory[idx].amount ) ? amount : sd->status.inventory[idx].amount;
 
-		if( sd->inventory_data[idx]->type == IT_PETEGG && sd->status.inventory[idx].card[0] == CARD0_PET )
-		{// delete pet
-			intif->delete_petdata(MakeDWord(sd->status.inventory[idx].card[1], sd->status.inventory[idx].card[2]));
+		if (sd->inventory_data[idx]->type == IT_PETEGG && sd->status.inventory[idx].card[0] == CARD0_PET) {
+			// delete pet
+			intif->delete_petdata(itemdb_pet_id(&sd->status.inventory[idx]));
 		}
 		pc->delitem(sd, idx, delamount, 0, DELITEM_NORMAL, LOG_TYPE_COMMAND);
 

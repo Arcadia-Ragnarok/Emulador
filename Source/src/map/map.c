@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------*\
 |              ____                     _                           |
-|             /    |   [ Emulador ]    | |_                         |
+|             /    |                   | |_                         |
 |            /     |_ __ ____  __ _  __| |_  __ _                   |
 |           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
 |          /  __   | | |  |__  (_| | (_| | | (_| |                  |
@@ -1449,8 +1449,9 @@ int map_clearflooritem_timer(int tid, int64 tick, int id, intptr_t data)
 		return 1;
 	}
 
-	if (pet->search_petDB_index(fitem->item_data.nameid, PET_EGG) >= 0)
-		intif->delete_petdata(MakeDWord(fitem->item_data.card[1], fitem->item_data.card[2]));
+	if (pet->search_petDB_index(fitem->item_data.nameid, PET_EGG) >= 0) {
+		intif->delete_petdata(itemdb_pet_id(&fitem->item_data));
+	}
 
 	clif->clearflooritem(fitem, 0);
 	map->deliddb(&fitem->bl);
