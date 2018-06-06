@@ -4854,9 +4854,8 @@ bool mob_skill_db_libconfig_sub(struct config_setting_t *it, int n) {
 	return true;
 }
 
-bool mob_skill_db_libconfig_sub_skill(struct config_setting_t *it, int n, int mob_id)
-{
-	int i, j;
+bool mob_skill_db_libconfig_sub_skill(struct config_setting_t *it, int n, int mob_id) {
+	int i, j, idx = 0;
 	int i32;
 	int skill_id = 0;
 	int skill_idx = 0;
@@ -4888,8 +4887,8 @@ bool mob_skill_db_libconfig_sub_skill(struct config_setting_t *it, int n, int mo
 		memset(&gms, 0, sizeof (struct mob_skill));
 		ms = &gms;
 	} else {
-		ARR_FIND(0, MAX_MOBSKILL, i, (ms = &mob->db_data[mob_id]->skill[i])->skill_id == 0);
-		if (i == MAX_MOBSKILL) {
+		ARR_FIND(0, MAX_MOBSKILL, idx, (ms = &mob->db_data[mob_id]->skill[idx])->skill_id == 0);
+		if (idx == MAX_MOBSKILL) {
 			ShowError("mob_skill_db_libconfig_sub_skill: Muitas habilidades para o monstro %d\n", mob_id);
 			return false;
 		}
@@ -5032,7 +5031,7 @@ bool mob_skill_db_libconfig_sub_skill(struct config_setting_t *it, int n, int mo
 			mob->db_data[i]->maxskill = j + 1;
 		}
 	} else { //Skill set on a single mob.
-		mob->db_data[mob_id]->maxskill = i + 1;
+		mob->db_data[mob_id]->maxskill = idx + 1;
 	}
 
 	return true;
