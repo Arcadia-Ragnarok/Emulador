@@ -4879,11 +4879,12 @@ bool map_zone_mf_cache(int m, char *flag, char *params) {
 		}
 	} else if (!strcmpi(flag,"adjust_unit_duration")) {
 		int skill_id, k;
-		char skill_name[MAP_ZONE_MAPFLAG_LENGTH], modifier[MAP_ZONE_MAPFLAG_LENGTH];
-		size_t len = strlen(params);
+		char skill_name[MAX_SKILL_NAME_LENGTH], modifier[MAP_ZONE_MAPFLAG_LENGTH];
+		size_t len;
 
 		modifier[0] = '\0';
-		memcpy(skill_name, params, MAP_ZONE_MAPFLAG_LENGTH);
+		safestrncpy(skill_name, params, MAX_SKILL_NAME_LENGTH);
+		len = strlen(skill_name);
 
 		for(k = 0; k < len; k++) {
 			if( skill_name[k] == '\t' ) {
@@ -4912,11 +4913,12 @@ bool map_zone_mf_cache(int m, char *flag, char *params) {
 		}
 	} else if (!strcmpi(flag,"adjust_skill_damage")) {
 		int skill_id, k;
-		char skill_name[MAP_ZONE_MAPFLAG_LENGTH], modifier[MAP_ZONE_MAPFLAG_LENGTH];
-		size_t len = strlen(params);
+		char skill_name[MAX_SKILL_NAME_LENGTH], modifier[MAP_ZONE_MAPFLAG_LENGTH];
+		size_t len;
 
 		modifier[0] = '\0';
-		memcpy(skill_name, params, MAP_ZONE_MAPFLAG_LENGTH);
+		safestrncpy(skill_name, params, MAX_SKILL_NAME_LENGTH);
+		len = strlen(skill_name);
 
 		for(k = 0; k < len; k++) {
 			if( skill_name[k] == '\t' ) {

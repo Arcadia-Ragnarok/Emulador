@@ -4763,7 +4763,7 @@ void char_parse_char_pincode_check(int fd, struct char_session_data* sd) {
 void char_parse_char_pincode_window(int fd, struct char_session_data* sd) __attribute__((nonnull (2)));
 void char_parse_char_pincode_window(int fd, struct char_session_data* sd) {
 	if (RFIFOL(fd,2) == sd->account_id) {
-		pincode->sendstate(fd, sd, PINCODE_NOTSET);
+		pincode->loginstate(fd, sd, PINCODE_LOGIN_NOTSET);
 	}
 	RFIFOSKIP(fd, 6);
 }
@@ -5814,6 +5814,7 @@ int do_final(void) {
 
 	do_final_mapif();
 	loginif->final();
+	pincode->final();
 
 	if( SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s`", ragsrvinfo_db) ) {
 		Sql_ShowDebug(inter->sql_handle);
@@ -5947,6 +5948,7 @@ int do_init(int argc, char **argv) {
 
 	//Read map indexes
 	mapindex->init();
+	pincode->init();
 
 	start_point.map = mapindex->name2id("new_1-1");
 

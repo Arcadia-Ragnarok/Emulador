@@ -1086,7 +1086,7 @@ ACMD(heal)
 	}
 
 	if ( hp > 0 && sp >= 0 ) {
-		if(!status->heal(&sd->bl, hp, sp, 0))
+		if (status->heal(&sd->bl, hp, sp, STATUS_HEAL_DEFAULT) == 0)
 			clif->message(fd, msg_txt(157)); // HP and SP are already with the good value.
 		else
 			clif->message(fd, msg_txt(17)); // HP, SP recovered.
@@ -1103,7 +1103,7 @@ ACMD(heal)
 	//Opposing signs.
 	if ( hp ) {
 		if (hp > 0)
-			status->heal(&sd->bl, hp, 0, 0);
+			status->heal(&sd->bl, hp, 0, STATUS_HEAL_DEFAULT);
 		else {
 			status->damage(NULL, &sd->bl, -hp, 0, 0, 0);
 			clif->damage(&sd->bl,&sd->bl, 0, 0, -hp, 0, BDT_ENDURE, 0);
@@ -1112,7 +1112,7 @@ ACMD(heal)
 
 	if ( sp ) {
 		if (sp > 0)
-			status->heal(&sd->bl, 0, sp, 0);
+			status->heal(&sd->bl, 0, sp, STATUS_HEAL_DEFAULT);
 		else
 			status->damage(NULL, &sd->bl, 0, -sp, 0, 0);
 	}
@@ -2043,7 +2043,7 @@ ACMD(monster)
 		number = 1;
 
 	if (!name[0])
-		strcpy(name, "--ja--");
+		strcpy(name, DEFAULT_MOB_JNAME);
 
 	// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
 	if (battle_config.atc_spawn_quantity_limit && number > battle_config.atc_spawn_quantity_limit)
@@ -6128,9 +6128,10 @@ ACMD(mobsearch)
 		clif->message(fd, atcmd_output);
 		return false;
 	}
-	if (mob_id == atoi(mob_name))
-		strcpy(mob_name,mob->db(mob_id)->jname); // --ja--
-		//strcpy(mob_name,mob_db(mob_id)->name); // --en--
+	if (mob_id == atoi(mob_name)) {
+		strcpy(mob_name,mob->db(mob_id)->jname); // DEFAULT_MOB_JNAME
+		//strcpy(mob_name,mob_db(mob_id)->name); // DEFAULT_MOB_NAME
+	}
 
 	snprintf(atcmd_output, sizeof atcmd_output, msg_txt(1220), mob_name, mapindex_id2name(sd->mapindex)); // Mob Search... %s %s
 	clif->message(fd, atcmd_output);
@@ -6192,7 +6193,7 @@ ACMD(cleanarea) {
  *------------------------------------------*/
 ACMD(npctalk)
 {
-	char name[NAME_LENGTH],mes[100],temp[100];
+	char name[NAME_LENGTH], mes[100], temp[200];
 	struct npc_data *nd;
 	bool ifcolor=(*(info->command + 7) != 'c' && *(info->command + 7) != 'C')?0:1;
 	unsigned int color = 0;
@@ -6229,7 +6230,7 @@ ACMD(npctalk)
 
 ACMD(pettalk)
 {
-	char mes[100],temp[100];
+	char mes[100], temp[200];
 	struct pet_data *pd;
 
 	if (battle_config.min_chat_delay) {
@@ -6373,7 +6374,7 @@ ACMD(summon)
 		return false;
 	}
 
-	md = mob->once_spawn_sub(&sd->bl, sd->bl.m, -1, -1, "--ja--", mob_id, "", SZ_SMALL, AI_NONE);
+	md = mob->once_spawn_sub(&sd->bl, sd->bl.m, -1, -1, DEFAULT_MOB_JNAME, mob_id, "", SZ_SMALL, AI_NONE);
 
 	if(!md)
 		return false;
@@ -6803,9 +6804,10 @@ ACMD(showmobs)
 		return false;
 	}
 
-	if(mob_id == atoi(mob_name))
-		strcpy(mob_name,mob->db(mob_id)->jname);    // --ja--
-	//strcpy(mob_name,mob_db(mob_id)->name);    // --en--
+	if (mob_id == atoi(mob_name)) {
+		strcpy(mob_name,mob->db(mob_id)->jname); // DEFAULT_MOB_JNAME
+		//strcpy(mob_name,mob_db(mob_id)->name); // DEFAULT_MOB_NAME
+	}
 
 	snprintf(atcmd_output, sizeof atcmd_output, msg_txt(1252), // Mob Search... %s %s
 			 mob_name, mapindex_id2name(sd->mapindex));
@@ -7023,7 +7025,7 @@ ACMD(homhungry)
  *------------------------------------------*/
 ACMD(homtalk)
 {
-	char mes[100],temp[100];
+	char mes[100], temp[200];
 
 	if (battle_config.min_chat_delay) {
 		if (DIFF_TICK(sd->cantalk_tick, timer->gettick()) > 0)

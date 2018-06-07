@@ -724,7 +724,7 @@ enum map_zone_merge_type {
 	MZMT_NEVERMERGE, ///< Cannot merge with any zones.
 };
 
-#define MAP_ZONE_NAME_LENGTH 60
+#define MAP_ZONE_NAME_LENGTH 65
 #define MAP_ZONE_ALL_NAME "All"
 #define MAP_ZONE_NORMAL_NAME "Normal"
 #define MAP_ZONE_PVP_NAME "PvP"
@@ -732,7 +732,7 @@ enum map_zone_merge_type {
 #define MAP_ZONE_BG_NAME "Battlegrounds"
 #define MAP_ZONE_CVC_NAME "CvC"
 #define MAP_ZONE_PK_NAME "PK Mode"
-#define MAP_ZONE_MAPFLAG_LENGTH 50
+#define MAP_ZONE_MAPFLAG_LENGTH 65
 
 struct map_zone_data {
 	char name[MAP_ZONE_NAME_LENGTH];/* 20'd */

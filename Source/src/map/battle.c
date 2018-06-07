@@ -2626,7 +2626,7 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 		if( sc->data[SC__MAELSTROM] && (flag&BF_MAGIC) && skill_id && (skill->get_inf(skill_id)&INF_GROUND_SKILL) ) {
 			// {(Maelstrom Skill LevelxAbsorbed Skill Level)+(Caster's Job/5)}/2
 			int sp = (sc->data[SC__MAELSTROM]->val1 * skill_lv + (t_sd ? t_sd->status.job_level / 5 : 0)) / 2;
-			status->heal(bl, 0, sp, 3);
+			status->heal(bl, 0, sp, STATUS_HEAL_FORCED | STATUS_HEAL_SHOWEFFECT);
 			d->dmg_lv = ATK_BLOCK;
 			return 0;
 		}
@@ -2965,7 +2965,7 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 		//(since battle_drain is strictly for players currently)
 		if ((sce=sc->data[SC_HAMI_BLOODLUST]) && flag&BF_WEAPON && damage > 0 &&
 			rnd()%100 < sce->val3)
-			status->heal(src, damage*sce->val4/100, 0, 3);
+			status->heal(src, damage*sce->val4/100, 0, STATUS_HEAL_FORCED | STATUS_HEAL_SHOWEFFECT);
 
 		if( (sce = sc->data[SC_FORCEOFVANGUARD]) && flag&BF_WEAPON
 			&& rnd()%100 < sce->val2 && sc->fv_counter <= sce->val3 )
@@ -5432,7 +5432,7 @@ void battle_drain(struct map_session_data *sd, struct block_list *tbl, int64 rda
 
 	if (!thp && !tsp) return;
 
-	status->heal(&sd->bl, thp, tsp, battle_config.show_hp_sp_drain ? 3 : 1);
+	status->heal(&sd->bl, thp, tsp, STATUS_HEAL_FORCED | (battle_config.show_hp_sp_drain ? STATUS_HEAL_SHOWEFFECT : STATUS_HEAL_DEFAULT));
 
 	if (rhp || rsp)
 		status_zap(tbl, rhp, rsp);
@@ -6362,6 +6362,7 @@ battle_data[] = {
 	{ "client_config/rodex",                           &battle_config.feature_rodex,                   1,   0, 1,            },
 	{ "client_config/rodex_use_accountmail",           &battle_config.feature_rodex_use_accountmail,   0,   0, 1,            },
 	{ "client_config/enable_homun_autofeed",           &battle_config.feature_enable_homun_autofeed,   1,   0, 1,            },
+	{ "client_config/display_fake_hp_when_dead",       &battle_config.display_fake_hp_when_dead,       1,   0, 1,            },
 
 	{ "drops_config/flooritem_lifetime",       &battle_config.flooritem_lifetime,       60000, 1000, INT_MAX, },
 	{ "drops_config/item_auto_get",            &battle_config.item_auto_get,            0,     0,    1,       },

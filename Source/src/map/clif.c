@@ -3027,7 +3027,12 @@ void clif_updatestatus(struct map_session_data *sd,int type)
 			WFIFOL(fd,4)=sd->battle_status.max_sp;
 			break;
 		case SP_HP:
-			WFIFOL(fd,4)=sd->battle_status.hp;
+			if (sd->battle_status.hp == 0 && battle_config.display_fake_hp_when_dead) {
+				// On official servers, the HP displayed when dead is the HP that the character will have at respawn.
+				WFIFOL(fd, 4) = status->get_restart_hp(sd, &sd->battle_status);
+			} else {
+				WFIFOL(fd, 4) = sd->battle_status.hp;
+			}
 			break;
 		case SP_SP:
 			WFIFOL(fd,4)=sd->battle_status.sp;
@@ -17109,43 +17114,52 @@ void clif_parse_ReqOpenBuyingStore(int fd, struct map_session_data* sd) __attrib
 /// result:
 ///     0 = cancel
 ///     1 = open
-void clif_parse_ReqOpenBuyingStore(int fd, struct map_session_data* sd) {
-	const unsigned int blocksize = 8;
-	const uint8 *itemlist;
+void clif_parse_ReqOpenBuyingStore(int fd, struct map_session_data *sd)
+{
+	const int blocksize = 8;
+	const uint8 *raw_list;
+	struct buyingstore_itemlist item_list;
 	char storename[MESSAGE_SIZE];
 	unsigned char result;
-	int zenylimit;
-	int count, packet_len;
+	int zenylimit, count, packet_len, i;
 	struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
 
 	packet_len = RFIFOW(fd,info->pos[0]);
 
 	// TODO: Make this check global for all variable length packets.
-	if( packet_len < 89 )
-	{// minimum packet length
-		ShowError("clif_parse_ReqOpenBuyingStore: Packet mal formado (comprimento length=%u, length=%d, account_id=%d).\n", 89U, packet_len, sd->bl.id);
+	if (packet_len < 89) { // minimum packet length
+		ShowError("clif_parse_ReqOpenBuyingStore: Packet mal formado (expected=%d, length=%d, account_id=%d).\n", 89, packet_len, sd->bl.id);
 		return;
 	}
 
 	zenylimit = RFIFOL(fd,info->pos[1]);
 	result    = RFIFOL(fd,info->pos[2]);
 	safestrncpy(storename, RFIFOP(fd,info->pos[3]), sizeof(storename));
-	itemlist  = RFIFOP(fd,info->pos[4]);
+	raw_list  = RFIFOP(fd,info->pos[4]);
 
-	// so that buyingstore_create knows, how many elements it has access to
-	packet_len-= info->pos[4];
+	packet_len -= info->pos[4];
 
 	if (packet_len < 0) {
 		return;
 	}
 
-	if (packet_len%blocksize) {
-		ShowError("clif_parse_ReqOpenBuyingStore: Tamanho da lista de itens inesperada %d (account_id=%d, block size=%u)\n", packet_len, sd->bl.id, blocksize);
+	if (packet_len%blocksize != 0) {
+		ShowError("clif_parse_ReqOpenBuyingStore: Tamanho da lista de itens inesperada %d (account_id=%d, block size=%d)\n", packet_len, sd->bl.id, blocksize);
 		return;
 	}
 	count = packet_len/blocksize;
 
-	buyingstore->create(sd, zenylimit, result, storename, itemlist, count);
+	VECTOR_INIT(item_list);
+	VECTOR_ENSURE(item_list, count, 1);
+	for (i = 0; i < count; i++) {
+		struct s_buyingstore_item entry = { 0 };
+		entry.nameid = RBUFW(raw_list, i * blocksize + 0);
+		entry.amount = RBUFW(raw_list, i * blocksize + 2);
+		entry.price  = RBUFL(raw_list, i * blocksize + 4);
+		VECTOR_PUSH(item_list, entry);
+	}
+	buyingstore->create(sd, zenylimit, result, storename, &item_list);
+	VECTOR_CLEAR(item_list);
 }
 
 /// Notification, that the requested buying store could not be created (ZC_FAILED_OPEN_BUYING_STORE_TO_BUYER).
@@ -17305,25 +17319,26 @@ void clif_buyingstore_itemlist(struct map_session_data* sd, struct map_session_d
 void clif_parse_ReqTradeBuyingStore(int fd, struct map_session_data* sd) __attribute__((nonnull (2)));
 /// Request to sell items to a buying store (CZ_REQ_TRADE_BUYING_STORE).
 /// 0819 <packet len>.W <account id>.L <store id>.L { <index>.W <name id>.W <amount>.W }*
-void clif_parse_ReqTradeBuyingStore(int fd, struct map_session_data* sd) {
-	const unsigned int blocksize = 6;
-	const uint8 *itemlist;
-	int account_id;
+void clif_parse_ReqTradeBuyingStore(int fd, struct map_session_data *sd)
+{
+	const int blocksize = 6;
+	const uint8 *raw_list;
+	struct buyingstore_trade_itemlist item_list;
+	int account_id, count, packet_len, i;
 	unsigned int buyer_id;
-	int count, packet_len;
 	struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
 
 	packet_len = RFIFOW(fd,info->pos[0]);
 
 	// minimum packet length
 	if (packet_len < 12) {
-		ShowError("clif_parse_ReqTradeBuyingStore: Packet mal formado (length=%u, length=%d, account_id=%d).\n", 12U, packet_len, sd->bl.id);
+		ShowError("clif_parse_ReqTradeBuyingStore: Packet mal formado (expected=%d, length=%d, account_id=%d).\n", 12, packet_len, sd->bl.id);
 		return;
 	}
 
 	account_id = RFIFOL(fd,info->pos[1]);
 	buyer_id   = RFIFOL(fd,info->pos[2]);
-	itemlist   = RFIFOP(fd,info->pos[3]);
+	raw_list   = RFIFOP(fd,info->pos[3]);
 
 	// so that buyingstore_trade knows, how many elements it has access to
 	packet_len-= info->pos[3];
@@ -17331,13 +17346,24 @@ void clif_parse_ReqTradeBuyingStore(int fd, struct map_session_data* sd) {
 		return;
 	}
 
-	if(packet_len%blocksize) {
-		ShowError("clif_parse_ReqTradeBuyingStore: Tamanho da lista de itens inesperada %d (account_id=%d, buyer_id=%d, block size=%u)\n", packet_len, sd->bl.id, account_id, blocksize);
+	if (packet_len%blocksize != 0) {
+		ShowError("clif_parse_ReqTradeBuyingStore: Tamanho da lista de itens inesperada %d (account_id=%d, buyer_id=%d, block size=%d)\n", packet_len, sd->bl.id, account_id, blocksize);
 		return;
 	}
 	count = packet_len/blocksize;
 
-	buyingstore->trade(sd, account_id, buyer_id, itemlist, count);
+	VECTOR_INIT(item_list);
+	VECTOR_ENSURE(item_list, count, 1);
+	for (i = 0; i < count; i++) {
+		struct buyingstore_trade_item entry = { 0 };
+		entry.index  = RBUFW(raw_list, i * blocksize + 0) - 2;
+		entry.nameid = RBUFW(raw_list, i * blocksize + 2);
+		entry.amount = RBUFW(raw_list, i * blocksize + 4);
+		VECTOR_PUSH(item_list, entry);
+	}
+
+	buyingstore->trade(sd, account_id, buyer_id, &item_list);
+	VECTOR_CLEAR(item_list);
 }
 
 /// Notifies the buyer, that the buying store has been closed due to a post-trade condition (ZC_FAILED_TRADE_BUYING_STORE_TO_BUYER).
@@ -17447,19 +17473,20 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) __attribute
 ///         amount of card slots. If the client does not know about the item it
 ///         cannot be searched.
 void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
-	const unsigned int blocksize = 2;
-	const uint8* itemlist;
-	const uint8* cardlist;
+	const int blocksize = 2;
+	const uint16 *raw_itemlist;
+	const uint16 *raw_cardlist;
 	unsigned char type;
 	unsigned int min_price, max_price;
-	int packet_len, count, item_count, card_count;
+	int i, packet_len, count, item_count, card_count;
 	struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
+	struct s_search_store_search query = { 0 };
 
 	packet_len = RFIFOW(fd,info->pos[0]);
 
 	// minimum packet length
 	if (packet_len < 15) {
-		ShowError("clif_parse_SearchStoreInfo: Packet mal formado (length=%u, length=%d, account_id=%d).\n", 15U, packet_len, sd->bl.id);
+		ShowError("clif_parse_SearchStoreInfo: Packet mal formado (expected=%d, length=%d, account_id=%d).\n", 15, packet_len, sd->bl.id);
 		return;
 	}
 
@@ -17468,7 +17495,7 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
 	min_price  = RFIFOL(fd,info->pos[3]);
 	item_count = RFIFOB(fd,info->pos[4]);
 	card_count = RFIFOB(fd,info->pos[5]);
-	itemlist   = RFIFOP(fd,info->pos[6]);
+	raw_itemlist = RFIFOP(fd,info->pos[6]);
 
 	if (packet_len < 0) {
 		return;
@@ -17477,20 +17504,43 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
 	// check, if there is enough data for the claimed count of items
 	packet_len-= info->pos[6];
 
-	if (packet_len%blocksize) {
-		ShowError("clif_parse_SearchStoreInfo: Tamanho da lista de itens inesperada %d (account_id=%d, block size=%u)\n", packet_len, sd->bl.id, blocksize);
+	if (packet_len % blocksize != 0) {
+		ShowError("clif_parse_SearchStoreInfo: Tamanho da lista de itens inesperad %d (account_id=%d, block size=%d)\n", packet_len, sd->bl.id, blocksize);
 		return;
 	}
-	count = packet_len/blocksize;
+	count = packet_len / blocksize;
 
-	if (count < item_count+card_count) {
+	if (count < item_count + card_count) {
 		ShowError("clif_parse_SearchStoreInfo: Packet mal formado (count=%d, count=%d, account_id=%d).\n", item_count+card_count, count, sd->bl.id);
 		return;
 	}
 
-	cardlist   = RFIFOP(fd, info->pos[6] + blocksize * item_count);
+	raw_cardlist = RFIFOP(fd,info->pos[6]+blocksize*item_count);
 
-	searchstore->query(sd, type, min_price, max_price, (const unsigned short*)itemlist, item_count, (const unsigned short*)cardlist, card_count);
+	if (min_price > max_price) {
+		swap(min_price, max_price);
+	}
+
+	query.search_sd = sd;
+	query.max_price = max_price;
+	query.min_price = min_price;
+
+	VECTOR_INIT(query.itemlist);
+	VECTOR_ENSURE(query.itemlist, item_count, 1);
+	for (i = 0; i < item_count; i++) {
+		VECTOR_INDEX(query.itemlist, i) = raw_itemlist[i];
+	}
+
+	VECTOR_INIT(query.cardlist);
+	VECTOR_ENSURE(query.cardlist, card_count, 1);
+	for (i = 0; i < card_count; i++) {
+		VECTOR_INDEX(query.cardlist, i) = raw_cardlist[i];
+	}
+
+	searchstore->query(sd, type, &query);
+
+	VECTOR_CLEAR(query.itemlist);
+	VECTOR_CLEAR(query.cardlist);
 }
 
 /// Results for a store search request (ZC_SEARCH_STORE_INFO_ACK).
@@ -19862,9 +19912,9 @@ void clif_rodex_send_maillist(int fd, struct map_session_data *sd, int8 open_typ
 		}
 		inner->Titlelength = (int16)strlen(msg->title) + 1;
 		if (open_type != RODEX_OPENTYPE_RETURN) {
-			strncpy(inner->SenderName, msg->sender_name, sizeof(msg->sender_name));
+			strncpy(inner->SenderName, msg->sender_name, sizeof(inner->SenderName));
 		} else {
-			strncpy(inner->SenderName, msg->receiver_name, sizeof(msg->receiver_name));
+			strncpy(inner->SenderName, msg->receiver_name, sizeof(inner->SenderName));
 		}
 		strncpy(inner->title, msg->title, inner->Titlelength);
 		size += sizeof(*inner) + inner->Titlelength;
@@ -19923,9 +19973,9 @@ void clif_rodex_send_mails_all(int fd, struct map_session_data *sd, int64 mail_i
 		}
 		inner->Titlelength = (int16)strlen(msg->title) + 1;
 		if (msg->opentype != RODEX_OPENTYPE_RETURN) {
-			strncpy(inner->SenderName, msg->sender_name, sizeof(msg->sender_name));
+			strncpy(inner->SenderName, msg->sender_name, sizeof(inner->SenderName));
 		} else {
-			strncpy(inner->SenderName, msg->receiver_name, sizeof(msg->receiver_name));
+			strncpy(inner->SenderName, msg->sender_name, sizeof(inner->SenderName));
 		}
 		strncpy(inner->title, msg->title, inner->Titlelength);
 		size += sizeof(*inner) + inner->Titlelength;
@@ -19994,9 +20044,9 @@ void clif_rodex_send_refresh(int fd, struct map_session_data *sd, int8 open_type
 		}
 		inner->Titlelength = (int16)strlen(msg->title) + 1;
 		if (open_type != RODEX_OPENTYPE_RETURN) {
-			strncpy(inner->SenderName, msg->sender_name, sizeof(msg->sender_name));
+			strncpy(inner->SenderName, msg->sender_name, sizeof(inner->SenderName));
 		} else {
-			strncpy(inner->SenderName, msg->receiver_name, sizeof(msg->receiver_name));
+			strncpy(inner->SenderName, msg->sender_name, sizeof(inner->SenderName));
 		}
 		strncpy(inner->title, msg->title, inner->Titlelength);
 		size += sizeof(*inner) + inner->Titlelength;

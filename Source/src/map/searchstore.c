@@ -40,7 +40,7 @@ static inline searchstore_search_t searchstore_getsearchfunc(unsigned char type)
 }
 
 /// retrieves search-all function by type
-static inline searchstore_searchall_t searchstore_getsearchallfunc(unsigned char type)
+static inline SearchStoreAllFunc *searchstore_getsearchallfunc(unsigned char type)
 {
 	switch( type ) {
 		case SEARCHTYPE_VENDING:      return vending->searchall;
@@ -91,13 +91,12 @@ bool searchstore_open(struct map_session_data* sd, unsigned int uses, unsigned s
 	return true;
 }
 
-void searchstore_query(struct map_session_data* sd, unsigned char type, unsigned int min_price, unsigned int max_price, const unsigned short* itemlist, unsigned int item_count, const unsigned short* cardlist, unsigned int card_count)
+void searchstore_query(struct map_session_data *sd, unsigned char type, const struct s_search_store_search *query)
 {
-	unsigned int i;
-	struct map_session_data* pl_sd;
+	int i;
+	const struct map_session_data *pl_sd;
 	struct DBIterator *iter;
-	struct s_search_store_search s;
-	searchstore_searchall_t store_searchall;
+	SearchStoreAllFunc *store_searchall;
 	time_t querytime;
 
 	if( !battle_config.feature_search_stores ) {
@@ -105,11 +104,12 @@ void searchstore_query(struct map_session_data* sd, unsigned char type, unsigned
 	}
 
 	nullpo_retv(sd);
-	if( !sd->searchstore.open ) {
+	Assert_retv(sd == query->search_sd);
+	if (!sd->searchstore.open) {
 		return;
 	}
 
-	if( ( store_searchall = searchstore_getsearchallfunc(type) ) == NULL ) {
+	if ((store_searchall = searchstore_getsearchallfunc(type)) == NULL) {
 		ShowError("searchstore_query: Tipo de procura desconhecida %u (account_id=%d).\n", (unsigned int)type, sd->bl.id);
 		return;
 	}
@@ -126,27 +126,24 @@ void searchstore_query(struct map_session_data* sd, unsigned char type, unsigned
 		return;
 	}
 
-	nullpo_retv(itemlist);
-	nullpo_retv(cardlist);
+	nullpo_retv(query);
 
 	// validate lists
-	for( i = 0; i < item_count; i++ ) {
-		if( !itemdb->exists(itemlist[i]) ) {
-			ShowWarning("searchstore_query: Item do Client determinado %hu nao se sabe.\n", itemlist[i]);
+	for (i = 0; i < VECTOR_LENGTH(query->itemlist); i++ ) {
+		int nameid = VECTOR_INDEX(query->itemlist, i);
+		if (!itemdb->exists(nameid)) {
+			ShowWarning("searchstore_query: Item do Client determinado %d desconhecido.\n", nameid);
 			clif->search_store_info_failed(sd, SSI_FAILED_NOTHING_SEARCH_ITEM);
 			return;
 		}
 	}
-	for( i = 0; i < card_count; i++ ) {
-		if( !itemdb->exists(cardlist[i]) ) {
-			ShowWarning("searchstore_query: Carta do Client determinado %hu nao se sabe.\n", cardlist[i]);
+	for (i = 0; i < VECTOR_LENGTH(query->cardlist); i++) {
+		int nameid = VECTOR_INDEX(query->cardlist, i);
+		if (!itemdb->exists(nameid)) {
+			ShowWarning("searchstore_query: Carta do Client determinado %d desconhecida.\n", nameid);
 			clif->search_store_info_failed(sd, SSI_FAILED_NOTHING_SEARCH_ITEM);
 			return;
 		}
-	}
-
-	if( max_price < min_price ) {
-		swap(min_price, max_price);
 	}
 
 	sd->searchstore.uses--;
@@ -160,21 +157,14 @@ void searchstore_query(struct map_session_data* sd, unsigned char type, unsigned
 	sd->searchstore.items = (struct s_search_store_info_item*)aMalloc(sizeof(struct s_search_store_info_item)*battle_config.searchstore_maxresults);
 
 	// search
-	s.search_sd  = sd;
-	s.itemlist   = itemlist;
-	s.cardlist   = cardlist;
-	s.item_count = item_count;
-	s.card_count = card_count;
-	s.min_price  = min_price;
-	s.max_price  = max_price;
-	iter         = db_iterator(vending->db);
+	iter = db_iterator(vending->db);
 
 	for( pl_sd = dbi_first(iter); dbi_exists(iter);  pl_sd = dbi_next(iter) ) {
 		if( sd == pl_sd ) {// skip own shop, if any
 			continue;
 		}
 
-		if( !store_searchall(pl_sd, &s) ) {// exceeded result size
+		if (!store_searchall(pl_sd, query)) {// exceeded result size
 			clif->search_store_info_failed(sd, SSI_FAILED_OVER_MAXCOUNT);
 			break;
 		}

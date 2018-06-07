@@ -187,4 +187,12 @@ client_config: {
 
 	// Auto alimentar Homunculus?
 	enable_homun_autofeed: false
+
+
+	// Exibe o mesmo valor de HP que os servidores oficiais quando um personagem está morto.
+	// Em servidores oficiais, a HP nunca é exibida como 0, mas quando morta, exibe o valor que será exibido após a ressurreição (50% HP para classes iniciantes, 1 HP para outras classes).
+	// Servidores Athena, mostram o valor real (0 quando morto), para evitar confusão.
+	// Note: Esta é apenas uma configuração visual, e o servidor tratará internamente como 0, independentemente disso.
+	// Isso significa que os scripts saberão que o personagem tem 0 HP quando morto.
+	display_fake_hp_when_dead: true
 }

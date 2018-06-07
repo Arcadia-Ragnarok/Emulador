@@ -167,6 +167,16 @@ char_configuration: {
 		// Padrão: 3
 		// Máximo permitido pelo lado do cliente: 3
 		max_tries: 3
-	}
 
+		// Recusar sequencias contidas no "check_blacklisted" para
+		// criação do código pin?
+		check_blacklisted: false
+
+		// Lista de sequencias bloquadas
+		// Você pode adicionar/remover o quanto quiser.
+		blacklist: [
+			"0000", "1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999",
+			"0123", "1234", "2345", "3456", "4567", "5678", "6789"
+		]
+	}
 }
