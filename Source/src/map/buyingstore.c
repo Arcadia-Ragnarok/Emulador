@@ -286,6 +286,7 @@ void buyingstore_trade(struct map_session_data* sd, int account_id, unsigned int
 	{// itemlist: <index>.W <name id>.W <amount>.W
 		unsigned short nameid, amount;
 		int index;
+		int j;
 
 		index  = RBUFW(itemlist,i*6+0)-2;
 		nameid = RBUFW(itemlist,i*6+2);
@@ -311,14 +312,20 @@ void buyingstore_trade(struct map_session_data* sd, int account_id, unsigned int
 
 		if (sd->status.inventory[index].expire_time || (sd->status.inventory[index].bound && !pc_can_give_bound_items(sd))
 		 || !itemdb_cantrade(&sd->status.inventory[index], pc_get_group_level(sd), pc_get_group_level(pl_sd))
-		 || memcmp(sd->status.inventory[index].card, buyingstore->blankslots, sizeof(buyingstore->blankslots))
 		) {
 			// non-tradable item
 			clif->buyingstore_trade_failed_seller(sd, BUYINGSTORE_TRADE_SELLER_FAILED, nameid);
 			return;
 		}
 
-		ARR_FIND( 0, pl_sd->buyingstore.slots, listidx, pl_sd->buyingstore.items[listidx].nameid == nameid );
+		ARR_FIND(0, MAX_SLOTS, j, sd->status.inventory[index].card[j] != 0);
+		if (j != MAX_SLOTS) {
+			// non-tradable item
+			clif->buyingstore_trade_failed_seller(sd, BUYINGSTORE_TRADE_SELLER_FAILED, nameid);
+			return;
+		}
+
+		ARR_FIND(0, pl_sd->buyingstore.slots, listidx, pl_sd->buyingstore.items[listidx].nameid == nameid );
 		if( listidx == pl_sd->buyingstore.slots || pl_sd->buyingstore.items[listidx].amount == 0 )
 		{// there is no such item or the buyer has already bought all of them
 			clif->buyingstore_trade_failed_seller(sd, BUYINGSTORE_TRADE_SELLER_FAILED, nameid);
@@ -446,9 +453,9 @@ bool buyingstore_searchall(struct map_session_data* sd, const struct s_search_st
 		return true;
 	}
 
-	for( idx = 0; idx < s->item_count; idx++ )
-	{
-		ARR_FIND( 0, sd->buyingstore.slots, i, sd->buyingstore.items[i].nameid == s->itemlist[idx] && sd->buyingstore.items[i].amount );
+	for (idx = 0; idx < s->item_count; idx++) {
+		const short blankslots[MAX_SLOTS] = { 0 };
+		ARR_FIND(0, sd->buyingstore.slots, i, sd->buyingstore.items[i].nameid == s->itemlist[idx] && sd->buyingstore.items[i].amount );
 		if( i == sd->buyingstore.slots )
 		{// not found
 			continue;
@@ -470,8 +477,8 @@ bool buyingstore_searchall(struct map_session_data* sd, const struct s_search_st
 			;
 		}
 
-		if( !searchstore->result(s->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, buyingstore->blankslots, 0) )
-		{// result set full
+		if (!searchstore->result(s->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, blankslots, 0)) {
+			// result set full
 			return false;
 		}
 	}
@@ -482,7 +489,6 @@ void buyingstore_defaults(void) {
 	buyingstore = &buyingstore_s;
 
 	buyingstore->nextid = 0;
-	memset(buyingstore->blankslots,0,sizeof(buyingstore->blankslots));
 	/* */
 	buyingstore->setup = buyingstore_setup;
 	buyingstore->create = buyingstore_create;

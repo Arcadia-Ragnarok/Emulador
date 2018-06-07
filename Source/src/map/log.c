@@ -155,21 +155,35 @@ void log_branch(struct map_session_data* sd) {
 	logs->branch_sub(sd);
 }
 void log_pick_sub_sql(int id, int16 m, e_log_pick_type type, int amount, struct item* itm, struct item_data *data) {
+	StringBuf buf;
+	int i;
 	nullpo_retv(itm);
-	if (SQL_ERROR == SQL->Query(logs->mysql_handle,
-	    LOG_QUERY " INTO `%s` (`time`, `char_id`, `type`, `nameid`, `amount`, `refine`, `card0`, `card1`, `card2`, `card3`, "
-		"`opt_idx0`, `opt_val0`, `opt_idx1`, `opt_val1`, `opt_idx2`, `opt_val2`, `opt_idx3`, `opt_val3`, `opt_idx4`, `opt_val4`, `map`, `unique_id`) "
-	    "VALUES (NOW(), '%d', '%c', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%"PRIu64"')",
-	    logs->config.log_pick, id, logs->picktype2char(type), itm->nameid, amount, itm->refine, itm->card[0], itm->card[1], itm->card[2], itm->card[3],
-		itm->option[0].index, itm->option[0].value, itm->option[1].index, itm->option[1].value, itm->option[2].index, itm->option[2].value,
-		itm->option[3].index, itm->option[3].value, itm->option[4].index, itm->option[4].value,
-	    map->list[m].name, itm->unique_id))
-	{
+
+	StrBuf->Init(&buf);
+	StrBuf->Printf(&buf, LOG_QUERY " INTO `%s` (`time`, `char_id`, `type`, `nameid`, `amount`, `refine`, `map`, `unique_id`", logs->config.log_pick);
+	for (i = 0; i < MAX_SLOTS; i++)
+		StrBuf->Printf(&buf, ", `card%d`", i);
+	for (i = 0; i < MAX_ITEM_OPTIONS; i++)
+		StrBuf->Printf(&buf, ", `opt_idx%d`, `opt_val%d`", i, i);
+	StrBuf->Printf(&buf, ") VALUES (NOW(), '%d', '%c', '%d', '%d', '%d', '%s', '%"PRIu64"'",
+	               id, logs->picktype2char(type), itm->nameid, amount, itm->refine, map->list[m].name, itm->unique_id);
+	for (i = 0; i < MAX_SLOTS; i++)
+		StrBuf->Printf(&buf, ", '%d'", itm->card[i]);
+	for (i = 0; i < MAX_ITEM_OPTIONS; i++)
+		StrBuf->Printf(&buf, ", '%d', '%d'", itm->option[i].index, itm->option[i].value);
+	StrBuf->AppendStr(&buf, ")");
+
+	if (SQL_ERROR == SQL->QueryStr(logs->mysql_handle, StrBuf->Value(&buf))) {
 		Sql_ShowDebug(logs->mysql_handle);
+		StrBuf->Clear(&buf);
 		return;
 	}
+
+	StrBuf->Clear(&buf);
 }
 void log_pick_sub_txt(int id, int16 m, e_log_pick_type type, int amount, struct item* itm, struct item_data *data) {
+	StringBuf buf;
+	int i;
 	char timestring[255];
 	time_t curtime;
 	FILE* logfp;
@@ -179,9 +193,17 @@ void log_pick_sub_txt(int id, int16 m, e_log_pick_type type, int amount, struct 
 		return;
 	time(&curtime);
 	strftime(timestring, sizeof(timestring), "%m/%d/%Y %H:%M:%S", localtime(&curtime));
-	fprintf(logfp,"%s - %d\t%c\t%d,%d,%d,%d,%d,%d,%d,%s,'%"PRIu64"'\n",
-	        timestring, id, logs->picktype2char(type), itm->nameid, amount, itm->refine, itm->card[0], itm->card[1], itm->card[2], itm->card[3],
-		map->list[m].name, itm->unique_id);
+
+	StrBuf->Init(&buf);
+	StrBuf->Printf(&buf, "%s - %d\t%c\t%d,%d,%d", timestring, id, logs->picktype2char(type), itm->nameid, amount, itm->refine);
+	for (i = 0; i < MAX_SLOTS; ++i)
+		StrBuf->Printf(&buf, ",%d", itm->card[i]);
+	StrBuf->Printf(&buf, ",%s,'%"PRIu64"", map->list[m].name, itm->unique_id);
+
+	fprintf(logfp,"%s\n", StrBuf->Value(&buf));
+
+	StrBuf->Clear(&buf);
+
 	fclose(logfp);
 }
 /// logs item transactions (generic)
@@ -244,39 +266,37 @@ void log_zeny(struct map_session_data* sd, e_log_pick_type type, struct map_sess
 
 	logs->zeny_sub(sd,type,src_sd,amount);
 }
-void log_mvpdrop_sub_sql(struct map_session_data* sd, int monster_id, int* log_mvp) {
+void log_mvpdrop_sub_sql(struct map_session_data* sd, int monster_id, int mvp_drop, int mvp_exp) {
 	nullpo_retv(sd);
-	nullpo_retv(log_mvp);
-	if( SQL_ERROR == SQL->Query(logs->mysql_handle, LOG_QUERY " INTO `%s` (`mvp_date`, `kill_char_id`, `monster_id`, `prize`, `mvpexp`, `map`) VALUES (NOW(), '%d', '%d', '%d', '%d', '%s') ",
-							   logs->config.log_mvpdrop, sd->status.char_id, monster_id, log_mvp[0], log_mvp[1], mapindex_id2name(sd->mapindex)) )
-	{
+	if (SQL_ERROR == SQL->Query(logs->mysql_handle, LOG_QUERY " INTO `%s` (`mvp_date`, `kill_char_id`, `monster_id`, `prize`, `mvpexp`, `map`) "
+	                            "VALUES (NOW(), '%d', '%d', '%d', '%d', '%s') ",
+	                            logs->config.log_mvpdrop, sd->status.char_id, monster_id, mvp_drop, mvp_exp, mapindex_id2name(sd->mapindex))
+	) {
 		Sql_ShowDebug(logs->mysql_handle);
 		return;
 	}
 }
-void log_mvpdrop_sub_txt(struct map_session_data* sd, int monster_id, int* log_mvp) {
+void log_mvpdrop_sub_txt(struct map_session_data* sd, int monster_id, int mvp_drop, int mvp_exp) {
 	char timestring[255];
 	time_t curtime;
 	FILE* logfp;
 
 	nullpo_retv(sd);
-	nullpo_retv(log_mvp);
 	if( ( logfp = fopen(logs->config.log_mvpdrop,"a") ) == NULL )
 		return;
 	time(&curtime);
 	strftime(timestring, sizeof(timestring), "%m/%d/%Y %H:%M:%S", localtime(&curtime));
-	fprintf(logfp,"%s - %s[%d:%d]\t%d\t%d,%d\n", timestring, sd->status.name, sd->status.account_id, sd->status.char_id, monster_id, log_mvp[0], log_mvp[1]);
+	fprintf(logfp,"%s - %s[%d:%d]\t%d\t%d,%d\n", timestring, sd->status.name, sd->status.account_id, sd->status.char_id, monster_id, mvp_drop, mvp_exp);
 	fclose(logfp);
 }
 /// logs MVP monster rewards
-void log_mvpdrop(struct map_session_data* sd, int monster_id, int* log_mvp)
-{
+void log_mvpdrop(struct map_session_data* sd, int monster_id, int mvp_drop, int mvp_exp) {
 	nullpo_retv(sd);
 
 	if( !logs->config.mvpdrop )
 		return;
 
-	logs->mvpdrop_sub(sd,monster_id,log_mvp);
+	logs->mvpdrop_sub(sd, monster_id, mvp_drop, mvp_exp);
 }
 
 void log_atcommand_sub_sql(struct map_session_data* sd, const char* message)

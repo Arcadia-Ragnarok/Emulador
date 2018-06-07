@@ -1681,14 +1681,14 @@ bool mob_ai_sub_hard(struct mob_data *md, int64 tick) {
 		logs->pick_mob(md, LOG_TYPE_LOOT, fitem->item_data.amount, &fitem->item_data, NULL);
 
 		if (md->lootitem_count < LOOTITEM_SIZE) {
-			memcpy (&md->lootitem[md->lootitem_count++], &fitem->item_data, sizeof(md->lootitem[0]));
+			md->lootitem[md->lootitem_count++] = fitem->item_data;
 		} else {
 			//Destroy first looted item...
 			if (md->lootitem[0].card[0] == CARD0_PET) {
 				intif->delete_petdata(itemdb_pet_id(&md->lootitem[0]));
 			}
 			memmove(&md->lootitem[0], &md->lootitem[1], (LOOTITEM_SIZE-1)*sizeof(md->lootitem[0]));
-			memcpy (&md->lootitem[LOOTITEM_SIZE-1], &fitem->item_data, sizeof(md->lootitem[0]));
+			md->lootitem[LOOTITEM_SIZE - 1] = fitem->item_data;
 		}
 		if (pc->db_checkid(md->vd->class)) {
 			//Give them walk act/delay to properly mimic players. [Skotlex]
@@ -1896,7 +1896,7 @@ struct item_drop* mob_setlootitem(struct item* item)
 
 	nullpo_retr(NULL, item);
 	drop = ers_alloc(item_drop_ers, struct item_drop);
-	memcpy(&drop->item_data, item, sizeof(struct item));
+	drop->item_data = *item;
 	drop->showdropeffect = false;
 	drop->next = NULL;
 	return drop;
@@ -2564,7 +2564,8 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 	}
 
 	if(mvp_sd && md->db->mexp > 0 && md->special_state.ai == AI_NONE) {
-		int log_mvp[2] = {0};
+		int log_mvp_drop = 0;
+		int log_mvp_exp = 0;
 		unsigned int mexp;
 		int64 exp;
 
@@ -2582,7 +2583,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 		clif->mvp_effect(mvp_sd);
 		clif->mvp_exp(mvp_sd,mexp);
 		pc->gainexp(mvp_sd, &md->bl, mexp,0, false);
-		log_mvp[1] = mexp;
+		log_mvp_exp = mexp;
 
 		if (!(map->list[m].flag.nomvploot || type&1)) {
 			/* pose them randomly in the list -- so on 100% drop servers it wont always drop the same item */
@@ -2621,7 +2622,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 					item.nameid = mdrop[i].nameid;
 					item.identify = itemdb->isidentified2(data);
 					clif->mvp_item(mvp_sd, item.nameid);
-					log_mvp[0] = item.nameid;
+					log_mvp_drop = item.nameid;
 
 					if((temp = pc->additem(mvp_sd,&item,1,LOG_TYPE_PICKDROP_PLAYER)) != 0) {
 						clif->additem(mvp_sd,0,0,temp);
@@ -2635,7 +2636,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 			}
 		}
 
-		logs->mvpdrop(mvp_sd, md->class_, log_mvp);
+		logs->mvpdrop(mvp_sd, md->class_, log_mvp_drop, log_mvp_exp);
 	}
 
 	if (type&2 && !sd && md->class_ == MOBID_EMPELIUM && md->guardian_data) {

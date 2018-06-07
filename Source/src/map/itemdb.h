@@ -423,13 +423,22 @@ enum ItemOptionTypes {
 	IT_OPT_MAX
 };
 
-/** Convenience item list (entry) used in various functions */
-struct itemlist_entry {
-	int id;       ///< Item ID or (inventory) index
+/** Convenience item list (entry) used in various functions (using item nameid) */
+struct itemlist_id_entry {
+	int nameid;   ///< Item ID
 	int16 amount; ///< Amount
 };
-/** Convenience item list used in various functions */
-VECTOR_STRUCT_DECL(itemlist, struct itemlist_entry);
+
+/** Convenience item list used in various functions (using item nameid) */
+VECTOR_STRUCT_DECL(itemlist_id, struct itemlist_id_entry);
+
+/** Convenience item list (entry) used in various functions (using item index) */
+struct itemlist_idx_entry {
+	int16 index;  ///< Inventory index
+	int16 amount; ///< Amount
+};
+/** Convenience item list used in various functions (using item index) */
+VECTOR_STRUCT_DECL(itemlist_idx, struct itemlist_idx_entry);
 
 struct item_combo {
 	struct script_code *script;
@@ -695,6 +704,9 @@ struct itemdb_interface {
 	bool (*lookup_const) (const struct config_setting_t *it, const char *name, int *value);
 	bool (*lookup_const_mask) (const struct config_setting_t *it, const char *name, int *value);
 	bool (*items_identical) (const struct item *a, const struct item *b, bool stack_match);
+	void (*fill_produceinfo) (struct item *item, int char_id);
+	void (*fill_forgeinfo) (struct item *item, int char_id, int star_crumbs, int element);
+	void (*fill_petinfo) (struct item *item, int pet_id, char rename_flag);
 };
 
 void itemdb_defaults(void);

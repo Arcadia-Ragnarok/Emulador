@@ -33,7 +33,7 @@ struct guild;
 struct homun_data;
 struct item;
 struct item_data;
-struct itemlist; // map/itemdb.h
+struct itemlist_id; // map/itemdb.h
 struct map_session_data;
 struct mercenary_data;
 struct mob_data;
@@ -658,8 +658,8 @@ struct clif_interface {
 	void (*equipitemack) (struct map_session_data *sd,int n,int pos,enum e_EQUIP_ITEM_ACK result);
 	void (*unequipitemack) (struct map_session_data *sd,int n,int pos,enum e_UNEQUIP_ITEM_ACK result);
 	void (*useitemack) (struct map_session_data *sd,int index,int amount,bool ok);
-	void (*addcards) (unsigned char* buf, struct item* item);
-	void (*addcards2) (unsigned short *cards, struct item* item);
+	void (*addcards) (unsigned char *buf, const struct item *item);
+	void (*addcards2) (unsigned short *cards, const struct item *item);
 	void (*item_sub) (unsigned char *buf, int n, struct item *i, struct item_data *id, int equip);
 	void (*getareachar_item) (struct map_session_data* sd,struct flooritem_data* fitem);
 	void (*cart_additem_ack) (struct map_session_data *sd, int flag);
@@ -1033,7 +1033,7 @@ struct clif_interface {
 	void (*mail_setattachment) (int fd, int index, uint8 flag);
 	/* auction-related */
 	void (*auction_openwindow) (struct map_session_data *sd);
-	void (*auction_results) (struct map_session_data *sd, short count, short pages, const uint8 *buf);
+	void (*auction_results) (struct map_session_data *sd, short count, short pages, const struct auction_data *auctions);
 	void (*auction_message) (int fd, unsigned char flag);
 	void (*auction_close) (int fd, unsigned char flag);
 	void (*auction_setitem) (int fd, int index, bool fail);
@@ -1113,7 +1113,7 @@ struct clif_interface {
 	int (*delay_damage_sub) (int tid, int64 tick, int id, intptr_t data);
 	/* NPC Market */
 	void (*npc_market_open) (struct map_session_data *sd, struct npc_data *nd);
-	void (*npc_market_purchase_ack) (struct map_session_data *sd, const struct itemlist *item_list, unsigned char response);
+	void (*npc_market_purchase_ack) (struct map_session_data *sd, const struct itemlist_id *item_list, unsigned char response);
 	/* */
 	bool (*parse_roulette_db) (void);
 	void (*roulette_generate_ack) (struct map_session_data *sd, unsigned char result, short stage, short prizeIdx, short bonusItemID);

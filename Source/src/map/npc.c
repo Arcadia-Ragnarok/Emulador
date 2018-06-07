@@ -1404,7 +1404,7 @@ int npc_buysellsel(struct map_session_data* sd, int id, int type) {
 /*==========================================
 * Cash Shop Buy List
 *------------------------------------------*/
-int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlist *item_list)
+int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlist_id *item_list)
 {
 	int i, j, new_, w, vt;
 	struct npc_data *nd = NULL;
@@ -1443,21 +1443,22 @@ int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlis
 
 	// Validating Process ----------------------------------------------------
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
 
-		if (!itemdb->exists(entry->id) || entry->amount <= 0)
+		if (!itemdb->exists(entry->nameid) || entry->amount <= 0)
 			return ERROR_TYPE_ITEM_ID;
 
-		ARR_FIND(0,shop_size,j,shop[j].nameid == entry->id);
+		ARR_FIND(0,shop_size,j,shop[j].nameid == entry->nameid);
 		if (j == shop_size || shop[j].value <= 0)
 			return ERROR_TYPE_ITEM_ID;
 
-		if (!itemdb->isstackable(entry->id) && entry->amount > 1) {
-			ShowWarning("Jogador %s (%d:%d) eviou um packet ao hexed tentando comprar %d de um item nao empilhavel %d!\n", sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->id);
+		if (!itemdb->isstackable(entry->nameid) && entry->amount > 1) {
+			ShowWarning("Jogador %s (%d:%d) eviou um packet ao hexed tentando comprar %d de um item nao empilhavel %d!\n",
+						sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->nameid);
 			entry->amount = 1;
 		}
 
-		switch (pc->checkadditem(sd, entry->id, entry->amount)) {
+		switch (pc->checkadditem(sd, entry->nameid, entry->amount)) {
 			case ADDITEM_NEW:
 				new_++;
 				break;
@@ -1466,7 +1467,7 @@ int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlis
 		}
 
 		vt += shop[j].value * entry->amount;
-		w += itemdb_weight(entry->id) * entry->amount;
+		w += itemdb_weight(entry->nameid) * entry->amount;
 	}
 
 	if( w + sd->weight > sd->max_weight )
@@ -1488,13 +1489,11 @@ int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlis
 	}
 	// Delivery Process ----------------------------------------------------
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		struct item item_tmp;
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct item item_tmp = { 0 };
 
-		memset(&item_tmp,0,sizeof(item_tmp));
-
-		if (!pet->create_egg(sd, entry->id)) {
-			item_tmp.nameid = entry->id;
+		if (!pet->create_egg(sd, entry->nameid)) {
+			item_tmp.nameid = entry->nameid;
 			item_tmp.identify = 1;
 			pc->additem(sd, &item_tmp, entry->amount, LOG_TYPE_NPC);
 		}
@@ -1504,7 +1503,7 @@ int npc_cashshop_buylist(struct map_session_data *sd, int points, struct itemlis
 }
 
 //npc_buylist for script-controlled shops.
-int npc_buylist_sub(struct map_session_data *sd, struct itemlist *item_list, struct npc_data *nd)
+int npc_buylist_sub(struct map_session_data *sd, struct itemlist_id *item_list, struct npc_data *nd)
 {
 	char npc_ev[EVENT_NAME_LENGTH];
 	int i;
@@ -1520,8 +1519,8 @@ int npc_buylist_sub(struct map_session_data *sd, struct itemlist *item_list, str
 
 	// save list of bought items
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		intptr_t nameid = entry->id;
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
+		intptr_t nameid = entry->nameid;
 		intptr_t amount = entry->amount;
 		script->setarray_pc(sd, "@bought_nameid", i, (void *)nameid, &key_nameid);
 		script->setarray_pc(sd, "@bought_quantity", i, (void *)amount, &key_amount);
@@ -1826,8 +1825,7 @@ int npc_cashshop_buy(struct map_session_data *sd, int nameid, int amount, int po
 	}
 
 	if( !pet->create_egg(sd, nameid) ) {
-		struct item item_tmp;
-		memset(&item_tmp, 0, sizeof(struct item));
+		struct item item_tmp = { 0 };
 		item_tmp.nameid = nameid;
 		item_tmp.identify = 1;
 
@@ -1844,7 +1842,7 @@ int npc_cashshop_buy(struct map_session_data *sd, int nameid, int amount, int po
  * @param item_list List of items.
  * @return result code for clif->parse_NpcBuyListSend.
  */
-int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
+int npc_buylist(struct map_session_data *sd, struct itemlist_id *item_list)
 {
 	struct npc_data* nd;
 	struct npc_item_list *shop = NULL;
@@ -1876,25 +1874,26 @@ int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
 	// process entries in buy list, one by one
 	for (i = 0; i < VECTOR_LENGTH(*item_list); ++i) {
 		int value;
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
 
 		// find this entry in the shop's sell list
 		ARR_FIND( 0, shop_size, j,
-				 entry->id == shop[j].nameid || //Normal items
-				 entry->id == itemdb_viewid(shop[j].nameid) //item_avail replacement
+				 entry->nameid == shop[j].nameid || //Normal items
+				 entry->nameid == itemdb_viewid(shop[j].nameid) //item_avail replacement
 				 );
 		if (j == shop_size)
 			return 3; // no such item in shop
 
-		entry->id = shop[j].nameid; //item_avail replacement
+		entry->nameid = shop[j].nameid; //item_avail replacement
 		value = shop[j].value;
 
-		if (!itemdb->exists(entry->id))
+		if (!itemdb->exists(entry->nameid))
 			return 3; // item no longer in itemdb
 
-		if (!itemdb->isstackable(entry->id) && entry->amount > 1) {
+		if (!itemdb->isstackable(entry->nameid) && entry->amount > 1) {
 			//Exploit? You can't buy more than 1 of equipment types o.O
-			ShowWarning("Jogador %s (%d:%d) enviou um packet do hexed tentando comprar %d de um item nao empilhavel %d!\n", sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->id);
+			ShowWarning("Jogador %s (%d:%d) enviou um packet do hexed tentando comprar %d de um item nao empilhavel %d!\n",
+						sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->nameid);
 			entry->amount = 1;
 		}
 
@@ -1903,7 +1902,7 @@ int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
 			continue;
 		}
 
-		switch (pc->checkadditem(sd, entry->id, entry->amount)) {
+		switch (pc->checkadditem(sd, entry->nameid, entry->amount)) {
 			case ADDITEM_EXIST:
 				break;
 
@@ -1918,7 +1917,7 @@ int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
 		value = pc->modifybuyvalue(sd,value);
 
 		z += (int64)value * entry->amount;
-		w += itemdb_weight(entry->id) * entry->amount;
+		w += itemdb_weight(entry->nameid) * entry->amount;
 	}
 
 	if (nd->master_nd != NULL) //Script-based shops.
@@ -1934,13 +1933,12 @@ int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
 	pc->payzeny(sd, (int)z, LOG_TYPE_NPC, NULL);
 
 	for (i = 0; i < VECTOR_LENGTH(*item_list); ++i) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		if (itemdb_type(entry->id) == IT_PETEGG) {
-			pet->create_egg(sd, entry->id);
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
+		if (itemdb_type(entry->nameid) == IT_PETEGG) {
+			pet->create_egg(sd, entry->nameid);
 		} else {
-			struct item item_tmp;
-			memset(&item_tmp,0,sizeof(item_tmp));
-			item_tmp.nameid = entry->id;
+			struct item item_tmp = { 0 };
+			item_tmp.nameid = entry->nameid;
 			item_tmp.identify = 1;
 
 			pc->additem(sd, &item_tmp, entry->amount, LOG_TYPE_NPC);
@@ -1966,7 +1964,7 @@ int npc_buylist(struct map_session_data *sd, struct itemlist *item_list)
 /**
  * Processes incoming npc market purchase list
  **/
-int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
+int npc_market_buylist(struct map_session_data *sd, struct itemlist_id *item_list)
 {
 	struct npc_data* nd;
 	struct npc_item_list *shop = NULL;
@@ -1992,17 +1990,17 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 	// process entries in buy list, one by one
 	for (i = 0; i < VECTOR_LENGTH(*item_list); ++i) {
 		int value;
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
 
 		// find this entry in the shop's sell list
 		ARR_FIND( 0, shop_size, j,
-				 entry->id == shop[j].nameid || //Normal items
-				 entry->id == itemdb_viewid(shop[j].nameid) //item_avail replacement
+				 entry->nameid == shop[j].nameid || //Normal items
+				 entry->nameid == itemdb_viewid(shop[j].nameid) //item_avail replacement
 				 );
 		if (j == shop_size) /* TODO find official response for this */
 			return 1; // no such item in shop
 
-		entry->id = shop[j].nameid; //item_avail replacement
+		entry->nameid = shop[j].nameid; //item_avail replacement
 
 		if (entry->amount > (int)shop[j].qty)
 			return 1;
@@ -2010,16 +2008,17 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 		value = shop[j].value;
 		npc_market_qty[i] = j;
 
-		if (!itemdb->exists(entry->id)) /* TODO find official response for this */
+		if (!itemdb->exists(entry->nameid)) /* TODO find official response for this */
 			return 1; // item no longer in itemdb
 
-		if (!itemdb->isstackable(entry->id) && entry->amount > 1) {
+		if (!itemdb->isstackable(entry->nameid) && entry->amount > 1) {
 			//Exploit? You can't buy more than 1 of equipment types o.O
-			ShowWarning("Jogador %s (%d:%d) enviou um packet do hexed tentando comprar %d de um item nao empilhavel %d!\n", sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->id);
+			ShowWarning("Jogador %s (%d:%d) enviou um packet do hexed tentando comprar %d de um item nao empilhavel %d!\n",
+						sd->status.name, sd->status.account_id, sd->status.char_id, entry->amount, entry->nameid);
 			entry->amount = 1;
 		}
 
-		switch (pc->checkadditem(sd, entry->id, entry->amount)) {
+		switch (pc->checkadditem(sd, entry->nameid, entry->amount)) {
 			case ADDITEM_EXIST:
 				break;
 			case ADDITEM_NEW:
@@ -2030,7 +2029,7 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 		}
 
 		z += (int64)value * entry->amount;
-		w += itemdb_weight(entry->id) * entry->amount;
+		w += itemdb_weight(entry->nameid) * entry->amount;
 	}
 
 	if (z > sd->status.zeny) /* TODO find official response for this */
@@ -2045,7 +2044,7 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 	pc->payzeny(sd,(int)z,LOG_TYPE_NPC, NULL);
 
 	for (i = 0; i < VECTOR_LENGTH(*item_list); ++i) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
 
 		j = npc_market_qty[i];
 
@@ -2056,12 +2055,11 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 
 		npc->market_tosql(nd,j);
 
-		if (itemdb_type(entry->id) == IT_PETEGG) {
-			pet->create_egg(sd, entry->id);
+		if (itemdb_type(entry->nameid) == IT_PETEGG) {
+			pet->create_egg(sd, entry->nameid);
 		} else {
-			struct item item_tmp;
-			memset(&item_tmp,0,sizeof(item_tmp));
-			item_tmp.nameid = entry->id;
+			struct item item_tmp = { 0 };
+			item_tmp.nameid = entry->nameid;
 			item_tmp.identify = 1;
 
 			pc->additem(sd, &item_tmp, entry->amount, LOG_TYPE_NPC);
@@ -2072,7 +2070,7 @@ int npc_market_buylist(struct map_session_data *sd, struct itemlist *item_list)
 }
 
 /// npc_selllist for script-controlled shops
-int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, struct npc_data *nd)
+int npc_selllist_sub(struct map_session_data *sd, struct itemlist_idx *item_list, struct npc_data *nd)
 {
 	char npc_ev[EVENT_NAME_LENGTH];
 	char card_slot[NPC_NAME_LENGTH];
@@ -2119,8 +2117,8 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 
 	// save list of to be sold items
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		struct item *item = &sd->status.inventory[entry->id];
+		struct itemlist_idx_entry *entry = &VECTOR_INDEX(*item_list, i);
+		struct item *item = &sd->status.inventory[entry->index];
 		intptr_t nameid = item->nameid;
 		intptr_t amount = entry->amount;
 		intptr_t refine = item->refine;
@@ -2165,7 +2163,7 @@ int npc_selllist_sub(struct map_session_data *sd, struct itemlist *item_list, st
 ///
 /// @param item_list 'n' pairs <index,amount>
 /// @return result code for clif->parse_NpcSellListSend
-int npc_selllist(struct map_session_data *sd, struct itemlist *item_list)
+int npc_selllist(struct map_session_data *sd, struct itemlist_idx *item_list)
 {
 	int64 z;
 	int i,skill_t, skill_idx = skill->get_index(MC_OVERCHARGE);
@@ -2191,8 +2189,8 @@ int npc_selllist(struct map_session_data *sd, struct itemlist *item_list)
 
 	// verify the sell list
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		int nameid, value, idx = entry->id;
+		struct itemlist_idx_entry *entry = &VECTOR_INDEX(*item_list, i);
+		int nameid, value, idx = entry->index;
 
 		if (idx >= MAX_INVENTORY || idx < 0 || entry->amount < 0) {
 			return 1;
@@ -2226,8 +2224,8 @@ int npc_selllist(struct map_session_data *sd, struct itemlist *item_list)
 
 	// delete items
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
-		int idx = entry->id;
+		struct itemlist_idx_entry *entry = &VECTOR_INDEX(*item_list, i);
+		int idx = entry->index;
 
 		if (sd->inventory_data[idx]->type == IT_PETEGG && sd->status.inventory[idx].card[0] == CARD0_PET) {
 			if (pet->search_petDB_index(sd->status.inventory[idx].nameid, PET_EGG) >= 0) {

@@ -1129,7 +1129,6 @@ ACMD(item)
 {
 	char item_name[100];
 	int number = 0, item_id, flag = 0, bound = 0;
-	struct item item_tmp;
 	struct item_data *item_data;
 	int get_count, i;
 
@@ -1197,7 +1196,7 @@ ACMD(item)
 	for (i = 0; i < number; i += get_count) {
 		// if not pet egg
 		if (!pet->create_egg(sd, item_id)) {
-			memset(&item_tmp, 0, sizeof(item_tmp));
+			struct item item_tmp = { 0 };
 			item_tmp.nameid = item_id;
 			item_tmp.identify = 1;
 			item_tmp.bound = (unsigned char)bound;
@@ -1217,36 +1216,66 @@ ACMD(item)
  *------------------------------------------*/
 ACMD(item2)
 {
-	struct item item_tmp;
 	struct item_data *item_data;
-	char item_name[100];
+	char item_name[100] = "";
 	int item_id, number = 0, bound = 0;
 	int identify = 0, refine = 0, attr = 0;
-	int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+	int card[MAX_SLOTS] = { 0 };
+	bool is_bound = false;
+	bool invalid_input = false;
 
-	memset(item_name, '\0', sizeof(item_name));
-
-	if (!strcmpi(info->command,"itembound2") && (!*message || (
-		sscanf(message, "\"%99[^\"]\" %12d %12d %12d %12d %12d %12d %12d %12d %12d", item_name, &number, &identify, &refine, &attr, &c1, &c2, &c3, &c4, &bound) < 10 &&
-		sscanf(message, "%99s %12d %12d %12d %12d %12d %12d %12d %12d %12d", item_name, &number, &identify, &refine, &attr, &c1, &c2, &c3, &c4, &bound) < 10 ))) {
-		clif->message(fd, msg_txt(296)); // Please enter all parameters (usage: @itembound2 <item name/ID> <quantity>
-		clif->message(fd, msg_txt(297)); //   <identify_flag> <refine> <attribute> <card1> <card2> <card3> <card4> <bound_type>).
-		return false;
-	} else if (!*message
-	         || ( sscanf(message, "\"%99[^\"]\" %12d %12d %12d %12d %12d %12d %12d %12d", item_name, &number, &identify, &refine, &attr, &c1, &c2, &c3, &c4) < 9
-	           && sscanf(message, "%99s %12d %12d %12d %12d %12d %12d %12d %12d", item_name, &number, &identify, &refine, &attr, &c1, &c2, &c3, &c4) < 9
-	)) {
-		clif->message(fd, msg_txt(984)); // Please enter all parameters (usage: @item2 <item name/ID> <quantity>
-		clif->message(fd, msg_txt(985)); //   <identify_flag> <refine> <attribute> <card1> <card2> <card3> <card4>).
-		return false;
+	if (strcmpi(info->command,"itembound2") == 0) {
+		is_bound = true;
 	}
 
-	if (number <= 0)
-		number = 1;
+	do {
+		int pos = 0;
+		int i = 0;
+		const char *p = message;
+		if (*message != '\0') {
+			invalid_input = true;
+			break;
+		}
+		if (sscanf(p, "\"%99[^\"]\" %d %d %d %d%n", item_name, &number, &identify, &refine, &attr, &pos) < 5
+		 && sscanf(p, "%99s %d %d %d %d%n", item_name, &number, &identify, &refine, &attr, &pos) < 5) {
+			invalid_input = true;
+			break;
+		}
+		p += pos;
+		for (i = 0; i < MAX_SLOTS; ++i) {
+			if (sscanf(p, " %d%n", &card[i], &pos) < 1) {
+				invalid_input = true;
+				break;
+			}
+			p += pos;
+		}
+		if (invalid_input) {
+			break;
+		}
+		if (is_bound) {
+			if (sscanf(p, " %d", &bound) < 1) {
+				invalid_input = true;
+				break;
+			}
+			if (bound < IBT_MIN || bound > IBT_MAX) {
+				clif->message(fd, msg_txt(298)); // Invalid bound type
+				return false;
+			}
+		}
+	} while(false);
 
-	if( !strcmpi(info->command,"itembound2") && !(bound >= IBT_MIN && bound <= IBT_MAX) ) {
-		clif->message(fd, msg_txt(298)); // Invalid bound type
-		return false;
+	if (invalid_input) {
+		if (is_bound) {
+			clif->message(fd, msg_txt(296)); // Please enter all parameters (usage: @itembound2 <item name/ID> <quantity>
+			clif->message(fd, msg_txt(297)); //   <identify_flag> <refine> <attribute> <card1> <card2> <card3> <card4> <bound_type>).
+		} else {
+			clif->message(fd, msg_txt(984)); // Please enter all parameters (usage: @item2 <item name/ID> <quantity>
+			clif->message(fd, msg_txt(985)); //   <identify_flag> <refine> <attribute> <card1> <card2> <card3> <card4>).
+		}		return false;
+	}
+
+	if (number <= 0) {
+		number = 1;
 	}
 
 	item_id = 0;
@@ -1256,11 +1285,9 @@ ACMD(item2)
 
 	if (item_id > 500) {
 		int flag = 0;
-		int loop, get_count, i;
+		int loop, get_count, i, j;
 		loop = 1;
 		get_count = number;
-		if( !strcmpi(info->command,"itembound2") )
-			bound = 1;
 		if( !itemdb->isstackable2(item_data) ) {
 			if( bound && (item_data->type == IT_PETEGG || item_data->type == IT_PETARMOR) ) {
 				clif->message(fd, msg_txt(498)); // Cannot create bounded pet eggs or pet armors.
@@ -1280,16 +1307,15 @@ ACMD(item2)
 		}
 		refine = cap_value(refine, 0, MAX_REFINE);
 		for (i = 0; i < loop; i++) {
-			memset(&item_tmp, 0, sizeof(item_tmp));
+			struct item item_tmp = { 0 };
 			item_tmp.nameid = item_id;
 			item_tmp.identify = identify;
 			item_tmp.refine = refine;
 			item_tmp.attribute = attr;
 			item_tmp.bound = (unsigned char)bound;
-			item_tmp.card[0] = c1;
-			item_tmp.card[1] = c2;
-			item_tmp.card[2] = c3;
-			item_tmp.card[3] = c4;
+			for (j = 0; j < MAX_SLOTS; ++j) {
+				item_tmp.card[j] = card[j];
+			}
 
 			if ((flag = pc->additem(sd, &item_tmp, get_count, LOG_TYPE_COMMAND)))
 				clif->additem(sd, 0, 0, flag);
@@ -2187,7 +2213,6 @@ ACMD(produce)
 	char item_name[100];
 	int item_id, attribute = 0, star = 0;
 	struct item_data *item_data;
-	struct item tmp_item;
 
 	memset(atcmd_output, '\0', sizeof(atcmd_output));
 	memset(item_name, '\0', sizeof(item_name));
@@ -2210,19 +2235,19 @@ ACMD(produce)
 
 	if (itemdb->isequip2(item_data)) {
 		int flag = 0;
+		struct item tmp_item = { 0 };
 		if (attribute < MIN_ATTRIBUTE || attribute > MAX_ATTRIBUTE)
 			attribute = ATTRIBUTE_NORMAL;
 		if (star < MIN_STAR || star > MAX_STAR)
 			star = 0;
-		memset(&tmp_item, 0, sizeof tmp_item);
 		tmp_item.nameid = item_id;
 		tmp_item.amount = 1;
 		tmp_item.identify = 1;
-		tmp_item.card[0] = CARD0_FORGE;
-		tmp_item.card[1] = item_data->type==IT_WEAPON?
-		((star*5) << 8) + attribute:0;
-		tmp_item.card[2] = GetWord(sd->status.char_id, 0);
-		tmp_item.card[3] = GetWord(sd->status.char_id, 1);
+		if (item_data->type == IT_WEAPON) {
+			itemdb->fill_forgeinfo(&tmp_item, sd->status.char_id, star, attribute);
+		} else {
+			itemdb->fill_forgeinfo(&tmp_item, sd->status.char_id, 0, 0);
+		}
 		clif->produce_effect(sd, 0, item_id);
 		clif->misceffect(&sd->bl, 3);
 
@@ -5468,16 +5493,13 @@ ACMD(skilltree)
 // Hand a ring with partners name on it to this char
 void atcommand_getring(struct map_session_data* sd) {
 	int flag, item_id;
-	struct item item_tmp;
+	struct item item_tmp = { 0 };
 	nullpo_retv(sd);
 	item_id = (sd->status.sex) ? WEDDING_RING_M : WEDDING_RING_F;
 
-	memset(&item_tmp, 0, sizeof(item_tmp));
 	item_tmp.nameid = item_id;
 	item_tmp.identify = 1;
-	item_tmp.card[0] = 255;
-	item_tmp.card[2] = GetWord(sd->status.partner_id, 0);
-	item_tmp.card[3] = GetWord(sd->status.partner_id, 1);
+	itemdb->fill_forgeinfo(&item_tmp, sd->status.partner_id, 0, 0);
 
 	if((flag = pc->additem(sd,&item_tmp,1,LOG_TYPE_COMMAND))) {
 		clif->additem(sd,0,0,flag);

@@ -306,19 +306,15 @@ int pet_performance(struct map_session_data *sd, struct pet_data *pd)
 
 int pet_return_egg(struct map_session_data *sd, struct pet_data *pd)
 {
-	struct item tmp_item;
+	struct item tmp_item = { 0 };
 	int flag;
 
 	nullpo_retr(1, sd);
 	nullpo_retr(1, pd);
 	pet->lootitem_drop(pd,sd);
-	memset(&tmp_item,0,sizeof(tmp_item));
 	tmp_item.nameid = pd->petDB->EggID;
 	tmp_item.identify = 1;
-	tmp_item.card[0] = CARD0_PET;
-	tmp_item.card[1] = GetWord(pd->pet.pet_id,0);
-	tmp_item.card[2] = GetWord(pd->pet.pet_id,1);
-	tmp_item.card[3] = pd->pet.rename_flag;
+	itemdb->fill_petinfo(&tmp_item, pd->pet.pet_id, pd->pet.rename_flag);
 	if((flag = pc->additem(sd,&tmp_item,1,LOG_TYPE_EGG))) {
 		clif->additem(sd,0,0,flag);
 		map->addflooritem(&sd->bl, &tmp_item, 1, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0, false);
@@ -574,7 +570,7 @@ int pet_catch_process2(struct map_session_data* sd, int target_id) {
  **/
 bool pet_get_egg(int account_id, short pet_class, int pet_id ) {
 	struct map_session_data *sd;
-	struct item tmp_item;
+	struct item tmp_item = { 0 };
 	int i = 0, ret = 0;
 
 	if( pet_id == 0 || pet_class == 0 )
@@ -597,13 +593,9 @@ bool pet_get_egg(int account_id, short pet_class, int pet_id ) {
 		return false;
 	}
 
-	memset(&tmp_item,0,sizeof(tmp_item));
 	tmp_item.nameid = pet->db[i].EggID;
 	tmp_item.identify = 1;
-	tmp_item.card[0] = CARD0_PET;
-	tmp_item.card[1] = GetWord(pet_id,0);
-	tmp_item.card[2] = GetWord(pet_id,1);
-	tmp_item.card[3] = 0; //New pets are not named.
+	itemdb->fill_petinfo(&tmp_item, pet_id, 0); //New pets are not named.
 	if((ret = pc->additem(sd,&tmp_item,1,LOG_TYPE_PICKDROP_PLAYER))) {
 		clif->additem(sd,0,0,ret);
 		map->addflooritem(&sd->bl, &tmp_item, 1, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0, false);
@@ -730,7 +722,7 @@ int pet_equipitem(struct map_session_data *sd,int index) {
 }
 
 int pet_unequipitem(struct map_session_data *sd, struct pet_data *pd) {
-	struct item tmp_item;
+	struct item tmp_item = { 0 };
 	int nameid,flag;
 
 	nullpo_retr(1, sd);
@@ -742,7 +734,6 @@ int pet_unequipitem(struct map_session_data *sd, struct pet_data *pd) {
 	pd->pet.equip = 0;
 	status->set_viewdata(&pd->bl, pd->pet.class_);
 	clif->send_petdata(NULL, sd->pd, 3, sd->pd->vd.head_bottom);
-	memset(&tmp_item,0,sizeof(tmp_item));
 	tmp_item.nameid = nameid;
 	tmp_item.identify = 1;
 	if((flag = pc->additem(sd,&tmp_item,1,LOG_TYPE_CONSUME))) {
@@ -959,7 +950,7 @@ int pet_ai_sub_hard(struct pet_data *pd, struct map_session_data *sd, int64 tick
 		} else{
 			struct flooritem_data *fitem = BL_UCAST(BL_ITEM, target);
 			if(pd->loot->count < pd->loot->max){
-				memcpy(&pd->loot->item[pd->loot->count++],&fitem->item_data,sizeof(pd->loot->item[0]));
+				pd->loot->item[pd->loot->count++] = fitem->item_data;
 				pd->loot->weight += itemdb_weight(fitem->item_data.nameid)*fitem->item_data.amount;
 				map->clearflooritem(target);
 			}
@@ -1053,13 +1044,13 @@ int pet_lootitem_drop(struct pet_data *pd,struct map_session_data *sd)
 			if ((flag = pc->additem(sd,it,it->amount,LOG_TYPE_PICKDROP_PLAYER))) {
 				clif->additem(sd,0,0,flag);
 				ditem = ers_alloc(pet->item_drop_ers, struct item_drop);
-				memcpy(&ditem->item_data, it, sizeof(struct item));
+				ditem->item_data = *it;
 				ditem->next = dlist->item;
 				dlist->item = ditem;
 			}
 		} else {
 			ditem = ers_alloc(pet->item_drop_ers, struct item_drop);
-			memcpy(&ditem->item_data, it, sizeof(struct item));
+			ditem->item_data = *it;
 			ditem->next = dlist->item;
 			dlist->item = ditem;
 		}

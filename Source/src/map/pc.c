@@ -1182,7 +1182,7 @@ bool pc_authok(struct map_session_data *sd, int login_id2, time_t expiration_tim
 		return false;
 	}
 
-	memcpy(&sd->status, st, sizeof(*st));
+	sd->status = *st;
 	memset(&sd->rodex, 0x0, sizeof(sd->rodex));
 	VECTOR_INIT(sd->rodex.messages);
 
@@ -4651,7 +4651,7 @@ int pc_additem(struct map_session_data *sd,struct item *item_data,int amount,e_l
 		if (i == INDEX_NOT_FOUND)
 			return 4;
 
-		memcpy(&sd->status.inventory[i], item_data, sizeof(sd->status.inventory[0]));
+		sd->status.inventory[i] = *item_data;
 		// clear equip and favorite fields first, just in case
 		if( item_data->equip )
 			sd->status.inventory[i].equip = 0;
@@ -5273,7 +5273,7 @@ int pc_cart_additem(struct map_session_data *sd,struct item *item_data,int amoun
 		if(i == MAX_CART) {
 			return 2; // no room
 		}
-		memcpy(&sd->status.cart[i],item_data,sizeof(sd->status.cart[0]));
+		sd->status.cart[i] = *item_data;
 		sd->status.cart[i].amount=amount;
 		sd->cart_num++;
 		clif->cart_additem(sd,i,amount,0);
@@ -5464,7 +5464,6 @@ int pc_steal_item(struct map_session_data *sd,struct block_list *bl, uint16 skil
 	int rate;
 	struct status_data *sd_status, *md_status;
 	struct mob_data *md = BL_CAST(BL_MOB, bl);
-	struct item tmp_item;
 	struct item_data *data = NULL;
 
 	if (sd == NULL || md == NULL)
@@ -5505,25 +5504,25 @@ int pc_steal_item(struct map_session_data *sd,struct block_list *bl, uint16 skil
 		return 0;
 
 	itemid = md->db->dropitem[i].nameid;
-	memset(&tmp_item,0,sizeof(tmp_item));
-	tmp_item.nameid = itemid;
-	tmp_item.amount = 1;
-	tmp_item.identify = itemdb->isidentified2(data);
-	flag = pc->additem(sd,&tmp_item,1,LOG_TYPE_PICKDROP_PLAYER);
 
-	//TODO: Should we disable stealing when the item you stole couldn't be added to your inventory? Perhaps players will figure out a way to exploit this behaviour otherwise?
-	md->state.steal_flag = UCHAR_MAX; //you can't steal from this mob any more
+	{
+		struct item tmp_item = { 0 };
+		tmp_item.nameid = itemid;
+		tmp_item.amount = 1;
+		tmp_item.identify = itemdb->isidentified2(data);
+		flag = pc->additem(sd,&tmp_item,1,LOG_TYPE_PICKDROP_PLAYER);
+		//TODO: Should we disable stealing when the item you stole couldn't be added to your inventory? Perhaps players will figure out a way to exploit this behaviour otherwise?
+		md->state.steal_flag = UCHAR_MAX; //you can't steal from this mob any more
+		if(flag) { //Failed to steal due to overweight
+			clif->additem(sd,0,0,flag);
+			return 0;
+		}
+		if(battle_config.show_steal_in_same_party)
+			party->foreachsamemap(pc->show_steal,sd,AREA_SIZE,sd,tmp_item.nameid);
 
-	if(flag) { //Failed to steal due to overweight
-		clif->additem(sd,0,0,flag);
-		return 0;
+		//Logs items, Stolen from mobs [Lupus]
+		logs->pick_mob(md, LOG_TYPE_STEAL, -1, &tmp_item, data);
 	}
-
-	if(battle_config.show_steal_in_same_party)
-		party->foreachsamemap(pc->show_steal,sd,AREA_SIZE,sd,tmp_item.nameid);
-
-	//Logs items, Stolen from mobs [Lupus]
-	logs->pick_mob(md, LOG_TYPE_STEAL, -1, &tmp_item, data);
 
 	return 1;
 }
@@ -7976,14 +7975,10 @@ int pc_dead(struct map_session_data *sd,struct block_list *src) {
 	if( battle_config.bone_drop==2
 	 || (battle_config.bone_drop==1 && map->list[sd->bl.m].flag.pvp)
 	) {
-		struct item item_tmp;
-		memset(&item_tmp,0,sizeof(item_tmp));
+		struct item item_tmp = { 0 };
 		item_tmp.nameid=ITEMID_SKULL_;
 		item_tmp.identify=1;
-		item_tmp.card[0]=CARD0_CREATE;
-		item_tmp.card[1]=0;
-		item_tmp.card[2]=GetWord(sd->status.char_id,0); // CharId
-		item_tmp.card[3]=GetWord(sd->status.char_id,1);
+		itemdb->fill_produceinfo(&item_tmp, sd->status.char_id);
 		map->addflooritem(&sd->bl, &item_tmp, 1, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0, false);
 	}
 
@@ -11806,7 +11801,7 @@ void pc_autotrade_prepare(struct map_session_data *sd) {
 
 	for(i = 0; i < sd->vend_num; i++) {
 		if( sd->vending[i].amount ) {
-			memcpy(&data->list[cursor],&sd->status.cart[sd->vending[i].index],sizeof(struct item));
+			data->list[cursor] = sd->status.cart[sd->vending[i].index];
 			cursor++;
 		}
 	}

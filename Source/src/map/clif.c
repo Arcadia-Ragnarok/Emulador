@@ -2346,7 +2346,7 @@ void clif_cutin(struct map_session_data* sd, const char* image, int type)
 /*==========================================
  * Fills in card data from the given item and into the buffer. [Skotlex]
  *------------------------------------------*/
-void clif_addcards(unsigned char* buf, struct item* item) {
+void clif_addcards(unsigned char *buf, const struct item *item) {
 	int i=0,j;
 	nullpo_retv(buf);
 	if( item == NULL ) { //Blank data
@@ -2396,7 +2396,7 @@ void clif_addcards(unsigned char* buf, struct item* item) {
 		WBUFW(buf,6) = item->card[i];
 }
 
-void clif_addcards2(unsigned short *cards, struct item* item) {
+void clif_addcards2(unsigned short *cards, const struct item *item) {
 	int i=0,j;
 	nullpo_retv(cards);
 	if( item == NULL ) { //Blank data
@@ -10893,16 +10893,16 @@ void clif_parse_NpcBuyListSend(int fd, struct map_session_data* sd)
 	if( sd->state.trading || !sd->npc_shopid || pc_has_permission(sd,PC_PERM_DISABLE_STORE) ) {
 		result = 1;
 	} else {
-		struct itemlist item_list = { 0 };
+		struct itemlist_id item_list = { 0 };
 		int i;
 
 		VECTOR_INIT(item_list);
 		VECTOR_ENSURE(item_list, n, 1);
 		for (i = 0; i < n; i++) {
-			struct itemlist_entry entry = { 0 };
+			struct itemlist_id_entry entry = { 0 };
 
 			entry.amount = RFIFOW(fd, 4 + 4 * i);
-			entry.id =     RFIFOW(fd, 4 + 4 * i + 2);
+			entry.nameid = RFIFOW(fd, 4 + 4 * i + 2);
 
 			VECTOR_PUSH(item_list, entry);
 		}
@@ -10945,17 +10945,17 @@ void clif_parse_NpcSellListSend(int fd,struct map_session_data *sd)
 	if (sd->state.trading || !sd->npc_shopid) {
 		fail = 1;
 	} else {
-		struct itemlist item_list = { 0 };
+		struct itemlist_idx item_list = { 0 };
 		int i;
 
 		VECTOR_INIT(item_list);
 		VECTOR_ENSURE(item_list, n, 1);
 
 		for (i = 0; i < n; i++) {
-			struct itemlist_entry entry = { 0 };
+			struct itemlist_idx_entry entry = { 0 };
 
-			entry.id = (int)RFIFOW(fd, 4 + 4 * i) - 2;
-			entry.amount =  RFIFOW(fd, 4 + 4 * i + 2);
+			entry.index = RFIFOW(fd, 4 + 4 * i) - 2;
+			entry.amount = RFIFOW(fd, 4 + 4 * i + 2);
 
 			VECTOR_PUSH(item_list, entry);
 		}
@@ -15136,10 +15136,7 @@ void clif_Mail_read(struct map_session_data *sd, int mail_id)
 			WFIFOB(fd,88) = item->identify;
 			WFIFOB(fd,89) = item->attribute;
 			WFIFOB(fd,90) = item->refine;
-			WFIFOW(fd,91) = item->card[0];
-			WFIFOW(fd,93) = item->card[1];
-			WFIFOW(fd,95) = item->card[2];
-			WFIFOW(fd,97) = item->card[3];
+			clif->addcards(WFIFOP(fd, 91), item);
 		} else // no item, set all to zero
 			memset(WFIFOP(fd,80), 0x00, 19);
 
@@ -15421,10 +15418,10 @@ void clif_Auction_openwindow(struct map_session_data *sd)
 
 /// Returns auction item search results (ZC_AUCTION_ITEM_REQ_SEARCH).
 /// 0252 <packet len>.W <pages>.L <count>.L { <auction id>.L <seller name>.24B <name id>.W <type>.L <amount>.W <identified>.B <damaged>.B <refine>.B <card1>.W <card2>.W <card3>.W <card4>.W <now price>.L <max price>.L <buyer name>.24B <delete time>.L }*
-void clif_Auction_results(struct map_session_data *sd, short count, short pages, const uint8 *buf)
+void clif_Auction_results(struct map_session_data *sd, short count, short pages, const struct auction_data *auctions)
 {
-	int i, fd, len = sizeof(struct auction_data);
-	struct auction_data auction;
+	int i, fd;
+	const struct auction_data *auction = NULL;
 	struct item_data *item;
 
 	nullpo_retv(sd);
@@ -15437,29 +15434,26 @@ void clif_Auction_results(struct map_session_data *sd, short count, short pages,
 
 	for( i = 0; i < count; i++ ) {
 		int k = 12 + (i * 83);
-		memcpy(&auction, RBUFP(buf,i * len), len);
+		auction = &auctions[i];
 
-		WFIFOL(fd,k) = auction.auction_id;
-		safestrncpy(WFIFOP(fd,4+k), auction.seller_name, NAME_LENGTH);
+		WFIFOL(fd,k) = auction->auction_id;
+		safestrncpy(WFIFOP(fd,4+k), auction->seller_name, NAME_LENGTH);
 
-		if( (item = itemdb->exists(auction.item.nameid)) != NULL && item->view_id > 0 )
+		if ((item = itemdb->exists(auction->item.nameid)) != NULL && item->view_id > 0)
 			WFIFOW(fd,28+k) = item->view_id;
 		else
-			WFIFOW(fd,28+k) = auction.item.nameid;
+			WFIFOW(fd,28+k) = auction->item.nameid;
 
-		WFIFOL(fd,30+k) = auction.type;
-		WFIFOW(fd,34+k) = auction.item.amount; // Always 1
-		WFIFOB(fd,36+k) = auction.item.identify;
-		WFIFOB(fd,37+k) = auction.item.attribute;
-		WFIFOB(fd,38+k) = auction.item.refine;
-		WFIFOW(fd,39+k) = auction.item.card[0];
-		WFIFOW(fd,41+k) = auction.item.card[1];
-		WFIFOW(fd,43+k) = auction.item.card[2];
-		WFIFOW(fd,45+k) = auction.item.card[3];
-		WFIFOL(fd,47+k) = auction.price;
-		WFIFOL(fd,51+k) = auction.buynow;
-		safestrncpy(WFIFOP(fd,55+k), auction.buyer_name, NAME_LENGTH);
-		WFIFOL(fd,79+k) = (uint32)auction.timestamp;
+		WFIFOL(fd,30+k) = auction->type;
+		WFIFOW(fd,34+k) = auction->item.amount; // Always 1
+		WFIFOB(fd,36+k) = auction->item.identify;
+		WFIFOB(fd,37+k) = auction->item.attribute;
+		WFIFOB(fd,38+k) = auction->item.refine;
+		clif->addcards(WFIFOP(fd, 39 + k), &auction->item);
+		WFIFOL(fd,47+k) = auction->price;
+		WFIFOL(fd,51+k) = auction->buynow;
+		safestrncpy(WFIFOP(fd,55+k), auction->buyer_name, NAME_LENGTH);
+		WFIFOL(fd,79+k) = (uint32)auction->timestamp;
 	}
 	WFIFOSET(fd,WFIFOW(fd,2));
 }
@@ -15649,7 +15643,7 @@ void clif_parse_Auction_register(int fd, struct map_session_data *sd)
 
 	safestrncpy(auction.item_name, item->jname, sizeof(auction.item_name));
 	auction.type = item->type;
-	memcpy(&auction.item, &sd->status.inventory[sd->auction.index], sizeof(struct item));
+	auction.item = sd->status.inventory[sd->auction.index];
 	auction.item.amount = 1;
 	auction.timestamp = 0;
 
@@ -15868,7 +15862,7 @@ void clif_parse_cashshop_buy(int fd, struct map_session_data *sd)
 		int len = RFIFOW(fd,2);
 		int points;
 		int count;
-		struct itemlist item_list = { 0 };
+		struct itemlist_id item_list = { 0 };
 		int i;
 
 		if (len < 10) {
@@ -15886,10 +15880,10 @@ void clif_parse_cashshop_buy(int fd, struct map_session_data *sd)
 		VECTOR_INIT(item_list);
 		VECTOR_ENSURE(item_list, count, 1);
 		for (i = 0; i < count; i++) {
-			struct itemlist_entry entry = { 0 };
+			struct itemlist_id_entry entry = { 0 };
 
 			entry.amount = RFIFOW(fd, 10 + 4 * i);
-			entry.id =     RFIFOW(fd, 10 + 4 * i + 2); // Nameid
+			entry.nameid = RFIFOW(fd, 10 + 4 * i + 2); // Nameid
 
 			VECTOR_PUSH(item_list, entry);
 		}
@@ -16993,7 +16987,7 @@ void clif_parse_ItemListWindowSelected(int fd, struct map_session_data *sd)
 	int n = ((int)RFIFOW(fd, 2) - 12) / 4;
 	int type = RFIFOL(fd,4);
 	int flag = RFIFOL(fd,8); // Button clicked: 0 = Cancel, 1 = OK
-	struct itemlist item_list = { 0 };
+	struct itemlist_idx item_list = { 0 };
 	int i;
 
 	if( sd->state.trading || sd->npc_shopid )
@@ -17015,9 +17009,9 @@ void clif_parse_ItemListWindowSelected(int fd, struct map_session_data *sd)
 	VECTOR_INIT(item_list);
 	VECTOR_ENSURE(item_list, n, 1);
 	for (i = 0; i < n; i++) {
-		struct itemlist_entry entry = { 0 };
-		entry.id = (int)RFIFOW(fd, 12 + 4 * i) - 2; // Inventory index
-		entry.amount =  RFIFOW(fd, 12 + 4 * i + 2);
+		struct itemlist_idx_entry entry = { 0 };
+		entry.index = RFIFOW(fd, 12 + 4 * i) - 2; // Inventory index
+		entry.amount = RFIFOW(fd, 12 + 4 * i + 2);
 		VECTOR_PUSH(item_list, entry);
 	}
 
@@ -17527,7 +17521,7 @@ void clif_search_store_info_ack(struct map_session_data* sd)
 
 	for( i = start; i < end; i++ ) {
 		struct s_search_store_info_item* ssitem = &sd->searchstore.items[i];
-		struct item it;
+		struct item it = { 0 };
 
 		WFIFOL(fd,i*blocksize+ 7) = ssitem->store_id;
 		WFIFOL(fd,i*blocksize+11) = ssitem->account_id;
@@ -18160,7 +18154,6 @@ void clif_parse_CashShopBuy(int fd, struct map_session_data *sd) {
 			} else if (!(data = itemdb->exists(clif->cs.data[tab][j]->id))) {
 				result = CSBR_UNKONWN_ITEM;
 			} else {
-				struct item item_tmp;
 				int k, get_count;
 				int ret = 0;
 
@@ -18177,7 +18170,7 @@ void clif_parse_CashShopBuy(int fd, struct map_session_data *sd) {
 				kafra_pay = ret;
 				for (k = 0; k < qty; k += get_count) {
 					if (!pet->create_egg(sd, data->nameid)) {
-						memset(&item_tmp, 0, sizeof(item_tmp));
+						struct item item_tmp = { 0 };
 						item_tmp.nameid = data->nameid;
 						item_tmp.identify = 1;
 
@@ -18842,7 +18835,7 @@ void clif_parse_NPCMarketClosed(int fd, struct map_session_data *sd) {
 	sd->npc_shopid = 0;
 }
 
-void clif_npc_market_purchase_ack(struct map_session_data *sd, const struct itemlist *item_list, unsigned char response)
+void clif_npc_market_purchase_ack(struct map_session_data *sd, const struct itemlist_id *item_list, unsigned char response)
 {
 #if PACKETVER >= 20131223
 	unsigned short c = 0;
@@ -18859,13 +18852,13 @@ void clif_npc_market_purchase_ack(struct map_session_data *sd, const struct item
 		int i;
 
 		for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-			const struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
+			const struct itemlist_id_entry *entry = &VECTOR_INDEX(*item_list, i);
 			int j;
 
-			npcmarket_result.list[i].ITID = entry->id;
+			npcmarket_result.list[i].ITID = (uint16)entry->nameid;
 			npcmarket_result.list[i].qty  = entry->amount;
 
-			ARR_FIND( 0, shop_size, j, entry->id == shop[j].nameid);
+			ARR_FIND(0, shop_size, j, entry->nameid == shop[j].nameid);
 
 			npcmarket_result.list[i].price = (j != shop_size) ? shop[j].value : 0;
 
@@ -18886,7 +18879,7 @@ void clif_parse_NPCMarketPurchase(int fd, struct map_session_data *sd)
 	const struct packet_npc_market_purchase *p = RP2PTR(fd);
 	int response = 0, i;
 	int count = (p->PacketLength - 4) / sizeof p->list[0];
-	struct itemlist item_list;
+	struct itemlist_id item_list;
 
 	Assert_retv(count >= 0 && count <= MAX_INVENTORY);
 
@@ -18894,9 +18887,9 @@ void clif_parse_NPCMarketPurchase(int fd, struct map_session_data *sd)
 	VECTOR_ENSURE(item_list, count, 1);
 
 	for (i = 0; i < count; i++) {
-		struct itemlist_entry entry = { 0 };
+		struct itemlist_id_entry entry = { 0 };
 
-		entry.id = p->list[i].ITID;
+		entry.nameid = p->list[i].ITID;
 		entry.amount = p->list[i].qty;
 
 		VECTOR_PUSH(item_list, entry);
@@ -19023,8 +19016,7 @@ void clif_parse_RouletteGenerate(int fd, struct map_session_data* sd) {
 		sd->roulette.prizeStage = stage;
 		sd->roulette.prizeIdx = rnd()%clif->rd.items[stage];
 		if( sd->roulette.prizeIdx == 0 ) {
-			struct item it;
-			memset(&it, 0, sizeof(it));
+			struct item it = { 0 };
 
 			it.nameid = clif->rd.nameid[stage][0];
 			it.identify = 1;
@@ -19060,8 +19052,7 @@ void clif_parse_RouletteRecvItem(int fd, struct map_session_data* sd)
 	p.AdditionItemID = 0;/** TODO **/
 
 	if( sd->roulette.claimPrize ) {
-		struct item it;
-		memset(&it, 0, sizeof(it));
+		struct item it = { 0 };
 
 		it.nameid = clif->rd.nameid[sd->roulette.prizeStage][sd->roulette.prizeIdx];
 		it.identify = 1;
@@ -19273,7 +19264,6 @@ void clif_ackmergeitems(int fd, struct map_session_data *sd)
 #if PACKETVER > 20120228
 	int i = 0, n = 0, length = 0, count = 0;
 	int16 nameid = 0, indexes[MAX_INVENTORY] = {0}, amounts[MAX_INVENTORY] = {0};
-	struct item item_data;
 
 	nullpo_retv(sd);
 	length = (RFIFOW(fd,2) - 4)/2;
@@ -19335,14 +19325,14 @@ void clif_ackmergeitems(int fd, struct map_session_data *sd)
 	for (i = 0; i < n; i++)
 		pc->delitem(sd,indexes[i],amounts[i],0,DELITEM_NORMAL,LOG_TYPE_NPC);
 
-	memset(&item_data,'\0',sizeof(item_data));
-
-	item_data.nameid = nameid;
-	item_data.identify = 1;
-	item_data.unique_id = itemdb->unique_id(sd);
-	pc->additem(sd,&item_data,count,LOG_TYPE_NPC);
-
-	ARR_FIND(0,MAX_INVENTORY,i,item_data.unique_id == sd->status.inventory[i].unique_id);
+	{
+		struct item item_data = { 0 };
+		item_data.nameid = nameid;
+		item_data.identify = 1;
+		item_data.unique_id = itemdb->unique_id(sd);
+		pc->additem(sd,&item_data,count,LOG_TYPE_NPC);
+		ARR_FIND(0, MAX_INVENTORY, i, item_data.unique_id == sd->status.inventory[i].unique_id);
+	}
 
 	WFIFOHEAD(fd,7);
 	WFIFOW(fd,0) = 0x96f;
