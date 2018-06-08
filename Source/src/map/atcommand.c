@@ -1601,7 +1601,8 @@ int atcommand_pvpon_sub(struct block_list *bl,va_list ap)
 	sd = BL_UCAST(BL_PC, bl);
 
 	if (sd->pvp_timer == INVALID_TIMER) {
-		sd->pvp_timer = timer->add(timer->gettick() + 200, pc->calc_pvprank_timer, sd->bl.id, 0);
+		if (!map->list[sd->bl.m].flag.pvp_nocalcrank)
+			sd->pvp_timer = timer->add(timer->gettick() + 200, pc->calc_pvprank_timer, sd->bl.id, 0);
 		sd->pvp_rank = 0;
 		sd->pvp_lastusers = 0;
 		sd->pvp_point = 5;
@@ -7513,11 +7514,11 @@ ACMD(sizeguild)
  *------------------------------------------*/
 ACMD(monsterignore)
 {
-	if (!sd->state.monster_ignore) {
-		sd->state.monster_ignore = 1;
+	if (!sd->block_action.immune) {
+		sd->block_action.immune = 1;
 		clif->message(sd->fd, msg_txt(1305)); // You are now immune to attacks.
 	} else {
-		sd->state.monster_ignore = 0;
+		sd->block_action.immune = 0;
 		clif->message(sd->fd, msg_txt(1306)); // Returned to normal state.
 	}
 
@@ -9496,6 +9497,9 @@ bool atcommand_exec(const int fd, struct map_session_data *sd, const char *messa
 			return false;
 		}
 	}
+
+	if (sd->block_action.commands) // *pcblock script command
+		return false;
 
 	if (*message == atcommand->char_symbol)
 		is_atcommand = false;

@@ -10590,10 +10590,15 @@ int buildin_getunits_sub(struct block_list *bl, va_list ap)
 	uint32 limit = va_arg(ap, uint32);
 	const char *name = va_arg(ap, const char *);
 	struct reg_db *ref = va_arg(ap, struct reg_db *);
+	enum bl_type type = va_arg(ap, enum bl_type);
 	uint32 index = start + *count;
 
-	if (index >= SCRIPT_MAX_ARRAYSIZE || *count > limit) {
-		return 1;
+	if ((bl->type & type) == 0) {
+		return 0; // type mismatch => skip
+	}
+
+	if (index >= SCRIPT_MAX_ARRAYSIZE || *count >= limit) {
+		return -1;
 	}
 
 	script->set_reg(st, sd, reference_uid(id, index), name,
@@ -10603,16 +10608,32 @@ int buildin_getunits_sub(struct block_list *bl, va_list ap)
 	return 0;
 }
 
+static int buildin_getunits_sub_pc(struct map_session_data *sd, va_list ap)
+{
+	return buildin_getunits_sub(&sd->bl, ap);
+}
+
+static int buildin_getunits_sub_mob(struct mob_data *md, va_list ap)
+{
+	return buildin_getunits_sub(&md->bl, ap);
+}
+
+static int buildin_getunits_sub_npc(struct npc_data *nd, va_list ap)
+{
+	return buildin_getunits_sub(&nd->bl, ap);
+}
+
+
 BUILDIN(getunits)
 {
-	const char *mapname, *name;
-	int16 m, x1, y1, x2, y2;
+	const char *name;
 	int32 id;
 	uint32 start;
 	struct reg_db *ref;
 	enum bl_type type = script_getnum(st, 2);
 	struct script_data *data = script_getdata(st, 3);
-	uint32 count = 0, limit = script_getnum(st, 4);
+	uint32 count = 0;
+	uint32 limit = script_getnum(st, 4);
 	struct map_session_data *sd = NULL;
 
 	if (!data_isreference(data) || reference_toconstant(data)) {
@@ -10645,20 +10666,50 @@ BUILDIN(getunits)
 		limit = SCRIPT_MAX_ARRAYSIZE;
 	}
 
-	mapname = script_getstr(st, 5);
-	m = map->mapname2mapid(mapname);
+	if (script_hasdata(st, 5)) {
+		const char *mapname = script_getstr(st, 5);
+		int16 m = map->mapname2mapid(mapname);
 
-	if (script_hasdata(st, 9)) {
-		x1 = script_getnum(st, 6);
-		y1 = script_getnum(st, 7);
-		x2 = script_getnum(st, 8);
-		y2 = script_getnum(st, 9);
+		if (script_hasdata(st, 9)) {
+			int16 x1 = script_getnum(st, 6);
+			int16 y1 = script_getnum(st, 7);
+			int16 x2 = script_getnum(st, 8);
+			int16 y2 = script_getnum(st, 9);
 
-		map->foreachinarea(buildin_getunits_sub, m, x1, y1, x2, y2, type,
-			st, sd, id, start, &count, limit, name, ref);
+			// FIXME: map_foreachinarea does NOT stop iterating when the callback
+			//        function returns -1. we still limit the array size, but
+			//        this doesn't break the loop. We need a foreach function
+			//        that behaves like map_foreachiddb, but for areas
+			map->foreachinarea(buildin_getunits_sub, m, x1, y1, x2, y2, type,
+				st, sd, id, start, &count, limit, name, ref, type);
+		} else {
+			// FIXME: map_foreachinmap does NOT stop iterating when the callback
+			//        function returns -1. we still limit the array size, but
+			//        this doesn't break the loop. We need a foreach function
+			//        that behaves like map_foreachiddb, but for maps
+			map->foreachinmap(buildin_getunits_sub, m, type,
+				st, sd, id, start, &count, limit, name, ref, type);
+		}
 	} else {
-		map->foreachinmap(buildin_getunits_sub, m, type,
-			st, sd, id, start, &count, limit, name, ref);
+		// for faster lookup we try to reduce the scope of the search if possible
+		switch (type) {
+		case BL_PC:
+			map->foreachpc(buildin_getunits_sub_pc,
+				st, sd, id, start, &count, limit, name, ref, type);
+			break;
+		case BL_MOB:
+			map->foreachmob(buildin_getunits_sub_mob,
+				st, sd, id, start, &count, limit, name, ref, type);
+			break;
+		case BL_NPC:
+			map->foreachnpc(buildin_getunits_sub_npc,
+				st, sd, id, start, &count, limit, name, ref, type);
+			break;
+		default:
+			// fallback to global lookup (slowest option)
+			map->foreachiddb(buildin_getunits_sub,
+				st, sd, id, start, &count, limit, name, ref, type);
+		}
 	}
 
 	script_pushint(st, count);
@@ -12316,7 +12367,8 @@ int script_mapflag_pvp_sub(struct block_list *bl, va_list ap)
 	sd = BL_UCAST(BL_PC, bl);
 
 	if (sd->pvp_timer == INVALID_TIMER) {
-		sd->pvp_timer = timer->add(timer->gettick() + 200, pc->calc_pvprank_timer, sd->bl.id, 0);
+		if (!map->list[sd->bl.m].flag.pvp_nocalcrank)
+			sd->pvp_timer = timer->add(timer->gettick() + 200, pc->calc_pvprank_timer, sd->bl.id, 0);
 		sd->pvp_rank = 0;
 		sd->pvp_lastusers = 0;
 		sd->pvp_point = 5;
@@ -12553,7 +12605,8 @@ BUILDIN(pvpon)
 		if( sd->bl.m != m || sd->pvp_timer != INVALID_TIMER )
 			continue; // not applicable
 
-		sd->pvp_timer = timer->add(timer->gettick()+200,pc->calc_pvprank_timer,sd->bl.id,0);
+		if (!map->list[m].flag.pvp_nocalcrank)
+			sd->pvp_timer = timer->add(timer->gettick()+200,pc->calc_pvprank_timer,sd->bl.id,0);
 		sd->pvp_rank = 0;
 		sd->pvp_lastusers = 0;
 		sd->pvp_point = 5;
@@ -17424,8 +17477,88 @@ BUILDIN(pcblockmove) {
 	else
 		sd = script->rid2sd(st);
 
-	if (sd != NULL)
-		sd->state.blockedmove = flag > 0;
+	if (!sd)
+		return true;
+
+	if (flag)
+		sd->block_action.move = 1;
+	else
+		sd->block_action.move = 0;
+
+	return true;
+}
+
+BUILDIN(setpcblock)
+{
+	struct map_session_data *sd = script->rid2sd(st);
+	enum pcblock_action_flag type = script_getnum(st, 2);
+	int state = (script_getnum(st, 3) > 0) ? 1 : 0;
+
+	if (sd == NULL)
+		return true;
+
+	if ((type & PCBLOCK_MOVE) != 0)
+		sd->block_action.move = state;
+
+	if ((type & PCBLOCK_ATTACK) != 0)
+		sd->block_action.attack = state;
+
+	if ((type & PCBLOCK_SKILL) != 0)
+		sd->block_action.skill = state;
+
+	if ((type & PCBLOCK_USEITEM) != 0)
+		sd->block_action.useitem = state;
+
+	if ((type & PCBLOCK_CHAT) != 0)
+		sd->block_action.chat = state;
+
+	if ((type & PCBLOCK_IMMUNE) != 0)
+		sd->block_action.immune = state;
+
+	if ((type & PCBLOCK_SITSTAND) != 0) 
+		sd->block_action.sitstand = state;
+
+	if ((type & PCBLOCK_COMMANDS) != 0)
+		sd->block_action.commands = state;
+
+	return true;
+}
+
+BUILDIN(checkpcblock)
+{
+	struct map_session_data *sd = script->rid2sd(st);
+	int retval = PCBLOCK_NONE;
+
+	if (sd == NULL) {
+		script_pushint(st, PCBLOCK_NONE);
+		return true;
+	}
+
+	if (sd->block_action.move != 0)
+		retval |= PCBLOCK_MOVE;
+
+	if (sd->block_action.attack != 0)
+		retval |= PCBLOCK_ATTACK;
+
+	if (sd->block_action.skill != 0)
+		retval |= PCBLOCK_SKILL;
+
+	if (sd->block_action.useitem != 0)
+		retval |= PCBLOCK_USEITEM;
+
+	if (sd->block_action.chat != 0)
+		retval |= PCBLOCK_CHAT;
+
+	if (sd->block_action.immune != 0)
+		retval |= PCBLOCK_IMMUNE;
+
+	if (sd->block_action.sitstand != 0)
+		retval |= PCBLOCK_SITSTAND;
+
+	if (sd->block_action.commands != 0)
+		retval |= PCBLOCK_COMMANDS;
+
+	script_pushint(st, retval);
 
 	return true;
 }
@@ -19036,7 +19169,7 @@ BUILDIN(getunitdata)
 
 #undef getunitdata_sub
 
-	return false;
+	return true;
 }
 
 /**
@@ -21143,7 +21276,7 @@ BUILDIN(setcashmount)
 		return true;
 
 	if (pc_hasmount(sd)) {
-		clif->msgtable(sd, MSG_REINS_CANT_USE_MOUNTED);
+		clif->msgtable(sd, MSG_FAIELD_RIDING_OVERLAPPED);
 		script_pushint(st, 0); // Can't mount with one of these
 	} else {
 		if (sd->sc.data[SC_ALL_RIDING]) {
@@ -23589,7 +23722,7 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF(deltimer,"s?"),
 		BUILDIN_DEF(addtimercount,"si?"),
 		BUILDIN_DEF(gettimer,"i??"),
-		BUILDIN_DEF(getunits,"iris????"),
+		BUILDIN_DEF(getunits,"iri?????"),
 		BUILDIN_DEF(initnpctimer,"??"),
 		BUILDIN_DEF(stopnpctimer,"??"),
 		BUILDIN_DEF(startnpctimer,"??"),
@@ -23812,7 +23945,9 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF(rid2name,"i"),
 		BUILDIN_DEF(pcfollow,"ii"),
 		BUILDIN_DEF(pcstopfollow,"i"),
-		BUILDIN_DEF(pcblockmove,"ii"),
+		BUILDIN_DEF_DEPRECATED(pcblockmove,"ii"), // Deprecated 2018-05-04
+		BUILDIN_DEF(setpcblock, "ii"),
+		BUILDIN_DEF(checkpcblock, ""),
 		// <--- [zBuffer] List of player cont commands
 		// [zBuffer] List of mob control commands --->
 		BUILDIN_DEF(getunittype,"i"),
@@ -24380,7 +24515,18 @@ void script_hardcoded_constants(void)
 	script->set_constant("MST_AROUND3", MST_AROUND3, false, false);
 	script->set_constant("MST_AROUND4", MST_AROUND4, false, false);
 	script->set_constant("MST_AROUND", MST_AROUND , false, false);
-	
+
+	script->constdb_comment("pc block constants, use with *setpcblock* and *checkpcblock*");
+	script->set_constant("PCBLOCK_NONE",     PCBLOCK_NONE,     false, false);
+	script->set_constant("PCBLOCK_MOVE",     PCBLOCK_MOVE,     false, false);
+	script->set_constant("PCBLOCK_ATTACK",   PCBLOCK_ATTACK,   false, false);
+	script->set_constant("PCBLOCK_SKILL",    PCBLOCK_SKILL,    false, false);
+	script->set_constant("PCBLOCK_USEITEM",  PCBLOCK_USEITEM,  false, false);
+	script->set_constant("PCBLOCK_CHAT",     PCBLOCK_CHAT,     false, false);
+	script->set_constant("PCBLOCK_IMMUNE",   PCBLOCK_IMMUNE,   false, false);
+	script->set_constant("PCBLOCK_SITSTAND", PCBLOCK_SITSTAND, false, false);
+	script->set_constant("PCBLOCK_COMMANDS", PCBLOCK_COMMANDS, false, false);
+
 	script->constdb_comment(NULL);
 	#include "constants.inc"
 }

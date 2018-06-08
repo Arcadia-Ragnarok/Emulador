@@ -1752,6 +1752,9 @@ int status_check_skilluse(struct block_list *src, struct block_list *target, uin
 	if (src != NULL && src->type != BL_PC && status->isdead(src))
 		return 0;
 
+	if (sd != NULL && sd->block_action.skill && skill_id) // *pcblock script command
+		return 0;
+
 	if (!skill_id) { //Normal attack checks.
 		if (!(st->mode&MD_CANATTACK))
 			return 0; //This mode is only needed for melee attacking.
@@ -12684,6 +12687,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 {
 	struct config_setting_t *temp = NULL;
 	int i32 = 0;
+	const char *str = NULL;
 
 	struct {
 		const char *name;
@@ -12716,6 +12720,36 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 		{ "Shield", MAX_SINGLE_WEAPON_TYPE }
 	};
 
+	/**
+	 * @field BaseExpGroup must be read before any other that deal with exp tables.
+	 */
+	if (libconfig->setting_lookup_string(jdb, "BaseExpGroup", &str) != 0) {
+		int i = 0;
+		ARR_FIND(0, VECTOR_LENGTH(pc->class_exp_groups[CLASS_EXP_TABLE_BASE]), i, strcmp(str, VECTOR_INDEX(pc->class_exp_groups[CLASS_EXP_TABLE_BASE], i).name) == 0);
+		if (i == VECTOR_LENGTH(pc->class_exp_groups[CLASS_EXP_TABLE_BASE])) {
+			ShowError("status_read_job_db: Grupo Desconhecido de Exp. Base '%s' fornecido para entrada '%s'\n", str, name);
+		} else {
+			pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE] = &VECTOR_INDEX(pc->class_exp_groups[CLASS_EXP_TABLE_BASE], i);
+		}
+	} else {
+		ShowError("status_read_job_db: Configuracao de BaseExpGroup nao encontrada para entrada '%s'\n", name);
+	}
+
+	/**
+	 * @field JobExpGroup must be read before any other that deal with exp tables.
+	 */
+	if (libconfig->setting_lookup_string(jdb, "JobExpGroup", &str) != 0) {
+		int i = 0;
+		ARR_FIND(0, VECTOR_LENGTH(pc->class_exp_groups[CLASS_EXP_TABLE_JOB]), i, strcmp(str, VECTOR_INDEX(pc->class_exp_groups[CLASS_EXP_TABLE_JOB], i).name) == 0);
+		if (i == VECTOR_LENGTH(pc->class_exp_groups[CLASS_EXP_TABLE_JOB])) {
+			ShowError("status_read_job_db: Grupo Desconhecido de Job Exp. Base '%s' fornecido para entrada '%s'\n", str, name);
+		} else {
+			pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_JOB] = &VECTOR_INDEX(pc->class_exp_groups[CLASS_EXP_TABLE_JOB], i);
+		}
+	} else {
+		ShowError("status_read_job_db: Configuracao de JobExpGroup nao encontrada para entrada '%s'\n", name);
+	}
+
 	if ((temp = libconfig->setting_get_member(jdb, "Inherit"))) {
 		int nidx = 0;
 		const char *iname;
@@ -12741,7 +12775,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 			} else {
 				avg_increment = 5;
 			}
-			for (i = 1; i <= pc->max_level[idx][0]; i++) {
+			for ( ; i <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; i++) {
 				status->dbs->HP_table[idx][i] = min(base + avg_increment * i, battle_config.max_hp);
 			}
 
@@ -12757,7 +12791,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 			} else {
 				avg_increment = 1;
 			}
-			for ( ; i <= pc->max_level[idx][0]; i++) {
+			for ( ; i <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; i++) {
 				status->dbs->SP_table[idx][i] = min(base + avg_increment * i, battle_config.max_sp);
 			}
 		}
@@ -12784,7 +12818,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 			} else {
 				avg_increment = 5;
 			}
-			for ( ; i <= pc->max_level[idx][0]; i++) {
+			for ( ; i <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; i++) {
 				status->dbs->HP_table[idx][i] = min(base + avg_increment * i, battle_config.max_hp);
 			}
 		}
@@ -12811,7 +12845,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 			} else {
 				avg_increment = 1;
 			}
-			for ( ; i <= pc->max_level[idx][0]; i++) {
+			for ( ; i <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; i++) {
 				status->dbs->SP_table[idx][i] = min(base + avg_increment * i, battle_config.max_sp);
 			}
 		}
@@ -12854,7 +12888,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 		} else {
 			avg_increment = 5;
 		}
-		for (++level; level <= pc->max_level[idx][0]; ++level) { /* limit only to possible maximum level of the given class */
+		for (++level; level <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; ++level) { /* limit only to possible maximum level of the given class */
 			status->dbs->HP_table[idx][level] = min(base + avg_increment * level, battle_config.max_hp); /* some are still empty? then let's use the average increase */
 		}
 	}
@@ -12875,7 +12909,7 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 		} else {
 			avg_increment = 1;
 		}
-		for (++level; level <= pc->max_level[idx][0]; level++ ) {
+		for (++level; level <= pc->dbs->class_exp_table[idx][CLASS_EXP_TABLE_BASE]->max_level; level++) {
 			status->dbs->SP_table[idx][level] = min(base + avg_increment * level, battle_config.max_sp);
 		}
 	}
@@ -12898,7 +12932,7 @@ void status_read_job_db(void) /* [malufett] */
 	if (!libconfig->load_file(&job_db_conf, config_filename))
 		return;
 
-	while ( (jdb = libconfig->setting_get_elem(job_db_conf.root, i++)) ) {
+	while ((jdb = libconfig->setting_get_elem(job_db_conf.root, i++))) {
 		int class, idx;
 		const char *name = config_setting_name(jdb);
 
@@ -13169,6 +13203,8 @@ int status_readdb(void)
 	status->readdb_refine_libconfig("Status_DB/Refine.conf");
 	sv->readdb(map->db_path, "Status_DB/SC_Config.txt", ',', 2, 2, SC_MAX, status->readdb_scconfig);
 	status->read_job_db();
+
+	pc->validate_levels();
 
 	return 0;
 }

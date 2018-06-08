@@ -196,10 +196,8 @@ struct map_session_data {
 		unsigned int noask :1; // [LuzZza]
 		unsigned int trading :1; //[Skotlex] is 1 only after a trade has started.
 		unsigned int deal_locked :2; //1: Clicked on OK. 2: Clicked on TRADE
-		unsigned int monster_ignore :1; // for monsters to ignore a character [Valaris] [zzo]
 		unsigned int size :2; // for tiny/large types
 		unsigned int night :1; //Holds whether or not the player currently has the SI_NIGHT effect on. [Skotlex]
-		unsigned int blockedmove :1;
 		unsigned int using_fake_npc :1;
 		unsigned int rewarp :1; //Signals that a player should warp as soon as he is done loading a map. [Skotlex]
 		unsigned int killer : 1;
@@ -605,6 +603,18 @@ END_ZEROED_BLOCK;
 
 	// HatEffect
 	VECTOR_DECL(int) hatEffectId;
+
+	struct {
+		unsigned move     : 1;
+		unsigned attack   : 1;
+		unsigned skill    : 1;
+		unsigned useitem  : 1;
+		unsigned chat     : 1;
+		unsigned immune   : 1;
+		unsigned sitstand : 1;
+		unsigned commands : 1;
+	} block_action;
+
 };
 
 #define EQP_WEAPON EQP_HAND_R
@@ -780,6 +790,24 @@ struct autotrade_vending {
 	unsigned char vend_num;
 };
 
+struct class_exp_group {
+	char name[SCRIPT_VARNAME_LENGTH];
+	int max_level;
+	VECTOR_DECL(uint64) exp;
+};
+
+/**
+* Exp types
+*/
+enum class_exp_type {
+	CLASS_EXP_TABLE_BASE,
+	CLASS_EXP_TABLE_JOB
+};
+
+struct class_exp_tables {
+	struct class_exp_group *class_exp_table[CLASS_COUNT][2];
+};
+
 /*=====================================
 * Interface : pc.h
 * created by Susu
@@ -796,8 +824,6 @@ struct pc_interface {
 	/* */
 
 BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when status_defaults() is executed */
-	uint64 exp_table[CLASS_COUNT][2][150]; //MAX_LEVEL
-	int max_level[CLASS_COUNT][2];
 	unsigned int statp[150+1]; //MAX_LEVEL
 	unsigned int level_penalty[3][RC_MAX][150*2+1]; //MAX_LEVEL
 	/* */
@@ -806,6 +832,9 @@ BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when sta
 	struct fame_list chemist_fame_list[MAX_FAME_LIST];
 	struct fame_list taekwon_fame_list[MAX_FAME_LIST];
 END_ZEROED_BLOCK; /* End */
+
+	struct class_exp_tables *dbs;
+	VECTOR_DECL(struct class_exp_group) class_exp_groups[2];
 
 	unsigned int equip_pos[EQI_MAX];
 	struct sg_data sg_info[MAX_PC_FEELHATE];
@@ -1017,6 +1046,9 @@ END_ZEROED_BLOCK; /* End */
 	int (*set_hate_mob) (struct map_session_data *sd, int pos, struct block_list *bl);
 
 	int (*readdb) (void);
+	bool (*read_exp_db) (void);
+	int (*read_exp_db_sub) (struct config_setting_t *conf, bool base);
+	bool (*read_exp_db_sub_class) (struct config_setting_t *t, bool base);
 	int (*map_day_timer) (int tid, int64 tick, int id, intptr_t data); // by [yor]
 	int (*map_night_timer) (int tid, int64 tick, int id, intptr_t data); // by [yor]
 	// Rental System
@@ -1088,6 +1120,9 @@ END_ZEROED_BLOCK; /* End */
 
 	void (*validate_levels) (void);
 	void (*update_job_and_level) (struct map_session_data *sd);
+	void (*clear_exp_groups) (void);
+	void (*init_exp_groups) (void);
+	bool (*job_is_dummy) (int job);
 
 	/**
 	 * Autotrade persistency
