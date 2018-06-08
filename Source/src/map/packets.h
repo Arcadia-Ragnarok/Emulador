@@ -3037,7 +3037,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 // new packets
 	packet(0x0a00,269); // ZC_SHORTCUT_KEY_LIST_V3
 	packet(0x0a01,3,clif->pHotkeyRowShift,2); // CZ_SHORTCUTKEYBAR_ROTATE
-// Warning using this packets for items manipulation. In RagexeRE from 20140129 and before 20140305, this actions broken.
+// Warning hercules using this packets for items manipulation. In RagexeRE from 20140129 and before 20140305, this actions broken.
 #ifdef PACKETVER_RE
 // changed packet sizes
 	packet(0x01c4,43); // ZC_ADD_ITEM_TO_STORE2
@@ -3057,7 +3057,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 
 // 2014-02-19aRagexeRE
 #if PACKETVER >= 20140219
-// Warning using this packets for items manipulation. In RagexeRE from 20140129 and before 20140305, this actions broken.
+// Warning hercules using this packets for items manipulation. In RagexeRE from 20140129 and before 20140305, this actions broken.
 #ifdef PACKETVER_RE
 // changed packet sizes
 	packet(0x01c4,53); // ZC_ADD_ITEM_TO_STORE2
@@ -3180,7 +3180,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 	packet(0x0a14,10); // ZC_CHECK_RECEIVE_CHARACTER_NAME
 #endif
 
-/* Roulette System [Yommy] */
+/* Roulette System [Yommy/Hercules] */
 // 2014-06-05aRagexe
 #if PACKETVER >= 20140605
 // new packets
@@ -3192,7 +3192,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 	packet(0x0a1d,14,clif->pDull/*,XXX*/); // CZ_REQ_CLOSE_ROULETTE
 #endif
 
-/* Roulette System [Yommy] */
+/* Roulette System [Yommy/Hercules] */
 // 2014-06-11bRagexe / RE. moved by 4144
 #if PACKETVER >= 20140611
 // new packets
@@ -3378,6 +3378,14 @@ packet(0x96e,-1,clif->ackmergeitems);
 	packet(0x0a45,-1);
 #endif
 
+// 2015-11-04aRagexeRE
+#if PACKETVER >= 20151104
+// new packets
+	packet(0x0a46,14,clif->pReqStyleChange);
+	packet(0x0a47,3);
+	packet(0x0a48,2,clif->pDull/*,XXX*/);
+#endif
+
 // 2015-11-18aRagexeRE
 #if PACKETVER >= 20151118
 // new packets
@@ -3425,7 +3433,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 // 2016-03-23aRagexeRE
 #if PACKETVER >= 20160323
 // new packets
-	packet(0x0a68,3);
+	packet(0x0a68,3,clif->pOpenUIRequest);
 	packet(0x0a69,6);
 	packet(0x0a6a,12);
 	packet(0x0a6b,-1);
@@ -3821,7 +3829,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 // changed packet sizes
 	packet(0x006d,157); // HC_ACCEPT_MAKECHAR
 	packet(0x08e3,157); // HC_UPDATE_CHARINFO
-	packet(0x0a49,20);
+	packet(0x0a49, 20, clif->pPrivateAirshipRequest);
 #endif
 
 // 2017-09-06cRagexeRE
@@ -3968,7 +3976,7 @@ packet(0x96e,-1,clif->ackmergeitems);
 
 #if PACKETVER >= 20180117
 // new packets
-	packet(0x0aef,2);
+	packet(0x0aef,2,clif->pAttendanceRewardRequest);
 	packet(0x0af0,10);
 // changed packet sizes
 	packet(0x0ae9,13);
@@ -4001,7 +4009,6 @@ packet(0x96e,-1,clif->ackmergeitems);
 // changed packet sizes
 	packet(0x0821,102); // AC_OTP_USER
 #endif
-
 
 #ifdef PACKETVER_ZERO
 // 2018-02-07bRagexe_zero
@@ -4054,17 +4061,18 @@ packet(0x96e,-1,clif->ackmergeitems);
 #endif  // PACKETVER_ZERO
 
 #ifdef PACKETVER_ZERO
-	// 2018-03-28_1aRagexe_zero
-	#if PACKETVER >= 20180328
-	// new
-	packet(0x0af8,11,clif->pDull);
-	packet(0x0af9,6,clif->pDull);
-	packet(0x0afa,54,clif->pDull);
-	// packet sizes
+// 2018-03-28_1aRagexe_zero
+#if PACKETVER >= 20180328
+// new packets
+	packet(0x0af8,11,clif->pDull/*,XXX*/);
+	packet(0x0af9,6,clif->pDull/*,XXX*/);
+	packet(0x0afa,54,clif->pDull/*,XXX*/);
+// changed packet sizes
 	packet(0x0206,35); // ZC_FRIENDS_STATE
-	packet(0x0ae7,38,clif->pDull);
-	#endif
+	packet(0x0ae7,38,clif->pDull/*,XXX*/);
+#endif
 #endif  // PACKETVER_ZERO
+
 
 #ifndef PACKETVER_ZERO
 // 2018-04-04bRagexe, 2018-04-04cRagexeRE
@@ -4086,12 +4094,12 @@ packet(0x96e,-1,clif->ackmergeitems);
 #endif
 
 #ifndef PACKETVER_ZERO
-	// 2018-04-18aRagexe, 2018-04-18bRagexeRE
-	#if PACKETVER >= 20180418
-	// new packets
-		packet(0x0afb,-1,clif->pDull/*,XXX*/);
-	// changed packet sizes
-	#endif
+// 2018-04-18aRagexe, 2018-04-18bRagexeRE
+#if PACKETVER >= 20180418
+// new packets
+	packet(0x0afb,-1,clif->pDull/*,XXX*/);
+// changed packet sizes
+#endif
 #endif
 
 #ifdef PACKETVER_ZERO

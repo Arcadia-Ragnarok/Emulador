@@ -975,7 +975,7 @@ struct packet_banking_withdraw_ack {
 	int32 Balance;
 } __attribute__((packed));
 
-/* Roulette System [Yommy] */
+/* Roulette System [Yommy/Hercules] */
 struct packet_roulette_open_ack {
 	int16 PacketType;
 	int8 Result;
@@ -1255,15 +1255,15 @@ struct packet_hotkey {
  * MISSION_HUNT_INFO_EX (PACKETVER >= 20150513)
  */
 struct packet_mission_info_sub {
-	#if PACKETVER >= 20150513
-		uint32 huntIdent;
-		uint32 mobType;
-	#endif
-		uint32 mob_id;
-	#if PACKETVER >= 20150513
-		int16 levelMin;
-		int16 levelMax;
-	#endif
+#if PACKETVER >= 20150513
+	uint32 huntIdent;
+	uint32 mobType;
+#endif
+	uint32 mob_id;
+#if PACKETVER >= 20150513
+	int16 levelMin;
+	int16 levelMax;
+#endif
 	int16 huntCount;
 	int16 maxCount;
 	char mobName[NAME_LENGTH];
@@ -1615,15 +1615,15 @@ struct PACKET_ZC_NOTIFY_CLAN_CHAT {
  * PACKET_ZC_MISSION_HUNT_EX (PACKETVER >= 20150513)
  */
 struct packet_quest_hunt_sub {
-	#if PACKETVER >= 20150513
-		uint32 huntIdent;
-		uint32 mobType;
-	#endif
+#if PACKETVER >= 20150513
+	uint32 huntIdent;
+	uint32 mobType;
+#endif
 	uint32 mob_id;
-	#if PACKETVER >= 20150513
-		int16 levelMin;
-		int16 levelMax;
-	#endif
+#if PACKETVER >= 20150513
+	int16 levelMin;
+	int16 levelMax;
+#endif
 	int16 huntCount;
 	char mobName[NAME_LENGTH];
 } __attribute__((packed));
@@ -1649,11 +1649,11 @@ struct packet_quest_add_header {
  */
 struct packet_quest_update_hunt {
 	uint32 questID;
-	#if PACKETVER >= 20150513
-		uint32 huntIdent;
-	#else
-		uint32 mob_id;
-	#endif // PACKETVER < 20150513
+#if PACKETVER >= 20150513
+	uint32 huntIdent;
+#else
+	uint32 mob_id;
+#endif // PACKETVER < 20150513
 	int16 maxCount;
 	int16 count;
 } __attribute__((packed));
@@ -1721,6 +1721,31 @@ struct PACKET_ZC_UI_ACTION {
 	int32 data;
 } __attribute__((packed));
 
+struct PACKET_CZ_PRIVATE_AIRSHIP_REQUEST {
+	int16 PacketType;
+	char mapName[MAP_NAME_LENGTH_EXT];
+	uint16 ItemID;
+} __attribute__((packed));
+
+struct PACKET_ZC_PRIVATE_AIRSHIP_RESPONSE {
+	int16 PacketType;
+	uint32 flag;
+} __attribute__((packed));
+
+struct PACKET_CZ_REQ_STYLE_CHANGE {
+	int16 PacketType;
+	int16 HeadPalette;
+	int16 HeadStyle;
+	int16 BodyPalette;
+	int16 TopAccessory;
+	int16 MidAccessory;
+	int16 BottomAccessory;
+} __attribute__((packed));
+
+struct PACKET_ZC_STYLE_CHANGE_RES {
+	int16 PacketType;
+	int8 flag;
+} __attribute__((packed));
 
 #if !defined(sun) && (!defined(__NETBSD__) || __NetBSD_Version__ >= 600000000) // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute
 #pragma pack(pop)
