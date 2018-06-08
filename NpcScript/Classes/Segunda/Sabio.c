@@ -82,9 +82,9 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 						mes "Muito bem. Vamos completar o seu formulário de candidatura.";
 						mes "Por favor, coloque sua assinatura aqui.";
 						next;
-						select(strcharinfo(PC_NAME));
+						select(strcharinfo(CHAR_NAME));
 						mes "[Metheus Sylphe]";
-						mes "Seu nome é... "+strcharinfo(PC_NAME)+".";
+						mes "Seu nome é... "+strcharinfo(CHAR_NAME)+".";
 						next;
 						if (JobLevel == 50) {
 							mes "[Metheus Sylphe]";
@@ -172,9 +172,9 @@ yuno_in03,154,35,4	script	Academico#sageq	2_M_SAGE_B,{
 							mes "Ok, vamos completar o formulário de candidatura.";
 							mes "Por favor, coloque sua assinatura aqui.";
 							next;
-							select(strcharinfo(PC_NAME));
+							select(strcharinfo(CHAR_NAME));
 							mes "[Metheus Sylphe]";
-							mes "Seu nome é ... "+strcharinfo(PC_NAME)+".";
+							mes "Seu nome é ... "+strcharinfo(CHAR_NAME)+".";
 							next;
 							mes "[Metheus Sylphe]";
 							mes "Sim, tudo está pronto.";
@@ -400,7 +400,7 @@ yuno_in03,105,177,5	script	Prof. de Teste Escrito#sageq	4_M_SAGE_A,{
 				mes "Você já foi aplicado pro teste, não é?";
 				next;
 				mes "[Claytos Verdo]";
-				mes "Vamos ver, seu nome é "+strcharinfo(PC_NAME)+"...";
+				mes "Vamos ver, seu nome é "+strcharinfo(CHAR_NAME)+"...";
 				mes "Ok, vamos começar!";
 				next;
 				mes "[Claytos Verdo]";
@@ -1102,7 +1102,7 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	--.SgMobs;
 	if (.SgMobs < 1) {
 		stopnpctimer;
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do primeiro estágio.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+", derrotou todos os monstros do primeiro estágio.",bc_map);
 		donpcevent(strnpcinfo(NPC_NAME)+"::OnSummon2");
 	}
 	end;
@@ -1111,7 +1111,7 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	--.SgMobs;
 	if (.SgMobs < 1) {
 		stopnpctimer;
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+", derrotou todos os monstros do segundo estágio.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+", derrotou todos os monstros do segundo estágio.",bc_map);
 		donpcevent(strnpcinfo(NPC_NAME)+"::OnSummon3");
 	}
 	end;
@@ -1121,7 +1121,7 @@ job_sage,1,1,0	script	Sague_Test_Battle#sageq	HIDDEN_NPC,{
 	if (.MyMobs < 1) {
 		stopnpctimer;
 		killmonsterall("job_sage");
-		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(CHAR_NAME)+". Você passou no teste.",bc_map);
 		sageq = 8;
 		donpcevent("Sague_Test_Warp#sageq::OnEnable");
 	}
@@ -1224,7 +1224,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 		if (sageq == 9) {
 			if (!sageq2) {
 				mes "[Professor de História]";
-				mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+","+strcharinfo(PC_NAME)+".";
+				mes "Bem vind"+(Sex == SEX_MALE ? "o":"a")+","+strcharinfo(CHAR_NAME)+".";
 				mes "Estou feliz em conhecê-l"+(Sex == SEX_MALE ? "o":"a")+".";
 				mes "Meu nome é Saphien Layless, eu fui designado para ensinar sobre a Yggdrasil.";
 				next;
@@ -1380,7 +1380,7 @@ yuno_in03,62,176,2	script	Prof. de História#sageq	4_M_MANAGER,{
 				next;
 				mes ".................................";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Existe um oceano ao redor do continente.";
 				mes "O oceano é envolto por";
 				switch (select("Um galho gigante","Uma cobra gigante","Uma tartaruga gigante","Um dragão gigante")) {
@@ -1549,7 +1549,7 @@ yuno_in03,32,102,1	script	Prof. de Biologia#sageq	4_M_SAGE_C,{
 			mes "Você está previsto para se apresentar para mim tão logo eu vos saúdo!";
 			mes "Qual é o seu nome, jovem?";
 			next;
-			select(strcharinfo(PC_NAME));
+			select(strcharinfo(CHAR_NAME));
 			mes "[Lucius Celsus]";
 			mes "Então, você está ciente do assunto que você está estudando?";
 			mes "Como você sabe, o seu tema de estudo é de monstros.";
@@ -2117,7 +2117,7 @@ yuno_in03,244,31,3	script	Prof. de Física#sa	2_M_PHARMACIST,{
 				next;
 				mes ".................................";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes ".....Magias são dividas em 4 elementos que são:";
 				switch (select("Água, Terra, Fogo e Ar","Terra, Água, Fogo e Ar","Água, Vento, Terra e Fogo.")) {
 					case 1:

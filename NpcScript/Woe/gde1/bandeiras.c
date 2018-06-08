@@ -30,7 +30,7 @@
 		mes "2 - Para quem puder superar todas provações e destruír o Emperium.";
 		mes "O rei vai reconhecer esse como proprietário do castelo.";
 		close;
-	} else if (getcharid(CHAR_ID_GUILD) == .@GID) {
+	} else if (getcharid(ID_GUILD) == .@GID) {
 		if (.@npc$ == "aldeg_cas01") { setarray(.@ReturnCastle[0],218,170); }
 		else if (.@npc$ == "aldeg_cas02") { setarray(.@ReturnCastle[0],220,190); }
 		else if (.@npc$ == "aldeg_cas03") { setarray(.@ReturnCastle[0],205,186); }
@@ -58,7 +58,7 @@
 		next;
 		if (select("Retornar ao Castelo","Sair") == 1) {
 			close2;
-			if (getcharid(CHAR_ID_GUILD) == getcastledata(.@npc$,1)) {
+			if (getcharid(ID_GUILD) == getcastledata(.@npc$,1)) {
 				warp(.@npc$,.@ReturnCastle[0],.@ReturnCastle[1]);
 			}
 			end;

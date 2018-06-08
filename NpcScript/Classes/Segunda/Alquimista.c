@@ -114,7 +114,7 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 				mes "Agora...";
 				mes "Por favor assine aqui.";
 				next;
-				select (strcharinfo(PC_NAME));
+				select (strcharinfo(CHAR_NAME));
 				mes "[Parmy Gianino]";
 				mes "Bom, agora, se você tiver O Zeny para sua taxa de inscrição.";
 				mes "Vou dizer-lhe quais os itens que você precisará trazer.";
@@ -129,7 +129,7 @@ alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
 				}
 				Zeny -= 50000;
 				mes "[Parmy Gianino]";
-				mes "Vamos ver... "+strcharinfo(PC_NAME);
+				mes "Vamos ver... "+strcharinfo(CHAR_NAME);
 				mes "Precisa trazer ...";
 				switch (rand(1,3)) {
 					case 1:

@@ -61,7 +61,7 @@
 		mes "Puxar isto?";
 		next;
 		if (select("Puxar","Não Puxar") == 1) {
-			if (getcharid(CHAR_ID_GUILD) == .@GID) {
+			if (getcharid(ID_GUILD) == .@GID) {
 				close2;
 				warp(.@destination$,.@coordinates[0],.@coordinates[1]);
 				end;

@@ -58,7 +58,7 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 					next;
 					if (select("Sim, agora mesmo","Vou pensar mais a respeito") == 1) {
 						mes "Deixe-me ver...";
-						mes "Seu nome é "+strcharinfo(PC_NAME)+"...";
+						mes "Seu nome é "+strcharinfo(CHAR_NAME)+"...";
 						mes "É isso mesmo?";
 						next;
 						mes "[Capitão Herman]";
@@ -108,7 +108,7 @@ prt_in,88,101,4	script	Capitão Herman#knightq	1_M_KNIGHTMASTER,{
 			}
 		} else if (knightq == 1 || knightq == 2) {
 			mes "Mmm?";
-			mes strcharinfo(PC_NAME)+", o que posso fazer por você?";
+			mes strcharinfo(CHAR_NAME)+", o que posso fazer por você?";
 			mes "Ah, você não sabe quem visitar?";
 			next;
 			mes "[Capitão Herman]";
@@ -325,7 +325,7 @@ prt_in,75,107,4	script	Senhor Andrew#knightq	1_M_YOUNGKNIGHT,{
 			mes "[Senhor Andrew]";
 			mes "Ah...";
 			mes "Deseja se tornar Cavaleiro.";
-			mes "Seu nome é "+strcharinfo(PC_NAME)+", correto?";
+			mes "Seu nome é "+strcharinfo(CHAR_NAME)+", correto?";
 			next;
 			mes "[Senhor Andrew]";
 			mes "Eu sou um Cavaleiro da Cavalaria de Prontera, Andrew Shylock.";

@@ -266,7 +266,7 @@ prt_church,16,41,4	script	Bispo#priestq	1_M_PASTOR,{
 		if (BaseJob == Job_Priest) {
 			mes "[Bispo Paul]";
 			mes "Ah...";
-			mes "É bom ver você, "+(Sex == SEX_MALE ? "Irmão":"Irmã")+" "+strcharinfo(PC_NAME)+".";
+			mes "É bom ver você, "+(Sex == SEX_MALE ? "Irmão":"Irmã")+" "+strcharinfo(CHAR_NAME)+".";
 			next;
 			mes "[Bispo Paul]";
 			mes "Fico satisfeito em ver que você continuará orientando as crianças de Deus pelo caminho certo.";
@@ -677,7 +677,7 @@ job_prist,1,1,0	script	prstmob#priestq	HIDDEN_NPC,{
 job_prist,24,44,0	script	prstmob2#priestq	FAKE_NPC,17,1,{
 	OnTouch:
 	if (priestq2 == 1) {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área de testes. 5 minutos serão dados para derrotar as criaturas do mal.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" Acaba de entrar na área de testes. 5 minutos serão dados para derrotar as criaturas do mal.",bc_map);
 		mes "[Irmão Peter]";
 		mes "Derrote todos os zumbis e passe pelo portal no final do corredor.";
 		mes "Certifique-se de eliminar todos.";
@@ -708,7 +708,7 @@ job_prist,24,82,0	duplicate(prstmob2#priestq)	prstmob6#priestq	FAKE_NPC,17,1
 job_prist,24,109,0	script	prstestwarp#priestq	WARPNPC,3,3,{
 	OnTouch:
 	if (priestq2 == 6) {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 2 de testes. 5 minutos serão dados para completar a tarefa.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" Acaba de entrar na área 2 de testes. 5 minutos serão dados para completar a tarefa.",bc_map);
 		warp(strnpcinfo(NPC_MAP),168,17);
 		donpcevent("prstmob#priestq::OnStop");
 		donpcevent("prsttime#priestq::OnEnable");
@@ -889,7 +889,7 @@ job_prist,168,150,4	script	Bafomé#priestq	4_BAPHOMET,8,1,{
 	OnTouch:
 	if (priestq2 == 9) {
 		mes "[Bafomé]";
-		mes "Saudações "+strcharinfo(PC_NAME)+".";
+		mes "Saudações "+strcharinfo(CHAR_NAME)+".";
 		next;
 		mes "[Bafomé]";
 		mes "Sim, humano, sei quem é você.";
@@ -946,7 +946,7 @@ job_prist,168,150,4	script	Bafomé#priestq	4_BAPHOMET,8,1,{
 job_prist,168,180,0	script	prstestwarp2#priestq	WARPNPC,3,3,{
 	OnTouch:
 	if (priestq2 == 10) {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Acaba de entrar na área 3 de testes. 2 minutos serão dados para completar a tarefa.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" Acaba de entrar na área 3 de testes. 2 minutos serão dados para completar a tarefa.",bc_map);
 		warp(strnpcinfo(NPC_MAP),98,40);
 		donpcevent("prsttime#priestq::OnStop");
 		donpcevent("prsttime2#priestq::OnEnable");
@@ -1039,7 +1039,7 @@ job_prist,98,105,4	script	prstestwarp3#priestq	WARPNPC,3,3,{
 	changequest(8012,8013);
 	warp("prt_church",16,37);
 	$PriestJoinTest = 0;
-	mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+"Acaba de concluir seu teste espiritual! Próximo cadidato entre na área de testes.",bc_map);
+	mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+"Acaba de concluir seu teste espiritual! Próximo cadidato entre na área de testes.",bc_map);
 	end;
 }
 

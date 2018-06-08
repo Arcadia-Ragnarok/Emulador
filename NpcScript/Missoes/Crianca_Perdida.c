@@ -71,7 +71,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Olá! Como está você ainda, er...";
 		mes "Isso olha sua cara você encontrou Logan?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não! Eu estava realmente conversando com Mogan, e então nós tivemos uma conversa.";
 		mes "Qual é a grande idéia?";
 		mes "Eu te ajudar e você tenta me matar!";
@@ -82,7 +82,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Primeiramente...";
 		mes "Phobe é meu filho, mas por favor não diga para ninguém!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Que?";
 		mes "Por que, qual o grande problema?";
 		next;
@@ -134,11 +134,11 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Nossa papisa ordenou meu senhor para mater a jóia segura.";
 		mes "Até que ela tenha forças para salvar Arunafeltz e Rachel quando a hora chegar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A gema é realmente tão importante, huh?";
 		mes "Bem, você quase me matou, mas já que ainda estou vivo, acho que posso procurá-la, entende?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vovê não terá problemas se eu puder achar a jóia e Phobe antes que Sr. Zhed retorne.";
 		mes "Então tentarei achá-los para você o mais rápido possível.";
 		next;
@@ -147,7 +147,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Mesmo depois do que eu lhe fiz passar?";
 		mes "^333333*Sniff*^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É, eu já entrei nesse problema, então tenho que terminar o serviço.";
 		mes "Além disso, Phobe é apenas uma criança, então ele provavelmente está escondido em algum lugar na cidade.";
 		lost_boy = 8;
@@ -159,11 +159,11 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Nossa Papisa ordenou meu senhor para mater a jóia segura.";
 		mes "Até que ela tenha forças para salvar Arunafeltz e Rachel quando a hora chegar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A gema é realmente tão importante, huh?";
 		mes "Bem, você quase me matou, mas já que ainda estou vivo, acho que posso procurá-la, entende?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você não terá problemas se eu puder achar a jóia e Phobe antes que Sr. Zhed retorne.";
 		mes "Então tentarei achá-los para você o mais rápido possível.";
 		next;
@@ -172,7 +172,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Mesmo depois do que eu lhe fiz passar?";
 		mes "^333333*Sniff*^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É, eu já entrei nesse problema, então tenho que terminar o serviço.";
 		mes "Além disso, Phobe é apenas uma criança, então ele provavelmente está escondido em algum lugar na cidade...";
 		close;
@@ -182,11 +182,11 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Você é capaz de encontrar Phobe?!";
 		mes "Como ele estava? Ele estava bem?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh? Oh sim, ele estava bem.";
 		mes "Ele não pode vim agora, mas ele me deu a gema roubada.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Assim... Eu ganhei minha recompensa agora, certo?";
 		mes "E ninguém tem que morrer?";
 		next;
@@ -195,7 +195,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Eu nunca esquecerei o que você fêz para mim.";
 		mes "Oh, meu menino está bem!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "H-hey! Um, pegue esta jóia!";
 		mes "Você precisa devolvê-la para qualquer lugar que ela imaginar ir, entendido?";
 		next;
@@ -204,14 +204,14 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Enquanto devolvo esta jóia, você, por favor, poderia contar à minha esposa Jenny que nosso garoto está bem?";
 		mes "Ela tem estado muito preocupada com ele, então...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você quer que eu conte à Jenny sobre Phobe?";
 		mes "Ok, ok, farei isso.";
 		lost_boy = 10;
 		changequest(8096,8097);
 		close;
 	} else if (lost_boy == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Contei à Jenny sobre Phobe, e que a gema foi devolvida...";
 		mes "Ela pareceu muito aliviada...";
 		next;
@@ -253,7 +253,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 		mes "Oh! Enquanto devolvo esta jóia, você, por favor, poderia contar à minha esposa Jenny que nosso garoto está bem?";
 		mes "Ela tem estado muito preocupada com ele, então...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você quer que eu conte à Jenny sobre Phobe?";
 		mes "Ok, ok, farei isso.";
 		close;
@@ -268,7 +268,7 @@ ra_in01,384,246,3	script	Vincent#ra_in01	1_M_01,{
 // ------------------------------------------------------------------
 rachel,114,232,3	script	Logan#ra_in01	4_M_LGTMAN,{
 	if (lost_boy == 1) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você conhece um homem chamado Phoebe?";
 		mes "Eu ouvi que ele trabalhava aqui ao redor";
 		next;
@@ -276,7 +276,7 @@ rachel,114,232,3	script	Logan#ra_in01	4_M_LGTMAN,{
 		mes "Er, eu posso perguntar você é?";
 		mes "Porque você o está procurando?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, eu há pouco fui contratad"+(Sex == SEX_MALE ? "o":"a")+" para o procurar.";
 		mes "E me falaram que os criados nos arredores tinham um bom ponto de partida";
 		next;
@@ -284,7 +284,7 @@ rachel,114,232,3	script	Logan#ra_in01	4_M_LGTMAN,{
 		mes "Oh, está bem.";
 		mes "Sim Phoebe está perdendo desde então ele partiu para comprar algums materias no mercado a poucos dias atras espero que ele esteja bem";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, quantos anos tem Phoebe?";
 		next;
 		mes "[Logan]";
@@ -327,7 +327,7 @@ ra_in01,372,200,3	script	Manson#ra_in01	4_M_MIDDLE,{
 		mes "E muitas classes mistas eu realmente tenho sorte de trabalhar para o Sr. Zhed aqui na mansão.";
 		close;
 	} else if (lost_boy == 2) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você conheçe um homem chamado Phoebe?";
 		mes "Ele sumiu da mansao, então eu estou procurando por ele";
 		next;
@@ -382,7 +382,7 @@ ra_in01,372,200,3	script	Manson#ra_in01	4_M_MIDDLE,{
 // ------------------------------------------------------------------
 rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 	if (lost_boy == 3) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você é Jenny?";
 		mes "Me falaram para eu procurasse você para me falar mais sobre Phoebe.";
 		mes "Vicent me contratou para encontrar ele.";
@@ -392,7 +392,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "Notícia! S-sim, eu sou Jenny.";
 		mes "O que você precisa saber?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Er, tudo o que você puder contar.";
 		mes "Me fale se ele está bem.";
 		mes "Coisas que ele gosta.";
@@ -413,7 +413,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "Lá ele foi visto pela ultima vez, não é?";
 		mes "Talvez eles tenham alguma idéia de onde ele foi.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh... essa é uma boa idéia!";
 		mes "Então ta, acho que posso ir ao mercado e perguntar nos arredores.";
 		lost_boy = 4;
@@ -424,7 +424,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "Por favor ache Phoebe, e traga ele pra mim devolta salvo o mais rápido possível que você puder!";
 		mes "Eu não posso ajudar, mas posso preocupar com aquele menino, você entende?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu vou fazer meu melhor.";
 		mes "Primeiro, eu acho que vou perguntar nos arredores do mercado onde Phobe foi visto pela última vez.";
 		close;
@@ -437,7 +437,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "[Jenny]";
 		mes "Oh! você voltou, encontrou Phobe?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ainda não...";
 		mes "Eu tenho algo muito importante para discutir com o Vicent primeiro.";
 		close;
@@ -445,7 +445,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "[Jenny]";
 		mes "Oh! você voltou, encontrou Phobe?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "De fato... Uh...";
 		mes "Ainda não. Mas eu estou seguindo uma boa pista!";
 		mes "Não se preocupe, eu vou";
@@ -455,7 +455,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "[Jenny]";
 		mes "Oh! você voltou, encontrou Phobe?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "De fato... Uh...";
 		mes "Eu deveria informar primeiro a Vicent e devolver esta jóia, mas eu entregarei noticias boas logo.";
 		mes "Eu prometo.";
@@ -466,11 +466,11 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 		mes "Oh! você voltou";
 		mes "Você encontrou Phobe?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, ele está bem, mais esta suspenso em volta do lado sul da cidade.";
 		mes "Ele está seguro, mas não está disposto a voltar para casa por enquanto.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Quando a Jóia tiver sido devolvida, tudo finalmente ficará bem.";
 		mes "Além disso, Vincent me explicou tudo.";
 		mes "Como você sabe, você, Vicent, e Phobe estão todos relacionados, por isso ...";
@@ -511,7 +511,7 @@ rachel,48,237,3	script	Jenny#ra_in01	4_F_KHELLISIA,{
 // ------------------------------------------------------------------
 rachel,138,73,5	script	Mercador Idle#ra_in01	4_M_03,{
 	if (lost_boy == 4) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença?";
 		mes "Olá? Senhor?";
 		next;
@@ -521,7 +521,7 @@ rachel,138,73,5	script	Mercador Idle#ra_in01	4_M_03,{
 		mes "Então o que você quer comprar?";
 		mes "Eu tenho todo o tipo de adereços Úteis";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Infelizmente, eu não estou interessado.";
 		mes "Só queria perguntar se você viu algum garoto por aqui ele tem 15 anos.";
 		mes "Ele supostamente fugiu de Casa, e aí...";
@@ -531,7 +531,7 @@ rachel,138,73,5	script	Mercador Idle#ra_in01	4_M_03,{
 		mes "Me desculpe, mas nunca vi este um menino dessa idade passando por aqui por esses dias.";
 		mes "Talvez, você deveria perguntar para os outros mercadores.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Certo. Muito Obrigado.";
 		next;
 		mes "[Mercador Idle]";
@@ -539,7 +539,7 @@ rachel,138,73,5	script	Mercador Idle#ra_in01	4_M_03,{
 		lost_boy = 5;
 		close;
 	} else if (lost_boy == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "(^333333É melhor você perguntar aos mercadores que estão aqui se alguém viu esse garoto.";
 		mes "Eu estou perdendo meu tempo falando com você esse mercador louco e seus ridículos vegetais falsos.^000000)";
 		close;
@@ -555,7 +555,7 @@ rachel,138,73,5	script	Mercador Idle#ra_in01	4_M_03,{
 // ------------------------------------------------------------------
 rachel,120,47,3	script	Mercador Idle#ra_in01_2	4_M_03,{
 	if (lost_boy == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença,";
 		mes "Hum... oi?";
 		next;
@@ -563,7 +563,7 @@ rachel,120,47,3	script	Mercador Idle#ra_in01_2	4_M_03,{
 		mes "Oh! Bem vindo à minha loja!";
 		mes "Como eu posso lhe ajudar?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Na verdade, eu não estou aqui para comprar nada...";
 		mes "Estou procurando por um menino o nome dele é Phobe sumiu a alguns dias.";
 		mes "Você o viu?";
@@ -572,7 +572,7 @@ rachel,120,47,3	script	Mercador Idle#ra_in01_2	4_M_03,{
 		mes "Oh! sim, ontem a noite, um cara queria saber se alguém estava procurando esse garoto chamado Phobe, para dar a você uma mensagem.";
 		mes "Basicamente, ele quer que você vá até \"Caverna de Gelo\".";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Quem Pediu a você para me dizer isso?";
 		mes "Como vou Saber?";
 		mes "Quem veio aqui?";
@@ -599,7 +599,7 @@ rachel,120,47,3	script	Mercador Idle#ra_in01_2	4_M_03,{
 		mes "Ontem a noite, um cara queria saber se alguém estava procurando esse garoto chamado Phobe, para dar a você uma mensagem.";
 		mes "Basicamente, ele quer que você vá até \"Caverna de Gelo\".";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Quem Pediu a você para me dizer isso?";
 		mes "Como vou Saber?";
 		mes "Quem veio aqui?";
@@ -631,7 +631,7 @@ rachel,120,47,3	script	Mercador Idle#ra_in01_2	4_M_03,{
 // ------------------------------------------------------------------
 ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 	if (lost_boy == 6) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você seria Rogan?";
 		mes "Eu estou aqui....";
 		next;
@@ -654,7 +654,7 @@ ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 		mes "Acho que o Substimei você!";
 		mes "Você é muito forte mesmo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, Quem Diabos é você você?!";
 		mes "Você é Rogan?";
 		mes "Você é aquele que sequestrou Phobe?";
@@ -676,7 +676,7 @@ ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 		mes "Ei, me indique corretamente aqui.";
 		mes "Você roubou algo realmente de valor, tipo como uma jóia vermelha ou algo do tipo?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh? Não!";
 		mes "Na verdade Vincent me mandou para procurer o garoto que roubou aquela jóia, e levar de volta para ele!";
 		next;
@@ -686,7 +686,7 @@ ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 		mes "Desculpe se eu soubesse, eu realmente não teria feito tal coisa.";
 		mes "Por que será que ele nos manipulou desse jeito?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu não sei...";
 		mes "Estou indo conversar com Vincente faze-lo explicar Tudo.";
 		lost_boy = 7;
@@ -699,7 +699,7 @@ ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 		mes "Desculpe se eu soubesse, eu realmente não teria feito tal coisa.";
 		mes "Por que será que ele nos manipulou desse jeito?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu Não sei...";
 		mes "Estou indo conversar com Vincente faze-lo explicar tudo.";
 		close;
@@ -715,13 +715,13 @@ ra_fild01,245,325,3	script	Homem Suspeito#ra_in01	4_M_RASWORD,{
 // ------------------------------------------------------------------
 rachel,263,32,3	script	Criança#ra_in01	4_M_RACHMAN1,{
 	if (lost_boy == 8) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, você deve ser Phobe, certo?";
 		next;
 		mes "[Criança]";
 		mes "Sim, e dai?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Seu pai me enviou aqui para achar você.";
 		next;
 		mes "[Phobe]";
@@ -729,7 +729,7 @@ rachel,263,32,3	script	Criança#ra_in01	4_M_RACHMAN1,{
 		mes "Eu não tenho Pai!";
 		mes "El..Ele está morto pra mim!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, em todo caso, eu preciso retornar com aquela jóia que você está escondendo no seu bolso.";
 		mes "Eu sei que ela realmente pertence ao Senhor Zhed se não seu pai estará com problemas";
 		next;
@@ -738,7 +738,7 @@ rachel,263,32,3	script	Criança#ra_in01	4_M_RACHMAN1,{
 		mes "Vicent isto está bem para mim!";
 		mes "Isto é exatamente porque eu levei está coisa!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh, sim? Como você sabe?";
 		mes "O que a senhora Jenny irá sentir?";
 		mes "Você acha que ela ficará bem feliz quando ouvir sobre isso?";
@@ -756,7 +756,7 @@ rachel,263,32,3	script	Criança#ra_in01	4_M_RACHMAN1,{
 		mes "Pois já basta não neste Segundo de qualquer forma.";
 		mes "Mas eu quero que minha mãe saiba que eu estou bem e que não é para se preocupar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Tudo bem.";
 		mes "Eu contarei a sua mãe, mas você tem que saber que tem de voltar logo.";
 		mes "Seu pai está realmente correndo um grande risco, te dando cobertura ";

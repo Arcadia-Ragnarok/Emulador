@@ -89,7 +89,7 @@ moc_prydb1,39,129,2	script	Gatuna Ajudante#thiefq	1_F_04,{
 					next;
 					if (select("Assinar","Cancelar inscrição") == 1) {
 						mes "[Gatuna Ajudante]";
-						mes "Hunnn... "+strcharinfo(PC_NAME)+"?";
+						mes "Hunnn... "+strcharinfo(CHAR_NAME)+"?";
 						mes "Que tipo de nome estranho é esse?";
 						next;
 						mes "[Gatuna Ajudante]";
@@ -216,7 +216,7 @@ moc_ruins,141,125,3	script	Sr. Irrelevante#thiefq	4_M_01,{
 			mes "[Senhor Irrelevante]";
 			mes "A sim, o teste da guilda dos gaturnos.";
 			mes "Qual é o seu nome?";
-			select (strcharinfo(PC_NAME));
+			select (strcharinfo(CHAR_NAME));
 			next;
 			mes "[Senhor Irrelevante]";
 			mes "Claro seu nome está aqui nessa lista.";

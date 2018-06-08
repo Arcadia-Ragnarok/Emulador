@@ -16,13 +16,13 @@ bat_b01,1,3,0	script	FlaviusCrystal	CLEAR_NPC,{
 
 // Invocação dos dos cristais e suas proteções
 	OnBlueCSummon: // Equipe Azul
-	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),61,150,"Cristal Azul",OBJ_A2,strnpcinfo(PC_NAME)+"::OnBlueCDead");
+	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),61,150,"Cristal Azul",OBJ_A2,strnpcinfo(NPC_NAME)+"::OnBlueCDead");
 	setcell(strnpcinfo(NPC_MAP),62,149,60,151,cell_basilica,1);
 	setcell(strnpcinfo(NPC_MAP),62,149,60,151,cell_walkable,0);
 	end;
 
 	OnRedCSummon: // Equipe Vermelha
-	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),328,150,"Cristal Vermelho",OBJ_B2,strnpcinfo(PC_NAME)+"::OnRedCDead");
+	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),328,150,"Cristal Vermelho",OBJ_B2,strnpcinfo(NPC_NAME)+"::OnRedCDead");
 	setcell(strnpcinfo(NPC_MAP),327,151,329,149,cell_basilica,1);
 	setcell(strnpcinfo(NPC_MAP),327,151,329,149,cell_walkable,0);
 	end;

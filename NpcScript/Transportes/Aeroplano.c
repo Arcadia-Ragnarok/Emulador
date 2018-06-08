@@ -185,11 +185,11 @@ airplane_01,243,73,0	script	#AirshipWarp-3	WARPNPC,1,1,{
 	OnInit:
 	OnHide:
 	specialeffect(EF_BASH);
-	disablenpc(strnpcinfo(PC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnUnhide:
-	enablenpc(strnpcinfo(PC_NAME));
+	enablenpc(strnpcinfo(NPC_NAME));
 	specialeffect(EF_SUMMONSLAVE);
 	end;
 }

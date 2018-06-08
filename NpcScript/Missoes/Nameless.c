@@ -23,7 +23,7 @@ airplane_01,90,63,0	script	Event Switch#pc	FAKE_NPC,3,3,{
 	if ((prt_curse == 36 || prt_curse == 45 || prt_curse == 56 || prt_curse == 61) && (aru_monas < 1)) {
 		hideoffnpc("Agente#pc1");
 		mes "[????]";
-		mes "Você é "+strcharinfo(PC_NAME)+"?";
+		mes "Você é "+strcharinfo(CHAR_NAME)+"?";
 		mes "Eu estava esperando você.";
 		mes "O \"^6B8E23Sacerdote Bamph^000000\" aguarda sua chegada na ^6B8E23Catedral de Prontera^000000.";
 		mes "Vá vê-lo o mais rápido que puder.";
@@ -255,11 +255,11 @@ ra_in01,301,43,0	script	MealConversation Trigger	FAKE_NPC,3,3,{
 		mes "Ah, aqui está o seu Esgana-Gata Listrado de Veins.";
 		mes "Bom apetite.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^ff0000Veins^000000, não é?";
 		mes "É melhor eu dar uma olhada lá um dia desses, talvez encontre mais desses peixes.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Uau, esse peixe tem gosto de...";
 		mes "Nunca saboreei nada igual!";
 		mes "É quase como uma sobremesa. Hummm, que bom!";
@@ -463,7 +463,7 @@ ra_temple,165,57,5	script	Niren#ss	4_F_MADAME,{
 			mes "[Niren]";
 			mes "Sinto não poder dar muitas informações sobre eles, pois há muita coisa em jogo.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Na verdade, queria saber sobre quem foi seqüestrado.";
 			next;
 			mes "[Niren]";
@@ -615,7 +615,7 @@ ve_in,239,115,0	script	Bêbedo#Aru	4_M_DESERT,{
 			aru_monas = 15;
 			changequest(17010,17011);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Isso mesmo!";
 			mes "Talvez eu deva falar com o ^32CD32pai de Karyn, já que ele é um pescador^000000.";
 			close;
@@ -648,9 +648,9 @@ ve_fild07,125,128,0	script	Barco#Aru	HIDDEN_NPC,{
 		mes "Bem, o monastério deve estar a sudoeste daqui...^000000";
 		next;
 		mes "[Larjes]";
-		mes "A quanto tempo, "+strcharinfo(PC_NAME)+".";
+		mes "A quanto tempo, "+strcharinfo(CHAR_NAME)+".";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Larjes!";
 		next;
 		mes "[Larjes]";
@@ -781,13 +781,13 @@ nameless_i,127,207,0	script	Corvo Morto#Aru	HIDDEN_NPC,{
 		mes "^3355FFVocê nota um pouco de seiva de grama no bico do corvo, então ele devia estar mastigando a grama.";
 		mes "Algumas penas e tão faltando, revelando uma pele escamosa como a de uma cobra.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere...";
 		mes "Essa grama...?";
 		next;
 		mes "^3355FFEssa grama deve ser o ingrediente principal do veneno usado para matar os príncipes da família Gaebolg.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Parece que tirei a sorte grande.";
 		mes "Hã? Tem alguém atrás...";
 		next;
@@ -821,7 +821,7 @@ nameless_in,15,61,0	script	Pass Out#Aru	FAKE_NPC,2,3,{
 		mes "Por um instante,";
 		mes "Pensei ter perdido você.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Larjes...? O que...";
 		mes "O que aconteceu?";
 		mes "Ai, minha cabeça...";
@@ -832,7 +832,7 @@ nameless_in,15,61,0	script	Pass Out#Aru	FAKE_NPC,2,3,{
 		mes "Foi sorte sua.";
 		mes "Quando encontrei você, aquelas criaturas estranhas estavam atacando você!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você me salvou?";
 		mes "Obrigado.";
 		mes "Você por acaso sabe que criaturas eram aquelas?";
@@ -848,7 +848,7 @@ nameless_in,15,61,0	script	Pass Out#Aru	FAKE_NPC,2,3,{
 		mes "[Larjes]";
 		mes "?!?!?!!!!!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "!!!!?!?!!!!!!";
 		mes "Elas... Não são...?";
 		next;
@@ -856,7 +856,7 @@ nameless_in,15,61,0	script	Pass Out#Aru	FAKE_NPC,2,3,{
 		mes "Elas se parecem com as criaturas que levaram você, mas...";
 		mes "Por que será que não nos atacaram?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Acho que teremos de ir até lá perguntar.";
 		aru_monas = 19;
 		close;
@@ -918,7 +918,7 @@ nameless_n,169,254,0	script	Noite#Aru2	FAKE_NPC,3,3,{
 	OnTouch:
 	if (aru_monas == 20) {
 		hideoffnpc("Larjes#Monastery2");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mas que diabos...?!";
 		next;
 		mes "[Larjes]";
@@ -928,7 +928,7 @@ nameless_n,169,254,0	script	Noite#Aru2	FAKE_NPC,3,3,{
 		mes "[Larjes]";
 		mes "Alguém como eu não sobrevive em um lugar como este.";
 		mes "Vou esperar por você no barco.";
-		mes "Descubra o que tiver que descobrir, e volte a salvo, "+strcharinfo(PC_NAME)+".";
+		mes "Descubra o que tiver que descobrir, e volte a salvo, "+strcharinfo(CHAR_NAME)+".";
 		aru_monas = 21;
 		changequest(17013,17014);
 		close2;
@@ -990,7 +990,7 @@ abbey03,232,233,4	script	Homem#King	4_M_TRISTAN,{
 		mes "Parece que ele ainda respira, mas está quase morto.^000000";
 		next;
 		if (select("Toque-o","Ignore-o") == 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Este homem...";
 			mes "Ele parece familiar, por algum motivo.";
 			next;
@@ -1032,7 +1032,7 @@ abbey03,232,232,4	script	Homem Morto#King	4_M_TRISTAN,{
 		mes "^3355FFVocê não faz idéia por que esse homem morto está andando por aí, então decide examiná-lo.";
 		mes "Em sua casaca você encontra uma medalha brilhante...^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Essa medalha...";
 		mes "Isso significa que este homem é...!";
 		aru_monas = 24;
@@ -1183,7 +1183,7 @@ nameless_n,145,162,0	script	AideAmi#Aru	HIDDEN_WARP_NPC,2,2,{
 	end;
 	OnTouch:
 	if (aru_monas == 26) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Há uma parede baixa aqui contra a outra parede, se eu escalo isto, eu poderia chegar ao lugar de descanso do Tristan III...";
 		next;
 		switch (select("Fique aqui","Escale a parede")) {

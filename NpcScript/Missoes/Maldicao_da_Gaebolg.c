@@ -24,7 +24,7 @@ prontera,248,212,3	script	Garoto Ocupado#prtcurse	4_M_KID1,{
 			mes "Você não pode ser mais cuidadoso?!";
 			emotion(e_ag);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oops, eu lamento muito.";
 			mes "Você está bem?";
 			next;
@@ -235,7 +235,7 @@ yuno,311,195,3	script	Historiador#prtcurse	4_M_SAGE_A,{
 			mes "Ótimo, você está aqui!";
 			mes "Então, onde estão os livros?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu...";
 			mes "Eles não estão comigo no momento.";
 			next;
@@ -525,7 +525,7 @@ morocc_in,45,126,3	script	Historiadora#prtcurse	4_F_GON,{
 					next;
 					mes "^3355FFVocê limpa a sua garganta e começa a cantar o poema que você escutou de Karlomoff.^000000";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					input(.@line$);
 					if (.@line$ == "A grande serpente engoliu o mar.") {
 						.@total += 1;
@@ -604,9 +604,9 @@ morocc_in,45,126,3	script	Historiadora#prtcurse	4_F_GON,{
 		mes "Aventureiro...";
 		mes "Quero saber o seu nome.";
 		next;
-		select("Meu nome é "+strcharinfo(PC_NAME)+".");
+		select("Meu nome é "+strcharinfo(CHAR_NAME)+".");
 		mes "[Historiadora Rodafrian]";
-		mes "Ah "+strcharinfo(PC_NAME)+", é?";
+		mes "Ah "+strcharinfo(CHAR_NAME)+", é?";
 		mes "Será que eu posso lhe pedir um favor?";
 		mes "Eu realmente preciso verificar se são verdadeiras as letras deste poema.";
 		mes "No entanto, eu preciso ficar aqui em Morroc para completar minha pesquisa.";
@@ -632,7 +632,7 @@ morocc_in,45,126,3	script	Historiadora#prtcurse	4_F_GON,{
 		mes "Oh, você retornou.";
 		mes "Você se encontrou com Mondo e conseguiu as letras do poema que eu estava procurando?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^FF0000*A grande serpente*^000000";
 		mes "^FF0000*engoliu o mar.*^000000";
 		mes "^FF0000*A águia do arco-íris*^000000";
@@ -646,7 +646,7 @@ morocc_in,45,126,3	script	Historiadora#prtcurse	4_F_GON,{
 		mes "Agora eu lembrei, muito obrigada!";
 		mes "Ah, de volta ao trabalho...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^333333(Como historiadora, Rodafrian talvez possa me ajudar na investigação sobre a maldição dos Gaebolgs.";
 		mes "Os sacerdotes me disseram para não contar a ninguém, sem exceção.";
 		mes "Eu devo correr este risco?)^000000";
@@ -678,7 +678,7 @@ morocc_in,45,126,3	script	Historiadora#prtcurse	4_F_GON,{
 			mes "Então, quando eu revelar o segredo da Maldição de Gaebolg sobre a família real.";
 			mes "Eeu finalmente deixarei Karmoloff para trás! Muahahahahaha!";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "^333333(Droga, ela não me ajudou em nada...";
 			mes "Tudo que eu fiz foi revelar um grande segredo a ela com o risco dela sair espalhando!";
 			mes "Ah bem, acho melhor voltar para os sacerdotes...)^000000";
@@ -748,7 +748,7 @@ mjolnir_01,135,168,3	script	Historiador#prtcurse2	4_M_SAGE_A,{
 		mes "Mas se você não tem nada importante para mim, então poderia me deixar em paz?";
 		mes "Eu preciso pesquisar para atender a...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Me desculpe, mas a Sra. Rodafrian me pediu para lhe perguntar pelas letras de um poema.";
 		mes "Que explica a criação do Reino de Rune-Midgard.";
 		mes "Poderia me dizer para passar para ela?";
@@ -776,7 +776,7 @@ mjolnir_01,135,168,3	script	Historiador#prtcurse2	4_M_SAGE_A,{
 		mes "Hm? Você parece confuso.";
 		mes "Você tem alguma pergunta para fazer sobre este poema?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Na verdade, eu ouvi uma versão diferente deste poema.";
 		mes "Então eu estava me perguntando porque as letras são diferentes...";
 		next;
@@ -838,7 +838,7 @@ mjolnir_01,135,168,3	script	Historiador#prtcurse2	4_M_SAGE_A,{
 	}
 
 	S_Song:
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	input(.@line$);
 	if (.@line$ == "A grande serpente engoliu o mar") {
 		.@total += 1;
@@ -865,7 +865,7 @@ mjolnir_01,135,168,3	script	Historiador#prtcurse2	4_M_SAGE_A,{
 		prt_curse = 10;
 	} else {
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera, espera...";
 		mes "Eu acho que misturei tudo!";
 		mes "(Estas não são as letras corretas...)";
@@ -972,7 +972,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 				mes "A grande maioria das pessoas não gostam de vir a esta área remota.";
 				mes "O que você procura aqui para ter passado por todo esse caminho, eu me pergunto?";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Na verdade, eu estou apenas tentando aprender a verdadeira letra do poema que este garoto estava cantando.";
 				next;
 				mes "[Mulher Parecendo Exausta]";
@@ -1007,7 +1007,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 				mes "Quando você ver ele, por favor dê a ele meus cumprimentos.";
 				mes "Eu gostaria de fazer eu mesma, mas por causa do que eu fiz, eu não posso retornar a Prontera...";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "^333333Está certo então.";
 				mes "Eu acho que devo entregar estas ervas na Catedral de Prontera depois de falar com Rodafrian.^000000";
 				getitem(Leather_Pouch,1);
@@ -1025,7 +1025,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 			mes "Oh, você voltou?";
 			mes "Você conseguiu entregar a bolsa de ervas que eu lhe dei para o Padre Bamph?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Sim, eu entreguei.";
 			mes "Na verdade, o Padre Bamph me enviou aqui para lhe perguntar algumas coisas.";
 			mes "Ele me disse tudo sobre o seu segredo real e, bem, seu exorcismo.";
@@ -1035,7 +1035,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 			mes "Você deve estar pensando que sou um monstro...";
 			mes "Aquelas pobres crianças estão mortas por minha culpa...";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "N-Não! Nada disso!";
 			mes "Eu só queria perguntar se há alguma conexão entre o poema que Kaanu estava cantando e a Maldição de Jormungand.";
 			next;
@@ -1061,7 +1061,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 			mes "Eu sempre achei que isso foi um pouco estranho.";
 			mes "Eu queria investigar isto, mas então eu fui expulsa da Catedral de Prontera depois de minha falha...";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Um fragmento de uma Gema Vermelha?";
 			mes "Talvez... talvez seja uma evidência de sabotagem do exorcismo!";
 			next;
@@ -1069,7 +1069,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 			mes "O que aconteceu foi trágico, mas isso faria me sentir bem melhor se esta fosse a real verdade.";
 			mes "Mesmo que o exorcismo tenha sido sabotado, não podemos voltar no tempo...";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "^333333Hmm...";
 			mes "Seria melhor voltar para a Catedral de Prontera e fazer com que o Padre Bamph saiba desta informação.^000000";
 			prt_curse = 17;
@@ -1103,7 +1103,7 @@ mjolnir_01,316,268,3	script	Mulher Exausta#prtcurse	4_F_CAPEGIRL,{
 			mes "Como é que os príncipes morreram, então?";
 			mes "Não havia nenhuma ferida nos corpos pelo que eu me lembre...";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Bem, hm, eu não sei de nada disso, mas o Padre Bamph e o Padre Biscuss estão fazendo a investigação.";
 			mes "Eles estão dando o seu melhor para descobrir.";
 			next;
@@ -1162,7 +1162,7 @@ mjolnir_01,313,269,5	duplicate(Mulher Exausta#prtcurse)	Garoto Distraído#prtcurs
 prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 	if (prt_curse == 13) {
 		if (countitem(Leather_Pouch) < 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Argh!";
 			mes "Agora, aonde eu coloquei esta bolsa de ervas?";
 			close;
@@ -1176,7 +1176,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 			mes "Deixe-me perguntar...";
 			mes "Por que você está me dando esta bolsa de ervas?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Bem, foi aquela moça que vive no Monte Mjolnir que me mandou te entregar estas ervas.";
 			mes "Hm, ela tem um filho chamado Kaanu?";
 			next;
@@ -1185,7 +1185,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 			mes "Já se passou um bom tempo desde que eu a vi pela última vez.";
 			mes "O que ela tem feito, posso perguntar?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh...";
 			mes "Eu acho que ela está bem.";
 			mes "Mas ela parece muito...";
@@ -1262,7 +1262,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "Esta é a Maldição de Jormungand e o segredo da família real.";
 		emotion(e_omg,1);
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que...?!";
 		mes "Isto é verdade?!";
 		mes "Não ha nenhuma maneira de acabar com esta horrível maldição?!";
@@ -1280,7 +1280,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "Uma série de testes foi realizada para selecionar o melhor sacerdote e exorcista para remover esta maldição.";
 		mes "No fim disto, ^3131FFBonnie Imbullea^000000 foi escolhida para liderar a cerimônia de exorcismo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere, mas você mencionou algo sobre um acidente.";
 		mes "Quer dizer que ela falhou no desempenho do exorcismo?";
 		next;
@@ -1292,7 +1292,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "Embora todos nós termos jurado manter o incidente em segredo, Bonnie Imbullea levou toda a responsabilidade pelas mortes.";
 		mes "É por isso que ela está em exílio imposto pelo reino.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O Que...?";
 		mes "Isso é...";
 		mes "Isso é loucura!";
@@ -1309,7 +1309,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "É como se estivessem crescendo escamas de serpente.";
 		emotion(e_gasp,1);
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere, cresceram escamas de serpente?";
 		mes "Isso parece igual a uma das versões do poema que estou investigando.";
 		mes "Eu acho que foi o poema sobre a origem do Reino de Rune-Midgard.";
@@ -1327,12 +1327,12 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "A águia então construiu seu ninho.";
 		mes "Um ninho sob o mar encoberto.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hmm...";
 		mes "Bem, eu escutei uma diferente versão do mesmo poema.";
 		mes "Ela é assim...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A grande serpente engoliu o mar.";
 		mes "A águia do arco-íris engoliu a serpente.";
 		mes "Então escamas de cobra cresceram na águia, e ela morreu lentamente.";
@@ -1342,7 +1342,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		mes "No entanto, sua versão parece revelar o segredo da Família dos Gaebolgs.";
 		mes "Por favor, me diga onde você escutou este poema?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, primeiro eu escutei esta versão de um historiador, e depois eu descobri que Bonnie Imbullea sabe ele muito bem.";
 		mes "Hm, há algum problema?";
 		next;
@@ -1538,7 +1538,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		close;
 	} else if (prt_curse == 60) {
 		mes "[Padre Bamph]";
-		mes "Ah, "+strcharinfo(PC_NAME)+".";
+		mes "Ah, "+strcharinfo(CHAR_NAME)+".";
 		mes "Já se passou um tempo, ein.";
 		mes "Você já falou com";
 		mes "Bonnie? Ah, e";
@@ -1569,7 +1569,7 @@ prt_church,185,106,3	script	Padre Bamph#prtcurse	1_M_PASTOR,{
 		next;
 		mes "[Padre Bamph]";
 		mes "Ah, para preservar os segredos da família real, peço que você evite entrar no área cerimonial sagrada de agora em diante.";
-		mes "Obrigado novamente pela a sua ajuda, "+strcharinfo(PC_NAME)+".";
+		mes "Obrigado novamente pela a sua ajuda, "+strcharinfo(CHAR_NAME)+".";
 		prt_curse = 61;
 		completequest(18052);
 		close;
@@ -1716,7 +1716,7 @@ prt_church,16,114,4	script	Padre Bamph#prtcurse2	1_M_PASTOR,{
 		mes "Por favor de uma olhada no corpo que está na extrema esquerda, o primeiro Príncipe.";
 		close;
 	} else if (prt_curse == 20) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Esta marca estranha é muito parecida com escamas de cobra.";
 		mes "É... é esta a marca por trás da maldição de Jormungand?";
 		next;
@@ -1801,7 +1801,7 @@ prt_church,21,111,5	script	Corpo#prtcurse2	4_M_LIEMAN,{
 		mes "^3355FFVocê examina o corpo do segundo príncipe e nota que as marcas de escama em sua pele estão mais esmaecidas.";
 		mes "Levemente diferentes quanto à tonalidade, do que as marcas do primeiro príncipe.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Padre Bamph...!";
 		mes "Olhe, essas marcas do segundo príncipe são diferentes das marcas do primeiro";
 		mes "príncipe! Viu?";
@@ -1918,7 +1918,7 @@ moc_fild16,201,295,5	script	Mercenário#prtcurse	4_M_ACROSS,{
 		mes "Quais os negócios que o trazem aqui?";
 		next;
 		if (select("Veneno","Nada") == 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu preciso falar com um especialista em venenos.";
 			mes "Estou investigando uma coisa para a Igreja de Prontera, provavelmente um assassinato.";
 			next;
@@ -1959,7 +1959,7 @@ que_job01,10,16,5	script	Marjana#prtcurse	4_F_ACROSS,{
 		mes "O que traz você aqui?";
 		mes "Eu vou lhe dar 4  minutos para me dizer, então vá direto ao ponto.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu quero saber mais sobre venenos e confirmar se foi usado para matar alguém.";
 		next;
 		mes "[Marjana]";
@@ -1968,14 +1968,14 @@ que_job01,10,16,5	script	Marjana#prtcurse	4_F_ACROSS,{
 		mes "Se eu não souber a resposta, eu duvido que você encontre alguém que possa lhe dar.";
 		mes "Pergunte.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É verdade que o veneno de um Mercenário pode ser tão poderoso que, apenas uma gota pode matar uma pessoa?";
 		next;
 		mes "[Marjana]";
 		mes "É verdade que veneno tão poderoso assim existe, mas tal veneno mortal só é usado por Algozes.";
 		mes "Geralmente, Mercenários normais utilizam venenos que são muito menos potentes.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Certo.";
 		mes "Você pode criar um veneno que deixe uma marca específica no corpo?";
 		next;
@@ -1993,7 +1993,7 @@ que_job01,10,16,5	script	Marjana#prtcurse	4_F_ACROSS,{
 		mes "que foi deixada poderia na verdade servir como algum tipo de pista.";
 		mes "Qual era a marca no corpo da vítima?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Nós ainda não temos certeza se foi usado veneno, mas há marcas que parecem com escamas de cobra deixadas nos corpos.";
 		next;
 		mes "[Marjana]";
@@ -2023,43 +2023,43 @@ que_job01,10,16,5	script	Marjana#prtcurse	4_F_ACROSS,{
 // ------------------------------------------------------------------
 morocc,45,103,0	script	Vestígios#prtcurse	HIDDEN_NPC,{
 	if (prt_curse == 25) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hm....";
 		mes "É melhor eu rever os fatos que descobri, para que possa me concentrar melhor na investigação.";
 		mes "Vamos ver...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Há muito tempo, a serpente gigante Jormungand ameaçava a raça humana.";
 		mes "7 guerreiros derrotaram Jormungand, liderados por Tristram III da família Gaebolg.";
 		mes "Mas Jormungand quado foi derrotado, jogou uma maldição na linhagem dos Gaebolg.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Desde então, a maldição mata o príncipe primogênito da família Gaebolg, quando eles ainda são muito jovens.";
 		mes "Entretanto, todos os prícipes dessa geração foram mortos.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "De acordo com o que eu aprendi com aquele mercenário.";
 		mes "O primeiro príncipe morreu da maldição, e os outros dois morreram por envenenamento.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É mais provável que caso tenha sido usado veneno.";
 		mes "Então a pessoa que o usou, era um assassino de fora do Reino de Rune-Midgard.";
 		mes "Sim, isso é quase tudo que sei.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Agora, aquela historiadora Rodafrian está me esperando para lhe informar sobre a letra certa daquela canção.";
 		mes "Mas o Padre Bamph também está esperando pelas informações que eu descobri com a Guilda dos Mercenários.";
 		mes "O que devo fazer?";
 		next;
 		if (select("Ir encontrar com Rodafrian","Ir encontrar com o Padre Bamph") == 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Bem, é mais fácil para mim visitar Rodafrian agora.";
 			mes "Ela está muito mais perto do que o Padre Bamph, então eu acho que eu deveria ir falar com ela primeiro.";
 			prt_curse = 30;
 			changequest(18041,18042);
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, é mais importante que eu vá ver o Padre Bamph e investigue os corpos dos príncipes.";
 		mes "É melhor eu ir para Prontera logo de uma vez.";
 		prt_curse = 50;

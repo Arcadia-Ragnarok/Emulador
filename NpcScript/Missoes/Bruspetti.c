@@ -117,7 +117,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Eu ja te falei que eu não estou de bom humor para falar com ninguém hoje.";
 		mes "Eu ainda estou arcando com o meu término com minha namorada.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Katinshuell... eu tenho o presentimento que você está escondendo algo.";
 		mes "De alguma forma, Bruspetti era sua namorada?";
 		next;
@@ -127,7 +127,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Não é do seu interesse!";
 		mes "Além disso, você não acha que uma garota como aquela é muito boa para alguém como eu?!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu relmente não tenho nenhuma razão para suspeitar nada de você";
 		mes "Mas o meu sentimento e o jeito que você reagiu não estão garantindo muito.";
 		mes "Bem, eu acho que eu posso pesquisar através desse livro...";
@@ -137,7 +137,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "é o diário de Bruspetti!";
 		mes "E-eu tenho procurado por-- um...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hey! Como você sabia";
 		mes "sobre ele?!";
 		mes "Conte-me a verdade!";
@@ -160,16 +160,16 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "E-eu não fiz nada errado!";
 		mes "Vá em frente, me pergunte qualquer coisa!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Tudo bem então, por que você não explica isso?";
 		next;
 		switch (select("Casa do Sr. Shendar","Lighthalzen","Nascente de Freya","Bruspetti")) {
 			case 1:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Sr. Shendar, o pai de Bruspetti, diz que alguém entrou em sua casa por alguma razão.";
 			mes "Agora, por que você faria isso?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Você reconheceu o diário de Bruspetti vem rápido...";
 			mes "E você realmente mencionou que estava procurando por isso.";
 			next;
@@ -178,7 +178,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 			mes "Eu não sei sobre o que você está falando!";
 			close;
 			case 2:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Você sabe, eu descobri que Bruspetti estava planejando ir para Lighthalzen.";
 			mes "Parece que ela queria saber algo realmente importante por lá...";
 			next;
@@ -186,7 +186,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 			mes "Não...!";
 			mes "Ela não poderia...!";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Tudo bem.";
 			mes "Não há necessidade de fingir que você não a conhece.";
 			mes "Você era seu namorado, não era?";
@@ -201,7 +201,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 			next;
 			switch (select("Casa do Sr. Shendar","Nascente de Freya","Separação Recente")) {
 				case 1:
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Então enquanto ela estava fora em Lighthalzen, você entrou na cada do Sr. Shendar e--";
 				next;
 				mes "[Katinshuell]";
@@ -210,12 +210,12 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 				mes "Eu não tinha idéia de que ela percorreu todo o caminho para Lighthalzen!";
 				mes "Ha ha! Ha ha!";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "...............................";
 				mes "^333333Nossa! Eu acho que saiu pela culatra, então eu vou ter que tentar novamente.^000000";
 				close;
 				case 2:
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Então, enquanto ela estava fora em Lighthalzen, você foi para Nascente de Freya, sozinho, não foi?!";
 				next;
 				mes "[Katinshuell]";
@@ -223,12 +223,12 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 				mes ".........";
 				mes "Um? ...Sim.";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "...............................";
 				mes "^333333Nossa! Eu acho que saiu pela culatra, então terei que tentar isso novamente.^000000";
 				close;
 				case 3:
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Espere um segundo!";
 				mes "O seu término e a repentina necessidade de Bruspetti investigar algo em Lighthalzen...";
 				mes "Estão relacionadas de alguma forma, não estão?";
@@ -238,11 +238,11 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 				mes ".........";
 				mes "Não, não é verdade!";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				next;
 				switch (select("Casa do Sr. Shendar","Nascente de Freya")) {
 					case 1:
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Então enquanto ela estava fora em Lighthalzen, você entrou na casa do Sr. Shendar e--";
 					next;
 					mes "[Katinshuell]";
@@ -251,12 +251,12 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 					mes "Eu não tinha idéia que ela tinha viajado para Lighthalzen!";
 					mes "Ha ha! Ha ha!";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "...............................";
 					mes "^333333Nossa! Eu acho que saiu pela culatra, então terei que tentar isso novamente.^000000";
 					close;
 					case 2:
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Hmm... Por que você está sempre passando um tempo sozinho na Nascente de Freya?";
 					mes "E por que Bruspetti ainda não voltou pra casa?";
 					next;
@@ -265,7 +265,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 					mes "Qual é a sua evidencia para me condenar pelo crime?";
 					mes "Não quero mais ouvir falar de você.";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Mesmo depois de você ter matado Bruspetti,";
 					mes "você fica preocupado com outra possibilidade.";
 					mes "Então você está conspirando para se livrar dessa possibilidade,também.";
@@ -280,7 +280,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 				}
 			}
 			case 3:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Nascente de Freya.";
 			mes "Por que você está sempre passando um tempo por ali sozinho, é?";
 			next;
@@ -288,12 +288,12 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 			mes "...............................";
 			mes "É porque eu realmente sinto falta da minha ex-namorada.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh. Certo.";
 			mes "É uma ótima razão.";
 			close;
 			case 4:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Se Bruspetti não é mais sua namorada, então...";
 			mes "Quem é?!";
 			mes "Responda!";
@@ -305,7 +305,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 			mes "Eu apenas não gosto de falar sobre Bruspetti, É isso.";
 			mes "Agora você pode me deixar sozinho?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "^333333Nossa! Ele não devia ceder assim!";
 			mes "Eu preciso perguntar novamente pra ele até que meu sentimento esteja satisfeito!^000000";
 			close;
@@ -315,13 +315,13 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Droga! Eu não quero mais pensar sobre ela!";
 		mes "Vá embora de mim, e leve o diário de Bruspetti com você!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que?! De jeito nenhum, não depois que aquela pequena explorão sobre matar ou não matar Bruspetti!";
 		mes "Bem, se você não vai falar, então eu vou revirar esse diário em busca de respostas.";
 		rach_vice = 18;
 		close;
 	} else if (rach_vice == 18) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Oh, essa entrada parece interessante, é tudo sobre você, Katinshuell.";
 		next;
@@ -356,7 +356,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Eu espero que eu tenha boas notícias da proxíma vez que eu escrever nesse diário...";
 		mes "Bem, aqui há esperança.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, aquela foi a última página...";
 		mes "O que aconteceu quando Bruspetti confrontrou você na Nascente de Freya?";
 		rach_vice = 19;
@@ -372,7 +372,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Eu não mereço isso!";
 		mes "Porque você continua me rondando com essas perguntas?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Algo... algo aconteceu quando Bruspetti confrontou você na Nascente de Freya?";
 		mes "O que ela exatamente aprendeu sobre você em Lighthalzen?";
 		next;
@@ -381,7 +381,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		rach_vice = 20;
 		changequest(8120,8121);
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^333333Ele ainda está me evitando...";
 		mes "Como eu posso faze-lo revelar a verdade?^000000";
 		close;
@@ -391,14 +391,14 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Eu não mereço isso!";
 		mes "Porque você continua me rondando com essas perguntas?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Algo... algo aconteceu quando Bruspetti confrontou você na Nascente de Freya?";
 		mes "O que ela exatamente aprendeu sobre você em Lighthalzen?";
 		next;
 		mes "[Katinshuell]";
 		mes "Eu... Eu não tenho que te dizer nada!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Como você pode dizer isso?";
 		mes "Eu só li no diário da Bruspetti que ela descobriu algo horrível sobre você";
 		mes "E isso envolve uma faca... exatamente como isso.";
@@ -412,7 +412,7 @@ ra_in01,235,194,5	script	Katinshuell#vice	4_M_RACHMAN1,{
 		mes "Você não entende como eu costumava viver, você n-não--!";
 		rach_vice = 21;
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh...?";
 		mes "Sr. Katinshuell?";
 		close;
@@ -539,14 +539,14 @@ ra_in01,250,19,3	script	Sr. Shendar#vice	4_M_MIDDLE,{
 		mes "[Sr. Shendar]";
 		mes "Hey! Hey! Você é o pervertido que está entrando em minha casa para caçar minha filha?!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O qu--?";
 		mes "Não, Eu sou apenas um--";
 		next;
 		percentheal(-50,0);
 		mes "^3355FF*BAM!*^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ow! Para que";
 		mes "você fez aquilo?";
 		next;
@@ -562,13 +562,13 @@ ra_in01,250,19,3	script	Sr. Shendar#vice	4_M_MIDDLE,{
 		mes "Eu pensei que você fosse aquela pessoa que está rondando a minha casa.";
 		mes "Eu não sei quem ele é, mas tenho certeza que não é você...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere, espere...";
 		mes "Então alguem tem rondado por aqui?";
 		mes "É estranho.";
 		mes "Espere, aquele cara, aquele que pode ser o namorado de Bruspetti...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Certo, seu nome era Katinshuell.";
 		mes "Aquele cara tem agido de forma realmente engraçada.";
 		mes "Talvez seja ele que está rondando por aqui?";
@@ -602,7 +602,7 @@ ra_in01,250,19,3	script	Sr. Shendar#vice	4_M_MIDDLE,{
 		mes "[Sr. Shendar]";
 		mes "Então você tem uma alguma idéia de quem está entrando em minha casa?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, eu suspeito desse cara chamado Katinshuell.";
 		mes "Porque ele pode ter sido os namorado de Bruspetti e ele tem agido de forma engraçada.";
 		mes "Ainda, não tenho nenhuma real evidência sobre isso.";
@@ -764,13 +764,13 @@ rachel,73,244,3	script	Lachellen#vice	4_F_SHABBY,{
 lhz_in02,213,207,0	script	#vicetrace	HIDDEN_NPC,4,4,{
 	OnTouch:
 	if (rach_vice == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Isse...";
 		mes "Isse cheiro...";
 		mes "É um cheiro tão bom!";
 		mes "Como pétalas de rosa levadas por uma brisa leve...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere, pode isso ser o aroma que o pai de Bruspetti falou antes?";
 		rach_vice = 6;
 		changequest(8109,8110);
@@ -787,23 +787,23 @@ rachel,265,47,0	script	#vicetrace2	HIDDEN_NPC,2,2,{
 		mes "Você não deve se aproximar tanto da água.";
 		mes "E se você escorregar e cair?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh?";
 		next;
 		mes "[Grandma]";
 		mes "Oh, me desculpe se te preucupei, mas o o chão que você esta parado sobre é muito escorregadio, sabe...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ah, estou vendo.";
 		rach_vice = 8;
 		changequest(8111,8112);
 		close;
 	} else if (rach_vice == 8) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aquela velha senhora me disse para ter cuidado para não escorregar e cair na água nesse local, então é melhor andar com cuidado.";
 		close;
 	} else if (rach_vice == 22) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Este deve ser onde Bruspetti se afogou...";
 		next;
 		mes "[Vovó]";
@@ -812,7 +812,7 @@ rachel,265,47,0	script	#vicetrace2	HIDDEN_NPC,2,2,{
 		mes "E se você cair na nascente?";
 		mes "É perigoso!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh... Er, obrigado.";
 		mes "Sim, eu não queria me ver afogando";
 		next;
@@ -822,27 +822,27 @@ rachel,265,47,0	script	#vicetrace2	HIDDEN_NPC,2,2,{
 		mes "A aguá não é assim tão profunda...";
 		mes "Mesmo se não souber nadar, você pode sair dai, você sabe";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...O que?";
 		close;
 	} else if (rach_vice == 23) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Olhando essa nascente me faz pensar em Bruspetti.";
 		mes "O que aconteceu com ela?";
 		mes "Eu consigo sentir que ela se cavou em desespero";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A água não é tão gelada, ou profunda e Katinshuell mencionou que seu corpo foi puxado pela perna...";
 		mes "Mas ela continuou olhando para ele.";
 		mes "Isso está assombrando...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu suponho ela estava rasgada...";
 		mes "Ela amava-o, mas não podia suportar viver com o segredo dele.";
 		mes "No final, isso tudo foi muito tragico.";
 		mes "Katinshuell não era uma pessoa má...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ele foi forçado a cometer crimes hediondos, e continuou cometendo erros, correndo de sua culpa.";
 		mes "Ninguém é responsável por isso?";
 		mes "Quem o culparia?";
@@ -852,7 +852,7 @@ rachel,265,47,0	script	#vicetrace2	HIDDEN_NPC,2,2,{
 		if (BaseLevel > 90) { getexp(130000,0); }
 		else if (BaseLevel > 75) { getexp(85000,0); }
 		else { getexp(45000,0); }
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "De alguma forma, gostaria que Katinshuell tivesse a força de encarar sua culpa e também para perdoar a si mesmo.";
 		close;
 	}

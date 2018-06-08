@@ -50,31 +50,31 @@ ra_temin,87,133,1	script	Soldado de Rachel#vol1	4_M_RASWORD,{
 		mes "Por favor volte aqui depois se quiser vê-lo.";
 		next;
 		select("Pensar em uma Distração");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Este cara não vai me deixar passar.";
 		mes "Vamos ver...";
 		mes "Há um jeito de eu conseguir passar por ele?";
 		mes "O que, ou ^FF0000Quem^000000, poderia o distrair?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera um segundo...";
 		mes "É claro!";
 		mes "Eu devo falar com ele sobre...";
 		next;
 		input(.@input$);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera um segundo...";
 		mes "É claro!";
 		mes "Eu devo falar com ele sobre ^FF0000"+.@input$+"^000000 !!";
 		next;
 		if (.@input$ != "Lamir") {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "O que...?";
 			mes "De onde é que eu tiro estas idéias?";
 			mes "Isto não faz sentido algum...";
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Está Certo!";
 		mes "Eu falei com Lamir algum tempo atrás.";
 		mes "Se ela está certa, então este cara deve ser Karlum.";
@@ -82,7 +82,7 @@ ra_temin,87,133,1	script	Soldado de Rachel#vol1	4_M_RASWORD,{
 		mes "Hmm...";
 		mes "Eu já sei o que eu vou dizer...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^333333*Ahem*^000000 Com licença, mas por acaso você é Karlum?";
 		mes "Eu tenho uma mensagem para você.";
 		next;
@@ -92,7 +92,7 @@ ra_temin,87,133,1	script	Soldado de Rachel#vol1	4_M_RASWORD,{
 		mes "Bem, qual é a mensagem.";
 		mes "Eu não posso ficar muito tempo fora do meu trabalho...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você conhece ^3131FFLamir^000000, certo?";
 		next;
 		emotion(e_omg);
@@ -102,14 +102,14 @@ ra_temin,87,133,1	script	Soldado de Rachel#vol1	4_M_RASWORD,{
 		mes "Algo de ruim aconteceu a ela?";
 		mes "Rápido, fale logo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não, não é nada disto.";
 		mes "Ela só me disse que tinha";
 		mes "algo importante para";
 		mes "lhe dizer, e que você deve ir";
 		mes "vê-la quando tiver tempo livre.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tentei perguntar a ela mais coisas, mas ela apenas mudava de assunto e ignorava.";
 		mes "Há algo acontecendo entre vocês dois?";
 		next;
@@ -134,7 +134,7 @@ ra_temin,87,133,1	script	Soldado de Rachel#vol1	4_M_RASWORD,{
 		mes "Qual é o seu jogo, huh?";
 		mes "Você acha que eu sou fácil de ser enganado?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que?";
 		mes "Foi isto que aconteceu?";
 		mes "Eu poderia jurar qu--Aaah.";
@@ -223,7 +223,7 @@ ra_temin,115,140,1	script	Vaso de Flores#vol	HIDDEN_NPC,{
 			disablenpc(strnpcinfo(NPC_NAME));
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Um monte de carinho foi posto ao arranjar estas flores...";
 		mes "Eu não poderia suportar se eu perturbasse sua beleza.";
 		next;
@@ -288,13 +288,13 @@ ra_temin,85,118,3	script	Gaveta#vol3	HIDDEN_NPC,{
 		mes "^3355FFVocê encontra uma pilha de relatórios designados ao sumo sacerdote dentro desta gaveta.^000000";
 		next;
 		if (select("Ver Relatórios","Cancelar") == 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Bem, talvez não seja a coisa mais certa a se fazer.";
 			mes "Mas eu tenho a sensação de que eu deveria, pelo menos, dar uma olhada neste relatórios.";
 			next;
 			mes "^3355FFVocê começou a folhear os documentos, dando uma olhada em algo que lhe seja interessante.^000000";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Ooh...";
 			mes "Isto deve ser o";
 			mes "eu estava procurando.";
@@ -306,13 +306,13 @@ ra_temin,85,118,3	script	Gaveta#vol3	HIDDEN_NPC,{
 			getitem(File01,1);
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É melhor deixar pra lá.";
 		mes "Eu não tenho permissão para dentro destes arquivos.";
 		close;
 	} else if (aru_vol == 5) {
 		if (!countitem(File01) && !checkweight(File01,1)) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh! Aqui está uma outra do relatório que eu precisava!";
 			mes "Que sorte.";
 			getitem(File01,1);
@@ -348,7 +348,7 @@ ve_in,280,223,0	script	#volroom	FAKE_NPC,2,2,{
 		mes "^333333O inquérito regular Geológico foi agendado para daqui a uma semana.";
 		mes "Envie seu relatório para nós o mais rápido possível.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Apesar do nome do remetente não estar nesta carta, eu posso adivinhar quem escreveu esta.";
 		mes "Falando nisto...";
 		mes "Aonde está o Geólogo?";
@@ -421,7 +421,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Eu apenas estava sendo um cavalheiro.";
 		mes "Hahahah, isso mesmo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você é o Diretor Executivo do Instituto de Pesquisas Geológicas de Veins?";
 		next;
 		mes "[Homem Bêbado]";
@@ -434,12 +434,12 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Eu sou u único que trabalha no instituto, com seriedade.";
 		mes "Porque, o que você quer?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Uhh... Existem alguns avisos oficiais para você no seu escritório.";
 		mes "Eu acho que você precisa fazer alguns relatórios que já deviam estar feitos?";
 		mes "Eles parecem ser bem importantes.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Talvez...";
 		mes "Talvez seja ^FF0000urgente^000000.";
 		next;
@@ -483,7 +483,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "[Homem Bêbado]";
 		mes "Ei, você.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim?";
 		next;
 		emotion(e_no1);
@@ -492,7 +492,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Parabéns!";
 		mes "Bem vindo a equipe, colega!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh...?";
 		mes "Eu não entendo do que você está falando!";
 		next;
@@ -501,7 +501,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Todos os meus alunos tem orgulho de estudarem comigo, Geo, o maior geólogo do mundo!";
 		mes "Bem, talvez...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, eu nunca.";
 		next;
 		mes "[Geólogo Geo]";
@@ -579,7 +579,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "[Geólogo Geo]";
 		mes "Bem, estas são boas pernas, mas este não não é o melhor par que eu já v-";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu estou de volta.";
 		next;
 		mes "[Geologist Geo]";
@@ -593,7 +593,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Bem vindo de volta!.";
 		mes "Então, como foi a apresentação do relatório de temperatura vulcânica?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Pois bem, eu fiz o que você me mediu.";
 		mes "Ei, tem certeza de que queria que eu exagerasse na temperatura?";
 		mes "O que se passa na base?";
@@ -602,7 +602,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Oh, não se preocupe com a temperatura.";
 		mes "Foi suposto que ela iria aumentar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que você fez...?";
 		mes "Na verdade, eu pensei que talvez o pirômetro poderia estar quebrado.";
 		next;
@@ -610,7 +610,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "Heh! Você está certo.";
 		mes "Eu quebrei ele de propósito.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que?!";
 		next;
 		mes "[Geólogo Geo]";
@@ -628,7 +628,7 @@ ve_in,233,116,3	script	Homem Bêbado#vol	4_M_HUOLDARMY,{
 		mes "que parece que irá funcionar.";
 		mes "Evidentemente, não há nenhum problema em começar com...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Então...";
 		mes "Você é um pilantra.";
 		next;
@@ -738,7 +738,7 @@ thor_v01,37,234,3	script	Superfície Quente#1	HIDDEN_NPC,{
 			changequest(2117,2118);
 			aru_vol = 9;
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu deveria tirar mais medições de temperatura antes de eu apresentar este relatório.";
 			mes "Só para ter certeza absoluta.";
 			close;
@@ -788,7 +788,7 @@ thor_v02,170,100,3	script	Superfície Quente#3	HIDDEN_NPC,{
 			next;
 			mes "^3355FFVocê registra a temperatura em seu relatório.^000000";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu tirei medidas o bastante.";
 			mes "Agora eu devo apresentar este relatório à base geológico.";
 			changequest(2119,2120);
@@ -799,7 +799,7 @@ thor_v02,170,100,3	script	Superfície Quente#3	HIDDEN_NPC,{
 			close;
 		}
 	} else if (aru_vol == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tirei medidas o bastante.";
 		mes "Agora eu devo apresentar este relatório à base geológico.";
 		close;
@@ -816,7 +816,7 @@ que_thor,145,66,3	script	Guarda#vol::VeinsGuard	4_DST_SOLDIER,{
 		mes "Somente pessoas autorizadas podem entrar nesta área.";
 		mes "Identifique-se!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu sou um estudante trabalhando em uma pesquisa sobre as ordens do Diretor Geo para o Instituto de Pesquisas Geológicas de Veins.";
 		mes "Você poderia por favor carimbar a aprovação deste relatório de temperaturas para mim?";
 		next;
@@ -835,7 +835,7 @@ que_thor,145,66,3	script	Guarda#vol::VeinsGuard	4_DST_SOLDIER,{
 		mes "Oh, você é aquele aluno do instituto.";
 		mes "Não acho estejamos esperando quaisquer relatórios por enquanto.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh, nós percebemos que os instrumentos que nós usamos estavam com defeito.";
 		mes "Então temos de revisar nosso relatório.";
 		next;
@@ -862,11 +862,11 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "Somente pessoas autorizadas são permitidas nesta área.";
 		mes "Então se você não tem nenhum motivo para estar aqui...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu sou um estudante trabalhando em uma pesquisa sobre as ordens do Diretor Geo para o Instituto de Pesquisas Geológicas de Veins.";
 		mes "Você poderia por favor carimbar a aprovação deste relatório de temperaturas para mim?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Um, Geo está doente agora, então por isto ele me pediu para preencher este formulário de de relatório e apresentá-lo a vocês, para ele.";
 		next;
 		mes "[Sahedi]";
@@ -884,7 +884,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "O quão ruim é isto?";
 		next;
 		emotion(e_swt2,1);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh... Oh, não!";
 		mes "Yikes! Eu acho que se isto ficar muito mais alto do que o normal...";
 		mes "Isto poderia ser ruim?";
@@ -895,7 +895,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "Eu não...";
 		mes "Eu não quero morrer!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você quer por favor se acalmar primeiro.";
 		mes "Eu vou dar uma olhada pela base.";
 		mes "Então por favor não diga nada que possa fazer com que alguém entre em pânico agora.";
@@ -913,7 +913,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "Então, nós estamos em algum perigo?";
 		mes "Parece que este vulcão pode entrar em erupção a qualquer momento?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh, eu não acabei de investigar tudo ainda.";
 		mes "Você poderia por favor esperar um pouco mais?";
 		next;
@@ -928,7 +928,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		next;
 		while (true) {
 			if (select("Sim","Não") == 1) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Eu acho que eu não posso esconder isto de você...";
 				mes "A recente atividade deste vulcão recentemente tem sido...";
 				mes "Preocupante.";
@@ -952,7 +952,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "Poderia ser um desastre, como o que aconteceu no passado!";
 		next;
 		emotion(e_flash,1);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, concordo.";
 		mes "Tem uma boa chance de acontecer uma...";
 		mes "explosão que poderá causar um monte de danos colaterais.";
@@ -962,7 +962,7 @@ thor_camp,250,104,3	script	Sahedi#vol	4_M_RASWORD,{
 		mes "Quanto tempo nós temos para evacuar?";
 		next;
 		emotion(e_flash,1);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem... Uh...";
 		mes "De acordo com as minhas...";
 		mes "Análises...";
@@ -1011,7 +1011,7 @@ thor_camp,187,228,5	script	Coronel Vito#1	4_M_DST_MASTER,{
 		mes "Você não foi posto para transportar carga?";
 		mes "Atenção para as ordens!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você está falando comigo?";
 		mes "Não, eu sou do Instituto de Pes--";
 		next;
@@ -1020,7 +1020,7 @@ thor_camp,187,228,5	script	Coronel Vito#1	4_M_DST_MASTER,{
 		mes "Ainda é um novato, eh?";
 		mes "Parece que eu vou ter de treinar você pessoalmente como um de nossos cavaleiros sagrados!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mas eu não--";
 		next;
 		mes "[Coronel Vito]";
@@ -1054,7 +1054,7 @@ thor_camp,155,175,7	script	Coronel Vito#2	4_M_DST_MASTER,{
 		mes "Você não foi posto para transportar carga?";
 		mes "Atenção para as ordens!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você está falando comigo?";
 		mes "Não, eu sou do Instituto de Pes--";
 		next;
@@ -1064,7 +1064,7 @@ thor_camp,155,175,7	script	Coronel Vito#2	4_M_DST_MASTER,{
 		mes "Ainda é um novato, eh?";
 		mes "Parece que eu vou ter de treinar você pessoalmente como um de nossos cavaleiros sagrados!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mas eu não--";
 		next;
 		mes "[Coronel Vito]";
@@ -1095,8 +1095,8 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "Eu sou o Coronel Vito, e eu estou no encarregado da base de Arunafeltz aqui no Vulcão de Thor.";
 		mes "Qual o seu nome, soldado?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
-		mes strcharinfo(PC_NAME)+", senhor.";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
+		mes strcharinfo(CHAR_NAME)+", senhor.";
 		next;
 		mes "[Coronel Vito]";
 		mes "Hmpf! Este é um nome que o enfraquece!";
@@ -1147,7 +1147,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "[Coronel Vito]";
 		mes "VOCÊ ENTENDEU?!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, senhor!";
 		next;
 		mes "[Coronel Vito]";
@@ -1161,10 +1161,10 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "Agora, repita comigo.";
 		next;
 		mes "[Coronel Vito]";
-		mes "Eu, "+strcharinfo(PC_NAME)+",";
+		mes "Eu, "+strcharinfo(CHAR_NAME)+",";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
-		mes "Eu, "+strcharinfo(PC_NAME)+",";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
+		mes "Eu, "+strcharinfo(CHAR_NAME)+",";
 		next;
 		while (true) {
 			mes "[Coronel Vito]";
@@ -1173,7 +1173,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 			input(.@input$);
 			.@answer$ = "como servidor devotado da Deusa Freya";
 			if (.@input$ == .@answer$) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "como um servidor devotado da Deusa Freya, a padroeira da grande Arunafeltz,^000000";
 				next;
 				break;
@@ -1190,7 +1190,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 			input(.@input$);
 			.@answer$ = "juro, por minha honra, derrotar nosso inimigo mortal";
 			if (.@input$ == .@answer$) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "juro, por minha honra, derrotar nosso inimigo mortal, o Reino de Rune-Midgard.";
 				next;
 				break;
@@ -1207,7 +1207,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 			input(.@input$);
 			.@answer$ = "Não terei misericórdia";
 			if (.@input$ == .@answer$) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Não terei misericórdia.";
 				mes "Com nada que ficar na minha mão.^000000";
 				next;
@@ -1225,7 +1225,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 			input(.@input$);
 			.@answer$ = "Dedicarei toda a minha vida";
 			if (.@input$ == .@answer$) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Dedicarei toda a minha vida para recuperação total da Deusa Freya.^000000";
 				next;
 				break;
@@ -1242,7 +1242,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 			input(.@input$);
 			.@answer$ = "Abaixo o Reino de Rune-Midgard!";
 			if (.@input$ == .@answer$) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Abaixo o Reino de Rune-Midgard!^000000";
 				next;
 				break;
@@ -1277,7 +1277,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "Ele precisa ser regularmente inspecionado.";
 		mes "Uma vez que ele controla os recursos energéticos da base.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, senhor!";
 		next;
 		mes "[Coronel Vito]";
@@ -1309,7 +1309,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "Quando você cresce com força, então se torna um soldado das tropas Sagradas de Freya.";
 		mes "Treine todos os dias, então você sempre ficará forte!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, senhor!";
 		next;
 		mes "[Coronel Vito]";
@@ -1318,7 +1318,7 @@ thor_camp,159,74,3	script	Coronel Vito#3	4_M_DST_MASTER,{
 		mes "Vá perguntar a Sahedi fora deste edifício.";
 		mes "Você está despensado.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^333333Bem...";
 		mes "Eu acho que eu devo voltar para Sahedi.";
 		mes "Felizmente, ele vai pensar de mim como um pesquisador geológico, em vez de como um soldado.^000000";
@@ -1339,7 +1339,7 @@ thor_camp,109,167,3	script	Painel de Controle#vol	HIDDEN_NPC,{
 		mes "^3355FFEste Painel de controle controla os recursos de energia para a Base do Vulcão de Thor.";
 		mes "Ajudando ele a executar operações mesmo abaixo do solo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Todos estes canos com rocha derretida passando por eles...";
 		mes "Acho que o calor é aquilo que é fonte de energia para a base.";
 		mes "Isso é realmente uma idéia inteligente.";
@@ -1347,7 +1347,7 @@ thor_camp,109,167,3	script	Painel de Controle#vol	HIDDEN_NPC,{
 		mes "^3355FFO painel de controle emite ruídos mecânicos e parece estar funcionando muito bem.";
 		mes "Tudo parece estar em bom estado.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sem problemas aqui.";
 		mes "Eu acho que posso voltar para o Coronel.";
 		changequest(2124,2125);
@@ -1363,7 +1363,7 @@ thor_camp,150,65,3	script	Boneco#1::VeinsDummy	HIDDEN_NPC,{
 		mes "^3355FFÉ um boneco para treinamento parece que é um inimigo a ser derrotado.";
 		mes "Sua frente é marcado com o emblema do Reino de Rune-Midgard.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eles realmente odeiam o Reino de Rune-Midgard...";
 		mes "^333333Tecnicamente, eu não deveria esta fazendo isto.";
 		mes "Será que isto não é considerado como traição?^000000";
@@ -1373,47 +1373,47 @@ thor_camp,150,65,3	script	Boneco#1::VeinsDummy	HIDDEN_NPC,{
 		mes "Faça sua vos ser escutada claramente!";
 		mes "Agora... Execute o Ataque!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, senhor!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Um!!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Dois!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Três!!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Quatro!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Cinco!!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Seis!!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sete!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oito!!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Nove!";
 		next;
 		specialeffect EF_HIT2;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Dez!";
 		aru_vol = 20;
 		close;
@@ -1426,13 +1426,13 @@ thor_camp,150,65,3	script	Boneco#1::VeinsDummy	HIDDEN_NPC,{
 		mes "Soldado...";
 		mes "Quantas vezes eu ordenei para que você socasse o boneco?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "10 vezes, senhor!";
 		next;
 		mes "[Coronel Vito]";
 		mes "E quantas vezes você socou o boneco?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "11 vezes, senhor!";
 		next;
 		mes "[Coronel Vito]";
@@ -1473,7 +1473,7 @@ thor_camp,148,310,0	script	#buki_vol	FAKE_NPC,5,5,{
 		mes "^3355FFHá pessoas carregando muitas caixas pesadas de madeira marcadas com o selo da República de Schwaltzvalt.";
 		mes "Eles devem conter suprimentos militares para a base.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu devo ir até Sahedi agora.";
 		changequest(2127,2128);
 		aru_vol = 23;
@@ -1536,7 +1536,7 @@ ve_in,281,214,3	script	Estante#vol	HIDDEN_NPC,{
 // ------------------------------------------------------------------
 ra_temin,73,126,1	script	Escadarias#vol1	HIDDEN_NPC,{
 	if (aru_vol == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera, eu posso usar esta escada para dar o fora daqui!";
 		mes "Eu iria pelo caminho normal mas seria pego se eu passasse pelos guardas...";
 		next;

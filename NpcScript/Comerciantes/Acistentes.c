@@ -17,7 +17,7 @@
 // ------------------------------------------------------------------
 -	script	MercenaryRent	FAKE_NPC,{
 	mes("[Gerente do Clã]\n"
-		"Olá " + strcharinfo(PC_NAME) + ".\n"
+		"Olá " + strcharinfo(CHAR_NAME) + ".\n"
 		"Sou responsavel pela contratação de acistentes de nosso clã.\n"
 		"Estaria enterçad"+(Sex == SEX_MALE ? "o":"a")+" em algum?");
 	if (strnpcinfo(NPC_MAP) == "prontera")  { .@mercenaryType$ = "SPEAR_MERC_GUILD"; .@mercenaryName$ = "Lanceiro"; }

@@ -272,7 +272,7 @@ payon,157,141,5	script	Fênix#taekwonq	4_M_MONK,{
 			mes "[Fênix]";
 			mes "Muito bem.";
 			mes "Desejo-lhe sorte.";
-			mes "Esperto te ver novamente algum dia, "+strcharinfo(PC_NAME)+".";
+			mes "Esperto te ver novamente algum dia, "+strcharinfo(CHAR_NAME)+".";
 			close;
 		}
 		mes "[Fênix]";

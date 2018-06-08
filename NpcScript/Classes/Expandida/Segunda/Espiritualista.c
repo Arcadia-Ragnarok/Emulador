@@ -39,7 +39,7 @@ morocc_in,174,30,6	script	Garoto#slinkerq	4_M_KID2,{
 			mes "...";
 			mes "Ei você.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Você está me chamando?";
 			next;
 			mes "[Garoto]";

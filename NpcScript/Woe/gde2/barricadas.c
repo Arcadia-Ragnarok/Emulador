@@ -21,7 +21,7 @@
 	.@value = atoi(charat(strnpcinfo(NPC_NAME_VISIBLE), 12));
 	.@data$ = "$agitse_" + strnpcinfo(NPC_NAME_HIDDEN);
 
-	if (getguildmaster(.@guild) == strcharinfo(PC_NAME)) {
+	if (getguildmaster(.@guild) == strcharinfo(CHAR_NAME)) {
 		if (.@value == 1)      { .@name$ = "Primeiro"; }
 		else if (.@value == 2) { .@name$ = "Segundo";  }
 		else if (.@value == 3) { .@name$ = "Terceiro"; }

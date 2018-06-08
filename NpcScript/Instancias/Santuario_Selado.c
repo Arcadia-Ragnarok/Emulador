@@ -89,16 +89,16 @@ monk_test,309,146,3	script	Frei Patrick#edq	4_M_OLDFRIAR,{
 		break;
 		case 2:
 		if (BaseLevel >= 75) {
-			.@party_id = getcharid(CHAR_ID_PARTY);
+			.@party_id = getcharid(ID_PARTY);
 			mes "[Frei Patrick]";
 			mes "Está certo que você irá ao santuário e selar Bafomé novamente?";
 			next;
 			.@ins_bapho_check = questprogress(3040,PLAYTIME);
 			if (!.@ins_bapho_check) {
-				if (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR) && instance_check_party(.@party_id,4,75)) {
+				if (getpartyleader(.@party_id,2) == getcharid(ID_CHAR) && instance_check_party(.@party_id,4,75)) {
 					mes "[Frei Patrick]";
 					mes "O nome do grupo é "+getpartyname(.@party_id)+"...";
-					mes "O nome do líder é "+strcharinfo(PC_NAME)+"...";
+					mes "O nome do líder é "+strcharinfo(CHAR_NAME)+"...";
 					.@instance = instance_create("Santuário Selado",.@party_id);
 					if (.@instance < 0) {
 						mes "Hum... Mais parece que temos um problema aqui...";
@@ -229,7 +229,7 @@ monk_test,306,151,3	script	Túmulo de Bafomé#edq	HIDDEN_NPC,{
 			mes "Mais nada acontece.";
 			close;
 		} else {
-			mapannounce("monk_test","["+strcharinfo(PC_NAME)+"] membro do grupo ["+getpartyname(.@party_id)+"] entrou no Santuário Selado.",bc_map,"0x00ff99");
+			mapannounce("monk_test","["+strcharinfo(CHAR_NAME)+"] membro do grupo ["+getpartyname(.@party_id)+"] entrou no Santuário Selado.",bc_map,"0x00ff99");
 			setquest(3040);
 			warp("1@cata",100,224);
 			end;
@@ -529,7 +529,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 
 // ------------------------------------------------------------------
 1@cata,141,221,0	script	Túmulo#ss	CLEAR_NPC,3,3,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
+	.@party_id = getcharid(ID_PARTY);
 	if (`ins_baphomet == 0) {
 		mes "O Túmulo está trêmulo...";
 		next;
@@ -597,7 +597,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		mes "[Túmulo do Herói]";
 		mes "Para isso você deve achar o meu corpo que deve estar dentro de algum desses túmulos.";
 		close;
-	} else if ((`ins_baphomet == 2) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
+	} else if ((`ins_baphomet == 2) && (getpartyleader(.@party_id,2) == getcharid(ID_CHAR))) {
 		mes "[Túmulo do Herói]";
 		mes "Encontraram meu pingente?";
 		next;
@@ -650,7 +650,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 
 // ------------------------------------------------------------------
 1@cata,176,119,4	script	Alma do Herói#1F	4_M_CHAMPSOUL,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
+	.@party_id = getcharid(ID_PARTY);
 	cutin("ins_cata_champ_n",2);
 	if (`ins_baphomet == 2) {
 		mes "[Alma do Herói]";
@@ -727,7 +727,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 				break;
 				case 3:
 				++.@ins_baphomet_1f_3;
-				if (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR)) {
+				if (getpartyleader(.@party_id,2) == getcharid(ID_CHAR)) {
 					mes "[Alma do Herói]";
 					mes "Você parece ser o líder do grupo.";
 					mes "Você precisa ter ^0000FF10 Essências de Fogo^000000 das tochas.";
@@ -786,7 +786,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 			}
 			if (.@exitloop) break;
 		}
-		if (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR)) {
+		if (getpartyleader(.@party_id,2) == getcharid(ID_CHAR)) {
 			mes "[Alma do Herói]";
 			mes "Lembrando novamente, só posso ficar aqui por uma hora.";
 			mes "Então devem finalizar o trabalho dentro desse tempo.";
@@ -802,7 +802,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		close2;
 		cutin("",255);
 		end;
-	} else if ((`ins_baphomet == 3) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
+	} else if ((`ins_baphomet == 3) && (getpartyleader(.@party_id,2) == getcharid(ID_CHAR))) {
 		cutin("ins_cata_champ_n",2);
 		mes "[Alma do Herói]";
 		mes "Você pegou as 10 ^0000FFEssências de Fogo^000000";
@@ -844,7 +844,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		close2;
 		cutin("",255);
 		end;
-	} else if ((`ins_baphomet == 4) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
+	} else if ((`ins_baphomet == 4) && (getpartyleader(.@party_id,2) == getcharid(ID_CHAR))) {
 		cutin "ins_cata_champ_n",2;
 		mes "[Alma do Herói]";
 		mes "Está pronto?";
@@ -907,7 +907,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		`ins_baphomet = 2;
 		mes "Um pequeno objeto está brilhando abaixo do antigo túmulo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu acho que é o pingente...";
 		close;
 	} else {
@@ -950,8 +950,8 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 // ------------------------------------------------------------------
 // - Tochas
 -	script	BobbingTorch#SS	FAKE_NPC,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
-	if (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR)) {
+	.@party_id = getcharid(ID_PARTY);
+	if (getpartyleader(.@party_id,2) == getcharid(ID_CHAR)) {
 		if ((`ins_baphomet == 3) && (countitem(Essence_Of_Fire) < 11)) {
 			mes "Uma antiga tocha parece que pode queimar tudo que está a minha volta.";
 			next;
@@ -1216,8 +1216,8 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 
 // ------------------------------------------------------------------
 2@cata,79,65,0	script	Altar Principal#ss	CLEAR_NPC,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
-	if ((`ins_baphomet == 5) && (getpartyleader(.@party_id,2) == getcharid(CHAR_ID_CHAR))) {
+	.@party_id = getcharid(ID_PARTY);
+	if ((`ins_baphomet == 5) && (getpartyleader(.@party_id,2) == getcharid(ID_CHAR))) {
 		mes "Um poder malígno, terrível demais para descrever, passa pelo altar irradiando uma cor violeta.";
 		next;
 		mes "Pergaminhos Mágicos piscam rapidamente, na tentativa de suprimir esse poder terrível.";
@@ -1226,7 +1226,7 @@ prt_monk,261,91,3	script	Rust Blackhand#edq	4_M_DWARF,{
 		next;
 		specialeffect(EF_METEORSTORM);
 		specialeffect(EF_METEORSTORM);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Olhem! Algo... Algo está vindo.";
 		`ins_baphomet = 6;
 		donpcevent(instance_npcname("ins_2f_hero_broad")+"::OnEnable");

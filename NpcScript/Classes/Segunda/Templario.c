@@ -77,7 +77,7 @@ prt_castle,45,169,5	script	Templário#crusaderq	4_M_CRU_OLD,{
 						mes "Vou testa-l"+(Sex == SEX_MALE ? "o":"a")+" para ver se você está pronto para se tornar um Templário.";
 						next;
 						mes "[Michael Halig]";
-						mes "Seu nome é "+strcharinfo(PC_NAME)+"...?";
+						mes "Seu nome é "+strcharinfo(CHAR_NAME)+"...?";
 						mes "Está correto?...";
 						next;
 						if (countitem(Patriotism_Marks) && countitem(Sacred_Marks)) {
@@ -302,7 +302,7 @@ prt_castle,165,27,3	script	Templário#2crusaderq	4_M_JOB_KNIGHT1,{
 				mes "Hm, lutar na Guerra Santa é algo admirável.";
 				next;
 				mes "[Murnak Mijoul]";
-				mes "Seu nome é "+strcharinfo(PC_NAME)+"?";
+				mes "Seu nome é "+strcharinfo(CHAR_NAME)+"?";
 				mes "Deixe-me dar uma olhada em seu rosto...";
 				next;
 				mes "[Murnak Mijoul]";
@@ -810,7 +810,7 @@ prt_castle,35,151,5	script	Templário#4crusaderq	4_M_CRU,{
 			close;
 		} else if (crusaderq == 8) {
 			mes "[Templário]";
-			mes "Você deve ser "+strcharinfo(PC_NAME)+" não é?";
+			mes "Você deve ser "+strcharinfo(CHAR_NAME)+" não é?";
 			mes "Você está se preparando para se tornar "+(Sex == SEX_MALE ? "um Templário":"uma Templária")+".";
 			next;
 			mes "[Templário]";

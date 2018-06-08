@@ -139,7 +139,7 @@ lighthalzen,261,112,3	script	Ruth#lhz	4_F_LGTGIRL,{
 	mes "Sinto que estou derretendo de felicidade!";
 	mes "Ah, eu te amo tanto, Oyoung.";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Epa...";
 	mes "Esse casal está indo para a Nuvem 9, não está?";
 	close;
@@ -156,7 +156,7 @@ lighthalzen,259,108,7	script	Oyoung#lhz	4_M_LGTMAN,{
 	mes "E pelo que vejo seus lábios têm deficiência dessa vitamina!";
 	mes "Vou tomar conta disso!";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Minha nossa!";
 	mes "Não sei o que é mais assustador...";
 	mes "Ele ter usado aquela cantada ou o fato de ela ter funcionado...";
@@ -562,7 +562,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			emotion(e_heh);
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aqui, pegue.";
 		Zeny -= 50;
 		next;
@@ -588,16 +588,16 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "Como estrelas, que estão no céu de dia, mas invisíveis.";
 			mes "Devemos ter esperança, mesmo se não tivermos motivo aparente.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			mes "............";
@@ -627,16 +627,16 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "A capacidade de ocorrerem milagres sempre estará lá e saiba que você pode ser um milagre para alguém.";
 			mes "Isso não é lindo?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			mes "............";
@@ -678,16 +678,16 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			mes "Brigar por raiva passageira ou frustração fará de você um idiota.";
 			mes "Saiba a diferença.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			emotion(e_dots, 1);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "............";
 			mes "............";
 			mes "............";
@@ -700,7 +700,7 @@ lighthalzen,312,233,3	script	Beggar#lhz	4_M_TWOLDMAN,,{
 			close;
 		}
 	}
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "............";
 	close;
 }
@@ -1064,13 +1064,13 @@ lhz_in01,124,28,3	script	Ellette#lhz	1_F_01,{
 	mes "[Ellette]";
 	mes "...";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Com licença.";
 	next;
 	mes "[Ellette]";
 	mes ".........";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Olá?";
 	next;
 	mes "[Ellette]";
@@ -1147,7 +1147,7 @@ lhz_in01,116,39,7	script	Kejulle Rekenber#lhz	4_M_CHNMAN,{
 
 // ------------------------------------------------------------------
 lhz_in01,110,40,3	script	Jorjerro#lhz	4_M_ORIENT02,{
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "^3355FFEsse homem está imóvel, e para todos os propósitos, parece adormecido.^000000";
 	close;
 }
@@ -1323,7 +1323,7 @@ lhz_in01,138,47,0	script	#mimir_camera	FAKE_NPC,2,2,{
 	OnTouch:
 	mes "^3355FF*Click*^000000";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "O quê...?";
 	mes "Esse som. Alguém...";
 	mes "Alguém tirou uma foto minha?";

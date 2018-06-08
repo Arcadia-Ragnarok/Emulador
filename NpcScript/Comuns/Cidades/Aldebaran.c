@@ -889,11 +889,11 @@ aldeba_in,24,245,4	script	Marianne#alde	4_F_KAFRA3,{
 	next;
 	switch (select("O quê?! Não acredito!","Ahh Cale a boca!","Seus Serviços são ótimos!")) {
 		case 1:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O quê?!";
 		mes "Não acredito nisso!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "CINCO MIL E OITOCENTOS ANOS?! VOCÊ ESTÁ LOUCA?!";
 		next;
 		mes "[Kafra Marianne]";

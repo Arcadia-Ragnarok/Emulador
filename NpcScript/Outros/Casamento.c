@@ -218,7 +218,7 @@ prt_church,97,100,4	script	Casamenteira#w	1_F_LIBRARYGIRL,{
 			next;
 			while (true) {
 				input(.@name$);
-				if (.@name$ != strcharinfo(PC_NAME)) {
+				if (.@name$ != strcharinfo(CHAR_NAME)) {
 					mes "[Casamenteira]";
 					mes "Hum, você tem que escrever abaixo o seu nome exatamente como está exibido.";
 					mes "Talvez você precise copiar e colá-lo?";
@@ -446,7 +446,7 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 	if (!getpartnerid()) {
 		if (!$wedding) {
 			if (wedding_sign == 1) {
-				getpartymember(getcharid(CHAR_ID_PARTY));
+				getpartymember(getcharid(ID_PARTY));
 				.@partymembercount = $@partymembercount;
 				if (.@partymembercount == 2) {
 					if (Sex == SEX_MALE) {
@@ -461,7 +461,7 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 						mes "[Vomars]";
 						mes "Que o amor de vocês possa crescer mais a cada dia que passa.";
 						next;
-						mapannounce(strnpcinfo(NPC_MAP),"É o pedido de matrimônio do noivo, Senhor "+strcharinfo(PC_NAME)+"...",bc_map);
+						mapannounce(strnpcinfo(NPC_MAP),"É o pedido de matrimônio do noivo, Senhor "+strcharinfo(CHAR_NAME)+"...",bc_map);
 						mes "[Vomars]";
 						mes "Até o fim do mundo, você deve ficar ao lado daquela que você realmente ama, para apoiá-la e protegê-la.";
 						next;
@@ -470,16 +470,16 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 						next;
 						input($wed_bride$);
 						mes "[Vomars]";
-						mes "Senhor "+strcharinfo(PC_NAME)+"...";
+						mes "Senhor "+strcharinfo(CHAR_NAME)+"...";
 						mes "Você jura pela sua vida que para sempre você vai amá-la e tomará conta da sua noiva, Senhorita "+$wed_bride$+"?";
 						next;
 						select("Eu aceito.");
-						$wed_groom$ = strcharinfo(PC_NAME);
+						$wed_groom$ = strcharinfo(CHAR_NAME);
 						mes "[Vomars]";
 						mes "Agora, é a vez da sua noiva fazer seu voto de casamento.";
 						mes "Que ela venha aqui na frente...";
 						close2;
-						mapannounce(strnpcinfo(NPC_MAP),"O noivo, Senhor "+strcharinfo(PC_NAME)+", fez seus votos para a Senhorita "+$wed_bride$+"...",bc_map);
+						mapannounce(strnpcinfo(NPC_MAP),"O noivo, Senhor "+strcharinfo(CHAR_NAME)+", fez seus votos para a Senhorita "+$wed_bride$+"...",bc_map);
 						cutin("",255);
 						end;
 					}
@@ -507,11 +507,11 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 			end;
 		} else if ($wedding == 1) {
 			if (wedding_sign == 1) {
-				getpartymember(getcharid(CHAR_ID_PARTY));
+				getpartymember(getcharid(ID_PARTY));
 				.@partymembercount = $@partymembercount;
 				if (.@partymembercount == 2) {
 					if (Sex == SEX_FEMALE) {
-						if (strcharinfo(PC_NAME) == $wed_bride$) {
+						if (strcharinfo(CHAR_NAME) == $wed_bride$) {
 							mes "[Vomars]";
 							mes "Jovens Apaixonados, por favor lembrem se desde momento pelo resto das suas vidas.";
 							next;
@@ -544,16 +544,16 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 							mes "Você casará com "+$wed_groom$+"?";
 							next;
 							if (select("Sim, Eu caso.","^FF0000Não.^000000") == 1) {
-								if (isloggedin(getcharid(CHAR_ID_ACCOUNT,$wed_groom$))) {
+								if (isloggedin(getcharid(ID_ACCOUNT,$wed_groom$))) {
 									if (marriage($wed_groom$)) {
 										wedding;
 										sc_start(SC_WEDDING,3600000,1);
 										getitem(Bride_Ring,1);
-										attachrid(getcharid(CHAR_ID_ACCOUNT,$wed_groom$));
+										attachrid(getcharid(ID_ACCOUNT,$wed_groom$));
 										sc_start(SC_WEDDING,3600000,1);
 										getitem(Bridegroom_Ring,1);
 										detachrid;
-										attachrid(getcharid(CHAR_ID_ACCOUNT,$wed_bride$));
+										attachrid(getcharid(ID_ACCOUNT,$wed_bride$));
 										cutin("wedding_bomars02",2);
 										mapannounce(strnpcinfo(NPC_MAP),"Agora Eu os declaro, "+$wed_groom$+" e "+$wed_bride$+", Marido e Mulher.",bc_map);
 										mes "[Vomars]";
@@ -609,7 +609,7 @@ prt_church,100,128,4	script	Bispo#w	1_M_PASTOR,{
 				}
 				callsub(S_Busy);
 			}
-			if (strcharinfo(PC_NAME) == $wed_bride$) {
+			if (strcharinfo(CHAR_NAME) == $wed_bride$) {
 				mes "[Vomars]";
 				mes "Hum? Parece que a Casamenteira ainda não recebeu sua solitação de matrimônio.";
 				next;

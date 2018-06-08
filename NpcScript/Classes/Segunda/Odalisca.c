@@ -85,7 +85,7 @@ job_duncer,43,93,4	script	Aile#dancerq	4_F_07,{
 						next;
 						cutin("job_dancer_eir01",2);
 						mes "[Aire]";
-						mes "Seu nome é "+strcharinfo(PC_NAME)+"?";
+						mes "Seu nome é "+strcharinfo(CHAR_NAME)+"?";
 						mes "Oh! Que belo nome!";
 						mes "Apenas um momento, tenho que mostrar isso ao diretor.";
 						mes "Então volte daqui a pouco, certo?";
@@ -329,7 +329,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "[Bijou]";
 				mes "6. Quem é a Odalisca mais bonita?";
 				next;
-				if (select(strcharinfo(PC_NAME),"Bijou","Aile","Bonjour") == 2) {
+				if (select(strcharinfo(CHAR_NAME),"Bijou","Aile","Bonjour") == 2) {
 					.@da_score += 10;
 				}
 				mes "[Bijou]";
@@ -398,7 +398,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "[Bijou]";
 				mes "7. Quem é a Odalisca mais graciosa?";
 				next;
-				if (select(strcharinfo(PC_NAME),"Bijou","Isis","Mercy Bokou") == 2) {
+				if (select(strcharinfo(CHAR_NAME),"Bijou","Isis","Mercy Bokou") == 2) {
 					.@da_score += 10;
 				}
 				mes "[Bijou]";
@@ -449,7 +449,7 @@ job_duncer,95,93,4	script	Bijou#dancerq	4W_F_01,{
 				mes "[Bijou]";
 				mes "5. Quem a seguir, é a Odalisca mais maravilhosa?";
 				next;
-				if (select(strcharinfo(PC_NAME),"Bijou","Isis","Guton Tak") == 2) {
+				if (select(strcharinfo(CHAR_NAME),"Bijou","Isis","Guton Tak") == 2) {
 					.@da_score += 10;
 				}
 				mes "[Bijou]";
@@ -836,12 +836,12 @@ job_duncer,69,114,0	script	dance_return#dancerq	FAKE_NPC,8,8,{
 
 	OnTouch:
 	if (getvariableofnpc(.DancePoints,"dance#dancerq") > 12) {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Passou no teste de dança!!",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" Passou no teste de dança!!",bc_map);
 		dancerq = 9;
 		changequest(7005,7006);
 		warp(strnpcinfo(NPC_MAP),69,49);
 	} else {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" Reprovou no teste de dança!!",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" Reprovou no teste de dança!!",bc_map);
 		warp("comodo",188,162);
 	}
 	donpcevent("dance_timer#dancerq::OnStop");

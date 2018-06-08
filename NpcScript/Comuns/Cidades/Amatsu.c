@@ -313,12 +313,12 @@ amatsu,274,178,7	script	Veterinario#ama	4_M_JOB_WIZARD,{
 
 // ------------------------------------------------------------------
 amatsu,262,197,1	script	Árvore Lendária#ama	HIDDEN_NPC,{
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "^3355FFHavia uma cerejeira na colina.";
 	mes "Ela não se parece com as outras arvores.";
 	mes "Essa árvore parece ter muitas histórias para contar.^000000";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "^3355FFHaverão pessoas morando aqui?";
 	mes "Eu dou uma olhada ao redor e vejo alguem lá embaixo.";
 	mes "Vou perguntar sobre esta arvore.^000000";

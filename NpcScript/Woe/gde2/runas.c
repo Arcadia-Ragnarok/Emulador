@@ -19,7 +19,7 @@
 	.@rune = atoi(charat(strnpcinfo(NPC_NAME_VISIBLE), 0));
 	.@data$ = "$agitse_" + strnpcinfo(NPC_NAME_HIDDEN);
 
-	if (getcharid(CHAR_ID_GUILD) == getcastledata(strnpcinfo(NPC_NAME_HIDDEN), 1)) {
+	if (getcharid(ID_GUILD) == getcastledata(strnpcinfo(NPC_NAME_HIDDEN), 1)) {
 		mes("^3355FFVocê precisa dos seguintes materiais para reconstruir a Runa Guardiã destruída.^000000");
 		next;
 		mes("1 Oridecon\n"

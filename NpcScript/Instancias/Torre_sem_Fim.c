@@ -229,7 +229,7 @@ alberta,214,77,6	script	Capitão Janssen#eT	4_M_SEAMAN,{
 
 // ------------------------------------------------------------------
 e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
+	.@party_id = getcharid(ID_PARTY);
 	.@p_name$ = getpartyname(.@party_id);
 	.@etower_timer = questprogress(60200,PLAYTIME); // 1 Semana
 	.@etower_timer2 = questprogress(60201,PLAYTIME); // 4 Horas
@@ -239,7 +239,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 		close;
 	}
 	if (!.@etower_timer) {
-		if (getcharid(CHAR_ID_CHAR) == getpartyleader(.@party_id,2)) {
+		if (getcharid(ID_CHAR) == getpartyleader(.@party_id,2)) {
 			mes "Confirmado, o grupo foi feito.";
 			mes "Você gostaria de reservar a entrada para a Torre Sem Fim?";
 			next;
@@ -248,7 +248,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 				.@instance = instance_create("Torre Infinita",.@party_id);
 				if (.@instance < 0) {
 					mes "Nome do grupo:"+.@p_name$+"";
-					mes "Líder do grupo:"+strcharinfo(PC_NAME)+"";
+					mes "Líder do grupo:"+strcharinfo(CHAR_NAME)+"";
 					mes "^0000ffTorre Infinita ^000000- A reserva falhou!";
 					close;
 				}
@@ -333,7 +333,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 		mes "O líder do grupo não gerou o calabouço ainda.";
 		close;
 	} else {
-		mapannounce("e_tower",strcharinfo(PC_NAME)+" do grupo, "+getarg(3)+", está entrando no calabouço da, Torre Infinita.",bc_map,"0x00ff99",FW_NORMAL,12);
+		mapannounce("e_tower",strcharinfo(CHAR_NAME)+" do grupo, "+getarg(3)+", está entrando no calabouço da, Torre Infinita.",bc_map,"0x00ff99",FW_NORMAL,12);
 		if (getarg(1)) {
 			etower_timer = gettimetick(2);
 			setquest(60200);
@@ -349,7 +349,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 e_tower,30,30,2	script	Grande Vortex#eT	CLEAR_NPC,2,2,{
 	end;
 	OnTouch:
-	mapannounce("e_tower","["+strcharinfo(PC_NAME)+"], parece ter sido engolido por um enorme vortex",bc_map,"0x00ff99",FW_NORMAL,12);
+	mapannounce("e_tower","["+strcharinfo(CHAR_NAME)+"], parece ter sido engolido por um enorme vortex",bc_map,"0x00ff99",FW_NORMAL,12);
 	warp("alberta",223,36);
 	end;
 }
@@ -1168,7 +1168,7 @@ function	script	F_Tower_Warp	{
 		close;
 	}
 	delitem(Dark_Ashes,.@i);
-	mapannounce(instance_mapname("1@tower"),strcharinfo(PC_NAME)+". Você será teleportado para o "+.@level$[.@i]+" andar.",bc_map,"0x00ff99");
+	mapannounce(instance_mapname("1@tower"),strcharinfo(CHAR_NAME)+". Você será teleportado para o "+.@level$[.@i]+" andar.",bc_map,"0x00ff99");
 	warp(instance_mapname(.@map$[.@i]),52,354);
 	close;
 

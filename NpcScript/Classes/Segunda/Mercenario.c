@@ -141,7 +141,7 @@ in_moc_16,19,33,1	script	Membro da Guilda#assassinq	1_M_JOBTESTER,{
 			mes "Eu me lembro, porque soava engraçado para mim...";
 			next;
 			mes "[Mercenário Huey]";
-			mes strcharinfo(PC_NAME)+", certo?";
+			mes strcharinfo(CHAR_NAME)+", certo?";
 			mes "Era sim, como tem passado?";
 			next;
 			mes "[Mercenário Huey]";
@@ -474,7 +474,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 			next;
 			mes "[Mercenário Khai]";
 			mes "Vamos ver.";
-			mes "Seu nome é "+strcharinfo(PC_NAME)+"...";
+			mes "Seu nome é "+strcharinfo(CHAR_NAME)+"...";
 			mes "Level de Classe "+JobLevel+"...";
 			next;
 			if (JobLevel > 48) {
@@ -547,7 +547,7 @@ in_moc_16,25,90,1	script	Membro da Guilda#ASN2	4_M_JOB_ASSASSIN,2,2,{
 			mes "Preencha o formulário com seu nome e do nível de classe.";
 			next;
 			mes "[Mercenário Khai]";
-			mes strcharinfo(PC_NAME)+"?";
+			mes strcharinfo(CHAR_NAME)+"?";
 			mes "Esse é o seu nome?";
 			mes "Parece engraçado.";
 			mes "Vamos ver...";
@@ -1059,7 +1059,7 @@ in_moc_16,21,165,2	script	Sala de Espera#assassinq	4_F_JOB_ASSASSIN,{
 	warpwaitingpc(strnpcinfo(NPC_MAP),66,151);
 	attachrid($@warpwaitingpc[0]);
 	if (assassinq2 < 5) {
-		warpchar(strnpcinfo(NPC_MAP),20,145,getcharid(CHAR_ID_CHAR));
+		warpchar(strnpcinfo(NPC_MAP),20,145,getcharid(ID_CHAR));
 		end;
 	}
 	donpcevent("Beholder#assassinq::OnEnable");
@@ -1076,7 +1076,7 @@ in_moc_16,21,165,2	script	Sala de Espera#assassinq	4_F_JOB_ASSASSIN,{
 in_moc_16,21,165,2	script	Guia do Teste#assassinq	4_F_JOB_ASSASSIN,4,4,{
 	if (assassinq == 1 && assassinq2 == 5) {
 		mes "[Barcardi]";
-		mes strcharinfo(PC_NAME)+"...";
+		mes strcharinfo(CHAR_NAME)+"...";
 		mes "Você passou no teste?";
 		next;
 		mes "[Barcardi]";
@@ -1930,11 +1930,11 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "Estou aqui.";
 		next;
 		mes "[Lider dos Mercenários]";
-		mes "Gostaria de ouvir a sua opinião sobre "+strcharinfo(PC_NAME)+" sobre o teste de mudança de classe.";
+		mes "Gostaria de ouvir a sua opinião sobre "+strcharinfo(CHAR_NAME)+" sobre o teste de mudança de classe.";
 		next;
 		mes "[O Anônimo]";
 		mes "Ah sim ...";
-		mes "Eu acho "+strcharinfo(PC_NAME)+" que tem potencial.";
+		mes "Eu acho "+strcharinfo(CHAR_NAME)+" que tem potencial.";
 		next;
 		mes "[Lider dos Mercenários]";
 		mes "Bem ...";
@@ -1950,8 +1950,8 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			mes "Eu concordo com o senhor Anônimo.";
 		} else {
 			mes "[Huey]";
-			mes "Apesar "+strcharinfo(PC_NAME)+" parece muito suave e gentil, como uma espécie de gatinho.";
-			mes strcharinfo(PC_NAME)+" tem o requisitos.";
+			mes "Apesar "+strcharinfo(CHAR_NAME)+" parece muito suave e gentil, como uma espécie de gatinho.";
+			mes strcharinfo(CHAR_NAME)+" tem o requisitos.";
 			next;
 			mes "[Huey]";
 			mes "Se está tudo bem com você, eu gostaria de voltar para o meu trabalho.";
@@ -1983,7 +1983,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		next;
 		mes "[Lider dos Mercenários]";
 		mes "Hmm ...";
-		mes "Parece que estamos todos de acordo com as qualificações de "+strcharinfo(PC_NAME)+"...";
+		mes "Parece que estamos todos de acordo com as qualificações de "+strcharinfo(CHAR_NAME)+"...";
 		next;
 		switch (assassinq) {
 			case 8:
@@ -2112,14 +2112,14 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 		mes "Ao receber este sinal, Huey vai promovê-lo a um mercenário.";
 		next;
 		mes "[Lider dos Mercenários]";
-		mes "Você, "+strcharinfo(PC_NAME)+", optou por viver como um mercenário.";
+		mes "Você, "+strcharinfo(CHAR_NAME)+", optou por viver como um mercenário.";
 		mes "Que possa aprender com nossos caminhos, e ser um exemplo honra para os outros";
 		savepoint("morocc",100,100);
 		getitem(Frozen_Heart,1);
 		changequest(8006,8007);
 		next;
 		mes "[Lider dos Mercenários]";
-		mes "Ok, todos vocês podem voltar para suas posições, que eu vou enviar "+strcharinfo(PC_NAME)+" para a entrada....";
+		mes "Ok, todos vocês podem voltar para suas posições, que eu vou enviar "+strcharinfo(CHAR_NAME)+" para a entrada....";
 		if (.@assassinqNpc) {
 			.@assassinqNpc = 0;
 			disablenpc("[Huey]");
@@ -2132,7 +2132,7 @@ in_moc_16,149,80,4	script	Lider dos Mercenários#assassinq_2	1_M_MOC_LORD,1,1,{
 			close2;
 		}
 		mes "[Lider dos Mercenários]";
-		mes strcharinfo(PC_NAME)+" leve esse ^006699Colar Oblivion^000000 para o Huey na entrada da guilda.";
+		mes strcharinfo(CHAR_NAME)+" leve esse ^006699Colar Oblivion^000000 para o Huey na entrada da guilda.";
 		mes "Ele cuidará do resto.";
 		next;
 		warp(strnpcinfo(NPC_MAP),17,19);

@@ -33,7 +33,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "É sério, você está começando a me dar nos nervos!";
 		mes "Mas o que é que você quer de mim?!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Na verdade, nada.";
 		mes "Eu só gosto de ficar vendo você trabalhar.";
 		mes "Aliás, o que é que você faz exatamente, heim?";
@@ -42,7 +42,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Ei! Se eu pudesse ficar mostrando o que eu estou fazendo.";
 		mes "Eu não ficaria tão tenso com você olhando o que eu faço, não acha?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Nããoooo...";
 		mes "Eu acho que você fica sempre tenso mesmo.";
 		next;
@@ -58,7 +58,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Isso realmente me irrita!";
 		mes "Por que você não dá o fora?!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, eu também estava pensando porque é que você trabalha em um lugar que é tão, hum... depressivo.";
 		next;
 		mes "[Espinha]";
@@ -73,7 +73,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Ou mesmo ir a qualquer lugar da cidade, sem autorização.";
 		mes "Caramba, eu posso até mesmo colocar você naquele Laboratório...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "E-espere!";
 		mes "Laboratório?!";
 		mes "Sério?";
@@ -84,7 +84,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Você não vai me deixar em paz, né?";
 		mes "Olha, você parece legal, mesmo sendo meio teimoso, garoto.";
 		mes "Mas eu não confio nem trabalho para estranhos, ponto.";
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mas não há nada que eu possa fazer para você me ajudar a entrar no Laboratório?";
 		next;
 		mes "[Espinha]";
@@ -95,7 +95,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		lhz_sincube = 3;
 		close;
 	} else if (lhz_sincube == 3) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Por favor...";
 		mes "Por favor, diga para mim";
 		mes "como eu posso entrar";
@@ -109,7 +109,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		lhz_sincube = 4;
 		close;
 	} else if (lhz_sincube == 4) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Porque você não me ajudaaaaaa?";
 		mes "Por favoooooooor!";
 		mes "Você é o único que conheceeeee!";
@@ -120,7 +120,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "É isso e ponto final.";
 		mes "Quantas vezes eu preciso dizer isso?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mas deve haver algo que eu possa fazer para você me ajudar!";
 		mes "É-é assim q-que as c-coisas f-funcionam.";
 		mes "Você não p-pode...";
@@ -137,7 +137,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		mes "Então eu dou toda a ajuda que precisar.";
 		mes "Muito bem?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Está brincando, né?";
 		mes "Não tem como eu jamais arranjar tantos zenys!";
 		mes "Eu...";
@@ -273,7 +273,7 @@ lighthalzen,341,224,3	script	Espinha#lhzcube	4_M_LGTGUARD,{
 		lhz_sincube = 12;
 		completequest(12014);
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim...";
 		mes "De qualquer forma, espero que sim.";
 		next;

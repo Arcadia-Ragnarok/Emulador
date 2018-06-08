@@ -20,7 +20,7 @@
 // ------------------------------------------------------------------
 
 function	script	LinkFlag	{
-	if (getcharid(CHAR_ID_GUILD) != getcastledata(strnpcinfo(NPC_MAP), 1)) {
+	if (getcharid(ID_GUILD) != getcastledata(strnpcinfo(NPC_MAP), 1)) {
 		end;
 	} else if (getarg(0) == "Central de Conveniência") {
 		mes("^3355FFEste é o Lugar do Serviço de Teleporte.\n"

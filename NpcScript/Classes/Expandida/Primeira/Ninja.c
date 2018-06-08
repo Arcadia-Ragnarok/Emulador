@@ -23,7 +23,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			close;
 		}
 		if (ninjaq == 0) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Com licença.";
 			mes "O-olá?";
 			next;
@@ -31,7 +31,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "...............................";
 			mes "Como fez isso?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Fiz o quê?";
 			mes "Eu não fiz nada, eu acho que não...";
 			next;
@@ -42,7 +42,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "Wildcat Joe deve ter te mandado para me matar!";
 			mes "Não cairei em seus truques! Morra!";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "E-espere!";
 			mes "Eu nem mesmo sei quem sei quem Wildcat Joe é!";
 			mes "Acalme-se, não há motivo para ficar violento!";
@@ -52,7 +52,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "Como se esquivou de todos os meus ataques?";
 			mes "Você tem algum talento, eu admito.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "...............................";
 			mes "Eu vim aqui esperando mudar minha classe para Ninja.";
 			next;
@@ -127,7 +127,7 @@ que_ng,30,65,3	script	Cougar#ninjaq	4_M_JOB_ASSASSIN,{
 			mes "^3355FF1 Fracon^000000.";
 			mes "Por favor, consiga-os o mais rápido que puder!";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Huh? Que engraçado, Wildcat Joe me pediu para conseguir os mesmos materiais.";
 			next;
 			mes "[Cougar]";
@@ -222,7 +222,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Eu viajei para muitos países, mas nunca estive em um prédio tão alto como a Torre de Einbroch.";
 		mes "Todos os prédios na minha cidade natal são minúsculos em comparação...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Oh, você é de Amatsu?";
 		mes "Estou procurando alguém de lá que é chamado Wildcat Joe.";
 		next;
@@ -230,7 +230,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Não... Não, na verdade sou de Izlude, e estou aqui em Einbroch somente por alguns minérios.";
 		mes "Diga-me, por que está procurando por Wildcat Joe?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, preciso entregar esta carta para ele e obter sua resposta para que eu possa me tornar um Ninja.";
 		next;
 		mes "[Homem Suspeito]";
@@ -269,14 +269,14 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Agora, é minha vez de te ajudar.";
 		mes "Aqui, deixe-me ver essa carta.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "?????!!";
 		next;
 		mes "[Homem Suspeito]";
 		mes "Por quê?";
 		mes "Você não trouxe essa carta de Cougar para mim?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você é..";
 		mes "Você é Wildcat Joe?";
 		next;
@@ -294,7 +294,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Lembre-se de se mover rapidamente, e de sempre desaparecer sem deixar rastros.";
 		mes "Permanecer oculto nas sombras é realmente nosso poder supremo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Entendo... ...........";
 		next;
 		mes "[Red Leopard Joe]";
@@ -311,7 +311,7 @@ einbroch,184,194,3	script	Homem Suspeito#ninjaq	4_M_SITDOWN,{
 		mes "Também vou escrever uma recomendação para você...";
 		mes "Acho que você vai se tornar um excelente Ninja, mesmo que eu tenha acabado de te enganar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "......";
 		mes ".........";
 		mes "............";

@@ -36,7 +36,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		next;
 		if (select("Ignora-o.","Quem é você?") == 2) {
 			cutin("bard_eland04",2);
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Você parece ser novo por aqui...";
 			mes "Quem é você?";
 			next;
@@ -60,7 +60,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 	} else if (gef_bard_q == 1) {
 		cutin("bard_eland01",2);
 		mes "[Errende]";
-		mes "Bem-vind"+(Sex == SEX_MALE)+" de volta, "+strcharinfo(PC_NAME)+".";
+		mes "Bem-vind"+(Sex == SEX_MALE)+" de volta, "+strcharinfo(CHAR_NAME)+".";
 		mes "O que você gostaria que fizesse por você?";
 		mes "Gostaria de ouvir um conto ou escutar uma canção?";
 	} else if (gef_bard_q == 2) {
@@ -276,7 +276,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 			mes "Claro, você começa a sentir pena dele.^000000";
 			next;
 			if (select("Está bem, vou te ajudar...","Ignora-o assim mesmo") == 1) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Ei. Ei, Errende.";
 				mes "Pare de cantar essa canção.";
 				mes "É embaraçoso, ok?";
@@ -328,7 +328,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 		mes "Meu espírito é insensível.";
 		mes "Não há nenhuma inspiração.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O senhor não acha...";
 		mes "Que a pessoa...";
 		mes "que mudou a canção seria...";
@@ -573,7 +573,7 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 	} else if (gef_bard_q == 12) {
 		cutin("bard_eland01",2);
 		mes "[Errende]";
-		mes "Olá "+strcharinfo(PC_NAME)+" o que você gostaria que fizesse por você?";
+		mes "Olá "+strcharinfo(CHAR_NAME)+" o que você gostaria que fizesse por você?";
 		mes "Gostaria de ouvir um conto ou escutar uma canção?";
 	}
 	next;
@@ -879,13 +879,13 @@ geffen,132,38,3	script	Bardo#gef_bard_q	1_M_BARD,{
 					mes "Basta segurar a minha mão.";
 					mes "*La la la* *La la la*^000000";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "À propósito...";
 					mes "Porque é que vocês brigam às vezes?";
 					mes "Soa estranho quando você faz isso.";
 					next;
 					mes "[Errende]";
-					mes "C-como você pode dizer tal coisa, "+strcharinfo(PC_NAME)+"?";
+					mes "C-como você pode dizer tal coisa, "+strcharinfo(CHAR_NAME)+"?";
 					mes "É difícil chegar a melodias originais!";
 				}
 				break;
@@ -919,7 +919,7 @@ payon,181,172,3	script	Bardo#2gef_bard_q	1_M_BARD,{
 		mes "Que vive em Payon e todo mundo adora essa música.";
 		mes "Especialmente porque eu estou cantando e você sabe disso...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença.";
 		mes "Você é...";
 		mes "Gunther Doubleharmony?";
@@ -1275,7 +1275,7 @@ morocc,134,111,3	script	Bardo#3gef_bard_q	2_M_BARD_ORIENT,{
 			mes "Estou ofendido porque Errende não gostou das palavras que escrevi para 'Eu fico apaixonado'.";
 			mes "Mas, eu suponho que ele é um romântico de coração.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Então...";
 			mes "Você conhece a letra original dessa canção?";
 			next;
@@ -1540,7 +1540,7 @@ yuno_in01,163,101,0	script	Livro Velho#gef_bard_q	HIDDEN_NPC,{
 		mes "Em seis, eu fico apaixonado.";
 		mes "Em sete, você se apaixona.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Acho que é isso!";
 		mes "É melhor eu anotá-la.";
 		next;

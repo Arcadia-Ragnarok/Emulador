@@ -93,7 +93,7 @@ alberta_in,53,43,6	script	Chefe Mansur#merchantq	4_M_04,{
 			switch (select("Preencer a inscrição","Teste do mercador?","Cancelar")) {
 				case 1:
 				mes "[Chefe Mansur]";
-				mes strcharinfo(PC_NAME)+"?!";
+				mes strcharinfo(CHAR_NAME)+"?!";
 				mes "Intereçante seu nome.";
 				mes "Agora vamos a taxa de inscrição, como quer pagar?";
 				next;
@@ -308,7 +308,7 @@ alberta_in,28,29,2	script	Mercador#merchantq	4_M_01,{
 		close;
 	} else if (merchantq == 2) {
 		mes "[Mercador da Guilda]";
-		mes "Seu nome é "+strcharinfo(PC_NAME)+"?";
+		mes "Seu nome é "+strcharinfo(CHAR_NAME)+"?";
 		select("Sim, me mandaram aqui");
 		next;
 		mes "[Mercador da Guilda]";

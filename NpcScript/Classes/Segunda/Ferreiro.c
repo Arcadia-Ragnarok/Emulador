@@ -102,7 +102,7 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 				blacksmithq = 7;
 				close;
 			}
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu viajei, fiz uma entrega extressante, e você ainda quer que eu faça mais um teste?!";
 			next;
 			mes "[Altiregen]";
@@ -129,7 +129,7 @@ ein_in01,18,28,4	script	Ferreiro#blacksmithq	4_M_JOB_BLACKSMITH,{
 				close;
 			} else {
 				mes "[Altiregen]";
-				mes "Ótimo "+strcharinfo(PC_NAME)+" você completou todos os testes de nossa guilda";
+				mes "Ótimo "+strcharinfo(CHAR_NAME)+" você completou todos os testes de nossa guilda";
 				mes "Sem dúvida você merece ser chamado de Ferreiro.";
 				jobchange(Job_Blacksmith);
 				completequest(2015);

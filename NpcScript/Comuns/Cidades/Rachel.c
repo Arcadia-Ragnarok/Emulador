@@ -198,7 +198,7 @@ rachel,197,137,3	script	Bardo#rac	1_M_BARD,{
 	mes "Sim, Estou falando da papisa...";
 	mes "Papisa, Papisa....";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Você deve estar fora de si cantando este tipo de música aqui em Arunafeltz!";
 	next;
 	mes ".........";

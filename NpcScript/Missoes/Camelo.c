@@ -21,7 +21,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		next;
 		mes "^3355FFEsta criança chorando parece estar bem preocupada...^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu, porque você está chorando?";
 		mes "Você está perdido?";
 		mes "Onde está sua mãe?";
@@ -30,11 +30,11 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Minha... Mãe...";
 		mes "Em casa...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "......";
 		mes ".........";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Entendo.";
 		mes "Então...";
 		mes "Você está tendo problemas procurando o caminho de volta para casa?";
@@ -45,10 +45,10 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "^333333*Sniff sniff*^000000";
 		mes "Buaaaaaaaahh!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você pode me dizer por que você está chorando?";
 		next;
 		mes "[Garoto Karyn]";
@@ -56,7 +56,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "E-eu havia ido para... O-o...";
 		mes "Vulcão.... c-c-com minha irm-- Buuaaaaaaah!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Pobre garoto...";
 		mes "Vamos, respire fundo, assim você pode me dizer sobre o que aconteçeu um pouco mais devagar.";
 		next;
@@ -89,7 +89,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Por favor?";
 		mes "Eu prometo que eu irei lhe pagar assim que meu pai voltar!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere... Eu tenho uma pergunta.";
 		mes "Você disse que alguém pegou sua irmã no Vulcão de Thor?";
 		mes "O que eles fizeram?";
@@ -100,12 +100,12 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Eu fiquei tão assustado, eu só fugi para longe!";
 		mes "Eu... Eu não queria deixar minha lá!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hmmm...";
 		mes "Talvez sua irmã tenha sido sequestrada por bandidos...";
 		next;
 		if (select("Rejeitar pedido","Aceitar Pedido") == 1) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Lamento garoto mas eu tenho muitas coisas para fazer.";
 			mes "Estou certo de que alguém virá logo logo para salvar sua irmã.";
 			next;
@@ -113,7 +113,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 			mes "Uah";
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ok, Vou ver o que posso fazer.";
 		mes "Eu irei tentar de tudo para achar sua irmã";
 		next;
@@ -126,7 +126,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "^333333*Sniff*^000000";
 		mes "Eu não sei o que eu iria fazer! Buaaaaaaaah";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Certo...";
 		mes "Deseje-me sorte.";
 		mes "Eu irei procurar pelo Vulcão de Thor para achar sua pequena irmã Curdie.";
@@ -134,7 +134,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		rachel_camel = 1;
 		close;
 	} else if (rachel_camel == 1) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu devo procurar pelo Vulcão de Thor por Curdie, a pequena irmã de Karyn.";
 		close;
 	} else if (rachel_camel == 2) {
@@ -143,14 +143,14 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Ela está bem?";
 		mes "O que aconteceu?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu a encontrei, ela está bem, mas...";
 		next;
 		mes "[Garoto Karyn]";
 		mes "O que?";
 		mes "Por que ela não está com você?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Curdie está...";
 		mes "Bem, ela está acorrentada.";
 		mes "Nós precisamos achar uma forma de libertá-la.";
@@ -173,18 +173,18 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "É melhor falar com o Sr. Lockenlock primeiro, o chaveiro na rua do mercado.";
 		close;
 	} else if (rachel_camel == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu devo encontrar o chaveiro na Rua do Mercado.";
 		mes "E o perguntar se ele poderia me ajudar a soltar as algemas de Curdie.";
 		close;
 	} else if (rachel_camel == 6) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera...";
 		mes "Eu deveria estar levando todos os ingredientes do sabão para a Srta. Ivory.";
 		mes "Quais eram eles mesmo...?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^4D4DFF10 Leites^000000,";
 		mes "^4D4DFF100 Ervas Verdes^000000,";
 		mes "^4D4DFF50 Jellopys^000000, e";
@@ -192,70 +192,70 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Eu devo pegar estes...";
 		close;
 	} else if (rachel_camel == 7) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu preciso falar com alguém chamado Saraman para conseguir os ingredientes do sabão...";
 		close;
 	} else if (rachel_camel == 8) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu preciso levar para o Sr. Saraman todas as coisas que ele precisa para estimular o apetite de um camelo.";
 		mes "Eu preciso conseguir...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^4D4DFF1 Maçã Verde^000000,";
 		mes "^4D4DFF5 Rações para Monstros^000000,";
 		mes "^4D4DFF1 Garrafa Vazia^000000, e";
 		mes "^4D4DFF1 Poção Amarela^000000.";
 		close;
 	} else if (rachel_camel == 9) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tenho tudo que é necessário para estimular o apetite de um camelo.";
 		mes "Agora eu preciso de alimentar o camelo então.";
 		mes "Eu poderei conseguir os ingredientes para o sabão, 5 Blocos de Estrume.";
 		close;
 	} else if (rachel_camel == 10) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Agora,seria melhor gastar meu tempo procurando pelos ingredientes no deserto de camelos.";
 		close;
 	} else if (rachel_camel == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu deveria achar o camelo perdido do Sr. Saraman, alimentar este camelo com estimulantes de apetite.";
 		mes "E depois pegar os ingredientes para o sabão e 5 Blocos de Estrume se eu quiser libertar Curdie.";
 		close;
 	} else if (rachel_camel > 11 && rachel_camel < 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem... Eu encontrei o camelo.";
 		mes "Agora eu preciso conseguir todos os ingredientes para o sabão.";
 		mes "Quanto mais cedo eu fizer isto, mais cedo eu irei ajudar Curdie.";
 		close;
 	} else if (rachel_camel == 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu consegui todos os ingredientes para o sabão e 5 destes Blocos de Estrume.";
 		mes "Eu tenho voltar ao SR. Saraman para dizer a ele onde está o seu camelo, e depois ir até a Srta. Ivory.";
 		close;
 	} else if (rachel_camel == 18) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu não deveria estar indo ver a Srta. Ivory agora?";
 		close;
 	} else if (rachel_camel == 19) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Agora que eu tenho o Sabão de Camelo de Veludo, eu devo levar isto para o Sr. Lockenlock.";
 		close;
 	} else if (rachel_camel == 20) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tenho de utilizar o sabão para fazer um molde de chave que eu possa levar ao Sr. Lockenlock.";
 		close;
 	} else if (rachel_camel == 21) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Fazer a chave é mais importante do que dizer a Karyn sobre o que está acontecendo.";
 		close;
 	} else if (rachel_camel == 22) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu preciso levar 1 Aço para o Mr. Lockenlock então ele poderá fazer uma chave que finalmente libertará Curdie.";
 		close;
 	} else if (rachel_camel == 23) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu finalmente consegui a chave que eu posso usar para libertar Curdie.";
 		mes "Eu estou";
 		mes "indo salvá-la neste momento.";
@@ -265,7 +265,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Por favor traga Curdie o mais rápido possível! ^333333*Soluço*^000000";
 		close;
 	} else if (rachel_camel == 24) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, Karyn! Eu enviei sua irmã de volta para a cidade com uma Asa de Borboleta.";
 		mes "Ela voltou com segurança?";
 		next;
@@ -281,7 +281,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Eu prometo dizer ao meu pai sobre o que você fez assim que ele voltar.";
 		mes "Obrigado por tudo que você fez por nós!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hmm... Entendo...";
 		mes "Eu irei voltar depois, quando Curdie tiver saído do hospital.";
 		next;
@@ -289,7 +289,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Sim, por favor faça isto.";
 		mes "Eu prometo lhe ajudar sempre que precisar de mim!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hahahaha!";
 		mes "Bem...";
 		mes "Que isto é bem tranquilizante.";
@@ -299,7 +299,7 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "[Garoto Karyn]";
 		mes "Entendi!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bom, muito bom...";
 		mes "É uma promessa, então.";
 		mes "Vejo você por aí";
@@ -320,14 +320,14 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Curdi acabou de voltar do hospital e está, a cada dia ficando melhor!";
 		mes "Ah, e eu estou cuidando dele, como tinha prometido.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sério? Isto é ótimo.";
 		mes "Você deveria estar orgulhoso de si.";
 		next;
 		mes "[Pequeno Karyn]";
 		mes "^666666*envergonhado*^000000 Heh heh!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, eu estava me perguntando se você poderia me ajudar.";
 		mes "Seu pai é um pescador, certo?";
 		mes "Você perguntaria a ele se ele poderia me emprestar seu barco?";
@@ -348,14 +348,14 @@ veins,327,185,3	script	Garoto#camel	4_M_DST_CHILD,{
 		mes "Meu pai está tão nervoso por não poder usar o barco dele que talvez seja melhor não contarmos que você deseja usá-lo.";
 		mes "Vamos manter nosso segredinho, certo?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "C-claro!";
 		next;
 		mes "[Pequeno Karyn]";
 		mes "De qualquer forma, seu barco é o único da praia do sul uma vez que todos os outros pescadores atracam seus barcos em outros lugares.";
 		mes "E ainda, o barco do meu pai vai enferrujar se ninguém usá-lo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ótimo! Muito obrigado pela sua ajuda, Karyn.";
 		mes "Eu me certificarei de cuidar muito bem do barco do seu pai.";
 		mes "E eu só preciso dele por um momento, de qualquer forma.";
@@ -386,7 +386,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 	if (rachel_camel == 1) {
 		mes "^3355FFVocê se depara com uma menina deitada sobre o chão inconsciente.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei, menina! Acorde!";
 		mes "Você pode me escutar?";
 		next;
@@ -398,7 +398,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "...Ah, owwww";
 		mes "W-waaaaaaaah!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Desculpe!";
 		mes "Eu não queria fazer você chorar!";
 		mes "Você... Você está bem?";
@@ -408,7 +408,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Ah não, você tem que sair daqui!";
 		mes "Você estará em apuros se eles o capturarem!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É você Curdie?";
 		mes "Seu irmão Karyn me pediu para resgatar você.";
 		mes "Vamos, Nós precisamos de tirar você daqui.";
@@ -419,12 +419,12 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Eles me prenderam nestas algemas e eu não posso me mexer!";
 		mes "Você tem de sair antes que aqueles homens assustadores voltem!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que...?!";
 		mes "Que bastardos!";
 		mes "Prendendo uma pequena menina como esta...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Argh!";
 		mes "E eu não posso usar força bruta para quebrar estas algemas!";
 		mes "Eu acabaria te machucando...!";
@@ -436,7 +436,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Agora apresse-se!";
 		mes "Alguém está vindo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ok, Eu vou...";
 		mes "Mas tenha paciência, e espere por mim.";
 		mes "Eu irei descobrir uma forma para libertá-la.";
@@ -445,7 +445,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "^333333*Soluço*^000000";
 		mes "S-Sério...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu prometo.";
 		mes "Eu estou certo de que há alguém na cidade que saiba uma forma de soltar estas algemas.";
 		mes "Eu estarei de volta o mais rápido possível!";
@@ -487,7 +487,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Curdie de suas algemas.^000000";
 		close;
 	} else if (rachel_camel == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu deveria achar o camelo perdido do Sr. Saraman, alimentar este camelo com estimulantes de apetite.";
 		mes "Edepois pegar os ingredientes para o sabão e 5 Blocos de Estrume se eu quiser libertar Curdie.";
 		close;
@@ -495,7 +495,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "^3355FFVocê já encontrou o camelo, então você precisa coletar os ingredientes para o sabão se quiser libertar Curdie.^000000";
 		close;
 	} else if (rachel_camel == 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu consegui todos os ingredientes para o sabão e 5 destes Blocos de Estrume.";
 		mes "Eu tenho voltar ao Sr. Saraman para dizer a ele onde está o seu camelo, e depois ir até a Srta. Ivory.";
 		close;
@@ -517,7 +517,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Irei eu estar sempre presa aqui?";
 		mes "Eu... Eu quero minha mãe...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ah... Você está acordada?";
 		mes "Não se preocupe, Curdie, eu estou certo de que eu logo poderei te libertar.";
 		mes "Tente esperar mais um pouco.";
@@ -538,7 +538,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "^3355FFOs olhos de Curdie estão perdendo o foco e estão virando para cima.";
 		mes "Ela talvez não sobreviva se continuasse sendo forçada a ficar aqui por muito tempo.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não se preocupe.";
 		mes "Eu virei resgatá-la assim que eu fizer a chave para soltar estas horríveis algemas.";
 		mes "Não se preocupe...";
@@ -554,7 +554,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Eu quero...";
 		mes "Eu queria apenas lhe agradecer por fazer o possível para me ajudar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Tudo estará bem.";
 		mes "Eu tenho apenas de me apressar um pouco mais rápido.";
 		mes "Certo, é hora de ir.";
@@ -573,7 +573,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "Vo-Você...";
 		mes "É realmente você?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim sou eu Curdie!";
 		mes "Eu espero que esta chave funcione...";
 		next;
@@ -590,7 +590,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "[Pequena Curdie]";
 		mes "Eu não consigo mover minhas pernas!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, não temos outra escolha.";
 		mes "Curdie, eu irei enviá-la de volta para a cidade com uma Asa de Borboleta.";
 		mes "Tente não se mexer, certo?";
@@ -603,7 +603,7 @@ que_thor,36,66,5	script	Pequena Curdie#camel	4_F_DST_CHILD,{
 		mes "^3355FFVocê usa o poder de uma Asa de Borboleta para enviar Curdie de volta a cidade.";
 		mes "Felizmente, ela irá chegar a salvo e poderá ver seu irmão Karyn novamente.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que será que ela viu por traz daquela porta de aço neste velho vulcão?";
 		mes "Deve ser algo bem perigoso...";
 		mes "Algo relacionado com o Exército de Rachel...";
@@ -625,7 +625,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Eu nasci e cresci aqui, e ninguém sabe mais sobre esta cidade do que eu.";
 		mes "Sinta-se livre para perguntar se você precisar encontrar seu caminho por aqui.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença, mas você sabe aonde eu posso encontrar um chaveiro?";
 		next;
 		mes "[Toby]";
@@ -633,7 +633,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Sr. Lockenlock e um famoso chaveiro.";
 		mes "E ele faz quase todas as chaves e fechaduras em Veins e também em Rachel.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Mr. Lockenlock, eh?";
 		mes "Mas aonde eu posso encontrá-lo?";
 		next;
@@ -646,7 +646,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Uma Poção Amarela!";
 		mes "Isto nunca falha com este cara!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Entendi.";
 		mes "Obrigado pelo conselho.";
 		next;
@@ -656,7 +656,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Depois de todos estes anos...";
 		mes "Eu fui útil para algo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...Anh...?";
 		next;
 		mes "^3355FFEncontre o Sr.Lockenlock na Rua do Mercado, e leve a ele uma Poção Amarela.^000000";
@@ -668,7 +668,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Depois de todos estes anos...";
 		mes "Eu finalmente fui util para algo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...Anh...?";
 		next;
 		mes "^3355FFEncontre o Sr.Lockenlock na Rua do Mercado, e leve a ele uma Poção Amarela.^000000";
@@ -679,7 +679,7 @@ veins,221,120,5	script	Jovem Nativo#camel	4_M_DESERT,{
 		mes "Eu nasci e cresci aqui e ninguém sabe mais sobre esta cidade do que eu.";
 		mes "Sinta-se livre para perguntar se você precisar encontrar seu caminho por aqui.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não, Obrigado.";
 		next;
 		mes "[Jovem Nativo]";
@@ -699,7 +699,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		close;
 	} else if (rachel_camel == 4) {
 		if (countitem(Yellow_Potion)) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Com licença...?";
 			next;
 			mes "[Chaveiro Lockenlock]";
@@ -707,7 +707,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Minha cabeça...";
 			mes "O que você quer?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh, eu gostaria de fazer uma chave.";
 			next;
 			mes "[Chaveiro Lockenlock]";
@@ -719,7 +719,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Ugh, eu estou tão sedento e esta dor de cabeça está me matando.";
 			mes "Você poderia me trazer uma Poção Amarela primeiro?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Certo, eu acho.";
 			mes "Eu posso lhe dar apenas 1 Poção Amarela.";
 			mes "Aqui está.";
@@ -742,13 +742,13 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Meus cadeados são fortes o suficiente para suportar um dragão, você sabia disto?";
 			mes "Saiba que o exército de Rachel é um de meus melhores clientes.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "^333333Esse cara faz fechaduras para o exército de Rachel?!";
 			mes "Talvez não seja uma boa idéia permitir que ele saiba.";
 			mes "Que eu estou tentando libertar um de seus prisioneiros.";
 			mes "E se ele for fiel ao Exército?^000000";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Então, o que aconteceu foi...";
 			mes "Perdi a minha chave, mas não posso trazer o cadeado aqui comigo..";
 			mes "Eu acho que iria acabar quebrando se eu trouxesse ele comigo.";
@@ -759,7 +759,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Eu vou lhe cobrar um extra, no entanto especialmente porque o meu joelho vão mal.";
 			mes "Então, onde nós vamos exatamente?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Espere!";
 			mes "Não podemos fazer isso!";
 			next;
@@ -767,7 +767,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "O que você quer dizer?";
 			mes "Você não está tentando abrir um cofre de um banco ou algo assim, está?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Não, não é nada disto!";
 			mes "É que a fechadura está em um lugar muito perigoso.";
 			mes "Isto é realmente importante...";
@@ -790,7 +790,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Você irá precisar deste tipo exato de sabão:";
 			mes "Nenhum outro tipo funcionará.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Sabão Chamelepu?";
 			mes "O que é is--";
 			next;
@@ -799,7 +799,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Você deve se apressar e encontrá-la antes que ela feche sua loja.";
 			mes "A dona da loja é uma moça bonita, então será difícil de não encontrá-la.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "...........";
 			delitem(Yellow_Potion,1);
 			changequest(3063,3064);
@@ -818,7 +818,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "Você irá precisar deste tipo de sabão:";
 		mes "Nenhum outro tipo funcionará.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sabão Chamelepu?";
 		mes "O que é is--";
 		next;
@@ -828,11 +828,11 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "A dona da loja é uma moça bonita, então será difícil de não encontrá-la.";
 		close;
 	} else if (rachel_camel == 6) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espera... Eu deveria estar levando todos os ingredientes do sabão para a Srta. Ivory.";
 		mes "Quais eram eles mesmo...?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^4D4DFF10 Leites^000000,";
 		mes "^4D4DFF100 Ervas Verdes^000000,";
 		mes "^4D4DFF50 Jellopys^000000, e";
@@ -840,38 +840,38 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "Eu devo pegar estes...";
 		close;
 	} else if (rachel_camel == 7) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu preciso falar com alguém chamado Saraman para conseguir os ingredientes do sabão...";
 		close;
 	} else if (rachel_camel == 8) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu preciso levar para o Sr. Saraman todas as coisas que ele precisa para estimular o apetite de um camelo.";
 		mes "Eu preciso conseguir...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^4D4DFF1 Maçã Verde^000000,";
 		mes "^4D4DFF5 Rações para Monstros^000000,";
 		mes "^4D4DFF1 Garrafa Vazia^000000, e";
 		mes "^4D4DFF1 Poção Amarela^000000.";
 		close;
 	} else if (rachel_camel == 9) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tenho tudo que é necessário para estimular o apetite de um camelo.";
 		mes "Agora eu preciso de alimentar o camelo.";
 		mes "Então eu poderei conseguir os ingredientes para o sabão, 5 Blocos de Estrume.";
 		close;
 	} else if (rachel_camel == 10) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Agora,seria melhor gastar meu tempo procurando pelos ingredientes no deserto de camelos.";
 		close;
 	} else if (rachel_camel == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu deveria achar o camelo perdido do Sr. Saraman, alimentar este camelo com estimulantes de apetite.";
 		mes "E depois pegar os ingredientes para o sabão e 5 Blocos de Estrume e eu quiser libertar Curdie.";
 		close;
 	} else if (rachel_camel == 12) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem... Eu econtrei o camelo.";
 		mes "Agora eu preciso conseguir todos os ingredientes para o sabão.";
 		mes "Quanto mais cedo eu fizer isto, mais cedo eu irei ajudar Curdie.";
@@ -880,12 +880,12 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "^3355FFVocê já encontrou o camelo, então você precisa coletar os ingredientes para o sabão se quiser libertar Curdie.^000000";
 		close;
 	} else if (rachel_camel == 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu consegui todos os ingredientes para o sabão e 5 destes Blocos de Estrume.";
 		mes "Eu tenho voltar ao SR. Saraman para dizer a ele onde está o seu camelo, depois ir até a Srta. Ivory.";
 		close;
 	} else if (rachel_camel == 18) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu não deveria estar indo ver a Srta. Ivory agora?";
 		close;
@@ -895,7 +895,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "Porque demorou tanto?";
 		mes "Tudo o que tinha a fazer era ir ao mercado e comprá-lo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...............................";
 		mes "...............................";
 		mes "...............................";
@@ -923,13 +923,13 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "Finalmente, traga a garrafa de volta para mim, para que eu possa fazer a chave.";
 		mes "Mas quando você voltar, eu preciso ter certeza que a chave que você está fazendo não é para nada ilegal...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Tudo bem.";
 		changequest(3078,3079);
 		rachel_camel = 20;
 		close;
 	} else if (rachel_camel == 20) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tenho de utilizar o sabão para fazer um molde de chave que eu possa levar ao Sr. Lockenlock.";
 		close;
 	} else if (rachel_camel == 21) {
@@ -937,7 +937,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		mes "Oh, você está de volta...";
 		mes "Então você conseguiu fazer o molde de chave com o sabão?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, eu consegui.";
 		mes "Você poderia por favor se apressar?";
 		mes "Isto é uma emergência, e isto poderá ficar bem ruim se eu não conseguir esta chave pronta logo...";
@@ -962,7 +962,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 		close;
 	} else if (rachel_camel == 22) {
 		if (countitem(Steel)) {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Aqui está o que Aço de que você precisa.";
 			mes "Por favor";
 			mes "você poderia fazer a chave agora?";
@@ -972,7 +972,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Eu estive estudando este molde de chave, e eu percebi algo...";
 			mes "Diga-me agora: Para que você está usando esta chave?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Huh...?";
 			mes "Para que você quer saber...?";
 			next;
@@ -992,7 +992,7 @@ veins,181,166,3	script	Lockenlock#camel	4_M_HUMERCHANT,{
 			mes "Estas algemas só podem ser usadas por prisioneiros!";
 			mes "Se eu soltar um deles, eles irão caçá-lo e me responsabilizar.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "A verdade é que...";
 			mes "Eu estou tentando libertar alguém que o Exército de Rachel prendeu...";
 			mes "Ela é Curdie, uma garotinha que eles trancaram no Vulcão de Thor...";
@@ -1102,14 +1102,14 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "Bem, não há muito que eu possa fazer sem eles, por isto seria melhor fechar a loja por hoje...";
 		close;
 	} else if (rachel_camel == 5) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença...?";
 		next;
 		mes "[Produtora de Sabão]";
 		mes "Ah, lamento muito mas eu estou fechando a loja agora por que eu preciso correr atrás de ingredientes para sabão.";
 		mes "Se você encomendou algo, você poderia voltar aqui amanhã.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Um, é uma Emergência!";
 		mes "Sr. Lockenlock me pediu para vir aqui e conseguir algum tipo de sabão especial.";
 		mes "Eu preciso disto para fazer um molde para que ele possa fazer uma chave para mim...";
@@ -1119,7 +1119,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "Ah, o Sr. Lockenlock deve estar falando sobre o meu Sabão Chamelepu orgânico.";
 		mes "Este é um sabonete artístico que você pode moldar facilmente.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, este mesmo!";
 		mes "Sabão Chamelepu!";
 		next;
@@ -1141,7 +1141,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "Embora...";
 		mes "Eles possam ser um pouco difíceis de se conseguir.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Excelente. O importante";
 		mes "para mim é conseguir";
 		mes "este fazer este sabão";
@@ -1169,7 +1169,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 			mes "Você trouxe tudo! Agora...";
 			mes "É hora de você fazer a, parte difícil.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "...............................";
 			mes "...............................";
 			mes "...............................";
@@ -1178,7 +1178,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 			mes "Por favor diga ao Dono da Fazenda de Camelos na cidade.";
 			mes "Que eu lhe enviei e mostre a ele os ingredientes que você teve de me trazer.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Espere...";
 			mes "Porque eu iria querer ver o cara que toma conta dos camelos?";
 			mes "O que ele têm a ver com a fabricação do sabão?";
@@ -1188,7 +1188,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 			mes "apenas vá visitar o Sr. Saraman, o dono da Fazenda de Camelos.";
 			mes "Eu não posso esperar por muito tempo, então por favor volte o mais rápido possível.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Sr. Saraman...?";
 			mes "Ok, então eu preciso visitá-lo se eu realmente precisar de você para fazer o sabão...";
 			changequest(3065,3066);
@@ -1214,33 +1214,33 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "Eu estou abrindo a loja agora então eu não estou pronta para vender nada ainda.";
 		close;
 	} else if (rachel_camel == 8) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu preciso levar para o Sr. Saraman todas as coisas que ele precisa para estimular o apetite de um camelo.";
 		mes "Eu preciso conseguir...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "^4D4DFF1 Maçã Verde^000000,";
 		mes "^4D4DFF5 Rações para Monstros^000000,";
 		mes "^4D4DFF1 Garrafa Vazia^000000, e";
 		mes "^4D4DFF1 Poção Amarela^000000.";
 		close;
 	} else if (rachel_camel == 9) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu tenho tudo que é necessário para estimular o apetite de um camelo.";
 		mes "Agora eu preciso de alimentar o camelo então eu poderei conseguir os ingredientes para o sabão e 5 Blocos de Estrume.";
 		close;
 	} else if (rachel_camel == 10) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Agora,seria melhor gastar meu tempo procurando pelos ingredientes no deserto de camelos.";
 		close;
 	} else if (rachel_camel == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu deveria achar o camelo perdido do Sr. Saraman, alimentar este camelo com estimulantes de apetite.";
 		mes "E depois pegar os ingredientes para o sabão e 5 Blocos de Estrume se eu quiser libertar Curdie.";
 		close;
 	} else if (rachel_camel == 12) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem... Eu encontrei o camelo.";
 		mes "Agora eu preciso conseguir todos os ingredientes para o sabão.";
 		mes "Quanto mais cedo eu fizer isto, mais cedo eu irei ajudar Curdie.";
@@ -1249,7 +1249,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "^3355FFVocê já encontrou o camelo, então você precisa coletar os ingredientes para o sabão se quiser libertar Curdie.^000000";
 		close;
 	} else if (rachel_camel == 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu consegui todos os ingredientes para o sabão e 5 destes Blocos de Estrume.";
 		mes "Eu tenho voltar ao SR. Saraman para dizer a ele onde está o seu camelo, e depois ir até a Srta. Ivory.";
 		close;
@@ -1258,7 +1258,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "Hm, Soony por acaso lhe causou algum problema?";
 		mes "Eu estou achando que sim, por isto você demorou tanto para conseguir estes blocos de estrume de camelo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Parece que foi um grande incômodo...";
 		mes "Mas felizmente, tudo isto vai valer a pena.";
 		mes "De qualquer forma, pegue este Bloco de Estrume.";
@@ -1288,7 +1288,7 @@ veins,227,127,5	script	Ivory#camel	4_F_DESERT,{
 		mes "As pessoas não irão comprá-lo se eles souberem que eles lavam seus rostos com...";
 		mes "Você sabe...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não se preocupe, eu não direi a ninguém.";
 		mes "Obrigado por fazer o sabão!";
 		next;
@@ -1320,7 +1320,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "Zzz... Zzzzzz...";
 		close;
 	} else if (rachel_camel == 7) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença. Olá.";
 		mes "A Srta. Ivory me enviou aqui com estes ingredientes de sabão?";
 		mes "Ela disse que eu tinha de vir até você se eu quiser que ela faça um para mim.";
@@ -1329,7 +1329,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "Sabão, eh? Oh, entendi.";
 		mes "Você deve estar aqui para pegar alguns Blocos de Estrume de Camelo Fresco.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O-o Q-Que!?";
 		mes "Meu Deus!";
 		mes "Vo-Você tem certeza?";
@@ -1338,7 +1338,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "[Fazendeiro Saraman]";
 		mes "Claro como o pegado, e honesto como Deus.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...............................";
 		mes "...............................";
 		mes "...............................";
@@ -1363,7 +1363,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "Digo... Eu não estava esperando que ela enviaria um mensageiro até amanhã.";
 		mes "Por que você está aqui tão cedo assim?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Na verdade, este é um tipo de emergência.";
 		mes "Entende, eu preciso do sabão para fazer um molde de chave porque eu perdi--";
 		next;
@@ -1379,7 +1379,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "Bem, minha camela não está acostumada a comer tão tarde no dia.";
 		mes "Mesmo que coloquemos comida na frente dela, ela não irá comer.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O que?";
 		mes "Não há nada que possamos fazer?";
 		mes "Quero dizer, isto se trata de um caso de Vida ou Morte!";
@@ -1471,7 +1471,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "Esta é uma boa quantia de acordo com o que a Srta. Ivory ordenou.";
 		close;
 	} else if (rachel_camel == 10) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sr. Saraman, nenhum dos camelos quer comer este estimulante de apetite...";
 		mes "Eu estou fazendo algo errado?";
 		next;
@@ -1513,7 +1513,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "E meu negócio realmente depende de minha Soony!";
 		close;
 	} else if (rachel_camel == 12) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem... Eu encontrei o camelo.";
 		mes "Agora eu preciso conseguir todos os ingredientes para o sabão.";
 		mes "Quanto mais cedo eu fizer isto, mais cedo eu irei ajudar Curdie.";
@@ -1529,7 +1529,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		mes "O que aconteceu com ela?";
 		mes "Oh, eu não sei o que iria fazer sem minha Camela!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não se preocupe, Sr. Saraman, eu encontrei Soony perto da cidade.";
 		mes "Ela machucou sua perna então eu acho que iria ser uma boa idéia.";
 		mes "Se você enviasse algumas pessoas para ajudar a trazê-la de volta.";
@@ -1552,7 +1552,7 @@ veins,115,59,5	script	Saraman#camel	4_M_EINOLD,{
 		rachel_camel = 18;
 		close;
 	} else if (rachel_camel == 18) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Vamos ver...";
 		mes "Eu não deveria estar indo ver a Srta. Ivory agora?";
 		close;
@@ -1613,7 +1613,7 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 		mes "^3355FFA camela começou a mastigar o estimulante.";
 		mes "Então ela começou a comer cada vez mais rápido e mais da comida até o seu completo consumo.^000000";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Esta deve ser a";
 		mes "Camela de Veludo...";
 		mes "Eu acho que tudo que eu tenho que fazer é coletar um pouco deste seu precioso Estrume de Camelo.";
@@ -1653,7 +1653,7 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 				mes "Tcharam! Você conseguiu um bloco de estrume de camelo!";
 				mes "Pode comemorar!^000000";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				if (rachel_camel == 12) {
 					mes "Agora tudo de que preciso são mais 4 destes blocos de estrumes.";
 					rachel_camel = 13;
@@ -1680,15 +1680,15 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 					mes "Eu estou segurando 5 Blocos de Estrume de Camelo.";
 					mes "Este é o meu melhor momento.";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Nunca, em todos estes anos de aventura, salvando os oprimidos.";
 					mes "Protegendo os inocentes, eu pensei que iria completar este feito magnificente.";
 					next;
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Eu estou tão feliz --com isto--";
 					mes "^4D4DFFProvei^000000 minha força, meu valor, e minha determinação nesta tarefa.";
 					mes "Este dia entrará para a História!";
-					mes "Longa Vida a "+strcharinfo(PC_NAME)+"!";
+					mes "Longa Vida a "+strcharinfo(CHAR_NAME)+"!";
 					next;
 					mes "^3355FFÉ hora de você voltar para o Sr. Saraman.^000000";
 					rachel_camel = 17;
@@ -1715,7 +1715,7 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 				close;
 			}
 		} else {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			if (rachel_camel == 12) {
 				mes "Eu preciso alimentar esta camela, se não nunca vou conseguir algum";
 				mes "Estrume dela.";
@@ -1726,7 +1726,7 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 				mes "Se eu quiser alimentar este camelo de novo, então eu preciso trazer mais comida...";
 			}
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "^4D4DFF10 Leites^000000,";
 			mes "^4D4DFF100 Ervas Verde^000000,";
 			mes "^4D4DFF50 Jellopys^000000, e";
@@ -1738,7 +1738,7 @@ ve_fild07,235,42,3	script	Camela de Veludo#camel	4_DST_CAMEL,{
 			close;
 		}
 	} else if (rachel_camel == 17) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu consegui todos os ingredientes para o sabão e 5 destes Blocos de Estrume.";
 		mes "Eu tenho voltar ao Sr. Saraman para dizer a ele onde está o seu camelo, e depois ir até a Srta. Ivory.";
 		close;

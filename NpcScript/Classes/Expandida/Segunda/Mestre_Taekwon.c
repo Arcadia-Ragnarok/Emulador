@@ -25,7 +25,7 @@ payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 				mes "[Moohyun]";
 				mes "Tudo bem, criança qual é o seu nome?";
 				next;
-				mes strcharinfo(PC_NAME)+".";
+				mes strcharinfo(CHAR_NAME)+".";
 				next;
 				mes "[Moohyun]";
 				mes "Você é tão diret"+(Sex == SEX_MALE ? "o":"a")+".";
@@ -37,7 +37,7 @@ payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 				mes "Por que você não se torna um ^4d4dffguerreiro do Sol, da Lua, e das Estrelas^000000?";
 				mes "Pense nisso.";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Guerreiro do que...?";
 				mes "Nunca ouvi falar disso.";
 				mes "Mas eu sei que posso alterar minha classe para Espiritualista ou Mestre-Taekwon.";
@@ -149,7 +149,7 @@ payon,215,102,3	script	Moohyun#sgladiatorq	4_M_ROGUE,{
 			mes "O que você se diz quando sua vida parece desesperada?";
 			next;
 			if (select("Eu não vou desistir!","Eu... Eu não sei?") == 1) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Eu não vou desistir!";
 				mes "Vou fazer meus sonhos se tornar realidade.";
 				mes "Não importa quanto tempo demora!";
@@ -223,7 +223,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 	if (Class == Job_Taekwon) {
 		if (sgladiatorq == 1) {
 			mes "[Moogang]";
-			mes "Você deve ser "+strcharinfo(PC_NAME)+"...";
+			mes "Você deve ser "+strcharinfo(CHAR_NAME)+"...";
 			mes "Eu tenho esperado você.";
 			mes "Moohyun me falou sobre seu desejo para se tornar Mestre Taekwon";
 			mes "Confiarei em seu julgamento...";
@@ -422,21 +422,21 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 			mes "Sim, eu posso ver em seus olhos.";
 			mes "Então, diga-me, o que você aprendeu?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu posso sentir o vínculo entre o Sol, a Lua e as Estrelas.";
 			mes "Todos dão luz, mas concedem diferentes coisas.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "O sol dá glória calor e é a fonte da vida.";
 			mes "A luz do luar é gentil e dá conforto.";
 			mes "O brilho das estrelas dá esperança até as noites mais sombrias";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu também conheço o Sol escaldante, destrutivo calor.";
 			mes "A solidão de a lua e a tristeza das Estrelas.";
 			mes "Agora entendo o espectro do cosmos!";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "A raiva combinada com cosmos pode convocar uma completa escuridão";
 			mes "O amor combinado com cosmos dará uma infinidade de bênção e luz...";
 			next;
@@ -474,7 +474,7 @@ comodo,172,230,3	script	Meste Andarilho#sgladiatorq	4_M_JOB_ASSASSIN,{
 		mes "Um... Não.";
 		mes "Aguarde. Hmmm...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Huh...?";
 		next;
 		mes "[Moogang]";

@@ -320,7 +320,7 @@ hu_in01,382,382,4	script	Caçador da Guilda#hunterq	4_M_JOB_HUNTER,{
 		mes "Saudações.";
 		mes "Eles me chamam... de ^660000O Caçador de Demônio^000000.";
 		mes "Eu sou o encarregado pelas aplicações de classe.";
-		mes "Seu nome é... "+strcharinfo(PC_NAME)+", correto?";
+		mes "Seu nome é... "+strcharinfo(CHAR_NAME)+", correto?";
 		next;
 		mes "[Caçador de Demônio]";
 		mes "Ok. Estes são os itens que você precisa para o teste.";

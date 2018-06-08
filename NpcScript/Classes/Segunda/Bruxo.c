@@ -75,7 +75,7 @@ gef_tower,111,37,4	script	Bruxa#wizardq	1_F_GYPSY,{
 						mes "[Catherine]";
 						mes "Muito bem então, eu aceito sua inscrição.";
 						mes "Seu nome é...";
-						mes strcharinfo(PC_NAME)+", certo?";
+						mes strcharinfo(CHAR_NAME)+", certo?";
 						mes "Não estou certa, pronunciei corretamente?";
 						next;
 						mes "[Catherine]";
@@ -900,7 +900,7 @@ job_wiz,1,1,1	script	Room_of_Water#wizardq	1_F_01,{
 	--.MyMobs;
 	if (.MyMobs < 1) {
 		percentheal(100,100);
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" eliminou todos os Monstros.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" eliminou todos os Monstros.",bc_map);
 		warp(strnpcinfo(NPC_MAP),116,97);
 		donpcevent("Room_of_Earth#wizardq::OnEnable");
 		stopnpctimer;
@@ -986,7 +986,7 @@ job_wiz,1,3,1	script	Room_of_Earth#wizardq	1_F_01,{
 	OnMyMobDead:
 	--.MyMobs;
 	if (.MyMobs < 1) {
-		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(PC_NAME)+" eliminou todos os monstros.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),strcharinfo(CHAR_NAME)+" eliminou todos os monstros.",bc_map);
 		percentheal(100,100);
 		warp(strnpcinfo(NPC_MAP),46,99);
 		donpcevent("Room_of_Fire#wizardq::OnEnable");
@@ -1074,7 +1074,7 @@ job_wiz,1,5,1	script	Room_of_Fire#wizardq	1_F_01,{
 	if (.MyMobs < 1) {
 		wizardq = 7;
 		changequest(9017,9018);
-		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(PC_NAME)+". Você passou no teste.",bc_map);
+		mapannounce(strnpcinfo(NPC_MAP),"Parabéns, "+strcharinfo(CHAR_NAME)+". Você passou no teste.",bc_map);
 		sleep(500);
 		areawarp(strnpcinfo(NPC_MAP),30,82, 61,113,"gef_tower",110,30);
 		donpcevent("Assistente da Arena#wizardq::OnStart");

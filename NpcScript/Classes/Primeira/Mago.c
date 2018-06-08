@@ -93,7 +93,7 @@ geffen_in,164,124,4	script	Líder da Guilda#mageq	2_F_MAGICMASTER,{
 				mes "[Líder da Guilda]";
 				mes "Certo. Assine aqui mesmo.";
 				mes "Oh, você é muito bom para escrever.";
-				mes "Certo. Seu nome é... "+strcharinfo(PC_NAME)+".";
+				mes "Certo. Seu nome é... "+strcharinfo(CHAR_NAME)+".";
 				next;
 				mes "[Líder da Guilda]";
 				switch (rand(3)) {

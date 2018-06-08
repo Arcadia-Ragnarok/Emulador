@@ -132,7 +132,7 @@
 		mes "Estou aguardando um mestre para cumprir meu destino.";
 		mes "Que as almas valentes... lhe guie em seu futuro...";
 		close;
-	} else if (getguildmaster(.@GID) != strcharinfo(PC_NAME)) {
+	} else if (getguildmaster(.@GID) != strcharinfo(CHAR_NAME)) {
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
 		mes "Não importa o quanto você vai me incomodar, eu ainda vou seguir o mestre: ^ff0000"+getguildmaster(.@GID)+"^000000.";
 		mes "Não importa quanto você me importuna, eu ainda seguirei meu mestre^ff0000"+getguildmaster(.@GID)+"^000000.";
@@ -141,7 +141,7 @@
 		close;
 	} else {
 		mes "["+strnpcinfo(NPC_NAME_VISIBLE)+"]";
-		mes "Bem vindo"+(Sex == SEX_MALE ?"o":"a")+" mestre, ^ff0000"+strcharinfo(PC_NAME)+"^000000...";
+		mes "Bem vindo"+(Sex == SEX_MALE ?"o":"a")+" mestre, ^ff0000"+strcharinfo(CHAR_NAME)+"^000000...";
 		mes "Seu humilde servo, "+strnpcinfo(NPC_NAME_VISIBLE)+", está aqui para lhe atender.";
 		next;
 		switch (select("Instruções do castelo","Investir no Crescimento Comercial","Investir nas Defesas do Castelo","Convocar Guardiões","Contrato com a Cop. Kafra","Ir para sala do mestre")) {

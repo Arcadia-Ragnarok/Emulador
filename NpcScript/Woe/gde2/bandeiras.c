@@ -26,7 +26,7 @@
 			"O Reino Sagrado de " + .@str$ + " declara que ainda não existe um propietário deste castelo.\n"
 			"Quem quebrar o Emperium será reconhecido como o seu novo proprietário.");
 		close;
-	} else if (getcharid(CHAR_ID_GUILD) == .@guild) {
+	} else if (getcharid(ID_GUILD) == .@guild) {
 		if (compare(.@castle$, "arug")) {
 			if (.@castle$ == "arug_cas01") { setarray(.@in[0], 67, 193); }
 			else if (.@castle$ == "arug_cas02") { setarray(.@in[0], 43, 256); }
@@ -43,7 +43,7 @@
 		next;
 		if (select("Retornar ao Castelo","Sair") == 1) {
 			close2;
-			if (getcharid(CHAR_ID_GUILD) == getcastledata(.@castle$, 1)) { // @FIX (Bug das bandeiras)
+			if (getcharid(ID_GUILD) == getcastledata(.@castle$, 1)) { // @FIX (Bug das bandeiras)
 				warp(.@castle$, .@in[0], .@in[1]);
 			}
 			end;

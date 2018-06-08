@@ -86,7 +86,7 @@
 					mes "Ele prova que você fez a entrega.";
 					if (countitem(Delivery_Message)) {
 						next;
-						mes "["+strcharinfo(PC_NAME)+"]";
+						mes "["+strcharinfo(CHAR_NAME)+"]";
 						mes "Espere!!";
 						mes "O Chefe Mansur também me pediu para lhe entregar essa mensagem.";
 						next;

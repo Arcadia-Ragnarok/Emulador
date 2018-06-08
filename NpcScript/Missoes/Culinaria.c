@@ -1579,15 +1579,15 @@ prt_castle,44,30,5	script	Wickebine#cook	4_F_JOB_ASSASSIN,{
 	end;
 
 	OnInit:
-	disablenpc(strnpcinfo(PC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnEnable:
-	enablenpc(strnpcinfo(PC_NAME));
+	enablenpc(strnpcinfo(NPC_NAME));
 	end;
 
 	OnDisable:
-	disablenpc(strnpcinfo(PC_NAME));
+	disablenpc(strnpcinfo(NPC_NAME));
 	end;
 }
 
@@ -1631,7 +1631,7 @@ payon,209,127,3	script	Servo#cook	4_M_ORIENT01,{
 			close;
 			case 3:
 			if (countitem(Food_Package)) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Na verdade, Madeleine";
 				mes "me mandou aqui para encontrar você.";
 				mes "Ela disse que você estaria disposto a provar essa comida do pacote...";
@@ -1692,11 +1692,11 @@ payon,209,127,3	script	Servo#cook	4_M_ORIENT01,{
 				mes "E o mais importante, eu acho que deveria pedir desculpas ao Sr. Charles. ";
 				close;
 			} else {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Na verdade, Madeleine me mandou aqui para encontrar você.";
 				mes "Ela disse que você estária disposto a provar essa comida do pacote...";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Espere, espere...";
 				mes "Eu não acredito nisso!";
 				mes "Onde eu coloquei o pacote de comida?";

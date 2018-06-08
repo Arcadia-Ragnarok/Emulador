@@ -193,7 +193,7 @@ new_1-2,100,29,4	script	Sprakki#new2	4_F_01,{
 	}
 	input(.@charname$);
 	next;
-	if (.@charname$ != strcharinfo(PC_NAME)) {
+	if (.@charname$ != strcharinfo(CHAR_NAME)) {
 		mes "[Sprakki]";
 		mes "Acho que você digitou seu nome errado não foi?";
 		if (new_quest != 2) { new_quest = 2; }

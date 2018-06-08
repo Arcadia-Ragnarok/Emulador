@@ -14,7 +14,7 @@
 \*-----------------------------------------------------------------*/
 
 gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
-	.@party_id = getcharid(CHAR_ID_PARTY);
+	.@party_id = getcharid(ID_PARTY);
 	.@p_name$ = getpartyname(.@party_id);
 
 	if (!instance_check_party(.@party_id,2,30)) { // Grupo de 2 Membros de Nv Mínimo 30
@@ -35,7 +35,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 		next;
 		if (select("Entrar no Memorial dos Orcs","Cancelar") == 2) {close;}
 	} else {
-		if (getcharid(CHAR_ID_CHAR) == getpartyleader(.@party_id,2)) {
+		if (getcharid(ID_CHAR) == getpartyleader(.@party_id,2)) {
 			mes "Criação de grupo confirmada.";
 			mes "Gostaria de agendar a entrada de Memorial dos Orcs?";
 			next;
@@ -44,7 +44,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 				.@instance = instance_create("Memorial dos Orcs",.@party_id);
 				if (.@instance < 0) {
 					mes "Nome do Grupo: "+.@p_name$;
-					mes "Líder do Grupo: "+strcharinfo(PC_NAME);
+					mes "Líder do Grupo: "+strcharinfo(CHAR_NAME);
 					mes "^0000ffMemorial dos Orcs ^000000 - Falha ao reservar.";
 					close;
 				}
@@ -75,7 +75,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 		mes "Caso o seu calabouço tenha sido destruído deverá esperar 7 dias para entrar novamente.";
 		close;
 	}
-	mapannounce("gef_fild10",strcharinfo(PC_NAME)+" do grupo,"+.@p_name$+" iestá entrando no Memorial Orc.",bc_map,"0x00ff99");
+	mapannounce("gef_fild10",strcharinfo(CHAR_NAME)+" do grupo,"+.@p_name$+" iestá entrando no Memorial Orc.",bc_map,"0x00ff99");
 	if (!questprogress(12059)) {setquest(12059);}
 	if (orcdun) {orcdun = 0;};
 	warp("1@orcs",179,15);
@@ -587,7 +587,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 
 // ------------------------------------------------------------------
 2@orcs,26,164,0	script	Tocha#1-1	CLEAR_NPC,{
-	if (getpartyleader(getcharid(CHAR_ID_PARTY),2) != getcharid(CHAR_ID_CHAR)) end;
+	if (getpartyleader(getcharid(ID_PARTY),2) != getcharid(ID_CHAR)) end;
 	progressbar ("ffff00",5);
 	setarray(.@id[0],atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),0)),atoi(charat(strnpcinfo(NPC_NAME_HIDDEN),2)));
 	if (.@id[1] == 4) {
@@ -778,9 +778,9 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 	if (!orcdun) {
 		mes "[Kruger]";
 		mes "*Tosse*";
-		mes strcharinfo(PC_NAME)+", é você...";
+		mes strcharinfo(CHAR_NAME)+", é você...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não se mexa!!";
 		mes "Você está muito ferid"+(Sex == SEX_MALE ? "o" : "a" )+"!";
 		next;
@@ -790,7 +790,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 		mes "E o Xamã?";
 		mes "O que aconteceu com ele?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"] ";
+		mes "["+strcharinfo(CHAR_NAME)+"] ";
 		mes "O Xamã está morto agora.";
 		mes "Quem na verdade era o Xamã?";
 		next;

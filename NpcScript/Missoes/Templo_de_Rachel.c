@@ -90,7 +90,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 		}
 		cutin("ra_nemma01",2);
 		mes "[Sacerdotisa Nemma]";
-		mes "Assim,"+strcharinfo(PC_NAME)+"...";
+		mes "Assim,"+strcharinfo(CHAR_NAME)+"...";
 		mes "Eu quero ter certeza que você quer doar"+.@value$+" zeny, e receber"+.@Ticket;
 		if (.@Ticket == 1) {
 			mes "Bilhete de Loteria. Está certo?";
@@ -195,7 +195,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 		} else if (ra_tem_q == 10) {
 			cutin("ra_nemma04",2);
 			mes "[Sacerdotisa Nemma]";
-			mes "Oh, "+strcharinfo(PC_NAME)+"!";
+			mes "Oh, "+strcharinfo(CHAR_NAME)+"!";
 			mes "O portão acabou de abrir e eu pude entrar no templo!";
 			mes "Eu estava ficando realmente preocupada sobre isso por enquanto";
 			next;
@@ -216,7 +216,7 @@ ra_temple,116,174,3	script	Nemma#ra_temple	4_F_TRAINEE,{
 			emotion(e_ho);
 			cutin("ra_nemma03",2);
 			mes "[Sacerdotisa Nemma]";
-			mes "Ei, "+strcharinfo(PC_NAME)+"!";
+			mes "Ei, "+strcharinfo(CHAR_NAME)+"!";
 			mes "Nós conseguimos atingir nossas metas, isso não é legal?";
 			mes "Nós não estamos mais pedindo doações.";
 			mes "Mas você ainda pode trocar os seus";
@@ -548,10 +548,10 @@ que_rachel,170,37,0	script	nemma01::nemma01	FAKE_NPC,5,5,{
 		mes "Izlude, minha cidade natal,";
 		mes "Eu vim para este lugar para construir";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "E-es-essa é a voz da sacerdotisa Panno!";
 		mes "Mas ela não estava fora da porta?";
 		mes "O que exatamente ela está falando?";
@@ -623,7 +623,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "Eu não sei o que você quer dizer.";
 		next;
 		select("Explique");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu acho que Sacerdotisa Nemma ficou preocupada que o portal quebrou denovo.";
 		mes "Embora não foi como aquela vez você começou sua posição aqui no templo.";
 		next;
@@ -632,13 +632,13 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		mes "Sim, o minha irmã gêmea é conhecida por fazer muitas coisas, e chorar para ter minha ajuda.";
 		mes "Estou certa?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É estranho";
 		mes "... Ela disse que o portão iria se corrigir automaticamente propriamente dito.";
 		mes "Mas não tem sido feito ultimamente.";
 		mes "Ela estava agindo realmente engraçada..";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ela estava falando sobre a história dos templos e como o sistema de segurança era construído.";
 		mes "Então ela mencionou você, assim tenho a sensação de que você possa saber alguma coisa sobre isto.";
 		next;
@@ -649,7 +649,7 @@ ra_temin,170,46,3	script	Panno#rachel	4_F_TRAINEE,{
 		cutin("",255);
 		end;
 	} else if (ra_tem_q == 11) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu lembrei agora...!";
 		mes "Eu estava lá quando o portão fecho, e eu ouvi alguem com exatamente sua voz sussurar algo para magicamente abrir o portão!";
 		mes "O que é que todos falam?";
@@ -833,14 +833,14 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 		next;
 		select("Conte-lhe seu nome");
 		mes "[Sumo Sacerdote Zhed]";
-		mes ""+strcharinfo(PC_NAME)+"...";
+		mes ""+strcharinfo(CHAR_NAME)+"...";
 		mes "Sim, é um bom nome, lhe cai bem.";
 		mes "Eu estarei seguro que me lembrarei.";
 		mes "Denovo, deixe me agradeçer por você arriscar sua vida retribuindo meus pertences";
 		next;
 		mes "[Sumo Sacerdote Zhed]";
 		mes "Eu estarei rezando para Freya o guiar e proteger nas suas viagems.";
-		mes "Que a Paz esteja com você "+strcharinfo(PC_NAME)+".";
+		mes "Que a Paz esteja com você "+strcharinfo(CHAR_NAME)+".";
 		close2;
 		cutin("",255);
 		lost_boy = 13;
@@ -992,7 +992,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 		cutin("ra_gman2",2);
 		mes "[Sumo Sacerdote Zhed]";
 		mes "Er, sim, é claro!";
-		mes "Com licença um momento "+strcharinfo(PC_NAME)+"...";
+		mes "Com licença um momento "+strcharinfo(CHAR_NAME)+"...";
 		mes "Enquanto você está esperando por mim porque não descansa no quarto ao lado?";
 		mes "Não se esqueça não há nenhum Solo Santo.";
 		select("Certo");
@@ -1128,7 +1128,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "[Sumo Sacerdote Zhed]";
 			mes "Ah, ele foi um bocado, não é?";
 			mes "Você parece bem, eu estou bem como você pode ver.";
-			mes "O que posso fazer por você hoje, "+strcharinfo(PC_NAME)+"?";
+			mes "O que posso fazer por você hoje, "+strcharinfo(CHAR_NAME)+"?";
 			next;
 			if (select("Eu só queria dizer oi","Perguntar sobre o incidente em Veins") == 1) {
 				mes "[Sumo Sacerdote Zhed]";
@@ -1187,7 +1187,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "Aventureiros dispostos a trabalhar tão duro querendo a paz no mundo como você são muito incomuns.";
 			mes "Espero que saiba disto.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Huh...?";
 			mes "Por favor não me lisonjeie desta maneira!";
 			mes "Dizendo isto parece um tipo de exagero, não?";
@@ -1199,7 +1199,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "Agora, como posso lhe ajudar?";
 			next;
 			select("Prédio Misterioso no Vulcão");
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Atualmente, eu estava querendo saber se você sabe algo sobre esta instalação no Vulcão de Thor perto de Veins.";
 			mes "Parece que está acontecendo uma grande coisa dentro de lá.";
 			next;
@@ -1233,7 +1233,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "Mas estou certo de que eles tem muitos suprimentos militares.";
 			mes "E máquinas de destruição em massa escondidas pela base.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Espera, o que exatamente eles esperam conseguir lutando?";
 			mes "Como eles pretendem ajudar a Deusa Freya usando a violência?";
 			next;
@@ -1247,12 +1247,12 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "A facção moderada de sacerdotes decidiu contratar cientistas para reproduzir o Coração de Ymir.";
 			mes "Resultando em uma imitação do artefato.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Uma imitação do Coração de Ymir?";
 			mes "Eu acho que conheço um famoso cientista da República Schwartzvalt que estava trabalhando nisto!";
 			mes "Vamos ver, qual era seu nome mesmo?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Qual era o nome do Cientista...";
 			input(.@input$);
 			mes "^3131FF"+.@input$+"^000000?";
@@ -1305,7 +1305,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "E armas em sua base no Vulcão de Thor.";
 			mes "No entanto, eu não sei mais de nenhum detalhe.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Isto não parece ser bom.";
 			mes "Digo, se eles estão tentando tomar os Pedaços do Coração de Ymir a força.";
 			mes "Isto será uma guerra contra a República Schwalzvalt e o Reino de Rune-Midgard!";
@@ -1320,7 +1320,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "Por isto eu gostaria de lhe pedir que você infiltre.";
 			mes "Dentro da Base no Vulcão de Thor pela razão de proteger a paz internacional.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Eu realmente quero saber mais sobre o que eles estão planejando fazer.";
 			mes "Mas este local é fortemente vigiado!";
 			mes "Como eu irei me infiltrar?";
@@ -1376,7 +1376,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 				mes "Me perturba bastante tenho mais do que certeza de que pretendem declarar guerra.";
 				mes "Contra qualquer nação que tenha um pedaço do Coração de Ymir.";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Quem está no comando da base no Vulcão de Thor?";
 				next;
 				mes "[Sumo Sacerdote Zhed]";
@@ -1395,7 +1395,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 		} else if (aru_vol == 5) {
 			cutin("ra_gman",2);
 			if (countitem(File01)) {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Você poderia dar uma olhada nesta Pasta de arquivos, Sumo Sacerdote Zhed?";
 				next;
 				mes "[Sumo Sacerdote Zhed]";
@@ -1450,7 +1450,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 				aru_vol = 6;
 				changequest(2115,2116);
 			} else {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Huh...?";
 				mes "Onde eu coloquei aquela Pasta de Arquivos?";
 				close2;
@@ -1481,7 +1481,7 @@ ra_temin,277,159,3	script	Sumo Sacerdote Zhed#rachel	4_M_RACHOLD1,{
 			mes "Ah! Você está de volta!";
 			mes "O Geólogo conseguiu lhe ajudar a entrar dentro da Base no Vulcão de Thor?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Mais do que isso.";
 			mes "Nós conseguimos convencer a base de que o vulcão está prestes a explodir.";
 			mes "Então eles estão evacuando a área rapidamente.";
@@ -1589,7 +1589,7 @@ ra_temsky,99,99,5	script	Papisa#rachel	4_F_ARUNA_POP,{
 		mes "[Papisa]";
 		mes "As pessoas geralmente ficam um pouco chocadas na primeira vez que me veem.";
 		mes "Então... É... De onde você";
-		mes "Veio,"+strcharinfo(PC_NAME)+"?";
+		mes "Veio,"+strcharinfo(CHAR_NAME)+"?";
 		next;
 		input(.@input$);
 		mes "[Papisa]";
@@ -1638,7 +1638,7 @@ ra_temsky,99,99,5	script	Papisa#rachel	4_F_ARUNA_POP,{
 		mes "[Papisa]";
 		mes "Já?! Hmpf...";
 		mes "Ah, antes que eu esqueça...";
-		mes "Eu preciso dizer que Sumo Sacerdote Zhed quer falar com você, "+strcharinfo(PC_NAME)+".";
+		mes "Eu preciso dizer que Sumo Sacerdote Zhed quer falar com você, "+strcharinfo(CHAR_NAME)+".";
 		next;
 		mes "[Papisa]";
 		mes "Eu realmente quero agradecer você por vir aqui falar comigo.";
@@ -1705,7 +1705,7 @@ ra_temin,288,151,0	script	hidden1#rachel	FAKE_NPC,1,6,{
 		hideoffnpc("Sumo Sacerdotisa Niren#ra");
 		cutin("ra_gwoman",2);
 		mes "[Sumo Sacerdotisa Niren]";
-		mes "Ah! Você deve ser o "+strcharinfo(PC_NAME)+", de quem me disseram.";
+		mes "Ah! Você deve ser o "+strcharinfo(CHAR_NAME)+", de quem me disseram.";
 		mes "Prazer em conhecê-lo.";
 		mes "Sumo Sacerdotisa Niren, ao seu serviço.";
 		next;
@@ -1737,7 +1737,7 @@ ra_temin,288,151,0	script	hidden1#rachel	FAKE_NPC,1,6,{
 		mes "Ah, isto é muito interessante, sua terra.";
 		mes "Diga-me, como você conheçeu Bekento, er, digo, Sumo Sacerdote Zhed?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "(^666666Bekento?^000000)";
 		next;
 		select("Explicar como você conheçeu o Sumo Sacerdote Zhed");

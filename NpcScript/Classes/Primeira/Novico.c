@@ -175,7 +175,7 @@ prt_church,184,41,4	script	Bispo#acolyteq	1_M_PASTOR,{
 prt_fild03,365,255,2	script	Irmão Simão#nov	4_M_ORIENT02,{
 	if (BaseJob == Job_Novice && acolyteq) {
 		mes "[Simão]";
-		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
+		mes "Olá, você deve ser "+(strcharinfo(CHAR_NAME))+".";
 		next;
 		switch (acolyteq) {
 			case 1:
@@ -247,7 +247,7 @@ prt_fild03,365,255,2	script	Irmão Simão#nov	4_M_ORIENT02,{
 moc_fild07,41,355,4	script	Irmã Matilda#acolyteq	4_F_SISTER,{
 	if (BaseJob == Job_Novice && acolyteq) {
 		mes "[Matilda]";
-		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
+		mes "Olá, você deve ser "+(strcharinfo(CHAR_NAME))+".";
 		next;
 		switch (acolyteq) {
 			case 1:
@@ -323,7 +323,7 @@ moc_fild07,41,355,4	script	Irmã Matilda#acolyteq	4_F_SISTER,{
 prt_fild00,208,218,6	script	Irmão Bartolomeu#acolyteq	4W_M_02,{
 	if (BaseJob == Job_Novice && acolyteq) {
 		mes "[Bartolomeu]";
-		mes "Olá, você deve ser "+(strcharinfo(PC_NAME))+".";
+		mes "Olá, você deve ser "+(strcharinfo(CHAR_NAME))+".";
 		next;
 		switch (acolyteq) {
 			case 1:

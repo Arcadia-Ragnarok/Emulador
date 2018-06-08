@@ -36,7 +36,7 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 			mes "^3355FF*Gulp gulp gulp*^000000";
 			percentheal(5,-5);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Ahhh, isso é realmente bom!";
 			mes "Realmente acerta lá embaixo!!";
 			close;
@@ -69,7 +69,7 @@ yuno_in01,35,179,4	script	Dono do Bar#kh	1_ETC_01,5,5,{
 			mes "^3355FF*Gulp gulp gulp*^000000";
 			percentheal(5, -5);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Ahhh, isso é realmente bom!";
 			mes "Realmente acerta lá embaixo!!";
 			close;
@@ -515,7 +515,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 					next;
 					break;
 					case 2:
-					mes "["+strcharinfo(PC_NAME)+"]";
+					mes "["+strcharinfo(CHAR_NAME)+"]";
 					mes "Vou cair fora daqui.";
 					next;
 					cutin("kh_elly04",2);
@@ -617,12 +617,12 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "Eu sou ^FF0000Elly^000000.";
 		mes "Qual o seu nome?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
-		mes "É ^3355FF"+strcharinfo(PC_NAME)+"^000000.";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
+		mes "É ^3355FF"+strcharinfo(CHAR_NAME)+"^000000.";
 		next;
 		cutin("kh_elly02",2);
 		mes "[Elly]";
-		mes strcharinfo(PC_NAME)+"?";
+		mes strcharinfo(CHAR_NAME)+"?";
 		mes "...que nome! É maravilhoso!";
 		getitem(Well_Baked_Cookie,5);
 		KielHyreQuest = 10;
@@ -651,7 +651,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 				case 1:
 				cutin("kh_elly02",2);
 				mes "[Elly]";
-				mes "Oh,"+strcharinfo(PC_NAME)+"!";
+				mes "Oh,"+strcharinfo(CHAR_NAME)+"!";
 				mes "Muitíssimo obrigada, eu sabia que você entenderia!";
 				mes "Voce poderia por favor levar esses biscoitos para ele na ^FF0000Cabana de Kiel Hyre^000000?";
 				next;
@@ -799,7 +799,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 			cutin("kh_elly02",2);
 			mes "[Elly]";
 			mes "Mas eu ficarei bem!";
-			mes "Você estará lá para me resgatar do perigo certo,"+strcharinfo(PC_NAME)+"?";
+			mes "Você estará lá para me resgatar do perigo certo,"+strcharinfo(CHAR_NAME)+"?";
 			next;
 			switch (select("Quem é Senhorita Allysia?","Incidentes estranhos?")) {
 				case 1:
@@ -812,7 +812,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 				case 2:
 				cutin("kh_elly04",2);
 				mes "[Elly]";
-				mes "Bem,"+strcharinfo(PC_NAME)+"...";
+				mes "Bem,"+strcharinfo(CHAR_NAME)+"...";
 				mes "Eu não deveria dizer à ninguém fora da escola, mas posso confiar em você!";
 				mes "Estamos assombrados por um fantasma!";
 				next;
@@ -847,7 +847,7 @@ kh_school,179,39,0	script	Estudante Bonita#kh	4_F_KHELLY,{
 		mes "a Sra. Lecollane agora.";
 		next;
 		mes "[Elly]";
-		mes "Diga,"+strcharinfo(PC_NAME)+",";
+		mes "Diga,"+strcharinfo(CHAR_NAME)+",";
 		mes "se estiver tudo be, você poderia";
 		mes "descobrir o que meu";
 		mes "avô deixou para mim no";
@@ -957,7 +957,7 @@ kh_school,178,180,4	script	Elly#kh	4_F_KHELLY,{
 			mes "^3355FFVocê pega Elly pelos ombros.";
 			mes "E tenta fazer com que ela responda com uma sacodida violenta de todo o corpo dela^000000.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Elly? Elly? não!";
 			mes "Volte para nós!";
 			next;
@@ -1056,7 +1056,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 		next;
 		switch (select("Ler o Bilhete","Ignorar")) {
 			case 1:
-			mes strcharinfo(PC_NAME)+", socorro!";
+			mes strcharinfo(CHAR_NAME)+", socorro!";
 			mes "Tem esse cara vestido de preto que está andando por aí, e jogando essa magia estranha!";
 			mes "É ele que tem feito as pessoas frias e sem vida como bonecos!";
 			mes "Estou assustada!";
@@ -1079,7 +1079,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 		mes "^3355FFQuando você olha para o cesto de bolachas, o vento da janela o empurra, revelando uma carta que foi colocada embaixo.";
 		mes "Provavelmente foi escrito por Elly para você ler^000000.";
 		next;
-		mes "^333333Querido "+strcharinfo(PC_NAME)+",";
+		mes "^333333Querido "+strcharinfo(CHAR_NAME)+",";
 		mes " ";
 		mes "Meus professores geralmente me gritam desde que cometi tantos erros.";
 		mes "Mas hoje a Sra. Lecollane me deu elogios pelos meus deliciosos biscoitos!";
@@ -1098,7 +1098,7 @@ kh_school,175,176,0	script	Cesta de Biscoitos#kh	HIDDEN_NPC,{
 		mes "Era deliciosamente agridoce.";
 		KielHyreQuest = 109;
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É hora de voltar.";
 		mes "Não posso ficar aqui por muito mais tempo.";
 		close2;
@@ -2364,7 +2364,7 @@ kh_dun01,224,233,0	script	Pota da Fábica#kh	FAKE_NPC,5,5,{
 		mes "...Kiehl...";
 		mes "...Como se atreve...!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Senhor Kiel Hyre?";
 		mes "É você aí dentro?";
 		next;
@@ -2372,7 +2372,7 @@ kh_dun01,224,233,0	script	Pota da Fábica#kh	FAKE_NPC,5,5,{
 		mes "Q-Quem está aí?";
 		mes "Identifique-se!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sou... Sou...";
 		next;
 		mes "^3355FFVocê explica sua história para a voz atrás da porta, e lhe diz o que aconteceu à Elly e Allysia^000000.";
@@ -2446,7 +2446,7 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		switch (select("Mostrar a Chave Dourada","????")) {
 			case 1:
 			mes "[Mordomo]";
-			mes "Ah, Mestre "+strcharinfo(PC_NAME)+".";
+			mes "Ah, Mestre "+strcharinfo(CHAR_NAME)+".";
 			mes "Estava aguardando a sua chegada.";
 			mes "Por favor, por aqui.";
 			close2;
@@ -2461,7 +2461,7 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		}
 	} else if ((KielHyreQuest >= 50) && (KielHyreQuest < 64) || (KielHyreQuest >= 70)) {
 		mes "[Mordomo]";
-		mes "Ah, Mestre "+strcharinfo(PC_NAME)+".";
+		mes "Ah, Mestre "+strcharinfo(CHAR_NAME)+".";
 		mes "É um prazer em receber sua compania novamente.";
 		mes "Você gostaria de ver meu mestre?";
 		next;
@@ -2481,7 +2481,7 @@ kh_mansion,78,55,5	script	Mordomo#kh	4_M_MANAGER,{
 		}
 	} else if ((KielHyreQuest == 52) || (KielHyreQuest == 54) || (KielHyreQuest >= 64) && (KielHyreQuest <= 70)) {
 		mes "[Mordomo]";
-		mes "Ah, Mestre "+strcharinfo(PC_NAME)+".";
+		mes "Ah, Mestre "+strcharinfo(CHAR_NAME)+".";
 		mes "É um prazer em receber sua compania novamente.";
 		mes "Você gostaria de ver meu mestre, ou...?";
 		next;
@@ -2528,7 +2528,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 	} else if (KielHyreQuest == 46) {
 		cutin("kh_kyel01",2);
 		mes "[Kiel Hyre]";
-		mes "Ah, você deve ser "+strcharinfo(PC_NAME)+".";
+		mes "Ah, você deve ser "+strcharinfo(CHAR_NAME)+".";
 		mes "Gostaria de lhe agradecer por salvar minha vida.";
 		mes "Você deve ter muitas perguntas a me fazer, então eu farei o melhor para lhe dar respostas.";
 		next;
@@ -2610,17 +2610,17 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "gostaria de";
 		mes "me perguntar?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu não tenho evidências concretas suficientes ainda, mas eu devo ter algumas perguntas em breve.";
 	} else if (KielHyreQuest == 68) {
 		cutin("kh_kyel02",2);
 		mes "[Kiel Hyre]";
-		mes "Ah,"+strcharinfo(PC_NAME)+".";
+		mes "Ah,"+strcharinfo(CHAR_NAME)+".";
 		mes "É você.";
 		mes "Então como posso lhe ajudar hoje?";
 		next;
 		select("Sobre ^3355FFAllysia^000000...");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sabe, eu estava olhando nessa casa deserta em Yuno.";
 		mes "Descobri um velho porta retratos de uma mulher que se parece muito com Allysia.";
 		next;
@@ -2635,7 +2635,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "De qualquer forma, é uma estranha coincidência.";
 		mes "Bem, suporto que não é tão estranho encontrar pessoas parecidas com outras...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu não acho que seja só uma coincidência.";
 		mes "A mulher naquele pequeno retrato de trinta anos também era chamada Allysia";
 		mes "Ela ela trabalhava na rua Orsimier em Yuno.";
@@ -2648,7 +2648,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "............";
 		next;
 		cutin("kh_kyel01",2);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Então pensei que essa Allysia deve ter sido a mulher que você amou";
 		mes "Que você baseou a aparência dos seus robôs nela.";
 		next;
@@ -2657,16 +2657,16 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "............";
 		next;
 		cutin("kh_kyel01",2);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Acho que foi isso que aconteceu.";
 		mes "Quando você era um jovem, pobre você se apaixonou por Allysia.";
 		mes "Entretanto, ela estava apaixonada por Rosimier, que era rico e poderoso.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Entretanto, Rosimier estava noivo de uma outra mulher";
 		mes "Ele acabou por casar-se com sua noiva, assim partindo o coração de Allysia.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sentindo-se traída, seu coração partido, Allysia pulou em um rio.";
 		mes "Então você decidiu se vingar de Rosimier, então acabou por se juntar com a Corporação Rekenber!";
 		next;
@@ -2690,11 +2690,11 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Como...";
 		mes "Onde você...?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Kiel Hyre, eu encontrei esse retrato seu quando jovem na casa do homem que comprou o anel de Allysia.";
 		mes "Eu até falei com o pescador que descobriu o corpo de Allysia.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você pagou uma quantia absurda de dinheiro para comprar o anel de Allysia.";
 		mes "Como você pode me dizer que você não a amava?";
 		next;
@@ -2718,11 +2718,11 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Além do mais eu não tinha os recursos ou a capacidade de causar...";
 		next;
 		cutin("kh_kyel02",2);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Infelizmente acho que as evidências mostram o contrário.";
 		next;
 		select("Mostrar o retrato de Rosimier");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Dê uma boa olhada nesse retrato que encontrei na antiga casa de Rosimier.";
 		mes "Percebe algo... Incriminador?";
 		next;
@@ -2731,7 +2731,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Com excessão daquele James Rosimier, você quer dizer?";
 		mes "Não! Não vejo nada errado com essa imagem ao todo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Dê uma boa olhada no relógio de bolso no retrato.";
 		mes "Aquele é o relógio de bolso que você usa hoje, não é?";
 		next;
@@ -2739,7 +2739,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "...!!!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você pode não ter causado a queda de Rosimier por si só.";
 		mes "Mas com a ajuda da Corporação Rekenber eu diria que era inteiramente possível!";
 		next;
@@ -2748,7 +2748,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Eu não me arrependo do que fiz, eles mataram minha Allysia!";
 		mes "Se James não a tivese traído, se ele não a tivesse feito cometer suicídio...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aí é que você está errado!";
 		mes "Allysia foi assassinada, ela não cometeu suicídio.";
 		mes "Dê uma boa olhada nesse bilhete aqui!";
@@ -2763,13 +2763,13 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Como isso muda tudo?";
 		mes "Ela está morta, nada que eu faça trará ela de volta prá mim!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu nunca disse que James não a traiu.";
 		mes "Olhe na data no bilhete.";
 		mes "James fez planos de fugir com ela em 20 de Agosto.";
 		mes "Entretanto, o corpo dela foi encontrado no mesmo dia.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Portanto, Allysia deve ter morrido em 19 de Agosto.";
 		mes "Se ela estava planejando em fugir com seu amor no dia seguinte.";
 		mes "Então ela não tinha razão para se matar!";
@@ -2779,22 +2779,22 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Ela provavelmente não podia confiar em mim.";
 		mes "Ela deve ter percebido que ela não era nada além de um brinquedo para ele!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ah sim?";
 		mes "Digo que ela pulou no rio por que você encontrou-se com ela naquele dia.";
 		mes "Agora, dê uma boa olhada nisso!";
 		next;
 		select("Mostrar o bilhete de K.H.");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Esse bilhete foi escrito por um home com suas iniciais, K.H. essas iniciais estavam também escritas no retrato dela.";
 		mes "Você deve ter escrito esse bilhete.";
 		mes "Há muitas coincidências!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "De acordo com esse bilhete, você disse a Allysia que você queria vê-la novamente no lugar onde se encontraram antes.";
 		mes "Acho que você a viu novamente em 19 de Agosto, o dia que ela morreu!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Estou presumindo que o lugar que vocês se encontraram primeiro foi próximo ao rio.";
 		mes "Chega de suas mentiras, me conte o que realmente aconteceu!";
 		next;
@@ -2884,7 +2884,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "Tudo...?";
 		next;
 		cutin("kh_kyel01",2);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Na verdade, eu só quero perguntar sobre a natureza da sua relação profissional com a Corporação Rekenber e sobre Kiehl.";
 		next;
 		mes "[Kiel Hyre]";
@@ -3022,7 +3022,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	4_M_KHKYEL,{
 		mes "[Kiel Hyre]";
 		mes "Kiehl é minha responsabilidade...";
 		mes "Não importa qual o custo eu tenho de pará-lo!";
-		mes "Oh, e aqui, por favor pegue isso com toda minha gratidão por sua ajuda,"+(Sex == SEX_FEMALE ? "Sr":"Sra")+". "+strcharinfo(PC_NAME)+".";
+		mes "Oh, e aqui, por favor pegue isso com toda minha gratidão por sua ajuda,"+(Sex == SEX_FEMALE ? "Sr":"Sra")+". "+strcharinfo(CHAR_NAME)+".";
 		getitem(Old_Card_Album,1);
 		delitem(Elysia_Ring,1);
 		getexp(1000000,0);
@@ -3242,7 +3242,7 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 			mes "Você deve ter alguma conexão com ele.";
 			mes "Estou certo, não estou?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "......";
 			mes ".........";
 			mes "............";
@@ -3307,7 +3307,7 @@ kh_mansion,25,79,4	script	Mulher Misteriosa#kh	4_F_JOB_HUNTER,3,3,{
 				mes "[??????]";
 				mes "Se você não cooperar, então não posso garantir sua segurança, aventureiro";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Huh? O quê...?";
 				mes "O que isso quer dizer?";
 				mes "você está me ameaçando?";
@@ -4352,7 +4352,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Papai deve ter gasto muito dinheiro para lhe contratar.";
 		mes "Então ele lhe enviou para me matar?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Kiel Hyre me enviou para lhe pedir para parar de tornar toda a Terceira Geração de Robôs em máquinas mortíferas!";
 		mes "Como pode fazer algo assim a outros robôs como você?";
 		next;
@@ -4374,7 +4374,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Não até que são especialmente programados.";
 		mes "Desculpe mas não planejo parar o que estou fazendo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Humanidade pode não ser perfeita, mas pense com quem você está trabalhando!";
 		mes "Rekenber é o resumo do mal humano!";
 		mes "Como você pode ajudá-los assim?";
@@ -4468,7 +4468,7 @@ kh_kiehl02,50,52,4	script	Kiehl#kh	4_M_KHKIEL,{
 		mes "Vamos queimar tudo abaixo";
 		next;
 		mes "[Mitchell]";
-		mes "Rápido,"+strcharinfo(PC_NAME)+", use o dispositivo de força de Kiel Hyre, aquele que era para bagunçar com a fonte de força de Kiehl!";
+		mes "Rápido,"+strcharinfo(CHAR_NAME)+", use o dispositivo de força de Kiel Hyre, aquele que era para bagunçar com a fonte de força de Kiehl!";
 		mes "Rápido, use-o agora!";
 		next;
 		mapannounce(strnpcinfo(NPC_MAP),"*Gzzzz Gzzzz*",bc_map,"0xFF0000");

@@ -366,7 +366,7 @@ ve_in,238,120,4	script	Bêbedo#vei	4_F_DESERT,{
 	mes "Hohohoho";
 	mes "Oh Hohohoho";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Ela é meio estranha...";
 	close;
 }
@@ -408,7 +408,7 @@ ve_in,237,131,1	script	Cliente#vei	4_F_DESERT,{
 	mes "Eu não tenho tanta certeza..";
 	mes "O que acha deste jovem aventureiro aqui?";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Eeeuuu?";
 	emotion(e_swt2,1);
 	next;

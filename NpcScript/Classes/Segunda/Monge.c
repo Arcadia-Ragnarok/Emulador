@@ -29,12 +29,12 @@ prt_monk,59,247,1	script	Monge Guardião#monkq	2_M_PHARMACIST,{
 				close;
 			} else {
 				mes "[Monge Guardião]";
-				mes strcharinfo(PC_NAME)+" é seu nome?";
+				mes strcharinfo(CHAR_NAME)+" é seu nome?";
 				mes "...Eu falei certo?";
 				next;
 				mes "[Monge Guardião]";
 				mes "Muito bem ...";
-				mes "Por que você veio aqui "+strcharinfo(PC_NAME)+"?";
+				mes "Por que você veio aqui "+strcharinfo(CHAR_NAME)+"?";
 				next;
 				if (select("Aprender sobre os Monges","Me tornar Monge") == 1) {
 					mes "[Monge Guardião]";
@@ -516,7 +516,7 @@ prt_monk,251,255,1	script	Touha#monkq	1_F_PRIEST,{
 				mes "Parece que você não ouviu o que eu disse.";
 				close;
 			} else {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Procuro o caminho";
 			}
 			if (select("Acredito","Procuro o caminho","Buscarei a verdade","Da iluminação","Que aprendi","Protegerei os outros","Ao longo da vida","Pelos ensinamentos") != 4) {
@@ -772,14 +772,14 @@ prt_monk,57,179,1	script	Boohae#monkq	4_M_MINISTER,{
 			mes "Quantas vezes for necessário.";
 			close;
 		} else {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Hmmmm...!?";
 			next;
 			mes "Ele parece estar em meditação.";
 			close;
 		}
 	} else {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hmmmm...!?";
 		next;
 		mes "Ele parece estar em meditação.";
@@ -791,7 +791,7 @@ prt_monk,57,179,1	script	Boohae#monkq	4_M_MINISTER,{
 monk_test,329,61,3	script	Bashu#monkq	4_M_MONK,{
 	if (monkq == 12) {
 		mes "[Bashu]";
-		mes "Você deve ser "+strcharinfo(PC_NAME)+" que fará o teste de tolerância em ^ff0000Coletar Cogumelos^000000.";
+		mes "Você deve ser "+strcharinfo(CHAR_NAME)+" que fará o teste de tolerância em ^ff0000Coletar Cogumelos^000000.";
 		next;
 		mes "[Bashu]";
 		mes "Certo deixe-me enviar-l"+(Sex == SEX_MALE ? "o":"a")+" para o local.";
@@ -800,7 +800,7 @@ monk_test,329,61,3	script	Bashu#monkq	4_M_MONK,{
 		end;
 	} else if (monkq == 13) {
 		mes "[Bashu]";
-		mes "Você deve ser "+strcharinfo(PC_NAME)+" que decidiu fazer o teste de auto-controle a ^ff0000Maratona^000000.";
+		mes "Você deve ser "+strcharinfo(CHAR_NAME)+" que decidiu fazer o teste de auto-controle a ^ff0000Maratona^000000.";
 		next;
 		mes "[Bashu]";
 		mes "Certo deixe-me enviar-l"+(Sex == SEX_MALE ? "o":"a")+" para o local.";
@@ -931,7 +931,7 @@ monk_test,386,388,4	script	Supervisor#monkq	4_M_MINISTER,{
 // ------------------------------------------------------------------
 monk_test,82,384,0	script	MonkTrap#monkq	FAKE_NPC,{
 	OnTouch:
-	mapannounce(strnpcinfo(NPC_NAME),strcharinfo(PC_NAME)+", Você caiu em uma armadilha, voltará para o início.",bc_map);
+	mapannounce(strnpcinfo(NPC_NAME),strcharinfo(CHAR_NAME)+", Você caiu em uma armadilha, voltará para o início.",bc_map);
 	warp(strnpcinfo(NPC_MAP),386,387);
 	end;
 }

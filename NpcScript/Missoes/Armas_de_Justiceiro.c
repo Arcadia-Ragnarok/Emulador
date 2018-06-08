@@ -73,7 +73,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 			mes "Hmm. Você está parecendo que está vagando sem uma missão.";
 			mes "Se você tiver tempo,você me faria um favor?";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "O que é?";
 			next;
 			mes "[Garrison]";
@@ -147,10 +147,10 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "Enquanto eu espero.";
 		mes "Vou fazer as preparações para slotar sua Garrison, como prometido.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hmm, eu não quero fazer isso,mas eu irei fazer de qualquer forma.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ok.";
 		next;
 		mes "[Garrison]";
@@ -158,7 +158,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "Então entregue isto para uma pessoa chamada Ravery.";
 		mes "Ele mora na favela de Lighthalzen";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você recebeu a boa encomenda de Garrison";
 		mes "Vamos entregar-las para a pessoa chamada Ravery,que mora na favela de Lighthalzen";
 		delitem(Steel,10);
@@ -169,7 +169,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		gun_gs = 2;
 		close;
 		case 2:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você recebeu as boas encomendas de Garrison.";
 		mes "Vamos entrega-las para a pessoa chamada Ravery,que mora na favela de Lighthalzen";
 		close;
@@ -177,7 +177,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 		mes "[Garrison]";
 		mes "Oh como está sua viagem?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Gyah";
 		mes "Aquele homem tentou me atacar assim que me viu.";
 		mes "Mal escapo da morte!";
@@ -373,7 +373,7 @@ que_ng,182,85,3	script	Garrison#gungs	4_M_MANAGER,{
 // ------------------------------------------------------------------
 lighthalzen,322,247,6	script	Ravey#gungs	4_M_04,{
 	if (gun_gs == 2) {
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença.";
 		mes "Olá, eu estou aqui para repor as partes da defeituosa arma dos Justicei..";
 		next;
@@ -446,14 +446,14 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "É uma arma digna de ser chama de a verdadeira arma para qualquer Justiceiro.";
 		mes "huff huff...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você sabe muito sobre isso.";
 		mes ".....";
 		next;
 		mes "[Ingrid]";
 		mes "Ah. É claro, eu sou a pessoa que desenhou essa arma.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Wooow isto é incrível";
 		next;
 		mes "[Ingrid]";
@@ -481,7 +481,7 @@ que_ng,187,163,3	script	Ingrid#guninf	4_F_ALCHE,{
 		mes "Haha olhe para mim lhe falando todas essas coisas quando você nem se quer perguntou.";
 		mes "Desculpe.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Não,tudo bem";
 		mes "Você pode não ter se tornado uma Justiceira, mas acho que você se tornou uma grande pessoa.";
 		next;
@@ -606,7 +606,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Você é um Justiceiro, huh?";
 		mes "Por que você está interrompendo meus exercícios e eu ficando em frente a mim?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "É apenas excercícios de observação parce bom...";
 		mes ".............";
 		next;
@@ -614,14 +614,14 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Oh! Você gosta de artes marcíais?";
 		mes "Venha aqui, eu irei imobilizar você em uma queda de braços.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "N Não obrigado";
 		next;
 		mes "[Vanessa]";
 		mes "Venha aqui";
 		mes "-Bam! Bam!-";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "AahUgh Não faça isso";
 		mes "Aa..Aaaahhhh!!";
 		mes "Argh";
@@ -633,7 +633,7 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Hmm...eu coloquei muita força..";
 		mes "Hm";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem obviamente";
 		mes "Idiota! Idiota!!";
 		mes "*lágrimas*";
@@ -644,19 +644,19 @@ que_ng,185,180,3	script	Vanessa#gunst	4_F_JOB_BLACKSMITH,{
 		mes "Okey, okey,";
 		mes "Não chore";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "*lágrimas*";
 		next;
 		mes "[Vanessa]";
 		mes "Okey okey..";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "*lágrimas*";
 		next;
 		mes "[Vanessa]";
 		mes "Pare!Arrgh!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "........";
 		next;
 		mes "[Vanessa]";

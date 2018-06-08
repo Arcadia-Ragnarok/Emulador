@@ -136,7 +136,7 @@ payon,184,65,3	script	Sábio Chifre de Touro#gunslingerq	4_M_LGTGRAND,{
 		mes "[Sábio Chifre de Touro]";
 		mes "Olá, que assuntos te trazem à minha presença?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "O Sr. Miller me mandou entregar esta carta a você.";
 		mes "Na verdade, estou interessado em me tornar Justiceiro...";
 		next;

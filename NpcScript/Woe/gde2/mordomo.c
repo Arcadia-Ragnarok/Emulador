@@ -25,13 +25,13 @@
 	setarray(.@status$[0], "^FF0000Inoperante", "^4D4DFFOperacional");
 	if (!.@guild) {
 		close;
-	} else if (getcharid(CHAR_ID_GUILD) != .@guild) {
+	} else if (getcharid(ID_GUILD) != .@guild) {
 		mes("[" + .@name$ + "]\n"
 			"Suas ameaças não me assustam!\n"
 			"Guardiães, levem-lo para longe daqui!\n"
 			"Eu sempre serei leal ao mestre ^FF0000" + getguildmaster(.@GID) + "^000000.");
 		close;
-	} else if (strcharinfo(PC_NAME) == getguildmaster(.@guild)) {
+	} else if (strcharinfo(CHAR_NAME) == getguildmaster(.@guild)) {
 		if (agitcheck2()) {
 			switch (select("Situação da Fortalesa", "Contrato com Kafra", "Cancelar")) {
 				case 1:
@@ -84,7 +84,7 @@
 							next;
 							cutin("kafra_01", 2);
 							mes("[Funcionária Kafra ]\n"
-								"Como vai " + strcharinfo(PC_NAME) + "?\n"
+								"Como vai " + strcharinfo(CHAR_NAME) + "?\n"
 								"Fui enviada pelo Escritório Central Kafra para servir o seu clã.");
 							next;
 							mes("[Funcionária Kafra ]\n"
@@ -408,7 +408,7 @@
 								next;
 								cutin("kafra_01", 2);
 								mes("[Funcionária Kafra]\n"
-									"Como vai " + strcharinfo(PC_NAME) + "?\n"
+									"Como vai " + strcharinfo(CHAR_NAME) + "?\n"
 									"Fui enviada pelo Escritório Central Kafra para servir o seu clã.");
 								next;
 								mes("[Funcionária Kafra]\n"
@@ -465,7 +465,7 @@
 	} else {
 		mes("[" + .@name$ + "]\n"
 			"Como vai honorável membro\n"
-			"^00FF00" + strcharinfo(PC_NAME) + "^000000");
+			"^00FF00" + strcharinfo(CHAR_NAME) + "^000000");
 		next;
 		if (agitcheck2()) {
 			select("Visualizar Situação da Fortaleza");

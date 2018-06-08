@@ -608,7 +608,7 @@ ein_in01,277,95,7	script	Ryan#ein	4_M_EINMAN,{
 	mes "Por quê você não tirar essas roupas pesadas, incômodas?";
 	mes "Eu vou comprar tudo que você desejar, estou aqui! Venha.";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "N-no...!";
 	mes "I-I-I-I...";
 	mes "^666666Este é o sujeito mais sombrio que eu já vi!^000000";
@@ -626,7 +626,7 @@ ein_in01,277,95,7	script	Ryan#ein	4_M_EINMAN,{
 	mes "Ou eu estava?";
 	mes "Bwahahahaha!";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Es-este sujeito deve estar bêbado, com a mente drogada.";
 	close;
 }

@@ -381,7 +381,7 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 		mes "Você foi no seu caminho deixando os viajantes atrás de você.";
 		close;
 	}
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "O que está acontecendo aqui?";
 	emotion(e_what, 1);
 	next;
@@ -400,7 +400,7 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 	next;
 	switch (select("Roseten","Rose","Como eu saberia isso?")) {
 		case 1:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A resposta à pergunta é Roseten.";
 		mes "Por que você está lutando por um assunto tão trivial?";
 		next;
@@ -412,7 +412,7 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 		emotion(e_an, 0, "Viajante Nervoso#mor");
 		break;
 		case 2:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "A resposta à pergunta é Rose.";
 		mes "Você disse que a mãe de Rose tinha 10 filhos.";
 		mes "Então, mesmo que os nomes dos outros filhos sejam Roseone, Rosetwo...";
@@ -427,7 +427,7 @@ mora,43,113,4	script	Rafflen Apreensivo#mor	4_M_RAFLE_OLD,{
 		emotion(e_gg,0, "Viajante Chateado#mor");
 		break;
 		case 3:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu não faço ideia.";
 		mes "Tente ordená-los.";
 		next;

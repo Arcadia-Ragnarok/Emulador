@@ -33,7 +33,7 @@
 	}
 
 	cutin("kafra_01",2);
-	if (getcharid(CHAR_ID_GUILD) == .@GID) {
+	if (getcharid(ID_GUILD) == .@GID) {
 		mes "[Funcionária Kafra]";
 		mes "Bem vind"+(Sex == SEX_MALE ?"o":"a")+".";
 		mes "Membro ^ff0000"+getguildname(.@GID)+"^000000.";

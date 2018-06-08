@@ -573,7 +573,7 @@ dewata,278,100,4	script	Criança Desaparecida#dew	4_F_KID2,{
 	mes "WaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaa.";
 	emotion(e_sob);
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Hey, Garotinha...";
 	next;
 	mes "[Ukki]";
@@ -585,7 +585,7 @@ dewata,278,100,4	script	Criança Desaparecida#dew	4_F_KID2,{
 	mes "Onde estão vocês.....!. Waa.";
 	emotion(e_sob);
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "... ... ...";
 	emotion(e_dots);
 	close;

@@ -273,7 +273,7 @@ alberta,127,143,3	script	Belder	4_M_03,{
 		mes "Isso é, hum, muito bom pra ele.";
 		mes "Pensando melhor, acho que emprestei dinheiro a um tal Muff, sim.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "......";
 		next;
 		mes "[Belder]";

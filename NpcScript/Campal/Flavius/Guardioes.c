@@ -17,13 +17,13 @@ bat_b01,1,2,0	script	FlaviusGuardians	CLEAR_NPC,{
 //-------------------------------------------------------------------
 // Invocação dos guardiões
 	OnBlueGSummon: // Equipe Azul
-	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),108,159,"Guardião de Guillaume",B_S_GUARDIAN,strnpcinfo(PC_NAME)+"::OnBlueGDead");
-	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),108,141,"Guardião de Guillaume",B_B_GUARDIAN,strnpcinfo(PC_NAME)+"::OnBlueGDead");
+	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),108,159,"Guardião de Guillaume",B_S_GUARDIAN,strnpcinfo(NPC_NAME)+"::OnBlueGDead");
+	bg_monster($@FlaviusTeanBlue,strnpcinfo(NPC_MAP),108,141,"Guardião de Guillaume",B_B_GUARDIAN,strnpcinfo(NPC_NAME)+"::OnBlueGDead");
 	end;
 
 	OnRedGSummon: // Equipe Vermelha
-	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),307,160,"Guardião de Croix",B_S_GUARDIAN,strnpcinfo(PC_NAME)+"::OnRedGDead");
-	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),307,138,"Guardião de Croix",B_B_GUARDIAN,strnpcinfo(PC_NAME)+"::OnRedGDead");
+	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),307,160,"Guardião de Croix",B_S_GUARDIAN,strnpcinfo(NPC_NAME)+"::OnRedGDead");
+	bg_monster($@FlaviusTeanRed,strnpcinfo(NPC_MAP),307,138,"Guardião de Croix",B_B_GUARDIAN,strnpcinfo(NPC_NAME)+"::OnRedGDead");
 	end;
 
 //-------------------------------------------------------------------

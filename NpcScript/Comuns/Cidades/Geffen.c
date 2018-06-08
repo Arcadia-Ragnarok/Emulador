@@ -278,7 +278,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 		mes "Ouvi dizer que tem uma pessoa em Rune-Midgard...";
 		next;
 		mes "[Elenore]";
-		mes "Você ouviu falar de "+strcharinfo(PC_NAME)+"?";
+		mes "Você ouviu falar de "+strcharinfo(CHAR_NAME)+"?";
 		if (Sex == SEX_MALE) {
 			mes " Ele é supostamente o herói mais lindo da região!";
 		} else {
@@ -318,7 +318,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 			mes "Pare de olhar pra minha filha desse jeito.";
 			mes "Antes que eu arranque seus olhos e os coma com macarrão!^000000";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			if (Sex == SEX_MALE) {
 				mes " Huh...?";
 				mes "D-de novo?";
@@ -328,7 +328,7 @@ geffen_in,27,134,5	script	Garçonete#gef	4_F_02,{
 				mes "Oh, papai deve ter me possuído de novo.";
 				mes "Acontece comigo e minha irmã o tempo todo.";
 				next;
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Sério?";
 				mes "Huh.";
 				mes "É uma chatice.";

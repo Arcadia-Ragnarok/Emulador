@@ -15,7 +15,7 @@
 
 ice_dun04,33,166,3	script	Garoto congelado#ice	4_M_FROZEN,{
 	cutin("ra_sboy.bmp", 2);
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "Este garoto deve ser o que Ktullanux tenta proteger.";
 	next;
 	mes "^777777O garoto está congelado dentro de uma grande pedra de gelo e parece mais que ele está dormindo do que morto -^000000";
@@ -27,7 +27,7 @@ ice_dun04,33,166,3	script	Garoto congelado#ice	4_M_FROZEN,{
 	mes "^777777Você se pergunta porquê um jovem garoto teve de ser confinado nesta caverna isolada,";
 	mes "você instintivamente sabe que nenhuma magia no mundo seria capaz de libertá-lo desta pedra de gelo^000000.";
 	next;
-	mes "["+strcharinfo(PC_NAME)+"]";
+	mes "["+strcharinfo(CHAR_NAME)+"]";
 	mes "O que aconteceu a este garoto?";
 	close2; cutin("",255); end;
 }

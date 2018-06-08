@@ -78,8 +78,8 @@ bat_a01,6,1,0	script	TierraWall	CLEAR_NPC,{
 // - [Repararo das barricadas] -
 //-------------------------------------------------------------------
 -	script	TierraWallRepair	FAKE_NPC,{
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Guillaume" && $@TierraNorthWall < 1) { end; }
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanRed && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Croix" && $@TierraSouthWall < 1) { end; }
+	if (getcharid(ID_BG) == $@TierraTeanBlue && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Guillaume" && $@TierraNorthWall < 1) { end; }
+	if (getcharid(ID_BG) == $@TierraTeanRed && strnpcinfo(NPC_NAME_VISIBLE) == "Ferreiro Croix" && $@TierraSouthWall < 1) { end; }
 	mes "[Reparador]";
 	mes "Mes a barricada foi destruída, posso recontruíla.";
 	mes "Para isso vou precisar de 50 Pedras, 5 Aço, 2 Minérios de Elunium e 1 Ferro.";
@@ -112,7 +112,7 @@ bat_a01,6,1,0	script	TierraWall	CLEAR_NPC,{
 			mes "O preparo foi realizado com sucesso!";
 			mes "Agora vou me descançar.";
 			// Azul
-			if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue) {
+			if (getcharid(ID_BG) == $@TierraTeanBlue) {
 				if ($@TierraNorthWall < 1) {
 					donpcevent("TierraWall::OnEnableNorth");
 					close2;
@@ -121,7 +121,7 @@ bat_a01,6,1,0	script	TierraWall	CLEAR_NPC,{
 				end;
 			}
 			// Vermelho
-			if (getcharid(CHAR_ID_BG) == $@TierraTeanRed) {
+			if (getcharid(ID_BG) == $@TierraTeanRed) {
 				if ($@TierraSouthWall < 1) {
 					donpcevent("TierraWall::OnEnableSoulth");
 					close2;
@@ -160,25 +160,25 @@ bat_a01,170,121,5	duplicate(TierraWallRepair)	Ferreiro Croix#tierraRepair2	4_M_R
 // Azul
 bat_a01,194,267,0	script	#TierraBlueWarp	HIDDEN_NPC,7,0,{
 	OnTouch:
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue) { warp(strnpcinfo(NPC_MAP),194,261); }
+	if (getcharid(ID_BG) == $@TierraTeanBlue) { warp(strnpcinfo(NPC_MAP),194,261); }
 	end;
 }
 
 bat_a01,194,265,0	script	#TierraBlueWarp2	HIDDEN_NPC,7,0,{
 	OnTouch:
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanBlue) { warp(strnpcinfo(NPC_MAP),194,270); }
+	if (getcharid(ID_BG) == $@TierraTeanBlue) { warp(strnpcinfo(NPC_MAP),194,270); }
 	end;
 }
 
 // Vermelho
 bat_a01,177,130,0	script	#TierraRedWarp	HIDDEN_NPC,7,0,{
 	OnTouch:
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanRed) { warp(strnpcinfo(NPC_MAP),178,125); }
+	if (getcharid(ID_BG) == $@TierraTeanRed) { warp(strnpcinfo(NPC_MAP),178,125); }
 	end;
 }
 
 bat_a01,177,128,0	script	#TierraRedWarp2	HIDDEN_NPC,7,0,{
 	OnTouch:
-	if (getcharid(CHAR_ID_BG) == $@TierraTeanRed) { warp(strnpcinfo(NPC_MAP),178,134); }
+	if (getcharid(ID_BG) == $@TierraTeanRed) { warp(strnpcinfo(NPC_MAP),178,134); }
 	end;
 }

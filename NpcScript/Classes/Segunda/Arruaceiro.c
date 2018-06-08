@@ -39,7 +39,7 @@ in_rogue,363,122,4	script	Arruaceira#rogueq	4_F_ROGUE,{
 				mes "Mas qual é seu nome?";
 				next;
 				mes "[Markie]";
-				mes "..."+strcharinfo(PC_NAME)+"?";
+				mes "..."+strcharinfo(CHAR_NAME)+"?";
 				mes "Heh heh! Bom nome.";
 				next;
 				mes "[Markie]";
@@ -638,20 +638,20 @@ cmd_fild09,106,195,0	script	Warp#1rogueq	WARPNPC,1,1,{
 	next;
 	switch (select("Meu pai","Aragham","Aragon","Legolas")) {
 		case 1:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Meu pai";
 		break;
 		case 2:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aragham";
 		.@rogue_t += 10;
 		break;
 		case 3:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aragon";
 		break;
 		case 4:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Legolas";
 		break;
 	}
@@ -708,20 +708,20 @@ cmd_fild09,335,143,0	script	Warp#2rogueq	WARPNPC,1,1,{
 	next;
 	switch (select("Meu pai","Aragham","Aragon","Legolas")) {
 		case 1:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Meu pai";
 		.@rogue_t += 10;
 		break;
 		case 2:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aragham";
 		break;
 		case 3:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aragon";
 		break;
 		case 4:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Legolas";
 		break;
 	}
@@ -778,20 +778,20 @@ cmd_fild04,304,180,0	script	Warp#3rogueq	WARPNPC,1,1,{
 	next;
 	switch (select("Anntonio","Aragham","Antonio","Hollgrehenn")) {
 		case 1:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Anntonio";
 		break;
 		case 2:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aragham";
 		break;
 		case 3:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Antonio";
 		.@rogue_t += 10;
 		break;
 		case 4:
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hollgrehenn";
 		break;
 	}

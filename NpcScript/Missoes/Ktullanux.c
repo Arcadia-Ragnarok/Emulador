@@ -40,7 +40,7 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 			mes "Olhe, Freya usou de toda sua força lutando contra os mais terríveis demônios na Guerra de Mil Anos.";
 			mes "Agora, ela descansa e recupera suas energias num lugar puro e sagrado.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Espere...";
 			mes "Como você sabe que tudo isso aconteceu?";
 			next;
@@ -54,7 +54,7 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 			mes "Me envergonha admitir que meu filho Egapeo é...";
 			mes "É culpado de pecar.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Pecar? O que ele fez, se não se importa que eu pergunte?";
 			next;
 			mes "[Urstialla]";
@@ -62,7 +62,7 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 			mes "Eu estou convencido de que ele fez alguma coisa para enraivecer Freya.";
 			mes "Mesmo que ele possa merecer, eu estou fazendo meu melhor para ajudá-lo.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "...Espere. O quê?!";
 			next;
 			mes "[Urstialla]";
@@ -146,7 +146,7 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 			ice_necklace_q = 6;
 			completequest(2113);
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh, vamos apenas dizer que isso foi uma valiosa experiência para mim.";
 			next;
 			mes "[Urstialla]";
@@ -154,7 +154,7 @@ rachel,157,183,3	script	Devota Urstia	4_F_MASK1,{
 			mes "............";
 			mes "Que Freya sempre proteja, guie e perdoe você por essa horrível brincadeira.";
 		} else {
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh, não! O colar desapareceu!";
 		}
 		close2;
@@ -179,7 +179,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Ei! Ei, você!";
 		mes "Me ajude a quebrar esse gelo!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Como você ficou preso aí?";
 		next;
 		mes "[Homem Preso no Gelo]";
@@ -194,11 +194,11 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 			mes "^3355FFVocê atingiu o gelo com todo seu poder.^000000";
 		}
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "......";
 		mes "........";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu não...";
 		mes "Eu não consigo nem ao menos arranhá-lo!";
 		mes "Você tem alguma idéia?";
@@ -208,7 +208,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Isso é tão humilhante...";
 		mes "Eu, o maior mago do nosso tempo, Maheo, preso neste pilar de gelo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Espere...";
 		mes "Você é Maheo?";
 		next;
@@ -225,7 +225,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "É por isso que eu sempre visto esse uniforme de Mago...";
 		mes "Para lembrar a mim mesmo do valor da humildade.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Então como você ficou preso nesse gelo todo?";
 		next;
 		cutin("ra_magic3",2);
@@ -233,7 +233,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Na verdade, isso aconteceu porquê eu fui muito humilde.";
 		mes "Você vê, eu subestimei a mim mesmo, e a devastante força da minha própria magia.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "...Ahn?";
 		next;
 		mes "[Maheo]";
@@ -245,7 +245,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Eu então decidi que exterminaria esses monstros demoníacos pelo bem das pessoas!";
 		mes "Os cidadãos sentiriam-se protegidos, e eu seria reconhecido como um herói!";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Okay... Eu suponho que isso soa normal o suficiente.";
 		mes "Continue.";
 		next;
@@ -268,7 +268,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "E toda aquela chama fez com que minhas roupas pegarem fogo!";
 		next;
 		emotion(e_flash,1);
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Você...";
 		mes "você tocou fogo nas suas roupas";
 		next;
@@ -287,7 +287,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Mas chega de falar sobre mim.";
 		mes "Que motivo nobre traz você até esse lugar, aventureir"+(Sex == SEX_MALE ? "o":"a")+"?";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu ouvi dizer que você é capaz de polir as gemas nesse colar com a sua magia, então eu vim aqui te procurar.";
 		next;
 		mes "[Maheo]";
@@ -297,7 +297,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "Quer dizer, assim que eu conseguir sair desse gelo. Hmm...";
 		mes "Mas eu duvido que magia normal será capaz de derreter tudo isso.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Então como nós faremos para tirá-lo daí?";
 		next;
 		mes "[Maheo]";
@@ -319,7 +319,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 				mes "alguma idéia de quebrar esta gelada prisão de gelo?";
 				next;
 			} else {
-				mes "["+strcharinfo(PC_NAME)+"]";
+				mes "["+strcharinfo(CHAR_NAME)+"]";
 				mes "Oh, não! Eu deixei o colar na cidade! Eu tratei de volta!";
 				next; 
 				mes "[Maheo]";
@@ -335,7 +335,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 			mes "Ele deve estar lendo perto do Templo de Freya.";
 			close;
 		}
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bem, ele fez esse machado mágico com o qual espera-se ser capaz de quebrar esse gelo mágico.";
 		next;
 		mes "[Maheo]";
@@ -375,7 +375,7 @@ ice_dun02,120,105,3	script	Homem Preso no Gelo#cave	4_M_FROZEN1,5,5,{
 		mes "[Maheo]";
 		mes "Er, mas primeiro, eu preciso usar minha magia para limpar esse seu colar.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Aqui...";
 		next;
 		mes "[Maheo]";
@@ -439,7 +439,7 @@ rachel,265,98,3	script	Hamion#aru	4_M_RACHMAN2,{
 		mes "Hm? Você está precisando de alguma coisa?";
 		mes "Se não for tão importante, eu gostaria de voltar a ler o meu livro.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Hm, você por acaso conheceria um mago chamado Maheo?";
 		mes "Eu achava que tinha que procurar o seu mestre por essa área.";
 		next;

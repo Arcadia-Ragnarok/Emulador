@@ -17,7 +17,7 @@
 // - [ Script Base ] -
 // ------------------------------------------------------------------
 -	script	SunflowerSE	FAKE_NPC,{
-	if (getcharid(CHAR_ID_GUILD) != getcastledata(strnpcinfo(NPC_MAP), 1)) {
+	if (getcharid(ID_GUILD) != getcastledata(strnpcinfo(NPC_MAP), 1)) {
 		mes("- É um enorme girassol, é tão grande quanto um ser humano!..."
 			"Você sente que algo misterioso é emanado da flor. -");
 		next;

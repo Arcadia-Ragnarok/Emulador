@@ -187,7 +187,7 @@ valkyrie,48,86,4	script	Valkyrie#valkyrieq	4_F_VALKYRIE,{
 			close;
 		} else {
 			mes "[Valquíria]";
-			mes "Vejo que você já se livrou de todas coisas materiais deste mundo, "+strcharinfo(PC_NAME)+".";
+			mes "Vejo que você já se livrou de todas coisas materiais deste mundo, "+strcharinfo(CHAR_NAME)+".";
 			next;
 			mes "[Valquíria]";
 			mes "Esta foi uma sábia atitude para alguém como você.";

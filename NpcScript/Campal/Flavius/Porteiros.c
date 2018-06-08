@@ -36,10 +36,10 @@
 	} else {
 		mes "[Oficial de "+strnpcinfo(NPC_NAME_HIDDEN)+"]";
 		if (strnpcinfo(NPC_NAME_HIDDEN) == "Guillaume") {
-			mes "Olá ^777777"+strcharinfo(PC_NAME)+"^000000, vamos mostrar o poder do Exército Guillaume para estes Croixs!";
+			mes "Olá ^777777"+strcharinfo(CHAR_NAME)+"^000000, vamos mostrar o poder do Exército Guillaume para estes Croixs!";
 		}
 		if (strnpcinfo(NPC_NAME_HIDDEN) == "Croix") {
-			mes "Olá ^777777"+strcharinfo(PC_NAME)+"^000000, vamos mostrar o poder de nós Croixs para estes Guillaumes";
+			mes "Olá ^777777"+strcharinfo(CHAR_NAME)+"^000000, vamos mostrar o poder de nós Croixs para estes Guillaumes";
 		}
 		mes "Está pront"+(Sex == SEX_MALE ? "o":"a")+" para a batalha?";
 		next;

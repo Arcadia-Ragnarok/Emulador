@@ -81,7 +81,7 @@ izlude_in,74,172,4	script	Líder dos Espadachins#swordq	2_M_SWORDMASTER,{
 					case 1:
 					mes "[Líder dos Espadachins]";
 					mes "Então deixe me ver.";
-					mes "Seu nome é ^0066ff"+strcharinfo(PC_NAME)+"^000000, não é?";
+					mes "Seu nome é ^0066ff"+strcharinfo(CHAR_NAME)+"^000000, não é?";
 					mes "Pois bem... Ver aquele quarda alí?";
 					next;
 					mes "[Líder dos Espadachins]";
@@ -225,7 +225,7 @@ job_sword1,7,245,0	script	#WarpSwordQexit	WARPNPC,1,3,{
 
 job_sword1,192,244,0	script	#WarpSwordQ1st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo primeiro percuso do teste.",bc_map,"0xffce00");
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(CHAR_NAME)+" acaba de passar pelo primeiro percuso do teste.",bc_map,"0xffce00");
 	warp("job_sword1",215,244);
 	end;
 }
@@ -233,7 +233,7 @@ job_sword1,192,244,0	script	#WarpSwordQ1st	WARPNPC,1,3,{
 job_sword1,230,245,2	script	Checagem#st1swordq	8W_SOLDIER,{
 	percentheal(100,100);
 	mes "[Equipe de Testes]";
-	mes "Muito bem "+strcharinfo(PC_NAME);
+	mes "Muito bem "+strcharinfo(CHAR_NAME);
 	mes "Este é o primeiro ponto de checagem.";
 	close;
 }
@@ -256,7 +256,7 @@ job_sword1,8,206,0	script	#WarpSwordQexit2	WARPNPC,1,3,{
 
 job_sword1,193,207,0	script	#WarpSwordQ2st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo segundo percuso do teste.",bc_map,"0xffce00");
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(CHAR_NAME)+" acaba de passar pelo segundo percuso do teste.",bc_map,"0xffce00");
 	warp("job_sword1",10,169);
 	end;
 }
@@ -264,7 +264,7 @@ job_sword1,193,207,0	script	#WarpSwordQ2st	WARPNPC,1,3,{
 job_sword1,230,245,2	script	Checagem#st3swordq	8W_SOLDIER,{
 	percentheal(100,100);
 	mes "[Equipe de Testes]";
-	mes "Muito bem "+strcharinfo(PC_NAME);
+	mes "Muito bem "+strcharinfo(CHAR_NAME);
 	mes "Este é o último ponto de checagem.";
 	close;
 }
@@ -286,7 +286,7 @@ job_sword1,8,169,0	script	#WarpSwordQexit3	WARPNPC,1,3,{
 
 job_sword1,193,168,0	script	#WarpSwordQ3st	WARPNPC,1,3,{
 	OnTouch:
-	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(PC_NAME)+" acaba de passar pelo último percuso do teste.",bc_map,"0xffce00");
+	mapannounce(strnpcinfo(NPC_MAP),"[Salão de Testes] O candidato "+strcharinfo(CHAR_NAME)+" acaba de passar pelo último percuso do teste.",bc_map,"0xffce00");
 	warp("job_sword1",215,167);
 	end;
 }

@@ -328,7 +328,7 @@ comodo,226,123,5	script	Bardo Andarilho#bardq	2_M_BARD_ORIENT,{
 				mes "Uma frase de cada vez.";
 				next;
 			}
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			input(.@playerMusic1$);
 			if (.@playerMusic1$ != .@bardMusic1$) {
 				.@musicError = 1;

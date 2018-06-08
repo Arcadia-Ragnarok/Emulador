@@ -85,7 +85,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 				if (select("Assinar","Desistir") == 1) {
 					mes "[Guia dos Arqueiros]";
 					mes "Deixe-me ver.... Seu nome é.....";
-					mes "^0066ff"+strcharinfo(PC_NAME)+"^000000.";
+					mes "^0066ff"+strcharinfo(CHAR_NAME)+"^000000.";
 					mes "Muito bem seu teste começa agora.";
 					next;
 					mes "[Guia dos Arqueiros]";
@@ -119,7 +119,7 @@ payon_in02,64,71,4	script	Guia dos Arqueiros#archerq	4_M_03,{
 						close;
 					}
 				}
-				mes strcharinfo(PC_NAME);
+				mes strcharinfo(CHAR_NAME);
 				mes "Acho melhor eu pensar mais um pouco";
 				next;
 				mes "[Guia dos Arqueiros]";

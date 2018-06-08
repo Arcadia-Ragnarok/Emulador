@@ -94,7 +94,7 @@
 	// --------------------------------------------------------------
 	// O emperium foi destruído
 	OnAgitBreak:
-	.@guild = getcharid(CHAR_ID_GUILD);
+	.@guild = getcharid(ID_GUILD);
 	.@map$ = strnpcinfo(NPC_NAME_HIDDEN);
 	.@region$ = (compare(.@map$, "arug")) ? "Arunafeltz" : "Schwaltzvalt";
 	setcastledata(.@map$, 1, .@guild); // Adiciona novo ocupante ao castelo

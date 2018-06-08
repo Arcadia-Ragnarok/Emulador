@@ -127,7 +127,7 @@ lighthalzen,337,232,3	script	Maku#friendship	4_M_LGTPOOR,{
 		mes "Você deve ter algo melhor para fazer do que conversar com um rufião como eu ou com aquele idiota esnobe do Digotz.";
 		next;
 		select("Falando nele...");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Falando nele...";
 		mes "Eu conversei de novo com Digotz.";
 		mes "Ele me disse para dar um recado para você, mas eu não sei se...";
@@ -359,7 +359,7 @@ lighthalzen,337,232,3	script	Maku#friendship	4_M_LGTPOOR,{
 		mes "tiramos a idéia de uma HQ!";
 		mes "Bem, se ele se desculpar primeiro, acho que é melhor eu perdoá-lo.";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Bom...";
 		mes "Porque Digotz disse que ele está vindo para cá em alguns dias.";
 		next;
@@ -465,7 +465,7 @@ lhz_in02,201,210,5	script	Digotz#friendship	4_M_LGTMAN,{
 		mes "Agora, você já visitou o bairro pobre?";
 		next;
 		select("Sim, já...");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Sim, já...";
 		mes "E lá conheci um tal de Maku.";
 		next;
@@ -537,7 +537,7 @@ lhz_in02,201,210,5	script	Digotz#friendship	4_M_LGTMAN,{
 		mes "E, hmm, você entregou aquela mensagem para Maku?";
 		mes "Pensando nisso agora, eu fui meio...";
 		next;
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Eu entreguei a mensagem palavra por palavra.";
 		mes "E Maku ficou tão bravo, xingou muito e ameaçou dar uma surra bem dada em você.";
 		next;
@@ -686,7 +686,7 @@ lhz_in02,201,210,5	script	Digotz#friendship	4_M_LGTMAN,{
 		} else {
 			mes "^3355FFDigotz está seriamente ferido pela faca que ainda está enterrada na sua barriga.^000000 ";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Digotz...?";
 			mes "Oh não, deixe-me ajudá-lo!";
 			next;
@@ -798,7 +798,7 @@ yuno_in04,96,106,5	script	Estudante Dedicado#friendship	4_M_SAGE_A,{
 		mes "Esse é o amigo que Maku e Digotz falaram.^000000 ";
 		next;
 		select("Com licença...");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Com licença...";
 		mes "Benkaistein?";
 		next;
@@ -808,7 +808,7 @@ yuno_in04,96,106,5	script	Estudante Dedicado#friendship	4_M_SAGE_A,{
 		mes "Hmm, isso deve ajudar...";
 		next;
 		select("Ei...");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "Ei...";
 		mes "Você ai.";
 		mes "Benkaistein!";
@@ -818,7 +818,7 @@ yuno_in04,96,106,5	script	Estudante Dedicado#friendship	4_M_SAGE_A,{
 		mes "Se eu puder incorporá-la na minha tese sem me dar muito trabalho, minhas conclusão ficaria muito mais sólida...";
 		next;
 		select("EI VOCÊ...!");
-		mes "["+strcharinfo(PC_NAME)+"]";
+		mes "["+strcharinfo(CHAR_NAME)+"]";
 		mes "BENKAISTEIN...!";
 		next;
 		mes "[Estudante Dedicado]";

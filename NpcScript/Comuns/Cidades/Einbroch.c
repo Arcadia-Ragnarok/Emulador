@@ -92,7 +92,7 @@ einbroch,40,116,1	script	Eng. do Aeroporto#ein	4_M_EINMAN,{
 		next;
 		switch (select("Ah!","Uh huh...")) {
 			case 1:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Entendo, então você esta trabalhando na restauração desta magnifica espécime de Aeronave.";
 			next;
 			mes "[Engenheiro do Aeroporto]";
@@ -101,12 +101,12 @@ einbroch,40,116,1	script	Eng. do Aeroporto#ein	4_M_EINMAN,{
 			mes "Eu coloquei muito amor concerto de Burielle...";
 			close;
 			case 2:
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Uh huh...";
 			mes "Certo.";
 			mes "Por um segundo atrás, pensei que você estava falando de uma pessoa, mas agora percebi que não, você sabe, como um louco.";
 			next;
-			mes "["+strcharinfo(PC_NAME)+"]";
+			mes "["+strcharinfo(CHAR_NAME)+"]";
 			mes "Oh, você disse, \"modelo mais bonito\"?";
 			mes "Todas as Aeronaves pra mim parecem iguais, essa aqui não é especial contudo.";
 			mes "Você esta ficando maluco, pobre coitado.";

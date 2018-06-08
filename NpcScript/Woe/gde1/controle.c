@@ -56,10 +56,10 @@
 	// - [ O emperium foi quebrado ] -
 	// --------------------------------------------------------------
 	OnAgitBreak:
-	.@GID = getcharid(CHAR_ID_GUILD);
+	.@GID = getcharid(ID_GUILD);
 	// Mostra um Log de erro caso algum personagem sem clã quebre o emperium, mesmo que isso é impossível de acontecer
 	if (.@GID <= 0) {
-		.@notice$ = "O personagem "+strcharinfo(PC_NAME)+" ("+getcharid(CHAR_ID_CHAR)+") acaba de quebrar o Emperium no Castelo: "+strnpcinfo(NPC_NAME_HIDDEN)+" sem estar em um Clã. O Emperium será restaurado";
+		.@notice$ = "O personagem "+strcharinfo(CHAR_NAME)+" ("+getcharid(ID_CHAR)+") acaba de quebrar o Emperium no Castelo: "+strnpcinfo(NPC_NAME_HIDDEN)+" sem estar em um Clã. O Emperium será restaurado";
 		logmes(.@notice$);
 		debugmes(.@notice$);
 		donpcevent("Agit#"+strnpcinfo(NPC_NAME_HIDDEN)+"::OnStartArena");

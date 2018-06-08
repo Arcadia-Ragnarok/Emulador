@@ -18,7 +18,7 @@
 -	script	KafraSE	FAKE_NPC,{
 	cutin("kafra_01", 2);
 	.@guild = getcastledata(strnpcinfo(NPC_NAME_HIDDEN), 1);
-	if (getcharid(CHAR_ID_GUILD) == .@guild && getgdskilllv(.@guild, GD_KAFRACONTRACT)) {
+	if (getcharid(ID_GUILD) == .@guild && getgdskilllv(.@guild, GD_KAFRACONTRACT)) {
 		mes("[Funcionária Kafra]\n"
 			"Bem-vind" + (Sex == SEX_MALE ? "o" : "a") + ", membro da Guilda ^FF0000" + getguildname(.@guild) + "^000000!\n"
 			"A Corporação Kafra estará pronta para ajudar onde quer que esteja!");
