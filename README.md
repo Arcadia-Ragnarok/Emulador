@@ -37,6 +37,12 @@ NÃO SENDO ACONSELHAVEL O USO PARA CRIAÇÃO DE NUNHUM SERVIDOR NO MOMENTO!
 
 
 -------------
+
+#### Para testes em sistemas operacionais Windows.
+- Download da compilação ([Link](https://drive.google.com/drive/folders/104sJ5B6NvulDBUMpHbaF-Fad3QDFWEY9?usp=sharing))
+
+-------------
+
 ```
 
 Como já mensionado o emulador arcadia é apenas um emulador de uso pessoal que não visa substituir outros softwares semelhantes.
