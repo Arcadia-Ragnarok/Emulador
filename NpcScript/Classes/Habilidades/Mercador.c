@@ -10,7 +10,7 @@
 +-------------------------------------------------------------------+
 | - Author: Sem informação precisa                                  |
 | - Version: Spell Master                                           |
-| - Info: Quest da habilidades para mercador                        |
+| - Info: Aprendizagem das habilidades para mercador.               |
 |   Grito de Guerra (MC_LOUD)                                       |
 |   Personalizar Carrinho (MC_CHANGECART)                           | 
 |   Cavalo de Pau (MC_CARTREVOLUTION)                               |
@@ -22,143 +22,143 @@
 alberta,83,96,5	script	Necko	4W_M_02,7,7,{
 	if (BaseClass == Job_Merchant) {
 		if (getskilllv("MC_LOUD")) {
-			mes "[Necko]";
-			mes "Sinto muito. A Loja do Necko ...";
-			mes "Oh? Quem é este?";
-			mes "Pukakakakakakakakakaka!!!";
-			mes "Há quanto tempo!";
-			mes "Como você está?";
-			mes "Prazer em vê-lo novamente!";
-			mes "Nada de novo?";
-			mes "Eu estou tão contente de vê-lo!!";
-			mes "Você! Apareça de vez em quando!!";
-			mes "Eu poderia esquecer sua aparência!!";
-			mes "Pukakakakakakakakaka!!!";
-			mes "Muito, muito bom ver você!!";
-			mes "É tão bom te ver assim!!";
-			mes "Venha para Alberta frequentemente!!";
-			mes "Matar dois coelhos com uma cajadada só!!";
-			mes "Eu consigo ver você, e grito também!!";
-			mes "Quanto melhor ele pode chegar!!";
-			mes "Keuhahahahahahahaha!!";
-			mes "Pukakakakakakakakakaka!!!";
-			mes "Ppyakikakikakakakakakakaka!!";
+			mes("[Necko]\n"
+				"Sinto muito. A Loja do Necko ...\n"
+				"Oh? Quem é este?\n"
+				"Pukakakakakakakakakaka!!!\n"
+				"Há quanto tempo!\n"
+				"Como você está?\n"
+				"Prazer em vê-lo novamente!\n"
+				"Nada de novo?\n"
+				"Eu estou tão contente de vê-lo!!\n"
+				"Você! Apareça de vez em quando!!\n"
+				"Eu poderia esquecer sua aparência!!\n"
+				"Pukakakakakakakakaka!!!\n"
+				"Muito, muito bom ver você!!\n"
+				"É tão bom te ver assim!!\n"
+				"Venha para Alberta frequentemente!!\n"
+				"Matar dois coelhos com uma cajadada só!!\n"
+				"Eu consigo ver você, e grito também!!\n"
+				"Quanto melhor ele pode chegar!!\n"
+				"Keuhahahahahahahaha!!\n"
+				"Pukakakakakakakakakaka!!!\n"
+				"Ppyakikakikakakakakakakaka!!");
 			close;
 		} else if (JobLevel < 15) {
-			mes "[Necko]";
-			mes "Ah, você veio porque você está encantado com a minha voz?";
-			mes "Minha voz é alta, não é considerando que você pode ouvi-la à distância.";
-			mes "E também...";
-			mes "*Olhando em volta*";
+			mes("[Necko]\n"
+				"Ah, você veio porque você está encantado com a minha voz?\n"
+				"Minha voz é alta, não é considerando que você pode ouvi-la à distância.\n"
+				"E também...\n"
+				"*Olhando em volta*");
 			next;
-			mes "[Necko]";
-			mes "Minha voz não é apenas uma voz alta!";
-			mes "Uma vez que você é um Mercador nível 15.";
-			mes "Vou lhe contar o segredo!";
-			mes "Então, virei outra vez!!!";
+			mes("[Necko]\n"
+				"Minha voz não é apenas uma voz alta!\n"
+				"Uma vez que você é um Mercador nível 15.\n"
+				"Vou lhe contar o segredo!\n"
+				"Então, virei outra vez!!!");
 			next;
-			mes "[Necko]";
-			mes "Uahahahahahahahahahahahaha!";
-			mes "Kyukwakakakakakakakakakaka!";
+			mes("[Necko]\n"
+				"Uahahahahahahahahahahahaha!\n"
+				"Kyukwakakakakakakakakakaka!");
 			close;
 		} else if ((countitem(Scarlet_Jewel) > 6) && (countitem(Banana_Juice) > 0) && (countitem(Mushroom_Spore) > 49) && (JobLevel >= 15 || (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist))) {
-			mes "[Necko]";
-			mes "Oh! Você!";
-			mes "Você está qualificado para aprender a gritar!";
-			mes "Aprenda a gritar com a minha ajuda!";
-			mes "Gostaria de aprender o Grito de Guerra?";
+			mes("[Necko]\n"
+				"Oh! Você!\n"
+				"Você está qualificado para aprender a gritar!\n"
+				"Aprenda a gritar com a minha ajuda!\n"
+				"Gostaria de aprender o Grito de Guerra?");
 			next;
-			switch (select("Sim!!!!","Não","O que é isso?")) {
+			switch (select("Sim!!!!", "Não", "O que é isso?")) {
 				case 1:
-				mes "[Necko]";
-				mes "Ahahahahaha!! Bom!!!";
-				mes "Esse é o espírito!";
-				mes "Aqui vamos nós!";
+				mes("[Necko]\n"
+					"Ahahahahaha!! Bom!!!\n"
+					"Esse é o espírito!\n"
+					"Aqui vamos nós!");
 				next;
 				delitem(Scarlet_Jewel,7);
 				delitem(Banana_Juice,1);
 				delitem(Mushroom_Spore,50);
-				skill("MC_LOUD",1,0);
-				mes "[Necko]";
-				mes "Você aprendeu o Grito de Guerra!!";
-				mes "Grite o quanto quiser!!";
-				mes "Hahahahahahaha!";
+				skill("MC_LOUD", 1, 0);
+				mes("[Necko]\n"
+					"Você aprendeu o Grito de Guerra!!\n"
+					"Grite o quanto quiser!!\n"
+					"Hahahahahahaha!");
 				close;
 				case 2:
-				mes "[Necko]";
-				mes "Eh... ok.";
-				mes "Pooooh...";
+				mes("[Necko]\n"
+					"Eh... ok.\n"
+					"Pooooh...");
 				close;
 				case 3:
-				mes "[Necko]";
-				mes "Grito de Guerra usa sua voz para impulsionar o espírito de batalha com 8 de SP.";
-				mes "Você recebe um adicional de 4 FOR durante 5 minutos!";
-				mes "Se você usá-la repetidamente bastam 5 minutos daquele ponto em diante.";
+				mes("[Necko]\n"
+					"Grito de Guerra usa sua voz para impulsionar o espírito de batalha com 8 de SP.\n"
+					"Você recebe um adicional de 4 FOR durante 5 minutos!\n"
+					"Se você usá-la repetidamente bastam 5 minutos daquele ponto em diante.");
 				next;
-				mes "[Necko]";
-				mes "Fique descontraído na vida cotidiana, e quando precisar lutar ele reunirá o seu espírito.";
-				mes "Muito útil, devo dizer!!!!";
+				mes("[Necko]\n"
+					"Fique descontraído na vida cotidiana, e quando precisar lutar ele reunirá o seu espírito.\n"
+					"Muito útil, devo dizer!!!!");
 				close;
 			}
 		}
-		mes "[Necko]";
-		mes "Oh, você estava encantado com a minha voz?";
-		mes "Na verdade, minha voz é alta!";
-		mes "Você pode ouvi-la de tão longe.";
-		mes "E também...";
-		mes "*olha em volta*";
+		mes("[Necko]\n"
+			"Oh, você estava encantado com a minha voz?\n"
+			"Na verdade, minha voz é alta!\n"
+			"Você pode ouvi-la de tão longe.\n"
+			"E também...\n"
+			"*olha em volta*");
 		next;
-		mes "[Necko]";
-		mes "Minha voz não é apenas alta!";
-		mes "Eu aprendi a habilidade que me deixa gritar..";
-		mes "A habilidade Grito de Guerra!!";
+		mes("[Necko]\n"
+			"Minha voz não é apenas alta!\n"
+			"Eu aprendi a habilidade que me deixa gritar..\n"
+			"A habilidade Grito de Guerra!!");
 		next;
-		mes "[Necko]";
-		mes "O Grito de Guerra usa sua voz para aumentar o espírito de batalha com 8 sp.";
-		mes "Você recebe um adicional 4 FOR por 5 minutos!";
-		mes "Se você usá-la repetidamente bastam 5 minutos daquele ponto em diante.";
+		mes("[Necko]\n"
+			"O Grito de Guerra usa sua voz para aumentar o espírito de batalha com 8 sp.\n"
+			"Você recebe um adicional 4 FOR por 5 minutos!\n"
+			"Se você usá-la repetidamente bastam 5 minutos daquele ponto em diante.");
 		next;
-		mes "[Necko]";
-		mes "Permaneça descontraído na vida cotidiana, mas grite para conseguir mais força quando você lutar.";
-		mes "É muito útil!!!!";
-		mes "Para aprender essa habilidade, você precisa primeiro aprender os fundamentos do som!!!";
+		mes("[Necko]\n"
+			"Permaneça descontraído na vida cotidiana, mas grite para conseguir mais força quando você lutar.\n"
+			"É muito útil!!!!\n"
+			"Para aprender essa habilidade, você precisa primeiro aprender os fundamentos do som!!!");
 		next;
-		mes "[Necko]";
-		mes "Você poderia aprender isso em Payon a partir de um cantor com apenas uma voz alta...";
-		mes "Você poderia ter aulas com ele!";
+		mes("[Necko]\n"
+			"Você poderia aprender isso em Payon a partir de um cantor com apenas uma voz alta...\n"
+			"Você poderia ter aulas com ele!");
 		next;
-		mes "[Necko]";
-		mes "Porém essa pessoa morreu!";
-		mes "Então você não pode aprender mais!";
-		mes "Hahahahahahahaha!!!!";
-		mes "..............................";
-		mes "...Aww você me observa decepcionado.";
-		mes "Você quer aprender o Grito de Guerra?";
+		mes("[Necko]\n"
+			"Porém essa pessoa morreu!\n"
+			"Então você não pode aprender mais!\n"
+			"Hahahahahahahaha!!!!\n"
+			"..............................\n"
+			"...Aww você me observa decepcionado.\n"
+			"Você quer aprender o Grito de Guerra?");
 		next;
-		mes "[Necko]";
-		mes "Hmm ... Devo ensinar-lhe?";
-		mes "Se você realmente quer aprender, primeiro deve treinar as cordas vocais.";
-		mes "Existem algumas coisas necessárias para o fazer.";
+		mes("[Necko]\n"
+			"Hmm ... Devo ensinar-lhe?\n"
+			"Se você realmente quer aprender, primeiro deve treinar as cordas vocais.\n"
+			"Existem algumas coisas necessárias para o fazer.");
 		next;
-		mes "[Necko]";
-		mes "7 Pérolas, 1 garrafa de suco de banana, e 50 esporos de cogumelos!";
-		mes "Então eu vou treinar suas cordas vocais!";
+		mes("[Necko]\n"
+			"7 Pérolas, 1 garrafa de suco de banana, e 50 esporos de cogumelos!\n"
+			"Então eu vou treinar suas cordas vocais!");
 		next;
-		mes "[Necko]";
-		mes "Vejo você quando estiver pronto!";
-		mes "Eu irei preparar a minha garganta para em seguida eu lhe ensinar!!";
-		mes "Bboowuuuuuuuuuuuuuuuuh...!!";
+		mes("[Necko]\n"
+			"Vejo você quando estiver pronto!\n"
+			"Eu irei preparar a minha garganta para em seguida eu lhe ensinar!!\n"
+			"Bboowuuuuuuuuuuuuuuuuh...!!");
 		close;
 	}
-	mes "[Necko]";
-	mes "A loja do Necko está fechada nesse momento.";
-	mes "Volte mais tarde....";
+	mes("[Necko]\n"
+		"A loja do Necko está fechada nesse momento.\n"
+		"Volte mais tarde....");
 	close;
 
 	OnTouch:
-	mes "[!?]";
-	mes "Muahahahahahahahahahahahaha!!";
-	mes "Pukakakakakakakakakakakakaka!";
+	mes("[!?]\n"
+		"Muahahahahahahahahahahahaha!!\n"
+		"Pukakakakakakakakakakakakaka!");
 	close;
 }
 
@@ -168,125 +168,128 @@ alberta,83,96,5	script	Necko	4W_M_02,7,7,{
 alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 	if (BaseClass == Job_Merchant) {
 		if (getskilllv("MC_CHANGECART")) {
-			mes "[Charlron]";
-			mes "Mmm? Fiquei me perguntando quem estava fazendo todo";
-			mes "esse barulho transportando um carrinho.";
-			mes "Foi você.";
-			mes "Sim, eu lembro de você.";
-			mes "O que você acha do carrinho novo .. bom, não é?";
+			mes("[Charlron]\n"
+				"Mmm? Fiquei me perguntando quem estava fazendo todo\n"
+				"esse barulho transportando um carrinho.\n"
+				"Foi você.\n"
+				"Sim, eu lembro de você.\n"
+				"O que você acha do carrinho novo .. bom, não é?");
 			next;
-			mes "[Charlron]";
-			mes "Aproveite a vida.";
-			mes "A vida não é simplesmente passar a frente...";
-			mes "Devagar, olhando em volta, arrastando um carrinho pesado, é a forma como nós, comerciantes vivemos.";
-			mes "Até a próxima vez.";
+			mes("[Charlron]\n"
+				"Aproveite a vida.\n"
+				"A vida não é simplesmente passar a frente...\n"
+				"Devagar, olhando em volta, arrastando um carrinho pesado, é a forma como nós, comerciantes vivemos.\n"
+				"Até a próxima vez.");
 			next;
-			mes "[Charlron]";
-			mes "Esteja saudável.";
+			mes("[Charlron]\n"
+				"Esteja saudável.");
 			close;
 		} else if (JobLevel >= 30|| (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist)) {
-			mes "[Charlron]";
-			mes "É bom ver um colega Mercador.";
-			mes "Se me lembro bem, você é aquele famoso Mercador que vi esses dias.";
+			mes("[Charlron]\n"
+				"É bom ver um colega Mercador.\n"
+				"Se me lembro bem, você é aquele famoso Mercador que vi esses dias.");
 			next;
-			mes "Mas seu carrinho não parece se encaixar a sua fama.";
-			mes "Que pena.";
+			mes("[Charlron]\n"
+				"Mas seu carrinho não parece se encaixar a sua fama.\n"
+				"Que pena.");
 			next;
-			switch (select("É por isso que eu vim","O que acontece com o meu carrinho?")) {
+			switch (select("É por isso que eu vim", "O que acontece com o meu carrinho?")) {
 				case 1:
 				if ((countitem(Wooden_Block) > 49) && (countitem(Iron) > 9) && (countitem(Animals_Skin) > 19)) {
-					mes "[Charlron]";
-					mes "Haha! Ok, ok!";
-					mes "Com as coisas que você trouxe";
-					mes "Eu posso mudar seu carrinho.";
+					mes("[Charlron]\n"
+						"Haha! Ok, ok!\n"
+						"Com as coisas que você trouxe\n"
+						"Eu posso mudar seu carrinho.");
 					next;
-					delitem(Wooden_Block,50);
-					delitem(Iron,10);
-					delitem(Animals_Skin,20);
-					skill("MC_CHANGECART",1,0);
-					mes "[Charlron]";
-					mes "Parabéns.";
-					mes "Agora é possível escolher um carrinho de acordo com seu gosto.";
-					mes "E agora você não precisa mesmo de mim para ajudá-lo.";
-					mes "Tudo o que é necessário é um pouco de SP.";
+					delitem(Wooden_Block, 50);
+					delitem(Iron, 10);
+					delitem(Animals_Skin, 20);
+					skill("MC_CHANGECART", 1, 0);
+					mes("[Charlron]\n"
+						"Parabéns.\n"
+						"Agora é possível escolher um carrinho de acordo com seu gosto.\n"
+						"E agora você não precisa mesmo de mim para ajudá-lo.\n"
+						"Tudo o que é necessário é um pouco de SP.");
 					next;
-					mes "[Charlron]";
-					mes "Conveniente, não acha?";
-					mes "Ah, e mais uma coisa!";
-					mes "Conforme você aumenta de nível, você poderá ter um novo carrinho, então trabalhe duro.";
+					mes("[Charlron]\n"
+						"Conveniente, não acha?\n"
+						"Ah, e mais uma coisa!\n"
+						"Conforme você aumenta de nível, você poderá ter um novo carrinho,\n"
+						"então trabalhe duro.");
 					next;
-					mes "[Charlron]";
-					mes "Mas de qualquer maneira, ficará muito bem em você!";
-					mes "Hahaha! Tenha um bom dia!";
+					mes("[Charlron]\n"
+						"Mas de qualquer maneira, ficará muito bem em você!\n"
+						"Hahaha! Tenha um bom dia!");
 					close;
 				}
-				mes "[Charlron]";
-				mes "Hum... É verdade que eu modifico carrinhos, mas...";
-				mes "Para fazer isso, eu preciso de alguns materiais.";
+				mes("[Charlron]\n"
+					"Hum... É verdade que eu modifico carrinhos, mas...\n"
+					"Para fazer isso, eu preciso de alguns materiais.");
 				next;
-				mes "[Charlron]";
-				mes "50 Troncos.";
-				mes "10 Ferros.";
-				mes "20 Couro de animais.";
-				mes "Eu preciso, pelo menos, dessas coisas para modificar seu carrinho.";
+				mes("[Charlron]\n"
+					"50 Troncos.\n"
+					"10 Ferros.\n"
+					"20 Couro de animais.\n"
+					"Eu preciso, pelo menos, dessas coisas para modificar seu carrinho.");
 				next;
-				mes "[Charlron]";
-				mes "Então venha me ver quando tiver tudo preparado.";
+				mes("[Charlron]\n"
+					"Então venha me ver quando tiver tudo preparado.");
 				close;
 				case 2:
-				mes "[Charlron]";
-				mes "Ah, não, você não sabe de nada?";
-				mes "*Aumenta o tom de voz*";
-				mes "Uma nova maneira de mostrar o ego de um Mercador!";
-				mes "Uma expressão de um cérebro excelente!";
-				mes "Personalizar Carrinho é uma habilidade que faz com que um Mercador se destaque!";
+				mes("[Charlron]\n"
+					"Ah, não, você não sabe de nada?\n"
+					"*Aumenta o tom de voz*\n"
+					"Uma nova maneira de mostrar o ego de um Mercador!\n"
+					"Uma expressão de um cérebro excelente!\n"
+					"Personalizar Carrinho é uma habilidade que faz com que um Mercador se destaque!");
 				next;
-				mes "[Charlron]";
-				mes "Uma habilidade divertida que lhe permite usar um carrinho diferente de acordo com o seu nível e com apenas 40 de SP!";
+				mes("[Charlron]\n"
+					"Uma habilidade divertida que lhe permite usar um carrinho diferente de acordo com o seu nível e com apenas 40 de SP!");
 				next;
-				mes "[Charlron]";
-				mes "Isso é Personalizar Carrinho uma habilidade fundamental para qualquer Mercador.";
-				mes "Eu vou te ensinar como fazer, observe com bastante atenção.";
-				mes "Faça exatamente o que eu digo para fazer e fará o seu próprio no futuro";
+				mes("[Charlron]\n"
+					"Isso é Personalizar Carrinho uma habilidade fundamental para qualquer Mercador.\n"
+					"Eu vou te ensinar como fazer, observe com bastante atenção.\n"
+					"Faça exatamente o que eu digo para fazer e fará o seu próprio no futuro.");
 				next;
-				mes "[Charlron]";
-				mes "Uma vez que fará a primeira vez, precisarei de alguns materiais.";
-				mes "50 Troncos!";
-				mes "10 Ferros!";
-				mes "20 Couro Animais!";
-				mes "Traga esses itens por favor!";
+				mes("[Charlron]\n"
+					"Uma vez que fará a primeira vez, precisarei de alguns materiais.\n"
+					"50 Troncos!\n"
+					"10 Ferros!\n"
+					"20 Couro Animais!\n"
+					"Traga esses itens por favor!");
 				next;
-				mes "[Charlron]";
-				mes "Tudo o que temos que fazer é usar esses materiais, então volte quando estiver com tudo pronto.";
-				mes "Ok?";
+				mes("[Charlron]\n"
+					"Tudo o que temos que fazer é usar esses materiais."
+					"Então volte quando estiver com tudo pronto.\n"
+					"Ok?");
 				close;
 				case 3:
-				mes "[Charlron]";
-				mes "...Isso não é 'CARTA'!";
+				mes("[Charlron]\n"
+					"...Isso não é 'CARTA'!");
 				close;
 			}
 		}
-		mes "[Charlron]";
-		mes "Bem-vindo jovem.";
-		mes "Está vendendo diversão?";
-		mes "Eu sou o Mercador Charlron.";
-		mes "Eu fui fazendo uma pesquisa sobre carrinhos.";
+		mes("[Charlron]\n"
+			"Bem-vindo jovem.\n"
+			"Está vendendo diversão?\n"
+			"Eu sou o Mercador Charlron.\n"
+			"Eu fui fazendo uma pesquisa sobre carrinhos.");
 		next;
-		mes "[Charlron]";
-		mes "Você não está cansado desse carrinho?";
-		mes "Venha até mim se você quiser modificar seu carrinho.";
-		mes "Farei um bom trabalho.";
-		mes "Mas, existem algumas condições.";
+		mes("[Charlron]\n"
+			"Você não está cansado desse carrinho?\n"
+			"Venha até mim se você quiser modificar seu carrinho.\n"
+			"Farei um bom trabalho.\n"
+			"Mas, existem algumas condições.");
 		next;
-		mes "[Charlron]";
-		mes "Eu sou um Mercador muito famoso, então eu realmente não sei lidar com iniciantes.";
-		mes "Uma vez que você é nível 30 de Classe.";
-		mes "Eu posso considerar a criação de um acordo com você.";
+		mes("[Charlron]\n"
+			"Eu sou um Mercador muito famoso, então eu realmente não sei lidar com iniciantes.\n"
+			"Uma vez que você é nível 30 de Classe.\n"
+			"Eu posso considerar a criação de um acordo com você.");
 		close;
 	}
-	mes "[Charlron]";
-	mes "Eu sou um Mercador que lida com muitas coisas.";
-	mes "Se você alguma vez encontrar alguma coisa interessante volte e tente fazer um acordo comigo.";
+	mes("[Charlron]\n"
+		"Eu sou um Mercador que lida com muitas coisas.\n"
+		"Se você alguma vez encontrar alguma coisa interessante volte e tente fazer um acordo comigo.");
 	close;
 }
 
@@ -296,207 +299,209 @@ alberta,119,221,6	script	Charlron	1_M_PAY_ELDER,{
 -	script	::Gershaun_alberta	-1,{
 	if (BaseClass == Job_Merchant) {
 		if (getskilllv("MC_CARTREVOLUTION")) {
-			mes "[Gershaun]";
-			mes "Ah, quanto tempo sem te ver!";
-			mes "Ohh, as marcas vermelhas em seu carrinho.";
-			mes "Elas devem ser as marcas dele...";
-			mes "Parece que eu te ensinei a habilidade corretamente!";
+			mes("[Gershaun]\n"
+				"Ah, quanto tempo sem te ver!\n"
+				"Ohh, as marcas vermelhas em seu carrinho.\n"
+				"Elas devem ser as marcas dele...\n"
+				"Parece que eu te ensinei a habilidade corretamente!");
 			next;
-			mes "[Gershaun]";
-			mes "Você tem sangue como o meu!";
-			mes "Mmm! afinal...";
-			mes "Eu sou feliz!";
-			mes "Coçe minhas costas!";
-			mes "Aqui! Depressa!";
+			mes("[Gershaun]\n"
+				"Você tem sangue como o meu!\n"
+				"Mmm! afinal...\n"
+				"Eu sou feliz!\n"
+				"Coçe minhas costas!\n"
+				"Aqui! Depressa!");
 			close;
 		} else if (JobLevel >= 35 || (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist)) {
-			mes "[Gershaun]";
-			mes "Ooh. Você tem um corpo firme para um mercador.";
-			mes "Você deve ser muito bom com algumas coisas que transporta!?";
-			mes "Mmm, você deve ser capaz de aprender";
-			mes "Cavalo de Pau!";
+			mes("[Gershaun]\n"
+				"Ooh. Você tem um corpo firme para um mercador.\n"
+				"Você deve ser muito bom com algumas coisas que transporta!?\n"
+				"Mmm, você deve ser capaz de aprender\n"
+				"Cavalo de Pau!");
 			next;
-			switch (select("Ei, é por isso que eu vim","O que é isso?")) {
+			switch (select("Ei, é por isso que eu vim", "O que é isso?")) {
 				case 1:
 				if ((countitem(Grape_Juice) > 1) && (countitem(Iron) > 19) && (countitem(Sticky_Mucus) > 29) && (countitem(Wing_Of_Fly) > 19) && (countitem(Tentacle) > 4)) {
-					mes "[Gershaun]";
-					mes "Hoho!";
-					mes "Vejo que está pronto! agora vou te ensinar";
-					mes "Cavalo de Pau!";
+					mes("[Gershaun]\n"
+						"Hoho!\n"
+						"Vejo que está pronto! Agora vou te ensinar\n"
+						"Cavalo de Pau!");
 					next;
-					mes "[Gershaun]";
-					mes "Ah, é um dia tão agradável!";
-					mes "Vou premiar aqueles que";
-					mes "estão ansiosos para balançar seus carrinhos!";
+					mes("[Gershaun]\n"
+						"Ah, é um dia tão agradável!\n"
+						"Vou premiar aqueles que\n"
+						"estão ansiosos para balançar seus carrinhos!");
 					next;
-					delitem(Grape_Juice,2);
-					delitem(Iron,20);
-					delitem(Sticky_Mucus,30);
-					delitem(Wing_Of_Fly,20);
-					delitem(Tentacle,5);
-					skill("MC_CARTREVOLUTION",1,0);
-					mes "Agora você pode usar o Cavalo de Pau.";
-					mes "Espero que você faça Mercadores famosos por usar este incrível poder destrutivo.";
-					mes "Muahahahahaha!!!";
+					delitem(Grape_Juice, 2);
+					delitem(Iron, 20);
+					delitem(Sticky_Mucus, 30);
+					delitem(Wing_Of_Fly, 20);
+					delitem(Tentacle, 5);
+					skill("MC_CARTREVOLUTION", 1, 0);
+					mes("[Gershaun]\n"
+						"Agora você pode usar o Cavalo de Pau.\n"
+						"Espero que você faça Mercadores famosos por usar este incrível poder destrutivo.\n"
+						"Muahahahahaha!!!");
 					next;
-					mes "[Gershaun]";
-					mes "Tenha um ótimo dia!!";
+					mes("[Gershaun]\n"
+						"Tenha um ótimo dia!!");
 					close;
 				} else if (countitem(Banana_Juice)) {
-					mes "[Gershaun]";
-					mes "Ooh!";
-					mes "É suco de banana!";
-					mes "Muito obrigado!";
-					mes "...............Kaah!";
-					delitem(Banana_Juice,1);
-					mes "Muito refrescante! Obrigado! Até logo!";
+					mes("[Gershaun]\n"
+						"Ooh!\n"
+						"É suco de banana!\n"
+						"Muito obrigado!\n"
+						"...............Kaah!\n"
+						"Muito refrescante! Obrigado! Até logo!");
+					delitem(Banana_Juice, 1);
 					next;
-					mes "[Gershaun]";
-					mes "Hmm?";
-					mes "Você não se foi ainda?";
-					mes "Ah! Você ainda está ligado no Cavalo de Pau!";
-					mes "Ok então.";
-					mes "Considerando que você trouxe o suco de banana, eu vou te ensinar.";
+					mes("[Gershaun]\n"
+						"Hmm?\n"
+						"Você não se foi ainda?\n"
+						"Ah! Você ainda está ligado no Cavalo de Pau!\n"
+						"Ok então.\n"
+						"Considerando que você trouxe o suco de banana, eu vou te ensinar.");
 					next;
-					mes "[Gershaun]";
-					mes "Não é difícil ensiná-lo a fazer o Cavalo de Pau.";
-					mes "Mas eu preciso de você para preparar os materiais para eu modificar o seu carrinho.";
-					mes "Os itens que eu preciso são...";
+					mes("[Gershaun]\n"
+						"Não é difícil ensiná-lo a fazer o Cavalo de Pau.\n"
+						"Mas eu preciso de você para preparar os materiais para eu modificar o seu carrinho.\n"
+						"Os itens que eu preciso são...");
 					next;
-					mes "[Gershaun]";
-					mes "Primeiro eu preciso de 20 Ferros para fazer o carrinho durável.";
-					mes "Em seguida, 30 Muco Pegajosos para absorver o choque.";
-					mes "E cerca de 20 Asas de Mosca e 5 tentáculos.";
-					mes "E 2 garrafas de suco de uva para mim!";
+					mes("[Gershaun]\n"
+						"Primeiro eu preciso de 20 Ferros para fazer o carrinho durável.\n"
+						"Em seguida, 30 Muco Pegajosos para absorver o choque.\n"
+						"E cerca de 20 Asas de Mosca e 5 tentáculos.\n"
+						"E 2 garrafas de suco de uva para mim!");
 					next;
-					mes "[Gershaun]";
-					mes "Basta trazer os itens.";
-					mes "Não estou dizendo que são apenas 20 ou 30.";
-					mes "Depende do meu estado!";
-					mes "Hahahaha!";
-					mes "Eu estarei esperando. Até logo!";
+					mes("[Gershaun]\n"
+						"Basta trazer os itens.\n"
+						"Não estou dizendo que são apenas 20 ou 30.\n"
+						"Depende do meu estado!\n"
+						"Hahahaha!\n"
+						"Eu estarei esperando. Até logo!");
 					close;
 				}
-				mes "[Gershaun]";
-				mes "Mmm!";
-				mes "Nada pode ser feito sem uma bebida refrescante!";
-				mes "Que tal começar uma conversa com pelo menos uma garrafa de suco de banana?";
+				mes("[Gershaun]\n"
+					"Mmm!\n"
+					"Nada pode ser feito sem uma bebida refrescante!\n"
+					"Que tal começar uma conversa com pelo menos uma garrafa de suco de banana?");
 				close;
 				case 2:
-				mes "[Gershaun]";
-				mes "Você não parece saber sobre a habilidade Cavalo de Pau.";
-				mes "Ok, eu vou lhe contar uma história";
-				mes "Eu nunca disse a ninguém antes.";
-				mes "Ouça com atenção.";
+				mes("[Gershaun]\n"
+					"Você não parece saber sobre a habilidade Cavalo de Pau.\n"
+					"Ok, eu vou lhe contar uma história\n"
+					"Eu nunca disse a ninguém antes.\n"
+					"Ouça com atenção.");
 				next;
-				mes "[Gershaun]";
-				mes "Fiz uma pesquisa sobre uma diferente forma de usar o carrinho.";
-				mes "Tentei cozinhar ramen e ainda tentei pular corda.";
-				mes "Mas nenhum deles era capaz de me satisfazer.";
+				mes("[Gershaun]\n"
+					"Fiz uma pesquisa sobre uma diferente forma de usar o carrinho.\n"
+					"Tentei cozinhar ramen e ainda tentei pular corda.\n"
+					"Mas nenhum deles era capaz de me satisfazer.");
 				next;
-				mes "[Gershaun]";
-				mes "Em desespero, eu vagava através dos campos com o meu carrinho.";
-				mes "Depois de perambular dia após dia confuso..";
-				mes "Eu conheci um monstro muito forte.";
-				mes "Minha vida estava em perigo!";
-				mes "Por que eu - um desarmado, Mercador sem armadura!";
+				mes("[Gershaun]\n"
+					"Em desespero, eu vagava através dos campos com o meu carrinho.\n"
+					"Depois de perambular dia após dia confuso..\n"
+					"Eu conheci um monstro muito forte.\n"
+					"Minha vida estava em perigo!\n"
+					"Por que eu - um desarmado, Mercador sem armadura!");
 				next;
-				mes "[Gershaun]";
-				mes "Eu estava morrendo de medo...";
-				mes "Pensando e esperando que este não era o meu último suspiro.";
-				mes "Com pouca esperança a esquerda eu tentei a última coisa possível.";
-				mes "Eu usei o meu carrinho para acertar o monstro!";
+				mes("[Gershaun]\n"
+					"Eu estava morrendo de medo...\n"
+					"Pensando e esperando que este não era o meu último suspiro.\n"
+					"Com pouca esperança a esquerda eu tentei a última coisa possível.\n"
+					"Eu usei o meu carrinho para acertar o monstro!");
 				next;
-				mes "[Gershaun]";
-				mes "O monstro morreu em uma única batida.";
-				mes "Foi então que eu percebi uma coisa.";
-				mes "Os carrinhos também podem se tornar armas!";
-				mes "Eu finalmente percebi que nós podemos atacar com nossos carrinhos!";
+				mes("[Gershaun]\n"
+					"O monstro morreu em uma única batida.\n"
+					"Foi então que eu percebi uma coisa.\n"
+					"Os carrinhos também podem se tornar armas!\n"
+					"Eu finalmente percebi que nós podemos atacar com nossos carrinhos!");
 				next;
-				mes "[Gershaun]";
-				mes "Cavalo de Pau!";
-				mes "Essa é a habilidade nova de ataque que eu desenvolvi.";
-				mes "Usando 12 SP você poderá levantar seu carrinho para bater no seu adversário com um golpe certeiro na cabeça!";
+				mes("[Gershaun]\n"
+					"Cavalo de Pau!\n"
+					"Essa é a habilidade nova de ataque que eu desenvolvi.\n"
+					"Usando 12 SP você poderá levantar seu carrinho para bater no seu adversário com um golpe certeiro na cabeça!");
 				next;
-				mes "[Gershaun]";
-				mes "Quanto mais pesado o seu carrinho é, mais forte é o dano de ataque com um golpe.";
-				mes "O adversário vai se machucar e será forçado a recuar!";
-				mes "Isso é o Cavalo de Pau!";
+				mes("[Gershaun]\n"
+					"Quanto mais pesado o seu carrinho é, mais forte é o dano de ataque com um golpe.\n"
+					"O adversário vai se machucar e será forçado a recuar!\n"
+					"Isso é o Cavalo de Pau!");
 				close;
 			}
 		}
-		mes "[Gershaun]";
-		mes "Mmm, um jovem Mercador.";
-		mes "Mmm, Você também deve usar carrinhos.";
-		mes "Já que você vai precisar para fazer negócios.";
-		mes "Mas isso é tudo?";
+		mes("[Gershaun]\n"
+			"Mmm, um jovem Mercador.\n"
+			"Mmm, Você também deve usar carrinhos.\n"
+			"Já que você vai precisar para fazer negócios.\n"
+			"Mas isso é tudo?");
 		next;
-		mes "[Gershaun]";
-		mes "Fiz uma pesquisa sobre uma diferente forma de usar o carrinho.";
-		mes "Tentei cozinhar ramen e ainda tentei pular corda.";
-		mes "Mas nenhum deles era capaz de me satisfazer.";
+		mes("[Gershaun]\n"
+			"Fiz uma pesquisa sobre uma diferente forma de usar o carrinho.\n"
+			"Tentei cozinhar ramen e ainda tentei pular corda.\n"
+			"Mas nenhum deles era capaz de me satisfazer.");
 		next;
 		switch (select("Eu sei, Eu sei.","...?")) {
 			case 1:
-			mes "[Gershaun]";
-			mes "Não, o que eu estou dizendo é...";
+			mes("[Gershaun]\n"
+				"Não, o que eu estou dizendo é...");
 			close;
 			case 2:
-			mes "[Gershaun]";
-			mes "Em desespero, eu vagava através dos campos com o meu carrinho.";
-			mes "Depois de perambular dia após dia confuso..";
-			mes "Eu conheci um monstro muito forte.";
-			mes "Minha vida estava em perigo!";
-			mes "Por que eu, um desarmado, Mercador sem armadura!";
+			mes("[Gershaun]\n"
+				"Em desespero, eu vagava através dos campos com o meu carrinho.\n"
+				"Depois de perambular dia após dia confuso..\n"
+				"Eu conheci um monstro muito forte.\n"
+				"Minha vida estava em perigo!\n"
+				"Por que eu, um desarmado, Mercador sem armadura!");
 			next;
-			mes "[Gershaun]";
-			mes "Eu estava morrendo de medo.";
-			mes "Pensando e esperando que este não era o meu último suspiro.";
-			mes "Com pouca esperança a esquerda eu tentei a última coisa possível.";
-			mes "Eu usei o meu carrinho para acertar o monstro!";
-			mes "E então... E então!";
+			mes("[Gershaun]\n"
+				"Eu estava morrendo de medo.\n"
+				"Pensando e esperando que este não era o meu último suspiro.\n"
+				"Com pouca esperança a esquerda eu tentei a última coisa possível.\n"
+				"Eu usei o meu carrinho para acertar o monstro!\n"
+				"E então... E então!");
 			next;
-			mes "[Gershaun]";
-			mes "O monstro morreu em uma única batida.";
-			mes "Foi então que eu percebi uma coisa.";
-			mes "Os carrinhos também podem se tornar armas!";
-			mes "Eu finalmente percebi que nós podemos atacar com nossos carrinhos!";
+			mes("[Gershaun]\n"
+				"O monstro morreu em uma única batida.\n"
+				"Foi então que eu percebi uma coisa.\n"
+				"Os carrinhos também podem se tornar armas!\n"
+				"Eu finalmente percebi que nós podemos atacar com nossos carrinhos!");
 			next;
-			mes "[Gershaun]";
-			mes "Cavalo de Pau!";
-			mes "Essa é a habilidade nova de ataque que eu desenvolvi.";
-			mes "Usando 12 SP você poderá levantar seu carrinho para bater no seu adversário com um golpe certeiro na cabeça!";
+			mes("[Gershaun]\n"
+				"Cavalo de Pau!\n"
+				"Essa é a habilidade nova de ataque que eu desenvolvi.\n"
+				"Usando 12 SP você poderá levantar seu carrinho para bater no seu adversário com um golpe certeiro na cabeça!");
 			next;
-			mes "[Gershaun]";
-			mes "Quanto mais pesado o seu carrinho é mais forte é o dano de ataque com um golpe, o adversário vai se machucar e será forçado a recuar!";
+			mes("[Gershaun]\n"
+				"Quanto mais pesado o seu carrinho é mais forte é o dano de ataque com um golpe,\n"
+				"o adversário vai se machucar e será forçado a recuar!");
 			next;
-			mes "[Gershaun]";
-			mes "Você gostaria de aprender esta habilidade?";
+			mes("[Gershaun]\n"
+				"Você gostaria de aprender esta habilidade?");
 			next;
 			switch (select("Sim!!","Eu quero aprender...")) {
 				case 1:
-				mes "[Gershaun]";
-				mes "Ok!";
-				mes "Vou te dar um treinamento especial!";
-				mes "Primeiro você precisa de saúde!";
-				mes "Torne-se um Mercador de nível 35 de classe!";
-				mes "Nos falamos depois!";
+				mes("[Gershaun]\n"
+					"Ok!\n"
+					"Vou te dar um treinamento especial!\n"
+					"Primeiro você precisa de saúde!\n"
+					"Torne-se um Mercador de nível 35 de classe!\n"
+					"Nos falamos depois!");
 				close;
 				case 2:
-				mes "[Rei do Sushi Gershaun]";
+				mes("[Rei do Sushi Gershaun]");
 				if (Sex == SEX_MALE) {
-					mes "Garota estúpida!";
+					mes("Garota estúpida!");
 				} else {
-					mes "Garoto estúpida!";
+					mes("Garoto estúpida!");
 				}
-				mes "É muito cedo para você, até mesmo para colocar suas mãos em sushis!";
+				mes("É muito cedo para você, até mesmo para colocar suas mãos em sushis!");
 				close;
 			}
 		}
 	}
-	mes "[Gershaun]";
-	mes "Se não funcionar, faça com que funcione.";
-	mes "Se não funcionar, faça com que funcione.";
-	mes "Se não funcionar, faça com que funcione.";
+	mes("[Gershaun]\n"
+		"Se não funcionar, faça com que funcione.\n"
+		"Se não funcionar, faça com que funcione.\n"
+		"Se não funcionar, faça com que funcione.");
 	close;
 }
