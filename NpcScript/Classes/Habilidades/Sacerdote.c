@@ -115,7 +115,8 @@ prt_church,111,112,1	script	Irmã Linus#priest_sk	1_F_PRIEST,{
 				"Se eu vê-la, irei pedir para que ela entre em contato com você.");
 			next;
 			mes("[Irmã Linus]\n"
-				"Ah, muito obrigado! O nome dela é Suma Sacerdotisa Sorin. Melhor, ^3131FFMargaretha Sorin^000000.\n"
+				"Ah, muito obrigado!\n"
+				"O nome dela é Suma Sacerdotisa Sorin. Melhor, ^3131FFMargaretha Sorin^000000.\n"
 				"Se você por acaso encontrá-la.\n"
 				"Por favor diga a ela que eu estou orando por sua segurança.");
 			priest_sk = 1;
@@ -232,7 +233,6 @@ prt_church,111,112,1	script	Irmã Linus#priest_sk	1_F_PRIEST,{
 					"Eu espero que você use-o de forma correta em suas aventuras");
 				close;
 			} else {
-				priest_sk = 0;
 				mes("[Irmã Linus]\n"
 					"Eu sempre estarei orando por sua segurança.\n"
 					"Eu espero que você possa trazer amor e compaixão para todos que encontrar em sua jornada.");
