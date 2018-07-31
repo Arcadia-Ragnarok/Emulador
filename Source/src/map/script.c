@@ -11939,7 +11939,7 @@ BUILDIN(waitingroom)
 	int trigger =  script_hasdata(st,5) ? script_getnum(st,5) : limit;
 	int zeny =  script_hasdata(st,6) ? script_getnum(st,6) : 0;
 	int minLvl =  script_hasdata(st,7) ? script_getnum(st,7) : 1;
-	int maxLvl =  script_hasdata(st,8) ? script_getnum(st,8) : 150; //MAX_LEVEL
+	int maxLvl =  script_hasdata(st,8) ? script_getnum(st,8) : 175; //MAX_LEVEL
 
 	nd = map->id2nd(st->oid);
 	if (nd != NULL) {
@@ -20878,12 +20878,12 @@ BUILDIN(instance_check_party)
 
 	amount = script_hasdata(st,3) ? script_getnum(st,3) : 1; // Amount of needed Partymembers for the Instance.
 	min = script_hasdata(st,4) ? script_getnum(st,4) : 1; // Minimum Level needed to join the Instance.
-	max  = script_hasdata(st,5) ? script_getnum(st,5) : 150; // Maxium Level allowed to join the Instance. //MAX_LEVEL
+	max  = script_hasdata(st,5) ? script_getnum(st,5) : 175; // Maxium Level allowed to join the Instance. //MAX_LEVEL
 
-	if( min < 1 || min > 150) { //MAX_LEVEL
+	if( min < 1 || min > 175) { //MAX_LEVEL
 		ShowError("instance_check_party: Nivel minimo invalido, %d\n", min);
 		return true;
-	} else if(  max < 1 || max > 150) { //MAX_LEVEL
+	} else if(  max < 1 || max > 175) { //MAX_LEVEL
 		ShowError("instance_check_party: Nivel maximo invalido, %d\n", max);
 		return true;
 	}
@@ -20937,12 +20937,12 @@ BUILDIN(instance_check_guild)
 
 	amount = script_hasdata(st,3) ? script_getnum(st,3) : 1;
 	min = script_hasdata(st,4) ? script_getnum(st,4) : 1;
-	max = script_hasdata(st,5) ? script_getnum(st,5) : 150; //MAX_LEVEL
+	max = script_hasdata(st,5) ? script_getnum(st,5) : 175; //MAX_LEVEL
 
-	if( min < 1 || min > 150 ){ //MAX_LEVEL
+	if( min < 1 || min > 175 ){ //MAX_LEVEL
 		ShowError("instance_check_guild: Nivel minimo invalido, %d\n", min);
 		return true;
-	} else if( max < 1 || max > 150 ){ //MAX_LEVEL
+	} else if( max < 1 || max > 175 ){ //MAX_LEVEL
 		ShowError("instance_check_guild: Nivel maximo invalido, %d\n", max);
 		return true;
 	}
@@ -21782,8 +21782,8 @@ BUILDIN(npcskill)
 		ShowError("npcskill: pontos maximos de status excedido de %d.\n",battle_config.max_third_parameter );
 		return false;
 	}
-	if (npc_level > 150) { //MAX_LEVEL
-		ShowError("npcskill: nivel maximo excedido de %d.\n", 150); //MAX_LEVEL
+	if (npc_level > 175) { //MAX_LEVEL
+		ShowError("npcskill: nivel maximo excedido de %d.\n", 175); //MAX_LEVEL
 		return false;
 	}
 	if (nd == NULL) {

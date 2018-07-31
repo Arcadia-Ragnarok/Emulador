@@ -112,7 +112,7 @@ bool chat_createpcchat(struct map_session_data* sd, const char* title, const cha
 
 	pc_stop_walking(sd, STOPWALKING_FLAG_FIXPOS);
 
-	cd = chat->create(&sd->bl, title, pass, limit, pub, 0, "", 0, 1, 150); //MAX_LEVEL
+	cd = chat->create(&sd->bl, title, pass, limit, pub, 0, "", 0, 1, 175); //MAX_LEVEL
 	if( cd ) {
 		cd->users = 1;
 		cd->usersd[0] = sd;
@@ -380,7 +380,7 @@ bool chat_createnpcchat(struct npc_data* nd, const char* title, int limit, bool 
 		return false;
 	}
 
-	if (zeny > MAX_ZENY || max_level > 150) { //MAX_LEVEL
+	if (zeny > MAX_ZENY || max_level > 175) { //MAX_LEVEL
 		ShowError("chat_createnpcchat: npc '%s' tem um lvl exigido ou quantidade de zeny acima do limite maximo!\n", nd->exname);
 		return false;
 	}

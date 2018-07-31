@@ -386,9 +386,9 @@ void bg_config_read(void) {
 					ShowWarning("bg_config_read: valor %d invalido para arena '%s' minLevel\n",minLevel,aName);
 					minLevel = 0;
 				}
-				if( maxLevel > 150 ) { //MAX_LEVEL
+				if( maxLevel > 175 ) { //MAX_LEVEL
 					ShowWarning("bg_config_read: valor %d invalido para arena '%s' maxLevel\n",maxLevel,aName);
-					maxLevel = 150; //MAX_LEVEL
+					maxLevel = 175; //MAX_LEVEL
 				}
 
 				if( !(reward = libconfig->setting_get_member(arena, "reward")) ) {

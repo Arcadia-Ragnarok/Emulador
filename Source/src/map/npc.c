@@ -3887,7 +3887,7 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 		return strchr(start, '\n');
 	}
 
-	if( (mob_lv == 0 || mob_lv > 150) && mob_lv != -1 ) { //MAX_LEVEL
+	if( (mob_lv == 0 || mob_lv > 175) && mob_lv != -1 ) { //MAX_LEVEL
 		ShowError("npc_parse_mob: Nivel invalido %d para o monstro do ID %d no arquivo '%s', linha '%d'.\n", mob_lv, class_, filepath, strline(buffer, start - buffer));
 		if (retval) *retval = EXIT_FAILURE;
 		return strchr(start, '\n');
@@ -3900,7 +3900,7 @@ const char *npc_parse_mob(const char *w1, const char *w2, const char *w3, const 
 	mobspawn.y = (unsigned short)y;
 	mobspawn.xs = (signed short)xs;
 	mobspawn.ys = (signed short)ys;
-	if (mob_lv > 0 && mob_lv <= 150) { //MAX_LEVEL
+	if (mob_lv > 0 && mob_lv <= 175) { //MAX_LEVEL
 		mobspawn.level = mob_lv;
 	}
 	if (size > 0 && size <= 2)

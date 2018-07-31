@@ -85,8 +85,8 @@ player_config: {
 	max_aspd: 190
 
 	// Máxima velocidade de ataque, mas para as 3ª classes.
-	// O máximo aceito é 190 padrão oficial
-	max_third_aspd: 190
+	// O máximo aceito é 193 padrão oficial
+	max_third_aspd: 193
 
 	// Máxima taxa de velocidade de movimento
 	// 200 é o dobro da velocidade normal
@@ -105,13 +105,13 @@ player_config: {
 	// O mesmo que max_parameter, mas para classes 3.
 	// Nota: Este valor deve ser igual ou maior que o definido em
 	//max_parameter.
-	// O máximo aceito é 120 padrão oficial
-	max_third_parameter: 120
+	// O máximo aceito é 130 padrão oficial
+	max_third_parameter: 130
 
 	// O mesmo que max_parameter, mas para classes extendidas
 	//(Ex. Super Novice, Kagero/Oboro, Rebellion).
-	// O máximo aceito é 120 padrão oficial
-	max_extended_parameter: 120
+	// O máximo aceito é 125 padrão oficial
+	max_extended_parameter: 125
 
 	// Mesmo do max_parameter, mas para classe summoner
 	// O máximo aceito é 120 padrão oficial
@@ -122,8 +122,8 @@ player_config: {
 	max_baby_parameter: 80
 
 	// Mesmo do max_third_parameter, mas para classe bebê 3rd's.
-	// O máximo aceito é 99 padrão oficial
-	max_baby_third_parameter: 99
+	// O máximo aceito é 117 padrão oficial
+	max_baby_third_parameter: 117
 
 	// Máximo de def/mdef
 	// NOTA: não afeta habilidades e efeitos como Corpo Fechado

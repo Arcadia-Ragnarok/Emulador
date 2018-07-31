@@ -1751,7 +1751,7 @@ int itemdb_validate_entry(struct item_data *entry, int n, const char *source) {
 	entry->wlv = cap_value(entry->wlv, REFINE_TYPE_ARMOR, REFINE_TYPE_MAX);
 
 	if( !entry->elvmax )
-		entry->elvmax = 150; //MAX_LEVEL
+		entry->elvmax = 175; //MAX_LEVEL
 	else if( entry->elvmax < entry->elv )
 		entry->elvmax = entry->elv;
 

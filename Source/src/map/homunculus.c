@@ -1309,7 +1309,7 @@ void homunculus_exp_db_read(void) {
 			ShowError("Nao foi possivel ler %s\n",line);
 			return;
 		}
-		while(fgets(line, sizeof(line), fp) && j < 150) { //MAX_LEVEL
+		while(fgets(line, sizeof(line), fp) && j < 175) { //MAX_LEVEL
 			if(line[0] == '/' && line[1] == '/')
 				continue;
 
@@ -1317,9 +1317,9 @@ void homunculus_exp_db_read(void) {
 				break;
 		}
 		// Last permitted level have to be 0!
-		if (homun->dbs->exptable[150 - 1]) { //MAX_LEVEL
-			ShowWarning("homunculus_exp_db_read: Nivel maximo atingido em exp_homun [%d]. Linhas restantes nao foram lidas.\n ", 150); //MAX_LEVEL
-			homun->dbs->exptable[150 - 1] = 0; //MAX_LEVEL
+		if (homun->dbs->exptable[175 - 1]) { //MAX_LEVEL
+			ShowWarning("homunculus_exp_db_read: Nivel maximo atingido em exp_homun [%d]. Linhas restantes nao foram lidas.\n ", 175); //MAX_LEVEL
+			homun->dbs->exptable[175 - 1] = 0; //MAX_LEVEL
 		}
 		fclose(fp);
 		ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", j, filename[i]);

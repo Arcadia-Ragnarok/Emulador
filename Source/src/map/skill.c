@@ -9612,7 +9612,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 			}
 			break;
 		case LG_INSPIRATION:
-			if( sd && !map->list[sd->bl.m].flag.noexppenalty && sd->status.base_level != 150 ) { //MAX_LEVEL
+			if( sd && !map->list[sd->bl.m].flag.noexppenalty && sd->status.base_level != 175 ) { //MAX_LEVEL
 					sd->status.base_exp -= min(sd->status.base_exp, pc->nextbaseexp(sd) * 1 / 100); // 1% penalty.
 					sd->status.job_exp -= min(sd->status.job_exp, pc->nextjobexp(sd) * 1 / 100);
 					clif->updatestatus(sd,SP_BASEEXP);

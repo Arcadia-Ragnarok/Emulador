@@ -824,8 +824,8 @@ struct pc_interface {
 	/* */
 
 BEGIN_ZEROED_BLOCK; /* Everything within this block will be memset to 0 when status_defaults() is executed */
-	unsigned int statp[150+1]; //MAX_LEVEL
-	unsigned int level_penalty[3][RC_MAX][150*2+1]; //MAX_LEVEL
+	unsigned int statp[175+1]; //MAX_LEVEL
+	unsigned int level_penalty[3][RC_MAX][175*2+1]; //MAX_LEVEL
 	/* */
 	struct skill_tree_entry skill_tree[CLASS_COUNT][MAX_SKILL_TREE];
 	struct fame_list smith_fame_list[MAX_FAME_LIST];

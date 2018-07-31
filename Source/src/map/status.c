@@ -2049,11 +2049,10 @@ int status_calc_mob_(struct mob_data *md, enum e_status_calc_opt opt)
 
 	nullpo_retr(1, md);
 	if(opt&SCO_FIRST) { //Set basic level on respawn.
-	/*
-		if (md->level > 0 && md->level <= MAX_LEVEL && md->level != md->db->lv)
+
+		if (md->level > 0 && md->level <= 175 && md->level != md->db->lv)
 			;
 		else
-	*/
 			md->level = md->db->lv;
 	}
 
@@ -2789,7 +2788,7 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt)
 
 	// Job bonuses
 	index = pc->class2idx(sd->status.class);
-	for (i = 0; i < sd->status.job_level && i < 150; i++) { //MAX_LEVEL
+	for (i = 0; i < sd->status.job_level && i < 175; i++) { //MAX_LEVEL
 		if(!status->dbs->job_bonus[index][i])
 			continue;
 		switch(status->dbs->job_bonus[index][i]) {
@@ -12763,13 +12762,13 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 			status->dbs->max_weight_base[idx] = status->dbs->max_weight_base[iidx];
 			memcpy(&status->dbs->aspd_base[idx], &status->dbs->aspd_base[iidx], sizeof(status->dbs->aspd_base[iidx]));
 
-			for (i = 1; i <= 150 && status->dbs->HP_table[iidx][i]; i++) { //MAX_LEVEL
+			for (i = 1; i <= 175 && status->dbs->HP_table[iidx][i]; i++) { //MAX_LEVEL
 				status->dbs->HP_table[idx][i] = status->dbs->HP_table[iidx][i];
 			}
 			base = (i > 1 ? status->dbs->HP_table[idx][1] : 35); // Safe value if none are specified
 			if (i > 2) {
-				if (i >= 150 + 1) { //MAX_LEVEL
-					i = 150; //MAX_LEVEL
+				if (i >= 175 + 1) { //MAX_LEVEL
+					i = 175; //MAX_LEVEL
 				}
 				avg_increment = (status->dbs->HP_table[idx][i] - base) / (i - 1);
 			} else {
@@ -12779,13 +12778,13 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 				status->dbs->HP_table[idx][i] = min(base + avg_increment * i, battle_config.max_hp);
 			}
 
-			for (i = 1; i <= 150 && status->dbs->SP_table[iidx][i]; i++) { //MAX_LEVEL
+			for (i = 1; i <= 175 && status->dbs->SP_table[iidx][i]; i++) { //MAX_LEVEL
 				status->dbs->SP_table[idx][i] = status->dbs->SP_table[iidx][i];
 			}
 			base = (i > 1 ? status->dbs->SP_table[idx][1] : 10); // Safe value if none are specified
 			if (i > 2) {
-				if (i >= 150 + 1) { //MAX_LEVEL
-					i = 150; //MAX_LEVEL
+				if (i >= 175 + 1) { //MAX_LEVEL
+					i = 175; //MAX_LEVEL
 				}
 				avg_increment = (status->dbs->SP_table[idx][i] - base) / (i - 1);
 			} else {
@@ -12806,13 +12805,13 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 				continue;
 			}
 			iidx = pc->class2idx(iclass);
-			for (i = 1; i <= 150 && status->dbs->HP_table[iidx][i]; i++) { //MAX_LEVEL
+			for (i = 1; i <= 175 && status->dbs->HP_table[iidx][i]; i++) { //MAX_LEVEL
 				status->dbs->HP_table[idx][i] = status->dbs->HP_table[iidx][i];
 			}
 			base = (i > 1 ? status->dbs->HP_table[idx][1] : 35); // Safe value if none are specified
 			if (i > 2) {
-				if (i >= 150 + 1) {
-					i = 150;
+				if (i >= 175 + 1) {
+					i = 175;
 				}
 				avg_increment = (status->dbs->HP_table[idx][i] - base) / (i - 1);
 			} else {
@@ -12833,13 +12832,13 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 				continue;
 			}
 			iidx = pc->class2idx(iclass);
-			for (i = 1; i <= 150 && status->dbs->SP_table[iidx][i]; i++) { //MAX_LEVEL
+			for (i = 1; i <= 175 && status->dbs->SP_table[iidx][i]; i++) { //MAX_LEVEL
 				status->dbs->SP_table[idx][i] = status->dbs->SP_table[iidx][i];
 			}
 			base = (i > 1 ? status->dbs->SP_table[idx][1] : 10); // Safe value if none are specified
 			if (i > 2) {
-				if (i >= 150 + 1) {
-					i = 150; //MAX_LEVEL
+				if (i >= 175 + 1) {
+					i = 175; //MAX_LEVEL
 				}
 				avg_increment = (status->dbs->SP_table[idx][i] - base) / (i - 1);
 			} else {
@@ -12875,14 +12874,14 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 	if ((temp = libconfig->setting_get_member(jdb, "HPTable"))) {
 		int level = 0, avg_increment, base;
 		struct config_setting_t *hp = NULL;
-		while (level <= 150 && (hp = libconfig->setting_get_elem(temp, level)) != NULL) { //MAX_LEVEL
+		while (level <= 175 && (hp = libconfig->setting_get_elem(temp, level)) != NULL) { //MAX_LEVEL
 			i32 = libconfig->setting_get_int(hp);
 			status->dbs->HP_table[idx][++level] = min(i32, battle_config.max_hp);
 		}
 		base = (level > 0 ? status->dbs->HP_table[idx][1] : 35); // Safe value if none are specified
 		if (level > 2) {
-			if (level >= 150 + 1) {
-				level = 150;
+			if (level >= 175 + 1) {
+				level = 175;
 			}
 			avg_increment = (status->dbs->HP_table[idx][level] - base) / level;
 		} else {
@@ -12896,14 +12895,14 @@ void status_read_job_db_sub(int idx, const char *name, struct config_setting_t *
 	if ((temp = libconfig->setting_get_member(jdb, "SPTable"))) {
 		int level = 0, avg_increment, base;
 		struct config_setting_t *sp = NULL;
-		while (level <= 150 && (sp = libconfig->setting_get_elem(temp, level)) != NULL) { //MAX_LEVEL
+		while (level <= 175 && (sp = libconfig->setting_get_elem(temp, level)) != NULL) { //MAX_LEVEL
 			i32 = libconfig->setting_get_int(sp);
 			status->dbs->SP_table[idx][++level] = min(i32, battle_config.max_sp);
 		}
 		base = (level > 0 ? status->dbs->SP_table[idx][1] : 10); // Safe value if none are specified
 		if (level > 2) {
-			if (level >= 150 + 1) {
-				level = 150; //MAX_LEVEL
+			if (level >= 175 + 1) {
+				level = 175; //MAX_LEVEL
 			}
 			avg_increment = (status->dbs->SP_table[idx][level] - base) / level;
 		} else {
@@ -13198,7 +13197,7 @@ int status_readdb(void)
 
 	// read databases
 	//
-	sv->readdb(map->db_path, "Job_DB/LvStatus.txt", ',', 1, 1+150, -1, status->readdb_job2); //MAX_LEVEL
+	sv->readdb(map->db_path, "Job_DB/LvStatus.txt", ',', 1, 1+175, -1, status->readdb_job2); //MAX_LEVEL
 	sv->readdb(map->db_path, "Status_DB/SizeFix.txt", ',', MAX_SINGLE_WEAPON_TYPE, MAX_SINGLE_WEAPON_TYPE, ARRAYLENGTH(status->dbs->atkmods), status->readdb_sizefix);
 	status->readdb_refine_libconfig("Status_DB/Refine.conf");
 	sv->readdb(map->db_path, "Status_DB/SC_Config.txt", ',', 2, 2, SC_MAX, status->readdb_scconfig);

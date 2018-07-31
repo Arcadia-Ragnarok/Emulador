@@ -331,7 +331,7 @@ struct mob_data* mob_spawn_dataset(struct spawn_data *data) {
 	md->class_ = data->class_;
 	md->state.boss = data->state.boss;
 	md->db = mob->db(md->class_);
-	if (data->level > 0 && data->level <= 150) { //MAX_LEVEL
+	if (data->level > 0 && data->level <= 175) { //MAX_LEVEL
 		md->level = data->level;
 	}
 	memcpy(md->name, data->name, NAME_LENGTH);

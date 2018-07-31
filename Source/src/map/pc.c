@@ -7464,9 +7464,9 @@ int pc_resetstate(struct map_session_data* sd) {
 
 	if (battle_config.use_statpoint_table) {
 		// New statpoint table used here - Dexity
-		if (sd->status.base_level > 150) { //MAX_LEVEL
+		if (sd->status.base_level > 175) { //MAX_LEVEL
 			//pc->statp[] goes out of bounds, can't reset!
-			ShowError("pc_resetstate: Nao e possivel resetar os status de %d:%d, o level de base (%d) e maior que o level maximo suportado (%d)\n", sd->status.account_id, sd->status.char_id, sd->status.base_level, 150); //MAX_LEVEL
+			ShowError("pc_resetstate: Nao e possivel resetar os status de %d:%d, o level de base (%d) e maior que o level maximo suportado (%d)\n", sd->status.account_id, sd->status.char_id, sd->status.base_level, 175); //MAX_LEVEL
 			return 0;
 		}
 
@@ -10955,7 +10955,7 @@ int pc_level_penalty_mod(int diff, unsigned char race, uint32 mode, int type)
 	int rate = 100, i;
 
 	if( diff < 0 )
-		diff = 150 + ( ~diff + 1 ); //MAX_LEVEL
+		diff = 175 + ( ~diff + 1 ); //MAX_LEVEL
 
 	for (i = RC_FORMLESS; i < RC_MAX; i++) {
 		int tmp;
@@ -11224,10 +11224,10 @@ bool pc_readdb_levelpenalty(char* fields[], int columns, int current) {
 		return false;
 	}
 
-	diff = min(diff, 150); //MAX_LEVEL
+	diff = min(diff, 175); //MAX_LEVEL
 
 	if( diff < 0 )
-		diff = min(150 + ( ~(diff) + 1 ), 150*2); //MAX_LEVEL
+		diff = min(175 + ( ~(diff) + 1 ), 175*2); //MAX_LEVEL
 
 	pc->level_penalty[type][race][diff] = atoi(fields[3]);
 	return true;
@@ -11244,9 +11244,9 @@ bool pc_read_exp_db_sub_class(struct config_setting_t *t, bool base)
 	safestrncpy(entry.name, config_setting_name(t), SCRIPT_VARNAME_LENGTH);
 
 	if (libconfig->setting_lookup_int(t, "MaxLevel", &maxlv) == 0
-		|| (maxlv <= 0 || maxlv > 150)) { // MAX_LEVEL
+		|| (maxlv <= 0 || maxlv > 175)) { // MAX_LEVEL
 		ShowError("pc_read_exp_db_sub_class: Invalido max %s level '%d' define para '%s'. definindo para %d...", base ? "base" : "job", maxlv, entry.name, 150); // MAX_LEVEL
-		maxlv = 150; // MAX_LEVEL
+		maxlv = 175; // MAX_LEVEL
 	}
 
 	entry.max_level = maxlv;
@@ -11364,8 +11364,8 @@ int pc_readdb(void) {
 	for( k=1; k < 3; k++ ){ // fill in the blanks
 		for (j = RC_FORMLESS; j < RC_MAX; j++) {
 			int tmp = 0;
-			for( i = 0; i < 150*2; i++ ){ //MAX_LEVEL
-				if( i == 150+1 ) { //MAX_LEVEL
+			for( i = 0; i < 175*2; i++ ){ //MAX_LEVEL
+				if( i == 175+1 ) { //MAX_LEVEL
 					tmp = pc->level_penalty[k][j][0];// reset
 				}
 				if( pc->level_penalty[k][j][i] > 0 )
@@ -11444,7 +11444,7 @@ int pc_readdb(void) {
 				continue;
 			if ((stat=(int)strtol(line,NULL,10))<0)
 				stat=0;
-			if (i > 150) { //MAX_LEVEL
+			if (i > 175) { //MAX_LEVEL
 				break;
 			}
 			count++;
@@ -11459,7 +11459,7 @@ int pc_readdb(void) {
 	k = battle_config.use_statpoint_table; //save setting
 	battle_config.use_statpoint_table = 0; //temporarily disable to force pc->gets_status_point use default values
 	pc->statp[0] = 45; // seed value
-	for (i = 0; i <= 150; i++) { //MAX_LEVEL
+	for (i = 0; i <= 175; i++) { //MAX_LEVEL
 		pc->statp[i] = pc->statp[i-1] + pc->gets_status_point(i-1);
 	}
 	battle_config.use_statpoint_table = k; //restore setting

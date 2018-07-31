@@ -6326,8 +6326,8 @@ battle_data[] = {
 	{ "client_config/hanbok_ignorepalette",            &battle_config.hanbok_ignorepalette,            0,   0, 1,            },
 	{ "client_config/oktoberfest_ignorepalette",       &battle_config.oktoberfest_ignorepalette,       0,   0, 1,            },
 	{ "client_config/summer2_ignorepalette",           &battle_config.summer2_ignorepalette,           0,   0, 1,            },
-	{ "client_config/max_lv",                          &battle_config.max_lv,                          150, 0, 150,          }, //MAX_LEVEL
-	{ "client_config/aura_lv",                         &battle_config.aura_lv,                         150, 0, INT_MAX,      },
+	{ "client_config/max_lv",                          &battle_config.max_lv,                          175, 0, 175,          }, //MAX_LEVEL
+	{ "client_config/aura_lv",                         &battle_config.aura_lv,                         175, 0, INT_MAX,      },
 	{ "client_config/save_clothcolor",                 &battle_config.save_clothcolor,                 1,   0, 1,            },
 	{ "client_config/min_hair_style",                  &battle_config.min_hair_style,                  0,   0, INT_MAX,      },
 	{ "client_config/max_hair_style",                  &battle_config.max_hair_style,                  23,  0, INT_MAX,      },
@@ -6490,7 +6490,7 @@ battle_data[] = {
 	{ "homunc_config/hvan_explosion_intimate",  &battle_config.hvan_explosion_intimate,  45000,  0,      100000,    },
 	{ "homunc_config/homunculus_autoloot",      &battle_config.homunculus_autoloot,      0,      0,      1,         },
 	{ "homunc_config/homunculus_auto_vapor",    &battle_config.homunculus_auto_vapor,    1,      0,      1,         },
-	{ "homunc_config/homunculus_max_level",     &battle_config.hom_max_level,            99,     0,      150,       }, //MAX_LEVEL
+	{ "homunc_config/homunculus_max_level",     &battle_config.hom_max_level,            99,     0,      99,        }, //MAX_LEVEL
 	{ "homunc_config/homunculus_S_max_level",   &battle_config.hom_S_max_level,          150,    0,      150,       }, //MAX_LEVEL
 
 	{ "item_config/random_monster_checklv",           &battle_config.random_monster_checklv,           0,        0,      1,        },
@@ -6637,7 +6637,7 @@ battle_data[] = {
 	{ "player_config/natural_heal_skill_interval", &battle_config.natural_heal_skill_interval,   10000,   NATURAL_HEAL_INTERVAL, INT_MAX,                },
 	{ "player_config/natural_heal_weight_rate",    &battle_config.natural_heal_weight_rate,      50,      50,                    101                     },
 	{ "player_config/max_aspd",                    &battle_config.max_aspd,                      190,     100,                   190,                    },
-	{ "player_config/max_third_aspd",              &battle_config.max_third_aspd,                190,     100,                   190,                    },
+	{ "player_config/max_third_aspd",              &battle_config.max_third_aspd,                193,     100,                   190,                    },
 	{ "player_config/max_walk_speed",              &battle_config.max_walk_speed,                300,     100,                   100*DEFAULT_WALK_SPEED, },
 	{ "player_config/max_hp",                      &battle_config.max_hp,                        1000000, 100,                   21474836,               },
 	{ "player_config/max_sp",                      &battle_config.max_sp,                        1000000, 100,                   21474836,               },
@@ -6655,9 +6655,9 @@ battle_data[] = {
 	{ "player_config/character_size",              &battle_config.character_size,                1|2,     0,                     1|2,                    },
 	{ "player_config/friend_auto_add",             &battle_config.friend_auto_add,               1,       0,                     1,                      },
 	{ "player_config/idle_no_autoloot",            &battle_config.idle_no_autoloot,              0,       0,                     INT_MAX,                },
-	{ "player_config/max_third_parameter",         &battle_config.max_third_parameter,           120,     10,                    120,                    },
-	{ "player_config/max_baby_third_parameter",    &battle_config.max_baby_third_parameter,      99,      10,                    99,                     },
-	{ "player_config/max_extended_parameter",      &battle_config.max_extended_parameter,        120,     10,                    120,                    },
+	{ "player_config/max_third_parameter",         &battle_config.max_third_parameter,           130,     10,                    120,                    },
+	{ "player_config/max_baby_third_parameter",    &battle_config.max_baby_third_parameter,      117,      10,                    99,                     },
+	{ "player_config/max_extended_parameter",      &battle_config.max_extended_parameter,        125,     10,                    120,                    },
 	{ "player_config/min_npc_vendchat_distance",   &battle_config.min_npc_vendchat_distance,     3,       0,                     100                     },
 	{ "player_config/vendchat_near_hiddennpc",     &battle_config.vendchat_near_hiddennpc,       0,       0,                     1,                      },
 	{ "player_config/snovice_call_type",           &battle_config.snovice_call_type,             0,       0,                     1,                      },

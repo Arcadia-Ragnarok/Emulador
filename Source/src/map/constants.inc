@@ -4,7 +4,6 @@
 
 	script->constdb_comment("Server defines");
 	script->set_constant("PACKETVER",PACKETVER,false, false);
-//	script->set_constant("MAX_LEVEL",MAX_LEVEL,false, false);
 	script->set_constant("MAX_STORAGE",MAX_STORAGE,false, false);
 	script->set_constant("MAX_GUILD_STORAGE",MAX_GUILD_STORAGE,false, false);
 	script->set_constant("MAX_CART",MAX_INVENTORY,false, false);
