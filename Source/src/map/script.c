@@ -10652,6 +10652,7 @@ BUILDIN(getunits)
 	if (not_server_variable(*name)) {
 		sd = script->rid2sd(st);
 		if (sd == NULL) {
+			script_pushint(st, 0);
 			return true; // player variable but no player attached
 		}
 	}

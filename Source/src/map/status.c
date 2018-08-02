@@ -4861,8 +4861,7 @@ unsigned short status_calc_watk(struct block_list *bl, struct status_change *sc,
 		watk += sc->data[SC_HEATER_OPTION]->val2;
 	if( sc->data[SC_PYROTECHNIC_OPTION] )
 		watk += sc->data[SC_PYROTECHNIC_OPTION]->val2;
-
-	if(sc->data[SC_INCATKRATE] && bl->type != BL_MOB)
+	if(sc->data[SC_INCATKRATE])
 		watk += watk * sc->data[SC_INCATKRATE]->val1/100;
 	if(sc->data[SC_PROVOKE])
 		watk += watk * sc->data[SC_PROVOKE]->val3/100;
@@ -4872,6 +4871,8 @@ unsigned short status_calc_watk(struct block_list *bl, struct status_change *sc,
 		watk += watk * sc->data[SC_HLIF_FLEET]->val3/100;
 	if(sc->data[SC_CURSE])
 		watk -= watk * 25/100;
+	if(sc->data[SC_NOEQUIPWEAPON] && bl->type != BL_PC)
+		watk -= watk * sc->data[SC_NOEQUIPWEAPON]->val2/100;
 	if(sc->data[SC__ENERVATION])
 		watk -= watk * sc->data[SC__ENERVATION]->val2 / 100;
 	if(sc->data[SC_RUSH_WINDMILL])
