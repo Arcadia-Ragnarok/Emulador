@@ -34,6 +34,7 @@
 #include "map/mail.h"
 #include "map/map.h"
 #include "map/mercenary.h"
+#include "map/messages.h"
 #include "map/mob.h"
 #include "map/npc.h"
 #include "map/party.h"
@@ -5627,7 +5628,7 @@ void clif_cooking_list(struct map_session_data *sd, int trigger, uint16 skill_id
 		clif_menuskill_clear(sd);
 		if( skill_id != AM_PHARMACY ) { // AM_PHARMACY is used to Cooking.
 			// It fails.
-#if PACKETVER >= 20090922
+#if PACKETVER >= 20091013
 			clif->msgtable_skill(sd, skill_id, MSG_SKILL_MATERIAL_FAIL);
 #else
 			WFIFOW(fd,2) = 6 + 2 * c;
@@ -10832,7 +10833,7 @@ void clif_parse_NpcClicked(int fd,struct map_session_data *sd)
 		return;
 	}
 	if (sd->npc_id || sd->state.workinprogress & 2) {
-#if PACKETVER >= 20110309
+#if PACKETVER >= 20110308
 		clif->msgtable(sd, MSG_BUSY);
 #else
 		clif->messagecolor_self(fd, COLOR_WHITE, msg_txt(48));
@@ -10849,7 +10850,7 @@ void clif_parse_NpcClicked(int fd,struct map_session_data *sd)
 			break;
 		case BL_NPC:
 			if (sd->ud.skill_id < RK_ENCHANTBLADE && sd->ud.skilltimer != INVALID_TIMER) { // TODO: should only work with none 3rd job skills
-#if PACKETVER >= 20110309
+#if PACKETVER >= 20110308
 				clif->msgtable(sd, MSG_BUSY);
 #else
 				clif->messagecolor_self(fd, COLOR_WHITE, msg_txt(48));
@@ -11246,7 +11247,7 @@ void clif_parse_ChangeCart(int fd, struct map_session_data *sd)
 		return;
 
 	if (sd->npc_id || sd->state.workinprogress & 1) {
-#if PACKETVER >= 20110309
+#if PACKETVER >= 20110308
 		clif->msgtable(sd, MSG_BUSY);
 #else
 		clif->messagecolor_self(fd, COLOR_WHITE, msg_txt(48));
@@ -11457,7 +11458,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd)
 	pc->update_idle_time(sd, BCIDLE_USESKILLTOID);
 
 	if (sd->npc_id || sd->state.workinprogress & 1) {
-#if PACKETVER >= 20110309
+#if PACKETVER >= 20110308
 		clif->msgtable(sd, MSG_BUSY);
 #else
 		clif->messagecolor_self(fd, COLOR_WHITE, msg_txt(48));
@@ -11556,7 +11557,7 @@ void clif_parse_UseSkillToPosSub(int fd, struct map_session_data *sd, uint16 ski
 	}
 
 	if (sd->state.workinprogress & 1) {
-#if PACKETVER >= 20110309
+#if PACKETVER >= 20110308
 		clif->msgtable(sd, MSG_BUSY);
 #else
 		clif->messagecolor_self(fd, COLOR_WHITE, msg_txt(48));
@@ -16036,10 +16037,13 @@ void clif_parse_ViewPlayerEquip(int fd, struct map_session_data* sd) {
 	if (!tsd)
 		return;
 
-	if( tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT) )
+	if (tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT)) {
 		clif->viewequip_ack(sd, tsd);
-	else
+	} else {
+#if PACKETVER >= 20070918
 		clif->msgtable(sd, MSG_OPEN_EQUIPEDITEM_REFUSED);
+#endif
+	}
 }
 
 void clif_parse_cz_config(int fd, struct map_session_data *sd) __attribute__((nonnull (2)));
@@ -16553,7 +16557,9 @@ void clif_parse_mercenary_action(int fd, struct map_session_data* sd)
 ///     3 = Your mercenary soldier has ran away.
 void clif_mercenary_message(struct map_session_data* sd, int message)
 {
+#if PACKETVER >= 20070227
 	clif->msgtable(sd, MSG_MER_FINISH + message);
+#endif
 }
 
 /// Notification about the remaining time of a rental item (ZC_CASH_TIME_COUNTER).
