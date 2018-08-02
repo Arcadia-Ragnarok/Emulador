@@ -3351,7 +3351,10 @@
     PACKETVER == 20180502 || \
     PACKETVER == 20180509 || \
     PACKETVER == 20180516 || \
-    PACKETVER >= 20180523
+    PACKETVER == 20180523 || \
+    PACKETVER == 20180530 || \
+    PACKETVER == 20180605 || \
+    PACKETVER >= 20180612
 	packet(0x0202,26,clif->pFriendsListAdd,2);  // CZ_ADD_FRIENDS
 	packet(0x022d,5,clif->pHomMenu,2,4);  // CZ_COMMAND_MER
 	packet(0x023b,36,clif->pStoragePassword,0);  // CZ_ACK_STORE_PASSWORD

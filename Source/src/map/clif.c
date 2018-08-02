@@ -10989,7 +10989,7 @@ void clif_parse_CreateChatRoom(int fd, struct map_session_data* sd) __attribute_
 ///     0 = private
 ///     1 = public
 void clif_parse_CreateChatRoom(int fd, struct map_session_data* sd) {
-	int len = RFIFOW(fd,2)-15;
+	int len = (int)RFIFOW(fd, 2) - 15;
 	int limit;
 	bool pub;
 	const char *password; //not zero-terminated
@@ -11046,7 +11046,7 @@ void clif_parse_ChatRoomStatusChange(int fd, struct map_session_data* sd) __attr
 ///     1 = public
 void clif_parse_ChatRoomStatusChange(int fd, struct map_session_data* sd)
 {
-	int len = RFIFOW(fd,2)-15;
+	int len = (int)RFIFOW(fd, 2) - 15;
 	int limit;
 	bool pub;
 	const char *password; // not zero-terminated
@@ -13059,12 +13059,12 @@ void clif_parse_OpenVending(int fd, struct map_session_data* sd) __attribute__((
 ///     0 = canceled
 ///     1 = open
 void clif_parse_OpenVending(int fd, struct map_session_data* sd) {
-	short len = (short)RFIFOW(fd,2) - 85;
+	int len = (int)RFIFOW(fd, 2) - 85;
 	const char *message;
 	bool flag;
 	const uint8 *data;
 
-	if (len < 1) {
+	if (len < 0) {
 		return;
 	}
 	message = RFIFOP(fd,4);

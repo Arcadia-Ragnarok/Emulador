@@ -1585,7 +1585,7 @@ void itemdb_read_combos(void)
 		count++;
 	}
 	fclose(fp);
-	ShowStatus("Leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"item_combo_db"CL_RESET"'.\n", count);
+	ShowStatus("Leitura de '"CL_WHITE"%"PRIu32""CL_RESET"' registros em '"CL_WHITE"Itemi_DB/Combine.txt"CL_RESET"'.\n", count);
 
 	return;
 }
