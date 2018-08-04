@@ -18,47 +18,46 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 	.@p_name$ = getpartyname(.@party_id);
 
 	if (!instance_check_party(.@party_id,2,30)) { // Grupo de 2 Membros de Nv Mínimo 30
-		mes "Me desculpe, mas seu grupo não atende os requisistos necessários.";
+		mes("Me desculpe, mas seu grupo não atende os requisistos necessários.");
 		close;
 	}
 
 	.@orctime = questprogress(12059,PLAYTIME);
 	if (.@orctime == 2) {
-		mes "^0000ff0000ffTodos os registros relacionados ao Memorial dos Orcs foram deletados.";
-		mes "Agora você pode entrar novamente.^000000";
+		mes("^0000ff0000ffTodos os registros relacionados ao Memorial dos Orcs foram deletados.\n"
+			"Agora você pode entrar novamente.^000000");
 		erasequest(12059);
 		close;
 	}
 
 	if (.@orctime == 1) {
-		mes "Você pode entrar no calabouço se ele foi gerado.";
+		mes("Você pode entrar no calabouço se ele foi gerado.");
 		next;
 		if (select("Entrar no Memorial dos Orcs","Cancelar") == 2) {close;}
 	} else {
 		if (getcharid(ID_CHAR) == getpartyleader(.@party_id,2)) {
-			mes "Criação de grupo confirmada.";
-			mes "Gostaria de agendar a entrada de Memorial dos Orcs?";
+			mes("Criação de grupo confirmada.\n"
+				"Gostaria de agendar a entrada de Memorial dos Orcs?");
 			next;
 			switch (select("Reservar","Entrar no calabouço","Cancelar")) {
 				case 1:
 				.@instance = instance_create("Memorial dos Orcs",.@party_id);
-				if (.@instance < 0) {
-					mes "Nome do Grupo: "+.@p_name$;
-					mes "Líder do Grupo: "+strcharinfo(CHAR_NAME);
-					mes "^0000ffMemorial dos Orcs ^000000 - Falha ao reservar.";
-					close;
-				}
-				mes "^0000ffMemorial dos Orcs^000000- Aguardando a reserva";
-				for (.@i = 1; .@i <= 2; ++.@i) {
-					if (instance_attachmap(.@i+"@orcs",.@instance) == "") {
-						break;
+				if (.@instance) {
+					for (.@i = 1; .@i <= 2; ++.@i) {
+						if (instance_attachmap(.@i + "@orcs", .@instance) == "") {
+							mesf("Nome do Grupo: %s", .@p_name$);
+							mesf("Líder do Grupo: %s", strcharinfo(PC_NAME));
+							mesf("^0000ffMemorial dos Orcs ^000000 - Falha ao reservar.");
+							instance_destroy(.@instance);
+							close;
+						}
 					}
+					instance_set_timeout(7200, 300, .@instance);
+					instance_init(.@instance);
 				}
-				if (.@i < 2) {instance_destroy(.@instance); close;}
-				instance_set_timeout(7200,300,.@instance);
-				instance_init(.@instance);
-				mes "Após fazer a reserva, você deve selecionar no menu a opção 'Entrar no Calabouço'.";
-				mes "Caso deseje entrar no Memorial dos Orcs.";
+				mes("^0000ffMemorial dos Orcs^000000- Aguardando a reserva\n"
+					"Após fazer a reserva, você deve selecionar no menu a opção 'Entrar no Calabouço'.\n"
+					"Caso deseje entrar no Memorial dos Orcs.");
 				close;
 				case 2:
 				break;
@@ -67,12 +66,12 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 			}
 		} else if (select("Entrar no calabouço","Cancelar") == 2) {end;}
 	}
-	if (has_instance("1@orcs") == "") {
-		mes "O Calabouço Memorial Memorial dos Orcs não existe.";
-		mes "O líder do grupo não reservou a entrada no calabouço.";
+	if (has_instance("1@orcs")) {
+		mes("O Calabouço Memorial Memorial dos Orcs não existe.\n"
+			"O líder do grupo não reservou a entrada no calabouço.");
 		next;
-		mes "Após a reserva ser concluída, o calabouço será criado.";
-		mes "Caso o seu calabouço tenha sido destruído deverá esperar 7 dias para entrar novamente.";
+		mes("Após a reserva ser concluída, o calabouço será criado.\n"
+			"Caso o seu calabouço tenha sido destruído deverá esperar 7 dias para entrar novamente.");
 		close;
 	}
 	mapannounce("gef_fild10",strcharinfo(CHAR_NAME)+" do grupo,"+.@p_name$+" iestá entrando no Memorial Orc.",bc_map,"0x00ff99");
@@ -112,7 +111,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 				mapannounce(instance_mapname("1@orcs"),"Grande Orc: Precisamos de mais defesa! Arranje mais guerreiros para cá!",bc_map,"0xff4444");
 			}
 		} else if ((.@mob_ran > 26) && (.@mob_ran < 29)) {
-			areamonster instance_mapname("1@orcs"),41,91,51,81,"Grand Orc",HIGH_ORC,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+			areamonster(instance_mapname("1@orcs"),41,91,51,81,"Grand Orc",HIGH_ORC,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead");
 			if (rand(1,10) == 9) {
 				mapannounce(instance_mapname("1@orcs"),"Onde estão os Grandes Orc's!? Precisamos deles para deter os inimigos!",bc_map,"0xff4444");
 			}
@@ -453,7 +452,7 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 		} else if ((.@mob_ran > 28) && (.@mob_ran < 30)) {
 			monster(instance_mapname("2@orcs"),0,0,"Grande Orc",HIGH_ORC,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead");
 		} else if ((.@mob_ran > 26) && (.@mob_ran < 29)) {
-			areamonster instance_mapname("2@orcs"),157,112,167,122,"Grande Orc",HIGH_ORC,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+			areamonster(instance_mapname("2@orcs"),157,112,167,122,"Grande Orc",HIGH_ORC,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead");
 			if (rand(1,10) == 9) {
 				mapannounce(instance_mapname("2@orcs"),"Aviso: Grand Orcs estão reunidos perto da Área 3.",bc_map,"0xff4444");
 			}
@@ -776,37 +775,37 @@ gef_fild10,242,202,0	script	Memorial dos Orcs	2_MONEMUS,{
 // ------------------------------------------------------------------
 2@orcs,172,13,0	script	Kruger#	4_ORCWARRIOR2,{
 	if (!orcdun) {
-		mes "[Kruger]";
-		mes "*Tosse*";
-		mes strcharinfo(CHAR_NAME)+", é você...";
+		mes("[Kruger]\n"
+			"*Tosse*\n"
+			+ strcharinfo(CHAR_NAME)+", é você...");
 		next;
-		mes "["+strcharinfo(CHAR_NAME)+"]";
-		mes "Não se mexa!!";
-		mes "Você está muito ferid"+(Sex == SEX_MALE ? "o" : "a" )+"!";
+		mes("[" + strcharinfo(CHAR_NAME) + "]\n"
+			"Não se mexa!!\n"
+			"Você está muito ferid"+(Sex == SEX_MALE ? "o" : "a" )+"!");
 		next;
-		mes "[Kruger]";
-		mes "Está... tudo bem..";
-		mes "....";
-		mes "E o Xamã?";
-		mes "O que aconteceu com ele?";
+		mes("[Kruger]\n"
+			"Está... tudo bem..\n"
+			"....\n"
+			"E o Xamã?\n"
+			"O que aconteceu com ele?");
 		next;
-		mes "["+strcharinfo(CHAR_NAME)+"] ";
-		mes "O Xamã está morto agora.";
-		mes "Quem na verdade era o Xamã?";
+		mes("["+strcharinfo(CHAR_NAME)+"] \n"
+			"O Xamã está morto agora.\n"
+			"Quem na verdade era o Xamã?");
 		next;
-		mes "*Kruger parecia estar aliviado quando ouviu falar da morte do Xamã.";
-		mes "Porém você percebe uma expressão triste no rosto dele.*";
+		mes("*Kruger parecia estar aliviado quando ouviu falar da morte do Xamã.\n"
+			"Porém você percebe uma expressão triste no rosto dele.*");
 		next;
-		mes "[Kruger]";
-		mes "Eu...";
-		mes "Eu não conseguia matar minah própria filha...";
-		mes "Obrigado, tenho certeza absoluta que agora ela está livre do pesadelo que assombrava a alma dela.";
+		mes("[Kruger]\n"
+			"Eu...\n"
+			"Eu não conseguia matar minah própria filha...\n"
+			"Obrigado, tenho certeza absoluta que agora ela está livre do pesadelo que assombrava a alma dela.");
 		next;
-		mes "*Kruger gostaria de dizer mais alguma coisa, porém deu seu último suspiro e se foi...*";
+		mes("*Kruger gostaria de dizer mais alguma coisa, porém deu seu último suspiro e se foi...*");
 		orcdun = 1;
 		close;
 	} else {
-		mes "Você vê o corpo de Kruger estirado no chão, pacificamente.";
+		mes("Você vê o corpo de Kruger estirado no chão, pacificamente.");
 		close;
 	}
 

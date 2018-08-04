@@ -18,158 +18,158 @@
 // ------------------------------------------------------------------
 alberta,214,77,6	script	Capitão Janssen#eT	4_M_SEAMAN,{
 	if (BaseLevel < 50) {
-		mes "[Capitão Janssen]";
-		mes "*Suspiro*...";
-		mes "Eu não sei se posso sempre voltar a velejar no mar...";
+		mes("[Capitão Janssen]\n"
+			"*Suspiro*...\n"
+			"Eu não sei se posso sempre voltar a velejar no mar...");
 		close;
 	}
 	if (in_102tower == 1) {
-		mes "^0000ff*Olhando incrivelmente animado.";
-		mes "O velho correu as pressas para loja da marinha encomendar coisas.";
-		mes "Você não tem nada melhor pra fazer.";
-		mes "Então você decide perguntar por que ele está em uma correria dessas.*^000000";
+		mes("^0000ff*Olhando incrivelmente animado.\n"
+			"O velho correu as pressas para loja da marinha encomendar coisas.\n"
+			"Você não tem nada melhor pra fazer.\n"
+			"Então você decide perguntar por que ele está em uma correria dessas.*^000000");
 		next;
-		mes "^0000ff*O velho, depois de ter feito suas encomendas.";
-		mes "Anda em sua direção.*^000000";
+		mes("^0000ff*O velho, depois de ter feito suas encomendas.\n"
+			"Anda em sua direção.*^000000");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Eu fiquei comovido quando você aceitou um pedido meu, um estranho, tão facilmente.";
-		mes "Você deve ser realmente um dos bons, "+(Sex == SEX_MALE ? "herói aventureiro":"heroina aventureira")+".";
-		mes "Você está interessado em sair numa viagem oceânica?";
+		mes("[Capitão Janssen]\n"
+			"Eu fiquei comovido quando você aceitou um pedido meu, um estranho, tão facilmente.\n"
+			"Você deve ser realmente um dos bons, "+(Sex == SEX_MALE ? "herói aventureiro":"heroina aventureira")+".\n"
+			"Você está interessado em sair numa viagem oceânica?");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Já naveguei algumas vezes...";
-		mes "Mas agora penso sobre isto, e vejo que nunca cruzei todo o continente";
+		mes("[Capitão Janssen]\n"
+			"Já naveguei algumas vezes...\n"
+			"Mas agora penso sobre isto, e vejo que nunca cruzei todo o continente");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Não, isso é bom o suficiente.";
-		mes "Talvez eu só tenha uma pequena embarcação de pesca.";
-		mes "Mas eu costumava ser um capitão que comandou uma frota";
+		mes("[Capitão Janssen]\n"
+			"Não, isso é bom o suficiente.\n"
+			"Talvez eu só tenha uma pequena embarcação de pesca.\n"
+			"Mas eu costumava ser um capitão que comandou uma frota");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Como você deve saber após algumas viagens marítimas.";
-		mes "Talvez muitas pessoas não tenham atravessado o oceano além do continente.";
-		mes "Eu também falhei na conquista do oceano.";
+		mes("[Capitão Janssen]\n"
+			"Como você deve saber após algumas viagens marítimas.\n"
+			"Talvez muitas pessoas não tenham atravessado o oceano além do continente.\n"
+			"Eu também falhei na conquista do oceano.");
 		next;
-		mes "^0000ff*Mr. Janssen falou sobre suas perigosas viagens oceânicas durante um bom tempo.";
-		mes "Você tem bastante tempo livre, então você senta.";
-		mes "E em silêncio ouve a sua história.*^000000";
+		mes("^0000ff*Mr. Janssen falou sobre suas perigosas viagens oceânicas durante um bom tempo.\n"
+			"Você tem bastante tempo livre, então você senta.\n"
+			"E em silêncio ouve a sua história.*^000000");
 		next;
-		mes "^0000ff*Pelo menos metade de sua história soou muito exagerada.";
-		mes "Mas algo chamou sua atenção:";
-		mes "Ele insiste que uma torre monstruosa existe no oceano, e que é tão alta, que raspa no céu.*^000000";
+		mes("^0000ff*Pelo menos metade de sua história soou muito exagerada.\n"
+			"Mas algo chamou sua atenção:\n"
+			"Ele insiste que uma torre monstruosa existe no oceano, "
+			"e que é tão alta, que raspa no céu.*^000000");
 		in_102tower = 2;
 		close;
 	} else if (in_102tower == 2) {
-		mes "[Capitão Jassen]";
-		mes "Então tudo que eu podia fazer era lançar a âncora naquela torre monstruosa.";
-		mes "Depois que minha frota foi destruída.";
-		mes "No início, éramos para ficar lá somente até que a temPesteade acabasse.";
-		mes "Mas não chegou a acabar tão cedo quanto esperávamos.";
+		mes("[Capitão Jassen]\n"
+			"Então tudo que eu podia fazer era lançar a âncora naquela torre monstruosa.\n"
+			"Depois que minha frota foi destruída.\n"
+			"No início, éramos para ficar lá somente até que a temPesteade acabasse.\n"
+			"Mas não chegou a acabar tão cedo quanto esperávamos.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Minha equipe estava com fome, e alguns entraram na torre a fim de encontrar alimento...";
-		mes "Eles nunca mais voltaram.";
+		mes("[Capitão Janssen]\n"
+			"Minha equipe estava com fome, e alguns entraram na torre a fim de encontrar alimento...\n"
+			"Eles nunca mais voltaram.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Por que você não foi lá com eles?";
+		mes("[Capitão Janssen]\n"
+			"Por que você não foi lá com eles?");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Meus instintos me disseram que a torre era perigosa.";
-		mes "Fiquei curioso, mas eu não iria arriscar a minha vida.";
-		mes "Nós esperamos que eles retornassem por 7 dias até que a temPesteade finalmente acabou.";
-		mes "Mas ninguém retornou.";
+		mes("[Capitão Janssen]\n"
+			"Meus instintos me disseram que a torre era perigosa.\n"
+			"Fiquei curioso, mas eu não iria arriscar a minha vida.\n"
+			"Nós esperamos que eles retornassem por 7 dias até que a temPesteade finalmente acabou.\n"
+			"Mas ninguém retornou.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Em nosso desespero para sobreviver, abandonamos todos os nossos bens.";
-		mes "E deixamos a torre somente com um pouco de água e plantas comestíveis.";
-		mes "Que haviamos encontrado ao redor da torre.";
-		mes "Quando finalmente em terra firme, eu era o único vivo...";
+		mes("[Capitão Janssen]\n"
+			"Em nosso desespero para sobreviver, abandonamos todos os nossos bens.\n"
+			"E deixamos a torre somente com um pouco de água e plantas comestíveis.\n"
+			"Que haviamos encontrado ao redor da torre.\n"
+			"Quando finalmente em terra firme, eu era o único vivo...");
 		next;
-		mes "^0000ff*Você pôde imaginar a cena desesperadora da frota morrendo em sua última viagem.";
-		mes "Mesmo que ele não explicasse mais nada.";
-		mes "Um olhar de lamento sombrio varreu seu rosto enquanto ele permaneceu em silêncio.";
-		mes "Então ele disse:*^000000";
+		mes("^0000ff*Você pôde imaginar a cena desesperadora da frota morrendo em sua última viagem.\n"
+			"Mesmo que ele não explicasse mais nada.\n"
+			"Um olhar de lamento sombrio varreu seu rosto enquanto ele permaneceu em silêncio.\n"
+			"Então ele disse:*^000000");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Tenho algo que devo fazer antes de morrer.";
-		mes "Preciso recuperar os restos mortais da minha tripulação que morreu na torre.";
-		mes "E dar-lhes um enterro apropriado.";
+		mes("[Capitão Janssen]\n"
+			"Tenho algo que devo fazer antes de morrer.\n"
+			"Preciso recuperar os restos mortais da minha tripulação que morreu na torre.\n"
+			"E dar-lhes um enterro apropriado.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Eu me sinto tão afortunado por receber um aventureiro caloroso como você.";
-		mes "Com o dinheiro que você me deu, eu finalmente posso velejar até a torre novamente.";
+		mes("[Capitão Janssen]\n"
+			"Eu me sinto tão afortunado por receber um aventureiro caloroso como você.\n"
+			"Com o dinheiro que você me deu, eu finalmente posso velejar até a torre novamente.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Que tal me contratar como seu primeiro marujo?";
+		mes("[Capitão Janssen]\n"
+			"Que tal me contratar como seu primeiro marujo?");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Obrigado, mas é um lugar extremamente perigoso.";
-		mes "Eu tenho o meu dever à cumprir, e você não tem nenhuma obrigação comigo ou com eles.";
-		mes "Não quero sacrificar alguém tão jovem como você para ir a um lugar tão perigoso.";
+		mes("[Capitão Janssen]\n"
+			"Obrigado, mas é um lugar extremamente perigoso.\n"
+			"Eu tenho o meu dever à cumprir, e você não tem nenhuma obrigação comigo ou com eles.\n"
+			"Não quero sacrificar alguém tão jovem como você para ir a um lugar tão perigoso.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Não...";
-		mes ".";
-		mes ".";
-		mes "Como um aventureiro, é minha obrigação ajudar aqueles que precisam.";
-		mes "Eu também estou muito curioso sobre esse lugar...";
+		mes("[Capitão Janssen]\n"
+			"Não...\n"
+			".\n"
+			".\n"
+			"Como um aventureiro, é minha obrigação ajudar aqueles que precisam.\n"
+			"Eu também estou muito curioso sobre esse lugar...");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Eu já ia sair imediatamente, mas desde que você se juntou a mim,.";
-		mes "Devo dar-lhe tempo para se preparar.";
-		mes "Eu vou estar aqui esperando até que você esteja pronto para ir.";
+		mes("[Capitão Janssen]\n"
+			"Eu já ia sair imediatamente, mas desde que você se juntou a mim,.\n"
+			"Devo dar-lhe tempo para se preparar.\n"
+			"Eu vou estar aqui esperando até que você esteja pronto para ir.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "...então ok...";
-		mes "Bem-vind"+(Sex == SEX_MALE ? "o" : "a")+" à bordo, primeiro marujo.";
+		mes("[Capitão Janssen]\n"
+			"...então ok...\n"
+			"Bem-vind"+(Sex == SEX_MALE ? "o" : "a")+" à bordo, primeiro marujo.");
 		in_102tower = 3;
 		close;
 	} else if (in_102tower == 3) {
-		mes "[Capitão Jassen]";
-		mes "Vamos partir agora?";
+		mes("[Capitão Jassen]\n"
+			"Vamos partir agora?");
 		next;
 		switch (select("Sim, vamos!","Não, ainda não...")) {
 			case 1:
-			mes "[Capitão Janssen]";
-			mes "Em seguida puxe a âncora, primeiro marujo!";
+			mes("[Capitão Janssen]\n"
+				"Em seguida puxe a âncora, primeiro marujo!");
 			close2;
 			in_102tower = 4;
 			warp("e_tower",70,114);
 			end;
 			case 2:
-			mes "[Capitão Janssen]";
-			mes "Claro, sem problemas.";
-			mes "Volte quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+".";
+			mes("[Capitão Janssen]\n"
+				"Claro, sem problemas.\n"
+				"Volte quando estiver pront"+(Sex == SEX_MALE ? "o":"a")+".");
 			close;
 		}
 	} else if (in_102tower > 3) {
-		mes "[Capitão Jassen]";
-		mes "Bem, para viajar pelo oceano novamente, precisamos repor os suprimentos.";
-		mes "Se você me der 10.000 zenys, eu cuido do resto.";
+		mes("[Capitão Jassen]\n"
+			"Bem, para viajar pelo oceano novamente, precisamos repor os suprimentos.\n"
+			"Se você me der 10.000 zenys, eu cuido do resto.");
 		next;
 		switch (select("Voltarei depois","Vamos, agora!")) {
 			case 1:
-			mes "[Capitão Janssen]";
-			mes "Me desculpe, mas eu não tenho muito dinheiro.";
-			mes "Eu vou voltar quando eu economizar o suficiente.";
+			mes("[Capitão Janssen]\n"
+				"Me desculpe, mas eu não tenho muito dinheiro.\n"
+				"Eu vou voltar quando eu economizar o suficiente.");
 			next;
-			mes "[Capitão Janssen]";
-			mes "Claro, sem problemas.";
-			mes "Eu estarei esperando pelo seu retorno.";
+			mes("[Capitão Janssen]\n"
+				"Claro, sem problemas.\n"
+				"Eu estarei esperando pelo seu retorno.");
 			close;
 			case 2:
 			if (Zeny < 10000) {
-				mes "[Capitão Jassen]";
-				mes "Me desculpe, mas você não tem dinheiro suficiente.";
-				mes "Eu preciso de pelo menos 10.000 zenys para reabastecer os nossos suprimentos...";
+				mes("[Capitão Jassen]\n"
+					"Me desculpe, mas você não tem dinheiro suficiente.\n"
+					"Eu preciso de pelo menos 10.000 zenys para reabastecer os nossos suprimentos...");
 				close;
-			}
-			else {
-				mes "[Capitão Jassen]";
-				mes "Excelente!";
-				mes "Agora estamos pronto para ir.";
-				mes "Vamos levantar a âncora de novo!";
+			} else {
+				mes("[Capitão Jassen]\n"
+					"Excelente!\n"
+					"Agora estamos pronto para ir.\n"
+					"Vamos levantar a âncora de novo!");
 				Zeny -= 10000;
 				close2;
 				warp("e_tower",70,114);
@@ -177,48 +177,48 @@ alberta,214,77,6	script	Capitão Janssen#eT	4_M_SEAMAN,{
 			}
 		}
 	} else {
-		mes "[Capitão Jassen]";
-		mes "Desculpe-me, você é um aventureiro?";
+		mes("[Capitão Jassen]\n"
+			"Desculpe-me, você é um aventureiro?");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Desculpe perguntar isso, principalmente quando esta é a primeira vez que nos vemos.";
-		mes "Mas você pode me fazer um favor?";
-		mes "Serei breve.";
+		mes("[Capitão Janssen]\n"
+			"Desculpe perguntar isso, principalmente quando esta é a primeira vez que nos vemos.\n"
+			"Mas você pode me fazer um favor?\n"
+			"Serei breve.");
 		next;
-		mes "[Capitão Janssen]";
-		mes "Você pode doar ^0000ff10.000^000000 zenys para mim?";
-		mes "É por uma causa importante para mim ...";
+		mes("[Capitão Janssen]\n"
+			"Você pode doar ^0000ff10.000^000000 zenys para mim?\n"
+			"É por uma causa importante para mim ...");
 		next;
 		switch (select("Não!","Sim Claro.")) {
 			case 1:
-			mes "[Capitão Janssen]";
-			mes "Me desculpe, mas você perguntou isso a pessoa errada.";
+			mes("[Capitão Janssen]\n"
+				"Me desculpe, mas você perguntou isso a pessoa errada.");
 			next;
-			mes "[Capitão Janssen]";
-			mes "Entendo... Desculpe incomodá-l"+(Sex == SEX_MALE ? "o":"a")+".";
-			mes "Entendo que seria muito rude perguntar algo assim.";
+			mes("[Capitão Janssen]\n"
+				"Entendo... Desculpe incomodá-l"+(Sex == SEX_MALE ? "o":"a")+".\n"
+				"Entendo que seria muito rude perguntar algo assim.");
 			close;
 			case 2:
-			mes "[Capitão Janssen]";
-			mes "Hã?";
-			mes "Tem certeza que você não se importa em me dar tanto dinheiro?";
-			mes "Uau, muito obrigado!";
+			mes("[Capitão Janssen]\n"
+				"Hã?\n"
+				"Tem certeza que você não se importa em me dar tanto dinheiro?\n"
+				"Uau, muito obrigado!");
 			next;
 			if (Zeny < 10000) {
-				mes "[Capitão Janssen]";
-				mes "...Sinto muito, mas eu não acho que você tenha 10.000 zenys.";
-				mes "Obrigado pela sua gentileza, mas eu preciso mais do que isso.";
+				mes("[Capitão Janssen]\n"
+					"...Sinto muito, mas eu não acho que você tenha 10.000 zenys.\n"
+					"Obrigado pela sua gentileza, mas eu preciso mais do que isso.");
 				close;
 			} else {
-				mes "[Capitão Janssen]";
-				mes "Eu não sei porque você precisa de tanto dinheiro.";
+				mes("[Capitão Janssen]\n"
+					"Eu não sei porque você precisa de tanto dinheiro.");
 				next;
-				mes "^0000ff*Você dôou 10.000 zenys para o Capitão Janssen*^000000.";
+				mes("^0000ff*Você dôou 10.000 zenys para o Capitão Janssen*^000000.");
 				next;
-				mes "[Capitão Janssen]";
-				mes "Muito obrigado!";
-				mes "Agora posso estocar alimentos e materiais para o meu navio.";
-				mes "Você é gentil e muito amável!";
+				mes("[Capitão Janssen]\n"
+					"Muito obrigado!\n"
+					"Agora posso estocar alimentos e materiais para o meu navio.\n"
+					"Você é gentil e muito amável!");
 				Zeny -= 10000;
 				in_102tower = 1;
 				close;
@@ -235,39 +235,39 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 	.@etower_timer2 = questprogress(60201,PLAYTIME); // 4 Horas
 
 	if (!instance_check_party(.@party_id,4)) { // 4 Mínimo de 4 membros no grupo
-		mes "Me desculpe mas seu grupo não cumpre com as exigências para entrar na Torre.";
+		mes("Me desculpe mas seu grupo não cumpre com as exigências para entrar na Torre.");
 		close;
 	}
 	if (!.@etower_timer) {
 		if (getcharid(ID_CHAR) == getpartyleader(.@party_id,2)) {
-			mes "Confirmado, o grupo foi feito.";
-			mes "Você gostaria de reservar a entrada para a Torre Sem Fim?";
+			mes("Confirmado, o grupo foi feito.\n"
+				"Você gostaria de reservar a entrada para a Torre Sem Fim?");
 			next;
 			switch (select("Gerar Torre Infinita","Entrar no Torre","Retornar para Alberta","Cancelar")) {
 				case 1:
 				.@instance = instance_create("Torre Infinita",.@party_id);
-				if (.@instance < 0) {
-					mes "Nome do grupo:"+.@p_name$+"";
-					mes "Líder do grupo:"+strcharinfo(CHAR_NAME)+"";
-					mes "^0000ffTorre Infinita ^000000- A reserva falhou!";
-					close;
-				}
-				mes "^0000ffTorre Infinita^000000 - Tentar reservar";
-				mes "Depois de fazer uma reserva, você tem que falar com o NPC logo atrás e selecionar o menu 'Entrar no Calabouço' para entrar no calabouço.";
-				for (.@i = 1; .@i <= 6; ++.@i) {
-					if ( instance_attachmap(.@i+"@tower", .@instance) == "" ) {
-						mes "^0000ffTorre Infinita ^000000- A reserva falhou!";
-						instance_destroy(.@instance);
-						close;
+				if (.@instance) {
+					for (.@i = 1; .@i <= 6; ++.@i) {
+						if (instance_attachmap(.@i + "@tower", .@instance) == "") {
+							mesf("Nome do grupo: %s", .@p_name$);
+							mesf("Líder do grupo: %s", strcharinfo(PC_NAME));
+							mesf("^0000ffTorre Infinita ^000000- A reserva falhou!");
+							instance_destroy(.@instance);
+							close;
+						}
 					}
+					instance_set_timeout(14400, 300, .@instance);
+					instance_init(.@instance);
 				}
+				mes("^0000ffTorre Infinita^000000 - Tentar reservar\n"
+					"Depois de fazer uma reserva, você tem que falar com o NPC logo atrás e selecionar o menu 'Entrar no Calabouço' para entrar no calabouço.");
 				instance_set_timeout(14400,300,.@instance);
 				instance_init(.@instance);
 				close;
 				case 2:
 				callsub(L_Enter,0,1,"Torre Infinita",.@p_name$);
 				case 3:
-				mes "Eu irei te levar de volta para Alberta.";
+				mes("Eu irei te levar de volta para Alberta.");
 				close2;
 				warp("alberta",223,36);
 				end;
@@ -279,7 +279,7 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 			case 1:
 			callsub(L_Enter,1,1,"Torre Infinita",.@p_name$);
 			case 2:
-			mes "Eu irei te levar de volta para Alberta.";
+			mes("Eu irei te levar de volta para Alberta.");
 			close2;
 			warp("alberta",223,36);
 			end;
@@ -294,23 +294,22 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 		.@dun_h = (.@dun_ent_t / 3600);
 		.@dun_m = (.@dun_ent_t - (.@dun_h * 3600)) / 60;
 		.@dun_s = .@dun_ent_t - ((.@dun_h * 3600) + (.@dun_m * 60));
-
-		mes "Devido às sequelas deixadas na torre.";
-		mes "Você não pode entrar no calabouço agora, "+.@dun_h+"horas "+.@dun_m+"minutos "+.@dun_s+"segundos restantes para entrar novamente.";
+		mes("Devido às sequelas deixadas na torre.\n"
+			"Você não pode entrar no calabouço agora, "+.@dun_h+" horas "+.@dun_m+" minutos "+.@dun_s+" segundos restantes para entrar novamente.");
 		next;
-		mes "Aqui é perigoso.";
-		mes "Vá e volte para Alberta.";
+		mes("Aqui é perigoso.\n"
+			"Vá e volte para Alberta.");
 		close2;
 		warp("alberta",223,36);
 		end;
 	} else if (.@etower_timer == 1) {
-		mes "Você gostaria de reservar a entrada para a Torre Sem Fim?";
+		mes("Você gostaria de reservar a entrada para a Torre Sem Fim?");
 		next;
 		switch (select("Entrar na Torre","Voltar para Alberta","Cancelar")) {
 			case 1:
 			callsub(L_Enter,0,0,"Torre Infinita",.@p_name$);
 			case 2:
-			mes "Eu irei te levar de volta para Alberta.";
+			mes("Eu irei te levar de volta para Alberta.");
 			close2;
 			warp("alberta",223,36);
 			end;
@@ -322,15 +321,15 @@ e_tower,81,105,0	script	Pedra de Proteção	2_MONEMUS,{
 		etower_timer = 0;
 		erasequest(60200);
 		erasequest(60201);
-		mes "^0000ffOs registros e efeitos secundários relacionados à Torre Infinita foram removidos.";
-		mes "Você pode gerar e entrar novamente na Tower Endless.^000000";
+		mes("^0000ffOs registros e efeitos secundários relacionados à Torre Infinita foram removidos.\n"
+			"Você pode gerar e entrar novamente na Tower Endless.^000000");
 		close;
 	}
 
 	L_Enter:
 	if (has_instance("1@tower") == "") {
-		mes "O calabouço da "+getarg(2)+" não existe.";
-		mes "O líder do grupo não gerou o calabouço ainda.";
+		mes("O calabouço da "+getarg(2)+" não existe.\n"
+			"O líder do grupo não gerou o calabouço ainda.");
 		close;
 	} else {
 		mapannounce("e_tower",strcharinfo(CHAR_NAME)+" do grupo, "+getarg(3)+", está entrando no calabouço da, Torre Infinita.",bc_map,"0x00ff99",FW_NORMAL,12);
@@ -357,8 +356,8 @@ e_tower,30,30,2	script	Grande Vortex#eT	CLEAR_NPC,2,2,{
 // ------------------------------------------------------------------
 e_tower,69,117,4	script	Pedra da Purificação#eT1	2_MONEMUS,{
 	etower_timer = 0;
-	mes "^0000ffOs registros e efeitos relacionados com a Torre Sem Fim foram removidos.";
-	mes "Você pode gerar e entrar no calabouço da Torre Sem Fim novamente.^000000";
+	mes("^0000ffOs registros e efeitos relacionados com a Torre Sem Fim foram removidos.\n"
+		"Você pode gerar e entrar no calabouço da Torre Sem Fim novamente.^000000");
 	close;
 
 	OnInit:
@@ -1155,16 +1154,16 @@ function	script	F_Tower_Warp	{
 // ------------------------------------------------------------------
 // - Andar 1-25
 1@tower,50,360,0	script	Braseiro Imortal#eT	CLEAR_NPC,{
-	mes "-A mensagem é gravada no Braseiro Imortal -";
-	mes "Aquele que espalha as cinzas da escuridão neste lugar estará um passo mais perto de Naght Sieger, a Sombra dos Reis das Trevas...";
+	mes("-A mensagem é gravada no Braseiro Imortal -\n"
+		"Aquele que espalha as cinzas da escuridão neste lugar estará um passo mais perto de Naght Sieger, a Sombra dos Reis das Trevas...");
 	next;
 	setarray(.@level$[1],"26° andar","51° andar","76° andar");
 	setarray(.@map$[1],"2@tower","3@tower","4@tower");
 	.@i = select("26° andar","51° andar","76° andar");
 
 	if (countitem(Dark_Ashes) < .@i) {
-		mes "-Aviso-";
-		mes "Para ir ao "+.@level$[.@i]+", você precisa de "+.@i+" Cinza da Escuridão.";
+		mes("-Aviso-\n"
+			"Para ir ao "+.@level$[.@i]+", você precisa de "+.@i+" Cinza da Escuridão.");
 		close;
 	}
 	delitem(Dark_Ashes,.@i);
@@ -1621,47 +1620,47 @@ function	script	F_Tower_Warp	{
 // ------------------------------------------------------------------
 5@tower,106,109,2	script	Cristal Translúcido#102	CLEAR_NPC,{
 	if (in_102tower < 10) {
-		mes "^0000ff*Uma misteriosa voz ecoa pela sala dizendo para você tocar o cristal translúcido que está irradiando uma luz forte.*^000000";
+		mes("^0000ff*Uma misteriosa voz ecoa pela sala dizendo para você tocar o cristal translúcido que está irradiando uma luz forte.*^000000");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Bem-vindo ao meu lar, intrusos.";
-		mes "Eu me diverti vendo vocês suportarem todas as dificuldades que eu tenho posto diante de vocês.";
+		mes("[Voz Misteriosa]\n"
+			"Bem-vindo ao meu lar, intrusos.\n"
+			"Eu me diverti vendo vocês suportarem todas as dificuldades que eu tenho posto diante de vocês.");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Infelizmente, chegou a hora de terminar o show.";
+		mes("[Voz Misteriosa]\n"
+			"Infelizmente, chegou a hora de terminar o show.");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Ainda é muito cedo para comemorar a vitória contra o meu braço direito Knothen.";
-		mes "Porque ele não está completamente destruído!";
+		mes("[Voz Misteriosa]\n"
+			"Ainda é muito cedo para comemorar a vitória contra o meu braço direito Knothen.\n"
+			"Porque ele não está completamente destruído!");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Vou ressuscitá-lo para o próximo show.";
-		mes "Derrote-o novamente, e então aceitarei com prazer o desafio de vocês.";
+		mes("[Voz Misteriosa]\n"
+			"Vou ressuscitá-lo para o próximo show.\n"
+			"Derrote-o novamente, e então aceitarei com prazer o desafio de vocês.");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Até logo.";
-		mes "Mais uma vez, havia um bom tempo, os seres humanos.";
-		mes "Estou ansioso para vê-los novamente.";
+		mes("[Voz Misteriosa]\n"
+			"Até logo.\n"
+			"Mais uma vez, havia um bom tempo, os seres humanos.\n"
+			"Estou ansioso para vê-los novamente.");
 		next;
-		mes "^0000ff*Assim que a voz parou de falar.";
-		mes "Uma força irresistível o levantou e lhe moveu para algum lugar.*";
+		mes("^0000ff*Assim que a voz parou de falar.\n"
+			"Uma força irresistível o levantou e lhe moveu para algum lugar.*");
 		close2;
 		in_102tower = 10;
 		warp("alberta",223,36);
 	} else {
-		mes "^0000ff*A peça de cristal irradiando parece acenar para você, assim como da última vez.*^000000";
+		mes("^0000ff*A peça de cristal irradiando parece acenar para você, assim como da última vez.*^000000");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Devo ter subestimado você...";
-		mes "Eu não esperava vê-l"+(Sex == SEX_MALE ? "o" : "a")+" novamente.";
+		mes("[Voz Misteriosa]\n"
+			"Devo ter subestimado você...\n"
+			"Eu não esperava vê-l"+(Sex == SEX_MALE ? "o" : "a")+" novamente.");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Eu posso sentir o seu suor, ouvir os suspiros de cansaço em combate.";
-		mes "Ah! O desejo humano pela vitória sempre me excita.";
+		mes("[Voz Misteriosa]\n"
+			"Eu posso sentir o seu suor, ouvir os suspiros de cansaço em combate.\n"
+			"Ah! O desejo humano pela vitória sempre me excita.");
 		next;
-		mes "[Voz Misteriosa]";
-		mes "Eu agora permito que você venha ao meu encontro.";
-		mes "Venha até mim, para o grande Naght Sieger o Rei dos reis das Trevas!";
+		mes("[Voz Misteriosa]\n"
+			"Eu agora permito que você venha ao meu encontro.\n"
+			"Venha até mim, para o grande Naght Sieger o Rei dos reis das Trevas!");
 		close2;
 		warp(instance_mapname("6@tower"),32,12);
 	}
@@ -1801,7 +1800,7 @@ function	script	F_Tower_Warp	{
 // ------------------------------------------------------------------
 // - Último andar
 6@tower,45,89,2	script	Fonte da Vida#1	CLEAR_NPC,{
-	mes "^0066ffVocê tomou um gole de água límpida e sentiu-se revigorado.^000000";
+	mes("^0066ffVocê tomou um gole de água límpida e sentiu-se revigorado.^000000");
 	heal ((MaxHp-Hp),(MaxSp-Sp));
 	close;
 
@@ -1958,7 +1957,7 @@ function	script	F_Tower_Warp	{
 
 	OnTimer10500:
 	.@map$ = instance_mapname("6@tower");
-	mapannounce .@map$,"Como quer jogar comigo o próximo round?",bc_map,"0x00ffcc";
+	mapannounce(.@map$,"Como quer jogar comigo o próximo round?",bc_map,"0x00ffcc");
 	stopnpctimer;
 	areamonster(.@map$,151,66,153,106,"Guardião da Espada Gêmea",KHALITZBURG,20,instance_npcname("#3rd Beeper")+"::OnMyMobDead");
 	areamonster(.@map$,158,66,160,106,"Guardião da Espada Gêmea",KHALITZBURG,20,instance_npcname("#3rd Beeper")+"::OnMyMobDead");
@@ -2006,59 +2005,59 @@ function	script	F_Tower_Warp	{
 // ------------------------------------------------------------------
 6@tower,169,127,2	script	Alma Perdida#102	4_M_NFDEADSWDMAN,{
 	if (checkweight(Knife,1) == 0) {
-		mes "Você está carregando muito equipamento.";
-		mes "Porque não joga alguns fora e depois retorna?";
+		mes("Você está carregando muito equipamento.\n"
+			"Porque não joga alguns fora e depois retorna?");
 		close;
 	}
-	mes "[Alma Perdida]";
-	mes "Foram vocês que nos libertaram do terrível Naght Sieger.";
+	mes("[Alma Perdida]\n"
+		"Foram vocês que nos libertaram do terrível Naght Sieger.");
 	next;
-	mes "[Alma Perdida]";
-	mes "Muito obrigado.";
-	mes "Agora podemos escapar deste lugar frio e escuro... para o céu.";
+	mes("[Alma Perdida]\n"
+		"Muito obrigado.\n"
+		"Agora podemos escapar deste lugar frio e escuro... para o céu.");
 	next;
 	if ((countitem(Twin_Edge_B)) && (countitem(Twin_Edge_R))) {
-		mes "[Alma Perdida]";
-		mes "Ei, você tem os restos de Naght Sieger com você.";
+		mes("[Alma Perdida]\n"
+			"Ei, você tem os restos de Naght Sieger com você.");
 		next;
-		mes "[Alma Perdida]";
-		mes "Elas podem parecer espadas de uma mão.";
-		mes "Mas posso colocá-las juntas para fazer uma de duas mãos se quiser.";
-		mes "Essa é a única maneira para que eu possa retribuir-lhes por me libertar.";
+		mes("[Alma Perdida]\n"
+			"Elas podem parecer espadas de uma mão.\n"
+			"Mas posso colocá-las juntas para fazer uma de duas mãos se quiser.\n"
+			"Essa é a única maneira para que eu possa retribuir-lhes por me libertar.");
 		next;
 		switch (select("Faça uma espada de 2 mãos","Não, obrigado.")) {
 			case 1:
-			mes "[Alma Perdida]";
-			mes "Bom, então eu vou combiná-las para criar uma espada de duas mãos.";
+			mes("[Alma Perdida]\n"
+				"Bom, então eu vou combiná-las para criar uma espada de duas mãos.");
 			next;
 			switch (select("Está tudo bem","De maneira nenhuma!")) {
 				case 1:
-				mes "[Alma Perdida]";
-				mes "Bom, então eu vou combiná-las para criar uma espada de duas mãos.";
+				mes("[Alma Perdida]\n"
+					"Bom, então eu vou combiná-las para criar uma espada de duas mãos.");
 				next;
 				delitem(Twin_Edge_B,1);
 				delitem(Twin_Edge_R,1);
 				getitem(Violet_Fear,1);
 				break;
 				case 2:
-				mes "[Alma Perdida]";
-				mes "Eu acho que você não são tão gananciosos ou ambiciosos quanto aqueles outros aventureiros.";
+				mes("[Alma Perdida]\n"
+					"Eu acho que você não são tão gananciosos ou ambiciosos quanto aqueles outros aventureiros.");
 				next;
 				break;
 			}
 			break;
 			case 2:
-			mes "[Alma Perdida]";
-			mes "Eu acho que você não são tão gananciosos ou ambiciosos quanto aqueles outros aventureiros.";
+			mes("[Alma Perdida]\n"
+				"Eu acho que você não são tão gananciosos ou ambiciosos quanto aqueles outros aventureiros.");
 			next;
 			break;
 		}
 	}
-	mes "[Alma Perdida]";
-	mes "Eu gostaria de falar mais com vocês, mas eu tenho... Eu tenho que ir agora.";
+	mes("[Alma Perdida]\n"
+		"Eu gostaria de falar mais com vocês, mas eu tenho... Eu tenho que ir agora.");
 	next;
-	mes "[Lost Souls]";
-	mes "Adeus, jovens aventureiros. Desejo-lhes boa sorte.";
+	mes("[Lost Souls]\n"
+		"Adeus, jovens aventureiros. Desejo-lhes boa sorte.");
 	close2;
 	warp("alberta",223,36);
 	end;
