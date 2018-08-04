@@ -69,10 +69,6 @@
  * Please note that NO SUPPORT will be given if you uncomment the following line.
  */
 
-
-/// Called when a terminate signal is received.
-void (*shutdown_callback)(void) = NULL;
-
 struct core_interface core_s;
 struct core_interface *core = &core_s;
 
@@ -118,8 +114,8 @@ static BOOL WINAPI console_handler(DWORD c_event)
 		case CTRL_CLOSE_EVENT:
 		case CTRL_LOGOFF_EVENT:
 		case CTRL_SHUTDOWN_EVENT:
-			if( shutdown_callback != NULL )
-				shutdown_callback();
+			if (core->shutdown_callback != NULL)
+				core->shutdown_callback();
 			else
 				core->runflag = CORE_ST_STOP;// auto-shutdown
 			break;
@@ -148,8 +144,8 @@ static void sig_proc(int sn)
 		case SIGTERM:
 			if (++is_called > 3)
 				exit(EXIT_SUCCESS);
-			if( shutdown_callback != NULL )
-				shutdown_callback();
+			if (core->shutdown_callback != NULL)
+				core->shutdown_callback();
 			else
 				core->runflag = CORE_ST_STOP;// auto-shutdown
 			break;

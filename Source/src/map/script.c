@@ -1306,8 +1306,8 @@ const char* script_parse_subexpr(const char* p,int limit)
 	p=script->skip_space(p);
 	while((
 	   (op=C_OP3,    opl=0, len=1,*p=='?')              // ?:
-	|| (op=C_ADD,    opl=9, len=1,*p=='+')              // +
-	|| (op=C_SUB,    opl=9, len=1,*p=='-')              // -
+	|| (op=C_ADD,    opl=9, len=1,*p=='+' && p[1]!='+') // +
+	|| (op=C_SUB,    opl=9, len=1,*p=='-' && p[1]!='-') // -
 	|| (op=C_POW,    opl=11,len=2,*p=='*' && p[1]=='*') // **
 	|| (op=C_MUL,    opl=10,len=1,*p=='*')              // *
 	|| (op=C_DIV,    opl=10,len=1,*p=='/')              // /
@@ -20548,7 +20548,7 @@ BUILDIN(instance_create)
 			break;
 		default:
 			if (res < 0)
-				ShowError("buildin_instance_create: failed to unknown reason [%d].\n", res);
+				ShowError("buildin_instance_create: Falha por razao desconhecida [%d].\n", res);
 		}
 	} else {
 		const char *err;
@@ -23190,7 +23190,7 @@ bool rodex_sendmail_sub(struct script_state* st, struct rodex_message *msg)
 {
 	const char *sender_name, *title, *body;
 
-	if (!strcmp(script->getfuncname(st), "rodex_sendmail_acc2"))
+	if (strcmp(script->getfuncname(st), "rodex_sendmail_acc") == 0 || strcmp(script->getfuncname(st), "rodex_sendmail_acc2") == 0)
 		msg->receiver_accountid = script_getnum(st, 2);
 	else
 		msg->receiver_id = script_getnum(st, 2);
