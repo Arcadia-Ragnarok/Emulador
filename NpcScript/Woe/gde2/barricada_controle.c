@@ -181,7 +181,7 @@
 	end;
 
 	// --------------------------------------------------------------
-	// Quando desatruída
+	// Quando destruída
 	OnDestroyed:
 	.@map$ = strnpcinfo(NPC_NAME_HIDDEN);
 	.@number = atoi(charat(strnpcinfo(NPC_NAME_VISIBLE), 10));

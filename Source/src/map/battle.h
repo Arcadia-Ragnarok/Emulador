@@ -557,6 +557,7 @@ struct Battle_Config {
 	int feature_rodex_use_accountmail;
 
 	int feature_enable_homun_autofeed;
+	int feature_enable_pet_autofeed;
 
 	int display_fake_hp_when_dead;
 };

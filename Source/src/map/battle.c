@@ -6362,6 +6362,7 @@ battle_data[] = {
 	{ "client_config/rodex",                           &battle_config.feature_rodex,                   1,   0, 1,            },
 	{ "client_config/rodex_use_accountmail",           &battle_config.feature_rodex_use_accountmail,   0,   0, 1,            },
 	{ "client_config/enable_homun_autofeed",           &battle_config.feature_enable_homun_autofeed,   1,   0, 1,            },
+	{ "client_config/enable_pet_autofeed",             &battle_config.feature_enable_pet_autofeed,     1,   0, 1,            },
 	{ "client_config/display_fake_hp_when_dead",       &battle_config.display_fake_hp_when_dead,       1,   0, 1,            },
 
 	{ "drops_config/flooritem_lifetime",       &battle_config.flooritem_lifetime,       60000, 1000, INT_MAX, },

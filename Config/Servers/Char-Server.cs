@@ -120,7 +120,7 @@ char_configuration: {
 			// Quantidade de tempo em segundos pelo qual a exclusão do caractere está atrasada.
 			// Padrão: 86400 (24 horas)
 			// NOTA: requer o cliente 2010-08-03aragexeRE ou mais recente.
-			delay: 86400
+			delay: 0
 
 			// Bloqueia a exclusão se o personagem estiver dentro de uma guild ou de uma festa? (BOOL)
 			// official: true

@@ -188,6 +188,8 @@ client_config: {
 	// Auto alimentar Homunculus?
 	enable_homun_autofeed: false
 
+	// Auto alimentar bichinhos de estimação?
+	enable_pet_autofeed: false
 
 	// Exibe o mesmo valor de HP que os servidores oficiais quando um personagem está morto.
 	// Em servidores oficiais, a HP nunca é exibida como 0, mas quando morta, exibe o valor que será exibido após a ressurreição (50% HP para classes iniciantes, 1 HP para outras classes).

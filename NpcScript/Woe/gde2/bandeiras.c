@@ -8,7 +8,7 @@
 |        /__/   |__|  Ragnarok - Npc Script                         |
 |                                                                   |
 +-------------------------------------------------------------------+
-| - Copyright: Spell Master (05/05/2011)                            |
+| - Copyright: Spell Master (05/05/2018)                            |
 | - Info: Bandeiras nas portas/ cidades dos castelos na WOE 2.0     |
 \*-----------------------------------------------------------------*/
 
