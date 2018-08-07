@@ -18605,8 +18605,7 @@ int skill_select_menu(struct map_session_data *sd,uint16 skill_id)
 	return 0;
 }
 
-int skill_elementalanalysis(struct map_session_data *sd, uint16 skill_lv, const struct itemlist_idx *item_list)
-{
+int skill_elementalanalysis(struct map_session_data *sd, uint16 skill_lv, const struct itemlist *item_list) {
 	int i;
 
 	nullpo_ret(sd);
@@ -18616,10 +18615,10 @@ int skill_elementalanalysis(struct map_session_data *sd, uint16 skill_lv, const 
 		return 1;
 
 	for (i = 0; i < VECTOR_LENGTH(*item_list); i++) {
-		const struct itemlist_idx_entry *entry = &VECTOR_INDEX(*item_list, i);
+		const struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, i);
 		int nameid, add_amount, product;
 		int del_amount = entry->amount;
-		int idx = entry->index;
+		int idx = entry->id;
 
 		if( skill_lv == 2 )
 			del_amount -= (del_amount % 10);
@@ -18679,8 +18678,7 @@ int skill_elementalanalysis(struct map_session_data *sd, uint16 skill_lv, const 
 	return 0;
 }
 
-int skill_changematerial(struct map_session_data *sd, const struct itemlist_idx *item_list)
-{
+int skill_changematerial(struct map_session_data *sd, const struct itemlist *item_list) {
 	int i, j, k, c, p = 0, nameid, amount;
 
 	nullpo_ret(sd);
@@ -18696,8 +18694,8 @@ int skill_changematerial(struct map_session_data *sd, const struct itemlist_idx 
 				for( j = 0; j < MAX_PRODUCE_RESOURCE; j++ ) {
 					if( skill->dbs->produce_db[i].mat_id[j] > 0 ) {
 						for (k = 0; k < VECTOR_LENGTH(*item_list); k++) {
-							const struct itemlist_idx_entry *entry = &VECTOR_INDEX(*item_list, k);
-							int idx = entry->index;
+							const struct itemlist_entry *entry = &VECTOR_INDEX(*item_list, k);
+							int idx = entry->id;
 							Assert_ret(idx >= 0 && idx < MAX_INVENTORY);
 							amount = entry->amount;
 							nameid = sd->status.inventory[idx].nameid;
