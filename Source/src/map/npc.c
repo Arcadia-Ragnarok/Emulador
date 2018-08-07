@@ -4810,12 +4810,8 @@ void npc_process_files( int npc_min ) {
 	}
 	ShowInfo ("Carregando '"CL_WHITE"%d"CL_RESET"' NPCs:"CL_CLL"\n"
 		"\t-'"CL_WHITE"%d"CL_RESET"' Portais\n"
-		"\t-'"CL_WHITE"%d"CL_RESET"' Lojas\n"
-		"\t-'"CL_WHITE"%d"CL_RESET"' Scripts\n"
-		"\t-'"CL_WHITE"%d"CL_RESET"' Spawns\n"
-		"\t-'"CL_WHITE"%d"CL_RESET"' Monstros em Cache\n"
-		"\t-'"CL_WHITE"%d"CL_RESET"' Monstros fora de Cache\n",
-		npc->npc_id - npc_min, npc->npc_warp, npc->npc_shop, npc->npc_script, npc->npc_mob, npc->npc_cache_mob, npc->npc_delay_mob);
+		"\t-'"CL_WHITE"%d"CL_RESET"' monstros, contabilizando o total de '"CL_WHITE"%d"CL_RESET"' em todas invocacoes\n",
+		npc->npc_id - npc_min, npc->npc_warp, npc->npc_mob, npc->npc_cache_mob);
 }
 
 //Clear then reload npcs files
