@@ -9,21 +9,27 @@ Status:
 ![Language](https://img.shields.io/badge/PassiveDocs-txt/Conf-blue.svg)
 
 #### O que é o emulador Arcadia?
-O Arcadia é um emulador sem fins de lucrativos ou por fama para simulação do jogo Ragnarok-Online. Criado no intuito de mostrar abertamente o desenvolvimento para um servidor do mesmo jogo.
+O Arcadia é um emulador sem fins de lucrativos para simulação do jogo Ragnarok-Online.
+Criado no intuito de mostrar abertamente o desenvolvimento para um servidor do mesmo jogo.
 
 Originalmente seu código fonte é baseado e usa-se de updates no Hercules-Emulador que por sua vez é baseado no extinto Athena.
 
 #### Qual é o diferencial?
-Diferente dos demais emuladores que abragem um gama de opções para configuração por parte do usuário. O Arcadia já vem configurado seguindo os padrões do servidor oficial brasileiro de ragnarok.
+Diferente dos demais emuladores assim como o próprio hercules que abragem um gama de opções para configuração por parte do usuário. 
+Arcadia já vem configurado seguindo os padrões do servidor oficial brasileiro de ragnarok.
 Não sendo plausível modificações severas que fogem dos padrões oficiais.
 
-No geral é voltado a uso pessoal por parte dos colaboradores, mas mantendo seu código em aberto para que pessoas possam visualizar o que é feito antes da criação do servidor que contará com esse emulador.
+No geral é voltado a uso pessoal por parte dos colaboradores, mas mantendo seu código em aberto para que pessoas possam visualizar o que é feito antes da criação do servidor que contará com esse emulador. 
 Dedicado a um servidor de rates baixos sem custominizações.
 
 #### Desenvolvimento geral.
-Como dito anteriormente seu código vem e é modificado em relação ao emulador Hercules. Entretanto no momento o Arcadia está em faze de implementação e ajuste.
+Como dito anteriormente seu código vem e é modificado em relação ao emulador Hercules. Sendo conta com 100% traduzido para o português brasileiro. 
+Em outra parte sendo modificado severamente ou removido tudo aquilo que seja considerável inútil ou inadequado para exisitr em um emulador de ragnarok, além de modificações peculiares para melhor uso e praticidade.
 
-NÃO SENDO ACONSELHAVEL O USO PARA CRIAÇÃO DE NUNHUM SERVIDOR NO MOMENTO!
+#### Agradecimentos.
+Primiramente devemos agradecer aos desenvolvedores e colaboradores que criaram o Athena que sem eles nenhum emulador de ragnarok seria possível.
+
+Em segundo a equipe do Hercules por melhorar o código original do emulador, e aos contribuídores do mesmo que periódicamente atualizam e modificam seu código.
 
 -------------
 #### Compilador para testar o emulador.
@@ -42,15 +48,3 @@ NÃO SENDO ACONSELHAVEL O USO PARA CRIAÇÃO DE NUNHUM SERVIDOR NO MOMENTO!
 - Download da compilação ([Link](https://drive.google.com/drive/folders/104sJ5B6NvulDBUMpHbaF-Fad3QDFWEY9?usp=sharing))
 
 -------------
-
-```
-
-Como já mensionado o emulador arcadia é apenas um emulador de uso pessoal que não visa substituir outros softwares semelhantes.
-
-Se você pretente criar um servidor de ragnarok, pode optar pelos outros emuladores porque como já dito arcadia vem a ser desenvolvido para uso pessoal e por ele não estar pronto para uso.
-
-Mas nada o impede de usar-lo para testes pessoais também.
-
-Lembre-se que esse emulador é apenas um exemplo das modificações que estão sendo feitas para um servidor de ragnarok.
-
-```
