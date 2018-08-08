@@ -542,6 +542,18 @@ enum CZ_CONFIG {
 	CZ_CONFIG_PET_AUTOFEEDING        = 2,
 	CZ_CONFIG_HOMUNCULUS_AUTOFEEDING = 3,
 };
+
+/** Pet Evolution Results */
+enum pet_evolution_result {
+	PET_EVOL_UNKNOWN = 0x0,
+	PET_EVOL_NO_CALLPET = 0x1,
+	PET_EVOL_NO_PETEGG = 0x2,
+	PET_EVOL_NO_RECIPE = 0x3,
+	PET_EVOL_NO_MATERIAL = 0x4,
+	PET_EVOL_RG_FAMILIAR = 0x5,
+	PET_EVOL_SUCCESS = 0x6,
+};
+
 /**
  * Structures
  **/
@@ -1387,6 +1399,9 @@ struct clif_interface {
 	/* Hat Effect */
 	void (*hat_effect) (struct block_list *bl, struct block_list *tbl, enum send_target target);
 	void (*hat_effect_single) (struct block_list *bl, uint16 effectId, bool enable);
+	/* Pet Evolution */
+	void (*pPetEvolution) (int fd, struct map_session_data *sd);
+	void (*petEvolutionResult) (int fd, enum pet_evolution_result result);
 };
 
 void clif_defaults(void);

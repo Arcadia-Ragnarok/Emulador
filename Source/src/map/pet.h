@@ -24,6 +24,12 @@
 #define MAX_PET_DB       300
 #define MAX_PETLOOT_SIZE 30
 
+/** Pet Evolution [Dastgir/Hercules] */
+struct pet_evolve_data {
+	int petEggId;
+	VECTOR_DECL(struct itemlist_entry) items;
+};
+
 struct s_pet_db {
 	short class_;
 	char name[NAME_LENGTH],jname[NAME_LENGTH];
@@ -47,6 +53,9 @@ struct s_pet_db {
 	int autofeed;
 	struct script_code *equip_script;
 	struct script_code *pet_script;
+
+	/* Pet Evolution */
+	VECTOR_DECL(struct pet_evolve_data) evolve_data;
 };
 
 enum { PET_CLASS,PET_CATCH,PET_EGG,PET_EQUIP,PET_FOOD };
@@ -166,6 +175,9 @@ struct pet_interface {
 	int (*read_db_sub) (struct config_setting_t *it, int n, const char *source);
 	bool (*read_db_sub_intimacy) (int idx, struct config_setting_t *t);
 	void (*read_db_clear) (void);
+
+	/* Pet Evolution [Dastgir] */
+	void (*read_db_sub_evolution) (struct config_setting_t *t, int n);
 };
 
 void pet_defaults(void);
