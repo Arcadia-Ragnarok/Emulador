@@ -381,8 +381,8 @@ bool vending_searchall(struct map_session_data *sd, const struct s_search_store_
 			}
 		}
 
-		if (!searchstore->result(s->search_sd, sd->vender_id, sd->status.account_id, sd->message, it->nameid, sd->vending[i].amount, sd->vending[i].value, it->card, it->refine)) {
 		// result set full
+		if (!searchstore->result(s->search_sd, sd->vender_id, sd->status.account_id, sd->message, it->nameid, sd->vending[i].amount, sd->vending[i].value, it->card, it->refine, it->option)) {
 			return false;
 		}
 	}

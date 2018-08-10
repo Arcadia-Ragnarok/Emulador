@@ -468,8 +468,9 @@ bool buyingstore_searchall(struct map_session_data *sd, const struct s_search_st
 			;
 		}
 
-		if (!searchstore->result(s->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, blankslots, 0)) {
-			// result set full
+		// TODO: add support for cards and options
+		// result set full
+		if (!searchstore->result(s->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, buyingstore->blankslots, 0, buyingstore->blankoptions)) {
 			return false;
 		}
 	}
@@ -480,6 +481,8 @@ void buyingstore_defaults(void) {
 	buyingstore = &buyingstore_s;
 
 	buyingstore->nextid = 0;
+	memset(buyingstore->blankslots, 0, sizeof(buyingstore->blankslots));
+	memset(buyingstore->blankoptions, 0, sizeof(buyingstore->blankoptions));
 	/* */
 	buyingstore->setup = buyingstore_setup;
 	buyingstore->create = buyingstore_create;
