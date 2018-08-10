@@ -87,10 +87,10 @@ struct buyingstore_interface {
 	bool (*setup) (struct map_session_data* sd, unsigned char slots);
 	void (*create) (struct map_session_data *sd, int zenylimit, unsigned char result, const char *storename, const struct buyingstore_itemlist *itemlist);
 	void (*close) (struct map_session_data* sd);
-	void (*open) (struct map_session_data* sd, int account_id);
+	void (*open) (struct map_session_data *sd, int account_id);
 	void (*trade) (struct map_session_data *sd, int account_id, unsigned int buyer_id, const struct buyingstore_trade_itemlist *itemlist);
-	bool (*search) (struct map_session_data* sd, unsigned short nameid);
-	bool (*searchall) (const struct map_session_data *sd, const struct s_search_store_search *query);
+	bool (*search) (struct map_session_data *sd, unsigned short nameid);
+	bool (*searchall) (struct map_session_data *sd, const struct s_search_store_search *s);
 	unsigned int (*getuid) (void);
 };
 

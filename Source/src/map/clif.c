@@ -17607,20 +17607,18 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) __attribute
 ///         amount of card slots. If the client does not know about the item it
 ///         cannot be searched.
 void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
-	const int blocksize = 2;
-	const uint16 *raw_itemlist;
-	const uint16 *raw_cardlist;
+	const unsigned int blocksize = 2;
+	const uint8 *itemlist;
+	const uint8 *cardlist;
 	unsigned char type;
-	unsigned int min_price, max_price;
-	int i, packet_len, count, item_count, card_count;
+	unsigned int min_price, max_price, packet_len, count, item_count, card_count;
 	struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
-	struct s_search_store_search query = { 0 };
 
 	packet_len = RFIFOW(fd,info->pos[0]);
 
 	// minimum packet length
 	if (packet_len < 15) {
-		ShowError("clif_parse_SearchStoreInfo: Packet mal formado (expected=%d, length=%d, account_id=%d).\n", 15, packet_len, sd->bl.id);
+		ShowError("clif_parse_SearchStoreInfo: Packet mal formado (expected=%u, length=%d, account_id=%d).\n", 15, packet_len, sd->bl.id);
 		return;
 	}
 
@@ -17629,9 +17627,10 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
 	min_price  = RFIFOL(fd,info->pos[3]);
 	item_count = RFIFOB(fd,info->pos[4]);
 	card_count = RFIFOB(fd,info->pos[5]);
-	raw_itemlist = RFIFOP(fd,info->pos[6]);
+	itemlist   = RFIFOP(fd,info->pos[6]);
+	cardlist   = RFIFOP(fd,info->pos[6]+blocksize*item_count);
 
-	if (packet_len < 0) {
+	if (packet_len%blocksize) {
 		return;
 	}
 
@@ -17649,32 +17648,7 @@ void clif_parse_SearchStoreInfo(int fd, struct map_session_data* sd) {
 		return;
 	}
 
-	raw_cardlist = RFIFOP(fd,info->pos[6]+blocksize*item_count);
-
-	if (min_price > max_price) {
-		swap(min_price, max_price);
-	}
-
-	query.search_sd = sd;
-	query.max_price = max_price;
-	query.min_price = min_price;
-
-	VECTOR_INIT(query.itemlist);
-	VECTOR_ENSURE(query.itemlist, item_count, 1);
-	for (i = 0; i < item_count; i++) {
-		VECTOR_INDEX(query.itemlist, i) = raw_itemlist[i];
-	}
-
-	VECTOR_INIT(query.cardlist);
-	VECTOR_ENSURE(query.cardlist, card_count, 1);
-	for (i = 0; i < card_count; i++) {
-		VECTOR_INDEX(query.cardlist, i) = raw_cardlist[i];
-	}
-
-	searchstore->query(sd, type, &query);
-
-	VECTOR_CLEAR(query.itemlist);
-	VECTOR_CLEAR(query.cardlist);
+	searchstore->query(sd, type, min_price, max_price, (const unsigned short*)itemlist, item_count, (const unsigned short*)cardlist, card_count);
 }
 
 /// Results for a store search request (ZC_SEARCH_STORE_INFO_ACK).

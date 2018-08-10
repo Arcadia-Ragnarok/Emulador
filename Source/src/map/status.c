@@ -4779,8 +4779,6 @@ unsigned short status_calc_batk(struct block_list *bl, struct status_change *sc,
 		batk += batk * sc->data[SC_INCATKRATE]->val1/100;
 	if(sc->data[SC_PROVOKE])
 		batk += batk * sc->data[SC_PROVOKE]->val3/100;
-	if ( sc->data[SC_NOEQUIPWEAPON] && bl->type != BL_PC )
-		batk -= batk * sc->data[SC_NOEQUIPWEAPON]->val2 / 100;
 	if(sc->data[SC_SKE])
 		batk += batk * 3;
 	if(sc->data[SC_HAMI_BLOODLUST])

@@ -54,8 +54,10 @@ enum e_searchstore_failure {
 /// information about the search being performed
 struct s_search_store_search {
 	struct map_session_data* search_sd;  // sd of the searching player
-	VECTOR_DECL(int) itemlist;
-	VECTOR_DECL(int) cardlist;
+	const unsigned short* itemlist;
+	const unsigned short* cardlist;
+	unsigned int item_count;
+	unsigned int card_count;
 	unsigned int min_price;
 	unsigned int max_price;
 };
@@ -84,15 +86,15 @@ struct s_search_store_info {
 };
 
 /// type for shop search function
-typedef bool (*searchstore_search_t)(struct map_session_data* sd, unsigned short nameid);
-typedef bool (SearchStoreAllFunc) (const struct map_session_data *sd, const struct s_search_store_search *query);
+typedef bool (*searchstore_search_t)(struct map_session_data *sd, unsigned short nameid);
+typedef bool (*searchstore_searchall_t)(struct map_session_data *sd, const struct s_search_store_search *s);
 
 /**
  * Interface
  **/
 struct searchstore_interface {
 	bool (*open) (struct map_session_data* sd, unsigned int uses, unsigned short effect);
-	void (*query) (struct map_session_data *sd, unsigned char type, const struct s_search_store_search *query);
+	void (*query) (struct map_session_data *sd, unsigned char type, unsigned int min_price, unsigned int max_price, const unsigned short* itemlist, unsigned int item_count, const unsigned short* cardlist, unsigned int card_count);
 	bool (*querynext) (struct map_session_data* sd);
 	void (*next) (struct map_session_data* sd);
 	void (*clear) (struct map_session_data* sd);

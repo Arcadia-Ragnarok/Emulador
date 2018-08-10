@@ -433,42 +433,43 @@ bool buyingstore_search(struct map_session_data* sd, unsigned short nameid)
 
 /// Searches for all items in a buyingstore, that match given ids, price and possible cards.
 /// @return Whether or not the search should be continued.
-bool buyingstore_searchall(const struct map_session_data *sd, const struct s_search_store_search *query)
-{
-	int i, idx;
-	const short blankslots[MAX_SLOTS] = { 0 };
+bool buyingstore_searchall(struct map_session_data *sd, const struct s_search_store_search* s) {
+	unsigned int i, idx;
+	struct s_buyingstore_item* it;
 
 	nullpo_retr(true, sd);
-	nullpo_retr(true, query);
 
 	// not buying
 	if (!sd->state.buyingstore) {
 		return true;
 	}
 
-	for (idx = 0; idx < VECTOR_LENGTH(query->itemlist); idx++) {
-		const struct s_buyingstore_item *it;
-		ARR_FIND (0, sd->buyingstore.slots, i, sd->buyingstore.items[i].nameid == VECTOR_INDEX(query->itemlist, idx) && sd->buyingstore.items[i].amount > 0);
-		// not found
+	for (idx = 0; idx < s->item_count; idx++) {
+		const short blankslots[MAX_SLOTS] = { 0 };
+		ARR_FIND( 0, sd->buyingstore.slots, i, sd->buyingstore.items[i].nameid == s->itemlist[idx] && sd->buyingstore.items[i].amount );
 		if (i == sd->buyingstore.slots) {
+			// not found
 			continue;
 		}
 		it = &sd->buyingstore.items[i];
 
-		// too low price
-		if (query->min_price && query->min_price > (unsigned int)it->price) {
+		if (s->min_price && s->min_price > (unsigned int)it->price) {
+			// too low price
 			continue;
 		}
 
-		// too high price
-		if (query->max_price && query->max_price < (unsigned int)it->price) {
+		if (s->max_price && s->max_price < (unsigned int)it->price) {
+			// too high price
 			continue;
 		}
 
-		//if (VECTOR_LENGTH(query->cardlist) > 0) (void)0; // ignore cards, as there cannot be any
+		if (s->card_count) {
+			// ignore cards, as there cannot be any
+			;
+		}
 
-		// result set full
-		if (!searchstore->result(query->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, blankslots, 0)) {
+		if (!searchstore->result(s->search_sd, sd->buyer_id, sd->status.account_id, sd->message, it->nameid, it->amount, it->price, blankslots, 0)) {
+			// result set full
 			return false;
 		}
 	}
