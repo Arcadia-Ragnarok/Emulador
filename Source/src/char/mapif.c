@@ -13,55 +13,444 @@
 | - Copyright: Athena (Original Emulator)                           |
 \*-----------------------------------------------------------------*/
 
+#define MAIN_CORE
+
 #include "mapif.h"
 
 #include "char/char.h"
 #include "char/int_auction.h"
+#include "char/int_clan.h"
 #include "char/int_guild.h"
 #include "char/int_homun.h"
+#include "char/int_elemental.h"
+#include "char/int_mail.h"
 #include "char/int_rodex.h"
+#include "char/inter.h"
+
 #include "common/cbasetypes.h"
 #include "common/mmo.h"
+#include "common/nullpo.h"
 #include "common/random.h"
 #include "common/showmsg.h"
 #include "common/socket.h"
+#include "common/sql.h"
 #include "common/strlib.h"
 
 #include <stdlib.h>
 
-void mapif_ban(int id, unsigned int flag, int status);
-void mapif_server_init(int id);
-void mapif_server_destroy(int id);
-void mapif_server_reset(int id);
-void mapif_on_disconnect(int id);
-void mapif_on_parse_accinfo(int account_id, int u_fd, int u_aid, int u_group, int map_fd);
-void mapif_char_ban(int char_id, time_t timestamp);
-int mapif_sendall(const unsigned char *buf, unsigned int len);
-int mapif_sendallwos(int sfd, unsigned char *buf, unsigned int len);
-int mapif_send(int fd, unsigned char *buf, unsigned int len);
-void mapif_send_users_count(int users);
-void mapif_auction_message(int char_id, unsigned char result);
-void mapif_auction_sendlist(int fd, int char_id, short count, short pages, const struct auction_data *auctions);
-void mapif_parse_auction_requestlist(int fd);
-void mapif_auction_register(int fd, struct auction_data *auction);
-void mapif_parse_auction_register(int fd);
-void mapif_auction_cancel(int fd, int char_id, unsigned char result);
-void mapif_parse_auction_cancel(int fd);
-void mapif_auction_close(int fd, int char_id, unsigned char result);
-void mapif_parse_auction_close(int fd);
-void mapif_auction_bid(int fd, int char_id, int bid, unsigned char result);
-void mapif_parse_auction_bid(int fd);
-bool mapif_elemental_create(struct s_elemental *ele);
-bool mapif_elemental_save(const struct s_elemental *ele);
-bool mapif_elemental_load(int ele_id, int char_id, struct s_elemental *ele);
-bool mapif_elemental_delete(int ele_id);
-void mapif_elemental_send(int fd, struct s_elemental *ele, unsigned char flag);
-void mapif_parse_elemental_create(int fd, const struct s_elemental *ele);
-void mapif_parse_elemental_load(int fd, int ele_id, int char_id);
-void mapif_elemental_deleted(int fd, unsigned char flag);
-void mapif_parse_elemental_delete(int fd, int ele_id);
-void mapif_elemental_saved(int fd, unsigned char flag);
-void mapif_parse_elemental_save(int fd, const struct s_elemental *ele);
+void mapif_ban(int id, unsigned int flag, int status) {
+	// send to all map-servers to disconnect the player
+	unsigned char buf[11];
+	WBUFW(buf,0) = 0x2b14;
+	WBUFL(buf,2) = id;
+	WBUFB(buf,6) = flag; // 0: change of status, 1: ban
+	WBUFL(buf,7) = status; // status or final date of a banishment
+	mapif->sendall(buf, 11);
+}
+
+/// Initializes a server structure.
+void mapif_server_init(int id) {
+	//memset(&chr->server[id], 0, sizeof(server[id]));
+	chr->server[id].fd = -1;
+}
+
+/// Destroys a server structure.
+void mapif_server_destroy(int id) {
+	if (chr->server[id].fd == -1) {
+		sockt->close(chr->server[id].fd);
+		chr->server[id].fd = -1;
+	}
+}
+
+/// Resets all the data related to a server.
+void mapif_server_reset(int id) {
+	int i, j;
+	unsigned char buf[16384];
+	int fd = chr->server[id].fd;
+	//Notify other map servers that this one is gone. [Skotlex]
+	WBUFW(buf, 0) = 0x2b20;
+	WBUFL(buf, 4) = htonl(chr->server[id].ip);
+	WBUFW(buf, 8) = htons(chr->server[id].port);
+	j = 0;
+	for (i = 0; i < VECTOR_LENGTH(chr->server[id].maps); i++) {
+		uint16 m = VECTOR_INDEX(chr->server[id].maps, i);
+		if (m != 0)
+			WBUFW(buf, 10 + (j++) * 4) = m;
+	}
+	if (j > 0) {
+		WBUFW(buf, 2) = j * 4 + 10;
+		mapif->sendallwos(fd, buf, WBUFW(buf, 2));
+	}
+	if (SQL_ERROR == SQL->Query(inter->sql_handle, "DELETE FROM `%s` WHERE `index`='%d'", ragsrvinfo_db, chr->server[id].fd))
+		Sql_ShowDebug(inter->sql_handle);
+	chr->online_char_db->foreach(chr->online_char_db, chr->db_setoffline, id); //Tag relevant chars as 'in disconnected' server.
+	mapif->server_destroy(id);
+	mapif->server_init(id);
+}
+
+/// Called when the connection to a Map Server is disconnected.
+void mapif_on_disconnect(int id) {
+	ShowStatus("Map-server #%d desconectado.\n", id);
+	mapif->server_reset(id);
+}
+
+void mapif_on_parse_accinfo(int account_id, int u_fd, int u_aid, int u_group, int map_fd) {
+	Assert_retv(chr->login_fd > 0);
+	WFIFOHEAD(chr->login_fd, 22);
+	WFIFOW(chr->login_fd, 0) = 0x2740;
+	WFIFOL(chr->login_fd, 2) = account_id;
+	WFIFOL(chr->login_fd, 6) = u_fd;
+	WFIFOL(chr->login_fd, 10) = u_aid;
+	WFIFOL(chr->login_fd, 14) = u_group;
+	WFIFOL(chr->login_fd, 18) = map_fd;
+	WFIFOSET(chr->login_fd, 22);
+}
+
+void mapif_char_ban(int char_id, time_t timestamp) {
+	unsigned char buf[11];
+	WBUFW(buf, 0) = 0x2b14;
+	WBUFL(buf, 2) = char_id;
+	WBUFB(buf, 6) = 2;
+	WBUFL(buf, 7) = (unsigned int)timestamp;
+	mapif->sendall(buf, 11);
+}
+
+int mapif_sendall(const unsigned char *buf, unsigned int len) {
+	int i, c;
+
+	nullpo_ret(buf);
+	c = 0;
+	for (i = 0; i < ARRAYLENGTH(chr->server); i++) {
+		int fd;
+		if ((fd = chr->server[i].fd) > 0) {
+			WFIFOHEAD(fd, len);
+			memcpy(WFIFOP(fd, 0), buf, len);
+			WFIFOSET(fd, len);
+			c++;
+		}
+	}
+
+	return c;
+}
+
+int mapif_sendallwos(int sfd, unsigned char *buf, unsigned int len) {
+	int i, c;
+
+	nullpo_ret(buf);
+	c = 0;
+	for (i = 0; i < ARRAYLENGTH(chr->server); i++) {
+		int fd;
+		if ((fd = chr->server[i].fd) > 0 && fd != sfd) {
+			WFIFOHEAD(fd, len);
+			memcpy(WFIFOP(fd, 0), buf, len);
+			WFIFOSET(fd, len);
+			c++;
+		}
+	}
+
+	return c;
+}
+
+
+int mapif_send(int fd, unsigned char *buf, unsigned int len) {
+	nullpo_ret(buf);
+	if (fd >= 0) {
+		int i;
+		ARR_FIND (0, ARRAYLENGTH(chr->server), i, fd == chr->server[i].fd);
+		if (i < ARRAYLENGTH(chr->server)) {
+			WFIFOHEAD(fd, len);
+			memcpy(WFIFOP(fd, 0), buf, len);
+			WFIFOSET(fd, len);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+void mapif_send_users_count(int users) {
+	uint8 buf[6];
+	// send number of players to all map-servers
+	WBUFW(buf, 0) = 0x2b00;
+	WBUFL(buf, 2) = users;
+	mapif->sendall(buf, 6);
+}
+
+/*
+ * INT_AUCTION
+ */
+void mapif_auction_message(int char_id, unsigned char result) {
+	unsigned char buf[74];
+
+	WBUFW(buf,0) = 0x3854;
+	WBUFL(buf,2) = char_id;
+	WBUFL(buf,6) = result;
+	mapif->sendall(buf,7);
+}
+
+void mapif_auction_sendlist(int fd, int char_id, short count, short pages, const struct auction_data *auctions) {
+	int len = (sizeof(struct auction_data) * count) + 12;
+
+	nullpo_retv(auctions);
+
+	WFIFOHEAD(fd, len);
+	WFIFOW(fd,0) = 0x3850;
+	WFIFOW(fd,2) = len;
+	WFIFOL(fd,4) = char_id;
+	WFIFOW(fd,8) = count;
+	WFIFOW(fd,10) = pages;
+	memcpy(WFIFOP(fd,12), auctions, len - 12);
+	WFIFOSET(fd,len);
+}
+
+void mapif_parse_auction_requestlist(int fd) {
+	char searchtext[NAME_LENGTH];
+	int char_id = RFIFOL(fd,4);
+	int price = RFIFOL(fd,10);
+	short type = RFIFOW(fd,8), page = max(1,RFIFOW(fd,14));
+	struct auction_data auctions[5];
+	struct DBIterator *iter = db_iterator(inter_auction->db);
+	struct auction_data *auction;
+	short i = 0, j = 0, pages = 1;
+
+	memcpy(searchtext, RFIFOP(fd,16), NAME_LENGTH);
+
+	for( auction = dbi_first(iter); dbi_exists(iter); auction = dbi_next(iter) ) {
+		if( (type == 0 && auction->type != IT_ARMOR && auction->type != IT_PETARMOR) ||
+			(type == 1 && auction->type != IT_WEAPON) ||
+			(type == 2 && auction->type != IT_CARD) ||
+			(type == 3 && auction->type != IT_ETC) ||
+			(type == 4 && !strstr(auction->item_name, searchtext)) ||
+			(type == 5 && auction->price > price) ||
+			(type == 6 && auction->seller_id != char_id) ||
+			(type == 7 && auction->buyer_id != char_id) )
+			continue;
+
+		i++;
+		if( i > 5 ) { // Counting Pages of Total Results (5 Results per Page)
+			pages++;
+			i = 1; // First Result of This Page
+		}
+		if( page != pages ) {
+			continue; // This is not the requested Page
+		}
+		auctions[j] = *auction;
+		j++; // Found Results
+	}
+	dbi_destroy(iter);
+	mapif->auction_sendlist(fd, char_id, j, pages, auctions);
+}
+
+void mapif_auction_register(int fd, struct auction_data *auction) {
+	int len = sizeof(struct auction_data) + 4;
+
+	nullpo_retv(auction);
+
+	WFIFOHEAD(fd,len);
+	WFIFOW(fd,0) = 0x3851;
+	WFIFOW(fd,2) = len;
+	memcpy(WFIFOP(fd,4), auction, sizeof(struct auction_data));
+	WFIFOSET(fd,len);
+}
+
+void mapif_parse_auction_register(int fd) {
+	struct auction_data auction;
+	if( RFIFOW(fd,2) != sizeof(struct auction_data) + 4 )
+		return;
+
+	memcpy(&auction, RFIFOP(fd,4), sizeof(struct auction_data));
+	if( inter_auction->count(auction.seller_id, false) < 5 )
+		auction.auction_id = inter_auction->create(&auction);
+
+	mapif->auction_register(fd, &auction);
+}
+
+void mapif_auction_cancel(int fd, int char_id, unsigned char result) {
+	WFIFOHEAD(fd,7);
+	WFIFOW(fd,0) = 0x3852;
+	WFIFOL(fd,2) = char_id;
+	WFIFOB(fd,6) = result;
+	WFIFOSET(fd,7);
+}
+
+void mapif_parse_auction_cancel(int fd) {
+	int char_id = RFIFOL(fd,2), auction_id = RFIFOL(fd,6);
+	struct auction_data *auction;
+
+	if( (auction = (struct auction_data *)idb_get(inter_auction->db, auction_id)) == NULL ) {
+		mapif->auction_cancel(fd, char_id, 1); // Bid Number is Incorrect
+		return;
+	}
+
+	if( auction->seller_id != char_id ) {
+		mapif->auction_cancel(fd, char_id, 2); // You cannot end the auction
+		return;
+	}
+
+	if( auction->buyer_id > 0 ) {
+		mapif->auction_cancel(fd, char_id, 3); // An auction with at least one bidder cannot be canceled
+		return;
+	}
+
+	inter_mail->sendmail(0, "Sistema do Leilão", auction->seller_id, auction->seller_name, "Auction", "Leilão Cancelado.", 0, &auction->item);
+	inter_auction->delete_(auction);
+
+	mapif->auction_cancel(fd, char_id, 0); // The auction has been canceled
+}
+
+void mapif_auction_close(int fd, int char_id, unsigned char result) {
+	WFIFOHEAD(fd,7);
+	WFIFOW(fd,0) = 0x3853;
+	WFIFOL(fd,2) = char_id;
+	WFIFOB(fd,6) = result;
+	WFIFOSET(fd,7);
+}
+
+void mapif_parse_auction_close(int fd) {
+	int char_id = RFIFOL(fd,2), auction_id = RFIFOL(fd,6);
+	struct auction_data *auction;
+
+	if( (auction = (struct auction_data *)idb_get(inter_auction->db, auction_id)) == NULL ) {
+		mapif->auction_close(fd, char_id, 2); // Bid Number is Incorrect
+		return;
+	}
+
+	if( auction->seller_id != char_id ) {
+		mapif->auction_close(fd, char_id, 1); // You cannot end the auction
+		return;
+	}
+
+	if( auction->buyer_id == 0 ) {
+		mapif->auction_close(fd, char_id, 1); // You cannot end the auction
+		return;
+	}
+
+	// Send Money to Seller
+	inter_mail->sendmail(0, "Sistema do Leilão", auction->seller_id, auction->seller_name, "Auction", "Leilão Fechado.", auction->price, NULL);
+	// Send Item to Buyer
+	inter_mail->sendmail(0, "Sistema do Leilão", auction->buyer_id, auction->buyer_name, "Auction", "Leilão Vencedor.", 0, &auction->item);
+	mapif->auction_message(auction->buyer_id, 6); // You have won the auction
+	inter_auction->delete_(auction);
+
+	mapif->auction_close(fd, char_id, 0); // You have ended the auction
+}
+
+void mapif_auction_bid(int fd, int char_id, int bid, unsigned char result) {
+	WFIFOHEAD(fd,11);
+	WFIFOW(fd,0) = 0x3855;
+	WFIFOL(fd,2) = char_id;
+	WFIFOL(fd,6) = bid; // To Return Zeny
+	WFIFOB(fd,10) = result;
+	WFIFOSET(fd,11);
+}
+
+void mapif_parse_auction_bid(int fd) {
+	int char_id = RFIFOL(fd,4), bid = RFIFOL(fd,12);
+	unsigned int auction_id = RFIFOL(fd,8);
+	struct auction_data *auction;
+
+	if( (auction = (struct auction_data *)idb_get(inter_auction->db, auction_id)) == NULL || auction->price >= bid || auction->seller_id == char_id ) {
+		mapif->auction_bid(fd, char_id, bid, 0); // You have failed to bid in the auction
+		return;
+	}
+
+	if( inter_auction->count(char_id, true) > 4 && bid < auction->buynow && auction->buyer_id != char_id ) {
+		mapif->auction_bid(fd, char_id, bid, 9); // You cannot place more than 5 bids at a time
+		return;
+	}
+
+	if( auction->buyer_id > 0 ) { // Send Money back to the previous Buyer
+		if( auction->buyer_id != char_id )
+		{
+			inter_mail->sendmail(0, "Sistema do Leilão", auction->buyer_id, auction->buyer_name, "Auction", "Alguém colocou uma oferta maior.", auction->price, NULL);
+			mapif->auction_message(auction->buyer_id, 7); // You have failed to win the auction
+		}
+		else
+			inter_mail->sendmail(0, "Sistema do Leilão", auction->buyer_id, auction->buyer_name, "Auction", "Alguém colocou uma oferta maior.", auction->price, NULL);
+	}
+
+	auction->buyer_id = char_id;
+	safestrncpy(auction->buyer_name, RFIFOP(fd,16), NAME_LENGTH);
+	auction->price = bid;
+
+	if( bid >= auction->buynow ) { // Automatic won the auction
+		mapif->auction_bid(fd, char_id, bid - auction->buynow, 1); // You have successfully bid in the auction
+
+		inter_mail->sendmail(0, "Sistema do Leilão", auction->buyer_id, auction->buyer_name, "Auction", "Você ganhou o leilão.", 0, &auction->item);
+		mapif->auction_message(char_id, 6); // You have won the auction
+		inter_mail->sendmail(0, "Sistema do Leilão", auction->seller_id, auction->seller_name, "Auction", "Pagamento por seu leilão!.", auction->buynow, NULL);
+
+		inter_auction->delete_(auction);
+		return;
+	}
+
+	inter_auction->save(auction);
+
+	mapif->auction_bid(fd, char_id, 0, 1); // You have successfully bid in the auction
+}
+
+/*
+ * END INT_AUCTION
+ */
+
+/*
+ * INT_ELEMENTAL
+ */
+void mapif_elemental_send(int fd, struct s_elemental *ele, unsigned char flag) {
+	int size = sizeof(struct s_elemental) + 5;
+
+	nullpo_retv(ele);
+	WFIFOHEAD(fd,size);
+	WFIFOW(fd,0) = 0x387c;
+	WFIFOW(fd,2) = size;
+	WFIFOB(fd,4) = flag;
+	memcpy(WFIFOP(fd,5),ele,sizeof(struct s_elemental));
+	WFIFOSET(fd,size);
+}
+
+void mapif_parse_elemental_create(int fd, const struct s_elemental *ele) {
+	struct s_elemental ele_;
+	bool result;
+
+	memcpy(&ele_, ele, sizeof(ele_));
+
+	result = inter_elemental->create(&ele_);
+	mapif->elemental_send(fd, &ele_, result);
+}
+
+void mapif_parse_elemental_load(int fd, int ele_id, int char_id) {
+	struct s_elemental ele;
+	bool result = inter_elemental->load(ele_id, char_id, &ele);
+	mapif->elemental_send(fd, &ele, result);
+}
+
+void mapif_elemental_deleted(int fd, unsigned char flag) {
+	WFIFOHEAD(fd,3);
+	WFIFOW(fd,0) = 0x387d;
+	WFIFOB(fd,2) = flag;
+	WFIFOSET(fd,3);
+}
+
+void mapif_parse_elemental_delete(int fd, int ele_id) {
+	bool result = inter_elemental->delete(ele_id);
+	mapif->elemental_deleted(fd, result);
+}
+
+void mapif_elemental_saved(int fd, unsigned char flag) {
+	WFIFOHEAD(fd,3);
+	WFIFOW(fd,0) = 0x387e;
+	WFIFOB(fd,2) = flag;
+	WFIFOSET(fd,3);
+}
+
+void mapif_parse_elemental_save(int fd, const struct s_elemental *ele) {
+	bool result = inter_elemental->save(ele);
+	mapif->elemental_saved(fd, result);
+}
+
+/*
+ * END INT_ELEMENTAL
+ */
+
 int mapif_guild_created(int fd, int account_id, struct guild *g);
 int mapif_guild_noinfo(int fd, int guild_id);
 int mapif_guild_info(int fd, struct guild *g);
@@ -207,8 +596,27 @@ int mapif_parse_RegistryRequest(int fd);
 void mapif_namechange_ack(int fd, int account_id, int char_id, int type, int flag, const char *const name);
 int mapif_parse_NameChangeRequest(int fd);
 // Clan System
-int mapif_parse_ClanMemberKick(int fd, int clan_id, int kick_interval);
-int mapif_parse_ClanMemberCount(int fd, int clan_id, int kick_interval);
+int mapif_parse_ClanMemberKick(int fd, int clan_id, int kick_interval) {
+	int count = 0;
+	if (inter_clan->kick_inactive_members(clan_id, kick_interval) == 1) {
+		count = inter_clan->count_members(clan_id, kick_interval);
+	}
+	WFIFOHEAD(fd, 10);
+	WFIFOW(fd, 0) = 0x3858;
+	WFIFOL(fd, 2) = clan_id;
+	WFIFOL(fd, 6) = count;
+	WFIFOSET(fd, 10);
+	return 0;
+}
+
+int mapif_parse_ClanMemberCount(int fd, int clan_id, int kick_interval) {
+	WFIFOHEAD(fd, 10);
+	WFIFOW(fd, 0) = 0x3858;
+	WFIFOL(fd, 2) = clan_id;
+	WFIFOL(fd, 6) = inter_clan->count_members(clan_id, kick_interval);
+	WFIFOSET(fd, 10);
+	return 0;
+}
 
 struct mapif_interface mapif_s;
 struct mapif_interface *mapif;
@@ -238,10 +646,6 @@ void mapif_defaults(void) {
 	mapif->parse_auction_close = mapif_parse_auction_close;
 	mapif->auction_bid = mapif_auction_bid;
 	mapif->parse_auction_bid = mapif_parse_auction_bid;
-	mapif->elemental_create = mapif_elemental_create;
-	mapif->elemental_save = mapif_elemental_save;
-	mapif->elemental_load = mapif_elemental_load;
-	mapif->elemental_delete = mapif_elemental_delete;
 	mapif->elemental_send = mapif_elemental_send;
 	mapif->parse_elemental_create = mapif_parse_elemental_create;
 	mapif->parse_elemental_load = mapif_parse_elemental_load;

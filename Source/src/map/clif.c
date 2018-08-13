@@ -8931,33 +8931,55 @@ void clif_slide(struct block_list *bl, int x, int y)
 
 /// Public chat message (ZC_NOTIFY_CHAT). lordalfa/Skotlex - used by @me as well
 /// 008d <packet len>.W <id>.L <message>.?B
-void clif_disp_overhead(struct block_list *bl, const char *mes)
-{
-	unsigned char buf[256]; //This should be more than sufficient, the theoretical max is CHAT_SIZE + 8 (pads and extra inserted crap)
+void clif_disp_overhead(struct block_list *bl, const char *mes, enum send_target target, struct block_list *target_bl) {
+	char buf[CHAT_SIZE_MAX + (int)sizeof(struct PACKET_ZC_NOTIFY_CHAT)];
+	uint32 max_len = CHAT_SIZE_MAX - (int)sizeof(struct PACKET_ZC_NOTIFY_CHAT);
+	struct PACKET_ZC_NOTIFY_CHAT *p = (struct PACKET_ZC_NOTIFY_CHAT *)&buf;
 	int mes_len;
 
 	nullpo_retv(bl);
 	nullpo_retv(mes);
-	mes_len = (int)strlen(mes)+1; //Account for \0
 
-	if (mes_len > (int)sizeof(buf)-8) {
-		ShowError("clif_disp_overhead: Mensagem muito longa (length %d)\n", mes_len);
-		mes_len = sizeof(buf)-8; //Trunk it to avoid problems.
+	mes_len = (int)strlen(mes) + 1; //Account for \0
+	if (mes_len > max_len) {
+		ShowError("clif_disp_overhead: Mensagem truncada '%s' (len=%d, max=%u).\n", mes, mes_len, max_len);
+		mes_len = max_len; //Trunk it to avoid problems.
 	}
+
 	// send message to others
-	WBUFW(buf,0) = 0x8d;
-	WBUFW(buf,2) = mes_len + 8; // len of message + 8 (command+len+id)
-	WBUFL(buf,4) = bl->id;
-	safestrncpy(WBUFP(buf,8), mes, mes_len);
-	clif->send(buf, WBUFW(buf,2), bl, AREA_CHAT_WOC);
-
-	// send back message to the speaker
-	if (bl->type == BL_PC) {
-		WBUFW(buf,0) = 0x8e;
-		WBUFW(buf, 2) = mes_len + 4;
-		safestrncpy(WBUFP(buf,4), mes, mes_len);
-		clif->send(buf, WBUFW(buf,2), bl, SELF);
+	p->PacketType = 0x8d;
+	p->PacketLength = mes_len + (int)sizeof(struct PACKET_ZC_NOTIFY_CHAT); // len of message + 8 (command+len+id)
+	p->GID = bl->id;
+	safestrncpy(p->Message, mes, mes_len);
+	if (target == SELF && target_bl != NULL) {
+		clif->send(p, p->PacketLength, target_bl, SELF);
+	} else {
+		clif->send(p, p->PacketLength, bl, AREA_CHAT_WOC);
+		// send back message to the speaker
+		if (bl->type == BL_PC)
+			clif->notify_playerchat(bl, mes);
 	}
+}
+
+void clif_notify_playerchat(struct block_list *bl, const char *mes) {
+	char buf[CHAT_SIZE_MAX + (int)sizeof(struct PACKET_ZC_NOTIFY_PLAYERCHAT)];
+	uint32 max_len = CHAT_SIZE_MAX - (int)sizeof(struct PACKET_ZC_NOTIFY_PLAYERCHAT);
+	struct PACKET_ZC_NOTIFY_PLAYERCHAT *p = (struct PACKET_ZC_NOTIFY_PLAYERCHAT *)&buf;
+	int mes_len;
+
+	nullpo_retv(bl);
+	nullpo_retv(mes);
+
+	mes_len = (int)strlen(mes) + 1; // Account for \0
+	if (mes_len > max_len) {
+		ShowError("clif_notify_playerchat: Mensagem truncada '%s' (len=%d, max=%u).\n", mes, mes_len, max_len);
+		mes_len = max_len; // Truncate to avoid problems.
+	}
+
+	p->PacketType = 0x8e;
+	p->PacketLength = mes_len + (int)sizeof(struct PACKET_ZC_NOTIFY_PLAYERCHAT);
+	safestrncpy(p->Message, mes, mes_len);
+	clif->send(p, p->PacketLength, bl, SELF);
 }
 
 /*==========================
@@ -9425,6 +9447,21 @@ bool clif_process_whisper_message(struct map_session_data *sd, const struct pack
 	return true;
 }
 
+// TODO: [4144] same packet with login server. need somehow use one function for both servers
+// 3 - Rejected by server
+void clif_auth_error(int fd, int errorCode) {
+	struct packet_ZC_REFUSE_LOGIN p;
+	const int len = sizeof(p);
+
+	p.PacketType = authError;
+	p.error_code = errorCode;
+	p.block_date[0] = '\0';
+
+	WFIFOHEAD(fd, len);
+	memcpy(WFIFOP(fd, 0), &p, len);
+	WFIFOSET(fd, len);
+}
+
 // ------------
 // clif_parse_*
 // ------------
@@ -9461,12 +9498,9 @@ void clif_parse_WantToConnection(int fd, struct map_session_data* sd) {
 
 	//Check for double login.
 	bl = map->id2bl(account_id);
-	if(bl && bl->type != BL_PC) {
+	if (bl && bl->type != BL_PC) {
 		ShowError("clif_parse_WantToConnection: um objeto de nao-jogador já tem id %d, por favor aumente o numero de conta inicial\n", account_id);
-		WFIFOHEAD(fd,packet_len(0x6a));
-		WFIFOW(fd,0) = 0x6a;
-		WFIFOB(fd,2) = 3; // Rejected by server
-		WFIFOSET(fd,packet_len(0x6a));
+		clif->auth_error(fd, 3);  // Rejected by server
 		sockt->eof(fd);
 
 		return;
@@ -19126,7 +19160,9 @@ void clif_parse_RouletteInfo(int fd, struct map_session_data* sd)
 			p.ItemInfo[count].Position = j;
 			p.ItemInfo[count].ItemId = clif->rd.nameid[i][j];
 			p.ItemInfo[count].Count = clif->rd.qty[i][j];
-			count++;
+#if PACKETVER >= 20180523  // unknown real version
+			p.ItemInfo[count].unused = 0;
+#endif			count++;
 		}
 	}
 	clif->send(&p,sizeof(p), &sd->bl, SELF);
@@ -20775,6 +20811,7 @@ void clif_defaults(void) {
 	clif->packet = clif_packet;
 	/* auth */
 	clif->authok = clif_authok;
+	clif->auth_error = clif_auth_error;
 	clif->authrefuse = clif_authrefuse;
 	clif->authfail_fd = clif_authfail_fd;
 	clif->charselectok = clif_charselectok;
@@ -21016,6 +21053,7 @@ void clif_defaults(void) {
 	clif->messagecolor_self = clif_messagecolor_self;
 	clif->messagecolor = clif_messagecolor;
 	clif->disp_overhead = clif_disp_overhead;
+	clif->notify_playerchat = clif_notify_playerchat;
 	clif->msgtable_skill = clif_msgtable_skill;
 	clif->msgtable = clif_msgtable;
 	clif->msgtable_num = clif_msgtable_num;

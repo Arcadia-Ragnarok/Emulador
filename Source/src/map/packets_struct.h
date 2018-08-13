@@ -360,6 +360,13 @@ enum packet_headers {
 	questUpdateType = 0x2b5,
 #endif // PACKETVER < 20150513
 	questUpdateType2 = 0x8fe,
+#if PACKETVER_ZERO_NUM >= 20180627
+	authError = 0xb02,
+#elif PACKETVER >= 20101123
+	authError = 0x83e,
+#else
+	authError = 0x6a,
+#endif
 };
 
 #if !defined(sun) && (!defined(__NETBSD__) || __NetBSD_Version__ >= 600000000) // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute
@@ -995,8 +1002,14 @@ struct packet_roulette_info_ack {
 	struct {
 		uint16 Row;
 		uint16 Position;
+#if PACKETVER >= 20180523  // unknown real version
+		uint32 ItemId;
+		uint16 Count;
+		uint16 unused;
+#else
 		uint16 ItemId;
 		uint16 Count;
+#endif
 	} ItemInfo[42];
 } __attribute__((packed));
 
@@ -1757,6 +1770,29 @@ struct PACKET_CZ_PET_EVOLUTION {
 	uint16 PacketLength;
 	int16 EvolvedPetEggID;
 	// struct pet_evolution_items items[];
+} __attribute__((packed));
+
+struct packet_ZC_REFUSE_LOGIN {
+	int16 PacketType;
+#if PACKETVER >= 20101123
+	uint32 error_code;
+#else
+	uint8 error_code;
+#endif
+	char block_date[20];
+} __attribute__((packed));
+
+struct PACKET_ZC_NOTIFY_CHAT {
+	int16 PacketType;
+	int16 PacketLength;
+	uint32 GID;
+	char Message[];
+} __attribute__((packed));
+
+struct PACKET_ZC_NOTIFY_PLAYERCHAT {
+	int16 PacketType;
+	int16 PacketLength;
+	char Message[];
 } __attribute__((packed));
 
 #if !defined(sun) && (!defined(__NETBSD__) || __NetBSD_Version__ >= 600000000) // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute
