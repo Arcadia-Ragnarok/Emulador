@@ -30,6 +30,12 @@ struct inter_mercenary_interface {
 	int (*sql_init) (void);
 	void (*sql_final) (void);
 	int (*parse_frommap) (int fd);
+
+
+	bool (*create) (struct s_mercenary *merc);
+	bool (*save) (const struct s_mercenary *merc);
+	bool (*load) (int merc_id, int char_id, struct s_mercenary *merc);
+	bool (*delete) (int merc_id);
 };
 
 void inter_mercenary_defaults(void);
