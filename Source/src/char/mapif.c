@@ -15,6 +15,8 @@
 
 #define MAIN_CORE
 
+#include "config/core.h" // GP_BOUND_ITEMS
+
 #include "mapif.h"
 
 #include "char/char.h"
@@ -26,10 +28,14 @@
 #include "char/int_mail.h"
 #include "char/int_mercenary.h"
 #include "char/int_party.h"
+#include "char/int_pet.h"
+#include "char/int_quest.h"
 #include "char/int_rodex.h"
+#include "char/int_storage.h"
 #include "char/inter.h"
 
 #include "common/cbasetypes.h"
+#include "common/memmgr.h"
 #include "common/mmo.h"
 #include "common/nullpo.h"
 #include "common/random.h"
@@ -1280,49 +1286,526 @@ int mapif_parse_PartyLeaderChange(int fd, int party_id, int account_id, int char
 	return 1;
 }
 
-int mapif_pet_created(int fd, int account_id, struct s_pet *p);
-int mapif_pet_info(int fd, int account_id, struct s_pet *p);
-int mapif_pet_noinfo(int fd, int account_id);
-int mapif_save_pet_ack(int fd, int account_id, int flag);
-int mapif_delete_pet_ack(int fd, int flag);
-int mapif_create_pet(int fd, int account_id, int char_id, short pet_class, short pet_lv, short pet_egg_id,
-	short pet_equip, short intimate, short hungry, char rename_flag, char incubate, const char *pet_name);
-int mapif_load_pet(int fd, int account_id, int char_id, int pet_id);
-int mapif_save_pet(int fd, int account_id, const struct s_pet *data);
-int mapif_delete_pet(int fd, int pet_id);
-int mapif_parse_CreatePet(int fd);
-int mapif_parse_LoadPet(int fd);
-int mapif_parse_SavePet(int fd);
-int mapif_parse_DeletePet(int fd);
-struct quest *mapif_quests_fromsql(int char_id, int *count);
-bool mapif_quest_delete(int char_id, int quest_id);
-bool mapif_quest_add(int char_id, struct quest qd);
-bool mapif_quest_update(int char_id, struct quest qd);
-void mapif_quest_save_ack(int fd, int char_id, bool success);
-int mapif_parse_quest_save(int fd);
-void mapif_send_quests(int fd, int char_id, struct quest *tmp_questlog, int num_quests);
-int mapif_parse_quest_load(int fd);
-/* RoDEX */
-int mapif_parse_rodex_requestinbox(int fd);
-void mapif_rodex_sendinbox(int fd, int char_id, int8 opentype, int8 flag, int count, int64 mail_id, struct rodex_maillist *mails);
-int mapif_parse_rodex_checkhasnew(int fd);
-void mapif_rodex_sendhasnew(int fd, int char_id, bool has_new);
-int mapif_parse_rodex_updatemail(int fd);
-int mapif_parse_rodex_send(int fd);
-void mapif_rodex_send(int fd, int sender_id, int receiver_id, int receiver_accountid, bool result);
-int mapif_parse_rodex_checkname(int fd);
-void mapif_rodex_checkname(int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name);
-int mapif_load_guild_storage(int fd,int account_id,int guild_id, char flag);
-int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail);
-int mapif_parse_LoadGuildStorage(int fd);
-int mapif_parse_SaveGuildStorage(int fd);
-int mapif_account_storage_load(int fd, int account_id);
-int mapif_parse_AccountStorageLoad(int fd);
-int mapif_parse_AccountStorageSave(int fd);
-void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool save);
-int mapif_itembound_ack(int fd, int aid, int guild_id);
-int mapif_parse_ItemBoundRetrieve_sub(int fd);
-void mapif_parse_ItemBoundRetrieve(int fd);
+/* ******************
+ * INT_PET
+ ***************** */
+int mapif_pet_created(int fd, int account_id, struct s_pet *p) {
+	WFIFOHEAD(fd, 12);
+	WFIFOW(fd, 0) = 0x3880;
+	WFIFOL(fd, 2) = account_id;
+	if(p!=NULL){
+		WFIFOW(fd, 6) = p->class_;
+		WFIFOL(fd, 8) = p->pet_id;
+		ShowInfo("int_pet: criado pet %d - %s\n", p->pet_id, p->name);
+	} else {
+		WFIFOB(fd, 6) = 0;
+		WFIFOL(fd, 8) = 0;
+	}
+	WFIFOSET(fd, 12);
+	return 0;
+}
+
+int mapif_pet_info(int fd, int account_id, struct s_pet *p) {
+	nullpo_ret(p);
+	WFIFOHEAD(fd, sizeof(struct s_pet) + 9);
+	WFIFOW(fd, 0) = 0x3881;
+	WFIFOW(fd, 2) = sizeof(struct s_pet) + 9;
+	WFIFOL(fd, 4) = account_id;
+	WFIFOB(fd, 8) = 0;
+	memcpy(WFIFOP(fd, 9), p, sizeof(struct s_pet));
+	WFIFOSET(fd, WFIFOW(fd, 2));
+	return 0;
+}
+
+int mapif_pet_noinfo(int fd, int account_id) {
+	WFIFOHEAD(fd, sizeof(struct s_pet) + 9);
+	WFIFOW(fd, 0) = 0x3881;
+	WFIFOW(fd, 2) = sizeof(struct s_pet) + 9;
+	WFIFOL(fd, 4) = account_id;
+	WFIFOB(fd, 8) = 1;
+	memset(WFIFOP(fd, 9), 0, sizeof(struct s_pet));
+	WFIFOSET(fd, WFIFOW(fd, 2));
+	return 0;
+}
+
+int mapif_save_pet_ack(int fd, int account_id, int flag) {
+	WFIFOHEAD(fd, 7);
+	WFIFOW(fd, 0) = 0x3882;
+	WFIFOL(fd, 2) = account_id;
+	WFIFOB(fd, 6) = flag;
+	WFIFOSET(fd, 7);
+	return 0;
+}
+
+int mapif_delete_pet_ack(int fd, int flag) {
+	WFIFOHEAD(fd, 3);
+	WFIFOW(fd, 0) = 0x3883;
+	WFIFOB(fd, 2) = flag;
+	WFIFOSET(fd, 3);
+	return 0;
+}
+
+int mapif_save_pet(int fd, int account_id, const struct s_pet *data) {
+	//here process pet save request.
+	int len;
+	nullpo_ret(data);
+	RFIFOHEAD(fd);
+	len = RFIFOW(fd, 2);
+	if (sizeof(struct s_pet) != len-8) {
+		ShowError("inter pet: incompatibilidade no tamanho de dados: %d != %"PRIuS"\n", len-8, sizeof(struct s_pet));
+		return 0;
+	}
+	inter_pet->tosql(data);
+	mapif->save_pet_ack(fd, account_id, 0);
+	return 0;
+}
+
+int mapif_delete_pet(int fd, int pet_id) {
+	mapif->delete_pet_ack(fd, inter_pet->delete_(pet_id));
+	return 0;
+}
+
+int mapif_parse_CreatePet(int fd) {
+	int account_id;
+	struct s_pet *pet;
+	RFIFOHEAD(fd);
+	account_id = RFIFOL(fd, 2);
+	pet = inter_pet->create(account_id, RFIFOL(fd, 6), RFIFOW(fd, 10), RFIFOW(fd, 12), RFIFOW(fd, 14),
+	      RFIFOW(fd, 16), RFIFOW(fd, 18), RFIFOW(fd, 20), RFIFOB(fd, 22), RFIFOB(fd, 23), RFIFOP(fd, 24));
+	if (pet != NULL) {
+		mapif->pet_created(fd, account_id, pet);
+	} else {
+		mapif->pet_created(fd, account_id, NULL);
+	}
+	return 0;
+}
+
+int mapif_parse_LoadPet(int fd) {
+	int account_id;
+	struct s_pet *pet;
+	RFIFOHEAD(fd);
+	account_id = RFIFOL(fd, 2);
+	pet = inter_pet->load(account_id, RFIFOL(fd, 6), RFIFOL(fd, 10));
+	if (pet != NULL) {
+		mapif->pet_info(fd, account_id, pet);
+	} else {
+		mapif->pet_noinfo(fd, account_id);
+	}
+	return 0;
+}
+
+int mapif_parse_SavePet(int fd) {
+	RFIFOHEAD(fd);
+	mapif->save_pet(fd, RFIFOL(fd, 4), RFIFOP(fd, 8));
+	return 0;
+}
+
+int mapif_parse_DeletePet(int fd) {
+	RFIFOHEAD(fd);
+	mapif->delete_pet(fd, RFIFOL(fd, 2));
+	return 0;
+}
+
+/* ******************
+ * INT_QUEST
+ ***************** */
+void mapif_quest_save_ack(int fd, int char_id, bool success) {
+	WFIFOHEAD(fd, 7);
+	WFIFOW(fd, 0) = 0x3861;
+	WFIFOL(fd, 2) = char_id;
+	WFIFOB(fd, 6) = success ? 1 : 0;
+	WFIFOSET(fd, 7);
+}
+
+/**
+ * Handles the save request from mapserver for a character's questlog.
+ *
+ * Received quests are saved, and an ack is sent back to the map server.
+ *
+ * @see inter_parse_frommap
+ */
+int mapif_parse_quest_save(int fd) {
+	int num = (RFIFOW(fd, 2) - 8) / sizeof(struct quest);
+	int char_id = RFIFOL(fd, 4);
+	const struct quest *qd = NULL;
+	bool success;
+	if (num > 0) {
+		qd = RFIFOP(fd, 8);
+	}
+	success = inter_quest->save(char_id, qd, num);
+	// Send ack
+	mapif->quest_save_ack(fd, char_id, success);
+
+	return 0;
+}
+
+void mapif_send_quests(int fd, int char_id, struct quest *tmp_questlog, int num_quests) {
+	WFIFOHEAD(fd,num_quests*sizeof(struct quest) + 8);
+	WFIFOW(fd,0) = 0x3860;
+	WFIFOW(fd,2) = num_quests*sizeof(struct quest) + 8;
+	WFIFOL(fd,4) = char_id;
+
+	if (num_quests > 0) {
+		nullpo_retv(tmp_questlog);
+		memcpy(WFIFOP(fd, 8), tmp_questlog, sizeof(struct quest)*num_quests);
+	}
+	WFIFOSET(fd,num_quests*sizeof(struct quest)+8);
+}
+
+/**
+ * Sends questlog to the map server
+ *
+ * Note: Completed quests (state == Q_COMPLETE) are guaranteed to be sent last
+ * and the map server relies on this behavior (once the first Q_COMPLETE quest,
+ * all of them are considered to be Q_COMPLETE)
+ *
+ * @see inter_parse_frommap
+ */
+int mapif_parse_quest_load(int fd) {
+	int char_id = RFIFOL(fd,2);
+	struct quest *tmp_questlog = NULL;
+	int num_quests;
+	tmp_questlog = inter_quest->fromsql(char_id, &num_quests);
+	mapif->send_quests(fd, char_id, tmp_questlog, num_quests);
+	if (tmp_questlog) {
+		aFree(tmp_questlog);
+	}
+	return 0;
+}
+
+/* ******************
+ * INT_RODEX
+ ***************** */
+
+/*==========================================
+ * Inbox Request
+ *------------------------------------------*/
+void mapif_parse_rodex_requestinbox(int fd) {
+	int count;
+	int char_id = RFIFOL(fd,2);
+	int account_id = RFIFOL(fd, 6);
+	int8 flag = RFIFOB(fd, 10);
+	int8 opentype = RFIFOB(fd, 11);
+	int64 mail_id = RFIFOQ(fd, 12);
+	struct rodex_maillist mails = { 0 };
+	VECTOR_INIT(mails);
+	if (flag == 0) {
+		count = inter_rodex->fromsql(char_id, account_id, opentype, 0, &mails);
+	} else {
+		count = inter_rodex->fromsql(char_id, account_id, opentype, mail_id, &mails);
+	}
+	mapif->rodex_sendinbox(fd, char_id, opentype, flag, count, mail_id, &mails);
+	VECTOR_CLEAR(mails);
+}
+
+void mapif_rodex_sendinbox(int fd, int char_id, int8 opentype, int8 flag, int count, int64 mail_id, struct rodex_maillist *mails) {
+	int per_packet = (UINT16_MAX - 24) / sizeof(struct rodex_message);
+	int sent = 0;
+	bool is_first = true;
+	nullpo_retv(mails);
+	Assert_retv(char_id > 0);
+	Assert_retv(count >= 0);
+	Assert_retv(mail_id >= 0);
+	do {
+		int i = 24, j, size, limit;
+		int to_send = count - sent;
+		bool is_last = true;
+		if (to_send <= per_packet) {
+			size = to_send * sizeof(struct rodex_message) + 24;
+			limit = to_send;
+			is_last = true;
+		} else {
+			limit = min(to_send, per_packet);
+			if (limit != to_send) {
+				is_last = false;
+			}
+			size = limit * sizeof(struct rodex_message) + 24;
+		}
+		WFIFOHEAD(fd, size);
+		WFIFOW(fd, 0) = 0x3895;
+		WFIFOW(fd, 2) = size;
+		WFIFOL(fd, 4) = char_id;
+		WFIFOB(fd, 8) = opentype;
+		WFIFOB(fd, 9) = flag;
+		WFIFOB(fd, 10) = is_last;
+		WFIFOB(fd, 11) = is_first;
+		WFIFOL(fd, 12) = limit;
+		WFIFOQ(fd, 16) = mail_id;
+		for (j = 0; j < limit; ++j, ++sent, i += sizeof(struct rodex_message)) {
+			memcpy(WFIFOP(fd, i), &VECTOR_INDEX(*mails, sent), sizeof(struct rodex_message));
+		}
+		WFIFOSET(fd, size);
+		is_first = false;
+	} while (sent < count);
+}
+
+/*==========================================
+ * Checks if there are new mails
+ *------------------------------------------*/
+void mapif_parse_rodex_checkhasnew(int fd) {
+	int char_id = RFIFOL(fd, 2);
+	int account_id = RFIFOL(fd, 6);
+	bool has_new;
+	Assert_retv(account_id >= START_ACCOUNT_NUM && account_id <= END_ACCOUNT_NUM);
+	Assert_retv(char_id >= START_CHAR_NUM);
+	has_new = inter_rodex->hasnew(char_id, account_id);
+	mapif->rodex_sendhasnew(fd, char_id, has_new);
+}
+
+void mapif_rodex_sendhasnew(int fd, int char_id, bool has_new) {
+	Assert_retv(char_id > 0);
+	WFIFOHEAD(fd, 7);
+	WFIFOW(fd, 0) = 0x3896;
+	WFIFOL(fd, 2) = char_id;
+	WFIFOB(fd, 6) = has_new;
+	WFIFOSET(fd, 7);
+}
+
+/*==========================================
+ * Update/Delete mail
+ *------------------------------------------*/
+void mapif_parse_rodex_updatemail(int fd) {
+	int64 mail_id = RFIFOL(fd, 2);
+	int8 flag = RFIFOB(fd, 10);
+	inter_rodex->updatemail(mail_id, flag);
+}
+
+/*==========================================
+ * Send Mail
+ *------------------------------------------*/
+void mapif_parse_rodex_send(int fd) {
+	struct rodex_message msg = { 0 };
+	if (RFIFOW(fd,2) != 4 + sizeof(struct rodex_message)) {
+		return;
+	}
+	memcpy(&msg, RFIFOP(fd,4), sizeof(struct rodex_message));
+	if (msg.receiver_id > 0 || msg.receiver_accountid > 0) {
+		msg.id = inter_rodex->savemessage(&msg);
+	}
+	mapif->rodex_send(fd, msg.sender_id, msg.receiver_id, msg.receiver_accountid, msg.id > 0 ? true : false);
+}
+
+void mapif_rodex_send(int fd, int sender_id, int receiver_id, int receiver_accountid, bool result) {
+	Assert_retv(sender_id >= 0);
+	Assert_retv(receiver_id + receiver_accountid > 0);
+	WFIFOHEAD(fd,15);
+	WFIFOW(fd,0) = 0x3897;
+	WFIFOL(fd,2) = sender_id;
+	WFIFOL(fd,6) = receiver_id;
+	WFIFOL(fd,10) = receiver_accountid;
+	WFIFOB(fd,14) = result;
+	WFIFOSET(fd,15);
+}
+
+/*------------------------------------------
+ * Check Player
+ *------------------------------------------*/
+void mapif_parse_rodex_checkname(int fd) {
+	int reqchar_id = RFIFOL(fd, 2);
+	char name[NAME_LENGTH];
+	int target_char_id, target_level;
+	short target_class;
+	safestrncpy(name, RFIFOP(fd, 6), NAME_LENGTH);
+	if (inter_rodex->checkname(name, &target_char_id, &target_class, &target_level) == true) {
+		mapif->rodex_checkname(fd, reqchar_id, target_char_id, target_class, target_level, name);
+	} else {
+		mapif->rodex_checkname(fd, reqchar_id, 0, 0, 0, name);
+	}
+}
+
+void mapif_rodex_checkname(int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name) {
+	nullpo_retv(name);
+	Assert_retv(reqchar_id > 0);
+	Assert_retv(target_char_id >= 0);
+	WFIFOHEAD(fd, 16 + NAME_LENGTH);
+	WFIFOW(fd, 0) = 0x3898;
+	WFIFOL(fd, 2) = reqchar_id;
+	WFIFOL(fd, 6) = target_char_id;
+	WFIFOW(fd, 10) = target_class;
+	WFIFOL(fd, 12) = target_level;
+	safestrncpy(WFIFOP(fd, 16), name, NAME_LENGTH);
+	WFIFOSET(fd, 16 + NAME_LENGTH);
+}
+
+/* ******************
+ * INT_STORAGE
+ ***************** */
+//---------------------------------------------------------
+// packet from map server
+int mapif_load_guild_storage(int fd, int account_id, int guild_id, char flag) {
+	if (SQL_ERROR == SQL->Query(inter->sql_handle, "SELECT `guild_id` FROM `%s` WHERE `guild_id`='%d'", guild_db, guild_id)) {
+		Sql_ShowDebug(inter->sql_handle);
+	} else if (SQL->NumRows(inter->sql_handle) > 0) {
+		// guild exists
+		WFIFOHEAD(fd, sizeof(struct guild_storage) + 13);
+		WFIFOW(fd, 0) = 0x3818;
+		WFIFOW(fd, 2) = sizeof(struct guild_storage) + 13;
+		WFIFOL(fd, 4) = account_id;
+		WFIFOL(fd, 8) = guild_id;
+		WFIFOB(fd, 12) = flag; //1 open storage, 0 don't open
+		inter_storage->guild_storage_fromsql(guild_id, WFIFOP(fd, 13));
+		WFIFOSET(fd, WFIFOW(fd, 2));
+		return 0;
+	}
+	// guild does not exist
+	SQL->FreeResult(inter->sql_handle);
+	WFIFOHEAD(fd, 12);
+	WFIFOW(fd, 0) = 0x3818;
+	WFIFOW(fd, 2) = 12;
+	WFIFOL(fd, 4) = account_id;
+	WFIFOL(fd, 8) = 0;
+	WFIFOSET(fd, 12);
+	return 0;
+}
+
+int mapif_save_guild_storage_ack(int fd, int account_id, int guild_id, int fail) {
+	WFIFOHEAD(fd, 11);
+	WFIFOW(fd, 0) = 0x3819;
+	WFIFOL(fd, 2) = account_id;
+	WFIFOL(fd, 6) = guild_id;
+	WFIFOB(fd, 10) = fail;
+	WFIFOSET(fd, 11);
+	return 0;
+}
+
+//=========================================================
+// Guild Storage
+//---------------------------------------------------------
+int mapif_parse_LoadGuildStorage(int fd) {
+	RFIFOHEAD(fd);
+	mapif->load_guild_storage(fd, RFIFOL(fd, 2), RFIFOL(fd, 6), 1);
+	return 0;
+}
+
+int mapif_parse_SaveGuildStorage(int fd) {
+	int guild_id;
+	int len;
+	RFIFOHEAD(fd);
+	guild_id = RFIFOL(fd, 8);
+	len = RFIFOW(fd, 2);
+	if (sizeof(struct guild_storage) != len - 12) {
+		ShowError("inter storage: Tamanho de dados incompativel: %d != %"PRIuS"\n", len - 12, sizeof(struct guild_storage));
+	} else if (inter_storage->guild_storage_tosql(guild_id, RFIFOP(fd,12))) {
+		mapif->save_guild_storage_ack(fd, RFIFOL(fd, 4), guild_id, 0);
+		return 0;
+	}
+	mapif->save_guild_storage_ack(fd, RFIFOL(fd,4), guild_id, 1);
+	return 0;
+}
+
+/**
+ * Loads the account storage and send to the map server.
+ * @packet 0x3805     [out] <account_id>.L <struct item[]>.P
+ * @param  fd         [in]  file/socket descriptor.
+ * @param  account_id [in]  account id of the session.
+ * @return 1 on success, 0 on failure.
+ */
+int mapif_account_storage_load(int fd, int account_id) {
+	struct storage_data stor = { 0 };
+	int count = 0, i = 0, len = 0;
+	Assert_ret(account_id > 0);
+	VECTOR_INIT(stor.item);
+	count = inter_storage->fromsql(account_id, &stor);
+	len = 8 + count * sizeof(struct item);
+	WFIFOHEAD(fd, len);
+	WFIFOW(fd, 0) = 0x3805;
+	WFIFOW(fd, 2) = (uint16) len;
+	WFIFOL(fd, 4) = account_id;
+	for (i = 0; i < count; i++) {
+		memcpy(WFIFOP(fd, 8 + i * sizeof(struct item)), &VECTOR_INDEX(stor.item, i), sizeof(struct item));
+	}
+	WFIFOSET(fd, len);
+	VECTOR_CLEAR(stor.item);
+	return 1;
+}
+
+//=========================================================
+// Account Storage
+//---------------------------------------------------------
+/**
+ * Parses account storage load request from map server.
+ * @packet 0x3010 [in] <account_id>.L
+ * @param  fd     [in] file/socket descriptor
+ * @return 1 on success, 0 on failure.
+ */
+int mapif_parse_AccountStorageLoad(int fd) {
+	int account_id = RFIFOL(fd, 2);
+	Assert_ret(fd > 0);
+	Assert_ret(account_id > 0);
+	mapif->account_storage_load(fd, account_id);
+	return 1;
+}
+
+/**
+ * Parses an account storage save request from the map server.
+ * @packet 0x3011 [in] <packet_len>.W <account_id>.L <struct item[]>.P
+ * @param  fd     [in] file/socket descriptor.
+ * @return 1 on success, 0 on failure.
+ */
+int mapif_parse_AccountStorageSave(int fd) {
+	int payload_size = RFIFOW(fd, 2) - 8, account_id = RFIFOL(fd, 4);
+	int i = 0, count = 0;
+	struct storage_data p_stor = { 0 };
+	Assert_ret(fd > 0);
+	Assert_ret(account_id > 0);
+	count = payload_size/sizeof(struct item);
+	VECTOR_INIT(p_stor.item);
+	if (count > 0) {
+		VECTOR_ENSURE(p_stor.item, count, 1);
+		for (i = 0; i < count; i++) {
+			const struct item *it = RFIFOP(fd, 8 + i * sizeof(struct item));
+			VECTOR_PUSH(p_stor.item, *it);
+		}
+		p_stor.aggregate = count;
+	}
+	inter_storage->tosql(account_id, &p_stor);
+	VECTOR_CLEAR(p_stor.item);
+	mapif->sAccountStorageSaveAck(fd, account_id, true);
+	return 1;
+}
+
+/**
+ * Sends an acknowledgement for the save
+ * status of the account storage.
+ * @packet 0x3808     [out] <account_id>.L <save_flag>.B
+ * @param  fd         [in]  File/Socket Descriptor.
+ * @param  account_id [in]  Account ID of the storage in question.
+ * @param  flag       [in]  Save flag, true for success and false for failure.
+ */
+void mapif_send_AccountStorageSaveAck(int fd, int account_id, bool flag) {
+	WFIFOHEAD(fd, 7);
+	WFIFOW(fd, 0) = 0x3808;
+	WFIFOL(fd, 2) = account_id;
+	WFIFOB(fd, 6) = flag ? 1 : 0;
+	WFIFOSET(fd, 7);
+}
+
+int mapif_itembound_ack(int fd, int aid, int guild_id) {
+	#ifdef GP_BOUND_ITEMS
+	WFIFOHEAD(fd,8);
+	WFIFOW(fd,0) = 0x3856;
+	WFIFOL(fd,2) = aid;/* the value is not being used, drop? */
+	WFIFOW(fd,6) = guild_id;
+	WFIFOSET(fd,8);
+	#endif
+	return 0;
+}
+
+void mapif_parse_ItemBoundRetrieve(int fd) {
+	#ifdef GP_BOUND_ITEMS
+	int char_id = RFIFOL(fd, 2);
+	int account_id = RFIFOL(fd, 6);
+	int guild_id = RFIFOW(fd, 10);
+	inter_storage->retrieve_bound_items(char_id, account_id, guild_id);
+	//Finally reload storage and tell map we're done
+	mapif->load_guild_storage(fd, account_id, guild_id, 0);
+	// If character is logged in char, disconnect
+	chr->disconnect_player(account_id);
+	#endif // GP_BOUND_ITEMS
+	/* tell map server the operation is over and it can unlock the storage */
+	mapif->itembound_ack(fd,RFIFOL(fd,6),RFIFOW(fd,10));
+}
+
 void mapif_parse_accinfo(int fd);
 void mapif_parse_accinfo2(bool success, int map_fd, int u_fd, int u_aid, int account_id, const char *userid, const char *user_pass,
     const char *email, const char *last_ip, const char *lastlogin, const char *pin_code, const char *birthdate, int group_id, int logincount, int state);
@@ -1476,18 +1959,12 @@ void mapif_defaults(void) {
 	mapif->pet_noinfo = mapif_pet_noinfo;
 	mapif->save_pet_ack = mapif_save_pet_ack;
 	mapif->delete_pet_ack = mapif_delete_pet_ack;
-	mapif->create_pet = mapif_create_pet;
-	mapif->load_pet = mapif_load_pet;
 	mapif->save_pet = mapif_save_pet;
 	mapif->delete_pet = mapif_delete_pet;
 	mapif->parse_CreatePet = mapif_parse_CreatePet;
 	mapif->parse_LoadPet = mapif_parse_LoadPet;
 	mapif->parse_SavePet = mapif_parse_SavePet;
 	mapif->parse_DeletePet = mapif_parse_DeletePet;
-	mapif->quests_fromsql = mapif_quests_fromsql;
-	mapif->quest_delete = mapif_quest_delete;
-	mapif->quest_add = mapif_quest_add;
-	mapif->quest_update = mapif_quest_update;
 	mapif->quest_save_ack = mapif_quest_save_ack;
 	mapif->parse_quest_save = mapif_parse_quest_save;
 	mapif->send_quests = mapif_send_quests;
@@ -1511,7 +1988,6 @@ void mapif_defaults(void) {
 	mapif->sAccountStorageSaveAck = mapif_send_AccountStorageSaveAck;
 	mapif->account_storage_load = mapif_account_storage_load;
 	mapif->itembound_ack = mapif_itembound_ack;
-	mapif->parse_ItemBoundRetrieve_sub = mapif_parse_ItemBoundRetrieve_sub;
 	mapif->parse_ItemBoundRetrieve = mapif_parse_ItemBoundRetrieve;
 	mapif->parse_accinfo = mapif_parse_accinfo;
 	mapif->parse_accinfo2 = mapif_parse_accinfo2;

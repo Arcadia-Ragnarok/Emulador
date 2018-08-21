@@ -139,32 +139,29 @@ struct mapif_interface {
 	int (*pet_noinfo) (int fd, int account_id);
 	int (*save_pet_ack) (int fd, int account_id, int flag);
 	int (*delete_pet_ack) (int fd, int flag);
-	int (*create_pet) (int fd, int account_id, int char_id, short pet_class, short pet_lv, short pet_egg_id,
-			short pet_equip, short intimate, short hungry, char rename_flag, char incubate, const char *pet_name);
-	int (*load_pet) (int fd, int account_id, int char_id, int pet_id);
 	int (*save_pet) (int fd, int account_id, const struct s_pet *data);
 	int (*delete_pet) (int fd, int pet_id);
 	int (*parse_CreatePet) (int fd);
 	int (*parse_LoadPet) (int fd);
 	int (*parse_SavePet) (int fd);
 	int (*parse_DeletePet) (int fd);
-	struct quest *(*quests_fromsql) (int char_id, int *count);
-	bool (*quest_delete) (int char_id, int quest_id);
-	bool (*quest_add) (int char_id, struct quest qd);
-	bool (*quest_update) (int char_id, struct quest qd);
 	void (*quest_save_ack) (int fd, int char_id, bool success);
 	int (*parse_quest_save) (int fd);
 	void (*send_quests) (int fd, int char_id, struct quest *tmp_questlog, int num_quests);
 	int (*parse_quest_load) (int fd);
-	int(*parse_rodex_requestinbox) (int fd);
-	void(*rodex_sendinbox) (int fd, int char_id, int8 opentype, int8 flag, int count, int64 mail_id, struct rodex_maillist *mails);
-	int(*parse_rodex_checkhasnew) (int fd);
-	void(*rodex_sendhasnew) (int fd, int char_id, bool has_new);
-	int(*parse_rodex_updatemail) (int fd);
-	int(*parse_rodex_send) (int fd);
-	void(*rodex_send) (int fd, int sender_id, int receiver_id, int receiver_accountid, bool result);
-	int(*parse_rodex_checkname) (int fd);
-	void(*rodex_checkname) (int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name);
+
+	void (*parse_rodex_requestinbox) (int fd);
+	void (*rodex_sendinbox) (int fd, int char_id, int8 opentype, int8 flag, int count, int64 mail_id, struct rodex_maillist *mails);
+	void (*parse_rodex_checkhasnew) (int fd);
+	void (*rodex_sendhasnew) (int fd, int char_id, bool has_new);
+	void (*parse_rodex_updatemail) (int fd);
+	void (*parse_rodex_send) (int fd);
+	void (*rodex_send) (int fd, int sender_id, int receiver_id, int receiver_accountid, bool result);
+	void (*parse_rodex_checkname) (int fd);
+	void (*rodex_checkname) (int fd, int reqchar_id, int target_char_id, short target_class, int target_level, char *name);
+
+
+
 	int (*load_guild_storage) (int fd, int account_id, int guild_id, char flag);
 	int (*save_guild_storage_ack) (int fd, int account_id, int guild_id, int fail);
 	int (*parse_LoadGuildStorage) (int fd);
@@ -174,7 +171,6 @@ struct mapif_interface {
 	int (*pAccountStorageSave) (int fd);
 	void (*sAccountStorageSaveAck) (int fd, int account_id, bool save);
 	int (*itembound_ack) (int fd, int aid, int guild_id);
-	int (*parse_ItemBoundRetrieve_sub) (int fd);
 	void (*parse_ItemBoundRetrieve) (int fd);
 	void (*parse_accinfo) (int fd);
 	void (*parse_accinfo2) (bool success, int map_fd, int u_fd, int u_aid, int account_id, const char *userid, const char *user_pass,

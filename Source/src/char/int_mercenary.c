@@ -170,14 +170,6 @@ bool inter_mercenary_delete(int merc_id) {
 	return true;
 }
 
-
-
-
-
-
-
-
-
 int inter_mercenary_sql_init(void) {
 	return 0;
 }
@@ -212,7 +204,6 @@ void inter_mercenary_defaults(void) {
 	inter_mercenary->sql_init = inter_mercenary_sql_init;
 	inter_mercenary->sql_final = inter_mercenary_sql_final;
 	inter_mercenary->parse_frommap = inter_mercenary_parse_frommap;
-
 
 	inter_mercenary->create = inter_mercenary_create;
 	inter_mercenary->load = inter_mercenary_load;
