@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de bixinhos de estimação.                  |
@@ -91,4 +91,7 @@ pet_config: {
 	//para seus ovos quando seu dono entrar num mapa GvG
 	// e chocar o ovo também é proibido.
 	pet_disable_in_gvg: true
+
+	// Auto alimentar bichinhos de estimação?
+	enable_pet_autofeed: true
 }

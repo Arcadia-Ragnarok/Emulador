@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação para login-serve                            |
@@ -19,9 +19,7 @@ login_configuration: {
 	// - Configuração para salvamento de logs para o login-serve
 	// -----------------------------------------------------------------
 	log: {
-		// O servidor de login-sql precisa dos logs de login para ativar as restrições de falha de passagem dinâmica.
 		log_login: true
-
 		// Indicar como exibir a data nos logs, nos jogadores, etc.
 		date_format: "%Y-%m-%d %H:%M:%S"
 	}
@@ -32,8 +30,9 @@ login_configuration: {
 	// (FUNCIONABILIDADE EM TESTE!)
 	// -----------------------------------------------------------------
 	users_count: {
-		// Se habilitado exibibe as diferentes cores se não assume a cor padrão.]
-		send_user_count_description: false
+		// Se habilitado exibibe as diferentes cores se não assume a
+		//cor padrão.
+		send_user_count_description: true
 
 		// Quantos usuários para difinir o tipo?
 		// 'low' Mostra texto em verde
@@ -70,9 +69,10 @@ login_configuration: {
 		use_MD5_passwords: false
 
 		// Configurações de conexão SQL
-		@include "Config/Connect/Connections.cs"
+			@include "Config/Connect/Connections.cs"
 
-		// IP banning system
+		// -----------------------------------------------------------------
+		// - Configuração para banimento de conta
 		ipban: {
 			enabled: true
 
@@ -122,6 +122,7 @@ login_configuration: {
 		// Que versão permitiríamos para conectar? (Se check_client_version estiver ativada)
 		client_version_to_connect: 20
 
+		// -----------------------------------------------------------------
 		// Sistema de verificação de hash do cliente
 		hash: {
 			// Verificação de hash do cliente MD5
@@ -151,6 +152,8 @@ login_configuration: {
 			)
 		}
 
+		// -----------------------------------------------------------------
+		// Sistema de bloqueio por DNS
 		DNS_blacklist: {
 			// Bloqueio de lista negra DNS
 			// Se ativado, cada conexão de entrada será testada em relação às listas negras

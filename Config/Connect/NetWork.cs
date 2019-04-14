@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação de rede                                     |
@@ -30,7 +30,7 @@ lan_subnets: (
 // Lista aqui qualquer IP intervalos um char ou mapa de servidor pode
 //se conectar.
 // Um curinga de "0.0.0.0.0.0.0.0" significa que as conexões do servidor
-//são permitidas de QUALQUER IP. (não recomendado).
+//são permitidas de QUALQUER IP.
 // ---------------------------------------------------------------------
 allowed: (
 	"0.0.0.0:0.0.0.0",

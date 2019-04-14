@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação para Conexão                                |
@@ -21,12 +21,6 @@ sql_connection: {
 	// Qual é a codificação dos bancos de dados?
 	// NOTA: Desabilitado por padrão.
 	//codepage: "" // Especifique a codificação
-
-	// O emulador deve interpretar letras maiúsculas de minúsculas no
-	//banco de dados?
-	// NOTA: Isso interfirá drasticamente nos registros na coluna 
-	//`userid` em login (Desabilitado por padrão)
-	//case_sensitive: false
 
 	// ----------------------------------------------------------------
 	// - Conexão com o Banco de dados do emulador.
@@ -56,31 +50,28 @@ sql_connection: {
 	// ----------------------------------------------------------------
 	// - Conexão com o Banco de dados de LOG.
 	// Usado para armazenamento de de logs corriqueiros.
+	// Ip do banco de dados no servidor SQL onde estão armazenas
 
 	// Ip do banco de dados no servidor SQL onde estão armazenas
 	//as tabelas de logs
-	log_db_hostname: "127.0.0.1"
+	log_hostname: "127.0.0.1"
 
 	// Porta de acesso ao servidor SQL
-	log_db_port: 3306
+	log_port: 3306
 
 	// Login do usuário SQL que tem permissão de acessar o banco de
 	//dados.
 	// NOTA: Esse usuário deve possuir privilégios globais para 
 	//INSERT, UPDATE, SELECT e DELETE
-	log_db_username: "arcadiasqluser"
+	log_username: "arcadiasqluser"
 
 	// Senha do usuário usado em 'log_db_username' que tem permissão
 	//de acessar o banco de dados
-	log_db_password: "arcadiasqluserpass"
+	log_password: "arcadiasqluserpass"
 
 	// Nome do Banco de dados onde estão armazenadas as tabelas do
 	//de armazenamento de LOGS
-	log_db_database: "arcadia_logs"
-	
-	// Nome da tabela para gerar logs do servidor de login
-	log_login_db: "loginlog"
-
+	log_database: "arcadia_logs"
 }
 
 // ---------------------------------------------------------------------
@@ -90,9 +81,12 @@ sql_connection: {
 //login-serve consigam se comunicar entre sí.
 // E aceitem conexões de usuários.
 // ---------------------------------------------------------------------
-inter: {
+inter_connection: {
 	userid: "arcadiauser" // Login da conta principal usada para fazer comunicação entre os servidores (Jamais loge nessa conta!)
 	passwd: "arcadiapass" // Senha da conta usada em 'userid' para fazer comunicação entre os servidores
+
+	login_ip: "127.0.0.1" // Ip do servidor de Login-Serve *NOTA: Esse IP deve ser usado no arquivo ClientInfo.XML do client
+	login_port: 6900      // Porta de acesso ao Login-Serve
 
 	char_ip: "127.0.0.1"  // Ip do servidor do Char-Serve (127.0.0.1 para servidor local)
 	char_port: 6121       // Porta de acesso ao Char-Serve
@@ -100,18 +94,15 @@ inter: {
 	map_ip: "127.0.0.1"   // Ip do servidor do Map-Serve (127.0.0.1 para servidor local)
 	map_port: 5121        // Porta de acesso ao Map-Serve
 
-	login_ip: "127.0.0.1" // Ip do servidor de Login-Serve *NOTA: Esse IP deve ser usado no arquivo ClientInfo.XML do client
-	login_port: 6900      // Porta de acesso ao Login-Serve
+	// Quando o emulador estiver compartilhando o IP com outro emulador
+	//para serem executados juntos...
+	// Qual o endereço de IP que ambos usam?
+	// NOTA: Isso desabilita as configurações de IP convencionais
+	//bind_ip: "" // Especifique o IP
 
 	// Qual é o intervalo em minutos para executar a atualização de DNS?
 	// NOTA: Isso poderá almentar consideravelmente as chances do
 	//servidor sofrer queda, mas reduzirar um pouco o LAG em caso de IP
 	//dinâmico. (Desabilitado para melhor performace)
 	//ip_sync_interval: 10
-
-	// Quando o emulador estiver compartilhando o IP com outro emulador
-	//para serem executados juntos...
-	// Qual o endereço de IP que ambos usam?
-	// NOTA: Isso desabilita as configurações de IP convencionais
-	//bind_ip: "" // Especifique o IP
 }

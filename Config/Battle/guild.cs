@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de Clãs.                                   |
 \*--------------------------------------------------------------------*/
 
 guild_config: {
+
 	// Quando um clã é criado, o Emperium é usado?
 	guild_emperium_check: true
 
@@ -32,8 +33,8 @@ guild_config: {
 
 	// Penalidade na Esquiva em mapas GvG.
 	// O padrão oficial é 20
-	// NOTA: A configuração é feita em porcentagem (%), então 20 = -20%
-	//da esquiva total
+	// NOTA: A configuração é feita em porcentagem (%),
+	//então 20 = -20% da esquiva total
 	gvg_flee_penalty: 20
 
 	// A habilidade 'Glória do Clã' pode ser aprendida, e para mudar de
@@ -58,4 +59,30 @@ guild_config: {
 	//castelo nas Guerras?
 	guild_castle_invite: false
 	guild_castle_expulsion: false
+
+	// Configurações do Chamado Urgente
+	//(Se Necessário Some os valores Desejados).
+	// Note que para que esta habilidade funcione, 
+	// você precisa de pelo menos um de 1/2 e 4/8
+	// 1: É possível usar a habilidade sem GdE.
+	// 2: É possível usar a habilidade durante a GdE.
+	// 4: É possível usar a habilidade fora de locais GvG
+	// 8: É possível usar a habilidade em mapas GvG
+	//16: Desabilitar habilidade em mapas com "nowarpto"
+	// (irá funcionar em Castelos GvG mesmo se somado o valor 16 na
+	//configuração)
+	emergency_call: 11
+
+	// Configurações da Aura do Clã
+	//(Se Necessário Some os valores Desejados).
+	// (Isto afeta GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD
+	//e GD_HAWKEYES)
+	// Note que para que esta habilidade funcione, 
+	// você precisa de pelo menos um de 1/2 e 4/8
+	// 1: É possível usar a habilidade sem GdE.
+	// 2: É possível usar a habilidade durante a GdE.
+	// 4: É possível usar a habilidade fora de locais GvG
+	// 8: É possível usar a habilidade em mapas GvG
+	//16: Desabilitar o efeito sobre o Líder do Clã
+	guild_aura: 31
 }

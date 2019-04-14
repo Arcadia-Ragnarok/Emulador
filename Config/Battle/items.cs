@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de Itens.                                  |
 \*--------------------------------------------------------------------*/
 
 item_config: {
+
 	// O valor máximo que um item pode ser vendido pela habilidade
 	//Comércio.
 	vending_max_value: 1000000000
@@ -112,8 +113,30 @@ item_config: {
 	// Quando não há um arco com flechas equipadas, também não usa a flecha?
 	bow_unequip_arrow: true
 
-	// Quanto as montarias de aluguel podem aumentar a velocidade de
-	//movimento de um jogador?
-	// Oficial é 25 (Padrão)
+	// How much should rental mounts increase a player's movement speed? (Note 2)
+	// Official: 25 (Default)
 	boarding_halter_speed: 25
+
+	// Allow to use items when the storage is open?
+	// Official: false (Default)
+	storage_use_item: false
+
+	// Minimum item buy price at shop
+	// Default: 1
+	min_item_buy_price: 1
+
+	// Minimum item sell price at shop
+	// Default: 0
+	min_item_sell_price: 0
+
+	// Munições/flechas são consumidas quando usadas em arcos/armas?
+	// 0 = Não
+	// 1 = Sim
+	// 2 = Sim, mesmo para habilidades que não especifiquem o consumo de flechas
+	// em habilidades usadas com armas e com armas de alcance
+	//(adivinha automaticamente
+	// quais habilidades devem consumir munição quando é adquirida
+	//por carta ou Plágio)
+	arrow_decrement: 1
+
 }

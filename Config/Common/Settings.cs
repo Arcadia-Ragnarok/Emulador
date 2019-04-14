@@ -5,56 +5,54 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 \*--------------------------------------------------------------------*/
 
 battle_configuration: {
 	// Configurações relacionadas ao battleground
-	@include "Config/Battle/battleground.cs"
+	@include "Config/Battle/Battleground.cs"
 
 	// Configurações relacionadas ao client.
-	@include "Config/Battle/client.cs"
+	@include "Config/Battle/Client.cs"
 
 	// Configurações relacionadas a drop de item
-	@include "Config/Battle/drops.cs"
+	@include "Config/Battle/Drops.cs"
 
 	// Configurações relacionadas a experiência
-	@include "Config/Battle/exp.cs"
+	@include "Config/Battle/Exp.cs"
 
 	// Configurações globais de batalha.
-	@include "Config/Battle/global.cs"
+	@include "Config/Battle/Global.cs"
 
 	// Configurações relacionadas a GM.
-	@include "Config/Battle/gm.cs"
+	@include "Config/Battle/Gm.cs"
 
 	// Configurações relacionadas a clãs
-	@include "Config/Battle/guild.cs"
+	@include "Config/Battle/Guild.cs"
 
 	// Configurações relacionadas a homunculus
-	@include "Config/Battle/homunc.cs"
+	@include "Config/Battle/Homunc.cs"
 
 	// Configurações relacionadas a itens
-	@include "Config/Battle/items.cs"
+	@include "Config/Battle/Items.cs"
 
 	// Configurações variadas
-	@include "Config/Battle/misc.cs"
+	@include "Config/Battle/Misc.cs"
 
 	// Configurações relacionadas a monstros
-	@include "Config/Battle/monster.cs"
+	@include "Config/Battle/Monster.cs"
 
 	// Configurações relacionadas a grupo
-	@include "Config/Battle/party.cs"
+	@include "Config/Battle/Party.cs"
 
 	// Configurações relacionadas a Pet's
-	@include "Config/Battle/pet.cs"
+	@include "Config/Battle/Pet.cs"
 
 	// Configurações relacionadas a jogadores
-	@include "Config/Battle/player.cs"
+	@include "Config/Battle/Player.cs"
 
 	// Configurações relacionadas a habilidades
-	@include "Config/Battle/skill.cs"
+	@include "Config/Battle/Skill.cs"
 
-	// Configurações relacionadas aos status
-	@include "Config/Battle/status.cs"
 }

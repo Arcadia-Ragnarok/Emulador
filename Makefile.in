@@ -10,15 +10,7 @@
 #####################################################################
 #                  Idealizado por: Spell Master                     #
 #####################################################################
-# - Este código é livre para editar, redistribuir de acordo com os  #
-# termos da GNU General Public License, publicada sobre conselho    #
-# pela Free Software Foundation.                                    #
-#                                                                   #
-# - Qualquer ato de comercialização desse software está previsto    #
-# em leis internacionais, junto com este(s) código(s) você recebeu  #
-# uma cópia de licença de uso.                                      #
-# - Caso não tenha recebido veja: http://www.gnu.org/licenses/      #
-#####################################################################
+
 
 # @configure_input@
 
@@ -26,13 +18,12 @@
 
 HAVE_MYSQL=@HAVE_MYSQL@
 ifeq ($(HAVE_MYSQL),yes)
-	ALL_DEPENDS=common_sql login_sql char_sql map_sql tools sysinfo | import
-	SQL_DEPENDS=common_sql login_sql char_sql map_sql sysinfo | import
+	ALL_DEPENDS=common_src login_sql char_sql map_sql sysinfo
+	SQL_DEPENDS=common_src login_sql char_sql map_sql sysinfo
 	COMMON_SQL_DEPENDS=mt19937ar libconfig sysinfo
-	LOGIN_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
-	CHAR_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
-	MAP_SQL_DEPENDS=mt19937ar libconfig common_sql sysinfo
-	TOOLS_DEPENDS=mt19937ar libconfig common_sql sysinfo
+	LOGIN_SQL_DEPENDS=mt19937ar libconfig common_src sysinfo
+	CHAR_SQL_DEPENDS=mt19937ar libconfig common_src sysinfo
+	MAP_SQL_DEPENDS=mt19937ar libconfig common_src sysinfo
 else
 	ALL_DEPENDS=needs_mysql
 	SQL_DEPENDS=needs_mysql
@@ -40,43 +31,35 @@ else
 	LOGIN_SQL_DEPENDS=needs_mysql
 	CHAR_SQL_DEPENDS=needs_mysql
 	MAP_SQL_DEPENDS=needs_mysql
-	TOOLS_DEPENDS=needs_mysql
 endif
 
-HAVE_PERL=@HAVE_PERL@
-
-MF_TARGETS = Makefile $(addsuffix /Makefile, Source/src/common Source/3rdparty/mt19937ar \
-             Source/3rdparty/libconfig Source/src/char Source/src/login Source/src/map \
-             Source/src/tool Source/src/test)
+MF_TARGETS = Makefile $(addsuffix /Makefile, Build/source/common Build/3rdparty/mt19937ar \
+             Build/3rdparty/libconfig Build/source/char Build/source/login Build/source/map)
 
 CC = @CC@
 export CC
 
 #####################################################################
-.PHONY: sql  \
-	common_sql \
+.PHONY: arcadia  \
+	common_src \
 	mt19937ar \
 	login_sql \
 	char_sql \
 	map_sql \
-	tools \
-	import \
-	test \
 	clean \
 	buildclean \
 	distclean \
 	sysinfo \
-	hooks \
 	help
 
 all: $(ALL_DEPENDS)
 
-sql: $(SQL_DEPENDS)
+arcadia: $(SQL_DEPENDS)
 
 $(MF_TARGETS): %: %.in config.status
 	@echo "	CONFIGURE"
 	@if [ -x config.status ]; then \
-		echo "Reconfiguring with options: $$(./config.status --config)"; \
+		echo "Reconfigurando opcoes: $$(./config.status --config)"; \
 		./config.status; \
 	else \
 		echo "Unable to find a previous config.status.  ./configure will be re-run with the default options."; \
@@ -89,64 +72,47 @@ $(MF_TARGETS): %: %.in config.status
 		./configure; \
 	fi;
 
-common_sql: $(COMMON_SQL_DEPENDS) Source/src/common/Makefile
+common_src: $(COMMON_SQL_DEPENDS) Build/source/common/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/common sql
+	@$(MAKE) -C Build/source/common sql
 
-mt19937ar: Source/3rdparty/mt19937ar/Makefile
+mt19937ar: Build/3rdparty/mt19937ar/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/3rdparty/mt19937ar
+	@$(MAKE) -C Build/3rdparty/mt19937ar
 
-libconfig: Source/3rdparty/libconfig/Makefile
+libconfig: Build/3rdparty/libconfig/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/3rdparty/libconfig
+	@$(MAKE) -C Build/3rdparty/libconfig
 
-login_sql: $(LOGIN_SQL_DEPENDS) Source/src/login/Makefile
+login_sql: $(LOGIN_SQL_DEPENDS) Build/source/login/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/login sql
+	@$(MAKE) -C Build/source/login sql
 
-char_sql: $(CHAR_SQL_DEPENDS) Source/src/char/Makefile
+char_sql: $(CHAR_SQL_DEPENDS) Build/source/char/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/char
+	@$(MAKE) -C Build/source/char
 
-map_sql: $(MAP_SQL_DEPENDS) Source/src/map/Makefile
+map_sql: $(MAP_SQL_DEPENDS) Build/source/map/Makefile
 	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/map sql
-
-tools: $(TOOLS_DEPENDS) Source/src/tool/Makefile
-	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/tool
-
-test: Source/src/test/Makefile
-	@echo "	MAKE	$@"
-	@$(MAKE) -C Source/src/test
-
-import: Makefile
-	@# 1) create Config/import folder
-	@# 2) add missing files
-	@echo "building Config/import folder..."
-	@if test ! -d Config/import ; then mkdir Config/import ; fi
-	@for f in $$(ls Config/import-tmpl) ; do if test ! -e Config/import/$$f ; then cp Config/import-tmpl/$$f Config/import ; fi ; done
+	@$(MAKE) -C Build/source/map sql
 
 clean buildclean: $(MF_TARGETS)
-	@$(MAKE) -C Source/src/common $@
-	@$(MAKE) -C Source/3rdparty/mt19937ar $@
-	@$(MAKE) -C Source/3rdparty/libconfig $@
-	@$(MAKE) -C Source/src/login $@
-	@$(MAKE) -C Source/src/char $@
-	@$(MAKE) -C Source/src/map $@
-	@$(MAKE) -C Source/src/tool $@
-	@$(MAKE) -C Source/src/test $@
+	@$(MAKE) -C Build/source/common $@
+	@$(MAKE) -C Build/3rdparty/mt19937ar $@
+	@$(MAKE) -C Build/3rdparty/libconfig $@
+	@$(MAKE) -C Build/source/login $@
+	@$(MAKE) -C Build/source/char $@
+	@$(MAKE) -C Build/source/map $@
 
 distclean: clean
 	@-rm -f $(MF_TARGETS) config.status config.log
 
 sysinfo: config.status
-	@./sysinfogen.sh Source/src/common/sysinfo_new.inc @CFLAGS@ @CPPFLAGS@
-	@if cmp -s Source/src/common/sysinfo.inc Source/src/common/sysinfo_new.inc; then \
-		rm Source/src/common/sysinfo_new.inc ; \
+	@./sysinfogen.sh Build/source/common/sysinfo_new.inc @CFLAGS@ @CPPFLAGS@
+	@if cmp -s Build/source/common/sysinfo.inc Build/source/common/sysinfo_new.inc; then \
+		rm Build/source/common/sysinfo_new.inc ; \
 	else \
-		mv Source/src/common/sysinfo_new.inc Source/src/common/sysinfo.inc ; \
+		mv Build/source/common/sysinfo_new.inc Build/source/common/sysinfo.inc ; \
 	fi
 
 config.status: configure
@@ -154,29 +120,22 @@ config.status: configure
 	@./config.status --recheck && ./config.status
 
 help: Makefile
-	@echo "most common targets are 'all' 'sql' 'clean' 'help'"
-	@echo "possible targets are:"
-	@echo "'common_sql'  - builds object files used in SQL servers"
-	@echo "'mt19937ar'   - builds object file of Mersenne Twister MT19937"
-	@echo "'libconfig'   - builds object files of libconfig"
-	@echo "'login_sql'   - builds login server"
-	@echo "'char_sql'    - builds char server"
-	@echo "'map_sql'     - builds map server"
-	@echo "'tools'       - builds all the tools in Source/src/tools"
-	@echo "'import'      - builds Config/import folder from the template Config/import-tmpl"
-	@echo "'all'         - builds all the above targets"
-	@echo "'sql'         - builds sql servers (targets 'common_sql' 'login_sql' 'char_sql'"
-	@echo "                'map_sql' and 'import')"
-	@echo "'test'        - builds tests"
-	@echo "'clean'       - cleans executables and objects"
-	@echo "'buildclean'  - cleans build temporary (object) files, without deleting the"
-	@echo "                executables"
-	@echo "'distclean'   - cleans files generated by ./configure"
-	@echo "'sysinfo'     - re-generates the System Info include"
-	@echo "'help'        - outputs this message"
+	@echo "============================"
+	@echo "   Ajuda"
+	@echo "============================"
+	@echo "'login_sql'   - compila o 'login serve'"
+	@echo "'char_sql'    - compila o 'char serve'"
+	@echo "'map_sql'     - compila o map serve"
+	@echo "'all'           - Compila todos dados nessessarios"
+	@echo "'arcadia'         - Compila o 'char serve', 'login serve' e 'map serve'"
+	@echo "'clean'          - Apaga executaveis e objetos"
+	@echo "'buildclean'  - Apaga todos objetos gerados pela compilacao, mas nao apaga os executaveis"
+	@echo "'distclean'      - Apaga todos dados gerados pelo './configure' e os executaveis complilados"
+	@echo "'help'           - Mostra essa mensagem"
+	@echo "============================"
 
 #####################################################################
 
 needs_mysql:
-	@echo "MySQL not found or disabled by the configure script"
+	@echo "Script MySQL nao encontrado ou desativado"
 	@exit 1

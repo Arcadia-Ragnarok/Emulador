@@ -5,50 +5,51 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Descrição: Configuação para Logs                                   |
 \*--------------------------------------------------------------------*/
 
 map_log: {
-	// Habilitar Registros?
-	// 0x00000 - Não fazer logs.
-	// 0x00001 - (T) Log de negociações.
-	// 0x00002 - (V) Log de vendas.
-	// 0x00004 - (P) Log de itens caídos/recolhidos por jogadores.
-	// 0x00008 - (L) Log de itens caídos/recolhidos por monstros.
-	// 0x00010 - (S) Log de npcs (compra/venda).
-	// 0x00020 - (N) Log de npcs (itens deletados/adquiridos através de quest).
-	// 0x00040 - (D) Log de itens roubados dos monstros (habilidade furto).
-	// 0x00080 - (C) Log de uso de itens.
-	// 0x00100 - (O) Log de itens produzidos.
-	// 0x00200 - (U) Log de itens MvP.
-	// 0x00400 - (A) Log de criação/deleção de itens por jogadores (com @/# commands)
-	// 0x00800 - (R) Log de itens colocados/retirados do armazém.
-	// 0x01000 - (G) Log de itens colocados/retirados do armazém da guilda.
-	// 0x02000 - (E) Log de transações pelo sistema de email.
-	// 0x04000 - (I) Log de transaões do sistema de leilões.
-	// 0x08000 - (B) Log de transações da loja de compras.
-	// 0x20000 - (K) Log de transações do Sistema de Banco.
-	// 0x10000 - (X) Log de todas as transações.
+	// O que registrar nos logs 
+	// 0x0000000 - Nada
+	// 0x0000001 - (T) Trocas
+	// 0x0000002 - (V) Vendas
+	// 0x0000004 - (P) Itens dropados ou pegados por jogadpres
+	// 0x0000008 - (L) Itens dropados ou consumido por monstros
+	// 0x0000010 - (S) Compra e venda em NPC
+	// 0x0000020 - (N) Itens apagados ou adquiridos por NPC
+	// 0x0000040 - (D) Itens Roubados de monstros
+	// 0x0000080 - (C) Itens do jogador usado por terceiros como requisito de habilidade por exemplo
+	// 0x0000100 - (O) Itens usados para produção
+	// 0x0000200 - (U) Dinheiro ganho ao derrotar MVP
+	// 0x0000400 - (A) Criação de itens por comandos
+	// 0x0000800 - (R) Itens colocados ou retirados do armazém
+	// 0x0001000 - (G) Itens colocados ou retirados do armazém do clã
+	// 0x0002000 - (E) Transações pelo mail_system
+	// 0x0004000 - (I) Transações por leilão
+	// 0x0008000 - (B) Transações pela lja de compras
+	// 0x0010000 - (X) Outros tipos de transações
+	// 0x0020000 - (K) Transações pelo banco
+	// 0x0040000 - (Y) Divórcio
+	// 0x0080000 - (Z) Roleta
+	// 0x0100000 - (W) Aluguel
+	// 0x0200000 - (Q) Carata
+	// 0x0400000 - (J) Itens inválidos no inventário
+	// 0x0800000 - (H) Itens inválidos no carrinho
+	// 0x1000000 - (@) Ovo
+	// 0x2000000 - (0) Quest
+	// 0x4000000 - (1) Habilidade
+	// 0x8000000 - (2) Refinamento
 	// Exemplo: Log de negociações+Log de vendas+Log de npcs (compra/venda)+Log de itens produzidos: 1+2+32+1024 = 1059
-	// Mover itens do inventário para o carrinho não é gravado propositalmente.
-	enable: 0xFFFFF
+	enable: 0xFFFFFFF
 
 	// As configurações a seguir indicam o local de registro.
 	// Se 'use_sql' for true, as tabelas SQL são assumidas, caso contrário arquivos flat.
 	database: {
-		// Utilizar Registros em MySQL?
+		// Registrar os LOGS no banco de dados?
 		use_sql: true
-		// log_gm_db: "log/atcommandlog.log"
-		// log_branch_db: "log/branchlog.log"
-		// log_chat_db: "log/chatlog.log"
-		// log_mvpdrop_db: "log/mvplog.log"
-		// log_npc_db: "log/npclog.log"
-		// log_pick_db: "log/picklog.log"
-		// log_zeny_db: "log/zenylog.log"
-		// SQL tables
 		log_gm_db: "atcommandlog"
 		log_branch_db: "branchlog"
 		log_chat_db: "chatlog"
@@ -56,6 +57,15 @@ map_log: {
 		log_npc_db: "npclog"
 		log_pick_db: "picklog"
 		log_zeny_db: "zenylog"
+
+		// Caso não usados os registros no banco de dados gerar arquivos para armazenar os dados
+		// log_gm_db: "log/atcommandlog.log"
+		// log_branch_db: "log/branchlog.log"
+		// log_chat_db: "log/chatlog.log"
+		// log_mvpdrop_db: "log/mvplog.log"
+		// log_npc_db: "log/npclog.log"
+		// log_pick_db: "log/picklog.log"
+		// log_zeny_db: "log/zenylog.log"
 	}
 
 	// Registrar uso de Galho Seco?
@@ -67,7 +77,8 @@ map_log: {
 	log_zeny: 0
 
 	// Registro de Itens de MVPs
-	// Obsoleto. Use Pick_Log. Mas este pode ser útil para rastrear MVPs derrotados
+	// Obsoleto. Use Pick_Log.
+	// Mas este pode ser útil para rastrear MVPs derrotados
 	log_mvpdrop: false
 
 	// Log de Comandos
@@ -103,7 +114,7 @@ map_log: {
 			// log_filter: 0x40 = logs only Cartões
 			// log_filter: 0x142 = registra apenas itens de Cura, Cartões e itens cujo preço é> = price_items_log
 			// log_filter: 0xff0 = registra todos os itens (incluindo todos raros, grande quantidade) exceto cura, etc, setas e usáveis
-			log_filter: 0
+			log_filter: 1
 
 			// Log de itens refinados 
 			refine_items_log: 7

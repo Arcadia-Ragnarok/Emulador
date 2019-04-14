@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de Jogadores.                              |
 \*--------------------------------------------------------------------*/
 
 player_config: {
+
 	// Taxa máxima de HP para jogador. (O padrão é 100)
 	hp_rate: 100
 
@@ -20,7 +21,7 @@ player_config: {
 
 	// Cartas e atributos para a mão esquerda também são aplicados na
 	//mão direita?
-	// (Definido para 'yes' em servidores oficiais)
+	// (Definido para 'true' em servidores oficiais)
 	left_cardfix_to_right: true
 
 	// Quantidade de HP que um jogador irá reviver, 0 é o padrão.
@@ -44,6 +45,7 @@ player_config: {
 	// Habilidades de quest podem ser aprendidas?    
 	// Configurando para yes poderá abrir exploits em seu servidor!
 	quest_skill_learn: false
+
 
 	// Quando as habilidades são resetadas, as habilidades de quest
 	//também são?    
@@ -235,16 +237,11 @@ player_config: {
 	idletime_criteria: 0x1F
 
 	// Os jogadores podem obter ATK / DEF de refinamentos em
-	//equipamentos de cosntume?
+	//equipamentos de costume?
 	costume_refine_def: true
 	shadow_refine_def: true
 	shadow_refine_atk: true
 
 	// Manter o jogador virado para a direção após ser teleportado?
-	player_warp_keep_direction: false
-
-	// Banir pessoas que tentam burlar a negociação.
-	// Duração do banimento, em minutos (padrão: 5).
-	//Para desabilitar, defina 0.
-	ban_hack_trade: 5
+	player_warp_keep_direction: true
 }

@@ -1,4 +1,22 @@
 #!/bin/sh
+# athena starting script by rowla
+# Correção UNIX & tradução PT-BR: By Spell Master
+# 
+# **** [ATENÇÃO!!!] *****
+# Não editar ou salvar esse arquivo no windows!!!
+
+# ######################################### #
+#       ____                     _          #
+#      /    |                   | |_        #
+#     /     |_ __ ____  __ _  __| |_  __ _  #
+#    /  /|  | '__/  __|/ _` |/ _  | |/ _` | #
+#   /  __   | | |  |__| (_| | (_| | | (_| | #
+#  /  /  |  |_|  \____|\__,_|\__,_|_|\__,_| #
+# /__/   |__|                               #
+#                                           #
+# ######################################### #
+# Idealizado por: Spell Master              #
+# ######################################### #
 
 PATH=./:$PATH
 
@@ -7,10 +25,13 @@ C_SRV=char-server
 M_SRV=map-server
 
 print_start() {
-	echo "Copyright - 2016 Spell Master Games"
-	echo "Emulador Iniciando..."
-	echo ""
-	echo "Verificando..."
+#    more << EOF
+echo "Servidor Iniciando..."
+echo " (c) 2003 Athena Project"
+echo "  Ver. Spell Master (2018)"
+echo ""
+echo "Verificando..."
+#EOF
 }
 
 check_files() {
@@ -18,19 +39,20 @@ check_files() {
     for i in ${L_SRV} ${C_SRV} ${M_SRV}
     do
         if [ ! -f ./$i ]; then
-            echo "$i n�o existe, ou n�o pode executar."
-            echo "Parado. Confira seu compilador."
+            echo "$i  does not exist, or can't run."
+            echo "Stop. Check your compile."
             exit 1;
         fi
     done
 
-    echo "Checagem completa."
-    echo "Todos requisitos funcionando!"
+#    more << EOF
+echo "Verificacao completada."
+#EOF
 }
 
 
 case $1 in
-    'start')
+    'iniciar')
         print_start
         check_files
 
@@ -41,9 +63,9 @@ case $1 in
         exec ./${M_SRV}&
     echo $! > .${M_SRV}.pid
 
-    echo "Iniciando....."
-    ;;
-    'stop')
+        echo "Iniciado"
+;;
+    'parar')
     for i in .${L_SRV}.pid .${C_SRV}.pid .${M_SRV}.pid
         do
         if [ -e ./$i ]; then
@@ -51,12 +73,12 @@ case $1 in
             rm $i
         fi
         done
-    ;;
-    'restart')
+;;
+    'reiniciar')
         $0 stop
         $0 start
-    ;;
+;;
     *)
-    echo "Usos: servidor { start | stop | restart }"
-    ;;
+        echo "Uso: servidor { iniciar | parar | reiniciar }"
+;;
 esac

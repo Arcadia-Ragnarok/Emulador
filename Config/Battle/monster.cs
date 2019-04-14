@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de Grupo.                                  |
 \*--------------------------------------------------------------------*/
 
 monster_config: {
+
 	// A taxa de HP dos MVPs.    
 	mvp_hp_rate: 100
 
@@ -237,7 +238,7 @@ monster_config: {
 	dynamic_mobs: true
 
 	// Remover monstros mesmo se estiverem feridos
-	mob_remove_damaged: false
+	mob_remove_damaged: true
 
 	// Delay antes de remover monstros de mapas vazios
 	//(padrão de 5 min = 300 segs)
@@ -269,7 +270,7 @@ monster_config: {
 
 	// Tempo em milissegundos para o túmulo aparecer.
 	// Padrão: 1000 (1 segundo)
-	mvp_tomb_spawn_delay: 1000
+	mvp_tomb_spawn_delay: 10000
 
 	// Mostrar barra de hp dos monstros?
 	// Nota: Só funciona em clientes 2012-04-04aRagexeRE em diante.

@@ -1,7 +1,20 @@
+#####################################################################
 #!/bin/sh
+#              ____                     _                           #
+#             /    |                   | |_
+#            /     |_ __ ____  __ _  __| |_  __ _ 
+#           /  /|  | '__/  __|/ _` |/ _  | |/ _` |
+#          /  __   | | |  |__| (_| | (_| | | (_| |
+#         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_| 
+#        /__/   |__|  [ Ragnarok Emulator ] 
+#
+#####################################################################
+# Autor: Haru @ http://herc.ws
+# Edição e correção: Spell Master
+#####################################################################
 
 do_fail() {
-	echo 'Error writing output file'
+	echo 'Erro ao escrever arquivo de saida'
 	exit 1
 }
 
@@ -27,17 +40,17 @@ if ! touch "$OUTFILE"; then
 	exit 1
 fi
 
+YEAR="$(date +%Y)"
 cat > "$OUTFILE" << EOF
-// This file was automatically generated. Any edit to it will be lost.
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-ARCADIA_PLATFORM="$( uname -s )"
-ARCADIA_CORES="0"
-ARCADIA_CPU="Unknown"
+OS_PLATFORM="$( uname -s )"
+CPU_CORE="0"
+CPU_MODEL="Desconhecido"
 
-case $ARCADIA_PLATFORM in
+case $OS_PLATFORM in
 	Linux)
 		DIST=''
 		DESCRIPTION=''
@@ -125,7 +138,7 @@ case $ARCADIA_PLATFORM in
 				DESCRIPTION="$( head -n 1 /etc/trustix-release )"
 				REV=''
 			else
-				DIST='Unknown'
+				DIST='Desconhecido'
 				DESCRIPTION=''
 				REV=''
 			fi
@@ -133,120 +146,119 @@ case $ARCADIA_PLATFORM in
 		if [ -n "$DESCRIPTION" ]; then
 			DIST="$DESCRIPTION"
 		fi
-		ARCADIA_OSVERSION="$DIST"
+		OS_VERSION="$DIST"
 
-		ARCADIA_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
-		ARCADIA_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
+		CPU_MODEL="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
+		CPU_CORE="$( grep '^processor' /proc/cpuinfo | wc -l )"
 		;;
 	Darwin)
-		ARCADIA_PLATFORM="Mac OS X"
+		OS_PLATFORM="Mac OS X"
 		if type sw_vers >/dev/null 2>&1; then
-			ARCADIA_OSVERSION="$( sw_vers -productName ) $( sw_vers -productVersion ) $( sw_vers -buildVersion )"
+			OS_VERSION="$( sw_vers -productName ) $( sw_vers -productVersion ) $( sw_vers -buildVersion )"
 		else
-			ARCADIA_OSVERSION="Unknown"
+			OS_VERSION="Desconhecido"
 		fi
 		if type system_profiler >/dev/null 2>&1; then
 			HWDATA="$( system_profiler SPHardwareDataType )"
 			HWDATA_CPU="$( echo "$HWDATA" | grep "Processor Name:" | cut -d: -f2- )"
 			HWDATA_CPUSPEED="$( cleanstring "$( echo "$HWDATA" | grep "Processor Speed:" | cut -d: -f2- )" )"
-			ARCADIA_CORES="$( echo "$HWDATA" | grep "Total Number of Cores:" | cut -d: -f2- )"
-			ARCADIA_CPU="${HWDATA_CPU} (${HWDATA_CPUSPEED})"
+			CPU_CORE="$( echo "$HWDATA" | grep "Total Number of Cores:" | cut -d: -f2- )"
+			CPU_MODEL="${HWDATA_CPU} (${HWDATA_CPUSPEED})"
 		fi
 		;;
 	SunOS)
-		ARCADIA_PLATFORM="Solaris"
-		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
+		OS_PLATFORM="Solaris"
+		OS_VERSION="${OS_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
 		;;
 	AIX)
-		ARCADIA_OSVERSION="AIX $( oslevel ) ($(`oslevel -r`))"
+		OS_VERSION="AIX $( oslevel ) ($(`oslevel -r`))"
 		;;
 	CYGWIN*)
-		ARCADIA_PLATFORM="Cygwin Windows"
-		ARCADIA_OSVERSION="$( cleanstring "$( uname -s )" )"
-		ARCADIA_CPU="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
-		ARCADIA_CORES="$( grep '^processor' /proc/cpuinfo | wc -l )"
+		OS_PLATFORM="Cygwin Windows"
+		OS_VERSION="$( cleanstring "$( uname -s )" )"
+		CPU_MODEL="$( cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d: -f2- )"
+		CPU_CORE="$( grep '^processor' /proc/cpuinfo | wc -l )"
 		;;
 	OpenBSD)
-		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
-		ARCADIA_CPU="$( sysctl hw.model | cut -d= -f2- )"
-		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
+		OS_VERSION="${OS_PLATFORM} $( uname -r ) ($( uname -p) $(uname -v))"
+		CPU_MODEL="$( sysctl hw.model | cut -d= -f2- )"
+		CPU_CORE="$( sysctl hw.ncpu | cut -d= -f2- )"
 		;;
 	FreeBSD)
-		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p))"
-		ARCADIA_CPU="$( sysctl hw.model | cut -d: -f2- )"
-		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d: -f2- )"
+		OS_VERSION="${OS_PLATFORM} $( uname -r ) ($( uname -p))"
+		CPU_MODEL="$( sysctl hw.model | cut -d: -f2- )"
+		CPU_CORE="$( sysctl hw.ncpu | cut -d: -f2- )"
 		;;
 	NetBSD)
-		ARCADIA_OSVERSION="${ARCADIA_PLATFORM} $( uname -r ) ($( uname -p))"
-		ARCADIA_CPU="$( sysctl hw.model | cut -d= -f2- )"
-		ARCADIA_CORES="$( sysctl hw.ncpu | cut -d= -f2- )"
+		OS_VERSION="${OS_PLATFORM} $( uname -r ) ($( uname -p))"
+		CPU_MODEL="$( sysctl hw.model | cut -d= -f2- )"
+		CPU_CORE="$( sysctl hw.ncpu | cut -d= -f2- )"
 		;;
 	*)
-		ARCADIA_OSVERSION="Unknown"
+		OS_VERSION="Desconhecido"
 		;;
 esac
 
 cat >> "$OUTFILE" << EOF
 // Platform (uname -s)
-#define SYSINFO_PLATFORM "$( cleanstring "${ARCADIA_PLATFORM}" )"
+#define SYSINFO_PLATFORM "$( cleanstring "${OS_PLATFORM}" )"
 
 // Operating System version (Platform-dependent)
-#define SYSINFO_OSVERSION "$( cleanstring "${ARCADIA_OSVERSION}" )"
+#define SYSINFO_OSVERSION "$( cleanstring "${OS_VERSION}" )"
 
 // CPU Model (Platform-dependent)
-#define SYSINFO_CPU "$( cleanstring "${ARCADIA_CPU}" )"
+#define SYSINFO_CPU "$( cleanstring "${CPU_MODEL}" )"
 
 // CPU Cores (Platform-dependent)
-#define SYSINFO_CPUCORES ( $( cleanstring "${ARCADIA_CORES}" ) )
+#define SYSINFO_CPUCORES ( $( cleanstring "${CPU_CORE}" ) )
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-ARCADIA_ARCH="$( uname -m )"
+CORE_ARCH="$( uname -m )"
 
 cat >> "$OUTFILE" << EOF
 // OS Architecture (uname -m)
-#define SYSINFO_ARCH "$( cleanstring "${ARCADIA_ARCH}" )"
+#define SYSINFO_ARCH "$( cleanstring "${CORE_ARCH}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-ARCADIA_CFLAGS="$@"
-ARCADIA_CFLAGS="$( echo "${ARCADIA_CFLAGS}" | sed 's/"//g' )"
+CF_LAGS="$@"
+CF_LAGS="$( echo "${CF_LAGS}" | sed 's/"//g' )"
 
 cat >> "$OUTFILE" << EOF
 // Compiler Flags
-#define SYSINFO_CFLAGS "$( cleanstring "${ARCADIA_CFLAGS}" )"
+#define SYSINFO_CFLAGS "$( cleanstring "${CF_LAGS}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
 
-ARCADIA_VCSREV=""
+VCS_REV=""
 if [ -d .git ]; then
-	ARCADIA_VCSTYPE="VCSTYPE_GIT"
+	VCS_TYPE="VCSTYPE_GIT"
 	if type git >/dev/null 2>&1; then
-		ARCADIA_VCSREV="$( git rev-parse HEAD )"
+		VCS_REV="$( git rev-parse HEAD )"
 	else
-		ARCADIA_VCSREV="Unknown"
+		VCS_REV="Desconhecido"
 	fi
 elif [ -d .svn ]; then
-	ARCADIA_VCSTYPE="VCSTYPE_SVN"
+	VCS_TYPE="VCSTYPE_SVN"
 	if type svnversion >/dev/null 2>&1; then
-		ARCADIA_VCSREV="$( svnversion )"
+		VCS_REV="$( svnversion )"
 	else
-		ARCADIA_VCSREV="Unknown"
+		VCS_REV="Desconhecido"
 	fi
 else
-	ARCADIA_VCSTYPE="VCSTYPE_NONE"
+	VCS_TYPE="VCSTYPE_NONE"
 fi
 
 cat >> "$OUTFILE" << EOF
 // VCS Type
-#define SYSINFO_VCSTYPE ${ARCADIA_VCSTYPE}
+#define SYSINFO_VCSTYPE ${VCS_TYPE}
 
 // VCS Revision
-#define SYSINFO_VCSREV "$( cleanstring "${ARCADIA_VCSREV}" )"
+#define SYSINFO_VCSREV "$( cleanstring "${VCS_REV}" )"
 
 EOF
 [ $? -eq 0 ] || do_fail
-

@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 \*--------------------------------------------------------------------*/
 
@@ -16,7 +16,8 @@ map_configuration: {
 	// Listas de mapas
 	@include "Config/Common/Maps.cs"
 
-	// Quando @help ou @h é digitado quando você é um gm, isso é exibido para ajudar os novos gms a entender os comandos gm.
+	// Quando @help ou @h é digitado quando você é um gm, isso é exibido
+	//para ajudar os novos gms a entender os comandos gm.
 	help_txt: "Config/Help.txt"
 	charhelp_txt: "Config/Char-Help.txt"
 

@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de EXP.                                    |
 \*--------------------------------------------------------------------*/
 
 exp_config: {
+
 	// Taxa de experiência ganha em base.
 	// NOTA: Valor máximo aceito é de 1000
 	base_exp_rate: 1000
@@ -103,7 +104,7 @@ exp_config: {
 	// NOTA: É a porcentagem do zeny do jogador, então 100 = 1%
 	zeny_penalty: 0
 
-	// Exibir a experiência ganha ao matar um monstro.
+	// Will display experience gained from killing a monster. (Note 1)
 	disp_experience: false
 
 	// Exibir a quantia de zeny ganho

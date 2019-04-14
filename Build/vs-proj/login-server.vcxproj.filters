@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\login\account.c">
+      <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\login\ipban.c">
+      <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\login\login.c">
+      <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\login\loginlog.c">
+      <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\conf.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\core.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\packets.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\console.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\db.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\ers.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\grfio.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\memmgr.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\md5calc.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\nullpo.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\random.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\showmsg.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\socket.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\sql.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\strlib.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\sysinfo.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\timer.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\utils.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\mt19937ar\mt19937ar.c">
+      <Filter>3rdparty\mt19937ar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\libconfig\grammar.c">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\libconfig\libconfig.c">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\libconfig\scanctx.c">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\libconfig\scanner.c">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\libconfig\strbuf.c">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\thread.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\mutex.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\common\des.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\login\lclif.c">
+      <Filter>login</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\login\account.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\login\ipban.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\login\loginlog.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\login\login.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\cbasetypes.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\conf.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\core.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\console.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\db.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\ers.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\grfio.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\memmgr.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\md5calc.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\mmo.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\nullpo.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\random.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\showmsg.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\socket.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\sql.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\strlib.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\sysinfo.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\timer.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\utils.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\mt19937ar\mt19937ar.h">
+      <Filter>3rdparty\mt19937ar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\grammar.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\libconfig.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\parsectx.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\scanctx.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\scanner.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\strbuf.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\libconfig\wincompat.h">
+      <Filter>3rdparty\libconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\winapi.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\thread.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\mutex.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\atomic.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\des.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\common\spinlock.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\config\const.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\config\core.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\config\secure.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\config\classes\general.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\login\lclif.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\login\lclif.p.h">
+      <Filter>login</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{b50ee803-e71d-4d41-8f7d-2dad5839df50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdparty">
+      <UniqueIdentifier>{ab5c90ec-923d-4847-a214-45b40818211e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdparty\mt19937ar">
+      <UniqueIdentifier>{68e3bcee-28d9-4b2d-8701-614d50f32999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdparty\libconfig">
+      <UniqueIdentifier>{779e8145-9bb2-4a88-9149-60586ab0bdd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="login">
+      <UniqueIdentifier>{8eea96ed-d379-4694-ae2e-ffb0be95170c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{d8fb6ac7-c87d-4d6b-aea4-98a0ea800666}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

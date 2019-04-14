@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de loot de itens.                          |
 \*--------------------------------------------------------------------*/
 
 drops_config: {
+
 	// Quando um item é dropado, o mesmo vai diretamente para o
 	//inventário do jogador?
 	item_auto_get: false
@@ -49,55 +50,58 @@ drops_config: {
 	// (Funciona após o tempo do mvp_item_second_get_time passar)
 	mvp_item_third_get_time: 2000
 
+	// Item drop rates (Note 2)
+
 	// A taxa cujo os itens comuns são dropados
 	//(Itens localizados na aba ETC, exceto cartas)
 	item_rate_common: 1000
 	item_rate_common_boss: 1000
 	item_drop_common_min: 1
-	item_drop_common_max: 1000
+	item_drop_common_max: 10000
 
 	// A taxa cujo os itens de cura são dropados
 	//(itens que recuperam HP ou SP)
 	item_rate_heal: 1000
 	item_rate_heal_boss: 1000
 	item_drop_heal_min: 1
-	item_drop_heal_max: 1000
+	item_drop_heal_max: 10000
 
 	// A taxa cujo os itens usáveis diferentes dos itens de cura são dropados.
 	//(na aba item)
 	item_rate_use: 1000
 	item_rate_use_boss: 1000
 	item_drop_use_min: 1
-	item_drop_use_max: 1000
+	item_drop_use_max: 10000
 
 	// A taxa cujo os equipamentos são dropados.
 	item_rate_equip: 1000
 	item_rate_equip_boss: 1000
 	item_drop_equip_min: 1
-	item_drop_equip_max: 1000
+	item_drop_equip_max: 10000
 
 	// A taxa cujo as cartas são dropadas.
 	item_rate_card: 1000
 	item_rate_card_boss: 1000
 	item_drop_card_min: 1
-	item_drop_card_max: 1000
+	item_drop_card_max: 10000
 
 	// A taxa de ajuste para itens de MvP que vão diretamente para o
 	//inventário de quem o matar
 	item_rate_mvp: 1000
 	item_drop_mvp_min: 1
-	item_drop_mvp_max: 1000
+	item_drop_mvp_max: 10000
 
 	// A taxa de ajuste para itens ganhos por bônus dados por cartas.
 	item_rate_adddrop: 1000
 	item_drop_add_min: 1
-	item_drop_add_max: 1000
+	item_drop_add_max: 10000
+
 
 	// A taxa de ajuste para os drops de Baú do Tesouro
 	//(estes possuem prioridade sobre todos os outros modificadores)
-	item_rate_treasure: 1000
+	item_rate_treasure: 100
 	item_drop_treasure_min: 1
-	item_drop_treasure_max: 1000
+	item_drop_treasure_max: 10000
 
 	// Utilizar drops logarítmicos?
 	// Drops logarítmicos são escalas de drops não-lineares utilizando a equação

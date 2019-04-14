@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração geral.                                     |
 \*--------------------------------------------------------------------*/
 
 misc_config: {
+
 	// Modo PK. O servidor inteiro fica em PvP (exceto as cidades).
 	//A perda de experiência é dobrada quando se morre para um jogador.
 	// Ao matar monstros 20 níveis acima do seu, será recebido 15% de
@@ -45,9 +46,6 @@ misc_config: {
 	// 16: Desabilita criação de salas de chats e vendas
 	manner_system: 31
 
-	// Exibir uso de habilidades no console? (somente depuração)
-	skill_log: false
-
 	// Exibir registro (log) da battle? (somente somente depuração)
 	battle_log: false
 
@@ -69,9 +67,10 @@ misc_config: {
 	// Escolha 0 para desabilitar o ciclo do dia
 	day_duration: 3600000
 
-	// Defina a duração da noite em milissegundos
-	// Escolha 0 para desabilitar o ciclo de noite
-	night_duration: 3600000
+	// Define duration in msec of the night (default: 1800000 = 30 min)
+	// Set to 0 to disable night cycle (but not @night GM command).
+	// Except 0, minimum is 60000 (1 minute)
+	night_duration: 0
 
 	// Habilitar duelos em mapas com pvp
 	duel_allow_pvp: false
@@ -86,7 +85,7 @@ misc_config: {
 	duel_autoleave_when_die: true
 
 	// Intervalo em minutos para utilizar "@duel"
-	duel_time_interval: 60
+	duel_time_interval: 5
 
 	// Restringir o duelo somente no mesmo mapa
 	duel_only_on_same_map: false
@@ -107,12 +106,6 @@ misc_config: {
 	// Configure isto para quantos minutos de autotrade serão
 	//necessários para expulsar um personagem do servidor.
 	at_timeout: 0
-
-	// Taxa por hora no sistema de leilões. O padrão é 12000
-	auction_feeperhour: 12000
-
-	// Preço máximo de venda nos leilões
-	auction_maximumprice: 500000000
 
 	// Tempo mínimo entre o uso do search store em segundos.
 	searchstore_querydelay: 10

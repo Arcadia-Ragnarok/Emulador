@@ -5,21 +5,40 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração da global da Battle.                       |
 \*--------------------------------------------------------------------*/
 
 global_config: {
-	// Quem deve possuir um valor de BaseAtk?
-	//(faz a força afetar o dano)
+
+	// O carregamento de uma habilidade deve ser cancelado quando
+	//inflingida por maldição/artordoar/sono/etc (inclui silêncio)?
+	status_cast_cancel: 0
+
+	// Ajuste para a taxa natural de resistência para mudanças de
+	//status.
+	// Se 50, o status defesa é reduzido pela metade, e você precisará
+	//do dobro de stats para bloqueá-los.
+	// Por exemplo: 200 vit para bloquear completamente atordoar ao
+	//invés de 100
+	pc_status_def_rate: 100
+	mob_status_def_rate: 100
+
+	// Resistências máxima às mudanças de status. (100 = 100%)
+	// NOTA: Cartas e equipamentos podem ultrapassar esse limite, então
+	//isto só se aplica a resistência natural.
+	pc_max_status_def: 100
+	mob_max_status_def: 100
+
+	// Ajuste do BaseAtk medindo força para alterar o dano
 	enable_baseatk: 9
 
-	// Quem pode ter Esquiva Perfeita?
+	// Personagem podem ter Esquiva Perfeita?
 	enable_perfect_flee: 1
 
-	// Quem pode acertar danos críticos?
+	// Ajuste do acerto de danos críticos
 	// (Algumas habilidades sempre acertam o alvo, independente de
 	//ser crítico ou não)
 	enable_critical: 17
@@ -65,6 +84,9 @@ global_config: {
 	// 1 = raça morto-vivo
 	// 2 = ambos (qualquer uma funciona)
 	undead_detect_type: 0
+
+	// Recuperar HP quando atingido pelo mesmo atributo
+	attribute_recover: false
 
 	// Qual é a mínima e máxima taxa de ataque para danos normais? 
 	min_hitrate: 5
@@ -133,9 +155,8 @@ global_config: {
 	//normais (eg: vs. Ghostring).
 	attack_attr_none: 14
 
-	// Taxa na qual equipamentos podem ser quebrados (taxa-base
-	//antes de modificada por qualquer habilidade)
-	// 1 = 0.01% chance. Padrão dos servidores oficiais: 0
+	// Rate at which equipment can break (base rate before it's modified by any skills)
+	// 1 = 0.01% chance. Default for official servers: 0
 	equip_natural_break_rate: 0
 
 	// Taxa na qual seu equipamento é quebrado pelo jogador que
@@ -158,16 +179,6 @@ global_config: {
 	// NOTA: A configuração oficial é yes, mesmo que compromenta
 	//um pouco o desempenho.
 	delay_battle_damage: true
-
-	// Munições/flechas são consumidas quando usadas em arcos/armas?
-	// 0 = Não
-	// 1 = Sim
-	// 2 = Sim, mesmo para habilidades que não especifiquem o consumo de flechas
-	// em habilidades usadas com armas e com armas de alcance
-	//(adivinha automaticamente
-	// quais habilidades devem consumir munição quando é adquirida
-	//por carta ou Plágio)
-	arrow_decrement: 1
 
 	// O item script 'Autospell' deve checar alcance/obstáculos antes
 	//de ser conjurada?

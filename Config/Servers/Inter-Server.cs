@@ -5,40 +5,48 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação para comunicação                            |
 \*--------------------------------------------------------------------*/
 
 inter_configuration: {
+	// Level range for sharing within a party
+	party_share_level: 15 // FIXME: Split RE and pre-RE
 
 	// Log configuration
 	log: {
-		log_inter: false // Logs devem ser gerados?
+		log_inter: true // Logs devem ser gerados?
 		//inter_log_filename: "log/inter.log"
 		@include "Config/Connect/Connections.cs"
 	}
 
 	mysql_reconnect: {
-		// == Configurações do MySQL Reconnect
-		// ===========================
 		// - mysql_reconnect_type
-		// - 1: quando o mysql se desconecta durante o tempo de execução, o servidor tenta reconectar mysql_reconnect_count vezes e,
+		// - Em caso de queda o servidor vai se re-conectar
+		// - 1: quando o mysql se desconecta durante o
+		// tempo de execução, o servidor tenta reconectar
+		// mysql_reconnect_count vezes e,
 		// - se não tiver êxito, o servidor será desligado
-		// - 2: quando o mysql se desconecta durante o tempo de execução ele tenta se reconectar indefinidamente
+		// - 2: quando o mysql se desconecta durante
+		// o tempo de execução ele tenta se reconectar
+		// indefinidamente
 		type: 2
 
 		// - mysql_reconnect_count
-		// - número de tentativas de reconexão que o servidor deve fazer quando o banco de dados é desconectado durante o tempo de execução
-		// - usado somente quando mysql_reconnect_type é 1
+		// - Número de tentativas de reconexão que o
+		//servidor deve fazer quando o banco de dados
+		//é desconectado durante o tempo de execução
+		// - Usado somente quando mysql_reconnect_type é 1
 		count: 1
 	}
 
 	// TODOS os nomes de tabelas da base de dados MySQL
-	// NÃO MUDE ALGUMA COISA ALÉM DESTE LINHA A MENOS QUE VOCÊ CONHEÇA SEU DATABASE MUITO BEM
-	// isso é para pessoas que CONHECEM suas coisas e, por algum motivo, querem mudar suas
-	// layout do banco de dados.
+	// NÃO MUDE ALGUMA COISA ALÉM DESTE LINHA A MENOS QUE
+	//VOCÊ CONHEÇA SEU DATABASE MUITO BEM
+	// isso é para pessoas que CONHECEM suas coisas e,
+	//por algum motivo, querem mudar suas
 	database_names: {
 		account_db: "login"
 		login_db: "loginlog"
@@ -59,6 +67,7 @@ inter_configuration: {
 			hotkey_db: "hotkey"
 			scdata_db: "sc_data"
 			cart_db: "cart_inventory"
+			achievement_db: "char_achievements"
 			inventory_db: "inventory"
 			charlog_db: "charlog"
 			storage_db: "storage"
@@ -91,5 +100,6 @@ inter_configuration: {
 		autotrade_merchants_db: "autotrade_merchants"
 		autotrade_data_db: "autotrade_data"
 		npc_market_data_db: "npc_market_data"
+		npc_barter_data_db: "npc_barter_data"
 	}
 }

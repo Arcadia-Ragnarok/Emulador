@@ -12,6 +12,7 @@
 \*---------------------------------------------------------------------*/
 
 skill_config: {
+
 	// A taxa de tempo para conjurar uma magia.
 	casting_rate: 100
 
@@ -20,7 +21,6 @@ skill_config: {
 
 	// O tempo de delay depende da DES e/ou AGI de quem conjura?
 	// Nota: Em servidores oficiais, nem DES nem AGI afetam o tempo de
-	//delay
 	delay_dependon_dex: false
 	delay_dependon_agi: false
 
@@ -280,32 +280,6 @@ skill_config: {
 	max_heal: 9999
 	max_heal_lv: 11
 
-	// Configurações do Chamado Urgente
-	//(Se Necessário Some os valores Desejados).
-	// Note que para que esta habilidade funcione, 
-	// você precisa de pelo menos um de 1/2 e 4/8
-	// 1: É possível usar a habilidade sem GdE.
-	// 2: É possível usar a habilidade durante a GdE.
-	// 4: É possível usar a habilidade fora de locais GvG
-	// 8: É possível usar a habilidade em mapas GvG
-	//16: Desabilitar habilidade em mapas com "nowarpto"
-	// (irá funcionar em Castelos GvG mesmo se somado o valor 16 na
-	//configuração)
-	emergency_call: 11
-
-	// Configurações da Aura do Clã
-	//(Se Necessário Some os valores Desejados).
-	// (Isto afeta GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD
-	//e GD_HAWKEYES)
-	// Note que para que esta habilidade funcione, 
-	// você precisa de pelo menos um de 1/2 e 4/8
-	// 1: É possível usar a habilidade sem GdE.
-	// 2: É possível usar a habilidade durante a GdE.
-	// 4: É possível usar a habilidade fora de locais GvG
-	// 8: É possível usar a habilidade em mapas GvG
-	//16: Desabilitar o efeito sobre o Líder do Clã
-	guild_aura: 31
-
 	// Habilitar jogadores de pular o menu quando utilizar Teleporte nível 1
 	// O menu contém apenas duas opções. "Aleatório" e "Cancelar"
 	skip_teleport_lv1_menu: false
@@ -353,6 +327,14 @@ skill_config: {
 	// Padrão: yes
 	dancing_weaponswitch_fix: true
 
+	// Skill Trap Type (GvG)
+	// 0: (official) Traps in GvG only make player stop moving after its walk path is complete, and it activates other traps on the way.
+	// 1: Traps in GvG make player stop moving right when stepping over it.
+	skill_trap_type: 0
+
+	// O dado de armadilhas pode ser refletido?
+	trap_reflect: true
+
 	// Tipos de Armadilhas (GvG)
 	// 0: (oficial) Armadilhas usadas em GvG só farão o jogador parar de
 	//se mover depois de sua trajetória completa, e ele ativa outras
@@ -379,4 +361,12 @@ skill_config: {
 	// Caso você desabilite esta opção, o empurrão da Nevasca dentro das
 	//células descritas serão totalmente aleatórios. (eAthena Padrão)
 	stormgust_knockback: true
+
+	// Magic Rod's animation behavior
+	// 0 : (official) Magic Rod's animation occurs every time it is used.
+	// 1 : Magic Rod's animation would not occur unless a spell was absorbed. (old behavior)
+	magicrod_type: 0
+
+	// Exibir uso de habilidades no console? (somente depuração)
+	skill_log: false
 }

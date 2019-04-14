@@ -5,14 +5,13 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação para o sistema de Batalha Campal            |
 +----------------------------------------------------------------------+
 | - NOTA: É necessário cincronia com os npcs e client para que isso    |
 |         funcione.                                                    |
-|         Estes npcs ainda não foram criados                           |
 \*--------------------------------------------------------------------*/
 
 battlegrounds: ({

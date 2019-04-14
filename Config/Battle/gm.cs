@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de GM.                                     |
 \*--------------------------------------------------------------------*/
 
 gm_config: {
+
 	// A quantidade máxima de monstros que podem ser invocados por
 	//atcommand (0 significa quantidade ilimitada)
 	atcommand_spawn_quantity_limit: 100
@@ -32,6 +33,11 @@ gm_config: {
 	//podem atingir até 32k nos atributos.
 	atcommand_max_stat_bypass: false
 
+	// Banir pessoas que tentam burlar a negociação.
+	// Duração do banimento, em minutos (padrão: 5).
+	//Para desabilitar, defina 0.
+	ban_hack_trade: 5
+
 	// 1: Modifica @mobinfo para informar ao usuário a chance de
 	//drop real pela formula do renewal_drop.
 	// 2: Modifica @iteminfo para não exibir a chance mínima de
@@ -48,7 +54,7 @@ gm_config: {
 	// Essa opção funciona apenas em @baselevelup and @joblevelup
 	atcommand_levelup_events: false
 
-	// Sugestão no atcommand (Nota 1)
+	// Sugestão no atcommand
 	// Se for digitado um atcommand incompleto, irá ser sugerido o correto.
 	atcommand_suggestions: false
 

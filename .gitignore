@@ -1,38 +1,37 @@
-#Global
-.Apple*
-.DS_Store
-._*
-.clang_complete
-.local.vimrc
-.ycm_extra_conf.py*
-Thumbs.db
-
-# /
+# Global
+/VS-BUILD.opensdf
+/VS-BUILD.sdf
 /*.exe
+/*.suo
 
 # libconfig
-/Source/3rdparty/libconfig/*.o
+/Build/3rdparty/libconfig/*.o
+/Build/3rdparty/libconfig/Makefile
 
 # mt19937ar
-/Source/3rdparty/mt19937ar/*.o
+/Build/3rdparty/mt19937ar/*.o
+/Build/3rdparty/mt19937ar/Makefile
 
-/Source/src/char/obj_sql
+#char
+/Build/source/char/obj_sql
+/Build/source/char/Makefile
 
 # common
-/Source/src/common/obj_all
-/Source/src/common/obj_sql
-/Source/src/common/sysinfo.inc
+/Build/source/common/obj_all
+/Build/source/common/obj_sql
+/Build/source/common/Makefile
+/Build/source/common/sysinfo.inc
 
 # login/
-/Source/src/login/Makefile
-/Source/src/login/obj_sql
+/Build/source/login/obj_sql
+/Build/source/login/Makefile
 
 # map/
-/Source/src/map/obj_sql
+/Build/source/map/obj_sql
+/Build/source/map/Makefile
 
-# /vcproj-*
-/Source/vcproj-*/*.user
-/Source/vcproj-*/char-server
-/Source/vcproj-*/login-server
-/Source/vcproj-*/map-server
-/Source/vcproj-*/mapcache
+# vs-proj/
+/Build/vs-proj/Output/*.pdb
+/Build/vs-proj/Output/char-server
+/Build/vs-proj/Output/login-server
+/Build/vs-proj/Output/map-server

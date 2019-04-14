@@ -5,13 +5,14 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__  (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
 | - Arquivo de configuração de Homunculus.                             |
 \*--------------------------------------------------------------------*/
 
 homunc_config: {
+
 	// Configurações de homunculus (Nota 3)
 	// Ativa várias 'peculiaridades' que fazem os homunculus agirem
 	//diferentemente dos jogadores comuns.
@@ -53,4 +54,8 @@ homunc_config: {
 
 	// Nível máximo para o homunculus S
 	homunculus_S_max_level: 150
+
+	// Auto alimentar Homunculus?
+	enable_homun_autofeed: true
+
 }

@@ -5,7 +5,7 @@
 |             /  /|  | '__/  __|/ _` |/ _  | |/ _` |                   |
 |            /  __   | | |  |__| (_| | (_| | | (_| |                   |
 |           /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                   |
-|          /__/   |__|  [ Ragnarok Emulator ]                          |
+|          /__/   |__|                                                 |
 |                                                                      |
 |----------------------------------------------------------------------|
 | - Descrição: Configuação para char-Serve                             |
@@ -22,7 +22,7 @@ char_configuration: {
 	server_name: "Arcadia"
 
 	// Wisp nome para servidor: usado para enviar wisp do servidor para os jogadores (entre 4 a 23 caracteres)
-	wisp_server_name: "Emulador Arcadia"
+	wisp_server_name: "Arcadia RO"
 
 	// -----------------------------------------------------------------
 	// - Configuração de permissão de acesso
@@ -35,11 +35,13 @@ char_configuration: {
 		display_new: false
 
 		// Máximo de usuários capazes de se conectar ao servidor.
-		// Definir como 0 para desativar os usuários para log-in. (-1 significa ilimitado)
+		// Definir como 0 para desativar os usuários para log-in.
+		// -1 significa ilimitado
 		max_connect_user: -1
 
-		// ID de grupo que tem permissão para ignorar o limite de servidores de usuários.
-		// Default: -1 = todos (não há grupos com ID <0)
+		// ID de grupo que tem permissão para ignorar o limite de
+		// servidores de usuários.
+		// Padrão: -1 = todos (não há grupos com ID <0)
 		gm_allow_group: -1
 
 		// Tipo de servidor.
@@ -48,7 +50,8 @@ char_configuration: {
 		// 0 = normal, 1 = manutenção, 2 = acima de 18
 		server_type: 0
 
-		// ID de grupo mínimo para ingressar no servidor char quando ele estiver no char_server_type 1 (manutenção)
+		// ID de grupo mínimo para ingressar no servidor char
+		// quando ele estiver no char_server_type 1 (manutenção)
 		maintenance_min_group_id: 99
 	}
 
@@ -88,45 +91,67 @@ char_configuration: {
 			// Nome usado para pesonagens desconhecidos
 			unknown_char_name: "Unknown"
 
-			// Permitir ou não nome idêntico para caracteres mas com um caso diferente (superior / inferior):
-			// exemplo: Test-test-TEST-TesT; Valor: 0 não permitido (padrão), 1 permitido
+			// Permitir ou não nome idêntico para caracteres mas com
+			//um caso diferente (superior / inferior):
+			// Exemplo: Test-test-TEST-TesT;
 			name_ignoring_case: false
 
-			// Gerenciar possíveis letras / símbolo no nome do charater. O caractere de controle (0x00-0x1f) nunca é aceito. Os valores possíveis são:
-			// NOTA: Aplica-se a nomes de personagens, partidos e guildas.
+			// Gerenciar possíveis letras / símbolo no nome do charater.
+			// O caractere de controle (0x00-0x1f) nunca é aceito.
+			// NOTA: Aplica-se a nomes de personagens, partidos e
+			//guildas.
+			// Os valores possíveis são:
 			// 0: nenhuma restrição (padrão)
 			// 1: apenas letras / símbolos na opção 'name_letters'.
-			// 2: As letras / símbolos na opção 'name_letters' são proibidas. Todos os outros são possíveis.
+			// 2: As letras / símbolos na opção 'name_letters'
+			//são proibidas. Todos os outros são possíveis.
 			name_option: 1
 
-			// Defina as letras / símbolos que você deseja usar com a opção 'nome_do_caracteres'.
-			// Nota: Antes de modificar esses caracteres leia a respeito de injeção SQL.
-			// Em ferramentas de uso conhecidas como CP-Painel típicas de ragnarok pode abrir brechas
+			// Defina as letras / símbolos que você deseja usar com a
+			//opção 'nome_do_caracteres'.
+			// Nota: Antes de modificar esses caracteres leia a
+			//respeito de injeção SQL.
+			// Em ferramentas de uso conhecidas como CP-Painel
+			//típicas de ragnarok pode abrir brechas
 			// na segurança do servidor.
-			// Mais informações: https://pt.wikipedia.org/wiki/Injeção_de_SQL
+			// Mais informações:
+			// https://pt.wikipedia.org/wiki/Injeção_de_SQL
 			name_letters: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$%¨&*-+._-^~"
+
+			// Bloquear renomear personagem caso esteja em um clã ou
+			// grupo?
+			// Ativando isso pode evitar conflitos nos registros do
+			//banco de dados,  quando se utiliza de sistema para
+			//troca de nome.
+			use_aegis_rename: false
 		}
 
 		// -----------------------------------------------------------
 		// Configuração para apagar personagens
 		deletion: {
 			// Restringir a exclusão de caracteres por BaseLevel
-			// 0: nenhuma restrição (os jogadores podem excluir caracteres de qualquer nível)
+			// 0: nenhuma restrição (os jogadores podem excluir
+			//caracteres de qualquer nível)
 			// -X: você não pode excluir caracteres com BaseLevel <= X
 			// Y: você não pode excluir caracteres com BaseLevel> = Y
-			// por exemplo. Char_del_level: 80 (os jogadores não podem excluir caracteres com 80 + BaseLevel)
+			// por exemplo. Char_del_level: 80 (os jogadores não podem
+			//excluir caracteres com 80 + BaseLevel)
 			level: 0
 
-			// Quantidade de tempo em segundos pelo qual a exclusão do caractere está atrasada.
+			// Quantidade de tempo em segundos pelo qual a exclusão
+			//do caractere está atrasada.
 			// Padrão: 86400 (24 horas)
-			// NOTA: requer o cliente 2010-08-03aragexeRE ou mais recente.
+			// NOTA: requer o cliente 2010-08-03aragexeRE ou mais
+			//recente.
 			delay: 0
 
-			// Bloqueia a exclusão se o personagem estiver dentro de uma guild ou de uma festa? (BOOL)
-			// official: true
-			// Esta verificação é imposta pela Aegis para evitar entradas mortas nos bancos de dados e _is_not_needed_ como nós limpar dados corretamente!
-			use_aegis_delete: false
+			// Bloquear a exclusão se o personagem estiver dentro
+			//de uma guild ou de um grupo?
+			// Esta verificação é imposta pela Aegis para evitar
+			//entradas mortas nos bancos de dados.
+			use_aegis_delete: true
 		}
+
 		// Tamanho para as listas de Fama
 		fame: {
 			alchemist: 10
@@ -170,13 +195,14 @@ char_configuration: {
 
 		// Recusar sequencias contidas no "check_blacklisted" para
 		// criação do código pin?
-		check_blacklisted: false
+		check_blacklisted: true
 
 		// Lista de sequencias bloquadas
 		// Você pode adicionar/remover o quanto quiser.
 		blacklist: [
 			"0000", "1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999",
-			"0123", "1234", "2345", "3456", "4567", "5678", "6789"
+			"0123", "1234", "2345", "3456", "4567", "5678", "6789",
+			"9876", "6543", "3210"
 		]
 	}
 }
