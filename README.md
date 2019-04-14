@@ -23,20 +23,18 @@ No geral é voltado a uso pessoal por parte dos colaboradores, mas mantendo seu c
 Dedicado a um servidor de rates baixos sem custominizações.
 
 #### Desenvolvimento geral.
-Como dito anteriormente seu código vem e é modificado em relação ao emulador Hercules. Sendo conta com 100% traduzido para o português brasileiro. 
-Em outra parte sendo modificado severamente ou removido tudo aquilo que seja considerável inútil ou inadequado para exisitr em um emulador de ragnarok, além de modificações peculiares para melhor uso e praticidade.
+Como dito anteriormente seu código vem e é modificado em relação ao emulador Hercules. Sendo conta com a tradução para o português brasileiro. 
+Em outra parte sendo modificado severamente ou removido tudo aquilo que seja considerável, inútil ou inadequado para exisitr em um emulador de ragnarok, além de modificações peculiares para melhor uso e praticidade.
 
 #### Agradecimentos.
-Primiramente devemos agradecer aos desenvolvedores e colaboradores que criaram o Athena que sem eles nenhum emulador de ragnarok seria possível.
+Primeiramente devemos agradecer aos desenvolvedores e colaboradores que criaram o Athena que sem eles nenhum emulador de ragnarok seria possível.
 
-Em segundo a equipe do Hercules por melhorar o código original do emulador, e aos contribuídores do mesmo que periódicamente atualizam e modificam seu código.
+Em segundo a equipe do Hercules por melhorar o código original do emulador Athena, e aos contribuídores do mesmo que periódicamente atualizam e modificam seu código.
 
 -------------
 #### Compilador para testar o emulador.
 ###### Windows
-- Microsoft Visual Studio ([Versão 2012 até 2015](https://www.visualstudio.com/))
-
-* Compilador sugerido ([Senha para descompactar "spell"](https://mega.nz/#!XYdxyZiY!K0zcnNIvgNBVGIfbQ8v5zYjhGM8NoVLxjNFrMYBvkSg))
+- Microsoft Visual Studio ([Versão 2013 ou posterior](https://www.visualstudio.com/))
 
 ###### Linux
 * Requer usuário avançado e o código ainda não está 100% estável para o OS
@@ -44,7 +42,3 @@ Em segundo a equipe do Hercules por melhorar o código original do emulador, e ao
 
 -------------
 
-#### Para testes em sistemas operacionais Windows.
-- Download da compilação ([Link](https://drive.google.com/drive/folders/104sJ5B6NvulDBUMpHbaF-Fad3QDFWEY9?usp=sharing))
-
--------------
