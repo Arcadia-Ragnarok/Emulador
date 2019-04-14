@@ -30,15 +30,3 @@ Em outra parte sendo modificado severamente ou removido tudo aquilo que seja con
 Primeiramente devemos agradecer aos desenvolvedores e colaboradores que criaram o Athena que sem eles nenhum emulador de ragnarok seria possível.
 
 Em segundo a equipe do Hercules por melhorar o código original do emulador Athena, e aos contribuídores do mesmo que periódicamente atualizam e modificam seu código.
-
--------------
-#### Compilador para testar o emulador.
-###### Windows
-- Microsoft Visual Studio ([Versão 2013 ou posterior](https://www.visualstudio.com/))
-
-###### Linux
-* Requer usuário avançado e o código ainda não está 100% estável para o OS
-
-
--------------
-

@@ -1,6 +1,5 @@
 language: c
 compiler:
-  - clang
   - gcc
   
 before_script:
@@ -11,7 +10,7 @@ script:
   - chmod 777 sysinfogen.sh
   - ./configure
   - make clean
-  - make sql
+  - make arcadia
   
 notifications:
   email: false
