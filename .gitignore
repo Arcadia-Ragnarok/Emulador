@@ -31,7 +31,7 @@
 /Build/source/map/Makefile
 
 # vs-proj/
-/Build/vs-proj/Output/*.pdb
-/Build/vs-proj/Output/char-server
-/Build/vs-proj/Output/login-server
-/Build/vs-proj/Output/map-server
+/Build/Output/*.pdb
+/Build/Output/char-server
+/Build/Output/login-server
+/Build/Output/map-server
