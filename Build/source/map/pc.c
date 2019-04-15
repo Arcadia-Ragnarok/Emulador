@@ -11658,12 +11658,7 @@ static void pc_validate_levels(void)
 		if ( 
 			/* Casamento / Natal e Praia não recebem EXP */
 			i == JOB_WEDDING || i == JOB_XMAS || i == JOB_SUMMER
-			/* == [ Remoção não definitiva das classes 3rd T ] == */
-			|| i == JOB_RUNE_KNIGHT_T2 || i == JOB_ROYAL_GUARD_T2 || i == JOB_RANGER_T2 || i == JOB_MECHANIC_T2
-			|| (i >= JOB_GANGSI && i <= JOB_DARK_COLLECTOR) 
-			|| (i >= JOB_RUNE_KNIGHT_T && i <= JOB_GUILLOTINE_CROSS_T) 
-			|| (i >= JOB_ROYAL_GUARD_T && i <= JOB_SHADOW_CHASER_T)
-			/* == */
+			|| (i >= JOB_GANGSI && i <= JOB_DARK_COLLECTOR)
 		) {
 			continue;
 		}
