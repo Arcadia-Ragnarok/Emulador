@@ -26,7 +26,6 @@
 //Caps values to min/max
 #define cap_value(a, min, max) (((a) >= (max)) ? (max) : ((a) <= (min)) ? (min) : (a))
 
-#ifdef HERCULES_CORE
 // generate a hex dump of the first 'length' bytes of 'buffer'
 void WriteDump(FILE* fp, const void* buffer, size_t length);
 void ShowDump(const void* buffer, size_t length);
@@ -64,7 +63,6 @@ extern float GetFloat(const unsigned char* buf);
 
 size_t hread(void * ptr, size_t size, size_t count, FILE * stream);
 size_t hwrite(const void * ptr, size_t size, size_t count, FILE * stream);
-#endif // HERCULES_CORE
 
 #ifdef WIN32
 #define HSleep(x) Sleep(1000 * (x))

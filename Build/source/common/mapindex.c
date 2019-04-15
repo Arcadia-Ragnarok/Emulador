@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "mapindex.h"
 

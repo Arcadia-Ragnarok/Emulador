@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "login.h"
 #include "login/account.h"

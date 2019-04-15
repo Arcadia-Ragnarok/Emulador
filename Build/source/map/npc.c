@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // NPC_SECURE_TIMEOUT_INPUT, NPC_SECURE_TIMEOUT_MENU, NPC_SECURE_TIMEOUT_NEXT, SECURE_NPCTIMEOUT, SECURE_NPCTIMEOUT_INTERVAL
 #include "npc.h"

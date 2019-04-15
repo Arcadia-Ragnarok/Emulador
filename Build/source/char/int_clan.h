@@ -26,9 +26,6 @@ struct inter_clan_interface {
 	int (*parse_frommap) (int fd);
 };
 
-#ifdef HERCULES_CORE
 void inter_clan_defaults(void);
-#endif // HERCULES_CORE
-
 extern struct inter_clan_interface *inter_clan;
 #endif /* CHAR_INT_CLAN_H */

@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // CELL_NOSTACK, CIRCULAR_AREA, CONSOLE_INPUT, HMAP_ZONE_DAMAGE_CAP_TYPE, OFFICIAL_WALKPATH, RE_LVL_DMOD(), RE_LVL_MDMOD(), RE_LVL_TMDMOD(), RE_SKILL_REDUCTION(), SCRIPT_CALLFUNC_CHECK, SECURE_NPCTIMEOUT
 #include "battle.h"

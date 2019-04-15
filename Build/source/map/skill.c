@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // DBPATH, MAGIC_REFLECTION_TYPE, OFFICIAL_WALKPATH, VARCAST_REDUCTION()
 #include "skill.h"

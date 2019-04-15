@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "quest.h"
 
@@ -579,7 +578,7 @@ static int quest_read_db(void)
 		count++;
 	}
 	libconfig->destroy(&quest_db_conf);
-	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em '"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
+	ShowStatus("Leitura de '"CL_WHITE"%d"CL_RESET"' registros em Database/'"CL_WHITE"%s"CL_RESET"'.\n", count, filename);
 	return count;
 }
 

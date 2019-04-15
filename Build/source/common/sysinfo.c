@@ -17,7 +17,6 @@
  *
  * Base Author: Haru @ http://herc.ws
  */
-#define HERCULES_CORE
 
 #include "sysinfo.h"
 

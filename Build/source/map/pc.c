@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // DBPATH, GP_BOUND_ITEMS, MAX_SPIRITBALL, SECURE_NPCTIMEOUT
 #include "pc.h"

@@ -12,8 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
-
 #include "int_achievement.h"
 
 #include "char/char.h"

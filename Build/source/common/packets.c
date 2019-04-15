@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // CONSOLE_INPUT, MAX_CONSOLE_INPUT
 #include "common/packets.h"

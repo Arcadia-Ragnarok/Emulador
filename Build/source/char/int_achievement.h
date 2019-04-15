@@ -40,9 +40,6 @@ struct inter_achievement_interface {
 	int (*parse_frommap) (int fd);
 };
 
-#ifdef HERCULES_CORE
 void inter_achievement_defaults(void);
-#endif // HERCULES_CORE
-
 extern struct inter_achievement_interface *inter_achievement;
 #endif /* CHAR_INT_ACHIEVEMENT_H */

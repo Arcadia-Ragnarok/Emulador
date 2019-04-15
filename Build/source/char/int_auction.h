@@ -38,10 +38,7 @@ struct inter_auction_interface {
 	void (*sql_final) (void);
 };
 
-#ifdef HERCULES_CORE
 void inter_auction_defaults(void);
-#endif // HERCULES_CORE
-
 extern struct inter_auction_interface *inter_auction;
 
 #endif /* CHAR_INT_AUCTION_H */

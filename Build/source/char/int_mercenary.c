@@ -12,10 +12,7 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
-
 #include "int_mercenary.h"
-
 #include "char/char.h"
 #include "char/inter.h"
 #include "char/mapif.h"

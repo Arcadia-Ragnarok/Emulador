@@ -33,10 +33,7 @@ struct inter_elemental_interface {
 	bool (*delete) (int ele_id);
 };
 
-#ifdef HERCULES_CORE
 void inter_elemental_defaults(void);
-#endif // HERCULES_CORE
-
 extern struct inter_elemental_interface *inter_elemental;
 
 #endif /* CHAR_INT_ELEMENTAL_H */

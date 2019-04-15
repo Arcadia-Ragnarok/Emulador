@@ -295,7 +295,6 @@ struct char_interface {
 	bool (*config_read_top) (const char *filename, const struct config_t *config);
 };
 
-#ifdef HERCULES_CORE
 extern int char_name_option;
 extern char char_name_letters[];
 extern bool char_gm_read;
@@ -341,8 +340,6 @@ extern int guild_exp_rate;
 
 void char_load_defaults(void);
 void char_defaults(void);
-#endif // HERCULES_CORE
-
 struct char_interface *chr;
 
 #endif /* CHAR_CHAR_H */

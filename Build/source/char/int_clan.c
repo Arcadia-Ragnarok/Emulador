@@ -12,8 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
-
 #include "config/core.h" // DBPATH
 #include "int_clan.h"
 

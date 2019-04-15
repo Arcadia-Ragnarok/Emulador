@@ -12,8 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
-
 #include "geoip.h"
 
 #include "common/cbasetypes.h"

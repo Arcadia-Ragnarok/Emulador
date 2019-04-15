@@ -12,10 +12,7 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
-
 #include "int_auction.h"
-
 #include "char/char.h"
 #include "char/int_mail.h"
 #include "char/inter.h"

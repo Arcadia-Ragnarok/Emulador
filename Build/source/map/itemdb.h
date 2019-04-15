@@ -680,10 +680,7 @@ struct itemdb_interface {
 	int (*addname_sub) (union DBKey key, struct DBData *data, va_list ap);
 };
 
-#ifdef HERCULES_CORE
 void itemdb_defaults(void);
-#endif // HERCULES_CORE
-
 extern struct itemdb_interface *itemdb;
 
 #endif /* MAP_ITEMDB_H */

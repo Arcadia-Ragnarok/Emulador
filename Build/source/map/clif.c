@@ -12,7 +12,6 @@
 | - Copyright: Spell master (Source Mod)                            |
 \*-----------------------------------------------------------------*/
 
-#define HERCULES_CORE
 
 #include "config/core.h" // ANTI_MAYAP_CHEAT, SECURE_NPCTIMEOUT
 #include "clif.h"
