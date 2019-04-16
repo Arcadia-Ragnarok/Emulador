@@ -1,0 +1,11 @@
+
+// Teste de ativação da navegação
+// Não implementar até correção dos bugs nos arquivos LUA
+// Encontrado diversos bugs nos arquivos de navegação disponíveis na Web
+// Ação: Adicionar todos npcs do servidor e re-escrever de forma correta o sistema de navegação
+// nos arquivos Lua na Data
+alberta,23,238,4	script	Teste	8W_SOLDIER,{
+	mes F_Navi("Teste","alberta,99,152");
+	close2;
+	end;
+}

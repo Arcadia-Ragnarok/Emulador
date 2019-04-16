@@ -1,0 +1,980 @@
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
+|                                                                   |
++-------------------------------------------------------------------+
+| - Copyright: Spell Master                                         |
+| - Info: Diversos npcs Barqueiros                                  |
+\*-----------------------------------------------------------------*/
+
+// ------------------------------------------------------------------
+// - [Alberta > Izlude ] - 
+// ------------------------------------------------------------------
+alberta,189,151,5	script	Marinheiro Fisk#AlbIz	4W_SAILOR,{
+	mes "[Marinheiro Fisk]";
+	mes "Olá, partirei em breve para Izlude.";
+	mes "Gostaria de ir, por apênas 500 Zenys?";
+	next;
+	if (select("Ir á Izlude","Ficar em Alberta") == 1) {
+		if (Zeny < 500) {
+			mes "[Marinheiro Fisk]";
+			mes "Eu disse que preciso de 500 Zeny, e parece que você não tem.";
+			close;
+		} else {
+			Zeny -= 500;
+			close2;
+			warp("izlude",176,182);
+			end;
+		}
+	}
+	mes "[Marinheiro Fisk]";
+	mes "Bem...";
+	mes "Você parece mesmo uma pessoa que gosta de terra firme.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Alb2Trea] - 
+// ------------------------------------------------------------------
+alberta,195,151,2	script	Paul#AlbTre	4_M_04,{
+	mes "[Paul]";
+	mes "Bom dia";
+	mes "Você gostaria de juntar-se ao time de exploração do Navio Fantasma?";
+	next;
+	mes "[Paul]";
+	mes "Oh! Melhor lhe alertar, esse evento é recomendado para guerreiros de ALTO NÍVEL.";
+	next;
+	mes "[Paul]";
+	mes "Então o que diz?";
+	mes "Apenas 200 zeny para participar e você vai ter uma tonelada de experiência, eu garanto.";
+	next;
+	switch (select("Inscreva-me!","Uh, não obrigado.")) {
+		case 1:
+		if (Zeny < 200) {
+			mes "[Paul]";
+			mes "Parece que você não tem o dinheiro, meu amigo. Por favor, volte quando for capaz de pagar.";
+			close;
+		} else {
+			close2;
+			warp("alb2trea",62,69);
+			Zeny -= 200;
+			end;
+		}
+		case 2:
+		mes "[Paul]";
+		mes "Tudo bem, bem... eu estarei por perto se você mudar de idéia";
+		close;
+	}
+}
+
+alb2trea,39,50,6	script	Paul#AlbTre2	4W_SAILOR,{
+	mes "[Paul]";
+	mes "Deseja voltar para alberta Alberta?";
+	next;
+	if (select("Sim por favor.","Não, Mudei de idéia.") == 1 ) {
+		close2;
+		warp("alberta",192,169);
+		end;
+	}
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Amatsu ] - 
+// ------------------------------------------------------------------
+alberta,245,93,3	script	Capitão#Walter	4_M_SEAMAN,{
+	mes "[Walter Moers]";
+	mes "Ei, você aí...";
+	mes "Por acaso você sabia que existem países completamente diferentes do reino de Rune Midgard?";
+	next;
+	switch (select("Saber mais sobre Amatsu...","Ir para Amatsu:Cancelar")) {
+		case 1:
+		mes "[Walter Moers]";
+		mes "Eu ouvi falar que um navio à deriva acidentalmente descobriu este país peculiar...";
+		mes "A embarcação foi completamente destruída por uma incrível tempestade de fúria indescritível.";
+		next;
+		mes "[Walter Moers]";
+		mes "Enfim, o viajante acordou em uma praia, cercado pelos destroços de seu antigo navio.";
+		mes "Se levantando, cansado e ferido, ele avistou Amatsu.";
+		mes "Os habitantes de lá o acolheram e cuidaram de seus ferimentos, e ele continuou vivendo lá até poder completar um mapa para voltar.";
+		next;
+		mes "[Walter Moers]";
+		mes "Ele faleceu quando retornou dessa incrível viagem.";
+		mes "Por sorte, o mapa foi encontrado e entregue à Tristan III.";
+		mes "Que prometeu recompensar aqueles que se aventurarem em Amatsu, com sua eterna gratidão e reconhecimento.";
+		next;
+		mes "[Walter Moers]";
+		mes "Incontáveis aventureiros e corajosos capitães resolveram aceitar o desafio.";
+		mes "Pois além da grande fortuna que poderiam adquirir com a troca de produtos e conhecimento com os habitantes de Amatsu.";
+		mes "Ainda haveria a generosa recompensa de nosso Rei...";
+		next;
+		mes "[Walter Moers]";
+		mes "Porém, todos eles falharam!";
+		mes "Para superar as fortes correntes marítimas e as tempestades que cercam esse páis.";
+		mes "É preciso de nada menos que os mais experientes homens e mulheres.";
+		mes "Mas eles foram todos cegos pela promessa de fama e fortuna.";
+		mes "Eles não estavam preparados para essa viagem.";
+		next;
+		mes "[Walter Moers]";
+		mes "O que eles não sabiam é que existia uma rota muito mais tranquila e segura para Amatsu...";
+		mes "E apenas um homem a conhece...";
+		mes "Eu! Capitão Walter Moers! Hahaha!";
+		mes "E aqui termina a minha história sobre Amatsu.";
+		next;
+		mes "[Walter Moers]";
+		mes "Eu obtive excelentes lucros com o comércio entre Amatsu e Rune Midgard durante todos esses anos.";
+		mes "Mas agora, eu estou interessado apenas no turismo.";
+		mes "Se você deseja ir a Amatsu, fale comigo para negociarmos sua viagem!";
+		close;
+		case 2:
+		mes "[Walter Moers]";
+		mes "Você quer ir até Amatsu é?";
+		mes "É um longo caminho...";
+		mes "E por isso, eu terei que lhe cobrar uma taxa.";
+		mes "Você não pensou que eu ia fazer uma viagem longa e perigosa dessas de graça né?";
+		next;
+		mes "[Walter Moers]";
+		mes "Serão apenas 10,000 zeny pelo pacote completo!";
+		mes "Você terá um quarto com lençóis limpos e boa comida durante toda a viagem!";
+		mes "Considerando que esta viagem não é apenas de ida, eu diria que o preço está ótimo, não?";
+		next;
+		mes "[Walter Moers]";
+		mes "Então, vamos partir agora?";
+		mes "Você está levando o dinheiro consigo, não?";
+		mes "Então vamos lá!";
+		next;
+		if (select("Embarcar no Navio!","Cancelar") == 1) {
+			if (Zeny > 9999) {
+				mes "[Walter Moers]";
+				mes "Ok, eu vou içar as velas!";
+				mes "Todos preparem-se para zarpar!";
+				Zeny -= 10000;
+				close2;
+				warp("amatsu",197,83);
+				end;
+			} else {
+				mes "[Walter Moers]";
+				mes "Por acaso você não fui claro o suficiente?";
+				mes "São 10,000 zeny.";
+				mes "Se você não tem isso, vá caçar monstros...";
+				mes "Ou procurar tesouros em algum navio fantasma.";
+				mes "Eu quero ver essa grana contadinha na minha mão.";
+				close;
+			}
+		}
+		mes "[Walter Moers]";
+		mes "Se você é um aventureiro, essa é a sua grande chance de se aventurar em novos reinos...";
+		mes "Bem, a decisão final é sua.";
+		close;
+		case 3:
+		mes "[Walter Moers]";
+		mes "Quando você se cansar da sua vida rotineira, viaje comigo até esse país distante do outro lado do oceano.";
+		close;
+	}
+}
+
+amatsu,194,79,5	script	Capitão#Walter2	4_M_SEAMAN,{
+	mes "[Walter Moers]";
+	mes "Ahn, é você! Me conte, o que está achando da sua visita em Amatsu?";
+	mes "Não vai me dizer que já quer voltar para Alberta?";
+	next;
+	if (select("Voltar para Alberta","Cancelar") == 1) {
+		mes "[Walter Moers]";
+		mes "Vou preparar o navio para a partida!";
+		mes "Aposto que você tem muita coisa pra contar quando voltar!";
+		mes "Todos à bordo!";
+		close2;
+		warp("alberta",243,91);
+		end;
+	}
+	mes "[Walter Moers]";
+	mes "Tudo bem, fique o tempo que desejar.";
+	mes "O navio estará sempre aqui para quando você quiser voltar...";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Ayothaya ] - 
+// ------------------------------------------------------------------
+alberta,247,42,3	script	Aibakthing#alb	4_M_THAIONGBAK,{
+	mes "[Aibakthing]";
+	mes "Hmm! Hahh! Hmm! Hahh!";
+	mes "Deixe-me apresentar a você minha cidade, Ayothaya onde vive tudo o que é sagrado e misterioso!";
+	next;
+	switch (select("Fale-me sobre Ayothaya.","Ir para Ayothaya.","Cancelar.")) {
+		case 1:
+		mes "[Aibakthing]";
+		mes "Nós, os Ayothayanos somos religiosos e amamos a paz e a sinceridade.";
+		mes "Nós procuramos uma vida nobre e esplêndida.";
+		mes "Somos de natureza gentil, mas capazes de nos proteger quando é preciso.";
+		next;
+		mes "[Aibakthing]";
+		mes "A comida é especialmente boa.";
+		mes "Nosso prato mais tradicional é a Sopa Tailandesa feita com limão, camarões e pimenta que possui um sabor incrível com aroma único.";
+		mes "E sugiro que você prove-a em Ayothaya.";
+		next;
+		mes "[Aibakthing]";
+		mes "Na história de Ayothaya existe um fato terrível que fala sobre uma criatura maligna chamada 'Tigre Sa-mhing' que, contam, devorava pessoas.";
+		next;
+		mes "[Aibakthing]";
+		mes "Hmm! Hah! Hmm! Hah!";
+		mes "Ninguém resiste a um convite tão tentador a visitar uma área tão bela.";
+		mes "Você será Bem-vindo a qualquer hora!";
+		close;
+		case 2:
+		mes "[Aibakthing]";
+		mes "Se você desejar visitar Ayothaya.";
+		mes "Pedirei uma humilde taxa de 10.000 zenys!";
+		mes "Hmm! Hah! Hmm! Hah!";
+		next;
+		mes "[Aibakthing]";
+		mes "Agora, você gostaria de visitar Ayothaya!?";
+		next;
+		if (select("Estou pronto, Vamos Lá!","Não, obrigado.") == 1) {
+			if (Zeny > 9999) {
+				mes "[Aibakthing]";
+				mes "Hmm! Hah! Hmm! Hah!";
+				mes "Ah, minha cidade natal, Ayothaya...";
+				mes "Eu estou chegando!";
+				Zeny -= 10000;
+				close2;
+				warp("ayothaya",149,71);
+				end;
+			} else {
+				mes "[Aibakthing]";
+				mes "Como falei para você, sem a taxa de 10.000 zenys você não poderá apreciar a beleza de Ayothaya.";
+				close;
+			}
+		}
+		mes "[Aibakthing]";
+		mes "Se todos sonham em viver em um lugar pacífico e belo, este lugar é Ayothaya, minha cidade!";
+		close;
+		case 3:
+		mes "[Aibakthing]";
+		mes "Se todos sonham em viver em um lugar pacífico e belo, este lugar é Ayothaya, minha cidade!";
+		close;
+	}
+}
+
+ayothaya,152,68,1	script	Aibakthing#ayo	4_M_THAIONGBAK,{
+	mes "[Aibakthing]";
+	mes "Hmm! Hah! Hmm! Hah!";
+	mes "Então, você gostou de conhecer Ayothaya?";
+	mes "Gostou da Sopa Tailandesa?";
+	mes "Já é hora de voltar para seu país!";
+	next;
+	if (select("Voltar para Alberta","Cancelar") == 1) {
+		mes "[Aibakthing]";
+		mes "Estaremos aqui sempre para dar as boas-vindas.";
+		mes "Espero que possamos nos rever em breve!";
+		mes "Faça uma boa viagem!";
+		close2;
+		warp("alberta",238,22);
+		end;
+	}
+	mes "[Aibakthing]";
+	mes "Ah, eu entendo porque você não quer deixar um lugar tão belo como Ayothaya.";
+	mes "Não se preocupe, fique o tempo que precisar.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Kunlun(Gon_Fild) ] - 
+// ------------------------------------------------------------------
+alberta,245,69,3	script	Wabakho#alb	4_M_TWMIDMAN,{
+	mes "[Wabakho]";
+	mes "Saudações.";
+	mes "Eu gostaria de convidar todos vocês a Kunlun.";
+	mes "Eu tenho a honra de ser o encarregado de transportar os cidadãos de Rune Midgard a um país completamente novo.";
+	mes "Kunlun!";
+	next;
+	switch (select("Saber mais sobre Kunlun...","Ir para Kunlun.","Cancelar.")) {
+		case 1:
+		mes "[Wabakho]";
+		mes "Kunlun é o melhor lugar para realizar as fantasias de pessoas de toda Midgard.";
+		mes "Você irá passar pela casa em miniatura na Vila dos Pigmeus e entrar em Kunlun através de um pilar feito de uma luz encantadora.";
+		next;
+		mes "[Wabakho]";
+		mes "Eu ouvi dizer que os sábios daqui construíram uma cidade voadora...";
+		mes "É um feito impressionante, porém Kunlun sempre flutuou no céu naturalmente!";
+		mes "Kunlun possui a mais bela vista do mundo!";
+		next;
+		mes "[Wabakho]";
+		mes "Nossas especialidades locais são pão doce de passas e pêssego, são suculentos e deliciosos.";
+		mes "Como era de se esperar, um novo calabouço repleto de novos perigos o espera em Kunlun.";
+		mes "Então esteja bem preparado quando resolver ir lá!";
+		next;
+		mes "[Wabakho]";
+		mes "Quando você desejar partir, por favor me informe.";
+		mes "É um grande prazer servir pessoas, como você, do continente de Midgard.";
+		close;
+		case 2:
+		mes "[Wabakho]";
+		mes "Bem, tudo pronto para a viagem?";
+		mes "Nós cobramos ^0000FF10,000^000000z por uma passagem para Kunlun.";
+		mes "A passagem é apenas válida para uma ida.";
+		mes "Mas você pode voltar quando desejar sem custo algum.";
+		next;
+		mes "[Wabakho]";
+		mes "Você quer embarcar agora?";
+		next;
+		if (select("Sim por favor!","Hmm, talvez outra hora.") == 1) {
+			if (Zeny > 9999) {
+				mes "[Wabakho]";
+				mes "Tripulação, preparem-se para a partida.";
+				Zeny -= 10000;
+				close2;
+				warp("gon_fild01",258,82);
+				end;
+			} else {
+				mes "[Wabakho]";
+				mes "Eu sinto muito, mas você precisa trazer ^0000FF10,000^000000z para comprar sua passagem.";
+				mes "Por favor, tenha certeza de que você tem dinheiro suficiente.";
+				mes "Obrigado.";
+				close;
+			}
+		}
+		mes "[Wabakho]";
+		mes "Por favor, me avise se desejar visitar Kunlun.";
+		mes "É um grande prazer servir pessoas, como você, do continente de Midgard.";
+		close;
+		case 3:
+		mes "[Wabakho]";
+		mes "Por favor, me avise se desejar visitar Kunlun.";
+		mes "É um grande prazer servir pessoas, como você, do continente de Midgard.";
+		close;
+	}
+}
+
+gon_fild01,255,79,7	script	Wabakho#gon	4_M_TWMIDMAN,{
+	mes "[Wabakho]";
+	mes "E então ilustre visitante, o que achou de Kunlun?";
+	mes "Podemos partir para o continente quando quiser, basta dar as ordens.";
+	next;
+	if (select("Quero voltar para Alberta.","Cancelar") == 1) {
+		mes "[Wabakho]";
+		mes "Espero que tenha gostado de Kunlun e que volte a nos visitar no futuro.";
+		mes "Tripulação, prepare-se para a partida!";
+		close2;
+		warp("alberta",243,67);
+		end;
+	}
+	mes "[Wabakho]";
+	mes "Demore o tempo que quiser aqui, amigo.";
+	mes "Existem muitos lugares misteriosos em Kunlun pra você visitar.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Louyang(Lou_Fild01) ] - 
+// ------------------------------------------------------------------
+alberta,245,45,3	script	Kunyang#alb	4_F_CHNDRESS1,{
+	mes "[Kunyang]";
+	mes "La la la la.";
+	mes "Hoje eu me sinto tão bem.";
+	mes "Estou com vontade de fazer um piquenique em algum lugar."; 
+	mes "La la la la.";
+	next;
+	switch (select("Sobre Louyang.","Ir para Louyang.","Cancelar.")) {
+		case 1:
+		mes "[Kunyang]";
+		mes "Você está interessad"+(Sex == SEX_MALE ? "o":"a")+" em Louyang?";
+		mes "É um bom lugar para os aventureiros visitarem.";
+		next;
+		mes "[Kunyang]";
+		mes "Louyang tem uma longa história com contos sobre artes marcias e guerreiros ancestrais.";
+		mes "Também é conhecida pelos monstros que rondam a área de Louyang.";
+		next;
+		mes "[Kunyang]";
+		mes "Lá você encontrará medicamentos que curam tudo.";
+		mes "Ocorrências misteriosas, e artistas marciais tudo em um só lugar!"; 
+		next;
+		mes "[Kunyang]";
+		mes "Eu costumava treinar artes marciais todas as manhãs quando eu estava em Louyang.";
+		mes "Pode não parecer, mas eu sou muito forte!";
+		next;
+		mes "[Kunyang]"; 
+		mes "Se você quiser visitar Louyang, sinta se à vontade para me dizer.";
+		mes "É só me dar algum zeny que iremos.";
+		close; 
+		case 2:
+		mes "[Kunyang]";
+		mes "Eu te guiarei até Louyang imediatamente.";
+		mes "Pelos meus serviços, eu estou aceitando 10,000 zeny."; 
+		next;
+		mes "[Kunyang]";
+		mes "E então, você está pronto?";
+		next;
+		if (select("Sim!","Não.") == 1) {
+			if (Zeny > 9999) {
+				mes "[Kunyang]";
+				mes "Okay";
+				mes "Pronto!";
+				mes "Divirta-se!";
+				Zeny -= 10000;
+				close2;
+				warp("lou_fild01",190,101);
+				end;
+			} else {
+				mes "[Kunyang]";
+				mes "...";
+				mes "Me parece que você não tem 10,000 zeny...";
+				mes "Vá arrumar algum dinheiro antes!"; 
+				close;
+			}
+		}
+		mes "[Kunyang]";
+		mes "Oh..."; 
+		mes "É tão desapontador te ouvir dizer isto.";
+		mes "Bem, tenha um bom dia!";
+		close;
+		case 3:
+		mes "[Garota]";
+		mes "Oh...";
+		mes "Tenha um bom dia!";
+		close;
+	}
+}
+
+lou_fild01,190,100,7	script	Kunyang#lou	4_F_CHNDRESS1,{
+	mes "[Kunyang]"; 
+	mes "Você gostaria de voltar para Alberta?";
+	next;
+	if (select("Voltar para Alberta","Cancelar.") == 1) {
+		mes "[Kunyang]";
+		mes "Eu espero te ver novamente!";
+		mes "Tchau Tchau!";
+		close2;
+		warp("alberta",235,45);
+		end;
+	} else {
+		mes "[Kunyang]";
+		mes "Se você gostar desta área, porque não experimentar a comida e apreciar a paisagem!"; 
+		next;
+		if (Sex == SEX_MALE) {
+			mes "[Kunyang]";
+			mes "E por paisagem....";
+			mes "Eu quero dizer as garotas!";
+			mes "Tee hee...";
+		} else {
+			mes "[Kunyang]";
+			mes "E os garotos aqui não são tão ruins...";
+		}
+	}
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Alberta ~ Moscovia] - 
+// ------------------------------------------------------------------
+alberta,245,66,4	script	Representante de Moscovia#alb	4_F_RUSWOMAN2,{
+	mes "[Relações Públicas]";
+	mes "Moscóvia! Você conhece Moscóvia?";
+	mes "O paraíso em meio ao mar sem fim!";
+	mes "Moscóvia é um lugar místico e de aventuras.";
+	next;
+	switch (select("Sobre Moscóvia...","Ir para Moscóvia.","Cancelar")) {
+		case 1:
+		mes "[Relações Públicas]";
+		mes "Moscóvia é um lindo reino que fica em uma ilha localizada ao norte de Rune-Midgard.";
+		next;
+		mes "[Relações Públicas]";
+		mes "Estou certa de que você vai se encantar com as maravilhosas paisagens de Moscóvia, a esplêndida capela e o palácio.";
+		next;
+		mes "[Relações Públicas]";
+		mes "Estou feliz que posso mostrar a você nossa linda terra-natal depois que o longo inverno de Moscóvia passou.";
+		mes "Nosso inverno é muito frio!";
+		next;
+		mes "[Relações Públicas]";
+		mes "Se estiver com vontade de visitar Moscóvia, aproveite esta chance!";
+		mes "Eu garanto que vai ter uma ótima viagem para Moscóvia!";
+		close;
+		case 2:
+		mes "[Relações Públicas]";
+		mes "Certo então, vamos começar.";
+		mes "O preço total é 10.000 zenys para ir até Moscóvia.";
+		mes "Mas quando quiser voltar, você não vai precisar pagar...";
+		next;
+		mes "[Relações Públicas]";
+		mes "Podemos ir agora?";
+		next;
+		if (select("Vamos!","Cancelar") == 2) {
+			mes "[Relações Públicas]";
+			mes "Se você estiver ocupado agora, por favor, fale comigo de novo quando quiser.";
+			mes "Estou sempre pronta para ser sua guia pela Moscóvia.";
+			close;
+		} else {
+			if (Zeny < 10000) {
+				mes "[Relações Públicas]";
+				mes "Desculpe, mas você não tem zenys suficientes.";
+				mes "É preciso 10000 zenys para ir até Moscóvia.";
+				mes "Muito obrigado.";
+				close;
+			} else {
+				mes "[Relações Públicas]";
+				mes "Certo, então, estamos partindo.";
+				Zeny -= 10000;
+				close2;
+				warp("moscovia",163,55);
+				end;
+			}
+		}
+		case 3:
+		mes "[Relações Públicas]";
+		mes "Se você estiver ocupado agora, por favor, fale comigo de novo quando quiser.";
+		mes "Estou sempre pronta para ser sua guia pela Moscóvia.";
+		close;
+	}
+}
+
+moscovia,166,53,4	script	Representante de Moscovia#mosk	4_F_RUSWOMAN2,{
+	mes "[Relações Públicas]";
+	mes "E então, como foi a sua viagem?";
+	mes "Leva boas lembranças de Moscóvia?";
+	mes "Um navio está saindo agora para Rune-Midgard.";
+	next;
+	if (select("Retornar para Alberta","Cancelar") == 2) {
+		mes "[Relações Públicas]";
+		mes "Se você quiser ver mais, leve o tempo que quiser.";
+		close;
+	} else {
+		mes "[Relações Públicas]";
+		mes "Você pode vir quando quiser.";
+		mes "Certo então, vamos lá.";
+		close2;
+		warp("alberta",243,67);
+		end;
+	}
+}
+
+// ------------------------------------------------------------------
+// - [ alberta ~ brasilis ] - 
+// ------------------------------------------------------------------
+alberta,247,115,3	script	Marinheiro Crewman#bra	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Hey, você já ouviu falar de um lugar chamado Brasilis?";
+	mes "É uma cidade tropical é quente como o deserto, mas também de chuva.";
+	mes "É um lugar muito misterioso.";
+	next;
+	mes "[Marinheiro]";
+	mes "Nós recentemente encontrou uma rota novo oceano para chegar lá facilmente.";
+	mes "É apenas 10.000 zeny para uma viagem de volta Então você quer ir?";
+	next;
+	switch (select("Leve-me para Brasilis","Eu vou ficar aqui.")) {
+		case 1:
+		if (Zeny > 9999) {
+			mes "[Marinheiro]";
+			mes "Agora está bem fresco então vamos!";
+			Zeny -= 10000;
+			close2;
+			warp("brasilis",314,60);
+			end;
+		} else {
+			mes "[Marinheiro]";
+			mes "Eu disse 10.000 zeny.";
+			close;
+		}
+		case 2:
+		mes "[Marinheiro]";
+		mes "Bem, se você está sempre interessad"+(Sex == SEX_MALE ? "o":"a")+" é só me procurar.";
+		close;
+	}
+}
+
+brasilis,316,57,3	script	Marinheiro Crewman#bra2	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Meu navio vai voltar para Alberta, você quer se juntar a nós? ";
+	next;
+	switch (select("Volte para Alberta","Ainda não")) {
+		case 1:
+		mes "[Marinheiro]";
+		mes "Com certeza sinto falta de casa.";
+		close2;
+		warp("alberta",244,115);
+		end;
+		case 2:
+		mes "[Marinheiro]";
+		mes "Ok, servir a si mesmo Nós vamos vê-lo quando voltar então.";
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+// - [ alberta ~ dewata ] - 
+// ------------------------------------------------------------------
+alberta,240,47,4	script	Marinheiro de Dewata#dewata	4_M_DEWMAN,{
+	mes "[Marinheiro de Dewata]";
+	mes "Quer visitar a ^8B4513Ilha Dewata^000000 com ondas deslumbrantes que dão descanso à sua alma?";
+	mes "A taxa de embarque é de 10,000 Zenys.";
+	next;
+	switch (select("Sim!","Não.")) {
+		case 1:
+		if (Zeny >= 10000) {
+			mes "[Marinheiro de Dewata]";
+			mes "Dewata é um belo pacífico país insular.";
+			mes "Tenha uma boa viagem.";
+			Zeny -= 10000;
+			close2;
+			warp("dewata",232,53);
+			end;
+		} else {
+			mes "[Marinheiro de Dewata]";
+			mes "Você não tem a Zenys o bastante.";
+			mes "Volte quando você tiver mais dinheiro na carteira.";
+			close;
+		}
+		case 2:
+		mes "[Marinheiro de Dewata]";
+		mes "Avise-me quando quiser viajar";
+		close;
+	}
+}
+
+dewata,229,49,6	script	Marinheiro de Alberta#dewata2	4_M_DEWMAN,{
+	mes "[Marinheiro de Alberta]";
+	mes "Deseja voltar para Alberta?";
+	next;
+	switch (select("Sim.","Não.")) {
+		case 1:
+		mes "[Marinheiro de Alberta]";
+		mes "Eu espero que você tnha se divertido muita em sua viagem na ^8B4513Ilha de Dewata ^000000.";
+		mes "Venha nos visitar novamente!";
+		close2;
+		warp("alberta",210,198);
+		end;
+		case 2:
+		mes "[Marinheiro de Alberta]";
+		mes "Se divirta um pouco mais antes de partir.";
+		mes "A ^8B4513Ilha de Dewata^000000 tem muito mais a oferecer.";
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+// - [ alberta ~ malaya ] - 
+// ------------------------------------------------------------------
+alberta,237,71,3	script	Marinheiro Optamara#alb	4W_SAILOR,{
+	mes "[Marinheiro Optamara]";
+	mes "Ei, você!";
+	mes "Estaria intereçad"+(Sex == SEX_MALE ? "o":"a")+" em ir ao Porto de Malaya?";
+	mes "São só 10,000 Zeny para taxa de embarque.";
+	next;
+	switch (select("Sobre o Porto de Malaya","Ir á Malaya","Cancelar")) {
+		case 1:
+		mes "[Marinheiro Optamara]";
+		mes "Porto Malaya é uma aldeia pequena à que você poderia chegar velejando sudoeste de Alberta.";
+		next;
+		mes "[Marinheiro Optamara]";
+		mes "Antigamente não se podia visitar-la por motivos internos de Malaya.";
+		mes "Mas agora está tudo bem e viagens até lá são permitidas";
+		close;
+		case 2:
+		if (Zeny < 10000) {
+			mes "[Marinheiro Optamara]";
+			mes "Você não sabe como Maçaya é distante daqui.";
+			mes "Por isso não posso te levar de graça.";
+			mes "Por favor volte quando tiver 10,000 Zeny.!";
+			close;
+		}
+		mes "[Marinheiro Optamara]";
+		mes "Certo!";
+		Zeny -= 10000;
+		close2;
+		warp("malaya",271,55);
+		end;
+		case 3:
+		mes "[Marinheiro Optamara]";
+		mes "Os aventureiros estes dias agem como eles estivessem ocupados.";
+		mes "Volte quando você tiver o tempo e nós poderíamos ir visitar Porto de Malaya.";
+		close;
+	}
+}
+
+malaya,276,55,4	script	Marinheiro Optamara#mal	4W_SAILOR,{
+	mes "[Marinheiro Optamara]";
+	mes "Você quer voltar agora para Alberta?";
+	next;
+	switch (select("Voltar para Alberta","Não voltar")) {
+		case 1:
+		mes "[Marinheiro Optamara]";
+		mes "Certo! Vamos então pata Alberta!!";
+		close2;
+		warp("alberta",239,68);
+		end;
+		case 2:
+		mes "[Marinheiro Optamara]";
+		mes "Está bem. Me procure caso queira voltar para Alberta.";
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+// - [ alberta ~ tur_dun01 ] - 
+// ------------------------------------------------------------------
+alberta,247,122,4	script	Barqueiro#tur	4_M_SEAMAN,{
+	mes "[Barqueiro]";
+	mes "Hehe...";
+	mes "Seus olhos...";
+	mes "Eu posso ver que você está querendo saber mais sobre a Ilha da Tartaruga.";
+	mes "Você não quer ir até lá?";
+	mes "A taxa é de apenas 10.000 Zenys";
+	next;
+	if (select("Ilha da Tartaruga -> 10.000 zenys","Cancelar") == 1) {
+		if (Zeny > 9999) {
+			mes "[Barqueiro]";
+			mes "Certo!!";
+			mes "Partiremos agora mesmo.";
+			next;
+			Zeny -= 10000;
+			mes "^3355FF*Choo Choo*^000000";
+			close2;
+			warp("tur_dun01",157,39);
+			end;
+		} else {
+			mes "[Barqueiro]";
+			mes "Hum...";
+			mes "Desculpe, mas você não tem Zeny suficiente.";
+			mes "Espero que você entenda que eu posso deixar meu conhecimento e experiência ser subestimado...";
+			close;
+		}
+	} else {
+		mes "[Barqueiro]";
+		mes "Certo então...";
+		mes "Bem, se o espírito de aventura deve acontecer para pegar você, eu vou estar aqui esperando.";
+		close;
+	}
+}
+
+tur_dun01,165,29,4	script	Barqueiro#tur2	4_M_SEAMAN,{
+	mes "[Barqueiro]";
+	mes "Você deseja retornar a Alberta?";
+	next;
+	if (select("Ir para Alberta","Parar de Falar") == 1) {
+		mes "[Barqueiro]";
+		mes "Hehe...";
+		mes "Eu certamente espero que você encontrar o que você estava procurando. Tudo bem, eu acho que há sempre um tempo para um aventureiro de voltar para casa...";
+		next;
+		mes "^3355FF* Choo Choo *^000000";
+		close2;
+		warp("alberta",241,115);
+		end;
+	}
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Cmd_Fild > Alberta * Cmd_Fild > Izlude ] - 
+// ------------------------------------------------------------------
+-	script	cmdboard	FAKE_NPC,{
+	mes "[Zain]";
+	mes "Chamando os passageiros da escuna 'Lutifus'...";
+	mes "Com destino a Izlude e Alberta...";
+	mes "O embarque está liberado!";
+	mes "Agradecemos a preferência!";
+	mes "Você vai embarcar na 'Lutifus'?";
+	next;
+	switch (select("Porto de Alberta - 600 Zenys","Porto de Izlude - 800 Zenys","Sair")) {
+		case 1:
+		if (Zeny < 600) {
+			mes "[Zain]";
+			mes "Você não tem dinheiro suficiente para pagar a passagem.";
+			close;
+		} else {
+			Zeny -= 600;
+			close2;
+			warp("alberta",192,169);
+			end;
+		}
+		case 2:
+		if (Zeny < 800) {
+			mes "[Zain]";
+			mes "Você não tem dinheiro suficiente para pagar a passagem.";
+			close;
+		} else {
+			Zeny -= 800;
+			close2;
+			warp("izlude",176,182);
+			end;
+		}
+		case 3:
+		mes "[Zain]";
+		mes "Muito obrigado por escolher a";
+		mes "'Lutifus'!";
+		close;
+	}
+}
+cmd_fild07,299,83,4	duplicate(cmdboard)	Zain#cmd	4W_SAILOR
+cmd_fild07,94,134,4	duplicate(cmdboard)	Zain#cmd2	4W_SAILOR
+
+// ------------------------------------------------------------------
+// - [ Izlude > Izlu2Dun / Izlude > Alberta ] - 
+// ------------------------------------------------------------------
+izlude,201,181,1	script	Marinheiro#izlude	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Olá, todo mundo!";
+	mes "Atenção, atenção!";
+	mes "Venham passear ao vento em um barco fascinante!";
+	mes "Rápido, rápido!";
+	next;
+	switch (select("Ilha Byalan -> 150 Zeny.","Marinha de Alberta -> 500 Zeny","Cancelar.")) {
+		case 1:
+		if (Zeny < 150) {
+			mes "[Marinheiro]";
+			mes "150 Zeny!";
+			mes "Somente 150 Zeny para partir!";
+			close;
+		} else {
+			Zeny -= 150;
+			close2;
+			warp("izlu2dun",107,50);
+			end;
+		}
+		case 2:
+		if (Zeny < 500) {
+			mes "[Marinheiro]";
+			mes "500 Zeny!";
+			mes "Somente 500 Zeny para partir!";
+			close;
+		} else {
+			Zeny -= 500;
+			close2;
+			warp("alberta",188,169);
+			end;
+		}
+		case 3:
+		close;
+	}
+}
+
+izlu2dun,108,27,0	script	Marinheiro#izlude2	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Quer voltar para Izlude?";
+	next;
+	if (select("Sim.","Não, quero ficar mais tempo!") == 1) {
+		close2;
+		warp("izlude",176,182);
+		end;
+	}
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [Izlude ~ Jawaii] - 
+// ------------------------------------------------------------------
+izlude,171,185,3	script	Agente Matrimonial#Izl	1_F_LIBRARYGIRL,{
+	mes "[Auxiliar]";
+	mes "Recém casados e casais antigos...";
+	mes "Nós os convidamos para passar sua lua de mel aqui!";
+	next;
+	switch (select("Jawaii?","Ir para Jawaii!","Cancelar.")) {
+		case 1:
+		mes "[Auxiliar]";
+		mes "Existe uma ilha distante, em um continente longe de Rune-Midgard.";
+		mes "É uma ilha muito bonita e tranquila que abre as suas portas para os casais.";
+		next;
+		mes "[Auxiliar]";
+		mes "Essa é uma oferta exclusiva de viagem para refúgio da lua de mel especial para os cidações de Rune-Midgard.";
+		mes "Sendo que o preço é de 100.000 zeny.";
+		mes "Pode ser caro, mas você vai aproveitar cada centavo.";
+		next;
+		mes "[Auxiliar]";
+		mes "Eu garanto a você que esse serão os momentos mais felizes que você pode expereimentar em seu casamento estando na ilha.";
+		mes "Você realmente vai colocar algum preço nisso?";
+		close;
+		case 2:
+		mes "[Auxiliar]";
+		if (!getpartnerid()) {
+			mes "Hummm....";
+			mes "Infelizmente, solteiros não são permitidos na ilha.";
+			mes "Porque você não vai esquecer sua solidão no barzinho de Prontera?";
+			close;
+		} else if (Zeny > 99999) {
+			Zeny -= 100000;
+			mes "Bon Voyage...!!";
+			mes "Deixe-me guiar você para Jawaii";
+			close2;
+			warp("jawaii",245,125);
+			end;
+		}
+		mes "Como eu expliquei antes, você precisa ter 100.000 zeny para poder visitar Jawaii.";
+		mes "Porque você não pede para pessoa amada uma ajuda em zeny para essa viagem?";
+		close;
+		case 3:
+		mes "[Auxiliar]";
+		mes "Não há melhor forma de aproveitar momentos especiais com sua pessoa amada através de uma viagem secreta para um lugar remoto e exótico.";
+		next;
+		mes "[Auxiliar]";
+		mes "Umas férias em Jawaii poderia ser um incrível presente para quem você ama";
+		close;
+	}
+}
+
+jawaii,239,112,7	script	Marinheiro#jaw	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Este navio está indo para ^666699Izlude^000000.";
+	mes "Você aproveitou seu tempo em Jawaii?";
+	mes "Você deve verficar se não esqueceu alguma coisa antes de partirmos.";
+	next;
+	mes "[Marinheiro]";
+	mes "Bem, então você gostaria de voltar para Izlude?";
+	next;
+	if (select("Voltar.","Cancelar.") == 1) {
+		mes "[Marinheiro]";
+		mes "Agora, deixe-me guiar você para Izlude.";
+		close2;
+		warp("izlude",176,182);
+		end;
+	}
+	mes "[Marinheiro]";
+	mes "Aproveite o seu tempo e olhe tudo que gostar ao seu redor.";
+	mes "De qualquer forma, esse não é um lugar que você pode visitar com frequência.";
+	mes "Entende?";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [ Jawaii > Alberta ] - 
+// ------------------------------------------------------------------
+jawaii,122,263,5	script	Marinheiro#jaw2	4W_SAILOR,{
+	mes "[Marinheiro]";
+	mes "Esse navio está voltando para ^003399Alberta^000000.";
+	mes "Você aproveitou seu tempo em Jawaii?";
+	mes "Você deve verificar se não esqueceu alguma coisa antes de partirmos.";
+	next;
+	mes "[Marinheiro]";
+	mes "Agora, você está pront"+(Sex == SEX_MALE ? "o":"a")+" para ir a Alberta?";
+	next;
+	if (select("Ir para Alberta.","Cancelar.") == 1) {
+		mes "[Marinheiro]";
+		mes "Agora, deixe-me levar você para Alberta.";
+		close2;
+		warp("alberta",192,157);
+		end;
+	}
+	mes "[Marinheiro]";
+	mes "Isso...";
+	mes "Tente aproveitar suas férias o máximo que você puder.";
+	mes "Nós vamos estar prontos para sair quando você quiser.";
+	close;
+}
+
+// ------------------------------------------------------------------
+// - [ Mosc_Fild > Moscovia ] - 
+// ------------------------------------------------------------------
+mosk_fild02,198,53,3	script	Barco#mos_dun	HIDDEN_NPC,{
+	mes "- Você acha um barco ancorado. -";
+	next;
+	if (select("Voltar para Cidade","Ficar mais.") == 1) {
+		mes "- Você sobe a bordo do barco e puxa os remos. -";
+		close2;
+		warp("moscovia",140,54);
+		end;
+	}
+	mes "- O desconhecido desperta seu interesse. -";
+	close;
+}

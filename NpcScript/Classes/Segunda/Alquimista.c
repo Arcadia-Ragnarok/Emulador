@@ -1,0 +1,1719 @@
+/*-----------------------------------------------------------------*\
+|              ____                     _                           |
+|             /    |                   | |_                         |
+|            /     |_ __ ____  __ _  __| |_  __ _                   |
+|           /  /|  | '__/  __|/ _` |/ _  | |/ _` |                  |
+|          /  __   | | |  |__  (_| | (_| | | (_| |                  |
+|         /  /  |  |_|  \____|\__,_|\__,_|_|\__,_|                  |
+|        /__/   |__|   Ragnarok - Npc Script                        |
+|                                                                   |
++-------------------------------------------------------------------+
+| - Author: Sem informação precisa                                  |
+| - Version: Spell Master                                           |
+| - Info: Quest de Mudança de Classe para Alquimista.               |
+| - Nota:                                                           |
+| * Necessário quest do Antigeno e Mistura.                         |
+| * Necessário quest dos Irmãos Alquimista de Juno.                 |
+\*-----------------------------------------------------------------*/
+
+alde_alche,27,185,5	script	Alquimísta#alchemistq	4_F_ALCHE,{
+	mes("[Parmy Gianino]");
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes("Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Guilda Alquimísta.\n"
+				"A Guilda Alquimista\n"
+				"Estou meio ocupado, como sempre.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Todo mundo aqui está ocupado com o sua própria pesquisa.\n"
+				"Mas recentemente, alguns avanços foram feitos no campo da biotecnologia.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Todos esperam que os estudos biotecnológicos produzam resultados positivos...\n"
+				"Falando nisso, eu me pergunto como os alquimistas que trabalham na vida artificial estão fazendo...");
+			close;
+		}
+		mes("Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Guilda Alquimísta.\n"
+			"Estamos recrutando pessoas talentosas, com idéias novas.");
+		next;
+		mes("[Parmy Gianino]\n"
+			"Se você conhece alguns mercadores.\n"
+			"Por favor, fale a ele sobre nossa associação.\n"
+			"Esses tipos de pessoas tendem a ter um talento para a Alquimia e experimentação");
+		close;
+	}
+	if (!alchemistq) {
+		mes("Bem vind"+(Sex == SEX_MALE ? "o":"a")+" à Guilda Alquimísta.\n"
+			"Como posso ajudá-lo?");
+		next;
+		switch (select("Fale-me sobre Alquimistas", "Quero ser um Alquimista","Nada")) {
+			case 1:
+			mes("[Parmy Gianino]\n"
+				"Os alquimistas estudam e criam novas substâncias e itens a partir de materiais existentes.\n"
+				"Nosso conhecimento nos permite mudar as propriedades dos produtos químicos no nível atômico.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"A maioria das pessoas pensa nosso objetivo final é criar ouro.\n"
+				"Mas isso não é toda a verdade, queremos criar coisas como remédios e novos materiais.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Alguns de nós pesquisa a criação da vida.\n"
+				"Embora muitos de nós considerem que o território é trabalho de Deus.\n"
+				"Isso é tão complexo, a maioria dos alquimistas lidam com projetos, menos complicados.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Se você está interessado em se tornar um alquimista.\n"
+				"Recomendo que você obtenha muita experiência como mercador.\n"
+				"Ser um mercador é uma grande oportunidade para aprender sobre materiais e como lidar com eles.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Você se tornar ou não um Alquimista é a sua decisão.\n"
+				"O caminho para se tornar um Alquimista é muito desafiador.\n"
+				"E você precisa se concentrar em experimentação e pesquisa, em vez de comércio.");
+			close;
+			case 2:
+			mes("[Parmy Gianino]\n"
+				"Verdade?\n"
+				"Prazer em conhecê-l"+(Sex == SEX_MALE ? "o":"a")+".\n"
+				"Meu nome é Parmy Gianino.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Mas nós não aceitamos todos.\n"
+				"Você deve ter muita tenacidade e devoção sincera na exploração aos vários campos da ciência.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"São vários requisitos para se juntar a Guilda dos Alquimistas.\n"
+				"Mas vamos discutir isso depois de sua inscrição.");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Bem, então,\n"
+				"Você gosta de assinar o fomulário de registro agora?");
+			next;
+			if (select("Gostaria de assinar agora", "Farei isso mais tarde") == 1) {
+				if (JobLevel < 40) {
+					mes("[Parmy Gianino]\n"
+						"Hmmm ...\n"
+						"Um momento.\n"
+						"Lamento dizer isso, mas você não tem muita experiência como mercador para se juntar a nós.");
+					next;
+					mes("[Parmy Gianino]\n"
+						"Você deve ser pelo menos ^551A8BNível 40 de classe^000000 para se tornar iniciar seus testes.\n"
+						"Volte mais tarde quando você alcançar esse nível.\n"
+						"Está bem?");
+					close;
+				}
+				mes("[Parmy Gianino]\n"
+					"Agora, você deve pagar a taxa de inscrição que custa 50.000 Zeny.\n"
+					"E trazer alguns itens antes que você possa começar seu treinamento formal.");
+				next;
+				mes("[Parmy Gianino]\n"
+					"Mas se você trouxer um ^551A8Grimório Antigo^000000 e um ^551A8BMartelo de Ferreiro^000000.\n"
+					"Será aceito como um substitutos dos itens.");
+				next;
+				mes("[Parmy Gianino]\n"
+					"Agora...\n"
+					"Por favor assine aqui.");
+				next;
+				select (strcharinfo(CHAR_NAME));
+				mes("[Parmy Gianino]\n"
+					"Bom, agora, se você tiver O Zeny para sua taxa de inscrição.\n"
+					"Vou dizer-lhe quais os itens que você precisará trazer.\n"
+					"Agora, preste atenção.");
+				next;
+				if (Zeny < 50000) {
+					mes("[Parmy Gianino]]\n"
+						"Uh oh. Você não\n"
+						"Parece ter Zeny suficiente.\n"
+						"Volte quando você tem 50.000 Zeny, caso contrário, não podemos posseguir sua inscrição.");
+					close;
+				}
+				Zeny -= 50000;
+				mes("[Parmy Gianino]\n"
+					"Vamos ver... "+strcharinfo(CHAR_NAME)+"\n"
+					"Precisa trazer ...");
+				switch (rand(1,3)) {
+					case 1:
+					alchemistq = 1;
+					setquest(2028);
+					mes("^551A8B7 Poção da Fúria Selvagem^000000.");
+					break;
+					case 2:
+					alchemistq = 2;
+					setquest(2029);
+					mes("^551A8B100 Mini-Fornalha^000000.");
+					break;
+					case 3:
+					alchemistq = 3;
+					setquest(2030);
+					mes("^551A8B7,500 Flecha de Fogo^000000.");
+				}
+				next;
+				mes("[Parmy Gianino]\n"
+					"Uma vez que você se reuniu esses itens, volte e seu teste de Alquimista vai começar.\n"
+					"Vejo você em breve.");
+				close;
+			}
+			mes("[Parmy Gianino]\n"
+				"Comerciantes talentosos são sempre bem-vindos aqui.\n"
+				"Por favor, volte logo.");
+			close;
+			case 3:
+			mes("[Parmy Gianino]\n"
+				"Umm ...\n"
+				"Se você não precisar de qualquer coisa porque veio me atrapalhar?");
+			close;
+		}
+	} else if (alchemistq >= 1 && alchemistq <= 3) {
+		if (countitem(Old_Magic_Book) > 0 && countitem(Hammer_Of_Blacksmith) > 0) {
+			mes("Bem, você trouxe um Grimório Antigo e um Martelo de Ferreiro!\n"
+				"Usaremos esses itens da melhor forma.");
+			next;
+			delitem(Old_Magic_Book,1);
+			delitem(Hammer_Of_Blacksmith,1);
+			mes("[Parmy Gianino]\n"
+				"Certo, agora você precisa aprender O básico para ser um Alquimista.\n"
+				"Aprender os procedimentos para misturar produtos químicos e medicamentos.");
+			alchemistq = 4;
+			if (questprogress(2028)) { changequest(2028,2031); }
+			else if (questprogress(2029)) { changequest(2029,2031); }
+			else if (questprogress(2030)) { changequest(2030,2031); }
+			next;
+			mes("[Parmy Gianino]\n"
+				"Mas antes de tudo isso, você precisa falar com Raspuchin.\n"
+				"Eu não estou realmente certo do que você vai falar com ele...");
+			next;
+			mes("[Parmy Gianino]\n"
+				"Mas você ainda é obrigado a falar com Raspuchin.\n"
+				"Uma vez que ele é responsável por uma parte no processo de seleção Alquimista.");
+			close;
+		}
+		switch (alchemistq) {
+			case 1: setarray(.@items[0],657,7); break;
+			case 2: setarray(.@items[0],612,100); break;
+			case 3: setarray(.@items[0],1752,7500); break;
+		}
+		if (countitem(.@items[0]) >= .@items[1]) {
+			mes("Parece que está tudo aqui.\n"
+				"A Guilda usará esses itens para bem.");
+			next;
+			delitem(.@items[0],.@items[1]);
+			mes("[Parmy Gianino]\n" 
+				"Certo, agora você precisa aprender O básico para ser um Alquimista.\n"
+				"Aprender os procedimentos para misturar produtos químicos e medicamentos.");
+			alchemistq = 4;
+			if (questprogress(2028)) { changequest(2028,2031); }
+			else if (questprogress(2029)) { changequest(2029,2031); }
+			else if (questprogress(2030)) { changequest(2030,2031); }
+			next;
+			mes("[Parmy Gianino]\n"
+				"Mas você ainda é obrigado a falar com Raspuchin.\n"
+				"Uma vez que ele é responsável por uma parte no processo de seleção Alquimista.");
+			close;
+		}
+		mes("Você não está pronto?\n"
+			"Como eu disse antes você deve trazer.\n"
+			"^551A8B"+.@items[1]+" "+getitemname(.@items[0])+"s^000000.");
+		next;
+		mes("[Parmy Gianino]\n"
+			"Volte quando você tiver todos itens necessários.");
+		close;
+	} else if (alchemistq == 4) {
+		mes("Vá e fale com o Sr. Raspuchin.\n"
+			"Ele está envolvido no processo de seleção de alquimistas.");
+		next;
+		mes("[Parmy Gianino]\n"
+			"Não é nada demais\n"
+			"Eu acho que ele só vai entrevistá-lo, e perguntar-lhe algumas coisas simples.");
+		close;
+	} else {
+		mes("Ah, me desculpe, mas estou ocupado agora.");
+		next;
+		mes("[Parmy Gianino]\n"
+			"Por que você não pergunta outras pessoas se não estiver tendo serteza a quem visitar.\n"
+			"Boa sorte.");
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+alde_alche,175,107,3	script	Alquimista Fastidioso#alchemistq	4_M_ALCHE_B,{
+	mes("[Raspuchin Gregory]");
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes("Heeheehee\n"
+				"Keheheh!\n"
+				"Eh, o que você quer?!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Você não está aqui para roubar meus resultados experimentais ou plagiar meu trabalho, não é?\n"
+				"Como se atreve a considerar roubo intelectual!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Você não está, está?\n"
+				"Bem, como um colega,\n"
+				"Deixe-me apenas avisá-lo que tais truques não são tolerados aqui na Guilda dos Alquimístas!");
+			close;
+		} else {
+			mes("O que é isso?!\n"
+				"Você está curioso com o que estou fazendo?");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Heehee\n"
+				"Keheheh!\n"
+				"Ora, estou ocupado.\n"
+				"Pesquisando é claro!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Uma vez que essa poção estiver completa...\n"
+				"Você pode usá-lo para tomar controle sobre uma nação inteira!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Hee hee hee!\n"
+				"Algo como isso é perigoso, deve ser mantido em segredo!\n"
+				"Compreende?");
+			close;
+		}
+	}
+	if (!alchemistq) {
+		mes("Heeheehee\n"
+			"Keheheh!\n"
+			"O que você faz quer, garot"+(Sex == SEX_MALE ? "o":"a")+"?");
+		next;
+		mes("[Raspuchin Gregory]\n"
+			"Um mercador deve ir e vender com sua loja em outro lugar.\n"
+			"Por que você está vagando em um lugar como este?");
+		close;
+	} else if (alchemistq >= 1 && alchemistq <= 3) {
+		mes("Heeheehee\n"
+			"Keheheh!\n"
+			"O que você quer, garot"+(Sex == SEX_MALE ? "o":"a")+"?");
+		next;
+		mes("[Raspuchin Gregory]\n"
+			"O que...?\n"
+			"Aprender Alquimia?!\n"
+			"Nem sequer fale tais absurdos!");
+		next;
+		mes("[Raspuchin Gregory]\n"
+			"Mesmo se você estudasse por mil anos ou até mais, seria inútil para você!\n"
+			"Esqueça isso e apenas se preocupe com sua loja!");
+		close;
+	} else if ((alchemistq == 4) || (alchemistq == 5)) {
+		if (alchemistq == 4) {
+			mes("Heeheehee\n"
+				"Keheheh!\n"
+				"O que você faz quer, garot"+(Sex == SEX_MALE ? "o":"a")+"?");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"O que...?\n"
+				"Junte-se à Guilda!?\n"
+				"Eu não gosto disso...\n"
+				"Simplesmente não gosto...!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Hoje em dia, qualquer um pensa que pode ser alquimista apenas por saber misturar algumas ervas.\n"
+				"É por isso que a entrevista comigo é necessária.");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Heeheehee\n"
+				"Keheheh!\n"
+				"Eu pretendo eliminar todos os mudo incompetente, e persegui-los, não precisamos de idiotas!");
+			next;
+			if (JobLevel == 50) {
+				mes("[Rasputin Grigori]\n"
+					"Espere...\n"
+					"Talvez eu tenha Julgado mal a você.\n"
+					"Posso dizer que você é inteligente, vejo isso em seus seus olhos.");
+				next;
+				mes("[Raspuchin Gregory]\n"
+					"Você não é apenas "+(Sex == SEX_MALE ? "um garoto estúpido":"uma garota estúpida")+".\n"
+					"Eu posso dizer que já passou por alguns tempos difíceis como mercador.\n"
+					"Keh heh heh.");
+				next;
+				mes("[Raspuchin Gregory]\n"
+					"Tudo bem, só para não insultar a inteligência uns dos outros, vou deixar você passar na entrevista.");
+				next;
+				mes("[Raspuchin Gregory]\n"
+					"Então, apresse-se, torne-se um Alquimista, faça alguma boa pesquisa!\n"
+					"E você pode vir a ser de alguma ajuda para mim.");
+				next;
+				mes("[Raspuchin Gregory]\n"
+					"Agora vá falar com Darwin!\n"
+					"Ele vai te ensinar como fazer as experiências.\n"
+					"Basta dizer-lhe que eu te enviei.");
+				alchemistq = 6;
+				changequest(2031,2032);
+				close;
+			} else {
+				mes("[Raspuchin Gregory]\n"
+					"Surpres"+(Sex == SEX_MALE ? "o":"a")+", está?\n"
+					"Keheheh.\n"
+					"Se você pensou que se tornar Alquimista era apenas uma questão de trocar de roupas.\n"
+					"Então você tinha se confundifo totalmente.");
+				next;
+				mes("[Raspuchin Gregory]\n"
+					"Agora, tente resolver todos esses problemas.\n"
+					"Vamos ver o quão inteligente você realmente é.");
+			}
+		} else if (alchemistq == 5) {
+			mes("O que...?!\n"
+				"Você quer tentar novamente?!\n"
+				"Eu pensei que disse para sair!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Eu não gosto...\n"
+				"Não gosto disso!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Bem...\n"
+				"Vou tentar esquecer o seu desempenho lamentável da última vez.\n"
+				"E lhe dar outra chance.");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Então, responda tudo corretamente.");
+		}
+		next;
+		switch (rand(1,3)) {
+			case 1:
+			mes("[Raspuchin Gregory]\n"
+				"12 + 23 + 34 + 45 = ?");
+			next;
+			input .@input;
+			if (.@input != 114) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"1000 - 36 - 227 - 348 = ?");
+			next;
+			input .@input;
+			if (.@input != 389) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"14 * 17 * 3 = ?");
+			next;
+			input .@input;
+			if (.@input != 714) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"9765 / 3 / 5 / 7 = ?");
+			next;
+			input .@input;
+			if (.@input != 93) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(47 * 28) - (1376 / 4) = ?");
+			next;
+			input .@input;
+			if (.@input != 972) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(2646 / 7) + (13 * 28) = ?");
+			next;
+			input .@input;
+			if (.@input != 742) {
+				.@w_point += 1;
+			}
+			mes("[Rasputin Gregory]\n"
+				"Se comprando estes itens com 24% de desconto.\n"
+				"Qual o preço total de 15 Poções Verdes, 6 Lupas e 4 Armadilhas?");
+			next;
+			input .@input;
+			if (.@input != 909) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o toral de peso de 3 Cimitarra, 2 Elmos e 1 Casaco de Pele?");
+			next;
+			input .@input;
+			if (.@input != 450) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o total de defesa de Solidéu, Capote, Máscara de Opera, Óculos 3D, Sobrepelis, Botas e Aquecedor de Orelha?");
+			next;
+			input .@input;
+			if (.@input != 20) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Se você comprar 5 Elmos com um desconto de 24% e vender-los com ganho de 20%.\n"
+				"Quanto lucro ganharia?");
+			next;
+			input .@input;
+			if (.@input != 8800) {
+				.@w_point += 1;
+			}
+			break;
+			case 2:
+			mes("[Raspuchin Gregory]\n"
+				"13 + 25 + 37 + 48 = ?");
+			next;
+			input .@input;
+			if (.@input != 123) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"1000 - 58 - 214 - 416 = ?");
+			next;
+			input .@input;
+			if (.@input != 312) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"12 * 24 * 3 = ?");
+			next;
+			input .@input;
+			if (.@input != 864) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"10530 / 3 / 5 / 2 = ?");
+			next;
+			input .@input;
+			if (.@input != 351) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(35 * 19) - (1792 / 7) = ?");
+			next;
+			input .@input;
+			if (.@input != 409) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(2368 / 8) + (24 * 17) = ?");
+			next;
+			input .@input;
+			if (.@input != 704) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(2646 / 7) + (13 * 28) = ?");
+			next;
+			input .@input;
+			if (.@input != 742) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o total de preço de 15 Poções Verdes, 6 Lupas, e 4 Armadilhas com 24% de desconto?");
+			next;
+			input .@input;
+			if (.@input != 934) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o peso de 3 Sabres de Impacto, 3 Capas e 2 Botas?");
+			next;
+			input .@input;
+			if (.@input != 550) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual a defesa somada de Escudo, Casaco, Máscara de Gás, Laço Grande, Laço Meigo, Chapéu Chinês e Óculos");
+			next;
+			input .@input;
+			if (.@input != 16) {
+				.@w_point += 1;
+			}
+			mes("[Rasputin Gregory]\n"
+				"Quantos zeny você tem de lucro se você comprar uma Malha com 24% de desconto e vender a mesma com 20% do preço normal?");
+			next;
+			input .@input;
+			if (.@input != 8520) {
+				.@w_point += 1;
+			}
+			break;
+			case 3:
+			mes("[Raspuchin Gregory]\n"
+				"12 + 23 + 34 + 45 = ?");
+			next;
+			input .@input;
+			if (.@input != 114) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"1000 - 58 - 214 - 416 = ?");
+			next;
+			input .@input;
+			if (.@input != 312) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"14 * 17 * 3 = ?");
+			next;
+			input .@input;
+			if (.@input != 714) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"10530 / 3 / 5 / 2 = ?");
+			next;
+			input .@input;
+			if (.@input != 351) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(47 * 28) - (1376 / 4) = ?");
+			next;
+			input .@input;
+			if (.@input != 972) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"(2646 / 7) + (13 * 28) = ?");
+			next;
+			input .@input;
+			if (.@input != 742) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Quanto custa\n"
+				"6 Poções Vermelhas,\n"
+				"7 Poções Verdes\n"
+				"e 8 Asas de Mosca\n"
+				"com 24% de desconto?");
+			next;
+			input .@input;
+			if (.@input != 798) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o total de peso de 3 Sabres, 3 Capús e 3 Botas?");
+			next;
+			input .@input;
+			if (.@input != 480) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Qual o total de defesa de\n"
+				"Escudo Espelhado,\n"
+				"Máscara Feliz,\n"
+				"Gibão,\n"
+				"Manto de Seda,\n"
+				"Vestido de Noiva,\n"
+				"Sobrepelis\n"
+				"e Tapa Olho?");
+			next;
+			input .@input;
+			if (.@input != 12) {
+				.@w_point += 1;
+			}
+			mes("[Raspuchin Gregory]\n"
+				"Se você comprar 4 Armaduras Acolchoada com 24% de desconto.\n"
+				"E e vender cada uma com 20% a mais do preço que pagou.\n"
+				"Quanto lucraria com a venda?");
+			next;
+			input .@input;
+			if (.@input != 7680) .@w_point += 1;
+		}
+		if (.@w_point == 0) {
+			mes("[Raspucin Gregory]\n"
+				"Ooh... Excelente!\n"
+				"Você respondeu tudo correto!\n"
+				"Hehehe, eu não tenho escolha senão reconhecê-lo...");
+			next;
+		} else if (.@w_point == 1) {
+			mes("[Rasputin Grigori]\n"
+				"Você respondeu uma errada!\n"
+				"Mas cou deixar você passar na entrevista!");
+			next;
+		} else if (.@w_point == 2 && alchemistq == 5) {
+			mes("[Rasputin Grigori]\n"
+				"Você tem um sério problema em matemática\n"
+				"Mas eu vou deixar você passar na entrevista...");
+			next;
+		} else {
+			alchemistq = 5;
+			mes("[Raspuchin Gregory]\n"
+				"Keheheh! Idiota!\n"
+				"Apenas escutando suas respostas me sinto enjoado!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Como pode uma pessoa que nem sequer pode responder estas perguntas simples.\n"
+				"Pode pretender se tornar um Almimísta?!");
+			next;
+			mes("[Raspuchin Gregory]\n"
+				"Mesmo se você cometer um pequeno erro, tudo dará errado na alquimia!\n"
+				"Agora saia daqui!\n"
+				"Você me deixa doente!");
+			close;
+		}
+		mes("[Raspuchin Gregory]\n"
+			"Então, apresse-se, torne-se um Alquimista.\n"
+			"Faça alguma boa pesquisa, e você pode vir a ser de alguma ajuda para mim.");
+		next;
+		mes("[Raspuchin Gregory]\n"
+			"Agora vá falar Darwin!\n"
+			"Ele vai te ensinar como fazer as experiências.\n"
+			"Basta dizer-lhe que eu te enviei.");
+		alchemistq = 6;
+		changequest(2031,2032);
+		close;
+	} else if (alchemistq == 6) {
+		mes("O que você está fazendo?\n"
+			"Vá e encontrar Darwin agora.");
+		next;
+		mes("[Raspucin Gregory]\n"
+			"Hehe, não...\n"
+			"Não pense que este é o fim!");
+		close;
+	}
+	mes("Heheheheheheheheh\n"
+		"Não pense que este é o fim dele!");
+	close;
+}
+
+// ------------------------------------------------------------------
+alde_alche,13,15,7	script	Homem Estudioso#alchemistq	4_M_ALCHE_C,{
+	if (checkweight(Knife,1) == 0) {
+		mes("Espere um momento!\n"
+			"Atualmente, você está carregando muitos itens com você.\n"
+			"Por favor, volte novamente depois de guardar alguns itens no armazém da kafra.");
+		close;
+	}
+	mes("[Darwin]");
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes("Lembre-se...\n"
+				"Em sua busca, fazer o seu sonhos se tornam realidade e não perder o que você mais aprecia.");
+			next;
+			mes("[Darwin]\n"
+				"Ah...\n"
+				"Harmona...\n"
+				"Meu amor...");
+			close;
+		} else {
+			mes("Quando você tem seus sonhos, você tem tudo.\n"
+				"Sem eles, você tem nada mais a perder.");
+			next;
+			mes("[Darwin]\n"
+				"Estes olhos amaldiçoados...\n"
+				"Eles perderam de vista.\n"
+				"Meus sonhos há muito tempo.");
+			next;
+			mes("[Darwin]\n"
+				"Paraíso realmente existe...?\n"
+				"Não sem meu amor...\n"
+				"Não sem Harmona...");
+			close;
+		}
+	}
+	if (alchemistq == 6) {
+		mes("...");
+		next;
+		mes("[Darwin]\n"
+			"...\n"
+			"......");
+		next;
+		mes("[Darwin]\n"
+			"...\n"
+			"......\n"
+			"Quem é esse...?");
+		next;
+		monster("alde_alche",13,15,"Lobo",WOLF,1);
+		killmonsterall("alde_alche");
+		mes("[Darwin]\n"
+			"Um lobo?\n"
+			"Ou um ser humano?\n"
+			"Você deve estar procurando alguma coisa, não é?");
+		next;
+		mes("[Darwin]\n"
+			"Depois de tudo...\n"
+			"Todo mundo tem desejos, tenha cuidado.\n"
+			"Não seja como o selvagem lobo atraído pelas flores.");
+		next;
+		mes("[Darwin]\n"
+			"Em seus esforços para ganhar algo mais, você pode acabar sacrificando algo precioso para você.");
+		next;
+		mes("[Darwin]\n"
+			"Cultivando alegria e felicidade é como cultivar flores.\n"
+			"Se algo está faltando, é a flor desvanecer...");
+		next;
+		mes("[Darwin]\n"
+			"O que te traz\n"
+			"Para este tipo de lugar?");
+		next;
+		switch (select("Quero aprender experimentos", "Diga-me mais sobre flores", "Nada")) {
+			case 1:
+			mes("[Darwin]\n"
+				"Você deseja aprender Alquimia?\n"
+				"Tudo o que eu sei, para fazer o meu sonho ser realizado...");
+			next;
+			mes("[Darwin]\n"
+				"Eu vou ensinar você o básico...\n"
+				"Mas tudo o que você aprende depois deve ser dirigido através de suas próprias motivações.");
+			next;
+			mes("[Darwin]\n"
+				"Vou te ensinar como fazer simples alquimía, por favor trazer o seguinte materiais:");
+			next;
+			mes("[Darwin]\n"
+				"^551A8B3 Vasílha de Mistura^000000,\n"
+				"^551A8B3 Garrafa Vazia^000000,\n"
+				"^551A8B1 Erva Vermelha^000000,\n"
+				"^551A8B1 Erva Amarela^000000 e\n"
+				"^551A8B1 Erva Branca^000000.");
+			alchemistq = 7;
+			changequest(2032,2033);
+			next;
+			mes("[Darwin]\n"
+				"Uma vez que você tenha tudo preparado, volte.");
+			close;
+			case 2:
+			mes("[Darwin]\n"
+				"Flores...?\n"
+				"No mais escuro recessos da minha mente há uma flor, que eu me lembro vagamente...");
+			next;
+			mes("[Darwin]\n"
+				"Para aquela que eu amo, eu coloco tudos meus esforços em pesquisando uma coisa.");
+			next;
+			mes("[Darwin]\n"
+				"Eu não vou te dizer os detalhes.\n"
+				"Mas eu estava basicamente pesquisando o relacionamento entre lobos e flores.");
+			next;
+			mes("[Darwin]\n"
+				"Mas sim...\n"
+				"Era uma flor.\n"
+				"Com seu brilho, foi dito para deixar você ver o paraíso.\n"
+				"A ^551A8BIFlor das Ilusões^000000...");
+			next;
+			mes("[Darwin]\n"
+				"Eu fiz mesmo um Homúnculo.\n"
+				"Mas ninguém acreditou que eu poderia criar uma vida nova de uma flor...");
+			next;
+			mes("[Darwin]\n"
+				"Então...\n"
+				"Bem, algumas outras coisas aconteceram, e agora não tenho mais nada.\n"
+				"O tempo não tem mais nenhum significado para mim.");
+			next;
+			mes("[Darwin]\n"
+				"Ahh...\n"
+				"Harmona...\n"
+				"Onde você foi?\n"
+				"Eu espero que você esteja em um campo entre belas flores...");
+			close;
+			case 3:
+			mes("[Darwin]\n"
+				"Considere o que é mais precioso para você.\n"
+				"Não pode ser protegido se você não o reconhece.");
+			close;
+		}
+	} else if (alchemistq == 7) {
+		mes("...\n"
+			"......");
+		next;
+		mes("[Darwin]\n"
+			"...\n"
+			"......\n"
+			"O que é isso...?");
+		next;
+		mes("[Darwin]\n"
+			"Ah...\n"
+			"Você é quem deseja aprender Alquimia.\n"
+			"Trouxe tudo que pedi?");
+		next;
+		if (countitem(Illusion_Flower)) {
+			mes("[Darwin]\n"
+				"Espere.\n"
+				"Esta é a Flor das Ilusões.\n"
+				"Como você conseguiu isso?");
+			next;
+			mes("[Darwin]\n"
+				"Onde você achou isso?!\n"
+				"A flor que lentamente floresce sob o luar.\n"
+				"Não é lindo...!");
+			next;
+			mes("[Darwin]\n"
+				"E..Essa flor...\n"
+				"Por favor, deixe-me vê-la.\n"
+				"A Flor das Ilusões!\n"
+				"Uwaaaaaaah!!");
+			next;
+			mes("[Darwin]\n"
+				"Você seria gentil o suficiente para me deixar ficar com essa flor?\n"
+				"Tenho certeza que esta é a Flor do Luar que eu tenho procurado!");
+			next;
+			if (select("Desculpe, eu não posso dar", "Eu trouxe para dar a você.") == 1) {
+				mes("[Darwin]\n"
+					"Eu entendo.\n"
+					"Você não pode dar algo tão precioso para qualquer um.\n"
+					"Bem... Tudo bem.");
+				next;
+				mes("[Darwin]\n"
+					"Isso só trouxe de volta velhas lembranças.\n"
+					"Em qualquer caso, por favor traga o que é necessário para fazer a experiência.");
+				next;
+				mes("[Darwin]\n"
+					"Por favor, leve essa flor de volta, ela me traz de volta muitas lembranças...");
+				close;
+			}
+			mes("[Darwin]\n"
+				"Você está falando sério?!\n"
+				"Obrigado!\n"
+				"Uma flor tão preciosa.\n"
+				"Ah, Harmona, meu amor...");
+			next;
+			mes("[Darwin]\n"
+				"Sim...\n"
+				"Eu vou te retribuir por isso.\n"
+				"Eu plantarei todo o meu conhecimento da Alquimia diretamente em sua mente...");
+			next;
+			mes("[Darwin]\n"
+				"Mantenha seus olhos bem abertos e olhe diretamente nos meus!!\n"
+				"Não devie o olhar até o fim!!");
+			next;
+			mes("Lorem ipsum dolor sit amet.");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+				"Aenean fermentum ullamcorper.");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+				"Aenean fermentum ullamcorper.\n"
+				"Vestibulum ante ipsum primis in.");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+				"Aenean fermentum ullamcorper.\n"
+				"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+				"Aenean fermentum ullamcorper.\n"
+				"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae, Morbi");
+			next;
+			mes("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+				"Aenean fermentum ullamcorper.\n"
+				"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.\n"
+				"Morbi massa, fermentum vitae...");
+			next;
+			delitem(Illusion_Flower,1);
+			mes("[Darwin]\n"
+				"^666666*Suspiro...*^000000\n"
+				"Você é agora um Alquimista!!\n"
+				"Jogue fora agora essas vestes de mercador e essa vida mercantil!!");
+			alchemistq = 40;
+			changequest(2033,2034);
+			close;
+		} else if (countitem(Medicine_Bowl) > 2 && countitem(Empty_Bottle) > 2 && countitem(Red_Herb) > 0 && countitem(Yellow_Herb) > 0 && countitem(White_Herb) > 0) {
+			mes("[Darwin]\n"
+				"Parece que você tem tudo pronto, como prometido.\n"
+				"Vou ensinar-lhe como fazer uma alquimia simples.");
+			next;
+			mes("[Darwin]\n"
+				"Primeiro, prepare a tigela de remédios.\n"
+				"Então, coloque as ervas dentro, assim, e esmague-as lentamente.");
+			next;
+			mes("[Darwin]\n"
+				"Despeje pequenas quantidades de água limpa e mexa a mistura até engrossar.\n"
+				"Depois, adicione mais ervas.");
+			next;
+			mes("[Darwin]\n"
+				"Se você acha que tem o suficiente, derrame a mistura em uma garrafa vazia.");
+			delitem(Medicine_Bowl,3);
+			delitem(Empty_Bottle,3);
+			delitem(Red_Herb,1);
+			delitem(Yellow_Herb,1);
+			delitem(White_Herb,1);
+			next;
+			mes("[Darwin]\n"
+				"Ai está,\n"
+				"Está completo.\n"
+				"Agora, faça algum remédio usando o procedimento simples eu expliquei para você.");
+			.@w_point = 0;
+			next;
+			switch (select("Preparar a Vasílisa", "Colocar a Vasílisa na cabeça", "Chutar a Vasílisa")) {
+				case 1:
+				break;
+				case 2:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"O que...?");
+				next;
+				break;
+				case 3:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Não!");
+				next;
+				break;
+			}
+			switch (select("Põr areia na Vasília", "Põr ervas na Vasílha", "Põr uma harpa Vasílisa")) {
+				case 1:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"...Eh!?\n"
+					"Isso não é alquimia!");
+				next;
+				break;
+				case 2:
+				break;
+				case 3:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Uma harpa?\n"
+					"E como você faria isso?");
+				next;
+				break;
+			}
+			switch (select("Esmagar as ervas", "Esmagar a Vasílha", "Esmagar o pé de Darwin.")) {
+				case 1:
+				break;
+				case 2:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"O que você está fazendo!?");
+				next;
+				break;
+				case 3:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Agh...!\n"
+					"O que você pensa que está fazendo?!");
+				next;
+				break;
+			}
+			switch (select("Pulverizar a água", "Beber a água", "Despejar a água")) {
+				case 1:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"O que você está fazendo!?");
+				next;
+				break;
+				case 2:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Espere...\n"
+					"Você está fazendo uma pausa?");
+				next;
+				break;
+				case 3:
+				break;
+			}
+			switch (select("Continuar esmagando as ervas", "Comer as ervas", "Dançar e cantar")) {
+				case 1:
+				break;
+				case 2:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Comer as ervas?\n"
+					"Eu acho que você precisa prestar mais atenção no que faz...");
+				next;
+				break;
+				case 3:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Cantando e dançando?\n"
+					"Alquimistas não fazem isso, você ficou louco?");
+				next;
+				break;
+			}
+			switch (select("Fritar tudo com macarrão", "Despejar em uma Garrafa Vazia", "Segurar a Vasílha e beber")) {
+				case 1:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Somos Alquimistas, não chefs de restaurantes.");
+				next;
+				break;
+				case 2:
+				break;
+				case 3:
+				++.@w_point;
+				mes("[Darwin]\n"
+					"Huh...\n"
+					"Muito desleixado...");
+				next;
+				break;
+			}
+			if (.@w_point) {
+				mes("[Darwin]\n"
+					"...\n"
+					"......");
+				next;
+				mes("[Darwin]\n"
+					"Você estragou a mistura desde que você não seguiu o procedimento!\n"
+					"Terá que obter mais ingredientes para tentar novamente até que você acertar.");
+				close;
+			}
+			getitem(Red_Potion,1);
+			getitem(Yellow_Potion,1);
+			getitem(White_Potion,1);
+			mes("[Darwin]\n"
+				"Bom trabalho.\n"
+				"Ele saiu muito bem considerando que é a sua primeira vez.\n"
+				"Vá em frente e guarde o conhecimento que você acabou de adquirir.");
+			alchemistq = 8;
+			changequest(2033,2035);
+			next;
+			mes("[Darwin]\n"
+				"Agora, vá para a próxima sala e fale com Van Helmont para continuar sua formação.");
+			next;
+			mes("[Darwin]\n"
+				"Nunca esqueça...\n"
+				"Você deve sempre proteger o que é mais precioso para você.");
+			close;
+		} else {
+			mes("[Darwin]\n"
+				"Você esqueceu o que você precisa trazer?\n"
+				"Deixe-me lembrá-lo mais uma vez.\n"
+				"Você deve voltar com...");
+			next;
+			mes("[Darwin]\n"
+				"^551A8B3 Vasílha de Mistura^000000,\n"
+				"^551A8B3 Garrafa Vazia^000000,\n"
+				"^551A8B1 Erva Vermelha^000000,\n"
+				"^551A8B1 Erva Amarela^000000 e\n"
+				"^551A8B1 Erva Branca^000000.");
+			next;
+			mes("[Darwin]\n"
+				"Volte quando tudi estiver pronto...");
+			close;
+		}
+	} else if (alchemistq == 8) {
+		mes("Eu disse para ir falar com Van Helmont.\n"
+			"Gostaria de te ensinar mais, mas não posso.");
+		next;
+		mes("[Darwin]\n"
+			"Aah...\n"
+			"Harmona, meu amor.\n"
+			"Eu não consigo nem ver a flor mais.\n"
+			"Minha alma se seca também...");
+		close;
+	} else if (alchemistq == 40) {
+		mes("Já te dei todo o meu conhecimento e não tenho mais nada para te ensinar.");
+		next;
+		mes("[Darwin]\n"
+			"Vá para o segundo andar e converse com o nosso líder da guilda.\n"
+			"Depois de fazer isso, sua vida como Alquimista começará.");
+		close;
+	} else {
+		mes("Quando voce tem seus sonhos, você tem tudo.\n"
+			"Sem eles, você não tem mais nada a perder.");
+		next;
+		mes("[Darwin]\n"
+			"Estes olhos amaldiçoados...\n"
+			"Eles perderam de vista meus sonhos há muito tempo.\n"
+			"Ha ha ha ha ...");
+		next;
+		mes("[Darwin]\n"
+			"O paraíso realmente existe...?\n"
+			"Não sem meu amor...\n"
+			"Não sem Harmona...");
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+alde_alche,79,19,5	script	Especialista#alchemistq	4_M_ALCHE_A,{
+	mes("[Van Helmont]");
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes("O que você quer?\n"
+				"Estou ocupado!!\n"
+				"Não me incomode e continue seu caminho.");
+			next;
+			mes("[Van Helmont]\n"
+				"Agora, vamos...\n"
+				"Você nunca vai ter qualquer pesquisa concluída se você apenas fica perambulando.\n"
+				"Saia e aprenda tudo o que puder.");
+			next;
+			mes("[Van Helmont]\n"
+				"Ler livros científicos e realizar experimentos.\n"
+				"Isso é o que alquimía.\n"
+				"Agora, deixe-me voltar ao trabalho!");
+			close;
+		} else {
+			mes("Só um pouco...\n"
+				"Um pouquinho mais...\n"
+				"Nãoo!\n"
+				"Só um pouco mais e isso já teria sido feito!");
+			next;
+			mes("[Van Helmont]\n"
+				"Por quê...?!\n"
+				"Por que, outro fracasso?!\n"
+				"Meus cálculos estavam corretos!\n"
+				"E-espera...!");
+			next;
+			mes("[Van Helmont]\n"
+				"Talvez, se eu capacitasse o fluxo térmico usando o gradiente neutronic, ele apenas pôde trabalhar...!");
+			close;
+		}
+	}
+	if (alchemistq == 8) {
+		mes("Arrrrgh ...!\n"
+			"Por que essa fórmula não está funcionando?\n"
+			"O que está errado?\n"
+			"Em teoria, está tudo correto, mas deve haver um erro na fórmula em algum lugar ...");
+		next;
+		mes("[Van Helmont]\n"
+			"Eu derramo isto aqui, e ele deve parar.\n"
+			"Espere, esta é a solução errada!\n"
+			"Como eu poderia fazer um erro tão idiota?!\n"
+			"Quando eles ficaram trocados?!");
+		next;
+		mes("[Van Helmont]\n"
+			"Está bem, está bem...\n"
+			"Eu só preciso corrigir essa parte.\n"
+			"Não há necessidade de começar de novo.\n"
+			"Preciso consertá-lo...\n"
+			"Mas espere ... Espere...");
+		next;
+		mes("[Van Helmont]\n"
+			".................");
+		next;
+		mes("[Van Helmont]\n"
+			"Hum...\n"
+			"Quem é Você?");
+		next;
+		if (select("Quero ser Alquimísta", ".......") == 2) {
+			mes("[Van Helmont]\n"
+				"Hmm...?\n"
+				"O que, você só quer assistir?\n"
+				"Tudo bem, mas faça silêncio e deixe-me terminar.");
+			next;
+			mes("[Van Helmont]\n"
+				"Fique fora do meu caminho e não ande tocando coisas.\n"
+				"Pode haver alguns materiais voláteis, por isso seria perigoso ter quaisquer acidentes.");
+			close;
+		}
+		mes("[Van Helmont]\n"
+			"Você...?\n"
+			"Um Alquimista?\n"
+			"Que mercador engraçado.");
+		next;
+		mes("[Van Helmont]\n"
+			"Bem, isso é bom, mas tenho experiências muito urgentes que exigem minha atenção.\n"
+			"Então não fique no caminho.");
+		next;
+		if (select("Ensine-me algo", "...") == 1) {
+			mes("[Van Helmont]\n"
+				"Argh...!\n"
+				"Eu não te disse para não me incomodar?\n"
+				"O que é tão difícil de entender sobre isso?");
+			next;
+			mes("[Van Helmont]\n"
+				"Bem, eu vou te dar uma tarefa.\n"
+				"Aprenda algo novo e volte.\n"
+				"Vamos ver.\n"
+				"O que seria bom...");
+			next;
+			mes("[Van Helmont]\n"
+				"Certo já sei..\n"
+				"Vá aprender como faz o Antígeno e Mistura com Molgenstein.");
+			next;
+			mes("[Van Helmont]\n"
+				"Você não precisa trazer nada.\n"
+				"Basta ir vê-lo no trabalho e mandá-lo dizer-lhe como ele faz essas soluções.");
+			next;
+			alchemistq = 9;
+			changequest(2035,2036);
+			mes("[Van Helmont]\n"
+				"Bem, então vejo você mais tarde.\n"
+				"É melhor você ir logo que puder.");
+			close;
+		}
+		mes("[Van Helmont]\n"
+			"...");
+		next;
+		mes("[Van Helmont]\n"
+			"...\n"
+			"......");
+		next;
+		mes("[Van Helmont]\n"
+			"...\n"
+			"......");
+		next;
+		mes("[Van Helmont]\n"
+			"Então, se eu calibrar a taxa de combustão deste composto.\n"
+			"Deve negar qualquer tendências coesas neste fluxo de partículas...");
+		next;
+		mes("[Van Helmont]\n"
+			"Mas o que eu vou fazer sobre toda essa cristalização espontânea?!\n"
+			"Eu não posso muito bem remover esta matriz, preciso que o catalisador atinja o ponto triplo.");
+		next;
+		mes("[Van Helmont]\n"
+			"Damn!\n"
+			"O que eu vou fazer?!");
+		close;
+	} else if (alchemistq == 9) {
+		mes("Tudo bem, se eu fizer uma incisão aqui nos tentáculos.\n"
+			"Adicionar uma solução de jellopy e muco pegajoso no...\n"
+			"Onde minha vasílha de mistura foi parar?");
+		next;
+		mes("[Van Helmont]\n"
+			"Será que eu usá-los todos em um momento como este?!\n"
+			"Gostaria de saber se Nicholas tem alguma esquerma.\n"
+			"Espere.\n"
+			"Espere um minuto...");
+		next;
+		mes("[Van Helmont]\n"
+			"...");
+		next;
+		mes("[Van Helmont]\n"
+			"...\n"
+			"......\n"
+			"Quem é você?");
+		next;
+		if (select("Quero me tornar Alquimista", ".......") == 2) {
+			mes("[Van Helmont]\n"
+				"Hmm...?\n"
+				"Fique fora do meu caminho e não ande tocando as coisas.\n"
+				"Pode haver alguns materiais voláteis, por isso seria perigoso ter algum acidente.");
+			close;
+		}
+		mes("[Van Helmont]\n"
+			"Ah, é claro.\n"
+			"O mercador de antes.\n"
+			"Então, o que você aprendeu com Molgenstein?\n"
+			"Eu não apenas enviei você lá para se divertir, você sabe.");
+		next;
+		mes("[Van Helmont]\n"
+			"Deixe-me fazer algumas perguntas para verificar o que você aprendeu.");
+		next;
+		if (molgenstain == 3) {
+			mes("[Van Helmont]\n"
+				"Qual item não é necessário para fazer um Antígeno?");
+			next;
+			if (select("Karvodailnirol", "Detrimindexta", "Alcool") != 1) {
+				.@w_point += 1;
+			}
+			mes("[Van Helmont]\n"
+				"Qual item não é necessário para fazer uma Místura?");
+			next;
+			if (select("Karvodailnirol", "Detrimindexta", "Alcool") != 2) {
+				.@w_point += 1;
+			}
+			if (.@w_point) {
+				mes("[Van Helmont]\n"
+					"Você não estava ouvindo Molgenstein?\n"
+					"Talvez você tenha que vê-lo fazer novamente.");
+				next;
+				mes("[Van Helmont]\n"
+					"Se não saber os itens exatos que precisa em um experimento.\n"
+					"Você pode acabar ferindo a si mesmo e a outras pessoas!");
+				close;
+			}
+			mes("[Van Helmont]\n"
+				"Bom, você aprendeu bem.\n"
+				"Certo, agora você sabe algo sobre experimentação.\n"
+				"Você terminou aqui, então agora eu posso continuar com minhas experiências.");
+			next;
+			mes("[Van Helmont]\n"
+				"Vá agora encontrar no quarto ao lado deste, e fale com Nicholas.\n"
+				"Ele vai continuar seu treinamento.");
+			next;
+			alchemistq = 20;
+			changequest(2036,2037);
+			mes("[Van Helmont]\n"
+				"O que você ainda está fazendo aqui?\n"
+				"Vá!\n"
+				"Nós dois temos coisas mais importantes para fazer!");
+			close;
+		} else {
+			mes("[Van Helmont]\n"
+				"Qual item não é necessário para fazer um Antígeno?");
+			next;
+			select("Pluma", "Muco Pegajoso", "Sangue de Animal");
+			mes("[Van Helmont]\n"
+				"Qual item não é necessário para fazer uma Místura?");
+			next;
+			select("Ração de Monstro", "Lábios Fossilizados", "Bandagem Estragada");
+			mes("[Van Helmont]\n"
+				"Seja honest"+(Sex == SEX_MALE ? "o":"a")+".\n"
+				"Você não sabe, não é?!\n"
+				"Vá falar com Molgenstein e pedir-lo para ensinar?!");
+			next;
+			mes("[Van Helmont]\n"
+				"Nem pense em voltar até que você fale com ele!\n"
+				"Agora pare de me incomodar e saia daqui!");
+			close;
+		}
+	} else if (alchemistq == 20) {
+		mes("O que...?\n"
+			"Eu pensei que eu te disse para falar com Nicholas na sala ao lado?");
+		next;
+		mes("[Van Helmont]\n"
+			"Eu preciso continuar minha pesquisa, e você precisa terminar de seu treinamento para Alquimista.\n"
+			"Vamos, mexa-se!");
+		close;
+	} else {
+		mes("Só um pouco...\n"
+			"Um pouquinho mais...\n"
+			"Nãooo!\n"
+			"Só um pouco mais e isso já teria sido feito!");
+		next;
+		mes("[Van Helmont]\n"
+			"Por quê...?!\n"
+			"Por que, outro fracasso?!\n"
+			"Meus cálculos estavam corretos!\n"
+			"Espere...");
+		next;
+		mes("[Van Helmont]\n"
+			"Talvez, se eu capacitasse o fluxo térmico usando o gradiente neutronic...");
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+alde_alche,145,19,1	script	Pesquisador#alchemistq	1_M_LIBRARYMASTER,{
+	if (checkweight(Knife,1) == 0) {
+		mes("[Nicholas Flamel]\n"
+			"Espere um momento!\n"
+			"Atualmente você carrega muitos itens com você.\n"
+			"Volte depois de guardar alguns itens no armazém da Kafra.");
+		close;
+	}
+	if (alchemistq > 19 && alchemistq < 22) {
+		if (alchemistq == 20) {
+			mes("[Nicholas Flamel]\n"
+				"Ooh...\n"
+				"Você é o Mercador que quer se tornar um Alquimista?");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Não é apenas qualquer um pode se tornar um Alquimista, você sabe.\n"
+				"Você tem que ter motivação e metas claras e um forte senso de foco.");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Os alquimistas devem memorizar muitas equações químicas.\n"
+				"Leis científicas e muitas outras informações.\n"
+				"Na verdade, é muito difícil.");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Se você não pode se concentrar, você ficará confuso mais tarde.\n"
+				"Quando você olhar para gráficos de Alquimia.\n"
+				"Meu teste julgará sua capacidade de fazer exatamente isso.");
+			next;
+		}
+		mes("[Nicholas Flamel]\n"
+			"Encontre as palavras embaralhadas no grupo de letras que lhe mostrarei.\n"
+			"Eles podem ser feitos usando algumas ou todas as letras.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Você passa se você escolher a palavra que é ^551A8BCorreta^000000 nesse quebra-cabeça.");
+		next;
+		switch (rand(1,3)) {
+			case 1:
+			mes("[Nicholas Flamel]\n"
+				"t m y a n y e o b n e g p r i");
+			next;
+			if (select("Bronze", "Inseto", "Quebra", "Brigan") == 4) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"o n c u t a p i l e r s v m u");
+			next;
+			if (select("armazém", "comerciante", "simples", "loja") == 2) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"t v a r m e g p h e u b o y l");
+			next;
+			if (select("grupo", "clã", "líder", "doces") == 1) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"q z a h n a i n b r d p t n c");
+			next;
+			if (select("partisan", "partizan", "pato", "paros") == 2) {
+				.@alch_t += 10;
+			}
+			break;
+			case 2:
+			mes("[Nicholas Flamel]\n"
+				"m p d i c f a r o g n k w a s");
+			next;
+			if (select("packman", "sol", "ragnarok", "maravilhas") == 1) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"g b n o p r e f a r e t a s k");
+			next;
+			if (select("roxa", "fumaça", "ragnarok", "raio") == 3) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"u b n i s j r t r e a g a d p");
+			next;
+			if (select("abertura", "kinship", "doação", "fonte") == 1) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"ç o e h ã r o m c a i n p t t");
+			next;
+			if (select("forja", "poção", "encomenda", "comerciante") == 2) {
+				.@alch_t += 10;
+			}
+			break;
+			case 3:
+			mes("[Nicholas Flamel]\n"
+				"s m i e x b w u n e t a g l r");
+			next;
+			if (select("tigre", "lobo", "abóbora", "rasgou") == 1) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"n i e g b o p d s o a u w r v");
+			next;
+			if (select("golpe", "provocar", "vigor", "abracadabra") == 3) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"l r m g r e x t a v i n e d e");
+			next;
+			if (select("alberta", "latifoliate", "crimson", "verde") == 4) {
+				.@alch_t += 10;
+			}
+			mes("[Nicholas Flamel]\n"
+				"ç o e h ã r o m c a i n p t t");
+			next;
+			if (select("forja", "poção", "encomenda", "comerciante") == 2) {
+				.@alch_t += 10;
+			}
+			break;
+		}
+		mes("[Nicholas Flamel]\n"
+			"Ah, terminamos.\n"
+			"Agora vamos ver...");
+		if (.@alch_t > 30) {
+			alchemistq = 22;
+			mes("Excelente trabalho!");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Ótimo, você encontrou todas essas palavras escondidas.\n"
+				"Com esse tipo de concentração, você não deve ter nenhum problema para memorizar equações.");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Volte daquí a pouco, enquanto eu preparo a próxima tarefa para o seu treinamento.");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Oh, e antes de você falar comigo novamente, certifique-se de que você tem ^551A8Bespaço suficiente em seu inventário^000000.");
+			close;
+		} else {
+			alchemistq = 21;
+			mes("^666666*Suspiro!*^000000\n"
+				"H-horrivel!");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"A julgar por esses resultados, você obviamente tem um problema com a concentração.");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Se você não pode mesmo resolver estes enigmas fáceis da palavra.\n"
+				"Como pode você se manter a par de suas experiências e pesquisa?");
+			next;
+			mes("[Nicholas Flamel]\n"
+				"Por que você não relaxa e descansa um pouco antes de fazer o teste novamente?");
+			close;
+		}
+	} else if (alchemistq == 22) {
+		if (MaxWeight - Weight < 1370) {
+			mes("[Nicholas Flamel]\n"
+				"Uau...\n"
+				"Você está carregando muita coisa!\n"
+				"Primeiro, coloque algumas de suas coisas no Armazém Kafra.");
+			close;
+		}
+		mes("[Nicholas Flamel]\n"
+			"Bem...\n"
+			"Para sua próxima tarefa, você precisará viajar para ^551A8BJuno^000000.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Lá, você precisará falar com ^551A8BBain^000000 e ^551A8BBajin^000000.\n"
+			"Esses dois estão fazendo pesquisa de Alquimia com os Sábios em Juno.\n"
+			"Você aprenderá algo ajudando-os com seu projeto.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Volte aqui para mim depois que você os ajuda.\n"
+			"Eles vão precisar de todos esses itens para continuar seus experimentos.");
+		next;
+		alchemistq = 23;
+		changequest(2037,2038);
+		mes("[Nicholas Flamel]\n"
+			"1 Mistura,\n"
+			"5 Madeira Queimada,\n"
+			"5 Areia Fina,\n"
+			"3 Minério de Oridecon e\n"
+			"3 Minério de Elunium.");
+		getitem(Mixture,1);
+		getitem(Burn_Tree,5);
+		getitem(Fine_Sand,5);
+		getitem(Oridecon_Stone,3);
+		getitem(Elunium_Stone,3);
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Bem.\n"
+			"Tenha uma viagem segura e volte sem preça.");
+		close;
+	} else if (alchemistq == 23) {
+		mes("[Nicholas Flamel]\n"
+			"Eu não disse para ir a Juno e ajudar Bain e Bajin com sua pesquisa de Alquimia?");
+		close;
+	} else if (alchemistq == 24) {
+		alchemistq = 40;
+		changequest(2038,2039);
+		mes("[Nicholas Flamel]\n"
+			"Ah, você está de volta!\n"
+			"Acabei de receber uma mensagem de Bain e Bajin.\n"
+			"Eles me disseram que estavam muito felizes com sua ajuda.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Se você fosse bom o suficiente para ajudar aqueles irmãos.\n"
+			"Definitivamente se qualificaria para ser um Alquimista.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Bom trabalho!\n"
+			"Tudo o que você tem que fazer agora é falar com o Líder da Guilda no 2º andar!\n"
+			"Parabéns, você vai se tornar um Alquimista em breve!");
+		close;
+	} else if (alchemistq == 40 && BaseJob == Job_Merchant) {
+		mes("[Nicholas Flamel]\n"
+			"Tudo o que você tem que fazer agora é falar com o Líder da Guilda no 2º andar!\n"
+			"Parabéns, você vai se tornar um Alquimista em breve!");
+		close;
+	} else {
+		mes("[Nicholas Flamel]\n"
+			"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
+			"Vivamus sem.\n"
+			"Sed metus lacus, viverra id, rutrum eget rhoncus sit amet, lectus.");
+		next;
+		mes("[Nicholas Flamel]\n"
+			"Suspendisse sit amet urna in nisl fringilla faucibus.\n"
+			"Nulla scelerisque eros...\n"
+			"^666666*Resmungo*^000000");
+		close;
+	}
+}
+
+// ------------------------------------------------------------------
+alde_alche,101,184,4	script	Líder dos Alquimistas#alchemistq	2_M_DYEINGER,{
+	cutin("job_alche_vincent",2);
+	mes("[Vincent Carsciallo]");
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes("Bem vind"+(Sex == SEX_MALE ? "o":"a")+"!\n"
+				"Então, como está indo sua pesquisa?");
+			next;
+			mes("[Vincent Carsciallo]\n"
+				"Às vezes você obtém resultados inesperados de uma experiência.\n"
+				"Embora estes possam ser retrocessos em sua pesquisa.\n"
+				"Tais resultados também podem levar a novas descobertas.");
+			next;
+			mes("[Vincent Carsciallo]\n"
+				"Se você descobrir algo novo, venha nos contar.\n"
+				"Não se esqueçam de que estamos todos trabalhando juntos para desvendar os mistérios da ciência!");
+		} else {
+			mes("Hmm...?\n"
+				"O que um aventureiro está fazendo aqui na Guilda Alquimista?");
+			next;
+			mes("[Vincent Caracciolo]\n"
+				"Receio que não possamos oferecer-lhe aqui se não for membro da nossa Guilda.");
+		}
+		close2;
+		cutin("",255);
+		end;
+	}
+	if (alchemistq == 0) {
+		mes("Hmm...?\n"
+			"Um Mercador?\n"
+			"Você está interessado em aprender Alquimia?");
+		next;
+		mes("[Vincent Carsciallo]\n"
+			"Esta é a Guilda Alquimista.\n"
+			"Nós pesquisamos e experimentamos com muitas substâncias diferentes para criar novos materiais sem usar magia.");
+		next;
+		mes("[Vincent Carsciallo]\n"
+			"Algum dia, esperamos desvendar o segredo da vida, assim como os outros mistérios da ciência.");
+		next;
+		mes("[Vincent Carsciallo]\n"
+			"Depois de estar viajando como um comerciante por um longo tempo, você deve ter desenvolvido alguma curiosidade científica.\n"
+			"Se você gostaria de aprender Alquimia, por que você não tenta se tornar um Alquimista?");
+		close2;
+		cutin("",255);
+		end;
+	} else if (alchemistq == 40) {
+		if (JobLevel < 40) {
+			alchemistq = 0;
+			mes("Hmm...\n"
+				"Você não parece estar qualificado ainda.\n"
+				"Lembre-se, você deve alcançar pelo menos o nível 40 de Classe para se tornar um Alquimista.");
+			close2;
+			cutin("",255);
+			end;
+		}
+		if (SkillPoint) {
+			mes("Ah, você está quase pronto para se tornar um alquimista.\n"
+				"Mas você deve primeiro gastar seus pontos de habilidade não utilizados.");
+			next;
+			mes("[Vincent Carsciallo]\n"
+				"Fale comigo novamente depois de ter gasto todos os seus pontos de habilidade extras.");
+			close2;
+			cutin("",255);
+			end;
+		}
+		if (questprogress(2039)) { changequest(2039,2040); }
+		if (questprogress(2034)) { changequest(2034,2040); }
+		mes("Ah, bem isso é tudo.\n"
+			"Posso ver que você aprendeu todos os conceitos básicos da Alquimia.");
+		next;
+		jobchange(Job_Alchemist);
+		completequest(2040);
+		callfunc("ClearJobQuest2nd",18);
+		mes("[Vincent Carsciallo]\n"
+			"Parabéns, você é agora um membro da nossa ilustre Guilda.\n"
+			"Eu espero que você aprenda muito...");
+		next;
+		if (.@jlevel == 50) {
+			getitem(Slim_Potion_Create_Book,1);
+			getitem(Alcol_Create_Book,1);
+			getitem(FireBottle_Create_Book,1);
+			getitem(Acid_Create_Book,1);
+			getitem(Plant_Create_Book,1);
+			getitem(Mine_Create_Book,1);
+			getitem(Normal_Potion_Book,1);
+			mes("[Vincent Carsciallo]\n"
+				"Deixe-me dar-lhe algo especial.\n"
+				"Você pode usar isso para começar sua vida de pesquisa.");
+		} else {
+			switch (rand(1,6)) {
+				case 1:
+				getitem(Alcol_Create_Book,1);
+				break;
+				case 2:
+				getitem(FireBottle_Create_Book,1);
+				break;
+				case 3:
+				getitem(Acid_Create_Book,1);
+				break;
+				case 4:
+				getitem(Plant_Create_Book,1);
+				break;
+				case 5:
+				getitem(Mine_Create_Book,1);
+				break;
+				case 6:
+				getitem(Normal_Potion_Book,1);
+			}
+			mes("[Vincent Carsciallo]\n"
+				"E...\n"
+				"Aqui está uma pequena coisa para ajudá-lo a começar sua pesquisa.");
+		}
+		next;
+		mes("[Vincent Carsciallo]\n"
+			"Vejo você mais tarde, então...\n"
+			"Lembre-se de viver com orgulho de ser Alquimista!");
+		close2;
+		cutin("",255);
+		end;
+	} else {
+		mes("Ah...\n"
+			"Eu acredito que você já se inscreveu no treinamento para se tornar um Alquimista.");
+		next;
+		mes("[Vincent Carsciallo]\n"
+			"Por favor, ouça os outros Alquimistas e siga as instruções cuidadosamente.\n"
+			"Você aprenderá muito com eles.");
+		close2;
+		cutin("",255);
+		end;
+	}
+}
+
