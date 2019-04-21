@@ -142,4 +142,7 @@ misc_config: {
 	// @item Bao   # 553         # 553
 	// @item Bun_  # 6115        # 6115
 	case_sensitive_aegisnames: true
+
+	// Ativar sistema de conquista ?
+	enable_achievement_system: false
 }

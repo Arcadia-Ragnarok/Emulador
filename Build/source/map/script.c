@@ -9989,16 +9989,28 @@ static BUILDIN(gettimestr)
 	char *tmpstr;
 	const char *fmtstr;
 	int maxlen;
-	time_t now = time(NULL);
+	time_t now;
 
-	fmtstr=script_getstr(st,2);
-	maxlen=script_getnum(st,3);
+	fmtstr = script_getstr(st,2);
+	maxlen = script_getnum(st,3);
 
-	tmpstr=(char *)aMalloc((maxlen+1)*sizeof(char));
-	strftime(tmpstr,maxlen,fmtstr,localtime(&now));
-	tmpstr[maxlen]='\0';
+	if (script_hasdata(st, 4)) {
+		int timestamp = script_getnum(st, 4);
+		if (timestamp < 0) {
+			ShowWarning("buildin_gettimestr: O timestamp do UNIX deve estar em valor positivo.\n");
+			return false;
+		}
 
-	script_pushstr(st,tmpstr);
+		now = (time_t)timestamp;
+	} else {
+		now = time(NULL);
+	}
+
+	tmpstr = (char *)aMalloc((maxlen +1)*sizeof(char));
+	strftime(tmpstr, maxlen, fmtstr, localtime(&now));
+	tmpstr[maxlen] = '\0';
+
+	script_pushstr(st, tmpstr);
 	return true;
 }
 
@@ -14230,6 +14242,7 @@ static BUILDIN(getinventorylist)
 			}
 			pc->setreg(sd,reference_uid(script->add_variable("@inventorylist_expire"), j),sd->status.inventory[i].expire_time);
 			pc->setreg(sd,reference_uid(script->add_variable("@inventorylist_bound"), j),sd->status.inventory[i].bound);
+			pc->setreg(sd, reference_uid(script->add_variable("@inventorylist_idx"), j), i);
 			j++;
 		}
 	}
@@ -23678,7 +23691,7 @@ static BUILDIN(showscript)
 {
 	struct block_list *bl = NULL;
 	const char *msg = script_getstr(st, 2);
-	int id = 0;
+	int id = 0, flag = AREA;
 
 	if (script_hasdata(st, 3)) {
 		id = script_getnum(st, 3);
@@ -23690,13 +23703,13 @@ static BUILDIN(showscript)
 
 	if (!bl) {
 		ShowError("buildin_showscript: Script not attached. (id=%d, rid=%d, oid=%d)\n", id, st->rid, st->oid);
-		script_pushint(st, 0);
 		return false;
 	}
 
-	clif->ShowScript(bl, msg);
-
-	script_pushint(st, 1);
+	if (script_hasdata(st, 4))
+		if (script_getnum(st, 4) == SELF)
+			flag = SELF;
+	clif->ShowScript(bl, msg, flag);
 
 	return true;
 }
@@ -24668,7 +24681,7 @@ static void script_parse_builtin(void)
 		BUILDIN_DEF(savepoint,"sii"),
 		BUILDIN_DEF(gettimetick,"i"),
 		BUILDIN_DEF(gettime,"i"),
-		BUILDIN_DEF(gettimestr,"si"),
+		BUILDIN_DEF(gettimestr, "si?"),
 		BUILDIN_DEF(openstorage,""),
 		BUILDIN_DEF(guildopenstorage,""),
 		BUILDIN_DEF(itemskill,"vi?"),
@@ -25109,7 +25122,7 @@ static void script_parse_builtin(void)
 		BUILDIN_DEF(clan_leave,"?"),
 		BUILDIN_DEF(clan_master,"i"),
 
-		BUILDIN_DEF(showscript, "s?"),
+		BUILDIN_DEF(showscript, "s??"),
 		BUILDIN_DEF(mergeitem,""),
 		BUILDIN_DEF(getcalendartime, "ii??"),
 

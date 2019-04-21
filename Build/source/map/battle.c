@@ -6898,6 +6898,7 @@ static const struct battle_data {
 	{ "misc_config/mail_show_status",           &battle_config.mail_show_status,                 0,         0,    2,        },
 	{ "misc_config/mon_trans_disable_in_gvg",   &battle_config.mon_trans_disable_in_gvg,         0,         0,    1,        },
 	{ "misc_config/case_sensitive_aegisnames",  &battle_config.case_sensitive_aegisnames,        1,         0,    1,        },
+	{ "misc_config/enable_achievement_system",  &battle_config.feature_enable_achievement,       1,         0,    1,        },
 };
 
 static bool battle_set_value_sub(int index, int value)
