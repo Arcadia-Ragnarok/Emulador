@@ -1,4 +1,4 @@
-Arcadia - Ragnarok Serve Emulador
+Arcadia
 ========
 
 Status:
@@ -12,21 +12,32 @@ Status:
 O Arcadia é um emulador sem fins de lucrativos para simulação do jogo Ragnarok-Online.
 Criado no intuito de mostrar abertamente o desenvolvimento para um servidor do mesmo jogo.
 
-Originalmente seu código fonte é baseado e usa-se de updates no Hercules-Emulador que por sua vez é baseado no extinto Athena.
+Originalmente seu código fonte é baseado e usa-se de update no Emulador [Hercules](https://github.com/HerculesWS) que por sua vez é baseado no extinto Athena.
 
 #### Qual é o diferencial?
-Diferente dos demais emuladores assim como o próprio hercules que abragem um gama de opções para configuração por parte do usuário. 
+Diferente dos demais emuladores assim como o próprio hercules que abrangem um gama de opções para configuração por parte do usuário. 
 Arcadia já vem configurado seguindo os padrões do servidor oficial brasileiro de ragnarok.
 Não sendo plausível modificações severas que fogem dos padrões oficiais.
 
 No geral é voltado a uso pessoal por parte dos colaboradores, mas mantendo seu código em aberto para que pessoas possam visualizar o que é feito antes da criação do servidor que contará com esse emulador. 
-Dedicado a um servidor de rates baixos sem custominizações.
+Dedicado a um servidor de rates baixos sem customizações.
 
 #### Desenvolvimento geral.
 Como dito anteriormente seu código vem e é modificado em relação ao emulador Hercules. Sendo conta com a tradução para o português brasileiro. 
-Em outra parte sendo modificado severamente ou removido tudo aquilo que seja considerável, inútil ou inadequado para exisitr em um emulador de ragnarok, além de modificações peculiares para melhor uso e praticidade.
+Em outra parte sendo modificado severamente ou removido tudo aquilo que seja considerável, inútil ou inadequado para existir em um emulador de ragnarok, além de modificações peculiares para melhor uso e praticidade.
 
 #### Agradecimentos.
 Primeiramente devemos agradecer aos desenvolvedores e colaboradores que criaram o Athena que sem eles nenhum emulador de ragnarok seria possível.
 
-Em segundo a equipe do Hercules por melhorar o código original do emulador Athena, e aos contribuídores do mesmo que periódicamente atualizam e modificam seu código.
+Em segundo a equipe do Hercules por melhorar o código original do emulador Athena, e aos contribuidores do mesmo que periodicamente atualizam e modificam seu código.
+
+-------------
+#### Requisitos.
+###### Windows
+- Sistema MySql ou MariaDB
+- Microsoft Visual Studio Versão 2013 ou posterior
+
+###### Linux
+- Recomendado ´CentOS´
+- Sistema MySql ou MariaDB
+- Instalação dos seguintes pacotes (gcc make mysql mysql-devel mysql-server pcre-devel zlib-devel)
