@@ -204,4 +204,13 @@ client_config: {
 	// Permitir RODEX vinculado a account?
 	// NOTA: Isso não é possível utilizar na maioria dos clients
 	rodex_use_accountmail: false
+
+	// Enviar temporizador de ping
+	// Para clients 20190320
+	// Intervalo em segundos para invocar.
+	ping_timer_inverval: 30
+
+	// Tempo limite dos pacotes em segundos antes que o pacote de ping possa ser enviado.
+	// Para clients 20190320
+	ping_time: 20
 }

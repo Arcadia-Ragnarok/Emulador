@@ -481,6 +481,7 @@ enum e_mmo_charstatus_opt {
 	OPT_NONE        = 0x0,
 	OPT_SHOW_EQUIP  = 0x1,
 	OPT_ALLOW_PARTY = 0x2,
+	OPT_ALLOW_CALL  = 0x4,
 };
 
 enum e_item_bound_type {
@@ -727,7 +728,9 @@ struct mmo_charstatus {
 #ifdef HOTKEY_SAVING
 	struct hotkey hotkeys[MAX_HOTKEYS];
 #endif
-	bool show_equip, allow_party;
+	bool show_equip;
+	bool allow_party;
+	bool allow_call;
 	unsigned short rename;
 	unsigned short slotchange;
 
@@ -959,6 +962,11 @@ enum fame_list_type {
 	RANKTYPE_ALCHEMIST  = 1,
 	RANKTYPE_TAEKWON    = 2,
 	RANKTYPE_PK         = 3, //Not supported yet
+};
+
+struct rodex_item {
+	struct item item;
+	int idx;
 };
 
 struct rodex_message {

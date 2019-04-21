@@ -5831,7 +5831,7 @@ static enum damage_lv battle_weapon_attack(struct block_list *src, struct block_
 
 			if (d_bl != NULL
 			 && ((d_bl->type == BL_MER && d_md->master != NULL && d_md->master->bl.id == target->id)
-			  || (d_bl->type == BL_PC && d_sd->devotion[sce->val2] == target->id)
+			  || (d_sd != NULL && d_bl->type == BL_PC && d_sd->devotion[sce->val2] == target->id)
 			    )
 			 && check_distance_bl(target, d_bl, sce->val3)
 			) {
@@ -6504,6 +6504,8 @@ static const struct battle_data {
 	{ "client_config/roulette",                        &battle_config.feature_roulette,                1,         0,    1,            },
 	{ "client_config/rodex",                           &battle_config.feature_rodex,                   1,         0,    1,            },
 	{ "client_config/rodex_use_accountmail",           &battle_config.feature_rodex_use_accountmail,   0,         0,    1,            },
+	{ "client_config/ping_timer_inverval",             &battle_config.ping_timer_interval,             30,        0,    99999999,     },
+	{ "client_config/ping_time",                       &battle_config.ping_time,                       20,        0,    99999999,     },
 
 	// Drops
 	{ "drops_config/item_auto_get",            &battle_config.item_auto_get,            0,     0,    1,       },

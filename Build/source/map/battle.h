@@ -572,6 +572,9 @@ struct Battle_Config {
 	int magicrod_type;
 
 	int feature_enable_achievement;
+
+	int ping_timer_interval;
+	int ping_time;
 };
 
 /* criteria for battle_config.idletime_critera */

@@ -480,11 +480,12 @@ static int send_from_fifo(int fd)
 		return 0;
 	}
 
-	if( len > 0 )
+	if (len > 0)
 	{
+		sockt->session[fd]->wdata_tick = sockt->last_tick;
 		// some data could not be transferred?
 		// shift unsent data to the beginning of the queue
-		if( (size_t)len < sockt->session[fd]->wdata_size )
+		if ((size_t)len < sockt->session[fd]->wdata_size)
 			memmove(sockt->session[fd]->wdata, sockt->session[fd]->wdata + len, sockt->session[fd]->wdata_size - len);
 
 		sockt->session[fd]->wdata_size -= len;
@@ -641,6 +642,7 @@ static int make_listen_bind(uint32 ip, uint16 port)
 	create_session(fd, sockt->connect_client, null_send, null_parse);
 	sockt->session[fd]->client_addr = 0; // just listens
 	sockt->session[fd]->rdata_tick = 0; // disable timeouts on this socket
+	sockt->session[fd]->wdata_tick = 0;
 	return fd;
 }
 
@@ -723,6 +725,7 @@ static int create_session(int fd, RecvFunc func_recv, SendFunc func_send, ParseF
 	sockt->session[fd]->func_send  = func_send;
 	sockt->session[fd]->func_parse = func_parse;
 	sockt->session[fd]->rdata_tick = sockt->last_tick;
+	sockt->session[fd]->wdata_tick = sockt->last_tick;
 	sockt->session[fd]->session_data = NULL;
 	return 0;
 }
