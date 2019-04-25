@@ -15,6 +15,9 @@ npc_global_list: (
 
 	"NpcScript/Outros/Funcoes.c",
 
+	// Npcs temporários de apoio
+	"NpcScript/Suporte/Barquerio_hungel.c",
+
 	// Batalha Campal
 	@include "NpcScript/Npc_Config/Campal.conf"
 

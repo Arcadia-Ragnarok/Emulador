@@ -290,6 +290,18 @@ function	script	ClearJobQuest2nd	{
 	return;
 }
 
+function	script	ClearJobQuest3nd	{
+	if (getarg(0) == 4063) {
+		archquest = 0;
+		if (questprogress(2187)) { erasequest(2187); }
+		if (questprogress(2188)) { erasequest(2188); }
+		if (questprogress(2189)) { erasequest(2189); }
+		if (questprogress(2190)) { erasequest(2190); }
+		if (questprogress(2191)) { erasequest(2191); }
+	}
+	return;
+}
+
 // ------------------------------------------------------------------
 // - [ F_Navi ] -
 // ------------------------------------------------------------------
